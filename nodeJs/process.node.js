@@ -16,3 +16,9 @@ function asynchFunction = function (data, callback) {
         callback(val);
     });
 );
+
+/*
+process.stdin.resume();
+process.stdin.pipe(process.stdout);
+// Далее можно наблюдать, как все, что вводится, тут же выводится на экран.
+*/
