@@ -180,6 +180,14 @@ if (PROJECT == 'px') {
     if (strpos($text, $str1) !== false) $text = str_replace($str1, $str2, $text);
     else $text = str_replace($str2, $str1, $text);
     $str1 = file_put_contents($file, $text) ? '+' : '-';
+    // debugToolbar
+    $file = DIR . 'protected/extensions/yii-debug-toolbar/assets/yii.debug.toolbar.js';
+    $text = file_get_contents($file);
+    $str1 = "$('#yii-debug-toolbar').hide(); this.initTabs();";
+    $str2 = "this.initTabs();";
+    if (strpos($text, $str1) !== false) $text = str_replace($str1, $str2, $text);
+    else $text = str_replace($str2, $str1, $text);
+    $str1 = file_put_contents($file, $text) ? '+' : '-';
     echo 'success: ' . $str1 . ' | ' . $file . "\n";
     // SQL Log 1
     $file = DIR . 'protected/config/main.php';
