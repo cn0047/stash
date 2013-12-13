@@ -136,23 +136,20 @@ if (PROJECT == 'm') {
 }
 
 // PHOENIX
-if (PROJECT == 'p') {
-    echo "PHOENIX\n";
-    define('DIR', '/home/kovpak/web/kovpak/phoenix/');
-    $file = DIR . 'index.php';
-    $text = file_get_contents($file);
-    $str1 = "defined('YII_DEBUG') or define('YII_DEBUG', false);";
-    $str2 = "defined('YII_DEBUG') or define('YII_DEBUG', true);";
-    if (strpos($text, $str1) !== false) $text = str_replace($str1, $str2, $text);
-    else $text = str_replace($str2, $str1, $text);
-    $str1 = file_put_contents($file, $text) ? '+' : '-';
-    echo 'success: ' . $str1 . ' | ' . $file . "\n";
-}
-
-// PHOENIX 2
 if (PROJECT == 'px') {
     echo "PHOENIX\n";
     define('DIR', '/home/kovpak/web/kovpak/px/');
+
+    // .htaccess
+    $file = DIR . '.htaccess';
+    $text = file_get_contents($file);
+    $str1 = "allow from all\n";
+    $str2 = "";
+    if (strpos($text, $str1) !== false) $text = str_replace($str1, $str2, $text);
+    else $text = $str1 . $text;
+    $str1 = file_put_contents($file, $text) ? '+' : '-';
+    echo 'success: ' . $str1 . ' | ' . $file . "\n";
+
     // index.php
     $file = DIR . 'index.php';
     $text = file_get_contents($file);
@@ -162,15 +159,6 @@ if (PROJECT == 'px') {
     else $text = str_replace($str2, $str1, $text);
     $str1 = file_put_contents($file, $text) ? '+' : '-';
     echo 'success: ' . $str1 . ' | ' . $file . "\n";
-    // .htaccess
-    // $file = DIR . '.htaccess';
-    // $text = file_get_contents($file);
-    // $str1 = "</Files>Allow from all";
-    // $str2 = "</Files>";
-    // if (strpos($text, $str1) !== false) $text = str_replace($str1, $str2, $text);
-    // else $text = str_replace($str2, $str1, $text);
-    // $str1 = file_put_contents($file, $text) ? '+' : '-';
-    // echo 'success: ' . $str1 . ' | ' . $file . "\n";
 
     // dataCollector
     $file = DIR . 'protected/config/dataCollector.php';
@@ -180,6 +168,7 @@ if (PROJECT == 'px') {
     if (strpos($text, $str1) !== false) $text = str_replace($str1, $str2, $text);
     else $text = str_replace($str2, $str1, $text);
     $str1 = file_put_contents($file, $text) ? '+' : '-';
+
     // debugToolbar
     $file = DIR . 'protected/extensions/yii-debug-toolbar/assets/yii.debug.toolbar.js';
     $text = file_get_contents($file);
@@ -189,6 +178,7 @@ if (PROJECT == 'px') {
     else $text = str_replace($str2, $str1, $text);
     $str1 = file_put_contents($file, $text) ? '+' : '-';
     echo 'success: ' . $str1 . ' | ' . $file . "\n";
+
     // SQL Log 1
     $file = DIR . 'protected/config/main.php';
     $text = file_get_contents($file);
@@ -198,6 +188,7 @@ if (PROJECT == 'px') {
     else $text = str_replace($str2, $str1, $text);
     $str1 = file_put_contents($file, $text) ? '+' : '-';
     echo 'success: ' . $str1 . ' | ' . $file . "\n";
+
     // SQL Log 2
     $file = DIR . 'protected/config/main.php';
     $text = file_get_contents($file);
