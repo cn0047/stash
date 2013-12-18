@@ -38,3 +38,18 @@ app.configure(function(){
         res.send(err.message);
     });
 });
+
+app.use(express.cookieParser('mumble'))
+app.use(express.cookieSession({key : 'tracking'}))
+
+// Static cache
+app.use(express.favicon());
+app.use(express.logger('dev'));
+app.use(express.staticCache());
+app.use(express.static(__dirname + '/public'));
+// And
+app.use(express.favicon());
+app.use(express.logger('dev'));
+app.use(express.staticCache({maxObjects: 100, maxLength:
+app.use(express.directory(__dirname + '/public'));
+app.use(express.static(__dirname + '/public'));
