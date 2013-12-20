@@ -1,0 +1,7 @@
+extends layout
+block content
+    h1 #{widget.name}
+    include widget
+    form(method="POST" action="/widgets/#{widget.id}" enctype="application/x-www-form-urlencoded")
+    input(type="hidden"name="_method" id="_method" value="delete")
+    input(type="submit" name="submit" id="submit" value="Delete Widget")

@@ -2,6 +2,7 @@ var express = require('express')
     ,routes = require('./routes')
     ,map = require('./maproutecontroller')
     ,http = require('http')
+    , stylus = require('stylus')
     ,app = express();
 app.configure(function(){
     app.set('views', __dirname + '/views');
@@ -9,6 +10,10 @@ app.configure(function(){
     app.use(express.favicon());
     app.use(express.logger('dev'));
     app.use(express.staticCache({maxObjects: 100, maxLength: 512}));
+    app.use(stylus.middleware({
+        src: __dirname + '/views',
+        dest: __dirname + '/public'
+    }));
     app.use(express.static(__dirname + '/public'));
     app.use(express.bodyParser());
     app.use(express.methodOverride());
