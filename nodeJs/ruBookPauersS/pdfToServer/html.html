@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Upload PDF</title>
+    <script>
+        window.onload=function() {
+            document.getElementById('upload').onsubmit=function() {
+                document.getElementById('submit').disabled=true;
+            };
+        }
+    </script>
+</head>
+<body>
+    <form id="upload" method="POST" action="http://localhost:8124" enctype="multipart/form-data">
+        <p>
+            <label for="username">User Name:</label>
+            <input id="username" name="username" type="text" size="20" required />
+        </p>
+        <p>
+            <label for="email">Email:</label>
+            <input id="email" name="email" type="text" size="20" required />
+        </p>
+        <p>
+            <label for="pdffile">PDF File:</label>
+            <input type="file" name="pdffile" id="pdffile" required />
+        </p>
+        <p>
+            <input type="submit" name="submit" id="submit" value="Submit"/>
+        </p>
+    </form>
+</body>
+</html>
