@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>bi-directional communication</title>
+    <script src="socket.io.js"></script>
+    <script>
+        var socket = io.connect('http://localhost:8124');
+        socket.on('news', function (data) {
+            var html = '<p>' + data.news + '</p>';
+            document.getElementById("output").innerHTML=html;
+            socket.emit('echo', { back: data.news });
+        });
+    </script>
+</head>
+<body>
+    <div id="output"></div>
+</body>
+</html>
