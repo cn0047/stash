@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title><%= title %></title>
+</head>
+<body>
+    <% if (widgets.length) { %>
+        <table>
+            <caption>Widgets</caption>
+            <tr><th>ID</th><th>Name</th><th>Price</th><th>Description</th></tr>
+            <% widgets.forEach(function(widget){ %>
+                <tr>
+                    <td><%= widget.id %></td>
+                    <td><%= widget.name %></td>
+                    <td>$<%= widget.price.toFixed(2) %></td>
+                    <td><%= widget.desc %></td>
+                    <td><a href="/widgets/<%= widget.id %>/edit">Edit</a></td>
+                    <td><a href="/widgets/<%= widget.id %>">Delete</a></td>
+                </tr>
+            <% }) %>
+        </table>
+    <% } %>
+</body>
+</html>

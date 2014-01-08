@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>bi-directional communication</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io.connect('http://localhost:8124');
+        socket.on('connect', function() {
+            socket.emit('addme', prompt('Who are you?'));
+        });
+        socket.on('chat',function(username, data) {
+            var p = document.createElement('p');
+            p.innerHTML = username + ': ' + data;
+            document.getElementById('output').appendChild(p);
+        });
+        window.addEventListener('load',function() {
+            document.getElementById('sendtext').addEventListener('click', function() {
+                var text = document.getElementById('data').value;
+                socket.emit('sendchat', text);
+            }, false);
+        }, false);
+    </script>
+</head>
+<body>
+    <div id="output"></div>
+    <div id="send">
+        <input type="text" id="data" size="100" /><br />
+        <input type="button" id="sendtext" value="Send Text" />
+    </div>
+</body>
+</html>

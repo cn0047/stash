@@ -1,0 +1,8 @@
+extends layout
+block content
+    h1 #{title} | #{widget.name}
+    ul
+        li id: #{widget.id}
+        li Name: #{widget.name}
+        li Price: $#{widget.price.toFixed()}
+        li Desc: #{widget.desc}
