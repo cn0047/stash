@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://playcougar.px.kovpak.trunk-front.pmmedia.com.ua/affiliates" />
+<title>New Test</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">New Test</td></tr>
+</thead><tbody>
+<tr>
+	<td>deleteAllVisibleCookies</td>
+	<td>TRACK_VISIT</td>
+	<td>domain=.playcougar.px.kovpak.trunk-front.pmmedia.com.ua, recurse=true</td>
+</tr>
+<tr>
+	<td>deleteAllVisibleCookies</td>
+	<td>_uuid</td>
+	<td>domain=.playcougar.px.kovpak.trunk-front.pmmedia.com.ua, recurse=true</td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>http://m.playcougar.px.kovpak.trunk-front.pmmedia.com.ua/?utm_source=Inner&amp;a_aid=e7f63816&amp;data1=JameBond&amp;data2=selenium</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>link=Sign Up</td>
+	<td>Sign Up</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Sign Up</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=btn_register_submit</td>
+	<td>Join!</td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>id=UserForm_location</td>
+	<td>w1h</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=UserForm_day</td>
+	<td>label=1</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=UserForm_month</td>
+	<td>label=Jan.</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=UserForm_year</td>
+	<td>label=1978</td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>id=UserForm_password</td>
+	<td>ioytukhjkjk</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>'codenamek2010+'+new Date().getTime()+'@gmail.com'</td>
+	<td>email</td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>id=UserForm_email</td>
+	<td>javascript{storedVars['email']}</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td>${email}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=btn_register_submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>css=button.button</td>
+	<td>Save</td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>http://playcougar.px.kovpak.trunk-front.pmmedia.com.ua/admin/user/find</td>
+	<td></td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>id=AdminLoginForm_login</td>
+	<td>login</td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>id=AdminLoginForm_password</td>
+	<td>pass</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=yt0</td>
+	<td></td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>id=FindUserForm_user</td>
+	<td>javascript{storedVars['email']}</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=yt0</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeText</td>
+	<td>//div[@id='yw0']/table/tbody/tr/td[2]</td>
+	<td>userId</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td>${userId}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>http://playcougar.px.kovpak.trunk-front.pmmedia.com.ua/affiliates/admin</td>
+	<td></td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>id=email</td>
+	<td>login</td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>id=password</td>
+	<td>pass</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=btnLogin</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>css=span.icon-align-justify</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=span.icon-align-justify</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Stats by queue</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=purgeStampUser</td>
+	<td>Clear</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>'regexp:*${userId}*'</td>
+	<td>pattern</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=stampUser</td>
+	<td>javascript{storedVars['pattern']}</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td>${userId}</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>
