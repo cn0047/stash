@@ -1,9 +1,11 @@
 {
-  "name": "skipe",
-  "description": "node app",
-  "version": "0.0.1",
-  "private": true,
-  "dependencies": {
-    "express": "3.x"
-  }
+    "name": "skipe",
+    "version": "0.0.1",
+    "author": "Vladimir Kovpak <007ufins@gmail.com>",
+    "description": "node app",
+    "private": true,
+    "dependencies": {
+        "express": "3.x",
+        "jade": "*"
+    }
 }

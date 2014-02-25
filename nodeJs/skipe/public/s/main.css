@@ -1,0 +1,14 @@
+footer .panel-footer {
+    height: 22px;
+    padding: 0;
+}
+footer #progress {
+    height: 20px;
+    width: 220px;
+    float: right;
+}
+#guest_registration > div {
+    width: 390px;
+    margin-left: auto;
+    margin-right: auto;
+}
