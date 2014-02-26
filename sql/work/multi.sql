@@ -473,3 +473,22 @@ where o.external_order_id in (
 );
 
 php cron/external_remarketing_stat_collect.php -a payments_info -f '2013-11-21' -t '2013-11-22'
+
+
+------------------------------------------------------------------------------------------------------------------------
+-- Shows when host used on registration do not equal to host in EDGE CASE.
+------------------------------------------------------------------------------------------------------------------------
+set sql_big_selects=1;
+set @date1 = '2014-01-01';
+set @date2 = '2014-02-20';
+-- explain
+select
+    count(*)
+    -- phr.siteID, ss.value, phr.pid, phr.request_uri
+from profiles_http_referer phr
+join site_settings ss on phr.siteID = ss.siteID and ss.name = 'MAIL_SITE_NAME' and ss.value <> 'White Label Dating'
+where visit_date >= UNIX_TIMESTAMP(@date1) AND visit_date <= UNIX_TIMESTAMP(@date2)
+-- and phr.siteID=57
+and phr.request_uri like 'EDGE+CASE%7Chttp%'
+and phr.request_uri not regexp ss.value
+;
