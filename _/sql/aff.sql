@@ -12,8 +12,8 @@ FROM
 WHERE
     table_schema=DATABASE();
 */
-SELECT table_name, ROUND((data_length + data_free + index_length) / (1 << 30), 2) AS size 
-FROM information_schema.tables WHERE table_schema = 'aff_easydate_biz' 
+SELECT table_name, ROUND((data_length + data_free + index_length) / (1 << 30), 2) AS size
+FROM information_schema.tables WHERE table_schema = 'aff_easydate_biz'
 GROUP BY table_name ORDER BY size DESC LIMIT 30;
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -57,7 +57,7 @@ select distinct t0.user_data_id from users_sales_detailed t0 join users_data t1 
 
 
 
--- 
+--
 select u.userid,b.userid,b.backurl,round(sum(s.approved),2) approved_amount
 from users_data u join wd_g_backtraffic b on u.userid=b.userid join users_sales_detailed s on u.id=s.user_data_id
 where accountid='alcuda' and b.enabled=1 and b.backurl>'' and b.backurl not like '%a_aid%' and s.date>'2013' and s.approved>0
@@ -67,10 +67,10 @@ order by approved_amount;
 
 --  Shows transactions with 1 order id that tracked more than 1.
 select affiliateid,orderid,productid,count(orderid) cnt,group_concat(transid) -- ,transtype,countrycode
-from transactions_sales_alcuda 
+from transactions_sales_alcuda
 where dateinserted between '2013-01-25 00:00:00' and '2013-01-31 23:59:59' and hidden=0 -- and rstatus in (1, 2)
 group by orderid,productid -- ,countrycode
-having cnt>1 
+having cnt>1
 order by productid
 ;
 -- find transids for clear db
@@ -97,7 +97,7 @@ select message,count(message) cnt from transactions_errors where date>date(now()
 set @v_id     = 76656;
 set @v_date_1 = '2012-06-1 00:00:00';
 set @v_date_2 = '2012-06-30 23:59:59';
-select 
+select
     t.transid,
     t.affiliateid,
     u.id,
@@ -118,46 +118,46 @@ group by t.affiliateid
 
 -- TRANSACTIONS REPORT
 SELECT
-    t1.transid, t1.commission, t1.totalcost, t1.productid, t1.dateinserted, t1.transtype, t1.affiliateid, t1.rstatus, t1.payoutstatus, t1.ip, t1.countrycode, t1.campcategoryid, t1.datepayout, t1.count, t1.decline_reason, t1.date_status, t1.subnet_id, t1.hidden, t1.currency_rate, t1.shaved, t2.username, t2.name, t2.surname, t2.weburl, t2.accountid, t2.trusted, t3.userid 
-FROM 
-    campaigncategories t0 
-    INNER JOIN transactions_sales_alcuda t1 ON t0.campcategoryid = t1.campcategoryid 
-    INNER JOIN users_data t2 ON t1.affiliateid = t2.userid 
-    INNER JOIN wd_g_users t3 ON t2.userid = t3.userid 
-WHERE 
-    t0.campaignid IN ('0158831f', '27748a5d', '8eb302b7', 'b06deb8e', 'e0fbc8a1', '337f53a7', 'e46f6494', '9b80d209', '985803a6') 
-    AND t1.countrycode = 'US' 
-    AND (t1.dateinserted BETWEEN '2012-7-1 00:00:00' AND '2012-7-31 23:59:59') 
-    AND t1.affiliateid = '2d2e8fc0' 
-    AND t1.rstatus IN (1, 2, 3) 
-    AND t1.hidden IN (0, 1) 
-    AND t1.campaignid = 'b06deb8e' 
-    AND t1.transtype IN (1, 2, 4, 8, 16) 
-    AND t2.accountid = 'alcuda' 
-    AND t3.deleted = 0 
-    AND t3.rstatus IN (2, 1) 
-ORDER BY dateinserted desc 
+    t1.transid, t1.commission, t1.totalcost, t1.productid, t1.dateinserted, t1.transtype, t1.affiliateid, t1.rstatus, t1.payoutstatus, t1.ip, t1.countrycode, t1.campcategoryid, t1.datepayout, t1.count, t1.decline_reason, t1.date_status, t1.subnet_id, t1.hidden, t1.currency_rate, t1.shaved, t2.username, t2.name, t2.surname, t2.weburl, t2.accountid, t2.trusted, t3.userid
+FROM
+    campaigncategories t0
+    INNER JOIN transactions_sales_alcuda t1 ON t0.campcategoryid = t1.campcategoryid
+    INNER JOIN users_data t2 ON t1.affiliateid = t2.userid
+    INNER JOIN wd_g_users t3 ON t2.userid = t3.userid
+WHERE
+    t0.campaignid IN ('0158831f', '27748a5d', '8eb302b7', 'b06deb8e', 'e0fbc8a1', '337f53a7', 'e46f6494', '9b80d209', '985803a6')
+    AND t1.countrycode = 'US'
+    AND (t1.dateinserted BETWEEN '2012-7-1 00:00:00' AND '2012-7-31 23:59:59')
+    AND t1.affiliateid = '2d2e8fc0'
+    AND t1.rstatus IN (1, 2, 3)
+    AND t1.hidden IN (0, 1)
+    AND t1.campaignid = 'b06deb8e'
+    AND t1.transtype IN (1, 2, 4, 8, 16)
+    AND t2.accountid = 'alcuda'
+    AND t3.deleted = 0
+    AND t3.rstatus IN (2, 1)
+ORDER BY dateinserted desc
 LIMIT 0, 20
 ;
 
 -- Показывает сколько зашло транзакции (кроме кликов) за день по часам
-select hour(date) as hour, count(id) 
-from _sale_debug 
-where date > '2012-08-28' 
-group by hour 
+select hour(date) as hour, count(id)
+from _sale_debug
+where date > '2012-08-28'
+group by hour
 order by hour;
 -- Показывает сколько зашло транзакции (кроме кликов) per days
 set SQL_BIG_SELECTS=1;
 select date(date)d, count(id)
-from _sale_debug 
+from _sale_debug
 where date between date(now()-interval 0 day) and date(now()+interval 1 day)
-group by d 
+group by d
 ;
 ------------------------------------------------------------------------------------------------------------------------
 
 select count(*) from (
     select count(str) as cnt,str from (
-        select 
+        select
         concat( if(`dateinserted` is null,'',`dateinserted`),
             if(`bannerid` is null,'',`bannerid`),
             if(`affiliateid` is null,'',`affiliateid`),
@@ -227,16 +227,16 @@ select hour(date) hour,count(hour(date)) from _sale_debug where date between dat
 -- sale debug Кол-во полученных кликов по часам
 select HOUR(date) as hour,count(date) from _click_debug where date > CURRENT_DATE group by hour;
 -- кол-во полученных транзакции в разрезе по аффилейтам
-select RIGHT(LEFT(str, LOCATE('a_aid=', str)+13), 8) as a_aid, count(str) 
+select RIGHT(LEFT(str, LOCATE('a_aid=', str)+13), 8) as a_aid, count(str)
 from _sale_debug where date > '2012-09-11 01:00:00' -- BETWEEN '2012-09-11 01:00:00' AND '2012-09-11 01:00:00'
 group by a_aid order by a_aid ;
 -- выгребем ордеры полученных платежей
-select right(left(str, locate('orderid=', str)+15), 8) as ordrs 
+select right(left(str, locate('orderid=', str)+15), 8) as ordrs
 from _sale_debug where str like '%_comp%' and date between date(now()-interval 1 day) and date(now())
 ;
 -- PAYMENT COUNT BY SITES
 select site, count(site) cnt, group_concat(ordr) from (
-    select 
+    select
         substr(str, locate('ProductID=', str)+10, locate('&', str, locate('ProductID=', str))-16) site,
         right(left(str, locate('orderid=', str)+15), 8) as ordr
     from _sale_debug where str like '%_comp%internal%' and date between date(now()-interval 2 day) and date(now()-interval 1 day)
@@ -258,56 +258,56 @@ where ud.userid in ('6c553139','be0be0ed','dea02327', '7ef24092');
 
 -- Показывает когда менеджеры логинилсь последний раз в админку
 SELECT u.userid, ud.last_login, username, name, surname, accountid
-FROM wd_g_users AS u 
-LEFT JOIN users_data AS ud ON u.userid = ud.userid 
+FROM wd_g_users AS u
+LEFT JOIN users_data AS ud ON u.userid = ud.userid
 WHERE u.rtype=3 AND ud.accountid = 'alcuda'
 ORDER BY last_login
 ;
 
 set @v_aid = '769dfde7';
-SELECT q.id,q.userid,q.accountid,q.refid,q.username,q.rpassword,q.name,q.surname,w.alhash,w.userid,w.role_id 
-FROM users_data AS q 
-LEFT JOIN wd_g_users AS w 
-ON q.userid=w.userid 
+SELECT q.id,q.userid,q.accountid,q.refid,q.username,q.rpassword,q.name,q.surname,w.alhash,w.userid,w.role_id
+FROM users_data AS q
+LEFT JOIN wd_g_users AS w
+ON q.userid=w.userid
 WHERE q.userid = @v_aid;
 
 set @v_aid = '127690761';
-SELECT q.id,q.userid,q.accountid,q.refid,q.username,q.rpassword,q.name,q.surname,w.alhash,w.userid,w.role_id 
-FROM users_data AS q 
-LEFT JOIN wd_g_users AS w 
-ON q.userid=w.userid 
+SELECT q.id,q.userid,q.accountid,q.refid,q.username,q.rpassword,q.name,q.surname,w.alhash,w.userid,w.role_id
+FROM users_data AS q
+LEFT JOIN wd_g_users AS w
+ON q.userid=w.userid
 WHERE q.id=@v_aid;
 
 
 SELECT q.id,q.userid,q.accountid,q.refid,q.username,q.rpassword,q.name,q.surname,w.alhash,w.userid,w.role_id,w.source_type
-FROM users_data AS q 
-LEFT JOIN wd_g_users AS w 
-ON q.userid=w.userid 
+FROM users_data AS q
+LEFT JOIN wd_g_users AS w
+ON q.userid=w.userid
 WHERE q.id='80894';
 
 SELECT q.id,q.userid,q.accountid,q.refid,q.username,q.rpassword,q.name,q.surname,w.alhash,w.userid,w.role_id,w.source_type
-FROM users_data AS q 
-LEFT JOIN wd_g_users AS w 
-ON q.userid=w.userid 
+FROM users_data AS q
+LEFT JOIN wd_g_users AS w
+ON q.userid=w.userid
 WHERE q.userid='admin_29';
 
-SELECT q.id,q.userid,q.accountid,q.refid,q.username,q.rpassword,q.name,q.surname,w.alhash,w.userid,w.role_id 
-FROM users_data AS q 
-LEFT JOIN wd_g_users AS w 
-ON q.userid=w.userid 
+SELECT q.id,q.userid,q.accountid,q.refid,q.username,q.rpassword,q.name,q.surname,w.alhash,w.userid,w.role_id
+FROM users_data AS q
+LEFT JOIN wd_g_users AS w
+ON q.userid=w.userid
 WHERE q.username='vladimitk@ufins.com';
 
-SELECT q.id,q.userid,q.accountid,q.refid,q.username,q.rpassword,q.name,q.surname,w.alhash,w.userid,w.role_id 
-FROM users_data AS q 
-LEFT JOIN wd_g_users AS w 
-ON q.userid=w.userid 
+SELECT q.id,q.userid,q.accountid,q.refid,q.username,q.rpassword,q.name,q.surname,w.alhash,w.userid,w.role_id
+FROM users_data AS q
+LEFT JOIN wd_g_users AS w
+ON q.userid=w.userid
 WHERE w.alhash='341de58cb2346e60a561d074ac5671df';
 
 SELECT count(*)
 -- q.id,q.userid,q.accountid,q.refid,q.username,q.rpassword,q.name,q.surname,w.alhash,w.userid,w.role_id,w.source_type
-FROM users_data AS q 
-LEFT JOIN wd_g_users AS w 
-ON q.userid=w.userid 
+FROM users_data AS q
+LEFT JOIN wd_g_users AS w
+ON q.userid=w.userid
 WHERE w.source_type='1';
 
 
@@ -398,7 +398,7 @@ having date_first_lead is not null and dateinserted is not null
 --             right(ae.ref, length(ae.ref)-locate('://',ae.ref)-2),
 --             locate('/', right(ae.ref, length(ae.ref)-locate('://',ae.ref)-2) )-1
 --         ) host
---     from users_sales_detailed usd 
+--     from users_sales_detailed usd
 --     join users_data ud on usd.user_data_id = ud.id and ud.accountid='alcuda'
 --     join wd_g_users wgu using(userid)
 --     left join aff_entry ae on ud.userid = ae.affiliateid
@@ -451,14 +451,14 @@ insert into mailings_queue select null,id,@v_mailing_id,now(),@v_mailing_history
 
 -- Ставим всех алькудовских пользователей на емейл рассылку с id # @v_mailing_id
 INSERT INTO
-    mailings_queue 
+    mailings_queue
 SELECT
     null as id,
     ud.id as user_data_id,
     @v_mailing_id as mailing_id,
     now() as date_inserted,
     @v_mailing_history_id as mailing_history_id
-FROM 
+FROM
     wd_g_users u
     INNER JOIN users_data ud ON ud.userid = u.userid
 WHERE
@@ -469,7 +469,7 @@ WHERE
 ;
 -- Кол-во всех пользователей алькуды, которые попадут в рассылку
 SELECT count(ud.id)
-FROM 
+FROM
     wd_g_users u
     INNER JOIN users_data ud ON ud.userid = u.userid
 WHERE
@@ -480,14 +480,14 @@ WHERE
 ;
 /* -- Если какие-то пользователи не попали в рассылку
 INSERT INTO
-    mailings_queue 
+    mailings_queue
 SELECT
     null as id,
     ud.id as user_data_id,
     @v_mailing_id as mailing_id,
     null as date_inserted,
     null as mailing_history_id
-FROM 
+FROM
     wd_g_users u
     INNER JOIN users_data ud ON ud.userid = u.userid
 WHERE
@@ -531,18 +531,18 @@ where l2.date between date(now()-interval 1 day) and date(now()) and (l2.debug l
 explain
 select * from (
     ( SELECT t0.transid as transid, t0.transtype as transtype, t0.dateinserted as dateinserted, t0.countrycode as countrycode, t0.subnet_id as subnet_id, t0.totalcost as totalcost, t0.bannerid as bannerid, t0.rstatus as rstatus, t0.ip as ip, t0.productid as gender, t0.orderid as orderid, t0.payoutstatus as payoutstatus, t0.commission as commission, t0.currency_rate as currency_rate, t0.parent_id as parent_id, dr.reason as decline_reason, REPLACE( st.name,".com","") as site, ct.name as countryname
-    FROM transactions_sales_alcuda t0 
-    LEFT JOIN decline_reasons dr ON dr.id = t0.decline_reason 
-    LEFT JOIN wd_pa_campaigns cm ON cm.campaignid = t0.campaignid 
-    LEFT JOIN wd_pa_programs2sites ps ON ps.p2sid = cm.p2sid 
-    LEFT JOIN wd_pa_sites st ON st.siteid = ps.siteid LEFT JOIN countries ct ON ct.code = t0.countrycode 
-    WHERE (t0.dateinserted BETWEEN '2013-1-1 00:00:00' AND '2013-12-31 23:59:59') AND t0.affiliateid = 'e7f63816' AND t0.rstatus IN (1, 2, 3) AND t0.transtype IN (1, 2, 4, 8, 16, 0) AND t0.hidden = 0 ORDER BY null ) 
-    UNION 
-    ( SELECT t0.transid as transid, 0 as transtype, t0.dateinserted as dateinserted, t0.countrycode as countrycode, t0.subnet_id as subnet_id, 0 as totalcost, t0.bannerid as bannerid, 2 as rstatus, t0.ip as ip, 0 as gender, 0 as orderid, 0 as payoutstatus, 0 as commission, 0 as currency_rate, 0 as parent_id, 0 as decline_reason, REPLACE( t1.name,".com","") as site, ct.name as countryname 
-    FROM transactions_clicks_alcuda t0 
-    INNER JOIN wd_pa_sites t1 ON t0.siteid = t1.siteid 
-    LEFT JOIN countries ct ON ct.code = t0.countrycode 
-    WHERE (t0.dateinserted BETWEEN '2013-1-1 00:00:00' AND '2013-12-31 23:59:59') AND t0.affiliateid = 'e7f63816' AND t0.user_data_id = 79838 ORDER BY null ) 
-) ut LEFT JOIN users_subnets us ON us.id = ut.subnet_id 
+    FROM transactions_sales_alcuda t0
+    LEFT JOIN decline_reasons dr ON dr.id = t0.decline_reason
+    LEFT JOIN wd_pa_campaigns cm ON cm.campaignid = t0.campaignid
+    LEFT JOIN wd_pa_programs2sites ps ON ps.p2sid = cm.p2sid
+    LEFT JOIN wd_pa_sites st ON st.siteid = ps.siteid LEFT JOIN countries ct ON ct.code = t0.countrycode
+    WHERE (t0.dateinserted BETWEEN '2013-1-1 00:00:00' AND '2013-12-31 23:59:59') AND t0.affiliateid = 'e7f63816' AND t0.rstatus IN (1, 2, 3) AND t0.transtype IN (1, 2, 4, 8, 16, 0) AND t0.hidden = 0 ORDER BY null )
+    UNION
+    ( SELECT t0.transid as transid, 0 as transtype, t0.dateinserted as dateinserted, t0.countrycode as countrycode, t0.subnet_id as subnet_id, 0 as totalcost, t0.bannerid as bannerid, 2 as rstatus, t0.ip as ip, 0 as gender, 0 as orderid, 0 as payoutstatus, 0 as commission, 0 as currency_rate, 0 as parent_id, 0 as decline_reason, REPLACE( t1.name,".com","") as site, ct.name as countryname
+    FROM transactions_clicks_alcuda t0
+    INNER JOIN wd_pa_sites t1 ON t0.siteid = t1.siteid
+    LEFT JOIN countries ct ON ct.code = t0.countrycode
+    WHERE (t0.dateinserted BETWEEN '2013-1-1 00:00:00' AND '2013-12-31 23:59:59') AND t0.affiliateid = 'e7f63816' AND t0.user_data_id = 79838 ORDER BY null )
+) ut LEFT JOIN users_subnets us ON us.id = ut.subnet_id
 ORDER BY dateinserted asc LIMIT 0, 20
 ;

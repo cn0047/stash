@@ -40,7 +40,7 @@ sudo cp /etc/apache2/sites-available/default /etc/apache2/sites-available/mysite
 Редактируем его:
 
 sudo gedit /etc/apache2/sites-available/mysite
-Изменяем корневой узел документов 
+Изменяем корневой узел документов
 с /var/www/ на
 
 /home/<user>/web/
@@ -169,7 +169,7 @@ LogLevel warn
 CustomLog /var/log/apache2/access.log combined
 ServerSignature On
 
-Alias /doc/ "/usr/share/doc/" 
+Alias /doc/ "/usr/share/doc/"
 <directory "/usr/share/doc/">
 Options Indexes MultiViews FollowSymLinks
 AllowOverride None
@@ -189,11 +189,11 @@ sudo service apache2 restart
 Edit
 Примечания
 Так как проекту нежны некоторые каталоги вне докрута, то, удобнее держать проект в папке, вложенной в папку web/.
-Допустим вы сделали git clone из папки web без указания в какую папку делать clone, тогда будет создана папка multi_web/ и проект будет слит в нее. 
+Допустим вы сделали git clone из папки web без указания в какую папку делать clone, тогда будет создана папка multi_web/ и проект будет слит в нее.
 Теперь поменяйте в виртуалхостах mysite и ssl /home/<user>/web на /home/<user>/web/multi_web/ и перезапустите апач.
 При этом необходимые проекту каталоги такие как private и local удобно будет держать в /home/<user>/web/ (рядом с папкой multi_web).
 
-Если вы настраивали дополнительные домены в vhosts.conf (как вы помните, это необязательный шаг), то в vhosts.conf пути менять не нужно. 
+Если вы настраивали дополнительные домены в vhosts.conf (как вы помните, это необязательный шаг), то в vhosts.conf пути менять не нужно.
 В итоге при такой файловой структуре:
 
 web/

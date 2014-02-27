@@ -48,7 +48,7 @@ insert into tracking_codes_settings set class='main', name='ProductID', site_id=
 
 -- Add TRACKING CODES
 select * from tracking_codes where site_id in (36) and title like 'AFF%';
-insert into tracking_codes select 
+insert into tracking_codes select
     null,group_id_fk,title,code,code_for_payer,code_for_orders,code_for_genders,code_for_age1,code_for_age2,code_for_packages,class,source,network_id_fk,date_created,display_position,display_mode,display_use,amount_minimal,daily_cap,confirmed_registration_limit,confirmed_days_limit,tracking_param,tracking_value,
     51, -- site id
     country_code,region_code,is_debug_allowed,is_unique_registration_required,do_not_track,updated,do_not_track_female,funnel_tracking,target_roi,track_3d_pay,save_to_aff_sys
@@ -157,7 +157,7 @@ select
     ,round(o.amount/c.real_rate, 2) trackAmount
     ,ifnull(t.decline_reason, '')status,ifnull(t.code_id,'')
     ,if(l.logins_by_source_id is not null, 'yes', '')login
-from orders o 
+from orders o
 left join tracking_codes_processed_additional t on o.user_id = t.profile_id and o.id = t.order_id
 left join logins_by_source_orders l on o.id = l.order_id
 left join currency_rates c on date(o.tdate) = c.date and c.to = 'GBP' and c.from = left(o.currency, 3)
@@ -172,31 +172,31 @@ select * from tracking_codes_posted_5 where profile_id_fk = @v_pid;
 set @v_aid  = '%e7f63816%';
 select * from tracking_codes_posted_9 where qs_additional like @v_aid or qs_main like @v_aid;
 
-select 
+select
     tcph. id, profile_id_fk, order_id_fk, qs_additional, posted, sent,
     tcpl. ids, hour, processed
-from 
-    tracking_codes_posted_5 tcph 
+from
+    tracking_codes_posted_5 tcph
     left join tracking_codes_posted_log tcpl on tcph.id = tcpl.ids
-where 
+where
     tcph.profile_id_fk = @v_pid;
 
--- Проверяет был ли трек передан в AFFILIATES SYSTEM 
+-- Проверяет был ли трек передан в AFFILIATES SYSTEM
 -- по id профайла
 set @v_pid  = '217701504';
-select 
-    id, profile_id_fk, order_id_fk, qs_main, qs_additional, posted, sent 
+select
+    id, profile_id_fk, order_id_fk, qs_main, qs_additional, posted, sent
 from tracking_codes_posted_history_5 where profile_id_fk = @v_pid;
 -- по a_aid аффилейта
 set @v_like  = '%e7f63816%';
-select 
-    id, profile_id_fk, order_id_fk, qs_main, qs_additional, posted, sent 
+select
+    id, profile_id_fk, order_id_fk, qs_main, qs_additional, posted, sent
 from tracking_codes_posted_history_1 where qs_additional like @v_like;
 
 
 -- ORDER Смотрим ордер по его id и URL по которому пришел юзер
 select o. id, user_id, phr. request_uri, http_referer
-from orders o 
+from orders o
 left join profiles_http_referer phr on o.user_id = phr.pid
 where o.id in (41966607, 41966615);
 
@@ -225,7 +225,7 @@ select * from tracking_codes_posted_7 where order_id_fk <= 0 limit 3;
 -- TRANSACTIONS HISTORY
 ------------------------------------------------------------------------------------------------------------------------
 /*
-    base multi_c table 
+    base multi_c table
     tracking_codes_processed
     contains declined trackCodes
 */
@@ -237,15 +237,15 @@ select HOUR(FROM_UNIXTIME(sent)) as hour, count(sent)  from tracking_codes_poste
 
 -- выгребем ордеры полученных платежей, кроме тех что есть в аффилейт системе
 SELECT GROUP_CONCAT(order_id_fk SEPARATOR "','") as ordrs
-FROM tracking_codes_posted_history_5 
-WHERE 
-    qs_main LIKE '%_comP%' 
+FROM tracking_codes_posted_history_5
+WHERE
+    qs_main LIKE '%_comP%'
     AND  order_id_fk NOT IN ('42029475','42029483','42029573','42029597','42029670','42029730','42029776','42029840','42029889','42029913','42029939','42030052','42030031','42030200','42030240','42030258','42030487','42030531','42030574','42030705','42030808','42030815','42030952','42031675','42031725','42031735','42031878','42032004','42032176','42032465','41981910','41982549','41983247','42020634','41991840','41996041','42000212','42026450','42019292','42009101','42008394','42024352','42032898','42032899','42032901','42032994','42033014','42033046','42033137','42033291','42033348','42033372','42033388','42033426','42033554','42033928','42034165','42034305','42034317','42034324','42034437','42034750','42034832','42034834','42034837','42034878','42035097','42035181','42035213','42024330','42029326','42035215','42035221','42035312','42035359','42035410','42035418','42035473','42035630','42035652','42035730','42035747','42035757')
 ;
 -- LIMIT 20;
 
 -- кол-во полученных транзакции в разрезе по аффилейтам
-select RIGHT(LEFT(qs_additional, LOCATE('a_aid=', qs_additional)+13), 8) as a_aid, count(qs_additional) 
+select RIGHT(LEFT(qs_additional, LOCATE('a_aid=', qs_additional)+13), 8) as a_aid, count(qs_additional)
 from tracking_codes_posted_history_4
 group by a_aid order by a_aid ;
 
@@ -382,7 +382,7 @@ set @date2 = '2013-12-10';
 -- Show GOOD external orders per day.
 select
   date(created_at)d,count(date(created_at))cnt,sum(amount)amount
-from external_remarketing_exported_profiles_orders 
+from external_remarketing_exported_profiles_orders
 where created_at between @date1 and @date2 and status in ('CHARGED', 'STOPPED', 'PARTLY')
 group by d
 ;

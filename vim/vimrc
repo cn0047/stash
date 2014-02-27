@@ -1,0 +1,28 @@
+:syntax on
+:set paste
+:set autoindent
+:set autowrite
+:set shiftwidth=4
+:set hlsearch
+:set incsearch
+:set filetype=php
+:set tabstop=4
+:set undolevels=5000
+:set formatoptions=cr
+:set ignorecase
+:set list listchars=tab:→\ ,trail:·
+
+:set showmatch
+:set nobackup
+:set nowritebackup
+:set noswapfile
+:set smarttab
+:set et
+:set ai
+:set cin
+:set ruler
+
+map <S-left>  :tabp<cr>
+map <S-right> :tabn<cr>
+map <S-down>  :tabc<cr>
+map <S-up>    :qa!<cr>

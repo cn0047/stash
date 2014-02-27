@@ -43,7 +43,7 @@ $(function() {
 			}
 		},
 		deleteTask: function(){
-			
+
 		},
 	});
 
@@ -203,4 +203,4 @@ $(function() {
 
     new app.router();
     Backbone.history.start();
-}); 
+});
