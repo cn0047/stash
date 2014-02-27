@@ -9,12 +9,10 @@ xdebug
 	}
 
 ~/.bashrc
+// home ip address: 007.02.03.04
 
-	export XDEBUG_CONFIG="idekey=sublime.xdebug remote_host=192.168.12.184 remote_enable=1 remote_autostart=0"
+	export XDEBUG_CONFIG="idekey=sublime.xdebug remote_host=007.02.03.04 remote_enable=1 remote_autostart=0"
 
-home 176.36.24.43
-
-	export XDEBUG_CONFIG="idekey=sublime.xdebug remote_host=176.36.24.43 remote_enable=1 remote_autostart=0"
 
 .htaccess
 
