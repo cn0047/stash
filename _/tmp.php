@@ -182,16 +182,6 @@ ee.url
       echo "<table border=1 cellspacing=0 cellpadding=3 bordercolor='#BFBFBF'><tr bgcolor='#ADD8E6' align=center><td>".implode("</td><td>",$c)."</td></tr>".implode("",$d)."</table>";
   }
 
-
-  cron/external_remarketing_stat_collect.php
-  api/remarketing_external.stat.php
-
-  scp -P 10063 ppc/ppc.entryaction.url.casual.php                       multi-rel-work@lgw.am.hwtool.net:~/htdocs/ppc/ppc.entryaction.url.casual.php
-  scp -P 10063 repository/admin/smarty/ppc.entryaction.url.casual.htm   multi-rel-work@lgw.am.hwtool.net:~/htdocs/repository/admin/smarty/ppc.entryaction.url.casual.htm
-  scp -P 10063 ppc/ppc.entryaction.url.include.new.php                  multi-rel-work@lgw.am.hwtool.net:~/htdocs/ppc/ppc.entryaction.url.include.new.php
-  scp -P 10063 ppc/ppc.entryaction.url.include.php                      multi-rel-work@lgw.am.hwtool.net:~/htdocs/ppc/ppc.entryaction.url.include.php
-  scp -P 10063 ppc/ppc.entryaction.url.include.casual.php               multi-rel-work@lgw.am.hwtool.net:~/htdocs/ppc/ppc.entryaction.url.include.casual.php
-
 ex rm
   inc/external_registration/ExternalRemarketingProfile.php
   cron/external_remarketing_stat_collect.php
