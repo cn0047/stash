@@ -156,26 +156,6 @@ translations
   # and
   cd locale && make
 
-countries ip
-  $remaddrarr = array(
-    "USA" => "69.73.178.240",
-    "CAN" => "24.48.176.0",
-    "NZL" => "58.84.224.3",
-    "IND" => "58.146.96.3",
-    "AUS" => "202.138.16.3",
-    "AUT" => "62.47.255.255",
-    "GBR" => "86.141.47.163",
-    "ESP" => "62.93.160.3",
-    "FRA" => "62.160.230.10",
-    "TUR" => "94.54.0.3",
-    "ITA" => "212.14.140.2",
-    "DEU" => "77.185.208.234",
-    "UKR" => "176.36.52.108",
-  );
-  if ($_SERVER['SCRIPT_NAME'] != '/base/login.php')  {
-     $_SERVER['REMOTE_ADDR'] = $remaddrarr["ESP"];
-  }
-
 mysql.inc
   inc/mysql.inc.php 1857
   if ($_COOKIE['d']) define('nodbg',1);
