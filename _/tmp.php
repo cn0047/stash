@@ -1,56 +1,7 @@
-
 links
 
   http://www.xe.com/
 
-backup
-  sudo apt-get install bacula-fd
-
-  /etc/bacula/bacula-fd.conf
-  #
-  # Default  Bacula File Daemon Configuration file
-  #
-  #  For Bacula release 5.2.5 (26 January 2012) -- ubuntu 12.04
-  #
-  # There is not much to change here except perhaps the
-  # File daemon Name to
-  #
-
-  #
-  # List Directors who are permitted to contact this File daemon
-  #
-  Director {
-    Name = bacula-dir
-    Password = "iEkco_H2LSl8cIX8"
-  }
-
-  #
-  # Restricted Director, used by tray-monitor to get the
-  #   status of the file daemon
-  #
-  #Director {
-  #  Name = kovpak-mon
-  #  Password = "kJhtbOjirYBy6nqfxQ2OlKdn9NqcL3EfW"
-  #  Monitor = yes
-  #}
-
-  #
-  # "Global" File daemon configuration specifications
-  #
-  FileDaemon {                          # this is me
-    Name = kovpak
-    FDport = 9102                  # where we listen for the director
-    WorkingDirectory = /var/lib/bacula
-    Pid Directory = /var/run/bacula
-    Maximum Concurrent Jobs = 20
-    FDAddress = 192.168.12.184
-  }
-
-  # Send all messages except skipped files back to Director
-  Messages {
-    Name = Standard
-    director = bacula-dir = all, !skipped, !restored
-  }
 
 url
   : %3A
