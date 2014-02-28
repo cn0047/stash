@@ -236,10 +236,6 @@ migrate
   php protected/yiic.php migrate redo 1
   php protected/yiic.php migrate down 1
 
-live user
-
-  playcougar       codenamek2010+961@gmail.com c961c961       https://www.playcougar.com/site/autologin?key=9657fab2d2ccb8cfacb2da6f2c8d1489&crmMessageId=c0df0506e3eb11e292b2d4bed9a94a8f&eml=1&uniqmessageId=92d20330d04a4d3ca60fa59268acf5ce&open=search
-
 module
   $this->configure([
       'components' => [
@@ -249,32 +245,14 @@ module
       ],
   ]);
 
-
-  // private $companyName = 'AlcudaLimited';
-  // return 'AlcudaLimited';
-  // return 'EnedinaLtd';
-  // return 'MassinteractiveServicesLimited';
-  // return 'WoodrockMaltaLimited';
+tracking
 
   Yii::app()->eTrack->getSources()
 
-
-
-
-
-  login types :
+login types
   default
   autologinCrm
   autologinCookie
-
-  url param `utm_source` contains source.
-
-  /home/kovpak/web/kovpak/px/protected/components/Tracking.php
-  /home/kovpak/web/kovpak/px/protected/extensions/track/ETrack.php
-
-
-
-  Yii::app()->cache->set($key, array($value), $duration);
 
 eQueueManager
   $data = ['200'];
