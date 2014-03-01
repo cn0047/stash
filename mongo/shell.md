@@ -17,7 +17,6 @@ mongo
     db.testData.findOne()
     db.testData.find().limit(3)
     db.testData.find({ name : "mongo" })
-    
     // iterate over the cursor with a loop
     var c = db.testData.find()
     while (c.hasNext()) printjson(c.next())
