@@ -22,3 +22,4 @@ mongo
     while (c.hasNext()) printjson(c.next())
     // print 4th item in list
     printjson(c[4])
+    db.users.find({age:{$gt: 18}}).sort({age; 1})
