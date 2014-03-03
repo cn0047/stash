@@ -4,7 +4,7 @@ mongo
 sudo service mongodb start|stop|restart
 
 mongo
-
+````js
     // current database
     db
     show dbs
@@ -61,3 +61,4 @@ mongo
     db.users.update({ age: { $gt: 18 } }, { $set: { status: "A" } }, { multi: true })
     // DELETE
     db.users.remove({ status: "D" })
+````
