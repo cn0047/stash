@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://m.localsgowild.com/" />
+<title>px</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">px</td></tr>
+</thead><tbody>
+<tr>
+	<td>storeEval</td>
+	<td>'m.' /* 'm.' |&nbsp;&nbsp;''&nbsp;&nbsp;*/</td>
+	<td>platform</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>'playcougar' /* localsgowild | playcougar */</td>
+	<td>site</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>'kv' /* kv | zp */</td>
+	<td>server</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>'live' /* trunk | live */</td>
+	<td>environment</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>'${site}'+('${environment}' == 'live' ? '.com' : '.px.kovpak.trunk-front.pmmedia.com.ua')</td>
+	<td>host</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>'http://'+'${platform}'+'${host}'+'/?utm_source=Inner&amp;a_aid='+('${server}' == 'kv' ? 'e7f63816' : 'f5fe9afc')+'&amp;data1=JameBond&amp;data2=selenium'</td>
+	<td>url</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>'domain=.'+'${host}'+', recurse=true'</td>
+	<td>cookie</td>
+</tr>
+<tr>
+	<td>deleteAllVisibleCookies</td>
+	<td>TRACK_VISIT</td>
+	<td>domain=.localsgowild.com, recurse=true</td>
+</tr>
+<tr>
+	<td>deleteAllVisibleCookies</td>
+	<td>_uuid</td>
+	<td>domain=.localsgowild.com, recurse=true</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td>${url}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>${url}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars['server']=='kv'</td>
+	<td>l1</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td>200</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>l1</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
