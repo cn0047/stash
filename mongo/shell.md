@@ -62,4 +62,10 @@ db.users.update({ age: { $gt: 18 } }, { $set: { status: "A" } }, { multi: true }
 // DELETE
 db.users.remove({ status: "D" })
 
+// To set errors ignored write concern, specify w values of -1 to your driver.
+// To set unacknowledged write concern, specify w values of 0 to your driver.
+// To set acknowledged write concern, specify w values of 1 to your driver. DEFAULT.
+// To set a journaled write concern, specify w values of 1 and set the journal or j option to true for your driver.
+// To set replica acknowledged write concern, specify w values greater than 1 to your driver.
+
 ````
