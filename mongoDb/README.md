@@ -23,6 +23,18 @@ var c = db.testData.find()
 while (c.hasNext()) printjson(c.next())
 // print 4th item in list
 printjson(c[4])
+// print(tojson(c[4]));
+var myCursor =  db.inventory.find( { type: 'food' } );
+myCursor.forEach(printjson);
+// cursor to array
+var myCursor = db.inventory.find( { type: 'food' } );
+var documentArray = myCursor.toArray();
+var myDocument = documentArray[3];
+// or
+var myCursor = db.inventory.find( { type: 'food' } );
+var myDocument = myCursor[3];
+// or
+myCursor.toArray() [3];
 // search all documents with age exactly 18
 db.users.find({age: 18})
 // greater than condition
@@ -72,14 +84,21 @@ db.inventory.find({ type: "food", item:/^c/ }, { item: 1 })
 
 // EXPLAIN
 db.collection.find().explain()
+// hint
+db.inventory.find( { type: 'food' } ).hint( { type: 1 } ).explain()
+db.inventory.find( { type: 'food' } ).hint( { type: 1, name: 1 } ).explain()
 
 // INSERT
 // MongoDB always adds the _id field
 db.users.insert({name: "sue", age: 26, status: "A"})
+// save() - replaces an existing document with the same _id
 db.inventory.save({type: "book", item: "notebook", qty: 40})
+db.inventory.save({_id: 10, type: "misc", item: "placard"} )
 // UPDATE
+// update() - modify existing data or modify a group of documents
 // by default mongo update single row. use {multi: true} to update all maches documents
 db.users.update({ age: { $gt: 18 } }, { $set: { status: "A" } }, { multi: true })
+db.inventory.update({ type : "book" }, { $inc : { qty : -1 } }, { multi: true } )
 // REPLACE
 db.inventory.update(
     { type: "book", item : "journal" },
@@ -94,5 +113,7 @@ db.users.remove({ status: "D" })
 // To set acknowledged write concern, specify w values of 1 to your driver. DEFAULT.
 // To set a journaled write concern, specify w values of 1 and set the journal or j option to true for your driver.
 // To set replica acknowledged write concern, specify w values greater than 1 to your driver.
+
+
 
 ````
