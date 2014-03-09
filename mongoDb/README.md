@@ -1,7 +1,7 @@
 mongo
 -
 
-MongoDB shell version: 2.4.6
+*MongoDB shell version: 2.4.6*
 
 sudo service mongodb start|stop|restart
 
@@ -186,10 +186,10 @@ t = db.transactions.findAndModify({
 db.transactions.find({application: "A1", state: "pending"})
 
 db.runCommand( { getLastError: 1, j: "true" } )
-
+````
 [MongoDB CRUD Reference](http://docs.mongodb.org/manual/reference/crud/#mongodb-crud-reference)
 [SQL to MongoDB Mapping Chart](http://docs.mongodb.org/manual/reference/sql-comparison/#sql-to-mongodb-mapping-chart    )
-
+````js
 
 
 
