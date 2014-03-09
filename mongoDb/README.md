@@ -1,6 +1,8 @@
 mongo
 -
 
+MongoDB shell version: 2.4.6
+
 sudo service mongodb start|stop|restart
 
 mongo
@@ -40,7 +42,7 @@ db.users.find({age: 18})
 // greater than condition
 db.users.find({age:{$gt: 18}}).sort({age; 1})
 //
-db.records.find( { "user_id": { $lt: 42} }, { "name": 1, "email": 1} )
+db.records.find( { "user_id": { $lte: 42} }, { "name": 1, "email": 1} )
 // switch on/off fields
 db.users.find({age: {$gt: 18}}, {name: 1, address: 1, _id: 0}).limit(5)
 // 'food' or 'snacks'
@@ -74,6 +76,10 @@ myCursor.objsLeftInBatch();
 // info about all cursors
 db.runCommand( { cursorInfo: 1 } )
 
+// select count(user_id) from users
+db.users.count( { user_id: { $exists: true } } )
+db.users.distinct( "status" )
+
 // INDEX
 db.inventory.find({ type: 'aston' });
 db.inventory.ensureIndex( { type: 1 })
@@ -94,25 +100,99 @@ db.users.insert({name: "sue", age: 26, status: "A"})
 // save() - replaces an existing document with the same _id
 db.inventory.save({type: "book", item: "notebook", qty: 40})
 db.inventory.save({_id: 10, type: "misc", item: "placard"} )
+
 // UPDATE
 // update() - modify existing data or modify a group of documents
 // by default mongo update single row. use {multi: true} to update all maches documents
 db.users.update({ age: { $gt: 18 } }, { $set: { status: "A" } }, { multi: true })
 db.inventory.update({ type : "book" }, { $inc : { qty : -1 } }, { multi: true } )
+db.students.update(
+    { _id: 1 },
+    { $push: { scores: {
+        $each : [{ attempt: 3, score: 7 },
+        { attempt: 4, score: 4 } ],
+        $sort: { score: 1 },
+        $slice: -3
+    } } }
+)
+db.users.update(
+    { },
+    { $unset: { join_date: "" } },
+    { multi: true }
+)
+
 // REPLACE
 db.inventory.update(
     { type: "book", item : "journal" },
     { $set : { qty: 10 } },
     { upsert : true }
 )
+
 // DELETE
 db.users.remove({ status: "D" })
+// delete documents but don't delete indexes
+// to remove data and indexes use method drop()
+
+// remove 1 document
+db.inventory.remove( { type : "food" }, 1 )
+
+
+db.users.drop()
 
 // To set errors ignored write concern, specify w values of -1 to your driver.
 // To set unacknowledged write concern, specify w values of 0 to your driver.
 // To set acknowledged write concern, specify w values of 1 to your driver. DEFAULT.
 // To set a journaled write concern, specify w values of 1 and set the journal or j option to true for your driver.
 // To set replica acknowledged write concern, specify w values greater than 1 to your driver.
+
+// TRANSACTION
+db.accounts.save({name: "A", balance: 1000, pendingTransactions: []})
+db.accounts.save({name: "B", balance: 1000, pendingTransactions: []})
+db.accounts.find()
+// init
+db.transactions.save({source: "A", destination: "B", value: 100, state: "initial"})
+db.transactions.find()
+// set status pending
+t = db.transactions.findOne({state: "initial"})
+db.transactions.update({_id: t._id}, {$set: {state: "pending"}})
+db.transactions.find()
+// apply transaction
+db.accounts.update({name: t.source, pendingTransactions: {$ne: t._id}}, {$inc: {balance: -t.value}, $push: {pendingTransactions: t._id}})
+db.accounts.update({name: t.destination, pendingTransactions: {$ne: t._id}}, {$inc: {balance: t.value}, $push: {pendingTransactions: t._id}})
+db.accounts.find()
+// set status commited
+db.transactions.update({_id: t._id}, {$set: {state: "committed"}})
+db.transactions.find()
+// remove pending
+db.accounts.update({name: t.source}, {$pull: {pendingTransactions: t._id}})
+db.accounts.update({name: t.destination}, {$pull: {pendingTransactions: t._id}})
+db.accounts.find()
+// set status done
+db.transactions.update({_id: t._id}, {$set: {state: "done"}})
+db.transactions.find()
+// rollback
+// set status canceling
+db.transactions.update({_id: t._id}, {$set: {state: "canceling"}})
+db.accounts.update({name: t.source, pendingTransactions: t._id}, {$inc: {balance: t.value}, $pull: {pendingTransactions: t._id}})
+db.accounts.update({name: t.destination, pendingTransactions: t._id}, {$inc: {balance: -t.value}, $pull: {pendingTransactions: t._id}})
+db.accounts.find()
+db.transactions.update({_id: t._id}, {$set: {state: "canceled"}})
+
+t = db.transactions.findAndModify({
+    query: {state: "initial", application: {$exists: 0}},
+    update: {$set: {state: "pending", application: "A1"}},
+    new: true
+})
+db.transactions.find({application: "A1", state: "pending"})
+
+db.runCommand( { getLastError: 1, j: "true" } )
+
+[MongoDB CRUD Reference](http://docs.mongodb.org/manual/reference/crud/#mongodb-crud-reference)
+[SQL to MongoDB Mapping Chart](http://docs.mongodb.org/manual/reference/sql-comparison/#sql-to-mongodb-mapping-chart    )
+
+
+
+
 
 
 
