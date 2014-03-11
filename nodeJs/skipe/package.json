@@ -8,6 +8,6 @@
         "express": "3.x",
         "jade": "*",
         "express-validator": "*",
-        "mongoose": "*"
+        "mongodb": "*"
     }
 }
