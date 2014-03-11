@@ -68,8 +68,13 @@ mySqlDump
   zcat table.gz | host -uUser -pPass base
 
 smarty
-
+  {assign var='i' value=$k+1}
+  <pre>{$var|@var_export}<pre>
+  {showQuickHelp text=L_G_HLP_TOTALCOST}
   {get_assoc array=$matrix key=$id assoc="other"}
+  {if in_array($brand.wl.wl_site_id, array(3818, 3788, 4047, 4262, 5656))}
+  {capture name=req_url}index_popup2.php?md=Affiliate_Merchants_Views_AffiliateManager&action=affalldetails&aid={$row.userid}{/capture}
+  {showQuickDetails url=$smarty.capture.req_url size=300}
 
 SNIPPETS
   fwrite(STDOUT, __METHOD__ . "\n");
@@ -99,9 +104,10 @@ rivals
   http://www.datinggold.com/
   http://affiliate.sexsearch.com/
 
-xmlt debug
+debug
   $client->setDebug(1);
   ini_set('memory_limit', '512M');
+  dbg(0);file_put_contents('/tmp/debug.tmp',var_export(preg_replace('/\'/', '', ob_get_clean()), 1)."\n",FILE_APPEND); /// tail -f /tmp/debug.tmp
 
 ban aff from .htaccess
   #RewriteCond %{QUERY_STRING} c42bf7b6
@@ -186,6 +192,8 @@ ex rm
   inc/external_registration/ExternalRemarketingProfile.php
   cron/external_remarketing_stat_collect.php
   api/remarketing_external.stat.php
+
+  php cron/external_remarketing_stat_collect.php -a payments_info
 
 stub
   define('MOBILE_WEB_APP_JS_DEBUG', 1); - use not minified js file
