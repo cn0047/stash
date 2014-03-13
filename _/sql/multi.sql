@@ -492,3 +492,16 @@ where visit_date >= UNIX_TIMESTAMP(@date1) AND visit_date <= UNIX_TIMESTAMP(@dat
 and phr.request_uri like 'EDGE+CASE%7Chttp%'
 and phr.request_uri not regexp ss.value
 ;
+
+------------------------------------------------------------------------------------------------------------------------
+-- ppc/ppc.entryaction.php
+------------------------------------------------------------------------------------------------------------------------
+-- Bad account
+select * from ppc_account where account like 'google-rampetepiker%';
+-- Count of traffic for bad account by id of bad account
+select count(*) from ppc_destination where aid = 4835;
+SELECT distinct siteid FROM ppc_destination WHERE aid = 4835;
+-- Assign traff of bad account to good account
+update ppc_destination set aid = 4815, siteid = 56 where aid = 4835;
+-- Deactivate bad account
+update ppc_account set status = 3 where id in (4835);
