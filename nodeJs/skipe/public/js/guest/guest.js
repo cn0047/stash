@@ -3,6 +3,7 @@ define(['text!/js/guest/t/guest.layout.tpl.html'], function (t) {
         el: '#doc #guest',
         routes: {
             view_guest_registration: '/js/guest/v/registration.js',
+            view_guest_login: '/js/guest/v/login.js',
             view_guest_home: '/js/guest/v/home.js',
         },
         initialize: function () {

@@ -12,3 +12,8 @@ footer #progress {
     margin-left: auto;
     margin-right: auto;
 }
+#guest_login > div {
+    width: 390px;
+    margin-left: auto;
+    margin-right: auto;
+}

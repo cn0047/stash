@@ -13,15 +13,15 @@ define(['/js/guest/m/registration.js', 'text!/js/guest/t/registration.tpl.html']
             app.views.app.hideLoading();
         },
         signUp: function () {
-            app.views.app.showLoading();
             this.hideErrors();
+            this.model.clear();
             this.model.set({
                 email: (this.$('#email').val()).trim(),
                 sname: (this.$('#sname').val()).trim(),
             });
             if (this.model.isValid()) {
+                app.views.app.showLoading();
                 this.model.hash = 'registration';
-                this.model.save();
                 this.model.save({}, {
                     success: function (m) {
                         m.trigger('afterSave');
@@ -34,7 +34,7 @@ define(['/js/guest/m/registration.js', 'text!/js/guest/t/registration.tpl.html']
         showErrors: function (e) {
             _.each (e, function (v) {
                 var msg = '<small class="has-error"><small class="control-label">'+v.msg+'</small></small>';
-                this.$('#'+v.param).popover({html: true, content: msg}).popover('show');
+                this.$('#'+v.param).popover({html: true, content: msg, placement: 'top'}).popover('show');
             });
         },
         hideErrors: function () {
@@ -45,6 +45,11 @@ define(['/js/guest/m/registration.js', 'text!/js/guest/t/registration.tpl.html']
             if (e) {
                 this.showErrors(e);
             }
+            if (this.model.get('success')) {
+                this.$el.find('div:first').hide();
+                this.$el.find('div:nth-child(2)').removeClass('hide');
+            }
+            app.views.app.hideLoading();
         },
     });
 });

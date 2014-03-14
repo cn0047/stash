@@ -1,11 +1,26 @@
 // nodemon ./app.js localhost 3000
 
-var express = require('express');
+var express          = require('express');
 var expressValidator = require('express-validator');
-var mongodb = require('mongodb');
-var mongoServer = new mongodb.Server('localhost', 27017, {auto_reconnect: true});
-var mongoDB = new mongodb.Db('skipe', mongoServer);
+var mongodb          = require('mongodb');
+var mailer           = require('nodemailer');
+
+var config           = require('./configs/main').config;
+
+var mongoServer = new mongodb.Server(config.mongo.host, config.mongo.port, config.mongo.options);
+var mongoDB = new mongodb.Db(config.mongo.base, mongoServer);
 var app = express();
+mongoDB.open(function (err, db) {
+    if (err) {
+        console.error(err);
+    } else {
+        global.mongo = db;
+    }
+});
+global.mail = mailer.createTransport('SMTP', {
+    service: 'Gmail',
+    auth: {user: config.mail.user, pass: config.mail.password}
+});
 
 app.configure(function () {
     app.use(express.static(__dirname + '/public'));
@@ -13,7 +28,6 @@ app.configure(function () {
     app.use(expressValidator());
     app.set('views', __dirname + '/views');
     app.set('view engine', 'jade');
-    app.set('mongoDB', mongoDB);
 });
 
 app.get('*', require('./routes/app').go);

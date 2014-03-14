@@ -1,6 +1,7 @@
 requirejs.config({
     paths: {
         text: '/js/lib/text-2.0.10',
+        helpers: '/js/lib/helpers',
         view_guest_index: '/js/guest/guest',
     },
 });
@@ -12,6 +13,7 @@ window.app = {
         views: {},
     },
     routers: {},
+    helpers: {},
     views: {},
 };
 
@@ -55,6 +57,9 @@ app.init.views.app = Backbone.View.extend({
     el: 'body',
     initialize: function () {
         this.showLoading();
+        require(['helpers'], function (h) {
+            app.helpers = h;
+        });
         app.routers.app = new app.init.routers.app();
         Backbone.history.start();
     },
