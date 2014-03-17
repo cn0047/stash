@@ -2,6 +2,8 @@ requirejs.config({
     paths: {
         text: '/js/lib/text-2.0.10',
         helpers: '/js/lib/helpers',
+        skipeView: '/js/lib/backboneSkipeView',
+        skipeModel: '/js/lib/backboneSkipeModel',
         view_guest_index: '/js/guest/guest',
     },
 });
@@ -57,7 +59,9 @@ app.init.views.app = Backbone.View.extend({
     el: 'body',
     initialize: function () {
         this.showLoading();
-        require(['helpers'], function (h) {
+        require(['skipeModel', 'skipeView', 'helpers'], function (m, v, h) {
+            Backbone.skipeModel = m;
+            Backbone.skipeView = v;
             app.helpers = h;
         });
         app.routers.app = new app.init.routers.app();

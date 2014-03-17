@@ -22,7 +22,7 @@ exports.registration = function (req, res) {
                 collection.insert({
                     email: req.param('email'),
                     sname: req.param('sname'),
-                    password: require('crypto').randomBytes(10).toString('hex'),
+                    password: require('crypto').randomBytes(5).toString('hex'),
                 }, function (err, docs) {
                     if (err) {
                         res.json({errors: err});

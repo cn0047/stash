@@ -1,5 +1,5 @@
 define(['/js/guest/m/registration.js', 'text!/js/guest/t/registration.tpl.html'], function (m, t) {
-    return  Backbone.View.extend({
+    return  Backbone.skipeView.extend({
         events:{
             'click #signUp': 'signUp',
         },
@@ -30,15 +30,6 @@ define(['/js/guest/m/registration.js', 'text!/js/guest/t/registration.tpl.html']
             } else {
                 this.showErrors(this.model.validationError);
             }
-        },
-        showErrors: function (e) {
-            _.each (e, function (v) {
-                var msg = '<small class="has-error"><small class="control-label">'+v.msg+'</small></small>';
-                this.$('#'+v.param).popover({html: true, content: msg, placement: 'top'}).popover('show');
-            });
-        },
-        hideErrors: function () {
-            this.$('*').popover('destroy');
         },
         afterSave: function () {
             var e = this.model.get('errors');

@@ -107,7 +107,7 @@ rivals
 debug
   $client->setDebug(1);
   ini_set('memory_limit', '512M');
-  dbg(0);file_put_contents('/tmp/debug.tmp',var_export(preg_replace('/\'/', '', ob_get_clean()), 1)."\n",FILE_APPEND); /// tail -f /tmp/debug.tmp
+  dbg();ob_start();dbg(0);file_put_contents('/tmp/debug.tmp',var_export(preg_replace('/\'/', '', ob_get_clean()), 1)."\n",FILE_APPEND); /// tail -f /tmp/debug.tmp
 
 ban aff from .htaccess
   #RewriteCond %{QUERY_STRING} c42bf7b6
