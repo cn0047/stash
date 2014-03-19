@@ -81,6 +81,7 @@ db.users.count( { user_id: { $exists: true } } )
 db.users.distinct( "status" )
 
 // INDEX
+// Each index requires at least 8KB of data space.
 db.inventory.find({ type: 'aston' });
 db.inventory.ensureIndex( { type: 1 })
 // index uses
@@ -93,6 +94,9 @@ db.collection.find().explain()
 // hint
 db.inventory.find( { type: 'food' } ).hint( { type: 1 } ).explain()
 db.inventory.find( { type: 'food' } ).hint( { type: 1, name: 1 } ).explain()
+
+// BSON-document size limit = 16MB
+// In MongoDB, operations are atomic at the document level. No single write operation can change more than one document.
 
 // INSERT
 // MongoDB always adds the _id field
@@ -120,6 +124,27 @@ db.users.update(
     { $unset: { join_date: "" } },
     { multi: true }
 )
+book = {
+    _id: 123456789,
+    title: "MongoDB: The Definitive Guide",
+    author: [ "Kristina Chodorow", "Mike Dirolf" ],
+    published_date: ISODate("2010-09-24"),
+    pages: 216,
+    language: "English",
+    publisher_id: "oreilly",
+    available: 3,
+    checkout: [ { by: "joe", date: ISODate("2012-10-15") } ]
+}
+db.books.findAndModify ({
+    query: {
+        _id: 123456789,
+        available: { $gt: 0 }
+    },
+    update: {
+        $inc: { available: -1 },
+        $push: { checkout: { by: "abc", date: new Date() } }
+    }
+})
 
 // REPLACE
 db.inventory.update(
@@ -186,14 +211,36 @@ t = db.transactions.findAndModify({
 db.transactions.find({application: "A1", state: "pending"})
 
 db.runCommand( { getLastError: 1, j: "true" } )
+
 ````
 [MongoDB CRUD Reference](http://docs.mongodb.org/manual/reference/crud/#mongodb-crud-reference)
 
 [SQL to MongoDB Mapping Chart](http://docs.mongodb.org/manual/reference/sql-comparison/#sql-to-mongodb-mapping-chart    )
 ````js
 
+// In general, use embedded data models when:
+// you have one-to-one or one-to-many model.
+/* For model many-to-many use relationships with document references. */
 
+// Model Tree Structures with Parent References
+db.categories.insert( { _id: "MongoDB", parent: "Databases" } )
+db.categories.insert( { _id: "dbm", parent: "Databases" } )
+db.categories.insert( { _id: "Databases", parent: "Programming" } )
+db.categories.insert( { _id: "Languages", parent: "Programming" } )
+db.categories.insert( { _id: "Programming", parent: "Books" } )
+db.categories.insert( { _id: "Books", parent: null } )
+// parent
+db.categories.findOne( { _id: "MongoDB" } ).parent
+// index
+db.categories.ensureIndex( { parent: 1 } )
 
+// Model Tree Structures with Child References
+db.categories.insert( { _id: "MongoDB", children: [] } )
+db.categories.insert( { _id: "dbm", children: [] } )
+db.categories.insert( { _id: "Databases", children: [ "MongoDB", "dbm" ] } )
+db.categories.insert( { _id: "Languages", children: [] } )
+db.categories.insert( { _id: "Programming", children: [ "Databases", "Languages" ] } )
+db.categories.insert( { _id: "Books", children: [ "Programming" ] } )
 
 
 
