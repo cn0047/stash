@@ -5,6 +5,10 @@ mongo
 
 sudo service mongodb start|stop|restart
 
+sudo rm /var/lib/mongodb/mongod.lock
+sudo service mongodb restart
+
+
 mongo
 ````js
 // current database
