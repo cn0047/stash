@@ -6,28 +6,46 @@ exports.registration = function (req, res) {
         res.json({errors: e});
         return;
     }
-    var mongodb = require('mongodb');
-    var mongoServer = new mongodb.Server('localhost', 27017, {auto_reconnect: true});
-    var mongoDB = new mongodb.Db('skipe', mongoServer);
-    mongoDB.open(function(err, db) {
+    global.mongo.collection('user', function (err, collection) {
         if (err) {
-            console.log(err);
+            res.json({errors: err});
         } else {
-            db.collection('user', function(err, collection) {
+            collection.findOne({email: req.param('email')}, {_id: 1}, function (err, doc) {
                 if (err) {
-                    console.log(err);
-                } else {
-                    collection.insert({
-                        email: req.param('email'),
-                        sname: req.param('sname'),
-                    }, function(err, docs) {
-                        if (err) {
-                            console.log(err);
-                        } else {
-                            res.json({success: docs});
-                        }
-                    });
+                    res.json({errors: err});
+                    return;
                 }
+                if (doc) {
+                    res.json({errors: [{param: 'email', msg: 'This email address has already exists.'}]});
+                    return;
+                }
+                collection.insert({
+                    email: req.param('email'),
+                    sname: req.param('sname'),
+                    password: require('crypto').randomBytes(5).toString('hex'),
+                }, function (err, docs) {
+                    if (err) {
+                        res.json({errors: err});
+                        return;
+                    }
+                    res.render('registrationEmail', {email: docs[0].email, password: docs[0].password}, function(err, html) {
+                        if (err) {
+                            res.json({errors: err});
+                            return;
+                        }
+                        global.mail.sendMail({
+                            to: docs[0].email,
+                            subject: '☺ Your Skipe address, '+docs[0].email+', has been created!',
+                            html: html,
+                        }, function (err, r) {
+                            if (err) {
+                                res.json({errors: err});
+                            } else {
+                                res.json({success: true});
+                            }
+                        });
+                    });
+                });
             });
         }
     });

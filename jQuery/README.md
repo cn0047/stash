@@ -5,6 +5,12 @@ jQuery
 
 ````js
 
+$(function () {
+});
+
+$(document).ready(function () {
+});
+
 // prev selector in chain
 .end()
 

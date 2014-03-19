@@ -3,9 +3,13 @@ mongo
 
 *MongoDB shell version: 2.4.6*
 
-sudo service mongodb start|stop|restart
+    sudo service mongodb start|stop|restart
 
-mongo
+    sudo rm /var/lib/mongodb/mongod.lock
+    sudo service mongodb restart
+
+    mongo
+
 ````js
 // current database
 db
