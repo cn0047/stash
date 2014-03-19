@@ -3,6 +3,9 @@ mongo
 
 *MongoDB shell version: 2.4.6*
 
+Introduction
+=
+
     sudo service mongodb start|stop|restart
 
     sudo rm /var/lib/mongodb/mongod.lock
@@ -246,6 +249,48 @@ db.categories.insert( { _id: "Languages", children: [] } )
 db.categories.insert( { _id: "Programming", children: [ "Databases", "Languages" ] } )
 db.categories.insert( { _id: "Books", children: [ "Programming" ] } )
 
+// Manual References
+original_id = ObjectId()
+db.places.insert({
+    "_id": original_id,
+    "name": "Broadway Center",
+    "url": "bc.example.net"
+})
+db.people.insert({
+    "name": "Erin",
+    "places_id": original_id,
+    "url":  "bc.example.net/Erin"
+})
+// DBRef
+{ "$ref" : <value(collection)>, "$id" : <value(_id)>, "$db" : <value> }
+{
+    "_id" : ObjectId("5126bbf64aed4daf9e2ab771"),
+    // .. application fields
+    "creator" : {
+        "$ref" : "creators",
+        "$id" : ObjectId("5126bc054aed4daf9e2ab772"),
+        "$db" : "users"
+    }
+}
+oId = ObjectId();
+db.address.insert({'_id' : oId, country: 'UK', city: 'London'});
+db.user.insert({name : 'Bond', address: {'$ref': 'address', '$id': oId, '$db': 'user'}});
 
+ObjectId("507f191e810c19729de860ea").getTimestamp();
+ObjectId("507f191e810c19729de860ea").str;
+ObjectId("507f191e810c19729de860ea").valueOf();
+ObjectId("507f191e810c19729de860ea").toString();
+
+var mydate1 = new Date();
+var mydate2 = ISODate();
+mydate1.toString();
 
 ````
+
+Administration
+=
+
+````js
+````
+
+[>>>](http://docs.mongodb.org/manual/administration/monitoring/)
