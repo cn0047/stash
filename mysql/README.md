@@ -17,4 +17,4 @@ SELECT FOUND_ROWS();
 mysql> pager less -SFX
 -- disable-pager
 --pager="less -SFX"
-````sql
+````
