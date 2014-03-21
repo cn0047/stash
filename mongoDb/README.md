@@ -94,6 +94,8 @@ db.inventory.ensureIndex( { type: 1 })
 db.inventory.find({ type: "food", item:/^c/ }, { item: 1, _id: 0 })
 // index not uses, bacause query returns _id field
 db.inventory.find({ type: "food", item:/^c/ }, { item: 1 })
+// delete index
+db.items.dropIndex( { name : 1 } )
 
 // EXPLAIN
 db.collection.find().explain()
@@ -151,7 +153,6 @@ db.books.findAndModify ({
         $push: { checkout: { by: "abc", date: new Date() } }
     }
 })
-
 // REPLACE
 db.inventory.update(
     { type: "book", item : "journal" },
@@ -167,7 +168,6 @@ db.users.remove({ status: "D" })
 // remove 1 document
 db.inventory.remove( { type : "food" }, 1 )
 
-
 db.users.drop()
 
 // To set errors ignored write concern, specify w values of -1 to your driver.
@@ -176,46 +176,6 @@ db.users.drop()
 // To set a journaled write concern, specify w values of 1 and set the journal or j option to true for your driver.
 // To set replica acknowledged write concern, specify w values greater than 1 to your driver.
 
-// TRANSACTION
-db.accounts.save({name: "A", balance: 1000, pendingTransactions: []})
-db.accounts.save({name: "B", balance: 1000, pendingTransactions: []})
-db.accounts.find()
-// init
-db.transactions.save({source: "A", destination: "B", value: 100, state: "initial"})
-db.transactions.find()
-// set status pending
-t = db.transactions.findOne({state: "initial"})
-db.transactions.update({_id: t._id}, {$set: {state: "pending"}})
-db.transactions.find()
-// apply transaction
-db.accounts.update({name: t.source, pendingTransactions: {$ne: t._id}}, {$inc: {balance: -t.value}, $push: {pendingTransactions: t._id}})
-db.accounts.update({name: t.destination, pendingTransactions: {$ne: t._id}}, {$inc: {balance: t.value}, $push: {pendingTransactions: t._id}})
-db.accounts.find()
-// set status commited
-db.transactions.update({_id: t._id}, {$set: {state: "committed"}})
-db.transactions.find()
-// remove pending
-db.accounts.update({name: t.source}, {$pull: {pendingTransactions: t._id}})
-db.accounts.update({name: t.destination}, {$pull: {pendingTransactions: t._id}})
-db.accounts.find()
-// set status done
-db.transactions.update({_id: t._id}, {$set: {state: "done"}})
-db.transactions.find()
-// rollback
-// set status canceling
-db.transactions.update({_id: t._id}, {$set: {state: "canceling"}})
-db.accounts.update({name: t.source, pendingTransactions: t._id}, {$inc: {balance: t.value}, $pull: {pendingTransactions: t._id}})
-db.accounts.update({name: t.destination, pendingTransactions: t._id}, {$inc: {balance: -t.value}, $pull: {pendingTransactions: t._id}})
-db.accounts.find()
-db.transactions.update({_id: t._id}, {$set: {state: "canceled"}})
-
-t = db.transactions.findAndModify({
-    query: {state: "initial", application: {$exists: 0}},
-    update: {$set: {state: "pending", application: "A1"}},
-    new: true
-})
-db.transactions.find({application: "A1", state: "pending"})
-
 db.runCommand( { getLastError: 1, j: "true" } )
 
 ````
@@ -223,7 +183,6 @@ db.runCommand( { getLastError: 1, j: "true" } )
 
 [SQL to MongoDB Mapping Chart](http://docs.mongodb.org/manual/reference/sql-comparison/#sql-to-mongodb-mapping-chart    )
 ````js
-
 // In general, use embedded data models when:
 // you have one-to-one or one-to-many model.
 /* For model many-to-many use relationships with document references. */
@@ -283,12 +242,87 @@ ObjectId("507f191e810c19729de860ea").toString();
 var mydate1 = new Date();
 var mydate2 = ISODate();
 mydate1.toString();
-
 ````
 
 ####Administration
-
 ````js
+db.currentOp()
+// kill <mongod process ID>
+db.serverStatus()
+db.stats()
+db.isMaster()
+// replica set’s status
+rs.status()
+// sharding status
+sh.status()
+
+// Data Type Fidelity
+// data_binary
+{"$binary" : "<bindata>", "$type" : "<t>"}
+// data_date
+Date(<date>)
+// data_timestamp
+Timestamp(<t>, <i>)
+// data_regex
+/<jRegex>/<jOptions>
+// data_oid
+ObjectId("<id>")
+// data_ref
+DBRef("<name>", "<id>")
+
+// Collection Export
+mongoexport --collection collection --out collection.json
+mongoexport --db sales --collection contacts --query '{"field": 1}'
+// Collection Import
+mongoimport --collection collection --file collection.json
+
+// Creates a new collection explicitly.
+// maximum size of 5 megabytes and a maximum of 5000 documents.
+db.createCollection("log", { capped : true, size : 5242880, max : 5000 })
+
+// Check if a Collection is Capped
+db.collection.isCapped()
+db.cappedCollection.find().sort( { $natural: -1 } )
+// Convert a Collection to Capped
+db.runCommand({"convertToCapped": "mycoll", size: 100000});
+
+// Expire Documents after a Certain Number of Seconds
+db.log.events.ensureIndex( { "createdAt": 1 }, { expireAfterSeconds: 3600 } )
+// Expire Documents at a Certain Clock Time
+db.app.events.ensureIndex( { "expireAt": 1 }, { expireAfterSeconds: 0 } )
+
+db.runCommand({ isMaster: 1 })
+db.runCommand({buildInfo: 1})
+db._adminCommand({buildInfo: 1})
+// Shut down the mongod from the mongo shell
+db.shutdownServer()
+db.shutdownServer({timeoutSecs : 5})
+// Force Replica Set Shutdown
+db.adminCommand({shutdown : 1, force : true})
+db.adminCommand({shutdown : 1, timeoutSecs : 5})
+
+// Store a JavaScript Function on the Server
+db.system.js.save({
+    _id: "echoFunction",
+    value : function(x) { return x; }
+})
+db.eval("echoFunction( 'test' )")
+
+// Query Authenticated Users
+db.system.users.find()
+// Create a User Administrator
+db.addUser({
+    user: "<username>",
+    pwd: "<password>",
+    roles: [ "userAdminAnyDatabase" ]
+})
+// Add a User to a Database
+db.addUser({
+    user: "Alice",
+    pwd: "Moon1234",
+    roles: [ "readWrite", "dbAdmin" ],
+    otherDBRoles: { config: [ "readWrite" ]
+})
 ````
 
-[>>>](http://docs.mongodb.org/manual/administration/monitoring/)
+[>>>](http://docs.mongodb.org/manual/tutorial/#development-patterns)
