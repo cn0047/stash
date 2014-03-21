@@ -10,13 +10,11 @@ SELECT SQL_CALC_FOUND_ROWS * FROM table;
 SELECT FOUND_ROWS();
 
 SHOW COLUMNS FROM table LIKE '%';
-
 ````
 
 ####Options
 ````sql
 SET SQL_SAFE_UPDATES=0;
-
 ````
 
 ####Tricks
@@ -24,9 +22,7 @@ SET SQL_SAFE_UPDATES=0;
 tee /tmp/out
 cat /tmp/out | mail mail@com.com
 
---pager="less -S"
-mysql> pager less -SFX
--- disable-pager
---pager="less -SFX"
+user@ubuntu:~$ mysql --pager='less -S'
 
+mysql> pager less -SFX
 ````
