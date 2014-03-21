@@ -165,16 +165,18 @@ translations
 
 mysql.inc
   inc/mysql.inc.php 1857
+  if ($_COOKIE['d']) define('dbg',1);
   if ($_COOKIE['d']) define('nodbg',1);
   !defined('dbg') or defined('nodbg') or print('<span style="color:#A52A2A"><pre>'.str_ireplace(' from ', "<b style='color:#0000FF'> from </b>", $sql->show()).';<hr></pre></span>');
 
 ee.url
-  pr(
-      $current_start_period.'('.date('Y-m-d', $current_start_period).') - '.$current_end_period.'('.date('Y-m-d', $current_end_period).'), action '.strtotime($params['action_date']).' ('.$params['action_date'].')',
+  if ($_COOKIE['d']) pr(
+      $mktime_filter_entry_max.'('.date('Y-m-d H:i:s', $mktime_filter_entry_max).') | '.$current_start_period.'('.date('Y-m-d H:i:s', $current_start_period).') --- '.$current_end_period.'('.date('Y-m-d H:i:s', $current_end_period).'), action '.strtotime($params['action_date']).' ('.$params['action_date'].')',
       "entry_min_minus3($mktime_filter_entry_min_minus3):".date('Y-m-d', $mktime_filter_entry_min_minus3)." entry_min_minus30($mktime_filter_entry_min_minus30):".date('Y-m-d', $mktime_filter_entry_min_minus30)." entry_min_minus7($mktime_filter_entry_min_minus7):".date('Y-m-d', $mktime_filter_entry_min_minus7),
       "entry_max_minus3($mktime_filter_entry_max_minus3):".date('Y-m-d', $mktime_filter_entry_max_minus3)." entry_max_minus30($mktime_filter_entry_max_minus30):".date('Y-m-d', $mktime_filter_entry_max_minus30)." entry_max_minus7($mktime_filter_entry_max_minus7):".date('Y-m-d', $mktime_filter_entry_max_minus7)
   );
-  if (isset($_GET['d'])) define('nodbg',1);
+  if ($_COOKIE['d']) define('dbg',1);
+  if ($_COOKIE['d']) define('nodbg',1);
   $s = ppc_build_query('remarketing_ext', $queries['select_parts'], $params);
   pr($s);
   $s = $s->show();

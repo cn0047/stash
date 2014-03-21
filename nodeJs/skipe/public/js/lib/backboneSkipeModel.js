@@ -8,7 +8,7 @@ define([], function () {
                 password: /^\w{10}$/,
             };
             for (k in a) {
-                if (!patterns[this.checkOptions[k].type].test(a[k])) {
+                if ((k in this.checkOptions) && !patterns[this.checkOptions[k].type].test(a[k])) {
                     e.push({param: this.checkOptions[k].key, msg: this.checkOptions[k].msg});
                 }
             }

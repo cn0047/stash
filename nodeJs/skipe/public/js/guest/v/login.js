@@ -6,6 +6,7 @@ define(['/js/guest/m/login.js', 'text!/js/guest/t/login.tpl.html'], function (m,
         initialize: function () {
             this.tpl = _.template(t);
             this.model = new m();
+            this.model.on('afterSave', this.afterSave, this);
         },
         goTo: function () {
             this.$el.show().html(this.tpl());
@@ -29,6 +30,16 @@ define(['/js/guest/m/login.js', 'text!/js/guest/t/login.tpl.html'], function (m,
             } else {
                 this.showErrors(this.model.validationError);
             }
+        },
+        afterSave: function () {
+            var e = this.model.get('errors');
+            if (e) {
+                this.showErrors(e);
+            }
+            if (this.model.get('success')) {
+                console.log(200)
+            }
+            app.views.app.hideLoading();
         },
     });
 });

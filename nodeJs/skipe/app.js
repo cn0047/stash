@@ -30,8 +30,8 @@ app.configure(function () {
     app.set('view engine', 'jade');
 });
 
+app.post('/guest/:action', require('./routes/guest').go);
 app.get('*', require('./routes/app').go);
-app.post('/guest/registration', require('./routes/guest').registration);
 
 app.listen(3000);
 console.log('Listening on port 3000');

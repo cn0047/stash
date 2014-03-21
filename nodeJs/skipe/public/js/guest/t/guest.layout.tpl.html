@@ -4,8 +4,12 @@
             <a class="navbar-brand" href="#">skipe</a>
         </div>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#guest/registration">Registration</a></li>
-            <li><a href="#guest/login">Log in</a></li>
+            <li <% if (window.location.hash == '#guest/registration') { %> class="active" <% } %>>
+                <a href="#guest/registration">Registration</a>
+            </li>
+            <li <% if (window.location.hash == '#guest/login') { %> class="active" <% } %>>
+                <a href="#guest/login">Log in</a>
+            </li>
         </ul>
     </div>
 </nav>

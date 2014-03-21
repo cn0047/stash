@@ -1,4 +1,6 @@
-exports.registration = function (req, res) {
+var actions = {};
+
+actions.registration = function (req, res) {
     req.checkBody('email', 'Invalid email').isEmail();
     req.checkBody('sname', 'Invalid sname').matches(/^[\w\s\_\-\=\+@]+$/); // or .is()
     var e = req.validationErrors();
@@ -49,4 +51,42 @@ exports.registration = function (req, res) {
             });
         }
     });
+};
+
+actions.logIn = function (req, res) {
+    req.checkBody('email', 'Invalid email').isEmail();
+    req.checkBody('password', 'Invalid password').matches(/^\w{10}$/);
+    var e = req.validationErrors();
+    if (e) {
+        res.json({errors: e});
+        return;
+    }
+    global.mongo.collection('user', function (err, collection) {
+        if (err) {
+            res.json({errors: err});
+        } else {
+            collection.findOne({email: req.param('email')}, {_id: 1, password: 1}, function (err, doc) {
+                if (err) {
+                    res.json({errors: err});
+                    return;
+                }
+                if (!doc) {
+                    res.json({errors: [{param: 'email', msg: 'User with this email address not found.'}]});
+                    return;
+                }
+                if (doc) {
+                    if (doc.password != req.param('password')) {
+                        res.json({errors: [{param: 'password', msg: 'Wrong password.'}]});
+                        return;
+                    }
+                }
+            });
+        }
+    });
+};
+
+exports.go = function (req, res) {
+    if (req.param('action') in actions) {
+        actions[req.param('action')](req, res);
+    }
 };

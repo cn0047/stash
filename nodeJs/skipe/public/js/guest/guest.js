@@ -1,6 +1,10 @@
 define(['text!/js/guest/t/guest.layout.tpl.html'], function (t) {
     return  Backbone.View.extend({
         el: '#doc #guest',
+        events:{
+            'click .navbar-nav li a': 'clickNav',
+            'click .navbar-brand': 'clickNavBrand',
+        },
         routes: {
             view_guest_registration: '/js/guest/v/registration.js',
             view_guest_login: '/js/guest/v/login.js',
@@ -10,6 +14,13 @@ define(['text!/js/guest/t/guest.layout.tpl.html'], function (t) {
             console.log('init guest...');
             tpl = _.template(t);
             this.$el.html(tpl());
+        },
+        clickNav: function (e) {
+            this.$('.navbar-nav li').removeClass('active');
+            this.$(e.target).parent().addClass('active');
+        },
+        clickNavBrand: function (e) {
+            this.$('.navbar-nav li').removeClass('active');
         },
         goTo: function (route) {
             if (_.isEmpty(route)) {
