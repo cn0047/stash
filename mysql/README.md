@@ -18,7 +18,7 @@ SET SQL_SAFE_UPDATES=0;
 ````
 
 ####Tricks
-````sql
+````
 tee /tmp/out
 cat /tmp/out | mail mail@com.com
 
