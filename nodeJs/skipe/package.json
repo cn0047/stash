@@ -10,6 +10,8 @@
         "express-validator": "*",
         "mongodb": "*",
         "crypto": "*",
-        "nodemailer": "*"
+        "nodemailer": "*",
+        "passport": "*",
+        "passport-local": "*"
     }
 }

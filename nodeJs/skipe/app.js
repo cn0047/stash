@@ -4,6 +4,8 @@ var express          = require('express');
 var expressValidator = require('express-validator');
 var mongodb          = require('mongodb');
 var mailer           = require('nodemailer');
+var passport         = require('passport');
+var passportStrategy = require('passport-local').Strategy;
 
 var config           = require('./configs/main').config;
 
@@ -24,7 +26,11 @@ global.mail = mailer.createTransport('SMTP', {
 
 app.configure(function () {
     app.use(express.static(__dirname + '/public'));
+    //app.use(express.cookieParser());
     app.use(express.bodyParser());
+    //app.use(express.session({secret: 'keyboard cat'}));
+    //app.use(passport.initialize());
+    //app.use(passport.session());
     app.use(expressValidator());
     app.set('views', __dirname + '/views');
     app.set('view engine', 'jade');
