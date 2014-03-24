@@ -79,6 +79,7 @@ actions.logIn = function (req, res) {
                         res.json({errors: [{param: 'password', msg: 'Wrong password.'}]});
                         return;
                     }
+                    // Passport
                 }
             });
         }

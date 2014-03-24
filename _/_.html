@@ -37,6 +37,7 @@ debug
   ini_set("display_errors", 1);
   ini_set('display_startup_errors','On');
 
+  ?XDEBUG_SESSION_START=sublime.xdebug
   xdebug_start_trace('c:/data/fac.xt');
   xdebug_stop_trace();
 
