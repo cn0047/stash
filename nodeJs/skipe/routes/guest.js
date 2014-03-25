@@ -1,8 +1,10 @@
-var actions = {};
+var actions = {
+    POST: {},
+};
 
-actions.registration = function (req, res) {
+actions.POST.registration = function (req, res) {
     req.checkBody('email', 'Invalid email').isEmail();
-    req.checkBody('sname', 'Invalid sname').matches(/^[\w\s\_\-\=\+@]+$/); // or .is()
+    req.checkBody('sname', 'Invalid screen name').matches(global.validator.patterns.sname); // or .is()
     var e = req.validationErrors();
     if (e) {
         res.json({errors: e});
@@ -30,7 +32,12 @@ actions.registration = function (req, res) {
                         res.json({errors: err});
                         return;
                     }
-                    res.render('registrationEmail', {email: docs[0].email, password: docs[0].password}, function(err, html) {
+                    var args = {
+                        email: docs[0].email,
+                        sname: docs[0].sname,
+                        password: docs[0].password,
+                    };
+                    res.render('registrationEmail', args, function(err, html) {
                         if (err) {
                             res.json({errors: err});
                             return;
@@ -53,10 +60,22 @@ actions.registration = function (req, res) {
     });
 };
 
-actions.logIn = function (req, res) {
-    req.checkBody('email', 'Invalid email').isEmail();
+actions.POST.logIn = function (req, res) {
+    req.checkBody('type', 'Invalid login type').matches(/^(email|sname)$/);
     req.checkBody('password', 'Invalid password').matches(/^\w{10}$/);
     var e = req.validationErrors();
+    switch (req.param('type')) {
+        case 'email':
+            req.checkBody('token', 'Invalid email').isEmail();
+            var find = {email: req.param('token')};
+            break;
+        case 'sname':
+            req.checkBody('token', 'Invalid screen name').matches(global.validator.patterns.sname);
+            var find = {sname: req.param('token')};
+            break;
+        default:
+            e.push({param: 'token', msg: 'Invalid '+req.param('type')+'.'});
+    }
     if (e) {
         res.json({errors: e});
         return;
@@ -65,13 +84,13 @@ actions.logIn = function (req, res) {
         if (err) {
             res.json({errors: err});
         } else {
-            collection.findOne({email: req.param('email')}, {_id: 1, password: 1}, function (err, doc) {
+            collection.findOne(find, function (err, doc) {
                 if (err) {
                     res.json({errors: err});
                     return;
                 }
                 if (!doc) {
-                    res.json({errors: [{param: 'email', msg: 'User with this email address not found.'}]});
+                    res.json({errors: [{param: 'token', msg: 'User with this '+req.param('type')+' not found.'}]});
                     return;
                 }
                 if (doc) {
@@ -79,26 +98,8 @@ actions.logIn = function (req, res) {
                         res.json({errors: [{param: 'password', msg: 'Wrong password.'}]});
                         return;
                     }
-                    // Passport
-                    /*
-passport.use(new LocalStrategy({
-    usernameField: 'email',
-    passwordField: 'passwd'
-  },
-  function(username, password, done) {
-    User.findOne({ username: username }, function(err, user) {
-      if (err) { return done(err); }
-      if (!user) {
-        return done(null, false, { message: 'Incorrect username.' });
-      }
-      if (!user.validPassword(password)) {
-        return done(null, false, { message: 'Incorrect password.' });
-      }
-      return done(null, user);
-    });
-  }
-));
-                    */
+                    req.session.user = doc;
+                    res.json({success: true});
                 }
             });
         }
@@ -106,7 +107,7 @@ passport.use(new LocalStrategy({
 };
 
 exports.go = function (req, res) {
-    if (req.param('action') in actions) {
-        actions[req.param('action')](req, res);
+    if (req.method in actions && req.param('action') in actions[req.method]) {
+        actions[req.method][req.param('action')](req, res);
     }
 };

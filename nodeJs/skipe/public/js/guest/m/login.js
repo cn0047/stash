@@ -4,7 +4,8 @@ define([], function () {
         defaults: {
         },
         checkOptions: {
-            email: {type: 'email', key: 'email', msg: 'Invalid email.'},
+            type: {type: 'match', pattern: /^(email|sname)$/, key: 'type', msg: 'Invalid login type.'},
+            token: {type: 'email', key: 'token', msg: 'Invalid email.'},
             password: {type: 'password', key: 'password', msg: 'Invalid password.'},
         },
         urlRoot: function () {

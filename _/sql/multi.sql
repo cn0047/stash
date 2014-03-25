@@ -376,8 +376,8 @@ on mt1.site=mt2.site;
 -- EXTERNAL REMARKETING
 ------------------------------------------------------------------------------------------------------------------------
 set sql_big_selects=1;
-set @date1 = '2013-12-01';
-set @date2 = '2013-12-10';
+set @date1 = '2014-03-23';
+set @date2 = '2014-03-24';
 
 -- Show GOOD external orders per day.
 select
@@ -433,7 +433,7 @@ and ers.partner_id in (1)
 group by ers.site_name, pc.country_code3
 order by ers.site_name, regs desc
 ;
--- [+] Shows RAW REVENUE by sites and locations and source sites adn PARTNER ID..
+-- [+] Shows RAW REVENUE by sites and locations and source sites adn PARTNER ID.
 SELECT
     ers.partner_id, ers.site_name,
     traf.siteID,

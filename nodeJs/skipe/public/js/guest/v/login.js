@@ -2,6 +2,22 @@ define(['/js/guest/m/login.js', 'text!/js/guest/t/login.tpl.html'], function (m,
     return  Backbone.skipeView.extend({
         events:{
             'click #logIn': 'logIn',
+            'change #type input[name=type]': 'switchType',
+        },
+        switchType: function (e) {
+            var type = this.$('input[name=type]:checked').val();
+            switch (type) {
+                case 'email':
+                    this.model.checkOptions.token.msg = 'Invalid email';
+                    this.$('#token').attr('placeholder', 'EMAIL');
+                    break;
+                case 'sname':
+                    this.model.checkOptions.token.msg = 'Invalid screen name';
+                    this.$('#token').attr('placeholder', 'SCREEN NAME');
+                    break;
+                default:
+                    this.model.checkOptions.token.msg = 'Invalid token.';
+            }
         },
         initialize: function () {
             this.tpl = _.template(t);
@@ -15,8 +31,11 @@ define(['/js/guest/m/login.js', 'text!/js/guest/t/login.tpl.html'], function (m,
         logIn: function () {
             this.hideErrors();
             this.model.clear();
+            var type = this.$('input[name=type]:checked').val();
+            this.model.checkOptions.token.type = type;
             this.model.set({
-                email: (this.$('#email').val()).trim(),
+                type: type,
+                token: (this.$('#token').val()).trim(),
                 password: (this.$('#password').val()).trim(),
             });
             if (this.model.isValid()) {
@@ -37,7 +56,7 @@ define(['/js/guest/m/login.js', 'text!/js/guest/t/login.tpl.html'], function (m,
                 this.showErrors(e);
             }
             if (this.model.get('success')) {
-                console.log(200)
+                this.$('form').submit();
             }
             app.views.app.hideLoading();
         },

@@ -4,8 +4,6 @@ var express          = require('express');
 var expressValidator = require('express-validator');
 var mongodb          = require('mongodb');
 var mailer           = require('nodemailer');
-var passport         = require('passport');
-var passportStrategy = require('passport-local').Strategy;
 
 var config           = require('./configs/main').config;
 
@@ -23,20 +21,24 @@ global.mail = mailer.createTransport('SMTP', {
     service: 'Gmail',
     auth: {user: config.mail.user, pass: config.mail.password}
 });
+global.validator = {
+    patterns: {
+        sname: /^[\w\s\_\-\=\+@]+$/,
+    }
+};
 
 app.configure(function () {
     app.use(express.static(__dirname + '/public'));
-    //app.use(express.cookieParser());
     app.use(express.bodyParser());
-    //app.use(express.session({secret: 'keyboard cat'}));
-    //app.use(passport.initialize());
-    //app.use(passport.session());
+    app.use(express.cookieParser());
+    app.use(express.session({secret: '10QW3456789023456789QWERTY'}));
     app.use(expressValidator());
     app.set('views', __dirname + '/views');
     app.set('view engine', 'jade');
 });
 
-app.post('/guest/:action', require('./routes/guest').go);
+app.all('/account/:action?', require('./routes/account').go);
+app.all('/guest/:action?', require('./routes/guest').go);
 app.get('*', require('./routes/app').go);
 
 app.listen(3000);

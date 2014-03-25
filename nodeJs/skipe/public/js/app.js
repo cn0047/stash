@@ -5,6 +5,7 @@ requirejs.config({
         skipeView: '/js/lib/backboneSkipeView',
         skipeModel: '/js/lib/backboneSkipeModel',
         view_guest_index: '/js/guest/guest',
+        view_account_index: '/js/account/account',
     },
 });
 
@@ -21,24 +22,16 @@ window.app = {
 
 app.init.routers.app = Backbone.Router.extend({
     routes: {
-        'account*other': 'account',
-        'admin*other': 'admin',
-        '*other': 'guest',
+        '*other': 'goTo',
     },
-    account: function (id) {
-        this.goTo('account', id);
-    },
-    admin: function (id) {
-        this.goTo('admin', id);
-    },
-    guest: function (id) {
-        this.goTo('guest', id);
-    },
-    goTo: function (scope, id) {
-        this.scope = scope;
+    goTo: function (id) {
         this.id = id;
-        if (_.isEmpty(app.views[scope])) {
-            require(['view_'+scope+'_index'], app.routers.app.go);
+        this.scope = 'guest';
+        if (/^\/account/.test(window.location.pathname)) {
+            this.scope = 'account';
+        }
+        if (_.isEmpty(app.views[this.scope])) {
+            require(['view_'+this.scope+'_index'], app.routers.app.go);
         } else {
             this.go();
         }

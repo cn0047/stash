@@ -1,21 +1,23 @@
 <div>
-    <div class="input-group input-group-sm">
-        <div class="input-group-btn" data-toggle="buttons">
-            <label class="btn btn-default active">
-                <input type="radio" id="optionEmail">@
-            </label>
-            <label class="btn btn-default">
-                <input type="radio" id="optionSname"><span class="glyphicon glyphicon-user"></span>
-            </label>
+    <form method="post" action="account">
+        <div class="input-group input-group-sm">
+            <div id="type" class="input-group-btn" data-toggle="buttons">
+                <label class="btn btn-default active">
+                    <input type="radio" name="type" value="email" checked>@
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" name="type" value="sname"><span class="glyphicon glyphicon-user"></span>
+                </label>
+            </div>
+            <input id="token" type="text" class="form-control" placeholder="EMAIL">
         </div>
-        <input id="email" type="text" class="form-control" placeholder="EMAIL">
-    </div>
-    <br>
-    <div class="input-group input-group-sm">
-        <span class="input-group-addon"><span class="glyphicon glyphicon-flash"></span></span>
-        <input id="password" type="password" class="form-control" placeholder="PASSWORD">
-    </div>
-    <p class="text-center">
-        <br><button id="logIn" type="button" class="btn btn-default">log in</button>
-    </p>
+        <br>
+        <div class="input-group input-group-sm">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-flash"></span></span>
+            <input id="password" type="password" class="form-control" placeholder="PASSWORD">
+        </div>
+        <p class="text-center">
+            <br><button id="logIn" type="button" class="btn btn-default">log in</button>
+        </p>
+    </form>
 </div>
