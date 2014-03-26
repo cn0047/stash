@@ -3,8 +3,13 @@ links
   http://www.xe.com/
 
 url
+  ? %3F
+  & %26
+  = %3D
   : %3A
   / %2F
+  - -
+  _ _
 
 scp
 
@@ -91,6 +96,10 @@ SNIPPETS
   find -type f -name '*.php' -exec egrep -l 'class\s+ProfileManager' {} \;
   find -name '*.htm' -exec touch {} \;
   find -type f -name '*.php' -exec egrep -Hn --color=always 'is_failed' {} \; | grep profile
+
+redmine
+
+  <code class="sql">
 
 
 
@@ -207,6 +216,10 @@ stub
   // to acces on sandbox in base write in inc/config_am.php
   define('STAFF_PASSWORD_HASH_SAULT', 'trunk_password_sault');
   // and use 1111 pass
+
+nice admin report
+
+  base/edna/edna.track.action.list.php
 
 
 

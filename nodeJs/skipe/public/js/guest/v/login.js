@@ -1,10 +1,13 @@
 define(['/js/guest/m/login.js', 'text!/js/guest/t/login.tpl.html'], function (m, t) {
     return  Backbone.skipeView.extend({
         events:{
-            'click #logIn': 'logIn',
+            'click #btnLogIn': 'logIn',
+            'click #btnFPass': 'fPass',
             'change #type input[name=type]': 'switchType',
         },
         switchType: function (e) {
+            this.$('#token').val('');
+            this.$('#pass').val('');
             var type = this.$('input[name=type]:checked').val();
             switch (type) {
                 case 'email':
@@ -26,6 +29,8 @@ define(['/js/guest/m/login.js', 'text!/js/guest/t/login.tpl.html'], function (m,
         },
         goTo: function () {
             this.$el.show().html(this.tpl());
+            var matches = (document.cookie).match(/guestLoginType=(email|sname)/);
+            this.$el.find('#type input[name=type][value='+matches[1]+']').trigger('click');
             app.views.app.hideLoading();
         },
         logIn: function () {
@@ -36,7 +41,7 @@ define(['/js/guest/m/login.js', 'text!/js/guest/t/login.tpl.html'], function (m,
             this.model.set({
                 type: type,
                 token: (this.$('#token').val()).trim(),
-                password: (this.$('#password').val()).trim(),
+                password: (this.$('#pass').val()).trim(),
             });
             if (this.model.isValid()) {
                 app.views.app.showLoading();
@@ -50,6 +55,11 @@ define(['/js/guest/m/login.js', 'text!/js/guest/t/login.tpl.html'], function (m,
                 this.showErrors(this.model.validationError);
             }
         },
+        fPass: function () {
+            this.$('#pass').parent().slideUp('fast');
+            // this.$('form').slideUp('fast');
+            // this.$('#fPass').removeClass('hide').slideDown('fast');
+        },
         afterSave: function () {
             var e = this.model.get('errors');
             if (e) {
@@ -57,6 +67,7 @@ define(['/js/guest/m/login.js', 'text!/js/guest/t/login.tpl.html'], function (m,
             }
             if (this.model.get('success')) {
                 this.$('form').submit();
+                document.cookie = 'guestLoginType='+this.$('input[name=type]:checked').val();
             }
             app.views.app.hideLoading();
         },
