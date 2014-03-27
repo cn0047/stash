@@ -2,6 +2,7 @@ High Performance Web Sites:
 _
 
 1. Make Fewer HTTP Requests
+
     Image Maps
     CSS Sprites
     Inline Images
