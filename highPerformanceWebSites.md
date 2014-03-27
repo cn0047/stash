@@ -1,5 +1,4 @@
 ####High Performance Web Sites:
-_
 
 1. Make Fewer HTTP Requests
 
