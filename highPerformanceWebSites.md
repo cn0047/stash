@@ -3,10 +3,10 @@ _
 
 1. Make Fewer HTTP Requests
 
-    * Image Maps
-    * CSS Sprites
-    * Inline Images
-    * Combined Scripts and Stylesheets
+ * Image Maps
+ * CSS Sprites
+ * Inline Images
+ * Combined Scripts and Stylesheets
 
 2. Use a Content Delivery Network
 
