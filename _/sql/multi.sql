@@ -45,10 +45,10 @@ union all
 ;
 
 -- Add tracking codes SETTINGS
-insert into tracking_codes_settings set class='main', name='ProductID', site_id=51, sub_site_id=0, use_for='product',             value='dms_comP';
-insert into tracking_codes_settings set class='main', name='ProductID', site_id=51, sub_site_id=0, use_for='male_confirmation',   value='dms_comM';
-insert into tracking_codes_settings set class='main', name='ProductID', site_id=51, sub_site_id=0, use_for='female_confirmation', value='dms_comF';
-insert into tracking_codes_settings set class='main', name='ProductID', site_id=51, sub_site_id=0, use_for='couple_confirmation', value='dms_comC';
+insert into tracking_codes_settings set class='main', name='ProductID', site_id=32, sub_site_id=0, use_for='male_confirmation',     value='_comM';
+insert into tracking_codes_settings set class='main', name='ProductID', site_id=32, sub_site_id=0, use_for='product',               value='_comP';
+insert into tracking_codes_settings set class='main', name='ProductID', site_id=32, sub_site_id=0, use_for='wap_registration_male', value='wap_comM';
+insert into tracking_codes_settings set class='main', name='ProductID', site_id=32, sub_site_id=0, use_for='wap_product',           value='wap_comP';
 
 -- Add TRACKING CODES
 select * from tracking_codes where site_id in (36) and title like 'AFF%';

@@ -439,10 +439,11 @@ order by aff_cnt desc, host
 ------------------------------------------------------------------------------------------------------------------------
 -- MAILINGS
 ------------------------------------------------------------------------------------------------------------------------
-set @v_mailing_id = 79; -- AM
-set @v_mailing_id = 72; -- GA
-set @v_mailing_history_id = 149;
+set @v_mailing_id = 81; -- AM
+set @v_mailing_id = 73; -- GA
+set @v_mailing_history_id = 150;
 set @v_date = '2013-01-01 00:00:00';
+set @v_account = 'enedina'; -- alcuda|enedina
 
 insert into mailings_queue set user_data_id=79838, mailing_id=@v_mailing_id, date_inserted=now(), mailing_history_id=@v_mailing_history_id; -- vladimirk@ufins.com
 insert into mailings_queue set user_data_id=80603, mailing_id=@v_mailing_id, date_inserted=now(), mailing_history_id=@v_mailing_history_id; -- nadya@upforitnetworks.com
@@ -462,7 +463,7 @@ FROM
     wd_g_users u
     INNER JOIN users_data ud ON ud.userid = u.userid
 WHERE
-    ud.accountid = 'enedina' -- alcuda
+    ud.accountid = @v_account
     AND u.rtype = 4
     AND ud.subscriber = 1
     AND ud.last_login > @v_date
@@ -473,7 +474,7 @@ FROM
     wd_g_users u
     INNER JOIN users_data ud ON ud.userid = u.userid
 WHERE
-    ud.accountid = 'enedina' -- alcuda
+    ud.accountid = @v_account
     AND u.rtype = 4
     AND ud.subscriber = 1
     AND ud.last_login > @v_date
@@ -491,7 +492,7 @@ FROM
     wd_g_users u
     INNER JOIN users_data ud ON ud.userid = u.userid
 WHERE
-    ud.accountid = 'alcuda'
+    ud.accountid = @v_account
     AND u.rtype = 4
     AND ud.subscriber = 1
     AND ud.last_login > @v_date
