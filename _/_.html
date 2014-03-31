@@ -55,6 +55,10 @@ debug
   foreach($d as $v){$tbl->addRow($v);}
   echo '<pre>'.$tbl->getTable().'</pre>';
 
+  set_error_handler(function ($no, $str, $file, $line) {
+      mail('kovpak@ufins.com', 'DBG|ERROR', var_export([$no, $str, $file, $line], 1));
+  });
+
 phpDoc
 
   phpdoc run -d . -t doc

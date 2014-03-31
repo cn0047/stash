@@ -37,7 +37,7 @@ actions.POST.registration = function (req, res) {
                         sname: docs[0].sname,
                         password: docs[0].password,
                     };
-                    res.render('registrationEmail', args, function(err, html) {
+                    res.render('registrationEmail', args, function (err, html) {
                         if (err) {
                             res.json({errors: err});
                             return;
@@ -60,9 +60,8 @@ actions.POST.registration = function (req, res) {
     });
 };
 
-actions.POST.logIn = function (req, res) {
+function lfp(req, res, cb) {
     req.checkBody('type', 'Invalid login type').matches(/^(email|sname)$/);
-    req.checkBody('password', 'Invalid password').matches(/^\w{10}$/);
     var e = req.validationErrors();
     switch (req.param('type')) {
         case 'email':
@@ -94,15 +93,72 @@ actions.POST.logIn = function (req, res) {
                     return;
                 }
                 if (doc) {
-                    if (doc.password != req.param('password')) {
-                        res.json({errors: [{param: 'password', msg: 'Wrong password.'}]});
-                        return;
-                    }
-                    req.session.user = doc;
-                    res.json({success: true});
+                    cb(doc);
                 }
             });
         }
+    });
+}
+
+actions.POST.logIn = function (req, res) {
+    req.checkBody('pass', 'Invalid password').matches(/^\w{10}$/);
+    lfp(req, res, function (d) {
+        if (d.password != req.param('pass')) {
+            res.json({errors: [{param: 'pass', msg: 'Wrong password. Do you forgot password?'}]});
+            return;
+        }
+        req.session.user = d;
+        res.json({success: true});
+    });
+};
+
+actions.POST.forgotPassword = function (req, res) {
+    lfp(req, res, function (d) {
+        global.mongo.collection('user', function (err, collection) {
+            if (err) {
+                res.json({errors: err});
+            } else {
+                var p = require('crypto').randomBytes(5).toString('hex');
+                collection.update(
+                    {_id: d._id},
+                    {$set : {password: p}},
+                    {safe: true},
+                    function (err, result) {
+                        if (err) {
+                            res.json({errors: err});
+                        } else {
+                            if (result) {
+                                res.render(
+                                    'forgotPassword',
+                                    {
+                                        email: d.email,
+                                        sname: d.sname,
+                                        password: p,
+                                    },
+                                    function (err, html) {
+                                        if (err) {
+                                            res.json({errors: err});
+                                            return;
+                                        }
+                                        global.mail.sendMail({
+                                            to: d.email,
+                                            subject: '► Your Skipe password has been updated!',
+                                            html: html,
+                                        }, function (err, r) {
+                                            if (err) {
+                                                res.json({errors: err});
+                                            } else {
+                                                res.json({success: true});
+                                            }
+                                        });
+                                    }
+                                );
+                            }
+                        }
+                    }
+                );
+            }
+        });
     });
 };
 

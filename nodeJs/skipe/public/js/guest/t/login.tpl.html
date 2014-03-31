@@ -12,14 +12,20 @@
             <input id="token" type="text" class="form-control" placeholder="EMAIL">
         </div>
         <br>
-        <div class="input-group input-group-sm">
-            <span class="input-group-addon"><span class="glyphicon glyphicon-flash"></span></span>
-            <input id="pass" type="password" class="form-control" placeholder="PASSWORD">
-        </div>
-        <p class="text-center">
+        <div id="login" class="text-center">
+            <div class="input-group input-group-sm">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-flash"></span></span>
+                <input id="pass" type="password" class="form-control" placeholder="PASSWORD">
+            </div>
             <br>
             <button id="btnLogIn" type="button" class="btn btn-primary">log in</button>
             <button id="btnFPass" type="button" class="btn btn-default">forgot password</button>
-        </p>
+        </div>
+        <div id="fp" class="text-center hide">
+            <button id="btnSubmitFPass" type="button" class="btn btn-default">submit</button>
+        </div>
     </form>
+</div>
+<div class="alert alert-success hide">
+    Your password has been updated, and sent to your email address. Check password in your email box.
 </div>
