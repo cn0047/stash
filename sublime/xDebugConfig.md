@@ -3,10 +3,11 @@ xdebug
 
 	{
 	    "path_mapping": {
-	        "/var/www/vhosts/surname/htdocs/px": "/home/surname/web/kovpak/px/"
+	        "/var/www/vhosts/kovpak/htdocs/px/": "/home/kovpak/web/kovpak/px/",
+	        "/usr/share/yii/": "/home/kovpak/web/kovpak/yii/framework/"
 	    },
 	    "close_on_stop": true
-	}
+	}	
 
 ~/.bashrc
 // home ip address: 007.02.03.04
