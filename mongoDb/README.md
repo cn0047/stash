@@ -422,7 +422,38 @@ db.users.aggregate([
     },
     {$sort: {month_joined: 1}}
 ]);
+// Return Total Number of Joins per Month.
+db.users.aggregate([
+    {$project: {month_joined: {$month: "$joined"}}} ,
+    {$group: {_id: {month_joined: "$month_joined"}, number: {$sum: 1}}},
+    {$sort: {"_id.month_joined": 1}}
+]);
+// Return the Five Most Common “Likes”.
+db.users.aggregate([
+    {$unwind: "$likes"},
+    {$group: {_id: "$likes", number: {$sum: 1}}},
+    {$sort: {number: -1}}, // sort in reverse order.
+    {$limit: 5}
+]);
+// The $unwind operator separates each value in the likes array, and creates a new version of the source document for every element in the array.
+// Example:
+{
+    _id: "jane",
+    joined: ISODate("2011-03-02"),
+    likes: ["golf", "racquetball"]
+}
+// The $unwind operator would create the following documents:
+{
+    _id: "jane",
+    joined: ISODate("2011-03-02"),
+    likes: "golf"
+}
+{
+    _id: "jane",
+    joined: ISODate("2011-03-02"),
+    likes: "racquetball"
+}
 ````
 
 [aggregation](http://docs.mongodb.org/manual/applications/aggregation/)
-[>>>](http://docs.mongodb.org/manual/tutorial/aggregation-with-user-preference-data/#return-usernames-ordered-by-join-month)
+[>>>](http://docs.mongodb.org/manual/tutorial/map-reduce-examples/)
