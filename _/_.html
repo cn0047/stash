@@ -239,10 +239,13 @@ _
   cd protected/tests && phpunit protected/tests/unit/affiliates/ && cd -
   tail -f /home/kovpak/logs/error.log
 
-LIVE
+arm
+  # LIVE
   arm sync Kovpak
   arm workers
   arm unlock
+
+  arm installPackages
 
 old
   find -iname .git -type d
@@ -265,7 +268,7 @@ TODO:
 
 migrate
   php protected/yiic.php migrate
-  php protected/yiic.php migrate create LastName_#_Desc
+  php protected/yiic.php migrate create LastName_Desc
   php protected/yiic.php migrate redo 1
   php protected/yiic.php migrate down 1
 
