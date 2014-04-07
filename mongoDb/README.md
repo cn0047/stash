@@ -96,6 +96,13 @@ db.inventory.find({ type: "food", item:/^c/ }, { item: 1, _id: 0 })
 db.inventory.find({ type: "food", item:/^c/ }, { item: 1 })
 // delete index
 db.items.dropIndex( { name : 1 } )
+/*
+{
+  topics: ["whaling" , "allegory" , "revenge" , "American" , "novel" , "nautical" , "voyage" , "Cape Cod"]
+}
+*/
+db.volumes.ensureIndex({topics: 1});
+db.volumes.findOne({topics: "voyage"}, {title: 1});
 
 // EXPLAIN
 db.collection.find().explain()
@@ -326,6 +333,4 @@ db.addUser({
 ````
 
 [Development patterns](http://docs.mongodb.org/manual/tutorial/#development-patterns)
-
-[aggregation](http://docs.mongodb.org/manual/applications/aggregation/)
-[>>>](http://docs.mongodb.org/manual/tutorial/perform-incremental-map-reduce/)
+[>>>](http://docs.mongodb.org/manual/tutorial/limit-number-of-elements-in-updated-array/)

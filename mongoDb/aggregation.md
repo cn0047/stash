@@ -64,6 +64,7 @@ db.zipcodes.aggregate(
     }
 );
 ````
+
 ####Aggregation with User Preference Data.
 ````js
 /*
@@ -126,6 +127,7 @@ db.users.aggregate([
     likes: "racquetball"
 }
 ````
+
 ####Map-Reduce Examples
 ````js
 var mapFunction1 = function () {
@@ -138,5 +140,55 @@ db.ordersCollection.mapReduce(
     mapFunction1,
     reduceFunction1,
     {out: "map_reduce_example"}
+);
+````
+
+####Perform Incremental Map-Reduce
+````js
+var mapFunction = function () {
+    var key = this.userid;
+    var value = {
+        userid: this.userid,
+        total_time: this.length,
+        count: 1,
+        avg_time: 0
+    };
+    emit( key, value );
+};
+var reduceFunction = function (key, values) {
+    var reducedObject = {
+        userid: key,
+        total_time: 0,
+        count:0,
+        avg_time:0
+    };
+    values.forEach(function (value) {
+        reducedObject.total_time += value.total_time;
+        reducedObject.count += value.count;
+    });
+    return reducedObject;
+};
+var finalizeFunction = function (key, reducedValue) {
+    if (reducedValue.count > 0) {
+        reducedValue.avg_time = reducedValue.total_time / reducedValue.count;
+    }
+    return reducedValue;
+};
+db.sessions.mapReduce(
+    mapFunction,
+    reduceFunction,
+    {
+        out: {reduce: "session_stat"},
+        finalize: finalizeFunction
+    }
+);
+db.sessions.mapReduce(
+    mapFunction,
+    reduceFunction,
+    {
+        query: {ts: {$gt: ISODate('2011-11-05 00:00:00')}},
+        out: {reduce: "session_stat"},
+        finalize: finalizeFunction
+    }
 );
 ````
