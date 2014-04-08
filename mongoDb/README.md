@@ -333,4 +333,42 @@ db.addUser({
 ````
 
 [Development patterns](http://docs.mongodb.org/manual/tutorial/#development-patterns)
-[>>>](http://docs.mongodb.org/manual/tutorial/limit-number-of-elements-in-updated-array/)
+
+````js
+// Limit Number of Elements in an Array after an Update.
+/*
+{
+    _id: 1,
+    scores: [
+        {attempt: 1, score: 10},
+        {attempt: 2, score:8}
+    ]
+}
+*/
+db.students.update(
+    {_id: 1},
+    {
+        $push: {scores: {
+            $each : [
+                {attempt: 3, score: 7},
+                {attempt: 4, score: 4}
+            ],
+            $sort: {score: 1},
+            $slice: -3
+        }}
+    }
+);
+/*
+Result:
+{
+    "_id" : 1,
+    "scores" : [
+        {"attempt" : 3, "score" : 7},
+        {"attempt" : 2, "score" : 8},
+        {"attempt" : 1, "score" : 10}
+    ]
+}
+*/
+````
+
+[>>>](http://docs.mongodb.org/manual/tutorial/#text-search-patterns)
