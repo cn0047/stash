@@ -509,3 +509,14 @@ SELECT distinct siteid FROM ppc_destination WHERE aid = 4835;
 update ppc_destination set aid = 4815, siteid = 56 where aid = 4835;
 -- Deactivate bad account
 update ppc_account set status = 3 where id in (4835);
+--
+select
+  a.id, a.account
+  ,c.id, c.campaign
+  ,d.keyword_destination_url
+from ppc_destination d
+join ppc_account a on d.aid = a.id
+join ppc_campaign c on d.cid = c.id
+where d.aid = 4777
+group by a.id, c.id
+;

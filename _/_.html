@@ -184,6 +184,7 @@ mysql.inc
   if ($_COOKIE['d']) define('dbg',1);
   if ($_COOKIE['d']) define('nodbg',1);
   !defined('dbg') or defined('nodbg') or print('<span style="color:#A52A2A"><pre>'.str_ireplace(' from ', "<b style='color:#0000FF'> from </b>", $sql->show()).';<hr></pre></span>');
+  !defined('dbg') or defined('nodbg') or print($sql->show()."\n-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
 
 ee.url
   if ($_COOKIE['d']) pr(
