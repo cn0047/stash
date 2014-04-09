@@ -15,6 +15,7 @@ Array.IndexOf(array, el);
 
 var array = new Array(10); // length = 10
 array.length;
+array.length = 5; // truncate or increase array
 array.push('one');
 array.unshift('one');
 array.pop();
@@ -22,6 +23,8 @@ array.shift();
 array.splice(3, 2);
 array.reverse();
 array.sort();
+array.sort(function (a, b) { return a - b; });
+array.split();
 array.join('.');
 array.concat(varName);
 
@@ -79,6 +82,9 @@ var o = {x: 1, y: 2};
 delete o.x; // delete property x
 typeof o.x; // undefined
 delete o; // false. Cant't delte global var.
+
+o['y']; // Access to associative array.
+
 void varName; // Set undefined to var;
 
 null == undefined  // true
@@ -88,4 +94,51 @@ typeof val;
 tepeof(val);
 val instanceof Object;
 
+var d = new Date();
+d.constructor == Date; // true
+
+var o = {x: 1};
+o.toString();                // [object Object]
+o.toLocaleString();          // [object Object]
+o.valueOf();                 // Object {x: 1}
+o.propertyIsEnumerable('x'); // true
+o.isPrototypeOf();
+o[-1.23] = true;             // Create new property -1.23
+
+Math.hasOwnProperty('cos'); // true
+
+try {
+} catch (error) {
+} finally {
+}
+
+switch (x) {
+    case 1:
+        break;
+    default:
+        break;
+}
+
+// Convenience method bu slow
+with (frames[1].document.forms[0]) {
+    name.value = '007'; // Equal to frames[1].document.forms[0].name.value
+}
+// Better use:
+var form = frames[1].document.forms[0];
+form.name.value = '007';
+
+setTimeout("alert(200);", 3000);
+clearTimeout();
+var i = setInterval("alert(200);", 3000);
+clearInterval(i);
+
+navigator.cookieEnabled; // Show is cookie allowed.
+
+location.reload();  // Reload document
+location.replace(); // Reload document, and don't save action in history
+
+el.childNodes;      // child
+el.parentNode;      // parent
+el.nextSibling;     // next brother
+el.previousSibling; // prev brother
 ````
