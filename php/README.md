@@ -2,6 +2,39 @@ php
 -
 
 *PHP 5.1.6*
+####Flashback
+````php
+<?php
+
+$_SERVER['HTTP_ACCEPT_LANGUAGE'];
+
+$PHP_SELF;
+
+mysql_real_escape_string();
+
+get_defined_constants(true);
+
+setcookie('TestCookie', $value);
+$_COOKIE['TestCookie'];
+
+header();
+
+settype($var, $type);
+
+gzuncompress(gzcompress($data));
+
+filter_var();
+filter_list();
+
+highlight_string();
+
+system();
+
+set_include_path();
+
+memory_get_usage();
+memory_get_peak_usage();
+````
 
 ````php
 <?php
