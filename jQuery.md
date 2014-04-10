@@ -4,14 +4,109 @@ jQuery
 1.4.2
 
 ````js
+// Selectors:
+E>F         // element F that child of E
+E+F         // all F before that is present E
+E~F         // all F below E
+:only-child // single child el
+:eg(n)      // el with index n
+:gt(n)      // el after n el
+:lt(n)      // el before n el
+:animated
+:checked
+:parent
+:selected
+:visible
 
-$(function () {
+$('#el:hidden')
+$('#el:not(.el)')
+$('#el:has(.el)')
+$('#el:contains(Bond)')
+
+.children()
+.closest()
+.next()
+.parent()
+.prev()
+.siblings()
+.is(selector)
+.index()
+.add()
+.find(selector)
+.not(expression)
+.filter(expression)
+.map(callback)
+.each(iterator)
+.end() // prev selector in chain
+.addSelf()
+.data(name, value)
+.removeData(name)
+
+jQuery.noCoflict();
+
+$(function () {});
+(function ($) {})(jQuery);
+$(document).ready(function () {});
+
+.removeAttr(attr);
+.hasClass(name);
+.addClass(name);
+.removeClass(name);
+.toggleClass(name);
+.remove();
+.detach();
+.empty();
+
+.bind(eventType, data, handler);
+.one(eventType, data, listener);
+.unbind(eventType, listener);
+.live(eventType, data, listener);
+.trigger(eventType, data);
+.queue(name, func);
+.dequeue();
+.clearQueue();
+.preventDefault();
+.stopPropagation();
+.isDefaultPrevented();
+.isPropagationStopped();
+
+.scroll();
+.hover();
+.toggle();
+.serialize();
+.serializeArray();
+
+$.fx.off = true or false // Animation allowed
+
+$.map(array, callback)
+$.inArray(needle, haystack)
+$.isArray(array)
+$.isEmptyObject(object)
+$.isPlainObject(object)
+$.isFunction(func)
+$.merge(array, array)
+$.extend(deep, target, source1, sourceN)
+
+$('*').attr('title', function (index, previousValue) {
+    return previousValue + ' i am el:' + index;
 });
 
-$(document).ready(function () {
-});
+var settings = $.extend({x: 0}, options || {});
+````
 
-// prev selector in chain
-.end()
+####UI
+````js
+// Speeds
+slow|normal|fast
+// Effects
+blind|bounce|clip|drop|explode|fade|fold|highlight|puff|pulsate|scale|shake|size|slide|transfer
 
+$('*').show('fast');
+$('*').hide('puff');
+
+draggable(options, optionName, value)
+droppable(options, optionName, value)
+sortable(options, optionName, value)
+resizable(options, optionName, value)
+selectable(options, optionName, value)
 ````
