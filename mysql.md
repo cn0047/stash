@@ -14,6 +14,8 @@ SHOW COLUMNS FROM table LIKE '%';
 INSERT INTO tbl1 (field1) SELECT field2 FROM tbl2;
 
 SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'databaseName' AND TABLE_NAME = 'tableName';
+
+SELECT SUM(field) FROM table GROUP BY field WITH ROLLUP;
 ````
 ####Functions
 ````sql

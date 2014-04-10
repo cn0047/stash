@@ -1,6 +1,10 @@
+set sql_big_selects=1;
+set @date1 = '2014-03-23';
+set @date2 = '2014-03-24';
 SELECT
 RIGHT(LEFT(phr.request_uri, LOCATE('a_aid%3D', phr.request_uri)+15), 8) as a_aid
 FROM profiles_http_referer phr
+WHERE visit_date >= UNIX_TIMESTAMP(@date1) AND visit_date <= UNIX_TIMESTAMP(@date2)
 ;
 ------------------------------------------------------------------------------------------------------------------------
 -- TRACKING
@@ -520,3 +524,5 @@ join ppc_campaign c on d.cid = c.id
 where d.aid = 4777
 group by a.id, c.id
 ;
+-- consolidated log
+select * from ppc_consolidated_report_cron_log where date>date(now());

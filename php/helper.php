@@ -1,4 +1,4 @@
-<?
+<?php
 
 if (!empty($_POST['action'])) {
     $message = array();
@@ -13,7 +13,7 @@ if (!empty($_POST['action'])) {
                     }
                 }
             }
-            $message[] = implode('<br />', $diff);
+            $message[] = implode('<br>', $diff);
         } else {
             $message[] = 'Check input fields: date.';
         }
@@ -26,7 +26,7 @@ if (!empty($_POST['action'])) {
                     $diff[] = urldecode($needle);
                 }
             }
-            $message[] = implode('<br />', $diff);
+            $message[] = implode('<br>', $diff);
         } else {
             $message[] = 'Check input fields: date.';
         }
@@ -47,7 +47,7 @@ if (!empty($_POST['action'])) {
             $message[] = str_replace("\n", ',', str_replace(' ', '', $_POST['t2']));
         }
     }
-    die(json_encode(join('<br />', $message)));
+    die(json_encode(join('<br>', $message)));
 }
 ?>
 
@@ -56,18 +56,21 @@ if (!empty($_POST['action'])) {
         <link rel="stylesheet" href="../js/jquery-ui/development-bundle/themes/base/jquery.ui.all.css">
         <script type="text/javascript" src="../js/jquery-ui/js/jquery-1.4.2.min.js"></script>
         <script type="text/javascript" src="../js/jquery-ui/js/jquery-ui-1.8.6.custom.min.js"></script>
-
         <script>
-            $(function(){
-                $('.datepicker').datepicker({'autoSize': true, 'dateFormat': 'yy-mm-dd'});
-                $('input[name=btn]').click(function(){
+            $(function () {
+                $('#revert').click(function () {
+                    var tmp = $('textarea[name=t1]').val();
+                    $('textarea[name=t1]').val($('textarea[name=t2]').val());
+                    $('textarea[name=t2]').val(tmp);
+                });
+                $('input[name=btn]').click(function () {
                     $('input[name=action]').val($(this).val());
-                    $('#result').html('Result:<br /><img src="/i/ajax-loader.gif" />');
+                    $('#result').html('Result:<br><img src="/i/ajax-loader.gif">');
                     $.ajax({type: 'post', dataType: 'json', data: $('body :input').serialize(),
-                        success: function(response) {
-                            $('#result').html('Result:<br />' + response);
+                        success: function (response) {
+                            $('#result').html('Result:<br>' + response);
                         },
-                        error: function(xhr, status, error) {$('#result').html('Result:<br />' + error);}
+                        error: function (xhr, status, error) {$('#result').html('Result:<br>' + error);}
                     });
                 });
             });
@@ -77,22 +80,25 @@ if (!empty($_POST['action'])) {
         <table cellspacing="7">
             <tr valign="top" align="center">
                 <td>
-                    Needles: <br />
-                    <textarea name="t1" rows="15"></textarea>
+                    Needles: <br>
+                    <textarea name="t1" rows="30" cols="30"></textarea>
+                </td>
+                <td valign="middle">
+                    <input type="button" id="revert" value="<=>"><br>
                 </td>
                 <td>
-                    Haystacks: <br />
-                    <textarea name="t2" rows="15"></textarea>
+                    Haystacks: <br>
+                    <textarea name="t2" rows="30" cols="30"></textarea>
                 </td>
                 <td>
-                    Action:<br />
-                    <input type="hidden" name="action" value="" />
-                    <input type="button" name="btn" value="in_needles_not_in_haystacks" /><br />
-                    <input type="button" name="btn" value="url_decode" /><br />
-                    <input type="button" name="btn" value="sum" /><br />
-                    <input type="button" name="btn" value="1_line" /><br />
+                    Action:<br>
+                    <input type="hidden" name="action" value="">
+                    <input type="button" name="btn" value="in_needles_not_in_haystacks"><br>
+                    <input type="button" name="btn" value="url_decode"><br>
+                    <input type="button" name="btn" value="sum"><br>
+                    <input type="button" name="btn" value="1_line"><br>
                 </td>
-                <td id="result">Result:<br /></td>
+                <td id="result" nowrap>Result:<br></td>
             </tr>
         </table>
     </body>
