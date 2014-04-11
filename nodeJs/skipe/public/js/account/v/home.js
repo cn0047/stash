@@ -1,4 +1,4 @@
-define(['text!/js/guest/t/home.tpl.html'], function (t) {
+define(['text!/js/account/t/home.tpl.html'], function (t) {
     return  Backbone.View.extend({
         initialize: function () {
             this.tpl = _.template(t);

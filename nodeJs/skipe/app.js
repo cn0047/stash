@@ -39,7 +39,7 @@ app.configure(function () {
 
 app.all('/account/:action?', require('./routes/account').go);
 app.all('/guest/:action?', require('./routes/guest').go);
-app.get('*', require('./routes/app').go);
+app.all('*', require('./routes/guest').go);
 
 app.listen(3000);
 console.log('Listening on port 3000');
