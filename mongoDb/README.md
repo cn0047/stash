@@ -87,6 +87,7 @@ db.users.count( { user_id: { $exists: true } } )
 db.users.distinct( "status" )
 
 // INDEX
+db.collection.getIndexes();
 // Each index requires at least 8KB of data space.
 db.inventory.find({ type: 'aston' });
 db.inventory.ensureIndex( { type: 1 })
@@ -103,6 +104,71 @@ db.items.dropIndex( { name : 1 } )
 */
 db.volumes.ensureIndex({topics: 1});
 db.volumes.findOne({topics: "voyage"}, {title: 1});
+// Create a text Index
+db.collection.ensureIndex({
+    subject: "text",
+    content: "text"
+});
+db.collection.ensureIndex(
+    {"$**": "text"},
+    {name: "TextIndex"}
+);
+// Specify a Language for Text Index
+db.quotes.ensureIndex(
+    {content: "text"},
+    {default_language "spanish"}
+);
+db.quotes.ensureIndex(
+    {quote : "text"},
+    {language_override: "idioma"}
+);
+/*
+{ _id: 1, idioma: "portuguese", quote: "A sorte protege os audazes"}
+{ _id: 2, idioma: "spanish", quote: "Nada hay más surreal que la realidad."}
+{ _id: 3, idioma: "english", quote: "is this a dagger which I see before me"}
+*/
+// Control Search Results with Weights
+/*
+{
+    _id: 1,
+    content: "This morning I had a cup of coffee.",
+    about: "beverage",
+    keywords: ["coffee"]
+}
+{
+    _id: 2,
+    content: "Who doesn't like cake?",
+    about: "food",
+    keywords: ["cake", "food", "dessert"]
+}
+*/
+db.blog.ensureIndex(
+    {
+        content: "text",
+        keywords: "text",
+        about: "text"
+    },
+    {
+        weights: {
+            content: 10,
+            keywords: 5,
+        },
+        name: "TextIndex"
+    }
+);
+// Limit the Number of Entries Scanned
+/*
+{_id: 1, dept: "tech", description: "lime green computer"}
+{_id: 2, dept: "tech", description: "wireless red mouse"}
+{_id: 3, dept: "kitchen", description: "green placemat"}
+{_id: 4, dept: "kitchen", description: "red peeler"}
+{_id: 5, dept: "food", description: "green apple"}
+{_id: 6, dept: "food", description: "red potato"}
+*/
+db.inventory.ensureIndex({
+    dept: 1,
+    description: "text"
+});
 
 // EXPLAIN
 db.collection.find().explain()
@@ -188,7 +254,7 @@ db.runCommand( { getLastError: 1, j: "true" } )
 ````
 [MongoDB CRUD Reference](http://docs.mongodb.org/manual/reference/crud/#mongodb-crud-reference)
 
-[SQL to MongoDB Mapping Chart](http://docs.mongodb.org/manual/reference/sql-comparison/#sql-to-mongodb-mapping-chart    )
+[SQL to MongoDB Mapping Chart](http://docs.mongodb.org/manual/reference/sql-comparison/#sql-to-mongodb-mapping-chart)
 ````js
 // In general, use embedded data models when:
 // you have one-to-one or one-to-many model.
@@ -253,6 +319,17 @@ mydate1.toString();
 
 ####Administration
 ````js
+DBQuery.shellBatchSize = 10;
+
+db.getLastError()
+db.getLastErrorObj()
+
+db.adminCommand('listDatabases');
+db.getSiblingDB('<db>');
+db.getCollectionNames();
+db.getUsers();
+db.getRoles({showBuiltinRoles: true});
+
 db.currentOp()
 // kill <mongod process ID>
 db.serverStatus()
@@ -371,4 +448,9 @@ Result:
 */
 ````
 
-[>>>](http://docs.mongodb.org/manual/tutorial/#text-search-patterns)
+####Dump
+````js
+mongodump --host mongodb1.example.net --port 3017 --username user --password pass --out /opt/backup/mongodump-2013-10-24
+mongorestore --host mongodb1.example.net --port 3017 --username user --password pass /opt/backup/mongodump-2013-10-24/
+````
+[>>>](http://docs.mongodb.org/manual/core/security-introduction/)

@@ -4,8 +4,8 @@ define([], function () {
         defaults: {
         },
         checkOptions: {
-            email: {type: 'email', key: 'email', msg: 'Invalid email.'},
-            sname: {type: 'sname', key: 'sname', msg: 'Invalid screen name.'},
+            email: {type: 'email', key: 'email', msg: app.nls.invalidEmail},
+            sname: {type: 'sname', key: 'sname', msg: app.nls.invalidScreenName},
         },
         urlRoot: function () {
             return 'guest/'+this.hash;

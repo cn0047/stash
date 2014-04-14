@@ -1,17 +1,15 @@
 <div>
     <div class="input-group input-group-sm">
         <span class="input-group-addon">@</span>
-        <input id="email" type="text" class="form-control" placeholder="EMAIL">
+        <input id="email" type="text" class="form-control" placeholder="<%=app.nls.EMAIL%>">
     </div>
     <br>
     <div class="input-group input-group-sm">
         <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-        <input id="sname" type="text" class="form-control" placeholder="SCREEN NAME">
+        <input id="sname" type="text" class="form-control" placeholder="<%=app.nls.SCREEN_NAME%>">
     </div>
     <p class="text-center">
-        <br><button id="signUp" type="button" class="btn btn-success">sign up</button>
+        <br><button id="signUp" type="button" class="btn btn-success"><%=app.nls.signUp%></button>
     </p>
 </div>
-<div class="alert alert-success hide">
-    You were successfully registered! Check password in your email box.
-</div>
+<div class="alert alert-success hide"><%=app.nls.registrationSuccess%></div>

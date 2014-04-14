@@ -5,10 +5,19 @@
         </div>
         <ul class="nav navbar-nav navbar-right">
             <li <% if (window.location.hash == '#guest/registration') { %> class="active" <% } %>>
-                <a href="#guest/registration">Registration</a>
+                <a href="#guest/registration"><%=app.nls.registration%></a>
             </li>
             <li <% if (window.location.hash == '#guest/login') { %> class="active" <% } %>>
-                <a href="#guest/login">Log in</a>
+                <a href="#guest/login"><%=app.nls.logIn%></a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <img src="/i/uk.png">
+                </a>
+                <ul id="nls" class="dropdown-menu">
+                    <li><a href="#" id="ru"><img src="/i/ru.png"></a></li>
+                    <li><a href="#" id="uk"><img src="/i/uk.png"></a></li>
+                </ul>
             </li>
         </ul>
     </div>

@@ -12,15 +12,15 @@ define(['/js/guest/m/login.js', 'text!/js/guest/t/login.tpl.html'], function (m,
             var type = this.$('input[name=type]:checked').val();
             switch (type) {
                 case 'email':
-                    this.model.checkOptions.token.msg = 'Invalid email';
-                    this.$('#token').attr('placeholder', 'EMAIL');
+                    this.model.checkOptions.token.msg = app.nls.invalidEmail;
+                    this.$('#token').attr('placeholder', app.nls.EMAIL);
                     break;
                 case 'sname':
-                    this.model.checkOptions.token.msg = 'Invalid screen name';
-                    this.$('#token').attr('placeholder', 'SCREEN NAME');
+                    this.model.checkOptions.token.msg = app.nls.invalidScreenName;
+                    this.$('#token').attr('placeholder', app.nls.SCREEN_NAME);
                     break;
                 default:
-                    this.model.checkOptions.token.msg = 'Invalid token.';
+                    this.model.checkOptions.token.msg = app.nls.app.nls.invalidToken;
             }
         },
         initialize: function () {

@@ -9,23 +9,21 @@
                     <input type="radio" name="type" value="sname"><span class="glyphicon glyphicon-user"></span>
                 </label>
             </div>
-            <input id="token" type="text" class="form-control" placeholder="EMAIL">
+            <input id="token" type="text" class="form-control" placeholder="<%=app.nls.EMAIL%>">
         </div>
         <br>
         <div id="login" class="text-center">
             <div class="input-group input-group-sm">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-flash"></span></span>
-                <input id="pass" type="password" class="form-control" placeholder="PASSWORD">
+                <input id="pass" type="password" class="form-control" placeholder="<%=app.nls.PASSWORD%>">
             </div>
             <br>
-            <button id="btnLogIn" type="button" class="btn btn-primary">log in</button>
-            <button id="btnFPass" type="button" class="btn btn-default">forgot password</button>
+            <button id="btnLogIn" type="button" class="btn btn-primary"><%=app.nls.logIn%></button>
+            <button id="btnFPass" type="button" class="btn btn-default"><%=app.nls.forgotPassword%></button>
         </div>
         <div id="fp" class="text-center hide">
-            <button id="btnSubmitFPass" type="button" class="btn btn-default">submit</button>
+            <button id="btnSubmitFPass" type="button" class="btn btn-default"><%=app.nls.submit%></button>
         </div>
     </form>
 </div>
-<div class="alert alert-success hide">
-    Your password has been updated, and sent to your email address. Check password in your email box.
-</div>
+<div class="alert alert-success hide"><%=app.nls.passwordUpdated%></div>
