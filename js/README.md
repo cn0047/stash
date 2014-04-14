@@ -141,4 +141,29 @@ el.childNodes;      // child
 el.parentNode;      // parent
 el.nextSibling;     // next brother
 el.previousSibling; // prev brother
+
+f.call(object, 1, 2);
+f.apply(object, [1, 2]);
+
+function f(a, b, c) {
+    console.log(b.callee.length);
+    console.log(arguments[0]);
+    return arguments.length;
+}
+
+function f(x) {
+    return x * arguments.callee(x-1);
+}
+
+function rectangle(w, h) {
+    this.with = w;
+    this.height = h;
+}
+rectangle.protytype.area = function () {
+    console.log(this.superclass);
+}
+
+window.document == self == parent == top
+window.defaultStatus = 'status bar string';
+window.onerror = function (msg, url, line) {}
 ````

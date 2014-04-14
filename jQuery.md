@@ -3,6 +3,7 @@ jQuery
 
 1.4.2
 
+####Flashback
 ````js
 // Selectors:
 E>F         // element F that child of E
@@ -109,4 +110,21 @@ droppable(options, optionName, value)
 sortable(options, optionName, value)
 resizable(options, optionName, value)
 selectable(options, optionName, value)
+````
+
+####Ajax
+````js
+$('form').ajaxForm({});
+
+jQuery.getJSON(url, [data], [callback]);
+
+$.ajax({});
+
+load(url, parameters, callback);
+
+$.get(url, parameters, callback, type);
+
+$.getJSON(url, parameters, callback);
+
+$.post(url, parameters, callback, type);
 ````

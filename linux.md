@@ -8,3 +8,19 @@
 </pre>
 
 `grep pattern -Pz` # несколько строк
+`grep "$DC"`
+
+####shell
+<pre>
+cd -       # go to previous dir
+pushd path # remember path (save it at stack)
+popd       # got to pushed path (and delete it from stack)
+history
+</pre>
+
+####MC
+<pre>
+ctrl+u # change pannels palcements
+alt+i  # open dir in second pannel
+alt+s  # find match, again alt+s - find next match
+</pre>

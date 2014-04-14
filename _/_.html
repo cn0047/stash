@@ -80,13 +80,7 @@ mySqlDump
   zcat table.gz | host -uUser -pPass base
 
 smarty
-  {assign var='i' value=$k+1}
-  <pre>{$var|@var_export}<pre>
-  {','|implode:$options.errors}
   {showQuickHelp text=L_G_HLP_TOTALCOST}
-  {get_assoc array=$matrix key=$id assoc="other"}
-  {if in_array($brand.wl.wl_site_id, array(3818, 3788, 4047, 4262, 5656))}
-  {capture name=req_url}index_popup2.php?md=Affiliate_Merchants_Views_AffiliateManager&action=affalldetails&aid={$row.userid}{/capture}
   {showQuickDetails url=$smarty.capture.req_url size=300}
 
 SNIPPETS
