@@ -1,6 +1,8 @@
 requirejs.config({
     paths: {
         text: '/js/lib/text-2.0.10',
+        i18n: '/js/lib/i18n-2.0.4',
+        nls: '/js/nls/default',
         helpers: '/js/lib/helpers',
         skipeView: '/js/lib/backboneSkipeView',
         skipeModel: '/js/lib/backboneSkipeModel',
@@ -18,6 +20,7 @@ window.app = {
     routers: {},
     helpers: {},
     views: {},
+    nls: {},
 };
 
 app.init.routers.app = Backbone.Router.extend({
@@ -49,9 +52,11 @@ app.init.routers.app = Backbone.Router.extend({
 app.init.models.app = Backbone.Model.extend({});
 
 app.init.views.app = Backbone.View.extend({
+    locale: 'uk',
     el: 'body',
     initialize: function () {
         this.showLoading();
+        this.loadNls();
         require(['skipeModel', 'skipeView', 'helpers'], function (m, v, h) {
             Backbone.skipeModel = m;
             Backbone.skipeView = v;
@@ -59,6 +64,15 @@ app.init.views.app = Backbone.View.extend({
         });
         app.routers.app = new app.init.routers.app();
         Backbone.history.start();
+    },
+    loadNls: function (clb) {
+        var l = '/js/nls/'+this.locale+'.js';
+        require(['nls', l], function (a, b) {
+            app.nls = _.extend(a, b);
+            if (_.isFunction(clb)) {
+                clb();
+            }
+        });
     },
     showLoading: function () {
         this.$('footer #progress').removeClass('hide');
