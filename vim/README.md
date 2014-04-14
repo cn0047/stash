@@ -6,7 +6,7 @@ version 7.4
 <pre>
 :version
 :redo or CTRL+R
-:e! - reload file
+:e!                 - reload file
 :%s/text/newText/
 
 ctrl+p - show competition
@@ -27,10 +27,10 @@ J   - join lines
 2<< - move twice to left
 >>  - to right
 
-v - visual mode
-d - delete selected
-y - cope
-j - join
+v  - visual mode
+d  - delete selected
+y  - cope
+j  - join
 gJ - join without spaces
-</pre><h5>K</h5><pre> - look to screen
+</pre><b>K</b><pre> - look to screen
 </pre>
