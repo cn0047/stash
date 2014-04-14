@@ -32,5 +32,6 @@ d  - delete selected
 y  - cope
 j  - join
 gJ - join without spaces
-</pre><b>K</b><pre> - look to screen
+
+K  - LOOK TO SCREEN
 </pre>
