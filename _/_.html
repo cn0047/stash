@@ -131,7 +131,7 @@ stub
   if ($countBefore+count($queries) > $countAfter) {
       mail('mail@com.com', "DBG|!!! $countBefore, $countAfter", var_export($countAfter-$countBefore,1));
   }
-curl https://api.payoneer.com/payouts/HttpAPI/API.aspx -d mname=GetToken -d p1=AlucdaPAY -d p2=ALLTD321 -d p3=100010700 -d p4=81347
+
 
 
 
@@ -371,6 +371,3 @@ transaction
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8
   ;
   DROP TABLE `transaction`;
-
-
-ps aux | grep sftp-server
