@@ -58,7 +58,7 @@ debug
   set_error_handler(create_function('$n, $s, $f, $l', 'var_export(array($n, $s, $f, $l));'));
   set_error_handler(create_function('$n, $s, $f, $l', 'print("\033[01;31m ".$s." \033[0m \n");'));
   set_error_handler(function ($no, $str, $file, $line) {
-      mail('kovpak@ufins.com', 'DBG|ERROR', var_export([$no, $str, $file, $line], 1));
+      mail('mail@mail.com', 'DBG|ERROR', var_export([$no, $str, $file, $line], 1));
   });
 
 phpDoc
