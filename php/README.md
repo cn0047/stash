@@ -34,6 +34,17 @@ set_include_path();
 
 memory_get_usage();
 memory_get_peak_usage();
+
+is_a($object, $class_name);
+
+get_class();
+get_parent_class();
+get_class_methods($class_name);
+get_class_vars($class_name);
+get_object_vars($object);
+property_exists($class, $property);
+
+tempnam($dir, $prefix);
 ````
 
 ````php
