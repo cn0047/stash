@@ -132,6 +132,23 @@ stub
       mail('mail@com.com', "DBG|!!! $countBefore, $countAfter", var_export($countAfter-$countBefore,1));
   }
 
+dialog
+  <link rel="stylesheet" href="/js/jquery-ui/development-bundle/themes/base/jquery.ui.all.css">
+  <script type="text/javascript" src="/js/jquery-ui/js/jquery-1.4.2.min.js"></script>
+  <script type="text/javascript" src="/js/jquery-ui/js/jquery-ui-1.8.6.custom.min.js"></script>
+  <script>
+      jQuery(function ($) {
+          $('#lnk').click(function () {
+              $('#dialog:ui-dialog').dialog('destroy');
+              $('#dialog-modal').dialog({height: 240, modal: true});
+          });
+      });
+  </script>
+  <a href="#" id="lnk">clk</a>
+  <div id="dialog-modal" title="Basic modal dialog">
+      <p>Adding the modal overlay screen makes the dialog look more prominent because it dims out the page content.</p>
+  </div>
+
 
 
 

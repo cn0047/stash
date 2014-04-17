@@ -3,7 +3,7 @@ define({
     PASSWORD: 'PASSWORD',
     SCREEN_NAME: 'SCREEN NAME',
 
-    forgotPassword: 'forgot password',
+    forgotPassword: 'Forgot password',
     invalidEmail: 'Invalid email',
     invalidLoginType: 'Invalid login type',
     invalidPassword: 'Invalid password',
@@ -13,6 +13,6 @@ define({
     passwordUpdated: 'Your password has been updated, and sent to your email address. Check password in your email box.',
     registration: 'Registration',
     registrationSuccess: 'You were successfully registered! Check password in your email box.',
-    signUp: 'sign up',
-    submit: 'submit',
+    signUp: 'Sign up',
+    submit: 'Submit',
 });

@@ -3,8 +3,6 @@ define(['text!/js/guest/t/guest.layout.tpl.html'], function (t) {
         el: '#doc #guest',
         events:{
             'click .navbar-nav li a': 'clickNav',
-            'click #ru': 'setNls',
-            'click #uk': 'setNls',
         },
         defaultRoute: 'guest/home',
         routes: {
@@ -24,10 +22,5 @@ define(['text!/js/guest/t/guest.layout.tpl.html'], function (t) {
         clickNavBrand: function (e) {
             this.$('.navbar-nav li').removeClass('active');
         },
-        setNls: function (e) {
-            app.views.app.locale = e.target.id;
-            this.$('.dropdown-toggle').html(e.currentTarget.innerHTML);
-            app.views.app.loadNls(app.views.guest.initialize());
-        }
     });
 });

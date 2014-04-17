@@ -13,6 +13,7 @@ E~F         // all F below E
 :eg(n)      // el with index n
 :gt(n)      // el after n el
 :lt(n)      // el before n el
+:last
 :animated
 :checked
 :parent
@@ -118,7 +119,18 @@ $('form').ajaxForm({});
 
 jQuery.getJSON(url, [data], [callback]);
 
-$.ajax({});
+$.ajax({
+    url: 'index.php',
+    dataType: 'json',
+    type: 'post',
+    data: {},
+    success: function (r) {
+    },
+    error: function (xhr, status, error) {
+    },
+    complete: function () {
+    },
+});
 
 load(url, parameters, callback);
 

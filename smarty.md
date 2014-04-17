@@ -16,5 +16,6 @@ version 2.6.26
 
 {if in_array($brand.wl.wl_site_id, array(3818, 3788, 4047, 4262, 5656))}
 
-{capture name=req_url}index_popup2.php?md=Affiliate_Merchants_Views_AffiliateManager&action=affalldetails&aid={$row.userid}{/capture}
+{capture name=c}id={$row.userid}{/capture}
+{$smarty.capture.c}
 ````

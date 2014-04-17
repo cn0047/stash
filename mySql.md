@@ -3,6 +3,10 @@ MySql
 
 *5.1.72-rel14.10*
 
+````sql
+ALTER TABLE table ADD UNIQUE KEY (field);
+````
+
 ####Flashback
 ````sql
 -- First works AND than OR

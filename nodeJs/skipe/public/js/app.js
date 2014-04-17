@@ -54,6 +54,10 @@ app.init.models.app = Backbone.Model.extend({});
 app.init.views.app = Backbone.View.extend({
     locale: 'uk',
     el: 'body',
+    events:{
+        'click #ru': 'setNls',
+        'click #uk': 'setNls',
+    },
     initialize: function () {
         this.showLoading();
         this.loadNls();
@@ -72,6 +76,16 @@ app.init.views.app = Backbone.View.extend({
             if (_.isFunction(clb)) {
                 clb();
             }
+        });
+    },
+    setNls: function (e) {
+        e.preventDefault();
+        this.locale = this.$(e.currentTarget).attr('id');
+        if (app.routers.app.scope == 'guest') {
+            this.$('#doc #guest .dropdown-toggle').html(e.currentTarget.innerHTML);
+        }
+        this.loadNls(function () {
+            app.routers.app.goTo(Backbone.history.fragment);
         });
     },
     showLoading: function () {
