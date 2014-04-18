@@ -1,4 +1,4 @@
-define({
+{
     EMAIL: 'EMAIL',
     PASSWORD: 'PASSWORD',
     SCREEN_NAME: 'SCREEN NAME',
@@ -15,4 +15,4 @@ define({
     registrationSuccess: 'You were successfully registered! Check password in your email box.',
     signUp: 'Sign up',
     submit: 'Submit',
-});
+}

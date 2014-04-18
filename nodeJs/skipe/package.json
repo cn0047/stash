@@ -10,6 +10,7 @@
         "express-validator": "*",
         "mongodb": "*",
         "crypto": "*",
-        "nodemailer": "*"
+        "nodemailer": "*",
+        "i18n": "*"
     }
 }

@@ -2,7 +2,6 @@ requirejs.config({
     paths: {
         text: '/js/lib/text-2.0.10',
         i18n: '/js/lib/i18n-2.0.4',
-        nls: '/js/nls/default',
         helpers: '/js/lib/helpers',
         skipeView: '/js/lib/backboneSkipeView',
         skipeModel: '/js/lib/backboneSkipeModel',
@@ -62,6 +61,10 @@ app.init.views.app = Backbone.View.extend({
     },
     initialize: function () {
         this.showLoading();
+        var matches = (document.cookie).match(/locale=([\w]{2})/);
+        if (matches) {
+            this.locale = matches[1];
+        }
         this.loadNls();
         require(['skipeModel', 'skipeView', 'helpers'], function (m, v, h) {
             Backbone.skipeModel = m;
@@ -72,9 +75,8 @@ app.init.views.app = Backbone.View.extend({
         Backbone.history.start();
     },
     loadNls: function (clb) {
-        var l = '/js/nls/'+this.locale+'.js';
-        require(['nls', l], function (a, b) {
-            app.nls = _.extend(a, b);
+        require(['text!/js/nls/'+this.locale+'.json'], function (f) {
+            app.nls = eval('('+f+')');
             if (_.isFunction(clb)) {
                 clb();
             }
@@ -83,6 +85,7 @@ app.init.views.app = Backbone.View.extend({
     setNls: function (e) {
         e.preventDefault();
         this.locale = this.$(e.currentTarget).attr('id');
+        document.cookie = 'locale='+this.locale;
         if (app.routers.app.scope == 'guest') {
             this.$('#doc #guest .dropdown-toggle').html(e.currentTarget.innerHTML);
         }

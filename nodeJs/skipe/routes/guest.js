@@ -4,7 +4,7 @@ var actions = {
 
 actions.POST.registration = function (req, res) {
     req.checkBody('email', 'Invalid email').isEmail();
-    req.checkBody('sname', 'Invalid screen name').matches(global.validator.patterns.sname); // or .is()
+    req.checkBody('sname', 'Invalid screen name').matches(global.validator.pattern.sname); // or .is()
     var e = req.validationErrors();
     if (e) {
         res.json({errors: e});
@@ -60,7 +60,7 @@ actions.POST.registration = function (req, res) {
     });
 };
 
-function lfp(req, res, cb) {
+function checkUserArguments(req, res, cb) {
     req.checkBody('type', 'Invalid login type').matches(/^(email|sname)$/);
     var e = req.validationErrors();
     switch (req.param('type')) {
@@ -69,7 +69,7 @@ function lfp(req, res, cb) {
             var find = {email: req.param('token')};
             break;
         case 'sname':
-            req.checkBody('token', 'Invalid screen name').matches(global.validator.patterns.sname);
+            req.checkBody('token', 'Invalid screen name').matches(global.validator.pattern.sname);
             var find = {sname: req.param('token')};
             break;
         default:
@@ -102,7 +102,7 @@ function lfp(req, res, cb) {
 
 actions.POST.logIn = function (req, res) {
     req.checkBody('pass', 'Invalid password').matches(/^\w{10}$/);
-    lfp(req, res, function (d) {
+    checkUserArguments(req, res, function (d) {
         if (d.password != req.param('pass')) {
             res.json({errors: [{param: 'pass', msg: 'Wrong password. Do you forgot password?'}]});
             return;
@@ -113,7 +113,7 @@ actions.POST.logIn = function (req, res) {
 };
 
 actions.POST.forgotPassword = function (req, res) {
-    lfp(req, res, function (d) {
+    checkUserArguments(req, res, function (d) {
         global.mongo.collection('user', function (err, collection) {
             if (err) {
                 res.json({errors: err});

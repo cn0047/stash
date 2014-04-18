@@ -4,7 +4,7 @@ define(['text!/js/guest/t/guest.layout.tpl.html'], function (t) {
         tpl: t,
         defaultRoute: 'guest/home',
         events:{
-            'click .navbar-nav li a': 'clickNav',
+            'click .navbar a': 'clickNav',
         },
         routes: {
             view_guest_registration: '/js/guest/v/registration.js',

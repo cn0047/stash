@@ -1,9 +1,8 @@
-// nodemon ./app.js localhost 3000
-
 var express          = require('express');
 var expressValidator = require('express-validator');
 var mongodb          = require('mongodb');
 var mailer           = require('nodemailer');
+var i18n             = require('i18n');
 
 var config           = require('./configs/main').config;
 
@@ -22,10 +21,17 @@ global.mail = mailer.createTransport('SMTP', {
     auth: {user: config.mail.user, pass: config.mail.password}
 });
 global.validator = {
-    patterns: {
+    pattern: {
         sname: /^[\w\s\_\-\=\+@]+$/,
     }
 };
+i18n.configure({
+    cookie: 'locale',
+    locales:['ru', 'uk'],
+    defaultLocale: 'uk',
+    updateFiles: false,
+    directory: __dirname + '/public/nls'
+});
 
 app.configure(function () {
     app.use(express.static(__dirname + '/public'));
@@ -33,6 +39,7 @@ app.configure(function () {
     app.use(express.cookieParser());
     app.use(express.session({secret: '10QW3456789023456789QWERTY'}));
     app.use(expressValidator());
+    app.use(i18n.init);
     app.set('views', __dirname + '/views');
     app.set('view engine', 'jade');
 });
