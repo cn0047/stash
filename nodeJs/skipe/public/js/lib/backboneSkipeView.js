@@ -15,27 +15,35 @@ define([], function () {
                 return;
             }
             app.views.app.showLoading();
-            this.$('#content > div').hide();
+            this.$('#content .page').hide();
             this.route = route.replace('/', '_');
             var r = 'view_'+this.route;
-            if (r in this.routes) {
-                if (_.isEmpty(app.views[this.route])) {
-                    require([this.routes[r]], app.views[app.routers.app.scope].go);
-                } else {
-                    this.go();
-                }
-            } else {
+            if (!(r in this.routes)) {
                 this.goTo(this.defaultRoute);
+            }
+            if (_.isEmpty(app.views[this.route])) {
+                require([this.routes[r]], app.views[app.routers.app.scope].go);
+            } else {
+                this.go();
             }
         },
         go: function (v) {
             var scope = app.routers.app.scope;
             var route = app.views[scope].route;
+            if (app.views[scope].$el.find('#content #'+route).length == 0) {
+                app.views[scope].$el.find('#content').append('<div class="page" id="'+route+'"></div>');
+            }
             if (_.isEmpty(app.views[route])) {
-                app.views[scope].$el.find('#content').append('<div id="'+route+'"></div>');
                 app.views[route] = new v({el: '#doc #'+scope+' #content #'+route});
             }
+            this.$('#content #'+route).show();
             app.views[route].goTo();
+        },
+        renderIf: function () {
+            var r = app.views[app.routers.app.scope].route;
+            if (_.isEmpty(app.cache[r])) {
+                this.render();
+            }
         },
     });
 });

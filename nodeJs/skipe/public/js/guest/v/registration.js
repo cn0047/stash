@@ -1,16 +1,19 @@
 define(['/js/guest/m/registration.js', 'text!/js/guest/t/registration.tpl.html'], function (m, t) {
     return  Backbone.skipeView.extend({
+        tpl: t,
+        model: new m(),
         events:{
             'click #signUp': 'signUp',
         },
         initialize: function () {
-            this.tpl = _.template(t);
-            this.model = new m();
             this.model.on('afterSave', this.afterSave, this);
         },
         goTo: function () {
-            this.$el.show().html(this.tpl());
+            this.renderIf();
             app.views.app.hideLoading();
+        },
+        render: function () {
+            this.$el.html(_.template(this.tpl));
         },
         signUp: function () {
             this.hideErrors();

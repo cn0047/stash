@@ -3,7 +3,7 @@ var actions = {
 };
 
 actions.POST.init = function (req, res) {
-    res.render('account', {title: 'skipe'});
+    res.render('app', {title: 'skipe'});
 };
 
 exports.go = function (req, res) {

@@ -166,6 +166,6 @@ exports.go = function (req, res) {
     if (req.method in actions && req.param('action') in actions[req.method]) {
         actions[req.method][req.param('action')](req, res);
     } else {
-        res.render('app', {date: new Date()});
+        res.render('app', {title: new Date()});
     }
 };

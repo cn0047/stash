@@ -1,5 +1,7 @@
 define(['/js/guest/m/login.js', 'text!/js/guest/t/login.tpl.html'], function (m, t) {
     return  Backbone.skipeView.extend({
+        tpl: t,
+        model: new m(),
         events:{
             'click #btnLogIn': 'logIn',
             'click #btnFPass': 'fPass',
@@ -24,18 +26,19 @@ define(['/js/guest/m/login.js', 'text!/js/guest/t/login.tpl.html'], function (m,
             }
         },
         initialize: function () {
-            this.tpl = _.template(t);
-            this.model = new m();
             this.model.on('afterLogIn', this.afterLogIn, this);
             this.model.on('afterFPass', this.afterFPass, this);
         },
         goTo: function () {
-            this.$el.show().html(this.tpl());
+            this.renderIf();
             var matches = (document.cookie).match(/guestLoginType=(email|sname)/);
             if (matches) {
                 this.$el.find('#type input[name=type][value='+matches[1]+']').trigger('click');
             }
             app.views.app.hideLoading();
+        },
+        render: function () {
+            this.$el.html(_.template(this.tpl));
         },
         fulfillAction: function (h, a) {
             this.hideErrors();

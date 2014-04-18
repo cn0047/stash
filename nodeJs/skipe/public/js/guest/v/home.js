@@ -1,11 +1,12 @@
 define(['text!/js/guest/t/home.tpl.html'], function (t) {
-    return  Backbone.View.extend({
-        initialize: function () {
-            this.tpl = _.template(t);
-        },
+    return  Backbone.skipeView.extend({
+        tpl: t,
         goTo: function () {
-            this.$el.show().html(this.tpl());
+            this.renderIf();
             app.views.app.hideLoading();
+        },
+        render: function () {
+            this.$el.html(_.template(this.tpl));
         },
     });
 });

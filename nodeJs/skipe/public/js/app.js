@@ -20,6 +20,7 @@ window.app = {
     routers: {},
     helpers: {},
     views: {},
+    cache: {},
     nls: {},
 };
 
@@ -27,8 +28,8 @@ app.init.routers.app = Backbone.Router.extend({
     routes: {
         '*other': 'goTo',
     },
-    goTo: function (id) {
-        this.id = id;
+    goTo: function (route) {
+        this.route = route;
         this.scope = 'guest';
         if (/^\/account/.test(window.location.pathname)) {
             this.scope = 'account';
@@ -41,11 +42,12 @@ app.init.routers.app = Backbone.Router.extend({
     },
     go: function (v) {
         scope = app.routers.app.scope;
-        id = app.routers.app.id;
+        route = app.routers.app.route;
         if (_.isEmpty(app.views[scope])) {
             app.views[scope] = new v();
+            app.views.app.trigger('renderLayouts');
         }
-        app.views[scope].goTo(id);
+        app.views[scope].goTo(route);
     },
 });
 
@@ -85,6 +87,8 @@ app.init.views.app = Backbone.View.extend({
             this.$('#doc #guest .dropdown-toggle').html(e.currentTarget.innerHTML);
         }
         this.loadNls(function () {
+            app.cache = {};
+            app.views.app.trigger('renderLayouts');
             app.routers.app.goTo(Backbone.history.fragment);
         });
     },
