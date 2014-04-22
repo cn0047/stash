@@ -5,6 +5,8 @@ MySql
 
 ````sql
 ALTER TABLE table ADD UNIQUE KEY (field);
+ALTER TABLE table DROP COLUMN field;
+DROP INDEX keyName ON table;
 ````
 
 ####Flashback
@@ -90,6 +92,8 @@ SET SQL_SAFE_UPDATES = 0;
 
 ####Tricks
 ````
+~/.mysql_history
+
 tee /tmp/out
 cat /tmp/out | mail mail@com.com
 

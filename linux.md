@@ -1,5 +1,7 @@
 ####shell
 <pre>
+~/.bash_history
+
 cd -       # go to previous dir
 pushd path # remember path (save it at stack)
 popd       # got to pushed path (and delete it from stack)
