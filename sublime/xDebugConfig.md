@@ -19,3 +19,9 @@ xdebug
 .htaccess
 
 	php_value xdebug.remote_enable 1
+
+	php_value xdebug.remote_enable 1
+	php_value xdebug.remote_host localhost
+	php_value xdebug.remote_connect_back 1
+	php_value xdebug.remote_port 9000
+	php_value xdebug.remote_handler dbgp
