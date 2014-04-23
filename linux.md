@@ -6,6 +6,15 @@ cd -       # go to previous dir
 pushd path # remember path (save it at stack)
 popd       # got to pushed path (and delete it from stack)
 history
+
+git st -s
+ M cron/.htaccess
+?? ppc/Google/AdWords/AdWordsApiLibrary/src/Google/Api/Ads/AdWords/v201402/
+# Output second colunm. ' ' at `awk -F ' '` - separator
+git st -s | awk -F ' ' '{print $2}'
+cron/.htaccess
+ppc/Google/AdWords/AdWordsApiLibrary/src/Google/Api/Ads/AdWords/v201402/
+
 </pre>
 
 ####MC
