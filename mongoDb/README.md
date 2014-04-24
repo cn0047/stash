@@ -453,4 +453,4 @@ Result:
 mongodump --host mongodb1.example.net --port 3017 --username user --password pass --out /opt/backup/mongodump-2013-10-24
 mongorestore --host mongodb1.example.net --port 3017 --username user --password pass /opt/backup/mongodump-2013-10-24/
 ````
-[>>>](http://docs.mongodb.org/manual/core/aggregation-introduction/)
+[>>>](http://docs.mongodb.org/manual/core/map-reduce-sharded-collections/)
