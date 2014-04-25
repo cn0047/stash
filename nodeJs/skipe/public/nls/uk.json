@@ -1,2 +1,23 @@
 {
+	"EMAIL": "EMAIL",
+	"PASSWORD": "PASSWORD",
+	"SCREEN_NAME": "SCREEN NAME",
+	"forgotPassword": "Forgot password",
+	"invalidEmail": "Invalid email",
+	"invalidLoginType": "Invalid login type",
+	"invalidPassword": "Invalid password",
+	"invalidScreenName": "Invalid screen name",
+	"invalidToken": "Invalid token",
+	"logIn": "Log in",
+	"passwordUpdated": "Your password has been updated, and sent to your email address. Check password in your email box.",
+	"registration": "Registration",
+	"registrationSuccess": "You were successfully registered! Check password in your email box.",
+	"signUp": "Sign up",
+	"submit": "Submit",
+	"emailAlreadyExists": "This email address has already exists.",
+	"guestMailSubjectRegistration": "☺ Your Skipe address, %s, has been created!",
+	"invalidParam": "Invalid %s",
+	"userNotFound": "User with this %s not found.",
+	"wrongPassword": "Wrong password. Do you forgot password?",
+	"guestMailSubjectForgotPassword": "► Your Skipe password has been updated!"
 }

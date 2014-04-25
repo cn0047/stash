@@ -3,8 +3,8 @@ var actions = {
 };
 
 actions.POST.registration = function (req, res) {
-    req.checkBody('email', 'Invalid email').isEmail();
-    req.checkBody('sname', 'Invalid screen name').matches(global.validator.pattern.sname); // or .is()
+    req.checkBody('email', res.__('invalidEmail')).isEmail();
+    req.checkBody('sname', res.__('invalidScreenName')).matches(global.validator.pattern.sname); // or .is()
     var e = req.validationErrors();
     if (e) {
         res.json({errors: e});
@@ -20,7 +20,7 @@ actions.POST.registration = function (req, res) {
                     return;
                 }
                 if (doc) {
-                    res.json({errors: [{param: 'email', msg: 'This email address has already exists.'}]});
+                    res.json({errors: [{param: 'email', msg: res.__('emailAlreadyExists')}]});
                     return;
                 }
                 collection.insert({
@@ -37,14 +37,14 @@ actions.POST.registration = function (req, res) {
                         sname: docs[0].sname,
                         password: docs[0].password,
                     };
-                    res.render('registrationEmail', args, function (err, html) {
+                    res.render('guest/'+res.getLocale()+'MailRegistrationEmail', args, function (err, html) {
                         if (err) {
                             res.json({errors: err});
                             return;
                         }
                         global.mail.sendMail({
                             to: docs[0].email,
-                            subject: '☺ Your Skipe address, '+docs[0].email+', has been created!',
+                            subject: res.__('guestMailSubjectRegistration', docs[0].email),
                             html: html,
                         }, function (err, r) {
                             if (err) {
@@ -61,19 +61,19 @@ actions.POST.registration = function (req, res) {
 };
 
 function checkUserArguments(req, res, cb) {
-    req.checkBody('type', 'Invalid login type').matches(/^(email|sname)$/);
+    req.checkBody('type', res.__('invalidLoginType')).matches(/^(email|sname)$/);
     var e = req.validationErrors();
     switch (req.param('type')) {
         case 'email':
-            req.checkBody('token', 'Invalid email').isEmail();
+            req.checkBody('token', res.__('invalidEmail')).isEmail();
             var find = {email: req.param('token')};
             break;
         case 'sname':
-            req.checkBody('token', 'Invalid screen name').matches(global.validator.pattern.sname);
+            req.checkBody('token', res.__('invalidScreenName')).matches(global.validator.pattern.sname);
             var find = {sname: req.param('token')};
             break;
         default:
-            e.push({param: 'token', msg: 'Invalid '+req.param('type')+'.'});
+            e.push({param: 'token', msg: res.__('invalidParam', req.param('type'))});
     }
     if (e) {
         res.json({errors: e});
@@ -89,7 +89,7 @@ function checkUserArguments(req, res, cb) {
                     return;
                 }
                 if (!doc) {
-                    res.json({errors: [{param: 'token', msg: 'User with this '+req.param('type')+' not found.'}]});
+                    res.json({errors: [{param: 'token', msg: res.__('userNotFound', req.param('type'))}]});
                     return;
                 }
                 if (doc) {
@@ -101,10 +101,10 @@ function checkUserArguments(req, res, cb) {
 }
 
 actions.POST.logIn = function (req, res) {
-    req.checkBody('pass', 'Invalid password').matches(/^\w{10}$/);
+    req.checkBody('pass', res.__('invalidPassword')).matches(/^\w{10}$/);
     checkUserArguments(req, res, function (d) {
         if (d.password != req.param('pass')) {
-            res.json({errors: [{param: 'pass', msg: 'Wrong password. Do you forgot password?'}]});
+            res.json({errors: [{param: 'pass', msg: res.__('wrongPassword')}]});
             return;
         }
         req.session.user = d;
@@ -129,7 +129,7 @@ actions.POST.forgotPassword = function (req, res) {
                         } else {
                             if (result) {
                                 res.render(
-                                    'forgotPassword',
+                                    'guest/'+res.getLocale()+'MailForgotPassword',
                                     {
                                         email: d.email,
                                         sname: d.sname,
@@ -142,7 +142,7 @@ actions.POST.forgotPassword = function (req, res) {
                                         }
                                         global.mail.sendMail({
                                             to: d.email,
-                                            subject: '► Your Skipe password has been updated!',
+                                            subject: res.__('guestMailSubjectForgotPassword'),
                                             html: html,
                                         }, function (err, r) {
                                             if (err) {

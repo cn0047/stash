@@ -9,4 +9,5 @@ exports.config = {
         user: '',
         password: '',
     },
+    sessionSecret: '',
 };

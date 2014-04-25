@@ -75,7 +75,7 @@ app.init.views.app = Backbone.View.extend({
         Backbone.history.start();
     },
     loadNls: function (clb) {
-        require(['text!/js/nls/'+this.locale+'.json'], function (f) {
+        require(['text!/nls/'+this.locale+'.json'], function (f) {
             app.nls = eval('('+f+')');
             if (_.isFunction(clb)) {
                 clb();
