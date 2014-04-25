@@ -10,4 +10,5 @@ exports.config = {
         password: '',
     },
     sessionSecret: '',
+    defaultLocale: '',
 };

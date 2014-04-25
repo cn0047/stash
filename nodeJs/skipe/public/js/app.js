@@ -53,11 +53,11 @@ app.init.routers.app = Backbone.Router.extend({
 app.init.models.app = Backbone.Model.extend({});
 
 app.init.views.app = Backbone.View.extend({
-    locale: 'uk',
+    locale: 'en',
     el: 'body',
     events:{
         'click #ru': 'setNls',
-        'click #uk': 'setNls',
+        'click #en': 'setNls',
     },
     initialize: function () {
         this.showLoading();

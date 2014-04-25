@@ -30,8 +30,8 @@ global.validator = {
 };
 i18n.configure({
     cookie: 'locale',
-    locales:['ru', 'uk'],
-    defaultLocale: 'uk',
+    locales:['ru', 'en'],
+    defaultLocale: config.defaultLocale,
     updateFiles: false,
     directory: __dirname + '/public/nls'
 });
