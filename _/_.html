@@ -61,6 +61,8 @@ debug
       mail('mail@mail.com', 'DBG|ERROR', var_export([$no, $str, $file, $line], 1));
   });
 
+  php_sapi_name() == 'cli' ? print("\n$error\n") : pr($error);
+
 phpDoc
 
   phpdoc run -d . -t doc
@@ -149,6 +151,7 @@ dialog
       <p>Adding the modal overlay screen makes the dialog look more prominent because it dims out the page content.</p>
   </div>
 
+http://www.postaffiliatepro.com/
 
 
 
@@ -194,8 +197,8 @@ mysql.inc
   inc/mysql.inc.php 1857
   if ($_COOKIE['d']) define('dbg',1);
   if ($_COOKIE['d']) define('nodbg',1);
-  !defined('dbg') or defined('nodbg') or print('<span style="color:#A52A2A"><pre>'.str_ireplace(' from ', "<b style='color:#0000FF'> from </b>", $sql->show()).';<hr></pre></span>');
-  !defined('dbg') or defined('nodbg') or print($sql->show()."\n-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
+  !defined('dbg') or defined('nodbg') or dbg != 1 or print('<span style="color:steelblue"><pre>'.str_ireplace(' from ', "<b style='color:crimson'> from </b>", $sql->show()).';<hr></pre></span>');
+  !defined('dbg') or defined('nodbg') or dbg != 2 or print($sql->show()."\n-----------------------------------------------------------------------------------------------------------------\n");
 
 ee.url
   if ($_COOKIE['d']) pr(
@@ -242,6 +245,16 @@ nice admin report
 info m
 
   url ?*a_aid*
+
+adWords
+  cron/ppc.google.cron.php
+
+  tables:
+  ppc_account_settings
+
+  logs:
+  ppc/Google/AdWords/AdWordsApiLibrary/src/Google/Api/Ads/AdWords/Lib/report_download.log
+  ppc/Google/AdWords/AdWordsApiLibrary/src/Google/Api/Ads/AdWords/Lib/request_info.log
 
 
 

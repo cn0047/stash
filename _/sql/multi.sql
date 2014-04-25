@@ -526,3 +526,17 @@ group by a.id, c.id
 ;
 -- consolidated log
 select * from ppc_consolidated_report_cron_log where date>date(now());
+
+------------------------------------------------------------------------------------------------------------------------
+-- Google AdWords
+------------------------------------------------------------------------------------------------------------------------
+ -- LOGS
+select * from ppc_consolidated_report_cron_log where date>date(now()) order by id desc limit 1 \G
+-- Reports schedule
+select  pa.account, pcrs.*
+from ppc_consolidated_report_schedule pcrs
+inner join ppc_account pa on pcrs.accountID = pa.id
+where pcrs.owner = 'Google'
+and pcrs.day_number = 4 -- day of week
+;
+update ppc_consolidated_report_schedule set last_execution_date = '' where owner = 'Google'and day_number = 4;
