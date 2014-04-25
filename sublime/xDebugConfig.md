@@ -1,7 +1,7 @@
 xdebug
 -
 
-{
+    {
     "path_mapping": {
         "/var/www/vhosts/kovpak/htdocs/px/": "/home/kovpak/web/kovpak/px/",
         "/usr/share/yii/": "/home/kovpak/web/kovpak/yii/framework/"
@@ -21,7 +21,7 @@ xdebug
     "watch_group": 2,
     "watch_index": 2,
     "close_on_stop": true
-}
+    }
 
 ~/.bashrc
 // home ip address: 007.02.03.04
