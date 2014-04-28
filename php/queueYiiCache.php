@@ -1,18 +1,18 @@
 <?php
 
 if (!empty($toSave)) {
-    $keyStackAdditional = 'affiliatesTransactionStackAdditional';
+    $keyStackAdditional = 'StackAdditional';
     $stackAdditional = Yii::app()->cache->get($keyStackAdditional);
     if (is_array($stackAdditional)) {
         $toSave = array_merge($stackAdditional, $toSave);
     }
-    $keyStackLock = 'affiliatesTransactionStackLock';
+    $keyStackLock = 'StackLock';
     $lock = Yii::app()->cache->get($keyStackLock);
     if ($lock) {
         Yii::app()->cache->set($keyStackAdditional, $toSave, 7*24*3600);
     } else {
         Yii::app()->cache->set($keyStackLock, true, 7*24*3600);
-        $keyStack = 'affiliatesTransactionStack';
+        $keyStack = 'Stack';
         $stack = Yii::app()->cache->get($keyStack);
         if (is_array($stack)) {
             $toSave = array_merge($stack, $toSave);
@@ -24,27 +24,27 @@ if (!empty($toSave)) {
 
 function getLeadsSales($count)
 {
-   $keyStack = 'affiliatesTransactionStack';
-   $stack = Yii::app()->cache->get($keyStack);
-   if (!is_array($stack)) {
-       return [];
-   }
-   $slice = array_slice($stack, 0, $count);
-   $sliced = array_flip(array_keys($slice));
-   $keyStackSliced = 'affiliatesTransactionStackSliced';
-   Yii::app()->cache->set($keyStackSliced, $sliced, 7*24*3600);
-   return array_values($slice);
+    $keyStack = 'Stack';
+    $stack = Yii::app()->cache->get($keyStack);
+    if (!is_array($stack)) {
+        return [];
+    }
+    $slice = array_slice($stack, 0, $count);
+    $sliced = array_flip(array_keys($slice));
+    $keyStackSliced = 'StackSliced';
+    Yii::app()->cache->set($keyStackSliced, $sliced, 7*24*3600);
+    return array_values($slice);
 }
 
 function setStatusLeadsSales($count)
 {
-    $keyStackSliced = 'affiliatesTransactionStackSliced';
+    $keyStackSliced = 'StackSliced';
     $stackSliced = Yii::app()->cache->get($keyStackSliced);
     if (!is_array($stackSliced)) {
         return true;
     }
-    $keyStackLock = 'affiliatesTransactionStackLock';
-    $keyStack = 'affiliatesTransactionStack';
+    $keyStackLock = 'StackLock';
+    $keyStack = 'Stack';
     do {
         $lock = Yii::app()->cache->get($keyStackLock);
         if (!$lock) {
