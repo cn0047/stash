@@ -6,6 +6,7 @@ var expressValidator = require('express-validator');
 var mongodb          = require('mongodb');
 var mailer           = require('nodemailer');
 var i18n             = require('i18n');
+var fs               = require('fs');
 
 var config           = require('./configs/main').config;
 

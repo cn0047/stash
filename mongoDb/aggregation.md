@@ -200,3 +200,8 @@ db.sessions.mapReduce(
     }
 );
 ````
+
+[Aggregation Commands Comparison](http://docs.mongodb.org/manual/reference/aggregation-commands-comparison/)
+[SQL to Aggregation Mapping Chart](http://docs.mongodb.org/manual/reference/sql-aggregation-comparison/)
+[Aggregation Interfaces](http://docs.mongodb.org/manual/reference/operator/aggregation/interface/)
+[Variables in Aggregation](http://docs.mongodb.org/manual/reference/aggregation-variables/)

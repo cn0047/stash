@@ -87,6 +87,7 @@ db.users.count( { user_id: { $exists: true } } )
 db.users.distinct( "status" )
 
 // INDEX
+// MongoDB indexes may be ascending, (i.e. 1) or descending (i.e. -1)
 db.collection.getIndexes();
 // Each index requires at least 8KB of data space.
 db.inventory.find({ type: 'aston' });
@@ -453,4 +454,4 @@ Result:
 mongodump --host mongodb1.example.net --port 3017 --username user --password pass --out /opt/backup/mongodump-2013-10-24
 mongorestore --host mongodb1.example.net --port 3017 --username user --password pass /opt/backup/mongodump-2013-10-24/
 ````
-[>>>](http://docs.mongodb.org/manual/core/map-reduce-sharded-collections/)
+[>>>](http://docs.mongodb.org/manual/core/index-compound/)

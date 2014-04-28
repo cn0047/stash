@@ -251,12 +251,15 @@ adWords
 
   tables:
   ppc_account_settings
+  ppc_consolidated_report_cron_log
 
   logs:
   ppc/Google/AdWords/AdWordsApiLibrary/src/Google/Api/Ads/AdWords/Lib/report_download.log
   ppc/Google/AdWords/AdWordsApiLibrary/src/Google/Api/Ads/AdWords/Lib/request_info.log
 
-
+scp -P 10063        ppc/ppc.module.php              multi-rel-work@lgw.am.hwtool.net:~/htdocs/ppc/ppc.module.php
+scp -P 10063        ppc/ppc.api_module.php              multi-rel-work@lgw.am.hwtool.net:~/htdocs/ppc/ppc.api_module.php
+scp -P 10063        sql.php                          multi-rel-work@lgw.am.hwtool.net:~/htdocs/sql.php
 
 
 
