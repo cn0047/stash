@@ -6,12 +6,21 @@ var expressValidator = require('express-validator');
 var mongodb          = require('mongodb');
 var mailer           = require('nodemailer');
 var i18n             = require('i18n');
+var fs               = require('fs');
 
 var config           = require('./configs/main').config;
 
 var mongoServer = new mongodb.Server(config.mongo.host, config.mongo.port, config.mongo.options);
 var mongoDB = new mongodb.Db(config.mongo.base, mongoServer);
 var app = express();
+global.localesDirectory = './public/nls';
+global.availableLocales = [];
+fs.readdir(global.localesDirectory, function (err, files) {
+    var locales = [];
+    files.forEach(function (file) {
+        global.availableLocales.push(file.replace('.json', ''));
+    });
+});
 mongoDB.open(function (err, db) {
     if (err) {
         console.error(err);
@@ -29,21 +38,21 @@ global.validator = {
     }
 };
 i18n.configure({
-    cookie: 'locale',
-    locales:['ru', 'en'],
-    defaultLocale: config.defaultLocale,
-    updateFiles: false,
-    directory: __dirname + '/public/nls'
+    cookie        : 'locale',
+    locales       : global.availableLocales,
+    directory     : global.localesDirectory,
+    defaultLocale : config.defaultLocale,
+    updateFiles   : false,
 });
 
 app.configure(function () {
-    app.use(express.static(__dirname + '/public'));
+    app.use(express.static('./public'));
     app.use(express.bodyParser());
     app.use(express.cookieParser());
     app.use(express.session({secret: config.sessionSecret}));
     app.use(expressValidator());
     app.use(i18n.init);
-    app.set('views', __dirname + '/views');
+    app.set('views', './views');
     app.set('view engine', 'jade');
 });
 

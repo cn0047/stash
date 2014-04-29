@@ -65,6 +65,7 @@ app.init.views.app = Backbone.View.extend({
         if (matches) {
             this.locale = matches[1];
         }
+        document.cookie = 'locale='+this.locale;
         this.loadNls();
         require(['skipeModel', 'skipeView', 'helpers'], function (m, v, h) {
             Backbone.skipeModel = m;
