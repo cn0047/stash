@@ -19,5 +19,16 @@
 	"invalidParam": "Invalid %s",
 	"userNotFound": "User with this %s not found.",
 	"wrongPassword": "Wrong password. Do you forgot password?",
-	"guestMailSubjectForgotPassword": "► Your Skipe password has been updated!"
+	"guestMailSubjectForgotPassword": "► Your Skipe password has been updated!",
+	"activate": "Activate",
+	"recentChats": "Recent chats",
+	"chatsBookmarks": "Chats bookmarks",
+	"online": "Online",
+	"offline": "Offline",
+	"outOfPlace": "Out of place",
+	"doNotDisturb": "Do not disturb",
+	"invisible": "Invisible",
+	"settings": "Settings",
+	"changeAccount": "Change account",
+	"logOut": "Log out"
 }

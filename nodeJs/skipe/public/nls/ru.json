@@ -19,5 +19,16 @@
 	"invalidParam": "Некорректный %s",
 	"userNotFound": "Пользователь с таким %s не найден.",
 	"wrongPassword": "Неверный пароль. Вы забыли пароль?",
-	"guestMailSubjectForgotPassword": "► Ваш Skipe пароль был обновлен!"
+	"guestMailSubjectForgotPassword": "► Ваш Skipe пароль был обновлен!",
+	"activate": "Активировать",
+	"recentChats": "Недавнее чаты",
+	"chatsBookmarks": "Закладки чатов",
+	"online": "В сети",
+	"offline": "Не в сети",
+	"outOfPlace": "Нет на месте",
+	"doNotDisturb": "Не беспокоить",
+	"invisible": "Невидимый",
+	"settings": "Настройки",
+	"changeAccount": "Сменить учетную запись",
+	"logOut": "Выйти"
 }
