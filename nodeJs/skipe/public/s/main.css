@@ -7,7 +7,7 @@ footer #progress {
     width: 160px;
     float: right;
 }
-#guest .navbar #nls {
+.navbar #nls {
     min-width: 0;
 }
 #guest_registration > div {

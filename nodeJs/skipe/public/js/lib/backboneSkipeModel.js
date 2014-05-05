@@ -1,5 +1,9 @@
 define([], function () {
     return  Backbone.Model.extend({
+        hash: '',
+        urlRoot: function () {
+            return app.routers.app.scope+'/'+this.hash;
+        },
         validate: function (a, o) {
             var e = [];
             var patterns = {
