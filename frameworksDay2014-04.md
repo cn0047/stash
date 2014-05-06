@@ -1,10 +1,10 @@
 JavaScript Frameworks Day 2014
 -
 
-*https://www.odesk.com/ - work
-*http://www.ciklum.com/ - work
-*http://www.cappuccino-project.org/ - ui
-*http://pix.io/ - something intresting as example
+* https://www.odesk.com/ - work
+* http://www.ciklum.com/ - work
+* http://www.cappuccino-project.org/ - ui
+* http://pix.io/ - something intresting as example
 
 ####ember js
 *[ember](http://emberjs.com/) A framework for creating ambitious web applications.
