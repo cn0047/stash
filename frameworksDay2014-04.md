@@ -13,5 +13,5 @@ JavaScript Frameworks Day 2014
     http://mustache.github.io/ - templater
 
 ####react js
-    [react](https://github.com/facebook/react) - React is a JavaScript library for building user interfaces.
-    http://d3js.org/ - D3.js is a JavaScript library for manipulating documents based on data.
+[react](https://github.com/facebook/react) - React is a JavaScript library for building user interfaces.
+http://d3js.org/ - D3.js is a JavaScript library for manipulating documents based on data.
