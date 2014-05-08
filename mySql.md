@@ -3,6 +3,12 @@ MySql
 
 *5.1.72-rel14.10*
 
+####Options
+````sql
+SET SQL_BIG_SELECTS = 1;
+SET SQL_SAFE_UPDATES = 0;
+````
+
 ````sql
 ALTER TABLE table ADD UNIQUE KEY (field);
 ALTER TABLE table DROP COLUMN field;
@@ -83,11 +89,6 @@ INET_ATON(ip)
 INET_NTOA(i)
 
 UUID()
-````
-
-####Options
-````sql
-SET SQL_SAFE_UPDATES = 0;
 ````
 
 ####Tricks
