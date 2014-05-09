@@ -11,7 +11,7 @@ JavaScript Frameworks Day 2014
 * http://handlebarsjs.com/ - Handlebars.js is an extension to the Mustache templating language.
 * http://mustache.github.io/ - templater
 
-####React js
+####React js !!!
 * [React](https://github.com/facebook/react) - React is a JavaScript library for building user interfaces.
 * http://d3js.org/ - D3.js is a JavaScript library for manipulating documents based on data.
 
@@ -26,3 +26,10 @@ JavaScript Frameworks Day 2014
 ####Js tests
 * http://qunitjs.com/ - A JavaScript Unit Testing framework. writed by jQuery.
 * https://github.com/karma-runner/karma - Spectacular Test Runner for JavaScript.
+
+####UI
+* http://clojure.org/clojurescript - clojurescript
+* https://news.ycombinator.com/ - Hacker News
+
+Используй одну новую технологию на новом проекте!
+-
