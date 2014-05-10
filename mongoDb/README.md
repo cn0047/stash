@@ -170,6 +170,25 @@ db.inventory.ensureIndex({
     dept: 1,
     description: "text"
 });
+// Do not use a hashed index for floating point numbers.
+db.active.ensureIndex({a: 'hashed'});
+// Unique Indexes
+db.members.ensureIndex({'user_id': 1}, {unique: true});
+// (Sparse Indexes)[http://docs.mongodb.org/manual/core/index-sparse/]
+// if indexed field das NULL it don not be at result.
+{"_id" :ObjectId('523b6e32fb408eea0eec2647'), 'userid': 'newbie'}
+{"_id" :ObjectId('523b6e61fb408eea0eec2648'), 'userid': 'abby', 'score': 82}
+{"_id" :ObjectId('523b6e6ffb408eea0eec2649'), 'userid': 'nina', 'score': 90}
+db.scores.ensureIndex({score: 1}, {sparse: true})
+db.scores.find({score: {$lt: 90}})
+{'_id' : ObjectId('523b6e61fb408eea0eec2648'), 'userid': 'abby', 'score': 82}
+// NON BLOCK DATA
+db.people.ensureIndex({zipcode: 1}, {background: true})
+// Drop Duplicates
+db.accounts.ensureIndex({username: 1}, {unique: true, dropDups: true})
+// Index has the name inventory.
+db.products.ensureIndex({item: 1, quantity: -1} , {name: 'inventory'})
+
 
 // EXPLAIN
 db.collection.find().explain()
@@ -454,4 +473,4 @@ Result:
 mongodump --host mongodb1.example.net --port 3017 --username user --password pass --out /opt/backup/mongodump-2013-10-24
 mongorestore --host mongodb1.example.net --port 3017 --username user --password pass /opt/backup/mongodump-2013-10-24/
 ````
-[>>>](http://docs.mongodb.org/manual/core/index-compound/)
+[>>>](http://docs.mongodb.org/manual/core/index-intersection/)
