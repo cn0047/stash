@@ -1,3 +1,5 @@
+// nodemon ./app.js localhost 3000
+
 /**
  * @todo Move available locales to front.
  */
