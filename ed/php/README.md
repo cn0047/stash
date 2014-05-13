@@ -3,6 +3,7 @@ php
 *PHP 5.1.6*
 
 url
+````
     ? %3F
     & %26
     = %3D
@@ -10,9 +11,12 @@ url
     / %2F
     - -
     _ _
+````
 
 `<![CDATA[]]>`
+
 **phpDoc** `phpdoc run -d . -t doc`
+
 **phpUnit** `/usr/share/php/PHPUnit/Extensions/SeleniumTestCase.php`
 
 ````php
