@@ -7,7 +7,7 @@ Google Interview Questions: Software Engineer
 * Explain the significance of “dead beef”.
 * Write a C program which measures the the speed of a context switch on a UNIX/Linux system.
 * Given a function which produces a random integer in the range 1 to 5, write a function which produces a random integer in the range 1 to 7.
-<br>`php return function () { return randodmIntFrom1To5() + mt_rand(1, 2); }`
+<br>`return function () { return randodmIntFrom1To5() + mt_rand(1, 2); }`
 * Describe the algorithm for a depth-first graph traversal.
 * Design a class library for writing card games.
 * You need to check that your friend, Bob, has your correct phone number, but you cannot ask him directly. You must write a the question on a card which and give it to Eve who will take the card to Bob and return the answer to you. What must you write on the card, besides the question, to ensure Bob can encode the message so that Eve cannot read your phone number?
