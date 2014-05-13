@@ -12,6 +12,7 @@ SET SQL_SAFE_UPDATES = 0;
 ````sql
 ALTER TABLE table ADD UNIQUE KEY (field);
 ALTER TABLE table DROP COLUMN field;
+ALTER TABLE table MODIFY field VARCHAR(7) NOT NULL DEFAULT '';
 DROP INDEX keyName ON table;
 ````
 
