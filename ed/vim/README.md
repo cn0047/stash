@@ -3,7 +3,7 @@ vim
 
 version 7.4
 
-<pre>
+````
 :version
 :redo or CTRL+R
 :e!                 - reload file
@@ -34,4 +34,4 @@ j  - join
 gJ - join without spaces
 
 K  - LOOK TO SCREEN
-</pre>
+````
