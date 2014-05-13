@@ -2,6 +2,7 @@ Google Interview Questions: Software Engineer
 -
 * Why are manhole covers round?
 * What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
+<br>`Mutex is a semaphore with one mode (toilet example). Only mutex can be used for increment operation.`
 * A man pushed his car to a hotel and lost his fortune. What happened?
 * Explain the significance of “dead beef”.
 * Write a C program which measures the the speed of a context switch on a UNIX/Linux system.
