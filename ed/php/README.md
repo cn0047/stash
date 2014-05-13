@@ -2,23 +2,18 @@ php
 -
 *PHP 5.1.6*
 
-`url
-  ? %3F
-  & %26
-  = %3D
-  : %3A
-  / %2F
-  - -
-  _ _
-`
+url
+    ? %3F
+    & %26
+    = %3D
+    : %3A
+    / %2F
+    - -
+    _ _
 
 `<![CDATA[]]>`
-
-####phpDoc
-`phpdoc run -d . -t doc`
-
-####phpUnit
-`/usr/share/php/PHPUnit/Extensions/SeleniumTestCase.php`
+**phpDoc** `phpdoc run -d . -t doc`
+**phpUnit** `/usr/share/php/PHPUnit/Extensions/SeleniumTestCase.php`
 
 ````php
 <?php
@@ -46,7 +41,7 @@ error_reporting(E_ALL); // error_reporting(E_ALL & ~E_NOTICE);
 ini_set("display_errors", 1);
 ini_set('display_startup_errors','On');
 
-?XDEBUG_SESSION_START=sublime.xdebug
+# ?XDEBUG_SESSION_START=sublime.xdebug
 xdebug_start_trace('c:/data/fac.xt');
 xdebug_stop_trace();
 
