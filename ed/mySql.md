@@ -15,6 +15,17 @@ ALTER TABLE table DROP COLUMN field;
 DROP INDEX keyName ON table;
 ````
 
+####mySqlDump
+
+    mysqldump -h hostname -u user -d --skip-triggers --single-transaction --complete-insert --extended-insert --quote-names dbname tablename |gzip > sql.gz
+    mysqldump -hHost Base table | gzip | uuencode table.gz | mail mail@com.com -s table
+    mysqldump -h Host Base table --where="id=11" | mail mail@com.com
+    php-mysqldump -h HOST -u USER -a table -f sql -e "SELECT * FROM table LIMIT 10"
+    mysql -h Host -D Base -te "SELECT NOW()" | mail mail@com.com
+    mysql -hHost -uUser -pPass base ~ table
+    mysql -h Host -D Base -e "select * from table where id in (1,2);" | gzip | pv | uuencode result.csv.gz | mail mail@com.com -s "query result"
+    zcat table.gz | host -uUser -pPass base
+
 ####Flashback
 ````sql
 -- First works AND than OR
