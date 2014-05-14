@@ -11,6 +11,7 @@ Google Interview Questions: Software Engineer
 * Describe the algorithm for a depth-first graph traversal.
 * Design a class library for writing card games.
 * You need to check that your friend, Bob, has your correct phone number, but you cannot ask him directly. You must write a the question on a card which and give it to Eve who will take the card to Bob and return the answer to you. What must you write on the card, besides the question, to ensure Bob can encode the message so that Eve cannot read your phone number?
+<br>`I would write on the card - call me.`
 * How are cookies passed in the HTTP protocol?
 * Design the SQL database tables for a car rental database.
 * Write a regular expression which matches a email address.
