@@ -30,6 +30,9 @@ JavaScript Frameworks Day 2014
 ####UI
 * http://clojure.org/clojurescript - clojurescript
 * https://news.ycombinator.com/ - Hacker News
+* **Используй одну новую технологию на новом проекте!**
 
-Используй одну новую технологию на новом проекте!
--
+####pixi js!!!
+* [pixi](http://www.pixijs.com/) - 2D webGL renderer with canvas fallback
+
+####
