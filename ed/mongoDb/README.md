@@ -89,6 +89,7 @@ db.users.distinct( "status" )
 // INDEX
 // MongoDB indexes may be ascending, (i.e. 1) or descending (i.e. -1)
 db.collection.getIndexes();
+db.system.indexes.find();
 // Each index requires at least 8KB of data space.
 db.inventory.find({ type: 'aston' });
 db.inventory.ensureIndex( { type: 1 })
@@ -97,7 +98,9 @@ db.inventory.find({ type: "food", item:/^c/ }, { item: 1, _id: 0 })
 // index not uses, bacause query returns _id field
 db.inventory.find({ type: "food", item:/^c/ }, { item: 1 })
 // delete index
-db.items.dropIndex( { name : 1 } )
+db.items.dropIndex({name : 1})
+// Rebuild Indexes. This operation drops all indexes, including the _id index, and then rebuilds all indexes.
+db.accounts.reIndex()
 /*
 {
   topics: ["whaling" , "allegory" , "revenge" , "American" , "novel" , "nautical" , "voyage" , "Cape Cod"]
@@ -123,6 +126,8 @@ db.quotes.ensureIndex(
     {quote : "text"},
     {language_override: "idioma"}
 );
+// The following example indexes any string value in the data of every field of every document in collection and names the index TextIndex:
+db.collection.ensureIndex({"$**": "text"}, {name: "TextIndex"});
 /*
 { _id: 1, idioma: "portuguese", quote: "A sorte protege os audazes"}
 { _id: 2, idioma: "spanish", quote: "Nada hay más surreal que la realidad."}
@@ -188,6 +193,8 @@ db.people.ensureIndex({zipcode: 1}, {background: true})
 db.accounts.ensureIndex({username: 1}, {unique: true, dropDups: true})
 // Index has the name inventory.
 db.products.ensureIndex({item: 1, quantity: -1} , {name: 'inventory'})
+// (Specify a Language for Text Index)[http://docs.mongodb.org/manual/tutorial/specify-language-for-text-index/]
+db.quotes.ensureIndex({content : "text"}, {default_language: "spanish"})
 
 
 // EXPLAIN
@@ -473,4 +480,4 @@ Result:
 mongodump --host mongodb1.example.net --port 3017 --username user --password pass --out /opt/backup/mongodump-2013-10-24
 mongorestore --host mongodb1.example.net --port 3017 --username user --password pass /opt/backup/mongodump-2013-10-24/
 ````
-[>>>](http://docs.mongodb.org/manual/administration/indexes/)
+[>>>](http://docs.mongodb.org/manual/tutorial/avoid-text-index-name-limit/)
