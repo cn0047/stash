@@ -34,5 +34,3 @@ JavaScript Frameworks Day 2014
 
 ####pixi js!!!
 * [pixi](http://www.pixijs.com/) - 2D webGL renderer with canvas fallback
-
-####
