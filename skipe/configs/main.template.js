@@ -2,10 +2,12 @@ exports.config = {
     mongo: {
         host: '',
         port: '',
-        options: '',
+        options: {},
         base: '',
     },
     mail: {
+        type: '',
+        service: '',
         user: '',
         password: '',
     },

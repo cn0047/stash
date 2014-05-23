@@ -4,7 +4,7 @@ var actions = {
 
 actions.POST.registration = function (req, res) {
     req.checkBody('email', res.__('invalidEmail')).isEmail();
-    req.checkBody('sname', res.__('invalidScreenName')).matches(global.validator.pattern.sname); // or .is()
+    req.checkBody('sname', res.__('invalidScreenName')).matches(global.validator.pattern.sname);
     var e = req.validationErrors();
     if (e) {
         res.json({errors: e});
@@ -24,28 +24,29 @@ actions.POST.registration = function (req, res) {
                     return;
                 }
                 collection.insert({
-                    email: req.param('email'),
-                    sname: req.param('sname'),
-                    password: require('crypto').randomBytes(5).toString('hex'),
+                    email    : req.param('email'),
+                    sname    : req.param('sname'),
+                    password : require('crypto').randomBytes(5).toString('hex'),
                 }, function (err, docs) {
                     if (err) {
                         res.json({errors: err});
                         return;
                     }
                     var args = {
-                        email: docs[0].email,
-                        sname: docs[0].sname,
-                        password: docs[0].password,
+                        email    : docs[0].email,
+                        sname    : docs[0].sname,
+                        password : docs[0].password,
+                        locale   : res.getLocale(),
                     };
-                    res.render('guest/'+res.getLocale()+'MailRegistrationEmail', args, function (err, html) {
+                    res.render('guest/mailRegistration', args, function (err, html) {
                         if (err) {
                             res.json({errors: err});
                             return;
                         }
                         global.mail.sendMail({
-                            to: docs[0].email,
-                            subject: res.__('guestMailSubjectRegistration', docs[0].email),
-                            html: html,
+                            to      : docs[0].email,
+                            subject : res.__('guestMailSubjectRegistration', docs[0].email),
+                            html    : html,
                         }, function (err, r) {
                             if (err) {
                                 res.json({errors: err});
@@ -129,11 +130,12 @@ actions.POST.forgotPassword = function (req, res) {
                         } else {
                             if (result) {
                                 res.render(
-                                    'guest/'+res.getLocale()+'MailForgotPassword',
+                                    'guest/mailForgotPassword',
                                     {
-                                        email: d.email,
-                                        sname: d.sname,
-                                        password: p,
+                                        email    : d.email,
+                                        sname    : d.sname,
+                                        password : p,
+                                        locale   : res.getLocale(),
                                     },
                                     function (err, html) {
                                         if (err) {

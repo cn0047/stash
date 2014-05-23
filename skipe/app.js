@@ -2,6 +2,7 @@
 
 /**
  * @todo Move available locales to front.
+ * @todo Fix i18n.
  */
 var express          = require('express');
 var expressValidator = require('express-validator');
@@ -30,8 +31,8 @@ mongoDB.open(function (err, db) {
         global.mongo = db;
     }
 });
-global.mail = mailer.createTransport('SMTP', {
-    service: 'Gmail',
+global.mail = mailer.createTransport(config.mail.type, {
+    service: config.mail.service,
     auth: {user: config.mail.user, pass: config.mail.password}
 });
 global.validator = {

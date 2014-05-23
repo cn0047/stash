@@ -30,5 +30,16 @@
 	"invisible": "Невидимый",
 	"settings": "Настройки",
 	"changeAccount": "Сменить учетную запись",
+	"newPassword": "Новый пароль",
+	"passwordSuccessfullyUpdated": "Ваш пароль был успешно обновлен.",
+	"keepThisEmail": "Сохраните это сообщение.",
+	"youCanLoginWithNextCredentials": "Теперь вы можете войти в свой аккаунт со следующими полномочиями:",
+	"email": "эл.почта:",
+	"screenName": "псевдоним:",
+	"password": "пароль:",
+	"enjoy": "Приятных вам впечатлений!",
+	"skipeTeam": "Команда Skipe",
+	"congratulations": "Поздравляем",
+	"onCreatingNewAddress": "в создании совершенно нового адреса Skipe,",
 	"logOut": "Выйти"
 }

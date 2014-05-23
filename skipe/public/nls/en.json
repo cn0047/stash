@@ -30,5 +30,16 @@
 	"invisible": "Invisible",
 	"settings": "Settings",
 	"changeAccount": "Change account",
+	"newPassword": "New password",
+	"passwordSuccessfullyUpdated": "Your password has been successfully updated.",
+	"keepThisEmail": "Please keep this email.",
+	"youCanLoginWithNextCredentials": "From now you can login to your account with next credentials:",
+	"email": "Email:",
+	"screenName": "Screen name:",
+	"password": "Password:",
+	"enjoy": "Enjoy!",
+	"skipeTeam": "The Skipe Team",
+	"congratulations": "Congratulations",
+	"onCreatingNewAddress": "on creating your brand new Skipe address,",
 	"logOut": "Log out"
 }
