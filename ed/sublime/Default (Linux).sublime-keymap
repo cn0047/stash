@@ -1,8 +1,5 @@
 [
     // BOOKMARK
-    // { "keys": ["ctrl+m"], "command": "toggle_bookmark" },
-    // { "keys": ["ctrl+,"], "command": "prev_bookmark" },
-    // { "keys": ["ctrl+."], "command": "next_bookmark" },
     { "keys": ["ctrl+,"], "command": "sublime_bookmark", "args" : { "type" : "goto_previous" } },
     { "keys": ["ctrl+."], "command": "sublime_bookmark", "args" : { "type" : "goto_next" } },
     { "keys": ["ctrl+m"], "command": "sublime_bookmark", "args" : { "type" : "toggle_line"  } },
@@ -41,6 +38,22 @@
     { "keys": ["alt+left"], "command": "jump_back" },
     { "keys": ["alt+right"], "command": "jump_forward" },
     { "keys": ["ctrl+shift+c"], "command": "reveal_in_side_bar" },
+    // FIND PANEL
+    { "keys": ["alt+keypad2"], "command": "toggle_case_sensitive", "context":
+        [
+            { "key": "setting.is_widget", "operator": "equal", "operand": true }
+        ]
+    },
+    { "keys": ["alt+keypad1"], "command": "toggle_regex", "context":
+        [
+            { "key": "setting.is_widget", "operator": "equal", "operand": true }
+        ]
+    },
+    { "keys": ["alt+keypad3"], "command": "toggle_whole_word", "context":
+        [
+            { "key": "setting.is_widget", "operator": "equal", "operand": true }
+        ]
+    },
 
     //Favorite Files
     { "keys": ["ctrl+alt+o"], "command": "select_favorite_file" },
@@ -78,13 +91,6 @@
     { "keys": ["alt+x"], "command": "show_overlay", "args": {"overlay": "command_palette", "text": "xdebug"} },
 
     // GIT
-    // { "keys": ["alt+a"], "command": "show_overlay", "args": {"overlay": "command_palette", "text": "git add"} },
-    // { "keys": ["alt+l"], "command": "show_overlay", "args": {"overlay": "command_palette", "text": "git log c"} },
-    // { "keys": ["alt+r"], "command": "show_overlay", "args": {"overlay": "command_palette", "text": "git checkout"} },
-    // { "keys": ["alt+d"], "command": "show_overlay", "args": {"overlay": "command_palette", "text": "git diff Current"} },
-    // { "keys": ["alt+shift+d"], "command": "show_overlay", "args": {"overlay": "command_palette", "text": "git diff all"} },
-    // { "keys": ["alt+s"], "command": "show_overlay", "args": {"overlay": "command_palette", "text": "git status"} },
-    // { "keys": ["alt+b"], "command": "show_overlay", "args": {"overlay": "command_palette", "text": "git blame"} },
     { "keys": ["alt+a"], "command": "git_add" },
     { "keys": ["alt+l"], "command": "git_log" },
     { "keys": ["alt+r"], "command": "git_checkout" },
