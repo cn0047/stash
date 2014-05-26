@@ -89,7 +89,7 @@ db.users.distinct( "status" )
 
 // EXPLAIN
 db.collection.find().explain()
-// hint
+// hint - Forces MongoDB to use a specific index for a query.
 db.inventory.find( { type: 'food' } ).hint( { type: 1 } ).explain()
 db.inventory.find( { type: 'food' } ).hint( { type: 1, name: 1 } ).explain()
 
@@ -370,4 +370,4 @@ Result:
 mongodump --host mongodb1.example.net --port 3017 --username user --password pass --out /opt/backup/mongodump-2013-10-24
 mongorestore --host mongodb1.example.net --port 3017 --username user --password pass /opt/backup/mongodump-2013-10-24/
 ````
-[>>>](http://docs.mongodb.org/manual/applications/indexes/)
+[>>>](http://docs.mongodb.org/manual/faq/fundamentals/)

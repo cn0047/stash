@@ -1,5 +1,6 @@
 INDEX
 -
+[reference](http://docs.mongodb.org/manual/reference/indexes/)
 ````js
 // MongoDB indexes may be ascending, (i.e. 1) or descending (i.e. -1)
 db.collection.getIndexes();
@@ -112,3 +113,18 @@ db.blog.ensureIndex(
 A covered query is a query in which:
 * all the fields in the query are part of an index, and
 * all the fields returned in the results are in the same index.
+````js
+// Use Indexes to Sort Query Results
+/*
+For example, given an index { a: 1, b: 1, c: 1, d: 1 }, if the query condition includes equality match conditions on a and b, you can specify a sort on the subsets { c: 1 } or { c: 1, d: 1 }
+*/
+// THE sort() OPERATION WILL ABORT WHEN IT USES 32 MEGABYTES OF MEMORY.
+// Collection has the following index: {a: 1, b: 1, c: 1, d: 1}
+// Then following operations can use the index efficiently:
+db.collection.find({a: 5}).sort({a: 1, b: 1});
+db.collection.find({a: 5}).sort({b: 1, c: 1})
+db.collection.find({a: 5, c: 4, b: 3}).sort({d: 1})
+
+db.collection.totalIndexSize()
+````
+[Text Search Languages](http://docs.mongodb.org/manual/reference/text-search-languages/)
