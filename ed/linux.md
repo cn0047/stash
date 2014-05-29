@@ -30,13 +30,6 @@ mail -s 'subject' mail@com.com < fileName
 uuencode card.jpg card.jpg | mail mail@com.com
 ````
 
-####MC
-````
-ctrl+u # change pannels palcements
-alt+i  # open dir in second pannel
-alt+s  # find match, again alt+s - find next match
-````
-
 ####grep
 ````
 -z, --null-data             строки разделяются байтом с нулевым значением, а не символом конца строки
