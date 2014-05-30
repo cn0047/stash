@@ -43,6 +43,8 @@ uuencode card.jpg card.jpg | mail mail@com.com
 
 `grep "$DC"`
 
+`grep match -wrni --color=always --include=*.php . | grep notMatch -v --color=always`
+
 ####crun
 ````
 PATH=/bin:/usr/bin:/usr/local/bin

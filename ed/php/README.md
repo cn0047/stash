@@ -41,6 +41,9 @@ echo "\033[41;30mblack on red\033[40;37m ";
 
 ####debug
 ````php
+$t =microtime();
+var_export(sprintf('%f', microtime()-$t));
+
 error_reporting(E_ALL); // error_reporting(E_ALL & ~E_NOTICE);
 ini_set("display_errors", 1);
 ini_set('display_startup_errors','On');
