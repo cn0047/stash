@@ -41,13 +41,24 @@ echo "\033[41;30mblack on red\033[40;37m ";
 
 ####debug
 ````php
+$t =microtime();
+var_export(sprintf('%f', microtime()-$t));
+
 error_reporting(E_ALL); // error_reporting(E_ALL & ~E_NOTICE);
-ini_set("display_errors", 1);
+ini_set('display_errors', 1);
 ini_set('display_startup_errors','On');
 
 # ?XDEBUG_SESSION_START=sublime.xdebug
-xdebug_start_trace('c:/data/fac.xt');
+xdebug_start_trace('/home/kovpak/d/fac.xt');
 xdebug_stop_trace();
+
+# Profiling
+.htaccess
+php_value xdebug.profiler_enable 1
+php_value xdebug.profiler_output_name xdebug.out.%t
+php_value xdebug.profiler_output_dir /home/debug/d
+php_value xdebug.profiler_enable_trigger 1
+# Generated file open with KCachegrind.
 
 // debug tables:
 array_walk($d, create_function('&$i, $k, $c', 'if (empty($c)) {$c=array_keys($i);} $i="<tr><td>".implode("</td><td>",$i)."</td></tr>";'), &$c);
