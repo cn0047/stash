@@ -14,11 +14,18 @@ ALTER TABLE table ADD UNIQUE KEY (field);
 ALTER TABLE table DROP COLUMN field;
 ALTER TABLE table MODIFY field VARCHAR(7) NOT NULL DEFAULT '';
 DROP INDEX keyName ON table;
+
+SHOW TABLE STATUS WHERE name = 'table'; # Info about table, with creation date.
+
+SELECT
+    table_name, create_time
+FROM information_schema.tables
+WHERE table_schema='aff_easydate_biz' AND create_time BETWEEN '2014-05-05' AND '2014-05-07';
 ````
 
 ####mySqlDump
 ````
-mysqldump -h hostname -u user -d --skip-triggers --single-transaction --complete-insert --extended-insert --quote-names dbname tablename |gzip > sql.gz
+mysqldump -h hostname -u user -d --skip-triggers --single-transaction --complete-insert --extended-insert --quote-names dbname table |gzip > sql.gz
 mysqldump -hHost Base table | gzip | uuencode table.gz | mail mail@com.com -s table
 mysqldump -h Host Base table --where="id=11" | mail mail@com.com
 php-mysqldump -h HOST -u USER -a table -f sql -e "SELECT * FROM table LIMIT 10"
@@ -76,7 +83,7 @@ SHOW COLUMNS FROM table LIKE '%';
 
 INSERT INTO tbl1 (field1) SELECT field2 FROM tbl2;
 
-SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'databaseName' AND TABLE_NAME = 'tableName';
+SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'databaseName' AND TABLE_NAME = 'table';
 
 SELECT SUM(field) FROM table GROUP BY field WITH ROLLUP;
 ````
