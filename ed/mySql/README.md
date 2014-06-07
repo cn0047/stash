@@ -15,7 +15,7 @@ ALTER TABLE table DROP COLUMN field;
 ALTER TABLE table MODIFY field VARCHAR(7) NOT NULL DEFAULT '';
 DROP INDEX keyName ON table;
 
-SHOW TABLE STATUS WHERE name = 'table'; # Info about table, with creation date.
+SHOW TABLE STATUS WHERE name = 'table'; -- Info about table, with creation date.
 
 SELECT
     table_name, create_time
