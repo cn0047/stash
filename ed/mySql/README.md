@@ -9,6 +9,8 @@ SET SQL_BIG_SELECTS = 1;
 SET SQL_SAFE_UPDATES = 0;
 ````
 
+[Integer Types](http://dev.mysql.com/doc/refman/5.0/en/integer-types.html)
+
 ````sql
 ALTER TABLE table ADD UNIQUE KEY (field);
 ALTER TABLE table DROP COLUMN field;
