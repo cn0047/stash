@@ -10,14 +10,8 @@ You cannot use MyISAM for one partition and InnoDB for another.
 MySQL partitioning cannot be used with the MERGE, CSV, or FEDERATED storage engines.
 
 Partitioning Types:
-1 RANGE Partitioning
-2 LIST Partitioning
-3 COLUMNS Partitioning
-4 HASH Partitioning
-5 KEY Partitioning
 
-
-
+    1 RANGE Partitioning
 ````sql
 CREATE TABLE orders (
     date DATE,
@@ -69,6 +63,14 @@ EXPLAIN PARTITIONS SELECT * FROM orders WHERE date='2014-06-11';
 +----+-------------+--------+------------+------+---------------+------+---------+------+------+-------------+
 1 row in set (0.00 sec)
 ````
+    2 LIST Partitioning
+    3 COLUMNS Partitioning
+    4 HASH Partitioning
+    5 KEY Partitioning
+
+
+
+
 
 
 1. RANGE

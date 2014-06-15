@@ -13,3 +13,7 @@ http://www.phpdeveloper.org/
 * Inversion of control ?
 * Service locator pattern?
 * Reflection is very slow, do not use it at production.
+
+####Normalisation
+* Normalisation not need when we have a very big count of join tables.
+* When data doesn't update.
