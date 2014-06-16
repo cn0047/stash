@@ -21,12 +21,17 @@ Partitioning Types:
 ````sql
 ALTER TABLE employees DROP PARTITION p0;
 ALTER TABLE employees TRUNCATE PARTITION pWest;
-SELECT PARTITION_NAME,TABLE_ROWS FROM INFORMATION_SCHEMA.PARTITIONS WHERE TABLE_NAME = 'table';
 ALTER TABLE employees PARTITION BY RANGE COLUMNS (hired) (
     PARTITION p3 VALUES LESS THAN ('2000-01-01'),
     PARTITION p4 VALUES LESS THAN ('2010-01-01'),
     PARTITION p5 VALUES LESS THAN (MAXVALUE)
 );
+
+SELECT PARTITION_NAME,TABLE_ROWS FROM INFORMATION_SCHEMA.PARTITIONS WHERE TABLE_NAME = 'table';
+
+SELECT TABLE_NAME, PARTITION_NAME, TABLE_ROWS, AVG_ROW_LENGTH, DATA_LENGTH
+FROM INFORMATION_SCHEMA.PARTITIONS
+WHERE TABLE_NAME ='table';
 ````
 
 ####RANGE Partitioning
@@ -155,3 +160,24 @@ PARTITIONS 2;
 PARTITION BY LINEAR KEY (col1)
 PARTITIONS 3;
 ````
+
+####Subpartitioning
+````sql
+````
+
+####How MySQL Partitioning Handles NULL
+Partitioning in MySQL does nothing to disallow NULL. Even though it is permitted to use NULL as the value of an expression that must otherwise yield an integer.
+This means that treatment of NULL varies between partitioning of different types, and may produce behavior which you do not expect.
+
+* Handling of NULL with RANGE partitioning.  If you insert a row into a table partitioned by RANGE such that the column value used to determine the partition is NULL, the row is inserted into the lowest partition.
+
+* Handling of NULL with LIST partitioning.  A table that is partitioned by LIST admits NULL values if and only if one of its partitions is defined using that value-list that contains NULL.
+````sql
+PARTITION BY LIST(c1) (
+    PARTITION p0 VALUES IN (0, 3, 6),
+    PARTITION p1 VALUES IN (1, 4, 7),
+    PARTITION p3 VALUES IN (NULL)
+);
+````
+
+* Handling of NULL with HASH and KEY partitioning.  NULL is handled somewhat differently for tables partitioned by HASH or KEY. In these cases, any partition expression that yields a NULL value is treated as though its return value were zero.
