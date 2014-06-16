@@ -12,6 +12,24 @@ MySQL partitioning cannot be used with the MERGE, CSV, or FEDERATED storage engi
 Partitioning Types:
 
     1 RANGE Partitioning
+    2 LIST Partitioning
+    3 COLUMNS Partitioning
+    4 HASH Partitioning
+    5 KEY Partitioning
+
+
+````sql
+ALTER TABLE employees DROP PARTITION p0;
+ALTER TABLE employees TRUNCATE PARTITION pWest;
+SELECT PARTITION_NAME,TABLE_ROWS FROM INFORMATION_SCHEMA.PARTITIONS WHERE TABLE_NAME = 'table';
+ALTER TABLE employees PARTITION BY RANGE COLUMNS (hired) (
+    PARTITION p3 VALUES LESS THAN ('2000-01-01'),
+    PARTITION p4 VALUES LESS THAN ('2010-01-01'),
+    PARTITION p5 VALUES LESS THAN (MAXVALUE)
+);
+````
+
+####RANGE Partitioning
 ````sql
 CREATE TABLE orders (
     date DATE,
@@ -63,45 +81,77 @@ EXPLAIN PARTITIONS SELECT * FROM orders WHERE date='2014-06-11';
 +----+-------------+--------+------------+------+---------------+------+---------+------+------+-------------+
 1 row in set (0.00 sec)
 ````
-    2 LIST Partitioning
-    3 COLUMNS Partitioning
-    4 HASH Partitioning
-    5 KEY Partitioning
+####LIST
+````sql
+PARTITION BY LIST(store_id) (
+    PARTITION pNorth VALUES IN (3,5,6,9,17),
+    PARTITION pEast VALUES IN (1,2,10,11,19,20),
+    PARTITION pWest VALUES IN (4,12,13,14,18),
+    PARTITION pCentral VALUES IN (7,8,15,16)
+);
+````
 
+##COLUMNS Partitioning
+* All integer types: TINYINT, SMALLINT, MEDIUMINT, INT (INTEGER), and BIGINT. (This is the same as with partitioning by RANGE and LIST.)
+<br> Other numeric data types (such as DECIMAL or FLOAT) are not supported as partitioning columns.
 
+* DATE and DATETIME.
+<br> Columns using other data types relating to dates or times are not supported as partitioning columns.
 
+* The following string types: CHAR, VARCHAR, BINARY, and VARBINARY.
+<br> TEXT and BLOB columns are not supported as partitioning columns.
 
-
-
-1. RANGE
-PARTITION BY RANGE (store_id) (
-PARTITION p0 VALUES LESS THAN (10),
-PARTITION p1 VALUES LESS THAN (20),
-PARTITION p3 VALUES LESS THAN (30)
+####RANGE COLUMNS partitioning
+````sql
+PARTITION BY RANGE COLUMNS(a, b) (
+    PARTITION p0 VALUES LESS THAN (5, 12),
+    PARTITION p3 VALUES LESS THAN (MAXVALUE, MAXVALUE)
 );
 
-2. LIST
-PARTITION BY LIST(store_id) (
-PARTITION pNorth VALUES IN (3,5,6,9,17),
-PARTITION pEast VALUES IN (1,2,10,11,19,20)
-)
+SELECT (5,10) < (5,12), (5,11) < (5,12), (5,12) < (5,12);
++-----------------+-----------------+-----------------+
+| (5,10) < (5,12) | (5,11) < (5,12) | (5,12) < (5,12) |
++-----------------+-----------------+-----------------+
+|               1 |               1 |               0 |
++-----------------+-----------------+-----------------+
+SELECT (0,25,50) < (10,20,100), (10,20,100) < (10,30,50), (0,25,50) < (20,20,100), (20,20,100) < (10,30,50);
++-------------------------+--------------------------+-------------------------+--------------------------+
+| (0,25,50) < (10,20,100) | (10,20,100) < (10,30,50) | (0,25,50) < (20,20,100) | (20,20,100) < (10,30,50) |
++-------------------------+--------------------------+-------------------------+--------------------------+
+|                       1 |                        1 |                       1 |                        0 |
++-------------------------+--------------------------+-------------------------+--------------------------+
+````
 
-3. HASH
-PARTITION BY HASH(store_id)
+####LIST COLUMNS partitioning
+````sql
+PARTITION BY RANGE COLUMNS(renewal) (
+    PARTITION pWeek_1 VALUES LESS THAN('2010-02-09'),
+    PARTITION pWeek_2 VALUES LESS THAN('2010-02-15'),
+    PARTITION pWeek_3 VALUES LESS THAN('2010-02-22'),
+    PARTITION pWeek_4 VALUES LESS THAN('2010-03-01')
+);
+````
+
+####HASH Partitioning
+````sql
+PARTITION BY HASH( YEAR(hired) )
 PARTITIONS 4;
+````
 
-4. KEY
-PARTITION BY KEY(s1)
-PARTITIONS 10;
+####LINEAR HASH Partitioning
+Linear hashing, which differs from regular hashing in that linear hashing utilizes a linear powers-of-two algorithm whereas regular hashing employs the modulus of the hashing function's value.
+The advantage in partitioning by linear hash is that the adding, dropping, merging, and splitting of partitions is made much faster.
+The disadvantage is that data is less likely to be evenly distributed between partitions.
+````sql
+PARTITION BY LINEAR HASH( YEAR(hired) )
+PARTITIONS 4;
+````
 
+####KEY Partitioning
+````sql
+PARTITION BY KEY()
+PARTITIONS 2;
 
-
-
-
-
-
-
-
-
-
-[>>>](http://dev.mysql.com/doc/refman/5.5/en/partitioning-range.html)
+PARTITION BY LINEAR KEY (col1)
+PARTITIONS 3;
+````
