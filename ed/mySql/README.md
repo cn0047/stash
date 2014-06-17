@@ -12,9 +12,10 @@ SET SQL_SAFE_UPDATES = 0;
 [Integer Types](http://dev.mysql.com/doc/refman/5.0/en/integer-types.html)
 
 ````sql
+ALTER TABLE table ADD field INTEGER(1) NOT NULL;
+ALTER TABLE table MODIFY field VARCHAR(7) NOT NULL DEFAULT '';
 ALTER TABLE table ADD UNIQUE KEY (field);
 ALTER TABLE table DROP COLUMN field;
-ALTER TABLE table MODIFY field VARCHAR(7) NOT NULL DEFAULT '';
 DROP INDEX keyName ON table;
 
 SHOW TABLE STATUS WHERE name = 'table'; -- Info about table, with creation date.
@@ -90,6 +91,8 @@ INSERT INTO tbl1 (field1) SELECT field2 FROM tbl2;
 SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'databaseName' AND TABLE_NAME = 'table';
 
 SELECT SUM(field) FROM table GROUP BY field WITH ROLLUP;
+
+INSERT LOW_PRIORITY INTO table1 SELECT field FROM table2;
 ````
 
 ####Functions
