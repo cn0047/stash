@@ -3,14 +3,6 @@ MySql
 
 *5.1.72-rel14.10*
 
-####Options
-````sql
-SET SQL_BIG_SELECTS = 1;
-SET SQL_SAFE_UPDATES = 0;
-````
-
-[Integer Types](http://dev.mysql.com/doc/refman/5.0/en/integer-types.html)
-
 ````sql
 ALTER TABLE table ADD field INTEGER(1) NOT NULL;
 ALTER TABLE table MODIFY field VARCHAR(7) NOT NULL DEFAULT '';
@@ -19,12 +11,55 @@ ALTER TABLE table DROP COLUMN field;
 DROP INDEX keyName ON table;
 
 SHOW TABLE STATUS WHERE name = 'table'; -- Info about table, with creation date.
-
 SELECT
     table_name, create_time
 FROM information_schema.tables
-WHERE table_schema='aff_easydate_biz' AND create_time BETWEEN '2014-05-05' AND '2014-05-07';
+WHERE table_schema='aff_easydate_biz' AND create_time BETWEEN '2014-05-05' AND '2014-05-07'
+;
+SHOW COLUMNS FROM table LIKE '%';
+SELECT AUTO_INCREMENT FROM information_schema.TABLES
+WHERE TABLE_SCHEMA = 'databaseName' AND TABLE_NAME = 'table';
+
+SELECT SQL_CALC_FOUND_ROWS * FROM table;
+SELECT FOUND_ROWS();
+
+SELECT SUM(field) FROM table GROUP BY field WITH ROLLUP;
+INSERT LOW_PRIORITY INTO table1 SELECT field FROM table2;
 ````
+
+####Options
+````sql
+SET SQL_BIG_SELECTS = 1;
+SET SQL_SAFE_UPDATES = 0;
+
+SELECT SQL_CACHE
+SELECT SQL_NO_CACHE
+````
+
+####Functions
+````sql
+ROW_COUNT() -- after insert, update, delete
+LAST_INSERT_ID()
+CONNECTION_ID()
+
+UNIX_TIMESTAMP()
+CURTIME()
+sysdate() -- now
+LAST_DAY(date) -- last day in month
+
+REPLACE('www.site.com', 'w', 'w')
+
+SELECT ELT(1, 'foo', 'bar');       -- foo
+SELECT FIELD('foo', 'foo', 'bar');  -- 1
+SELECT FIND_IN_SET('b', 'a,b,cd'); -- 2
+
+INET_ATON(ip)
+INET_NTOA(i)
+
+UUID()
+````
+
+[Integer Types](http://dev.mysql.com/doc/refman/5.0/en/integer-types.html)
 
 ####mySqlDump
 ````
@@ -76,46 +111,6 @@ SHOW FULL TABLES;
 Масштабирование по горезонтали - распределение данных по нескольким серверам (репликация).
 Statement based replication - на мастере выполнился запрос - на слейвы приходит такой же запрос.
 roll based
-````
-
-````sql
-SELECT SQL_CACHE
-SELECT SQL_NO_CACHE
-SELECT SQL_CALC_FOUND_ROWS * FROM table;
-SELECT FOUND_ROWS();
-
-SHOW COLUMNS FROM table LIKE '%';
-
-INSERT INTO tbl1 (field1) SELECT field2 FROM tbl2;
-
-SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'databaseName' AND TABLE_NAME = 'table';
-
-SELECT SUM(field) FROM table GROUP BY field WITH ROLLUP;
-
-INSERT LOW_PRIORITY INTO table1 SELECT field FROM table2;
-````
-
-####Functions
-````sql
-ROW_COUNT() -- after insert, update, delete
-LAST_INSERT_ID()
-CONNECTION_ID()
-
-UNIX_TIMESTAMP()
-CURTIME()
-sysdate() -- now
-LAST_DAY(date) -- last day in month
-
-REPLACE('www.site.com', 'w', 'w')
-
-SELECT ELT(1, 'foo', 'bar');       -- foo
-SELECT FIELD('foo', 'foo', 'bar');  -- 1
-SELECT FIND_IN_SET('b', 'a,b,cd'); -- 2
-
-INET_ATON(ip)
-INET_NTOA(i)
-
-UUID()
 ````
 
 ####Tricks
