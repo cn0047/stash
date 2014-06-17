@@ -96,7 +96,7 @@ PARTITION BY LIST(store_id) (
 );
 ````
 
-##COLUMNS Partitioning
+###COLUMNS Partitioning
 * All integer types: TINYINT, SMALLINT, MEDIUMINT, INT (INTEGER), and BIGINT. (This is the same as with partitioning by RANGE and LIST.)
 <br> Other numeric data types (such as DECIMAL or FLOAT) are not supported as partitioning columns.
 
@@ -181,3 +181,94 @@ PARTITION BY LIST(c1) (
 ````
 
 * Handling of NULL with HASH and KEY partitioning.  NULL is handled somewhat differently for tables partitioned by HASH or KEY. In these cases, any partition expression that yields a NULL value is treated as though its return value were zero.
+
+###Partition Management
+
+####Management of RANGE and LIST Partitions
+It is very important to remember that, when you drop a partition, you also delete all the data that was stored in that partition.
+<br>With tables that are partitioned by range, you can use ADD PARTITION to add new partitions to the high end of the partitions list only.
+````sql
+ALTER TABLE members ADD PARTITION (PARTITION p3 VALUES LESS THAN (2000));
+ALTER TABLE members
+    REORGANIZE PARTITION p0 INTO (
+        PARTITION n0 VALUES LESS THAN (1960),
+        PARTITION n1 VALUES LESS THAN (1970)
+);
+ALTER TABLE members REORGANIZE PARTITION s0,s1 INTO (
+    PARTITION p0 VALUES LESS THAN (1970)
+);
+````
+````sql
+ALTER TABLE tt ADD PARTITION (PARTITION p2 VALUES IN (7, 14, 21));
+ALTER TABLE tt REORGANIZE PARTITION p1,np INTO (
+    PARTITION p1 VALUES IN (6, 18),
+    PARTITION np VALUES in (4, 8, 12)
+);
+````
+
+####Management of HASH and KEY Partitions
+````sql
+CREATE TABLE clients (
+    id INT,
+    fname VARCHAR(30),
+    lname VARCHAR(30),
+    signed DATE
+)
+PARTITION BY HASH( MONTH(signed) )
+PARTITIONS 12;
+
+SELECT PARTITION_NAME,TABLE_ROWS FROM INFORMATION_SCHEMA.PARTITIONS WHERE TABLE_NAME = 'clients';
++----------------+------------+
+| PARTITION_NAME | TABLE_ROWS |
++----------------+------------+
+| p0             |          0 |
+| p1             |          0 |
+| p2             |          0 |
+| p3             |          0 |
+| p4             |          0 |
+| p5             |          0 |
+| p6             |          0 |
+| p7             |          0 |
+| p8             |          0 |
+| p9             |          0 |
+| p10            |          0 |
+| p11            |          0 |
++----------------+------------+
+12 rows in set (0.00 sec)
+
+-- To reduce the number of partitions from twelve to eight
+ALTER TABLE clients COALESCE PARTITION 4;
+
+SELECT PARTITION_NAME,TABLE_ROWS FROM INFORMATION_SCHEMA.PARTITIONS WHERE TABLE_NAME = 'clients';
++----------------+------------+
+| PARTITION_NAME | TABLE_ROWS |
++----------------+------------+
+| p0             |          0 |
+| p1             |          0 |
+| p2             |          0 |
+| p3             |          0 |
+| p4             |          0 |
+| p5             |          0 |
+| p6             |          0 |
+| p7             |          0 |
++----------------+------------+
+8 rows in set (0.00 sec)
+
+-- To increase the number of partitions for the clients table from 12 to 18
+ALTER TABLE clients ADD PARTITION PARTITIONS 6;
+````
+
+#### Maintenance of Partitions
+Rebuilds the partition; this has the same effect as dropping all records stored in the partition, then reinserting them.
+````sql
+ALTER TABLE t1 REBUILD PARTITION p0, p1;
+````
+
+####Obtaining Information About Partitions
+````sql
+SHOW TABLE STATUS FROM test where Name = 'clients';
+EXPLAIN PARTITIONS SELECT * FROM clients;
+````
+
+
+http://dev.mysql.com/doc/refman/5.5/en/partitioning-pruning.html
