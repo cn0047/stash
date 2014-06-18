@@ -3,11 +3,11 @@ Partitioning
 
 *MySQL 5.5*
 
-The user-selected rule by which the division of data is accomplished is known as a partitioning function
-This is known as horizontal partitioning—that is, different rows of a table may be assigned to different physical partitions.
-MySQL 5.5 does not support vertical partitioning, in which different columns of a table are assigned to different physical partitions.
-You cannot use MyISAM for one partition and InnoDB for another.
-MySQL partitioning cannot be used with the MERGE, CSV, or FEDERATED storage engines.
+The user-selected rule by which the division of data is accomplished is known as a partitioning function.
+<br>MySQL 5.5 does not support vertical partitioning, in which different columns of a table are assigned to different physical partitions.
+<br>This is known as horizontal partitioning—that is, different rows of a table may be assigned to different physical partitions.
+<br>You cannot use MyISAM for one partition and InnoDB for another.
+<br>MySQL partitioning cannot be used with the MERGE, CSV, or FEDERATED storage engines.
 
 Partitioning Types:
 
@@ -159,10 +159,6 @@ PARTITIONS 2;
 
 PARTITION BY LINEAR KEY (col1)
 PARTITIONS 3;
-````
-
-####Subpartitioning
-````sql
 ````
 
 ####How MySQL Partitioning Handles NULL
