@@ -8,6 +8,13 @@ The user-selected rule by which the division of data is accomplished is known as
 <br>This is known as horizontal partitioning—that is, different rows of a table may be assigned to different physical partitions.
 <br>You cannot use MyISAM for one partition and InnoDB for another.
 <br>MySQL partitioning cannot be used with the MERGE, CSV, or FEDERATED storage engines.
+<br>
+<br>The maximum possible number of partitions for a given table (that does not use the NDB storage engine) is 1024.
+<br>The query cache is not supported for partitioned tables.
+<br>Partitioned tables do not support FULLTEXT indexes or searches.
+<br>Temporary tables cannot be partitioned.
+<br>Use of INSERT DELAYED to insert rows into a partitioned table is not supported.
+<br>All columns used in the partitioning expression for a partitioned table must be part of every unique key that the table may have.
 
 Partitioning Types:
 

@@ -17,3 +17,8 @@ http://www.phpdeveloper.org/
 ####Normalisation
 * Normalisation not need when we have a very big count of join tables.
 * When data doesn't update.
+
+####TTD
+* Ping pong model of programming?
+* TBD?
+* Code transformation!!!
