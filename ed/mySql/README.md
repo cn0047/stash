@@ -107,10 +107,8 @@ SHOW PRIVILEGES;
 
 SHOW FULL TABLES;
 
-Масштабирование по вертикали - повышение производительности сервера.
-Масштабирование по горезонтали - распределение данных по нескольким серверам (репликация).
-Statement based replication - на мастере выполнился запрос - на слейвы приходит такой же запрос.
-roll based
+Horizontal scaling means that you scale by adding more machines into your pool of resources (Replication).
+Vertical scaling means that you scale by adding more power (CPU, RAM) to your existing machine.
 ````
 
 ####Tricks
