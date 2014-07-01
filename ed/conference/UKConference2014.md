@@ -22,3 +22,7 @@ http://www.phpdeveloper.org/
 * Ping pong model of programming?
 * TBD?
 * Code transformation!!!
+
+####Debugging HTTP
+* Curl!
+* Wireshark!

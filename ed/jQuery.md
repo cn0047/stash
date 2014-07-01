@@ -3,6 +3,8 @@ jQuery
 
 1.4.2
 
+[jQuery in Action 2nd Edition](http://www.bibeault.org/jqia2/)
+
 ####Flashback
 ````js
 // Selectors:
