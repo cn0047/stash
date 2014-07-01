@@ -22,12 +22,6 @@ url
 getopt!!!
 
 ````php
-$d1 = '2014-06-24';
-$d2 = '2014-06-25';
-$diff1 = (strtotime($d2)-strtotime($d1))/60/60/24;
-````
-
-````php
 <?php
 $output = `ls -al`;
 echo "<pre>$output</pre>";
