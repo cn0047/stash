@@ -22,6 +22,12 @@ url
 getopt!!!
 
 ````php
+$d1 = '2014-06-24';
+$d2 = '2014-06-25';
+$diff1 = (strtotime($d2)-strtotime($d1))/60/60/24;
+````
+
+````php
 <?php
 $output = `ls -al`;
 echo "<pre>$output</pre>";
@@ -67,6 +73,8 @@ php_value xdebug.profiler_enable_trigger 1
 
 ####debug
 ````php
+(mt_rand(0, 10) > 1) or var_dump(200);
+
 $t =microtime();
 var_export(sprintf('%f', microtime()-$t));
 

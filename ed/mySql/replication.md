@@ -14,7 +14,7 @@ Replication between servers in MySQL is based on the binary logging mechanism. T
 
 ####Setting the Replication Master Configuration
 You will need to shut down your MySQL server and edit the my.cnf or my.ini file:
-````
+````sql
 [mysqld]
 log-bin=mysql-bin
 server-id=1
@@ -24,13 +24,38 @@ After making the changes, restart the server.
 
 ####Setting the Replication Slave Configuration
  You should shut down your slave server and edit the configuration to specify a unique server ID. For example:
-````
+````sql
 [mysqld]
 server-id=2
 ````
 After making the changes, restart the server.
 <br>You do not have to enable binary logging on the slave for replication to be enabled.
 
+####Creating a User for Replication
+Each slave must connect to the master using a MySQL user name and password.
+````sql
+CREATE USER 'repl'@'%.mydomain.com' IDENTIFIED BY 'slavepass';
+GRANT REPLICATION SLAVE ON *.* TO 'repl'@'%.mydomain.com';
+````
+
+####Obtaining the Replication Master Binary Log Coordinates
+Start a session on the master by connecting to it with the command-line client, and:
+````sql
+FLUSH TABLES WITH READ LOCK;
+````
+For InnoDB tables, note that FLUSH TABLES WITH READ LOCK also blocks COMMIT operations.
+<br>If you exit the client, the lock is released.
+<br>On the master:
+````sql
+SHOW MASTER STATUS;
++------------------+----------+--------------+------------------+
+| File             | Position | Binlog_Do_DB | Binlog_Ignore_DB |
++------------------+----------+--------------+------------------+
+| mysql-bin.000003 | 73       | test         | manual,mysql     |
++------------------+----------+--------------+------------------+
+````
+
+####Creating a Data Snapshot Using mysqldump
 
 
 
@@ -41,4 +66,21 @@ After making the changes, restart the server.
 
 
 
-[>>>](http://dev.mysql.com/doc/refman/5.5/en/replication-howto-repuser.html)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[>>>](http://dev.mysql.com/doc/refman/5.5/en/replication-howto-mysqldump.html)
