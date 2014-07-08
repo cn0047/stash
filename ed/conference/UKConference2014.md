@@ -26,3 +26,6 @@ http://www.phpdeveloper.org/
 ####Debugging HTTP
 * Curl!
 * Wireshark!
+
+####The Future of PHP
+* *WE DON'T HAVE TO WRITE CODE ANYMORE, WE COULD REUSE CODE!!!*

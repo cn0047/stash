@@ -13,7 +13,7 @@ Depending on the configuration, you can replicate all databases, selected databa
 Replication between servers in MySQL is based on the binary logging mechanism. The information in the binary log is stored in different logging formats according to the database changes being recorded.
 
 ####Setting the Replication Master Configuration
-You will need to shut down your MySQL server and edit the my.cnf or my.ini file:
+You will need to shut down your MySQL server and edit the my.cnf or my.ini file (/etc/mysql/my.cnf):
 ````sql
 [mysqld]
 log-bin=mysql-bin
@@ -56,6 +56,31 @@ SHOW MASTER STATUS;
 ````
 
 ####Creating a Data Snapshot Using mysqldump
+````sql
+mysqldump --all-databases --master-data > dbdump.db
+````
+
+####Creating a Data Snapshot Using Raw Data Files
+In a separate session, shut down the master server:
+````sql
+shell> mysqladmin shutdown
+````
+Make a copy of the MySQL data files, choose only one of them:
+````sql
+shell> tar cf /tmp/db.tar ./data
+shell> zip -r /tmp/db.zip ./data
+shell> rsync --recursive ./data /tmp/dbdata
+````
+Restart the master server. Copy the files to each slave before starting the slave replication process.
+
+####Setting Up Replication with New Master and Slaves
+
+####Setting Up Replication with Existing Data
+````sql
+START SLAVE;
+````
+
+####Introducing Additional Slaves to an Existing Replication Environment
 
 
 
@@ -80,7 +105,4 @@ SHOW MASTER STATUS;
 
 
 
-
-
-
-[>>>](http://dev.mysql.com/doc/refman/5.5/en/replication-howto-mysqldump.html)
+http://dev.mysql.com/doc/refman/5.5/en/replication-howto-additionalslaves.html
