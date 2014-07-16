@@ -1,12 +1,10 @@
 Patterns
 -
-
-####Abstract factory
+1
 ####Builder
 ####Factory method
 ####Prototype
-####Singleton
-
+2
 ####Adapter (wrapper)
 ####Bridge
 ####Composite
@@ -14,7 +12,7 @@ Patterns
 ####Facade
 ####Flyweight
 ####Proxy
-
+3
 ####Chain of Responsibilite
 ####Command
 ####Interpreter
@@ -26,5 +24,5 @@ Patterns
 ####Strategy
 ####Template method
 ####Visitor
-
+4
 ####Dependency injection
