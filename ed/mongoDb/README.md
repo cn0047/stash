@@ -23,6 +23,7 @@ j = {name : "mongo"}
 db.testData.insert(j)
 show collections
 db.testData.find()
+db.getCollection('_foo').find()
 db.testData.findOne()
 db.testData.find().limit(3)
 db.testData.find({ name : "mongo" })
@@ -86,6 +87,8 @@ db.runCommand( { cursorInfo: 1 } )
 db.users.count( { user_id: { $exists: true } } )
 db.users.distinct( "status" )
 
+// copy all objects from one collection to another
+db.collection.copyTo(newCollection)
 
 // EXPLAIN
 db.collection.find().explain()
@@ -370,4 +373,4 @@ Result:
 mongodump --host mongodb1.example.net --port 3017 --username user --password pass --out /opt/backup/mongodump-2013-10-24
 mongorestore --host mongodb1.example.net --port 3017 --username user --password pass /opt/backup/mongodump-2013-10-24/
 ````
-[>>>](http://docs.mongodb.org/manual/faq/developers/)
+[>>>](http://docs.mongodb.org/manual/faq/mongo/)
