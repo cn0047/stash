@@ -4,13 +4,17 @@ mongo
 *MongoDB shell version: 2.4.6*
 
 ####Introduction
+````
+sudo service mongodb start|stop|restart
 
-    sudo service mongodb start|stop|restart
+sudo rm /var/lib/mongodb/mongod.lock
+sudo service mongodb restart
 
-    sudo rm /var/lib/mongodb/mongod.lock
-    sudo service mongodb restart
+mongo
+````
 
-    mongo
+MongoDB implements locks on a per-database basis for most read and write operations.
+<br>[Which operations lock the database](http://docs.mongodb.org/manual/faq/concurrency/#which-operations-lock-the-database)
 
 ````js
 // current database
@@ -259,6 +263,7 @@ db.isMaster()
 rs.status()
 // sharding status
 sh.status()
+db.killOp()
 
 // Data Type Fidelity
 // data_binary
@@ -373,4 +378,5 @@ Result:
 mongodump --host mongodb1.example.net --port 3017 --username user --password pass --out /opt/backup/mongodump-2013-10-24
 mongorestore --host mongodb1.example.net --port 3017 --username user --password pass /opt/backup/mongodump-2013-10-24/
 ````
-[>>>](http://docs.mongodb.org/manual/faq/mongo/)
+
+[>>>](http://docs.mongodb.org/manual/faq/storage/)
