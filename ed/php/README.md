@@ -67,6 +67,13 @@ php_value xdebug.profiler_enable_trigger 1
 
 ####debug
 ````php
+array_walk(debug_backtrace(), create_function('$v', '
+    file_put_contents("/tmp/debug.tmp", sprintf("%s -> %s():%s\n", $v["file"], $v["function"], $v["line"]), FILE_APPEND); /// tail -f /tmp/debug.tmp
+'));
+foreach (debug_backtrace() as $v) {
+    file_put_contents('/tmp/debug.tmp', $v['file'].' -> '.$v['function'].'():'.$v['line']."\n", FILE_APPEND); /// tail -f /tmp/debug.tmp
+}
+
 (mt_rand(0, 10) > 1) or var_dump(200);
 
 $t =microtime();
