@@ -67,6 +67,8 @@ php_value xdebug.profiler_enable_trigger 1
 
 ####debug
 ````php
+echo '<script>console.log('.json_encode($_REQUEST).')</script>';
+
 array_walk(debug_backtrace(), create_function('$v', '
     file_put_contents("/tmp/debug.tmp", sprintf("%s -> %s():%s\n", $v["file"], $v["function"], $v["line"]), FILE_APPEND); /// tail -f /tmp/debug.tmp
 '));
