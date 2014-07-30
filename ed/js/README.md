@@ -142,6 +142,7 @@ el.parentNode;      // parent
 el.nextSibling;     // next brother
 el.previousSibling; // prev brother
 
+f.bind(object, 1, 2);
 f.call(object, 1, 2);
 f.apply(object, [1, 2]);
 
