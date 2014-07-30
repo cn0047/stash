@@ -265,6 +265,12 @@ rs.status()
 sh.status()
 db.killOp()
 
+db.collection.stats()
+db.collection.dataSize()
+db.collection.storageSize()
+db.collection.totalSize()
+db.collection.totalIndexSize()
+
 // Data Type Fidelity
 // data_binary
 {"$binary" : "<bindata>", "$type" : "<t>"}
@@ -379,4 +385,4 @@ mongodump --host mongodb1.example.net --port 3017 --username user --password pas
 mongorestore --host mongodb1.example.net --port 3017 --username user --password pass /opt/backup/mongodump-2013-10-24/
 ````
 
-[>>>](http://docs.mongodb.org/manual/faq/storage/)
+[>>>](http://docs.mongodb.org/manual/faq/indexes/)
