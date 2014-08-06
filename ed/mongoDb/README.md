@@ -61,6 +61,7 @@ db.inventory.find({ type: { $in: [ 'food', 'snacks' ] } })
 // food and a less than ($lt) price
 db.inventory.find( { type: 'food', price: { $lt: 9.95 } } )
 // OR
+// all the clauses in the $or expression must be supported by indexes. Otherwise, MongoDB will perform a collection scan.
 db.inventory.find({ $or: [{ qty: { $gt: 100 } }, { price: { $lt: 9.95 } } ] })
 // 'food' and either the qty has a value greater than ($gt) 100 or price is less than ($lt) 9.95
 db.inventory.find( { type: 'food', $or: [ { qty: { $gt: 100 } }, { price: { $lt: 9.95 } } ] } )
@@ -176,6 +177,8 @@ db.users.drop()
 db.runCommand( { getLastError: 1, j: "true" } )
 
 ````
+[Operators](http://docs.mongodb.org/manual/reference/operator/query/)
+
 [MongoDB CRUD Reference](http://docs.mongodb.org/manual/reference/crud/#mongodb-crud-reference)
 
 [SQL to MongoDB Mapping Chart](http://docs.mongodb.org/manual/reference/sql-comparison/#sql-to-mongodb-mapping-chart)
@@ -264,6 +267,9 @@ rs.status()
 // sharding status
 sh.status()
 db.killOp()
+
+// measure working set
+db.runCommand({serverStatus: 1, workingSet: 1})
 
 db.collection.stats()
 db.collection.dataSize()
@@ -385,4 +391,4 @@ mongodump --host mongodb1.example.net --port 3017 --username user --password pas
 mongorestore --host mongodb1.example.net --port 3017 --username user --password pass /opt/backup/mongodump-2013-10-24/
 ````
 
-[>>>](http://docs.mongodb.org/manual/faq/diagnostics/)
+[>>>](http://docs.mongodb.org/manual/reference/operator/query/and/)
