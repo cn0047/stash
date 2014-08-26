@@ -19,7 +19,11 @@ url
 
 **phpUnit** `/usr/share/php/PHPUnit/Extensions/SeleniumTestCase.php`
 
-getopt!!!
+####getopt
+````php
+$options = getopt('', array('sId:', 'dateFrom:', 'dateTo:'));
+// run.php --sId=8 --dateFrom='2011-01-01' --dateTo='2011-02-01'
+````
 
 ````php
 <?php
