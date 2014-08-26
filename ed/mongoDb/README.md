@@ -3,7 +3,7 @@ mongo
 
 *MongoDB shell version: 2.4.6*
 
-####Introduction
+#### Introduction
 ````
 sudo service mongodb start|stop|restart
 
@@ -25,6 +25,9 @@ use mydb
 // insert a collection
 j = {name : "mongo"}
 db.testData.insert(j)
+db.test.insert({x :MaxKey})
+db.test.insert({x :MinKey})
+
 show collections
 db.testData.find()
 db.getCollection('_foo').find()
@@ -52,19 +55,42 @@ myCursor.toArray() [3];
 db.users.find({age: 18})
 // greater than condition
 db.users.find({age:{$gt: 18}}).sort({age; 1})
+db.users.find({age:{$gte: 18}}).sort({age; 1})
+db.users.find({age:{$ne: 18}}) // not equal
 //
 db.records.find( { "user_id": { $lte: 42} }, { "name": 1, "email": 1} )
 // switch on/off fields
 db.users.find({age: {$gt: 18}}, {name: 1, address: 1, _id: 0}).limit(5)
 // 'food' or 'snacks'
 db.inventory.find({ type: { $in: [ 'food', 'snacks' ] } })
+db.inventory.find({ type: { $nin: [ 'food', 'snacks' ] } })
 // food and a less than ($lt) price
 db.inventory.find( { type: 'food', price: { $lt: 9.95 } } )
+
+
+#### Operators
 // OR
 // all the clauses in the $or expression must be supported by indexes. Otherwise, MongoDB will perform a collection scan.
 db.inventory.find({ $or: [{ qty: { $gt: 100 } }, { price: { $lt: 9.95 } } ] })
 // 'food' and either the qty has a value greater than ($gt) 100 or price is less than ($lt) 9.95
 db.inventory.find( { type: 'food', $or: [ { qty: { $gt: 100 } }, { price: { $lt: 9.95 } } ] } )
+// AND
+db.inventory.find( { $and: [ { price: { $ne: 1.99 } }, { price: { $exists: true } } ] } )
+// NOT
+db.inventory.find( { price: { $not: { $gt: 1.99 } } } )
+// NOR
+// selects the documents that fail all the query expressions
+db.inventory.find( { $nor: [ { price: 1.99 }, { sale: true } ] } )
+// MOD
+db.inventory.find( { qty: { $mod: [ 4, 0 ] } } )
+// REGEX
+db.collection.find( { field: /acme.*corp/i } );
+db.collection.find( { field: { $regex: 'acme.*corp', $options: 'i' } } );
+// TEXT
+db.articles.find( { $text: { $search: "coffee" } } )
+// contain the words bake or coffee but do not contain the term cake:
+db.articles.find( { $text: { $search: "bake coffee -cake" } } )
+
 // subdocument
 db.inventory.find({producer: {company: 'ABC123', address: '123 Street'} })
 db.inventory.find( { 'producer.company': 'ABC123' } )
@@ -244,7 +270,7 @@ var mydate2 = ISODate();
 mydate1.toString();
 ````
 
-####Administration
+#### Administration
 ````js
 DBQuery.shellBatchSize = 10;
 
@@ -290,6 +316,11 @@ Timestamp(<t>, <i>)
 ObjectId("<id>")
 // data_ref
 DBRef("<name>", "<id>")
+// type
+db.inventory.find({price: {$type: 1}});
+db.inventory.find({$where: "Array.isArray(this.tags)"})
+[Available types values](http://docs.mongodb.org/manual/reference/operator/query/type/)
+
 
 // Collection Export
 mongoexport --collection collection --out collection.json
@@ -385,10 +416,10 @@ Result:
 */
 ````
 
-####Dump
+#### Dump
 ````js
 mongodump --host mongodb1.example.net --port 3017 --username user --password pass --out /opt/backup/mongodump-2013-10-24
 mongorestore --host mongodb1.example.net --port 3017 --username user --password pass /opt/backup/mongodump-2013-10-24/
 ````
 
-[>>>](http://docs.mongodb.org/manual/reference/operator/query/and/)
+[>>>](http://docs.mongodb.org/manual/reference/operator/query/where/)
