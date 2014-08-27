@@ -1,7 +1,6 @@
 PHP UK Conference 2014
 -
 
-Keynote - Juozas 'Joe' Kaziukenas - What Makes Technology Work
 Andrei Zmievski - Intl Me This, Intl me That
 Bastian Hofmann - Profiling PHP Applications
 Ben Mathews - Facebook's Approach To Common Web Vulnerabilities
@@ -64,3 +63,10 @@ If something really very wrong with site or it hacked - change password to serve
 ####Derick Rethans - PHP In Space
 
 ####Davey Shafik - PHP Under The Hood
+
+####Keynote - Juozas 'Joe' Kaziukenas - What Makes Technology Work
+* Try to look at something from a different angle.
+* API first! Because everything must be connected!
+* Before real work create PROTOTYPE that will show what you really creating, and how it will be work, and show it as presentation.
+* Focus on core part of application!!!
+* If you not solve real problem nobody buy your idea/application.
