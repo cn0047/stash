@@ -67,30 +67,6 @@ db.inventory.find({ type: { $nin: [ 'food', 'snacks' ] } })
 // food and a less than ($lt) price
 db.inventory.find( { type: 'food', price: { $lt: 9.95 } } )
 
-
-#### Operators
-// OR
-// all the clauses in the $or expression must be supported by indexes. Otherwise, MongoDB will perform a collection scan.
-db.inventory.find({ $or: [{ qty: { $gt: 100 } }, { price: { $lt: 9.95 } } ] })
-// 'food' and either the qty has a value greater than ($gt) 100 or price is less than ($lt) 9.95
-db.inventory.find( { type: 'food', $or: [ { qty: { $gt: 100 } }, { price: { $lt: 9.95 } } ] } )
-// AND
-db.inventory.find( { $and: [ { price: { $ne: 1.99 } }, { price: { $exists: true } } ] } )
-// NOT
-db.inventory.find( { price: { $not: { $gt: 1.99 } } } )
-// NOR
-// selects the documents that fail all the query expressions
-db.inventory.find( { $nor: [ { price: 1.99 }, { sale: true } ] } )
-// MOD
-db.inventory.find( { qty: { $mod: [ 4, 0 ] } } )
-// REGEX
-db.collection.find( { field: /acme.*corp/i } );
-db.collection.find( { field: { $regex: 'acme.*corp', $options: 'i' } } );
-// TEXT
-db.articles.find( { $text: { $search: "coffee" } } )
-// contain the words bake or coffee but do not contain the term cake:
-db.articles.find( { $text: { $search: "bake coffee -cake" } } )
-
 // subdocument
 db.inventory.find({producer: {company: 'ABC123', address: '123 Street'} })
 db.inventory.find( { 'producer.company': 'ABC123' } )
@@ -201,9 +177,45 @@ db.users.drop()
 // To set replica acknowledged write concern, specify w values greater than 1 to your driver.
 
 db.runCommand( { getLastError: 1, j: "true" } )
+````
+
+#### [Operators](http://docs.mongodb.org/manual/reference/operator/query/)
+````js
+// OR
+// all the clauses in the $or expression must be supported by indexes. Otherwise, MongoDB will perform a collection scan.
+db.inventory.find({ $or: [{ qty: { $gt: 100 } }, { price: { $lt: 9.95 } } ] })
+// 'food' and either the qty has a value greater than ($gt) 100 or price is less than ($lt) 9.95
+db.inventory.find( { type: 'food', $or: [ { qty: { $gt: 100 } }, { price: { $lt: 9.95 } } ] } )
+// AND
+db.inventory.find( { $and: [ { price: { $ne: 1.99 } }, { price: { $exists: true } } ] } )
+// NOT
+db.inventory.find( { price: { $not: { $gt: 1.99 } } } )
+// NOR
+// selects the documents that fail all the query expressions
+db.inventory.find( { $nor: [ { price: 1.99 }, { sale: true } ] } )
+// MOD
+db.inventory.find( { qty: { $mod: [ 4, 0 ] } } )
+// REGEX
+db.collection.find( { field: /acme.*corp/i } );
+db.collection.find( { field: { $regex: 'acme.*corp', $options: 'i' } } );
+// TEXT
+db.articles.find( { $text: { $search: "coffee" } } )
+// contain the words bake or coffee but do not contain the term cake:
+db.articles.find( { $text: { $search: "bake coffee -cake" } } )
+// WHERE
+db.myCollection.find( { $where: "this.credits == this.debits" } );
+db.myCollection.find( { $where: function() { return obj.credits == obj.debits; } } );
+// ALL - Equivalent to $and Operation.
+{ tags: { $all: [ "ssl" , "security" ] } }
+// ELEMMATCH
+db.scores.find({ results: { $elemMatch: { $gte: 80, $lt: 85 } } })
+// SIZE
+db.collection.find( { field: { $size: 2 } } );
+// $ (projection)
+db.students.find( { semester: 1, grades: { $gte: 85 } }, { "grades.$": 1 } )
 
 ````
-[Operators](http://docs.mongodb.org/manual/reference/operator/query/)
+[Geospatial Query Operators](http://docs.mongodb.org/manual/reference/operator/query-geospatial/#geospatial-query-operators)
 
 [MongoDB CRUD Reference](http://docs.mongodb.org/manual/reference/crud/#mongodb-crud-reference)
 
@@ -422,4 +434,4 @@ mongodump --host mongodb1.example.net --port 3017 --username user --password pas
 mongorestore --host mongodb1.example.net --port 3017 --username user --password pass /opt/backup/mongodump-2013-10-24/
 ````
 
-[>>>](http://docs.mongodb.org/manual/reference/operator/query/where/)
+[>>>](http://docs.mongodb.org/manual/reference/operator/projection/elemMatch/)
