@@ -1,7 +1,6 @@
 PHP UK Conference 2014
 -
 
-Andrei Zmievski - Intl Me This, Intl me That
 Bastian Hofmann - Profiling PHP Applications
 Ben Mathews - Facebook's Approach To Common Web Vulnerabilities
 Davey Shafik - PHP 5.NEXT: The New Bits
@@ -16,7 +15,6 @@ Joshua Thijssen - RPMing Your Apps And Tools
 Julien - PHP Opcache Explained
 Mathias Verraes - Unbreakable Domain Models
 Michelle Sanver - 'ProTalking' Your Way into Open Source
-Morgan Tocker - Locking And Concurrency Control
 Morgan Tocker - My SQL 5 6 - Online Operations and Improved Diagnostics
 Nate Abele - Weild AngularJS Like A Pro
 Ole Michaelis - Service Oriented Architecture for Robust & Scalable Systems
@@ -28,10 +26,8 @@ Stuart Herbert - PHP at the Firehose Scale
 
 http://www.phpdeveloper.org/
 
-####mysql
+####Morgan Tocker - Locking And Concurrency Control
 * When write to two tables (create relation records) wrap it by transaction.
-
-
 
 ####Stephan Hochdorfer - The 7 Deadly Sins of Dependency Injection
 * Inversion of control?
@@ -70,3 +66,5 @@ If something really very wrong with site or it hacked - change password to serve
 * Before real work create PROTOTYPE that will show what you really creating, and how it will be work, and show it as presentation.
 * Focus on core part of application!!!
 * If you not solve real problem nobody buy your idea/application.
+
+####Andrei Zmievski - Intl Me This, Intl me That
