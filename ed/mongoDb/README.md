@@ -213,6 +213,22 @@ db.scores.find({ results: { $elemMatch: { $gte: 80, $lt: 85 } } })
 db.collection.find( { field: { $size: 2 } } );
 // $ (projection)
 db.students.find( { semester: 1, grades: { $gte: 85 } }, { "grades.$": 1 } )
+// $elemMatch
+db.schools.find( { zipcode: "63109" }, { students: { $elemMatch: { school: 102, age: { $gt: 10} } } } )
+// $meta
+db.collection.find( {}, { score: { $meta: "textScore" } } )
+// $slice (projection)
+db.posts.find( {}, { comments: { $slice: 5 } } )
+db.posts.find( {}, { comments: { $slice: [ 20, 10 ] } } ) // [ skip , limit ]
+// $inc
+db.products.update( { sku: "abc123" }, { $inc: { quantity: 5 } } ); //  first matching document
+db.records.update( { age: 20 }, { $inc: { age: 1 } }, { multi: true } ); // update all matching documents
+db.products.update( { sku: "abc123" }, { $inc: { quantity: -2, sales: 2 } } ); // 1st matching document
+// $mul
+db.products.update({ _id: 1 }, { $mul: { price: 1.25 } })
+// $rename
+
+
 
 ````
 [Geospatial Query Operators](http://docs.mongodb.org/manual/reference/operator/query-geospatial/#geospatial-query-operators)
@@ -434,4 +450,4 @@ mongodump --host mongodb1.example.net --port 3017 --username user --password pas
 mongorestore --host mongodb1.example.net --port 3017 --username user --password pass /opt/backup/mongodump-2013-10-24/
 ````
 
-[>>>](http://docs.mongodb.org/manual/reference/operator/projection/elemMatch/)
+[>>>](http://docs.mongodb.org/manual/reference/operator/update/rename/)
