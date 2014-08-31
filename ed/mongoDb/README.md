@@ -227,6 +227,10 @@ db.products.update( { sku: "abc123" }, { $inc: { quantity: -2, sales: 2 } } ); /
 // $mul
 db.products.update({ _id: 1 }, { $mul: { price: 1.25 } })
 // $rename
+db.students.update( { _id: 1 }, { $rename: { 'nickname': 'alias', 'cell': 'mobile' } } ) // renames the field nickname to alias, and the field cell to mobile
+// $setOnInsert
+
+
 
 
 
@@ -450,4 +454,4 @@ mongodump --host mongodb1.example.net --port 3017 --username user --password pas
 mongorestore --host mongodb1.example.net --port 3017 --username user --password pass /opt/backup/mongodump-2013-10-24/
 ````
 
-[>>>](http://docs.mongodb.org/manual/reference/operator/update/rename/)
+[>>>](http://docs.mongodb.org/manual/reference/operator/update/setOnInsert/)

@@ -1,7 +1,7 @@
 PHP UK Conference 2014
 -
 
-Bastian Hofmann - Profiling PHP Applications
+
 Ben Mathews - Facebook's Approach To Common Web Vulnerabilities
 Davey Shafik - PHP 5.NEXT: The New Bits
 Eli White - Caching Best Practices
@@ -68,3 +68,9 @@ If something really very wrong with site or it hacked - change password to serve
 * If you not solve real problem nobody buy your idea/application.
 
 ####Andrei Zmievski - Intl Me This, Intl me That
+
+####Bastian Hofmann - Profiling PHP Applications
+* Logstash - is a tool for managing events and logs.
+* Graphite - Scalable Realtime Graphing
+* xhprof!! can use at production!
+* http://www.perfplanet.com/
