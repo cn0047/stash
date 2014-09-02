@@ -229,7 +229,25 @@ db.products.update({ _id: 1 }, { $mul: { price: 1.25 } })
 // $rename
 db.students.update( { _id: 1 }, { $rename: { 'nickname': 'alias', 'cell': 'mobile' } } ) // renames the field nickname to alias, and the field cell to mobile
 // $setOnInsert
-
+db.products.update({ _id: 1 }, { $setOnInsert: { defaultQty: 100 } }, { upsert: true }) // during replace when insert
+// $set
+db.products.update({ sku: "abc123" }, { $set: { quantity: 500, instock: true, "details.make": "ZYX" } })
+// $unset
+db.products.update( { sku: "unknown" }, { $unset: {quantity: "", instock: ""} } )
+// $min
+db.scores.update( { _id: 1 }, { $min: { lowScore: 150 } } )
+// if stored document has lowScore lower than 150 -  nothing happens, otherwise lowScore will set to 150
+// $max
+db.scores.update( { _id: 1 }, { $max: { highScore: 950 } } )
+// $currentDate
+db.users.update(
+    { _id: 1 },
+    {
+        $currentDate: {lastModified: true, lastModifiedTS: { $type: "timestamp" }},
+        $set: { status: "D" }
+    }
+)
+db.users.update({}, {$currentDate: {created: true, updated: true } })
 
 
 
@@ -454,4 +472,4 @@ mongodump --host mongodb1.example.net --port 3017 --username user --password pas
 mongorestore --host mongodb1.example.net --port 3017 --username user --password pass /opt/backup/mongodump-2013-10-24/
 ````
 
-[>>>](http://docs.mongodb.org/manual/reference/operator/update/setOnInsert/)
+[>>>](http://docs.mongodb.org/manual/reference/operator/update-array/)
