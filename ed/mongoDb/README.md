@@ -248,6 +248,13 @@ db.users.update(
     }
 )
 db.users.update({}, {$currentDate: {created: true, updated: true } })
+// $
+db.students.update( { _id: 1, grades: 80 }, { $set: { "grades.$" : 82 } } )
+// $ operator acts as a placeholder for the first match
+db.students.update( { _id: 4, "grades.grade": 85 }, { $set: { "grades.$.std" : 6 } } )
+// $addToSet
+db.inventory.update({ _id: 1 }, { $addToSet: { tags: "accessories"  } })
+
 
 
 
@@ -472,4 +479,4 @@ mongodump --host mongodb1.example.net --port 3017 --username user --password pas
 mongorestore --host mongodb1.example.net --port 3017 --username user --password pass /opt/backup/mongodump-2013-10-24/
 ````
 
-[>>>](http://docs.mongodb.org/manual/reference/operator/update-array/)
+[>>>](http://docs.mongodb.org/manual/reference/operator/update/pop/)
