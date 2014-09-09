@@ -14,6 +14,8 @@ Example:
 u   g   o
 7   5   3
 rwx r-x -wx
+
+chmod u-rx,g+x,o+w fileName
 ````
 
 ####shell
