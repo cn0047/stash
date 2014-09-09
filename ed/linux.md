@@ -16,6 +16,10 @@ u   g   o
 rwx r-x -wx
 
 chmod u-rx,g+x,o+w fileName
+
+On server:
+directory - drwxrwxr-x (775)
+file      - -rw-rw-r-- (664)
 ````
 
 ####shell
