@@ -1,3 +1,21 @@
+Linux
+-
+####chmod
+````
+-rwxrwxrwx
+drwxr-xr-x
+directory user group other
+
+r (4) - read;
+w (2) - write;
+x (1) - execute;
+
+Example:
+u   g   o
+7   5   3
+rwx r-x -wx
+````
+
 ####shell
 ````
 colordiff -u file1 file2
