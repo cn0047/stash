@@ -58,7 +58,7 @@ CURTIME()
 sysdate()                          -- now
 LAST_DAY(date)                     -- last day in month
 
-REPLACE('www.site.com', 'w', 'w')
+REPLACE('vvv.site.com', 'v', 'w')
 
 SELECT ELT(1, 'foo', 'bar');       -- foo
 SELECT FIELD('foo', 'foo', 'bar'); -- 1
