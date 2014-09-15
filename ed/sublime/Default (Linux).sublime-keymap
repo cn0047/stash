@@ -23,10 +23,12 @@
     },
     { "keys": ["alt+up"], "command": "upper_case" },
     { "keys": ["alt+down"], "command": "lower_case" },
+    { "keys": ["alt+keypad0"], "command": "title_case" },
     {
         "keys": ["ctrl+shift+a"], "command": "align_tab",
         "args" : {"user_input" : "=/f"}
     },
+    { "keys": ["alt+t"], "command": "align_tab" },
     { "keys": ["ctrl+shift+v"], "command": "paste_from_history" },
     // { "keys": ["ctrl+shift+d"], "command": "toggle_trailing_spaces" },
 
@@ -70,6 +72,8 @@
     { "keys": ["ctrl+7"], "command": "fold_by_level", "args": {"level": 7} },
     { "keys": ["ctrl+8"], "command": "fold_by_level", "args": {"level": 8} },
     { "keys": ["ctrl+9"], "command": "fold_by_level", "args": {"level": 9} },
+    { "keys": ["alt+f"], "command": "show_overlay", "args": {"overlay": "command_palette", "text": "Filer Lines: Fold with s"} },
+    // { "keys": ["alt+f"], "command": "fold_tab" },
 
     // GLOBAL
     { "keys": ["ctrl+tab"], "command": "toggle_side_bar" },
@@ -91,14 +95,15 @@
     { "keys": ["alt+x"], "command": "show_overlay", "args": {"overlay": "command_palette", "text": "xdebug"} },
 
     // GIT
-    { "keys": ["alt+a"], "command": "git_add" },
+    { "keys": ["alt+a"], "command": "git_raw", "args": { "command": "git add", "append_current_file": true } },
     { "keys": ["alt+l"], "command": "git_log" },
-    { "keys": ["alt+r"], "command": "git_checkout" },
+    { "keys": ["alt+r"], "command": "git_raw", "args": { "command": "git checkout", "append_current_file": true } },
     { "keys": ["alt+d"], "command": "git_diff" },
     { "keys": ["alt+shift+d"], "command": "git_diff_all" },
     { "keys": ["alt+shift+c"], "command": "git_diff_commit" },
     { "keys": ["alt+s"], "command": "git_status" },
-    { "keys": ["alt+b"], "command": "git_blame" },
+    // { "keys": ["alt+b"], "command": "git_blame" },
+    { "keys": ["alt+b"], "command": "blame" },
 
     // Misc
     { "keys": ["alt+k"], "command": "super_calculator" }
