@@ -254,6 +254,32 @@ db.students.update( { _id: 1, grades: 80 }, { $set: { "grades.$" : 82 } } )
 db.students.update( { _id: 4, "grades.grade": 85 }, { $set: { "grades.$.std" : 6 } } )
 // $addToSet
 db.inventory.update({ _id: 1 }, { $addToSet: { tags: "accessories"  } })
+// $pop
+db.students.update( { _id: 1 }, { $pop: { scores: -1 } } // -1 first, 1 last
+// $pullAll
+db.survey.update( { _id: 1 }, { $pullAll: { scores: [ 0, 5 ] } } )
+// $pull
+db.cpuinfo.update({ flags: "msr" }, { $pull: { flags: "msr" } }, { multi: true })
+db.profiles.update( { _id: 1 }, { $pull: { votes: { $gte: 6 } } } )
+// $pushAll
+db.collection.update( { field: value }, { $pushAll: { field1: [ value1, value2, value3 ] } } );
+// $push
+db.students.update({ _id: 1 }, { $push: { scores: 89 } })
+db.students.update({ name: "joe" }, { $push: { scores: { $each: [ 90, 92, 85 ] } } })
+// $each
+db.students.update({ name: "joe" }, { $push: { scores: { $each: [ 90, 92, 85 ] } } })
+// $slice
+db.students.update( { _id: 1 }, { $push: { scores: {$each: [ 80, 78, 86 ], $slice: -5 } } } )
+// $sort
+db.students.update({ _id: 2 }, { $push: { tests: { $each: [ 40, 60 ], $sort: 1 } } })
+// $position
+db.students.update( { _id: 1 }, { $push: { scores: {$each: [ 20, 30 ], $position: 2 } } } )
+// $bit
+db.switches.update({ _id: 1 }, { $bit: { expdata: { and: NumberInt(10) } } } )
+db.switches.update({ _id: 2 }, { $bit: { expdata: { or: NumberInt(5) } } } )
+db.switches.update({ _id: 3 }, { $bit: { expdata: { xor: NumberInt(5) } } } )
+// $isolated
+db.foo.update({ status : "A" , $isolated : 1 }, { $inc : { count : 1 } }, { multi: true } )
 
 
 
@@ -479,4 +505,4 @@ mongodump --host mongodb1.example.net --port 3017 --username user --password pas
 mongorestore --host mongodb1.example.net --port 3017 --username user --password pass /opt/backup/mongodump-2013-10-24/
 ````
 
-[>>>](http://docs.mongodb.org/manual/reference/operator/update/pop/)
+[>>>](http://docs.mongodb.org/manual/reference/operator/aggregation/)
