@@ -281,9 +281,22 @@ db.switches.update({ _id: 3 }, { $bit: { expdata: { xor: NumberInt(5) } } } )
 // $isolated
 db.foo.update({ status : "A" , $isolated : 1 }, { $inc : { count : 1 } }, { multi: true } )
 
+#### Aggregation Pipeline Operators
+````js
+// $geoNear
+//
+// $out
+db.books.aggregate([{ $group : { _id : "$author", books: { $push: "$title" } } }, { $out : "authors" }])
+// $and
+db.inventory.aggregate([{$project: {item: 1, qty: 1, result: {$and: [{$gt: ["$qty", 100 ]}, {$lt: ["$qty", 250]}]}}}])
 
 
 
+
+
+
+
+````js
 
 ````
 [Geospatial Query Operators](http://docs.mongodb.org/manual/reference/operator/query-geospatial/#geospatial-query-operators)
@@ -505,4 +518,4 @@ mongodump --host mongodb1.example.net --port 3017 --username user --password pas
 mongorestore --host mongodb1.example.net --port 3017 --username user --password pass /opt/backup/mongodump-2013-10-24/
 ````
 
-[>>>](http://docs.mongodb.org/manual/reference/operator/aggregation/)
+[>>>](http://docs.mongodb.org/manual/reference/operator/aggregation/or/)
