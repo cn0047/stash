@@ -1,6 +1,7 @@
 Abstract factory
 -
-1
+
+Group 1
 
 ````php
 abstract class Document

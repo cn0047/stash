@@ -8,7 +8,6 @@ Patterns
 ####Adapter (wrapper)
 ####Bridge
 ####Composite
-####Decorator
 ####Facade
 ####Flyweight
 ####Proxy

@@ -1,6 +1,7 @@
 Singleton
 -
-1
+
+Group 1
 
 ````php
 class Singleton
