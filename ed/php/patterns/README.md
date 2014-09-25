@@ -8,7 +8,7 @@ Patterns
 ####Adapter (wrapper)
 ####Bridge
 ####Composite
-####Decorator
+#### [Decorator](http://www.phpdesignpatterns.com/design-patterns/pattern-decorator/)
 ####Facade
 ####Flyweight
 ####Proxy
