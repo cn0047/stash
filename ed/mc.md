@@ -30,6 +30,7 @@ Alt-l           # jump to line
 Alt-n           # display line numbers
 F4              # replace text
 F7              # search
+Shift-F7        # search next
 F2              # save the current file
 F12             # save as
 F9              # get a drop down menu
