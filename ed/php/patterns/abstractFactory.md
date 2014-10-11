@@ -4,6 +4,8 @@ Abstract factory
 Group 1
 
 ````php
+<?php
+
 abstract class Document
 {
    abstract public function createPage();

@@ -1,7 +1,7 @@
 Decorator
 -
 
-Group 2
+behaviour
 
 ````php
 <?php
@@ -10,6 +10,7 @@ abstract class Component
 {
     abstract public function operation();
 }
+
 class ConcreteComponent extends Component
 {
     public function operation()
@@ -17,18 +18,22 @@ class ConcreteComponent extends Component
         return 'I am component';
     }
 }
+
 abstract class Decorator extends Component
 {
     protected $component = null;
+
     public function __construct(Component $component)
     {
         $this->component = $component;
     }
+
     public function operation()
     {
         return $this->component->operation();
     }
 }
+
 class ConcreteDecoratorA extends Decorator
 {
     public function operation()
@@ -36,6 +41,7 @@ class ConcreteDecoratorA extends Decorator
         return '<a>' . parent::operation() . '</a>';
     }
 }
+
 class ConcreteDecoratorS extends Decorator
 {
     public function operation()
@@ -43,6 +49,7 @@ class ConcreteDecoratorS extends Decorator
         return '<strong>' . parent::operation() . '</strong>';
     }
 }
+
 $element = new ConcreteComponent();
 $extendedElement = new ConcreteDecoratorA($element);
 $superExtendedElement = new ConcreteDecoratorS($extendedElement);

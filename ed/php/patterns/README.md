@@ -1,7 +1,6 @@
 Patterns
 -
 1
-####Builder
 ####Factory method
 ####Prototype
 2
