@@ -2,7 +2,6 @@ Patterns
 -
 1
 ####Factory method
-####Prototype
 2
 ####Adapter (wrapper)
 ####Bridge
