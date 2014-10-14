@@ -1,7 +1,5 @@
 Patterns
 -
-1
-####Factory method
 2
 ####Adapter (wrapper)
 ####Bridge
