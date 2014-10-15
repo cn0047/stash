@@ -2,6 +2,8 @@ php
 -
 *PHP 5.1.6*
 
+phpcs file.php --standard=PSR2
+
 url
 ````
     ? %3F
