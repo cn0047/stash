@@ -3,6 +3,10 @@ jQuery
 
 1.4.2
 
+````js
+jQuery.fn.jquery // version of jQuery
+````
+
 [jQuery in Action 2nd Edition](http://www.bibeault.org/jqia2/)
 
 ####Flashback
