@@ -5,12 +5,13 @@ MySql
 
 ````sql
 ALTER TABLE table ADD field INTEGER(1) NOT NULL;
-ALTER TABLE table MODIFY field VARCHAR(7) NOT NULL DEFAULT '';
 ALTER TABLE table ADD UNIQUE KEY (field);
+ALTER TABLE table MODIFY field VARCHAR(7) NOT NULL DEFAULT '';
 ALTER TABLE table DROP COLUMN field;
 ALTER TABLE table DROP FOREIGN KEY key;
 ALTER TABLE table DROP KEY key;
-DROP INDEX keyName ON table;
+CREATE INDEX indexName ON table (column);
+DROP   INDEX indexName ON table;
 
 SHOW TABLE STATUS WHERE name = 'table'; -- Info about table, with creation date.
 SELECT
