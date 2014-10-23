@@ -1,7 +1,7 @@
 Prototype
 -
 
-Group 1
+Group 1.
 
 ````php
 <?php
@@ -19,7 +19,7 @@ class ClassA
 $prototype = new ClassA();
 $newObject = new ClassA($prototype);
 
-// Method 2
+// Method 2.
 class ClassB
 {
     public function getClone()
@@ -32,12 +32,10 @@ class ClassB
 $prototype = new ClassB();
 $newObject = $prototype->getClone();
 
-// Method 3
+// Method 3.
 class ClassC
 {
-    public function __clone()
-    {
-    }
+    public function __clone() {}
 }
 
 $prototype = new ClassC();

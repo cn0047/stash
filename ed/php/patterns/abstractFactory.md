@@ -1,7 +1,7 @@
 Abstract factory
 -
 
-Group 1
+Group 1.
 
 ````php
 <?php

@@ -1,8 +1,6 @@
 Patterns
 -
-2
-####Adapter (wrapper)
-####Bridge
+2 (structural)
 ####Composite
 ####Facade
 ####Flyweight

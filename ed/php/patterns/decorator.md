@@ -1,7 +1,7 @@
 Decorator
 -
 
-behaviour
+Behaviour.
 
 ````php
 <?php
@@ -53,5 +53,8 @@ class ConcreteDecoratorS extends Decorator
 $element = new ConcreteComponent();
 $extendedElement = new ConcreteDecoratorA($element);
 $superExtendedElement = new ConcreteDecoratorS($extendedElement);
-print $superExtendedElement->operation(); // <strong><a>I am component</a></strong>
+print $superExtendedElement->operation();
+/*
+<strong><a>I am component</a></strong>
+*/
 ````

@@ -1,7 +1,7 @@
 Factory method
 -
 
-Group 1
+Group 1.
 
 ````php
 <?php
