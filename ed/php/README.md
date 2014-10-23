@@ -2,8 +2,6 @@ php
 -
 *PHP 5.1.6*
 
-phpcs -sw --standard=PSR2 file.php
-
 url
 ````
     ? %3F
@@ -16,6 +14,8 @@ url
 ````
 
 `<![CDATA[]]>`
+
+**phpCs** `phpcs -sw --standard=PSR2 file.php`
 
 **phpDoc** `phpdoc run -d . -t doc`
 
