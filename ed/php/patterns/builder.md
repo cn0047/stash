@@ -1,10 +1,23 @@
 Builder
 -
 
-Group 1.
+Generator.
+
+Unlike the abstract factory pattern and the factory method pattern whose intention is to enable polymorphism,
+the intention of the builder pattern is to find a solution to the telescoping constructor anti-pattern.
+It occurs when the increase of object constructor parameter combination leads to an exponential list of constructors.
 
 ````php
 <?php
+
+abstract class BuilderAbstract
+{
+    public function buildPartA() {}
+
+    public function buildPartB() {}
+
+    abstract public function getResult();
+}
 
 abstract class DirectorAbstract
 {
@@ -22,16 +35,9 @@ abstract class DirectorAbstract
     }
 }
 
+class Product {}
+
 class Director extends DirectorAbstract {}
-
-abstract class BuilderAbstract
-{
-    public function buildPartA() {}
-
-    public function buildPartB() {}
-
-    abstract public function getResult();
-}
 
 class Builder extends BuilderAbstract
 {
@@ -51,8 +57,6 @@ class Builder extends BuilderAbstract
         return $this->product;
     }
 }
-
-class Product {}
 
 $builder = new Builder();
 $director = new Director($builder);

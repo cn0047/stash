@@ -1,7 +1,7 @@
 Factory method
 -
 
-Group 1.
+Generator.
 
 ````php
 <?php

@@ -3,6 +3,8 @@ Bridge
 
 Structural.
 
+Is meant to "decouple an abstraction from its implementation so that the two can vary independently".
+
 ````php
 <?php
 
@@ -23,7 +25,7 @@ class DrawingAPI2 implements DrawingAPI
 {
     public function drawCircle($x, $y, $radius)
     {
-            printf ("API2 draw (%d, %d, %d)\n", $x, $y, $radius);
+        printf ("API2 draw (%d, %d, %d)\n", $x, $y, $radius);
     }
 }
 
@@ -61,8 +63,8 @@ $shapes = array(
     new CircleShape(1, 3, 7,  new DrawingAPI1()),
     new CircleShape(5, 7, 11, new DrawingAPI2()),
 );
-foreach ($shapes as $sh) {
-    $sh->draw();
+foreach ($shapes as $shape) {
+    $shape->draw();
 }
 /*
 API1 draw (1, 3, 7)

@@ -1,7 +1,7 @@
 Singleton
 -
 
-Group 1.
+Generator.
 
 ````php
 <?php
