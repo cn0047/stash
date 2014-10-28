@@ -1,7 +1,6 @@
 PHP UK Conference 2014
 -
 
-Eli White - Caching Best Practices
 Eli White - Web Security And You
 Erika Heidi - Vagrant Provisioners In A Nutshell
 Gary Hockin - Maximising Performance With Zend Framework
@@ -68,9 +67,9 @@ If something really very wrong with site or it hacked - change password to serve
 
 ####Bastian Hofmann - Profiling PHP Applications
 * Logstash - is a tool for managing events and logs.
-* Graphite - Scalable Realtime Graphing
+* Graphite - Scalable Realtime Graphing.
 * xhprof!! can use at production!
-* http://www.perfplanet.com/
+* http://www.perfplanet.com/.
 
 ####Davey Shafik - PHP 5.NEXT: The New Bits
 
@@ -78,9 +77,19 @@ If something really very wrong with site or it hacked - change password to serve
 * xss:
 1 htmlspecialchars();
 2 print at browser "Ben" and "B&#101;n" if it loocks the same - here are B&#101;n.
-* sql injection: do not writ sql.
-* csrf: 
-1 token
-2 read controllers
-3 write controllers
-* cryptography
+* sql injection: don't write sql.
+* csrf:
+1 token.
+2 read controllers.
+3 write controllers.
+* cryptography.
+
+####Eli White - Caching Best Practices
+1. Whole page cache.
+2. Partial page cache.
+3. Database queries cache.
+4. Biggest-Smallest reusable object.
+* Varnish.
+* Pre-generation.
+* Beware FALSE (use NULL instead FALSE).
+* Cache expiration mast be configurable (have own config file).
