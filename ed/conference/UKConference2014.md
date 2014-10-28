@@ -75,18 +75,13 @@ If something really very wrong with site or it hacked - change password to serve
 
 ####Ben Mathews - Facebook's Approach To Common Web Vulnerabilities
 * xss:
-
-1. htmlspecialchars();
-2. print at browser "Ben" and "B&#101;n" if it loocks the same - here are B&#101;n.
-
+  * htmlspecialchars();
+  * print at browser "Ben" and "B&#101;n" if it loocks the same - here are B&#101;n.
 * sql injection: don't write sql.
-
 * csrf:
-
-1. token.
-2. read controllers.
-3. write controllers.
-
+  * token.
+  * read controllers.
+  * write controllers.
 * cryptography.
 
 ####Eli White - Caching Best Practices
