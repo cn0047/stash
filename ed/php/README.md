@@ -13,6 +13,9 @@ url
     _ _
 ````
 
+https://dev.twitter.com/
+http://www.phpdeveloper.org/
+
 `<![CDATA[]]>`
 
 **phpCs** `phpcs -sw --standard=PSR2 file.php`

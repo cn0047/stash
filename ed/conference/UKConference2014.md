@@ -2,7 +2,6 @@ PHP UK Conference 2014
 -
 
 Eli White - Web Security And You
-Erika Heidi - Vagrant Provisioners In A Nutshell
 Gary Hockin - Maximising Performance With Zend Framework
 Ian Barber/Mandy Waite - Building Scalable PHP Apps With Google App Engine
 Jeremy Quinton - Gathering Metrics With StatsD And Graphite
@@ -19,8 +18,6 @@ Rowan Merewood - Algorithm, Review, Sorting
 Stuart Herbert - PHP at the Firehose Scale
 
 
-
-http://www.phpdeveloper.org/
 
 ####Morgan Tocker - Locking And Concurrency Control
 * When write to two tables (create relation records) wrap it by transaction.
@@ -99,3 +96,9 @@ If something really very wrong with site or it hacked - change password to serve
 * Pre-generation.
 * Beware FALSE (use NULL instead FALSE).
 * Cache expiration mast be configurable (have own config file).
+
+####Erika Heidi - Vagrant Provisioners In A Nutshell
+* Ansible.
+* Puppet.
+* Chef.
+* PuPHPet.
