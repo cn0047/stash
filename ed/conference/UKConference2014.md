@@ -108,5 +108,5 @@ If something really very wrong with site or it hacked - change password to serve
 * Clickjacking (click on iframe). The solution:
   * `header('X-Frame Options: DENY');`
   * `header('X-Frame Options: SAMEORIGIN');`
-* *Keep all your software up to date!*
+* **Keep all your software up to date!**
 * Man in the middle?
