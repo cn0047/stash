@@ -1,7 +1,6 @@
 PHP UK Conference 2014
 -
 
-Gary Hockin - Maximising Performance With Zend Framework
 Ian Barber/Mandy Waite - Building Scalable PHP Apps With Google App Engine
 Jeremy Quinton - Gathering Metrics With StatsD And Graphite
 Joshua Thijssen - (Re)Discovering The SPL
@@ -110,3 +109,9 @@ If something really very wrong with site or it hacked - change password to serve
   * `header('X-Frame Options: SAMEORIGIN');`
 * **Keep all your software up to date!**
 * Man in the middle?
+
+####Gary Hockin - Maximising Performance With Zend Framework
+* **Siege** (An HTTP/HTTPS stress tester). `siedge -c 10 -t 1m -b http://mysite.dev`
+* xhprof (can be installed in production).
+* https://github.com/EvanDotPro/EdpSuperluminal.
+* If site don't have favicon - 2 overhead request per every request.
