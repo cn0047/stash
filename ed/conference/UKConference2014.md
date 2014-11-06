@@ -1,9 +1,7 @@
 PHP UK Conference 2014
 -
 
-Eli White - Web Security And You
-Gary Hockin - Maximising Performance With Zend Framework
-Ian Barber/Mandy Waite - Building Scalable PHP Apps With Google App Engine
+
 Jeremy Quinton - Gathering Metrics With StatsD And Graphite
 Joshua Thijssen - (Re)Discovering The SPL
 Joshua Thijssen - RPMing Your Apps And Tools
@@ -97,3 +95,27 @@ If something really very wrong with site or it hacked - change password to serve
 * Puppet.
 * Chef.
 * PuPHPet.
+
+####Eli White - Web Security And You
+* Return public images, or md files only through php (in such way apache can check permission to file).
+* Don't just use MD5.
+* Don't allow to upload an executable file.
+* Don't allow use session id from url. The solution:
+  * Use `session.use_cookies =1` or better: `session.use_only_cookies = 1`.
+  * Use `session_regenerate_id` after user login, logout.
+* FIEO - filter input escape output.
+* Clickjacking (click on iframe). The solution:
+  * `header('X-Frame Options: DENY');`
+  * `header('X-Frame Options: SAMEORIGIN');`
+* **Keep all your software up to date!**
+* Man in the middle?
+
+####Gary Hockin - Maximising Performance With Zend Framework
+* **Siege** (An HTTP/HTTPS stress tester). `siedge -c 10 -t 1m -b http://mysite.dev`
+* xhprof (can be installed in production).
+* https://github.com/EvanDotPro/EdpSuperluminal.
+* If site don't have favicon - 2 overhead request per every request.
+
+####Ian Barber/Mandy Waite - Building Scalable PHP Apps With Google App Engine
+* How many queries per second you have?
+* Google Cloud!

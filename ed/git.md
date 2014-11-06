@@ -46,3 +46,38 @@ push remoteRepoName pusedBranch
 push remoteRepoName pusedBranch:newBranchName
 push remoteRepoName :newBranch                # delete branch from remote repo
 ````
+
+####config
+````
+[color]
+    ui     = auto
+    diff   = true
+    status = auto
+    branch = auto
+[alias]
+    b   = branch
+    br  = branch
+    ch  = checkout
+    s   = status -sb
+    st  = status
+    sl  = stash list
+    f   = fetch origin
+    ml  = merge origin/live
+    mm  = merge origin/master
+    d   = diff --word-diff
+    df  = diff
+    dfc = diff --cached
+    dfl = diff origin/live
+    dfm = diff origin/master
+    dff = diff origin/live --name-only
+    ca  = commit -am
+    cm  = commit -m
+    ph  = push origin HEAD
+    lg  = log --pretty=format:\"%h %ad | [%an] %s%d\" --graph --date=short --no-merges
+[user]
+    name  = Name Surname
+    email = mail@mail.com
+[core]
+    excludesfile = ~/.gitignore
+    editor       = vim
+````
