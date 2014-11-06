@@ -1,7 +1,7 @@
 PHP UK Conference 2014
 -
 
-Ian Barber/Mandy Waite - Building Scalable PHP Apps With Google App Engine
+
 Jeremy Quinton - Gathering Metrics With StatsD And Graphite
 Joshua Thijssen - (Re)Discovering The SPL
 Joshua Thijssen - RPMing Your Apps And Tools
@@ -115,3 +115,7 @@ If something really very wrong with site or it hacked - change password to serve
 * xhprof (can be installed in production).
 * https://github.com/EvanDotPro/EdpSuperluminal.
 * If site don't have favicon - 2 overhead request per every request.
+
+####Ian Barber/Mandy Waite - Building Scalable PHP Apps With Google App Engine
+* How many queries per second you have?
+* Google Cloud!
