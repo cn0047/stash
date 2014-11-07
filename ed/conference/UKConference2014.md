@@ -1,8 +1,6 @@
 PHP UK Conference 2014
 -
 
-
-Jeremy Quinton - Gathering Metrics With StatsD And Graphite
 Joshua Thijssen - (Re)Discovering The SPL
 Joshua Thijssen - RPMing Your Apps And Tools
 Julien - PHP Opcache Explained
@@ -119,3 +117,8 @@ If something really very wrong with site or it hacked - change password to serve
 ####Ian Barber/Mandy Waite - Building Scalable PHP Apps With Google App Engine
 * How many queries per second you have?
 * Google Cloud!
+
+####Jeremy Quinton - Gathering Metrics With StatsD And Graphite
+* Measurement is the first step that leads to control and eventually to improvement. If you can't measure something, you can't understand it. If you can't understand it, you can't control it. If you can't control it, you can't improve it.
+* StatsD (on pacagist).
+* Graphite.

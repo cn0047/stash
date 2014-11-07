@@ -2,6 +2,8 @@ php
 -
 *PHP 5.1.6*
 
+*Since 2011-10-01.*
+
 http://php.net/manual/en/appendices.php
 
 url
