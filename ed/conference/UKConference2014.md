@@ -1,7 +1,6 @@
 PHP UK Conference 2014
 -
 
-Joshua Thijssen - (Re)Discovering The SPL
 Joshua Thijssen - RPMing Your Apps And Tools
 Julien - PHP Opcache Explained
 Mathias Verraes - Unbreakable Domain Models
@@ -122,3 +121,9 @@ If something really very wrong with site or it hacked - change password to serve
 * Measurement is the first step that leads to control and eventually to improvement. If you can't measure something, you can't understand it. If you can't understand it, you can't control it. If you can't control it, you can't improve it.
 * StatsD (on pacagist).
 * Graphite.
+
+####Joshua Thijssen - (Re)Discovering The SPL (Standard PHP Library)
+* lxr.php.net/xref/PHP_5_5/ext/spl/internal.
+* Interface traversable connot be implemented.
+* Use iterators!
+* Never trhow exception, always catch exception!
