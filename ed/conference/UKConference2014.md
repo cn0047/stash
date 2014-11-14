@@ -1,7 +1,6 @@
 PHP UK Conference 2014
 -
 
-Joshua Thijssen - RPMing Your Apps And Tools
 Julien - PHP Opcache Explained
 Mathias Verraes - Unbreakable Domain Models
 Michelle Sanver - 'ProTalking' Your Way into Open Source
@@ -127,3 +126,5 @@ If something really very wrong with site or it hacked - change password to serve
 * Interface traversable connot be implemented.
 * Use iterators!
 * Never trhow exception, always catch exception!
+
+####Joshua Thijssen - RPMing Your Apps And Tools
