@@ -1,7 +1,6 @@
 PHP UK Conference 2014
 -
 
-Julien - PHP Opcache Explained
 Mathias Verraes - Unbreakable Domain Models
 Michelle Sanver - 'ProTalking' Your Way into Open Source
 Morgan Tocker - My SQL 5 6 - Online Operations and Improved Diagnostics
@@ -128,3 +127,9 @@ If something really very wrong with site or it hacked - change password to serve
 * Never trhow exception, always catch exception!
 
 ####Joshua Thijssen - RPMing Your Apps And Tools
+
+####Julien - PHP Opcache Explained
+* How does PHP wokr:
+  * Parsing
+  * Compiling
+  * Executing
