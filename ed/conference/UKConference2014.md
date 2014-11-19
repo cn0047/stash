@@ -1,7 +1,6 @@
 PHP UK Conference 2014
 -
 
-Mathias Verraes - Unbreakable Domain Models
 Michelle Sanver - 'ProTalking' Your Way into Open Source
 Morgan Tocker - My SQL 5 6 - Online Operations and Improved Diagnostics
 Nate Abele - Weild AngularJS Like A Pro
@@ -133,3 +132,6 @@ If something really very wrong with site or it hacked - change password to serve
   * Parsing
   * Compiling
   * Executing
+
+####Mathias Verraes - Unbreakable Domain Models
+* DDD.
