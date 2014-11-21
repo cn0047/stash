@@ -1,7 +1,6 @@
 PHP UK Conference 2014
 -
 
-Michelle Sanver - 'ProTalking' Your Way into Open Source
 Morgan Tocker - My SQL 5 6 - Online Operations and Improved Diagnostics
 Nate Abele - Weild AngularJS Like A Pro
 Ole Michaelis - Service Oriented Architecture for Robust & Scalable Systems
@@ -135,3 +134,17 @@ If something really very wrong with site or it hacked - change password to serve
 
 ####Mathias Verraes - Unbreakable Domain Models
 * DDD.
+
+####Michelle Sanver - 'ProTalking' Your Way into Open Source
+* GitHub workflow:
+  * Clone repe.
+  * Read contribute file.
+  * Read README.
+  * Look test.
+  * Communicate before your code!
+  * Pick an issue.
+  * Make changes, and push it.
+  * Pull request.
+  * Code review.
+  * Correct or discuss.
+  * Contribute documentation first!
