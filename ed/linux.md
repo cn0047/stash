@@ -24,6 +24,9 @@ file      - -rw-rw-r-- (664)
 
 ####shell
 ````
+dig domain
+whois ip
+
 colordiff -u file1 file2
 
 scp -rp access@host:~/dir/ ~/dir/

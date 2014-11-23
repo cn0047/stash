@@ -1,13 +1,6 @@
 PHP UK Conference 2014
 -
 
-
-Jeremy Quinton - Gathering Metrics With StatsD And Graphite
-Joshua Thijssen - (Re)Discovering The SPL
-Joshua Thijssen - RPMing Your Apps And Tools
-Julien - PHP Opcache Explained
-Mathias Verraes - Unbreakable Domain Models
-Michelle Sanver - 'ProTalking' Your Way into Open Source
 Morgan Tocker - My SQL 5 6 - Online Operations and Improved Diagnostics
 Nate Abele - Weild AngularJS Like A Pro
 Ole Michaelis - Service Oriented Architecture for Robust & Scalable Systems
@@ -119,3 +112,39 @@ If something really very wrong with site or it hacked - change password to serve
 ####Ian Barber/Mandy Waite - Building Scalable PHP Apps With Google App Engine
 * How many queries per second you have?
 * Google Cloud!
+
+####Jeremy Quinton - Gathering Metrics With StatsD And Graphite
+* Measurement is the first step that leads to control and eventually to improvement. If you can't measure something, you can't understand it. If you can't understand it, you can't control it. If you can't control it, you can't improve it.
+* StatsD (on pacagist).
+* Graphite.
+
+####Joshua Thijssen - (Re)Discovering The SPL (Standard PHP Library)
+* lxr.php.net/xref/PHP_5_5/ext/spl/internal.
+* Interface traversable connot be implemented.
+* Use iterators!
+* Never trhow exception, always catch exception!
+
+####Joshua Thijssen - RPMing Your Apps And Tools
+
+####Julien - PHP Opcache Explained
+* How does PHP wokr:
+  * Parsing
+  * Compiling
+  * Executing
+
+####Mathias Verraes - Unbreakable Domain Models
+* DDD.
+
+####Michelle Sanver - 'ProTalking' Your Way into Open Source
+* GitHub workflow:
+  * Clone repe.
+  * Read contribute file.
+  * Read README.
+  * Look test.
+  * Communicate before your code!
+  * Pick an issue.
+  * Make changes, and push it.
+  * Pull request.
+  * Code review.
+  * Correct or discuss.
+  * Contribute documentation first!
