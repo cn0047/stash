@@ -2,8 +2,6 @@ php
 -
 *PHP 5.1.6*
 
-http://php.net/manual/en/appendices.php
-
 url
 ````
     ? %3F
@@ -161,3 +159,44 @@ property_exists($class, $property);
 
 tempnam($dir, $prefix);
 ````
+
+http://php.net/manual/en/appendices.php
+
+####PHP 5.6.x
+* Constant scalar expressions.
+* Variadic functions via ...
+* Argument unpacking via ...
+* Exponentiation via **
+* Use function and use const.
+* Phpdbg.
+* Default character encoding.
+* Files larger than 2 gigabytes in size are now accepted.
+
+####PHP 5.5.x
+* Generators.
+* Try-catch blocks now support a finally.
+* New password hashing API.
+* Foreach now supports list().
+* Empty() supports arbitrary expressions.
+* Array and string literal dereferencing.
+* Class name resolution via ::class (ClassName::class).
+* OPcache extension added.
+
+####PHP 5.4.x
+* Traits.
+* Short array syntax.
+* Function array dereferencing has been added (foo()[0]).
+* Closures now support $this.
+* Class member access on instantiation has been added ((new Foo)->bar()).
+* Binary number format.
+
+####PHP 5.3.x
+* Namespaces.
+* Late Static Bindings.
+* Native Closures.
+* Nowdoc syntax is now supported, similar to Heredoc syntax, but with single quotes.
+* Constants can now be declared outside a class using the const keyword.
+
+####PHP 5.2.x
+
+####PHP 5.1.x
