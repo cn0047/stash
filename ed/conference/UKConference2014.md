@@ -1,7 +1,6 @@
 PHP UK Conference 2014
 -
 
-Morgan Tocker - My SQL 5 6 - Online Operations and Improved Diagnostics
 Nate Abele - Weild AngularJS Like A Pro
 Ole Michaelis - Service Oriented Architecture for Robust & Scalable Systems
 Ricard Clau - Scaling with Symfony2
@@ -148,3 +147,8 @@ If something really very wrong with site or it hacked - change password to serve
   * Code review.
   * Correct or discuss.
   * Contribute documentation first!
+
+####Morgan Tocker - My SQL 5 6 - Online Operations and Improved Diagnostics
+* At 5.6 deleting index don't block read write.
+* Explain UPDATE/DELETE statements.
+* index usage statistics.
