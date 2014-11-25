@@ -85,7 +85,8 @@ mysqldump -h hostname -u user --skip-triggers --single-transaction --complete-in
 -- mysql -hHost -uUser -pPass base ~ table
 -- mysql -h Host -D Base -e "select * from table where id in (1,2);" | gzip | pv | uuencode result.csv.gz | mail mail@com.com -s "query result"
 -- zcat table.gz | host -uUser -pPass base
-zcat DUMP_dataBaseName.sql.gz | mysql
+-- zcat DUMP_dataBaseName.sql.gz | mysql
+mysql -hHost -uUser -pPass -DBase < dumpFile.sql
 ````
 
 ####Flashback
