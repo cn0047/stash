@@ -2,7 +2,6 @@ PHP UK Conference 2014
 -
 
 Nate Abele - Weild AngularJS Like A Pro
-Ole Michaelis - Service Oriented Architecture for Robust & Scalable Systems
 Ricard Clau - Scaling with Symfony2
 Rowan Merewood - Algorithm, Review, Sorting
 Stuart Herbert - PHP at the Firehose Scale
@@ -152,3 +151,9 @@ If something really very wrong with site or it hacked - change password to serve
 * At 5.6 deleting index don't block read write.
 * Explain UPDATE/DELETE statements.
 * index usage statistics.
+
+####Ole Michaelis - Service Oriented Architecture for Robust & Scalable Systems
+* Unimplement feature takes more time than implement.
+* Timeouts!
+* When everyone can decide - everyone make decision!
+* HTTP!
