@@ -2,7 +2,6 @@ PHP UK Conference 2014
 -
 
 Nate Abele - Weild AngularJS Like A Pro
-Ricard Clau - Scaling with Symfony2
 Rowan Merewood - Algorithm, Review, Sorting
 Stuart Herbert - PHP at the Firehose Scale
 
@@ -157,3 +156,5 @@ If something really very wrong with site or it hacked - change password to serve
 * Timeouts!
 * When everyone can decide - everyone make decision!
 * HTTP!
+
+####Ricard Clau - Scaling with Symfony2
