@@ -185,9 +185,9 @@ http://php.net/manual/en/appendices.php
 ####PHP 5.4.x
 * Traits.
 * Short array syntax.
-* Function array dereferencing has been added (foo()[0]).
-* Closures now support $this.
-* Class member access on instantiation has been added ((new Foo)->bar()).
+* Function array dereferencing has been added. `foo()[0]`
+* Closures now support `$this`.
+* Class member access on instantiation has been added. `(new Foo)->bar()`
 * Binary number format.
 
 ####PHP 5.3.x
