@@ -16,7 +16,7 @@ E>F         // element F that child of E
 E+F         // all F before that is present E
 E~F         // all F below E
 :only-child // single child el
-:eg(n)      // el with index n
+:eq(n)      // el with index n
 :gt(n)      // el after n el
 :lt(n)      // el before n el
 :last
