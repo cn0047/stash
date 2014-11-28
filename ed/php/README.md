@@ -179,7 +179,7 @@ http://php.net/manual/en/appendices.php
 * Foreach now supports list().
 * Empty() supports arbitrary expressions.
 * Array and string literal dereferencing.
-* Class name resolution via ::class. ````php ClassName::class````
+* Class name resolution via ::class. `ClassName::class`
 * OPcache extension added.
 
 ####PHP 5.4.x
