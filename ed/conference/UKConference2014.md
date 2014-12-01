@@ -2,7 +2,6 @@ PHP UK Conference 2014
 -
 
 Nate Abele - Weild AngularJS Like A Pro
-Rowan Merewood - Algorithm, Review, Sorting
 Stuart Herbert - PHP at the Firehose Scale
 
 
@@ -158,3 +157,14 @@ If something really very wrong with site or it hacked - change password to serve
 * HTTP!
 
 ####Ricard Clau - Scaling with Symfony2
+
+####Rowan Merewood - Algorithm, Review, Sorting
+* Insert sort (optimised in 1959).
+* Bubble sort (optimised in 1980).
+* Quick sort (developed in 1960).
+* Heap data structure?
+* Heap sort (improved in the '60s).
+* Searching sort:
+  * Sequential search.
+  * Binary search.
+* Merge sort.
