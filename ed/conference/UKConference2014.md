@@ -2,7 +2,6 @@ PHP UK Conference 2014
 -
 
 Nate Abele - Weild AngularJS Like A Pro
-Stuart Herbert - PHP at the Firehose Scale
 
 
 
@@ -168,3 +167,7 @@ If something really very wrong with site or it hacked - change password to serve
   * Sequential search.
   * Binary search.
 * Merge sort.
+
+####Stuart Herbert - PHP at the Firehose Scale
+* How much your traffic is bots???
+* Most famous website scraper GOOGLE!
