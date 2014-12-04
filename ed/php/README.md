@@ -18,6 +18,8 @@ http://www.phpdeveloper.org/
 
 `<![CDATA[]]>`
 
+php -S localhost:8000 index.php
+
 **phpCs** `phpcs -sw --standard=PSR2 file.php`
 
 **phpDoc** `phpdoc run -d . -t doc`
