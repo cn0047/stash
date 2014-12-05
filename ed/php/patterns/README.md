@@ -5,7 +5,6 @@ Patterns
 3. Behaviour.
 
 ####Interpreter
-####Iterator
 ####Mediator
 ####Memento
 ####Observer
