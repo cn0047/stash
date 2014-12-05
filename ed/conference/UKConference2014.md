@@ -1,10 +1,6 @@
 PHP UK Conference 2014
 -
 
-Nate Abele - Weild AngularJS Like A Pro
-
-
-
 ####Morgan Tocker - Locking And Concurrency Control
 * When write to two tables (create relation records) wrap it by transaction.
 
@@ -171,3 +167,7 @@ If something really very wrong with site or it hacked - change password to serve
 ####Stuart Herbert - PHP at the Firehose Scale
 * How much your traffic is bots???
 * Most famous website scraper GOOGLE!
+
+####Nate Abele - Weild AngularJS Like A Pro
+* Front-end must return: html, css, js.
+* Back-end must return: json.
