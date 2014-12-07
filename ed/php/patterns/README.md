@@ -11,7 +11,6 @@ Patterns
 ####State
 ####Strategy
 ####Template method
-####Visitor
 
 4.
 ####Dependency injection
