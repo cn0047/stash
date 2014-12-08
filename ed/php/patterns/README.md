@@ -7,7 +7,6 @@ Patterns
 ####Interpreter
 ####Mediator
 ####Memento
-####Observer
 ####State
 ####Strategy
 ####Template method
