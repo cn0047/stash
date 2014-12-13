@@ -4,11 +4,7 @@ Patterns
 2. Structural.
 3. Behaviour.
 
-####Interpreter
 ####Mediator
 ####Memento
 ####Strategy
 ####Template method
-
-4.
-####Dependency injection
