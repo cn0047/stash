@@ -4,7 +4,6 @@ Patterns
 2. Structural.
 3. Behaviour.
 
-####Mediator
 ####Memento
 ####Strategy
 ####Template method
