@@ -5,5 +5,4 @@ Patterns
 3. Behaviour.
 
 ####Memento
-####Strategy
 ####Template method
