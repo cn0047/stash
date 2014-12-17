@@ -4,5 +4,4 @@ Patterns
 2. Structural.
 3. Behaviour.
 
-####Memento
 ####Template method
