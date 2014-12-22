@@ -290,6 +290,10 @@ db.books.aggregate([{ $group : { _id : "$author", books: { $push: "$title" } } }
 // $and
 db.inventory.aggregate([{$project: {item: 1, qty: 1, result: {$and: [{$gt: ["$qty", 100 ]}, {$lt: ["$qty", 250]}]}}}])
 
+#### Set Operators (Aggregation)
+// $allElementsTrue
+// { $allElementsTrue: [ [ true, 1, "someString" ] ] } // true
+
 
 
 
@@ -518,4 +522,4 @@ mongodump --host mongodb1.example.net --port 3017 --username user --password pas
 mongorestore --host mongodb1.example.net --port 3017 --username user --password pass /opt/backup/mongodump-2013-10-24/
 ````
 
-[>>>](http://docs.mongodb.org/manual/reference/operator/aggregation/or/)
+[>>>](http://docs.mongodb.org/manual/reference/operator/aggregation/anyElementTrue/)
