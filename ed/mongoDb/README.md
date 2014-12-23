@@ -292,7 +292,19 @@ db.inventory.aggregate([{$project: {item: 1, qty: 1, result: {$and: [{$gt: ["$qt
 
 #### Set Operators (Aggregation)
 // $allElementsTrue
-// { $allElementsTrue: [ [ true, 1, "someString" ] ] } // true
+{ $allElementsTrue: [ [ true, 1, "someString" ] ] } // true
+// $anyElementTrue
+{ $anyElementTrue: [ [ true, false ] ] } // true
+{ $anyElementTrue: [ [ ] ] } // false
+// $setDifference
+{ $setDifference: [ [ "a", "b", "a" ], [ "b", "a" ] ] } // [ ]
+// $setEquals
+{ $setEquals: [ [ "a", "b", "a" ], [ "b", "a" ] ] } // true
+// $setIntersection
+{ $setIntersection: [ [ "a", "b", "a" ], [ "b", "a" ] ] } // [ "b", "a" ]
+// $setIsSubset
+{ $setIsSubset: [ [ "a", "b", "a" ], [ "b", "a" ] ] } // true
+
 
 
 
@@ -522,4 +534,4 @@ mongodump --host mongodb1.example.net --port 3017 --username user --password pas
 mongorestore --host mongodb1.example.net --port 3017 --username user --password pass /opt/backup/mongodump-2013-10-24/
 ````
 
-[>>>](http://docs.mongodb.org/manual/reference/operator/aggregation/anyElementTrue/)
+[>>>](http://docs.mongodb.org/manual/reference/operator/aggregation/setUnion/)
