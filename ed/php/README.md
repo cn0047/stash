@@ -124,6 +124,9 @@ php_sapi_name() == 'cli' ? print("\n$error\n") : pr($error);
 ````php
 <?php
 
+$foo = '5bar';
+settype($foo, 'integer'); // $foo is now 5 (integer)
+
 $_SERVER['HTTP_ACCEPT_LANGUAGE'];
 
 $PHP_SELF;
