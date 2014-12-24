@@ -4,13 +4,15 @@ MySql
 *5.1.72-rel14.10*
 
 ````sql
-ALTER TABLE table ADD field INTEGER(1) NOT NULL;
-ALTER TABLE table ADD UNIQUE KEY (field);
-ALTER TABLE table MODIFY field VARCHAR(7) NOT NULL DEFAULT '';
-ALTER TABLE table CHANGE field field VARCHAR(7) NOT NULL DEFAULT ''; -- rename column
-ALTER TABLE table DROP COLUMN field;
-ALTER TABLE table DROP FOREIGN KEY key;
-ALTER TABLE table DROP KEY key;
+ALTER  TABLE table ADD field INTEGER(1) NOT NULL;
+ALTER  TABLE table ADD UNIQUE KEY (field);
+ALTER  TABLE table MODIFY field VARCHAR(7) NOT NULL DEFAULT '';
+ALTER  TABLE table CHANGE field field VARCHAR(7) NOT NULL DEFAULT ''; -- rename column
+ALTER  TABLE table DROP COLUMN field;
+ALTER  TABLE table DROP FOREIGN KEY key;
+ALTER  TABLE table DROP KEY key;
+CREATE TABLE table LIKE talbeLike; INSERT INTO table SELECT * FROM talbeLike;
+RENAME TABLE table TO tableNewName;
 CREATE INDEX indexName ON table (column);
 DROP   INDEX indexName ON table;
 
