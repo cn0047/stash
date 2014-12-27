@@ -280,17 +280,20 @@ db.switches.update({ _id: 2 }, { $bit: { expdata: { or: NumberInt(5) } } } )
 db.switches.update({ _id: 3 }, { $bit: { expdata: { xor: NumberInt(5) } } } )
 // $isolated
 db.foo.update({ status : "A" , $isolated : 1 }, { $inc : { count : 1 } }, { multi: true } )
+````
 
 #### Aggregation Pipeline Operators
 ````js
 // $geoNear
-//
+// ...
 // $out
 db.books.aggregate([{ $group : { _id : "$author", books: { $push: "$title" } } }, { $out : "authors" }])
 // $and
 db.inventory.aggregate([{$project: {item: 1, qty: 1, result: {$and: [{$gt: ["$qty", 100 ]}, {$lt: ["$qty", 250]}]}}}])
+````
 
 #### Set Operators (Aggregation)
+````js
 // $allElementsTrue
 { $allElementsTrue: [ [ true, 1, "someString" ] ] } // true
 // $anyElementTrue
@@ -304,17 +307,30 @@ db.inventory.aggregate([{$project: {item: 1, qty: 1, result: {$and: [{$gt: ["$qt
 { $setIntersection: [ [ "a", "b", "a" ], [ "b", "a" ] ] } // [ "b", "a" ]
 // $setIsSubset
 { $setIsSubset: [ [ "a", "b", "a" ], [ "b", "a" ] ] } // true
-
-
-
-
-
-
-
-
-````js
-
+// $setUnion
+{ $setUnion: [ [ "a", "b", "a" ], [ "b", "a" ] ] } // [ "b", "a" ]
 ````
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[>>>](http://docs.mongodb.org/manual/reference/operator/aggregation-comparison/)
+
+
+
+
+
+
 [Geospatial Query Operators](http://docs.mongodb.org/manual/reference/operator/query-geospatial/#geospatial-query-operators)
 
 [MongoDB CRUD Reference](http://docs.mongodb.org/manual/reference/crud/#mongodb-crud-reference)
@@ -533,5 +549,3 @@ Result:
 mongodump --host mongodb1.example.net --port 3017 --username user --password pass --out /opt/backup/mongodump-2013-10-24
 mongorestore --host mongodb1.example.net --port 3017 --username user --password pass /opt/backup/mongodump-2013-10-24/
 ````
-
-[>>>](http://docs.mongodb.org/manual/reference/operator/aggregation/setUnion/)
