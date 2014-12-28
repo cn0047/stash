@@ -311,6 +311,60 @@ db.inventory.aggregate([{$project: {item: 1, qty: 1, result: {$and: [{$gt: ["$qt
 { $setUnion: [ [ "a", "b", "a" ], [ "b", "a" ] ] } // [ "b", "a" ]
 ````
 
+####[Comparison Aggregation Operators](http://docs.mongodb.org/manual/reference/operator/aggregation-comparison/)
+````js
+$cmp
+$eq
+$gt
+$gte
+$lt
+$lte
+$ne
+````
+
+####[Arithmetic Aggregation Operators](http://docs.mongodb.org/manual/reference/operator/aggregation-arithmetic/)
+````js
+$add
+$divide
+$mod
+$multiply
+$subtract
+````
+
+####[String Aggregation Operators](http://docs.mongodb.org/manual/reference/operator/aggregation-string/)
+````js
+$concat
+$strcasecmp
+$substr
+$toLower
+$toUpper
+````
+
+####[Text Search Aggregation Operators](http://docs.mongodb.org/manual/reference/operator/aggregation-text-search/)
+````js
+$meta
+````
+
+####[Array Aggregation Operators](http://docs.mongodb.org/manual/reference/operator/aggregation-array/)
+````js
+$size
+````
+
+####[Aggregation Variable Operators](http://docs.mongodb.org/manual/reference/operator/aggregation-projection/)
+````js
+$let
+$map
+````
+
+####[Aggregation Literal Operators](http://docs.mongodb.org/manual/reference/operator/aggregation-literal/)
+````js
+$literal // does not evaluate the expression
+````
+
+####[Date Aggregation Operators](http://docs.mongodb.org/manual/reference/operator/aggregation-date/)
+````js
+
+````
 
 
 
@@ -319,12 +373,7 @@ db.inventory.aggregate([{$project: {item: 1, qty: 1, result: {$and: [{$gt: ["$qt
 
 
 
-
-
-
-
-
-[>>>](http://docs.mongodb.org/manual/reference/operator/aggregation-comparison/)
+[>>>](http://docs.mongodb.org/manual/reference/operator/aggregation-date/)
 
 
 
