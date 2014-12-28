@@ -363,7 +363,27 @@ $literal // does not evaluate the expression
 
 ####[Date Aggregation Operators](http://docs.mongodb.org/manual/reference/operator/aggregation-date/)
 ````js
+$dayOfMonth
+$dayOfWeek
+$dayOfYear
+$hour
+$millisecond // between 0 and 999
+$minute
+$month
+$second
+$week
+$year
+````
 
+####[Conditional Aggregation Operators](http://docs.mongodb.org/manual/reference/operator/aggregation-conditional/)
+````js
+$cond // $cond: { if: { $gte: [ "$qty", 250 ] }, then: 30, else: 20 }
+$ifNull
+````
+
+####[Group Accumulator Operators¶](http://docs.mongodb.org/manual/reference/operator/aggregation-group/)
+````js
+$addToSet
 ````
 
 
@@ -373,7 +393,7 @@ $literal // does not evaluate the expression
 
 
 
-[>>>](http://docs.mongodb.org/manual/reference/operator/aggregation-date/)
+[>>>](http://docs.mongodb.org/manual/reference/operator/aggregation/addToSet/#grp._S_addToSet)
 
 
 
