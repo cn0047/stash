@@ -384,6 +384,7 @@ $ifNull
 ####[Group Accumulator Operators¶](http://docs.mongodb.org/manual/reference/operator/aggregation-group/)
 ````js
 $addToSet
+$avg
 ````
 
 
@@ -393,7 +394,7 @@ $addToSet
 
 
 
-[>>>](http://docs.mongodb.org/manual/reference/operator/aggregation/addToSet/#grp._S_addToSet)
+[>>>](http://docs.mongodb.org/manual/reference/operator/aggregation/first/)
 
 
 
