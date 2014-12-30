@@ -381,25 +381,38 @@ $cond // $cond: { if: { $gte: [ "$qty", 250 ] }, then: 30, else: 20 }
 $ifNull
 ````
 
-####[Group Accumulator Operators¶](http://docs.mongodb.org/manual/reference/operator/aggregation-group/)
+####[Group Accumulator Operators](http://docs.mongodb.org/manual/reference/operator/aggregation-group/)
 ````js
 $addToSet
 $avg
+$first
+$last
+$max
+$min
+$push
+$sum
 ````
 
+####[Query Modifiers](http://docs.mongodb.org/manual/reference/operator/query-modifier/)
+````js
+$comment
+$explain
+$hint
+$maxScan
+$maxTimeMS
+$max
+$min
+$orderby
+$query
+$returnKey
+$showDiskLoc
+$snapshot
+$natural
+````
 
+####[Database Commands](http://docs.mongodb.org/manual/reference/command/)!!!
 
-
-
-
-
-
-[>>>](http://docs.mongodb.org/manual/reference/operator/aggregation/first/)
-
-
-
-
-
+####[mongo Shell Methods](http://docs.mongodb.org/manual/reference/method/)!!!
 
 [Geospatial Query Operators](http://docs.mongodb.org/manual/reference/operator/query-geospatial/#geospatial-query-operators)
 
