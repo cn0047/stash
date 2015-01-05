@@ -143,3 +143,6 @@ user@ubuntu:~$ mysql --pager='less -S'
 
 mysql> pager less -SFX
 ````
+
+####MySQL 5.1
+http://dev.mysql.com/doc/refman/5.0/en/mysql-nutshell.html
