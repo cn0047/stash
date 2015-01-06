@@ -144,5 +144,33 @@ user@ubuntu:~$ mysql --pager='less -S'
 mysql> pager less -SFX
 ````
 
+####MySQL 5.5
+http://dev.mysql.com/doc/refman/5.5/en/mysql-nutshell.html
+
 ####MySQL 5.1
-http://dev.mysql.com/doc/refman/5.0/en/mysql-nutshell.html
+* Partitioning.
+* Row-based replication.
+* Plugin API.
+* Event scheduler.
+* Server log tables.
+* Upgrade program.
+* MySQL Cluster.
+* Backup of tablespaces.
+* Improvements to INFORMATION_SCHEMA.
+* XML functions with XPath support.
+* Load emulator ([mysqlslap](http://dev.mysql.com/doc/refman/5.1/en/mysqlslap.html) program).
+
+####MySQL 5.0
+* Information Schema.
+* Instance Manager.
+* Precision Math.
+* Storage Engines.
+* Stored Routines.
+* Triggers.
+* Views.
+* Cursors.
+* Strict Mode and Standard Error Handling.
+* VARCHAR Data Type.
+* BIT Data Type.
+* Optimizer enhancements.
+* XA Transactions.
