@@ -168,6 +168,23 @@ property_exists($class, $property);
 tempnam($dir, $prefix);
 ````
 
+####Data Types
+* Scalar types:
+    * Boolean.
+    * Integer.
+    * Float (floating-point number, aka double).
+    * String.
+* Compound types:
+    * Array.
+    * Object.
+* Special types:
+    * Resource.
+    * NULL.
+* Pseudo-types:
+    * Mixed.
+    * Number.
+    * Callback (aka callable).
+
 http://php.net/manual/en/appendices.php
 
 ####PHP 5.6.x

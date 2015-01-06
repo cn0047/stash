@@ -168,3 +168,33 @@ window.document == self == parent == top
 window.defaultStatus = 'status bar string';
 window.onerror = function (msg, url, line) {}
 ````
+
+####Data Types
+* Primitives:
+    * String.
+    * Number.
+    * Boolean.
+    * Symbol (new in ECMAScript 6).
+* Object:
+    * Object.
+    * Array.
+* Special:
+    * Null.
+    * Undefined.
+
+````js
+a = 1;               typeof a; // "number"
+a = 1.1;             typeof a; // "number"
+a = '1';             typeof a; // "string"
+a = true;            typeof a; // "boolean"
+a = {};              typeof a; // "object"
+a = [];              typeof a; // "object" But: a instanceof Array; // true
+a = new Array(1, 2); typeof a; // "object"
+a = null;            typeof a; // "object" And: a instanceof null; //  Uncaught TypeError: Expecting a function in instanceof check, but got null
+a = undefined;       typeof a; // "undefined"
+a = NaN;             typeof a; // "number"
+a = function () {};  typeof a; // "function"
+a = /.*/;            typeof a; // "object" But: a instanceof RegExp; // true
+a = new RegExp();    typeof a; // "object"
+a = new Date();      typeof a; // "object"
+````

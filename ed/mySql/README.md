@@ -74,8 +74,6 @@ INET_NTOA(i)
 UUID()
 ````
 
-[Integer Types](http://dev.mysql.com/doc/refman/5.0/en/integer-types.html)
-
 ####mySqlDump
 ````
 mysqldump -h hostname -u user --skip-triggers --single-transaction --complete-insert --extended-insert --quote-names --disable-keys dataBaseName | gzip -с > DUMP_dataBaseName.sql.gz
@@ -146,7 +144,7 @@ mysql> pager less -SFX
 
 ####[Data Types](http://dev.mysql.com/doc/refman/5.0/en/data-types.html)
 * Numeric Types:
-    * Integer:
+    * [Integer](http://dev.mysql.com/doc/refman/5.0/en/integer-types.html):
         * Tinyint (Bytes 1).
         * Smallint (Bytes 2).
         * Mediumint (Bytes 3).
