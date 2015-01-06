@@ -144,6 +144,57 @@ user@ubuntu:~$ mysql --pager='less -S'
 mysql> pager less -SFX
 ````
 
+####[Data Types](http://dev.mysql.com/doc/refman/5.0/en/data-types.html)
+* Numeric Types:
+    * Integer:
+        * Tinyint (Bytes 1).
+        * Smallint (Bytes 2).
+        * Mediumint (Bytes 3).
+        * Int (Bytes 4).
+        * Bigint (Bytes 8).
+    * Fixed-Point:
+        * Decimal.
+        * Numeric.
+    * Floating-Point:
+        * Float (A precision from 0 to 23 results in a 4-byte single-precision FLOAT column.),
+        * Double (A precision from 24 to 53 results in an 8-byte double-precision DOUBLE column.),
+    * Bit-Value:
+        * Bit.
+* Date and Time Types:
+    * Date (The supported range is '1000-01-01' to '9999-12-31'.).
+    * Datetime (The supported range is '1000-01-01 00:00:00' to '9999-12-31 23:59:59'.).
+    * Timestamp (Has a range of '1970-01-01 00:00:01' UTC to '2038-01-19 03:14:07' UTC.).
+    * Time (Range from '-838:59:59' to '838:59:59'.).
+    * Year (Range of 1901 to 2155, or 0000.).
+    * YEAR(2) (Range of 1901 to 2155, and 0000) (Display only the last two digits, omit the century digits).
+    * YEAR(4) (Range of 1901 to 2155, and 0000).
+* String Types:
+    * Char.
+    * Varchar.
+    * Binary.
+    * Varbinary.
+    * Blob:
+        * Tinyblob (2^8-1 bytes).
+        * Blob (2^16-1 bytes).
+        * Mediumblob (2^24-1 bytes).
+        * Longblob (2^32-1 bytes).
+    * Text:
+        * Tinytext (255 bytes).
+        * Text (65535 bytes).
+        * Mediumtext (16 777 215 bytes).
+        * Longtext (4 294 967 295 bytes).
+    * Enum.
+    * Set (Is a string object that can have zero or more values).
+* Spatial Data Types:
+    * Geometry.
+    * Point.
+    * Linestring.
+    * Polygon.
+    * Multipoint.
+    * Multilinestring.
+    * Multipolygon.
+    * Geometrycollection.
+
 ####MySQL 5.5
 http://dev.mysql.com/doc/refman/5.5/en/mysql-nutshell.html
 
