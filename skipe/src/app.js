@@ -53,7 +53,12 @@ app.configure(function () {
     app.use(express.static('./public'));
     app.use(express.bodyParser());
     app.use(express.cookieParser());
-    app.use(express.session({secret: config.sessionSecret}));
+    app.use(express.session({
+        secret: config.sessionSecret,
+        // cookie: {maxAge: 3600000}
+        // maxAge:  new Date(Date.now()+3600000), // 1 Hour
+        // expires: new Date(Date.now()+3600000), // 1 Hour
+    }));
     app.use(expressValidator());
     app.use(i18n.init);
     app.set('views', './views');
