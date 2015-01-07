@@ -1,7 +1,7 @@
 {
     "name": "skipe",
     "version": "0.0.1",
-    "author": "Vladimir Kovpak <007ufins@gmail.com>",
+    "author": "Vladimir Kovpak <cn007b@gmail.com>",
     "description": "node app",
     "private": true,
     "dependencies": {
