@@ -1,4 +1,4 @@
-// nodemon ./app.js localhost 3000
+// nodemon --watch ./app.js localhost 3000
 
 /**
  * @todo Move available locales to front.
@@ -40,6 +40,7 @@ global.validator = {
         sname: /^[\w\s\_\-\=\+@]+$/,
     }
 };
+global.demoUser = config.demoUser;
 i18n.configure({
     cookie        : 'locale',
     locales       : global.availableLocales,

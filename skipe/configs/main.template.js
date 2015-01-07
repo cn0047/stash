@@ -13,4 +13,9 @@ exports.config = {
     },
     sessionSecret: '',
     defaultLocale: '',
+    demoUser: {
+        type: '',
+        token: '',
+        pass: '',
+    },
 };

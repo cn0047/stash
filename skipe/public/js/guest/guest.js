@@ -12,10 +12,10 @@ define(['text!/js/guest/t/guest.layout.tpl.html'], function (t) {
             view_guest_home: '/js/guest/v/home.js',
         },
         initialize: function () {
-            app.views.app.on('renderLayouts', this.render, this);
+            app.views.app.on('renderLayouts', this.renderLayouts, this);
         },
-        render: function () {
-            this.$('#head').html(_.template(this.tpl));
+        renderLayouts: function () {
+            this.$('.head').html(_.template(this.tpl));
         },
         clickNav: function (e) {
             this.$('.navbar-nav li').removeClass('active');

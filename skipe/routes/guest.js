@@ -1,6 +1,11 @@
 var actions = {
+    GET: {},
     POST: {},
 };
+
+actions.GET.getDefaultLogIn = function (req, res) {
+    res.json(global.demoUser);
+}
 
 actions.POST.registration = function (req, res) {
     req.checkBody('email', res.__('invalidEmail')).isEmail();

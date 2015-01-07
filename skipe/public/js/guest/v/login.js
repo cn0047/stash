@@ -3,6 +3,7 @@ define(['/js/guest/m/login.js', 'text!/js/guest/t/login.tpl.html'], function (m,
         tpl: t,
         model: new m(),
         events:{
+            'click #btnLogInDefault': 'btnLogInDefault',
             'click #btnLogIn': 'logIn',
             'click #btnFPass': 'fPass',
             'click #btnSubmitFPass': 'submitFPass',
@@ -26,10 +27,11 @@ define(['/js/guest/m/login.js', 'text!/js/guest/t/login.tpl.html'], function (m,
             }
         },
         initialize: function () {
+            this.model.on('afterGetDefaultLogIn', this.afterGetDefaultLogIn, this);
             this.model.on('afterLogIn', this.afterLogIn, this);
             this.model.on('afterFPass', this.afterFPass, this);
         },
-        goTo: function () {
+        go: function () {
             this.renderIf();
             var matches = (document.cookie).match(/guestLoginType=(email|sname)/);
             if (matches) {
@@ -65,6 +67,22 @@ define(['/js/guest/m/login.js', 'text!/js/guest/t/login.tpl.html'], function (m,
             } else {
                 this.showErrors(this.model.validationError);
             }
+        },
+        btnLogInDefault: function () {
+            app.views.app.showLoading();
+            this.model.hash = 'getDefaultLogIn';
+            this.model.fetch({
+                success: function (m, r) {
+                    m.trigger('afterGetDefaultLogIn', r);
+                }
+            });
+        },
+        afterGetDefaultLogIn: function (args) {
+            this.$('input[name=type][value='+args.type+']').click();
+            this.$('#token').val(args.token);
+            this.$('#pass').val(args.pass);
+            this.$('#btnLogIn').click();
+            app.views.app.hideLoading();
         },
         logIn: function () {
             this.fulfillAction('logIn', 'afterLogIn');

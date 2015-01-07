@@ -24,29 +24,33 @@ window.app = {
 };
 
 app.init.routers.app = Backbone.Router.extend({
+    // Each controller (view) have own routes.
     routes: {
-        '*other': 'goTo',
+        '*other': 'go',
     },
-    goTo: function (route) {
+    /**
+     * Determines scope (guest, account) and pass event to it.
+     */
+    go: function (route) {
         this.route = route;
         this.scope = 'guest';
         if (/^\/account/.test(window.location.pathname)) {
             this.scope = 'account';
         }
         if (_.isEmpty(app.views[this.scope])) {
-            require(['view_'+this.scope+'_index'], app.routers.app.go);
+            require(['view_'+this.scope+'_index'], app.routers.app.goTo);
         } else {
-            this.go();
+            this.goTo();
         }
     },
-    go: function (v) {
+    goTo: function (v) {
         scope = app.routers.app.scope;
         route = app.routers.app.route;
         if (_.isEmpty(app.views[scope])) {
             app.views[scope] = new v();
             app.views.app.trigger('renderLayouts');
         }
-        app.views[scope].goTo(route);
+        app.views[scope].go(route);
     },
 });
 
@@ -93,7 +97,7 @@ app.init.views.app = Backbone.View.extend({
         this.loadNls(function () {
             app.cache = {};
             app.views.app.trigger('renderLayouts');
-            app.routers.app.goTo(Backbone.history.fragment);
+            app.routers.app.go(Backbone.history.fragment);
         });
     },
     showLoading: function () {

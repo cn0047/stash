@@ -8,7 +8,7 @@ define(['/js/guest/m/registration.js', 'text!/js/guest/t/registration.tpl.html']
         initialize: function () {
             this.model.on('afterSave', this.afterSave, this);
         },
-        goTo: function () {
+        go: function () {
             this.renderIf();
             app.views.app.hideLoading();
         },

@@ -9,36 +9,42 @@ define([], function () {
                 this.$('#'+v.param).popover({html: true, content: msg, placement: 'top'}).popover('show');
             });
         },
-        goTo: function (route) {
+        /**
+         * Determines controller (view) and pass event to it.
+         */
+        go: function (route) {
             if (_.isEmpty(route)) {
-                this.goTo(this.defaultRoute);
+                this.go(this.defaultRoute);
                 return;
             }
             app.views.app.showLoading();
-            this.$('#content .page').hide();
+            this.$('.content .page').hide();
             this.route = route.replace('/', '_');
             var r = 'view_'+this.route;
             if (!(r in this.routes)) {
-                this.goTo(this.defaultRoute);
+                this.go(this.defaultRoute);
             }
             if (_.isEmpty(app.views[this.route])) {
-                require([this.routes[r]], app.views[app.routers.app.scope].go);
+                require([this.routes[r]], app.views[app.routers.app.scope].goTo);
             } else {
-                this.go();
+                this.goTo();
             }
         },
-        go: function (v) {
+        goTo: function (v) {
             var scope = app.routers.app.scope;
             var route = app.views[scope].route;
-            if (app.views[scope].$el.find('#content #'+route).length == 0) {
-                app.views[scope].$el.find('#content').append('<div class="page" id="'+route+'"></div>');
+            if (app.views[scope].$el.find('.content #'+route).length == 0) {
+                app.views[scope].$el.find('.content').append('<div class="page" id="'+route+'"></div>');
             }
             if (_.isEmpty(app.views[route])) {
-                app.views[route] = new v({el: '#doc #'+scope+' #content #'+route});
+                app.views[route] = new v({el: '#doc #'+scope+' .content #'+route});
             }
-            this.$('#content #'+route).show();
-            app.views[route].goTo();
+            this.$('.content #'+route).show();
+            app.views[route].go();
         },
+        /**
+         * Primitive realization of cache.
+         */
         renderIf: function () {
             var r = app.views[app.routers.app.scope].route;
             if (_.isEmpty(app.cache[r])) {

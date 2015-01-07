@@ -1,6 +1,7 @@
 define(['text!/js/account/t/account.layout.tpl.html'], function (t) {
     return  Backbone.skipeView.extend({
         el: '#doc #account',
+        tpl: t,
         defaultRoute: 'account/home',
         model: new Backbone.skipeModel(),
         events:{
@@ -10,21 +11,19 @@ define(['text!/js/account/t/account.layout.tpl.html'], function (t) {
         },
         initialize: function () {
             console.log('init account...');
-            this.model.on('renderLayouts', this.renderLayouts, this);
+            app.views.app.on('renderLayouts', this.renderLayouts, this);
+            this.model.on('afterInitLayouts', this.afterInitLayouts, this);
         },
-        goTo: function () {
-            this.render();
-        },
-        render: function () {
-            this.$el.html(_.template(t));
+        renderLayouts: function () {
+            this.$el.html(_.template(this.tpl));
             this.model.hash = 'initLayouts';
             this.model.fetch({
                 success: function (m, r) {
-                    m.trigger('renderLayouts', r);
+                    m.trigger('afterInitLayouts', r);
                 }
             });
         },
-        renderLayouts: function (args) {
+        afterInitLayouts: function (args) {
             _.each(args.menu, function (v, k) {
                 var html = "<li><a href='#'>"+k+" "+app.nls[v]+"</a></li>";
                 if (v == 'divider') {
