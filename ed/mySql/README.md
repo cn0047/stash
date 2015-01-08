@@ -194,7 +194,25 @@ mysql> pager less -SFX
     * Geometrycollection.
 
 ####MySQL 5.7
-http://dev.mysql.com/doc/refman/5.7/en/mysql-nutshell.html
+* Security improvements.
+* SQL mode changes.
+* Online ALTER TABLE (RENAME INDEX).
+* InnoDB enhancements.
+* Condition handling.
+* Optimizer.
+* Triggers (Multiple triggers are permitted.).
+* Logging.
+* Test suite.
+* mysql client.
+* Database name rewriting with mysqlbinlog.
+* HANDLER with partitioned tables.
+* Index condition pushdown support for partitioned tables.
+* WITHOUT VALIDATION support for ALTER TABLE ... EXCHANGE PARTITION.
+* Master dump thread improvements.
+* Globalization improvements.
+* Changing the replication master without STOP SLAVE.
+* Deprecated EXPLAIN EXTENDED and PARTITIONS.
+* INSERT DELAYED is no longer supported.
 
 ####MySQL 5.6
 * Security improvements.
