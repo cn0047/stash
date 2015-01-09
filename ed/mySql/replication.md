@@ -81,6 +81,22 @@ START SLAVE;
 ````
 
 ####Introducing Additional Slaves to an Existing Replication Environment
+Shut down the existing slave:
+````sql
+shell> mysqladmin shutdown
+````
+Copy the data directory from the existing slave to the new slave.
+
+####Setting the Master Configuration on the Slave
+Execute the following statement on the slave:
+````sql
+mysql> CHANGE MASTER TO
+    MASTER_HOST='master_host_name',
+    MASTER_USER='replication_user_name',
+    MASTER_PASSWORD='replication_password',
+    MASTER_LOG_FILE='recorded_log_file_name',
+    MASTER_LOG_POS=recorded_log_position;
+````
 
 
 
@@ -101,8 +117,4 @@ START SLAVE;
 
 
 
-
-
-
-
-http://dev.mysql.com/doc/refman/5.5/en/replication-howto-additionalslaves.html
+http://dev.mysql.com/doc/refman/5.5/en/replication-formats.html
