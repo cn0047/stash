@@ -2,7 +2,7 @@ define(['text!/js/guest/t/guest.layout.tpl.html'], function (t) {
     return  Backbone.skipeView.extend({
         el: '#doc #guest',
         tpl: t,
-        defaultRoute: 'guest/home',
+        defaultRoute: 'home',
         events:{
             'click .navbar a': 'clickNav',
         },

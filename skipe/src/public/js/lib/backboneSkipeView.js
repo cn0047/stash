@@ -19,7 +19,7 @@ define([], function () {
             }
             app.views.app.showLoading();
             this.$('.content .page').hide();
-            this.route = route.replace('/', '_');
+            this.route = app.routers.app.scope+'_'+route.replace('/', '_');
             var r = 'view_'+this.route;
             if (!(r in this.routes)) {
                 this.go(this.defaultRoute);

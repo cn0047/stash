@@ -2,7 +2,7 @@ define(['text!/js/account/t/account.layout.tpl.html'], function (t) {
     return  Backbone.skipeView.extend({
         el: '#doc #account',
         tpl: t,
-        defaultRoute: 'account/home',
+        defaultRoute: 'home',
         events:{
         },
         routes: {

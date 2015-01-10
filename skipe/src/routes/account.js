@@ -7,6 +7,11 @@ actions.POST.init = function (req, res) {
     res.render('app', {title: 'skipe'});
 };
 
+actions.POST.logOut = function (req, res) {
+    req.session.destroy();
+    res.json({});
+};
+
 exports.go = function (req, res) {
     if (req.session.user) {
         req.session.user = req.session.user;
@@ -17,6 +22,6 @@ exports.go = function (req, res) {
             actions.POST.init(req, res);
         }
     } else {
-        res.redirect('/#guest/login');
+        res.redirect('/#login');
     }
 };

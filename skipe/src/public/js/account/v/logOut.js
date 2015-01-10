@@ -1,7 +1,19 @@
 define([], function () {
     return  Backbone.skipeView.extend({
+        model: new Backbone.skipeModel(),
+        initialize: function () {
+            this.model.on('afterLogOut', this.afterLogOut, this);
+        },
         go: function () {
-            console.log(200);
+            this.model.hash = 'logOut';
+            this.model.save({}, {
+                success: function (m, r) {
+                    m.trigger('afterLogOut', r);
+                }
+            });
+        },
+        afterLogOut: function (r) {
+            window.location.reload();
         },
     });
 });
