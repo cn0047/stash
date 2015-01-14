@@ -30,6 +30,7 @@ $('#el:hidden')
 $('#el:not(.el)')
 $('#el:has(.el)')
 $('#el:contains(Bond)')
+$('table tr td[data-field!=""]') // Not empty data-field.
 
 .children()
 .closest()
