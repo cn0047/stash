@@ -1,6 +1,10 @@
 js
 -
 
+````js
+console.log(typeof v !== 'undefined'); // isset variable v.
+````
+
 ####Flashback
 ````js
 for (key in array) {
