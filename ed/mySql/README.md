@@ -67,6 +67,7 @@ REPLACE('vvv.site.com', 'v', 'w')
 SELECT ELT(1, 'foo', 'bar');       -- foo
 SELECT FIELD('foo', 'foo', 'bar'); -- 1
 SELECT FIND_IN_SET('b', 'a,b,cd'); -- 2
+SELECT LEAST(15,10,25);            -- 10
 
 INET_ATON(ip)
 INET_NTOA(i)
