@@ -37,6 +37,7 @@ Command vs Strategy: ?
 
 ####Architectural patterns:
 
+* Active record
 * Blackboard system
 * Event-driven architecture
 * Implicit invocation
