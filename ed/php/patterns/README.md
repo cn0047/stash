@@ -39,6 +39,7 @@ Command vs Strategy: ?
 
 * Active record
 * Blackboard system
+* Data mapper
 * Event-driven architecture
 * Implicit invocation
 * Layers
