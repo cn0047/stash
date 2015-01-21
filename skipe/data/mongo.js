@@ -30,13 +30,13 @@
 { "_id" : ObjectId("54b8c04bc0eceb8b5083c1cc"), "caption" : "M with Bond" }
 
 // Posts.
-{ "_id" : ObjectId("54b99b7dbde7d834a6ec8b40"), "chat" : ObjectId("54b8c04bc0eceb8b5083c1cc"), "user" : "M",          "date" : ISODate("2006-11-14T10:00:35Z"), "text" : "You are now agent with two zeros!" }
-{ "_id" : ObjectId("54b99b7dbde7d834a6ec8b41"), "chat" : ObjectId("54b8c04bc0eceb8b5083c1cc"), "user" : "James Bond", "date" : ISODate("2006-11-14T10:00:47Z"), "text" : "I will not fail!" }
-{ "_id" : ObjectId("54b99b7dbde7d834a6ec8b42"), "chat" : ObjectId("54b8c04bc0eceb8b5083c1cc"), "user" : "M",          "date" : ISODate("2006-11-14T10:00:53Z"), "text" : "That's the cards in your hands..." }
+{ "_id" : ObjectId("54b99b7dbde7d834a6ec8b40"), "chat" : DBRef("chat", ObjectId("54b8c04bc0eceb8b5083c1cc")), "user" : "M",          "date" : ISODate("2006-11-14T10:00:35Z"), "text" : "You are now agent with two zeros!" }
+{ "_id" : ObjectId("54b99b7dbde7d834a6ec8b41"), "chat" : DBRef("chat", ObjectId("54b8c04bc0eceb8b5083c1cc")), "user" : "James Bond", "date" : ISODate("2006-11-14T10:00:47Z"), "text" : "I will not fail!" }
+{ "_id" : ObjectId("54b99b7dbde7d834a6ec8b42"), "chat" : DBRef("chat", ObjectId("54b8c04bc0eceb8b5083c1cc")), "user" : "M",          "date" : ISODate("2006-11-14T10:00:53Z"), "text" : "That's the cards in your hands..." }
 
 // Dispatcher.
-{ "_id" : ObjectId("54b99c5cbde7d834a6ec8b43"), "chat" : ObjectId("54b8c04bc0eceb8b5083c1cc"), "user" : "M" }
-{ "_id" : ObjectId("54b99c61bde7d834a6ec8b44"), "chat" : ObjectId("54b8c04bc0eceb8b5083c1cc"), "user" : "James Bond" }
+{ "_id" : ObjectId("54bf3992ea0f73ea669c2df7"), "chat" : DBRef("chat", ObjectId("54b8c04bc0eceb8b5083c1cc")), "user" : "M" }
+{ "_id" : ObjectId("54bf3996ea0f73ea669c2df8"), "chat" : DBRef("chat", ObjectId("54b8c04bc0eceb8b5083c1cc")), "user" : "James Bond" }
 
 
 
@@ -52,5 +52,5 @@ db.chat.find();
 db.post.find();
 // Dispatcher.
 db.dispatcher.find();
-//
+// Dispatcher for user.
 db.dispatcher.find({"user" : "James Bond"});
