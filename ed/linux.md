@@ -1,5 +1,9 @@
 Linux
 -
+
+screen
+which
+
 ####chmod
 ````
 -rwxrwxrwx

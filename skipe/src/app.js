@@ -13,9 +13,22 @@ var fs               = require('fs');
 
 var config           = require('./configs/main').config;
 
+var app = express();
+
 var mongoServer = new mongodb.Server(config.mongo.host, config.mongo.port, config.mongo.options);
 var mongoDB = new mongodb.Db(config.mongo.base, mongoServer);
-var app = express();
+mongoDB.open(function (err, db) {
+    if (err) {
+        console.error(err);
+    } else {
+        db.authenticate(config.mongo.user, config.mongo.pass, function(err, res) {
+            if (err) {
+                console.error(err);
+            }
+        });
+        global.mongo = db;
+    }
+});
 global.localesDirectory = './public/nls';
 global.availableLocales = [];
 fs.readdir(global.localesDirectory, function (err, files) {
@@ -23,13 +36,6 @@ fs.readdir(global.localesDirectory, function (err, files) {
     files.forEach(function (file) {
         global.availableLocales.push(file.replace('.json', ''));
     });
-});
-mongoDB.open(function (err, db) {
-    if (err) {
-        console.error(err);
-    } else {
-        global.mongo = db;
-    }
 });
 global.mail = mailer.createTransport(config.mail.type, {
     service: config.mail.service,
