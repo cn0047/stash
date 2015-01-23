@@ -1,6 +1,6 @@
 phpUnit
 -
-*3.7*
+*PHPUnit 3.7*
 
 /usr/share/php/PHPUnit
 
