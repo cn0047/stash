@@ -10,24 +10,14 @@ var mongodb          = require('mongodb');
 var mailer           = require('nodemailer');
 var i18n             = require('i18n');
 var fs               = require('fs');
-
 var config           = require('./configs/main').config;
-
 var app = express();
 
-var mongoServer = new mongodb.Server(config.mongo.host, config.mongo.port, config.mongo.options);
-var mongoDB = new mongodb.Db(config.mongo.base, mongoServer);
-mongoDB.open(function (err, db) {
+mongodb.MongoClient.connect('mongodb://'+config.mongo.user+':'+config.mongo.pass+'@'+config.mongo.host+':'+config.mongo.port+'/'+config.mongo.base, function (err, db) {
     if (err) {
         console.error(err);
-    } else {
-        db.authenticate(config.mongo.user, config.mongo.pass, function(err, res) {
-            if (err) {
-                console.error(err);
-            }
-        });
-        global.mongo = db;
     }
+    global.mongo = db;
 });
 global.localesDirectory = './public/nls';
 global.availableLocales = [];
