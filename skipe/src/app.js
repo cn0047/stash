@@ -13,7 +13,7 @@ var fs               = require('fs');
 var config           = require('./configs/main').config;
 var app = express();
 
-mongodb.MongoClient.connect('mongodb://'+config.mongo.user+':'+config.mongo.pass+'@'+config.mongo.host+':'+config.mongo.port+'/'+config.mongo.base, function (err, db) {
+mongodb.MongoClient.connect(config.mongo.url, function (err, db) {
     if (err) {
         console.error(err);
     }
@@ -44,7 +44,6 @@ i18n.configure({
     defaultLocale : config.defaultLocale,
     updateFiles   : false,
 });
-
 app.configure(function () {
     app.use(express.static('./public'));
     app.use(express.bodyParser());
@@ -60,7 +59,6 @@ app.configure(function () {
     app.set('views', './views');
     app.set('view engine', 'jade');
 });
-
 app.use(function (req, res, next) {
     next();
 });
