@@ -5,12 +5,15 @@
     "description": "node app",
     "private": true,
     "dependencies": {
-        "express": "3.x",
-        "jade": "*",
-        "express-validator": "*",
-        "mongodb": "*",
+        "bson": "*",
         "crypto": "*",
+        "express": "3.x",
+        "express-validator": "*",
+        "i18n": "*",
+        "jade": "*",
+        "mongodb": "*",
         "nodemailer": "*",
-        "i18n": "*"
+        "nodemon": "*",
+        "redis-sessions": "*"
     }
 }

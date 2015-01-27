@@ -10,8 +10,8 @@ var mongodb          = require('mongodb');
 var mailer           = require('nodemailer');
 var i18n             = require('i18n');
 var fs               = require('fs');
+var redisSessions    = require('redis-sessions');
 var config           = require('./configs/main').config;
-var app = express();
 
 mongodb.MongoClient.connect(config.mongo.url, function (err, db) {
     if (err) {
@@ -37,6 +37,7 @@ global.validator = {
     }
 };
 global.demoUser = config.demoUser;
+global.session = new redisSessions();
 i18n.configure({
     cookie        : 'locale',
     locales       : global.availableLocales,
@@ -44,21 +45,19 @@ i18n.configure({
     defaultLocale : config.defaultLocale,
     updateFiles   : false,
 });
-app.configure(function () {
-    app.use(express.static('./public'));
-    app.use(express.bodyParser());
-    app.use(express.cookieParser());
-    app.use(express.session({
-        secret: config.sessionSecret,
-        // cookie: {maxAge: 3600000}
-        // maxAge:  new Date(Date.now()+3600000), // 1 Hour
-        // expires: new Date(Date.now()+3600000), // 1 Hour
-    }));
-    app.use(expressValidator());
-    app.use(i18n.init);
-    app.set('views', './views');
-    app.set('view engine', 'jade');
-});
+
+var app = express();
+app.use(express.static('./public'));
+app.use(express.urlencoded());
+app.use(express.json());
+app.use(express.cookieParser());
+app.use(express.session({
+    secret: config.sessionSecret,
+}));
+app.use(expressValidator());
+app.use(i18n.init);
+app.set('views', './views');
+app.set('view engine', 'jade');
 app.use(function (req, res, next) {
     next();
 });
@@ -68,3 +67,18 @@ app.all('*', require('./routes/guest').go);
 
 app.listen(3000);
 console.log('Listening on port 3000...');
+
+global.session.create({
+app: 'skipe',
+id: "user1001",
+ip: "192.168.22.58",
+ttl: 3600,
+d: {
+foo: "bar",
+unread_msgs: 34
+}
+},
+function(err, resp) {
+console.error(err);
+console.log(resp);
+});
