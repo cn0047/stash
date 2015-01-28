@@ -10,7 +10,6 @@ var mongodb          = require('mongodb');
 var mailer           = require('nodemailer');
 var i18n             = require('i18n');
 var fs               = require('fs');
-var redisSessions    = require('redis-sessions');
 var config           = require('./configs/main').config;
 
 mongodb.MongoClient.connect(config.mongo.url, function (err, db) {
@@ -37,7 +36,6 @@ global.validator = {
     }
 };
 global.demoUser = config.demoUser;
-global.session = new redisSessions();
 i18n.configure({
     cookie        : 'locale',
     locales       : global.availableLocales,
@@ -67,18 +65,3 @@ app.all('*', require('./routes/guest').go);
 
 app.listen(3000);
 console.log('Listening on port 3000...');
-
-global.session.create({
-app: 'skipe',
-id: "user1001",
-ip: "192.168.22.58",
-ttl: 3600,
-d: {
-foo: "bar",
-unread_msgs: 34
-}
-},
-function(err, resp) {
-console.error(err);
-console.log(resp);
-});
