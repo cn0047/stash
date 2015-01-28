@@ -2,6 +2,8 @@ js
 -
 
 ````js
+JSON.stringify(object);                // object to JSON
+JSON.parse(string)                     // string to JSON
 console.log(typeof v !== 'undefined'); // isset variable v.
 ````
 
