@@ -139,7 +139,7 @@ $.ajax({
     },
 });
 
-load(url, parameters, callback);
+load(url, parameters, function (xhr, status, error) {});
 
 $.get(url, parameters, callback, type);
 
