@@ -3,6 +3,9 @@ MySql
 
 *5.1.72-rel14.10*
 
+
+
+####Snippets
 ````sql
 ALTER  TABLE table ADD field INTEGER(1) NOT NULL;
 ALTER  TABLE table ADD UNIQUE KEY (field);
@@ -20,7 +23,7 @@ SHOW TABLE STATUS WHERE name = 'table'; -- Info about table, with creation date.
 SELECT
     table_name, create_time
 FROM information_schema.tables
-WHERE table_schema='aff_easydate_biz' AND create_time BETWEEN '2014-05-05' AND '2014-05-07'
+WHERE table_schema='dataBaseName' AND create_time BETWEEN '2014-05-05' AND '2014-05-07'
 ;
 SHOW COLUMNS FROM table LIKE '%';
 SELECT AUTO_INCREMENT FROM information_schema.TABLES

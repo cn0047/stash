@@ -1,8 +1,16 @@
-define(['text!/js/account/t/account.layout.tpl.html'], function (t) {
+define([
+    '/js/account/c/chat.js',
+    '/js/account/c/contact.js',
+    '/js/account/c/post.js',
+    'text!/js/account/t/account.layout.tpl.html'
+], function (cChat, cContact, cPost, t) {
     return  Backbone.skipeView.extend({
         el: '#doc #account',
         tpl: t,
         defaultRoute: 'home',
+        cChat: new cChat(),
+        cContact: new cContact(),
+        cPost: new cPost(),
         events:{
         },
         routes: {

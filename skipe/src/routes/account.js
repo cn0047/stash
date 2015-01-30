@@ -13,6 +13,10 @@ actions.POST.logOut = function (req, res) {
 };
 
 exports.go = function (req, res) {
+    /**
+     * @todo Delete it.
+     */
+    req.session.user = global.demoUser;
     if (req.session.user) {
         req.session.user = req.session.user;
         if (req.method in actions && req.param('action') in actions[req.method]) {

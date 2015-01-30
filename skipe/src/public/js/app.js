@@ -5,6 +5,7 @@ requirejs.config({
         helpers: '/js/lib/helpers',
         skipeView: '/js/lib/backboneSkipeView',
         skipeModel: '/js/lib/backboneSkipeModel',
+        skipeCollection: '/js/lib/backboneSkipeCollection',
         view_guest_index: '/js/guest/guest',
         view_account_index: '/js/account/account',
     },
@@ -71,9 +72,10 @@ app.init.views.app = Backbone.View.extend({
         }
         document.cookie = 'locale='+this.locale;
         this.loadNls();
-        require(['skipeModel', 'skipeView', 'helpers'], function (m, v, h) {
+        require(['skipeModel', 'skipeView', 'skipeCollection', 'helpers'], function (m, v, c, h) {
             Backbone.skipeModel = m;
             Backbone.skipeView = v;
+            Backbone.skipeCollection = c;
             app.helpers = h;
         });
         app.routers.app = new app.init.routers.app();
