@@ -8,8 +8,6 @@ define(['text!/js/account/t/home.tpl.html'], function (t) {
             app.views.app.hideLoading();
         },
         render: function () {
-            // load contacts
-            // load chats
             this.$el.html(_.template(this.tpl));
         },
     });

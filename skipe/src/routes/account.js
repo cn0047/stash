@@ -12,6 +12,15 @@ actions.POST.logOut = function (req, res) {
     res.json({});
 };
 
+actions.GET.getUser = function (req, res) {
+    res.json(req.session.user);
+};
+
+actions.GET.getContacts = function (req, res) {
+    console.log(req);
+    res.json({r: req.param('user')});
+};
+
 exports.go = function (req, res) {
     /**
      * @todo Delete it.
