@@ -6,11 +6,13 @@ Principles
 
 
 ####SOLID
-SRP|Single responsibility principle
-OCP|Open/closed principle
-LSP|Liskov substitution principle
-ISP|Interface segregation principle
-DIP|Dependency inversion principle
+|acronym|Concept|
+--------|--------
+|SRP|Single responsibility principle|
+|OCP|Open/closed principle|
+|LSP|Liskov substitution principle|
+|ISP|Interface segregation principle|
+|DIP|Dependency inversion principle|
 
 ####Extreme Programming
 Core Practices:
