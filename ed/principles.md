@@ -6,7 +6,7 @@ Principles
 
 
 ####SOLID
-|acronym|Concept|
+|Acronym|Concept|
 --------|--------
 |SRP|Single responsibility principle|
 |OCP|Open/closed principle|
