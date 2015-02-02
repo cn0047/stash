@@ -3,6 +3,11 @@ Node JS
 
 *v0.10.26*
 
+````js
+req.url    // Url string.
+req.params // Parsed params from url.
+````
+
 ####Redis Sessions
 ````js
 var redisSessions = require('redis-sessions');
