@@ -38,6 +38,7 @@ K  - LOOK TO SCREEN
 
 ####.vimrc
 ````
+:set nonumber
 :syntax on
 :set paste
 :set autoindent
