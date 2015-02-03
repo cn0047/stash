@@ -59,7 +59,8 @@ app.set('view engine', 'jade');
 app.use(function (req, res, next) {
     next();
 });
-app.all('/account/:action*', require('./routes/account').go);
+app.all('/account/:action?/user/:user?', require('./routes/account').go);
+app.all('/account/:action?', require('./routes/account').go);
 app.all('/guest/:action?', require('./routes/guest').go);
 app.all('*', require('./routes/guest').go);
 

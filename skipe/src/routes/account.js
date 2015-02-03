@@ -17,10 +17,10 @@ actions.GET.getUser = function (req, res) {
 };
 
 actions.GET.getContacts = function (req, res) {
+    console.log(req.params);
 };
 
 exports.go = function (req, res) {
-    console.log(req);
     /**
      * @todo Delete it.
      */
