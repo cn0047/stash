@@ -21,19 +21,37 @@ mongodb.MongoClient.connect(config.mongo.url, function (err, db) {
     // });
     // All contacts by owner.
     // db.collection('contact', function (err, collection) {
-    //     collection.find({owner: 'James Bond'}, function (err, docs) {
+    //     collection.find({owner: 'James Bond'}, function (err, cursor) {
     //         if (err) { console.error(err); }
-    //         docs.toArray(function(err, docs) {
+    //         cursor.toArray(function(err, docs) {
     //             console.log(docs);
     //         });
     //     });
     // });
-    db.collection('contact', function (err, collection) {
-        collection.find({'owner.$id': mongodb.ObjectID('54b23de857fe2afb0c1182bf')}, function (err, docs) {
-            if (err) { console.error(err); }
-            docs.toArray(function(err, docs) {
-                console.log(docs);
-            });
-        });
+    // db.collection('contact', function (err, collection) {
+    //     collection.find({'owner.$id': mongodb.ObjectID('54b23de857fe2afb0c1182bf')}, function (err, cursor) {
+    //         if (err) { console.error(err); }
+    //         cursor.toArray(function(err, docs) {
+    //             console.log(docs);
+    //         });
+    //     });
+    // });
+    db.collection('post', function (err, collection) {
+        // collection.find().each(function(err, doc) {
+        //     console.log(doc);
+        //     console.log("\n---------\n");
+        // });
+        // collection.find({}, function (err, cursor) {
+        //     if (err) { console.error(err); }
+        //     cursor.toArray(function(err, docs) {
+        //         docs..forEach(function (item) {});
+        //         // for (i in docs) {
+        //         //     db.dereference(docs[i].chat, function(err, doc) {
+        //         //         if (err) { console.error(err); }
+        //         //         docs[i].chat = doc;
+        //         //     });
+        //         // }
+        //     });
+        // });
     });
 });
