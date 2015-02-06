@@ -36,22 +36,23 @@ mongodb.MongoClient.connect(config.mongo.url, function (err, db) {
     //         });
     //     });
     // });
-    db.collection('post', function (err, collection) {
-        // collection.find().each(function(err, doc) {
-        //     console.log(doc);
-        //     console.log("\n---------\n");
-        // });
-        // collection.find({}, function (err, cursor) {
-        //     if (err) { console.error(err); }
-        //     cursor.toArray(function(err, docs) {
-        //         docs..forEach(function (item) {});
-        //         // for (i in docs) {
-        //         //     db.dereference(docs[i].chat, function(err, doc) {
-        //         //         if (err) { console.error(err); }
-        //         //         docs[i].chat = doc;
-        //         //     });
-        //         // }
-        //     });
-        // });
-    });
+    // db.collection('post', function (err, collection) {
+    //     collection.find({}, function (err, cursor) {
+    //         cursor.toArray(function (err, docs) {
+    //             var count = docs.length - 1;
+    //             for (i in docs) {
+    //                 (function (docs, i) {
+    //                     db.dereference(docs[i].chat, function(err, doc) {
+    //                         docs[i].chat = doc;
+    //                         if (i == count) {
+    //                             (function (docs) {
+    //                                 console.log(docs);
+    //                             })(docs);
+    //                         }
+    //                     });
+    //                 })(docs, i)
+    //             }
+    //         });
+    //     });
+    // });
 });
