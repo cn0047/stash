@@ -35,19 +35,29 @@ define([
                     m.trigger('afterGetUser', r);
                 }
             });
+            this.getContacts();
+            this.getPosts();
         },
         afterGetUser: function (r) {
+        },
+        getContacts: function (r) {
             this.cContact.hash = 'getContacts/user/'+this.user.get('_id');
             this.cContact.fetch({
                 success: function (c, r) {
                     c.trigger('afterGetContacts', r);
                 }
             });
-            // load contacts
-            // load chats
         },
         afterGetContacts: function (r) {
-            console.log(r);
+            console.dir(r);
+        },
+        getPosts: function () {
+            this.cContact.hash = 'getContacts/user/'+this.user.get('_id');
+            this.cContact.fetch({
+                success: function (c, r) {
+                    c.trigger('afterGetContacts', r);
+                }
+            });
         },
     });
 });

@@ -52,7 +52,7 @@ text
 { "_id" : ObjectId("54b99b7dbde7d834a6ec8b42"), "chat" : DBRef("chat", ObjectId("54b8c04bc0eceb8b5083c1cc")), "user" : "M",          "date" : ISODate("2006-11-14T10:00:53Z"), "text" : "That's the cards in your hands..." }
 
 /*
-DISPATCHER:
+USERS_IN_CHAT:
 chat
 user
 */
@@ -71,7 +71,13 @@ db.contact.find({"owner" : "James Bond"});
 db.chat.find();
 // All posts.
 db.post.find();
-// Dispatcher.
-db.dispatcher.find();
-// Dispatcher for user.
-db.dispatcher.find({"user" : "James Bond"});
+// usersInChat.
+db.usersInChat.find();
+// usersInChat for user.
+db.usersInChat.find({"user" : "James Bond"});
+
+db.contact.update(
+    {"owner" : "Le Chiffre"},
+    {$set: {"owner" : ObjectId("54b24fbe49b8802715620d76")}},
+    { multi: true }
+);

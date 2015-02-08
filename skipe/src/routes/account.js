@@ -17,7 +17,13 @@ actions.GET.getUser = function (req, res) {
 };
 
 actions.GET.getContacts = function (req, res) {
-    console.log(req.params);
+    global.mongo.collection('contact', function (err, collection) {
+        collection
+        .find({owner: global.mongo.ObjectID(req.param('user'))})
+        .toArray(function (err, docs) {
+            res.json(docs);
+        });
+    });
 };
 
 exports.go = function (req, res) {

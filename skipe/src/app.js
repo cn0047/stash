@@ -17,6 +17,7 @@ mongodb.MongoClient.connect(config.mongo.url, function (err, db) {
         console.error(err);
     }
     global.mongo = db;
+    global.mongo.ObjectID = mongodb.ObjectID;
 });
 global.localesDirectory = './public/nls';
 global.availableLocales = [];
