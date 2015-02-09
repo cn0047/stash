@@ -22,14 +22,13 @@ CONTACTS:
 owner
 user
 */
-{ "_id" : ObjectId("54b760acee2a81ef4a895799"), "owner" : "James Bond", "user" : { "sname" : "M" } }
-{ "_id" : ObjectId("54b760acee2a81ef4a89579a"), "owner" : "James Bond", "user" : { "sname" : "Q" } }
-{ "_id" : ObjectId("54b760adee2a81ef4a89579b"), "owner" : "James Bond", "user" : { "sname" : "Vesper Lynd" } }
-{ "_id" : ObjectId("54b760adee2a81ef4a89579c"), "owner" : "James Bond", "user" : { "sname" : "Felix Leiter" } }
-{ "_id" : ObjectId("54b760aeee2a81ef4a89579d"), "owner" : "James Bond", "user" : { "sname" : "Rene Mathis" } }
-{ "_id" : ObjectId("54b76107ee2a81ef4a89579e"), "owner" : "Le Chiffre", "user" : { "sname" : "Mr White" } }
-{ "_id" : ObjectId("54b76107ee2a81ef4a89579f"), "owner" : "Le Chiffre", "user" : { "sname" : "Alex Dimitrios" } }
-{ "_id" : ObjectId("54b76107ee2a81ef4a8957a0"), "owner" : "Le Chiffre", "user" : { "sname" : "Rene Mathis" } }
+{ "_id" : ObjectId("54b760acee2a81ef4a89579a"), "owner" : ObjectId("54b23de857fe2afb0c1182bf"), "user" : { "sname" : "Q" } }
+{ "_id" : ObjectId("54b760adee2a81ef4a89579b"), "owner" : ObjectId("54b23de857fe2afb0c1182bf"), "user" : { "sname" : "Vesper Lynd" } }
+{ "_id" : ObjectId("54b760adee2a81ef4a89579c"), "owner" : ObjectId("54b23de857fe2afb0c1182bf"), "user" : { "sname" : "Felix Leiter" } }
+{ "_id" : ObjectId("54b760aeee2a81ef4a89579d"), "owner" : ObjectId("54b23de857fe2afb0c1182bf"), "user" : { "sname" : "Rene Mathis" } }
+{ "_id" : ObjectId("54b76107ee2a81ef4a89579e"), "owner" : ObjectId("54b24fbe49b8802715620d76"), "user" : { "sname" : "Mr White" } }
+{ "_id" : ObjectId("54b76107ee2a81ef4a89579f"), "owner" : ObjectId("54b24fbe49b8802715620d76"), "user" : { "sname" : "Alex Dimitrios" } }
+{ "_id" : ObjectId("54b76107ee2a81ef4a8957a0"), "owner" : ObjectId("54b24fbe49b8802715620d76"), "user" : { "sname" : "Rene Mathis" } }
 
 /*
 CHATS:
@@ -56,8 +55,8 @@ USERS_IN_CHAT:
 chat
 user
 */
-{ "_id" : ObjectId("54bf3992ea0f73ea669c2df7"), "chat" : DBRef("chat", ObjectId("54b8c04bc0eceb8b5083c1cc")), "user" : "M" }
-{ "_id" : ObjectId("54bf3996ea0f73ea669c2df8"), "chat" : DBRef("chat", ObjectId("54b8c04bc0eceb8b5083c1cc")), "user" : "James Bond" }
+{ "_id" : ObjectId("54bf3992ea0f73ea669c2df7"), "chat" : DBRef("chat", ObjectId("54b8c04bc0eceb8b5083c1cc")), "user" : ObjectId("54b23e6ab8b3cf0211c5adf3") }
+{ "_id" : ObjectId("54bf3996ea0f73ea669c2df8"), "chat" : DBRef("chat", ObjectId("54b8c04bc0eceb8b5083c1cc")), "user" : ObjectId("54b23de857fe2afb0c1182bf") }
 
 
 
@@ -76,8 +75,8 @@ db.usersInChat.find();
 // usersInChat for user.
 db.usersInChat.find({"user" : "James Bond"});
 
-db.contact.update(
-    {"owner" : "Le Chiffre"},
-    {$set: {"owner" : ObjectId("54b24fbe49b8802715620d76")}},
-    { multi: true }
+db.usersInChat.update(
+    {"user" : "James Bond"},
+    {$set: {"user" : ObjectId("54b23de857fe2afb0c1182bf")}},
+    {}
 );

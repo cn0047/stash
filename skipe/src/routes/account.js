@@ -26,6 +26,50 @@ actions.GET.getContacts = function (req, res) {
     });
 };
 
+actions.GET.getPosts = function (req, res) {
+    global.mongo.collection('post', function (err, collection) {
+        collection.find({}, function (err, cursor) {
+            cursor.toArray(function (err, docs) {
+                var count = docs.length - 1;
+                for (i in docs) {
+                    (function (docs, i) {
+                        global.mongo.dereference(docs[i].chat, function(err, doc) {
+                            docs[i].chat = doc;
+                            if (i == count) {
+                                (function (docs) {
+                                    res.json(docs);
+                                })(docs);
+                            }
+                        });
+                    })(docs, i)
+                }
+            });
+        });
+    });
+};
+
+actions.GET.getChats = function (req, res) {
+    global.mongo.collection('usersInChat', function (err, collection) {
+        collection.find({user: global.mongo.ObjectID(req.param('user'))}, function (err, cursor) {
+            cursor.toArray(function (err, docs) {
+                var count = docs.length - 1;
+                for (i in docs) {
+                    (function (docs, i) {
+                        global.mongo.dereference(docs[i].chat, function(err, doc) {
+                            docs[i].chat = doc;
+                            if (i == count) {
+                                (function (docs) {
+                                    res.json(docs);
+                                })(docs);
+                            }
+                        });
+                    })(docs, i)
+                }
+            });
+        });
+    });
+};
+
 exports.go = function (req, res) {
     /**
      * @todo Delete it.

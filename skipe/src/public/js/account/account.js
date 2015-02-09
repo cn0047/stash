@@ -23,6 +23,8 @@ define([
             app.views.app.on('renderLayouts', this.renderLayouts, this);
             this.user.on('afterGetUser', this.afterGetUser, this);
             this.cContact.on('afterGetContacts', this.afterGetContacts, this);
+            this.cPost.on('afterGetPosts', this.afterGetPosts, this);
+            this.cChat.on('afterGetChats', this.afterGetChats, this);
         },
         renderLayouts: function () {
             this.$('.head').html(_.template(this.tpl));
@@ -35,10 +37,9 @@ define([
                     m.trigger('afterGetUser', r);
                 }
             });
-            this.getContacts();
-            this.getPosts();
         },
         afterGetUser: function (r) {
+            this.getChats();
         },
         getContacts: function (r) {
             this.cContact.hash = 'getContacts/user/'+this.user.get('_id');
@@ -52,12 +53,28 @@ define([
             console.dir(r);
         },
         getPosts: function () {
-            this.cContact.hash = 'getContacts/user/'+this.user.get('_id');
-            this.cContact.fetch({
+            this.cPost.hash = 'getPosts/user/'+this.user.get('_id');
+            this.cPost.fetch({
                 success: function (c, r) {
-                    c.trigger('afterGetContacts', r);
+                    c.trigger('afterGetPosts', r);
                 }
             });
+        },
+        afterGetPosts: function (r) {
+            console.log(r);
+        },
+        getChats: function () {
+            this.cChat.hash = 'getChats/user/'+this.user.get('_id');
+            this.cChat.fetch({
+                success: function (c, r) {
+                    c.trigger('afterGetChats', r);
+                }
+            });
+        },
+        afterGetChats: function (r) {
+            // _.template(this.tpl)
+            // console.log( this.$('.chats').html() );
+            el = this.$el;
         },
     });
 });
