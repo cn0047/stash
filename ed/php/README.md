@@ -18,6 +18,7 @@ url
 
 https://dev.twitter.com/
 http://www.phpdeveloper.org/
+http://php.net/conferences/index.php
 
 /etc/php5/apache2/php.ini
 
