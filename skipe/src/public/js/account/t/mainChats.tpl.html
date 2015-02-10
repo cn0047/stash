@@ -1,0 +1,8 @@
+<div>
+    <h4><%=app.nls.chats%></h2>
+    <div class="list-group">
+        <%_.each (data, function(v) {%>
+            <a href="#" class="list-group-item"><%=v.chat.caption%></a>
+        <%})%>
+    </div>
+</div>

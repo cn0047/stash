@@ -72,9 +72,7 @@ define([
             });
         },
         afterGetChats: function (r) {
-            // _.template(this.tpl)
-            // console.log( this.$('.chats').html() );
-            el = this.$el;
+            app.views.account_home.renderChats(r);
         },
     });
 });
