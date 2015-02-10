@@ -95,7 +95,7 @@ If something really very wrong with site or it hacked - change password to serve
 * Man in the middle?
 
 ####Gary Hockin - Maximising Performance With Zend Framework
-* **Siege** (An HTTP/HTTPS stress tester). `siedge -c 10 -t 1m -b http://mysite.dev`
+* **Siege** (An HTTP/HTTPS stress tester). `siege -c 10 -t 1m -b http://mysite.dev`
 * xhprof (can be installed in production).
 * https://github.com/EvanDotPro/EdpSuperluminal.
 * If site don't have favicon - 2 overhead request per every request.
