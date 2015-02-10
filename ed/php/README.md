@@ -19,6 +19,8 @@ url
 https://dev.twitter.com/
 http://www.phpdeveloper.org/
 
+/etc/php5/apache2/php.ini
+
 `<![CDATA[]]>`
 
 php -S localhost:8000 index.php
