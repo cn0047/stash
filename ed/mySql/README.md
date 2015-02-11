@@ -12,7 +12,7 @@ ALTER  TABLE table ADD UNIQUE KEY (field);
 ALTER  TABLE table MODIFY field VARCHAR(7) NOT NULL DEFAULT '';
 ALTER  TABLE table CHANGE field field VARCHAR(7) NOT NULL DEFAULT ''; -- rename column
 ALTER  TABLE table DROP COLUMN field;
-ALTER  TABLE table DROP FOREIGN KEY key;
+ALTER  TABLE table DROP FOREIGN KEY key; -- CONSTRAINT.
 ALTER  TABLE table DROP KEY key;
 CREATE TABLE table LIKE talbeLike; INSERT INTO table SELECT * FROM talbeLike;
 RENAME TABLE table TO tableNewName;
