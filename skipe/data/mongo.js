@@ -38,6 +38,8 @@ caption
 { "_id" : ObjectId("54b8b995c0eceb8b5083c1c3"), "caption" : "organization" }
 { "_id" : ObjectId("54b8b996c0eceb8b5083c1c4"), "caption" : "Casino Royale" }
 { "_id" : ObjectId("54b8c04bc0eceb8b5083c1cc"), "caption" : "M with Bond" }
+{ "_id" : ObjectId("54dbac3e0b3ade33b8bb944a"), "caption" : "Bond with Vesper" }
+{ "_id" : ObjectId("54dbac560b3ade33b8bb944b"), "caption" : "Bond with Mathis" }
 
 /*
 POSTS:
@@ -80,3 +82,7 @@ db.usersInChat.update(
     {$set: {"user" : ObjectId("54b23de857fe2afb0c1182bf")}},
     {}
 );
+
+db.chat.insert({"caption" : "Bond with Mathis"});
+db.usersInChat.insert({chat: {"$ref" : "chat", "$id" : ObjectId("54dbac560b3ade33b8bb944b"), "$db" : "skipe"}, user: ObjectId("54b23de857fe2afb0c1182bf")});
+db.usersInChat.insert({chat: {"$ref" : "chat", "$id" : ObjectId("54dbac560b3ade33b8bb944b"), "$db" : "skipe"}, user: ObjectId("54b24e99af762f8013a30525")});
