@@ -59,6 +59,10 @@ user
 */
 { "_id" : ObjectId("54bf3992ea0f73ea669c2df7"), "chat" : DBRef("chat", ObjectId("54b8c04bc0eceb8b5083c1cc")), "user" : ObjectId("54b23e6ab8b3cf0211c5adf3") }
 { "_id" : ObjectId("54bf3996ea0f73ea669c2df8"), "chat" : DBRef("chat", ObjectId("54b8c04bc0eceb8b5083c1cc")), "user" : ObjectId("54b23de857fe2afb0c1182bf") }
+{ "_id" : ObjectId("54dbadec0b3ade33b8bb944c"), "chat" : DBRef("chat", ObjectId("54dbac3e0b3ade33b8bb944a")), "user" : ObjectId("54b23de857fe2afb0c1182bf") }
+{ "_id" : ObjectId("54dbaded0b3ade33b8bb944d"), "chat" : DBRef("chat", ObjectId("54dbac3e0b3ade33b8bb944a")), "user" : ObjectId("54b24dae445e086e129d0feb") }
+{ "_id" : ObjectId("54dbae590b3ade33b8bb944e"), "chat" : DBRef("chat", ObjectId("54dbac560b3ade33b8bb944b")), "user" : ObjectId("54b23de857fe2afb0c1182bf") }
+{ "_id" : ObjectId("54dbae590b3ade33b8bb944f"), "chat" : DBRef("chat", ObjectId("54dbac560b3ade33b8bb944b")), "user" : ObjectId("54b24e99af762f8013a30525") }
 
 
 

@@ -5,6 +5,8 @@ define([
     return  Backbone.skipeView.extend({
         tpl: t,
         tplChats: tChats,
+        events:{
+        },
         initialize: function () {
         },
         go: function () {
