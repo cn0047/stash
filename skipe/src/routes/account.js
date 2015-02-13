@@ -28,7 +28,7 @@ actions.GET.getContacts = function (req, res) {
 
 actions.GET.getPosts = function (req, res) {
     global.mongo.collection('post', function (err, collection) {
-        collection.find({}, function (err, cursor) {
+        collection.find({'chat.$id': global.mongo.ObjectID(req.param('chat'))}, function (err, cursor) {
             cursor.toArray(function (err, docs) {
                 var count = docs.length - 1;
                 for (i in docs) {

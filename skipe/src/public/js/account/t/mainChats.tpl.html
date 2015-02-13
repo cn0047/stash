@@ -2,7 +2,9 @@
     <h4><%=app.nls.chats%></h2>
     <div class="list-group">
         <%_.each (data, function(v) {%>
-            <a href="#activateChat" class="list-group-item"><%=v.chat.caption%></a>
+            <a href="#" class="list-group-item" data-chat="<%=v.chat._id%>">
+                <%=v.chat.caption%>
+            </a>
         <%})%>
     </div>
 </div>
