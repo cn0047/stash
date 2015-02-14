@@ -3,15 +3,18 @@ define([
     '/js/account/c/contact.js',
     '/js/account/c/post.js',
     'text!/js/account/t/home.tpl.html',
-    'text!/js/account/t/mainChats.tpl.html'
-], function (cChat, cContact, cPost, t, tChats) {
+    'text!/js/account/t/mainChats.tpl.html',
+    'text!/js/account/t/mainPosts.tpl.html'
+], function (cChat, cContact, cPost, t, tChats, tPosts) {
     return  Backbone.skipeView.extend({
         cChat: new cChat(),
         cContact: new cContact(),
         cPost: new cPost(),
         tpl: t,
         tplChats: tChats,
+        tplPosts: tPosts,
         events:{
+            'click #mainChats a': 'activateChat',
         },
         initialize: function () {
             this.cContact.on('afterGetContacts', this.afterGetContacts, this);
@@ -57,7 +60,18 @@ define([
             return this.$('#mainChats .list-group .active').attr('data-chat');
         },
         afterGetPosts: function (r) {
-            console.log(r);
+            this.renderPosts(r);
+        },
+        renderPosts: function (d) {
+            this.$('#mainPosts').html(_.template(this.tplPosts)({data: d}));
+            app.views.app.hideLoading();
+        },
+        activateChat: function (e) {
+            app.views.app.showLoading();
+            this.renderPosts({});
+            this.$('#mainChats .list-group a').removeClass('active');
+            this.$(e.currentTarget).addClass('active');
+            this.getPosts();
         },
         getContacts: function (r) {
             this.cContact.hash = 'getContacts/user/'+this.user.get('_id');

@@ -20,3 +20,27 @@ footer #progress {
     margin-left: auto;
     margin-right: auto;
 }
+#account .main h4 {
+    background-color: #eee;
+    border-radius: 4px;
+    border-shadow: 0 1px 2px rgba(0,0,0,.075);
+    color: #fff;
+    display: block;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+#account #mainPosts .container {
+    border-radius: 4px;
+    border-shadow: 0 1px 2px rgba(0,0,0,.075);
+    border: 1px solid #eee;
+    display: block;
+}
+#account #mainPosts .container .date {
+    color: #777;
+}
+#account #mainPosts .container .name {
+    color: #337ab7;
+}
+#account #mainPosts .container .text {
+    color: #222;
+}

@@ -34,6 +34,7 @@
 	"changeAccount": "Change account",
 	"newPassword": "New password",
 	"passwordSuccessfullyUpdated": "Your password has been successfully updated.",
+	"posts": "posts",
 	"keepThisEmail": "Please keep this email.",
 	"youCanLoginWithNextCredentials": "From now you can login to your account with next credentials:",
 	"email": "Email:",
