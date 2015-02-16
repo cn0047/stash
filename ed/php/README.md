@@ -22,7 +22,7 @@ http://php.net/conferences/index.php
 
 /etc/php5/apache2/php.ini
 
-`<![CDATA[]]>`
+`<![CDATA[]]>` - actual for XHTML.
 
 php -S localhost:8000 index.php
 
