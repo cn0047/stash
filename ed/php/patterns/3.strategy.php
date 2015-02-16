@@ -1,12 +1,11 @@
-Strategy
--
-
-Behaviour.
-
-Is a pattern that enables an algorithm's behavior to be selected at runtime.
-
-````php
 <?php
+/**
+ * Strategy
+ *
+ * Is a pattern that enables an algorithm's behavior to be selected at runtime.
+ *
+ * @category Behaviour
+ */
 
 interface Comparator
 {
@@ -87,9 +86,8 @@ $objects = new Collection(array($third, $second, $first));
 $objects->initComparator(new CountableObjectComparator);
 $objects->sort();
 echo $objects, "\n";
+
 /*
 (1, 3, 4, 6, 7)
 (Array with 3 elements, Array with 4 elements, (4, 2, 3, 5, 1))
 */
-?>
-````

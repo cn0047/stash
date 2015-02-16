@@ -1,10 +1,9 @@
-Abstract factory
--
-
-Creational.
-
-````php
 <?php
+/**
+ * Abstract factory
+ *
+ * @category Creational
+ */
 
 abstract class Document
 {
@@ -26,5 +25,3 @@ class LandscapeDocument extends Document
       return new LandscapePage;
    }
 }
-?>
-````

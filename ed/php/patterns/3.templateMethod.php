@@ -1,13 +1,12 @@
-Template method
--
-
-Behaviour.
-
-It’s another way of encapsulation piece of algorithms so the sub-classes can hook themselves
-right into computation any time they want.
-
-````php
 <?php
+/**
+ * Template method
+ *
+ * It’s another way of encapsulation piece of algorithms so the sub-classes can hook themselves
+ * right into computation any time they want.
+ *
+ * @category Behaviour
+ */
 
 abstract class Operation
 {
@@ -86,10 +85,9 @@ $nonNegativeSubtraction = new NonNegativeSubtraction(9, 14);
 echo $nonNegativeSubtraction->getOperationResult(), PHP_EOL;
 $nonNegativeSubtraction = new NonNegativeSubtraction(25, 11);
 echo $nonNegativeSubtraction->getOperationResult(), PHP_EOL;
+
 /*
 140
 0
 14
 */
-?>
-````

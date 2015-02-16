@@ -1,12 +1,11 @@
-Memento
--
-
-Behaviour.
-
-Is a pattern that provides the ability to restore an object to its previous state (undo via rollback).
-
-````php
 <?php
+/**
+ * Memento
+ *
+ * Is a pattern that provides the ability to restore an object to its previous state (undo via rollback).
+ *
+ * @category Behaviour
+ */
 
 class Memento
 {
@@ -54,11 +53,10 @@ $states[] = $victim->saveToMemento();
 $victim->setState('state three');
 $states[] = $victim->saveToMemento();
 $victim->restoreFromMemento($states[0]);
+
 /*
 Set state: state one
 Set state: state two
 Set state: state three
 Get state: state one
 */
-?>
-````

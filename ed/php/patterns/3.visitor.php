@@ -1,15 +1,14 @@
-Visitor
--
-
-Behaviour.
-
-Is a way of separating an algorithm from an object structure
-on which it operates. A practical result of this separation
-is the ability to add new operations to existing object structures
-without modifying those structures.
-
-````php
 <?php
+/**
+ * Visitor
+ *
+ * Is a way of separating an algorithm from an object structure
+ * on which it operates. A practical result of this separation
+ * is the ability to add new operations to existing object structures
+ * without modifying those structures.
+ *
+ * @category Behaviour
+ */
 
 interface Visited
 {
@@ -64,7 +63,7 @@ $dataVisitor = new DataVisitor();
 $visitedArray->accept($dataVisitor);
 $dataVisitor->visit($visitedArray);
 printf('Info from visitor object: %s'.PHP_EOL, $dataVisitor->getInfo());
+
 /*
 Info from visitor object: The array has 3 elements
 */
-````

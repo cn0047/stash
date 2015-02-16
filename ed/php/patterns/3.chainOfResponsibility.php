@@ -1,13 +1,12 @@
-Chain of Responsibility
--
-
-Behaviour.
-
-Is a design pattern consisting of objects, each object contains logic and link to the next
-processing object in the chain, that will invoked.
-
-````php
 <?php
+/**
+ * Chain of Responsibility
+ *
+ * Is a design pattern consisting of objects, each object contains logic and link to the next
+ * processing object in the chain, that will invoked.
+ *
+ * @category Behaviour
+ */
 
 abstract class AbstractHandler
 {
@@ -74,10 +73,10 @@ $handler = new ConcreteHandlerA();
 $handler->setNext(new ConcreteHandlerB());
 $handler->getNext()->setNext(new ConcreteHandlerC());
 $handler->sendRequest(3);
+
 /*
 ConcreteHandlerA try process this message
 ConcreteHandlerB try process this message
 ConcreteHandlerC try process this message
 ConcreteHandlerC process this message !!!
 */
-````

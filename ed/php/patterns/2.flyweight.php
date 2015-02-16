@@ -1,12 +1,11 @@
-Flyweight
--
-
-Structural.
-
-A flyweight is an object that minimizes memory use by sharing as much data as possible with other similar objects.
-
-````php
 <?php
+/**
+ * Flyweight
+ *
+ * A flyweight is an object that minimizes memory use by sharing as much data as possible with other similar objects.
+ *
+ * @category Structural
+ */
 
 class FlyweightFactory
 {
@@ -32,4 +31,3 @@ abstract class Flyweight
 
 class ConcreteFlyweight extends Flyweight {}
 class UnsharedFlyweight extends Flyweight {}
-````

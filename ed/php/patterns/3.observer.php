@@ -1,13 +1,12 @@
-Observer (publish-subscribe)
--
-
-Behaviour.
-
-Is a design pattern in which an object, called the subject, maintains a list of its dependents,
-called observers, and notifies them automatically of any state changes.
-
-````php
 <?php
+/**
+ * Observer (publish-subscribe)
+ *
+ * Is a design pattern in which an object, called the subject, maintains a list of its dependents,
+ * called observers, and notifies them automatically of any state changes.
+ *
+ * @category Behaviour
+ */
 
 abstract class Observer
 {
@@ -89,8 +88,8 @@ $auth = new Auth();
 $auth->attach(new ForumUser());
 $auth->login();
 $auth->logout();
+
 /*
 Forum user logged in.
 Forum user logged out.
 */
-````

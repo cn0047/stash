@@ -1,13 +1,12 @@
-Interpreter
--
-
-Behaviour.
-
-Is a pattern that specifies how to evaluate sentences in a language. The basic idea is to have a class
-for each symbol (terminal or nonterminal) in a specialized computer language.
-
-````php
 <?php
+/**
+ * Interpreter
+ *
+ * Is a pattern that specifies how to evaluate sentences in a language. The basic idea is to have a class
+ * for each symbol (terminal or nonterminal) in a specialized computer language.
+ *
+ * @category Behaviour
+ */
 
 interface MathExpression
 {
@@ -103,4 +102,3 @@ echo $o->evaluate(['c' => 5]).PHP_EOL;
 20
 45
 */
-````

@@ -1,10 +1,9 @@
-Singleton
--
-
-Creational.
-
-````php
 <?php
+/**
+ * Singleton
+ *
+ * @category Creational
+ */
 
 class Singleton
 {
@@ -26,4 +25,3 @@ class Singleton
 
 class Foobar extends Singleton {};
 $foo = Foobar::getInstance();
-````

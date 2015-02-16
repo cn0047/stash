@@ -1,12 +1,11 @@
-Prototype
--
-
-Creational.
-
-It is used when the type of objects to create is determined by a prototypical instance.
-
-````php
 <?php
+/**
+ * Prototype
+ *
+ * It is used when the type of objects to create is determined by a prototypical instance.
+ *
+ * @category Creational
+ */
 
 // Method 1.
 class ClassA
@@ -42,4 +41,3 @@ class ClassC
 
 $prototype = new ClassC();
 $newObject = clone $prototype;
-````

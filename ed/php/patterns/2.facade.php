@@ -1,12 +1,11 @@
-Facade
--
-
-Structural.
-
-A facade is an object that provides a simplified interface to a larger body of code, such as a class library.
-
-````php
 <?php
+/**
+ * Facade
+ *
+ * A facade is an object that provides a simplified interface to a larger body of code, such as a class library.
+ *
+ * @category Structural
+ */
 
 class Bank
 {
@@ -49,4 +48,3 @@ class Facade
 
 $Transfer = new Facade();
 $Transfer->transfer(1000);
-````

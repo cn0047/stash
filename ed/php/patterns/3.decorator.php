@@ -1,14 +1,12 @@
-Decorator
--
-(also known as Wrapper, an alternative naming shared with the Adapter pattern)
-
-Behaviour.
-
-Is a design pattern that allows behavior to be added to an individual object, either statically or dynamically,
-without affecting the behavior of other objects from the same class.
-
-````php
 <?php
+/**
+ * Decorator (also known as Wrapper, an alternative naming shared with the Adapter pattern)
+ *
+ * Is a design pattern that allows behavior to be added to an individual object, either statically or dynamically,
+ * without affecting the behavior of other objects from the same class.
+ *
+ * @category Behaviour
+ */
 
 abstract class Component
 {
@@ -58,7 +56,7 @@ $element = new ConcreteComponent();
 $extendedElement = new ConcreteDecoratorA($element);
 $superExtendedElement = new ConcreteDecoratorS($extendedElement);
 print $superExtendedElement->operation();
+
 /*
 <strong><a>I am component</a></strong>
 */
-````

@@ -1,12 +1,11 @@
-Composite
--
-
-Structural.
-
-The intent of a composite is to "compose" objects into tree structures to represent part-whole hierarchies.
-
-````php
 <?php
+/**
+ * Composite
+ *
+ * The intent of a composite is to "compose" objects into tree structures to represent part-whole hierarchies.
+ *
+ * @category Structural
+ */
 
 abstract class Component
 {
@@ -86,4 +85,3 @@ string(7) "Leaf XA"
 string(7) "Leaf XB"
 string(6) "Leaf C"
 */
-````

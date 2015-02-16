@@ -1,10 +1,9 @@
-Proxy
--
-
-Structural.
-
-````php
 <?php
+/**
+ * Proxy
+ *
+ * @category Structural
+ */
 
 interface IMath
 {
@@ -83,6 +82,7 @@ echo '4 + 2 = '.$p->Add(4, 2).PHP_EOL;
 echo '4 - 2 = '.$p->Sub(4, 2).PHP_EOL;
 echo '4 * 2 = '.$p->Mul(4, 2).PHP_EOL;
 echo '4 / 2 = '.$p->Div(4, 2).PHP_EOL;
+
 /*
 4 + 2 = 6
 4 - 2 = 2
@@ -90,5 +90,3 @@ Create object Math. Wait...
 4 * 2 = 8
 4 / 2 = 2
 */
-?>
-````

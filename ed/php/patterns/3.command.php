@@ -1,13 +1,12 @@
-Command
--
-
-Behaviour.
-
-Is a pattern in which an object is used to represent and encapsulate
-all the information needed to call a method.
-
-````php
 <?php
+/**
+ * Command
+ *
+ * Is a pattern in which an object is used to represent and encapsulate
+ * all the information needed to call a method.
+ *
+ * @category Behaviour
+ */
 
 class Lamp
 {
@@ -82,4 +81,3 @@ $registry->add(new TurnOffCommand($lamp), 'OFF');
 // $registry->add(new SosCommand($lamp), 'SOS');
 // $registry->add(new TimeoutCommand($lamp, $argv[2]), 'TIMEOUT');
 $registry->get($argv[1])->execute();
-````

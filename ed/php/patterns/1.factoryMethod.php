@@ -1,10 +1,10 @@
-Factory method
--
-
-Creational.
-
-````php
 <?php
+/**
+ * Factory method
+ *
+ * @category Creational
+ */
+
 class Twitter {
     public function share()
     {
@@ -30,4 +30,3 @@ class Factory {
 
 $twitter = Factory::create('Twitter');
 $facebook = Factory::create('Facebook');
-````

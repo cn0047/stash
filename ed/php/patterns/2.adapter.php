@@ -1,10 +1,9 @@
-Adapter (wrapper)
--
-
-Structural.
-
-````php
 <?php
+/**
+ * Adapter (wrapper)
+ *
+ * @category Structural
+ */
 
 class BookAdapter
 {
@@ -25,4 +24,3 @@ class BookAdapter
         $this->book->pressNext();
     }
 }
-````

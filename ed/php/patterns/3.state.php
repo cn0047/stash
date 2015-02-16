@@ -1,13 +1,12 @@
-State
--
-
-Behaviour.
-
-This pattern is used to encapsulate varying behavior for the same routine based on
-an object's state object.
-
-````php
 <?php
+/**
+ * State
+ *
+ * This pattern is used to encapsulate varying behavior for the same routine based on
+ * an object's state object.
+ *
+ * @category Behaviour
+ */
 
 interface EngineState
 {
@@ -68,10 +67,9 @@ $car->moveForward();
 $car = new Car;
 $car->startEngine();
 $car->moveForward();
+
 /*
 Have to start engine first!
 Started Engine.
 Moved Car forward...
 */
-?>
-````

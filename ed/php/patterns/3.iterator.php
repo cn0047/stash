@@ -1,12 +1,12 @@
-Iterator
--
-
-Behaviour.
-
-Is a pattern in which an iterator is used to traverse a container and access the container's elements.
-
-````php
 <?php
+/**
+ * Iterator
+ *
+ * Is a pattern in which an iterator is used to traverse a container and access the container's elements.
+ *
+ * @category Behaviour
+ */
+
 interface IIterator
 {
     public function hasNext();
@@ -78,10 +78,10 @@ $iterator = $booksCollection->createIterator();
 while ($iterator->hasNext()) {
     echo $iterator->next().PHP_EOL;
 }
+
 /*
 Design Patterns
 1
 2
 3
 */
-````

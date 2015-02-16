@@ -1,14 +1,13 @@
-Dependency injection
--
-
-Behaviour.
-
-Pattern separates the creation of a client's dependencies from its own behavior,
-which allows program designs to be loosely coupled and to follow the
-dependency inversion and single responsibility principles.
-
-````php
 <?php
+/**
+ * Dependency injection
+ *
+ * Pattern separates the creation of a client's dependencies from its own behavior,
+ * which allows program designs to be loosely coupled and to follow the
+ * dependency inversion and single responsibility principles.
+ *
+ * @category Behaviour
+ */
 
 class Author
 {
@@ -53,6 +52,3 @@ class Question
         return $this->question;
     }
 }
-
-?>
-````

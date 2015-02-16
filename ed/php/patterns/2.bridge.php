@@ -1,12 +1,12 @@
-Bridge
--
 
-Structural.
-
-Is meant to "decouple an abstraction from its implementation so that the two can vary independently".
-
-````php
 <?php
+/**
+ * Bridge
+ *
+ * Is meant to "decouple an abstraction from its implementation so that the two can vary independently".
+ *
+ * @category Structural
+ */
 
 interface DrawingAPI
 {
@@ -66,8 +66,8 @@ $shapes = array(
 foreach ($shapes as $shape) {
     $shape->draw();
 }
+
 /*
 API1 draw (1, 3, 7)
 API2 draw (5, 7, 11)
 */
-````

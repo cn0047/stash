@@ -1,12 +1,11 @@
-Mediator
--
-
-Behaviour.
-
-This pattern defines an object that encapsulates how a set of objects interact.
-
-````php
 <?php
+/**
+ * Mediator
+ *
+ * This pattern defines an object that encapsulates how a set of objects interact.
+ *
+ * @category Behaviour
+ */
 
 abstract class Mediator
 {
@@ -78,9 +77,8 @@ $mediator->setColleague1($collegue1);
 $mediator->setColleague2($collegue2);
 $collegue1->send('How are you ?');
 $collegue2->send('Fine, thanks!');
+
 /*
 Collegue2 gets message: How are you ?
 Collegue1 gets message: Fine, thanks!
 */
-?>
-````
