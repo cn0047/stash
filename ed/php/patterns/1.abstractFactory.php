@@ -26,4 +26,5 @@ class LandscapeDocument extends Document
       return new LandscapePage;
    }
 }
+?>
 ````
