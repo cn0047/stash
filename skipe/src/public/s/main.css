@@ -7,6 +7,9 @@ footer #progress {
     width: 160px;
     float: right;
 }
+.navbar {
+    margin-bottom: 0px;
+}
 .navbar #nls {
     min-width: 0;
 }
@@ -27,6 +30,8 @@ footer #progress {
     color: #fff;
     display: block;
     font-weight: bold;
+    margin-bottom: 0px;
+    padding: 7px;
     text-transform: uppercase;
 }
 #account #mainPosts .container {
@@ -34,6 +39,7 @@ footer #progress {
     border-shadow: 0 1px 2px rgba(0,0,0,.075);
     border: 1px solid #eee;
     display: block;
+    width: 100%;
 }
 #account #mainPosts .container .date {
     color: #777;

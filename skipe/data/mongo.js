@@ -51,6 +51,36 @@ text
 { "_id" : ObjectId("54b99b7dbde7d834a6ec8b40"), "chat" : DBRef("chat", ObjectId("54b8c04bc0eceb8b5083c1cc")), "user" : "M",          "date" : ISODate("2006-11-14T10:00:35Z"), "text" : "You are now agent with two zeros!" }
 { "_id" : ObjectId("54b99b7dbde7d834a6ec8b41"), "chat" : DBRef("chat", ObjectId("54b8c04bc0eceb8b5083c1cc")), "user" : "James Bond", "date" : ISODate("2006-11-14T10:00:47Z"), "text" : "I will not fail!" }
 { "_id" : ObjectId("54b99b7dbde7d834a6ec8b42"), "chat" : DBRef("chat", ObjectId("54b8c04bc0eceb8b5083c1cc")), "user" : "M",          "date" : ISODate("2006-11-14T10:00:53Z"), "text" : "That's the cards in your hands..." }
+db.post.insert({
+    chat: {
+        "$ref" : "chat",
+        "$id" : ObjectId("54b8c04bc0eceb8b5083c1cc"),
+        "$db" : "skipe"
+    },
+    user: "James Bond",
+    date: ISODate("2006-11-14T10:01:53Z"),
+    text: "Ok. Got it!"
+});
+db.post.insert({
+    chat: {
+        "$ref" : "chat",
+        "$id" : ObjectId("54dbac3e0b3ade33b8bb944a"),
+        "$db" : "skipe"
+    },
+    user: "James Bond",
+    date: ISODate("2008-11-14T11:01:53Z"),
+    text: "Hi, Darling!"
+});
+db.post.insert({
+    chat: {
+        "$ref" : "chat",
+        "$id" : ObjectId("54dbac3e0b3ade33b8bb944a"),
+        "$db" : "skipe"
+    },
+    user: "Vesper Lynd",
+    date: ISODate("2008-11-14T11:01:59Z"),
+    text: "Don't hi, agent. I don't give you money..."
+});
 
 /*
 USERS_IN_CHAT:
