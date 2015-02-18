@@ -15,6 +15,7 @@ define([
         tplPosts: tPosts,
         events:{
             'click #mainChats a': 'activateChat',
+            'keypress #newPost': 'newPost',
         },
         initialize: function () {
             this.cContact.on('afterGetContacts', this.afterGetContacts, this);
@@ -72,6 +73,19 @@ define([
             this.$('#mainChats .list-group a').removeClass('active');
             this.$(e.currentTarget).addClass('active');
             this.getPosts();
+        },
+        newPost: function (e) {
+            if (e.which === 13) {
+                this.cPost.add([{
+                    chat: {
+                      '$ref': 'chat',
+                      '$id': this.getActiveChatId(),
+                      '$db': 'skipe'
+                    },
+                    user: app.views.account.user.get('token'),
+                    text: this.$('#newPost').val()
+                }]);
+            }
         },
         getContacts: function (r) {
             this.cContact.hash = 'getContacts/user/'+this.user.get('_id');
