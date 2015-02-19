@@ -2,7 +2,7 @@
 
 class a
 {
-    function a($x = 1)
+    public function a($x = 1)
     {
         $this->myvar = $x;
     }
@@ -12,7 +12,7 @@ class b extends a
 {
     private $myvar;
 
-    function b($x = 2)
+    public function b($x = 2)
     {
         $this->myvar = $x;
         parent::a();

@@ -21,3 +21,7 @@ class Boo extends Foo
 
 $o = new Boo;
 echo $o->getBar().PHP_EOL;
+
+/*
+200
+*/
