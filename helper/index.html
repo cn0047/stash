@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="http://getbootstrap.com/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">simple helper</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <button type="button" id="inNeedlesNotInHaystack" class="btn btn-primary navbar-btn">in needles not in haystack</button>
+          <button type="button" id="inNeedlesAndInHaystack" class="btn btn-primary navbar-btn">in needles and in haystack</button>
+          <button type="button" id="interchange" class="btn btn-info">interchange</button>
+          <button type="button" id="urlEncod" class="btn btn-primary navbar-btn">url encode</button>
+          <button type="button" id="urlDecod" class="btn btn-primary navbar-btn">url decode</button>
+          <button type="button" id="regExpMatch" class="btn btn-primary navbar-btn">reg.exp. match</button>
+        </div>
+      </div>
+    </nav>
+    <section>
+      <textarea id="needles" name="needles" placeholder="Needles"></textarea>
+      <textarea id="haystack" name="haystack" placeholder="Haystack"></textarea>
+      <input type="hidden" id="action" name="action" value="">
+    </section>
+    <textarea id="result" placeholder="Result"></textarea>
+    <footer>
+      <img id="imgProgress" class="hide">
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+    <script src="helper.js"></script>
+  </body>
+</html>
