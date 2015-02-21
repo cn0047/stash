@@ -1,11 +1,5 @@
-<h4><%=app.nls.posts%></h2>
-<div class="container">
-<%_.each (data, function(v) {%>
-    <p>
-        <span class="date">[<%=v.date%>]</span>
-        <span class="name"><%=v.user%></span>
-        <span class="text"><%=v.text%></span>
-    </p>
-<%})%>
-</div>
-<textarea id="newPost" class="form-control"></textarea>
+<p>
+    <span class="date">[<%=v.date%>]</span>
+    <span class="name"><%=v.user%></span>
+    <span class="text"><%=v.text%></span>
+</p>

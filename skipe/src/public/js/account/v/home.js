@@ -1,15 +1,17 @@
 define([
     '/js/account/c/chat.js',
     '/js/account/c/contact.js',
+    '/js/account/m/post.js',
     '/js/account/c/post.js',
     'text!/js/account/t/home.tpl.html',
     'text!/js/account/t/mainChats.tpl.html',
     'text!/js/account/t/mainPosts.tpl.html'
-], function (cChat, cContact, cPost, t, tChats, tPosts) {
+], function (cChat, cContact, mPost, cPost, t, tChats, tPosts) {
     return  Backbone.skipeView.extend({
         cChat: new cChat(),
         cContact: new cContact(),
         cPost: new cPost(),
+        mPost: mPost,
         tpl: t,
         tplChats: tChats,
         tplPosts: tPosts,
@@ -64,7 +66,11 @@ define([
             this.renderPosts(r);
         },
         renderPosts: function (d) {
-            this.$('#mainPosts').html(_.template(this.tplPosts)({data: d}));
+            var t = this.tplPosts;
+            this.$('#mainPosts .container').html('');
+            _.each(d, function (v) {
+                this.$('#mainPosts .container').append(_.template(t)({v: v}));
+            })
             app.views.app.hideLoading();
         },
         activateChat: function (e) {
@@ -76,16 +82,28 @@ define([
         },
         newPost: function (e) {
             if (e.which === 13) {
-                this.cPost.add([{
-                    chat: {
-                      '$ref': 'chat',
-                      '$id': this.getActiveChatId(),
-                      '$db': 'skipe'
-                    },
+                var m = new mPost();
+                var d = {
+                    chat: this.getActiveChatId(),
                     user: app.views.account.user.get('token'),
+                    date: (new Date).toLocaleString(),
                     text: this.$('#newPost').val()
-                }]);
+                };
+                m.on('afterAddPost', this.afterAddPost, this);
+                m.save(d, {
+                    success: function (m) {
+                        m.trigger('afterAddPost', d);
+                    }
+                });
+                this.cPost.add(m);
             }
+        },
+        afterAddPost: function (d) {
+            this.$('#mainPosts .container').append(
+                _.template(this.tplPosts)({v: d})
+            );
+            // socet
+            this.$('#newPost').val('');
         },
         getContacts: function (r) {
             this.cContact.hash = 'getContacts/user/'+this.user.get('_id');

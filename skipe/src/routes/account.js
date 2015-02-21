@@ -12,6 +12,27 @@ actions.POST.logOut = function (req, res) {
     res.json({});
 };
 
+actions.POST.addPost = function (req, res) {
+    global.mongo.collection('post', function (err, collection) {
+        collection.insert({
+            chat: {
+              '$ref': 'chat',
+              '$id': global.mongo.ObjectID(req.param('chat')),
+              '$db': 'skipe'
+            },
+            user: req.param('user'),
+            date: req.param('date'),
+            text: req.param('text'),
+        }, function (err, docs) {
+            if (err) {
+                res.json({errors: err});
+                return;
+            }
+            res.json({success: true});
+        });
+    });
+};
+
 actions.GET.getUser = function (req, res) {
     res.json(req.session.user);
 };
