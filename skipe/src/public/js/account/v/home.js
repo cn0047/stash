@@ -49,7 +49,10 @@ define([
         },
         renderChats: function (d) {
             this.$('#mainChats').html(_.template(this.tplChats)({data: d}));
-            $('#mainChats .list-group a:first').addClass('active');
+            this.$('#mainChats .list-group a:first').addClass('active');
+            this.$('#mainChats .settings #chatCaption').val(
+                this.$('#mainChats .list-group a:first').html()
+            );
         },
         getPosts: function () {
             this.cPost.hash = 'getPosts/chat/'+this.getActiveChatId();
@@ -78,6 +81,9 @@ define([
             this.renderPosts({});
             this.$('#mainChats .list-group a').removeClass('active');
             this.$(e.currentTarget).addClass('active');
+            this.$('#mainChats .settings #chatCaption').val(
+                this.$(e.currentTarget).html()
+            );
             this.getPosts();
         },
         newPost: function (e) {

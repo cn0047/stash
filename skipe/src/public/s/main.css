@@ -23,6 +23,17 @@ footer #progress {
     margin-left: auto;
     margin-right: auto;
 }
+#account .main .settings {
+    height: 40px;
+    border: 1px solid #eee;
+    margin: 5px 0;
+    padding: 7px;
+}
+#account .main .settings #chatCaption {
+    border: 0;
+    border-bottom: 1px solid #eee;
+    width: 100%;
+}
 #account .main h4 {
     background-color: #eee;
     border-radius: 4px;
@@ -33,6 +44,12 @@ footer #progress {
     margin-bottom: 0px;
     padding: 7px;
     text-transform: uppercase;
+}
+#account #mainChats {
+    padding-right: 2px;
+}
+#account #mainPosts {
+    padding-left: 2px;
 }
 #account #mainPosts .container {
     border-radius: 4px;
