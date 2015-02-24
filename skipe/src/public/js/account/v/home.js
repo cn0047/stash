@@ -17,6 +17,7 @@ define([
         tplPosts: tPosts,
         events:{
             'click #mainChats a': 'activateChat',
+            'click #mainPosts #showMembersOfChat': 'showMembersOfChat',
             'keypress #newPost': 'newPost',
         },
         initialize: function () {
@@ -111,6 +112,15 @@ define([
             // socet
             this.$('#newPost').val('');
         },
+        showMembersOfChat: function () {
+            console.log(this.getActiveChatId());
+            console.log(this.cChat.findWhere({chat: {_id: this.getActiveChatId()}}));
+        },
+
+
+
+
+
         getContacts: function (r) {
             this.cContact.hash = 'getContacts/user/'+this.user.get('_id');
             this.cContact.fetch({

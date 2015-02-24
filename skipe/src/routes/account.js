@@ -69,6 +69,9 @@ actions.GET.getPosts = function (req, res) {
     });
 };
 
+/**
+ * @todo Refactor it.
+ */
 actions.GET.getChats = function (req, res) {
     global.mongo.collection('usersInChat', function (err, collection) {
         collection.find({user: global.mongo.ObjectID(req.param('user'))}, function (err, cursor) {
