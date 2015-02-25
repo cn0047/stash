@@ -188,6 +188,8 @@ tempnam($dir, $prefix);
     * Number.
     * Callback (aka callable).
 
+##History of PHP
+
 http://php.net/manual/en/appendices.php
 
 ####PHP 5.6.x
