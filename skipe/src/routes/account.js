@@ -94,6 +94,20 @@ actions.GET.getChats = function (req, res) {
     });
 };
 
+actions.GET.getUsersInChat = function (req, res) {
+    global.mongo.collection('usersInChat', function (err, collection) {
+        var args = {
+            'chat.$id': global.mongo.ObjectID(req.param('chat')),
+            'user': {$ne: global.mongo.ObjectID(req.param('user'))}
+        };
+        collection.find(args, function (err, cursor) {
+            cursor.toArray(function (err, docs) {
+                res.json(docs);
+            });
+        });
+    });
+};
+
 exports.go = function (req, res) {
     /**
      * @todo Delete it.

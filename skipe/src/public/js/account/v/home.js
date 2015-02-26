@@ -17,7 +17,7 @@ define([
         tplPosts: tPosts,
         events:{
             'click #mainChats a': 'activateChat',
-            'click #mainPosts #showMembersOfChat': 'showMembersOfChat',
+            'click #mainPosts #showUsersOfChat': 'showUsersOfChat',
             'keypress #newPost': 'newPost',
         },
         initialize: function () {
@@ -112,9 +112,24 @@ define([
             // socet
             this.$('#newPost').val('');
         },
-        showMembersOfChat: function () {
-            console.log(this.getActiveChatId());
-            console.log(this.cChat.findWhere({chat: {_id: this.getActiveChatId()}}));
+        showUsersOfChat: function () {
+            var activeChatId = this.getActiveChatId();
+            var v = this;
+            this.cChat.find(function (m) {
+                if (m.get('chat')._id === activeChatId) {
+                    m.hash = 'getUsersInChat/chat/'+activeChatId+'/user/'+app.views.account.userId;
+                    console.log(m);
+                    m.on('afterGetUsersInChat', v.afterGetUsersInChat, v);
+                    m.fetch({
+                        success: function (m, r) {
+                            m.trigger('afterGetUsersInChat', r);
+                        }
+                    });
+                }
+            });
+        },
+        afterGetUsersInChat: function (r) {
+            console.log(r);
         },
 
 

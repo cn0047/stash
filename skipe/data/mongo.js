@@ -51,6 +51,32 @@ text
 { "_id" : ObjectId("54b99b7dbde7d834a6ec8b40"), "chat" : DBRef("chat", ObjectId("54b8c04bc0eceb8b5083c1cc")), "user" : "M",          "date" : ISODate("2006-11-14T10:00:35Z"), "text" : "You are now agent with two zeros!" }
 { "_id" : ObjectId("54b99b7dbde7d834a6ec8b41"), "chat" : DBRef("chat", ObjectId("54b8c04bc0eceb8b5083c1cc")), "user" : "James Bond", "date" : ISODate("2006-11-14T10:00:47Z"), "text" : "I will not fail!" }
 { "_id" : ObjectId("54b99b7dbde7d834a6ec8b42"), "chat" : DBRef("chat", ObjectId("54b8c04bc0eceb8b5083c1cc")), "user" : "M",          "date" : ISODate("2006-11-14T10:00:53Z"), "text" : "That's the cards in your hands..." }
+
+/*
+USERS_IN_CHAT:
+chat
+user
+*/
+{ "_id" : ObjectId("54bf3992ea0f73ea669c2df7"), "chat" : DBRef("chat", ObjectId("54b8c04bc0eceb8b5083c1cc")), "user" : ObjectId("54b23e6ab8b3cf0211c5adf3") }
+{ "_id" : ObjectId("54bf3996ea0f73ea669c2df8"), "chat" : DBRef("chat", ObjectId("54b8c04bc0eceb8b5083c1cc")), "user" : ObjectId("54b23de857fe2afb0c1182bf") }
+{ "_id" : ObjectId("54dbadec0b3ade33b8bb944c"), "chat" : DBRef("chat", ObjectId("54dbac3e0b3ade33b8bb944a")), "user" : ObjectId("54b23de857fe2afb0c1182bf") }
+{ "_id" : ObjectId("54dbaded0b3ade33b8bb944d"), "chat" : DBRef("chat", ObjectId("54dbac3e0b3ade33b8bb944a")), "user" : ObjectId("54b24dae445e086e129d0feb") }
+{ "_id" : ObjectId("54dbae590b3ade33b8bb944e"), "chat" : DBRef("chat", ObjectId("54dbac560b3ade33b8bb944b")), "user" : ObjectId("54b23de857fe2afb0c1182bf") }
+{ "_id" : ObjectId("54dbae590b3ade33b8bb944f"), "chat" : DBRef("chat", ObjectId("54dbac560b3ade33b8bb944b")), "user" : ObjectId("54b24e99af762f8013a30525") }
+
+
+
+// All users.
+db.user.find();
+// All contacts.
+db.contact.find();
+// All contacts by owner.
+db.contact.find({"owner" : "James Bond"});
+// All chats.
+db.chat.find();
+db.chat.insert({"caption" : "Bond with Mathis"});
+// All posts.
+db.post.find();
 db.post.insert({
     chat: {
         "$ref" : "chat",
@@ -81,42 +107,15 @@ db.post.insert({
     date: ISODate("2008-11-14T11:01:59Z"),
     text: "Don't hi, agent. I don't give you money..."
 });
-
-/*
-USERS_IN_CHAT:
-chat
-user
-*/
-{ "_id" : ObjectId("54bf3992ea0f73ea669c2df7"), "chat" : DBRef("chat", ObjectId("54b8c04bc0eceb8b5083c1cc")), "user" : ObjectId("54b23e6ab8b3cf0211c5adf3") }
-{ "_id" : ObjectId("54bf3996ea0f73ea669c2df8"), "chat" : DBRef("chat", ObjectId("54b8c04bc0eceb8b5083c1cc")), "user" : ObjectId("54b23de857fe2afb0c1182bf") }
-{ "_id" : ObjectId("54dbadec0b3ade33b8bb944c"), "chat" : DBRef("chat", ObjectId("54dbac3e0b3ade33b8bb944a")), "user" : ObjectId("54b23de857fe2afb0c1182bf") }
-{ "_id" : ObjectId("54dbaded0b3ade33b8bb944d"), "chat" : DBRef("chat", ObjectId("54dbac3e0b3ade33b8bb944a")), "user" : ObjectId("54b24dae445e086e129d0feb") }
-{ "_id" : ObjectId("54dbae590b3ade33b8bb944e"), "chat" : DBRef("chat", ObjectId("54dbac560b3ade33b8bb944b")), "user" : ObjectId("54b23de857fe2afb0c1182bf") }
-{ "_id" : ObjectId("54dbae590b3ade33b8bb944f"), "chat" : DBRef("chat", ObjectId("54dbac560b3ade33b8bb944b")), "user" : ObjectId("54b24e99af762f8013a30525") }
-
-
-
-// All users.
-db.user.find();
-// All contacts.
-db.contact.find();
-// All contacts by owner.
-db.contact.find({"owner" : "James Bond"});
-// All chats.
-db.chat.find();
-// All posts.
-db.post.find();
 // usersInChat.
 db.usersInChat.find();
 // usersInChat for user.
 db.usersInChat.find({"user" : "James Bond"});
-
+db.usersInChat.find({"chat.$id" : ObjectId("54b8c04bc0eceb8b5083c1cc"), "user": {$ne: ObjectId("54b23de857fe2afb0c1182bf")}});
 db.usersInChat.update(
     {"user" : "James Bond"},
     {$set: {"user" : ObjectId("54b23de857fe2afb0c1182bf")}},
     {}
 );
-
-db.chat.insert({"caption" : "Bond with Mathis"});
 db.usersInChat.insert({chat: {"$ref" : "chat", "$id" : ObjectId("54dbac560b3ade33b8bb944b"), "$db" : "skipe"}, user: ObjectId("54b23de857fe2afb0c1182bf")});
 db.usersInChat.insert({chat: {"$ref" : "chat", "$id" : ObjectId("54dbac560b3ade33b8bb944b"), "$db" : "skipe"}, user: ObjectId("54b24e99af762f8013a30525")});
