@@ -55,4 +55,15 @@ mongodb.MongoClient.connect(config.mongo.url, function (err, db) {
     //         });
     //     });
     // });
+    db.collection('usersInChat', function (err, collection) {
+        var args = {
+            'chat.$id': mongodb.ObjectID('54b8c04bc0eceb8b5083c1cc'),
+            'user': {$ne: mongodb.ObjectID('54b23e6ab8b3cf0211c5adf3')}
+        };
+        collection.find(args, function (err, cursor) {
+            cursor.toArray(function (err, docs) {
+                console.log(docs);
+            });
+        });
+    });
 });

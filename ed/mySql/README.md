@@ -99,6 +99,8 @@ mysql -hHost -uUser -pPass -DBase < dumpFile.sql
 
 ####Flashback
 ````sql
+LIMIT OFFSET, COUNT
+
 -- First works AND than OR
 
 LIKE '[JM]%'                          -- begins on J or M
