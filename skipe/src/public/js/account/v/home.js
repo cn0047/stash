@@ -113,6 +113,7 @@ define([
             this.$('#newPost').val('');
         },
         showUsersOfChat: function () {
+            this.$('#mainPosts #mainUsersInChat').toggleClass('hide');
             var activeChatId = this.getActiveChatId();
             var v = this;
             this.cChat.find(function (m) {

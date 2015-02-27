@@ -18,6 +18,7 @@
 	"guestMailSubjectRegistration": "☺ Your Skipe address, %s, has been created!",
 	"invalidParam": "Invalid %s",
 	"userNotFound": "User with this %s not found.",
+	"usersInChat": "Members of this chat",
 	"wrongPassword": "Wrong password. Do you forgot password?",
 	"guestMailSubjectForgotPassword": "► Your Skipe password has been updated!",
 	"activate": "Activate",
