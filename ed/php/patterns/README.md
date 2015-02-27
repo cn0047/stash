@@ -33,6 +33,8 @@ Facade vs Proxy: facade cover defined objects, proxy provide access to several o
 Prototype vs Interpreter: ?
 Bridge vs Mediator: ?
 Command vs Strategy: ?
+
+Singletons are bad, they create dependency between classes.
 ````
 
 ####Architectural patterns:
