@@ -84,6 +84,14 @@ php_value xdebug.profiler_output_dir /home/debug/d
 php_value xdebug.profiler_enable_trigger 1
 # Generated file open with KCachegrind.
 ````
+````
+vim ~/.bashrc
+
+export PHP_IDE_CONFIG="serverName=trunk-007" 
+export XDEBUG_CONFIG="idekey=PHPSTORM remote_host={192.168.13.58} remote_enable=1 remote_autostart=1" 
+
+source ~/.bashrc
+````
 
 ####debug
 ````php
