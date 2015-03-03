@@ -67,4 +67,7 @@ map <S-left>  :tabp<cr>
 map <S-right> :tabn<cr>
 map <S-down>  :tabc<cr>
 map <S-up>    :qa!<cr>
+
+set pastetoggle=<F4>
+
 ````
