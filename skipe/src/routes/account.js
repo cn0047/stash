@@ -70,11 +70,11 @@ actions.GET.getPosts = function (req, res) {
 };
 
 /**
- * @todo Refactor it.
+ * @todo Refactor dereference.
  */
 actions.GET.getChats = function (req, res) {
     global.mongo.collection('usersInChat', function (err, collection) {
-        collection.find({user: global.mongo.ObjectID(req.param('user'))}, function (err, cursor) {
+        collection.find({'user.$id': global.mongo.ObjectID(req.param('user'))}, function (err, cursor) {
             cursor.toArray(function (err, docs) {
                 var count = docs.length - 1;
                 for (i in docs) {
@@ -94,15 +94,30 @@ actions.GET.getChats = function (req, res) {
     });
 };
 
+/**
+ * @todo Refactor dereference.
+ */
 actions.GET.getUsersInChat = function (req, res) {
     global.mongo.collection('usersInChat', function (err, collection) {
         var args = {
             'chat.$id': global.mongo.ObjectID(req.param('chat')),
-            'user': {$ne: global.mongo.ObjectID(req.param('user'))}
+            'user.$id': {$ne: global.mongo.ObjectID(req.param('user'))}
         };
         collection.find(args, function (err, cursor) {
             cursor.toArray(function (err, docs) {
-                res.json(docs);
+                var count = docs.length - 1;
+                for (i in docs) {
+                    (function (docs, i) {
+                        global.mongo.dereference(docs[i].user, function(err, doc) {
+                            docs[i].user = doc;
+                            if (i == count) {
+                                (function (docs) {
+                                    res.json(docs);
+                                })(docs);
+                            }
+                        });
+                    })(docs, i)
+                }
             });
         });
     });

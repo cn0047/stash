@@ -19,7 +19,9 @@ mongodb.MongoClient.connect(config.mongo.url, function (err, db) {
     //         console.log(doc);
     //     });
     // });
-    // All contacts by owner.
+    /**
+     * All contacts by owner.
+     */
     // db.collection('contact', function (err, collection) {
     //     collection.find({owner: 'James Bond'}, function (err, cursor) {
     //         if (err) { console.error(err); }
@@ -36,6 +38,9 @@ mongodb.MongoClient.connect(config.mongo.url, function (err, db) {
     //         });
     //     });
     // });
+    /**
+     * DEREFERENCE.
+     */
     // db.collection('post', function (err, collection) {
     //     collection.find({}, function (err, cursor) {
     //         cursor.toArray(function (err, docs) {
@@ -55,17 +60,23 @@ mongodb.MongoClient.connect(config.mongo.url, function (err, db) {
     //         });
     //     });
     // });
-    db.collection('usersInChat', function (err, collection) {
-        var args = {
-            'chat.$id': mongodb.ObjectID('54b8c04bc0eceb8b5083c1cc'),
-            'user': {$ne: mongodb.ObjectID('54b23e6ab8b3cf0211c5adf3')}
-        };
-        collection.find(args, function (err, cursor) {
-            // .forEach(function(err, doc) {
-            // http://thejackalofjavascript.com/mapreduce-in-mongodb/
-            cursor.toArray(function (err, docs) {
-                console.log(docs);
-            });
-        });
-    });
+    /**
+     * OK.
+     *
+     * npm install mongo-join
+     *
+     * @see http://thejackalofjavascript.com/mapreduce-in-mongodb
+     */
+    // .forEach(function(err, doc) {
+    // db.collection('usersInChat', function (err, collection) {
+    //     var args = {
+    //         'chat.$id': mongodb.ObjectID('54b8c04bc0eceb8b5083c1cc'),
+    //         'user': {$ne: mongodb.ObjectID('54b23e6ab8b3cf0211c5adf3')}
+    //     };
+    //     collection.find(args, function (err, cursor) {
+    //         cursor.toArray(function (err, docs) {
+    //             console.log(docs);
+    //         });
+    //     });
+    // });
 });
