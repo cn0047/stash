@@ -13,6 +13,7 @@ define([
         routes: {
             view_account_home: '/js/account/v/home.js',
             view_account_logOut: '/js/account/v/logOut.js',
+            view_account_contacts: '/js/account/v/contacts.js',
         },
         initialize: function () {
             app.views.app.on('renderLayouts', this.renderLayouts, this);

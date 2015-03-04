@@ -1,27 +1,26 @@
 define([
     '/js/account/c/chat.js',
-    '/js/account/c/contact.js',
     '/js/account/m/post.js',
     '/js/account/c/post.js',
     'text!/js/account/t/home.tpl.html',
     'text!/js/account/t/mainChats.tpl.html',
-    'text!/js/account/t/mainPosts.tpl.html'
-], function (cChat, cContact, mPost, cPost, t, tChats, tPosts) {
+    'text!/js/account/t/mainPosts.tpl.html',
+    'text!/js/account/t/mainUsersInChat.tpl.html'
+], function (cChat, mPost, cPost, t, tChats, tPosts, tUsersInChat) {
     return  Backbone.skipeView.extend({
         cChat: new cChat(),
-        cContact: new cContact(),
         cPost: new cPost(),
         mPost: mPost,
         tpl: t,
         tplChats: tChats,
         tplPosts: tPosts,
+        tplUsersInChat: tUsersInChat,
         events:{
             'click #mainChats a': 'activateChat',
             'click #mainPosts #showUsersOfChat': 'showUsersOfChat',
             'keypress #newPost': 'newPost',
         },
         initialize: function () {
-            this.cContact.on('afterGetContacts', this.afterGetContacts, this);
             this.cPost.on('afterGetPosts', this.afterGetPosts, this);
             this.cChat.on('afterGetChats', this.afterGetChats, this);
         },
@@ -71,13 +70,14 @@ define([
         },
         renderPosts: function (d) {
             var t = this.tplPosts;
-            this.$('#mainPosts .container').html('');
+            this.$('#mainPosts #postsContainer').html('');
             _.each(d, function (v) {
-                this.$('#mainPosts .container').append(_.template(t)({v: v}));
+                this.$('#mainPosts #postsContainer').append(_.template(t)({v: v}));
             })
             app.views.app.hideLoading();
         },
         activateChat: function (e) {
+            this.hideUsersInChat();
             app.views.app.showLoading();
             this.renderPosts({});
             this.$('#mainChats .list-group a').removeClass('active');
@@ -106,14 +106,23 @@ define([
             }
         },
         afterAddPost: function (d) {
-            this.$('#mainPosts .container').append(
+            this.$('#mainPosts #postsContainer').append(
                 _.template(this.tplPosts)({v: d})
             );
             // socet
             this.$('#newPost').val('');
         },
+        hideUsersInChat: function () {
+            if (!this.$('#mainPosts #mainUsersInChat').hasClass('hide')) {
+                this.$('#mainPosts #showUsersOfChat').click();
+                this.$('#mainUsersInChat .container').html('');
+            }
+        },
         showUsersOfChat: function () {
             this.$('#mainPosts #mainUsersInChat').toggleClass('hide');
+            if (this.$('#mainPosts #mainUsersInChat').hasClass('hide')) {
+                return;
+            }
             var activeChatId = this.getActiveChatId();
             var v = this;
             this.cChat.find(function (m) {
@@ -130,23 +139,9 @@ define([
             });
         },
         afterGetUsersInChat: function (r) {
-            console.log(r);
-        },
-
-
-
-
-
-        getContacts: function (r) {
-            this.cContact.hash = 'getContacts/user/'+this.user.get('_id');
-            this.cContact.fetch({
-                success: function (c, r) {
-                    c.trigger('afterGetContacts', r);
-                }
-            });
-        },
-        afterGetContacts: function (r) {
-            console.dir(r);
+            this.$('#mainUsersInChat .container').html(
+                _.template(this.tplUsersInChat)({data: r})
+            );
         },
     });
 });

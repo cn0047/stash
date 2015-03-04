@@ -1,4 +1,5 @@
 {
+	"allContacts": "All contacts",
 	"EMAIL": "EMAIL",
 	"PASSWORD": "PASSWORD",
 	"SCREEN_NAME": "SCREEN NAME",
@@ -36,6 +37,7 @@
 	"settings": "Settings",
 	"changeAccount": "Change account",
 	"newPassword": "New password",
+	"myContacts": "My contacts",
 	"passwordSuccessfullyUpdated": "Your password has been successfully updated.",
 	"posts": "posts",
 	"keepThisEmail": "Please keep this email.",

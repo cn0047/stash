@@ -1,4 +1,5 @@
 {
+	"allContacts": "Все контакты",
 	"EMAIL": "ЭЛ.ПОЧТА",
 	"PASSWORD": "ПАРОЛЬ",
 	"SCREEN_NAME": "ПСЕВДОНИМ",
@@ -36,6 +37,7 @@
 	"settings": "Настройки",
 	"changeAccount": "Сменить учетную запись",
 	"newPassword": "Новый пароль",
+	"myContacts": "Мои контакты",
 	"passwordSuccessfullyUpdated": "Ваш пароль был успешно обновлен.",
 	"posts": "сообщения",
 	"keepThisEmail": "Сохраните это сообщение.",
