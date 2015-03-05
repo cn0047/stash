@@ -7,6 +7,9 @@ define([
         tpl: t,
         tMy: tMy,
         cContact: new cContact(),
+        events:{
+            'click #myContacts a': 'activateContact',
+        },
         initialize: function () {
             this.cContact.on('afterGetMyContacts', this.afterGetMyContacts, this);
         },
@@ -18,6 +21,9 @@ define([
         },
         render: function () {
             this.$el.html(_.template(this.tpl));
+        },
+        activateContact: function (e) {
+            e.preventDefault();
         },
         getMyContacts: function () {
             this.cContact.hash = 'getContacts/user/'+app.views.account.userId;

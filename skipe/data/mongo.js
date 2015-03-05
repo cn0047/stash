@@ -22,13 +22,15 @@ CONTACTS:
 owner
 user
 */
-{ "_id" : ObjectId("54b760acee2a81ef4a89579a"), "owner" : ObjectId("54b23de857fe2afb0c1182bf"), "user" : { "sname" : "Q" } }
-{ "_id" : ObjectId("54b760adee2a81ef4a89579b"), "owner" : ObjectId("54b23de857fe2afb0c1182bf"), "user" : { "sname" : "Vesper Lynd" } }
-{ "_id" : ObjectId("54b760adee2a81ef4a89579c"), "owner" : ObjectId("54b23de857fe2afb0c1182bf"), "user" : { "sname" : "Felix Leiter" } }
-{ "_id" : ObjectId("54b760aeee2a81ef4a89579d"), "owner" : ObjectId("54b23de857fe2afb0c1182bf"), "user" : { "sname" : "Rene Mathis" } }
-{ "_id" : ObjectId("54b76107ee2a81ef4a89579e"), "owner" : ObjectId("54b24fbe49b8802715620d76"), "user" : { "sname" : "Mr White" } }
-{ "_id" : ObjectId("54b76107ee2a81ef4a89579f"), "owner" : ObjectId("54b24fbe49b8802715620d76"), "user" : { "sname" : "Alex Dimitrios" } }
-{ "_id" : ObjectId("54b76107ee2a81ef4a8957a0"), "owner" : ObjectId("54b24fbe49b8802715620d76"), "user" : { "sname" : "Rene Mathis" } }
+{ "_id" : ObjectId("54f7ea2699553d12dfcbe2c8"), "owner" : ObjectId("54b23de857fe2afb0c1182bf"), "user" : DBRef("user", ObjectId("54b23e6ab8b3cf0211c5adf3")) }
+{ "_id" : ObjectId("54f7ea2699553d12dfcbe2c9"), "owner" : ObjectId("54b23de857fe2afb0c1182bf"), "user" : DBRef("user", ObjectId("54b24d47df23943812d375fc")) }
+{ "_id" : ObjectId("54f7ea2699553d12dfcbe2ca"), "owner" : ObjectId("54b23de857fe2afb0c1182bf"), "user" : DBRef("user", ObjectId("54b24dae445e086e129d0feb")) }
+{ "_id" : ObjectId("54f7ea2699553d12dfcbe2cb"), "owner" : ObjectId("54b23de857fe2afb0c1182bf"), "user" : DBRef("user", ObjectId("54b24e095b9581dc127f428f")) }
+{ "_id" : ObjectId("54f7ea2799553d12dfcbe2cc"), "owner" : ObjectId("54b23de857fe2afb0c1182bf"), "user" : DBRef("user", ObjectId("54b24e99af762f8013a30525")) }
+{ "_id" : ObjectId("54f7ea2799553d12dfcbe2cd"), "owner" : ObjectId("54b24fbe49b8802715620d76"), "user" : DBRef("user", ObjectId("54b24fe82607dbaf153f9afc")) }
+{ "_id" : ObjectId("54f7ea2799553d12dfcbe2ce"), "owner" : ObjectId("54b24fbe49b8802715620d76"), "user" : DBRef("user", ObjectId("54b24f95061695e114e9910f")) }
+{ "_id" : ObjectId("54f7ea2899553d12dfcbe2cf"), "owner" : ObjectId("54b24fbe49b8802715620d76"), "user" : DBRef("user", ObjectId("54b24e99af762f8013a30525")) }
+
 
 /*
 CHATS:
@@ -72,51 +74,28 @@ db.user.find();
 db.contact.find();
 // All contacts by owner.
 db.contact.find({"owner" : "James Bond"});
+db.contact.insert({owner : ObjectId("54b23de857fe2afb0c1182bf"), user: {"$ref" : "user", "$id" : ObjectId("54b23e6ab8b3cf0211c5adf3"), "$db" : "skipe"}});
+db.contact.insert({owner : ObjectId("54b23de857fe2afb0c1182bf"), user: {"$ref" : "user", "$id" : ObjectId("54b24d47df23943812d375fc"), "$db" : "skipe"}});
+db.contact.insert({owner : ObjectId("54b23de857fe2afb0c1182bf"), user: {"$ref" : "user", "$id" : ObjectId("54b24dae445e086e129d0feb"), "$db" : "skipe"}});
+db.contact.insert({owner : ObjectId("54b23de857fe2afb0c1182bf"), user: {"$ref" : "user", "$id" : ObjectId("54b24e095b9581dc127f428f"), "$db" : "skipe"}});
+db.contact.insert({owner : ObjectId("54b23de857fe2afb0c1182bf"), user: {"$ref" : "user", "$id" : ObjectId("54b24e99af762f8013a30525"), "$db" : "skipe"}});
+db.contact.insert({owner : ObjectId("54b24fbe49b8802715620d76"), user: {"$ref" : "user", "$id" : ObjectId("54b24fe82607dbaf153f9afc"), "$db" : "skipe"}});
+db.contact.insert({owner : ObjectId("54b24fbe49b8802715620d76"), user: {"$ref" : "user", "$id" : ObjectId("54b24f95061695e114e9910f"), "$db" : "skipe"}});
+db.contact.insert({owner : ObjectId("54b24fbe49b8802715620d76"), user: {"$ref" : "user", "$id" : ObjectId("54b24e99af762f8013a30525"), "$db" : "skipe"}});
 // All chats.
 db.chat.find();
 db.chat.insert({"caption" : "Bond with Mathis"});
 // All posts.
 db.post.find();
-db.post.insert({
-    chat: {
-        "$ref" : "chat",
-        "$id" : ObjectId("54b8c04bc0eceb8b5083c1cc"),
-        "$db" : "skipe"
-    },
-    user: "James Bond",
-    date: ISODate("2006-11-14T10:01:53Z"),
-    text: "Ok. Got it!"
-});
-db.post.insert({
-    chat: {
-        "$ref" : "chat",
-        "$id" : ObjectId("54dbac3e0b3ade33b8bb944a"),
-        "$db" : "skipe"
-    },
-    user: "James Bond",
-    date: ISODate("2008-11-14T11:01:53Z"),
-    text: "Hi, Darling!"
-});
-db.post.insert({
-    chat: {
-        "$ref" : "chat",
-        "$id" : ObjectId("54dbac3e0b3ade33b8bb944a"),
-        "$db" : "skipe"
-    },
-    user: "Vesper Lynd",
-    date: ISODate("2008-11-14T11:01:59Z"),
-    text: "Don't hi, agent. I don't give you money..."
-});
+db.post.insert({chat: {"$ref" : "chat", "$id" : ObjectId("54b8c04bc0eceb8b5083c1cc"), "$db" : "skipe"}, user: "James Bond", date: ISODate("2006-11-14T10:01:53Z"), text: "Ok. Got it!"});
+db.post.insert({chat: {"$ref" : "chat", "$id" : ObjectId("54dbac3e0b3ade33b8bb944a"), "$db" : "skipe"}, user: "James Bond", date: ISODate("2008-11-14T11:01:53Z"), text: "Hi, Darling!"});
+db.post.insert({chat: {"$ref" : "chat", "$id" : ObjectId("54dbac3e0b3ade33b8bb944a"), "$db" : "skipe"}, user: "Vesper Lynd", date: ISODate("2008-11-14T11:01:59Z"), text: "Don't hi, agent. I don't give you money..."});
 // usersInChat.
 db.usersInChat.find();
 // usersInChat for user.
 db.usersInChat.find({"user" : "James Bond"});
 db.usersInChat.find({"chat.$id" : ObjectId("54b8c04bc0eceb8b5083c1cc"), "user": {$ne: ObjectId("54b23de857fe2afb0c1182bf")}});
-db.usersInChat.update(
-    {"user" : "James Bond"},
-    {$set: {"user" : ObjectId("54b23de857fe2afb0c1182bf")}},
-    {}
-);
+db.usersInChat.update({"user" : "James Bond"}, {$set: {"user" : ObjectId("54b23de857fe2afb0c1182bf")}}, {} );
 db.usersInChat.insert({chat: {"$ref" : "chat", "$id" : ObjectId("54dbac560b3ade33b8bb944b"), "$db" : "skipe"}, user: {"$ref" : "user", "$id" : ObjectId("54b23de857fe2afb0c1182bf"), "$db" : "skipe"}});
 db.usersInChat.insert({chat: {"$ref" : "chat", "$id" : ObjectId("54dbac560b3ade33b8bb944b"), "$db" : "skipe"}, user: {"$ref" : "user", "$id" : ObjectId("54b24e99af762f8013a30525"), "$db" : "skipe"}});
 db.usersInChat.insert({chat: {"$ref" : "chat", "$id" : ObjectId("54dbac3e0b3ade33b8bb944a"), "$db" : "skipe"}, user: {"$ref" : "user", "$id" : ObjectId("54b24dae445e086e129d0feb"), "$db" : "skipe"}});

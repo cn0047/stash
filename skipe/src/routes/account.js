@@ -37,16 +37,34 @@ actions.GET.getUser = function (req, res) {
     res.json(req.session.user);
 };
 
+/**
+ * @todo Refactor dereference.
+ */
 actions.GET.getContacts = function (req, res) {
     global.mongo.collection('contact', function (err, collection) {
-        collection
-        .find({owner: global.mongo.ObjectID(req.param('user'))})
-        .toArray(function (err, docs) {
-            res.json(docs);
+        collection.find({owner: global.mongo.ObjectID(req.param('user'))}, function (err, cursor) {
+            cursor.toArray(function (err, docs) {
+                var count = docs.length - 1;
+                for (i in docs) {
+                    (function (docs, i) {
+                        global.mongo.dereference(docs[i].user, function(err, doc) {
+                            docs[i].user = doc;
+                            if (i == count) {
+                                (function (docs) {
+                                    res.json(docs);
+                                })(docs);
+                            }
+                        });
+                    })(docs, i)
+                }
+            });
         });
     });
 };
 
+/**
+ * @todo Refactor dereference.
+ */
 actions.GET.getPosts = function (req, res) {
     global.mongo.collection('post', function (err, collection) {
         collection.find({'chat.$id': global.mongo.ObjectID(req.param('chat'))}, function (err, cursor) {
