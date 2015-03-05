@@ -200,6 +200,8 @@ mysql> pager less -SFX
     * Multipolygon.
     * Geometrycollection.
 
+##History of MySQL
+
 ####MySQL 5.7
 * Security improvements.
 * SQL mode changes.
