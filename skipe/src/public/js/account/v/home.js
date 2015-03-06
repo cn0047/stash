@@ -92,7 +92,7 @@ define([
                 var m = new mPost();
                 var d = {
                     chat: this.getActiveChatId(),
-                    user: app.views.account.user.get('token'),
+                    user: app.views.account.user.get('sname'),
                     date: (new Date).toLocaleString(),
                     text: this.$('#newPost').val()
                 };
