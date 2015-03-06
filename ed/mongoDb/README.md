@@ -419,11 +419,11 @@ $natural
 [MongoDB CRUD Reference](http://docs.mongodb.org/manual/reference/crud/#mongodb-crud-reference)
 
 [SQL to MongoDB Mapping Chart](http://docs.mongodb.org/manual/reference/sql-comparison/#sql-to-mongodb-mapping-chart)
-````js
-// In general, use embedded data models when:
-// you have one-to-one or one-to-many model.
-/* For model many-to-many use relationships with document references. */
 
+In general, use embedded data models when: you have one-to-one or one-to-many model.
+<br>For model many-to-many use relationships with document references.
+
+````js
 // Model Tree Structures with Parent References
 db.categories.insert( { _id: "MongoDB", parent: "Databases" } )
 db.categories.insert( { _id: "dbm", parent: "Databases" } )
