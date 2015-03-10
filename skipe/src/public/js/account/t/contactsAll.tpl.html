@@ -1,3 +1,8 @@
 <%_.each (data, function(v) {%>
-    <a href="#" class="list-group-item"><%=v.sname%></a>
+    <a href="#" class="list-group-item">
+        <%=v.sname%>
+        <div class="pull-right">
+            <span class="glyphicon glyphicon-plus"></span>
+        </div>
+    </a>
 <%})%>

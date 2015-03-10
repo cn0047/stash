@@ -1,3 +1,28 @@
 <%_.each (data, function(v) {%>
-    <a href="#" class="list-group-item"><%=v.user.sname%></a>
+    <a href="#" class="list-group-item">
+        <%=v.user.sname%>
+        <div class="pull-right">
+            <span class="glyphicon glyphicon-comment">
+            </span>
+            <span class="glyphicon glyphicon-user" data-toggle="modal" data-target="#contactInfoModal">
+            </span>
+        </div>
+    </a>
 <%})%>
+<div class="modal fade" id="contactInfoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">
+                    <%=app.nls.infoAboutProfile%>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </h4>
+            </div>
+            <div class="modal-body">
+            ...
+            </div>
+        </div>
+    </div>
+</div>
