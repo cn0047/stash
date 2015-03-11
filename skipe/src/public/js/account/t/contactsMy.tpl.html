@@ -1,7 +1,7 @@
 <%_.each (data, function(v) {%>
     <a href="#" class="list-group-item">
         <%=v.user.sname%>
-        <div class="pull-right">
+        <div class="pull-right hide" data-userId="<%=v.user._id%>">
             <span class="glyphicon glyphicon-comment">
             </span>
             <span class="glyphicon glyphicon-user" data-toggle="modal" data-target="#contactInfoModal">
@@ -20,9 +20,7 @@
                     </button>
                 </h4>
             </div>
-            <div class="modal-body">
-            ...
-            </div>
+            <div class="modal-body"><%=app.nls.loading%></div>
         </div>
     </div>
 </div>

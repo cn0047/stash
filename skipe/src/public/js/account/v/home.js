@@ -128,7 +128,6 @@ define([
             this.cChat.find(function (m) {
                 if (m.get('chat')._id === activeChatId) {
                     m.hash = 'getUsersInChat/chat/'+activeChatId+'/user/'+app.views.account.userId;
-                    console.log(m);
                     m.on('afterGetUsersInChat', v.afterGetUsersInChat, v);
                     m.fetch({
                         success: function (m, r) {

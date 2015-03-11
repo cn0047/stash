@@ -104,6 +104,18 @@ actions.GET.getUsersInChat = function (req, res) {
     });
 };
 
+actions.GET.getContactInfo = function (req, res) {
+    global.mongo.collection('user', function (err, collection) {
+        collection.findOne(
+            {'_id': global.mongo.ObjectID(req.param('user'))},
+            {sname: true, email: true},
+            function (err, doc) {
+                res.json(doc);
+            }
+        );
+    });
+};
+
 exports.go = function (req, res) {
     /**
      * @todo Delete it.
