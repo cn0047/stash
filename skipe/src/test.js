@@ -1,4 +1,4 @@
-// nodemon ./test.js localhost 3000
+// nodemon ./test.js localhost 3001
 
 var mongodb          = require('mongodb');
 var config           = require('./configs/main').config;
@@ -78,5 +78,34 @@ mongodb.MongoClient.connect(config.mongo.url, function (err, db) {
     //             console.log(docs);
     //         });
     //     });
+    // });
+    /**
+     * ALL CONTACTS.
+     */
+    // db.collection('contact', function (err, collection) {
+    //     collection.find(
+    //         {owner: mongodb.ObjectID('54b23de857fe2afb0c1182bf')},
+    //         {'user._id': true, _id: false},
+    //         function (err, cursor) {
+    //             cursor.toArray(function (err, docs) {
+    //                 var myContacts = docs.map(function (o) {
+    //                     return mongodb.ObjectID(o.user._id);
+    //                 });
+    //                 // Exclude myself.
+    //                 myContacts.push(mongodb.ObjectID('54b23de857fe2afb0c1182bf'));
+    //                 db.collection('user', function (err, collection) {
+    //                     collection.find(
+    //                         {_id: {$nin: myContacts}},
+    //                         {sort: ['sname', 'asc']},
+    //                         function (err, cursor) {
+    //                             cursor.toArray(function (err, docs) {
+    //                                 console.log(docs);
+    //                             });
+    //                         }
+    //                     );
+    //                 });
+    //             });
+    //         }
+    //     );
     // });
 });

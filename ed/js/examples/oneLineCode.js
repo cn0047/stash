@@ -5,3 +5,10 @@
 
 if (true) {} elseif (true) {} // Uncaught SyntaxError: Unexpected token {
 if (true) {} else if (true) {} // OK.
+
+console.log(
+    [1, 2, 3].map(function (v) {
+        return 'value:'+v;
+    })
+);
+// ["value:1", "value:2", "value:3"]

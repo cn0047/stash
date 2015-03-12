@@ -12,6 +12,9 @@ actions.POST.logOut = function (req, res) {
     res.json({});
 };
 
+/**
+ * @todo Security.
+ */
 actions.POST.addPost = function (req, res) {
     global.mongo.collection('post', function (err, collection) {
         collection.insert(
@@ -36,20 +39,43 @@ actions.GET.getUser = function (req, res) {
     res.json(req.session.user);
 };
 
+/**
+ * @todo Security.
+ */
 actions.GET.getAllContacts = function (req, res) {
-    global.mongo.collection('user', function (err, collection) {
+    global.mongo.collection('contact', function (err, collection) {
         collection.find(
-            {},
-            {sort: ['sname', 'asc']},
+            {owner: global.mongo.ObjectID(req.param('user'))},
+            {'user._id': true, _id: false},
             function (err, cursor) {
                 cursor.toArray(function (err, docs) {
-                    res.json(docs);
+                    var myContacts = docs.map(function (o) {
+                        return global.mongo.ObjectID(o.user._id);
+                    });
+                    // Exclude myself.
+                    myContacts.push(global.mongo.ObjectID(req.param('user')));
+                    // All available contacts without myself and my contacts.
+                    global.mongo.collection('user', function (err, collection) {
+                        collection.find(
+                            {_id: {$nin: myContacts}},
+                            {_id: true, sname: true},
+                            {sort: ['sname', 'asc']},
+                            function (err, cursor) {
+                                cursor.toArray(function (err, docs) {
+                                    res.json(docs);
+                                });
+                            }
+                        );
+                    });
                 });
             }
         );
     });
 };
 
+/**
+ * @todo Security.
+ */
 actions.GET.getContacts = function (req, res) {
     global.mongo.collection('contact', function (err, collection) {
         collection.find(
@@ -64,6 +90,9 @@ actions.GET.getContacts = function (req, res) {
     });
 };
 
+/**
+ * @todo Security.
+ */
 actions.GET.getPosts = function (req, res) {
     global.mongo.collection('post', function (err, collection) {
         collection.find(
@@ -77,6 +106,9 @@ actions.GET.getPosts = function (req, res) {
     });
 };
 
+/**
+ * @todo Security.
+ */
 actions.GET.getChats = function (req, res) {
     global.mongo.collection('usersInChat', function (err, collection) {
         collection.find(
@@ -90,6 +122,9 @@ actions.GET.getChats = function (req, res) {
     });
 };
 
+/**
+ * @todo Security.
+ */
 actions.GET.getUsersInChat = function (req, res) {
     global.mongo.collection('usersInChat', function (err, collection) {
         var args = {
@@ -104,6 +139,9 @@ actions.GET.getUsersInChat = function (req, res) {
     });
 };
 
+/**
+ * @todo Security.
+ */
 actions.GET.getContactInfo = function (req, res) {
     global.mongo.collection('user', function (err, collection) {
         collection.findOne(
