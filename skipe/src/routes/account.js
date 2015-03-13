@@ -35,6 +35,27 @@ actions.POST.addPost = function (req, res) {
     });
 };
 
+/**
+ * @todo Security.
+ */
+actions.POST.addContact = function (req, res) {
+    global.mongo.collection('contact', function (err, collection) {
+        collection.insert(
+            {
+                owner: global.mongo.ObjectID(req.param('owner')),
+                user: {_id: req.param('userId'), sname: req.param('sname')},
+            },
+            function (err, docs) {
+                if (err) {
+                    res.json({errors: err});
+                    return;
+                }
+                res.json({success: true});
+            }
+        );
+    });
+};
+
 actions.GET.getUser = function (req, res) {
     res.json(req.session.user);
 };

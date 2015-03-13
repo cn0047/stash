@@ -1,16 +1,18 @@
 define([
+    '/js/account/m/chat.js',
     '/js/account/m/contact.js',
     '/js/account/c/contact.js',
     'text!/js/account/t/contacts.tpl.html',
     'text!/js/account/t/contactInfo.tpl.html',
     'text!/js/account/t/contactsAll.tpl.html',
     'text!/js/account/t/contactsMy.tpl.html'
-], function (mContact, cContact, t, tContactInfo, tAll, tMy) {
+], function (mChat, mContact, cContact, t, tContactInfo, tAll, tMy) {
     return  Backbone.skipeView.extend({
         tpl: t,
         tContactInfo: tContactInfo,
         tAll: tAll,
         tMy: tMy,
+        mChat: new mChat(),
         mContact: new mContact(),
         cMyContact: new cContact(),
         cAllContact: new cContact(),
@@ -18,6 +20,7 @@ define([
             'click #myContacts a': 'cancelEvent',
             'click #allContacts a': 'cancelEvent',
             'click #myContacts .glyphicon-user': 'getContactInfo',
+            'click #myContacts .glyphicon-comment': 'startChat',
             'click #allContacts .glyphicon-plus': 'addContact',
             'mouseenter #myContacts a': 'showButtons',
             'mouseleave #myContacts a': 'hideButtons',
@@ -36,6 +39,7 @@ define([
         },
         go: function () {
             this.renderIf();
+            this.getMyContacts();
             this.getAllContacts();
             app.views.app.hideLoading();
         },
@@ -57,7 +61,6 @@ define([
             this.$('#allContacts .list-group').html(
                 _.template(this.tAll)({data: this.cAllContact.toJSON()})
             );
-            this.getMyContacts();
         },
         getMyContacts: function () {
             this.cMyContact.hash = 'getMyContacts/user/'+app.views.account.userId;
@@ -75,6 +78,7 @@ define([
         getContactInfo: function (e) {
             app.views.app.showLoading();
             var m = this.mContact;
+            m.clear();
             m.hash = 'getContactInfo/user/'+this.$(e.target).parent().attr('data-userId');
             m.on('afterGetContactInfo', this.afterGetContactInfo, this);
             m.fetch({
@@ -90,18 +94,28 @@ define([
             app.views.app.hideLoading();
         },
         addContact: function (e) {
+            app.views.app.showLoading();
             var userId = this.$(e.target).parent().attr('data-userId');
             var m = this.cAllContact.remove(
-                this.cAllContact.where({_id: userId})
+                this.cAllContact.findWhere({_id: userId})
             );
-            m = m[0];
-            // m.hash = 'addContact/owner/'+app.views.account.userId+'/user/'+userId;
-            // m.save();
-            // console.log(userId);
-            // console.log(m.get('sname'));
-            // this.cMyContact.add([{user: {_id: userId, sname: m.get('sname')}}]);
-            // this.renderAllContacts();
-            // this.renderMyContacts();
+            var sname = m.get('sname');
+            m = this.mContact;
+            m.clear();
+            m.hash = 'addContact';
+            var d = {
+                owner: app.views.account.userId,
+                userId: userId,
+                sname: sname
+            };
+            m.on('afterAddContact', this.go, this);
+            m.save(d, {
+                success: function (m) {
+                    m.trigger('afterAddContact');
+                }
+            });
+        },
+        startChat: function (e) {
         },
     });
 });

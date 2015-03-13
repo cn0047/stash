@@ -90,6 +90,7 @@ define([
         newPost: function (e) {
             if (e.which === 13) {
                 var m = new mPost();
+                m.hash = 'addPost';
                 var d = {
                     chat: this.getActiveChatId(),
                     user: app.views.account.user.get('sname'),
