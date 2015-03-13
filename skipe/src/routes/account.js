@@ -76,7 +76,7 @@ actions.GET.getAllContacts = function (req, res) {
 /**
  * @todo Security.
  */
-actions.GET.getContacts = function (req, res) {
+actions.GET.getMyContacts = function (req, res) {
     global.mongo.collection('contact', function (err, collection) {
         collection.find(
             {owner: global.mongo.ObjectID(req.param('user'))},

@@ -11,8 +11,9 @@ define([
         tContactInfo: tContactInfo,
         tAll: tAll,
         tMy: tMy,
-        mContact: mContact,
-        cContact: new cContact(),
+        mContact: new mContact(),
+        cMyContact: new cContact(),
+        cAllContact: new cContact(),
         events:{
             'click #myContacts a': 'cancelEvent',
             'click #allContacts a': 'cancelEvent',
@@ -30,8 +31,8 @@ define([
             this.$(e.target).find('div').addClass('hide');
         },
         initialize: function () {
-            this.cContact.on('afterGetAllContacts', this.afterGetAllContacts, this);
-            this.cContact.on('afterGetMyContacts', this.afterGetMyContacts, this);
+            this.cAllContact.on('renderAllContacts', this.renderAllContacts, this);
+            this.cMyContact.on('renderMyContacts', this.renderMyContacts, this);
         },
         go: function () {
             this.renderIf();
@@ -45,35 +46,35 @@ define([
             e.preventDefault();
         },
         getAllContacts: function () {
-            this.cContact.hash = 'getAllContacts/user/'+app.views.account.userId;
-            this.cContact.fetch({
+            this.cAllContact.hash = 'getAllContacts/user/'+app.views.account.userId;
+            this.cAllContact.fetch({
                 success: function (c, r) {
-                    c.trigger('afterGetAllContacts', r);
+                    c.trigger('renderAllContacts', r);
                 }
             });
         },
-        afterGetAllContacts: function (r) {
+        renderAllContacts: function () {
             this.$('#allContacts .list-group').html(
-                _.template(this.tAll)({data: r})
+                _.template(this.tAll)({data: this.cAllContact.toJSON()})
             );
             this.getMyContacts();
         },
         getMyContacts: function () {
-            this.cContact.hash = 'getContacts/user/'+app.views.account.userId;
-            this.cContact.fetch({
+            this.cMyContact.hash = 'getMyContacts/user/'+app.views.account.userId;
+            this.cMyContact.fetch({
                 success: function (c, r) {
-                    c.trigger('afterGetMyContacts', r);
+                    c.trigger('renderMyContacts', r);
                 }
             });
         },
-        afterGetMyContacts: function (r) {
+        renderMyContacts: function () {
             this.$('#myContacts .list-group').html(
-                _.template(this.tMy)({data: r})
+                _.template(this.tMy)({data: this.cMyContact.toJSON()})
             );
         },
         getContactInfo: function (e) {
             app.views.app.showLoading();
-            var m = new mContact();
+            var m = this.mContact;
             m.hash = 'getContactInfo/user/'+this.$(e.target).parent().attr('data-userId');
             m.on('afterGetContactInfo', this.afterGetContactInfo, this);
             m.fetch({
@@ -89,9 +90,18 @@ define([
             app.views.app.hideLoading();
         },
         addContact: function (e) {
-            console.log(
-                this.$(e.target).parent().attr('data-userId')
+            var userId = this.$(e.target).parent().attr('data-userId');
+            var m = this.cAllContact.remove(
+                this.cAllContact.where({_id: userId})
             );
+            m = m[0];
+            // m.hash = 'addContact/owner/'+app.views.account.userId+'/user/'+userId;
+            // m.save();
+            // console.log(userId);
+            // console.log(m.get('sname'));
+            // this.cMyContact.add([{user: {_id: userId, sname: m.get('sname')}}]);
+            // this.renderAllContacts();
+            // this.renderMyContacts();
         },
     });
 });
