@@ -11,8 +11,8 @@ Principles
 * (LSP) Liskov substitution principle - if S is a subtype of T, then objects of type T may be replaced with objects of type S without altering any of the desirable properties of the program.
 * (ISP) Interface segregation principle - splits interfaces which are very large into smaller and more specific ones.
 * (DIP) Dependency inversion principle - refers to a specific form of decoupling software modules.
-    <br>High-level modules should not depend on low-level modules. Both should depend on abstractions.
-    <br>Abstractions should not depend on details. Details should depend on abstractions.
+    <br>*High-level modules should not depend on low-level modules. Both should depend on abstractions.*
+    <br>*Abstractions should not depend on details. Details should depend on abstractions.*
     * Ownership inversion - both high- and lower-level layers should depend on abstractions that draw the behavior.
     * Abstraction dependency:
         * All member variables in a class must be interfaces or abstracts.
