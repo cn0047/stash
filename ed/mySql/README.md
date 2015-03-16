@@ -35,6 +35,8 @@ SELECT FOUND_ROWS();
 
 SELECT SUM(field) FROM table GROUP BY field WITH ROLLUP;
 INSERT LOW_PRIORITY INTO table1 SELECT field FROM table2;
+
+SELECT * FROM stockTable ORDER BY field(stockid, 33, 12, 53); -- ordered result: 33, 12, 53
 ````
 
 ####Options
