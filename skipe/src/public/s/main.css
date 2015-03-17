@@ -8,9 +8,9 @@ footer #progress {
     float: right;
 }
 .navbar {
-    margin-bottom: 0px;
 }
 .navbar #nls {
+    min-width: 0;
 }
 #guest_registration > div {
     width: 390px;
