@@ -149,6 +149,7 @@ cat /tmp/out | mail mail@com.com
 user@ubuntu:~$ mysql --pager='less -S'
 
 mysql> pager less -SFX
+mysql> \s
 ````
 
 ####[Data Types](http://dev.mysql.com/doc/refman/5.0/en/data-types.html)
