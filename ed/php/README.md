@@ -27,6 +27,12 @@ http://php.net/conferences/index.php
 php -S localhost:8000 index.php
 
 **phpCs** `phpcs -sw --standard=PSR2 file.php`
+````
+curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
+chmod +x phpcs.phar
+cp phpcs.phar /usr/local/bin/phpcs
+cp phpcs.phar /usr/bin/phpcs
+````
 
 **phpDoc** `phpdoc run -d . -t doc`
 
