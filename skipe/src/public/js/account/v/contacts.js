@@ -116,6 +116,7 @@ define([
             });
         },
         startChat: function (e) {
+            console.log(this.$(e.target).parent().attr('data-userId'));
         },
     });
 });
