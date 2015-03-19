@@ -94,8 +94,6 @@ CRUN_WORK_DIR=/var/www/vhosts/host/htdocs
 -e, --referer       Referer URL (H)
 -u, --user USER[:PASSWORD]  Server user and password
 
-# show ip
-curl -Iq http://2ip.ru | grep IP | awk '{print $2}'
 # (REST) JSON at POST.
 curl -X POST -H 'application/json' -d '{"key":"val"}' http://url.com
 ````
