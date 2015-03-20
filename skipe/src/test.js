@@ -108,4 +108,36 @@ mongodb.MongoClient.connect(config.mongo.url, function (err, db) {
     //         }
     //     );
     // });
+    /**
+     * START NEW CHAT.
+     */
+    db.collection('usersInChat', function (err, collection) {
+        collection.find(
+            {'user._id': mongodb.ObjectID('54b23de857fe2afb0c1182bf')},
+            {_id: false, 'chat._id': true},
+            function (err, cursor) {
+                cursor.toArray(function (err, docs) {
+                    var chats = docs.map(function (o) {
+                        return mongodb.ObjectID(o.chat._id);
+                    });
+                    // console.log(chats);
+                    db.collection('usersInChat', function (err, collection) {
+                        collection.find(
+                            {'chat._id': {$in: chats}, 'user._id': {$ne: mongodb.ObjectID('54b23de857fe2afb0c1182bf')}},
+                            // {_id: false, 'chat._id': true},
+                            function (err, cursor) {
+                                cursor.toArray(function (err, docs) {
+                                    console.log(docs);
+                                    // var chats = docs.map(function (o) {
+                                        // return mongodb.ObjectID(o.chat._id);
+                                    // });
+                                    // console.log(chats);
+                                });
+                            }
+                        );
+                    });
+                });
+            }
+        );
+    });
 });

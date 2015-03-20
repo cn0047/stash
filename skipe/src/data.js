@@ -131,3 +131,26 @@ db.usersInChat.find();
 { "_id" : ObjectId("54fa09c1bc86060d0f1f1a84"), "chat" : { "_id" : ObjectId("54dbac3e0b3ade33b8bb944a"), "caption" : "Bond with Vesper" }, "user" : { "_id" : ObjectId("54b23de857fe2afb0c1182bf"), "sname" : "James Bond" } }
 { "_id" : ObjectId("54fa09c1bc86060d0f1f1a85"), "chat" : { "_id" : ObjectId("54b8c04bc0eceb8b5083c1cc"), "caption" : "Bond with M" }, "user" : { "_id" : ObjectId("54b23de857fe2afb0c1182bf"), "sname" : "James Bond" } }
 { "_id" : ObjectId("54fa09c2bc86060d0f1f1a86"), "chat" : { "_id" : ObjectId("54b8c04bc0eceb8b5083c1cc"), "caption" : "Bond with M" }, "user" : { "_id" : ObjectId("54b23e6ab8b3cf0211c5adf3"), "sname" : "M" } }
+
+/*
+START NEW CHAT.
+*/
+// get my chats
+db.usersInChat.find({'user._id': ObjectId('54b23de857fe2afb0c1182bf')});
+// { "_id" : ObjectId("54fa09bebc86060d0f1f1a81"), "chat" : { "_id" : ObjectId("54dbac560b3ade33b8bb944b"), "caption" : "Bond with Mathis" }, "user" : { "_id" : ObjectId("54b23de857fe2afb0c1182bf"), "sname" : "James Bond" } }
+// { "_id" : ObjectId("54fa09c1bc86060d0f1f1a84"), "chat" : { "_id" : ObjectId("54dbac3e0b3ade33b8bb944a"), "caption" : "Bond with Vesper" }, "user" : { "_id" : ObjectId("54b23de857fe2afb0c1182bf"), "sname" : "James Bond" } }
+// { "_id" : ObjectId("54fa09c1bc86060d0f1f1a85"), "chat" : { "_id" : ObjectId("54b8c04bc0eceb8b5083c1cc"), "caption" : "Bond with M" }, "user" : { "_id" : ObjectId("54b23de857fe2afb0c1182bf"), "sname" : "James Bond" } }
+db.usersInChat.find({
+    'chat._id': {$in: [ObjectId("54dbac560b3ade33b8bb944b"), ObjectId("54dbac3e0b3ade33b8bb944a"), ObjectId("54b8c04bc0eceb8b5083c1cc")]},
+    'user._id': {$ne: ObjectId('54b23de857fe2afb0c1182bf')}
+});
+// { "_id" : ObjectId("54fa09bfbc86060d0f1f1a82"), "chat" : { "_id" : ObjectId("54dbac560b3ade33b8bb944b"), "caption" : "Bond with Mathis" }, "user" : { "_id" : ObjectId("54b24e99af762f8013a30525"), "sname" : "Rene Mathis" } }
+// { "_id" : ObjectId("54fa09c0bc86060d0f1f1a83"), "chat" : { "_id" : ObjectId("54dbac3e0b3ade33b8bb944a"), "caption" : "Bond with Vesper" }, "user" : { "_id" : ObjectId("54b24dae445e086e129d0feb"), "sname" : "Vesper Lynd" } }
+// { "_id" : ObjectId("54fa09c2bc86060d0f1f1a86"), "chat" : { "_id" : ObjectId("54b8c04bc0eceb8b5083c1cc"), "caption" : "Bond with M" }, "user" : { "_id" : ObjectId("54b23e6ab8b3cf0211c5adf3"), "sname" : "M" } }
+// { "_id" : ObjectId("550bb5f71be061c3da383bda"), "chat" : { "_id" : ObjectId("54dbac3e0b3ade33b8bb944a"), "caption" : "Bond with Vesper" }, "user" : { "_id" : ObjectId("54b24e99af762f8013a30525"), "sname" : "Rene Mathis" } }
+db.usersInChat.aggregate(
+    {$group: {_id: {chat: "$chat._id"}, count: {$sum: 1}}},
+    {$match: {
+        '_id.chat': {$in: [ObjectId("54dbac560b3ade33b8bb944b"), ObjectId("54dbac3e0b3ade33b8bb944a"), ObjectId("54b8c04bc0eceb8b5083c1cc")]},
+    }}
+);
