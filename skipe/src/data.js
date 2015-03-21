@@ -149,8 +149,11 @@ db.usersInChat.find({
 // { "_id" : ObjectId("54fa09c2bc86060d0f1f1a86"), "chat" : { "_id" : ObjectId("54b8c04bc0eceb8b5083c1cc"), "caption" : "Bond with M" }, "user" : { "_id" : ObjectId("54b23e6ab8b3cf0211c5adf3"), "sname" : "M" } }
 // { "_id" : ObjectId("550bb5f71be061c3da383bda"), "chat" : { "_id" : ObjectId("54dbac3e0b3ade33b8bb944a"), "caption" : "Bond with Vesper" }, "user" : { "_id" : ObjectId("54b24e99af762f8013a30525"), "sname" : "Rene Mathis" } }
 db.usersInChat.aggregate(
-    {$group: {_id: {chat: "$chat._id"}, count: {$sum: 1}}},
+    {$group: {_id: {chat: "$chat._id"}, user: {$push: "$chat._id"}, count: {$sum: 1}}},
     {$match: {
         '_id.chat': {$in: [ObjectId("54dbac560b3ade33b8bb944b"), ObjectId("54dbac3e0b3ade33b8bb944a"), ObjectId("54b8c04bc0eceb8b5083c1cc")]},
     }}
 );
+{ "_id" : { "chat" : ObjectId("54b8c04bc0eceb8b5083c1cc") }, "user" : [ ObjectId("54b8c04bc0eceb8b5083c1cc"), ObjectId("54b8c04bc0eceb8b5083c1cc") ], "count" : 2 }
+{ "_id" : { "chat" : ObjectId("54dbac3e0b3ade33b8bb944a") }, "user" : [ ObjectId("54dbac3e0b3ade33b8bb944a"), ObjectId("54dbac3e0b3ade33b8bb944a"), ObjectId("54dbac3e0b3ade33b8bb944a") ], "count" : 3 }
+{ "_id" : { "chat" : ObjectId("54dbac560b3ade33b8bb944b") }, "user" : [ ObjectId("54dbac560b3ade33b8bb944b"), ObjectId("54dbac560b3ade33b8bb944b") ], "count" : 2 }

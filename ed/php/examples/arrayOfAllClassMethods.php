@@ -2,6 +2,7 @@
 /**
 * Array of all class methods.
 * @link http://runnable.com/VNIJsTEgXHsl_2XP/array-of-all-class-methods-for-php
+* @link http://php.net/manual/en/reflectionclass.getmethods.php#116648
 */
 
 class foo

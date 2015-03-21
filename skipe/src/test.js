@@ -120,19 +120,12 @@ mongodb.MongoClient.connect(config.mongo.url, function (err, db) {
                     var chats = docs.map(function (o) {
                         return mongodb.ObjectID(o.chat._id);
                     });
-                    // console.log(chats);
                     db.collection('usersInChat', function (err, collection) {
-                        collection.find(
-                            {'chat._id': {$in: chats}, 'user._id': {$ne: mongodb.ObjectID('54b23de857fe2afb0c1182bf')}},
-                            // {_id: false, 'chat._id': true},
+                        collection.aggregate(
+                            {$group: {_id: {chat: '$chat._id'}, user: {$push: '$chat._id'}, count: {$sum: 1}}},
+                            {$match: {'_id.chat': {$in: chats}}},
                             function (err, cursor) {
-                                cursor.toArray(function (err, docs) {
-                                    console.log(docs);
-                                    // var chats = docs.map(function (o) {
-                                        // return mongodb.ObjectID(o.chat._id);
-                                    // });
-                                    // console.log(chats);
-                                });
+                                console.log(cursor);
                             }
                         );
                     });

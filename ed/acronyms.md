@@ -4,6 +4,7 @@ Acronyms
 ````
 CRM
 DAO
+LDAP
 ORM
 RBAC
 RFC
@@ -18,6 +19,9 @@ SPL
 
 <dt>DAO</dt>
 <dd>Data access object.</dd>
+
+<dt>LDAP</dt>
+<dd>Lightweight Directory Access Protocol.</dd>
 
 <dt>ORM</dt>
 <dd>
