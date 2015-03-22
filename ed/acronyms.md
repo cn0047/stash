@@ -3,6 +3,7 @@ Acronyms
 
 ````
 CRM
+CSRF
 DAO
 LDAP
 ORM
@@ -16,6 +17,9 @@ SPL
 <dl>
 <dt>CRM</dt>
 <dd>Customer relationship management.</dd>
+
+<dt>CSRF</dt>
+<dd>Cross-site request forgery.</dd>
 
 <dt>DAO</dt>
 <dd>Data access object.</dd>
