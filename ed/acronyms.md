@@ -5,6 +5,7 @@ Acronyms
 CRM
 CSRF
 DAO
+IoC
 LDAP
 ORM
 RBAC
@@ -23,6 +24,37 @@ SPL
 
 <dt>DAO</dt>
 <dd>Data access object.</dd>
+
+
+<dt>IoC</dt>
+<dd>
+    Inversion of control - is used to increase modularity of the program and make it extensible.
+    Software frameworks, callbacks, schedulers, event loops and dependency injection
+    are examples of design patterns that follow the inversion of control principle.
+    <br>IoC serves the following design purposes:
+    <ul>
+        <li>To decouple the execution of a task from implementation.</li>
+        <li>To focus a module on the task it is designed for.</li>
+        <li>
+            To free modules from assumptions about how other systems do
+            what they do and instead rely on contracts.
+        </li>
+        <li>To prevent side effects when replacing a module.</li>
+    </ul>
+    ("Hollywood Principle: Don't call us, we'll call you".)
+    <br>There are several basic techniques to implement inversion of control:
+    <ul>
+        <li>Using a factory pattern</li>
+        <li>Using a service locator pattern</li>
+        <li>
+            Using a dependency injection, for example
+            (constructor injection, parameter injection, setter injection, interface injection).
+        </li>
+        <li>Using a contextualized lookup</li>
+        <li>Using template method design pattern</li>
+        <li>Using strategy design pattern</li>
+    </ul>
+</dd>
 
 <dt>LDAP</dt>
 <dd>Lightweight Directory Access Protocol.</dd>
