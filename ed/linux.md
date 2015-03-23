@@ -28,6 +28,7 @@ file      - -rw-rw-r-- (664)
 
 ####shell
 ````
+host github.com # Shows ip by host.
 dig domain
 whois ip
 
