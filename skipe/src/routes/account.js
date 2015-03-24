@@ -127,10 +127,13 @@ actions.GET.getPosts = function (req, res) {
     });
 };
 
-/**
- * @todo Security.
- */
 actions.GET.getChats = function (req, res) {
+    req.checkParams('user', res.__('invalidUser')).isMongoId();
+    var e = req.validationErrors();
+    if (e) {
+        res.json({errors: e});
+        return;
+    }
     global.mongo.collection('usersInChat', function (err, collection) {
         collection.find(
             {'user._id': global.mongo.ObjectID(req.param('user'))},
@@ -143,10 +146,14 @@ actions.GET.getChats = function (req, res) {
     });
 };
 
-/**
- * @todo Security.
- */
 actions.GET.getUsersInChat = function (req, res) {
+    req.checkParams('chat', res.__('chatUser')).isMongoId();
+    req.checkParams('user', res.__('invalidUser')).isMongoId();
+    var e = req.validationErrors();
+    if (e) {
+        res.json({errors: e});
+        return;
+    }
     global.mongo.collection('usersInChat', function (err, collection) {
         var args = {
             'chat._id': global.mongo.ObjectID(req.param('chat')),
@@ -160,10 +167,13 @@ actions.GET.getUsersInChat = function (req, res) {
     });
 };
 
-/**
- * @todo Security.
- */
 actions.GET.getContactInfo = function (req, res) {
+    req.checkParams('user', res.__('invalidUser')).isMongoId();
+    var e = req.validationErrors();
+    if (e) {
+        res.json({errors: e});
+        return;
+    }
     global.mongo.collection('user', function (err, collection) {
         collection.findOne(
             {'_id': global.mongo.ObjectID(req.param('user'))},

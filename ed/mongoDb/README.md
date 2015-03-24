@@ -483,6 +483,8 @@ mydate1.toString();
 
 #### Administration
 ````js
+db.version();
+
 DBQuery.shellBatchSize = 10;
 
 db.getLastError()
