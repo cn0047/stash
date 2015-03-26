@@ -122,7 +122,7 @@ mongodb.MongoClient.connect(config.mongo.url, function (err, db) {
                     });
                     db.collection('usersInChat', function (err, collection) {
                         collection.aggregate(
-                            {$group: {_id: {chat: '$chat._id'}, user: {$push: '$chat._id'}, count: {$sum: 1}}},
+                            {$group: {_id: {chat: '$chat._id'}, user: {$push: '$user._id'}, count: {$sum: 1}}},
                             {$match: {'_id.chat': {$in: chats}}},
                             function (err, cursor) {
                                 console.log(cursor);
