@@ -123,9 +123,14 @@ mongodb.MongoClient.connect(config.mongo.url, function (err, db) {
                     db.collection('usersInChat', function (err, collection) {
                         collection.aggregate(
                             {$group: {_id: {chat: '$chat._id'}, user: {$push: '$user._id'}, count: {$sum: 1}}},
-                            {$match: {'_id.chat': {$in: chats}}},
-                            function (err, cursor) {
-                                console.log(cursor);
+                            {$match: {
+                                '_id.chat': {$in: chats},
+                                count: {$eq: 2},
+                                user: mongodb.ObjectID('54b23de857fe2afb0c1182bf'), // Bond
+                                user: mongodb.ObjectID('14b24e99af762f8013a30525'), // Mathis
+                            }},
+                            function (err, documents) {
+                                console.log(documents.length === 1);
                             }
                         );
                     });

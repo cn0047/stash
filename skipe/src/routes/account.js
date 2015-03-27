@@ -56,6 +56,105 @@ actions.POST.addContact = function (req, res) {
     });
 };
 
+/**
+ * Returns chat id.
+ *
+ * Activates present chat (if it exists directly with target user)
+ * or creates new.
+ *
+ * @todo Security.
+ */
+actions.POST.startChat = function (req, res) {
+    var user = global.mongo.ObjectID(req.param('user'));
+    var withUser = global.mongo.ObjectID(req.param('withUser'));
+    var caption = req.param('userSname')
+        + res.__('with')
+        + req.param('withUserSname');
+    var startNewChat = function (res) {
+        // New chat.
+        global.mongo.collection('chat', function (err, collection) {
+            collection.insert({caption: caption}, function (err, documents) {
+                if (err) {
+                    res.json({errors: err});
+                    return;
+                }
+                var chat = documents[0]._id;
+                // Add target user to chat.
+                global.mongo.collection('usersInChat', function (err, collection) {
+                    var d = {
+                        chat: {_id: chat, caption: caption},
+                        user: {_id: withUser, sname: req.param('withUserSname')}
+                    };
+                    collection.insert(d, function (err, docs) {
+                        if (err) {
+                            res.json({errors: err});
+                            return;
+                        }
+                        // Add me to chat.
+                        global.mongo.collection('usersInChat', function (err, collection) {
+                            var d = {
+                                chat: {_id: chat, caption: caption},
+                                user: {_id: user, sname: req.param('userSname')}
+                            };
+                            collection.insert(d, function (err, docs) {
+                                if (err) {
+                                    res.json({errors: err});
+                                    return;
+                                }
+                                // All OK.
+                                res.json(chat);
+                            });
+                        });
+                    });
+                });
+            });
+        });
+    }
+    global.mongo.collection('usersInChat', function (err, collection) {
+        // Find my chats.
+        collection.find(
+            {'user._id': user},
+            {_id: false, 'chat._id': true},
+            function (err, cursor) {
+                cursor.toArray(function (err, docs) {
+                    var chats = docs.map(function (o) {
+                        return global.mongo.ObjectID(o.chat._id);
+                    });
+                    // Find users with whom i want start chat in users for my present chats.
+                    // Find only chats where i'm and user with whom i want start chat.
+                    global.mongo.collection('usersInChat', function (err, collection) {
+                        collection.aggregate(
+                            {
+                                $group: {
+                                    _id: {chat: '$chat._id'},
+                                    user: {$push: '$user._id'},
+                                    count: {$sum: 1}
+                                }
+                            },
+                            {
+                                $match: {
+                                    '_id.chat': {$in: chats},
+                                    count: {$eq: 2},
+                                    user: user,
+                                    user: withUser
+                                }
+                            },
+                            function (err, documents) {
+                                if (documents.length === 0) {
+                                    startNewChat(res);
+                                } else {
+                                    // Activate present chat.
+                                    res.json(documents[0]._id.chat);
+                                }
+                            }
+                        );
+                    });
+                });
+            }
+        );
+    });
+};
+
 actions.GET.getUser = function (req, res) {
     res.json(req.session.user);
 };

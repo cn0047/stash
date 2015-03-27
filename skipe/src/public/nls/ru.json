@@ -20,6 +20,7 @@
 	"invalidParam": "Некорректный %s",
 	"userNotFound": "Пользователь с таким %s не найден.",
 	"usersInChat": "Участники этого чата",
+	"with": " с ",
 	"wrongPassword": "Неверный пароль. Вы забыли пароль?",
 	"guestMailSubjectForgotPassword": "► Ваш Skipe пароль был обновлен!",
 	"activate": "Активировать",

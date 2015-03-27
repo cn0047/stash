@@ -12,7 +12,7 @@ define([
         tContactInfo: tContactInfo,
         tAll: tAll,
         tMy: tMy,
-        mChat: new mChat(),
+        mChat: mChat,
         mContact: new mContact(),
         cMyContact: new cContact(),
         cAllContact: new cContact(),
@@ -116,7 +116,26 @@ define([
             });
         },
         startChat: function (e) {
-            console.log(this.$(e.target).parent().attr('data-userId'));
+            var $parent = this.$(e.target).parent();
+            var d = {
+                user: app.views.account.userId,
+                userSname: app.views.account.user.get('sname'),
+                withUser: $parent.attr('data-userId'),
+                withUserSname: $parent.parent().find('span:first').html()
+            };
+            var m = new this.mChat();
+            m.hash = 'startChat';
+            m.on('afterStartChat', this.afterStartChat, this);
+            m.save(d, {
+                success: function (m, r) {
+                    m.trigger('afterStartChat', r);
+                }
+            });
+        },
+        afterStartChat: function (d) {
+            // console.log(d);
+            // app.routers.app.go('');
+            // app.views.account_home.activate();
         },
     });
 });
