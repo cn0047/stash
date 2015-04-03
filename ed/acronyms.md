@@ -5,6 +5,7 @@ Acronyms
 CRM
 CSRF
 DAO
+DDD
 IoC
 LDAP
 ORM
@@ -25,6 +26,8 @@ SPL
 <dt>DAO</dt>
 <dd>Data access object.</dd>
 
+<dt>DDD</dt>
+<dd>Domain-driven design</dd>
 
 <dt>IoC</dt>
 <dd>

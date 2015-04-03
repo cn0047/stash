@@ -129,6 +129,7 @@ OPTIMIZE TABLE tab;
 
 SELECT VERSION();
 SELECT USER();
+SELECT * FROM mysql.user; -- Select all mysql users.
 SHOW GRANTS FOR 'usr';
 SHOW GRANTS;
 SHOW PRIVILEGES;

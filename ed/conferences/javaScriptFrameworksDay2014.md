@@ -1,4 +1,4 @@
-JavaScript Frameworks Day 2014
+javaScript frameworks day 2014
 -
 
 * https://www.odesk.com/ - work
