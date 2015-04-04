@@ -12,3 +12,17 @@ http://frameworksdays.com/event/php-frameworks-day-2014/page/program
 * Docker!!!
 
 ####Александр Бордун - Yii2
+
+####Nate Abele - Past, Present, and Future
+* ReactPhp?
+
+####Евгений Косинский - Laravel 4
+
+####Антон Шевчук - NIX Solutions
+
+####Zeev Suraski - Zend
+
+####Александр Торош - Phalcon
+
+####Андрей Аксенов - Sphinx Technologies
+https://www.youtube.com/watch?list=UU3NDbeN0Jq_InNAhiJtvHcQ&v=wcKt2eE8POM
