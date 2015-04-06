@@ -34,3 +34,36 @@ $response->headers->set('Content-Type', 'text/html');
 // prints the HTTP headers followed by the content
 $response->send();
 ````
+
+####Installing the Symfony Installer
+````
+sudo curl -LsS http://symfony.com/installer -o /usr/local/bin/symfony
+sudo chmod a+x /usr/local/bin/symfony
+````
+
+####Creating the Symfony Application
+````
+symfony new my_project_name
+symfony new my_project_name 2.3.26
+````
+
+####Creating a Symfony Application with Composer
+````
+composer create-project symfony/framework-standard-edition my_project_name
+composer create-project symfony/framework-standard-edition my_project_name "2.3.*"
+````
+
+####Running the Symfony Application
+````
+cd my_project_name/
+php app/console server:run
+php app/console server:stop
+
+then http://localhost:8000
+
+// Checking Symfony Application Configuration and Setup.
+http://localhost:8000/config.php
+
+// Check whether your project's dependencies contain any know security vulnerability.
+php app/console security:check
+````
