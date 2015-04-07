@@ -39,6 +39,8 @@ RegExp
 |\O                                        | octal digit |
 |\b                                        | word boundary |
 |\B                                        | not word boundary |
+|\Q                                        | begin quote. Any characters between \Q and \E including metacharacters (e.g. '+' or '.') will be treated as literals |
+|\E                                        | end quote |
 |\<                                        | start of word |
 |\>                                        | end of word |
 |?=                                        | lookahead assertion |
@@ -56,6 +58,7 @@ RegExp
 | $`                                       | before matched string |
 | $'                                       | after matched string |
 | $+                                       | last matched string |
+|((?<=^)|(?<=,))                           | Begin match with start of string (^) or comma. The `?<=` makes sure this is will not be replaced in preg_replace. |
 
 |   |   |
 |---|---|

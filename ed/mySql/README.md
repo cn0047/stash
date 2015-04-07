@@ -20,6 +20,8 @@ RENAME TABLE table TO tableNewName;
 CREATE INDEX indexName ON table (column);
 DROP   INDEX indexName ON table;
 
+SHOW OPEN TABLES from  dataBaseName; -- Show locked tables.
+
 SHOW TABLE STATUS WHERE name = 'table'; -- Info about table, with creation date.
 SELECT
     table_name, create_time
