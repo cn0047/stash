@@ -25,4 +25,7 @@ http://frameworksdays.com/event/php-frameworks-day-2014/page/program
 ####Александр Торош - Phalcon
 
 ####Андрей Аксенов - Sphinx Technologies
-https://www.youtube.com/watch?list=UU3NDbeN0Jq_InNAhiJtvHcQ&v=wcKt2eE8POM
+* Sphinx
+* Lucene
+* SOLR
+* Elastic

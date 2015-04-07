@@ -60,10 +60,37 @@ php app/console server:run
 php app/console server:stop
 
 then http://localhost:8000
+````
 
+####Application
+````
 // Checking Symfony Application Configuration and Setup.
 http://localhost:8000/config.php
 
 // Check whether your project's dependencies contain any know security vulnerability.
 php app/console security:check
+
+// Clear your cache.
+php app/console cache:clear --env=prod --no-debug
+
+//  Create the Bundle.
+php app/console generate:bundle --namespace=Acme/DemoBundle --format=yml
+php app/console generate:bundle --namespace=Acme/TestBundle
+````
+
+####The Directory Structure
+````
+app/    - application configuration.
+src/    - all the project PHP code.
+vendor/ - any vendor libraries.
+web/    - web root directory, contains publicly accessible files.
+
+Bundle Directory Structure:
+Controller/          - controllers.
+DependencyInjection/ - dependency injection extension classes.
+Resources/config/    - configuration, routing.
+Resources/views/     - templates.
+Resources/public/    - images, stylesheets, etc.
+web/                 - assets.
+Tests/               - tests for the bundle.
 ````
