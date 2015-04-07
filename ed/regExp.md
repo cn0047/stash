@@ -58,7 +58,7 @@ RegExp
 | $`                                       | before matched string |
 | $'                                       | after matched string |
 | $+                                       | last matched string |
-|((?<=^)|(?<=,))                           | Begin match with start of string (^) or comma. The `?<=` makes sure this is will not be replaced in preg_replace. |
+|((?<=^)\|(?<=,))                           | Begin match with start of string (^) or comma. The `?<=` makes sure this is will not be replaced in preg_replace. |
 
 |   |   |
 |---|---|
