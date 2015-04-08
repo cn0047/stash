@@ -22,6 +22,15 @@ $request->headers->get('host');
 $request->headers->get('content_type');
 $request->getMethod(); // GET, POST, PUT, DELETE, HEAD
 $request->getLanguages(); // an array of languages the client accepts
+
+// is it an Ajax request?
+$request->isXmlHttpRequest();
+// get a $_GET parameter
+$request->query->get('page');
+// get a $_POST parameter
+$request->request->get('page');
+
+$request->getPreferredLanguage(array('en', 'fr'));
 ````
 
 ####Response
@@ -33,6 +42,10 @@ $response->setStatusCode(Response::HTTP_OK);
 $response->headers->set('Content-Type', 'text/html');
 // prints the HTTP headers followed by the content
 $response->send();
+
+// create a JSON-response with a 200 status code
+$response = new Response(json_encode(array('name' => $name)));
+$response->headers->set('Content-Type', 'application/json');
 ````
 
 ####Installing the Symfony Installer
@@ -93,4 +106,30 @@ Resources/views/     - templates.
 Resources/public/    - images, stylesheets, etc.
 web/                 - assets.
 Tests/               - tests for the bundle.
+````
+
+####Controller
+````php
+// Redirecting.
+$this->redirectToRoute('homepage');
+$this->redirectToRoute('homepage', array(), 301);
+$this->redirect('http://symfony.com/doc');
+new RedirectResponse($this->generateUrl('homepage'));
+
+// Forwarding to Another Controller.
+$response = $this->forward('AppBundle:Something:fancy', array('name' => $name, 'color' => 'green'));
+
+// Accessing other Services.
+$templating = $this->get('templating');
+$router = $this->get('router');
+$mailer = $this->get('mailer');
+
+// Managing Errors and 404 Pages.
+throw $this->createNotFoundException('The product does not exist');
+
+// Managing the Session.
+$session = $request->getSession();
+$session->set('foo', 'bar');
+$foobar = $session->get('foobar');
+
 ````
