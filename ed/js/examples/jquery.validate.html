@@ -7,7 +7,10 @@
     </style>
     <form>
         <input type="text" name="email" value="bugEmail@">
-        <button>check</button>
+        <br>
+        <input type="text" name="email2" value="bugEmail@">
+        <br>
+        <button type="button">check</button>
     </form>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
@@ -23,7 +26,10 @@
             wrapper: 'div'
         });
         $('button').click(function () {
-            $('form').valid();
+            if ($('form').valid()) {
+                $('input:last').rules('add', {required: true, email: true});
+                $('form').valid();
+            }
         });
     </script>
 </body>
