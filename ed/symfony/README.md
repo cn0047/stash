@@ -31,6 +31,8 @@ $request->query->get('page');
 $request->request->get('page');
 
 $request->getPreferredLanguage(array('en', 'fr'));
+
+$request->headers->get("User-Agent");
 ````
 
 ####Response
@@ -93,10 +95,11 @@ php app/console generate:bundle --namespace=Acme/TestBundle
 
 ####The Directory Structure
 ````
-app/    - application configuration.
-src/    - all the project PHP code.
-vendor/ - any vendor libraries.
-web/    - web root directory, contains publicly accessible files.
+app/                         - application configuration.
+app/cache/{environment}/twig - twig template caching.
+src/                         - all the project PHP code.
+vendor/                      - any vendor libraries.
+web/                         - web root directory, contains publicly accessible files.
 
 Bundle Directory Structure:
 Controller/          - controllers.
@@ -132,4 +135,59 @@ $session = $request->getSession();
 $session->set('foo', 'bar');
 $foobar = $session->get('foobar');
 
+// Generating URLs.
+$uri = $this->get('router')->generate('blog_show', array('slug' => 'my-blog-post'));
+$url = $this->generateUrl('blog_show', array('slug' => 'my-blog-post'));
+$url = $this->container->get('router')->generate('blog_show', array('slug' => 'my-blog-post'));
+var url = Routing.generate('blog_show', {"slug": 'my-blog-post'});
+// Generating Absolute URLs.
+$this->generateUrl('blog_show', array('slug' => 'my-blog-post'), true);
+// Generating URLs from a Template.
+<a href="{{ path('blog_show', {'slug': 'my-blog-post'}) }}"> Read this blog post. </a>
+<a href="{{ url('blog_show', {'slug': 'my-blog-post'}) }}"> Read this blog post. </a>
 ````
+
+####Routing
+````
+Special Routing Parameters:
+_controller - which controller is executed
+_format     - format
+_locale     - locale
+
+// Visualizing & Debugging Routes.
+php app/console debug:router
+php app/console debug:router article_show
+php app/console router:match /blog/my-latest-post
+````
+
+####Templates
+````php
+{{ ... }}         - variable or the result of an expression
+{% ... %}         - a tag that controls the logic of the template
+{# ... #}         - comment
+{{ title|upper }} - filters
+{{ parent() }}    - block from the parent template
+{{ include('article/article_details.html.twig', { 'article': article }) }}
+
+<ul>
+    {% for user in users if user.active %}
+        <li>{{ user.username }}</li>
+    {% else %}
+        <li>No users found</li>
+    {% endfor %}
+</ul>
+
+<div id="sidebar">
+    {{ render(controller(
+        'AcmeArticleBundle:Article:recentArticles',
+        { 'max': 3 }
+    )) }}
+</div>
+
+````
+Template Suffix:
+|Filename|Format|Engine|
+|--------|------|------|
+|blog/index.html.twig|HTML|Twig|
+|blog/index.html.php|HTML|PHP|
+|blog/index.css.twig|CSS|Twig|

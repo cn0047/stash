@@ -14,3 +14,9 @@ _demo:
 random:
     path: /random/{limit}
     defaults: { _controller: AcmeDemoBundle:Random:index }
+
+contact:
+    path: /contact
+    defaults: { _controller: AcmeDemoBundle:Main:contact }
+    condition: "context.getMethod() in ['GET', 'HEAD'] and
+    request.headers.get('User-Agent') matches '/firefox/i'"

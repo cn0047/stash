@@ -2,3 +2,9 @@
 {% block body %}
     Number: {{ number }}
 {% endblock %}
+
+{% for i in 0..10 %}
+    <div class="{{ cycle(['odd', 'even'], i) }}">
+        *<br>
+    </div>
+{% endfor %}

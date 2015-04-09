@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class BlogController extends Controller
 {
@@ -24,5 +25,45 @@ class BlogController extends Controller
     public function showAction($slug)
     {
         return new Response("Slug: $slug");
+    }
+
+    /**
+    * @Route("/{_locale}", defaults={"_locale": "en"}, requirements={
+    * "_locale": "en|fr"
+    * })
+    */
+    public function homepageAction($_locale)
+    {
+    }
+
+    /**
+    * @Route("/contact")
+    * @Method("GET")
+    */
+    public function contactAction()
+    {
+    }
+
+    /**
+    * @Route("/contact")
+    * @Method("POST")
+    */
+    public function processContactAction()
+    {
+    }
+
+    /**
+    * @Route(
+    * "/articles/{_locale}/{year}/{title}.{_format}",
+    * defaults={"_format": "html"},
+    * requirements={
+    * "_locale": "en|fr",
+    * "_format": "html|rss",
+    * "year": "\d+"
+    * }
+    * )
+    */
+    public function renderAction($_locale, $year, $title)
+    {
     }
 }
