@@ -185,8 +185,10 @@ php app/console router:match /blog/my-latest-post
 </div>
 
 ````
+
 Template Suffix:
-|Filename|Format|Engine|
+
+| Filename | Format | Engine |
 |--------|------|------|
 |blog/index.html.twig|HTML|Twig|
 |blog/index.html.php|HTML|PHP|
