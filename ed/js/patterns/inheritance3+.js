@@ -1,6 +1,6 @@
 // родительский конструктор
 function Parent(name) {
-    this.name = name || ‘Adam’;
+    this.name = name || 'Adam';
 }
 // добавление дополнительной функциональности в прототип
 Parent.prototype.say = function () {
@@ -12,8 +12,8 @@ function Child(name) {
 }
 Child.prototype = new Parent();
 
-var kid = new Child(“Patrick”);
-kid.name;           // “Patrick”
-kid.say();          // “Patrick”
+var kid = new Child('Patrick');
+kid.name;           // 'Patrick'
+kid.say();          // 'Patrick'
 delete kid.name;
-kid.say();          // “Adam”
+kid.say();          // 'Adam'
