@@ -10,12 +10,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class FlashController extends Controller
 {
     /**
-    * @Route("/flash/in", name="in")
+    * @Route("/flash", name="in")
     */
     public function inAction(Request $request)
     {
         $this->addFlash('notice', 'Everything ok!');
-        return $this->redirect('out');
+        return $this->redirect('flash/out');
     }
 
     /**

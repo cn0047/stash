@@ -145,6 +145,9 @@ $this->generateUrl('blog_show', array('slug' => 'my-blog-post'), true);
 // Generating URLs from a Template.
 <a href="{{ path('blog_show', {'slug': 'my-blog-post'}) }}"> Read this blog post. </a>
 <a href="{{ url('blog_show', {'slug': 'my-blog-post'}) }}"> Read this blog post. </a>
+
+// Debug.
+dump($articles);
 ````
 
 ####Routing
@@ -167,7 +170,55 @@ php app/console router:match /blog/my-latest-post
 {# ... #}         - comment
 {{ title|upper }} - filters
 {{ parent() }}    - block from the parent template
+
 {{ include('article/article_details.html.twig', { 'article': article }) }}
+
+// Links.
+<a href="{{ path('_welcome') }}">Home</a>
+<a href="{{ path('article_show', {'slug': article.slug}) }}"> {{ article.title }} </a>
+// Absolute URL.
+<a href="{{ url('_welcome') }}">Home</a>
+<a href="<?php echo $view['router']->generate('_welcome', array(), true) ?>">Home</a>
+
+// Assets.
+<img src="{{ asset('images/logo.png') }}" alt="Symfony!" />
+<link href="{{ asset('css/blog.css') }}" rel="stylesheet" type="text/css" />
+<img src="{{ asset('images/logo.png', version='3.0') }}" alt="Symfony!" />
+<img src="{{ asset('images/logo.png', absolute=true) }}" alt="Symfony!" />
+
+// Stylesheets and JavaScripts
+{% block stylesheets %}
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet" />
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('js/main.js') }}"></script>
+{% endblock %}
+<link href="{{ asset('bundles/acmedemo/css/contact.css') }}" rel="stylesheet" />
+
+// Global Template Variables.
+app.security
+app.user
+app.request
+app.session
+app.environment
+app.debug
+
+// Symfony actually looks in two different locations for the template:
+1. app/Resources/AcmeBlogBundle/views/Blog/index.html.twig
+2. src/Acme/BlogBundle/Resources/views/Blog/index.html.twig
+
+// Output Escaping
+// IF YOU'RE USING TWIG TEMPLATES, THEN OUTPUT ESCAPING IS ON BY DEFAULT.
+{{ article.body|raw }} - render normally
+Hello <?php echo $view->escape($name) ?>
+var myMsg = 'Hello <?php echo $view->escape($name, 'js') ?>';
+
+// Debug.
+{{ dump(articles) }}
+
+// Syntax Checking.
+php app/console twig:lint app/Resources/views/article/recent_list.html.twig
+php app/console twig:lint app/Resources/views
 
 <ul>
     {% for user in users if user.active %}
@@ -184,6 +235,7 @@ php app/console router:match /blog/my-latest-post
     )) }}
 </div>
 
+<a href="{{ path('article_show', {'id': 123, '_format': 'pdf'}) }}"> PDF Version </a>
 ````
 
 Template Suffix:
@@ -193,3 +245,11 @@ Template Suffix:
 |blog/index.html.twig|HTML|Twig|
 |blog/index.html.php|HTML|PHP|
 |blog/index.css.twig|CSS|Twig|
+
+####Doctrine
+````
+php app/console doctrine:database:create
+php app/console doctrine:database:drop --force
+php app/console doctrine:generate:entity
+php app/console doctrine:generate:entities AppBundle/Entity/Product
+````

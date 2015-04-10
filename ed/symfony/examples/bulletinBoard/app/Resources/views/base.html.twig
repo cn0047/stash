@@ -7,6 +7,20 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+        <a href="{{ path('_index') }}">Index</a>
+        |
+        <a href="{{ path('homepage') }}">Homepage</a>
+        |
+        <a href="{{ path('random', {'limit': 25}) }}">Random 25</a>
+        |
+        <a href="{{ path('hello', {'name': 'Bond'}) }}">Hello Bond</a>
+        |
+        <a href="{{ path('hi', {'firstName': 'James', 'lastName': 'Bond'}) }}">Hi James Bond</a>
+        |
+
+        <a href="/blog">blog</a>
+        |
+        <a href="/flash">flash</a>
         <hr>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}

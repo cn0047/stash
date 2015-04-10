@@ -20,3 +20,7 @@ _main:
 # AcmeDemoBundle routes (to be removed)
 _acme_demo:
     resource: "@AcmeDemoBundle/Resources/config/routing.yml"
+
+_index:
+    path: /index
+    defaults: { _controller: AppBundle:Index:index }
