@@ -4,6 +4,7 @@ js
 ````js
 JSON.stringify(object);                // object to JSON
 JSON.parse(string)                     // string to JSON
+
 console.log(typeof v !== 'undefined'); // isset variable v.
 ````
 
@@ -44,16 +45,16 @@ str.slice(7);
 'James Bond'.match(/(J).*(B)/); // ["James B", "J", "B"]
 'James Bond'.replace('Bond', '007'); // James 007
 
-String(number);                                       // 12345.6789
-number.toString(2);      // to bin                    // 11000000111001.101011011100110001100011111100010100001
-number.toString(8);      // to oct                    // 30071.5334614374241
-number.toString(16);     // to hex                    // 3039.adcc63f142
-number.toFixed();                                     // 12346
-number.toFixed(2);       // to characters after comma // 12345.68
-number.toExponential(1);                              // 1.2e+4
-number.toExponential(3);                              // 1.235e+4
-number.toPrecision(4);                                // 1.235e+4
-number.toPrecision(7);                                // 12345.68
+String(number);                                        // 12345.6789
+number.toString(2);      // to bin                     // 11000000111001.101011011100110001100011111100010100001
+number.toString(8);      // to oct                     // 30071.5334614374241
+number.toString(16);     // to hex                     // 3039.adcc63f142
+number.toFixed();                                      // 12346
+number.toFixed(2);       // two characters after comma // 12345.68
+number.toExponential(1);                               // 1.2e+4
+number.toExponential(3);                               // 1.235e+4
+number.toPrecision(4);                                 // 1.235e+4
+number.toPrecision(7);                                 // 12345.68
 number.isNan();
 
 Number(bool);
@@ -203,4 +204,19 @@ a = function () {};  typeof a; // "function"
 a = /.*/;            typeof a; // "object" But: a instanceof RegExp; // true
 a = new RegExp();    typeof a; // "object"
 a = new Date();      typeof a; // "object"
+
+6 + '1'     // 61    - as string.
+6 - '1'     // 5     - as int.
+"3" + 4 + 5 // "345" - as string.
+3 + 4 + "5" // "75"  - as int and as string.
+
+if (true) {} elseif (true) {} // Uncaught SyntaxError: Unexpected token {
+if (true) {} else if (true) {} // OK.
+
+console.log(
+    [1, 2, 3].map(function (v) {
+        return 'value:'+v;
+    })
+);
+// ["value:1", "value:2", "value:3"]
 ````
