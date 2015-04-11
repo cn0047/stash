@@ -5,20 +5,9 @@ PHP
 <br>*PHP 5.3.3*
 <br>*PHP 5.1.6*
 
-url
-````
-    ? %3F
-    & %26
-    = %3D
-    : %3A
-    / %2F
-    - -
-    _ _
-````
-
 https://dev.twitter.com/
-http://www.phpdeveloper.org/
-http://php.net/conferences/index.php
+<br>http://www.phpdeveloper.org/
+<br>http://php.net/conferences/index.php
 
 /etc/php5/apache2/php.ini
 
@@ -26,17 +15,20 @@ http://php.net/conferences/index.php
 
 php -S localhost:8000 index.php
 
-**phpCs** `phpcs -sw --standard=PSR2 file.php`
+####phpCs
 ````
+phpcs -sw --standard=PSR2 file.php
+
 curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
 chmod +x phpcs.phar
 cp phpcs.phar /usr/local/bin/phpcs
 cp phpcs.phar /usr/bin/phpcs
 ````
 
-**phpDoc** `phpdoc run -d . -t doc`
-
-**phpUnit** `/usr/share/php/PHPUnit/Extensions/SeleniumTestCase.php`
+####phpDoc
+````
+phpdoc run -d . -t doc
+````
 
 ####getopt
 ````php
