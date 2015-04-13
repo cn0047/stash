@@ -1,4 +1,0 @@
-Symfony
--
-
-*Symfony 2*
