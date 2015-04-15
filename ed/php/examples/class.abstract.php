@@ -3,6 +3,11 @@
 abstract class Foo
 {
     abstract public function bar(array $args = null);
+
+    public function baz()
+    {
+        return 'baz';
+    }
 }
 
 class Boo extends Foo
