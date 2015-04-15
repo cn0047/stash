@@ -7,3 +7,7 @@ phpUnit
 
 Stub - an object that provides predefined answers to method calls.
 <br>Mock - an object on which you set expectations.
+
+`
+phpunit -d memory_limit=16M -c include/tests/conf.xml /tests/unit/
+`
