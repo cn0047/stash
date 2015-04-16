@@ -13,6 +13,26 @@ console.log(typeof v !== 'undefined'); // isset variable v.
 for (key in array) {
     console.log(array[key]);
 }
+var a = [];
+a[5] = 5; // Perfectly legal JavaScript that resizes the array.
+for (var i=0; i<a.length; i++) {
+    // Iterates over numeric indexes from 0 to 5, as everyone expects.
+}
+
+var a = [];
+a[5] = 5;
+for (var x in a) {
+    // Shows only the explicitly set index of "5", and ignores 0-4
+}
+
+// Somewhere deep in your JavaScript library...
+Array.prototype.foo = 1;
+// Now you have no idea what the below code will do.
+var a = [1,2,3,4,5];
+for (var x in a){
+    // Now foo is a part of EVERY array and
+    // will show up here as a value of 'x'.
+}
 
 alert(message);
 prompt(message);

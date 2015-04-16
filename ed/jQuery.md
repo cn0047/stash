@@ -46,9 +46,17 @@ $('table tr td[data-field!=""]') // Not empty data-field.
 .filter(expression)
 .map(callback)
 .each(iterator)
+/*
+$.each(yourObject, function (index, value) {
+});
+ */
 .end() // prev selector in chain
 .addSelf()
 .data(name, value)
+/*
+console.log($(this).attr('data-pseudo-field'));
+console.log($(this).data('pseudo-field'));
+*/
 .removeData(name)
 
 jQuery.noCoflict();

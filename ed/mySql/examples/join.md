@@ -90,4 +90,11 @@ SELECT t1.*, t2.* FROM table1 t1 RIGHT JOIN table2 t2 on t1.id = t2.id;
 | NULL | NULL  |  6 | six   |
 | NULL | NULL  |  7 | seven |
 +------+-------+----+-------+
+SELECT t1.*, t2.* FROM table1 t1 LEFT JOIN table2 t2 on t1.id = t2.id WHERE t2.id IS NULL;
++----+-------+------+-------+
+| id | value | id   | value |
++----+-------+------+-------+
+|  1 | one   | NULL | NULL  |
+|  2 | two   | NULL | NULL  |
++----+-------+------+-------+
 ````
