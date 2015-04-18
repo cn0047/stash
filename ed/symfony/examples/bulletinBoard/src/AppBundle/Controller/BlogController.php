@@ -34,6 +34,7 @@ class BlogController extends Controller
     */
     public function homepageAction($_locale)
     {
+        return $this->render('default/index.html.twig');
     }
 
     /**

@@ -18,9 +18,28 @@
         <a href="{{ path('hi', {'firstName': 'James', 'lastName': 'Bond'}) }}">Hi James Bond</a>
         |
 
-        <a href="/blog">blog</a>
+        <a href="/blog">[blog]</a>
         |
-        <a href="/flash">flash</a>
+        <a href="/flash">[flash]</a>
+        <hr>
+        Doctrine:
+        <a href="{{ path('doctrineProductInitialize') }}">Initialize</a>
+        |
+        <a href="{{ path('doctrineProductCreate') }}">Create product</a>
+        |
+        <a href="{{ path('doctrineProductInitialize2') }}">Create product with category</a>
+        |
+        <a href="{{ path('doctrineProductShow', {'id': '1'}) }}">Show</a>
+        |
+        <a href="{{ path('doctrineProductShow2') }}">Show2</a>
+        |
+        <a href="{{ path('doctrineProductShow3') }}">Show3</a>
+        |
+        <a href="{{ path('doctrineProductShow4') }}">Show4</a>
+        |
+        <a href="{{ path('doctrineProductShow5') }}">Show5</a>
+        |
+        <a href="{{ path('doctrineProductUpdate') }}">Update</a>
         <hr>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}

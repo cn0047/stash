@@ -2,6 +2,16 @@ Symfony
 -
 2.6.6
 
+
+####Running the Symfony Application
+````
+cd my_project_name/
+php app/console server:run
+php app/console server:stop
+
+then http://localhost:8000
+````
+
 ####Request
 ````php
 use Symfony\Component\HttpFoundation\Request;
@@ -66,15 +76,6 @@ symfony new my_project_name 2.3.26
 ````
 composer create-project symfony/framework-standard-edition my_project_name
 composer create-project symfony/framework-standard-edition my_project_name "2.3.*"
-````
-
-####Running the Symfony Application
-````
-cd my_project_name/
-php app/console server:run
-php app/console server:stop
-
-then http://localhost:8000
 ````
 
 ####Application
@@ -247,9 +248,17 @@ Template Suffix:
 |blog/index.css.twig|CSS|Twig|
 
 ####Doctrine
-````
+````php
 php app/console doctrine:database:create
 php app/console doctrine:database:drop --force
 php app/console doctrine:generate:entity
 php app/console doctrine:generate:entities AppBundle/Entity/Product
+php app/console doctrine:schema:update --force
+
+// generates all entities in the AppBundle
+php app/console doctrine:generate:entities AppBundle
+// generates all entities of bundles in the Acme namespace
+php app/console doctrine:generate:entities Acme
+
 ````
+page:111
