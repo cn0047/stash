@@ -261,4 +261,498 @@ php app/console doctrine:generate:entities AppBundle
 php app/console doctrine:generate:entities Acme
 
 ````
-page:111
+
+####Testing
+````php
+phpunit -c app/
+phpunit -c app src/AppBundle/Tests/Util
+
+$client = static::createClient();
+$crawler = $client->request('GET', '/post/hello-world');
+$client->request('POST', '/submit', array('name' => 'Fabien'));
+$client->request(
+    'POST',
+    '/submit',
+    array(),
+    array(),
+    array('CONTENT_TYPE' => 'application/json'),
+    '{"name":"Fabien"}'
+);
+
+$client->request(
+    $method,
+    $uri,
+    array $parameters = array(),
+    array $files = array(),
+    array $server = array(),
+    $content = null,
+    $changeHistory = true
+);
+
+$link = $crawler->selectLink('Go elsewhere...')->link();
+$crawler = $client->click($link);
+
+$form = $crawler->selectButton('validate')->form();
+$crawler = $client->submit($form, array('name' => 'Fabien'));
+
+$link = $crawler
+    ->filter('a:contains("Greet")') // find all links with the text "Greet"
+    ->eq(1) // select the second link in the list
+    ->link() // and click it
+    ;
+$crawler = $client->click($link);
+
+$form = $crawler->selectButton('submit')->form();
+// set some values
+$form['name'] = 'Lucas';
+$form['form_name[subject]'] = 'Hey there!';
+// submit the form
+$crawler = $client->submit($form);
+
+// Assert that the response matches a given CSS selector.
+$this->assertGreaterThan(0, $crawler->filter('h1')->count());
+
+$this->assertContains(
+    'Hello World',
+    $client->getResponse()->getContent()
+);
+
+// Assert that there is at least one h2 tag with the class "subtitle"
+$this->assertGreaterThan(
+    0,
+    $crawler->filter('h2.subtitle')->count()
+);
+
+// Assert that there are exactly 4 h2 tags on the page
+$this->assertCount(4, $crawler->filter('h2'));
+
+// Assert that the "Content-Type" header is "application/json"
+$this->assertTrue(
+$client->getResponse()->headers->contains(
+    'Content-Type',
+    'application/json'
+);
+
+// Assert that the response content contains a string
+$this->assertContains('foo', $client->getResponse()->getContent());
+// ...or matches a regex
+$this->assertRegExp('/foo(bar)?/', $client->getResponse()->getContent());
+
+// Assert that the response status code is 2xx
+$this->assertTrue($client->getResponse()->isSuccessful());
+// Assert that the response status code is 404
+$this->assertTrue($client->getResponse()->isNotFound());
+// Assert a specific 200 status code
+$this->assertEquals(
+    200, // or Symfony\Component\HttpFoundation\Response::HTTP_OK
+    $client->getResponse()->getStatusCode()
+);
+
+// Assert that the response is a redirect to /demo/contact
+$this->assertTrue(
+    $client->getResponse()->isRedirect('/demo/contact')
+);
+// ...or simply check that the response is a redirect to any URL
+$this->assertTrue($client->getResponse()->isRedirect());
+
+// Form submission with a file upload
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+$photo = new UploadedFile(
+    '/path/to/photo.jpg',
+    'photo.jpg',
+    'image/jpeg',
+    123
+);
+$client->request(
+    'POST',
+    '/submit',
+    array('name' => 'Fabien'),
+    array('photo' => $photo)
+);
+
+// Perform a DELETE request and pass HTTP headers
+$client->request(
+    'DELETE',
+    '/post/12',
+    array(),
+    array(),
+    array('PHP_AUTH_USER' => 'username', 'PHP_AUTH_PW' => 'pa$$word')
+);
+
+// Browsing
+$client->back();
+$client->forward();
+$client->reload();
+// Clears all cookies and the history
+$client->restart();
+
+$history = $client->getHistory();
+$cookieJar = $client->getCookieJar();
+
+// the HttpKernel request instance
+$request = $client->getRequest();
+// the BrowserKit request instance
+$request = $client->getInternalRequest();
+// the HttpKernel response instance
+$response = $client->getResponse();
+// the BrowserKit response instance
+$response = $client->getInternalResponse();
+$crawler = $client->getCrawler();
+
+$container = $client->getContainer();
+$kernel = $client->getKernel();
+
+// enable the profiler for the very next request
+$client->enableProfiler();
+$crawler = $client->request('GET', '/profiler');
+// get the profile
+$profile = $client->getProfile();
+
+// Redirecting
+$crawler = $client->followRedirect();
+
+$client->followRedirects();
+
+$client->followRedirects(false);
+
+$newCrawler = $crawler->filter('input[type=submit]')
+    ->last()
+    ->parents()
+    ->first()
+    ;
+// Many other methods are also available:
+filter('h1.title') - Nodes that match the CSS selector.
+filterXpath('h1')  - Nodes that match the XPath expression.
+eq(1)              - Node for the specified index.
+first()            - First node.
+last()             - Last node.
+siblings()         - Siblings.
+nextAll()          - All following siblings.
+previousAll()      - All preceding siblings.
+parents()          - Returns the parent nodes.
+children()         - Returns children nodes.
+reduce($lambda)    - Nodes for which the callable does not return false.
+
+$crawler
+    ->filter('h1')
+    ->reduce(function ($node, $i) {
+        if (!$node->getAttribute('class')) {
+            return false;
+        }
+    })
+    ->first()
+;
+
+// Extracting Information
+// Returns the attribute value for the first node
+$crawler->attr('class');
+// Returns the node value for the first node
+$crawler->text();
+// Extracts an array of attributes for all nodes
+// (_text returns the node value)
+// returns an array for each element in crawler,
+// each with the value and href
+$info = $crawler->extract(array('_text', 'href'));
+// Executes a lambda for each node and return an array of results
+$data = $crawler->each(function ($node, $i) {
+    return $node->attr('href');
+});
+
+$crawler->selectLink('Click here');
+$link = $crawler->selectLink('Click here')->link();
+$client->click($link);
+
+$buttonCrawlerNode = $crawler->selectButton('submit');
+$form = $buttonCrawlerNode->form();
+$form = $buttonCrawlerNode->form(array(
+    'name' => 'Fabien',
+    'my_form[subject]' => 'Symfony rocks!',
+));
+$form = $buttonCrawlerNode->form(array(), 'DELETE');
+$client->submit($form);
+$client->submit($form, array(
+    'name' => 'Fabien',
+    'my_form[subject]' => 'Symfony rocks!',
+));
+
+// Change the value of a field
+$form['name'] = 'Fabien';
+$form['my_form[subject]'] = 'Symfony rocks!';
+// Select an option or a radio
+$form['country']->select('France');
+// Tick a checkbox
+$form['like_symfony']->tick();
+// Upload a file
+$form['photo']->upload('/path/to/lucas.jpg');
+
+$client = static::createClient(array(
+    'environment' => 'my_test_env',
+    'debug' => false,
+));
+$client = static::createClient(array(), array(
+    'HTTP_HOST' => 'en.example.com',
+    'HTTP_USER_AGENT' => 'MySuperBrowser/1.0',
+));
+$client->request('GET', '/', array(), array(), array(
+    'HTTP_HOST' => 'en.example.com',
+    'HTTP_USER_AGENT' => 'MySuperBrowser/1.0',
+));
+````
+
+####Validation
+````php
+use Symfony\Component\Validator\Constraints as Assert;
+/**
+ * @Assert\NotBlank()
+ * @Assert\Length(min=3)
+ */
+public $name;
+
+$validator = $this->get('validator');
+$errors = $validator->validate($author);
+
+$author = new Author();
+$form = $this->createForm(new AuthorType(), $author);
+$form->handleRequest($request);
+if ($form->isValid()) {}
+
+// Basic Constraints
+• NotBlank
+• Blank
+• NotNull
+• Null
+• True
+• False
+• Type
+
+// String Constraints
+• Email
+• Length
+• Url
+• Regex
+• Ip
+• Uuid
+
+// Number Constraints
+• Range
+
+// Comparison Constraints
+• EqualTo
+• NotEqualTo
+• IdenticalTo
+• NotIdenticalTo
+• LessThan
+• LessThanOrEqual
+• GreaterThan
+• GreaterThanOrEqual
+
+// Date Constraints
+• Date
+• DateTime
+• Time
+
+// Collection Constraints
+• Choice
+• Collection
+• Count
+• UniqueEntity
+• Language
+• Locale
+• Country
+
+// File Constraints
+• File
+• Image
+
+// Financial and other Number Constraints
+• CardScheme
+• Currency
+• Luhn
+• Iban
+• Isbn
+• Issn
+
+// Other Constraints
+• Callback
+• Expression
+• All
+• UserPassword
+• Valid
+
+/**
+ * @Assert\Choice(
+ * choices = { "male", "female" },
+ * message = "Choose a valid gender."
+ * )
+ */
+public $gender;
+
+/**
+ * @Assert\True(message = "The password cannot match your first name")
+ */
+public function isPasswordLegal() { return $this->firstName !== $this->password; }
+
+// group
+$errors = $validator->validate($author, null, array('registration'));
+````
+
+####Forms
+````
+{{ form(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+$form = $this->createFormBuilder($users, array(
+    'validation_groups' => array('registration'),
+))->add(...);
+
+// Validation Groups
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+public function setDefaultOptions(OptionsResolverInterface $resolver)
+{
+    $resolver->setDefaults(array(
+       'validation_groups' => array('registration'),
+    ));
+    // Disabling Validation
+    $resolver->setDefaults(array(
+        'validation_groups' => false,
+    ));
+    // Groups based on the Submitted Data
+    $resolver->setDefaults(array(
+        'validation_groups' => array(
+            'AppBundle\Entity\Client',
+            'determineValidationGroups',
+        )
+    ));
+    $resolver->setDefaults(array(
+        'validation_groups' => function(FormInterface $form) {
+            $data = $form->getData();
+            if (Client::TYPE_PERSON == $data->getType()) {
+                return array('person');
+            }
+            return array('company');
+        },
+    ));
+    $resolver->setDefaults(array(
+        'validation_groups' => function(FormInterface $form) {
+            $data = $form->getData();
+            if (Client::TYPE_PERSON == $data->getType()) {
+              return array('Default', 'person');
+            }
+            return array('Default', 'company');
+        },
+    ));
+}
+
+$form = $this->createFormBuilder($task)
+    ->add('nextStep', 'submit')
+    ->add('previousStep', 'submit')
+    ->getForm();
+
+$form = $this->createFormBuilder($task)
+    ->add('previousStep', 'submit', array(
+        'validation_groups' => false,
+    ))
+    ->getForm();
+
+// Built-in Field Types:
+// Text Fields
+• text
+• textarea
+• email
+• integer
+• money
+• number
+• password
+• percent
+• search
+• url
+
+// Choice Fields
+• choice
+• entity
+• country
+• language
+• locale
+• timezone
+• currency
+
+// Date and Time Fields
+• date
+• datetime
+• time
+• birthday
+
+// Other Fields
+• checkbox
+• file
+• radio
+
+// Field Groups
+• collection
+• repeated
+
+// Hidden Fields
+• hidden
+
+// Buttons
+• button
+• reset
+• submit
+
+// Base Fields
+• form
+
+->add('dueDate', 'date', array('widget' => 'single_text'))
+->add('dueDate', 'date', array(
+    'widget' => 'single_text',
+    'label' => 'Due Date',
+))
+
+$form = $this->createFormBuilder($task)
+    ->setAction($this->generateUrl('target_route'))
+    ->setMethod('GET')
+    ->add('task', 'text')
+    ->add('dueDate', 'date')
+    ->add('save', 'submit')
+    ->getForm();
+
+$form = $this->createForm(new TaskType(), $task, array(
+    'action' => $this->generateUrl('target_route'),
+    'method' => 'GET',
+));
+
+// Rendering a Form in a Template
+{{ form_start(form) }}
+    {{ form_errors(form) }}
+    {{ form_row(form.task) }}
+    {{ form_row(form.dueDate) }}
+    {{ form.vars.value.task }}
+{{ form_end(form) }}
+
+{{ form_start(form) }}
+    {{ form_errors(form) }}
+    <div>
+        {{ form_label(form.task) }}
+        {{ form_errors(form.task) }}
+        {{ form_widget(form.task) }}
+    </div>
+    <div>
+        {{ form_label(form.dueDate) }}
+        {{ form_errors(form.dueDate) }}
+        {{ form_widget(form.dueDate) }}
+    </div>
+    <div>
+        {{ form_widget(form.save) }}
+    </div>
+{{ form_end(form) }}
+
+{{ form_label(form.task, 'Task Description') }}
+
+{{ form_widget(form.task, {'attr': {'class': 'task_field'}}) }}
+
+{{ form.task.vars.id }}
+{{ form.task.vars.full_name }}
+
+{{ form_start(form, {'action': path('target_route'), 'method': 'GET'}) }}
+
+````
+page:169

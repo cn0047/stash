@@ -5,9 +5,10 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Category;
 use AppBundle\Entity\Product;
-
+use AppBundle\Entity\Task;
 
 class DefaultController extends Controller
 {
@@ -214,9 +215,51 @@ class DefaultController extends Controller
             ->find($id);
         $categoryName = $product->getCategory()->getName();
         dump($product);
+        $category = $this->getDoctrine()
+            ->getRepository('AppBundle:Category')
+            ->find($id);
+        $products = $category->getProducts();
+        dump($products);
         return $this->render(
             'default/message.html.twig',
-            ['m' => $categoryName]
+            ['m' => '']
         );
+    }
+
+    public function show6Action($id)
+    {
+        $product = $this->getDoctrine()
+           ->getRepository('AppBundle:Product')
+            ->findOneByIdJoinedToCategory($id);
+        $category = $product->getCategory();
+    }
+
+    /**
+     * @Route("/newTask", name="newTask")
+     */
+    public function newTaskAction(Request $request)
+    {
+        // create a task and give it some dummy data for this example
+        $task = new Task();
+        $task->setTask('Write a blog post');
+        $task->setDueDate(new \DateTime('tomorrow'));
+        $form = $this->createFormBuilder($task)
+           ->add('task', 'text')
+            ->add('dueDate', 'date')
+            ->add('save', 'submit', array('label' => 'Create Task'))
+            ->add('saveAndAdd', 'submit', array('label' => 'Save and Add'))
+            ->getForm();
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $nextAction = $form->get('saveAndAdd')->isClicked()
+                ? 'task_new'
+                : 'task_success';
+            var_dump($nextAction);
+            // perform some action, such as saving the task to the database
+            // return $this->redirectToRoute('task_success');
+        }
+        return $this->render('default/newTask.html.twig', array(
+            'form' => $form->createView(),
+        ));
     }
 }
