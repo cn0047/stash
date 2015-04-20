@@ -51,3 +51,24 @@ if (!$sth->execute([':s1' => uniqid(), ':s2' => uniqid()])) {
 } else {
     echo 'VARIANT 4 - OK, at: '.time();
 }
+
+/**
+ * VARIANT 5
+ *
+ * Everything OK.
+ */
+$sth = $dbh->prepare('INSERT INTO stockists SET state1 = ?, state2 = ?');
+if (!$sth->execute([uniqid(), uniqid()])) {
+    var_dump($sth->errorInfo());
+} else {
+    echo 'VARIANT 5 - OK, at: '.time();
+}
+
+/**
+ * VARIANT 6
+ *
+ * PHP Warning:  PDO::query(): SQLSTATE[HY000]: General error: mode must be an integer in ...
+ */
+// $query = 'INSERT INTO stockists SET state1 = ?, state2 = ?';
+// $result = $dbh->query($query, [uniqid(), uniqid()]);
+// var_export($result);

@@ -2,6 +2,7 @@ Acronyms
 -
 
 ````
+CDN
 CRM
 CSRF
 DAO
@@ -15,6 +16,10 @@ SaaS
 SMTP
 SPL
 ````
+
+<dl>
+<dt>CDN</dt>
+<dd>Content distribution network.</dd>
 
 <dl>
 <dt>CRM</dt>
