@@ -77,7 +77,7 @@ $(document).ready(function () {});
 .bind(eventType, data, handler);
 .one(eventType, data, listener);
 .unbind(eventType, listener);
-.live(eventType, data, listener);
+.on() //.live(eventType, data, listener);
 .trigger(eventType, data);
 .queue(name, func);
 .dequeue();
