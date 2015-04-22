@@ -87,16 +87,17 @@ CRUN_WORK_DIR=/var/www/vhosts/host/htdocs
 
 ####curl
 ````
--b, --cookie STRING/FILE  String or file to read cookies from (H)
--d, --data DATA     HTTP POST data (H)
--F, --form CONTENT  Specify HTTP multipart POST data (H)
--o, --output FILE   Write output to <file> instead of stdout
+-b, --cookie STRING/FILE             String or file to read cookies from (H)
+-d, --data DATA                      HTTP POST data (H)
+-F, --form CONTENT                   Specify HTTP multipart POST data (H)
+-o, --output FILE                    Write output to <file> instead of stdout
 -x, --proxy [PROTOCOL://]HOST[:PORT] Use proxy on given port
--e, --referer       Referer URL (H)
--u, --user USER[:PASSWORD]  Server user and password
+-e, --referer                        Referer URL (H)
+-u, --user USER[:PASSWORD]           Server user and password
 
 # (REST) JSON at POST.
 curl -X POST -H 'application/json' -d '{"key":"val"}' http://url.com
+curl http://url.com -d x=1 -d y=2
 ````
 
 ####SNIPPETS

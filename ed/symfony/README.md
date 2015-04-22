@@ -6,6 +6,8 @@ Symfony
 ####Running the Symfony Application
 ````
 cd my_project_name/
+cd ed/symfony/examples/bulletinBoard/
+
 php app/console server:run
 php app/console server:stop
 
@@ -754,5 +756,14 @@ $form = $this->createForm(new TaskType(), $task, array(
 
 {{ form_start(form, {'action': path('target_route'), 'method': 'GET'}) }}
 
+$form->get('dueDate')->getData();
+$form->get('dueDate')->setData(new \DateTime());
+
+if ($form->isValid()) {
+    $em = $this->getDoctrine()->getManager();
+    $em->persist($task);
+    $em->flush();
+    return $this->redirectToRoute('task_success');
+}
 ````
-page:169
+page:172

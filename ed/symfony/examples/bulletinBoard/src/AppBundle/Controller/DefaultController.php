@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Category;
 use AppBundle\Entity\Product;
 use AppBundle\Entity\Task;
+use AppBundle\Form\Type\TaskType;
 
 class DefaultController extends Controller
 {
@@ -258,6 +259,30 @@ class DefaultController extends Controller
             // perform some action, such as saving the task to the database
             // return $this->redirectToRoute('task_success');
         }
+        return $this->render('default/newTask.html.twig', array(
+            'form' => $form->createView(),
+        ));
+    }
+
+    /**
+     * @Route("/newTask2", name="newTask2")
+     */
+    public function newTaskAction2()
+    {
+        $task = new Task();
+        $form = $this->createForm(new TaskType(), $task);
+        return $this->render('default/newTask.html.twig', array(
+            'form' => $form->createView(),
+        ));
+    }
+
+    /**
+     * @Route("/newTask3", name="newTask3")
+     */
+    public function newTaskAction3()
+    {
+        $task = new Task();
+        $form = $this->createForm('task', $task);
         return $this->render('default/newTask.html.twig', array(
             'form' => $form->createView(),
         ));
