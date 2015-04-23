@@ -10,6 +10,7 @@ use AppBundle\Entity\Category;
 use AppBundle\Entity\Product;
 use AppBundle\Entity\Task;
 use AppBundle\Form\Type\TaskType;
+use AppBundle\Form\Type\CategoryType;
 
 class DefaultController extends Controller
 {
@@ -271,6 +272,7 @@ class DefaultController extends Controller
     {
         $task = new Task();
         $form = $this->createForm(new TaskType(), $task);
+        $form->add('category', new CategoryType());
         return $this->render('default/newTask.html.twig', array(
             'form' => $form->createView(),
         ));

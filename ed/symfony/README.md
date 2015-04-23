@@ -765,5 +765,11 @@ if ($form->isValid()) {
     $em->flush();
     return $this->redirectToRoute('task_success');
 }
+
+// Global Form Theming
+# app/config/config.yml
+twig:
+    form_themes:
+        - 'form/fields.html.twig'
 ````
-page:172
+page:177
