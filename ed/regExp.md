@@ -48,7 +48,7 @@ RegExp
 |?<=                                       | lookbehind assetion |
 | ?! or ?<!                                | negative lookbehind |
 | ?>                                       | once-only sebexpression |
-| /?(condition)true-pattern|false-pattern/ | condition |
+| /?(condition)true-pattern\|false-pattern/ | condition |
 | /?(condition)true-pattern/               | condition |
 | ?#                                       | comment |
 | (?:...)                                  | just group, cannot be linked by \1 |
