@@ -64,6 +64,7 @@ str.slice(7);
 
 'James Bond'.match(/(J).*(B)/); // ["James B", "J", "B"]
 'James Bond'.replace('Bond', '007'); // James 007
+'James Bond James Bond James Bond James Bond'.replace(/Bond/g, '007'); // miltiple replace
 
 String(number);                                        // 12345.6789
 number.toString(2);      // to bin                     // 11000000111001.101011011100110001100011111100010100001
