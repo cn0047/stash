@@ -13,6 +13,7 @@ log -2         # last 2 commits
 log -p         # shows commits & code in commit
 log --stat     # statiistic about changes
 log --no-meges # log without merges
+git log --follow file.txt # Viewing GIT history of moved files.
 
 remote -v                      # shows remote repository
 remote show remoteRepoName     # shows all about remote repo (remote show origin)

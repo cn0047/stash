@@ -6,6 +6,8 @@ JSON.stringify(object);                // object to JSON
 JSON.parse(string)                     // string to JSON
 
 console.log(typeof v !== 'undefined'); // isset variable v.
+
+console.log('Code:%s', 200); // Code:200
 ````
 
 ####Flashback
