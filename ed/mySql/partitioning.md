@@ -269,7 +269,7 @@ ALTER TABLE t1 REBUILD PARTITION p0, p1;
 
 ####Obtaining Information About Partitions
 ````sql
-SHOW TABLE STATUS FROM test where Name = 'clients';
+SHOW TABLE STATUS FROM dbName where Name = 'tableName'; -- look to Create_options
 EXPLAIN PARTITIONS SELECT * FROM clients;
 ````
 
