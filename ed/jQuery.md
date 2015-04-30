@@ -147,9 +147,12 @@ $.ajax({
     },
 });
 
-load(url, parameters, function (xhr, status, error) {});
+$(selector).load(url, parameters, function (xhr, status, error) {});
 
 $.get(url, parameters, callback, type);
+$.get('demo_test.asp', function (data, status) {
+    console.log([data, status]);
+});
 
 $.getJSON(url, parameters, callback);
 

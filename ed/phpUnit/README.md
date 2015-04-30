@@ -11,3 +11,5 @@ Stub - an object that provides predefined answers to method calls.
 `
 phpunit -d memory_limit=16M -c include/tests/conf.xml /tests/unit/
 `
+
+In each test should be just one assert.

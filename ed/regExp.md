@@ -21,7 +21,6 @@ RegExp
 |[A-Q]                                     | upper case letter between A and Q |
 |[0-7]                                     | digit between 0 and 7 |
 |(...)                                     | group |
-|(?:...)                                   | pasive group |
 |\0                                        | null |
 |\t                                        | tab |
 |\n                                        | new line |
@@ -51,7 +50,7 @@ RegExp
 | /?(condition)true-pattern\|false-pattern/ | condition |
 | /?(condition)true-pattern/               | condition |
 | ?#                                       | comment |
-| (?:...)                                  | just group, cannot be linked by \1 |
+| (?:...)                                  | pasive group, just group, cannot be linked by \1 |
 | \1\2                                     | back reference to matches that was in (...) |
 | $1                                       | |
 | $2                                       | |

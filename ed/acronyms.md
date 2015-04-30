@@ -9,6 +9,7 @@ DAO
 DDD
 IoC
 LDAP
+MIME
 ORM
 RBAC
 RFC
@@ -18,10 +19,10 @@ SPL
 ````
 
 <dl>
+
 <dt>CDN</dt>
 <dd>Content distribution network.</dd>
 
-<dl>
 <dt>CRM</dt>
 <dd>Customer relationship management.</dd>
 
@@ -67,6 +68,9 @@ SPL
 <dt>LDAP</dt>
 <dd>Lightweight Directory Access Protocol.</dd>
 
+<dt>MIME</dt>
+<dd>Multipurpose Internet Mail Extensions.</dd>
+
 <dt>ORM</dt>
 <dd>
 Object-relational mapping - is a programming technique
@@ -87,4 +91,5 @@ for converting data between incompatible type systems in object-oriented program
 
 <dt>SPL</dt>
 <dd>Standard PHP Library.</dd>
+
 </dl>

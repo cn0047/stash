@@ -32,3 +32,6 @@ abstract class Foo
 
     abstract public function setBar();
 }
+
+// PHP Fatal error:  Cannot instantiate abstract class examples\Foo in gh/ed/php/examples/class.abstract.2.php on line 37
+$instance = new Foo();
