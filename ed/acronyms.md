@@ -2,6 +2,7 @@ Acronyms
 -
 
 ````
+B2B
 CDN
 CRM
 CSRF
@@ -16,9 +17,13 @@ RFC
 SaaS
 SMTP
 SPL
+UDP
 ````
 
 <dl>
+
+<dt>B2B</dt>
+<dd>Business to business.</dd>
 
 <dt>CDN</dt>
 <dd>Content distribution network.</dd>
@@ -91,5 +96,8 @@ for converting data between incompatible type systems in object-oriented program
 
 <dt>SPL</dt>
 <dd>Standard PHP Library.</dd>
+
+<dt><UDP/dt>
+<dd>User Datagram Protocol.</dd>
 
 </dl>

@@ -28,6 +28,9 @@ file      - -rw-rw-r-- (664)
 
 ####shell
 ````
+df # Show information about the file system.
+du # Summarize disk usage of each FILE.
+
 host github.com # Shows ip by host.
 dig domain
 whois ip
@@ -83,6 +86,8 @@ PATH=/bin:/usr/bin:/usr/local/bin
 CRUN_REMOTE_HOST=Host
 CRUN_EMAIL=mail@com.com
 CRUN_WORK_DIR=/var/www/vhosts/host/htdocs
+
+rm /tmp/crun_user_at_server_or_host_3a30db060f74d9390a2eb6f8a92eab8d # crun lock file. Should be removed when execution fails...
 ````
 
 ####curl
