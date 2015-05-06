@@ -8,6 +8,7 @@ CRM
 CSRF
 DAO
 DDD
+HTTP
 IoC
 LDAP
 MIME
@@ -17,6 +18,7 @@ RFC
 SaaS
 SMTP
 SPL
+TCP
 UDP
 ````
 
@@ -39,6 +41,9 @@ UDP
 
 <dt>DDD</dt>
 <dd>Domain-driven design</dd>
+
+<dt>HTTP</dt>
+<dd>Hypertext Transfer Protocol</dd>
 
 <dt>IoC</dt>
 <dd>
@@ -97,7 +102,10 @@ for converting data between incompatible type systems in object-oriented program
 <dt>SPL</dt>
 <dd>Standard PHP Library.</dd>
 
-<dt><UDP/dt>
+<dt>UDP</dt>
 <dd>User Datagram Protocol.</dd>
+
+<dt>TCP</dt>
+<dd>Transmission Control Protocol</dd>
 
 </dl>
