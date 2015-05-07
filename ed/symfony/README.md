@@ -771,5 +771,63 @@ if ($form->isValid()) {
 twig:
     form_themes:
         - 'form/fields.html.twig'
+
+// Customizing Form Output all in a Single File with Twig
+{% extends 'base.html.twig' %}
+
+{# import "_self" as the form theme #}
+{% form_theme form _self %}
+
+{# make the form fragment customization #}
+{% block form_row %}
+    {# custom field row output #}
+{% endblock form_row %}
+
+{% block content %}
+    {{ form_row(form.task) }}
+{% endblock %}
+
+// To automatically include the customized templates from the app/Resources/views/Form
+# app/config/config.yml
+framework:
+    templating:
+        form:
+            resources:
+                - 'Form'
+
+// CSRF Protection
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+class TaskType extends AbstractType
+{
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => 'AppBundle\Entity\Task',
+            'csrf_protection' => true,
+            'csrf_field_name' => '_token',
+            // a unique key to help generate the secret token
+            'intention' => 'task_item',
+        ));
+    }
+}
+
+// Using a Form without a Class
+use Symfony\Component\HttpFoundation\Request;
+// make sure you've imported the Request namespace above the class
+public function contactAction(Request $request)
+{
+    $defaultData = array('message' => 'Type your message here');
+    $form = $this->createFormBuilder($defaultData)
+        ->add('name', 'text')
+        ->add('email', 'email')
+        ->add('message', 'textarea')
+        ->add('send', 'submit')
+        ->getForm();
+    $form->handleRequest($request);
+    if ($form->isValid()) {
+        // data is an array with "name", "email", and "message" keys
+        $data = $form->getData();
+    }
+}
 ````
-page:177
+page:181
