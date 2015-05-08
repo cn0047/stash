@@ -6,6 +6,8 @@
         }
     </style>
     <form>
+        <input type="text" name="url" value="http://php.net">
+        <br>
         <input type="text" name="email" value="bugEmail@">
         <br>
         <input type="text" name="email2" value="bugEmail@">
@@ -15,9 +17,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
     <script>
+        $.validator.addMethod(
+            'url',
+            function (value, element, param) {
+                return /^https?\:\/\/.*$/.test(value);
+            },
+            'Please check your url.'
+        );
         $('form').validate({
             rules: {
                 email: {required: true, email: true},
+                url: {required: true, url: true},
             },
             errorPlacement: function(label, element) {
                 label.addClass('errorMsq');

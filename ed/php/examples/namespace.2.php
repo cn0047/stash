@@ -14,6 +14,7 @@ namespace Bar;
 use Foo;
 
 var_dump([
-    strlen('baz'),  // int(3)
-    strlen2('baz'), // PHP Fatal error:  Call to undefined function Bar\strlen2() in ...
+    strlen('baz'),     // int(3)
+    strlen2('baz'),    // PHP Fatal error:  Call to undefined function Bar\strlen2() in ...
+    Foo\strlen('baz'), // int(5)
 ]);
