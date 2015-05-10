@@ -15,6 +15,7 @@ MIME
 ORM
 RBAC
 RFC
+ROI
 SaaS
 SMTP
 SPL
@@ -92,6 +93,9 @@ for converting data between incompatible type systems in object-oriented program
 
 <dt>RFC</dt>
 <dd>Request for Comments.</dd>
+
+<dt>ROI</dt>
+<dd>Return on investment.</dd>
 
 <dt>SaaS</dt>
 <dd>Software as a service.</dd>
