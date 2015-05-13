@@ -7,11 +7,22 @@ try {
 }
 
 $date = '2015-03-13';
-$sth = $dbh->prepare('SELECT * FROM mostCurrentRow WHERE week = :date ORDER BY score DESC');
+$sth = $dbh->prepare('SELECT :date AS `date`');
 $sth->bindParam(':date', $date, PDO::PARAM_STR);
 if (!$sth->execute()) {
     throw new Exception($sth->errorInfo());
 }
-$result = $sth->fetchAll(PDO::FETCH_ASSOC);
-echo '<pre>';
-var_export($result);
+$result = $sth->fetchColumn();
+print($result);
+
+/**
+ * In loop.
+ */
+foreach (['one', 'tow', 'three'] as $value) {
+    $sth->bindParam(':date', $value, PDO::PARAM_STR);
+    if (!$sth->execute()) {
+        throw new Exception($sth->errorInfo());
+    }
+    $result = $sth->fetch(PDO::FETCH_ASSOC);
+    var_export($result);
+}

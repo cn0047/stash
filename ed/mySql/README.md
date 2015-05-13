@@ -41,6 +41,15 @@ INSERT LOW_PRIORITY INTO table1 SELECT field FROM table2;
 SELECT * FROM stockTable ORDER BY field(stockid, 33, 12, 53); -- ordered result: 33, 12, 53
 ````
 
+####Optimizations
+````sql
+// SELECT DISTINCT faster than SELECT GROUB BY.
+SELECT DISTINCT id FROM table;
+// vs
+SELECT id FROM table GROUP BY id;
+
+````
+
 ####Options
 ````sql
 SET SQL_BIG_SELECTS  = 1;
