@@ -198,6 +198,175 @@ php app/console router:match /blog/my-latest-post
 {% endblock %}
 <link href="{{ asset('bundles/acmedemo/css/contact.css') }}" rel="stylesheet" />
 
+<script src="{{ asset('js/script.js') }}"></script>
+
+{% block javascripts %}
+    {% javascripts '@AppBundle/Resources/public/js/*' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+{% javascripts
+    '@AppBundle/Resources/public/js/*'
+    '@AcmeBarBundle/Resources/public/js/form.js'
+    '@AcmeBarBundle/Resources/public/js/calendar.js' %}
+    <script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% javascripts
+    '@AppBundle/Resources/public/js/thirdparty/jquery.js'
+    '@AppBundle/Resources/public/js/*' %}
+    <script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% javascripts '@AppBundle/Resources/public/js/*' output='js/compiled/main.js' %}
+    <script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
+{% block stylesheets %}
+    {% stylesheets 'bundles/app/css/*' filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% image '@AppBundle/Resources/public/images/example.jpg' %}
+    <img src="{{ asset_url }}" alt="Example" />
+{% endimage %}
+
+// Using Named Assets
+# app/config/config.yml
+assetic:
+    assets:
+        jquery_and_ui:
+            inputs:
+                - '@AppBundle/Resources/public/js/thirdparty/jquery.js'
+                - '@AppBundle/Resources/public/js/thirdparty/jquery.ui.js'
+
+{% javascripts
+    '@jquery_and_ui'
+    '@AppBundle/Resources/public/js/*' %}
+    <script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
+// Filters
+# app/config/config.yml
+assetic:
+    filters:
+        uglifyjs2:
+            bin: /usr/local/bin/uglifyjs
+
+{% javascripts '@AppBundle/Resources/public/js/*' filter='uglifyjs2' %}
+    <script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
+// Dumping Asset Files
+php app/console assetic:dump --env=prod --no-debug
+
+# app/config/config_dev.yml
+assetic:
+    use_controller: false
+
+php app/console assetic:dump
+php app/console assetic:watch
+
+//  Minify CSS/JS Files (Using UglifyJS and UglifyCSS)
+1)
+npm install -g uglify-js
+uglifyjs --help
+2)
+cd /path/to/your/symfony/project
+npm install uglify-js --prefix app/Resources
+"./app/Resources/node_modules/.bin/uglifyjs" --help
+
+# app/config/config.yml
+assetic:
+    filters:
+        uglifyjs2:
+            # the path to the uglifyjs executable
+            bin: /usr/local/bin/uglifyjs
+
+# Configure the node Binary
+# app/config/config.yml
+assetic:
+    # the path to the node executable
+    node: /usr/bin/nodejs
+    filters:
+        uglifyjs2:
+            # the path to the uglifyjs executable
+            bin: /usr/local/bin/uglifyjs
+
+{% javascripts '@AppBundle/Resources/public/js/*' filter='uglifyjs2' %}
+    <script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
+// Disable Minification in Debug Mode
+{% javascripts '@AppBundle/Resources/public/js/*' filter='?uglifyjs2' %}
+    <script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
+// UglifyCSS
+1)
+npm install -g uglifycss
+2)
+cd /path/to/your/symfony/project
+npm install uglifycss --prefix app/Resources
+
+# app/config/config.yml
+assetic:
+    filters:
+        uglifycss:
+            bin: /usr/local/bin/uglifycss
+
+{% stylesheets 'bundles/App/css/*' filter='uglifycss' filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+{% endstylesheets %}
+
+// Image Optimization
+# app/config/config.yml
+assetic:
+    filters:
+        jpegoptim:
+            bin: path/to/jpegoptim
+
+{% image '@AppBundle/Resources/public/images/example.jpg'
+    filter='jpegoptim' output='/images/example.jpg' %}
+    <img src="{{ asset_url }}" alt="Example"/>
+{% endimage %}
+
+// Shorter Syntax
+# app/config/config.yml
+assetic:
+    filters:
+        jpegoptim:
+            bin: path/to/jpegoptim
+    twig:
+        functions:
+            # jpegoptim: ~
+            jpegoptim: { output: images/*.jpg }
+
+<img src="{{ jpegoptim('@AppBundle/Resources/public/images/example.jpg') }}" alt="Example"/>
+
+// Filter to a specific File Extension
+# app/config/config.yml
+assetic:
+    filters:
+        coffee:
+            bin: /usr/bin/coffee
+            node: /usr/bin/node
+            node_paths: [/usr/lib/node_modules/]
+            # apply_to: "\.coffee$" # Filtering Based on a File Extension
+
+{% javascripts '@AppBundle/Resources/public/js/example.coffee' filter='coffee' %}
+    <script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% javascripts '@AppBundle/Resources/public/js/example.coffee'
+    '@AppBundle/Resources/public/js/another.coffee'
+    filter='coffee' %}
+    <script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% javascripts '@AppBundle/Resources/public/js/example.coffee'
+    '@AppBundle/Resources/public/js/another.coffee'
+    '@AppBundle/Resources/public/js/regular.js' %}
+    <script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
 // Global Template Variables.
 app.security
 app.user
@@ -1262,3 +1431,4 @@ _profiler:
     resource: "@WebProfilerBundle/Resources/config/routing/profiler.xml"
     prefix: /_profiler
 ````
+page:23

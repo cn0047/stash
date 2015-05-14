@@ -15,6 +15,8 @@ https://dev.twitter.com/
 
 php -S localhost:8000 index.php
 
+php -d short_open_tag=1 x.php
+
 ####phpCs
 ````
 phpcs -sw --standard=PSR2 file.php
