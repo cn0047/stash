@@ -97,6 +97,107 @@ php app/console cache:clear --env=prod --no-debug
 //  Create the Bundle.
 php app/console generate:bundle --namespace=Acme/DemoBundle --format=yml
 php app/console generate:bundle --namespace=Acme/TestBundle
+
+// How to Install 3rd Party Bundles
+• A) Add Composer Dependencies
+    composer require friendsofsymfony/user-bundle
+• B) Enable the Bundle
+    // app/AppKernel.php
+    class AppKernel extends Kernel
+    {
+        public function registerBundles()
+        {
+            $bundles = array(
+                new FOS\UserBundle\FOSUserBundle(),
+            );
+        }
+    }
+• C) Configure the Bundle
+    app/console config:dump-reference AsseticBundle
+    app/console config:dump-reference assetic
+
+// Bundle Name
+Namespace                     | Bundle Class Name
+------------------------------+----------------------
+Acme\Bundle\BlogBundle        | AcmeBlogBundle
+Acme\Bundle\Social\BlogBundle | AcmeSocialBlogBundle
+Acme\BlogBundle               | AcmeBlogBundle
+
+// Configuration
+# app/config/config.yml
+parameters:
+    acme_hello.email.from: fabien@example.com
+
+$container->getParameter('acme_hello.email.from');
+
+// Custom Validation Constraints
+use Symfony\Component\Validator\ConstraintValidator;
+use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
+class ContainsAlphanumericValidator extends ConstraintValidator
+{
+    public function validate($value, Constraint $constraint)
+    {
+        if ($this->context instanceof ExecutionContextInterface) {
+            // the 2.5 API
+            $this->context->buildViolation($constraint->message)
+                ->setParameter('%string%', $value)
+                ->addViolation()
+            ;
+        } else {
+            // the 2.4 API
+            $this->context->addViolation(
+                $constraint->message,
+                array('%string%' => $value)
+            );
+        }
+    }
+}
+
+// How to Use Bundle Inheritance to Override Parts of a Bundle
+# src/Acme/UserBundle/AcmeUserBundle.php
+namespace Acme\UserBundle;
+use Symfony\Component\HttpKernel\Bundle\Bundle;
+class AcmeUserBundle extends Bundle
+{
+    public function getParent()
+    {
+        return 'FOSUserBundle';
+    }
+}
+
+// Overriding Controllers
+# src/Acme/UserBundle/Controller/RegistrationController.php
+namespace Acme\UserBundle\Controller;
+use FOS\UserBundle\Controller\RegistrationController as BaseController;
+class RegistrationController extends BaseController
+{
+    public function registerAction()
+    {
+        $response = parent::registerAction();
+        // ... do custom stuff
+        return $response;
+    }
+}
+
+// How to Override any Part of a Bundle
+// Services & Configuration
+# app/config/config.yml
+parameters:
+    translator.class: Acme\HelloBundle\Translation\Translator
+
+# src/Acme/DemoBundle/DependencyInjection/Compiler/OverrideServiceCompilerPass.php
+namespace Acme\DemoBundle\DependencyInjection\Compiler;
+use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+class OverrideServiceCompilerPass implements CompilerPassInterface
+{
+    public function process(ContainerBuilder $container)
+    {
+        $definition = $container->getDefinition('original-service-id');
+        $definition->setClass('Acme\DemoBundle\YourService');
+    }
+}
 ````
 
 ####The Directory Structure
@@ -108,13 +209,16 @@ vendor/                      - any vendor libraries.
 web/                         - web root directory, contains publicly accessible files.
 
 Bundle Directory Structure:
-Controller/          - controllers.
-DependencyInjection/ - dependency injection extension classes.
-Resources/config/    - configuration, routing.
-Resources/views/     - templates.
-Resources/public/    - images, stylesheets, etc.
-web/                 - assets.
-Tests/               - tests for the bundle.
+Controller/                 - controllers.
+DependencyInjection/        - dependency injection extension classes.
+Resources/config/           - configuration, routing.
+Resources/doc/              - index.rst.
+Resources/meta/             - LICENSE.
+Resources/views/            - templates.
+Resources/translations/     - translations.
+Resources/public/           - images, stylesheets, etc.
+web/                        - assets.
+Tests/                      - tests for the bundle.
 ````
 
 ####Controller
@@ -1434,4 +1538,4 @@ _profiler:
     resource: "@WebProfilerBundle/Resources/config/routing/profiler.xml"
     prefix: /_profiler
 ````
-page:23
+page:36
