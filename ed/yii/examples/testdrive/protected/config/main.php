@@ -19,6 +19,7 @@ return array(
 	),
 
 	'modules'=>array(
+		'admin',
 		'store',
 		// uncomment the following to enable the Gii tool
 		/*
@@ -41,6 +42,7 @@ return array(
 		'urlManager'=>array(
 			'urlFormat'=>'path',
 			'rules'=>array(
+				'/admin' => 'admin/admin/index',
 				'/store' => 'store/guest/index',
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
