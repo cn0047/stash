@@ -19,7 +19,11 @@ return array(
 	),
 
 	'modules'=>array(
-		'admin',
+		'admin' => array(
+			'modules'=>array(
+				'subadmin',
+			),
+		),
 		'store',
 		// uncomment the following to enable the Gii tool
 		/*
@@ -43,6 +47,7 @@ return array(
 			'urlFormat'=>'path',
 			'rules'=>array(
 				'/admin' => 'admin/admin/index',
+				'/subadmin' => 'admin/subadmin/admin/index',
 				'/store' => 'store/guest/index',
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
