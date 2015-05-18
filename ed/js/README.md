@@ -2,6 +2,10 @@ js
 -
 
 ````js
+console.group('Application Log');
+console.log('Application Log');
+console.groupEnd();
+
 JSON.stringify(object);                // object to JSON
 JSON.parse(string)                     // string to JSON
 
