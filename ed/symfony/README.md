@@ -198,6 +198,218 @@ class OverrideServiceCompilerPass implements CompilerPassInterface
         $definition->setClass('Acme\DemoBundle\YourService');
     }
 }
+
+// Services & Configuration
+# app/config/config.yml
+parameters:
+    translator.class: Acme\HelloBundle\Translation\Translator
+
+// src/Acme/DemoBundle/DependencyInjection/Compiler/OverrideServiceCompilerPass.php
+namespace Acme\DemoBundle\DependencyInjection\Compiler;
+use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+class OverrideServiceCompilerPass implements CompilerPassInterface
+{
+    public function process(ContainerBuilder $container)
+    {
+        $definition = $container->getDefinition('original-service-id');
+        $definition->setClass('Acme\DemoBundle\YourService');
+    }
+}
+
+// Validation Metadata
+# src/Acme/UserBundle/Resources/config/validation.yml
+FOS\UserBundle\Model\User:
+    properties:
+        plainPassword:
+            - NotBlank:
+                groups: [AcmeValidation]
+            - Length:
+                min: 6
+                minMessage: fos_user.password.short
+                groups: [AcmeValidation]
+
+// How to Remove the AcmeDemoBundle
+#  app/AppKernel.php
+class AppKernel extends Kernel
+{
+    public function registerBundles()
+    {
+        $bundles = array(...);
+            if (in_array($this->getEnvironment(), array('dev', 'test'))) {
+            // comment or remove this line:
+            // $bundles[] = new Acme\DemoBundle\AcmeDemoBundle();
+        }
+    }
+}
+
+// Remove Bundle Routing
+in app/config/routing_dev.yml remove the _acme_demo
+
+// Remove Bundle Configuration
+
+// Remove the Bundle from the Filesystem
+echo $this->container->get('kernel')->getBundle('AcmeDemoBundle')->getPath();
+
+// How to Load Service Configuration inside a Bundle
+# src/Acme/HelloBundle/DependencyInjection/AcmeHelloExtension.php
+namespace Acme\HelloBundle\DependencyInjection;
+use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+class AcmeHelloExtension extends Extension
+{
+    public function load(array $configs, ContainerBuilder $container)
+    {
+        // ... you'll load the files here later
+    }
+}
+
+// Manually Registering an Extension Class
+use Acme\HelloBundle\DependencyInjection\UnconventionalExtensionClass;
+class AcmeHelloBundle extends Bundle
+{
+    public function getContainerExtension()
+    {
+        return new UnconventionalExtensionClass();
+    }
+}
+
+// Using the load() Method
+use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
+use Symfony\Component\Config\FileLocator;
+// ...
+public function load(array $configs, ContainerBuilder $container)
+{
+    $loader = new XmlFileLoader(
+        $container,
+        new FileLocator(__DIR__.'/../Resources/config')
+    );
+    $loader->load('services.xml');
+}
+
+// How to Create Friendly Configuration for a Bundle
+# app/config/config.yml
+acme_social:
+    twitter:
+        client_id: 123
+        client_secret: $ecret
+
+// Processing the $configs Array
+array(
+    // values from config.yml
+    array(
+        'twitter' => array(
+            'client_id' => 123,
+            'client_secret' => '$secret',
+        ),
+    ),
+    // values from config_dev.yml
+    array(
+        'twitter' => array(
+            'client_id' => 456,
+        ),
+    ),
+)
+
+// src/Acme/SocialBundle/DependencyInjection/Configuration.php
+namespace Acme\SocialBundle\DependencyInjection;
+use Symfony\Component\Config\Definition\Builder\TreeBuilder;
+use Symfony\Component\Config\Definition\ConfigurationInterface;
+class Configuration implements ConfigurationInterface
+{
+    public function getConfigTreeBuilder()
+    {
+        $treeBuilder = new TreeBuilder();
+        $rootNode = $treeBuilder->root('acme_social');
+        $rootNode
+            ->children()
+            ->arrayNode('twitter')
+            ->children()
+            ->integerNode('client_id')->end()
+            ->scalarNode('client_secret')->end()
+            ->end()
+            ->end() // twitter
+            ->end()
+        ;
+        return $treeBuilder;
+    }
+}
+
+public function load(array $configs, ContainerBuilder $container)
+{
+    $configuration = new Configuration();
+    $config = $this->processConfiguration($configuration, $configs);
+}
+
+#  src/Acme/HelloBundle/DependencyInjection/AcmeHelloExtension.php
+namespace Acme\HelloBundle\DependencyInjection;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\HttpKernel\DependencyInjection\ConfigurableExtension;
+class AcmeHelloExtension extends ConfigurableExtension
+{
+    // note that this method is called loadInternal and not load
+    protected function loadInternal(array $mergedConfig, ContainerBuilder $container)
+    {
+        // ...
+    }
+}
+
+// Processing the Configuration yourself
+public function load(array $configs, ContainerBuilder $container)
+{
+    $config = array();
+    // let resources override the previous set value
+    foreach ($configs as $subConfig) {
+        $config = array_merge($config, $subConfig);
+    }
+    // ... now use the flat $config array
+}
+
+// Dump the Configuration
+config:dump-reference
+
+// How to Simplify Configuration of multiple Bundles
+# src/Acme/HelloBundle/DependencyInjection/AcmeHelloExtension.php
+namespace Acme\HelloBundle\DependencyInjection;
+use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+class AcmeHelloExtension extends Extension implements PrependExtensionInterface
+{
+    public function prepend(ContainerBuilder $container)
+    {
+        // get all bundles
+        $bundles = $container->getParameter('kernel.bundles');
+        // determine if AcmeGoodbyeBundle is registered
+        if (!isset($bundles['AcmeGoodbyeBundle'])) {
+            // disable AcmeGoodbyeBundle in bundles
+            $config = array('use_acme_goodbye' => false);
+            foreach ($container->getExtensions() as $name => $extension) {
+                switch ($name) {
+                    case 'acme_something':
+                    case 'acme_other':
+                        // set use_acme_goodbye to false in the config of
+                        // acme_something and acme_other note that if the user manually
+                        // configured use_acme_goodbye to true in the app/config/config.yml
+                        // then the setting would in the end be true and not false
+                        $container->prependExtensionConfig($name, $config);
+                        break;
+                }
+            }
+        }
+        // process the configuration of AcmeHelloExtension
+        $configs = $container->getExtensionConfig($this->getAlias());
+        // use the Configuration class to generate a config array with
+        // the settings "acme_hello"
+        $config = $this->processConfiguration(new Configuration(), $configs);
+        // check if entity_manager_name is set in the "acme_hello" configuration
+        if (isset($config['entity_manager_name'])) {
+            // prepend the acme_something settings with the entity_manager_name
+            $config = array('entity_manager_name' => $config['entity_manager_name']);
+            $container->prependExtensionConfig('acme_something', $config);
+        }
+    }
+}
 ````
 
 ####The Directory Structure
@@ -1538,4 +1750,4 @@ _profiler:
     resource: "@WebProfilerBundle/Resources/config/routing/profiler.xml"
     prefix: /_profiler
 ````
-page:36
+page:53
