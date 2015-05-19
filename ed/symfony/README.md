@@ -1750,4 +1750,36 @@ _profiler:
     resource: "@WebProfilerBundle/Resources/config/routing/profiler.xml"
     prefix: /_profiler
 ````
-page:53
+
+####Environments
+````php
+// How to Master and Create new Environments
+class AppKernel extends Kernel
+{
+    public function registerContainerConfiguration(LoaderInterface $loader)
+    {
+        $loader->load($this->getRootDir().'/config/config_'.$this->getEnvironment().'.yml');
+    }
+}
+
+$kernel = new AppKernel('prod', false);
+
+# 'prod' environment (debug is always disabled for 'prod')
+php app/console command_name --env=prod
+# 'test' environment and debug disabled
+php app/console command_name --env=test --no-debug
+
+# app/config/config_benchmark.yml
+imports:
+    - { resource: config_prod.yml }
+framework:
+    profiler: { only_exceptions: false }
+
+// change just this line
+$kernel = new AppKernel('benchmark', false);
+
+http://localhost/app_benchmark.php
+
+````
+
+page:65
