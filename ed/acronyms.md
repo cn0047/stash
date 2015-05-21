@@ -13,11 +13,14 @@ IoC
 LDAP
 MIME
 ORM
+PECL
 RBAC
 RFC
 ROI
 SaaS
+SFTP
 SMTP
+SOAP
 SPL
 TCP
 UDP
@@ -88,6 +91,9 @@ Object-relational mapping - is a programming technique
 for converting data between incompatible type systems in object-oriented programming languages.
 </dd>
 
+<dt>PECL</dt>
+<dd>Php extension community library.</dd>
+
 <dt>RBAC</dt>
 <dd>Role-based access control.</dd>
 
@@ -100,8 +106,14 @@ for converting data between incompatible type systems in object-oriented program
 <dt>SaaS</dt>
 <dd>Software as a service.</dd>
 
+<dt>SFTP</dt>
+<dd>SSH File Transfer Protocol (also Secure File Transfer Protocol).</dd>
+
 <dt>SMTP</dt>
 <dd>Simple Mail Transfer Protocol.</dd>
+
+<dt>SOAP</dt>
+<dd>Simple Object Access protocol.</dd>
 
 <dt>SPL</dt>
 <dd>Standard PHP Library.</dd>
