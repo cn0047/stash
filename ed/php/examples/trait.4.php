@@ -77,3 +77,10 @@ var_export([
     $db->getParam('host'),
     $fs->getParam('dir'),
 ]);
+
+/*
+array (
+  0 => 'localhost',
+  1 => '/tmp/',
+)
+*/
