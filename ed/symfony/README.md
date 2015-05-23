@@ -84,7 +84,7 @@ composer create-project symfony/framework-standard-edition my_project_name "2.3.
 ````
 
 ####Application
-````
+````php
 // Checking Symfony Application Configuration and Setup.
 http://localhost:8000/config.php
 
@@ -410,6 +410,50 @@ class AcmeHelloExtension extends Extension implements PrependExtensionInterface
         }
     }
 }
+
+// How to Set external Parameters in the Service Container
+export SYMFONY__DATABASE__USER=user
+export SYMFONY__DATABASE__PASSWORD=secre
+
+doctrine:
+    dbal:
+        driver pdo_mysql
+        dbname: symfony_project
+        user: "%database.user%"
+        password: "%database.password%"
+
+# app/config/config.yml
+imports:
+- { resource: parameters.php }
+
+# app/config/parameters.php
+include_once('/path/to/drupal/sites/default/settings.php');
+$container->setParameter('drupal.database.url', $db_url);
+````
+
+####How to Organize Configuration Files
+````
+// app/AppKernel.php
+use Symfony\Component\HttpKernel\Kernel;
+use Symfony\Component\Config\Loader\LoaderInterface;
+class AppKernel extends Kernel
+{
+    public function registerContainerConfiguration(LoaderInterface $loader)
+    {
+        $loader->load($this->getRootDir().'/config/config_'.$this->getEnvironment().'.yml');
+        $loader->load($this->getRootDir().'/config/'.$this->getEnvironment().'/config.yml');
+        $loader->load($this->getRootDir().'/config/environments/'.$this->getEnvironment().'.yml');
+    }
+}
+
+# app/config/dev/config.yml
+imports:
+    - { resource: '../common/config.yml' }
+    - { resource: 'parameters.yml' }
+    - { resource: 'security.yml' }
+    # silently discard errors when the loaded file doesn't exist
+    # for confings not under the git.
+    - { resource: '/etc/sites/mysite.com/parameters.yml', ignore_errors: true }
 ````
 
 ####The Directory Structure
@@ -431,6 +475,24 @@ Resources/translations/     - translations.
 Resources/public/           - images, stylesheets, etc.
 web/                        - assets.
 Tests/                      - tests for the bundle.
+````
+
+####How to Override Symfony's default Directory Structure
+````php
+class AppKernel extends Kernel
+{
+    // Override the cache Directory
+    public function getCacheDir()
+    {
+        return $this->rootDir.'/'.$this->environment.'/cache';
+    }
+
+    // Override the logs Directory
+    public function getLogDir()
+    {
+       return $this->rootDir.'/'.$this->environment.'/logs';
+    }
+}
 ````
 
 ####Controller
@@ -470,6 +532,232 @@ $this->generateUrl('blog_show', array('slug' => 'my-blog-post'), true);
 
 // Debug.
 dump($articles);
+````
+
+####How to Create a Console Command
+````php
+// src/AppBundle/Command/GreetCommand.php
+namespace AppBundle\Command;
+use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Output\OutputInterface;
+class GreetCommand extends ContainerAwareCommand
+{
+    protected function configure()
+    {
+        $this
+            ->setName('demo:greet')
+            ->setDescription('Greet someone')
+            ->addArgument(
+                'name',
+                InputArgument::OPTIONAL,
+                'Who do you want to greet?'
+            )
+            ->addOption(
+                'yell',
+                null,
+                InputOption::VALUE_NONE,
+                'If set, the task will yell in uppercase letters'
+            )
+            ;
+    }
+
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
+        $name = $input->getArgument('name');
+        $logger = $this->getContainer()->get('logger');
+        $logger->info('Executing command for '.$name);
+        $locale = $input->getArgument('locale');
+        $translator = $this->getContainer()->get('translator');
+        $translator->setLocale($locale);
+        if ($name) {
+            $text = 'Hello '.$name;
+            $logger->info('Greeted: '.$text);
+        } else {
+            $text = 'Hello';
+            $logger->warning('Yelled: '.$text);
+        }
+        if ($input->getOption('yell')) {
+            $text = strtoupper($text);
+        }
+        $output->writeln($text);
+    }
+}
+
+php app/console demo:greet Fabien
+
+// Testing Commands
+use Symfony\Component\Console\Tester\CommandTester;
+use Symfony\Bundle\FrameworkBundle\Console\Application;
+use AppBundle\Command\GreetCommand;
+class ListCommandTest extends \PHPUnit_Framework_TestCase
+{
+    public function testExecute()
+    {
+        // mock the Kernel or create one depending on your needs
+        $application = new Application($kernel);
+        $application->add(new GreetCommand());
+        $command = $application->find('demo:greet');
+        $commandTester = new CommandTester($command);
+        $commandTester->execute(
+            array(
+               'name' => 'Fabien',
+                '--yell' => true,
+            )
+        );
+        $this->assertRegExp('/.../', $commandTester->getDisplay());
+        // ...
+    }
+}
+
+use Symfony\Component\Console\Tester\CommandTester;
+use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+use AppBundle\Command\GreetCommand;
+class ListCommandTest extends KernelTestCase
+{
+    public function testExecute()
+    {
+        $kernel = $this->createKernel();
+        $kernel->boot();
+        $application = new Application($kernel);
+        $application->add(new GreetCommand());
+        $command = $application->find('demo:greet');
+        $commandTester = new CommandTester($command);
+        $commandTester->execute(
+            array(
+                'name' => 'Fabien',
+                '--yell' => true,
+            )
+        );
+        $this->assertRegExp('/.../', $commandTester->getDisplay());
+        // ...
+    }
+}
+
+// How to Use the Console
+php app/console cache:clear -e prod
+php app/console list --no-debug
+
+// interactive mode
+php app/console --shell
+php app/console -s
+
+php app/console --shell --process-isolation
+php app/console -s --process-isolation
+
+// How to Generate URLs and Send Emails from the Console
+# app/config/parameters.yml
+parameters:
+    router.request_context.host: example.org
+    router.request_context.scheme: https
+    router.request_context.base_url: my/path
+
+class DemoCommand extends ContainerAwareCommand
+{
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
+        $context = $this->getContainer()->get('router')->getContext();
+        $context->setHost('example.com');
+        $context->setScheme('https');
+        $context->setBaseUrl('my/path');
+        // ... your code here
+    }
+}
+
+// Enabling automatic Exceptions Logging
+# app/config/services.yml
+services:
+kernel.listener.command_dispatch:
+    class: AppBundle\EventListener\ConsoleExceptionListener
+    arguments:
+        logger: "@logger"
+    tags:
+            - { name: kernel.event_listener, event: console.exception }
+
+# app/config/services.yml
+services:
+kernel.listener.command_dispatch:
+    class: AppBundle\EventListener\ConsoleExceptionListener
+    arguments:
+        logger: "@logger"
+    tags:
+        - { name: kernel.event_listener, event: console.exception }
+
+// src/AppBundle/EventListener/ConsoleExceptionListener.php
+namespace AppBundle\EventListener;
+use Symfony\Component\Console\Event\ConsoleExceptionEvent;
+use Psr\Log\LoggerInterface;
+class ConsoleExceptionListener
+{
+    private $logger;
+    public function __construct(LoggerInterface $logger)
+    {
+        $this->logger = $logger;
+    }
+
+    public function onConsoleException(ConsoleExceptionEvent $event)
+    {
+        $command = $event->getCommand();
+        $exception = $event->getException();
+        $message = sprintf(
+            '%s: %s (uncaught exception) at %s line %s while running console command `%s`',
+            get_class($exception),
+            $exception->getMessage(),
+            $exception->getFile(),
+            $exception->getLine(),
+            $command->getName()
+        );
+        $this->logger->error($message, array('exception' => $exception));
+    }
+}
+
+// How to Define Commands as Services
+# app/config/config.yml
+services:
+    acme_hello.command.my_command:
+        class: Acme\HelloBundle\Command\MyCommand
+        tags:
+            - { name: console.command }
+
+// src/Acme/DemoBundle/Command/GreetCommand.php
+namespace Acme\DemoBundle\Command;
+use Acme\DemoBundle\Entity\NameRepository;
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Output\OutputInterface;
+class GreetCommand extends Command
+{
+    protected $nameRepository;
+    public function __construct(NameRepository $nameRepository)
+    {
+        $this->nameRepository = $nameRepository;
+        parent::__construct();
+    }
+    protected function configure()
+    {
+        $defaultName = $this->nameRepository->findLastOne();
+        $this
+            ->setName('demo:greet')
+            ->setDescription('Greet someone')
+            ->addOption(
+                'name',
+                '-n',
+                InputOption::VALUE_REQUIRED,
+                'Who do you want to greet?',
+                $defaultName
+            )
+        ;
+    }
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
+        $name = $input->getOption('name');
+        $output->writeln($name);
+    }
+}
 ````
 
 ####Routing
@@ -750,6 +1038,51 @@ php app/console doctrine:generate:entities AppBundle
 // generates all entities of bundles in the Acme namespace
 php app/console doctrine:generate:entities Acme
 
+````
+
+####How to Use PdoSessionHandler to Store Sessions in the Database
+````
+# app/config/config.yml
+framework:
+    session:
+        # ...
+        handler_id: session.handler.pdo
+services:
+    session.handler.pdo:
+        class: Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler
+        public: false
+        arguments:
+            - "mysql:dbname=mydatabase"
+            - { db_username: myuser, db_password: mypassword }
+
+// Configuring the Table and Column Names
+# app/config/config.yml
+services:
+    # ...
+    session.handler.pdo:
+        class: Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler
+        public: false
+        arguments:
+            - "mysql:dbname=mydatabase"
+            - { db_table: sessions, db_username: myuser, db_password: mypassword }
+
+// Sharing your Database Connection Information
+
+services:
+session.handler.pdo:
+    class: Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler
+    public: false
+    arguments:
+        - "mysql:host=%database_host%;port=%database_port%;dbname=%database_name%"
+        - { db_username: %database_user%, db_password: %database_password% }
+
+// MySQL
+CREATE TABLE `sessions` (
+    `sess_id` VARBINARY(128) NOT NULL PRIMARY KEY,
+    `sess_data` BLOB NOT NULL,
+    `sess_time` INTEGER UNSIGNED NOT NULL,
+    `sess_lifetime` MEDIUMINT NOT NULL
+) COLLATE utf8_bin, ENGINE = InnoDB;
 ````
 
 ####Testing
@@ -1782,4 +2115,4 @@ http://localhost/app_benchmark.php
 
 ````
 
-page:65
+page:111
