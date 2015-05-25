@@ -19,6 +19,7 @@ return array(
 	),
 
 	'modules'=>array(
+		'forum',
 		'admin' => array(
 			'modules'=>array(
 				'subadmin',
@@ -46,6 +47,7 @@ return array(
 		'urlManager'=>array(
 			'urlFormat'=>'path',
 			'rules'=>array(
+				'/forum/create' => 'forum/post/create/index',
 				'/admin' => 'admin/admin/index',
 				'/subadmin' => 'admin/subadmin/admin/index',
 				'/store' => 'store/guest/index',

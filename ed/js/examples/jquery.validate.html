@@ -12,6 +12,8 @@
         <br>
         <input type="text" name="email2" value="bugEmail@">
         <br>
+        <input type="text" name="numeric" value="1.2e+4">
+        <br>
         <button type="button">check</button>
     </form>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -24,10 +26,18 @@
             },
             'Please check your url.'
         );
+        $.validator.addMethod(
+            'isNumeric',
+            function (value, element) {
+                return !isNaN(value);
+            },
+            'Please check your url.'
+        );
         $('form').validate({
             rules: {
                 email: {required: true, email: true},
                 url: {required: true, url: true},
+                numeric: {required: true, number: true},
             },
             errorPlacement: function(label, element) {
                 label.addClass('errorMsq');
