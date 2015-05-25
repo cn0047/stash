@@ -48,6 +48,7 @@ return array(
 			'urlFormat'=>'path',
 			'rules'=>array(
 				'/forum/create' => 'forum/post/create/index',
+				'/forum' => 'forum/post/get/index',
 				'/admin' => 'admin/admin/index',
 				'/subadmin' => 'admin/subadmin/admin/index',
 				'/store' => 'store/guest/index',
