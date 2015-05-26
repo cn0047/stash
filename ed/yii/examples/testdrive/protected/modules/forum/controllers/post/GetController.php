@@ -8,9 +8,9 @@ class GetController extends CController
         if (isset($_POST['CreatePostForm'])) {
             $m->attributes = $_POST['CreatePostForm'];
             if ($m->validate()) {
-                var_dump(200);
+                var_dump($m);
             }
         }
-        $this->render('get', ['model' => $m]);
+        $this->render('get2', ['model' => $m]);
     }
 }

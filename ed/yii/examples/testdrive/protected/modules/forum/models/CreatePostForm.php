@@ -3,14 +3,18 @@
 class CreatePostForm extends CFormModel
 {
     public $username;
+    public $type;
     public $post;
+    public $tags;
 
     public function rules()
     {
         return [
-            ['username, post', 'required'],
+            ['username, type, post, tags', 'required'],
             ['username', 'length', 'min' => 1],
-            ['post', 'length', 'min' => 10],
+            ['type', 'numerical'],
+            ['post', 'length', 'min' => 2],
+            ['tags', 'type', 'type' => 'array'],
         ];
     }
 }

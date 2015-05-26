@@ -6,6 +6,10 @@
         <?php echo CHtml::activeTextField($model, 'username') ?>
     </div>
     <div class="row">
+        <?php echo CHtml::activeLabel($model, 'type'); ?>
+        <?php echo CHtml::dropDownList('type', $model->type, ['question', 'answer']); ?>
+    </div>
+    <div class="row">
         <?php echo CHtml::activeLabel($model, 'post'); ?>
         <?php echo CHtml::activeTextArea($model, 'post') ?>
     </div>
