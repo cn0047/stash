@@ -23,7 +23,7 @@ abstract class Foo
 
     /**
      * All methods marked abstract in the parent's class declaration
-     * must be defined by the child;
+     * must be defined by the child,
      * additionally, these methods must be defined with the same (or a less restricted) visibility.
      * If the abstract method is defined as protected,
      * the function implementation must be defined as either protected or public, but not private.
