@@ -181,6 +181,19 @@ mysql> pager less -SFX
 mysql> \s
 ````
 
+####Storage engines
+````
+InnoDB
+MyISAM
+MEMORY
+CSV
+ARCHIVE
+BLACKHOLE
+MERGE
+FEDERATED
+EXAMPLE
+````
+
 ####[Data Types](http://dev.mysql.com/doc/refman/5.0/en/data-types.html)
 * Numeric Types:
     * [Integer](http://dev.mysql.com/doc/refman/5.0/en/integer-types.html):
