@@ -11,4 +11,9 @@ class IndexController extends CController
         $rows=$command->queryAll();
         var_export($rows);
     }
+
+    public function actionRd()
+    {
+        throw new CHttpException(404);
+    }
 }

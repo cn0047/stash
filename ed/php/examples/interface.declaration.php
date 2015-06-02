@@ -15,6 +15,10 @@ interface Foo
 
 class Boo implements Foo
 {
+    /**
+     * The class implementing the interface
+     * must use the exact same method signatures as are defined in the interface.
+     */
     public function du(Baz $param)
     {
         echo false;

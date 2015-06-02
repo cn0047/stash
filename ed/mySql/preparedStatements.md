@@ -32,6 +32,11 @@ SET @s = CONCAT('SELECT * FROM ', @table);
 PREPARE stmt3 FROM @s;
 EXECUTE stmt3;
 DEALLOCATE PREPARE stmt3;
+
+SET @alias = (SELECT Alias FROM Aliases WHERE id = 1);
+SET @sql = CONCAT('INSERT INTO ', @alias, ' (somevalue) VALUES (value)');
+PREPARE stmt1 FROM @sql;
+EXECUTE stmt1;
 ````
 
 The following SQL statements can be used in prepared statements:
