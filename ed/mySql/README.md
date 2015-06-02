@@ -9,6 +9,7 @@ MySql
 ````sql
 ALTER  TABLE table ADD field INTEGER(1) NOT NULL;
 ALTER  TABLE table ADD UNIQUE KEY (field);
+ALTER  TABLE engineer ADD UNIQUE KEY username_email (username, email);
 ALTER  TABLE table MODIFY field VARCHAR(7) NOT NULL DEFAULT '';
 ALTER  TABLE table CHANGE field field VARCHAR(7) NOT NULL DEFAULT ''; -- rename column
 ALTER  TABLE table CHANGE field field TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
