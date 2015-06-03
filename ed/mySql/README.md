@@ -183,7 +183,6 @@ mysql> \s
 ````
 
 ####Storage engines
-````
 * InnoDB
     * Support for transactions (giving you support for the ACID property).
     * Foreign key constraints (take more time in designing).
@@ -201,7 +200,6 @@ mysql> \s
 * MERGE
 * FEDERATED
 * EXAMPLE
-````
 
 ####[Data Types](http://dev.mysql.com/doc/refman/5.0/en/data-types.html)
 * Numeric Types:
