@@ -184,15 +184,23 @@ mysql> \s
 
 ####Storage engines
 ````
-InnoDB
-MyISAM
-MEMORY
-CSV
-ARCHIVE
-BLACKHOLE
-MERGE
-FEDERATED
-EXAMPLE
+* InnoDB
+    * Support for transactions (giving you support for the ACID property).
+    * Foreign key constraints (take more time in designing).
+    * Row level locking. Faster in write-intensive because it utilizes row-level locking and only hold up changes to the same row that’s being inserted or updated.
+    * Recovers from a crash or other unexpected shutdown by replaying its logs.
+    * Consumes more system resources such as RAM.
+* MyISAM
+    * Table level locking. Slower than InnoDB for tables that are frequently being inserted to or updated, because the entire table is locked for any insert or update.
+    * Faster than InnoDB on the whole as a result of the simpler structure thus much less costs of server resources.
+    * Especially good for read-intensive (select) tables.
+* MEMORY
+* CSV
+* ARCHIVE
+* BLACKHOLE
+* MERGE
+* FEDERATED
+* EXAMPLE
 ````
 
 ####[Data Types](http://dev.mysql.com/doc/refman/5.0/en/data-types.html)
