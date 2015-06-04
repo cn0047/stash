@@ -13,3 +13,8 @@ Running the Yii Application
 cd ed/yii/examples/testdrive
 php -S localhost:8000 index.php
 ````
+
+````
+\Yii::app()->request->getQuery('id'); // $_GET['id']
+\Yii::app()->request->getPost('id'); // $_POST['id']
+````
