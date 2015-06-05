@@ -431,8 +431,16 @@ include_once('/path/to/drupal/sites/default/settings.php');
 $container->setParameter('drupal.database.url', $db_url);
 ````
 
-####How to Organize Configuration Files
+####Deploy
 ````
+php app/check.php
+composer install --no-dev --optimize-autoloader
+php app/console cache:clear --env=prod --no-debug
+php app/console assetic:dump --env=prod --no-debug
+````
+
+####Organize configuration files
+````php
 // app/AppKernel.php
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
@@ -477,7 +485,7 @@ web/                        - assets.
 Tests/                      - tests for the bundle.
 ````
 
-####How to Override Symfony's default Directory Structure
+####Override default directory structure
 ````php
 class AppKernel extends Kernel
 {
@@ -532,11 +540,111 @@ $this->generateUrl('blog_show', array('slug' => 'my-blog-post'), true);
 
 // Debug.
 dump($articles);
+
+// How to Customize Error Pages
+app/
+    └─ Resources/
+        └─ TwigBundle/
+            └─ views/
+                └─ Exception/
+                    ├─ error404.html.twig
+                    ├─ error403.html.twig
+                    ├─ error.html.twig # All other HTML errors (including 500)
+                    ├─ error404.json.twig
+                    ├─ error403.json.twig
+                    ├─ error.json.twig # All other JSON errors (including 500)
+
+// Example 404 Error Template
+{# app/Resources/TwigBundle/views/Exception/error404.html.twig #}
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Page not found</h1>
+        {# example security usage, see below #}
+    {% if app.user and is_granted('IS_AUTHENTICATED_FULLY') %}
+    {% endif %}
+        <p>
+            The requested page couldn't be located. Checkout for any URL
+            misspelling or <a href="{{ path('homepage') }}">return to the homepage</a>.
+        </p>
+{% endblock %}
+
+// Overriding the Default ExceptionController
+# app/config/config.yml
+twig:
+    exception_controller: AppBundle:Exception:showException
+
+// How to Define Controllers as Services
+# src/AppBundle/Controller/HelloController.php
+namespace AppBundle\Controller;
+use Symfony\Component\HttpFoundation\Response;
+class HelloController
+{
+    public function indexAction($name)
+    {
+        return new Response('<html><body>Hello '.$name.'!</body></html>');
+    }
+}
+
+# app/config/services.yml
+services:
+    app.hello_controller:
+        class: AppBundle\Controller\HelloController
+
+// Referring to the Service
+$this->forward('app.hello_controller:indexAction', array('name' => $name));
+
+# app/config/routing.yml
+hello:
+    path: /hello
+    defaults: { _controller: app.hello_controller:indexAction }
+
+// Alternatives to base Controller Methods
+# src/AppBundle/Controller/HelloController.php
+namespace AppBundle\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+class HelloController extends Controller
+{
+    public function indexAction($name)
+    {
+        return $this->render(
+            'AppBundle:Hello:index.html.twig',
+            array('name' => $name)
+        );
+    }
+}
+
+// Templating
+# src/AppBundle/Controller/HelloController.php
+namespace AppBundle\Controller;
+use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
+use Symfony\Component\HttpFoundation\Response;
+class HelloController
+{
+    private $templating;
+    public function __construct(EngineInterface $templating)
+    {
+        $this->templating = $templating;
+    }
+    public function indexAction($name)
+    {
+        return $this->templating->renderResponse(
+            'AppBundle:Hello:index.html.twig',
+            array('name' => $name)
+        );
+    }
+}
+
+# app/config/services.yml
+services:
+    app.hello_controller:
+        class: AppBundle\Controller\HelloController
+        arguments: ["@templating"]
 ````
 
-####How to Create a Console Command
+####Console Command
 ````php
-// src/AppBundle/Command/GreetCommand.php
+// How to Create a Console Command
+# src/AppBundle/Command/GreetCommand.php
 namespace AppBundle\Command;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
@@ -1040,8 +1148,8 @@ php app/console doctrine:generate:entities Acme
 
 ````
 
-####How to Use PdoSessionHandler to Store Sessions in the Database
-````
+####Store sessions in the database
+````yml
 # app/config/config.yml
 framework:
     session:
@@ -2113,6 +2221,19 @@ $kernel = new AppKernel('benchmark', false);
 
 http://localhost/app_benchmark.php
 
+// How to Optimize your Development Environment for Debugging
+# Disabling the Bootstrap File and Class Caching
+$loader = require_once __DIR__.'/../app/bootstrap.php.cache';
+require_once __DIR__.'/../app/AppKernel.php';
+$kernel = new AppKernel('dev', true);
+$kernel->loadClassCache();
+$request = Request::createFromGlobals();
+// $loader = require_once __DIR__.'/../app/bootstrap.php.cache';
+$loader = require_once __DIR__.'/../app/autoload.php';
+require_once __DIR__.'/../app/AppKernel.php';
+$kernel = new AppKernel('dev', true);
+// $kernel->loadClassCache();
+$request = Request::createFromGlobals();
 ````
 
-page:111
+page:152

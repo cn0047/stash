@@ -420,7 +420,8 @@ $natural
 
 [SQL to MongoDB Mapping Chart](http://docs.mongodb.org/manual/reference/sql-comparison/#sql-to-mongodb-mapping-chart)
 
-In general, use embedded data models when: you have one-to-one or one-to-many model.
+In general, use embedded data models when: you have one-to-one or one-to-many model
+((link)[http://docs.mongodb.org/manual/core/data-model-design/]).
 <br>For model many-to-many use relationships with document references.
 
 ````js
