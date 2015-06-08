@@ -52,6 +52,8 @@ return array(
 				'/admin' => 'admin/admin/index',
 				'/subadmin' => 'admin/subadmin/admin/index',
 				'/store' => 'store/guest/index',
+				'/site' => 'site',
+				'/site2' => 'site/ping',
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',

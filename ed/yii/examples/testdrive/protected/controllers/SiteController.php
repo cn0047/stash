@@ -32,6 +32,11 @@ class SiteController extends Controller
 		$this->render('index');
 	}
 
+	public function actionPing()
+	{
+		var_export('Pong');
+	}
+
 	/**
 	 * This is the action to handle external exceptions.
 	 */

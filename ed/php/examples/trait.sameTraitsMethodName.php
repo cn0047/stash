@@ -19,15 +19,11 @@ trait Bar
 class Boo
 {
     use Foo, Bar;
-
-    public function getName()
-    {
-        echo 'Boo'.PHP_EOL;
-    }
 }
 
-$boo = new Boo;
-$boo->getName();
+$o = new Boo;
+$o->getName();
+
 /*
-Boo
+PHP Fatal error:  Trait method getName has not been applied, because there are collisions with other trait methods on Boo
 */
