@@ -28,4 +28,26 @@ class Car extends CActiveRecord
             'pagination' => array('pageSize' => 20),
         ));
     }
+
+    public function getDistinctBrands()
+    {
+        $data = $this->getDbConnection()->createCommand()
+            ->selectDistinct(['brand'])
+            ->from($this->tableName())
+            ->queryColumn()
+            ;
+        $data = array_combine($data, $data);
+        return $data;
+    }
+
+    public function getDistinctModels()
+    {
+        $data = $this->getDbConnection()->createCommand()
+            ->selectDistinct(['model'])
+            ->from($this->tableName())
+            ->queryColumn()
+            ;
+        $data = array_combine($data, $data);
+        return $data;
+    }
 }
