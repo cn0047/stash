@@ -1,4 +1,3 @@
-<?php echo CHtml::button('Edit', array('class' => 'edit')); ?>
 <?php
 
 Yii::import('zii.widgets.grid.CDataColumn');
@@ -13,6 +12,7 @@ class ModelColumn extends CDataColumn
 
 $this->widget('zii.widgets.grid.CGridView', array(
     'dataProvider' => $model->search(),
+    'ajaxUpdate' => false,
     'filter' => $model,
     'columns' => [
         ['name' => 'id', 'value' => '$data->id'],
@@ -40,21 +40,15 @@ $this->widget('zii.widgets.grid.CGridView', array(
 <?php
 $js = <<<"HEREDOC"
 $(function () {
-    editHandler = function () {
-        console.log('changed');
-    }
-    $('.edit').on('click', function () {
-        $('table.items tbody tr td:nth-child(2)').each(function (k, v) {
-            var selected = $(v).html();
-            var html$ = $('select[name="Car[brand]"]')
-                .clone()
-                .attr('name', '')
-                .attr('class', 'gridEdit')
-                ;
-            html$.find('option[value="'+selected+'"]').attr('selected', true);
-            html$.on('change', editHandler);
-            $(v).html(html$);
-        });
+    $('table.items tbody tr td:nth-child(2)').each(function (k, v) {
+        var selected = $(v).html();
+        var html$ = $('select[name="Car[brand]"]')
+            .clone()
+            .attr('name', '')
+            .attr('class', 'gridEdit')
+            ;
+        html$.find('option[value="'+selected+'"]').attr('selected', true);
+        $(v).html(html$);
     });
 });
 HEREDOC;
