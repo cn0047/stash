@@ -26,6 +26,7 @@ php -S localhost:8000 index.php
 ['date', 'date', 'format' => 'yyyy-MM-dd hh:mm:ss'],
 ['userId', 'type', 'type' => 'string'],
 ['userId', 'length', 'min' => 32, 'max' => 32],
+['type', 'in', 'range' => array_keys(\Yii::app()->controller->getTypes())],
 
 php protected/yiic.php migrate create LastName_Desc
 php protected/yiic.php migrate

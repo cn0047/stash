@@ -73,13 +73,16 @@ return array(
 		'log'=>array(
 			'class'=>'CLogRouter',
 			'routes'=>array(
+                array(
+                    'class' => 'ext.yii-debug-toolbar.YiiDebugToolbarRoute',
+                    'ipFilters' => array('127.0.0.1'),
+                ),
 				array(
 					'class'=>'CFileLogRoute',
 					'levels'=>'error, warning',
 					'categories' => 'system.*',
 					'logFile' => 'debug.tmp.sql.log',
 				),
-				// uncomment the following to show log messages on web pages
 				array(
 					'class'=>'CWebLogRoute',
 					'showInFireBug' => true,
