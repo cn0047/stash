@@ -4,50 +4,46 @@ class Car extends CActiveRecord
 {
     public function tableName()
     {
-        return 'cars';
+        return 'car';
+    }
+
+    public function relations()
+    {
+        return [
+            'brand' => [self::BELONGS_TO, 'Brand', 'brand_id'],
+        ];
     }
 
     public function rules()
     {
+        $helper = new Helper;
         return [
-            ['brand, model, maxSpeed', 'required', 'on' => 'insert'],
-            ['brand', 'type', 'type' => 'string'],
+            ['brand_id, model, maxSpeed', 'required', 'on' => 'insert'],
+            ['brand_id', 'in', 'range' => array_keys($helper->getAvailableBrands())],
             ['model', 'type', 'type' => 'string'],
-            ['maxSpeed', 'numerical'],
+            ['model', 'length', 'max' => 100],
+            ['maxSpeed', 'type', 'type' => 'integer'],
         ];
     }
 
     public function search()
     {
+        $brand = new Brand;
         $criteria = new CDbCriteria;
-        $criteria->compare('brand', $this->brand, true);
+        $criteria->alias = 'c';
+        $criteria->join = 'INNER JOIN '.$brand->tableName().' AS b on c.brand_id = b.id';
+        if (!empty($this->brand_id)) {
+            $criteria->compare('brand_id', $this->brand_id, true);
+        }
         $criteria->compare('model', $this->model, true);
         $criteria->compare('maxSpeed', $this->maxSpeed, true);
-        return new CActiveDataProvider($this, array(
-            'criteria' => $criteria,
-            'pagination' => array('pageSize' => 20),
-        ));
-    }
-
-    public function getDistinctBrands()
-    {
-        $data = $this->getDbConnection()->createCommand()
-            ->selectDistinct(['brand'])
-            ->from($this->tableName())
-            ->queryColumn()
-            ;
-        $data = array_combine($data, $data);
-        return $data;
-    }
-
-    public function getDistinctModels()
-    {
-        $data = $this->getDbConnection()->createCommand()
-            ->selectDistinct(['model'])
-            ->from($this->tableName())
-            ->queryColumn()
-            ;
-        $data = array_combine($data, $data);
-        return $data;
+        return new CActiveDataProvider(
+            $this,
+            [
+                'criteria' => $criteria,
+                'pagination' => ['pageSize' => 20],
+                'sort' => ['defaultOrder'=>'maxSpeed DESC'],
+            ]
+        );
     }
 }

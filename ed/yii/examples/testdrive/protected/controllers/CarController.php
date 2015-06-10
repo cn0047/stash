@@ -4,11 +4,15 @@ class CarController extends Controller
 {
     public function actionIndex()
     {
-        $model = new Car('search');
-        $model->unsetAttributes();
-        if (isset($_GET['Car'])) {
-            $model->attributes = $_GET['Car'];
+        $car = new Car('search');
+        $query = Yii::app()->request->getQuery(get_class($car));
+        if (!is_null($query)) {
+            $car->attributes = $query;
+            if (!$car->validate()) {
+                $car->unsetAttributes();
+            }
         }
-        $this->render('index', array('model' => $model));
+        $helper = new Helper;
+        $this->render('index', ['model' => $car, 'helper' => $helper]);
     }
 }

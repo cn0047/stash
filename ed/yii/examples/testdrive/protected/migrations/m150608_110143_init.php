@@ -4,48 +4,72 @@ class m150608_110143_init extends CDbMigration
 {
     public function safeUp()
     {
-        $this->execute("
-            create table if not exists cars (
-                id int auto_increment,
-                brand varchar(100) not null default '',
-                model varchar(100) not null default '',
-                maxSpeed int not null default '0',
-                primary key (id)
-            )
-        ");
-        $this->execute("
-            insert into cars values
-            (null, 'bmw', '5', 220),
-            (null, 'bmw', 'x5', 250),
-            (null, 'bmw', 'm6', 290),
-            (null, 'audi', 'q7', 270),
-            (null, 'audi', 'a4', 250),
-            (null, 'bmx', 'x1', 260),
-            (null, 'aston martin', 'db9', 320),
-            (null, 'aston martin', 'dbs v12', 350),
-            (null, 'peugeot', '301', 160),
-            (null, 'peugeot', '401', 190),
-            (null, 'peugeot', '407', 210),
-            (null, 'toyota', 'corolla', 210),
-            (null, 'toyota', 'camry', 250),
-            (null, 'toyota', 'prado', 190),
-            (null, 'toyota', 'land cruiser', 200),
-            (null, 'porsche', 'cayen', 240),
-            (null, 'porsche', '911', 270),
-            (null, 'porsche', 'boxter', 280),
-            (null, 'porsche', 'spider', 290),
-            (null, 'porsche', 'carrera', 300),
-            (null, 'citroen', 'c1', 110),
-            (null, 'citroen', 'c3', 150),
-            (null, 'citroen', 'c4', 190),
-            (null, 'citroen', 'ds3', 210),
-            (null, 'citroen', 'ds4', 250)
-        ");
+        $sql = <<<"HEREDOC"
+            CREATE TABLE brand (
+                id INT AUTO_INCREMENT,
+                name VARCHAR(100) NOT NULL DEFAULT '',
+                country VARCHAR(50) NOT NULL DEFAULT '',
+                PRIMARY KEY (id)
+            );
+            CREATE TABLE car (
+                id INT AUTO_INCREMENT,
+                brand_id INT NOT NULL DEFAULT '0',
+                model VARCHAR(100) NOT NULL DEFAULT '',
+                maxSpeed INT NOT NULL DEFAULT '0',
+                PRIMARY KEY (id),
+                INDEX brand_id (brand_id),
+                FOREIGN KEY (brand_id) REFERENCES brand(id) ON DELETE CASCADE
+            );
+            INSERT INTO brand VALUES
+                (null, 'aston martin', 'UK'),
+                (null, 'audi', 'Germany'),
+                (null, 'bmw', 'Germany'),
+                (null, 'citroen', 'France'),
+                (null, 'peugeot', 'France'),
+                (null, 'porsche', 'Germany'),
+                (null, 'toyota', 'Japan'),
+                (null, 'ferrari', 'Italy')
+            ;
+            INSERT INTO car VALUES
+                (null, 1, 'db9', 320),
+                (null, 1, 'dbs v12', 350),
+                (null, 2, 'a4', 250),
+                (null, 2, 'q7', 270),
+                (null, 3, '5', 220),
+                (null, 3, 'm6', 290),
+                (null, 3, 'x1', 260),
+                (null, 3, 'x5', 250),
+                (null, 4, 'c1', 110),
+                (null, 4, 'c3', 150),
+                (null, 4, 'c4', 190),
+                (null, 4, 'ds3', 210),
+                (null, 4, 'ds4', 250),
+                (null, 5, '301', 160),
+                (null, 5, '401', 190),
+                (null, 5, '407', 210),
+                (null, 6, '911', 270),
+                (null, 6, 'boxter', 280),
+                (null, 6, 'carrera', 300),
+                (null, 6, 'cayen', 240),
+                (null, 6, 'spider', 290),
+                (null, 7, 'camry', 250),
+                (null, 7, 'corolla', 210),
+                (null, 7, 'land cruiser', 200),
+                (null, 7, 'prado', 190)
+            ;
+HEREDOC;
+        $this->execute($sql);
         return true;
     }
 
     public function down()
-    {$this->execute("drop table cars");
+    {
+        $sql = <<<"HEREDOC"
+            DELETE FROM brand;
+            DROP TABLE car;
+            DROP TABLE brand;
+HEREDOC;
+        $this->execute($sql);
         return true;
     }
 }

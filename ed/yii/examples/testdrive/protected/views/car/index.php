@@ -1,3 +1,4 @@
+<?php echo CHtml::errorSummary($model); ?>
 <?php
 
 Yii::import('zii.widgets.grid.CDataColumn');
@@ -16,11 +17,12 @@ $this->widget('zii.widgets.grid.CGridView', array(
     'filter' => $model,
     'columns' => [
         ['name' => 'id', 'value' => '$data->id'],
-        ['name' => 'brand', 'value' => '$data->brand', 'filter' => $model->getDistinctBrands()],
-        ['name' => 'model', 'value' => '$data->model', 'filter' => $model->getDistinctModels(), 'class' => 'ModelColumn'],
+        ['name' => 'brand_id', 'value' => '$data->brand_id', 'filter' => $helper->getAvailableBrands()],
+        ['header' => 'Country', 'value' => '$data->brand->country'],
+        ['name' => 'model', 'value' => '$data->model', 'filter' => $helper->getAvailableModels(), 'class' => 'ModelColumn'],
         ['name' => 'maxSpeed', 'value' => '$data->maxSpeed'],
         [
-            'header' => 'is fast',
+            'header' => 'Is fast',
             'value' => function ($data) {
                 return $data->maxSpeed > 250 ? 'yes' : '';
             },
@@ -42,7 +44,7 @@ $js = <<<"HEREDOC"
 $(function () {
     $('table.items tbody tr td:nth-child(2)').each(function (k, v) {
         var selected = $(v).html();
-        var html$ = $('select[name="Car[brand]"]')
+        var html$ = $('select[name="Car[brand_id]"]')
             .clone()
             .attr('name', '')
             .attr('class', 'gridEdit')
