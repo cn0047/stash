@@ -17,6 +17,11 @@ php -S localhost:8000 index.php
 
 php -d short_open_tag=1 x.php
 
+````php
+// Primitive validation
+preg_match('/^\d{4}(-\d{2}){2}$/', $args['date']); // 2015-06-10
+````
+
 ####phpCs
 ````
 phpcs -sw --standard=PSR2 file.php

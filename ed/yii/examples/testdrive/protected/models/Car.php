@@ -46,4 +46,35 @@ class Car extends CActiveRecord
             ]
         );
     }
+
+    public function searchAdd()
+    {
+        $brand = new Brand;
+        $sql = sprintf(
+            '
+                SELECT
+                    c.id,
+                    b.name AS brand_name,
+                    b.country,
+                    c.model,
+                    c.maxSpeed
+                FROM %s AS c
+                INNER JOIN %s AS b on c.brand_id = b.id
+            ',
+            $this->tableName(),
+            $brand->tableName()
+        );
+        $rawData = Yii::app()->db->createCommand($sql);
+        $count = Yii::app()->db->createCommand("SELECT COUNT(*) FROM ($sql) AS count")->queryScalar();
+        $dataProvider = new CSqlDataProvider(
+            $rawData,
+            [
+                'keyField' => 'id',
+                'totalItemCount' => $count,
+                'pagination' => ['pageSize' => 20],
+                'sort' => ['defaultOrder'=>'maxSpeed DESC'],
+            ]
+        );
+        return $dataProvider;
+    }
 }

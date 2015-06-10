@@ -19,6 +19,7 @@ php -S localhost:8000 index.php
 \Yii::app()->request->getPost('id'); // $_POST['id']
 
 ['siteId, countryCode, userId, userMsisdn', 'required', 'on' => 'insert'],
+['status', 'numerical', 'min' => 0, 'max' => 255],
 ['type'  , 'numerical'],
 ['type',     'match', 'pattern' => '/^(0|1|2)$/'],
 ['name', 'match', 'pattern' => '/^[\w\s]{2,64}$/'],

@@ -13,6 +13,10 @@ class CarController extends Controller
             }
         }
         $helper = new Helper;
-        $this->render('index', ['model' => $car, 'helper' => $helper]);
+        $templete = 'index';
+        if (Yii::app()->request->getQuery('add')) {
+            $templete = 'indexAdd';
+        }
+        $this->render($templete, ['model' => $car, 'helper' => $helper]);
     }
 }
