@@ -9,6 +9,14 @@ jQuery.fn.jquery // version of jQuery
 
 [jQuery in Action 2nd Edition](http://www.bibeault.org/jqia2/)
 
+````js
+$('select:last').parent().css('backgroundColor', '#dff0d8'); // bootstrap OK      <p class="bg-success">...</p>
+$('select:last').parent().css('backgroundColor', '#f2dede'); // bootstrap Error   <p class="bg-danger">...</p>
+$('select:last').parent().css('backgroundColor', '#fcf8e3'); // bootstrap Warning <p class="bg-warning">...</p>
+$('select:last').parent().css('backgroundColor', '#      '); // bootstrap Notice  <p class="bg-info">...</p>
+$('select:last').parent().parent().css({backgroundColor: '#fcf8e3'}).delay(200).css({backgroundColor: '#fff'});
+````
+
 ####Flashback
 ````js
 // Selectors:
@@ -140,8 +148,10 @@ $.ajax({
     type: 'post',
     data: {},
     success: function (r) {
+        console.log(r);
     },
     error: function (xhr, status, error) {
+        console.error(xhr, status, error);
     },
     complete: function () {
     },

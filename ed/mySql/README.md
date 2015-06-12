@@ -14,9 +14,10 @@ ALTER  TABLE table CHANGE field field TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTA
 ALTER  TABLE table DROP COLUMN field;
 ALTER  TABLE table DROP FOREIGN KEY key; -- CONSTRAINT.
 ALTER  TABLE table DROP KEY key;
-CREATE TABLE table LIKE talbeLike; INSERT INTO table SELECT * FROM talbeLike;
+CREATE TABLE IF NOT EXISTS table LIKE talbeLike; INSERT INTO table SELECT * FROM talbeLike;
 RENAME TABLE table TO tableNewName;
 CREATE INDEX indexName ON table (column);
+DROP   TABLE IF EXISTS tableNewName;
 DROP   INDEX indexName ON table;
 
 SHOW OPEN TABLES from  dataBaseName; -- Show locked tables.
