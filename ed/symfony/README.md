@@ -1433,6 +1433,84 @@ CREATE TABLE `sessions` (
 ) COLLATE utf8_bin, ENGINE = InnoDB;
 ````
 
+####Register Event Listeners and Subscribers
+````php
+# Configuring
+doctrine:
+    dbal:
+        default_connection: default
+        connections:
+            default:
+                driver: pdo_sqlite
+                memory: true
+services:
+my.listener:
+    class: Acme\SearchBundle\EventListener\SearchIndexer
+    tags:
+        - { name: doctrine.event_listener, event: postPersist }
+my.listener2:
+    class: Acme\SearchBundle\EventListener\SearchIndexer2
+    tags:
+        - { name: doctrine.event_listener, event: postPersist, connection: default }
+my.subscriber:
+    class: Acme\SearchBundle\EventListener\SearchIndexerSubscriber
+    tags:
+        - { name: doctrine.event_subscriber, connection: default }
+
+# Listener Class
+// src/Acme/SearchBundle/EventListener/SearchIndexer.php
+namespace Acme\SearchBundle\EventListener;
+use Doctrine\ORM\Event\LifecycleEventArgs;
+use Acme\StoreBundle\Entity\Product;
+class SearchIndexer
+{
+    public function postPersist(LifecycleEventArgs $args)
+    {
+        $entity = $args->getEntity();
+        $entityManager = $args->getEntityManager();
+        // perhaps you only want to act on some "Product" entity
+        if ($entity instanceof Product) {
+            // ... do something with the Product
+        }
+    }
+}
+
+# Subscriber Class
+// src/Acme/SearchBundle/EventListener/SearchIndexerSubscriber.php
+namespace Acme\SearchBundle\EventListener;
+use Doctrine\Common\EventSubscriber;
+use Doctrine\ORM\Event\LifecycleEventArgs;
+// for Doctrine 2.4: Doctrine\Common\Persistence\Event\LifecycleEventArgs;
+use Acme\StoreBundle\Entity\Product;
+class SearchIndexerSubscriber implements EventSubscriber
+{
+    public function getSubscribedEvents()
+    {
+        return array(
+            'postPersist',
+            'postUpdate',
+        );
+    }
+    public function postUpdate(LifecycleEventArgs $args)
+    {
+        $this->index($args);
+    }
+    public function postPersist(LifecycleEventArgs $args)
+    {
+        $this->index($args);
+    }
+    public function index(LifecycleEventArgs $args)
+    {
+        $entity = $args->getEntity();
+        $entityManager = $args->getEntityManager();
+        // perhaps you only want to act on some "Product" entity
+        if ($entity instanceof Product) {
+            // ... do something with the Product
+        }
+    }
+}
+````
+
 ####Testing
 ````php
 phpunit -c app/
@@ -2476,4 +2554,4 @@ $kernel = new AppKernel('dev', true);
 $request = Request::createFromGlobals();
 ````
 
-page:161
+page:174

@@ -5,6 +5,9 @@ MySql
 
 ####Snippets
 ````sql
+CREATE TABLE tableName (
+KEY `accounting_user` (`accountingid`,`user_id`)
+);
 ALTER  TABLE table ADD field INTEGER(1) NOT NULL;
 ALTER  TABLE table ADD UNIQUE KEY (field);
 ALTER  TABLE engineer ADD UNIQUE KEY username_email (username, email);
@@ -41,13 +44,19 @@ INSERT LOW_PRIORITY INTO table1 SELECT field FROM table2;
 SELECT * FROM stockTable ORDER BY field(stockid, 33, 12, 53); -- ordered result: 33, 12, 53
 ````
 
+####INDEX
+If Cardinality to low - index will not uses!
+
+####NULL
+Aggregate (summary) functions such as COUNT(), MIN(), and SUM() ignore NULL values.
+The exception to this is COUNT(*), which counts rows
+
 ####Optimizations
 ````sql
 // SELECT DISTINCT faster than SELECT GROUB BY.
 SELECT DISTINCT id FROM table;
 // vs
 SELECT id FROM table GROUP BY id;
-
 ````
 
 ####Options
@@ -66,6 +75,9 @@ SELECT
     round(((data_length + index_length) / 1024 / 1024), 2) 'Size in MB'
 FROM information_schema.TABLES
 WHERE table_schema = 'dbName' AND table_name = 'tableName';
+
+-- Count of rows in db.
+SELECT TABLE_NAME, TABLE_ROWS FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'dbName';
 ````
 
 ####Detection of bad index
