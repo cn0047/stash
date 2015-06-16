@@ -104,6 +104,15 @@ SELECT * FROM child;
 |    3 |         3 |
 +------+-----------+
 
-DROP TABLE parent;
+SELECT *
+FROM parent
+JOIN child ON parent.id = child.parent_id
+;
+
+DELETE FROM child
+WHERE parent_id IN (SELECT id FROM parent)
+;
+
 DROP TABLE child;
+DROP TABLE parent;
 ````

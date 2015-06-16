@@ -29,6 +29,7 @@ php -S localhost:8000 index.php
 ['userId', 'type', 'type' => 'string'],
 ['userId', 'length', 'min' => 32, 'max' => 32],
 ['type',   'in', 'range' => array_keys(\Yii::app()->controller->getTypes())],
+['userId', 'type', 'type' => 'string', 'except' => 'edit'],
 ````
 
 #### DB
