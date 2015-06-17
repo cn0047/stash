@@ -87,3 +87,22 @@ RegExp
 grep '$DC' # environment var
 grep -Pz 'r\nw' # match new line pattern
 ````
+
+````php
+$s = '19 20 22 -1 -3-4-10 -7 2 10';
+var_export(preg_split('/\s+|(?<!\s)(?=-)/', $s));
+/*
+array (
+  0 => '19',
+  1 => '20',
+  2 => '22',
+  3 => '-1',
+  4 => '-3',
+  5 => '-4',
+  6 => '-10',
+  7 => '-7',
+  8 => '2',
+  9 => '10',
+)
+*/
+````

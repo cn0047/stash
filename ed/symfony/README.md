@@ -1147,7 +1147,7 @@ php app/console doctrine:generate:entities AppBundle
 php app/console doctrine:generate:entities Acme
 ````
 
-####How to Handle File Uploads with Doctrine
+####Handle File Uploads with Doctrine
 ````php
 # First, create a simple Doctrine entity
 // src/AppBundle/Entity/Document.php
@@ -1386,6 +1386,68 @@ class Document
         : $this->getUploadRootDir().'/'.$this->id.'.'.$this->path;
     }
 }
+````
+
+####Define Relationships with Abstract Classes and Interfaces
+````php
+// src/Acme/AppBundle/Entity/Customer.php
+namespace Acme\AppBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+use Acme\CustomerBundle\Entity\Customer as BaseCustomer;
+use Acme\InvoiceBundle\Model\InvoiceSubjectInterface;
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="customer")
+ */
+class Customer extends BaseCustomer implements InvoiceSubjectInterface
+{
+    // In this example, any methods defined in the InvoiceSubjectInterface
+    // are already implemented in the BaseCustomer
+}
+
+// src/Acme/InvoiceBundle/Entity/Invoice.php
+namespace Acme\InvoiceBundle\Entity;
+use Doctrine\ORM\Mapping AS ORM;
+use Acme\InvoiceBundle\Model\InvoiceSubjectInterface;
+/**
+* Represents an Invoice.
+*
+* @ORM\Entity
+* @ORM\Table(name="invoice")
+*/
+class Invoice
+{
+    /**
+     * @ORM\ManyToOne(targetEntity="Acme\InvoiceBundle\Model\InvoiceSubjectInterface")
+     * @var InvoiceSubjectInterface
+     */
+    protected $subject;
+}
+
+// src/Acme/InvoiceBundle/Model/InvoiceSubjectInterface.php
+namespace Acme\InvoiceBundle\Model;
+/**
+* An interface that the invoice Subject object should implement.
+* In most circumstances, only a single object should implement
+* this interface as the ResolveTargetEntityListener can only
+* change the target to a single object.
+*/
+interface InvoiceSubjectInterface
+{
+    // List any additional methods that your InvoiceBundle
+    // will need to access on the subject so that you can
+    // be sure that you have access to those methods.
+    /**
+     * @return string
+     */
+    public function getName();
+}
+
+# app/config/config.yml
+doctrine:
+    orm:
+        resolve_target_entities:
+            Acme\InvoiceBundle\Model\InvoiceSubjectInterface: Acme\AppBundle\Entity\Customer
 ````
 
 ####Store sessions in the database
@@ -2554,4 +2616,4 @@ $kernel = new AppKernel('dev', true);
 $request = Request::createFromGlobals();
 ````
 
-page:174
+page:181
