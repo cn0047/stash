@@ -32,6 +32,7 @@
 				array('label'=>'Home', 'url'=>array('/site/index')),
 				array('label'=>'Cars', 'url'=>array('/car')),
 				array('label'=>'CarsAdd', 'url'=>array('/car?add=1')),
+				array('label'=>'Misc', 'url'=>array('/misc')),
 				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
 				array('label'=>'Contact', 'url'=>array('/site/contact')),
 				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),

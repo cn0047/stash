@@ -641,6 +641,196 @@ services:
         arguments: ["@templating"]
 ````
 
+####Simple Registration Form
+````php
+# src/Acme/AccountBundle/Entity/User.php
+namespace Acme\AccountBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+/**
+* @ORM\Entity
+* @UniqueEntity(fields="email", message="Email already taken")
+*/
+class User
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Email()
+     */
+    protected $email;
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(max = 4096)
+     */
+    protected $plainPassword;
+
+    public function getId()
+    {
+        return $this->id;
+    }
+    public function getEmail()
+    {
+        return $this->email;
+    }
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+    public function setPlainPassword($password)
+    {
+        $this->plainPassword = $password;
+    }
+}
+
+# src/Acme/AccountBundle/Form/Type/UserType.php
+namespace Acme\AccountBundle\Form\Type;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+class UserType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder->add('email', 'email');
+        $builder->add('plainPassword', 'repeated', array(
+            'first_name' => 'password',
+            'second_name' => 'confirm',
+            'type' => 'password',
+        ));
+    }
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => 'Acme\AccountBundle\Entity\User'
+        ));
+    }
+    public function getName()
+    {
+        return 'user';
+    }
+}
+
+# src/Acme/AccountBundle/Form/Model/Registration.php
+namespace Acme\AccountBundle\Form\Model;
+use Symfony\Component\Validator\Constraints as Assert;
+use Acme\AccountBundle\Entity\User;
+class Registration
+{
+    /**
+     * @Assert\Type(type="Acme\AccountBundle\Entity\User")
+     * @Assert\Valid()
+     */
+    protected $user;
+    /**
+     * @Assert\NotBlank()
+     * @Assert\True()
+     */
+    protected $termsAccepted;
+    public function setUser(User $user)
+    {
+        $this->user = $user;
+    }
+    public function getUser()
+    {
+        return $this->user;
+    }
+    public function getTermsAccepted()
+    {
+        return $this->termsAccepted;
+    }
+    public function setTermsAccepted($termsAccepted)
+    {
+        $this->termsAccepted = (bool) $termsAccepted;
+    }
+}
+
+# src/Acme/AccountBundle/Form/Type/RegistrationType.php
+namespace Acme\AccountBundle\Form\Type;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+class RegistrationType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder->add('user', new UserType());
+        $builder->add(
+            'terms',
+            'checkbox',
+            array('property_path' => 'termsAccepted')
+        );
+        $builder->add('Register', 'submit');
+    }
+    public function getName()
+    {
+        return 'registration';
+    }
+}
+
+# src/Acme/AccountBundle/Controller/AccountController.php
+namespace Acme\AccountBundle\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Acme\AccountBundle\Form\Type\RegistrationType;
+use Acme\AccountBundle\Form\Model\Registration;
+class AccountController extends Controller
+{
+    public function registerAction()
+    {
+        $registration = new Registration();
+        $form = $this->createForm(new RegistrationType(), $registration, array(
+            'action' => $this->generateUrl('account_create'),
+        ));
+        return $this->render(
+            'AcmeAccountBundle:Account:register.html.twig',
+            array('form' => $form->createView())
+        );
+    }
+}
+
+{# src/Acme/AccountBundle/Resources/views/Account/register.html.twig #}
+{{ form(form) }}
+
+use Symfony\Component\HttpFoundation\Request;
+public function createAction(Request $request)
+{
+    $em = $this->getDoctrine()->getManager();
+    $form = $this->createForm(new RegistrationType(), new Registration());
+    $form->handleRequest($request);
+    if ($form->isValid()) {
+        $registration = $form->getData();
+        $em->persist($registration->getUser());
+        $em->flush();
+        return $this->redirectToRoute(...);
+    }
+    return $this->render(
+        'AcmeAccountBundle:Account:register.html.twig',
+        array('form' => $form->createView())
+    );
+}
+
+# src/Acme/AccountBundle/Resources/config/routing.yml
+account_register:
+    path: /register
+    defaults: { _controller: AcmeAccountBundle:Account:register }
+account_create:
+    path: /register/create
+    defaults: { _controller: AcmeAccountBundle:Account:create }
+
+php app/console doctrine:schema:update --force
+````
+
 ####Console Command
 ````php
 // How to Create a Console Command
@@ -2616,4 +2806,4 @@ $kernel = new AppKernel('dev', true);
 $request = Request::createFromGlobals();
 ````
 
-page:181
+page:187
