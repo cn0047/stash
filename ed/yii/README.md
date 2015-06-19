@@ -46,7 +46,11 @@ $where = [
 $data = $this->getDbConnection()->createCommand()
     ->select(['*'], 'SQL_CALC_FOUND_ROWS')
     ->from($this->tableName())
+    ->join('userStat us', 'us.userId = uan.userId')
     ->where("`date` > :date1 `str` REGEXP :like", $where)
+    ->andWhere(['in', 'id', [1, 5, 7]])
+    ->group('user_id, group_id')
+    ->order('q.id, q.type')
     ;
 $count = $this->getDbConnection()->createCommand('SELECT FOUND_ROWS()')->queryScalar();
 ````
