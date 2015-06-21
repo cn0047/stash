@@ -2,7 +2,6 @@ PHP UK Conference 2015
 -
 
 ````
-Stephan Höchdorfer - The NoSQL Store everyone ignores: PostgreSQL
 Ben Waine - Application Logging & Logstash
 Beth Tucker Long - Be a Bold Coder
 Davey Shafik - Open Source, Love, and Social Responsibility
@@ -35,3 +34,6 @@ Jeremy Quinton - Devops for PHP Developers
 Liam Wiltshire - PHP's biggest bottleneck, MySQL
 Michelle Sanver - Accessibility Done Right
 ````
+
+#### Stephan Höchdorfer - The NoSQL Store everyone ignores: PostgreSQL
+* PostgreSQL!

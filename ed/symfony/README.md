@@ -946,6 +946,58 @@ php app/console -s
 php app/console --shell --process-isolation
 php app/console -s --process-isolation
 
+// Send an Email
+# app/config/config.yml
+swiftmailer:
+    transport: "%mailer_transport%"
+    host: "%mailer_host%"
+    username: "%mailer_user%"
+    password: "%mailer_password%"
+
+public function indexAction($name)
+{
+    $message = \Swift_Message::newInstance()
+        ->setSubject('Hello Email')
+        ->setFrom('send@example.com')
+        ->setTo('recipient@example.com')
+        ->setBody(
+            $this->renderView(
+                // app/Resources/views/Emails/registration.html.twig
+                'Emails/registration.html.twig',
+                array('name' => $name)
+            ),
+            'text/html'
+        )
+        /*
+         * If you also want to include a plaintext version of the message
+            ->addPart(
+                $this->renderView(
+                    'Emails/registration.txt.twig',
+                    array('name' => $name)
+                ),
+                'text/plain'
+            )
+        */
+        ;
+    $this->get('mailer')->send($message);
+    return $this->render(...);
+}
+
+// How to Use Gmail
+# app/config/config_dev.yml
+swiftmailer:
+    transport: gmail
+    username: your_gmail_username
+    password: your_gmail_password
+
+# app/config/parameters.yml
+parameters:
+# ...
+mailer_transport: gmail
+    mailer_host: ~
+    mailer_user: your_gmail_username
+    mailer_password: your_gmail_password
+
 // How to Generate URLs and Send Emails from the Console
 # app/config/parameters.yml
 parameters:
@@ -1335,6 +1387,10 @@ php app/console doctrine:schema:update --force
 php app/console doctrine:generate:entities AppBundle
 // generates all entities of bundles in the Acme namespace
 php app/console doctrine:generate:entities Acme
+
+php app/console list doctrine
+php app/console help doctrine:database:create
+php app/console doctrine:ensure-production-settings --env=prod
 ````
 
 ####Handle File Uploads with Doctrine
@@ -2806,4 +2862,4 @@ $kernel = new AppKernel('dev', true);
 $request = Request::createFromGlobals();
 ````
 
-page:187
+page:204
