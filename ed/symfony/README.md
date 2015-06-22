@@ -641,6 +641,109 @@ services:
         arguments: ["@templating"]
 ````
 
+####Before and after Filters
+````php
+# app/config/config.yml
+parameters:
+    tokens:
+        client1: pass1
+        client2: pass2
+
+namespace AppBundle\Controller;
+interface TokenAuthenticatedController
+{
+    // ...
+}
+
+namespace AppBundle\Controller;
+use AppBundle\Controller\TokenAuthenticatedController;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+class FooController extends Controller implements TokenAuthenticatedController
+{
+    // An action that needs authentication
+    public function barAction()
+    {
+        // ...
+    }
+}
+
+// src/AppBundle/EventListener/TokenListener.php
+namespace AppBundle\EventListener;
+use AppBundle\Controller\TokenAuthenticatedController;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
+class TokenListener
+{
+    private $tokens;
+    public function __construct($tokens)
+    {
+        $this->tokens = $tokens;
+    }
+    public function onKernelController(FilterControllerEvent $event)
+    {
+        $controller = $event->getController();
+        /**
+         * $controller passed can be either a class or a Closure.
+         * This is not usual in Symfony but it may happen.
+         * If it is a class, it comes in array format
+         */
+        if (!is_array($controller)) {
+           return;
+        }
+        if ($controller[0] instanceof TokenAuthenticatedController) {
+            $token = $event->getRequest()->query->get('token');
+            if (!in_array($token, $this->tokens)) {
+                throw new AccessDeniedHttpException('This action needs a valid token!');
+            }
+        }
+    }
+}
+
+# app/config/services.yml
+services:
+    app.tokens.action_listener:
+        class: AppBundle\EventListener\TokenListener
+        arguments: ["%tokens%"]
+        tags:
+            - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
+
+public function onKernelController(FilterControllerEvent $event)
+{
+    // ...
+    if ($controller[0] instanceof TokenAuthenticatedController) {
+        $token = $event->getRequest()->query->get('token');
+        if (!in_array($token, $this->tokens)) {
+            throw new AccessDeniedHttpException('This action needs a valid token!');
+        }
+        // mark the request as having passed token authentication
+        $event->getRequest()->attributes->set('auth_token', $token);
+    }
+}
+
+// add the new use statement at the top of your file
+use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
+public function onKernelResponse(FilterResponseEvent $event)
+{
+    // check to see if onKernelController marked this as a token "auth'ed" request
+    if (!$token = $event->getRequest()->attributes->get('auth_token')) {
+       return;
+    }
+    $response = $event->getResponse();
+    // create a hash and set it as a response header
+    $hash = sha1($response->getContent().$token);
+    $response->headers->set('X-CONTENT-HASH', $hash);
+}
+
+# app/config/services.yml
+services:
+    app.tokens.action_listener:
+        class: AppBundle\EventListener\TokenListener
+        arguments: ["%tokens%"]
+        tags:
+            - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
+            - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }
+````
+
 ####Simple Registration Form
 ````php
 # src/Acme/AccountBundle/Entity/User.php
@@ -2056,6 +2159,48 @@ $client->request('GET', '/', array(), array(), array(
 ));
 ````
 
+####Test that an Email is Sent in a Functional Test
+````php
+public function sendEmailAction($name)
+{
+    $message = \Swift_Message::newInstance()
+        ->setSubject('Hello Email')
+        ->setFrom('send@example.com')
+        ->setTo('recipient@example.com')
+        ->setBody('You should see me from the profiler!')
+    ;
+    $this->get('mailer')->send($message);
+    return $this->render(...);
+}
+
+// src/AppBundle/Tests/Controller/MailControllerTest.php
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+class MailControllerTest extends WebTestCase
+{
+    public function testMailIsSentAndContentIsOk()
+    {
+        $client = static::createClient();
+        // Enable the profiler for the next request (it does nothing if the profiler is not available)
+        $client->enableProfiler();
+        $crawler = $client->request('POST', '/path/to/above/action');
+        $mailCollector = $client->getProfile()->getCollector('swiftmailer');
+        // Check that an email was sent
+        $this->assertEquals(1, $mailCollector->getMessageCount());
+        $collectedMessages = $mailCollector->getMessages();
+        $message = $collectedMessages[0];
+        // Asserting email data
+        $this->assertInstanceOf('Swift_Message', $message);
+        $this->assertEquals('Hello Email', $message->getSubject());
+        $this->assertEquals('send@example.com', key($message->getFrom()));
+        $this->assertEquals('recipient@example.com', key($message->getTo()));
+        $this->assertEquals(
+            'You should see me from the profiler!',
+            $message->getBody()
+        );
+    }
+}
+````
+
 ####Validation
 ````php
 use Symfony\Component\Validator\Constraints as Assert;
@@ -2862,4 +3007,4 @@ $kernel = new AppKernel('dev', true);
 $request = Request::createFromGlobals();
 ````
 
-page:204
+page:210
