@@ -58,6 +58,19 @@ Equivalent to RESTRICT.
 InnoDB rejects table definitions containing ON DELETE SET DEFAULT or ON UPDATE SET DEFAULT clauses.
 
 ````sql
+-- Shows foreign keys
+SELECT
+    i.TABLE_SCHEMA,
+    i.TABLE_NAME,
+    i.CONSTRAINT_TYPE,
+    i.CONSTRAINT_NAME,
+    k.REFERENCED_TABLE_NAME,
+    k.REFERENCED_COLUMN_NAME
+FROM information_schema.TABLE_CONSTRAINTS i
+LEFT JOIN information_schema.KEY_COLUMN_USAGE k ON i.CONSTRAINT_NAME = k.CONSTRAINT_NAME
+WHERE i.CONSTRAINT_TYPE = 'FOREIGN KEY' AND i.TABLE_SCHEMA = 'dbName'
+;
+
 CREATE TABLE parent (
     id INT NOT NULL,
     PRIMARY KEY (id)
