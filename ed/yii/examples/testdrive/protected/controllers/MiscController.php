@@ -20,4 +20,10 @@ class MiscController extends Controller
         ]);
         echo '</pre>';
     }
+
+    public function actionGetQRCode()
+    {
+        $d = Yii::app()->QRCode->get();
+        $this->render('index', ['d' => $d]);
+    }
 }
