@@ -76,8 +76,8 @@ push remoteRepoName :newBranch                # delete branch from remote repo
     ph  = push origin HEAD
     lg  = log --pretty=format:\"%h %ad | [%an] %s%d\" --graph --date=short --no-merges
 [user]
-    name  = Name Surname
-    email = mail@mail.com
+    name  = Vladimir Kovpak
+    email = cn007b@gmail.com
 [core]
     excludesfile = ~/.gitignore
     editor       = vim

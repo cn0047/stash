@@ -5,6 +5,8 @@ Symfony
 [book](http://symfony.com/pdf/Symfony_book_2.6.pdf?v=4)
 |
 [cookbook](http://symfony.com/pdf/Symfony_cookbook_2.6.pdf?v=4)
+|
+[best practices](http://symfony.com/pdf/Symfony_best_practices_2.7.pdf?v=4)
 
 #### Running the Symfony Application
 ````
