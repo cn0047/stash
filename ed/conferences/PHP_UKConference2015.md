@@ -31,9 +31,10 @@ Chris Levy - The Power of Modern Version Control
 James Titcumb - Adding 1.21 Gigawatts to Applications with RabbitMQ
 Gordon Skinner - Hexagonal Architecture in DDD
 Jeremy Quinton - Devops for PHP Developers
-Liam Wiltshire - PHP's biggest bottleneck, MySQL
 Michelle Sanver - Accessibility Done Right
 ````
 
 #### Stephan Höchdorfer - The NoSQL Store everyone ignores: PostgreSQL
 * PostgreSQL!
+
+#### Liam Wiltshire - PHP's biggest bottleneck, MySQL
