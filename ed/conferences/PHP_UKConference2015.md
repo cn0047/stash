@@ -18,7 +18,6 @@ Nate Abele - The Future of Programming
 Sarah Khalil - Build RESTful APIs easily with Symfony
 Rob Allen - Building an API with Apigility
 Gary Hockin - Understanding the OWASP Top 10
-Dan Miller - HHVM at Etsy: Harder, Better, Faster, Stronger
 Jenny Wong - Integrating Communities
 Ricard Clau - Modern Software Architectures
 Thijs Feryn - Reverse caching proxies: Varnish or Nginx?
@@ -38,3 +37,7 @@ Michelle Sanver - Accessibility Done Right
 * PostgreSQL!
 
 #### Liam Wiltshire - PHP's biggest bottleneck, MySQL
+
+#### Dan Miller - HHVM at Etsy: Harder, Better, Faster, Stronger
+* HHVM is threaded.
+* spatch!!!
