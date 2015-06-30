@@ -13,12 +13,11 @@ class MiscController extends Controller
             'f895a078e81c11e4a5ee11aa24b31963',
             7,
         ];
-        echo '<pre>';
-        var_export([
+        $d = [
             $form->validate(),
             $form->getErrors(),
-        ]);
-        echo '</pre>';
+        ];
+        $this->render('index', ['d' => $d]);
     }
 
     public function actionGetQRCode()

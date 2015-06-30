@@ -1,10 +1,18 @@
 <?php
 
+/*
+CREATE DATABASE testdrive;
+CREATE DATABASE testdrive_unit_test;
+
+DROP DATABASE testdrive_unit_test;
+DROP DATABASE testdrive;
+*/
+
 class m150608_110143_init extends CDbMigration
 {
     public function safeUp()
     {
-        $sql = <<<"HEREDOC"
+        $sql = <<<"SQL"
             CREATE TABLE brand (
                 id INT AUTO_INCREMENT,
                 name VARCHAR(100) NOT NULL DEFAULT '',
@@ -57,18 +65,24 @@ class m150608_110143_init extends CDbMigration
                 (null, 7, 'land cruiser', 200),
                 (null, 7, 'prado', 190)
             ;
-HEREDOC;
+SQL;
+        $this->setDbConnection(Yii::app()->db);
+        $this->execute($sql);
+        $this->setDbConnection(Yii::app()->dbUnitTest);
         $this->execute($sql);
         return true;
     }
 
     public function down()
     {
-        $sql = <<<"HEREDOC"
+        $sql = <<<"SQL"
             DELETE FROM brand;
             DROP TABLE car;
             DROP TABLE brand;
-HEREDOC;
+SQL;
+        $this->setDbConnection(Yii::app()->dbUnitTest);
+        $this->execute($sql);
+        $this->setDbConnection(Yii::app()->db);
         $this->execute($sql);
         return true;
     }

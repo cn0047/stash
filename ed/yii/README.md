@@ -54,3 +54,7 @@ $data = $this->getDbConnection()->createCommand()
     ;
 $count = $this->getDbConnection()->createCommand('SELECT FOUND_ROWS()')->queryScalar();
 ````
+
+````
+phpunit --colors --bootstrap=bootstrap.php unit/
+````
