@@ -71,6 +71,7 @@ vim ~/.bashrc
 
 export PHP_IDE_CONFIG="serverName=trunk-007" 
 export XDEBUG_CONFIG="idekey=PHPSTORM remote_host={192.168.13.58} remote_enable=1 remote_autostart=1" 
+export XDEBUG_CONFIG="idekey=sublime.xdebug remote_host={127.0.0.1} remote_enable=1 remote_autostart=1"
 
 source ~/.bashrc
 ````

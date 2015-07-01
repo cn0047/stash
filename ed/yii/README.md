@@ -57,4 +57,7 @@ $count = $this->getDbConnection()->createCommand('SELECT FOUND_ROWS()')->querySc
 
 ````
 phpunit --colors --bootstrap=bootstrap.php unit/
+
+cd ed/yii/examples/testdrive/protected/tests/
+../../../../../../vendor/bin/phpunit  --colors --bootstrap=bootstrap.php unit/
 ````

@@ -76,6 +76,18 @@ SELECT
 FROM information_schema.TABLES
 WHERE table_schema = 'dbName' AND table_name = 'tableName';
 
+SELECT
+    CONCAT(table_schema, '.', table_name),
+    CONCAT(ROUND(table_rows / 1000000, 2), 'M')                                    rows,
+    CONCAT(ROUND(data_length / ( 1024 * 1024 * 1024 ), 2), 'G')                    data,
+    CONCAT(ROUND(index_length / ( 1024 * 1024 * 1024 ), 2), 'G')                   idx,
+    CONCAT(ROUND(( data_length + index_length ) / ( 1024 * 1024 * 1024 ), 2), 'G') total_size,
+    ROUND(index_length / data_length, 2)                                           idx_frac
+FROM information_schema.TABLES
+ORDER BY data_length + index_length DESC
+LIMIT 50
+;
+
 -- Count of rows in db.
 SELECT TABLE_NAME, TABLE_ROWS FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'dbName';
 ````
