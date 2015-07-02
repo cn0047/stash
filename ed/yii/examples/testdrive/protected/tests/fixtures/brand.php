@@ -1,11 +1,11 @@
 <?php
 
 return [
-    'f1' => [
+    1 => [
         'name' => 'Lexus',
         'country' => 'JPN',
     ],
-    'f2' => [
+    2 => [
         'name' => 'Acura',
         'country' => 'JPNE',
     ],
