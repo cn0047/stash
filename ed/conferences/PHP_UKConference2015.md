@@ -2,7 +2,6 @@ PHP UK Conference 2015
 -
 
 ````
-Ben Waine - Application Logging & Logstash
 Beth Tucker Long - Be a Bold Coder
 Davey Shafik - Open Source, Love, and Social Responsibility
 Lorna Mitchell - What's new in PHP
@@ -41,3 +40,7 @@ Michelle Sanver - Accessibility Done Right
 #### Dan Miller - HHVM at Etsy: Harder, Better, Faster, Stronger
 * HHVM is threaded.
 * spatch!!!
+
+#### Ben Waine - Application Logging & Logstash
+* Monolog
+* (ELK) Elasticsearch Logstash Kibana

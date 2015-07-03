@@ -4,6 +4,8 @@ namespace application\components;
 
 class QRCode extends \CComponent
 {
+    private $scope;
+
     public function init()
     {
     }
@@ -11,5 +13,10 @@ class QRCode extends \CComponent
     public function get()
     {
         return 200;
+    }
+
+    public function setScope($scope)
+    {
+        // $scope === 'global'
     }
 }

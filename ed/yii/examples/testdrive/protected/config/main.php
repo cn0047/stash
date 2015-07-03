@@ -36,7 +36,10 @@ return array(
 
 	// application components
 	'components'=>array(
-        'QRCode' => ['class' => 'application\components\QRCode'],
+        'QRCode' => [
+            'class' => 'application\components\QRCode',
+            'scope' => 'global',
+        ],
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
