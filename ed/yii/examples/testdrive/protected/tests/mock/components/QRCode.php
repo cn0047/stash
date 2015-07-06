@@ -4,6 +4,8 @@ namespace application\tests\mock\components;
 
 class QRCode extends \CComponent
 {
+    private $scope;
+
     public function init()
     {
     }
@@ -11,5 +13,9 @@ class QRCode extends \CComponent
     public function get()
     {
         return 404;
+    }
+
+    public function setScope($scope)
+    {
     }
 }
