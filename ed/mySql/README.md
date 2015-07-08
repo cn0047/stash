@@ -6,7 +6,8 @@ MySql
 ####Snippets
 ````sql
 CREATE TABLE tableName (
-KEY `accounting_user` (`accountingid`,`user_id`)
+    id int ZEROFILL,
+    KEY account_user (account, user)
 );
 ALTER  TABLE table ADD field INTEGER(1) NOT NULL;
 ALTER  TABLE table ADD UNIQUE KEY (field);
@@ -111,6 +112,9 @@ ORDER BY raw_readed DESC
 
 ####Functions
 ````sql
+CONV(2, 10, 2) -- CONV(num , from_base, to_base)
+LPAD(ZipCode, 5, '0')
+
 ROW_COUNT()                        -- after insert, update, delete
 LAST_INSERT_ID()
 CONNECTION_ID()
