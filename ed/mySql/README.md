@@ -54,6 +54,8 @@ The exception to this is COUNT(*), which counts rows
 
 ####Optimizations
 ````sql
+force index (createdAt)
+
 // SELECT DISTINCT faster than SELECT GROUB BY.
 SELECT DISTINCT id FROM table;
 // vs

@@ -48,5 +48,22 @@ http://tunedit.org/
 5.
 
 * Метод опорных векторов (SVM).
+* Недостатки svm:
+    * опорными объектами могут быть шумовые объекты,
+    * непонятно как выбирать ядро,
+    * есть отбор опорных объектов, но нет отбора признаков.
+* RVM - берет сильно меньше опорных объектов чем svm.
+* LASSO (Least Absolute Shrinkage And Selection) SVM.
+* Elastic Net SVM.
+* SFM (Support Features Machine).
+* RFM (Relevance Features Machine).
 
-https://www.youtube.com/watch?v=Adi67_94_gc&index=5&list=PLJOzdkh8T5kp99tGTEFjH_b9zqEQiiBtC
+6.
+
+* Линейная модель регрессии.
+* Метод главных компонент - обучение без учителя.
+* Гребневая регрессия.
+
+7.
+
+https://www.youtube.com/watch?v=aK0Tedo_X4o&index=7&list=PLJOzdkh8T5kp99tGTEFjH_b9zqEQiiBtC
