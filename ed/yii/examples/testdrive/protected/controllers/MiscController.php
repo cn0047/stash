@@ -22,7 +22,13 @@ class MiscController extends Controller
 
     public function actionGetQRCode()
     {
+        Yii::app()->QRCode->onGet = [$this, 'onGetQRCode'];
         $d = Yii::app()->QRCode->get();
         $this->render('index', ['d' => $d]);
+    }
+
+    public function onGetQRCode($event)
+    {
+        var_dump(['captured event' => $event]);
     }
 }

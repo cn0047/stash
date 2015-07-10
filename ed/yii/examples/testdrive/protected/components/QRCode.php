@@ -12,7 +12,15 @@ class QRCode extends \CComponent
 
     public function get()
     {
-        return 200;
+        $code = 200;
+        $event = new \CModelEvent(['code' => $code]);
+        $this->onGet($event);
+        return $code;
+    }
+
+    public function onGet($event)
+    {
+        $this->raiseEvent('onGet', $event);
     }
 
     public function setScope($scope)
