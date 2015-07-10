@@ -35,7 +35,7 @@ http://tunedit.org/
 
 * Линейные методы классификации.
 * Метод стохастического градиента.
-* Вектор классификации.
+* Вектор классификации (разделяющая поверхность).
 
 5.
 
@@ -78,4 +78,16 @@ http://tunedit.org/
 
 10.
 
-https://www.youtube.com/watch?v=4CPVlMWQtk8&index=10&list=PLJOzdkh8T5kp99tGTEFjH_b9zqEQiiBtC
+* Линейный дискриминант Фишера.
+* Ковариационная матрица.
+
+11.
+
+* Логическая регрессия!
+* Скоринговая карта.
+* ЕМ-алгоритм.
+* Radial Bassis Functions.
+
+12.
+
+https://www.youtube.com/watch?v=yB17EBtwa48&list=PLJOzdkh8T5kp99tGTEFjH_b9zqEQiiBtC&index=12

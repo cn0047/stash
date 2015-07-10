@@ -13,4 +13,9 @@ Selenium IDE
     <td>id=email</td>
     <td>javascript{'codenamek2010+'+new Date().getTime()+'@gmail.com'}</td>
 </tr>
+<tr>
+    <td>createCookie</td>
+    <td>ip_address=127.0.0.1</td>
+    <td></td>
+</tr>
 ````
