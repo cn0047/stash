@@ -99,4 +99,15 @@ http://tunedit.org/
 
 13.
 
-https://www.youtube.com/watch?v=euFMsTjbE2o&list=PLJOzdkh8T5kp99tGTEFjH_b9zqEQiiBtC&index=13
+* Алгоритм полного перебора (Full Search).
+* Алгоритм жадного добавления (Add).
+* Алгоритм поочередного добавления и удаления (Add-Del).
+* Поиск в глубину.
+* Поиск в ширину.
+* Генетический алгоритм поиска.
+
+14.
+
+* Нейронные сети.
+
+https://www.youtube.com/watch?v=WjwA5DqxL-c&index=14&list=PLJOzdkh8T5kp99tGTEFjH_b9zqEQiiBtC
