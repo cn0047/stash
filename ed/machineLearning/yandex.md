@@ -36,7 +36,7 @@ http://tunedit.org/
 4.
 
 * Линейные методы классификации.
-* Метод стохастического градиента.
+* Метод стохастического градиента (stochastic gradient).
 * Вектор классификации (разделяющая поверхность).
 * Стохастический EM-алгоритм.
 
@@ -108,6 +108,22 @@ http://tunedit.org/
 
 14.
 
-* Нейронные сети.
+* Нейронная сеть (двухслойная, трёхслойная).
+* Динамически обучающийся поток.
+* Оптимальная порча мозга (OBD, optimal brain damage).
 
-https://www.youtube.com/watch?v=WjwA5DqxL-c&index=14&list=PLJOzdkh8T5kp99tGTEFjH_b9zqEQiiBtC
+15.
+
+* Алгоритм AdaBoost.
+* Алгоритм Gradient Boosting.
+* Алгоритм ComBoost.
+
+16.
+
+* Random Forest.
+* В задачах классификации нужно строить дерево в лист которого будет доходить только 1 объект!
+* В регрессии - 5 объектов на лист!
+
+17.
+
+https://www.youtube.com/watch?v=QQaEnOlX9gA&index=17&list=PLJOzdkh8T5kp99tGTEFjH_b9zqEQiiBtC
