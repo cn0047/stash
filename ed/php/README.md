@@ -70,10 +70,11 @@ echo "<pre>$output</pre>";
 # ?XDEBUG_SESSION_START=sublime.xdebug
 # .htaccess
 php_value xdebug.remote_enable 1
-php_value xdebug.remote_connect_back 1
-php_value xdebug.remote_host localhost
-php_value xdebug.remote_handler dbgp
-php_value xdebug.remote_port 9000
+# php_value xdebug.remote_connect_back 1
+# php_value xdebug.remote_host localhost
+# php_value xdebug.remote_handler dbgp
+# php_value xdebug.remote_port 9000
+# php_value xdebug.remote_log '/tmp/xdebug.log'
 
 # Trace
 xdebug_start_trace('~/debug/trace.xt');

@@ -126,4 +126,14 @@ http://tunedit.org/
 
 17.
 
-https://www.youtube.com/watch?v=QQaEnOlX9gA&index=17&list=PLJOzdkh8T5kp99tGTEFjH_b9zqEQiiBtC
+* Метод обучения uncertainly sampling.
+* Усредненная дивергенция Кульбака-Лейблера.
+* Метод обучения expected model change.
+* Query By Committee.
+* Expected Error Reduction.
+* Variance Reduction.
+* Уменьшение дисперсии.
+
+18.
+
+https://www.youtube.com/watch?v=EioJ902VCmk&index=18&list=PLJOzdkh8T5kp99tGTEFjH_b9zqEQiiBtC
