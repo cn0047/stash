@@ -136,4 +136,7 @@ http://tunedit.org/
 
 18.
 
+* Методы обучения ранжированию.
+* Discounted Cumulative Gain.
+
 https://www.youtube.com/watch?v=EioJ902VCmk&index=18&list=PLJOzdkh8T5kp99tGTEFjH_b9zqEQiiBtC
