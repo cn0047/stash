@@ -17,6 +17,7 @@ php -S localhost:8000 index.php
 ````
 \Yii::app()->request->getQuery('id'); // $_GET['id']
 \Yii::app()->request->getPost('id'); // $_POST['id']
+\Yii::app()->request->getParam('id'); // $_GET['id'] or $_POST['id']
 
 $args = json_decode(\Yii::app()->request->getRawBody(), true);
 ````
@@ -51,6 +52,7 @@ $data = $this->getDbConnection()->createCommand()
     ->join('userStat us', 'us.userId = uan.userId')
     ->where("`date` > :date1 `str` REGEXP :like", $where)
     ->andWhere(['in', 'id', [1, 5, 7]])
+    ->andWhere('last_numbers = :ccl', compact('ccl'))
     ->group('user_id, group_id')
     ->order('q.id, q.type')
     ;

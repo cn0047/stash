@@ -6,8 +6,12 @@ PHP
 <br>*PHP 5.1.6*
 
 https://dev.twitter.com/
-<br>http://www.phpdeveloper.org/
-<br>http://php.net/conferences/index.php
+|
+http://www.phpdeveloper.org/
+|
+http://php.net/conferences/index.php
+|
+http://git.php.net/
 
 /etc/php5/apache2/php.ini
 
