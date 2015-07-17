@@ -30,21 +30,21 @@ preg_match('/^\d{4}(-\d{2}){2}$/', $args['date']); // 2015-06-10
 ````php
 throw new ErrorException(404);
 
-throw new BadFunctionCallException(404);
-throw new BadMethodCallException(404);
+throw new \BadFunctionCallException(404);
+throw new \BadMethodCallException(404);
 
-throw new InvalidArgumentException(404);
-throw new LengthException(404);
-throw new OutOfBoundsException(404);
-throw new OutOfRangeException(404);
-throw new OverflowException(404);
-throw new RangeException(404);
-throw new UnexpectedValueException(404);
+throw new \InvalidArgumentException(404);
+throw new \LengthException(404);
+throw new \OutOfBoundsException(404);
+throw new \OutOfRangeException(404);
+throw new \OverflowException(404);
+throw new \RangeException(404);
+throw new \UnexpectedValueException(404);
 
-throw new DomainException(404);
-throw new LogicException(404);
-throw new RuntimeException(404);
-throw new UnderflowException(404);
+throw new \DomainException(404);
+throw new \LogicException(404);
+throw new \RuntimeException(404);
+throw new \UnderflowException(404);
 ````
 
 ####phpCs
