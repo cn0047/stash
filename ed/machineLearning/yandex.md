@@ -138,5 +138,17 @@ http://tunedit.org/
 
 * Методы обучения ранжированию.
 * Discounted Cumulative Gain.
+* Ordinal Classification SVM.
 
-https://www.youtube.com/watch?v=EioJ902VCmk&index=18&list=PLJOzdkh8T5kp99tGTEFjH_b9zqEQiiBtC
+
+19.
+
+* Коллаборативная фильтрация.
+* Singular Value Decomposition.
+* Non-Negative Matrix Factorization.
+
+20.
+
+* Задачи кластеризации.
+
+https://www.youtube.com/watch?v=oWRmzf9eI-c&list=PLJOzdkh8T5kp99tGTEFjH_b9zqEQiiBtC&index=20
