@@ -150,5 +150,6 @@ http://tunedit.org/
 20.
 
 * Задачи кластеризации.
+* Алгоритм Ланса-Уильямса.
 
 https://www.youtube.com/watch?v=oWRmzf9eI-c&list=PLJOzdkh8T5kp99tGTEFjH_b9zqEQiiBtC&index=20

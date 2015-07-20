@@ -33,8 +33,8 @@ throw new ErrorException(404);
 throw new \BadFunctionCallException(404);
 throw new \BadMethodCallException(404);
 
-throw new \InvalidArgumentException(404);
-throw new \LengthException(404);
+throw new \InvalidArgumentException('Not Acceptable', 406);
+throw new \LengthException('Length Required', 411);
 throw new \OutOfBoundsException(404);
 throw new \OutOfRangeException(404);
 throw new \OverflowException(404);
