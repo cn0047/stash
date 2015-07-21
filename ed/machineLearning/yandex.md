@@ -151,5 +151,9 @@ http://tunedit.org/
 
 * Задачи кластеризации.
 * Алгоритм Ланса-Уильямса.
+* k-means
+* Self Organizing Map
 
-https://www.youtube.com/watch?v=oWRmzf9eI-c&list=PLJOzdkh8T5kp99tGTEFjH_b9zqEQiiBtC&index=20
+21.
+
+https://www.youtube.com/watch?v=ZkZQwKizgLM&list=PLJOzdkh8T5kp99tGTEFjH_b9zqEQiiBtC&index=21
