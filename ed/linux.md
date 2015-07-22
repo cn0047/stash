@@ -105,6 +105,7 @@ curl -X POST -H 'application/json' -d '{"key":"val"}' http://url.com
 curl http://url.com -d x=1 -d y=2
 
 curl http://login:pass@base-http-auth.com/
+curl -u login:pass http://base-http-auth.com/
 ````
 
 ####SNIPPETS

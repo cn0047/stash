@@ -13,6 +13,28 @@ class HelperTest extends CDbTestCase
         $this->assertContains('Acura', $actualBrands);
     }
 
+    /**
+     * @expectedException CDbException CDbCommand failed to execute the SQL statement: SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'brand' already exists
+     */
+    public function testGetAvailableBrands2()
+    {
+        $sql = <<<"SQL"
+            CREATE TABLE brand (
+                id INT AUTO_INCREMENT,
+                name VARCHAR(100) NOT NULL DEFAULT '',
+                country VARCHAR(50) NOT NULL DEFAULT '',
+                PRIMARY KEY (id)
+            );
+            INSERT INTO brand VALUES
+                (null, 'Lamborghini', 'IT')
+            ;
+SQL;
+        \Yii::app()->db->connectionString = 'sqlite::memory:';
+        \Yii::app()->db->setActive(true);
+        \Yii::app()->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        \Yii::app()->db->createCommand($sql)->execute();
+    }
+
     public function testGetAllAvailableBrands()
     {
         // Get brands from fixture.

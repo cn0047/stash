@@ -156,4 +156,12 @@ http://tunedit.org/
 
 21.
 
-https://www.youtube.com/watch?v=ZkZQwKizgLM&list=PLJOzdkh8T5kp99tGTEFjH_b9zqEQiiBtC&index=21
+* Многорукий бандит.
+* Upper confidence bound.
+* Reinforcement comparison.
+* Метод временных разностей.
+* State-action-reward-state-action.
+
+22.
+
+https://www.youtube.com/watch?v=IPG4-p7VVkI&list=PLJOzdkh8T5kp99tGTEFjH_b9zqEQiiBtC&index=22

@@ -3,6 +3,11 @@ Node JS
 
 *v0.10.26*
 
+````
+sudo npm install -g nodemon
+nodemon ./server.js localhost 8080
+````
+
 ````js
 req.url    // Url string.
 req.params // Parsed params from url.
