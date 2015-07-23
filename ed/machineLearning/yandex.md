@@ -164,4 +164,9 @@ http://tunedit.org/
 
 22.
 
-https://www.youtube.com/watch?v=IPG4-p7VVkI&list=PLJOzdkh8T5kp99tGTEFjH_b9zqEQiiBtC&index=22
+* Probabilistic Latent Semantic Analysis.
+* Latent Dirichlet Allocation.
+
+23.
+
+https://www.youtube.com/watch?v=hsl6Mn9THKg&list=PLJOzdkh8T5kp99tGTEFjH_b9zqEQiiBtC&index=23

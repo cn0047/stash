@@ -5,21 +5,24 @@
  * @category Creational
  */
 
-class Twitter {
+class Twitter
+{
     public function share()
     {
         return $this->tweet();
     }
 }
 
-class Facebook {
+class Facebook
+{
     public function share()
     {
         return $this->post();
     }
 }
 
-class Factory {
+class Factory
+{
     public static function create($name)
     {
         if (class_exists($name)) {
