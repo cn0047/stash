@@ -5,10 +5,6 @@ MySql
 
 ####Snippets
 ````sql
-CREATE TABLE tableName (
-    id int ZEROFILL,
-    KEY account_user (account, user)
-);
 ALTER  TABLE table ADD field INTEGER(1) NOT NULL;
 ALTER  TABLE table ADD UNIQUE KEY (field);
 ALTER  TABLE engineer ADD UNIQUE KEY username_email (username, email);
