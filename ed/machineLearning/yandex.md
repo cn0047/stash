@@ -169,4 +169,6 @@ http://tunedit.org/
 
 23.
 
-https://www.youtube.com/watch?v=hsl6Mn9THKg&list=PLJOzdkh8T5kp99tGTEFjH_b9zqEQiiBtC&index=23
+24.
+
+https://www.youtube.com/watch?v=DwA91VHydXU&index=24&list=PLJOzdkh8T5kp99tGTEFjH_b9zqEQiiBtC
