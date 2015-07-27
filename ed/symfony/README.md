@@ -489,6 +489,8 @@ app.debug
 <img src="{{ asset('images/logo.png', version='3.0') }}" alt="Symfony!" />
 <img src="{{ asset('images/logo.png', absolute=true) }}" alt="Symfony!" />
 
+app/console assets:install web/
+
 // Stylesheets and JavaScripts
 {% block stylesheets %}
     <link href="{{ asset('css/main.css') }}" rel="stylesheet" />
