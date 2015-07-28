@@ -13,7 +13,6 @@ Derick Rethans - Debugging: past, present and future
 Javier Lopez - Continuously delivering PHP projects
 Jordi Boggiano - Composer Best Practices
 Marcello Duarte - Barely Enough Design
-Nate Abele - The Future of Programming
 Sarah Khalil - Build RESTful APIs easily with Symfony
 Rob Allen - Building an API with Apigility
 Gary Hockin - Understanding the OWASP Top 10
@@ -44,3 +43,7 @@ Michelle Sanver - Accessibility Done Right
 #### Ben Waine - Application Logging & Logstash
 * Monolog
 * (ELK) Elasticsearch Logstash Kibana
+
+#### Nate Abele - The Future of Programming
+* Haskell.
+* Docker.
