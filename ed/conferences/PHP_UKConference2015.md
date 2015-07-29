@@ -2,7 +2,6 @@ PHP UK Conference 2015
 -
 
 ````
-Beth Tucker Long - Be a Bold Coder
 Davey Shafik - Open Source, Love, and Social Responsibility
 Lorna Mitchell - What's new in PHP
 Ciaran McNulty - Why Your Test Suite Sucks
@@ -47,3 +46,9 @@ Michelle Sanver - Accessibility Done Right
 #### Nate Abele - The Future of Programming
 * Haskell.
 * Docker.
+
+#### Beth Tucker Long - Be a Bold Coder
+* Security must be first!
+* https://insight.sensiolabs.com
+* https://www.phparch.com/magazine
+* http://phpmentoring.org
