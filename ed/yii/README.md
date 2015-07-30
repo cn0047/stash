@@ -57,6 +57,8 @@ $data = $this->getDbConnection()->createCommand()
     ->order('q.id, q.type')
     ;
 $count = $this->getDbConnection()->createCommand('SELECT FOUND_ROWS()')->queryScalar();
+
+$table = \Yii::app()->ext->getDbConnection()->schema->getTable('logCallMeBack');
 ````
 
 ````

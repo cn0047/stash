@@ -7,6 +7,7 @@ CDN
 CRM
 CSRF
 DAO
+DBAL
 DDD
 HTTP
 IoC
@@ -42,6 +43,9 @@ UDP
 
 <dt>DAO</dt>
 <dd>Data access object.</dd>
+
+<dt>DBAL</dt>
+<dd>Database Abstraction Layer.</dd>
 
 <dt>DDD</dt>
 <dd>Domain-driven design</dd>

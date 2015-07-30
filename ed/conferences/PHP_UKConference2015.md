@@ -3,7 +3,6 @@ PHP UK Conference 2015
 
 ````
 Davey Shafik - Open Source, Love, and Social Responsibility
-Lorna Mitchell - What's new in PHP
 Ciaran McNulty - Why Your Test Suite Sucks
 Bastian Hoffmann - Bring your PHP application to the next level with React.JS
 Christopher Pecoraro - Building RESTful APIs with Laravel 5's Doc Block-based Controller Annotations
@@ -52,3 +51,5 @@ Michelle Sanver - Accessibility Done Right
 * https://insight.sensiolabs.com
 * https://www.phparch.com/magazine
 * http://phpmentoring.org
+
+#### Lorna Mitchell - What's new in PHP
