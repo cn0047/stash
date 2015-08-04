@@ -7,7 +7,6 @@ Christopher Pecoraro - Building RESTful APIs with Laravel 5's Doc Block-based Co
 Billie Thompson - MVVM and Silex - It's the future
 Derick Rethans - Debugging: past, present and future
 Javier Lopez - Continuously delivering PHP projects
-Jordi Boggiano - Composer Best Practices
 Marcello Duarte - Barely Enough Design
 Sarah Khalil - Build RESTful APIs easily with Symfony
 Rob Allen - Building an API with Apigility
@@ -56,3 +55,9 @@ Michelle Sanver - Accessibility Done Right
 
 #### Bastian Hoffmann - Bring your PHP application to the next level with React.JS
 * V8js.
+
+#### Jordi Boggiano - Composer Best Practices
+* fixes -> 1.0.1; features -> 1.1.1; breaking -> 2.0.0;
+* dev -> 0.1.0; fixes -> 0.1.1; rbeaking changes -> 0.2.0;
+* README.md should contains info about what problem the code solves.
+* TAGign before breaking anything.
