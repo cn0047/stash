@@ -3,7 +3,6 @@ PHP UK Conference 2015
 
 ````
 Davey Shafik - Open Source, Love, and Social Responsibility
-Christopher Pecoraro - Building RESTful APIs with Laravel 5's Doc Block-based Controller Annotations
 Billie Thompson - MVVM and Silex - It's the future
 Derick Rethans - Debugging: past, present and future
 Javier Lopez - Continuously delivering PHP projects
@@ -61,3 +60,5 @@ Michelle Sanver - Accessibility Done Right
 * dev -> 0.1.0; fixes -> 0.1.1; rbeaking changes -> 0.2.0;
 * README.md should contains info about what problem the code solves.
 * TAGign before breaking anything.
+
+#### Christopher Pecoraro - Building RESTful APIs with Laravel 5's Doc Block-based Controller Annotations
