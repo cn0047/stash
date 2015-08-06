@@ -102,6 +102,7 @@ rm /tmp/crun_user_at_server_or_host_3a30db060f74d9390a2eb6f8a92eab8d # crun lock
 
 # (REST) JSON at POST.
 curl -X POST -H 'application/json' -d '{"key":"val"}' http://url.com
+curl -X POST -H 'Content-Type: text/plain' -d @/tmp/foo.txt http://url.com
 curl http://url.com -d x=1 -d y=2
 
 curl http://login:pass@base-http-auth.com/
