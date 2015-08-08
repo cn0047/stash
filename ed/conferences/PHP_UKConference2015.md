@@ -3,7 +3,6 @@ PHP UK Conference 2015
 
 ````
 Davey Shafik - Open Source, Love, and Social Responsibility
-Derick Rethans - Debugging: past, present and future
 Javier Lopez - Continuously delivering PHP projects
 Marcello Duarte - Barely Enough Design
 Sarah Khalil - Build RESTful APIs easily with Symfony
@@ -63,3 +62,5 @@ Michelle Sanver - Accessibility Done Right
 #### Christopher Pecoraro - Building RESTful APIs with Laravel 5's Doc Block-based Controller Annotations
 
 #### Billie Thompson - MVVM and Silex - It's the future
+
+#### Derick Rethans - Debugging: past, present and future
