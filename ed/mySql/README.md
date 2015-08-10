@@ -5,6 +5,8 @@ MySql
 
 ####Snippets
 ````sql
+INSERT INTO brand2 (name) SELECT name FROM brand;
+
 ALTER  TABLE table ADD field INTEGER(1) NOT NULL;
 ALTER  TABLE table ADD UNIQUE KEY (field);
 ALTER  TABLE engineer ADD UNIQUE KEY username_email (username, email);
