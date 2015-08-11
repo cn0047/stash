@@ -12,6 +12,8 @@ http://www.phpdeveloper.org/
 http://php.net/conferences/index.php
 |
 http://git.php.net/
+|
+[functions](http://php.net/manual/en/funcref.php)
 
 /etc/php5/apache2/php.ini
 
@@ -104,6 +106,8 @@ source ~/.bashrc
 
 ####debug
 ````php
+echo "\033[31m ".var_export($e->getMessage(), 1)." \033[0m\n";
+
 echo '<script>console.log('.json_encode($_REQUEST).')</script>';
 
 array_walk(debug_backtrace(), create_function('$v', '
