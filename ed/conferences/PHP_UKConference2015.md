@@ -3,7 +3,6 @@ PHP UK Conference 2015
 
 ````
 Davey Shafik - Open Source, Love, and Social Responsibility
-Marcello Duarte - Barely Enough Design
 Sarah Khalil - Build RESTful APIs easily with Symfony
 Rob Allen - Building an API with Apigility
 Gary Hockin - Understanding the OWASP Top 10
@@ -66,3 +65,8 @@ Michelle Sanver - Accessibility Done Right
 
 #### Javier Lopez - Continuously delivering PHP projects
 * Jenkins.
+
+#### Marcello Duarte - Barely Enough Design
+* Put the behaviour where the data is.
+* TO BE FREE YOU NEED ABSTRACTION!
+* Think about RESPONSIBILITIES, then think about roles.
