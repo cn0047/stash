@@ -9,7 +9,7 @@ https://dev.twitter.com/
 |
 http://www.phpdeveloper.org/
 |
-http://php.net/conferences/index.php
+[conferences](http://php.net/conferences/index.php)
 |
 http://git.php.net/
 |

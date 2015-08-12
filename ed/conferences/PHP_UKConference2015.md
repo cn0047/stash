@@ -3,7 +3,6 @@ PHP UK Conference 2015
 
 ````
 Davey Shafik - Open Source, Love, and Social Responsibility
-Sarah Khalil - Build RESTful APIs easily with Symfony
 Rob Allen - Building an API with Apigility
 Gary Hockin - Understanding the OWASP Top 10
 Jenny Wong - Integrating Communities
@@ -70,3 +69,5 @@ Michelle Sanver - Accessibility Done Right
 * Put the behaviour where the data is.
 * TO BE FREE YOU NEED ABSTRACTION!
 * Think about RESPONSIBILITIES, then think about roles.
+
+#### Sarah Khalil - Build RESTful APIs easily with Symfony

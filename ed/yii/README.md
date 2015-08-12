@@ -54,6 +54,7 @@ $data = $this->getDbConnection()->createCommand()
     ->andWhere(['in', 'id', [1, 5, 7]])
     ->andWhere('last_numbers = :ccl', compact('ccl'))
     ->group('user_id, group_id')
+    ->having('rows > 7')
     ->order('q.id, q.type')
     ;
 $count = $this->getDbConnection()->createCommand('SELECT FOUND_ROWS()')->queryScalar();
