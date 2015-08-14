@@ -3,7 +3,6 @@ PHP UK Conference 2015
 
 ````
 Davey Shafik - Open Source, Love, and Social Responsibility
-Gary Hockin - Understanding the OWASP Top 10
 Jenny Wong - Integrating Communities
 Ricard Clau - Modern Software Architectures
 Thijs Feryn - Reverse caching proxies: Varnish or Nginx?
@@ -72,3 +71,5 @@ Michelle Sanver - Accessibility Done Right
 #### Sarah Khalil - Build RESTful APIs easily with Symfony
 
 #### Rob Allen - Building an API with Apigility
+
+#### Gary Hockin - Understanding the OWASP Top 10
