@@ -3,7 +3,6 @@ PHP UK Conference 2015
 
 ````
 Davey Shafik - Open Source, Love, and Social Responsibility
-Jenny Wong - Integrating Communities
 Ricard Clau - Modern Software Architectures
 Thijs Feryn - Reverse caching proxies: Varnish or Nginx?
 Christopher Hoult - Your API is a UI
@@ -73,3 +72,5 @@ Michelle Sanver - Accessibility Done Right
 #### Rob Allen - Building an API with Apigility
 
 #### Gary Hockin - Understanding the OWASP Top 10
+
+#### Jenny Wong - Integrating Communities
