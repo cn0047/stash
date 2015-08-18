@@ -7,6 +7,6 @@
     'ajaxUpdate' => false,
     'columns' => [
         ['header' => 'Name', 'value' => '$data["name"]'],
-        ['header' => 'Country', 'value' => '$data["country"]'],
+        ['header' => 'Country', 'value' => '$data["country"]', 'htmlOptions' => ['nowrap' => 'nowrap']],
     ]
 )); ?>

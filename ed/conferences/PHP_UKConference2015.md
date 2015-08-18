@@ -14,7 +14,6 @@ Chris Levy - The Power of Modern Version Control
 James Titcumb - Adding 1.21 Gigawatts to Applications with RabbitMQ
 Gordon Skinner - Hexagonal Architecture in DDD
 Jeremy Quinton - Devops for PHP Developers
-Michelle Sanver - Accessibility Done Right
 ````
 
 #### Stephan Höchdorfer - The NoSQL Store everyone ignores: PostgreSQL
@@ -74,3 +73,6 @@ Michelle Sanver - Accessibility Done Right
 #### Gary Hockin - Understanding the OWASP Top 10
 
 #### Jenny Wong - Integrating Communities
+
+#### Michelle Sanver - Accessibility Done Right
+* UNIVERSAL DESIGN. No special things, no adaptations...
