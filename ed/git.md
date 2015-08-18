@@ -2,53 +2,65 @@ GIT
 -
 
 ````
-init
-clone repo
+git init
+git clone ssh://gitolite@repo.com:1011/repoName.git
 
-diff --cached or diff --staged # after git add shows diff
-diff branch..subBrach
-diff branch:file file
+git remote -v                      # shows remote repository
+git remote show remoteRepoName     # shows all about remote repo (remote show origin)
+git remote add origin ssh://gitolite@repo.com:1011/repoName.git
+git remote update origin
+git fetch remoteRepoName
 
-log -2         # last 2 commits
-log -p         # shows commits & code in commit
-log --stat     # statiistic about changes
-log --no-meges # log without merges
-git log --follow file.txt # Viewing GIT history of moved files.
-
-remote -v                      # shows remote repository
-remote show remoteRepoName     # shows all about remote repo (remote show origin)
-fetch remoteRepoName
-
-
-brnach --merged    # branches merged with current
-brnach --no-merged
-
-show commit-hash
-show HEAD^       # head parent
-show HEAD^2      # head second parent
-show HEAD~2      # first parent of first commit
+git show commit-hash
+git show HEAD^       # head parent
+git show HEAD^2      # head second parent
+git show HEAD~2      # first parent of first commit
 HEAD^^ == HEAD~2
 
-commit -m 'Message'
+git commit -m 'Message'
 
-blame -L 11,12 file
+git blame -L 11,12 file
 
-/etc/gitconfig # system
-~/.gitconfig   # user
+export GIT_SSL_NO_VERIFY=1;
+git config http.sslVerify 0
 ````
-.git/config    # project
+
+####diff
+````
+git diff --cached or diff --staged # after git add shows diff
+git diff branch..subBrach
+git diff branch:file file
+````
+
+####log
+````
+git log -2         # last 2 commits
+git log -p         # shows commits & code in commit
+git log --stat     # statiistic about changes
+git log --no-meges # log without merges
+git log --follow file.txt # Viewing GIT history of moved files.
+````
 
 ####branch
 ````
-show branch
-rev_parse branch
-branch -v                                     # all branches Y last branch commit
-push remoteRepoName pusedBranch
-push remoteRepoName pusedBranch:newBranchName
-push remoteRepoName :newBranch                # delete branch from remote repo
+git checkout --track -b live origin/live
+
+git show branchName
+git rev_parse branch
+git brnach --no-merged
+git brnach --merged                               # branches merged with current
+git branch -v                                     # all branches Y last branch commit
+git push remoteRepoName pusedBranch
+git push remoteRepoName pusedBranch:newBranchName
+git push remoteRepoName :newBranch                # delete branch from remote repo
 ````
 
 ####config
+````
+/etc/gitconfig # system
+~/.gitconfig   # user
+.git/config    # project
+````
 ````
 [color]
     ui     = auto
