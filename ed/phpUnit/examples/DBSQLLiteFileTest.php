@@ -9,7 +9,7 @@ class DBSQLLiteFileTest extends PHPUnit_Framework_TestCase
 
     public static function setUpBeforeClass()
     {
-        self::$pdo = new PDO('sqlite:'.__DIR__.'/sqlite.db3');
+        self::$pdo = new PDO('sqlite:/tmp/sqlite.db3');
         self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         self::$pdo->exec('CREATE TABLE tmp (id int)');
         $stmt = self::$pdo->prepare('INSERT INTO tmp (id) values (:id)');
