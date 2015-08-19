@@ -3,7 +3,6 @@ PHP UK Conference 2015
 
 ````
 Davey Shafik - Open Source, Love, and Social Responsibility
-Ricard Clau - Modern Software Architectures
 Thijs Feryn - Reverse caching proxies: Varnish or Nginx?
 Christopher Hoult - Your API is a UI
 Aaron Jorbin - Modernizing The WordPress Toolbox
@@ -76,3 +75,5 @@ Jeremy Quinton - Devops for PHP Developers
 
 #### Michelle Sanver - Accessibility Done Right
 * UNIVERSAL DESIGN. No special things, no adaptations...
+
+#### Ricard Clau - Modern Software Architectures

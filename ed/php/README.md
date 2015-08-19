@@ -28,6 +28,17 @@ php -d short_open_tag=1 x.php
 preg_match('/^\d{4}(-\d{2}){2}$/', $args['date']); // 2015-06-10
 ````
 
+####Escaping from HTML
+````php
+<?= 'print this string' ?>
+
+<?php if ($expression == true): ?>
+    This will show if the expression is true.
+<?php else: ?>
+    Otherwise this will show.
+<?php endif; ?>
+````
+
 ####Exceptions
 ````php
 throw new ErrorException(404);
