@@ -12,7 +12,6 @@ Gabriela D’Ávila - Database Wizardry for Legacy Applications
 Chris Levy - The Power of Modern Version Control
 James Titcumb - Adding 1.21 Gigawatts to Applications with RabbitMQ
 Gordon Skinner - Hexagonal Architecture in DDD
-Jeremy Quinton - Devops for PHP Developers
 ````
 
 #### Stephan Höchdorfer - The NoSQL Store everyone ignores: PostgreSQL
@@ -59,6 +58,7 @@ Jeremy Quinton - Devops for PHP Developers
 
 #### Javier Lopez - Continuously delivering PHP projects
 * Jenkins.
+* Deployment pipeline!
 
 #### Marcello Duarte - Barely Enough Design
 * Put the behaviour where the data is.
@@ -77,3 +77,8 @@ Jeremy Quinton - Devops for PHP Developers
 * UNIVERSAL DESIGN. No special things, no adaptations...
 
 #### Ricard Clau - Modern Software Architectures
+
+#### Jeremy Quinton - Devops for PHP Developers
+* VAGRANT!
+* DOCKER!
+* Continuous delivery!
