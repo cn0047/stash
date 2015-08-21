@@ -53,3 +53,7 @@ Singletons are bad, they create dependency between classes.
 * Peer-to-peer
 * Pipe and filter architecture
 * Service-oriented architecture
+
+####Else patterns:
+
+* Data mapper pattern (Object Relational Mapper (ORM) and the Database Abstraction Layer)
