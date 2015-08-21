@@ -55,7 +55,7 @@ class DefaultController extends Controller
         $product = new Product();
         $product->setName('A Foo Bar');
         $product->setPrice('19.99');
-        $product->setDescription('Lorem ipsum dolor');
+        $product->setDescription('Lorem ipsum dolor, '.time());
         $em = $this->getDoctrine()->getManager();
         $em->persist($product);
         $em->flush();
@@ -188,11 +188,11 @@ class DefaultController extends Controller
     public function createProductAction()
     {
         $category = new Category();
-        $category->setName('Main Products');
+        $category->setName('Main Products '.date('Y-m-d'));
         $product = new Product();
         $product->setName('Foo');
         $product->setPrice(19.99);
-        $product->setDescription('Lorem ipsum dolor');
+        $product->setDescription('Lorem ipsum dolor, product with category, '.time());
         // relate this product to the category
         $product->setCategory($category);
         $em = $this->getDoctrine()->getManager();
