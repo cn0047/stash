@@ -11,7 +11,6 @@ Ben Waine - My Debugging And Performance Toolbox
 Gabriela D’Ávila - Database Wizardry for Legacy Applications
 Chris Levy - The Power of Modern Version Control
 James Titcumb - Adding 1.21 Gigawatts to Applications with RabbitMQ
-Gordon Skinner - Hexagonal Architecture in DDD
 ````
 
 #### Stephan Höchdorfer - The NoSQL Store everyone ignores: PostgreSQL
@@ -82,3 +81,5 @@ Gordon Skinner - Hexagonal Architecture in DDD
 * VAGRANT!
 * DOCKER!
 * Continuous delivery!
+
+#### Gordon Skinner - Hexagonal Architecture in DDD

@@ -20,9 +20,15 @@ class c extends a
     }
 }
 
+class d extends b
+{
+}
+
 new b;
 new c;
+new d;
 /*
 construct a.
 construct c.
+construct a.
 */

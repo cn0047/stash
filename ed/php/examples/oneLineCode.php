@@ -26,3 +26,5 @@ array (
   3 => 0,
 )
 */
+$foo = 'boo';
+var_dump($GLOBALS['foo']);

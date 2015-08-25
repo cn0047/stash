@@ -2,6 +2,7 @@ Acronyms
 -
 
 ````
+ACID
 B2B
 CDN
 CRM
@@ -28,6 +29,9 @@ UDP
 ````
 
 <dl>
+
+<dt>ACID</dt>
+<dd>Atomicity, Consistency, Isolation, Durability.</dd>
 
 <dt>B2B</dt>
 <dd>Business to business.</dd>
