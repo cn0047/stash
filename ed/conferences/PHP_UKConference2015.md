@@ -3,7 +3,6 @@ PHP UK Conference 2015
 
 ````
 Davey Shafik - Open Source, Love, and Social Responsibility
-Thijs Feryn - Reverse caching proxies: Varnish or Nginx?
 Christopher Hoult - Your API is a UI
 Aaron Jorbin - Modernizing The WordPress Toolbox
 Anne-Julia Scheuermann - Naming Things
@@ -83,3 +82,7 @@ James Titcumb - Adding 1.21 Gigawatts to Applications with RabbitMQ
 * Continuous delivery!
 
 #### Gordon Skinner - Hexagonal Architecture in DDD
+
+#### Thijs Feryn - Reverse caching proxies: Varnish or Nginx?
+* If you need more control - go to VARNISH.
+* If you need plain, simple and powerful - go to NGINX.
