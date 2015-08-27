@@ -1,4 +1,3 @@
-
 create table prod (
     codes int,
     `desc` text,

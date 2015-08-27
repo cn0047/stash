@@ -31,6 +31,8 @@ file      - -rw-rw-r-- (664)
 df # Show information about the file system.
 du # Summarize disk usage of each FILE.
 
+uname -r # Show the kernel version.
+
 host github.com # Shows ip by host.
 dig domain
 whois ip
