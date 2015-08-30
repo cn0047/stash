@@ -363,4 +363,36 @@ $q = $em->createQuery('delete from MyProject\Model\Manager m where m.salary > 10
 $numDeleted = $q->execute();
 ````
 
-Page:39
+Iterating results:
+
+````php
+<?php
+$batchSize = 20;
+$i = 0;
+$q = $em->createQuery('select u from MyProject\Model\User u');
+$iterableResult = $q->iterate();
+while (($row = $iterableResult->next()) !== false) {
+    $em->remove($row[0]);
+    if (($i % $batchSize) == 0) {
+        $em->flush(); // Executes all deletions.
+        $em->clear(); // Detaches all objects from Doctrine!
+    }
+    ++$i;
+}
+````
+
+#### DQL (Doctrine Query Language)
+
+````sql
+SELECT u FROM MyProject\Model\User u WHERE u.age > 20
+````
+
+````php
+<?php
+// $em instanceof EntityManager
+// example1: passing a DQL string
+$q = $em->createQuery('select u from MyProject\Model\User u');
+// example2: usin setDql
+$q = $em->createQuery();
+$q->setDql('select u from MyProject\Model\User u');
+````
