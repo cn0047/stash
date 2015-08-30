@@ -1,0 +1,63 @@
+<html>
+<head>
+    <!-- Sorry for this... -->
+    <style>
+        textarea {
+            width: 90%;
+            height: 90%;
+            display: block;
+            margin: auto auto;
+        }
+    </style>
+</head>
+<body>
+    <textarea></textarea>
+    <!-- Hope jquery is allowed here... -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io.connect('http://localhost:8080');
+        var cache = $('textarea').val();
+        // We observe our textarea,
+        // and when it changed we notify about it, and send 2 parameters:
+        // 1) start - position from which text was updated.
+        // 2) diff - piece of text that was changed.
+        setInterval(function () {
+            var current = $('textarea').val();
+            if (cache === current) {
+                return;
+            }
+            var start = 0;
+            for (i in current) {
+                if (current[i] !== cache[i]) {
+                    start = i;
+                    break;
+                }
+            }
+            var diff = current.slice(start);
+            console.log('In cache: %s; Start: %s; Diff: %s;', cache, start, diff);
+            socket.emit('edit', {start: start, diff: diff});
+            cache = current;
+        }, 1000);
+        // Here we have listener, and here we'll receive parameters for update textarea.
+        // With received parameters we will replace part of textarea that was changed.
+        socket.on('update', function (data) {
+            console.log('UPDATE. Start: %s; Diff: %s;', cache, data.start, data.diff);
+            var origin = $('textarea').val();
+            $('textarea').val(
+                [origin.slice(0, data.start), data.diff].join('')
+            );
+            cache = $('textarea').val();
+        });
+    </script>
+</body>
+</html>
+<!--
+I'm clearly understand
+that this example not the best solution for such tasks,
+and it has a lot of problems,
+but i would like to show that i think
+to receive desired behaviour we should send commands
+with description what and how to do to sync all clients textareas...
+Hope it doesn't disappoint you...
+ -->
