@@ -26,6 +26,7 @@ SOAP
 SPL
 TCP
 UDP
+XML
 ````
 
 <dl>
@@ -52,10 +53,10 @@ UDP
 <dd>Database Abstraction Layer.</dd>
 
 <dt>DDD</dt>
-<dd>Domain-driven design</dd>
+<dd>Domain-driven design.</dd>
 
 <dt>HTTP</dt>
-<dd>Hypertext Transfer Protocol</dd>
+<dd>Hypertext Transfer Protocol.</dd>
 
 <dt>IoC</dt>
 <dd>
@@ -130,6 +131,10 @@ for converting data between incompatible type systems in object-oriented program
 <dd>User Datagram Protocol.</dd>
 
 <dt>TCP</dt>
-<dd>Transmission Control Protocol</dd>
+<dd>Transmission Control Protocol.</dd>
+
+
+<dt>XML</dt>
+<dd>Extensible Markup Language.</dd>
 
 </dl>
