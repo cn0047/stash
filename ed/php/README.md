@@ -207,6 +207,11 @@ property_exists($class, $property);
 tempnam($dir, $prefix);
 ````
 
+####Memcache
+````
+When memcache overflows, it will expire oldest keys and flush them.
+````
+
 ####Data Types
 * Scalar types:
     * Boolean.
