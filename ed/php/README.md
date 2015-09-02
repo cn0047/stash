@@ -37,6 +37,10 @@ preg_match('/^\d{4}(-\d{2}){2}$/', $args['date']); // 2015-06-10
 <?php else: ?>
     Otherwise this will show.
 <?php endif; ?>
+
+<?php foreach([1, 2, 3] as $number): ?>
+    <?=$number?>
+<?php endforeach; ?>
 ````
 
 ####Exceptions
