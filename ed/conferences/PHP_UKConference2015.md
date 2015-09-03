@@ -3,11 +3,8 @@ PHP UK Conference 2015
 
 ````
 Davey Shafik - Open Source, Love, and Social Responsibility
-Aaron Jorbin - Modernizing The WordPress Toolbox
-Anne-Julia Scheuermann - Naming Things
 Ben Waine - My Debugging And Performance Toolbox
 Gabriela D’Ávila - Database Wizardry for Legacy Applications
-Chris Levy - The Power of Modern Version Control
 James Titcumb - Adding 1.21 Gigawatts to Applications with RabbitMQ
 ````
 
@@ -87,3 +84,11 @@ James Titcumb - Adding 1.21 Gigawatts to Applications with RabbitMQ
 * If you need plain, simple and powerful - go to NGINX.
 
 #### Christopher Hoult - Your API is a UI
+
+#### Aaron Jorbin - Modernizing The WordPress Toolbox
+
+#### Anne-Julia Scheuermann - Naming Things
+* Avoid abbreviation.
+* Acronyms in upper case.
+
+#### Chris Levy - The Power of Modern Version Control
