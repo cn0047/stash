@@ -4,7 +4,6 @@ PHP UK Conference 2015
 ````
 Davey Shafik - Open Source, Love, and Social Responsibility
 Ben Waine - My Debugging And Performance Toolbox
-Gabriela D’Ávila - Database Wizardry for Legacy Applications
 James Titcumb - Adding 1.21 Gigawatts to Applications with RabbitMQ
 ````
 
@@ -92,3 +91,5 @@ James Titcumb - Adding 1.21 Gigawatts to Applications with RabbitMQ
 * Acronyms in upper case.
 
 #### Chris Levy - The Power of Modern Version Control
+
+#### Gabriela D’Ávila - Database Wizardry for Legacy Applications

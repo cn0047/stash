@@ -25,6 +25,21 @@ export GIT_SSL_NO_VERIFY=1;
 git config http.sslVerify 0
 ````
 
+####bisect
+````
+git bisect start
+git bisect bad       -- tell that current situation is bad
+git bisect good v1.0 -- bad commit hash
+                     -- test, is script working
+git bisect bad       -- because all don't works
+                     -- test, is script working
+git bisect good      -- because all works fine
+                     -- test script working
+git bisect good
+                     -- ...
+git bisect reset
+````
+
 ####diff
 ````
 git diff --cached or diff --staged # after git add shows diff
