@@ -3,6 +3,7 @@ Acronyms
 
 ````
 ACID
+AMQP
 B2B
 CDN
 CRM
@@ -33,6 +34,10 @@ XML
 
 <dt>ACID</dt>
 <dd>Atomicity, Consistency, Isolation, Durability.</dd>
+
+
+<dt>AMQP</dt>
+<dd>Advanced Message Queuing Protocol.</dd>
 
 <dt>B2B</dt>
 <dd>Business to business.</dd>

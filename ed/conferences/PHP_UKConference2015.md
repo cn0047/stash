@@ -3,8 +3,6 @@ PHP UK Conference 2015
 
 ````
 Davey Shafik - Open Source, Love, and Social Responsibility
-Ben Waine - My Debugging And Performance Toolbox
-James Titcumb - Adding 1.21 Gigawatts to Applications with RabbitMQ
 ````
 
 #### Stephan Höchdorfer - The NoSQL Store everyone ignores: PostgreSQL
@@ -93,3 +91,8 @@ James Titcumb - Adding 1.21 Gigawatts to Applications with RabbitMQ
 #### Chris Levy - The Power of Modern Version Control
 
 #### Gabriela D’Ávila - Database Wizardry for Legacy Applications
+
+#### Ben Waine - My Debugging And Performance Toolbox
+* XHprof.
+
+#### James Titcumb - Adding 1.21 Gigawatts to Applications with RabbitMQ
