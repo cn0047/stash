@@ -1,10 +1,6 @@
 PHP UK Conference 2015
 -
 
-````
-Davey Shafik - Open Source, Love, and Social Responsibility
-````
-
 #### Stephan Höchdorfer - The NoSQL Store everyone ignores: PostgreSQL
 * PostgreSQL!
 
@@ -96,3 +92,5 @@ Davey Shafik - Open Source, Love, and Social Responsibility
 * XHprof.
 
 #### James Titcumb - Adding 1.21 Gigawatts to Applications with RabbitMQ
+
+#### Davey Shafik - Open Source, Love, and Social Responsibility
