@@ -44,6 +44,9 @@ scp -rp access@host:~/dir/ ~/dir/
 ssh-add ~/.ssh/id_rsa
 
 ~/.bash_history
+
+cat
+tail
 ````
 ````
 cd -       # go to previous dir
