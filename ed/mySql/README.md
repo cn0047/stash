@@ -208,6 +208,10 @@ user@ubuntu:~$ mysql --pager='less -S'
 
 mysql> pager less -SFX
 mysql> \s
+
+/etc/mysql/my.cnf
+SET global general_log_file='/tmp/myslq.log';
+SET global general_log = 0;
 ````
 
 ####Lock and unlock tables
