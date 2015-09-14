@@ -1,7 +1,8 @@
 <html>
   <script>
     window.onerror = function(m, u, l) {
-      console.log('Message: %s, Url: %s, LineNumber: %s', m, u, l);
+      var msg = 'Message: '+m+', Url: '+u+', LineNumber: '+l;
+      console.log(msg);
       return true;
     };
     window.addEventListener('error', function (e) {
@@ -13,7 +14,8 @@
         } else {
           u = e.target.src;
         }
-        console.log('Message: error at %s, Url: %s', n, u);
+        var msg = 'Message: error at '+n+', Url: '+u;
+        console.log(msg);
       }
     }, true);
     // Error.
