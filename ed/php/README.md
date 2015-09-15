@@ -15,7 +15,13 @@ http://git.php.net/
 |
 [functions](http://php.net/manual/en/funcref.php)
 
+````
 /etc/php5/apache2/php.ini
+
+vim /etc/php5/fpm/php.ini
+slowlog = /tmp/php.log
+request_slowlog_timeout = 1
+````
 
 `<![CDATA[]]>` - actual for XHTML.
 

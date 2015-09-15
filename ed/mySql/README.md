@@ -197,6 +197,28 @@ Horizontal scaling means that you scale by adding more machines into your pool o
 Vertical scaling means that you scale by adding more power (CPU, RAM) to your existing machine.
 ````
 
+####Slow query log
+````
+mkdir /var/log/mysql
+touch /var/log/mysql/logSlowQueries.log
+chown mysql.mysql -R /var/log/mysql
+
+mysql -e "
+SET GLOBAL slow_query_log_file = '/var/log/mysql/logSlowQueries.log';
+SET GLOBAL slow_query_log = 1;
+SET GLOBAL long_query_time = 1;
+SET GLOBAL log_queries_not_using_indexes = 0;
+"
+````
+
+Conf:
+````sql
+slow_query_log = 1
+slow_query_log_file = /var/log/mysql/logSlowQueries.log
+long_query_time = 1
+log_queries_not_using_indexes = 0
+````
+
 ####Tricks
 ````
 ~/.mysql_history
@@ -208,6 +230,10 @@ user@ubuntu:~$ mysql --pager='less -S'
 
 mysql> pager less -SFX
 mysql> \s
+
+/etc/mysql/my.cnf
+SET global general_log_file='/tmp/myslq.log';
+SET global general_log = 0;
 ````
 
 ####Lock and unlock tables
