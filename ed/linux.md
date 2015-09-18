@@ -34,6 +34,7 @@ du # Summarize disk usage of each FILE.
 uptime # CPU load average
 
 pkill /var/www/x.php # Kill runned script x.php.
+pkill -f php # Kill runned script with name like php.
 
 uname -r # Show the kernel version.
 
@@ -100,6 +101,8 @@ CRUN_EMAIL=mail@com.com
 CRUN_WORK_DIR=/var/www/vhosts/host/htdocs
 
 rm /tmp/crun_user_at_server_or_host_3a30db060f74d9390a2eb6f8a92eab8d # crun lock file. Should be removed when execution fails...
+
+grep cron /var/log/syslog
 ````
 
 ####curl
