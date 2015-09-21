@@ -1,6 +1,27 @@
 <html>
   <script>
+    var eSender = {
+      queue: [],
+      send: function (m) {
+        this.queue.push(m);
+      },
+      flush: function () {
+        setTimeout(eSender.flush, 25);
+        if (typeof(_io_track) !== 'function') {
+          return;
+        }
+        while (eSender.queue.length > 0) {
+          _io_track(eSender.queue.pop());
+        }
+      },
+    }
+    eSender.flush();
+    // Previous error handler.
+    var p = window.onerror;
     window.onerror = function(m, u, l) {
+      if (typeof(p) === 'function') {
+          p(m, u, l);
+      }
       var msg = 'Message: '+m+', Url: '+u+', LineNumber: '+l;
       console.log(msg);
       return true;
@@ -18,6 +39,14 @@
         console.log(msg);
       }
     }, true);
+    // Another vision.
+    if (window.addEventListener) {
+      window.addEventListener('error', trackJavaScriptError, false);
+    } else if (window.attachEvent) {
+      window.attachEvent('onerror', trackJavaScriptError);
+    } else {
+      window.onerror = trackJavaScriptError;
+    }
     // Error.
     cnsl.lg(200);
   </script>
