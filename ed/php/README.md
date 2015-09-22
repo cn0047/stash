@@ -176,7 +176,11 @@ $_SERVER['HTTP_ACCEPT_LANGUAGE'];
 
 $PHP_SELF;
 
+// Escape
+$html['username'] = htmlentities($clean['username'], ENT_QUOTES, 'UTF-8');
+htmlspecialchars();
 mysql_real_escape_string();
+addslashes();
 
 get_defined_constants(true);
 
