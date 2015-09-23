@@ -28,8 +28,15 @@ file      - -rw-rw-r-- (664)
 
 ####shell
 ````
-df # Show information about the file system.
-du # Summarize disk usage of each FILE.
+df    # Show information about the file system.
+df -h
+du    # Summarize disk usage of each FILE.
+
+service supervisor restart
+supervisorctl restart
+
+service memcached restart
+
 
 uptime # CPU load average
 
