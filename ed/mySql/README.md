@@ -79,6 +79,12 @@ WHERE table_schema = 'dbName' AND table_name = 'tableName'
 ;
 
 SELECT
+    TABLE_NAME, TABLE_ROWS, AVG_ROW_LENGTH, DATA_LENGTH, INDEX_LENGTH, DATA_FREE
+FROM information_schema.TABLES
+WHERE table_schema = 'test' AND table_name IN ('testBinUniqueKey20', 'testBinUniqueKey200')
+;
+
+SELECT
     CONCAT(table_schema, '.', table_name),
     CONCAT(ROUND(table_rows / 1000000, 2), 'M')                                    rows,
     CONCAT(ROUND(data_length / ( 1024 * 1024 * 1024 ), 2), 'G')                    data,

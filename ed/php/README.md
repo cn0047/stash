@@ -32,6 +32,13 @@ php -d short_open_tag=1 x.php
 ````php
 // Primitive validation
 preg_match('/^\d{4}(-\d{2}){2}$/', $args['date']); // 2015-06-10
+if (!filter_var($args['email'], FILTER_VALIDATE_EMAIL)) {
+    return $this->jsonResponse(['error' => 'Invalid email.']);
+}
+
+if (json_last_error() !== JSON_ERROR_NONE) {
+    throw new RuntimeException(__FILE__.__LINE__);
+}
 ````
 
 ####Escaping from HTML
