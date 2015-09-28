@@ -46,10 +46,6 @@ SELECT * FROM stockTable ORDER BY field(stockid, 33, 12, 53); -- ordered result:
 ####INDEX
 If Cardinality to low - index will not uses!
 
-####NULL
-Aggregate (summary) functions such as COUNT(), MIN(), and SUM() ignore NULL values.
-The exception to this is COUNT(*), which counts rows
-
 ####
 
 Max key length is 767 bytes.
@@ -60,6 +56,10 @@ There is also a separate 3072 byte limit per index.
 The 767 byte limit is per column.
 So you can include multiple columns (each 767 bytes or smaller) up to 3072 total bytes per index.
 Using **innodb_large_prefix** allows you to include columns up to 3072 bytes long in InnoDB indexes.
+
+####NULL
+Aggregate (summary) functions such as COUNT(), MIN(), and SUM() ignore NULL values.
+The exception to this is COUNT(*), which counts rows
 
 ####Optimizations
 ````sql
