@@ -188,6 +188,8 @@ $html['username'] = htmlentities($clean['username'], ENT_QUOTES, 'UTF-8');
 htmlspecialchars();
 mysql_real_escape_string();
 addslashes();
+escapeshellcmd();
+escapeshellarg();
 
 get_defined_constants(true);
 
