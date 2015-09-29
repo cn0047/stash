@@ -17,13 +17,17 @@ select * from uk;
 +----+---------+
 2 rows in set (0.00 sec)
 
-
-
 create table uk2 (
     id int Auto_increment,
     browser varchar(20) CHARACTER SET utf8 COLLATE utf8_bin,
     primary key (id),
     unique key (browser)
+);
+-- OR
+create table uk2 (
+    id int Auto_increment,
+    browser varchar(20) CHARACTER SET utf8 COLLATE utf8_bin not null unique,
+    primary key (id)
 );
 insert into uk2 values (null, 'firefox');
 insert into uk2 values (null, 'Chrome');
