@@ -34,6 +34,7 @@ du    # Summarize disk usage of each FILE.
 
 service supervisor restart
 supervisorctl restart
+supervisorctl status
 
 service memcached restart
 
