@@ -32,6 +32,7 @@ df    # Show information about the file system.
 df -h
 du    # Summarize disk usage of each FILE.
 
+/etc/init.d/supervisor restart
 service supervisor restart
 supervisorctl restart
 supervisorctl status

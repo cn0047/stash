@@ -2,8 +2,10 @@ nginx
 -
 
 ````
-nginx -t        # check config file
-nginx -s reload # reload only configs
+nginx -t                 # check config file
+nginx -s reload          # reload only configs
+/etc/init.d/nginx reload
+service nginx restart
 ````
 
 osx:
