@@ -29,4 +29,8 @@ server {
 location / {
     access_log /var/log/nginx/access.log;
 }
+# Redirect uri like gXh6UAA727XX
+if ($request_uri ~* "gXh6UAA727XX") {
+    return 301 https://another.site.com/sc.js?gXh6UAA727XX;
+}
 ````
