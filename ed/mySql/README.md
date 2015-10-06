@@ -229,11 +229,17 @@ SET GLOBAL log_queries_not_using_indexes = 0;
 ````
 
 Conf:
+/etc/mysql/my.cnf
 ````sql
 slow_query_log = 1
 slow_query_log_file = /var/log/mysql/logSlowQueries.log
 long_query_time = 1
 log_queries_not_using_indexes = 0
+innodb_log_file_size = 5M
+````
+````sql
+SET global general_log_file='/tmp/myslq.log';
+SET global general_log = 0;
 ````
 
 ####Tricks
@@ -247,10 +253,6 @@ user@ubuntu:~$ mysql --pager='less -S'
 
 mysql> pager less -SFX
 mysql> \s
-
-/etc/mysql/my.cnf
-SET global general_log_file='/tmp/myslq.log';
-SET global general_log = 0;
 ````
 
 ####Lock and unlock tables

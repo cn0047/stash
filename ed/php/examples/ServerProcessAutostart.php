@@ -218,6 +218,7 @@ class SupervisorAutostart
 
     final private function checkIsOk(Host $host)
     {
+        // $output = $this->exec($host->ip, ['service supervisor status | grep "(supervisord is running|Loaded: loaded.*\n.*Active: active \(running\))" -czP']);
         foreach ($this->commands as $cmd) {
             $output = ssh(
                 $host->ip,

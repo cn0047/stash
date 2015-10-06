@@ -13,6 +13,7 @@ service supervisor status
 service supervisor restart
 /etc/init.d/supervisor restart
 
+supervisorctl reload
 supervisorctl restart
 supervisorctl status
 supervisorctl stop all
