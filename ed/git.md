@@ -24,6 +24,15 @@ git blame -L 11,12 file
 export GIT_SSL_NO_VERIFY=1;
 git config http.sslVerify 0
 ````
+````
+git st -s
+ M cron/.htaccess
+?? ppc/Google/AdWords/AdWordsApiLibrary/src/Google/Api/Ads/AdWords/v201402/
+# Output second colunm. ' ' at `awk -F ' '` - separator
+git st -s | awk -F ' ' '{print $2}'
+cron/.htaccess
+ppc/Google/AdWords/AdWordsApiLibrary/src/Google/Api/Ads/AdWords/v201402/
+````
 
 ####bisect
 ````

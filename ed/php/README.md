@@ -17,8 +17,9 @@ http://git.php.net/
 
 ````
 /etc/php5/apache2/php.ini
+/etc/php5/cli/php.ini
+/etc/php5/fpm/php.ini
 
-vim /etc/php5/fpm/php.ini
 slowlog = /tmp/php.log
 request_slowlog_timeout = 1
 ````

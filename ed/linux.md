@@ -1,31 +1,6 @@
 Linux
 -
 
-screen
-which
-
-####chmod
-````
--rwxrwxrwx
-drwxr-xr-x
-directory user group other
-
-r (4) - read;
-w (2) - write;
-x (1) - execute;
-
-Example:
-u   g   o
-7   5   3
-rwx r-x -wx
-
-chmod u-rx,g+x,o+w fileName
-
-On server:
-directory - drwxrwxr-x (775)
-file      - -rw-rw-r-- (664)
-````
-
 ####shell
 ````
 df    # Show information about the file system.
@@ -56,6 +31,9 @@ ssh-add ~/.ssh/id_rsa
 
 cat
 tail
+
+screen
+which
 ````
 ````
 cd -       # go to previous dir
@@ -63,14 +41,27 @@ pushd path # remember path (save it at stack)
 popd       # got to pushed path (and delete it from stack)
 history
 ````
+
+####chmod
 ````
-git st -s
- M cron/.htaccess
-?? ppc/Google/AdWords/AdWordsApiLibrary/src/Google/Api/Ads/AdWords/v201402/
-# Output second colunm. ' ' at `awk -F ' '` - separator
-git st -s | awk -F ' ' '{print $2}'
-cron/.htaccess
-ppc/Google/AdWords/AdWordsApiLibrary/src/Google/Api/Ads/AdWords/v201402/
+-rwxrwxrwx
+drwxr-xr-x
+directory user group other
+
+r (4) - read;
+w (2) - write;
+x (1) - execute;
+
+Example:
+u   g   o
+7   5   3
+rwx r-x -wx
+
+chmod u-rx,g+x,o+w fileName
+
+On server:
+directory - drwxrwxr-x (775)
+file      - -rw-rw-r-- (664)
 ````
 
 ####mail
