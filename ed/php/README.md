@@ -227,6 +227,15 @@ property_exists($class, $property);
 tempnam($dir, $prefix);
 ````
 
+####Interface vs abstract class
+
+Interface: implements, multiple implements, can contains only declatations of public methods,
+contains constants that cannot be overrided in child class.
+
+Abstract class: extends, can contains properties, constants and methods,
+must contains abstract methods protected or public,
+cannot be instantiated.
+
 ####Memcache
 ````
 When memcache overflows, it will expire oldest keys and flush them.
@@ -287,6 +296,7 @@ http://php.net/manual/en/appendices.php
 * Native Closures.
 * Nowdoc syntax is now supported, similar to Heredoc syntax, but with single quotes.
 * Constants can now be declared outside a class using the const keyword.
+* Class can implement two interfaces that specified a method with the same name.
 
 ####PHP 5.2.x
 
