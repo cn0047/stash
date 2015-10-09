@@ -1,7 +1,3 @@
-LEAST
--
-
-````sql
 SELECT LEAST(9, 11);
 +--------------+
 | LEAST(9, 11) |
@@ -26,4 +22,3 @@ SELECT LEAST("9", "11") + LEAST("9", "11");
 +-------------------------------------+
 1 row in set (0.00 sec)
 -- But context is impact to result.
-````

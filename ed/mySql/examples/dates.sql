@@ -8,3 +8,10 @@ create table dates (
   primary key (id)
 );
 drop table dates;
+create table dates (
+  id int auto_increment,
+  T1 timestamp default CURRENT_TIMESTAMP,
+  t2 timestamp default CURRENT_TIMESTAMP,
+  primary key (id)
+);
+-- Table cannot contains 2 fields with default value CURRENT_TIMESTAMP

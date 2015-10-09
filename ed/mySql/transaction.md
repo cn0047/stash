@@ -1,6 +1,11 @@
 Transaction
 -
 
+````sql
+create table if not exists tree (id int, title varchar(50));
+insert into tree values (9, 'none');
+````
+
 | terminal 1                                         | terminal 2                                                  |
 |----------------------------------------------------|-------------------------------------------------------------|
 | select title from tree where id = 9; -- service 9  |                                                             |
@@ -14,5 +19,5 @@ Transaction
 |                                                    | -- Query OK                                                 |
 | select title from tree where id = 9; -- service 99 |                                                             |
 |                                                    | commit;                                                     |
-|                                                    | select title from tree where id = 9; -- service 99          |
-| select title from tree where id = 9; -- service 99 |                                                             |
+|                                                    | select title from tree where id = 9; -- service 999         |
+| select title from tree where id = 9; -- service 999|                                                             |

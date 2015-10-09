@@ -1,10 +1,6 @@
-NULLIF
--
+-- MySQL NULLIF() returns NULL when the first is equal to the second expression,
+-- other wise it returns the first expression.
 
-MySQL NULLIF() returns NULL when the first is equal to the second expression,
-other wise it returns the first expression.
-
-````sql
 SELECT NULLIF(2, 2);
 +--------------+
 | NULLIF(2, 2) |
@@ -42,4 +38,3 @@ SELECT NULLIF(LEAST("9", "11"), "9") + 0;
 +-----------------------------------+
 |                                 9 | - Why not "11"? Why not "9"? Why not NULL?
 +-----------------------------------+
-````

@@ -56,6 +56,7 @@ If you use latin1 then the largest column you can index is varchar(767),
 <br>Using **innodb_large_prefix** allows you to include columns up to 3072 bytes long in InnoDB indexes.
 
 Types:
+
 KEY or INDEX: refers to a normal non-unique index.
 Non-distinct values for the index are allowed
 

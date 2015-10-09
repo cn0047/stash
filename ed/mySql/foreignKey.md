@@ -81,6 +81,24 @@ CREATE TABLE child (
     INDEX par_ind (parent_id),
     FOREIGN KEY (parent_id) REFERENCES parent(id) ON DELETE CASCADE
 ) ENGINE=INNODB;
+
+SELECT
+    i.TABLE_SCHEMA,
+    i.TABLE_NAME,
+    i.CONSTRAINT_TYPE,
+    i.CONSTRAINT_NAME,
+    k.REFERENCED_TABLE_NAME,
+    k.REFERENCED_COLUMN_NAME
+FROM information_schema.TABLE_CONSTRAINTS i
+LEFT JOIN information_schema.KEY_COLUMN_USAGE k ON i.CONSTRAINT_NAME = k.CONSTRAINT_NAME
+WHERE i.CONSTRAINT_TYPE = 'FOREIGN KEY' AND i.TABLE_SCHEMA = 'test'
+;
++--------------+------------+-----------------+-----------------+-----------------------+------------------------+
+| TABLE_SCHEMA | TABLE_NAME | CONSTRAINT_TYPE | CONSTRAINT_NAME | REFERENCED_TABLE_NAME | REFERENCED_COLUMN_NAME |
++--------------+------------+-----------------+-----------------+-----------------------+------------------------+
+| test         | child      | FOREIGN KEY     | child_ibfk_1    | parent                | id                     |
++--------------+------------+-----------------+-----------------+-----------------------+------------------------+
+
 INSERT INTO parent VALUES (1), (2), (3);
 INSERT INTO child VALUES (1, 1), (2, 2), (3, 3);
 

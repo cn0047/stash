@@ -25,6 +25,7 @@ SFTP
 SMTP
 SOAP
 SPL
+SSL
 TCP
 UDP
 XML
@@ -132,12 +133,14 @@ for converting data between incompatible type systems in object-oriented program
 <dt>SPL</dt>
 <dd>Standard PHP Library.</dd>
 
-<dt>UDP</dt>
-<dd>User Datagram Protocol.</dd>
+<dt>SSL</dt>
+<dd>Secure Sockets Layer.</dd>
 
 <dt>TCP</dt>
 <dd>Transmission Control Protocol.</dd>
 
+<dt>UDP</dt>
+<dd>User Datagram Protocol.</dd>
 
 <dt>XML</dt>
 <dd>Extensible Markup Language.</dd>
