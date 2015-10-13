@@ -9,6 +9,12 @@ unzip elasticsearch-$VERSION.zip
 cd elasticsearch-$VERSION
 ````
 
+Installation
+````
+wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.7.deb
+sudo dpkg -i elasticsearch-0.90.7.deb
+````
+
 Installing Marvel
 ````
 ./bin/plugin -i elasticsearch/marvel/latest
@@ -20,6 +26,9 @@ http://localhost:9200/_plugin/marvel/sense/
 Running Elasticsearch
 ````
 ./bin/elasticsearch
+
+sudo /etc/init.d/elasticsearch status
+sudo /etc/init.d/elasticsearch restart
 
 curl 'http://localhost:9200/?pretty'
 ````
@@ -150,6 +159,16 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '
     }
 }
 '
+
+curl -XGET localhost:9200/megacorp/employee/_search -d '
+{
+    "query" : {
+        "wildcard" : {
+           "about" : "*limbing"
+        }
+    }
+}'
+# we'll receive: "I love to go rock climbing"
 ````
 
 #### Analytics
