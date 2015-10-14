@@ -42,6 +42,23 @@ popd       # got to pushed path (and delete it from stack)
 history
 ````
 
+####ps
+````
+ps ax                             # Display all processess
+ps aux                            # Detailed information about processess
+ps -f -u www-data                 # Display process by user "www-data"
+ps -C apache2 u                   # Show process by name
+ps -f -p 1400                     # Show process by id
+ps aux --sort=-pcpu,+pmem         # Sort process by cpu or memory usage ("-" or "+" symbol indicating descending or ascending sort)
+ps -f --forest -C apache2         # Display process hierarchy in a tree style
+ps -o pid,uname,comm -C apache2   # Display child processes of a parent process
+ps -p 3150 -L                     # Display threads of a process
+ps -e -o pid,uname,pcpu,pmem,comm # Change the columns to display
+ps -e -o pid,uname=USERNAME,pcpu=CPU_USAGE,pmem,comm
+ps -e -o pid,comm,etime           # Display elapsed time of processes
+watch -n 1 'ps -e -o pid,uname,cmd,pmem,pcpu --sort=-pmem,-pcpu | head -15' # Turn ps into an realtime process viewer
+````
+
 ####chmod
 ````
 -rwxrwxrwx
