@@ -1,13 +1,10 @@
-// родительский конструктор
-function Parent(name) {
+function Parent (name) {
     this.name = name || 'Adam';
 }
-// добавление дополнительной функциональности в прототип
 Parent.prototype.say = function () {
     return this.name;
 };
-// дочерний конструктор
-function Child(name) {
+function Child (name) {
     Parent.apply(this, arguments);
 }
 Child.prototype = new Parent();

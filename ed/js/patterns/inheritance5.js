@@ -3,7 +3,7 @@ function inherit(C, P) {
     F.prototype = P.prototype;
     C.prototype = new F();
 }
-// Сохранение суперкласса
+// Save superclass
 function inherit(C, P) {
     var F = function () {};
     F.prototype = P.prototype;
@@ -29,12 +29,9 @@ var inherit = (function () {
     }
 }());
 
-
-// предок, потомок, наследование
 function Parent() {}
 function Child() {}
 inherit(Child, Parent);
-// проверка
 var kid = new Child();
 kid.constructor.name;       // “Parent”
 kid.constructor === Parent; // true

@@ -8,27 +8,27 @@ var module = {
 
 // Private property
 function Gadget() {
-    // частный член
+    // private
     var name = ‘iPod’;
-    // общедоступная функция
+    // public
     this.getName = function () {
         return name;
     };
 };
 
-// статический метод
+// static
 Gadget.isShiny = function () {
-    return “you bet”;
+    return "you bet";
 };
 
-// обычный метод, добавляемый в прототип
+// simple method
 Gadget.prototype.setPrice = function (price) {
     this.price = price;
 };
 
 // Private methods to public scope
 (function () {
-    var astr = “[object Array]”,
+    var astr = "[object Array]",
         toString = Object.prototype.toString;
     function isArray(a) {
         return toString.call(a) === astr;
@@ -65,7 +65,5 @@ MYAPP.utilities.array = (function () {
 
 // Module dependencies
 MYAPP.utilities.module = (function (app, global) {
-    // ссылки на объект global
-    // и на глобальное пространство имен app
-    // теперь будут локальными переменными
+    //
 }(MYAPP, this));

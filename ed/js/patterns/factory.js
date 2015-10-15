@@ -1,34 +1,24 @@
-// родительский конструктор
+// Parent constructor
 function CarMaker() {}
-// метод предка
+// Ancestor method
 CarMaker.prototype.drive = function () {
-    return “Vroom, I have “ + this.doors + “ doors”;
+    return "Vroom, I have " + this.doors + " doors";
 };
-// статический фабричный метод
+// Static fabric method
 CarMaker.factory = function (type) {
-    var constr = type,
-        newcar;
-    // сообщить об ошибке, если конструктор
-    // для запрошенного типа отсутствует
-    if (typeof CarMaker[constr] !== “function”) {
+    var constr = type, newcar;
+    if (typeof CarMaker[constr] !== "function") {
         throw {
-            name: “Error”,
-            message: constr + “ doesn’t exist”
+            name: "Error",
+            message: constr + " doesn't exist"
         };
     }
-    // в этой точке известно, что требуемый конструктор существует
-    // поэтому определим отношения наследования с предком,
-    // но только один раз
-    if (typeof CarMaker[constr].prototype.drive !== “function”) {
+    if (typeof CarMaker[constr].prototype.drive !== "function") {
         CarMaker[constr].prototype = new CarMaker();
     }
-    // создать новый экземпляр
     newcar = new CarMaker[constr]();
-    // дополнительно можно вызвать какие-либо методы
-    // и затем вернуть объект...
     return newcar;
 };
-// специализированные конструкторы
 CarMaker.Compact = function () {
     this.doors = 4;
 };
@@ -39,9 +29,9 @@ CarMaker.SUV = function () {
     this.doors = 24;
 };
 
-var corolla = CarMaker.factory(‘Compact’);
-var solstice = CarMaker.factory(‘Convertible’);
-var cherokee = CarMaker.factory(‘SUV’);
-corolla.drive(); // “Vroom, I have 4 doors”
-solstice.drive(); // “Vroom, I have 2 doors”
-cherokee.drive(); // “Vroom, I have 24 doors”
+var corolla = CarMaker.factory('Compact');
+var solstice = CarMaker.factory('Convertible');
+var cherokee = CarMaker.factory('SUV');
+corolla.drive(); // "Vroom, I have 4 doors"
+solstice.drive(); // "Vroom, I have 2 doors"
+cherokee.drive(); // "Vroom, I have 24 doors"

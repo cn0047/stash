@@ -27,6 +27,7 @@ SOAP
 SPL
 SSL
 TCP
+TLS
 UDP
 XML
 ````
@@ -138,6 +139,9 @@ for converting data between incompatible type systems in object-oriented program
 
 <dt>TCP</dt>
 <dd>Transmission Control Protocol.</dd>
+
+<dt>TLS</dt>
+<dd>Transport Layer Security.</dd>
 
 <dt>UDP</dt>
 <dd>User Datagram Protocol.</dd>

@@ -1,5 +1,5 @@
-function Sale(price) {
-    this.price = (price > 0) || 100;
+function Sale (price) {
+    this.price = price || 100;
     this.decorators_list = [];
 }
 Sale.decorators = {};
@@ -15,7 +15,7 @@ Sale.decorators.quebec = {
 };
 Sale.decorators.money = {
     getPrice: function (price) {
-        return “$” + price.toFixed(2);
+        return "$" + price.toFixed(2);
     }
 };
 Sale.prototype.decorate = function (decorator) {
@@ -33,8 +33,8 @@ Sale.prototype.getPrice = function () {
     return price;
 };
 
-var sale = new Sale(100);           // цена 100 долларов
-sale = sale.decorate(‘fedtax’);     // добавить федеральный налог
-sale = sale.decorate(‘quebec’);     // добавить местный налог
-sale = sale.decorate(‘money’);      // форматировать как денежную сумму
-sale.getPrice();                    // “$112.88”
+var sale = new Sale(100);           // price 100 $
+sale = sale.decorate('fedtax');     // add federal tax
+sale = sale.decorate('quebec');     // add local tax
+sale = sale.decorate('money');      // format money amount
+sale.getPrice();                    // "$112.88"

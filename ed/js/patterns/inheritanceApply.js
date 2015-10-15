@@ -1,31 +1,25 @@
 var one = {
-    name: “object”,
+    name: "object",
     say: function (greet) {
-        return greet + “, “ + this.name;
+        return greet + ", " + this.name;
     }
 };
-// проверка
-one.say(‘hi’); // “hi, object”
-
+one.say('hi'); // "hi, object"
 var two = {
-    name: “another object”
+    name: "another object"
 };
-one.say.apply(two, [‘hello’]); // “hello, another object”
+one.say.apply(two, ['hello']); // "hello, another object"
 
-
-
-// в случае присваивания функции переменной
-// ссылка `this` будет указывать на глобальный объект
 var say = one.say;
-say(‘hoho’); // “hoho, undefined”
-// передача в виде функции обратного вызова
+say('hoho'); // "hoho, undefined"
+// pass callback
 var yetanother = {
-    name: “Yet another object”,
+    name: "Yet another object",
     method: function (callback) {
-        return callback(‘Hola’);
+        return callback('Hola');
     }
 };
-yetanother.method(one.say); // “Hola, undefined”
+yetanother.method(one.say); // "Hola, undefined"
 
 function bind(o, m) {
     return function () {
@@ -34,4 +28,4 @@ function bind(o, m) {
 }
 
 var twosay = bind(two, one.say);
-twosay(‘yo’); // “yo, another object”
+twosay('yo'); // "yo, another object"

@@ -12,18 +12,5 @@ var obj = {
         alert(this.value);
     }
 };
-// цепочка из вызовов методов
+// Crain of methods calls.
 obj.increment().add(3).shout(); // 5
-
-
-
-var Person = function (name) {
-    this.name = name;
-}.
-method(‘getName’, function () {
-    return this.name;
-}).
-method(‘setName’, function (name) {
-    this.name = name;
-    return this;
-});

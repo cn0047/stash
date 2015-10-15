@@ -7,31 +7,30 @@ Player.prototype.play = function () {
     mediator.played();
 };
 var scoreboard = {
-    // элемент HTML, который должен обновляться
-    element: document.getElementById(‘results’),
-    // обновляет счет на экране
+    // refreshable html
+    element: document.getElementById('results'),
+    // refresh screen
     update: function (score) {
-        var i, msg = ‘’;
+        var i, msg = '';
         for (i in score) {
             if (score.hasOwnProperty(i)) {
-                msg += ‘<p><strong>’ + i + ‘<\/strong>: ‘;
+                msg += '<p><strong>' + i + '<\/strong>: ';
                 msg += score[i];
-                msg += ‘<\/p>’;
+                msg += '<\/p>';
             }
         }
         this.element.innerHTML = msg;
     }
 };
 var mediator = {
-    // все игроки
     players: {},
-    // инициализация
+    // init
     setup: function () {
         var players = this.players;
-        players.home = new Player(‘Home’);
-        players.guest = new Player(‘Guest’);
+        players.home = new Player('Home');
+        players.guest = new Player('Guest');
     },
-    // обновляет счет, если кто-то из игроков сделал ход
+    // refresh score
     played: function () {
         var players = this.players,
         score = {
@@ -40,7 +39,7 @@ var mediator = {
         };
         scoreboard.update(score);
     },
-    // обработчик действий пользователя
+    // handler
     keypress: function (e) {
         e = e || window.event; // IE
         if (e.which === 49) { // key “1”
@@ -54,11 +53,11 @@ var mediator = {
     }
 };
 
-// Старт!
+// Start
 mediator.setup();
 window.onkeypress = mediator.keypress;
-// Игра завершится через 30 секунд
+// After 30 second will be game over
 setTimeout(function () {
     window.onkeypress = null;
-    alert(‘Game over!’);
+    alert('Game over!');
 }, 30000);

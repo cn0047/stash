@@ -2,11 +2,10 @@
 var publisher = {
     subscribers: {
         any: []
-        // тип события: подписчик
     },
     subscribe: function (fn, type) {
         type = type || ‘any’;
-        if (typeof this.subscribers[type] === “undefined”) {
+        if (typeof this.subscribers[type] === "undefined") {
             this.subscribers[type] = [];
         }
         this.subscribers[type].push(fn);
@@ -36,7 +35,7 @@ var publisher = {
 function makePublisher(o) {
     var i;
     for (i in publisher) {
-        if (publisher.hasOwnProperty(i) && typeof publisher[i]===”function”)
+        if (publisher.hasOwnProperty(i) && typeof publisher[i]==="function")
         {
             o[i] = publisher[i];
         }
@@ -45,10 +44,10 @@ function makePublisher(o) {
 }
 var paper = {
     daily: function () {
-        this.publish(“big news today”);
+        this.publish("big news today");
     },
     monthly: function () {
-        this.publish(“interesting analysis”, “monthly”);
+        this.publish("interesting analysis", "monthly");
     }
 };
 makePublisher(paper);
@@ -80,5 +79,5 @@ paper.readTweets = function (tweet) {
     alert(‘Call big meeting! Someone ‘ + tweet);
 };
 joe.subscribe(paper.readTweets);
-joe.tweet(“hated the paper today”);
+joe.tweet("hated the paper today");
 // Call big meeting! Someone hated the paper today

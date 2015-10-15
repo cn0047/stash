@@ -9,7 +9,7 @@ var myevent = {
 var myevent = {
     // ...
     stop: function (e) {
-        // прочие броузеры
+        // another browsers
         if (typeof e.preventDefault === “function”) {
             e.preventDefault();
         }
