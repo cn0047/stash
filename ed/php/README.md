@@ -59,22 +59,22 @@ if (json_last_error() !== JSON_ERROR_NONE) {
 
 ####Exceptions
 ````php
-throw new ErrorException(404);
+throw new ErrorException('Unrecoverable Error', 456);
 
-throw new \BadFunctionCallException(404);
-throw new \BadMethodCallException(404);
+throw new \BadFunctionCallException();
+throw new \BadMethodCallException('Method Not Allowed', 405);
 
 throw new \InvalidArgumentException('Not acceptable.', 406);
-throw new \LengthException('Length Required', 411);
-throw new \OutOfBoundsException(404);
-throw new \OutOfRangeException(404);
-throw new \OverflowException(404);
-throw new \RangeException(404);
-throw new \UnexpectedValueException(404);
+throw new \LengthException('Request Entity Too Large', 413);
+throw new \OutOfBoundsException(400);
+throw new \OutOfRangeException(400);
+throw new \OverflowException(400);
+throw new \RangeException(400);
+throw new \UnexpectedValueException('Precondition Failed', 412);
 
-throw new \DomainException(404);
+throw new \DomainException('Failed Dependency', 424);
 throw new \LogicException(404);
-throw new \RuntimeException(404);
+throw new \RuntimeException('Expectation Failed', 417);
 throw new \UnderflowException(404);
 ````
 
