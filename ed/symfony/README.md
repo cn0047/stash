@@ -776,6 +776,9 @@ php app/console doctrine:generate:entities Acme
 php app/console list doctrine
 php app/console help doctrine:database:create
 php app/console doctrine:ensure-production-settings --env=prod
+
+// in controller
+$post=$this->get('doctrine')->getManager()->getRepository('AppBundle:Post')->find($id);
 ````
 
 #### Testing

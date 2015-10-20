@@ -42,6 +42,13 @@ if (json_last_error() !== JSON_ERROR_NONE) {
 }
 ````
 
+####Closures
+Anonymous functions - functions which have no specified name.
+<br>They are most useful as the value of callback parameters.
+<br>*PHP automatically converts such expressions into instances of the Closure internal class.*
+<br>Lambda function is an anonymous PHP function that can be stored in a variable and passed as an argument to other functions or methods.
+<br>A closure is a lambda function that is aware of its surrounding context.
+
 ####Escaping from HTML
 ````php
 <?= 'print this string' ?>
