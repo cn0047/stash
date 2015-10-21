@@ -29,7 +29,7 @@ of a message send of the same message to another constituent object.
 
 ````
 Adapter vs Bridge: adapter works with defined objects, bridge can accept objects on fly.
-Facade vs Proxy: facade cover defined objects, proxy provide access to several objects.
+Facade vs Proxy: facade cover defined objects, proxy provide access to objects and filtrate or restrict access to object.
 Prototype vs Interpreter: ?
 Bridge vs Mediator: ?
 Command vs Strategy: ?
