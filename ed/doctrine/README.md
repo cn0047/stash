@@ -8,6 +8,10 @@ doctrine
 ````
 svn co http://svn.doctrine-project.org/trunk doctrine
 cd doctrine
+
+"require": {
+    "doctrine/orm": "2.4.*"
+}
 ````
 
 #### Configuration
