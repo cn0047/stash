@@ -60,6 +60,15 @@ security:
             pattern: ^/user
             http_basic: ~
             provider: our_db_provider
+        db_user_with_form:
+            anonymous: ~
+            http_basic: ~
+            pattern: ^/login
+            form_login:
+                login_path: /login
+                check_path: /login_check
+                target_path_parameter: /logged
+            provider: our_db_provider
         default:
             anonymous: ~
             http_basic: ~

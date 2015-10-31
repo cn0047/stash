@@ -311,6 +311,14 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/userWithForm", name="userWithForm")
+     */
+    public function userWithFormAction()
+    {
+        return new Response('User page WithForm !!! :-)');
+    }
+
+    /**
      * @Route("/logout", name="logout")
      */
     public function logoutAction()
