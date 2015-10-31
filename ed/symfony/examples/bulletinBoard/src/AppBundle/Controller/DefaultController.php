@@ -296,7 +296,18 @@ class DefaultController extends Controller
      */
     public function adminAction()
     {
+        var_dump(
+            $this->get('security.context')->isGranted('ROLE_ADMIN')
+        );
         return new Response('Admin page!');
+    }
+
+    /**
+     * @Route("/user", name="user")
+     */
+    public function userAction()
+    {
+        return new Response('User page!!! :-)');
     }
 
     /**

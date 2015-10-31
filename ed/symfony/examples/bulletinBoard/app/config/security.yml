@@ -4,6 +4,8 @@ security:
     # http://symfony.com/doc/current/book/security.html#encoding-the-user-s-password
     encoders:
         Symfony\Component\Security\Core\User\User: plaintext
+        AppBundle\Entity\User:
+            algorithm: bcrypt
 
     # http://symfony.com/doc/current/book/security.html#hierarchical-roles
     role_hierarchy:
@@ -23,6 +25,10 @@ security:
                         roles: 'ROLE_ADMIN'
             #         user:  { password: userpass, roles: [ 'ROLE_USER' ] }
             #         admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+        our_db_provider:
+            entity:
+                class: AppBundle:User
+                property: username
 
     # the main part of the security, where you can set up firewalls
     # for specific sections of your app
@@ -50,6 +56,10 @@ security:
             #anonymous: ~
             #http_basic:
             #    realm: "Secured Demo Area"
+        db_user:
+            pattern: ^/user
+            http_basic: ~
+            provider: our_db_provider
         default:
             anonymous: ~
             http_basic: ~
