@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @Assert\GroupSequence({"User", "Strict"})
  */
-class User implements UserInterface
+class User // implements UserInterface
 {
     /**
     * @Assert\Email(groups={"registration"})
