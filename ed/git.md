@@ -23,6 +23,9 @@ git blame -L 11,12 file
 
 export GIT_SSL_NO_VERIFY=1;
 git config http.sslVerify 0
+
+# avoid git push prompt
+git remote set-url origin git+ssh://git@github.com/cn007b/my.git
 ````
 ````
 git st -s
