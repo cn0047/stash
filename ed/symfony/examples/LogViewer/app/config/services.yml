@@ -1,9 +1,14 @@
-# Learn more about services, parameters and containers at
-# http://symfony.com/doc/current/book/service_container.html
 parameters:
-#    parameter_name: value
 
 services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    log_reader:
+        class: AppBundle\DependencyInjection\LogReader
+        arguments:
+            - @doctrine.orm.entity_manager
+            - @log_saver
+            - 'default'
+            - '/home/bond/web/kovpak/gh/ed/symfony/examples/LogViewer/app/logs/'
+    log_saver:
+        class: AppBundle\DependencyInjection\LogSaver
+        arguments:
+            - @doctrine.orm.entity_manager
