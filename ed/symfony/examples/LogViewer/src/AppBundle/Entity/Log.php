@@ -7,7 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity
+ * Db analog for line record from log file.
+ *
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\LogRepository")
  * @ORM\Table(name="log")
  * @GRID\Source(columns="id, owner, host, user, dateTime, firstRequestLine, status, size, userAgent")
  */
@@ -69,6 +71,10 @@ class Log
      */
     private $userAgent;
 
+    /**
+     * Convenient way to set all properties in easiest way.
+     * @param array $args Parameters that will setted as entity properties.
+     */
     public function init(array $args)
     {
         foreach ($args as $field => $value) {

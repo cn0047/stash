@@ -7,6 +7,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
+ * Pointers for log files.
+ *
  * @ORM\Entity
  * @ORM\Table(name="log_pointer")
  * @UniqueEntity(fields="file", message="File already taken.")

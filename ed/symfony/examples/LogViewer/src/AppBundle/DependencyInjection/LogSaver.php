@@ -4,6 +4,9 @@ namespace AppBundle\DependencyInjection;
 
 use AppBundle\Entity\Log;
 
+/**
+ * Class that provides methods to save logs at db.
+ */
 class LogSaver
 {
     private $em;
@@ -15,6 +18,13 @@ class LogSaver
         $this->em = $em;
     }
 
+    /**
+     * Save log at db.
+     *
+     * Add entity to batch,
+     * and save all entities when threshold will exceeded.
+     * @param array $args Parameters that will setted as entity properties.
+     */
     public function save(array $args)
     {
         $log = new Log();
@@ -26,6 +36,9 @@ class LogSaver
         }
     }
 
+    /**
+     * Save all entities from batch at db.
+     */
     public function flush()
     {
         $this->em->flush();
