@@ -317,6 +317,19 @@ Rules for Lock Release:
   the server implicitly releases all table locks held by the session.
 * If you use ALTER TABLE on a locked table, it may become unlocked.
 
+Example:
+
+| session 1 query                                      | session 1 result              | session 2 query               | session 2 result |
+|------------------------------------------------------|-------------------------------|-------------------------------|------------------|
+| select count(*) from product;                        | 5                             |                               |                  |
+|                                                      |                               | select count(*) from product; | 5                |
+| lock tables product write;                           |                               |                               |                  |
+|                                                      |                               | select count(*) from product; | 5                |
+| insert into product set category_id=1, name = 'boo'; |                               |                               |                  |
+|                                                      | select count(*) from product; | --hang                        |                  |
+| unlock tables;                                       |                               |                               |                  |
+|                                                      |                               |                               | 6                |
+
 ####Storage engines
 * InnoDB
     * Support for transactions (giving you support for the ACID property).
