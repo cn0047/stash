@@ -22,12 +22,9 @@ class foo
 
 $reflection = new ReflectionClass('foo');
 $methods = $reflection->getMethods();
-array_walk(
-    $methods,
-    function (&$v) {
-        $v = $v->getName();
-    }
-);
+array_walk($methods, function (&$v) {
+    $v = $v->getName();
+});
 var_export($methods);
 /*
 array (

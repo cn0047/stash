@@ -22,5 +22,5 @@ class b extends a
 $obj = new b;
 echo $obj->myvar;
 /*
-PHP Fatal error:  Cannot access private property b::$myvar
+PHP Fatal error:  Cannot access private property b::$myvar on line 7
 */
