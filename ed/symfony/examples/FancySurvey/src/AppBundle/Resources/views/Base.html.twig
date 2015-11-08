@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Fancy Survey{% endblock %}</title>
+    {% block stylesheets %}
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+  </head>
+  <body>
+    <div class="col-xs-12 col-md-8">
+      {% block body %}{% endblock %}
+    </div>
+    <div class="col-xs-6 col-md-4 countdown">
+      <span></span> seconds
+    </div>
+    {% block javascripts %}
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+      <script>
+        $(function () {
+          var countdown = 360;
+          var matches = (document.cookie).match(/countdown=([\d]+)/);
+          if (matches) {
+              countdown = matches[1];
+          } else {
+              var d = new Date();
+              d.setYear(d.getFullYear()+1);
+              var expires = "expires=" + d.toUTCString();
+              document.cookie = 'countdown=' + countdown + '; ' + expires;
+          }
+          var counter = setInterval(timer, 1000);
+          function timer() {
+              countdown = countdown - 1;
+              document.cookie = 'countdown=' + countdown + '; ' + expires;
+              if (countdown <= 0) {
+                  clearInterval(counter);
+                  alert('Your time is wasted!');
+                  return;
+              }
+              $('.countdown span').html(countdown);
+          }
+          function initAjaxForm() {
+            $('body').on('submit', '.ajaxForm', function (e) {
+              e.preventDefault();
+              $.ajax({
+                type: $(this).attr('method'),
+                url: $(this).attr('action'),
+                data: $(this).serialize()
+              })
+              .done(function (data) {
+                if (typeof data.message !== 'undefined') {
+                  $('.ajaxForm').html(data.message);
+                  if (typeof data.route !== 'undefined') {
+                    window.location.href = data.route;
+                  }
+                }
+              })
+              .fail(function (jqXHR, textStatus, errorThrown) {
+                if (typeof jqXHR.responseJSON !== 'undefined') {
+                  if (jqXHR.responseJSON.hasOwnProperty('form')) {
+                    $('.formBody').html(jqXHR.responseJSON.form);
+                  }
+                  $('.formError').html(jqXHR.responseJSON.message);
+                } else {
+                  $('.formErrors').html(errorThrown);
+                }
+              });
+            });
+          }
+          initAjaxForm();
+        });
+      </script>
+    {% endblock %}
+  </body>
+</html>

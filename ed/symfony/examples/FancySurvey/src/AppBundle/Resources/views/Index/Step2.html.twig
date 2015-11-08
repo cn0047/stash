@@ -1,0 +1,27 @@
+{% extends 'AppBundle::Base.html.twig' %}
+
+{% block body %}
+  <div class="step2 text-center formBody">
+    <h2>Tell us more about yourself</h2>
+    <div class="formErrors bg-danger"></div>
+    <form method="post" class="ajaxForm" action="{{path('makeStep2')}}" {{ form_enctype(form) }}>
+      {{ form_errors(form.iceCream) }}
+      {{ form_widget(form.iceCream, {'attr': {'class': 'form-control', 'placeholder': 'WHAT IS YOUR FAVOURITE ICE CREAM'}}) }}
+      <br>
+      {{ form_errors(form.superHero) }}
+      {{ form_widget(form.superHero, {'attr': {'class': 'form-control', 'placeholder': 'WHO IS YOUR FAVOURITE SUPERHERO'}}) }}
+      <br>
+      {{ form_errors(form.movieStar) }}
+      {{ form_widget(form.movieStar, {'attr': {'class': 'form-control', 'placeholder': 'WHO IS YOUR FAVOURITE MOVIE STAR'}}) }}
+      <br>
+      {{ form_errors(form.worldEnd) }}
+      {{ form_widget(form.worldEnd, {'attr': {'class': 'form-control', 'placeholder': 'WHEN DO YOU THINK THE WORLD WILL END'}}) }}
+      <br>
+      {{ form_errors(form.whoWinSuperBowl) }}
+      {{ form_widget(form.whoWinSuperBowl, {'attr': {'class': 'form-control', 'placeholder': 'WHO WILL WIN THE SUPERBOWL THIS YEAR'}}) }}
+      <br>
+      {{ form_widget(form.submit, {'attr': {'class': 'btn btn-primary', 'value': 'Submit'}}) }}
+      {{form_rest(form)}}
+    </form>
+  </div>
+{% endblock %}

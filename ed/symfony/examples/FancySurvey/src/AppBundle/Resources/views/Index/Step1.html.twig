@@ -1,0 +1,27 @@
+{% extends 'AppBundle::Base.html.twig' %}
+
+{% block body %}
+  <div class="step1 text-center formBody">
+    <h2>Sign up and complete the survey</h2>
+    <div class="formErrors bg-danger"></div>
+    <form method="post" class="ajaxForm" action="{{path('makeStep1')}}" {{ form_enctype(form) }}>
+      {{ form_errors(form.firstName) }}
+      {{ form_widget(form.firstName, {'attr': {'class': 'form-control', 'placeholder': 'FIRST NAME'}}) }}
+      <br>
+      {{ form_errors(form.lastName) }}
+      {{ form_widget(form.lastName, {'attr': {'class': 'form-control', 'placeholder': 'LAST NAME'}}) }}
+      <br>
+      {{ form_errors(form.email) }}
+      {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'EMAIL'}}) }}
+      <br>
+      {{ form_errors(form.birthDay) }}
+      {{ form_widget(form.birthDay, {'attr': {'class': 'form-control'}}) }}
+      <br>
+      {{ form_errors(form.shoeSize) }}
+      {{ form_widget(form.shoeSize, {'attr': {'class': 'form-control', 'placeholder': 'SHOE SIZE'}}) }}
+      <br>
+      {{ form_widget(form.submit, {'attr': {'class': 'btn btn-primary', 'value': 'Submit'}}) }}
+      {{form_rest(form)}}
+    </form>
+  </div>
+{% endblock %}
