@@ -35,8 +35,15 @@ XML
 <dl>
 
 <dt>ACID</dt>
-<dd>Atomicity, Consistency, Isolation, Durability.</dd>
-
+<dd>
+    Atomicity, Consistency, Isolation, Durability.
+    <ul>
+        <li><i>Atomicity</i> - all or nothing.</li>
+        <li><i>Consistency</i> ensures that any transaction will bring the database from one valid state to another (constraints, cascades, triggers).</li>
+        <li><i>Isolation</i> ensures that the concurrent execution of transactions will executed serially, i.e., one after the other.</li>
+        <li><i>Durability</i> ensures that once a transaction has been committed, it will remain so, even in the event of power loss, crashes, or errors...</li>
+    </ul>
+</dd>
 
 <dt>AMQP</dt>
 <dd>Advanced Message Queuing Protocol.</dd>
