@@ -15,7 +15,7 @@ class Step2 extends AbstractType
             ->add('superHero', 'text')
             ->add('movieStar', 'text')
             ->add('worldEnd', 'text')
-            ->add('whoWinSuperBowl', 'integer')
+            ->add('whoWinSuperBowl', 'text')
             ->add('submit', 'submit')
             ;
     }
