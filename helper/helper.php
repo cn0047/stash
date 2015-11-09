@@ -1,5 +1,11 @@
 <?php
 
+    $XHPROF_ROOT = "/home/bond/web/kovpak/gh/helper/xhprof";
+    include_once $XHPROF_ROOT . "/xhprof_lib/utils/xhprof_lib.php";
+    include_once $XHPROF_ROOT . "/xhprof_lib/utils/xhprof_runs.php";
+    // start profiling
+    xhprof_enable(XHPROF_FLAGS_CPU + XHPROF_FLAGS_MEMORY);
+
 $result = [];
 if (isset($_POST['action'])) {
     if (function_exists($_POST['action'])) {
@@ -85,3 +91,8 @@ function regExpMatch($args)
     preg_match('/'.$args['needles'].'/', $args['haystack'], $matches);
     return ['array' => $matches, 'text' => var_export($matches, true)];
 }
+
+    //end profiling 
+    $xhprof_data = xhprof_disable();
+    $xhprof_runs = new XHProfRuns_Default();
+    $run_id = $xhprof_runs->save_run($xhprof_data, 'helper');
