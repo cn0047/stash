@@ -2,16 +2,6 @@ http
 -
 1.1
 
-#### Http methods
-
-| name   | description |
-|--------|-------------|
-| HEAD   ||
-| GET    ||
-| POST   |create|
-| PUT    |update|
-| DELETE ||
-
 #### Http codes
 
 1xx Informational

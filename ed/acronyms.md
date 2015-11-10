@@ -11,6 +11,7 @@ CSRF
 DAO
 DBAL
 DDD
+GUI
 HTTP
 IoC
 LDAP
@@ -29,6 +30,7 @@ SSL
 TCP
 TLS
 UDP
+WSDL
 XML
 ````
 
@@ -68,6 +70,9 @@ XML
 
 <dt>DDD</dt>
 <dd>Domain-driven design.</dd>
+
+<dt>GUI</dt>
+<dd>Graphical user interface.</dd>
 
 <dt>HTTP</dt>
 <dd>Hypertext Transfer Protocol.</dd>
@@ -152,6 +157,9 @@ for converting data between incompatible type systems in object-oriented program
 
 <dt>UDP</dt>
 <dd>User Datagram Protocol.</dd>
+
+<dt>WSDL</dt>
+<dd>Web Service Definition Language.</dd>
 
 <dt>XML</dt>
 <dd>Extensible Markup Language.</dd>
