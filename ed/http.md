@@ -2,6 +2,13 @@ http
 -
 1.1
 
+#### Request
+
+````
+GET /api/collection
+Accept: application/x-collection+yaml
+````
+
 #### Http codes
 
 1xx Informational

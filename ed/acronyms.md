@@ -19,6 +19,7 @@ MIME
 ORM
 PECL
 RBAC
+REST
 RFC
 ROI
 SaaS
@@ -124,6 +125,9 @@ for converting data between incompatible type systems in object-oriented program
 
 <dt>RBAC</dt>
 <dd>Role-based access control.</dd>
+
+<dt>REST</dt>
+<dd>Representational State Transfer.</dd>
 
 <dt>RFC</dt>
 <dd>Request for Comments.</dd>
