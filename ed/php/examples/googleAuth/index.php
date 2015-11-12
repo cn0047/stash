@@ -15,7 +15,8 @@ $googleClient->setApplicationName($applicationName);
 $googleClient->setClientId($clientId);
 $googleClient->setClientSecret($clientSecret);
 $googleClient->setRedirectUri($redirectUrl);
-$googleClient->setScopes('https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email');
+$googleClient->addScope('https://www.googleapis.com/auth/userinfo.profile');
+$googleClient->addScope('https://www.googleapis.com/auth/userinfo.email');
 
 if (isset($_GET['code'])) {
     $googleClient->authenticate($_GET['code']);
