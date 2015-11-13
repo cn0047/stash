@@ -257,12 +257,14 @@ window.onerror = function (msg, url, line) {}
     * Number.
     * Boolean.
     * Symbol (new in ECMAScript 6).
-* Object:
-    * Object.
-    * Array.
 * Special:
     * Null.
     * Undefined.
+* Object:
+    * Object.
+    * Array.
+    * Function.
+    * etc.
 
 ````js
 a = 1;               typeof a; // "number"
