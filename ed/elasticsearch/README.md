@@ -38,7 +38,7 @@ Shut down
 curl -XPOST 'http://localhost:9200/_shutdown'
 ````
 
-````
+````json
 curl -XGET 'http://localhost:9200/_count?pretty' -d '
 {
  "query": {
@@ -98,7 +98,7 @@ Elasticsearch ⇒ Indices   ⇒ Types  ⇒ Documents ⇒ Fields
 ````
 
 #### Search
-````
+````json
 curl -XGET localhost:9200/megacorp/employee/_search
 curl -XGET localhost:9200/megacorp/employee/_search?q=last_name:Smith
 curl -XGET localhost:9200/megacorp/employee/_search -d '
@@ -122,7 +122,7 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '
 ````
 
 #### Full-text search
-````
+````json
 curl -XGET localhost:9200/megacorp/employee/_search -d '
 {
     "query" : {
@@ -172,7 +172,7 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '
 ````
 
 #### Analytics
-````
+````json
 curl -XGET localhost:9200/megacorp/employee/_search -d '
 {
     "aggs": {
