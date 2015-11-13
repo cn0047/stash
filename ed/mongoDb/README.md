@@ -104,7 +104,8 @@ db.inventory.find( { type: 'food' } ).hint( { type: 1 } ).explain()
 db.inventory.find( { type: 'food' } ).hint( { type: 1, name: 1 } ).explain()
 
 // BSON-document size limit = 16MB
-// In MongoDB, operations are atomic at the document level. No single write operation can change more than one document.
+// In MongoDB, operations are atomic at the document level.
+// No single write operation can change more than one document.
 
 // INSERT
 // MongoDB always adds the _id field
@@ -173,7 +174,8 @@ db.users.drop()
 // To set errors ignored write concern, specify w values of -1 to your driver.
 // To set unacknowledged write concern, specify w values of 0 to your driver.
 // To set acknowledged write concern, specify w values of 1 to your driver. DEFAULT.
-// To set a journaled write concern, specify w values of 1 and set the journal or j option to true for your driver.
+// To set a journaled write concern,
+// specify w values of 1 and set the journal or j option to true for your driver.
 // To set replica acknowledged write concern, specify w values greater than 1 to your driver.
 
 db.runCommand( { getLastError: 1, j: "true" } )
@@ -182,7 +184,8 @@ db.runCommand( { getLastError: 1, j: "true" } )
 #### [Operators](http://docs.mongodb.org/manual/reference/operator/query/)
 ````js
 // OR
-// all the clauses in the $or expression must be supported by indexes. Otherwise, MongoDB will perform a collection scan.
+// all the clauses in the $or expression must be supported by indexes.
+// Otherwise, MongoDB will perform a collection scan.
 db.inventory.find({ $or: [{ qty: { $gt: 100 } }, { price: { $lt: 9.95 } } ] })
 // 'food' and either the qty has a value greater than ($gt) 100 or price is less than ($lt) 9.95
 db.inventory.find( { type: 'food', $or: [ { qty: { $gt: 100 } }, { price: { $lt: 9.95 } } ] } )
@@ -221,22 +224,27 @@ db.collection.find( {}, { score: { $meta: "textScore" } } )
 db.posts.find( {}, { comments: { $slice: 5 } } )
 db.posts.find( {}, { comments: { $slice: [ 20, 10 ] } } ) // [ skip , limit ]
 // $inc
-db.products.update( { sku: "abc123" }, { $inc: { quantity: 5 } } ); //  first matching document
-db.records.update( { age: 20 }, { $inc: { age: 1 } }, { multi: true } ); // update all matching documents
-db.products.update( { sku: "abc123" }, { $inc: { quantity: -2, sales: 2 } } ); // 1st matching document
+//  first matching document
+db.products.update( { sku: "abc123" }, { $inc: { quantity: 5 } } );
+// update all matching documents
+db.records.update( { age: 20 }, { $inc: { age: 1 } }, { multi: true } );
+// 1st matching document
+db.products.update( { sku: "abc123" }, { $inc: { quantity: -2, sales: 2 } } );
 // $mul
 db.products.update({ _id: 1 }, { $mul: { price: 1.25 } })
 // $rename
-db.students.update( { _id: 1 }, { $rename: { 'nickname': 'alias', 'cell': 'mobile' } } ) // renames the field nickname to alias, and the field cell to mobile
+// renames the field nickname to alias, and the field cell to mobile
+db.students.update( { _id: 1 }, { $rename: { 'nickname': 'alias', 'cell': 'mobile' } } )
 // $setOnInsert
-db.products.update({ _id: 1 }, { $setOnInsert: { defaultQty: 100 } }, { upsert: true }) // during replace when insert
+// during replace when insert
+db.products.update({ _id: 1 }, { $setOnInsert: { defaultQty: 100 } }, { upsert: true })
 // $set
 db.products.update({ sku: "abc123" }, { $set: { quantity: 500, instock: true, "details.make": "ZYX" } })
 // $unset
 db.products.update( { sku: "unknown" }, { $unset: {quantity: "", instock: ""} } )
 // $min
-db.scores.update( { _id: 1 }, { $min: { lowScore: 150 } } )
 // if stored document has lowScore lower than 150 -  nothing happens, otherwise lowScore will set to 150
+db.scores.update( { _id: 1 }, { $min: { lowScore: 150 } } )
 // $max
 db.scores.update( { _id: 1 }, { $max: { highScore: 950 } } )
 // $currentDate
@@ -289,7 +297,9 @@ db.foo.update({ status : "A" , $isolated : 1 }, { $inc : { count : 1 } }, { mult
 // $out
 db.books.aggregate([{ $group : { _id : "$author", books: { $push: "$title" } } }, { $out : "authors" }])
 // $and
-db.inventory.aggregate([{$project: {item: 1, qty: 1, result: {$and: [{$gt: ["$qty", 100 ]}, {$lt: ["$qty", 250]}]}}}])
+db.inventory.aggregate([{$project: {
+    item: 1, qty: 1, result: {$and: [{$gt: ["$qty", 100 ]}, {$lt: ["$qty", 250]}]}
+}}])
 ````
 
 #### Set Operators (Aggregation)

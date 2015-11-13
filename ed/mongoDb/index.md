@@ -14,11 +14,13 @@ db.inventory.find({ type: "food", item:/^c/ }, { item: 1, _id: 0 })
 db.inventory.find({ type: "food", item:/^c/ }, { item: 1 })
 // delete index
 db.items.dropIndex({name : 1})
-// Rebuild Indexes. This operation drops all indexes, including the _id index, and then rebuilds all indexes.
+// Rebuild Indexes. This operation drops all indexes, including the _id index,
+// and then rebuilds all indexes.
 db.accounts.reIndex()
 /*
 {
-  topics: ["whaling" , "allegory" , "revenge" , "American" , "novel" , "nautical" , "voyage" , "Cape Cod"]
+  topics: ["whaling" , "allegory" , "revenge" ,
+    "American" , "novel" , "nautical" , "voyage" , "Cape Cod"]
 }
 */
 db.volumes.ensureIndex({topics: 1});
@@ -30,7 +32,8 @@ db.collection.ensureIndex({"$**": "text"}, {name: "TextIndex"}
 // Specify a Language for Text Index
 db.quotes.ensureIndex({content: "text"}, {default_language "spanish"});
 db.quotes.ensureIndex({quote : "text"}, {language_override: "idioma"} );
-// The following example indexes any string value in the data of every field of every document in collection and names the index TextIndex:
+// The following example indexes any string value
+// in the data of every field of every document in collection and names the index TextIndex:
 db.collection.ensureIndex({"$**": "text"}, {name: "TextIndex"});
 /*
 { _id: 1, idioma: "portuguese", quote: "A sorte protege os audazes"}
@@ -116,7 +119,9 @@ A covered query is a query in which:
 ````js
 // Use Indexes to Sort Query Results
 /*
-For example, given an index { a: 1, b: 1, c: 1, d: 1 }, if the query condition includes equality match conditions on a and b, you can specify a sort on the subsets { c: 1 } or { c: 1, d: 1 }
+For example, given an index { a: 1, b: 1, c: 1, d: 1 },
+if the query condition includes equality match conditions on a and b,
+you can specify a sort on the subsets { c: 1 } or { c: 1, d: 1 }
 */
 // THE sort() OPERATION WILL ABORT WHEN IT USES 32 MEGABYTES OF MEMORY.
 // Collection has the following index: {a: 1, b: 1, c: 1, d: 1}
