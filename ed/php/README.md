@@ -26,10 +26,12 @@ request_slowlog_timeout = 1
 
 `<![CDATA[]]>` - actual for XHTML.
 
+````
 php -S localhost:8000 index.php
 
 php -d short_open_tag=1 x.php
 php -d extension=xhprof.so foo.php
+````
 
 ````php
 // Primitive validation

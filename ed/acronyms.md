@@ -17,6 +17,7 @@ IoC
 LDAP
 MIME
 ORM
+PEAR
 PECL
 RBAC
 REST
@@ -119,6 +120,9 @@ XML
 Object-relational mapping - is a programming technique
 for converting data between incompatible type systems in object-oriented programming languages.
 </dd>
+
+<dt>PEAR</dt>
+<dd>PHP Extension and Application Repository.</dd>
 
 <dt>PECL</dt>
 <dd>Php extension community library.</dd>
