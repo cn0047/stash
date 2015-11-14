@@ -61,10 +61,10 @@ git diff branch:file file
 
 ####log
 ````
-git log -2         # last 2 commits
-git log -p         # shows commits & code in commit
-git log --stat     # statiistic about changes
-git log --no-meges # log without merges
+git log -2                # last 2 commits
+git log -p                # shows commits & code in commit
+git log --stat            # statiistic about changes
+git log --no-meges        # log without merges
 git log --follow file.txt # Viewing GIT history of moved files.
 ````
 

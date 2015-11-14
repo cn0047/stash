@@ -16,6 +16,7 @@ A relation is in **1NF** if the domain of each attribute contains only atomic va
 * Eliminate repeating groups in individual tables.
 * Create a separate table for each set of related data.
 * Identify each set of related data with a primary key.
+
 (most basic: each cell in a table must contain only one piece of information,
 and there can be no duplicate rows).
 

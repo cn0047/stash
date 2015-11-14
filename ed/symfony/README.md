@@ -1085,7 +1085,9 @@ framework:
 php app/console debug:container
 php app/console debug:container --show-private
 php app/console debug:container my_mailer
-````##Environments
+````
+
+#### Environments
 ````php
 // How to Master and Create new Environments
 class AppKernel extends Kernel

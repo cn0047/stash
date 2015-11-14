@@ -61,6 +61,6 @@ Example:
 | lock tables product write;                           |                               |                               |                  |
 |                                                      |                               | select count(*) from product; | 5                |
 | insert into product set category_id=1, name = 'boo'; |                               |                               |                  |
-|                                                      | select count(*) from product; | --hang                        |                  |
+|                                                      |                               | select count(*) from product; | --hang           |
 | unlock tables;                                       |                               |                               |                  |
 |                                                      |                               |                               | 6                |
