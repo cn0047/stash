@@ -7,6 +7,60 @@
  * @category Structural
  */
 
+class Node
+{
+    private $elements = [];
+
+    public function add($el)
+    {
+        $this->elements[] = $el;
+    }
+
+    public function show()
+    {
+        foreach ($this->elements as $el) {
+            $el->show();
+        }
+    }
+}
+
+class Leaf
+{
+    private $name = '';
+
+    public function __construct($n)
+    {
+        $this->name = $n;
+    }
+
+    public function show()
+    {
+        var_dump($this->name);
+    }
+}
+
+$n = new Node();
+$n->add(new Leaf('first l'));
+$n->add(new Leaf('2nd l'));
+$n1 = new Node();
+$n->add(new Leaf('NLLL --- first l'));
+$n->add(new Leaf('NLLL --- 2nd l'));
+$n->add($n1);
+$n->add(new Leaf('3nd l'));
+$n->show();
+
+/*
+string(7) "first l"
+string(5) "2nd l"
+string(16) "NLLL --- first l"
+string(14) "NLLL --- 2nd l"
+string(5) "3nd l"
+*/
+
+/**
+ * Example 2.
+ */
+
 abstract class Component
 {
     protected $name;
