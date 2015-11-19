@@ -26,6 +26,7 @@ ROI
 SaaS
 SFTP
 SMTP
+SOA
 SOAP
 SPL
 SSL
@@ -147,6 +148,9 @@ for converting data between incompatible type systems in object-oriented program
 
 <dt>SMTP</dt>
 <dd>Simple Mail Transfer Protocol.</dd>
+
+<dt>SOA</dt>
+<dd>Service-oriented architecture (architectural pattern).</dd>
 
 <dt>SOAP</dt>
 <dd>Simple Object Access protocol.</dd>
