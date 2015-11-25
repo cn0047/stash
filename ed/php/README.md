@@ -111,6 +111,14 @@ echo "<pre>$output</pre>";
 
 ####xDebug
 ````
+# /etc/php5/fpm/php.ini
+[xdebug]
+zend_extension=/usr/lib/php5/20131226/xdebug.so
+xdebug.remote_port=9000
+xdebug.remote_enable=On
+xdebug.remote_connect_back=On
+xdebug.remote_log=/var/log/xdebug.log
+
 # Debug
 # ?XDEBUG_SESSION_START=sublime.xdebug
 # .htaccess

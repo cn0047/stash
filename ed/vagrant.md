@@ -8,8 +8,16 @@ Vagrant
 
 ````
 vagrant up
-vagrant suspend
+vagrant reload
+vagrant provision
+
 vagrant ssh
+
+vagrant suspend # stop machine
+vagrant halt # power down the guest machine
+vagrant destroy # power down, and remove all of the guest hard disks
+
+vagrant resume # after suspend
 
 vagrant box add hashicorp/precise32
 ````
@@ -18,4 +26,4 @@ vagrant box add hashicorp/precise32
 ````
 ````
 
-https://docs.vagrantup.com/v2/getting-started/up.html
+https://docs.vagrantup.com/v2/getting-started/providers.html
