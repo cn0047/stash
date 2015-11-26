@@ -766,6 +766,7 @@ php app/console doctrine:database:create
 php app/console doctrine:database:drop --force
 php app/console doctrine:generate:entity
 php app/console doctrine:generate:entities AppBundle/Entity/Product
+// update db schema from entities
 php app/console doctrine:schema:update --force
 
 // generates all entities in the AppBundle

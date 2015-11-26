@@ -76,7 +76,7 @@ CREATE TABLE parent (
     PRIMARY KEY (id)
 ) ENGINE=INNODB;
 CREATE TABLE child (
-    id INT,
+    id INT KEY,
     parent_id INT,
     INDEX par_ind (parent_id),
     FOREIGN KEY (parent_id) REFERENCES parent(id) ON DELETE CASCADE
