@@ -153,6 +153,10 @@ source ~/.bashrc
 
 ####debug
 ````php
+php -r 'var_export(json_decode(`curl http://country.io/iso3.json`, 1));'
+
+file_put_contents('/tmp/debug.tmp', var_export(this, 1)."\n", FILE_APPEND); /// tail -f /tmp/debug.tmp
+
 echo "\033[31m ".var_export($e->getMessage(), 1)." \033[0m\n";
 
 echo '<script>console.log('.json_encode($_REQUEST).')</script>';

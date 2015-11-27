@@ -16,10 +16,12 @@ HTTP
 IoC
 LDAP
 MIME
+MTA
 ORM
 PEAR
 PECL
 RBAC
+RCS
 REST
 RFC
 ROI
@@ -116,6 +118,9 @@ XML
 <dt>MIME</dt>
 <dd>Multipurpose Internet Mail Extensions.</dd>
 
+<dt>MTA</dt>
+<dd>Message Transfer Agent or Mail Transfer Agent.</dd>
+
 <dt>ORM</dt>
 <dd>
 Object-relational mapping - is a programming technique
@@ -130,6 +135,9 @@ for converting data between incompatible type systems in object-oriented program
 
 <dt>RBAC</dt>
 <dd>Role-based access control.</dd>
+
+<dt>RCS</dt>
+<dd>Revision control system.</dd>
 
 <dt>REST</dt>
 <dd>Representational State Transfer.</dd>
