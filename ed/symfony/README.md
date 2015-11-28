@@ -762,6 +762,11 @@ php app/console debug:translation en AcmeDemoBundle --only-missing
 
 #### Doctrine
 ````php
+// Generate Entities from an Existing Database
+php app/console doctrine:mapping:import --force AppBundle xml
+php app/console doctrine:mapping:convert annotation ./src
+php app/console doctrine:generate:entities AppBundle
+
 php app/console doctrine:database:create
 php app/console doctrine:database:drop --force
 php app/console doctrine:generate:entity

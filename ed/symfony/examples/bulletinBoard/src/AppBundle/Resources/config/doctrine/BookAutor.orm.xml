@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\BookAutor" table="book_autor">
+    <indexes>
+      <index name="author_id" columns="author_id"/>
+      <index name="IDX_3FC54BC316A2B381" columns="book_id"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="book_id" columns="book_id,author_id"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <many-to-one field="author" target-entity="Author">
+      <join-columns>
+        <join-column name="author_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="book" target-entity="Book">
+      <join-columns>
+        <join-column name="book_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>
