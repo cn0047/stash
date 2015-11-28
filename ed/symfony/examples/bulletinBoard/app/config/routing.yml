@@ -1,3 +1,13 @@
+app_model_api:
+    resource: "@AppBundle/Controller/ModelRESTController.php"
+    type:   rest
+    prefix:   /api
+
+app_vendor_api:
+    resource: "@AppBundle/Controller/VendorRESTController.php"
+    type:   rest
+    prefix:   /api
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
