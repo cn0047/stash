@@ -1,0 +1,44 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Author</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Fname</th>
+                <td>{{ entity.fName }}</td>
+            </tr>
+            <tr>
+                <th>Lname</th>
+                <td>{{ entity.lName }}</td>
+            </tr>
+            <tr>
+                <th>Dob</th>
+                <td>{{ entity.dob|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Country</th>
+                <td>{{ entity.country }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('author') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('author_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

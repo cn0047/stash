@@ -62,3 +62,32 @@ join author a on ba.author_id = a.id and a.name = 'Hemingway' and ba.book_id in 
   join author a on ba.author_id = a.id and a.name = 'Ernest'
 )
 ;
+
+-- V2 for Doctrine
+create table author (
+  id int not null auto_increment key,
+  f_name varchar(50) not null default '',
+  l_name varchar(50) not null default '',
+  dob timestamp not null default '0000-00-00 00:00:00',
+  country varchar(50) not null default '',
+  unique key (f_name, l_name)
+);
+create table book (
+  id int not null auto_increment key,
+  name varchar(50),
+  published_at timestamp not null default '0000-00-00 00:00:00',
+  -- Unknown database type enum requested, Doctrine\DBAL\Platforms\MySqlPlatform may not support it.
+  -- type enum('book', 'serie') not null default 'book',
+  type tinyint unsigned not null default 0,
+  price decimal not null default '0.00',
+  unique key (name)
+);
+create table book_autor (
+-- Table book_autor has no primary key. Doctrine does not support reverse engineering from tables that don't have a primary key.
+  id int not null auto_increment key,
+  book_id int,
+  author_id int,
+  unique key (book_id, author_id),
+  foreign key (book_id) references book(id) on delete restrict,
+  foreign key (author_id) references author(id) on delete restrict
+);

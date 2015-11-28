@@ -762,7 +762,7 @@ php app/console debug:translation en AcmeDemoBundle --only-missing
 
 #### Doctrine
 ````php
-// Generate Entities from an Existing Database
+// Generate Entities from an Existing Database !!!
 php app/console doctrine:mapping:import --force AppBundle xml
 php app/console doctrine:mapping:convert annotation ./src
 php app/console doctrine:generate:entities AppBundle
@@ -782,6 +782,9 @@ php app/console doctrine:generate:entities Acme
 php app/console list doctrine
 php app/console help doctrine:database:create
 php app/console doctrine:ensure-production-settings --env=prod
+
+// Generate CRUD !!!
+php app/console generate:doctrine:crud --entity=AppBundle:EntityName
 
 // in controller
 $post=$this->get('doctrine')->getManager()->getRepository('AppBundle:Post')->find($id);

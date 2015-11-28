@@ -1,0 +1,47 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Author list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Fname</th>
+                <th>Lname</th>
+                <th>Dob</th>
+                <th>Country</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('author_show', { 'id': entity.id }) }}">{{ entity.fName }}</a></td>
+                <td>{{ entity.lName }}</td>
+                <td>{% if entity.dob %}{{ entity.dob|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.country }}</td>
+                <td>{{ entity.id }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('author_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('author_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('author_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

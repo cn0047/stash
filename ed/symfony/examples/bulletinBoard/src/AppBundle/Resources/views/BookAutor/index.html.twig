@@ -1,0 +1,51 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>BookAutor list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Book</th>
+                <th>Author</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('bookautor_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>
+                    <a href="{{ path('book_show', { 'id': entity.book.id }) }}">
+                        {{ entity.book.name }}
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ path('author_show', { 'id': entity.author.id }) }}">
+                        {{ entity.author.lName }} {{ entity.author.fName }}
+                    </a>
+                </td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('bookautor_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('bookautor_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('bookautor_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}
