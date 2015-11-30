@@ -9,6 +9,7 @@ hg status . # only files in this directory
 
 hg diff   # all files in the repository
 hg diff . # only files in this directory
+hg diff -r branchName:default
 
 hg revert filename
 hg up -C

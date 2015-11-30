@@ -35,6 +35,7 @@ SSL
 TCP
 TLS
 UDP
+UTC
 WSDL
 XML
 ````
@@ -177,6 +178,9 @@ for converting data between incompatible type systems in object-oriented program
 
 <dt>UDP</dt>
 <dd>User Datagram Protocol.</dd>
+
+<dt>UTC</dt>
+<dd>Coordinated Universal Time</dd>
 
 <dt>WSDL</dt>
 <dd>Web Service Definition Language.</dd>

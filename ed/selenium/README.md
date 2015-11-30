@@ -18,4 +18,14 @@ Selenium IDE
     <td>ip_address=127.0.0.1</td>
     <td></td>
 </tr>
+<tr>
+    <td>store</td>
+    <td>javascript{'codenamek2010+'+new Date().getTime()+'@gmail.com'}</td>
+    <td>email</td>
+</tr>
+<tr>
+    <td>type</td>
+    <td>id=email</td>
+    <td>${email}</td>
+</tr>
 ````
