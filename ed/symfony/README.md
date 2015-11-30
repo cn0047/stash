@@ -478,6 +478,12 @@ app.debug
 
 {{ include('article/article_details.html.twig', { 'article': article }) }}
 
+{% if items is not empty %}
+{% for item in items  %}
+    {{ item.tariffNum }}
+{% endfor %}
+{% endif %}
+
 // Links.
 <a href="{{ path('_welcome') }}">Home</a>
 <a href="{{ path('article_show', {'slug': article.slug}) }}"> {{ article.title }} </a>
