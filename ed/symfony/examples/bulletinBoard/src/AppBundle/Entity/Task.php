@@ -8,6 +8,7 @@ class Task
 {
     /**
      * @Assert\NotBlank()
+     * @AppBundle\Validator\Constraints\ContainsAlphanumeric()
      */
     protected $task;
 

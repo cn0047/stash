@@ -11,6 +11,7 @@ use AppBundle\Entity\Category;
 use AppBundle\Entity\Product;
 use AppBundle\Entity\Task;
 use AppBundle\Form\Type\TaskType;
+use AppBundle\Form\Type\TaskAddType;
 use AppBundle\Form\Type\CategoryType;
 
 class DefaultController extends Controller
@@ -260,6 +261,20 @@ class DefaultController extends Controller
             var_dump($nextAction);
             // perform some action, such as saving the task to the database
             // return $this->redirectToRoute('task_success');
+        }
+        return $this->render('default/newTask.html.twig', array(
+            'form' => $form->createView(),
+        ));
+    }
+
+    /**
+     * @Route("/newTaskAdd", name="newTaskAdd")
+     */
+    public function newTaskAddAction(Request $request)
+    {
+        $form = $this->createForm(new TaskAddType(), new Task());
+        $form->handleRequest($request);
+        if ($form->isValid()) {
         }
         return $this->render('default/newTask.html.twig', array(
             'form' => $form->createView(),

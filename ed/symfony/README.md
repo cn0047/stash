@@ -153,6 +153,8 @@ use Symfony\Component\HttpFoundation\Request;
 $request = Request::createFromGlobals();
 // the URI being requested (e.g. /about) minus any query parameters
 $request->getPathInfo();
+//
+$Request->query->has('foo');
 // retrieve GET and POST variables respectively
 $request->query->get('foo');
 $request->request->get('bar', 'default value if bar does not exist');
@@ -489,8 +491,6 @@ app.debug
 <img src="{{ asset('images/logo.png', version='3.0') }}" alt="Symfony!" />
 <img src="{{ asset('images/logo.png', absolute=true) }}" alt="Symfony!" />
 
-app/console assets:install web/
-
 // Stylesheets and JavaScripts
 {% block stylesheets %}
     <link href="{{ asset('css/main.css') }}" rel="stylesheet" />
@@ -501,12 +501,16 @@ app/console assets:install web/
 <link href="{{ asset('bundles/acmedemo/css/contact.css') }}" rel="stylesheet" />
 
 <script src="{{ asset('js/script.js') }}"></script>
+{% set seriesSendTimeUtc = (series.send_time_utc is defined) ? series.send_time_utc :  null %}
+````
+````
+// Assets
+app/console assets:install web/
 
 // Dumping Asset Files
 php app/console assetic:dump --env=prod --no-debug
 php app/console assetic:dump
 php app/console assetic:watch
-
 ````
 
 Template Suffix:
