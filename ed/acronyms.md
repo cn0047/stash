@@ -31,6 +31,7 @@ SMTP
 SOA
 SOAP
 SPL
+SSH
 SSL
 TCP
 TLS
@@ -166,6 +167,9 @@ for converting data between incompatible type systems in object-oriented program
 
 <dt>SPL</dt>
 <dd>Standard PHP Library.</dd>
+
+<dt>SSH</dt>
+<dd>Secure Shell.</dd>
 
 <dt>SSL</dt>
 <dd>Secure Sockets Layer.</dd>
