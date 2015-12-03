@@ -2,7 +2,21 @@ Mercurial
 -
 
 ````
+hg version
+
+hg init
+
 hg clone url # clone
+
+hg log
+hg log -r 3
+hg log -r 0272e0d5a517
+hg log -r 1 -r 4
+hg log -r 2:4
+hg log -v -r 3 # --verbose
+hg log -v -p -r 2 # --patch
+
+hg parents
 
 hg status
 hg status . # only files in this directory
@@ -40,3 +54,5 @@ color =
 [ui]
 username = Vladimir Kovpak <cn007b@gmail.com>
 ````
+
+page 33
