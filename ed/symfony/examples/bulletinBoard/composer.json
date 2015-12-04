@@ -24,7 +24,9 @@
         "apy/datagrid-bundle": "^2.2",
         "ircmaxell/password-compat": "~1.0.3",
         "voryx/restgeneratorbundle": "dev-master",
-        "duncan3dc/fork-helper": "^1.1"
+        "duncan3dc/fork-helper": "^1.1",
+        "tedivm/fetch": "^0.7.1",
+        "kriswallsmith/spork": "^0.3.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

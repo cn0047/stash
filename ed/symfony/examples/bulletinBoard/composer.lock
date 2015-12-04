@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d9a5c8ecc3029a6dbc33d5f2cdd7f019",
+    "hash": "2d581899088f980626d5f28c03557cb5",
     "packages": [
         {
             "name": "apy/datagrid-bundle",
@@ -1404,6 +1404,48 @@
             "time": "2015-11-12 13:51:40"
         },
         {
+            "name": "kriswallsmith/spork",
+            "version": "v0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kriswallsmith/spork.git",
+                "reference": "530fcf57fce4d54806288547b22aa8dcbb4b6c96"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kriswallsmith/spork/zipball/530fcf57fce4d54806288547b22aa8dcbb4b6c96",
+                "reference": "530fcf57fce4d54806288547b22aa8dcbb4b6c96",
+                "shasum": ""
+            },
+            "require": {
+                "ext-pcntl": "*",
+                "ext-posix": "*",
+                "ext-shmop": "*",
+                "php": ">=5.3.0",
+                "symfony/event-dispatcher": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Spork": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kris Wallsmith",
+                    "email": "kris.wallsmith@gmail.com",
+                    "homepage": "http://kriswallsmith.net/"
+                }
+            ],
+            "description": "Asynchronous PHP",
+            "homepage": "https://github.com/kriswallsmith/spork",
+            "time": "2015-05-18 19:16:02"
+        },
+        {
             "name": "monolog/monolog",
             "version": "1.17.2",
             "source": {
@@ -2235,6 +2277,55 @@
                 "framework"
             ],
             "time": "2015-11-23 11:39:53"
+        },
+        {
+            "name": "tedivm/fetch",
+            "version": "v0.7.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tedious/Fetch.git",
+                "reference": "ea3f1bbde6bd6388488105240640642dc82c06a6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tedious/Fetch/zipball/ea3f1bbde6bd6388488105240640642dc82c06a6",
+                "reference": "ea3f1bbde6bd6388488105240640642dc82c06a6",
+                "shasum": ""
+            },
+            "require": {
+                "ext-imap": "*",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "fabpot/php-cs-fixer": "0.5.*",
+                "phpunit/phpunit": "4.2.*",
+                "satooshi/php-coveralls": "dev-master",
+                "tedivm/dovecottesting": "1.2.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Fetch": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Robert Hafner",
+                    "email": "tedivm@tedivm.com"
+                }
+            ],
+            "description": "A PHP IMAP Library",
+            "homepage": "http://github.com/tedious/Fetch",
+            "keywords": [
+                "email",
+                "imap",
+                "pop3"
+            ],
+            "time": "2015-08-02 03:38:12"
         },
         {
             "name": "twig/extensions",
