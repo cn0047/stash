@@ -23,7 +23,8 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "apy/datagrid-bundle": "^2.2",
         "ircmaxell/password-compat": "~1.0.3",
-        "voryx/restgeneratorbundle": "dev-master"
+        "voryx/restgeneratorbundle": "dev-master",
+        "duncan3dc/fork-helper": "^1.1"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
