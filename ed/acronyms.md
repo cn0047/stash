@@ -13,6 +13,7 @@ DBAL
 DDD
 GUI
 HTTP
+IMAP
 IoC
 LDAP
 MIME
@@ -83,6 +84,9 @@ XML
 
 <dt>HTTP</dt>
 <dd>Hypertext Transfer Protocol.</dd>
+
+<dt>IMAP</dt>
+<dd>Internet Message Access Protocol.</dd>
 
 <dt>IoC</dt>
 <dd>
