@@ -1,0 +1,3 @@
+ajaxform_test:
+    pattern: /a1/
+    defaults: { _controller: AppBundle:Lang:a1 }

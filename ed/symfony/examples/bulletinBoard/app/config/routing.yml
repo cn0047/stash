@@ -14,3 +14,7 @@ app:
 acme_website:
     resource: "@AcmeDemoBundle/Resources/config/routing.yml"
     prefix: /
+lang:
+    resource: "@AppBundle/Resources/config/routing.yml"
+    prefix: /{locale}/lang
+
