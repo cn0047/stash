@@ -14,6 +14,8 @@ class SecurityController extends Controller
      */
     public function loginAction(Request $request)
     {
+        var_dump($this->getRequest()->request->all());
+        var_dump($_SESSION);
         $authenticationUtils = $this->get('security.authentication_utils');
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();

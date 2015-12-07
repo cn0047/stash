@@ -10,6 +10,13 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * @example php app/console app:log --method=info pingLog
+ * @example php app/console app:log --method=notice pingLog
+ * @example php app/console app:log --method=debug pingLog
+ * @example php app/console app:log --method=warning pingLog
+ * @example php app/console app:log --method=error pingLog
+ * @example php app/console app:log --method=alert pingLog
+ * @example php app/console app:log --method=critical pingLog
+ * @example php app/console app:log --method=emergency pingLog
  * @see ./app/dev.my_cli.log
  */
 class LogCommand extends ContainerAwareCommand
