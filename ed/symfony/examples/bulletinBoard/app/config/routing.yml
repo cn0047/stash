@@ -16,5 +16,5 @@ acme_website:
     prefix: /
 lang:
     resource: "@AppBundle/Resources/config/routing.yml"
-    prefix: /{locale}/lang
+    prefix: /{_locale}/lang
 

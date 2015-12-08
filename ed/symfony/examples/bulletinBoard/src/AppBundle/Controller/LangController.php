@@ -11,13 +11,15 @@ class LangController extends Controller
 {
     public function a1Action()
     {
-        var_export(__METHOD__);
+        var_dump(__METHOD__);
+        var_dump($this->get('request')->getLocale());
+        var_dump($this->get('translator')->trans('app.label.hp'));
         return $this->render('default/index.html.twig');
     }
 
     public function a2Action()
     {
-        var_export(__METHOD__);
+        var_dump(__METHOD__);
         return $this->render('default/index.html.twig');
     }
 }
