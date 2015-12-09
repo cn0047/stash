@@ -13,8 +13,10 @@ hg log -r 3
 hg log -r 0272e0d5a517
 hg log -r 1 -r 4
 hg log -r 2:4
-hg log -v -r 3 # --verbose
+hg log -v -r 3    # --verbose
 hg log -v -p -r 2 # --patch
+hg log -b .       # log for current branch
+hg log -l 5       # limit 5
 
 hg parents
 
@@ -53,6 +55,9 @@ git = True
 color =
 [ui]
 username = Vladimir Kovpak <cn007b@gmail.com>
+[alias]
+lg = log --template '{date|isodate} | [{author}] {desc}\n'
+b = branch
 ````
 
 page 33
