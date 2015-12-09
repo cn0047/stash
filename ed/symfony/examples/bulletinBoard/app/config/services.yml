@@ -12,6 +12,15 @@ services:
     monolog.logger.my_cli_handler:
         class:     Monolog\Handler\StreamHandler
         arguments: [%kernel.logs_dir%/%kernel.environment%.my_cli.log, 200] # 200 - info
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    # app.exception_listener:
+    #     class: AppBundle\EventListener\ExceptionListener
+    #     tags:
+    #         - { name: kernel.event_listener, event: kernel.exception }
+    app.exception_subscriber:
+        class: AppBundle\EventSubscriber\ExceptionSubscriber
+        tags:
+            - { name: kernel.event_subscriber }
+    custom.event.home_page_event:
+        class: AppBundle\EventSubscriber\HomePageEventSubscriber
+        tags:
+            - { name: kernel.event_listener, event: custom.event.home_page_event, method: onCustomEvent }

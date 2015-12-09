@@ -2,17 +2,18 @@
 
 namespace AppBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Category;
 use AppBundle\Entity\Product;
 use AppBundle\Entity\Task;
-use AppBundle\Form\Type\TaskType;
-use AppBundle\Form\Type\TaskAddType;
+use AppBundle\Event\HomePageEvent;
 use AppBundle\Form\Type\CategoryType;
+use AppBundle\Form\Type\TaskAddType;
+use AppBundle\Form\Type\TaskType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -21,6 +22,10 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
+        $eventDispatcher = $this->get('event_dispatcher');
+        $event = new HomePageEvent();
+        $event->setCode(200);
+        $eventDispatcher->dispatch('custom.event.home_page_event', $event);
         return $this->render('default/index.html.twig');
     }
 
