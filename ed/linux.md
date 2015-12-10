@@ -15,6 +15,8 @@ uptime # CPU load average
 pkill /var/www/x.php # Kill runned script x.php.
 pkill -f php # Kill runned script with name like php.
 
+kill -9 `ps -aux|grep {{PROCESS_NAME}}|grep -v grep|awk '{print $2}'`
+
 uname -r # Show the kernel version.
 
 host github.com # Shows ip by host.
@@ -34,6 +36,11 @@ tail
 
 screen
 which
+
+DISPLAY=:7
+echo $DISPLAY
+
+cutycapt --url=cn007b.tumblr.com --out=out.png
 ````
 ````
 cd -       # go to previous dir

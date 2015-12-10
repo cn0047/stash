@@ -14,6 +14,8 @@ http://www.phpdeveloper.org/
 http://git.php.net/
 |
 [functions](http://php.net/manual/en/funcref.php)
+|
+[php-src](https://github.com/php/php-src)
 
 ````
 /etc/php5/apache2/php.ini
