@@ -1,0 +1,14 @@
+{
+  "name": "pedromcn/screecher",
+  "description": "Screecher: an application designed to scream at you when something goes terribly, terribly wrong",
+  "license": "proprietary",
+  "require": {
+    "silex/silex": "~1.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Screecher\\": "src/"
+    }
+  }
+}
+
