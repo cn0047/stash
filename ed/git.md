@@ -1,5 +1,6 @@
 GIT
 -
+git version 2.5.0
 
 ````
 git init
