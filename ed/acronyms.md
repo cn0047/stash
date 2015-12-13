@@ -12,6 +12,7 @@ DAO
 DBAL
 DDD
 GUI
+HTML
 HTTP
 IMAP
 IoC
@@ -81,6 +82,9 @@ XML
 
 <dt>GUI</dt>
 <dd>Graphical user interface.</dd>
+
+<dt>HTML</dt>
+<dd>HyperText Markup Language.</dd>
 
 <dt>HTTP</dt>
 <dd>Hypertext Transfer Protocol.</dd>
