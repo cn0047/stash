@@ -28,6 +28,7 @@ colordiff -u file1 file2
 scp -rp access@host:~/dir/ ~/dir/
 
 ssh-add ~/.ssh/id_rsa
+vim /etc/ssh/sshd_config
 
 ~/.bash_history
 
@@ -41,6 +42,8 @@ DISPLAY=:7
 echo $DISPLAY
 
 cutycapt --url=cn007b.tumblr.com --out=out.png
+wkhtmltoimage cn007b.tumblr.com i.jpg
+webkit-image-gtk http://cn007b.tumblr.com > i.png
 ````
 ````
 cd -       # go to previous dir
