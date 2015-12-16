@@ -158,6 +158,7 @@ $Request->query->has('foo');
 // retrieve GET and POST variables respectively
 $request->query->get('foo');
 $request->request->get('bar', 'default value if bar does not exist');
+$request->get('boo');
 // retrieve SERVER variables
 $request->server->get('HTTP_HOST');
 // retrieves an instance of UploadedFile identified by foo

@@ -11,6 +11,7 @@ CSRF
 DAO
 DBAL
 DDD
+GMT
 GUI
 HTML
 HTTP
@@ -79,6 +80,9 @@ XML
 
 <dt>DDD</dt>
 <dd>Domain-driven design.</dd>
+
+<dt>GMT</dt>
+<dd>Greenwich Mean Time.</dd>
 
 <dt>GUI</dt>
 <dd>Graphical user interface.</dd>

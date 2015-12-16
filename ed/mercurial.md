@@ -44,6 +44,13 @@ hg status
 hg status . # only files in this directory
 ````
 
+#### stash
+````
+hg diff > ../d.diff
+hg revert -aC
+hg import --no-commit ../d.diff
+````
+
 #### diff
 ````
 hg diff   # all files in the repository
