@@ -999,6 +999,11 @@ public function isPasswordLegal() { return $this->firstName !== $this->password;
 
 // group
 $errors = $validator->validate($author, null, array('registration'));
+
+$errors = $this->get('validator')->validate(
+    $request->get('id'),
+    new \Symfony\Component\Validator\Constraints\Type(['type' => 'digit'])
+);
 ````
 
 #### Security
