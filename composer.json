@@ -4,6 +4,7 @@
         "phpunit/phpunit-selenium": ">=1.2",
         "phpunit/dbunit": ">=1.2",
         "phpunit/phpunit-story": "*",
-        "phpunit/php-invoker": "*"
+        "phpunit/php-invoker": "*",
+        "tedivm/fetch": "^0.7.1"
    }
 }
