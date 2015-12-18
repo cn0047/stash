@@ -147,6 +147,51 @@ doctrine:
         password: "%database.password%"
 ````
 
+#### Service Container
+````php
+# app/config/config.yml
+services:
+    my_mailer:
+        class: Acme\HelloBundle\Mailer
+        arguments: [sendmail]
+        arguments: ["@=service('mailer_configuration').getMailerMethod()"]
+        arguments: ["@=container.hasParameter('some_param') ? parameter('some_param') : 'default_value'"]
+        calls:
+            - [setMailer, ["@my_mailer"]]
+
+public function sendEmailAction()
+{
+    $mailer = $this->get('my_mailer');
+    $mailer->send('ryan@foobar.net', ...);
+}
+
+# app/config/config.yml
+parameters:
+    my_mailer.transport: sendmail
+    mailer_password: "@@securepass"
+services:
+    my_mailer:
+        class: Acme\HelloBundle\Mailer
+        arguments: ["%my_mailer.transport%"]
+
+# app/config/config.yml
+imports:
+    - { resource: "@AcmeHelloBundle/Resources/config/services.yml" }
+    - { resource: "%kernel.root_dir%/parameters.yml" }
+
+# app/config/config.yml
+framework:
+    secret: xxxxxxxxxx
+    form: true
+    csrf_protection: true
+    router: { resource: "%kernel.root_dir%/config/routing.yml" }
+
+// Debugging Services
+php app/console debug:container
+php app/console debug:container --show-private
+php app/console debug:container my_mailer
+````
+
 #### Request
 ````php
 use Symfony\Component\HttpFoundation\Request;
@@ -1002,7 +1047,10 @@ $errors = $validator->validate($author, null, array('registration'));
 
 $errors = $this->get('validator')->validate(
     $request->get('id'),
-    new \Symfony\Component\Validator\Constraints\Type(['type' => 'digit'])
+    [
+        new \Symfony\Component\Validator\Constraints\NotNull(),
+        new \Symfony\Component\Validator\Constraints\Type(['type' => 'digit']),
+    ]
 );
 ````
 
@@ -1065,51 +1113,6 @@ security:
     role_hierarchy:
         ROLE_ADMIN: ROLE_USER
         ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
-````
-
-#### Service Container
-````php
-# app/config/config.yml
-services:
-    my_mailer:
-        class: Acme\HelloBundle\Mailer
-        arguments: [sendmail]
-        arguments: ["@=service('mailer_configuration').getMailerMethod()"]
-        arguments: ["@=container.hasParameter('some_param') ? parameter('some_param') : 'default_value'"]
-        calls:
-            - [setMailer, ["@my_mailer"]]
-
-public function sendEmailAction()
-{
-    $mailer = $this->get('my_mailer');
-    $mailer->send('ryan@foobar.net', ...);
-}
-
-# app/config/config.yml
-parameters:
-    my_mailer.transport: sendmail
-    mailer_password: "@@securepass"
-services:
-    my_mailer:
-        class: Acme\HelloBundle\Mailer
-        arguments: ["%my_mailer.transport%"]
-
-# app/config/config.yml
-imports:
-    - { resource: "@AcmeHelloBundle/Resources/config/services.yml" }
-    - { resource: "%kernel.root_dir%/parameters.yml" }
-
-# app/config/config.yml
-framework:
-    secret: xxxxxxxxxx
-    form: true
-    csrf_protection: true
-    router: { resource: "%kernel.root_dir%/config/routing.yml" }
-
-// Debugging Services
-php app/console debug:container
-php app/console debug:container --show-private
-php app/console debug:container my_mailer
 ````
 
 #### Environments
