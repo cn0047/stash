@@ -1,8 +1,8 @@
 <?php
 
 $box = "{imap.gmail.com:993/imap/ssl}INBOX";
-$user = "codenamek2010@gmail.com";
-$pass = "codenamek2010-007";
+$user = "mail@gmail.com";
+$pass = "pwd";
 // @see https://www.google.com/settings/security/lesssecureapps
 $mbox = imap_open($box, $user, $pass);
 if ($mbox === false) {

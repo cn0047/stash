@@ -1,7 +1,7 @@
 <?php
 
-$user = "codenamek2010@gmail.com";
-$pass = "codenamek2010-007";
+$user = "mail@gmail.com";
+$pass = "pwd";
 
 require __DIR__.'../../../../vendor/autoload.php';
 
