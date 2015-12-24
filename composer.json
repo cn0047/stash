@@ -6,6 +6,7 @@
         "phpunit/phpunit-story": "*",
         "phpunit/php-invoker": "*",
         "tedivm/fetch": "^0.7.1",
-        "symfony/http-foundation": "^3.0"
+        "symfony/http-foundation": "^3.0",
+        "friendsofsymfony/user-bundle": "^1.3"
    }
 }

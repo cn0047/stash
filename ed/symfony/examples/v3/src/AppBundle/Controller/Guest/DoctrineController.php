@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace AppBundle\Controller\Guest;
 
 use AppBundle\Form\MyCsrfType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;

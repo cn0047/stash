@@ -1,3 +1,10 @@
-app:
-    resource: "@AppBundle/Controller/"
+guest:
+    resource: "@AppBundle/Controller/Guest"
     type:     annotation
+
+account:
+    resource: "@AppBundle/Controller/Account"
+    type:     annotation
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

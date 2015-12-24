@@ -11,6 +11,7 @@ CSRF
 DAO
 DBAL
 DDD
+DDL
 GMT
 GUI
 HTML
@@ -80,6 +81,9 @@ XML
 
 <dt>DDD</dt>
 <dd>Domain-driven design.</dd>
+
+<dt>DDL</dt>
+<dd>Data description language.</dd>
 
 <dt>GMT</dt>
 <dd>Greenwich Mean Time.</dd>

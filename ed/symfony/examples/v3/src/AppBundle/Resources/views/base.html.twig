@@ -34,8 +34,12 @@
     <body>
         <header>
             <div class="body">
+                <a href="{{ path('homepage') }}"><code class="wrapper">HOME</code></a>
                 <a href="{{ path('my_csrf') }}">my csrf</a>
                 <a href="{{ path('plain_sql') }}">plain sql</a>
+                <a href="{{ path('validate_user_by_group') }}">validate user by group</a>
+                <a href="{{ path('embeded_form') }}">embeded form</a>
+                <a href="{{ path('account_homepage') }}">ACCOUNT</a>
             </div>
         </header>
         {% block body %}{% endblock %}
