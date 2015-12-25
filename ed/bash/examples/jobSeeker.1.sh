@@ -11,7 +11,7 @@ if [ -z "$idFrom" ]; then
     while [ true ]; do
         id=$(($START_FROM_ID_OFFSET+$i))
         i=$(($i+1))
-        curl -is -o /tmp/jobSeeker.tmp "http://jobs.dou.ua/companies/designcontestcom/vacancies/$id/"
+        curl -is -o /tmp/jobSeeker.tmp "http://jobs.site.com/vacancies/$id/"
         is404=$((`grep 'HTTP/1.1 404 NOT FOUND' -ric /tmp/jobSeeker.tmp`))
         printf "\ri = $i, id = $id, is 404 = $is404"
         if [ $is404 -eq 0 ];
@@ -28,7 +28,7 @@ else
     while [ true ]; do
         id=$(($idFrom+$i))
         i=$(($i+1))
-        url="http://jobs.dou.ua/companies/designcontestcom/vacancies/$id/"
+        url="http://jobs.site.com/vacancies/$id/"
         curl -is -o /tmp/jobSeeker.tmp "$url"
         is404=$((`grep 'HTTP/1.1 404 NOT FOUND' -ric /tmp/jobSeeker.tmp`))
         isPhp=$((`grep 'php|пхп' -Eric /tmp/jobSeeker.tmp`))
