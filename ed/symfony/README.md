@@ -1117,6 +1117,8 @@ security:
 
 #### Environments
 ````php
+export SYMFONY_ENV=prod
+
 // How to Master and Create new Environments
 class AppKernel extends Kernel
 {

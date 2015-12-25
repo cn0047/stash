@@ -27,9 +27,6 @@ colordiff -u file1 file2
 
 scp -rp access@host:~/dir/ ~/dir/
 
-ssh-add ~/.ssh/id_rsa
-vim /etc/ssh/sshd_config
-
 ~/.bash_history
 
 cat
@@ -50,6 +47,15 @@ cd -       # go to previous dir
 pushd path # remember path (save it at stack)
 popd       # got to pushed path (and delete it from stack)
 history
+````
+
+###ssh
+````
+ssh-add ~/.ssh/id_rsa
+vim /etc/ssh/sshd_config
+
+sshfs -o nonempty -p22 root@host:/home/host/www /home/user/web/www
+fusermount -u /home/user/web/www
 ````
 
 ####ps

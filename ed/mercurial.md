@@ -102,10 +102,15 @@ git = True
 [extensions]
 color =
 [ui]
-merge = internal:merge
 username = Vladimir Kovpak <cn007b@gmail.com>
+merge = internal:merge
+ignore = ~/.hgignore
 [alias]
-lg = log --template '{rev} {date|shortdate} | [{author}] {desc}\n'
+lg = log -l 50 --template '{rev} {date|shortdate} | [{author}] {desc} \n'
 b = branch
 cm  = commit -m
+r = revert -C
+d = diff --color=always
+df = diff
+apply = import --no-commit
 ````
