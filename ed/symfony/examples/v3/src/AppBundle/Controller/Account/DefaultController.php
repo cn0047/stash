@@ -18,7 +18,8 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        var_dump(__CLASS__);
-        return $this->render('AppBundle:default:index.html.twig');
+        return $this->render('AppBundle:default:index.html.twig', [
+            'message' => $this->get('translator')->trans("You're in account as logged user!"),
+        ]);
     }
 }

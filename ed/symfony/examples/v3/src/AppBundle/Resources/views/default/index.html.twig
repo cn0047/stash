@@ -1,5 +1,7 @@
 {% extends 'AppBundle::base.html.twig' %}
 
 {% block body %}
-
+    {% if message is defined %}
+        {{ message|raw }}
+    {% endif %}
 {% endblock %}
