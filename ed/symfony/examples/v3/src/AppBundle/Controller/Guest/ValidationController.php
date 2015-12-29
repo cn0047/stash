@@ -22,7 +22,8 @@ class ValidationController extends Controller
         $validator = $this->get('validator');
         $user = new UserForValidation();
         $errors = $validator->validate($user, null, array('g1'));
-        var_dump((string)$errors);
-        return $this->render('AppBundle:default:index.html.twig');
+        return $this->render('AppBundle:default:index.html.twig', [
+            'message' => (string)$errors,
+        ]);
     }
 }

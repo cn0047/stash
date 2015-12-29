@@ -1045,13 +1045,20 @@ public function isPasswordLegal() { return $this->firstName !== $this->password;
 // group
 $errors = $validator->validate($author, null, array('registration'));
 
-$errors = $this->get('validator')->validate(
+$violations = $this->get('validator')->validate(
     $request->get('id'),
     [
         new \Symfony\Component\Validator\Constraints\NotNull(),
         new \Symfony\Component\Validator\Constraints\Type(['type' => 'digit']),
     ]
 );
+if ($violations->count() > 0) {
+    $error = '';
+    foreach ($violations as $v) {
+        $error .= ' '.$v->getMessage();
+    }
+    throw new \UnexpectedValueException($m);
+}
 ````
 
 #### Security

@@ -43,7 +43,9 @@
                 <a href="{{ path('http_cache') }}">http cache</a>
             </div>
         </header>
-        {% block body %}{% endblock %}
+        <div class="content" id="container">
+            {% block body %}{% endblock %}
+        </div>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

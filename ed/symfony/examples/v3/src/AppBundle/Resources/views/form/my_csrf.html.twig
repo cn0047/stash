@@ -4,4 +4,7 @@
     {{ form_start(form) }}
     {{ form_widget(form) }}
     {{ form_end(form) }}
+    {% if message is defined %}
+        <p id="message">{{ message}}</p>
+    {% endif %}
 {% endblock %}

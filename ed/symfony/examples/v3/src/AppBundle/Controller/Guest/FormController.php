@@ -36,18 +36,26 @@ class FormController extends Controller
      */
     public function indexAction(Request $request)
     {
-        /** @var \Symfony\Component\Form\Form */
         $form = $this->createForm(MyCsrfType::class);
         $form->handleRequest($request);
+        $message = '';
         if ($form->isSubmitted()) {
-            print($this->get('translator')->trans('Form submited! Token valid: '));
             $args = $request->request->get('my_csrf');
             $csrfToken = new CsrfToken('my_csrf', $args['_token']);
-            var_dump($this->get('security.csrf.token_manager')->isTokenValid($csrfToken));
-            var_dump($this->isCsrfTokenValid('my_csrf', $args['_token']));
+            $isTokenValid1 = $this->get('security.csrf.token_manager')->isTokenValid($csrfToken);
+            $isTokenValid2 = $this->isCsrfTokenValid('my_csrf', $args['_token']);
+            $message = $this->get('translator')->trans(
+                'Form submitted with message: %msg%! Token valid: method 1 = %v1%, method 2 = %v2%',
+                [
+                    '%msg%' => $args['message'],
+                    '%v1%' => var_export($isTokenValid1, true),
+                    '%v2%' => var_export($isTokenValid2, true),
+                ]
+            );
         }
         $response = $this->render('AppBundle:form:my_csrf.html.twig', [
             'form' => $form->createView(),
+            'message' => $message,
         ]);
         return $response;
     }
