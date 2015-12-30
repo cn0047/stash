@@ -13,8 +13,8 @@ Symfony
 cd my_project_name/
 cd ed/symfony/examples/bulletinBoard/
 
-php app/console server:run
-php app/console server:stop
+php bin/console server:run
+php bin/console server:stop
 
 then http://localhost:8000
 ````
@@ -80,23 +80,23 @@ class AppKernel extends Kernel
 http://localhost:8000/config.php
 
 // Check whether your project's dependencies contain any know security vulnerability.
-php app/console security:check
+php bin/console security:check
 // Clear your cache.
-php app/console cache:clear --env=prod --no-debug
-php app/console cache:clear -e prod
+php bin/console cache:clear --env=prod --no-debug
+php bin/console cache:clear -e prod
 
-php app/console list --no-debug
+php bin/console list --no-debug
 
 // interactive mode
-php app/console --shell
-php app/console -s
+php bin/console --shell
+php bin/console -s
 
-php app/console --shell --process-isolation
-php app/console -s --process-isolation
+php bin/console --shell --process-isolation
+php bin/console -s --process-isolation
 
 //  Create the Bundle.
-php app/console generate:bundle --namespace=Acme/DemoBundle --format=yml
-php app/console generate:bundle --namespace=Acme/TestBundle
+php bin/console generate:bundle --namespace=Acme/DemoBundle --format=yml
+php bin/console generate:bundle --namespace=Acme/TestBundle
 
 ````
 
@@ -104,8 +104,8 @@ php app/console generate:bundle --namespace=Acme/TestBundle
 ````
 php app/check.php
 composer install --no-dev --optimize-autoloader
-php app/console cache:clear --env=prod --no-debug
-php app/console assetic:dump --env=prod --no-debug
+php bin/console cache:clear --env=prod --no-debug
+php bin/console assetic:dump --env=prod --no-debug
 ````
 
 #### Configuration
@@ -187,9 +187,9 @@ framework:
     router: { resource: "%kernel.root_dir%/config/routing.yml" }
 
 // Debugging Services
-php app/console debug:container
-php app/console debug:container --show-private
-php app/console debug:container my_mailer
+php bin/console debug:container
+php bin/console debug:container --show-private
+php bin/console debug:container my_mailer
 ````
 
 #### Request
@@ -251,9 +251,9 @@ _format     - format
 _locale     - locale
 
 // Visualizing & Debugging Routes.
-php app/console debug:router
-php app/console debug:router article_show
-php app/console router:match /blog/my-latest-post
+php bin/console debug:router
+php bin/console debug:router article_show
+php bin/console router:match /blog/my-latest-post
 ````
 
 #### Controller
@@ -502,8 +502,8 @@ Hello <?php echo $view->escape($name) ?>
 var myMsg = 'Hello <?php echo $view->escape($name, 'js') ?>';
 
 // Syntax Checking.
-php app/console twig:lint app/Resources/views/article/recent_list.html.twig
-php app/console twig:lint app/Resources/views
+php bin/console twig:lint app/Resources/views/article/recent_list.html.twig
+php bin/console twig:lint app/Resources/views
 
 // Debug.
 {{ dump(articles) }}
@@ -560,9 +560,9 @@ app.debug
 app/console assets:install web/
 
 // Dumping Asset Files
-php app/console assetic:dump --env=prod --no-debug
-php app/console assetic:dump
-php app/console assetic:watch
+php bin/console assetic:dump --env=prod --no-debug
+php bin/console assetic:dump
+php bin/console assetic:watch
 ````
 
 Template Suffix:
@@ -787,7 +787,7 @@ public function indexAction()
 ) ?>
 
 // Each time you create a new translation resource
-php app/console cache:clear
+php bin/console cache:clear
 
 class Author
 {
@@ -809,38 +809,39 @@ $view['translator']->transChoice('Symfony2 is great', 1);
 {{ message|trans }}
 
 // To inspect all messages in the fr locale for the AcmeDemoBundle, run:
-php app/console debug:translation fr AcmeDemoBundle
-php app/console debug:translation en AcmeDemoBundle --domain=messages
+php bin/console debug:translation fr AcmeDemoBundle
+php bin/console debug:translation en AcmeDemoBundle --domain=messages
 
-php app/console debug:translation en AcmeDemoBundle --only-unused
-php app/console debug:translation en AcmeDemoBundle --only-missing
+php bin/console debug:translation en AcmeDemoBundle --only-unused
+php bin/console debug:translation en AcmeDemoBundle --only-missing
 ````
 
 #### Doctrine
 ````php
 // Generate Entities from an Existing Database !!!
-php app/console doctrine:mapping:import --force AppBundle xml
-php app/console doctrine:mapping:convert annotation ./src
-php app/console doctrine:generate:entities AppBundle
+php bin/console doctrine:mapping:import --force AppBundle xml
+php bin/console doctrine:mapping:convert annotation ./src
+php bin/console doctrine:generate:entities AppBundle
+php bin/console doctrine:mapping:info
 
-php app/console doctrine:database:create
-php app/console doctrine:database:drop --force
-php app/console doctrine:generate:entity
-php app/console doctrine:generate:entities AppBundle/Entity/Product
+php bin/console doctrine:database:create
+php bin/console doctrine:database:drop --force
+php bin/console doctrine:generate:entity
+php bin/console doctrine:generate:entities AppBundle/Entity/Product
 // update db schema from entities
-php app/console doctrine:schema:update --force
+php bin/console doctrine:schema:update --force
 
 // generates all entities in the AppBundle
-php app/console doctrine:generate:entities AppBundle
+php bin/console doctrine:generate:entities AppBundle
 // generates all entities of bundles in the Acme namespace
-php app/console doctrine:generate:entities Acme
+php bin/console doctrine:generate:entities Acme
 
-php app/console list doctrine
-php app/console help doctrine:database:create
-php app/console doctrine:ensure-production-settings --env=prod
+php bin/console list doctrine
+php bin/console help doctrine:database:create
+php bin/console doctrine:ensure-production-settings --env=prod
 
 // Generate CRUD !!!
-php app/console generate:doctrine:crud --entity=AppBundle:EntityName
+php bin/console generate:doctrine:crud --entity=AppBundle:EntityName
 
 // in controller
 $post=$this->get('doctrine')->getManager()->getRepository('AppBundle:Post')->find($id);
@@ -1138,9 +1139,9 @@ class AppKernel extends Kernel
 $kernel = new AppKernel('prod', false);
 
 # 'prod' environment (debug is always disabled for 'prod')
-php app/console command_name --env=prod
+php bin/console command_name --env=prod
 # 'test' environment and debug disabled
-php app/console command_name --env=test --no-debug
+php bin/console command_name --env=test --no-debug
 
 # app/config/config_benchmark.yml
 imports:

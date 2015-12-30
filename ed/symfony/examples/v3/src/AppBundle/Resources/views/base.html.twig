@@ -14,11 +14,29 @@
             a:hover { text-decoration: none; }
             code { background: #F5F5F5; max-width: 100px; padding: 2px 6px; word-wrap: break-word; }
             #wrapper { background: #FFF; margin: 1em auto; max-width: 800px; width: 95%; }
-            #container { padding: 2em; }
+            .container { padding: 2em; }
             #welcome, #status { margin-bottom: 2em; }
             #welcome h1 span { display: block; font-size: 75%; }
             #icon-status, #icon-book { float: left; height: 64px; margin-right: 1em; margin-top: -4px; width: 64px; }
             #icon-book { display: none; }
+            #footer {
+                clear: both;
+                position: relative;
+                z-index: 10;
+                height: 3em;
+                margin-top: -3em;
+            }
+            .footer {
+                bottom: 0;
+                box-shadow: 0 -1px 0px rgba(0, 0, 0, 0.2);
+                font: 11px Arial, sans-serif;
+                left: 0;
+                margin: 0;
+                padding: 0 36px 36px 0;
+                position: fixed;
+                right: 0;
+                text-align: left;
+            }
             @media (min-width: 768px) {
                 #wrapper { width: 80%; margin: 2em auto; }
                 #icon-book { display: inline-block; }
@@ -43,9 +61,15 @@
                 <a href="{{ path('http_cache') }}">http cache</a>
             </div>
         </header>
-        <div class="content" id="container">
+        <div class="content container">
             {% block body %}{% endblock %}
         </div>
-        {% block javascripts %}{% endblock %}
+        <div class="footer container">
+            <textarea id="comment" cols="30" rows="2" placeholder="{{ 'COMMENT'|trans }}"></textarea>
+        </div>
+        {% block javascripts %}
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+            <script src="{{ asset('bundles/app/js/main.js') }}"></script>
+        {% endblock %}
     </body>
 </html>

@@ -6,5 +6,9 @@ account:
     resource: "@AppBundle/Controller/Account"
     type:     annotation
 
+api:
+    resource: "@AppBundle/Controller/Api"
+    type:     annotation
+
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
