@@ -138,13 +138,6 @@ class OverrideServiceCompilerPass implements CompilerPassInterface
 // External parameters in the service container
 export SYMFONY__DATABASE__USER=user
 export SYMFONY__DATABASE__PASSWORD=secre
-
-doctrine:
-    dbal:
-        driver pdo_mysql
-        dbname: symfony_project
-        user: "%database.user%"
-        password: "%database.password%"
 ````
 
 #### Service Container
@@ -845,6 +838,33 @@ php bin/console generate:doctrine:crud --entity=AppBundle:EntityName
 
 // in controller
 $post=$this->get('doctrine')->getManager()->getRepository('AppBundle:Post')->find($id);
+
+$query = $em
+    ->getRepository('LetterBundle:BurstSeed')
+    ->createQueryBuilder('bs')
+    ->select('bs.burstId')
+    ->where(implode(' OR ', $clauses))
+;
+$r = $query->getQuery()->getArrayResult();
+
+$query = $em
+    ->createQueryBuilder()
+    ->select('bs')
+    ->select("
+        bs.burstId, COUNT(bs.burstId) AS numSeeds,
+        b.status, b.numTotal, b.numSent,
+        bs.sendResult,
+        SUM(CASE WHEN (bs.sendResult = 'ok_read') THEN 1 ELSE 0 END) AS numInbox,
+        SUM(CASE WHEN (bs.sendResult = 'ok_spam_folder') THEN 1 ELSE 0 END) AS numSpamBox
+    ")
+    ->from('LetterBundle:BurstSeed', 'bs')
+    ->leftJoin('BurstBundle:Burst', 'b', \Doctrine\ORM\Query\Expr\Join::WITH, 'bs.burstId = b.id')
+    ->andWhere('b.id IN (:bursts)')
+    ->setParameter('bursts', $bursts)
+    ->groupBy('bs.burstId')
+    ->orderBy('numSpamBox', 'DESC')
+    ->addOrderBy('b.numTotal', 'DESC')
+;
 ````
 
 #### Testing
