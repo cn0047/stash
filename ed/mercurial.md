@@ -42,6 +42,9 @@ hg log -l 5       # limit 5
 ````
 hg status
 hg status . # only files in this directory
+
+# delete not tracked files
+rm `hg st|awk '{if($1=="?") print $2}'`
 ````
 
 #### stash

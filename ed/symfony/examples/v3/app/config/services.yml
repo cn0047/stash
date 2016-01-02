@@ -4,6 +4,24 @@ parameters:
 #    parameter_name: value
 
 services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    # AVAILABLE KERNEL EVENTS:
+    #
+    # kernel.request
+    # kernel.view
+    # kernel.finish_request
+    # kernel.terminate
+    # kernel.exception
+    #
+    # or run: php bin/console debug:event-dispatcher
+    app.controller_listener:
+        class: AppBundle\EventListener\MySymfonyListener
+        tags:
+            - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
+    app.response_listener:
+        class: AppBundle\EventListener\MySymfonyListener
+        tags:
+            - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }
+    app.console_command_listener:
+        class: AppBundle\EventListener\MySymfonyListener
+        tags:
+            - { name: kernel.event_listener, event: console.command, method: onConsoleCommand }
