@@ -1,7 +1,8 @@
 #!/bin/sh
 
 readonly DATE=`date "+%d.%m.%Y" -d "7 days ago"`
-readonly URL="http://rabota.ua/jobsearch/vacancy_list?regionId=1&keyWords=php&period=3&lastdate=$DATE&pg=" # page
+# readonly URL="http://rabota.ua/jobsearch/vacancy_list?regionId=1&keyWords=php&period=3&lastdate=$DATE&pg=" # page
+readonly URL="http://rabota.ua/jobsearch/vacancy_list?keyWords=php&period=3&lastdate=$DATE&pg=" # page
 
 toOpen=''
 i=0
