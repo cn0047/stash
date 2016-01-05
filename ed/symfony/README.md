@@ -1032,7 +1032,7 @@ $client->request(
 • Country
 
 // File Constraints
-• File
+• File(mimeTypes={ "application/pdf" })
 • Image
 
 // Financial and other Number Constraints
