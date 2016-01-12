@@ -9,6 +9,3 @@ account:
 api:
     resource: "@AppBundle/Controller/Api"
     type:     annotation
-
-fos_user:
-    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

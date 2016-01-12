@@ -74,11 +74,6 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
-fos_user:
-    db_driver: orm
-    firewall_name: main
-    user_class: AppBundle\Entity\User
-
 assetic:
     debug:          '%kernel.debug%'
     use_controller: '%kernel.debug%'
