@@ -1,6 +1,7 @@
 Acronyms
 -
 
+<div style="display: none;">
 ````
 ACID
 AMQP
@@ -12,6 +13,7 @@ DAO
 DBAL
 DDD
 DDL
+DRY
 GMT
 GUI
 HTML
@@ -34,16 +36,19 @@ SFTP
 SMTP
 SOA
 SOAP
+SOLID
 SPL
 SSH
 SSL
 TCP
+TDD
 TLS
 UDP
 UTC
 WSDL
 XML
 ````
+</div>
 
 <dl>
 
@@ -84,6 +89,9 @@ XML
 
 <dt>DDL</dt>
 <dd>Data description language.</dd>
+
+<dt>DRY</dt>
+<dd>Don't repeat yourself.</dd>
 
 <dt>GMT</dt>
 <dd>Greenwich Mean Time.</dd>
@@ -181,6 +189,42 @@ for converting data between incompatible type systems in object-oriented program
 <dt>SOAP</dt>
 <dd>Simple Object Access protocol.</dd>
 
+<dt>SOLID</dt>
+<dd>
+    <ul>
+        <li>
+            (SRP) Single responsibility principle - states that every class should have responsibility over a single part of the functionality provided by the software.
+        </li>
+        <li>
+            (OCP) Open/closed principle - (classes, modules, functions, etc.) should be open for extension, but closed for modification.
+        </li>
+        <li>
+            (LSP) Liskov substitution principle - if S is a subtype of T, then objects of type T may be replaced with objects of type S without altering any of the desirable properties of the program.
+        </li>
+        <li>
+            (ISP) Interface segregation principle - splits interfaces which are very large into smaller and more specific ones.
+        </li>
+        <li>
+            (DIP) Dependency inversion principle - refers to a specific form of decoupling software modules.
+            <ul>
+                <li>High-level modules should not depend on low-level modules. Both should depend on abstractions.</li>
+                <li>Abstractions should not depend on details. Details should depend on abstractions.</li>
+                <li>Ownership inversion - both high- and lower-level layers should depend on abstractions that draw the behavior.</li>
+                <li>
+                    Abstraction dependency:
+                    <ul>
+                        <li>All member variables in a class must be interfaces or abstracts.</li>
+                        <li>All concrete class packages must connect only through interface/abstract classes packages.</li>
+                        <li>No class should derive from a concrete class.</li>
+                        <li>No method should override an implemented method.</li>
+                        <li>All variable instantiation requires the implementation of a Creational pattern as the Factory Method or the Factory pattern, or the more complex use of a Dependency Injection framework.</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</dd>
+
 <dt>SPL</dt>
 <dd>Standard PHP Library.</dd>
 
@@ -192,6 +236,16 @@ for converting data between incompatible type systems in object-oriented program
 
 <dt>TCP</dt>
 <dd>Transmission Control Protocol.</dd>
+
+<dt>TDD</dt>
+<dd>
+    Test-driven development.
+    <ul>
+        <li>*Acceptance*: Does the whole system work?</li>
+        <li>*Integration*: Does our code work against code we can't change?</li>
+        <li>*Unit*: Do our objects do the right thing, are they convenient to work with?</li>
+    </ul>
+</dd>
 
 <dt>TLS</dt>
 <dd>Transport Layer Security.</dd>

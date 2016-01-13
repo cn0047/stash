@@ -326,6 +326,15 @@ $form = $this->createFormBuilder($task)
     ->add('task', 'text')
     ->add('dueDate', 'date')
     ->add('save', 'submit')
+    ->add('message_format', 'choice', [
+        'required'    => false,
+        'empty_data'  => null,
+        'choices' => [
+            'raw_html' => 'raw_html',
+            'block' => 'block',
+            'text' => 'text',
+        ],
+    ])
     ->getForm();
 
 $form = $this->createForm(new TaskType(), $task, array(
@@ -814,7 +823,7 @@ php bin/console debug:translation en AcmeDemoBundle --only-missing
 // Generate Entities from an Existing Database !!!
 php bin/console doctrine:mapping:import AppBundle xml
 php bin/console doctrine:mapping:convert annotation ./src
-php bin/console doctrine:generate:entities AppBundle
+php bin/console doctrine:generate:entities --no-backup AppBundle
 php bin/console doctrine:mapping:info
 
 php bin/console doctrine:database:create

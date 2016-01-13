@@ -33,7 +33,7 @@ PHP UK Conference 2015
 
 #### Jordi Boggiano - Composer Best Practices
 * fixes -> 1.0.1; features -> 1.1.1; breaking -> 2.0.0;
-* dev -> 0.1.0; fixes -> 0.1.1; rbeaking changes -> 0.2.0;
+* dev -> 0.1.0; fixes -> 0.1.1; breaking changes -> 0.2.0;
 * README.md should contains info about what problem the code solves.
 * TAGign before breaking anything.
 

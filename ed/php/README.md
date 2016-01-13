@@ -7,6 +7,8 @@ PHP
 
 https://dev.twitter.com/
 |
+[paypal api](https://developer.paypal.com/docs/api/)
+|
 http://www.phpdeveloper.org/
 |
 [conferences](http://php.net/conferences/index.php)
