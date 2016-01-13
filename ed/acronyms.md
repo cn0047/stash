@@ -2,48 +2,48 @@ Acronyms
 -
 
 [ACID](#ACID)
-AMQP
-B2B
-CDN
-CRM
-CSRF
-DAO
-DBAL
-DDD
-DDL
-DRY
-GMT
-GUI
-HTML
-HTTP
-IMAP
-IoC
-LDAP
-MIME
-MTA
-ORM
-PEAR
-PECL
-RBAC
-RCS
-REST
-RFC
-ROI
-SaaS
-SFTP
-SMTP
-SOA
-SOAP
-SOLID
-SPL
-SSH
-SSL
-TCP
-TDD
-TLS
-UDP
-UTC
-WSDL
+[AMQP](#AMQP)
+[B2B](#B2B)
+[CDN](#CDN)
+[CRM](#CRM)
+[CSRF](#CSRF)
+[DAO](#DAO)
+[DBAL](#DBAL)
+[DDD](#DDD)
+[DDL](#DDL)
+[DRY](#DRY)
+[GMT](#GMT)
+[GUI](#GUI)
+[HTML](#HTML)
+[HTTP](#HTTP)
+[IMAP](#IMAP)
+[IoC](#IoC)
+[LDAP](#LDAP)
+[MIME](#MIME)
+[MTA](#MTA)
+[ORM](#ORM)
+[PEAR](#PEAR)
+[PECL](#PECL)
+[RBAC](#RBAC)
+[RCS](#RCS)
+[REST](#REST)
+[RFC](#RFC)
+[ROI](#ROI)
+[SaaS](#SaaS)
+[SFTP](#SFTP)
+[SMTP](#SMTP)
+[SOA](#SOA)
+[SOAP](#SOAP)
+[SOLID](#SOLID)
+[SPL](#SPL)
+[SSH](#SSH)
+[SSL](#SSL)
+[TCP](#TCP)
+[TDD](#TDD)
+[TLS](#TLS)
+[UDP](#UDP)
+[UTC](#UTC)
+[WSDL](#WSDL)
 [XML](#XML)
 
 <dl>
@@ -59,52 +59,52 @@ WSDL
     </ul>
 </dd>
 
-<dt>AMQP</dt>
+<dt><a name="AMQP"></a>AMQP</dt>
 <dd>Advanced Message Queuing Protocol.</dd>
 
-<dt>B2B</dt>
+<dt><a name="B2B"></a>B2B</dt>
 <dd>Business to business.</dd>
 
-<dt>CDN</dt>
+<dt><a name="CDN"></a>CDN</dt>
 <dd>Content distribution network.</dd>
 
-<dt>CRM</dt>
+<dt><a name="CRM"></a>CRM</dt>
 <dd>Customer relationship management.</dd>
 
-<dt>CSRF</dt>
+<dt><a name="CSRF"></a>CSRF</dt>
 <dd>Cross-site request forgery.</dd>
 
-<dt>DAO</dt>
+<dt><a name="DAO"></a>DAO</dt>
 <dd>Data access object.</dd>
 
-<dt>DBAL</dt>
+<dt><a name="DBAL"></a>DBAL</dt>
 <dd>Database Abstraction Layer.</dd>
 
-<dt>DDD</dt>
+<dt><a name="DDD"></a>DDD</dt>
 <dd>Domain-driven design.</dd>
 
-<dt>DDL</dt>
+<dt><a name="DDL"></a>DDL</dt>
 <dd>Data description language.</dd>
 
-<dt>DRY</dt>
+<dt><a name="DRY"></a>DRY</dt>
 <dd>Don't repeat yourself.</dd>
 
-<dt>GMT</dt>
+<dt><a name="GMT"></a>GMT</dt>
 <dd>Greenwich Mean Time.</dd>
 
-<dt>GUI</dt>
+<dt><a name="GUI"></a>GUI</dt>
 <dd>Graphical user interface.</dd>
 
-<dt>HTML</dt>
+<dt><a name="HTML"></a>HTML</dt>
 <dd>HyperText Markup Language.</dd>
 
-<dt>HTTP</dt>
+<dt><a name="HTTP"></a>HTTP</dt>
 <dd>Hypertext Transfer Protocol.</dd>
 
-<dt>IMAP</dt>
+<dt><a name="IMAP"></a>IMAP</dt>
 <dd>Internet Message Access Protocol.</dd>
 
-<dt>IoC</dt>
+<dt><a name="IoC"></a>IoC</dt>
 <dd>
     Inversion of control - is used to increase modularity of the program and make it extensible.
     Software frameworks, callbacks, schedulers, event loops and dependency injection
@@ -134,58 +134,58 @@ WSDL
     </ul>
 </dd>
 
-<dt>LDAP</dt>
+<dt><a name="LDAP"></a>LDAP</dt>
 <dd>Lightweight Directory Access Protocol.</dd>
 
-<dt>MIME</dt>
+<dt><a name="MIME"></a>MIME</dt>
 <dd>Multipurpose Internet Mail Extensions.</dd>
 
-<dt>MTA</dt>
+<dt><a name="MTA"></a>MTA</dt>
 <dd>Message Transfer Agent or Mail Transfer Agent.</dd>
 
-<dt>ORM</dt>
+<dt><a name="ORM"></a>ORM</dt>
 <dd>
 Object-relational mapping - is a programming technique
 for converting data between incompatible type systems in object-oriented programming languages.
 </dd>
 
-<dt>PEAR</dt>
+<dt><a name="PEAR"></a>PEAR</dt>
 <dd>PHP Extension and Application Repository.</dd>
 
-<dt>PECL</dt>
+<dt><a name="PECL"></a>PECL</dt>
 <dd>Php extension community library.</dd>
 
-<dt>RBAC</dt>
+<dt><a name="RBAC"></a>RBAC</dt>
 <dd>Role-based access control.</dd>
 
-<dt>RCS</dt>
+<dt><a name="RCS"></a>RCS</dt>
 <dd>Revision control system.</dd>
 
-<dt>REST</dt>
+<dt><a name="REST"></a>REST</dt>
 <dd>Representational State Transfer.</dd>
 
-<dt>RFC</dt>
+<dt><a name="RFC"></a>RFC</dt>
 <dd>Request for Comments.</dd>
 
-<dt>ROI</dt>
+<dt><a name="ROI"></a>ROI</dt>
 <dd>Return on investment.</dd>
 
-<dt>SaaS</dt>
+<dt><a name="SaaS"></a>SaaS</dt>
 <dd>Software as a service.</dd>
 
-<dt>SFTP</dt>
+<dt><a name="SFTP"></a>SFTP</dt>
 <dd>SSH File Transfer Protocol (also Secure File Transfer Protocol).</dd>
 
-<dt>SMTP</dt>
+<dt><a name="SMTP"></a>SMTP</dt>
 <dd>Simple Mail Transfer Protocol.</dd>
 
-<dt>SOA</dt>
+<dt><a name="SOA"></a>SOA</dt>
 <dd>Service-oriented architecture (architectural pattern).</dd>
 
-<dt>SOAP</dt>
+<dt><a name="SOAP"></a>SOAP</dt>
 <dd>Simple Object Access protocol.</dd>
 
-<dt>SOLID</dt>
+<dt><a name="SOLID"></a>SOLID</dt>
 <dd>
     <ul>
         <li>
@@ -221,19 +221,19 @@ for converting data between incompatible type systems in object-oriented program
     </ul>
 </dd>
 
-<dt>SPL</dt>
+<dt><a name="SPL"></a>SPL</dt>
 <dd>Standard PHP Library.</dd>
 
-<dt>SSH</dt>
+<dt><a name="SSH"></a>SSH</dt>
 <dd>Secure Shell.</dd>
 
-<dt>SSL</dt>
+<dt><a name="SSL"></a>SSL</dt>
 <dd>Secure Sockets Layer.</dd>
 
-<dt>TCP</dt>
+<dt><a name="TCP"></a>TCP</dt>
 <dd>Transmission Control Protocol.</dd>
 
-<dt>TDD</dt>
+<dt><a name="TDD"></a>TDD</dt>
 <dd>
     Test-driven development.
     <ul>
@@ -243,16 +243,16 @@ for converting data between incompatible type systems in object-oriented program
     </ul>
 </dd>
 
-<dt>TLS</dt>
+<dt><a name="TLS"></a>TLS</dt>
 <dd>Transport Layer Security.</dd>
 
-<dt>UDP</dt>
+<dt><a name="UDP"></a>UDP</dt>
 <dd>User Datagram Protocol.</dd>
 
-<dt>UTC</dt>
+<dt><a name="UTC"></a>UTC</dt>
 <dd>Coordinated Universal Time</dd>
 
-<dt>WSDL</dt>
+<dt><a name="WSDL"></a>WSDL</dt>
 <dd>Web Service Definition Language.</dd>
 
 <dt><a name="XML"></a>XML</dt>
