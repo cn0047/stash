@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller\Guest;
 
-use AppBundle\Entity\UserForValidation;
+use AppBundle\VO\UserForValidation;
 use AppBundle\Form\MyCsrfType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
