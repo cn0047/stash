@@ -33,6 +33,7 @@ Core Practices:
 #### Agile:
 
 The Agile Manifesto is based on 12 principles:
+
 1.  Customer satisfaction by rapid delivery of useful software
 2.  Welcome changing requirements, even late in development
 3.  Working software is delivered frequently (weeks rather than months)
