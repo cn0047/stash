@@ -1,9 +1,7 @@
 Acronyms
 -
 
-<div style="display: none;">
-````
-ACID
+[ACID](#ACID)
 AMQP
 B2B
 CDN
@@ -46,13 +44,11 @@ TLS
 UDP
 UTC
 WSDL
-XML
-````
-</div>
+[XML](#XML)
 
 <dl>
 
-<dt>ACID</dt>
+<dt><a name="ACID"></a>ACID</dt>
 <dd>
     Atomicity, Consistency, Isolation, Durability.
     <ul>
@@ -259,7 +255,7 @@ for converting data between incompatible type systems in object-oriented program
 <dt>WSDL</dt>
 <dd>Web Service Definition Language.</dd>
 
-<dt>XML</dt>
+<dt><a name="XML"></a>XML</dt>
 <dd>Extensible Markup Language.</dd>
 
 </dl>
