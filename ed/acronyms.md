@@ -241,9 +241,9 @@ for converting data between incompatible type systems in object-oriented program
 <dd>
     Test-driven development.
     <ul>
-        <li>*Acceptance*: Does the whole system work?</li>
-        <li>*Integration*: Does our code work against code we can't change?</li>
-        <li>*Unit*: Do our objects do the right thing, are they convenient to work with?</li>
+        <li><b>Acceptance</b>: Does the whole system work?</li>
+        <li><b>Integration</b>: Does our code work against code we can't change?</li>
+        <li><b>Unit</b>: Do our objects do the right thing, are they convenient to work with?</li>
     </ul>
 </dd>
 
