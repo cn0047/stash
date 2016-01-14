@@ -15,7 +15,7 @@ class Version20160105185037 extends AbstractMigration
      */
     public function up(Schema $schema)
     {
-        $this->addSql("INSERT INTO comment VALUES (NULL, DEFAULT, 'Hello mysql world!', 'root')");
+        $this->addSql("INSERT INTO comment SET route = '/', message ='Hello mysql world!', user = 'root'");
     }
 
     /**
