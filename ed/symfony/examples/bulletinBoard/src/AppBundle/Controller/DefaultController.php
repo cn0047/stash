@@ -235,12 +235,18 @@ class DefaultController extends Controller
         );
     }
 
+    /**
+     * @Route("/join/{id}", name="join")
+     */
     public function show6Action($id)
     {
         $product = $this->getDoctrine()
-           ->getRepository('AppBundle:Product')
-            ->findOneByIdJoinedToCategory($id);
+            ->getRepository('AppBundle:Product')
+            ->findOneByIdJoinedToCategory($id)
+        ;
+        var_dump($product);
         $category = $product->getCategory();
+        var_dump($category);
     }
 
     /**

@@ -30,7 +30,8 @@
         "sensio/generator-bundle": "^3.0",
         "friendsofsymfony/rest-bundle": "^1.7",
         "doctrine/doctrine-migrations-bundle": "^1.0",
-        "friendsofsymfony/user-bundle": "~2.0@dev"
+        "friendsofsymfony/user-bundle": "~2.0@dev",
+        "doctrine/mongodb-odm": "~1.0"
     },
     "require-dev": {
         "symfony/phpunit-bridge": "^2.7"

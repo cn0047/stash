@@ -10,7 +10,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * @example php app/console x
  */
-class xCommand extends ContainerAwareCommand
+class XCommand extends ContainerAwareCommand
 {
     protected function configure()
     {

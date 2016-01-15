@@ -32,7 +32,6 @@ class Category
 
     public function __construct()
     {
-        $this->products = new ArrayCollection();
     }
 
     /**
@@ -49,7 +48,7 @@ class Category
      * Set name
      *
      * @param string $name
-     * @return Product
+     * @return Category
      */
     public function setName($name)
     {
