@@ -36,6 +36,8 @@ hg log -v -r 3    # --verbose
 hg log -v -p -r 2 # --patch
 hg log -b .       # log for current branch
 hg log -l 5       # limit 5
+
+hg cat -r c6f5e97edfdf PATH_TO_FILE # see file from particular rev
 ````
 
 #### status
@@ -66,6 +68,8 @@ hg diff -r branchName:default
 hg branch               # show curr branch
 hg branch newBranchName # new branch
 hg branches             # all branches
+
+hg identify --id --rev BRANCH_NAME # get revision by branch name
 ````
 
 #### conflict example

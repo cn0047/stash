@@ -33,6 +33,10 @@ class Product
     protected $description;
 
     /**
+    * @ORM\Column(name="category_id",type="text")
+    */
+    protected $categoryId;
+    /**
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="products")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */

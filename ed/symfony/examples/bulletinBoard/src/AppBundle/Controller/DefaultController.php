@@ -240,6 +240,17 @@ class DefaultController extends Controller
      */
     public function show6Action($id)
     {
+        $em = $this->getDoctrine()->getEntityManager();
+        $r = $em
+            ->createQueryBuilder()
+            ->select('c, p')
+            ->from('AppBundle:Category', 'c')
+            ->leftJoin('AppBundle:Product', 'p', \Doctrine\ORM\Query\Expr\Join::WITH, 'c.id = p.categoryId')
+            ->getQuery()
+            ->getArrayResult()
+        ;
+        var_dump($r);
+        //
         $product = $this->getDoctrine()
             ->getRepository('AppBundle:Product')
             ->findOneByIdJoinedToCategory($id)
