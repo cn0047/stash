@@ -25,3 +25,16 @@ services:
         class: AppBundle\EventListener\MySymfonyListener
         tags:
             - { name: kernel.event_listener, event: console.command, method: onConsoleCommand }
+
+    # Twig
+    date.twig_extension:
+        class: AppBundle\Twig\DateExtension
+        public: false
+        tags:
+            - { name: twig.extension }
+    comments.twig_function:
+        class: AppBundle\Twig\CommentsExtension
+        arguments: ['@service_container']
+        public: false
+        tags:
+            - { name: twig.extension }

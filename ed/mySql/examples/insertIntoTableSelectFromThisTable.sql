@@ -20,4 +20,20 @@ drop table tmpTbl1;
 insert into tmpTbl1 values (null, 101), (null, 200);
 select * from tmpTbl1;
 insert into tmpTbl1 select null, code from tmpTbl1;
-ERROR 1137 (HY000): Can't reopen table: 'tmpTbl1'
+-- ERROR 1137 (HY000): Can't reopen table: 'tmpTbl1'
+
+create table tmpTbl1 (
+id int,
+code int
+);
+insert into tmpTbl1 values (null, 101), (null, 200);
+insert into tmpTbl1 select * from tmpTbl1;
+-- Query OK, 2 rows affected
+
+create temporary table tmpTbl2 (
+id int,
+code int
+);
+insert into tmpTbl2 values (null, 101), (null, 200);
+insert into tmpTbl2 select * from tmpTbl2;
+-- ERROR 1137 (HY000): Can't reopen table: 'tmpTbl2'

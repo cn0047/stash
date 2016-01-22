@@ -4,8 +4,37 @@ Patterns
 ####Design Patterns:
 
 1. Creational.
+
+    * abstractFactory
+    * builder
+    * factoryMethod
+    * prototype
+    * singleton
+
 2. Structural.
+
+    * adapter
+    * bridge
+    * composite
+    * facade
+    * flyweight
+    * proxy
+
 3. Behaviour.
+
+    * chainOfResponsibility
+    * command
+    * decorator
+    * dependencyInjection
+    * interpreter
+    * iterator
+    * mediator
+    * memento
+    * observer
+    * state
+    * strategy
+    * templateMethod
+    * visitor
 
 This grouping described using the concepts of delegation, aggregation, and consultation.
 

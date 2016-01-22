@@ -1,6 +1,8 @@
 Relational database
 -
 
+#### 1NF
+
 A relation is in **1NF** if the domain of each attribute contains only atomic values.
 1NF enforces these criteria:
 * Eliminate repeating groups in individual tables.
@@ -9,6 +11,8 @@ A relation is in **1NF** if the domain of each attribute contains only atomic va
 
 (most basic: each cell in a table must contain only one piece of information,
 and there can be no duplicate rows).
+
+#### 2NF
 
 Table is in **2NF** if it is in 1NF
 and every non-prime attribute of the table (in main table) is dependent on the whole of every candidate key.
@@ -83,9 +87,12 @@ R1
 </tr>
 </table>
 
+#### 3NF
+
 Table is in **3NF** if it is in 2NF
 and each attribute must represent a fact about the key, the whole key, and nothing but the key
 (every non-prime attribute of table is non-transitively dependent on every key of table).
+(Transitive dependency: A → B; B → C; as result A → C = is a transitive dependency.)
 
 R1
 
@@ -108,10 +115,10 @@ R1
         </thead>
         <tr>
             <td>Accounts</td>
-            <td>Logistic</td>
+            <td>11-22-33</td>
         </tr>
         <tr>
-            <td>11-22-33</td>
+            <td>Logistic</td>
             <td>44-55-66</td>
         </tr>
     </table>
