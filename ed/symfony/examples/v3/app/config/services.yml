@@ -25,6 +25,14 @@ services:
         class: AppBundle\EventListener\MySymfonyListener
         tags:
             - { name: kernel.event_listener, event: console.command, method: onConsoleCommand }
+    # app.doctrine_post_persist_listener:
+    #     class: AppBundle\EventListener\MyDoctrineListener
+    #     tags:
+    #         - { name: doctrine.event_listener, event: postPersist, method: onPostPersist }
+    # app.doctrine_subscriber_listener:
+    #     class: AppBundle\EventListener\MyDoctrineListener
+    #     tags:
+    #         - { name: doctrine.event_subscriber, connection: default, method: onCustom }
 
     # Twig
     date.twig_extension:
@@ -38,3 +46,10 @@ services:
         public: false
         tags:
             - { name: twig.extension }
+
+    # DOMAIN MODEL
+    comment:
+        class: AppBundle\DomainModel\Comment
+        arguments:
+            - '@doctrine.orm.slave_entity_manager'
+            - '@doctrine.orm.master_entity_manager'

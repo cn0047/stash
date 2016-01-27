@@ -1093,6 +1093,11 @@ if ($violations->count() > 0) {
     }
     throw new \UnexpectedValueException($m);
 }
+$errors = [];
+foreach ($form->all() as $field) {
+    $errors[$field->getName()] = trim((string)$field->getErrors());
+}
+var_dump($errors);
 ````
 
 #### Security

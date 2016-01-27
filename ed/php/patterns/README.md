@@ -86,3 +86,5 @@ Singletons are bad, they create dependency between classes.
 ####Else patterns:
 
 * Data mapper pattern (Object Relational Mapper (ORM) and the Database Abstraction Layer)
+  Object-relational mapping - is a programming technique
+  for converting data between incompatible type systems in object-oriented programming languages.

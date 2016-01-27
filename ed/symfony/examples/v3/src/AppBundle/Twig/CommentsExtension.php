@@ -29,12 +29,8 @@ class CommentsExtension extends \Twig_Extension
 
     public function commentsFunction()
     {
-        $c = new Comment($this->container);
+        $c = $this->container->get('comment');
         $comments = $c->get();
-        $comments = [
-            ['route' => '/', 'message' => 'hi', 'user' => 'unknown'],
-            ['route' => '/index', 'message' => 'are you there?', 'user' => 'nobody'],
-        ];
         $r = $this->container->get('templating')->render(
             'AppBundle:default:comments.html.twig',
             ['comments' => $comments]

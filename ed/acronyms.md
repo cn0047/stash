@@ -109,10 +109,7 @@ Acronyms
 <dd>Message Transfer Agent or Mail Transfer Agent.</dd>
 
 <dt><a name="ORM"></a>ORM</dt>
-<dd>
-Object-relational mapping - is a programming technique
-for converting data between incompatible type systems in object-oriented programming languages.
-</dd>
+<dd>Object-relational mapping.</dd>
 
 <dt><a name="PEAR"></a>PEAR</dt>
 <dd>PHP Extension and Application Repository.</dd>

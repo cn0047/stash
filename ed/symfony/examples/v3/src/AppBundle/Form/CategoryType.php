@@ -17,6 +17,9 @@ class CategoryType extends AbstractType
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
+        $resolver->setDefaults(array(
+            'data_class' => 'AppBundle\VO\Category',
+        ));
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -27,6 +30,7 @@ class CategoryType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
+            'data_class' => 'AppBundle\VO\Category',
         ));
     }
 }
