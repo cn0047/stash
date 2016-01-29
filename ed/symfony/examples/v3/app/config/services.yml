@@ -53,3 +53,21 @@ services:
         arguments:
             - '@doctrine.orm.slave_entity_manager'
             - '@doctrine.orm.master_entity_manager'
+
+    # MISC
+    apikey_authenticator:
+        class: AppBundle\Security\ApiKeyAuthenticator
+        public: false
+
+    api_key_user_provider:
+        class: AppBundle\Security\ApiKeyUserProvider
+
+    app.request_collector:
+        class: AppBundle\DataCollector\RequestCollector
+        public: false
+        tags:
+            -
+                name: data_collector
+                template: 'data_collector/template.html.twig'
+                id: 'app.request_collector'
+                priority: 300

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\AppBundle\Controller\Account;
+namespace Tests\AppBundle\Functional\Controller\Account;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\BrowserKit\Cookie;

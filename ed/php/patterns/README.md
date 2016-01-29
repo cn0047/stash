@@ -36,7 +36,7 @@ Patterns
     * templateMethod
     * visitor
 
-This grouping described using the concepts of delegation, aggregation, and consultation.
+This grouping described using the concepts of **delegation**, **aggregation**, and **consultation**.
 
 Delegation is the simple yet powerful concept of handing a task over to another part of the program.
 Object assigns a task to another object, known as the delegate.
@@ -57,7 +57,8 @@ Consultation in object-oriented programming occurs when an object's method imple
 of a message send of the same message to another constituent object.
 
 ````
-Adapter vs Bridge: adapter works with defined objects, bridge can accept objects on fly.
+Adapter vs Bridge: adapter works with defined objects,
+                   bridge can accept objects on fly, because it is abstraction over implementation.
 Facade vs Proxy: facade cover defined objects, proxy provide access to objects and filtrate or restrict access to object.
 Prototype vs Interpreter: ?
 Bridge vs Mediator: ?

@@ -18,6 +18,7 @@ Acronyms
 [HTTP](#HTTP)
 [IMAP](#IMAP)
 [IoC](#IoC)
+[KISS](#KISS)
 [LDAP](#LDAP)
 [MIME](#MIME)
 [MTA](#MTA)
@@ -98,6 +99,9 @@ Acronyms
 
 <dt><a name="IoC"></a>IoC</dt>
 <dd>Inversion of Control.</dd>
+
+<dt><a name="KISS"></a>KISS</dt>
+<dd>Keep it simple, stupid (noted in 1960).</dd>
 
 <dt><a name="LDAP"></a>LDAP</dt>
 <dd>Lightweight Directory Access Protocol.</dd>

@@ -16,7 +16,8 @@ Tell, Don’t Ask (Law of Demeter).
 
 <ul>
     <li>
-        (SRP) Single responsibility principle - states that every class should have responsibility over a single part of the functionality provided by the software.
+        (SRP) Single responsibility principle - states that every class should have responsibility over a single part
+        of the functionality provided by the software. If description contains word **AND** or **OR** - it's not SRP.)
     </li>
     <li>
         (OCP) Open/closed principle - (classes, modules, functions, etc.) should be open for extension, but closed for modification.
@@ -84,6 +85,10 @@ Imperative program consists of commands for the computer to perform.
 
 Declarative programming focuses on what the program should accomplish
 without specifying how the program should achieve the result.
+
+The declarative layer describes what the code will do,
+while the implementation layer describes how the code does it.
+(The declarative layer is, in effect, a small  domain-specific language).
 
 #### Extreme Programming:
 
