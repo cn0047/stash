@@ -82,7 +82,7 @@ Singletons are bad, they create dependency between classes.
 * Operational Data Store (ODS)
 * Peer-to-peer
 * Pipe and filter architecture
-* Service-oriented architecture
+* Service-oriented architecture (SOA)
 
 ####Else patterns:
 

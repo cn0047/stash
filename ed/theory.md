@@ -3,6 +3,19 @@ Theory
 
 Tell, Don’t Ask (Law of Demeter).
 
+#### Code quality
+
+* Maintainable
+* Extendable
+* Reusable
+* Understandable
+* Testable
+* Documentable
+* Well designed (patterns)
+* Encourage solid
+* Haven't memory leaks
+* Haven't vulnerabilities and be secure
+
 #### ACID
 
 <ul>
