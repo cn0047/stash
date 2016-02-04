@@ -18,6 +18,7 @@ class End implements StateInterface
 
     public function getNotPromptedCommand()
     {
+       return null;
     }
 }
 
