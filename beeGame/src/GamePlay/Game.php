@@ -36,7 +36,10 @@ class Game
         /** @var CommandInterface $command */
         while ($command = $this->interface->getCommand($this->state)) {
             $command->execute($this);
-            $this->interface->outputStatistics($this->beeGang->getStatistics());
+            // In case when beeGang initialized we can receive some statistics.
+            if ($this->beeGang !== null) {
+                $this->interface->outputStatistics($this->beeGang->getStatistics());
+            }
         }
     }
 
