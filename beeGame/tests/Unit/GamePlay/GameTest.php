@@ -16,6 +16,8 @@ class StartTest extends \PHPUnit_Framework_TestCase
     {
         // If be honest, i have no idea how i can test it
         // yet...
+        // Moreover it's not exactly unit test,
+        // here should be integration test...
     }
 
     public function testGetLevel()

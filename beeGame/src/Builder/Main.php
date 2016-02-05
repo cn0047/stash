@@ -8,27 +8,43 @@ use Bee\Gang;
 use Bee\Factory;
 use Config\ConfigInterface;
 
+/**
+ * Main builder.
+ *
+ * This is builder that build all things necessary for game.
+ * Encapsulates all game initialization logic.
+ */
 class Main
 {
-    // Specify particular types of bee that allowed in this particular builder.
+    /** @var array $allowedBeeTypes Specify particular types of bee that allowed in this particular builder. */
     private static $allowedBeeTypes = [
         'Queen',
         'Worker',
         'Drone',
     ];
 
-    /** @var ConfigInterface */
+    /** @var ConfigInterface $config Contains configuration of game for particular game level. */
     private $config;
 
-    /** @var Gang $beeGang */
+    /** @var Gang $beeGang Contains bee aggregate.*/
     private $beeGang;
 
+    /**
+     * Constructor.
+     *
+     * @param NotEmptyString $level Contains level by which will be loaded configs.
+     */
     public function __construct(NotEmptyString $level)
     {
         $configName = "Config\\$level";
         $this->config = new $configName();
     }
 
+    /**
+     * Builds all game objects.
+     *
+     * @throws \InvalidArgumentException In case when factory cannot create bee.
+     */
     public function buildLevel()
     {
         $factory = new Factory();
@@ -51,6 +67,11 @@ class Main
         $this->beeGang->shuffle();
     }
 
+    /**
+     * Provides access to bee gang aggregate.
+     *
+     * @return Gang Bee gang.
+     */
     public function getBeeGang()
     {
         return $this->beeGang;

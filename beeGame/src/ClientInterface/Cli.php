@@ -4,8 +4,16 @@ namespace ClientInterface;
 
 use State\StateInterface;
 
+/**
+ * Cli.
+ *
+ * This class provides ability to play game in CLI environment (console/terminal).
+ */
 class Cli implements ClientInterfaceInterface
 {
+    /**
+     * {@inheritdoc}
+     */
     public function getCommand(StateInterface $state)
     {
         echo "\n".$state->getPromptMessage();
@@ -17,6 +25,9 @@ class Cli implements ClientInterfaceInterface
         }
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function outputStatistics(array $statistics)
     {
         foreach ($statistics as $beeType => $points) {

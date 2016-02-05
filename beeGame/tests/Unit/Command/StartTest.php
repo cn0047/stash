@@ -2,10 +2,10 @@
 
 namespace Test\Unit\Command;
 
-use Command\Escape;
 use ClientInterface\Cli;
+use Command\Start;
 use GamePlay\Game;
-use State\End as StateEnd;
+use State\InProgress as StateInProgress;
 
 class StartTest extends \PHPUnit_Framework_TestCase
 {
@@ -15,10 +15,10 @@ class StartTest extends \PHPUnit_Framework_TestCase
         $game
             ->expects(static::once())
             ->method('setState')
-            ->with(static::equalTo(new StateEnd()))
+            ->with(static::equalTo(new StateInProgress()))
             ->will(static::returnValue('OK'))
         ;
-        $command = new Escape();
+        $command = new Start();
         $command->execute($game);
         // No need assert something, if method will not be invoked we'll receive fail.
     }
