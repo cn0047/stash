@@ -10,6 +10,6 @@ class WorkerTest extends \PHPUnit_Framework_TestCase
     public function testGetIsQueen()
     {
         $bee = new Worker(new PositiveInteger(50), new PositiveInteger(12));
-        static::assertInternalType('boolean', $bee->getIsQueen());
+        static::assertFalse($bee->getIsQueen());
     }
 }

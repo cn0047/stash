@@ -19,6 +19,7 @@ class StartTest extends \PHPUnit_Framework_TestCase
             ->will(static::returnValue('OK'))
         ;
         $command = new Start();
+        /** @var Game $game */
         $command->execute($game);
         // No need assert something, if method will not be invoked we'll receive fail.
     }

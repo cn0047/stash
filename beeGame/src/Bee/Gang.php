@@ -7,7 +7,7 @@ namespace Bee;
  *
  * This is aggregate
  * that allows manage all bees in particular game,
- * and provides necessary methods to understand what is going on.
+ * and provides necessary methods to understand what is going on with bees.
  */
 class Gang
 {

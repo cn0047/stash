@@ -6,7 +6,7 @@ use VO\PositiveInteger;
 use VO\NotEmptyString;
 use Bee\Gang;
 use Bee\Factory;
-use Config\ConfigInterface;
+use Config\Config;
 
 /**
  * Main builder.
@@ -23,7 +23,7 @@ class Main
         'Drone',
     ];
 
-    /** @var ConfigInterface $config Contains configuration of game for particular game level. */
+    /** @var Config $config Contains configuration of game for particular game level. */
     private $config;
 
     /** @var Gang $beeGang Contains bee aggregate.*/

@@ -10,6 +10,6 @@ class QueenTest extends \PHPUnit_Framework_TestCase
     public function testGetIsQueen()
     {
         $bee = new Queen(new PositiveInteger(50), new PositiveInteger(12));
-        static::assertTrue(true, $bee->getIsQueen());
+        static::assertTrue($bee->getIsQueen());
     }
 }

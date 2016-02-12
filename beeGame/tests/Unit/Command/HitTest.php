@@ -31,6 +31,8 @@ class HitTest extends \PHPUnit_Framework_TestCase
             ->method('getIsQueenAlive')
             ->will(static::returnValue(true))
         ;
+        /** @var Game $game */
+        /** @var Gang $beeGang */
         $game->setBeeGang($beeGang);
         $command = new Hit();
         $command->execute($game);
@@ -57,6 +59,8 @@ class HitTest extends \PHPUnit_Framework_TestCase
             ->method('getIsQueenAlive')
             ->will(static::returnValue(false))
         ;
+        /** @var Game $game */
+        /** @var Gang $beeGang */
         $game->setBeeGang($beeGang);
         $command = new Hit();
         $command->execute($game);

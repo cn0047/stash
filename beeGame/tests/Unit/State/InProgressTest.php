@@ -17,7 +17,9 @@ class InProgressTest extends \PHPUnit_Framework_TestCase
 
     public function testGetPromptMessage()
     {
-        static::assertNotEmpty($this->state->getPromptMessage());
+        $msg = $this->state->getPromptMessage();
+        static::assertNotEmpty($msg);
+        static::assertInternalType('string', $msg);
     }
 
     public function testGetPromptedCommand()

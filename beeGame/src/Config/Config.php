@@ -4,10 +4,24 @@ namespace Config;
 
 use VO\NotEmptyString;
 
-abstract class Config implements ConfigInterface
+/**
+ * Game level config.
+ *
+ * This config provides convenient way to work with settings for bees in particular game level.
+ */
+abstract class Config
 {
     protected static $config = [];
 
+    /**
+     * Gets setting value by name.
+     *
+     * @param NotEmptyString $configName Name of setting.
+     *
+     * @throws \InvalidArgumentException In case when config not found.
+     *
+     * @return mixed Value of setting.
+     */
     public function get(NotEmptyString $configName)
     {
         $key = $configName->get();

@@ -2,8 +2,9 @@
 
 namespace Config;
 
-use VO\NotEmptyString;
-
+/**
+ * Configuration settings for game level 1.
+ */
 class LevelOne extends Config
 {
     protected static $config = [

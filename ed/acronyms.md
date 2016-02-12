@@ -4,6 +4,7 @@ Acronyms
 [ACID](#ACID)
 [AMQP](#AMQP)
 [B2B](#B2B)
+[BDD](#BDD)
 [CDN](#CDN)
 [CRM](#CRM)
 [CSRF](#CSRF)
@@ -57,6 +58,9 @@ Acronyms
 
 <dt><a name="B2B"></a>B2B</dt>
 <dd>Business to business.</dd>
+
+<dt><a name="BDD"></a>BDD</dt>
+<dd>Behavior-driven development.</dd>
 
 <dt><a name="CDN"></a>CDN</dt>
 <dd>Content distribution network.</dd>

@@ -6,7 +6,7 @@ use State\StateInterface;
 use Command\CommandInterface;
 
 /**
- * Interface ClientInterfaceInterface.
+ * Interface of interaction between client (gamer) and game.
  *
  * This interface describes rules how game interact with client (gamer) INPUT/OUTPUT layer.
  */

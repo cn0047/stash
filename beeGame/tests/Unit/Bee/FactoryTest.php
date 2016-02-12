@@ -27,6 +27,6 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
         $factory = new Factory();
         $lifespan = new PositiveInteger(100);
         $deduceStep = new PositiveInteger(8);
-        $bee = $factory->create(new NotEmptyString('Bumblebee'), $lifespan, $deduceStep);
+        $factory->create(new NotEmptyString('Bumblebee'), $lifespan, $deduceStep);
     }
 }

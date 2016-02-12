@@ -2,22 +2,33 @@
 
 namespace Test\Unit\GamePlay;
 
+use Bee\Gang;
 use ClientInterface\Cli;
+use ClientInterface\ClientInterfaceInterface;
+use Command\Start as CommandStart;
 use GamePlay\Game;
 use State\Begin as StateBegin;
-use Bee\Gang;
 
 class StartTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * @todo Finalize this test.
-     */
     public function testPlay()
     {
-        // If be honest, i have no idea how i can test it
-        // yet...
-        // Moreover it's not exactly unit test,
-        // here should be integration test...
+        $command = $this->getMock(CommandStart::class);
+        $command
+            ->expects(static::once())
+            ->method('execute')
+            ->will(static::returnValue(null))
+        ;
+        $interface = $this->getMock(Cli::class);
+        $interface
+            ->method('getCommand')
+            ->will(static::onConsecutiveCalls($command, null))
+        ;
+        /** @var ClientInterfaceInterface $interface */
+        $game = new Game($interface);
+        $beeGang = new Gang();
+        $game->setBeeGang($beeGang);
+        $game->play();
     }
 
     public function testGetLevel()
@@ -25,7 +36,6 @@ class StartTest extends \PHPUnit_Framework_TestCase
         $game = new Game(new Cli());
         static::assertSame('LevelOne', $game->getLevel()->get());
     }
-
 
     public function testSetState()
     {
