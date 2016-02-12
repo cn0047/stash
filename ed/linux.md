@@ -159,6 +159,7 @@ prompt \u@\h [\d]>
 find -type f -mtime -20 | while read file; do modif=`git log -1 --format="%cd" $file`; echo "$modif - $file"; done
 # Shows file types that present in foolder
 find . -type f | perl -ne 'print $1 if m/\.([^.\/]+)$/' | sort -u
+
 time find -name '*.php' -mtime -1 | xargs -l php -l | grep -v 'No syntax errors detected in'
 find ./ | grep '.php' | xargs -l php -l | pv | grep -v 'No syntax errors detected in'
 # skype Vdovin

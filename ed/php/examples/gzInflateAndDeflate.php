@@ -1,9 +1,14 @@
 <?php
 
 $compressed = gzdeflate('Compress me', 9);
-var_dump($compressed);
-echo mb_strlen($compressed).PHP_EOL;
-
+var_export([
+    mb_strlen($compressed),
+    $compressed,
+    base64_encode($compressed),
+]);
 $uncompressed = gzinflate($compressed);
-var_dump($uncompressed);
-echo mb_strlen($uncompressed).PHP_EOL;
+var_export([
+    mb_strlen($uncompressed),
+    $uncompressed,
+    gzinflate(base64_decode('c87PLShKLS5WyE0FAA==')),
+]);

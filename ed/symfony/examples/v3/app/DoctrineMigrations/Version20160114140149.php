@@ -10,7 +10,7 @@ use Doctrine\DBAL\Schema\Schema;
  */
 class Version20160114140149 extends AbstractMigration
 {
-    // password = gues
+    // password = guest
     private $password = '$2y$13$dBieYBsXQkfB1X8Uq9WjTO.Do6Z79PV6OoW7fCSBX2y6yd4XRdFFu';
 
     /**

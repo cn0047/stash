@@ -3,6 +3,7 @@
  * Bridge
  *
  * Is meant to "decouple an abstraction from its implementation so that the two can vary independently".
+ * It belong to one domain but implement interfaces from another.
  *
  * @category Structural
  */

@@ -59,13 +59,18 @@
                 <a href="{{ path('embeded_form') }}">embeded form</a>
                 <a href="{{ path('account_homepage') }}">ACCOUNT</a>
                 <a href="{{ path('http_cache') }}">http cache</a>
+                <a href="{{ path('component') }}">component</a>
             </div>
         </header>
         <div class="content container">
             {% block body %}{% endblock %}
         </div>
         <div class="footer container">
+            <div>
+                {{ comments()|raw }}
+            </div>
             <textarea id="comment" cols="30" rows="2" placeholder="{{ 'COMMENT'|trans }}"></textarea>
+            {{ 'now'|date('UTC') }}
         </div>
         {% block javascripts %}
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

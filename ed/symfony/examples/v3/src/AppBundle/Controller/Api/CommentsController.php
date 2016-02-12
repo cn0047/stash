@@ -16,10 +16,11 @@ class CommentsController extends FOSRestController
 {
     /**
      * @Route("/", name="post_comments")
-     * @Method("POST")
+     * @Method("GET")
      */
     public function postCommentsAction(Request $request)
     {
+        // http://localhost:8000/api/comments/?apikey=007
         // curl -X POST http://127.0.0.1:8000/comments/ -d message=msg -d user=007 -d route=/home
         var_export($request->request->get('message'));
         return new JsonResponse([]);

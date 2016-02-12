@@ -134,7 +134,7 @@ php_value xdebug.remote_enable 1
 # php_value xdebug.remote_log '/tmp/xdebug.log'
 
 # Trace
-xdebug_start_trace('~/debug/trace.xt');
+xdebug_start_trace('/tmp/xdebug.trace'); // output will be in file /tmp/xdebug.trace.xt
 xdebug_stop_trace();
 
 # Profiling

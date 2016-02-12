@@ -1,0 +1,5 @@
+{% if comments is defined %}
+    {% for c in comments %}
+        <div>{{ c.route ~ ' [' ~ c.user ~ '] ' ~ c.message }}</div>
+    {% endfor %}
+{% endif %}

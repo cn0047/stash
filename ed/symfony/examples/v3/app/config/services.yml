@@ -25,3 +25,49 @@ services:
         class: AppBundle\EventListener\MySymfonyListener
         tags:
             - { name: kernel.event_listener, event: console.command, method: onConsoleCommand }
+    # app.doctrine_post_persist_listener:
+    #     class: AppBundle\EventListener\MyDoctrineListener
+    #     tags:
+    #         - { name: doctrine.event_listener, event: postPersist, method: onPostPersist }
+    # app.doctrine_subscriber_listener:
+    #     class: AppBundle\EventListener\MyDoctrineListener
+    #     tags:
+    #         - { name: doctrine.event_subscriber, connection: default, method: onCustom }
+
+    # Twig
+    date.twig_extension:
+        class: AppBundle\Twig\DateExtension
+        public: false
+        tags:
+            - { name: twig.extension }
+    comments.twig_function:
+        class: AppBundle\Twig\CommentsExtension
+        arguments: ['@service_container']
+        public: false
+        tags:
+            - { name: twig.extension }
+
+    # DOMAIN MODEL
+    comment:
+        class: AppBundle\DomainModel\Comment
+        arguments:
+            - '@doctrine.orm.slave_entity_manager'
+            - '@doctrine.orm.master_entity_manager'
+
+    # MISC
+    apikey_authenticator:
+        class: AppBundle\Security\ApiKeyAuthenticator
+        public: false
+
+    api_key_user_provider:
+        class: AppBundle\Security\ApiKeyUserProvider
+
+    app.request_collector:
+        class: AppBundle\DataCollector\RequestCollector
+        public: false
+        tags:
+            -
+                name: data_collector
+                template: 'data_collector/template.html.twig'
+                id: 'app.request_collector'
+                priority: 300

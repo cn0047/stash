@@ -4,10 +4,39 @@ Patterns
 ####Design Patterns:
 
 1. Creational.
+
+    * abstractFactory
+    * builder
+    * factoryMethod
+    * prototype
+    * singleton
+
 2. Structural.
+
+    * adapter
+    * bridge
+    * composite
+    * facade
+    * flyweight
+    * proxy
+
 3. Behaviour.
 
-This grouping described using the concepts of delegation, aggregation, and consultation.
+    * chainOfResponsibility
+    * command
+    * decorator
+    * dependencyInjection
+    * interpreter
+    * iterator
+    * mediator
+    * memento
+    * observer
+    * state
+    * strategy
+    * templateMethod
+    * visitor
+
+This grouping described using the concepts of **delegation**, **aggregation**, and **consultation**.
 
 Delegation is the simple yet powerful concept of handing a task over to another part of the program.
 Object assigns a task to another object, known as the delegate.
@@ -28,7 +57,8 @@ Consultation in object-oriented programming occurs when an object's method imple
 of a message send of the same message to another constituent object.
 
 ````
-Adapter vs Bridge: adapter works with defined objects, bridge can accept objects on fly.
+Adapter vs Bridge: adapter works with defined objects,
+                   bridge can accept objects on fly, because it is abstraction over implementation.
 Facade vs Proxy: facade cover defined objects, proxy provide access to objects and filtrate or restrict access to object.
 Prototype vs Interpreter: ?
 Bridge vs Mediator: ?
@@ -52,8 +82,10 @@ Singletons are bad, they create dependency between classes.
 * Operational Data Store (ODS)
 * Peer-to-peer
 * Pipe and filter architecture
-* Service-oriented architecture
+* Service-oriented architecture (SOA)
 
 ####Else patterns:
 
 * Data mapper pattern (Object Relational Mapper (ORM) and the Database Abstraction Layer)
+  Object-relational mapping - is a programming technique
+  for converting data between incompatible type systems in object-oriented programming languages.

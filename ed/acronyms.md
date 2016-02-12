@@ -4,6 +4,7 @@ Acronyms
 [ACID](#ACID)
 [AMQP](#AMQP)
 [B2B](#B2B)
+[BDD](#BDD)
 [CDN](#CDN)
 [CRM](#CRM)
 [CSRF](#CSRF)
@@ -18,6 +19,7 @@ Acronyms
 [HTTP](#HTTP)
 [IMAP](#IMAP)
 [IoC](#IoC)
+[KISS](#KISS)
 [LDAP](#LDAP)
 [MIME](#MIME)
 [MTA](#MTA)
@@ -56,6 +58,9 @@ Acronyms
 
 <dt><a name="B2B"></a>B2B</dt>
 <dd>Business to business.</dd>
+
+<dt><a name="BDD"></a>BDD</dt>
+<dd>Behavior-driven development.</dd>
 
 <dt><a name="CDN"></a>CDN</dt>
 <dd>Content distribution network.</dd>
@@ -99,6 +104,9 @@ Acronyms
 <dt><a name="IoC"></a>IoC</dt>
 <dd>Inversion of Control.</dd>
 
+<dt><a name="KISS"></a>KISS</dt>
+<dd>Keep it simple, stupid (noted in 1960).</dd>
+
 <dt><a name="LDAP"></a>LDAP</dt>
 <dd>Lightweight Directory Access Protocol.</dd>
 
@@ -109,10 +117,7 @@ Acronyms
 <dd>Message Transfer Agent or Mail Transfer Agent.</dd>
 
 <dt><a name="ORM"></a>ORM</dt>
-<dd>
-Object-relational mapping - is a programming technique
-for converting data between incompatible type systems in object-oriented programming languages.
-</dd>
+<dd>Object-relational mapping.</dd>
 
 <dt><a name="PEAR"></a>PEAR</dt>
 <dd>PHP Extension and Application Repository.</dd>

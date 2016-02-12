@@ -25,6 +25,13 @@ hg commit -m "Commit message"
 hg push --new-branch
 ````
 
+#### stash
+````
+hg diff > ~/d.diff
+hg revert -aC
+hg import --no-commit ~/d.diff
+````
+
 #### log
 ````
 hg log
@@ -47,13 +54,6 @@ hg status . # only files in this directory
 
 # delete not tracked files
 rm `hg st|awk '{if($1=="?") print $2}'`
-````
-
-#### stash
-````
-hg diff > ../d.diff
-hg revert -aC
-hg import --no-commit ../d.diff
 ````
 
 #### diff

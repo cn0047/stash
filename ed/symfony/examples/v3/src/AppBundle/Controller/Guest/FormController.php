@@ -25,6 +25,9 @@ class FormController extends Controller
             ->add('submit', SubmitType::class)
             ->getForm()
         ;
+        $form->handleRequest($request);
+        $data = $form->getData();
+        dump($data);
         $response = $this->render('AppBundle:form:my_csrf.html.twig', [
             'form' => $form->createView(),
         ]);

@@ -8,6 +8,38 @@ framework:
     profiler:
         collect: false
 
+doctrine:
+    dbal:
+        default_connection: slave
+        connections:
+            slave:
+                driver:   pdo_mysql
+                host:     "%database_host%"
+                port:     "%database_port%"
+                dbname:   "%database_test_name%"
+                user:     "%database_user%"
+                password: "%database_password%"
+                charset:  UTF8
+            master:
+                driver:   pdo_mysql
+                host:     "%database_host%"
+                port:     "%database_port%"
+                dbname:   "%database_test_name%"
+                user:     "%database_user%"
+                password: "%database_password%"
+                charset:  UTF8
+    orm:
+        default_entity_manager: slave
+        entity_managers:
+            slave:
+                connection: slave
+                mappings:
+                    AppBundle:  ~
+            master:
+                connection: master
+                mappings:
+                    AppBundle: ~
+
 web_profiler:
     toolbar: false
     intercept_redirects: false

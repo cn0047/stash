@@ -43,8 +43,6 @@ SELECT * FROM table2;
 |  7 | seven |
 +----+-------+
 
-
-
 SELECT t1.*, t2.* FROM table1 t1 JOIN table2 t2 on t1.id = t2.id;
 SELECT t1.*, t2.* FROM table1 t1 INNER JOIN table2 t2 on t1.id = t2.id;
 SELECT t1.*, t2.* FROM table1 t1 CROSS JOIN table2 t2 on t1.id = t2.id;
@@ -56,20 +54,7 @@ SELECT t1.*, t2.* FROM table1 t1 STRAIGHT_JOIN table2 t2 on t1.id = t2.id;
 |  4 | four  |  4 | four  |
 |  5 | five  |  5 | five  |
 +----+-------+----+-------+
-
-
-
-
 SELECT t1.*, t2.* FROM table1 t1 LEFT JOIN table2 t2 on t1.id = t2.id;
-+----+-------+------+-------+
-| id | value | id   | value |
-+----+-------+------+-------+
-|  1 | one   | NULL | NULL  |
-|  2 | two   | NULL | NULL  |
-|  3 | three |    3 | three |
-|  4 | four  |    4 | four  |
-|  5 | five  |    5 | five  |
-+----+-------+------+-------+
 SELECT t1.*, t2.* FROM table1 t1 LEFT OUTER JOIN table2 t2 on t1.id = t2.id;
 +----+-------+------+-------+
 | id | value | id   | value |
