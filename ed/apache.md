@@ -19,6 +19,17 @@ sudo php5enmod mcrypt
 ````
 
 ````
+DocumentRoot /home/kovpak/web/kovpak/gh/ed/phalcon/examples/one/public/
+<Directory /home/kovpak/web/kovpak/gh/>
+    Options Indexes FollowSymLinks Includes ExecCGI
+    Require all granted
+    AllowOverride All
+    Order deny,allow
+    Allow from all
+</Directory>
+````
+
+````
 rm -rf /var/www
 ln -fs /vagrant /var/www
 ````
