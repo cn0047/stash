@@ -3,6 +3,7 @@ Acronyms
 
 [ACID](#ACID)
 [AMQP](#AMQP)
+[API](#API)
 [B2B](#B2B)
 [BDD](#BDD)
 [CDN](#CDN)
@@ -55,6 +56,9 @@ Acronyms
 
 <dt><a name="AMQP"></a>AMQP</dt>
 <dd>Advanced Message Queuing Protocol.</dd>
+
+<dt><a name="API"></a>API</dt>
+<dd>Application programming interface.</dd>
 
 <dt><a name="B2B"></a>B2B</dt>
 <dd>Business to business.</dd>
