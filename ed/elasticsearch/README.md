@@ -38,6 +38,14 @@ Shut down
 curl -XPOST 'http://localhost:9200/_shutdown'
 ````
 
+````
+// Create new index
+curl -XPUT http://localhost:9200/new_index/
+
+// Delete index
+curl -XDELETE http://localhost:9200/new_index/
+````
+
 ````json
 curl -XGET 'http://localhost:9200/_count?pretty' -d '
 {
@@ -55,7 +63,32 @@ curl -XGET 'localhost:9200/_count?pretty' -d '
  "match_all": {}
  }
 }'
+````
 
+````json
+# create index
+curl -XPUT http://localhost:9200/my_index/
+
+# get indexes
+curl http://localhost:9200/_cat/indices?v
+
+# get mapping
+curl -XGET http://localhost:9200/ziipr/_mapping/users
+
+# put mapping for user
+curl -XPUT http://localhost:9200/my_index/_mapping/users -d '{
+  "users": {
+      "_id" : {"path" : "user_id"},
+      "properties": {
+          "user_id": {"type": "long"},
+          "created_at": {"type": "date", "format": "yyy-MM-dd HH:mm:ss"}
+      }
+  }
+}'
+````
+
+````json
+// Create new document (employee id 1)
 curl -XPUT localhost:9200/megacorp/employee/1 -d '
 {
  "first_name" : "John",
@@ -65,6 +98,8 @@ curl -XPUT localhost:9200/megacorp/employee/1 -d '
  "interests": [ "sports", "music" ]
 }
 '
+
+// Create new document (employee id 2)
 curl -XPUT localhost:9200/megacorp/employee/2 -d '
 {
  "first_name" : "Jane",
@@ -73,6 +108,8 @@ curl -XPUT localhost:9200/megacorp/employee/2 -d '
  "about" : "I like to collect rock albums",
  "interests": [ "music" ]
 }
+
+// Create new document (employee id 3)
 '
 curl -XPUT localhost:9200/megacorp/employee/3 -d '
 {
@@ -84,6 +121,7 @@ curl -XPUT localhost:9200/megacorp/employee/3 -d '
 }
 '
 
+// Getn employee 1
 curl -XGET localhost:9200/megacorp/employee/1
 ````
 We could use the DELETE verb to delete the document.
