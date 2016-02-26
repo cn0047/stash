@@ -98,8 +98,8 @@ phpcs -sw --standard=PSR2 file.php
 
 curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
 chmod +x phpcs.phar
-cp phpcs.phar /usr/local/bin/phpcs
-cp phpcs.phar /usr/bin/phpcs
+sudo cp phpcs.phar /usr/local/bin/phpcs
+sudo cp phpcs.phar /usr/bin/phpcs
 ````
 
 ####[phpDoc](http://www.phpdoc.org/docs/latest/index.html)
@@ -140,7 +140,7 @@ xdebug_stop_trace();
 # Profiling
 # .htaccess
 php_value xdebug.profiler_enable 1
-php_value xdebug.profiler_output_name xdebug.out.%t
+php_value xdebug.profiler_output_name xdebug.profiler.%t
 php_value xdebug.profiler_output_dir /home/debug/d
 php_value xdebug.profiler_enable_trigger 1
 # Generated file open with KCachegrind.

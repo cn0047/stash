@@ -164,7 +164,7 @@ $.get('demo_test.asp', function (data, status) {
     console.log([data, status]);
 });
 
-$.getJSON(url, parameters, callback);
+$.getJSON(url, parameters, function (data) { console.log(data); });
 
 $.post(url, parameters, callback, type);
 ````

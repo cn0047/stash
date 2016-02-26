@@ -1,6 +1,32 @@
 Linux
 -
 
+####sed
+
+Sed was developed from 1973.
+
+````
+# Mode of operation
+d - delete
+q - quit
+N - add the next line
+
+echo 'Some text or regexp' | sed 's/regexp/replacement/g' # Some text or replacement
+echo 'cat and dog' | sed -r "s/(cat|dog)s?/\1s/g" # cats and dogs
+echo 'xxx and zzz' | sed 's/x/y/g' # yyy and zzz
+echo '1 one; 2 two' | sed 's/1//g; s/2//g' #  one;  two
+````
+
+####awk
+
+AWK was created in the 1970s.
+
+````
+echo 'one and two' | awk '{print $1}' # will print one
+awk 'BEGIN {print "Hello, world!"}'
+ps aux|awk 'length($0) > 150' # Print lines longer than 150 characters
+````
+
 ####shell
 ````
 df    # Show information about the file system.
@@ -49,7 +75,7 @@ popd       # got to pushed path (and delete it from stack)
 history
 ````
 
-###ssh
+####ssh
 ````
 ssh-add ~/.ssh/id_rsa
 vim /etc/ssh/sshd_config

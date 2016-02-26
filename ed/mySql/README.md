@@ -5,6 +5,11 @@ MySql
 
 ####Snippets
 ````sql
+-- Create new user like root
+-- mysql --user=root mysql
+CREATE USER 'ziipr'@'localhost' IDENTIFIED BY '';
+GRANT ALL PRIVILEGES ON *.* TO 'ziipr'@'localhost' WITH GRANT OPTION;
+
 INSERT INTO brand2 (name) SELECT name FROM brand;
 
 ALTER  TABLE table ADD field INTEGER(1) NOT NULL;
