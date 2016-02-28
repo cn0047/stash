@@ -36,10 +36,10 @@ try {
         return $view;
     });
 
-    // Setup a base URI so that all generated URIs include the "tutorial" folder
+    // Setup a base URI so that all generated URIs include the "one" folder
     $di->set('url', function () {
         $url = new UrlProvider();
-        // $url->setBaseUri('/tutorial/');
+        $url->setBaseUri('/one/');
         return $url;
     });
 

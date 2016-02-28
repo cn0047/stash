@@ -176,6 +176,9 @@ curl http://url.com -d x=1 -d y=2
 
 curl http://login:pass@base-http-auth.com/
 curl -u login:pass http://base-http-auth.com/
+
+# upload file
+curl http://localhost:8000 -F "file=@/home/kovpak/Downloads/download.jpg"
 ````
 
 ####SNIPPETS
