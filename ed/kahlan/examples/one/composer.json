@@ -1,0 +1,10 @@
+{
+    "require": {
+        "crysalead/kahlan": "^2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "One\\": "src/One"
+        }
+    }
+}

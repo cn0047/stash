@@ -47,7 +47,7 @@ RegExp
 |?<=                                       | lookbehind assetion |
 | ?! or ?<!                                | negative lookbehind |
 | ?>                                       | once-only sebexpression |
-| /?(condition)true-pattern\|false-pattern/ | condition |
+| /?(condition)true-pattern\|false-pattern/| condition |
 | /?(condition)true-pattern/               | condition |
 | ?#                                       | comment |
 | (?:...)                                  | pasive group, just group, cannot be linked by \1 |
@@ -57,7 +57,7 @@ RegExp
 | $`                                       | before matched string |
 | $'                                       | after matched string |
 | $+                                       | last matched string |
-|((?<=^)\|(?<=,))                           | Begin match with start of string (^) or comma. The `?<=` makes sure this is will not be replaced in preg_replace. |
+|((?<=^)\|(?<=,))                          | Begin match with start of string (^) or comma. The `?<=` makes sure this is will not be replaced in preg_replace. |
 
 |   |   |
 |---|---|
