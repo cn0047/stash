@@ -45,8 +45,7 @@ Relational DB ⇒ Databases ⇒ Tables ⇒ Rows      ⇒ Columns
 Elasticsearch ⇒ Indices   ⇒ Types  ⇒ Documents ⇒ Fields
 ````
 
-````
-
+````json
 # create index
 curl -XPUT http://localhost:9200/megacorp/
 
@@ -60,46 +59,85 @@ curl http://localhost:9200/_cat/indices?v
 curl -XGET http://localhost:9200/ziipr/_mapping/users
 
 # put mapping for user
-curl -XPUT http://localhost:9200/megacorp/_mapping/users -d '{
-  "users": {
-      "_id" : {"path" : "user_id"},
+curl -XPUT http://localhost:9200/megacorp/_mapping/employee -d '{
+  "employee": {
       "properties": {
-          "user_id": {"type": "long"},
-          "created_at": {"type": "date", "format": "yyy-MM-dd HH:mm:ss"}
+          "first_name": {"type": "string"},
+          "last_name": {"type": "string"},
+          "age": {"type": "integer"},
+          "about": {"type": "string"},
+          "last_login_at": {"type": "date", "format": "yyy-MM-dd"},
+          "city": {"type": "string"},
+          "location": {"type": "geo_point", "lat_lon": "true"},
+          "interests": {"type": "string"}
       }
   }
 }'
 ````
 
 ````json
-// Create new document (employee id 1)
+// Create new documents (employee)
 curl -XPUT localhost:9200/megacorp/employee/1 -d '{
 "first_name" : "John",
 "last_name" : "Smith",
 "age" : 25,
 "about" : "I love to go rock climbing",
+"last_login_at": "2016-01-21",
+"city": "London",
+"location": {"lat": 51.5072, "lon": 0.1275},
 "interests": [ "sports", "music" ]
 }'
-
-// Create new document (employee id 2)
 curl -XPUT localhost:9200/megacorp/employee/2 -d '{
 "first_name" : "Jane",
 "last_name" : "Smith",
 "age" : 32,
 "about" : "I like to collect rock albums",
+"last_login_at": "2016-01-10",
+"city": "Manchester",
+"location": {"lat": 53.4667, "lon": 2.2333},
 "interests": [ "music" ]
 }'
-
-// Create new document (employee id 3)
 curl -XPUT localhost:9200/megacorp/employee/3 -d '{
 "first_name" : "Douglas",
 "last_name" : "Fir",
 "age" : 35,
 "about": "I like to build cabinets",
+"last_login_at": "2016-02-14",
+"city": "Kyiv",
+"location": {"lat": 50.4500, "lon": 30.5233},
 "interests": [ "forestry" ]
 }'
+curl -XPUT localhost:9200/megacorp/employee/4 -d '{
+"first_name" : "Louis",
+"last_name" : "de Funès",
+"age" : 70,
+"about": "actor",
+"last_login_at": "2012-03-04",
+"city": "Paris",
+"location": {"lat": 48.8567, "lon": 2.3508},
+"interests": [ "fantomas", "theatre" ]
+}'
+curl -XPUT localhost:9200/megacorp/employee/5 -d '{
+"first_name" : "Cristiano",
+"last_name" : "Ronaldo",
+"age" : 31,
+"about": "footballer",
+"last_login_at": "2016-03-11",
+"city": "Santo António",
+"location": {"lat": 37.1939, "lon": 7.4158},
+"interests": [ "football", "cars", "casino" ]
+}'
+curl -XPUT localhost:9200/megacorp/employee/6 -d '{
+"first_name" : "Gennady",
+"last_name" : "Golovkin",
+"age" : 33,
+"about": "Professional Boxer",
+"last_login_at": "2016-03-03",
+"city": "Karaganda",
+"location": {"lat": 49.8333, "lon": 73.1667},
+"interests": [ "boxing", "WBA", "IBO", "cars" ]
+}'
 
-````
 // Get employee 1
 curl -XGET localhost:9200/megacorp/employee/1
 ````
@@ -111,6 +149,7 @@ To replace an existing document - just PUT it again.
 #### Search
 
 ````json
+# find all employee
 curl -XGET localhost:9200/megacorp/employee/_search
 
 curl -XGET localhost:9200/megacorp/employee/_search?q=last_name:Smith
@@ -119,6 +158,16 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
     "query" : {
         "filtered" : {
             "filter" : { "range" : { "age" : { "gt" : 30 } } }
+        }
+    }
+}'
+
+curl -XGET localhost:9200/megacorp/employee/_search -d '{
+    "query" : {
+        "bool": {
+            "filter" : [
+                {"range" : {"age": {"gt": 32}}}
+            ]
         }
     }
 }'
@@ -148,6 +197,44 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
         }
     }
 }'
+
+curl -XGET localhost:9200/megacorp/employee/_search -d '{
+    "query" : {"bool": {
+        "filter": {
+            "script": {
+                "script": "doc['"'"'age'"'"'].value > 33"
+            }
+        }
+    }}
+}'
+
+curl -XGET localhost:9200/megacorp/employee/_search -d '{
+    "query" : {"bool": {
+        "filter": {
+            "script": {
+                "script": {
+                    "inline": "doc['"'"'age'"'"'].value > param1",
+                    "params" : {"param1": 40}
+                }
+            }
+        }
+    }}
+}'
+
+curl -XGET localhost:9200/megacorp/employee/_search -d '{
+    "query" : {
+        "bool": {
+            "filter": {
+                "script": {
+                    "script": {
+                        "inline": "doc['"'"'location'"'"'].distanceInKm(lat, lon)",
+                        "params": {"lat": 49.8333, "lon": 73.1667}
+                    }
+                }
+            }
+        }
+    }
+}'
 ````
 
 #### Full-text search
@@ -163,7 +250,6 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
         "match_phrase" : { "about" : "rock climbing" }
     }
 }'
-
 # we'll receive: "I love to go rock climbing"
 
 curl -XGET localhost:9200/megacorp/employee/_search -d '
@@ -174,13 +260,13 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '
     "highlight": { "fields" : { "about" : {} } }
 }
 '
+#
 
 curl -XGET localhost:9200/megacorp/employee/_search -d '{
     "query" : {
         "wildcard" : { "about" : "*limbing" }
     }
 }'
-
 # we'll receive: "I love to go rock climbing"
 ````
 
