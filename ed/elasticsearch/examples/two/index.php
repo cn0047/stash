@@ -22,47 +22,35 @@ $params = [
     'timestamp' => time(),
 ];
 $response = $client->index($params);
+// print_r($response);
 
-var_dump(new \Elastica\Document());
-die;
+// Bulk indexing.
+$params = [];
+for($i = 0; $i < 5; $i++) {
+    $params['body'][] = [
+        'index' => [
+            '_index' => 'my_index',
+            '_type' => 'my_type',
+        ]
+    ];
+    $params['body'][] = [
+        'index' => 'my_index',
+        'type' => 'my_type',
+        'body' => ['testOk' => (bool)mt_rand(0, 1)],
+        'timestamp' => time(),
+    ];
+}
+$responses = $client->bulk($params);
+// print_r($response);
 
-// // Bulk indexing.
-// for($i = 0; $i < 10; $i++) {
-//     // $params['body'][] = [
-//     //     'index' => [
-//     //         '_id' => 'my_id_' . $i,
-//     //         'type' => 'my_type',
-//     //     ],
-//     //     'my_index',
-//     //     'type' => 'my_type',
-//     // ];
-//     // $params['body'][] = [
-//     //     'my_field' => 'my_value',
-//     //     'second_field' => 'some more values',
-//     // ];
-
-//     // $params['body'][] = [
-//     //     'index' => 'my_index',
-//     //     'type' => 'my_type',
-//     //     'id' => 'my_id_' . $i,
-//     //     'body' => ['testOk' => 'true'],
-//     //     'timestamp' => time(),
-//     // ];
-//     // $params['body'][] = [
-//     //     'my_field' => 'my_value',
-//     //     'second_field' => 'some more values'
-//     // ];
-// }
-// $responses = $client->bulk($params);
-// var_export($response);
-
-// Get document.
+// Get document by id.
 $params = [
     'index' => 'my_index',
     'type' => 'my_type',
     'id' => $id,
 ];
 $response = $client->get($params);
+// print_r($response);
 
 // Search.
 $params = [
@@ -77,40 +65,4 @@ $params = [
     ]
 ];
 $response = $client->search($params);
-//
-$params = [
-    'index' => 'my_index',
-    'type' => 'my_type',
-    // 'timestamp' => [
-    //     'query' => [
-    //         'wildcard' => '*',
-    //     ]
-    // ]
-    'body' => [
-        'query' => [
-            'bool' => [
-                'should' => [
-                    'wildcard' => ['timestamp' => '*'],
-                ],
-            ],
-        ],
-    ],
-];
-$response = $client->search($params);
-
-
-//
-var_export($response);
-
-
-
-
-// curl "localhost:9200/my_index/_search?search_type=count" -d '{
-//     "aggs": {
-//         "count_by_type": {
-//             "terms": {
-//                 "field": "_type"
-//             }
-//         }
-//     }
-// }'
+// var_export($response);

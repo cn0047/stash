@@ -32,6 +32,11 @@ sudo /etc/init.d/elasticsearch restart
 
 curl 'http://localhost:9200/?pretty'
 ````
+````
+# enable scripting
+# appent into file /etc/elasticsearch/elasticsearch.yml
+script.engine.groovy.inline.search: on
+````
 
 Shut down
 ````
@@ -137,7 +142,16 @@ curl -XPUT localhost:9200/megacorp/employee/6 -d '{
 "location": {"lat": 49.8333, "lon": 73.1667},
 "interests": [ "boxing", "WBA", "IBO", "cars" ]
 }'
-
+curl -XPUT localhost:9200/megacorp/employee/7 -d '{
+"first_name" : "Jackie",
+"last_name" : "Chan",
+"age" : 61,
+"about": "Martial Artist",
+"last_login_at": "2016-03-12",
+"city": "Hong Kong",
+"location": {"lat": 22.2783, "lon": 114.1747},
+"interests": [ "movie", "hollywood", "kong foo" ]
+}'
 // Get employee 1
 curl -XGET localhost:9200/megacorp/employee/1
 ````
@@ -222,6 +236,7 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
 }'
 
 curl -XGET localhost:9200/megacorp/employee/_search -d '{
+    "fields" : ["city"],
     "query" : {
         "bool": {
             "filter": {
@@ -234,6 +249,27 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
             }
         }
     }
+}'
+
+curl -XGET localhost:9200/megacorp/employee/_search -d '{
+    "sort" : [{ "city" : "asc" }]
+}'
+
+# Sorting by distance from London.
+curl -XGET localhost:9200/megacorp/employee/_search -d '{
+  "sort": [
+    {
+      "_geo_distance": {
+        "location": {
+          "lat":  51.5072,
+          "lon": 0.1275
+        },
+        "order":         "asc",
+        "unit":          "km",
+        "distance_type": "plane"
+      }
+    }
+  ]
 }'
 ````
 
