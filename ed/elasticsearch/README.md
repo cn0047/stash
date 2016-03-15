@@ -1,5 +1,6 @@
 Elasticsearch
 -
+2.2
 1.6.0
 
 elasticsearch.org/download
@@ -63,7 +64,7 @@ curl http://localhost:9200/_cat/indices?v
 # get mapping
 curl -XGET http://localhost:9200/ziipr/_mapping/users
 
-# put mapping for user
+# put mapping for employee
 curl -XPUT http://localhost:9200/megacorp/_mapping/employee -d '{
   "employee": {
       "properties": {
@@ -168,6 +169,11 @@ curl -XGET localhost:9200/megacorp/employee/_search
 
 curl -XGET localhost:9200/megacorp/employee/_search?q=last_name:Smith
 
+# Calculate count of all documents
+curl -XGET localhost:9200/megacorp/employee/_count -d '{
+    "query": {"match_all" : {}}
+}'
+
 curl -XGET localhost:9200/megacorp/employee/_search -d '{
     "query" : {
         "filtered" : {
@@ -177,10 +183,12 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
 }'
 
 curl -XGET localhost:9200/megacorp/employee/_search -d '{
+    "fields": ["last_login_at", "age"],
     "query" : {
         "bool": {
             "filter" : [
-                {"range" : {"age": {"gt": 32}}}
+                {"range" : {"age": {"gt": 31}}},
+                {"range" : {"last_login_at": {"gt": "2016-03-01"}}}
             ]
         }
     }
@@ -252,7 +260,9 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
 }'
 
 curl -XGET localhost:9200/megacorp/employee/_search -d '{
-    "sort" : [{ "city" : "asc" }]
+    "post_filter": {
+        "range": {"age": {"gt" : 35}}
+    }
 }'
 
 # Sorting by distance from London.
@@ -270,6 +280,23 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
       }
     }
   ]
+}'
+
+# Simple sort
+curl -XGET localhost:9200/megacorp/employee/_search -d '{
+    "sort" : [{ "city" : "asc" }]
+}'
+
+curl -XGET localhost:9200/megacorp/employee/_search -d '{
+    "fielddata_fields" : ["first_name", "age"]
+}'
+````
+````
+# Custom field
+curl -XGET localhost:9200/megacorp/employee/_search -d '{
+    "script_fields": {"name": {
+        "script" : "_source.first_name + _source.last_name"
+    }}
 }'
 ````
 
