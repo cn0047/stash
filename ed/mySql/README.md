@@ -12,9 +12,10 @@ GRANT ALL PRIVILEGES ON *.* TO 'ziipr'@'localhost' WITH GRANT OPTION;
 
 INSERT INTO brand2 (name) SELECT name FROM brand;
 
-ALTER  TABLE table ADD field INTEGER(1) NOT NULL;
-ALTER  TABLE table ADD UNIQUE KEY (field);
+ALTER  TABLE table    ADD field INTEGER(1) NOT NULL AFTER anotherFieldName;
+ALTER  TABLE table    ADD UNIQUE KEY (field);
 ALTER  TABLE engineer ADD UNIQUE KEY username_email (username, email);
+ALTER  TABLE engineer ADD FOREIGN KEY (LanguageID) REFERENCES languages(LanguageId) ON DELETE RESTRICT;
 ALTER  TABLE table MODIFY field VARCHAR(7) NOT NULL DEFAULT '';
 ALTER  TABLE table CHANGE field field VARCHAR(7) NOT NULL DEFAULT ''; -- rename column
 ALTER  TABLE table CHANGE field field TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
@@ -228,6 +229,11 @@ slow_query_log_file = /var/log/mysql/logSlowQueries.log
 long_query_time = 1
 log_queries_not_using_indexes = 0
 innodb_log_file_size = 5M
+
+general-log = 1
+general-log-file = /var/log/mysql/general.log
+# And run:
+# sudo chown mysql:mysql /var/log/mysql/general.log
 ````
 ````sql
 SET global general_log_file='/tmp/myslq.log';

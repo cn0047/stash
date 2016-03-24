@@ -84,6 +84,14 @@ git push remoteRepoName :newBranch                # delete branch from remote re
 ````
 
 ####config
+
+.gitignore
+````
+.idea/
+vendor/
+node_modules/
+````
+
 ````
 /etc/gitconfig # system
 ~/.gitconfig   # user

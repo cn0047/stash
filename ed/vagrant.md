@@ -6,6 +6,8 @@ Vagrant
 [download virtualbox](https://www.virtualbox.org/wiki/Linux_Downloads),
 [download vagrant](https://www.vagrantup.com/downloads.html).
 
+vagrant plugin install vagrant-vbguest
+
 ````
 vagrant up
 vagrant reload

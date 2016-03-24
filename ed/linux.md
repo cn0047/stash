@@ -55,6 +55,8 @@ scp -rp access@host:~/dir/ ~/dir/
 
 ~/.bash_history
 
+ln -s {file} {symbolic-name}
+
 cat
 tail
 
