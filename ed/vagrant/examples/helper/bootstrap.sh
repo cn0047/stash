@@ -15,4 +15,5 @@ service apache2 stop
 
 # nginx
 apt-get install -y nginx
-# enable php at /etc/nginx/sites-available/default
+cp /vagrant/nginx.default.conf /etc/nginx/sites-available/default
+service nginx restart
