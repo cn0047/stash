@@ -88,8 +88,9 @@ git push remoteRepoName :newBranch                # delete branch from remote re
 .gitignore
 ````
 .idea/
-vendor/
+.vagrant/
 node_modules/
+vendor/
 ````
 
 ````

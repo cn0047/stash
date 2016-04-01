@@ -1,5 +1,7 @@
 #!/bin/sh
 
+exit
+
 readonly URL_1='http://jobs.dou.ua/vacancies/?city=%D0%9A%D0%B8%D1%97%D0%B2&category=PHP&count=9999'
 readonly URL_2='http://jobs.dou.ua/vacancies/xhr-load/?category=PHP&city=%D0%9A%D0%B8%D1%97%D0%B2&count_BAD=9999'
 

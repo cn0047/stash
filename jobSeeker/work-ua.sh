@@ -1,7 +1,12 @@
 #!/bin/sh
 
-# readonly URL='http://www.work.ua/jobs-kyiv-php/?days=123&page='
-readonly URL='http://www.work.ua/jobs-php/?days=123&page='
+echo "http://www.work.ua/jobs-kyiv-php/?advs=1&sel_zan=76&days=123&page=1"
+exit
+
+# Kiev
+readonly URL='http://www.work.ua/jobs-kyiv-php/?days=123&page='
+# All UA
+# readonly URL='http://www.work.ua/jobs-php/?days=123&page='
 
 toOpen=''
 i=0
@@ -10,8 +15,9 @@ while [ true ]; do
     curl -s -o /tmp/jobSeeker.tmp "$URL$i"
     is404=$((`grep 'card-logotype' -ric /tmp/jobSeeker.tmp`))
     if [ $is404 -eq 0 ]; then
+        echo "\n"
         echo $toOpen
-        /usr/bin/chromium-browser $toOpen
+        # /usr/bin/chromium-browser $toOpen
         exit
     fi
     for uri in `grep '\/jobs\/[0-9]+\/' -Erio /tmp/jobSeeker.tmp`; do

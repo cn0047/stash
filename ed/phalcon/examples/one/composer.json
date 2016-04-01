@@ -1,5 +1,10 @@
 {
     "require": {
         "crysalead/kahlan": "^2.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Services\\": "app/services"
+        }
     }
 }
