@@ -6,8 +6,8 @@ console.group('Application Log');
 console.log('Application Log');
 console.groupEnd();
 
-JSON.stringify(object);                // object to JSON
-JSON.parse(string)                     // string to JSON
+JSON.stringify(object);                // object to JSON string
+JSON.parse(string)                     // JSON string to object
 
 console.log(typeof v !== 'undefined'); // isset variable v.
 
@@ -201,7 +201,7 @@ switch (x) {
         break;
 }
 
-// Convenience method bu slow
+// Convenience method but slow
 with (frames[1].document.forms[0]) {
     name.value = '007'; // Equal to frames[1].document.forms[0].name.value
 }

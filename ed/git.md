@@ -20,6 +20,9 @@ HEAD^^ == HEAD~2
 
 git commit -m 'Message'
 
+git tag 1.1.1
+git push origin --tags
+
 git blame -L 11,12 file
 
 export GIT_SSL_NO_VERIFY=1;

@@ -37,6 +37,10 @@ K  - LOOK TO SCREEN
 ````
 
 ####.vimrc
+
+````
+:set nowrap
+````
 ````
 :set nonumber
 :syntax on

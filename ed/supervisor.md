@@ -10,11 +10,12 @@ Supervisor
 http://localhost:9001/
 
 service supervisor status
-service supervisor restart
+service supervisord status
 /etc/init.d/supervisor restart
 
-supervisorctl reload
-supervisorctl restart
+sudo /usr/local/bin/supervisorctl status
 supervisorctl status
+supervisorctl reload
+supervisorctl restart all
 supervisorctl stop all
 ````

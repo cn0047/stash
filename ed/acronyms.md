@@ -46,6 +46,7 @@ Acronyms
 [TLS](#TLS)
 [UDP](#UDP)
 [UTC](#UTC)
+[VPN](#VPN)
 [WSDL](#WSDL)
 [XML](#XML)
 
@@ -185,6 +186,9 @@ Acronyms
 
 <dt><a name="UTC"></a>UTC</dt>
 <dd>Coordinated Universal Time</dd>
+
+<dt><a name="VPN"></a>VPN</dt>
+<dd>Virtual Private Network</dd>
 
 <dt><a name="WSDL"></a>WSDL</dt>
 <dd>Web Service Definition Language.</dd>

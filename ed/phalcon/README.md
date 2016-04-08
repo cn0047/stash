@@ -29,3 +29,8 @@ phalcon migration --action=generate --table=template --no-auto-increment
 # run db migration
 phalcon migration --action=run --table=template --version=1.0.0
 ````
+
+#### Volt
+````twig
+{{ select('email_template_name', email_templates_names, 'class': 'hidden') }}
+````

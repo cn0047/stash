@@ -61,8 +61,11 @@ curl -XDELETE http://localhost:9200/megacorp/
 # get indexes
 curl http://localhost:9200/_cat/indices?v
 
+# get all mappings (types)
+curl -XGET http://localhost:9200/_mapping
+
 # get mapping
-curl -XGET http://localhost:9200/ziipr/_mapping/users
+curl -XGET http://localhost:9200/megacorp/_mapping/employee
 
 # put mapping for employee
 curl -XPUT http://localhost:9200/megacorp/_mapping/employee -d '{
@@ -78,6 +81,16 @@ curl -XPUT http://localhost:9200/megacorp/_mapping/employee -d '{
           "interests": {"type": "string"}
       }
   }
+}'
+
+# delete mapping
+curl -XDELETE 'http://localhost:9200/megacorp/employee'
+
+# create alias
+curl -XPOST localhost:9200/_aliases -d '{
+"actions": [
+    {"add": {"alias": "megacorp", "index": "megacorp_v1"}}
+]
 }'
 ````
 
