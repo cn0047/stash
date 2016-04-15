@@ -8,6 +8,7 @@ Vagrant
 [download vagrant](https://www.vagrantup.com/downloads.html).
 
 vagrant plugin install vagrant-vbguest
+vagrant plugin install vagrant-cachier
 
 ````
 vagrant up

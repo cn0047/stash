@@ -37,6 +37,7 @@ curl 'http://localhost:9200/?pretty'
 # enable scripting
 # appent into file /etc/elasticsearch/elasticsearch.yml
 script.engine.groovy.inline.search: on
+script.engine.groovy.inline.update: on
 ````
 
 Shut down
@@ -313,6 +314,12 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
 }'
 ````
 
+````
+curl -XPOST 'localhost:9200/ziipr/users/18330/_update?pretty' -d '{
+"script" : "if (ctx._source.pictures != null) { for (item in ctx._source.pictures) { if (item.picture_id == 3460) { item.type_id = 201201999 } } } "
+}'
+````
+
 #### Full-text search
 
 ````json
@@ -377,3 +384,5 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
     }
 }'
 ````
+
+https://www.elastic.co/guide/en/elasticsearch/reference/current/_basic_concepts.html

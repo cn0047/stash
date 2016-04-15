@@ -1,6 +1,31 @@
 Theory
 -
 
+#### Microservices
+
+The less well you understand a domain,
+the harder it will be for you to find proper bounded contexts for your services.
+
+Greenfield development is also quite challenging.
+So again, consider starting monolithic first and break things out when you’re stable.
+
+Many of the challenges you’re going to face with microservices get worse with scale.
+
+* Model Around Business Concepts
+  (use bounded contexts)
+* Adopt a Culture of Automation
+  (automated testing, deploy the same way everywhere, continuous delivery)
+* Hide Internal Implementation Details
+  (modeling bounded contexts, services should also hide their databases, consider using REST)
+* Decentralize All the Things
+  (teams own their services, align teams to the organization, prefer choreography over orchestration)
+* Independently Deployable
+  (coexist versioned endpoints, one-service-per-host)
+* Isolate Failure
+  (expect failure will occur anywhere and everywhere)
+* Highly Observable
+  (aggregate your logs, aggregate your stats)
+
 Tell, Don’t Ask (Law of Demeter).
 
 #### Code quality
@@ -24,6 +49,23 @@ Tell, Don’t Ask (Law of Demeter).
     <li><i>Isolation</i> ensures that the concurrent execution of transactions will executed serially, i.e., one after the other.</li>
     <li><i>Durability</i> ensures that once a transaction has been committed, it will remain so, even in the event of power loss, crashes, or errors...</li>
 </ul>
+
+#### 10 Questions Developers Should be Asking Themselves
+
+* Is there a pattern here?
+* How can I make this simpler?
+* Why does it work like that?
+  (Knowing that something works and knowing why it works that way are two very  different things.)
+* Has somebody done this before?
+* Who said it first?
+  (Always try read the original source of a concept or theory.)
+* Do I love what I’m doing?
+* Where else could I use this?
+* What did I fail at today?
+* How can we make this possible?
+  (Start from the assumption that whatever you want to do is possible.)
+* Who can I learn from?
+  (You should never work anywhere where you are the smartest person in the room.)
 
 #### SOLID
 

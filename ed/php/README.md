@@ -49,6 +49,13 @@ if (json_last_error() !== JSON_ERROR_NONE) {
 }
 ````
 
+####opCache
+
+https://gist.github.com/ck-on/4959032/?ocp.php
+https://github.com/rlerdorf/opcache-status
+https://github.com/PeeHaa/OpCacheGUI
+https://github.com/amnuts/opcache-gui :+1:
+
 ####Closures
 Anonymous functions - functions which have no specified name.
 <br>They are most useful as the value of callback parameters.
@@ -125,6 +132,7 @@ xdebug.remote_log=/var/log/xdebug.log
 
 # Debug
 # ?XDEBUG_SESSION_START=sublime.xdebug
+# ?XDEBUG_SESSION_START=PHPSTORM
 # .htaccess
 php_value xdebug.remote_enable 1
 # php_value xdebug.remote_connect_back 1
