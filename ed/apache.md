@@ -30,6 +30,13 @@ DocumentRoot /home/kovpak/web/kovpak/gh/ed/phalcon/examples/one/public/
 ````
 
 ````
+-RewriteCond %{HTTP_HOST} www\.upforit\.com [NC]
+-RewriteCond %{REQUEST_URI} ^/aff.php$
+-RewriteCond %{QUERY_STRING} ^dynamicpage=find&filter=sexy&a_bid=48c701ef&a_aid=e2ddc951
+-RewriteRule ^(.*) - [F]
+````
+
+````
 rm -rf /var/www
 ln -fs /vagrant /var/www
 ````

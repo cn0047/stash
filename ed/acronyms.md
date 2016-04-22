@@ -2,6 +2,7 @@ Acronyms
 -
 
 [ACID](#ACID)
+[AJAX](#AJAX)
 [AMQP](#AMQP)
 [API](#API)
 [B2B](#B2B)
@@ -53,7 +54,10 @@ Acronyms
 <dl>
 
 <dt><a name="ACID"></a>ACID</dt>
-<dd> Atomicity, Consistency, Isolation, Durability.</dd>
+<dd>Atomicity, Consistency, Isolation, Durability.</dd>
+
+<dt><a name="AJAX"></a>AJAX</dt>
+<dd>Asynchronous JavaScript and XML</dd>
 
 <dt><a name="AMQP"></a>AMQP</dt>
 <dd>Advanced Message Queuing Protocol.</dd>

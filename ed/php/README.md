@@ -298,6 +298,21 @@ When memcache overflows, it will expire oldest keys and flush them.
 
 http://php.net/manual/en/appendices.php
 
+####PHP 7.x
+* Scalar type declarations.
+* Return type declarations.
+* Null coalescing operator (??).
+* Spaceship operator (<=>).
+* Constant arrays using define().
+* Anonymous classes.
+* Closure::call().
+* Filtered unserialize() (prevent code injections).
+* IntlChar.
+* Group use declarations.
+* Integer division with intdiv().
+* Session options (session_start() now accepts an array).
+* random_bytes() and random_int().
+
 ####PHP 5.6.x
 * Constant scalar expressions.
 * Variadic functions via ...

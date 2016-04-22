@@ -7,7 +7,7 @@ version 7.4
 :version
 :redo or CTRL+R
 :e!                 - reload file
-:%s/text/newText/
+:%s/text/newText/   - replace
 
 ctrl+p - show competition
 

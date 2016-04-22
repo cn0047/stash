@@ -1,8 +1,14 @@
 <?php
 
 $xmlDoc = new DOMDocument();
+
+// PHP
 $xmlDoc->load('http://jobs.dou.ua/vacancies/feeds/?cities=%D0%9A%D0%B8%D0%B5%D0%B2&category=PHP');
 $xmlDoc->load('http://jobs.dou.ua/vacancies/feeds/?&category=PHP');
+// JS
+$xmlDoc->load('http://jobs.dou.ua/vacancies/feeds/?cities=%D0%9A%D0%B8%D0%B5%D0%B2&category=Front+End');
+$xmlDoc->load('http://jobs.dou.ua/vacancies/feeds/?&category=Front+End');
+
 $items = $xmlDoc->getElementsByTagName('item');
 $foundUrls = [];
 foreach ($items as $i => $el) {
