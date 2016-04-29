@@ -90,4 +90,4 @@ curl -XPOST localhost:9200/_aliases -d '{
 }'
 ````
 
-https://www.elastic.co/guide/en/elasticsearch/reference/current/date-math-index-names.html
+https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-get.html

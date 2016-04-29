@@ -27,9 +27,10 @@ PHP= UK Conference 2016
 
 #### Gary Hockin - Step into Debugging
 
+#### Christopher Hoult - Simple Machine Learning
+
 Beth Tucker-Long - Mentoring: Change the World One Hour at a Time
 Billie Thompson - Kubernetes at the Home Office
-Christopher Hoult - Simple Machine Learning
 Ciaran Rooney - Magneto Done Right
 Davey Shafik - Every Millisecond Counts Performance & UX
 Derick Rethans - HHVM and MongoDB — the perfect combination

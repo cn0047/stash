@@ -3,7 +3,7 @@ Megacorp examples
 
 ````json
 # Create new documents (employee)
-curl -XPUT localhost:9200/megacorp/employee/1 -d '{
+curl -XPUT localhost:9200/megacorp/employee/1?routing=JohnSmith -d '{
     "first_name" : "John",
     "last_name" : "Smith",
     "age" : 25,
@@ -384,3 +384,7 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
     }
 }'
 ````
+curl -XPUT 'http://localhost:9200/twitter/tweet/1?ttl=1m' -d '{
+    "user": "kimchy",
+    "message": "Trying out elasticsearch, so far so good?"
+}'

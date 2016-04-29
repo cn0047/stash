@@ -1,0 +1,73 @@
+<html>
+<body>
+<script>
+
+/*
+
+Promise States:
+* Pending
+* Fulfilled
+* Rejected
+
+*/
+
+// Simple example.
+
+var hello = function (cb) {
+    cb({code: 200, message: 'hello world'});
+};
+
+var promise1 = new Promise(function (resolve, reject) {
+    hello(function (res) {
+        resolve(res);
+    });
+});
+
+promise1.then(function (data) {
+    console.log('Got data! Promise fulfilled.');
+    console.log(data);
+});
+
+// Example with exception.
+
+var hello2 = function (cb) {
+    throw 'Hello exception.';
+};
+
+var promise2 = new Promise(function (resolve, reject) {
+    try {
+        hello2(function (res) {
+            resolve(res);
+        });
+    } catch (e) {
+        reject(e);
+    }
+});
+
+promise2.then(function (data) {
+    console.log('Got data! Promise fulfilled.');
+    console.log(data);
+}, function(error) {
+    console.log('Promise rejected.');
+    console.log(error);
+});
+
+// Example with exception (another syntax).
+
+var promise3 = new Promise(function (resolve, reject) {
+    hello2(function (res) {
+        resolve(res);
+    });
+});
+
+promise3.then(function (data) {
+    console.log('Got data! Promise fulfilled.');
+    console.log(data);
+}).catch(function(e) {
+    console.log('Caught exception:');
+    console.log(e);
+})
+
+</script>
+</body>
+</html>

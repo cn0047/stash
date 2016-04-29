@@ -1,0 +1,75 @@
+<html>
+<body>
+<script>
+
+/*
+
+ECMAScript 6:
+
+*/
+
+// Constants.
+const PI = 3.141593
+
+// Let - allows you to declare variables that are limited in scope to the block.
+// for (let i = 0; i < 3; i++) {}
+
+// Block-Scoped Functions.
+{
+    function foo () { return 1 }
+    foo() === 1
+    {
+        function foo () { return console.log(2) }
+        foo() === 2
+    }
+}
+
+// More expressive closure syntax. Expression Bodies.
+var hello = function (cb) {
+    cb({code: 200, message: 'hello world'});
+};
+hello(v => console.log(v));
+
+// odds  = evens.map(v => v + 1)
+// pairs = evens.map(v => ({ even: v, odd: v + 1 }))
+// nums  = evens.map((v, i) => v + i)
+
+// Default Parameter Values.
+// function f (x, y = 7, z = 42) {
+//     return x + y + z
+// }
+// f(1) === 50
+
+// Variadic functions.
+function f (x, y, ...a) {
+    return (x + y) * a.length
+}
+f(1, 2, "hello", true, 7) === 9
+
+// Spread Operator.
+var params = [ "hello", true, 7 ]
+var other = [ 1, 2, ...params ]
+
+// String Interpolation.
+var customer = { name: "Foo" }
+message = `Hello ${customer.name} ${1 + 2}!`;
+
+// Binary & Octal Literal.
+0b111110111 === 503
+0o767 === 503
+
+// Unicode String & RegExp Literal
+"𠮷".length === 2
+
+// Computed Property Names
+obj = {
+    foo: "bar",
+    [ "baz" + 1 ]: 42
+}
+
+//
+http://es6-features.org/#ArrayMatching
+
+</script>
+</body>
+</html>

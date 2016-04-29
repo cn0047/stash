@@ -129,6 +129,7 @@ xdebug.remote_port=9000
 xdebug.remote_enable=On
 xdebug.remote_connect_back=On
 xdebug.remote_log=/var/log/xdebug.log
+xdebug.idekey=PHPSTORM
 
 # Debug
 # ?XDEBUG_SESSION_START=sublime.xdebug
@@ -139,7 +140,7 @@ php_value xdebug.remote_enable 1
 # php_value xdebug.remote_host localhost
 # php_value xdebug.remote_handler dbgp
 # php_value xdebug.remote_port 9000
-# php_value xdebug.remote_log '/tmp/xdebug.log'
+# php_value xdebug.remote_log '/var/log/xdebug.log'
 
 # Trace
 xdebug_start_trace('/tmp/xdebug.trace'); // output will be in file /tmp/xdebug.trace.xt
@@ -157,7 +158,7 @@ php_value xdebug.profiler_enable_trigger 1
 vim ~/.bashrc
 
 export PHP_IDE_CONFIG="serverName=trunk-007" 
-export XDEBUG_CONFIG="idekey=PHPSTORM remote_host={192.168.13.58} remote_enable=1 remote_autostart=1" 
+export XDEBUG_CONFIG="idekey=PHPSTORM remote_host={192.168.56.101} remote_enable=1 remote_autostart=1"
 export XDEBUG_CONFIG="idekey=sublime.xdebug remote_host={127.0.0.1} remote_enable=1 remote_autostart=1"
 
 source ~/.bashrc
