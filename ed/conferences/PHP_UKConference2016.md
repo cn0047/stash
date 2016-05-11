@@ -29,6 +29,8 @@ PHP= UK Conference 2016
 
 #### Christopher Hoult - Simple Machine Learning
 
+#### Morgan Tocker - MySQL 5 7 + JSON
+
 Beth Tucker-Long - Mentoring: Change the World One Hour at a Time
 Billie Thompson - Kubernetes at the Home Office
 Ciaran Rooney - Magneto Done Right
@@ -49,7 +51,6 @@ Marco Pivetta - Doctrine ORM Good Practices and Tricks
 Matthew Turland - Mocking Dependencies in Unit Tests with Phake
 Matthias Noback - All the cool kids...
 Michael Heap - Automation Automation Automation
-Morgan Tocker - MySQL 5 7 + JSON
 Ole Michaelis - Whirlwind tour through the HTTP2 spec
 Samantha Quiñones - Real Time Data Pipelines
 Szymon Skórczyński - Docker & PHP development and deployment

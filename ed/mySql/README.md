@@ -236,7 +236,7 @@ general-log-file = /var/log/mysql/general.log
 # sudo chown mysql:mysql /var/log/mysql/general.log
 ````
 ````sql
-SET global general_log_file='/tmp/myslq.log';
+SET global general_log_file='/var/log/mysql/general.log';
 SET global general_log = 0;
 ````
 

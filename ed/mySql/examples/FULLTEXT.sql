@@ -16,7 +16,21 @@ INSERT INTO articles (title,body) VALUES
 ('MySQL Security','When configured properly, MySQL ...');
 
 SELECT * FROM articles WHERE MATCH (title,body) AGAINST ('database');
++----+-------------------+------------------------------------------+
+| id | title             | body                                     |
++----+-------------------+------------------------------------------+
+|  1 | MySQL Tutorial    | DBMS stands for DataBase ...             |
+|  5 | MySQL vs. YourSQL | In the following database comparison ... |
++----+-------------------+------------------------------------------+
+
 SELECT * FROM articles WHERE MATCH (title,body) AGAINST ('databas*' IN BOOLEAN MODE);
++----+-------------------+------------------------------------------+
+| id | title             | body                                     |
++----+-------------------+------------------------------------------+
+|  1 | MySQL Tutorial    | DBMS stands for DataBase ...             |
+|  5 | MySQL vs. YourSQL | In the following database comparison ... |
++----+-------------------+------------------------------------------+
+
 SELECT * FROM articles WHERE MATCH (title,body) AGAINST ('dat*base' IN BOOLEAN MODE);
 +----+-------------------+------------------------------------------+
 | id | title             | body                                     |
@@ -26,4 +40,4 @@ SELECT * FROM articles WHERE MATCH (title,body) AGAINST ('dat*base' IN BOOLEAN M
 +----+-------------------+------------------------------------------+
 
 SELECT * FROM articles WHERE MATCH (title,body) AGAINST ('*atabase' IN BOOLEAN MODE);
-Empty set (0,00 sec)
+Empty set (0.00 sec)
