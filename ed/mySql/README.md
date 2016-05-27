@@ -233,6 +233,8 @@ innodb_log_file_size = 5M
 general-log = 1
 general-log-file = /var/log/mysql/general.log
 # And run:
+# sudo mkdir -p /var/log/mysql
+# sudo touch /var/log/mysql/general.log
 # sudo chown mysql:mysql /var/log/mysql/general.log
 ````
 ````sql

@@ -1,5 +1,6 @@
 Elasticsearch
 -
+2.3.3
 2.2
 1.6.0
 
@@ -90,4 +91,16 @@ curl -XPOST localhost:9200/_aliases -d '{
 }'
 ````
 
-https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-get.html
+#### Versioning
+
+Internally, Elasticsearch has marked the old document as deleted and added an entirely new document.
+The old version of the document doesn’t disappear immediately,
+although you won’t be able to access it.
+Elasticsearch cleans up deleted documents in the background as you continue to index more data.
+
+
+
+The update operation supports the following query-string
+[parameters](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-update.html#_parameters_3).
+
+https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-multi-get.html

@@ -151,6 +151,7 @@ uuencode card.jpg card.jpg | mail mail@com.com
 cat /etc/cron.d/
 ````
 ````
+SHELL=/bin/bash
 PATH=/bin:/usr/bin:/usr/local/bin
 CRUN_REMOTE_HOST=Host
 CRUN_EMAIL=mail@com.com

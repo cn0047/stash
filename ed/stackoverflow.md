@@ -12,5 +12,5 @@ SQL Fiddle:
 
 Regex:
 ````
-https://regex101.com/r/hK4gO3/3
+https://regex101.com/r/zO0kO8/1
 ````

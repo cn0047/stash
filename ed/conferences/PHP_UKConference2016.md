@@ -1,4 +1,4 @@
-PHP= UK Conference 2016
+PHP UK Conference 2016
 -
 
 #### Stephan Hochdörfer - From Vagrant to Production
@@ -31,12 +31,24 @@ PHP= UK Conference 2016
 
 #### Morgan Tocker - MySQL 5 7 + JSON
 
-Beth Tucker-Long - Mentoring: Change the World One Hour at a Time
-Billie Thompson - Kubernetes at the Home Office
-Ciaran Rooney - Magneto Done Right
-Davey Shafik - Every Millisecond Counts Performance & UX
-Derick Rethans - HHVM and MongoDB — the perfect combination
-Gavin Davies - Comic book continuity and Git rebase
+#### Beth Tucker-Long - Mentoring: Change the World One Hour at a Time
+
+#### Billie Thompson - Kubernetes at the Home Office
+
+* Docker
+* Kubernetes
+
+#### Ciaran Rooney - Magneto Done Right
+
+#### Davey Shafik - Every Millisecond Counts Performance & UX
+
+* Preload & Prerender.
+* Critical path.
+
+#### Derick Rethans - HHVM and MongoDB — the perfect combination
+
+#### Gavin Davies - Comic book continuity and Git rebase
+
 Georgiana Gligor - Large scale websites performance optimisation tricks
 Hamish Friedlander - SilverStripe the open source PHP CMS for Teams
 Hannes Van De Vreken - PSR 7 HTTP Messages In the Wild

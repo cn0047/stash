@@ -33,4 +33,8 @@ location / {
 if ($request_uri ~* "gXh6UAA727XX") {
     return 301 https://another.site.com/sc.js?gXh6UAA727XX;
 }
+# Redirect no-www to www
+if ($host = 'ziipr.dev') {
+    rewrite  ^/(.*)$  $scheme://www.ziipr.com/$1  permanent;
+}
 ````

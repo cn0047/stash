@@ -2,6 +2,8 @@ GIT
 -
 git version 2.5.0
 
+Git is a free and open source distributed version control system .
+
 ````
 git init
 git clone ssh://gitolite@repo.com:1011/repoName.git
