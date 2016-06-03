@@ -64,6 +64,53 @@ Many hash table designs also allow arbitrary insertions and deletions of key-val
 Widely used in many kinds of computer software,
 particularly for associative arrays, database indexing, caches, and sets.
 
+Hashed array tree - is a dynamic array data-structure
+maintaining an array of separate memory fragments (or "leaves") to store the data elements,
+unlike simple dynamic arrays which maintain their data in one contiguous memory area.
 
+Sparse array - is an array in which most of the elements have the default value (usually 0 or null).
+
+#### Linked
+
+Linked list - is a linear collection of data elements,
+called nodes pointing to the next node by means of a pointer.
+It is a data structure consisting of a group of nodes which together represent a sequence.
+Under the simplest form, each node is composed of data and a reference
+to the next node in the sequence.
+The principal benefit - is that the list elements can easily be inserted or removed
+without reallocation or reorganization of the entire structure
+because the data items need not be stored contiguously in memory or on disk.
+
+Doubly linked list - each node contains two links,
+that are references to the previous and to the next node in the sequence of nodes.
+
+Association list (alist) - is a linked list
+in which each list element (or node) comprises a key and a value.
+The association list is said to associate the value with the key.
+
+Skip list - is a data structure that allows fast search within an ordered sequence of elements.
+
+Unrolled linked list - is a variation on the linked list which stores multiple elements in each node.
+It is related to the B-tree.
+
+XOR linked list - it takes advantage of the bitwise XOR operation
+to decrease storage requirements for doubly linked lists.
+
+#### Trees
+
+Binary search trees (ordered, sorted binary trees) - particular type of containers,
+data structures that store "items" in memory.
+They allow fast lookup, addition and removal of items,
+and can be used to implement either dynamic sets of items,
+or lookup tables that allow finding an item by its keys.
+Keep their keys in sorted order, so that lookup and other operations can use the principle of binary search.
+
+Self-balancing binary search tree (height-balanced) - is any node-based binary search tree
+that automatically keeps its height small in the face of arbitrary item insertions and deletions.
+
+B-tree - is a self-balancing tree data structure
+that keeps data sorted and allows searches,
+sequential access, insertions, and deletions in logarithmic time.
+The B-tree is a generalization of a binary search tree in that a node can have more than two children.
 
 http://en.wikipedia.org/wiki/Template:Data_structures

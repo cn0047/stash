@@ -49,9 +49,12 @@ PHP UK Conference 2016
 
 #### Gavin Davies - Comic book continuity and Git rebase
 
-Georgiana Gligor - Large scale websites performance optimisation tricks
-Hamish Friedlander - SilverStripe the open source PHP CMS for Teams
-Hannes Van De Vreken - PSR 7 HTTP Messages In the Wild
+#### Georgiana Gligor - Large scale websites performance optimisation tricks
+
+#### Hamish Friedlander - SilverStripe the open source PHP CMS for Teams
+
+#### Hannes Van De Vreken - PSR 7 HTTP Messages In the Wild
+
 Jakub Zalas - Eating spaghetti with Symfony
 James Titcumb - Dip Your Toes in the Sea of Security
 Jessica Rose - Imposter Syndrome and Individual Competence

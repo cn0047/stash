@@ -84,7 +84,7 @@ curl -XPUT localhost:9200/megacorp/employee/13 -d '{
     "interests": [ "boxing", "sport", "movie", "hollywood" ]
 }'
 
-# Bulk insert
+# Bulk insert (the possible actions are index, create, delete and update)
 curl -XPOST 'localhost:9200/megacorp/employee/_bulk?pretty' -d '
 {"index":{"_id":"8"}}
 {"name": "John Doe" }
@@ -99,6 +99,24 @@ curl -XPOST 'localhost:9200/megacorp/employee/_bulk?pretty' --data-binary "@/vag
 ````
 # Get employee 1
 curl -XGET localhost:9200/megacorp/employee/1
+
+# Multi get
+curl 'localhost:9200/_mget?pretty' -d '{
+    "docs" : [
+        {"_index" : "megacorp", "_type" : "employee", "_id" : "1"},
+        {"_index" : "megacorp", "_type" : "employee", "_id" : "2"},
+        {"_index" : "megacorp", "_type" : "employee", "_id" : "3"}
+    ]
+}'
+
+# Multi get by certain index and type
+curl 'localhost:9200/megacorp/employee/_mget?pretty' -d '{
+    "docs" : [{"_id" : "1"}, {"_id" : "2"}]
+}'
+# or
+curl 'localhost:9200/megacorp/employee/_mget?pretty' -d '{
+    "ids" : ["1", "2"]
+}'
 ````
 
 #### Update

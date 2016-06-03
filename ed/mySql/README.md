@@ -104,22 +104,6 @@ LIMIT 50
 SELECT TABLE_NAME, TABLE_ROWS FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'dbName';
 ````
 
-####Detection of bad index
-````sql
-SELECT
-    t.TABLE_NAME,
-    SUM(t.ROWS_READ) AS raw_readed,
-    SUM(i.ROWS_READ) AS key_readed,
-    ROUND((SUM(i.ROWS_READ)/SUM(t.ROWS_READ))*100, 2) AS index_coverage
-FROM information_schema.TABLE_STATISTICS t
-LEFT join information_schema.INDEX_STATISTICS i ON t.TABLE_SCHEMA = i.TABLE_SCHEMA AND t.TABLE_NAME = i.TABLE_NAME
-WHERE t.TABLE_SCHEMA = 'dbName'
-GROUP BY t.TABLE_NAME
-HAVING raw_readed > 10000
-ORDER BY raw_readed DESC
-;
-````
-
 ####Functions
 ````sql
 CONV(2, 10, 2) -- CONV(num , from_base, to_base)
