@@ -17,5 +17,5 @@ use tube_chat
 # add job to tube
 # where 95 - str length of data
 put 1024 0 60 95
-{"login":"user_18069","password":"f2tusyMldY6AmiIFNCca","target_user_id":177914,"message":"x2"}
+{"login":"user_46205","password":"4rfOoPdwzveveN/XWRFC","target_user_id":202636,"message":"x5"}
 ````

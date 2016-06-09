@@ -55,7 +55,8 @@ PHP UK Conference 2016
 
 #### Hannes Van De Vreken - PSR 7 HTTP Messages In the Wild
 
-Jakub Zalas - Eating spaghetti with Symfony
+#### Jakub Zalas - Eating spaghetti with Symfony
+
 James Titcumb - Dip Your Toes in the Sea of Security
 Jessica Rose - Imposter Syndrome and Individual Competence
 Jordi Boggiano - Behind the Scenes of Maintaining an Open Source Project

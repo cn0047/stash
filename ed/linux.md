@@ -1,6 +1,12 @@
 Linux
 -
 
+####rsync
+
+````
+rsync -az --progress --exclude=.git/* --rsh='ssh -p26' kovpak@trunk-web-php.pmmedia.priv:/usr/share/yii/ /home/volodymyr/web/kovpak/yii/framework/
+````
+
 ####sed
 
 Sed was developed from 1973.
@@ -15,6 +21,8 @@ echo 'Some text or regexp' | sed 's/regexp/replacement/g' # Some text or replace
 echo 'cat and dog' | sed -r "s/(cat|dog)s?/\1s/g" # cats and dogs
 echo 'xxx and zzz' | sed 's/x/y/g' # yyy and zzz
 echo '1 one; 2 two' | sed 's/1//g; s/2//g' #  one;  two
+
+sed -i "s/admin_user/user/" /var/www/html/config.php
 ````
 
 ####awk
