@@ -96,6 +96,21 @@ curl -XPOST 'localhost:9200/megacorp/employee/_bulk?pretty' -d '
 curl -XPOST 'localhost:9200/megacorp/employee/_bulk?pretty' --data-binary "@/vagrant/megacorpEmployee.json"
 ````
 
+#### Reindex
+
+````
+# Reindex whole index
+curl -XPOST localhost:9200/_reindex -d '{
+  "source": {"index": "megacorp"},
+  "dest": {"index": "megacorp_2"}
+}'
+
+curl -XPOST localhost:9200/_reindex -d '{
+  "source": {"index": "megacorp", "type": "employee"},
+  "dest": {"index": "new_megacorp", "type": "new_employee"}
+}'
+````
+
 ````
 # Get employee 1
 curl -XGET localhost:9200/megacorp/employee/1
@@ -193,6 +208,9 @@ curl -XPOST 'localhost:9200/megacorp/employee/2/_update' -d '{
 
 #### Search
 
+The parameters allowed in the URI search
+[are](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-uri-request.html#_parameters_4)
+
 ````json
 # find all employee
 curl -XGET localhost:9200/megacorp/employee/_search
@@ -201,6 +219,18 @@ curl -XGET localhost:9200/megacorp/employee/_search?q=last_name:Smith
 
 # Calculate count of all documents
 curl -XGET localhost:9200/megacorp/employee/_count -d '{
+    "query": {"match_all" : {}}
+}'
+
+# explain
+curl -XGET localhost:9200/megacorp/employee/_search -d '{
+    "explain": true,
+    "query": {"match_all" : {}}
+}'
+
+# version for each search hit
+curl -XGET localhost:9200/megacorp/employee/_search -d '{
+    "version": true,
     "query": {"match_all" : {}}
 }'
 
@@ -333,6 +363,12 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
 
 curl -XGET localhost:9200/megacorp/employee/_search -d '{
     "fielddata_fields" : ["first_name", "age"]
+}'
+
+# order mode
+curl -XGET localhost:9200/megacorp/employee/_search?pretty -d '{
+    "fields": ["age"],
+    "sort" : [{ "age" : {"order" : "asc", "mode" : "avg"} }]
 }'
 ````
 ````

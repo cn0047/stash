@@ -4,9 +4,9 @@ RegExp
 | syntax                                   | description |
 |------------------------------------------|-------------|
 |^                                         | start of string |
-|\A                                        | start of string |
+|\A                                        | absolute start of string |
 |$                                         | end of string |
-|\Z                                        | end of string |
+|\Z                                        | absolute end of string |
 |.                                         | any single character |
 |\                                         | escape |
 |0                                         | 0 or more |
@@ -67,7 +67,7 @@ RegExp
 | s | treat string as single line |
 | x | allow comments and white space in pattern |
 | e | evaluate replacement |
-| u | upgready |
+| u | upgready|unicode |
 
 ````
 /Jave(?!Script)/ - Java, not Script
@@ -81,6 +81,17 @@ RegExp
 /(?<=td)/
 /(?<!td)/
 /(['"])[^'"]*\1/
+
+(aa){1,2}? # exactly 2 aa, not 4 aa (2 aa & 2 aa)
+<em>(.+?)</em> # exactly what in em tag
+(['"])\w+\1 # 's' or "d" but not 'mess". (back reference)
+(?P<quote>['"])\w+(?P=quote) # named back reference
+````
+
+````
+\*\w+\* # *keep* or *secret* https://regex101.com/r/yO6wI6/1
+(?<=\*)\w+(?=\*) # same as prev pattern
+(?<!\*)\w+(?!\*) # https://regex101.com/r/hC8pG6/1
 ````
 
 ````
@@ -103,6 +114,20 @@ array (
   7 => '-7',
   8 => '2',
   9 => '10',
+)
+*/
+````
+
+Named back reference.
+
+````php
+preg_match('/(?P<one>f..)/', 'foo bar', $matches);
+var_export($matches);
+/*
+array (
+  0 => 'foo',
+  'one' => 'foo',
+  1 => 'foo',
 )
 */
 ````

@@ -57,16 +57,34 @@ PHP UK Conference 2016
 
 #### Jakub Zalas - Eating spaghetti with Symfony
 
-James Titcumb - Dip Your Toes in the Sea of Security
-Jessica Rose - Imposter Syndrome and Individual Competence
-Jordi Boggiano - Behind the Scenes of Maintaining an Open Source Project
-Jordi Boggiano - How I learned to stop worrying and love Regex
-Kayla Daniels - The Code Manifesto
-Liam Wiltshire - Got 15 Minutes?
-Marco Pivetta - Doctrine ORM Good Practices and Tricks
-Matthew Turland - Mocking Dependencies in Unit Tests with Phake
-Matthias Noback - All the cool kids...
-Michael Heap - Automation Automation Automation
+#### James Titcumb - Dip Your Toes in the Sea of Security
+
+#### Jessica Rose - Imposter Syndrome and Individual Competence
+
+#### Jordi Boggiano - Behind the Scenes of Maintaining an Open Source Project
+
+#### Kayla Daniels - The Code Manifesto
+
+#### Liam Wiltshire - Got 15 Minutes?
+
+#### Marco Pivetta - Doctrine ORM Good Practices and Tricks
+
+* Doctrine not for:
+  * dynamic data structures (mongodb, etc);
+  * magento;
+  * reporting;
+  * if you don't have behaviour - you don't need ORM;
+
+#### Jordi Boggiano - How I learned to stop worrying and love Regex
+
+#### Matthew Turland - Mocking Dependencies in Unit Tests with Phake
+
+* Phake
+
+#### Matthias Noback - All the cool kids...
+
+#### Michael Heap - Automation Automation Automation
+
 Ole Michaelis - Whirlwind tour through the HTTP2 spec
 Samantha Quiñones - Real Time Data Pipelines
 Szymon Skórczyński - Docker & PHP development and deployment
