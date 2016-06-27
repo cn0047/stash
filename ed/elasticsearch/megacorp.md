@@ -98,7 +98,7 @@ curl -XPOST 'localhost:9200/megacorp/employee/_bulk?pretty' --data-binary "@/vag
 
 #### Reindex
 
-````
+````json
 # Reindex whole index
 curl -XPOST localhost:9200/_reindex -d '{
   "source": {"index": "megacorp"},
@@ -111,7 +111,7 @@ curl -XPOST localhost:9200/_reindex -d '{
 }'
 ````
 
-````
+````json
 # Get employee 1
 curl -XGET localhost:9200/megacorp/employee/1
 
@@ -136,7 +136,7 @@ curl 'localhost:9200/megacorp/employee/_mget?pretty' -d '{
 
 #### Update
 
-````
+````json
 # Update particular document
 curl -XPOST 'localhost:9200/megacorp/employee/1/_update?pretty' -d '{
   "doc": { "first_name": "JohnnNnn" }
@@ -217,7 +217,12 @@ curl -XGET localhost:9200/megacorp/employee/_search
 
 curl -XGET localhost:9200/megacorp/employee/_search?q=last_name:Smith
 
-# Calculate count of all documents
+# validate query
+curl -XGET localhost:9200/megacorp/employee/_validate/query -d '{
+    "query": {"match_all" : {}}
+}'
+
+# calculate count of all documents
 curl -XGET localhost:9200/megacorp/employee/_count -d '{
     "query": {"match_all" : {}}
 }'
@@ -227,6 +232,8 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
     "explain": true,
     "query": {"match_all" : {}}
 }'
+# or
+curl -XGET localhost:9200/megacorp/employee/4/_explain?q=first_name:Louis&pretty
 
 # version for each search hit
 curl -XGET localhost:9200/megacorp/employee/_search -d '{
@@ -371,7 +378,7 @@ curl -XGET localhost:9200/megacorp/employee/_search?pretty -d '{
     "sort" : [{ "age" : {"order" : "asc", "mode" : "avg"} }]
 }'
 ````
-````
+````json
 # Custom field
 curl -XGET localhost:9200/megacorp/employee/_search -d '{
     "script_fields": {"name": {
@@ -380,7 +387,7 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
 }'
 ````
 
-````
+````json
 curl -XPOST 'localhost:9200/ziipr/users/18330/_update?pretty' -d '{
 "script" : "if (ctx._source.pictures != null) { for (item in ctx._source.pictures) { if (item.picture_id == 3460) { item.type_id = 201201999 } } } "
 }'
@@ -491,7 +498,9 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
     }
 }'
 ````
+````json
 curl -XPUT 'http://localhost:9200/twitter/tweet/1?ttl=1m' -d '{
     "user": "kimchy",
     "message": "Trying out elasticsearch, so far so good?"
 }'
+````

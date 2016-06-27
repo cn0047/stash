@@ -1,0 +1,27 @@
+<html>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <body>
+        <div id="chart_div"></div>
+    </body>
+    <script type="text/javascript">
+
+    google.charts.load('current', {packages: ['corechart', 'line']});
+    google.charts.setOnLoadCallback(drawBasic);
+
+    function drawBasic() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'X');
+      data.addColumn('number', 'Dogs');
+      data.addRows([
+        [0, 0],   [1, 10],  [2, 23],  [3, 17],  [4, 18],  [5, 9]
+      ]);
+      var options = {
+        hAxis: {title: 'Time'},
+        vAxis: {title: 'Popularity'}
+      };
+      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+    }
+
+    </script>
+</html>

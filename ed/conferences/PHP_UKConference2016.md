@@ -85,8 +85,12 @@ PHP UK Conference 2016
 
 #### Michael Heap - Automation Automation Automation
 
-Ole Michaelis - Whirlwind tour through the HTTP2 spec
-Samantha Quiñones - Real Time Data Pipelines
-Szymon Skórczyński - Docker & PHP development and deployment
-Tess Barnes - Version Control tips, tricks and good citizenship
-Thomas Shone - Security Theatre
+#### Ole Michaelis - Whirlwind tour through the HTTP2 spec
+
+#### Samantha Quiñones - Real Time Data Pipelines
+
+#### Szymon Skórczyński - Docker & PHP development and deployment
+
+#### Tess Barnes - Version Control tips, tricks and good citizenship
+
+#### Thomas Shone - Security Theatre

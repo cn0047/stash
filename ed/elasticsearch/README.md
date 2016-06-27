@@ -103,4 +103,4 @@ Elasticsearch cleans up deleted documents in the background as you continue to i
 The update operation supports the following query-string
 [parameters](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-update.html#_parameters_3).
 
-https://www.elastic.co/guide/en/elasticsearch/reference/current/search-suggesters.html
+https://www.elastic.co/guide/en/elasticsearch/reference/current/search-profile.html

@@ -3,6 +3,10 @@ Phalcon
 
 2.0.9
 
+````
+php -S localhost:8000 -t ./public
+````
+
 ````php
 $di = \Phalcon\DI::getDefault();
 $this->getDI()->getShared('config')->get('admin_module')->get('version')
