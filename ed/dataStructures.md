@@ -115,9 +115,9 @@ sequential access, insertions, and deletions in logarithmic time.
 The B-tree is a generalization of a binary search tree in that a node **can have more than two children**.
 
 * Red–black tree - is a kind of self-balancing binary search tree.
-Each node of the binary tree has an extra bit,
+**Each node** of the binary tree **has an extra bit**,
 and that bit is often interpreted as the color (red or black) of the node.
-These color bits are used to ensure the tree remains approximately balanced during insertions and deletions.
+These color bits are used **to ensure the tree remains approximately balanced** during insertions and deletions.
 
 * 2–3 tree:
 2-node if it has one data element and two children.
@@ -125,30 +125,30 @@ These color bits are used to ensure the tree remains approximately balanced duri
 
 * AA tree (named for Arne Andersson, their inventor) - variation of the red-black tree,
 is a form of binary search tree which supports efficient addition and deletion of entries.
-Unlike red-black trees, red nodes on an AA tree can only be added as a right subchild.
+**Unlike red-black** trees, **red nodes** on an AA tree **can only be added as a right subchild**.
 
-* AVL tree - the heights of the two child subtrees of any node differ by at most one.
+* AVL tree - the **heights of the two child subtrees of any node differ by at most one**.
 Are faster than red–black trees because they are more rigidly balanced.
 Similar to red–black trees, AVL trees are height-balanced.
 
-* Splay tree -  is a self-adjusting binary search tree
-with the additional property that recently accessed elements are quick to access again.
+* Splay tree - is a self-adjusting binary search **tree
+with the additional property that recently accessed elements** are quick to access again.
 All normal operations on a binary search tree are combined with one basic operation, called splaying.
 
 * Heap - can be classified further as either a "max heap" or a "min heap".
-In a max heap, the keys of parent nodes are always greater than or equal
-to those of the children and the highest key is in the root node.
+**In a max heap, the keys of parent nodes are always greater than or equal
+to those of the children** and the highest key is in the root node.
 In a min heap, the keys of parent nodes are less than or equal.
 
 * Binary heap - is a heap data structure created using a binary tree.
 
 * Binomial heap - is a heap similar to a binary heap
-but also supports quick merging of two heaps.
+but also supports **quick merging of two heaps**.
 
-* Fibonacci heap - is a data structure for priority queue operations,
-consisting of a collection of heap-ordered trees.
+* Fibonacci heap - is a data structure for **priority queue operations,
+consisting of a collection of heap-ordered trees**.
 
-* R-tree - tree data structures used for spatial access methods.
+* R-tree - tree data structures **used for spatial access methods**.
 
 * R*-trees - have slightly higher construction cost than standard R-trees,
 as the data may need to be reinserted;
@@ -160,16 +160,20 @@ and often for locations on the surface of the earth.
 * Hilbert R-tree - an extension to B+-tree for multidimensional objects.
 
 * Trie (digital or radix or prefix tree) - is an ordered tree data structure
-that is used to store a dynamic set or associative array where the keys are usually strings.
+that is used to **store a dynamic set or associative array** where the keys are usually strings.
 
-* Hash tree - is a persistent data structure that can be used to implement sets and maps,
+* Hash tree - is a persistent data structure that can be **used to implement sets and maps**,
 intended to replace hash tables in purely functional programming.
+
+#### Graphs
 
 * Binary decision diagram (BDD) -  is a data structure
 that is used to represent a Boolean function.
 On a more abstract level, BDDs can be considered
 as a compressed representation of sets or relations.
 
-* Directed acyclic graph -
+* Directed acyclic graph - ...
+
+* Directed acyclic word graph - ...
 
 http://en.wikipedia.org/wiki/Template:Data_structures
