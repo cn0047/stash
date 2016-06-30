@@ -1,4 +1,4 @@
-RegExp
+RegEx
 -
 
 | syntax                                   | description |

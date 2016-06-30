@@ -7,9 +7,9 @@ $config_aws = (object)[
             'secret' => '',
         ],
         'cognito' => [
-            'identity_pool_id' => '',
+            'identity_pool_id' => '/',
             'identity_name'    => '',
-            'token_duration'   => 7200,
+            'token_duration'   => ,
             'roles' => [
                 'unauth' => '',
                 'auth'   => ''

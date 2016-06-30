@@ -20,10 +20,16 @@ $this->request->getPost(); // $_POST
 $this->request->getQuery('_GET');
 $this->request->getPost('_POST');
 ````
+````
+php app/cli.php main
+````
 
 #### Devtools
 
 ````
+# create project
+phalcon project --name dbRelationships --type=cli
+
 # generate model from db table
 phalcon model languages --get-set --namespace=W3\\Ziipr\\Models\\v1
 

@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/vendor/autoload.php';
-require_once __DIR__ . '/../config.php';
+require_once __DIR__ . '/../../config.php';
 
 use Aws\S3\S3Client;
 
@@ -10,13 +10,20 @@ $s3 = S3Client::factory([
     'credentials' => (array) $config_aws->credentials,
     'version' => 'latest',
 ]);
-$s3->putObject([
-    'Bucket' => $config_aws->s3->bucket,
-    'Key'    => 'my-object',
-    'Body'   => fopen('/home/kovpak/Downloads/images.jpg', 'r'),
-    'ACL'    => 'public-read',
-]);
 
+// Next code works, uncomment when you need it.
+// $s3->putObject([
+//     'Bucket' => $config_aws->s3->bucket,
+//     'Key'    => 'my-object',
+//     'Body'   => fopen('/home/kovpak/Downloads/images.jpg', 'r'),
+//     'ACL'    => 'public-read',
+// ]);
+
+$result = $s3->listObjects(array(
+    'Bucket' => 'w3.ziipr.bucket',
+    'MaxKeys' => 5
+));
+var_export(($result));
 
 // $aws = new \Aws\Sdk([
 //     'region' => $config_aws->region,

@@ -235,6 +235,12 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
 # or
 curl -XGET localhost:9200/megacorp/employee/4/_explain?q=first_name:Louis&pretty
 
+# profile
+curl -XGET localhost:9200/megacorp/employee/_search -d '{
+    "profile": true,
+    "query": {"match_all" : {}}
+}'
+
 # version for each search hit
 curl -XGET localhost:9200/megacorp/employee/_search -d '{
     "version": true,
@@ -426,7 +432,7 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
 # we'll receive: "I love to go rock climbing"
 ````
 
-#### Analytics
+#### Analytics (Aggregations)
 
 ````json
 # SELECT city, COUNT(*) FROM employee GROUP BY city ORDER BY COUNT(*) DESC
@@ -470,6 +476,20 @@ curl -XPOST 'localhost:9200/megacorp/employee/_search?pretty' -d '{
   }
 }'
 
+# Extended Stats Aggregation
+curl -XGET localhost:9200/megacorp/employee/_search -d '{
+    "aggs" : {
+        "e_stats" : { "extended_stats" : { "field" : "age" } }
+    }
+}'
+
+# Percentiles
+curl -XGET localhost:9200/megacorp/employee/_search -d '{
+    "aggs" : {
+        "p_stats" : { "percentiles" : { "field" : "age" } }
+    }
+}'
+
 curl -XGET localhost:9200/megacorp/employee/_search -d '{
     "aggs": {
         "all_interests": { "terms": { "field": "interests" } }
@@ -504,3 +524,5 @@ curl -XPUT 'http://localhost:9200/twitter/tweet/1?ttl=1m' -d '{
     "message": "Trying out elasticsearch, so far so good?"
 }'
 ````
+
+https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-scripted-metric-aggregation.html
