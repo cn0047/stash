@@ -69,9 +69,13 @@ We should not create a Service for
 every operation needed. But when such an operation stands out
 as an important concept in the domain, a Service should be
 created for it.
+
 There are three characteristics of a Service:
+
 1. The operation performed by the Service refers to a domain
 concept which does not naturally belong to an Entity or Value
 Object.
+
 2. The operation performed refers to other objects in the domain.
+
 3. The operation is stateless.
