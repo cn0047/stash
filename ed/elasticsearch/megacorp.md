@@ -476,10 +476,49 @@ curl -XPOST 'localhost:9200/megacorp/employee/_search?pretty' -d '{
   }
 }'
 
+# Stats Aggregation
+curl -XGET localhost:9200/megacorp/employee/_search -d '{
+    "aggs" : {
+        "stats" : { "stats" : { "field" : "age" } }
+    }
+}'
+
 # Extended Stats Aggregation
 curl -XGET localhost:9200/megacorp/employee/_search -d '{
     "aggs" : {
         "e_stats" : { "extended_stats" : { "field" : "age" } }
+    }
+}'
+
+# Filter Aggregation
+curl -XGET localhost:9200/megacorp/employee/_search?pretty -d '{
+    "aggs" : {
+        "age31" : {
+            "filter" : {"range" : {"age": {"gt": 31}}},
+            "aggs" : {
+                "avg_age" : { "avg" : { "field" : "age" } }
+            }
+        }
+    }
+}'
+
+# Missing Aggregation
+curl -XGET localhost:9200/megacorp/employee/_search -d '{
+    "aggs" : {
+        "without_age" : { "missing" : { "field" : "age" } }
+    }
+}'
+
+# Nested Aggregation
+# this example won't work it is here just for facilitate future investigations...
+curl -XGET localhost:9200/megacorp/employee/_search -d '{
+    "aggs" : {
+        "n_a" : {
+            "nested" : { "path" : "location" },
+            "aggs" : {
+                "m_l" : { "max" : { "field" : "location.lon" } }
+            }
+        }
     }
 }'
 
@@ -525,4 +564,4 @@ curl -XPUT 'http://localhost:9200/twitter/tweet/1?ttl=1m' -d '{
 }'
 ````
 
-https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-scripted-metric-aggregation.html
+https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-reverse-nested-aggregation.html
