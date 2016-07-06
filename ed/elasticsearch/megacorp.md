@@ -96,6 +96,15 @@ curl -XPOST 'localhost:9200/megacorp/employee/_bulk?pretty' -d '
 curl -XPOST 'localhost:9200/megacorp/employee/_bulk?pretty' --data-binary "@/vagrant/megacorpEmployee.json"
 ````
 
+# Clear Cache
+curl -XPOST 'http://localhost:9200/megacorp/_cache/clear'
+
+# Flush
+curl -XPOST 'http://localhost:9200/megacorp/_flush'
+
+# Refresh index
+curl -XPOST 'http://localhost:9200/megacorp/_refresh'
+
 #### Reindex
 
 ````json
@@ -271,6 +280,33 @@ curl -XGET localhost:9200/megacorp/employee/_search?pretty -d '{
             ]
         }
     }
+}'
+
+# Array interests contains sports and music
+curl -XPOST 'localhost:9200/megacorp/employee/_search?pretty' -d '{
+  "query": {
+    "bool": {
+      "must": [
+        { "term": { "interests": "sports" } } ,
+        { "term": { "interests": "music" } }
+      ]
+    }
+  }
+}'
+
+# Array interests contains sports or music
+curl -XGET localhost:9200/megacorp/employee/_search -d '{
+  "query": {
+    "filtered": {
+      "query": {"match_all": {}},
+      "filter": {
+        "terms": {
+          "interests": ["sports", "music"],
+          "execution" : "or"
+        }
+      }
+    }
+  }
 }'
 
 curl -XGET localhost:9200/megacorp/employee/_search -d '{
@@ -490,6 +526,9 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
     }
 }'
 
+# Indices Stats
+curl localhost:9200/megacorp/_stats
+
 # Filter Aggregation
 curl -XGET localhost:9200/megacorp/employee/_search?pretty -d '{
     "aggs" : {
@@ -519,6 +558,13 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
                 "m_l" : { "max" : { "field" : "location.lon" } }
             }
         }
+    }
+}'
+
+# cardinality (distinct)
+curl -XGET localhost:9200/megacorp/employee/_search -d '{
+    "aggs" : {
+        "crd" : { "cardinality" : { "field" : "age" } }
     }
 }'
 
@@ -563,5 +609,3 @@ curl -XPUT 'http://localhost:9200/twitter/tweet/1?ttl=1m' -d '{
     "message": "Trying out elasticsearch, so far so good?"
 }'
 ````
-
-https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-reverse-nested-aggregation.html

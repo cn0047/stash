@@ -1,0 +1,21 @@
+<?php
+
+$config_aws = (object)[
+        'region' => 'eu-west-1',
+        'credentials' => [
+            'key'    => '********************',
+            'secret' => '****************************************',
+        ],
+        'cognito' => [
+            'identity_pool_id' => 'eu-west-1:34cacfce-a4a4-4341-a325-************',
+            'identity_name'    => 'w3_z_identity',
+            'token_duration'   => 7200,
+            'roles' => [
+                'unauth' => 'arn:aws:iam::********:role/cognito_w3_ziipr_identity_auth_role',
+                'auth'   => 'arn:aws:iam::********:role/cognito_w3_ziipr_identity_auth_role'
+            ]
+        ],
+        's3' => (object)[
+            'bucket' => 'w.z.bucket'
+        ]
+];

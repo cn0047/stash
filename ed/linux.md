@@ -1,6 +1,18 @@
 Linux
 -
 
+####image optimization
+
+````
+jpegoptim --size=12k --dest a/ -o origin.jpg
+
+convert origin.jpg -quality 95 result.jpg
+convert origin.jpg -resize 100 result.jpg
+convert origin.jpg -resize 50% result.jpg
+
+jpegtran -copy none -optimize -outfile res.jpg origin.jpg
+````
+
 ####rsync
 
 ````
@@ -22,8 +34,8 @@ echo 'cat and dog' | sed -r "s/(cat|dog)s?/\1s/g" # cats and dogs
 echo 'xxx and zzz' | sed 's/x/y/g' # yyy and zzz
 echo '1 one; 2 two' | sed 's/1//g; s/2//g' #  one;  two
 
-sed -i "s/admin_user/user/" /var/www/html/config.php
 ````
+sed -i "s/admin_user/user/" /var/www/html/config.php
 
 ####awk
 
@@ -33,6 +45,8 @@ AWK was created in the 1970s.
 echo 'one and two' | awk '{print $1}' # will print one
 awk 'BEGIN {print "Hello, world!"}'
 ps aux|awk 'length($0) > 150' # Print lines longer than 150 characters
+printf "one\n* two\n" | awk '{print ($1=="*" ? $2 : $1)}' # Print one \n two
+printf "1\n 2\n 3\n" | awk 'ORS=NR?",":"\n"' # Replace new line with comma
 ````
 
 ####shell

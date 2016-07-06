@@ -49,11 +49,26 @@ curl 'localhost:9200/_cat/health?v'
 curl 'localhost:9200/_cat/nodes?v'
 curl 'localhost:9200/_nodes/stats/process?pretty'
 
+# show shards
+curl localhost:9200/_cat/shards?v
+
 # create index
 curl -XPUT http://localhost:9200/megacorp/
 
 # delete index
 curl -XDELETE http://localhost:9200/megacorp/
+
+# get index settings
+curl localhost:9200/megacorp/_settings
+# or
+curl localhost:9200/_cat/indices?v
+
+# master
+curl http://localhost:9200/_cat/master?v
+# node
+curl http://localhost:9200/_cat/nodeattrs?v
+# nodes
+curl http://localhost:9200/_cat/nodes?v
 
 # get indexes
 curl http://localhost:9200/_cat/indices?v
@@ -78,6 +93,19 @@ curl -XPUT http://localhost:9200/megacorp/_mapping/employee -d '{
           "interests": {"type": "string"}
       }
   }
+}'
+
+# Fields in the same index with the same name in two different types must have the same mapping
+# Next code will spawn error
+curl -XPUT http://localhost:9200/test/ -d '{
+"mappings" : {
+      "boxing": {
+        "properties": {"email": {"type": "string", "index": "not_analyzed"}}
+      },
+      "footbal": {
+        "properties": {"email": {"type": "nested"}}
+      }
+}
 }'
 
 # delete mapping
