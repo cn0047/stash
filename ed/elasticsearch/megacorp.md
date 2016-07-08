@@ -293,6 +293,14 @@ curl -XPOST 'localhost:9200/megacorp/employee/_search?pretty' -d '{
     }
   }
 }'
+# or (using query_string)
+curl -XGET localhost:9200/megacorp/employee/_search -d '{
+"query" : {
+    "query_string": {
+      "query": "(interests:sports AND interests:music)"
+    }
+  }
+}'
 
 # Array interests contains sports or music
 curl -XGET localhost:9200/megacorp/employee/_search -d '{

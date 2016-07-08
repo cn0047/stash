@@ -5,6 +5,7 @@ Linux
 
 ````
 jpegoptim --size=12k --dest a/ -o origin.jpg
+jpegoptim --max=30 --dest=res -o  bond.origin.jpg
 
 convert origin.jpg -quality 95 result.jpg
 convert origin.jpg -resize 100 result.jpg

@@ -22,17 +22,20 @@ class Command
         $this->$commandName($config_aws);
     }
 
-    private function getUrl($config_aws)
+    private function getUrl($config_aws, $key = null)
     {
+        if ($key === null) {
+            // p
+            $key = '000046059/public/photo_2016-06-06_11-30-41_thumbnail.jpg';
+            // s
+            $key = 'test/logo.jpg';
+            $key = '000009355/public/photo_2016-07-06_13-32-57.jpg';
+        }
         $command = $this->s3->getCommand('GetObject', [
             'Bucket' => $config_aws->s3->bucket,
-            // p
-            'Key'    => '000046059/public/photo_2016-06-06_11-30-41_thumbnail.jpg',
-            // s
-            'Key'    => 'test/logo.jpg',
-            'Key'    => '000009355/public/photo_2016-07-06_13-32-57.jpg',
+            'Key'    => $key,
         ]);
-        printf("S3 image url: %s\n\n", $command->createPresignedUrl('+5 minutes'));
+        return $command->createPresignedUrl('+5 minutes');
     }
 
     private function uploadTxt($config_aws)
@@ -42,17 +45,54 @@ class Command
             'Key'    => 'test/data.txt.' . time(),
             'Body'   => 'Hello! ' . time(),
         ]);
-        var_export($r);
+        return $r;
     }
 
-    private function uploadImg($config_aws)
+    private function uploadImg($config_aws, $key = 'test/BOND.jpg', $sourceFile = '/home/kovpak/Downloads/b.jpg')
     {
         $r = $this->s3->putObject([
             'Bucket' => $config_aws->s3->bucket,
-            'Key'    => 'test/BOND.jpg',
-            'SourceFile' => '/home/kovpak/Downloads/b.jpg',
+            'Key'    => $key,
+            'SourceFile' => $sourceFile,
         ]);
-        var_export($r);
+        return $r;
+    }
+
+    private function uploadVideo($config_aws, $key = 'test/test.video.mp4', $sourceFile = '/home/kovpak/Downloads/test.video.mp4')
+    {
+        $r = $this->s3->putObject([
+            'Bucket' => $config_aws->s3->bucket,
+            'Key'    => $key,
+            'SourceFile' => $sourceFile,
+        ]);
+        return $r;
+    }
+
+    private function optimize($config_aws)
+    {
+        $url = $this->getUrl($config_aws, 'test/BOND.origin.jpg');
+        $this->download($url);
+        `convert /tmp/tmpS3ImageFile.jpg -resize 50% /tmp/tmpS3ImageFile.result.jpg`;
+        $this->uploadImg($config_aws, 'test/BOND.result.jpg', '/tmp/tmpS3ImageFile.result.jpg');
+    }
+
+    private function download($uri, $targetFile = '/tmp/tmpS3ImageFile.jpg')
+    {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $uri);
+        curl_setopt($ch, CURLOPT_HEADER, false);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_BINARYTRANSFER, true);
+        $response = curl_exec($ch);
+        if ($response === false) {
+            throw new RuntimeException(curl_error($ch));
+        }
+        if (file_exists($targetFile)) {
+            unlink($targetFile);
+        }
+        $fp = fopen($targetFile, 'x');
+        fwrite($fp, $response);
+        fclose($fp);
     }
 }
 

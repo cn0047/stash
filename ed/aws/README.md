@@ -1,7 +1,7 @@
 AWS
 -
 
-#### cli
+#### CLI
 
 ````
 # instances
@@ -12,4 +12,10 @@ aws ec2 describe-instances \
 
 # s3
 aws s3 cp /home/kovpak/Downloads/images.jpg s3://w3.stage.ziipr.bucket/test/x.jpg
+````
+
+#### One php session storage per several instances
+
+````
+load balancer -> description -> port configuration = Stickiness: LBCookieStickinessPolicy, expirationPeriod='1800'
 ````
