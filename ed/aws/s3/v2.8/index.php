@@ -35,7 +35,8 @@ class Command
             'Bucket' => $config_aws->s3->bucket,
             'Key'    => $key,
         ]);
-        return $command->createPresignedUrl('+5 minutes');
+        $r = $command->createPresignedUrl('+5 minutes');
+        return $r;
     }
 
     private function uploadTxt($config_aws)
@@ -93,6 +94,26 @@ class Command
         $fp = fopen($targetFile, 'x');
         fwrite($fp, $response);
         fclose($fp);
+    }
+
+    private function copy($config_aws, $key = 'test/BOND.jpg')
+    {
+        $r = $this->s3->copyObject([
+            'Bucket' => $config_aws->s3->bucket,
+            'Key' => $key.'.copy',
+            'CopySource' => urlencode($config_aws->s3->bucket . '/' . $key),
+        ]);
+        return $r;
+    }
+
+    private function fileExists($config_aws, $key = 'test/BOND.jpg')
+    {
+        $r = $this->s3->getObject([
+            'Bucket' => $config_aws->s3->bucket,
+            'Key' => $key,
+        ]);
+        var_export($r);
+        return $r;
     }
 }
 

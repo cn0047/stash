@@ -8,7 +8,7 @@ php -S localhost:8000 -t ./public
 ````
 
 ````php
-$di = \Phalcon\DI::getDefault();
+$di = \Phalcon\Di::getDefault();
 $this->getDI()->getShared('config')->get('admin_module')->get('version')
 ````
 

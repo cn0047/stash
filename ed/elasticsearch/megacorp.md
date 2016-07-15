@@ -2,6 +2,35 @@ Megacorp examples
 -
 
 ````json
+# mapping for megacorp
+curl -XPUT http://localhost:9200/megacorp -d '{
+    "mappings" : {
+      "employee": {
+        "properties": {
+            "first_name": {"type": "string", "index": "not_analyzed"},
+            "last_name": {"type": "string", "index": "not_analyzed"},
+            "age": {"type": "integer"},
+            "about": {"type": "string", "index": "not_analyzed"},
+            "last_login_at": {"type": "date", "format": "yyy-MM-dd"},
+            "city": {"type": "string", "index": "not_analyzed"},
+            "location": {"type": "geo_point", "lat_lon": "true"},
+            "interests": {"type": "string"},
+            "fetish": {"type": "nested"}
+        }
+      },
+      "car": {
+        "_parent" : {
+            "type": "employee"
+        },
+        "properties": {
+            "name": {"type": "string", "index": "not_analyzed"},
+            "brand": {"type": "string", "index": "not_analyzed"},
+            "about": {"type": "string", "index": "not_analyzed"}
+        }
+      }
+    }
+}'
+
 # Create new documents (employee)
 curl -XPUT localhost:9200/megacorp/employee/1?routing=JohnSmith -d '{
     "first_name" : "John",
@@ -11,7 +40,8 @@ curl -XPUT localhost:9200/megacorp/employee/1?routing=JohnSmith -d '{
     "last_login_at": "2016-01-21",
     "city": "London",
     "location": {"lat": 51.5072, "lon": 0.1275},
-    "interests": [ "sports", "music" ]
+    "interests": [ "sports", "music" ],
+    "fetish": {"name": "none"}
 }'
 curl -XPUT localhost:9200/megacorp/employee/2 -d '{
     "first_name" : "Jane",
@@ -83,6 +113,44 @@ curl -XPUT localhost:9200/megacorp/employee/13 -d '{
     "location": {"lat": 50.4501, "lon": 30.5234},
     "interests": [ "boxing", "sport", "movie", "hollywood" ]
 }'
+curl -XPUT localhost:9200/megacorp/employee/14 -d '{
+    "first_name" : "Paul",
+    "last_name" : "McCartney",
+    "age" : 74,
+    "about": "Music. London. etc...",
+    "last_login_at": "2016-04-22",
+    "city": "London",
+    "location": {"lat": 51.5074, "lon": 0.1278},
+    "interests": [ "london", "music" ]
+}'
+curl -XPUT localhost:9200/megacorp/employee/15 -d '{
+    "first_name" : "Wayne",
+    "last_name" : "Rooney",
+    "age" : 30,
+    "about": "is an English professional footballer",
+    "last_login_at": "2016-07-07",
+    "city": "London",
+    "location": {"lat": 51.5074, "lon": 0.1278},
+    "interests": ["football", "sport", "cars"],
+    "fetish": {"name": "RANGE_ROVER_SPORT"}
+}'
+curl -XPUT localhost:9200/megacorp/employee/16 -d '{
+    "first_name" : "Jayce",
+    "last_name" : "Chan",
+    "age" : 33,
+    "about": "Son of Martial Artist",
+    "last_login_at": "2016-07-11",
+    "city": "Hong Kong",
+    "location": {"lat": 22.2783, "lon": 114.1747},
+    "interests": [ "movie", "hollywood", "kong foo", "father" ]
+}'
+
+# Create new documents (car)
+curl -XPUT localhost:9200/megacorp/car/15?parent=15 -d '{
+    "name" : "RANGE_ROVER_SPORT",
+    "brand" : "land rover",
+    "about": "cool car!"
+}'
 
 # Bulk insert (the possible actions are index, create, delete and update)
 curl -XPOST 'localhost:9200/megacorp/employee/_bulk?pretty' -d '
@@ -96,6 +164,7 @@ curl -XPOST 'localhost:9200/megacorp/employee/_bulk?pretty' -d '
 curl -XPOST 'localhost:9200/megacorp/employee/_bulk?pretty' --data-binary "@/vagrant/megacorpEmployee.json"
 ````
 
+````
 # Clear Cache
 curl -XPOST 'http://localhost:9200/megacorp/_cache/clear'
 
@@ -104,6 +173,7 @@ curl -XPOST 'http://localhost:9200/megacorp/_flush'
 
 # Refresh index
 curl -XPOST 'http://localhost:9200/megacorp/_refresh'
+````
 
 #### Reindex
 
@@ -143,305 +213,6 @@ curl 'localhost:9200/megacorp/employee/_mget?pretty' -d '{
 }'
 ````
 
-#### Update
-
-````json
-# Update particular document
-curl -XPOST 'localhost:9200/megacorp/employee/1/_update?pretty' -d '{
-  "doc": { "first_name": "JohnnNnn" }
-}'
-
-# Update particular document using script
-curl -XPOST 'localhost:9200/megacorp/employee/1/_update?pretty' -d '{
-  "script" : "ctx._source.age += 100"
-}'
-
-# Bulk operations up & del
-curl -XPOST 'localhost:9200/megacorp/employee/_bulk?pretty' -d '
-{"update": {"_id": "9"}}
-{"doc": {"name": "John Doe becomes John DoeeEee"}}
-{"delete": {"_id": "8"}}
-'
-
-# Scripted update
-curl -XPOST 'localhost:9200/megacorp/employee/2/_update' -d '{
-    "script" : {
-        "inline": "ctx._source.age += count",
-        "params" : {"count" : 2}
-    }
-}'
-curl -XPOST 'localhost:9200/megacorp/employee/2/_update' -d '{
-    "script" : {
-        "inline": "ctx._source.interests += el",
-        "params" : {"el" : "rock music"}
-    }
-}'
-
-# In addition to _source, the following variables are available through the ctx map:
-_index, _type, _id, _version, _routing, _parent, _timestamp, _ttl.
-
-# Add new field to certain user
-curl -XPOST 'localhost:9200/megacorp/employee/2/_update' -d '{
-    "script" : "ctx._source.name_of_new_field = \"value_of_new_field\""
-}'
-
-# Update by query - ADD new field
-curl -XPOST 'localhost:9200/megacorp/employee/_update_by_query?conflicts=proceed&pretty' -d '{
-    "query": {"match_all" : {}},
-    "script" : {
-        "inline": "ctx._source.likes = \"0\""
-    }
-}'
-
-# Update by query 1000 documents
-curl -XPOST 'localhost:9200/megacorp/employee/_update_by_query&scroll_size=1000' -d '{
-  "script": {
-    "inline": "ctx._source.likes++"
-  }
-}'
-
-# Remove a field from the document
-curl -XPOST 'localhost:9200/megacorp/employee/2/_update' -d '{
-    "script" : "ctx._source.remove(\"name_of_new_field\")"
-}'
-
-# Change the operation that is executed.
-# This example deletes the doc if the tags field contain blue, otherwise it does nothing (noop):
-curl -XPOST 'localhost:9200/megacorp/employee/2/_update' -d '{
-    "script" : {
-        "inline": "ctx._source.interests.contains(tag) ? ctx.op = \"delete\" : ctx.op = \"none\"",
-        "params" : {"tag" : "rock music"}
-    }
-}'
-````
-
-#### Search
-
-The parameters allowed in the URI search
-[are](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-uri-request.html#_parameters_4)
-
-````json
-# find all employee
-curl -XGET localhost:9200/megacorp/employee/_search
-
-curl -XGET localhost:9200/megacorp/employee/_search?q=last_name:Smith
-
-# validate query
-curl -XGET localhost:9200/megacorp/employee/_validate/query -d '{
-    "query": {"match_all" : {}}
-}'
-
-# calculate count of all documents
-curl -XGET localhost:9200/megacorp/employee/_count -d '{
-    "query": {"match_all" : {}}
-}'
-
-# explain
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
-    "explain": true,
-    "query": {"match_all" : {}}
-}'
-# or
-curl -XGET localhost:9200/megacorp/employee/4/_explain?q=first_name:Louis&pretty
-
-# profile
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
-    "profile": true,
-    "query": {"match_all" : {}}
-}'
-
-# version for each search hit
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
-    "version": true,
-    "query": {"match_all" : {}}
-}'
-
-# Search by AND condition
-curl -XPOST 'localhost:9200/megacorp/employee/_search?pretty' -d '{
-  "query": {
-    "bool": {
-      "must": [
-        { "match": { "about": "like" } } ,
-        { "match": { "city": "Kyiv" } }
-      ]
-    }
-  }
-}'
-
-# Search all and filter result by AND condition
-curl -XGET localhost:9200/megacorp/employee/_search?pretty -d '{
-    "fields": ["last_login_at", "age"],
-    "query" : {
-        "bool": {
-            "must": { "match_all": {} },
-            "filter" : [
-                {"range" : {"age": {"gt": 31}}},
-                {"range" : {"last_login_at": {"gt": "2016-03-01"}}}
-            ]
-        }
-    }
-}'
-
-# Array interests contains sports and music
-curl -XPOST 'localhost:9200/megacorp/employee/_search?pretty' -d '{
-  "query": {
-    "bool": {
-      "must": [
-        { "term": { "interests": "sports" } } ,
-        { "term": { "interests": "music" } }
-      ]
-    }
-  }
-}'
-# or (using query_string)
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
-"query" : {
-    "query_string": {
-      "query": "(interests:sports AND interests:music)"
-    }
-  }
-}'
-
-# Array interests contains sports or music
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
-  "query": {
-    "filtered": {
-      "query": {"match_all": {}},
-      "filter": {
-        "terms": {
-          "interests": ["sports", "music"],
-          "execution" : "or"
-        }
-      }
-    }
-  }
-}'
-
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
-    "query" : {
-        "filtered" : {
-            "filter" : { "range" : { "age" : { "gt" : 30 } } }
-        }
-    }
-}'
-
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
-    "query" : {
-        "filtered" : {
-            "filter" : { "range" : { "age" : { "gt" : 30 } } },
-            "query" : { "match" : { "last_name" : "smith" } }
-        }
-    }
-}'
-
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
-    "query" : {
-        "filtered" : {
-            "query" : { "match" : { "first_name" : "Douglas" } }
-        }
-    }
-}'
-
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
-    "query" : {
-        "filtered" : {
-            "query" : { "match_all" : {  } },
-            "filter": { "term": { "age": 35 } }
-        }
-    }
-}'
-
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
-    "query" : {"bool": {
-        "filter": {
-            "script": {
-                "script": "doc['"'"'age'"'"'].value > 33"
-            }
-        }
-    }}
-}'
-
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
-    "query" : {"bool": {
-        "filter": {
-            "script": {
-                "script": {
-                    "inline": "doc['"'"'age'"'"'].value > param1",
-                    "params" : {"param1": 40}
-                }
-            }
-        }
-    }}
-}'
-
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
-    "fields" : ["city"],
-    "query" : {
-        "bool": {
-            "filter": {
-                "script": {
-                    "script": {
-                        "inline": "doc['"'"'location'"'"'].distanceInKm(lat, lon)",
-                        "params": {"lat": 49.8333, "lon": 73.1667}
-                    }
-                }
-            }
-        }
-    }
-}'
-
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
-    "post_filter": {
-        "range": {"age": {"gt" : 35}}
-    }
-}'
-
-# Sorting by distance from London.
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
-  "sort": [
-    {
-      "_geo_distance": {
-        "location": {
-          "lat":  51.5072,
-          "lon": 0.1275
-        },
-        "order":         "asc",
-        "unit":          "km",
-        "distance_type": "plane"
-      }
-    }
-  ]
-}'
-
-# Simple sort
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
-    "sort" : [{ "city" : "asc" }]
-}'
-
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
-    "fielddata_fields" : ["first_name", "age"]
-}'
-
-# order mode
-curl -XGET localhost:9200/megacorp/employee/_search?pretty -d '{
-    "fields": ["age"],
-    "sort" : [{ "age" : {"order" : "asc", "mode" : "avg"} }]
-}'
-````
-````json
-# Custom field
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
-    "script_fields": {"name": {
-        "script" : "_source.first_name + _source.last_name"
-    }}
-}'
-````
-
-````json
-curl -XPOST 'localhost:9200/ziipr/users/18330/_update?pretty' -d '{
-"script" : "if (ctx._source.pictures != null) { for (item in ctx._source.pictures) { if (item.picture_id == 3460) { item.type_id = 201201999 } } } "
-}'
-````
 
 #### Full-text search
 
@@ -583,6 +354,14 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
     }
 }'
 
+# get count of each interest
+curl -XGET localhost:9200/megacorp/employee/_search?pretty -d '{
+  "size": 0,
+  "aggs":{
+    "interest_count":{"terms":{"field": "interests"}}
+  }
+}'
+
 curl -XGET localhost:9200/megacorp/employee/_search -d '{
     "aggs": {
         "all_interests": { "terms": { "field": "interests" } }
@@ -617,3 +396,5 @@ curl -XPUT 'http://localhost:9200/twitter/tweet/1?ttl=1m' -d '{
     "message": "Trying out elasticsearch, so far so good?"
 }'
 ````
+
+https://www.elastic.co/guide/en/elasticsearch/reference/current/number.html

@@ -10,8 +10,33 @@ jpegoptim --max=30 --dest=res -o  bond.origin.jpg
 convert origin.jpg -quality 95 result.jpg
 convert origin.jpg -resize 100 result.jpg
 convert origin.jpg -resize 50% result.jpg
+convert bond.origin.jpg -resize 200x150 bond.res.jpg
 
 jpegtran -copy none -optimize -outfile res.jpg origin.jpg
+
+pngquant --force --quality=25-25 ~/Downloads/origin.png --ext .25.png
+````
+````
+# install jpegoptim on centos 6
+sudo yum install libjpeg*
+cd /tmp
+wget http://www.kokkonen.net/tjko/src/jpegoptim-1.4.1.tar.gz
+tar -xzf jpeg*
+cd ./jpeg*
+./configure
+make
+make install
+sudo ln -s /usr/local/bin/jpegoptim /usr/bin/
+
+# install pngquant on centos 6
+sudo yum install libpng*
+wget http://pngquant.org/pngquant-2.4.0-src.tar.bz2
+bunzip2 pngquant-2.4.0-src.tar.bz2
+tar -xvf pngquant-2.4.0-src.tar
+./configure
+make
+make install
+sudo ln -s /usr/local/bin/pngquant /usr/bin/
 ````
 
 ####rsync
