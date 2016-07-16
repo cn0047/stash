@@ -1,6 +1,8 @@
 Megacorp examples
 -
 
+[Meta-Fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-fields.html).
+
 ````json
 # mapping for megacorp
 curl -XPUT http://localhost:9200/megacorp -d '{
@@ -397,4 +399,4 @@ curl -XPUT 'http://localhost:9200/twitter/tweet/1?ttl=1m' -d '{
 }'
 ````
 
-https://www.elastic.co/guide/en/elasticsearch/reference/current/number.html
+https://www.elastic.co/guide/en/elasticsearch/reference/current/doc-values.html
