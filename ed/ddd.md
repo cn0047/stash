@@ -62,6 +62,8 @@ such that alternative storage implementations may be easily interchanged.
 Factory - Methods for creating domain objects
 should delegate to a specialized Factory.
 
+CQRS - Command Query Responsibility Segregation.
+
 Service - When an operation does not conceptually belong to any object.
 An object does not have an internal state, and its purpose is to simply provide
 functionality for the domain.

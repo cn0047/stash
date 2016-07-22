@@ -76,7 +76,7 @@ git log --follow file.txt # Viewing GIT history of moved files.
 
 ####branch
 ````
-git checkout --track -b live origin/live
+git checkout --track -b master origin/master
 
 git show branchName
 git rev_parse branch

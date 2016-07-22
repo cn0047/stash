@@ -27,6 +27,11 @@ php app/cli.php main
 #### Devtools
 
 ````
+sudo ln -s /var/www/html/public/phalcon-devtools/phalcon.php /usr/bin/phalcon
+sudo chmod ugo+x /usr/bin/phalcon
+````
+
+````
 # create project
 phalcon project --name dbRelationships --type=cli
 

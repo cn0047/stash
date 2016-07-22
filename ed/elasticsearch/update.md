@@ -1,6 +1,9 @@
 Update
 -
 
+The update operation supports the following query-string
+[parameters](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-update.html#_parameters_3).
+
 ````json
 # Update particular document
 curl -XPOST 'localhost:9200/megacorp/employee/1/_update?pretty' -d '{

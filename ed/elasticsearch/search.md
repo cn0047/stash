@@ -10,6 +10,29 @@ There are three types of `match` query: `boolean`, `phrase`, and `phrase_prefix`
 [Regexp syntax](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-regexp-query.html#regexp-syntax).
 
 ````json
+# Get employee 1
+curl -XGET localhost:9200/megacorp/employee/1
+
+# Multi get
+curl 'localhost:9200/_mget?pretty' -d '{
+    "docs" : [
+        {"_index" : "megacorp", "_type" : "employee", "_id" : "1"},
+        {"_index" : "megacorp", "_type" : "employee", "_id" : "2"},
+        {"_index" : "megacorp", "_type" : "employee", "_id" : "3"}
+    ]
+}'
+
+# Multi get by certain index and type
+curl 'localhost:9200/megacorp/employee/_mget?pretty' -d '{
+    "docs" : [{"_id" : "1"}, {"_id" : "2"}]
+}'
+# or
+curl 'localhost:9200/megacorp/employee/_mget?pretty' -d '{
+    "ids" : ["1", "2"]
+}'
+````
+
+````json
 # find all employee
 curl -XGET localhost:9200/megacorp/employee/_search
 

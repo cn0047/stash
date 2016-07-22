@@ -14,6 +14,8 @@ service supervisord status
 /etc/init.d/supervisor restart
 
 sudo /usr/local/bin/supervisorctl status
+sudo /usr/local/bin/supervisorctl restart all
+sudo /usr/local/bin/supervisorctl reload # reload config
 supervisorctl status
 supervisorctl reload
 supervisorctl restart all

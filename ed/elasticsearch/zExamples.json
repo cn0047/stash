@@ -1,0 +1,63 @@
+````
+curl -XGET localhost:9200/ziipr/users/_search -d '{
+    "query" : {
+        "bool": {
+            "filter": {
+                "script": {
+                    "script": {
+                        "inline": "doc['"'"'location'"'"'].arcDistanceInKm(lat, lon)",
+                        "params": {"lat": 50.422607185224003, "lon": 30.505957800141999}
+                    }
+                }
+            }
+        }
+    },
+    "post_filter": {
+        // "range": {"last_seen_at": {"from": "2016-02-13 14:15:31"}}
+        "bool": {
+            "must": [
+                {
+                    "range":{
+                        "last_seen_at":{"from":"2016-04-25 16:36:10"}
+                    }
+                }
+            ]
+        }
+    },
+    "from": 0,
+    "size": 5
+}'
+
+curl -XGET location/ziipr/users/_search?pretty=true -d '{
+    "from" : 10,
+    "size" : 10,
+    "sort" : [{ "last_seen_at" : "desc" }],
+    "query":{
+        "bool":{
+            "must_not":[
+                {"terms": {"user_id": [19194]}}
+            ]
+        }
+    },
+    "post_filter": {
+        "bool": {
+            "must": [
+                {"range":{"last_seen_at":{"from": "2016-04-26 14:14:56"} } }
+            ]
+        }
+    },
+    "script_fields" : {
+        "distance" : {
+          "script" : "doc['"'"'location'"'"'].arcDistanceInKm(lat,lon)",
+          "params" : {"lat" : 50.422607185224003, "lon" : 30.505957800141999}
+        }
+    }
+}'
+
+curl -XGET localhost:9200/ziipr/users/_search -d '{
+    "from" : 0,
+    "size" : 1,
+    "fields": ["verification_status_id", "pictures.type_id", "pictures.file_name", "pictures.*"],
+    "script_fields": {"e": {"script": "_source.email"}, "s": {"script": "_source.status_id"}}
+}'
+````

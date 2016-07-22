@@ -49,7 +49,7 @@ class Command
         return $r;
     }
 
-    private function uploadImg($config_aws, $key = 'test/BOND.jpg', $sourceFile = '/home/kovpak/Downloads/b.jpg')
+    private function uploadImg($config_aws, $key = 'bu/test/BOND.jpg', $sourceFile = '/home/kovpak/Downloads/b.jpg')
     {
         $r = $this->s3->putObject([
             'Bucket' => $config_aws->s3->bucket,
@@ -114,6 +114,33 @@ class Command
         ]);
         var_export($r);
         return $r;
+    }
+
+    private function deleteFile($config_aws, $key = '')
+    {
+        $r = $this->s3->deleteObject([
+            'Bucket' => $config_aws->s3->bucket,
+            'Key' => $key,
+        ]);
+        return $r;
+    }
+
+    private function getObjectsList($config_aws)
+    {
+        $r = $this->s3->getIterator(
+            'ListObjects',
+            ['Bucket' => $config_aws->s3->bucket, 'Prefix' => '']
+        );
+        return $r;
+    }
+
+    public function deleteCopies($config_aws)
+    {
+        foreach ($this->getObjectsList($config_aws) as $el) {
+            if (preg_match('/.*\.copy$/', $el['Key'])) {
+                var_export($this->deleteFile($config_aws, $el['Key']));
+            }
+        }
     }
 }
 

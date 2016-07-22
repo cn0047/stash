@@ -127,6 +127,6 @@ although you won’t be able to access it.
 Elasticsearch cleans up deleted documents in the background as you continue to index more data.
 
 
+[Meta-Fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-fields.html).
 
-The update operation supports the following query-string
-[parameters](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-update.html#_parameters_3).
+https://www.elastic.co/guide/en/elasticsearch/reference/current/shard-request-cache.html
