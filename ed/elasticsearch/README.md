@@ -129,4 +129,9 @@ Elasticsearch cleans up deleted documents in the background as you continue to i
 
 [Meta-Fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-fields.html).
 
-https://www.elastic.co/guide/en/elasticsearch/reference/current/shard-request-cache.html
+[Groovy](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-scripting.html#_document_fields).
+
+[Glossary](https://www.elastic.co/guide/en/elasticsearch/reference/current/glossary.html).
+
+A shard is a single Lucene instance.
+An index is a logical namespace which points to primary and replica shards.
