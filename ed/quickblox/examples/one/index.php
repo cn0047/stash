@@ -1,16 +1,22 @@
 <?php
 
-define('USER_LOGIN', '');
-define('USER_PASSWORD', '');
+require_once __DIR__ . '/../config.php';
 
-define('APPLICATION_ID', '');
-define('AUTH_KEY', '');
-define('AUTH_SECRET', '');
-
-define('QB_API_ENDPOINT', '');
+set_error_handler(function ($code, $description) {
+    throw new ErrorException($description, $code);
+});
 
 class QuickBloxBridge
 {
+    private $login;
+    private $password;
+
+    public function __construct($login, $password)
+    {
+        $this->login = $login;
+        $this->password = $password;
+    }
+
     public function getToken()
     {
         $body = [
@@ -18,13 +24,12 @@ class QuickBloxBridge
             'auth_key' => AUTH_KEY,
             'nonce' => time(),
             'timestamp' => time(),
-            'user' => ['login' => USER_LOGIN, 'password' => USER_PASSWORD]
+            'user' => ['login' => $this->login, 'password' => $this->password]
         ];
         $built_query = urldecode(http_build_query($body));
         $signature = hash_hmac( 'sha1', $built_query , AUTH_SECRET);
         $body['signature'] = $signature;
         $post_body = http_build_query($body);
-
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, QB_API_ENDPOINT . '/session.json');
         curl_setopt($curl, CURLOPT_POST, true);
@@ -49,7 +54,6 @@ class QuickBloxBridge
             'Content-Type: application/json',
         ];
         $post_body = $body;
-
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, QB_API_ENDPOINT . '/users.json');
         curl_setopt($curl, CURLOPT_POST, true);
@@ -59,9 +63,49 @@ class QuickBloxBridge
         $response = curl_exec($curl);
         return $response;
     }
+
+    public function getChats()
+    {
+        $headers = [
+            'QB-Token: '. $this->getToken(),
+            'Content-Type: application/json',
+        ];
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, QB_API_ENDPOINT . '/chat/Dialog.json');
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($curl);
+        return json_decode($response, true);
+    }
+
+    public function getHaveUnreadMessage()
+    {
+        foreach ($this->getChats()['items'] as $key => $chat) {
+            if ($chat['unread_messages_count'] > 0) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
-$qbb = new QuickBloxBridge();
-// $token = $qbb->getToken();
+// $qbb = new QuickBloxBridge(USER_LOGIN, USER_PASSWORD);
+// var_export($qbb->getToken());
+// var_export($qbb->createUser());
+// var_export($qbb->getHaveUnreadMessage());
 
-var_export($qbb->createUser());
+$csv = array_map('str_getcsv', file('/home/kovpak/csv.csv'));
+foreach ($csv as $el) {
+    list($email, $userId, $qbUserId, $password) = $el;
+    $error = 0;
+    try {
+        $qbb = new QuickBloxBridge(sprintf('user_%s', trim($userId)), trim($password));
+        $haveUnreadMessage = $qbb->getHaveUnreadMessage();
+    } catch (Exception $e) {
+        $error = 1;
+    }
+    // printf('%s99s, %s, %d, %d %s', trim($email), trim($userId), (int)$haveUnreadMessage, $error, PHP_EOL);
+    if ($haveUnreadMessage) {
+        printf('| %50s | %s | %s', trim($email), trim($userId), PHP_EOL);
+    }
+}

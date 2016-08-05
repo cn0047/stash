@@ -1,0 +1,10 @@
+<?php
+
+define('USER_LOGIN', '');
+define('USER_PASSWORD', '');
+
+define('APPLICATION_ID', '');
+define('AUTH_KEY', '');
+define('AUTH_SECRET', '');
+
+define('QB_API_ENDPOINT', '');

@@ -1,0 +1,1 @@
+../../../bash/examples/sshToAws.sh

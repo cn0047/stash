@@ -1,6 +1,17 @@
 Theory
 -
 
+#### Continuous Delivery
+
+How long would it take your organization to deploy a change that involves just one single line of code?
+Do you do this on a repeatable, reliable basis?
+
+A deployment pipeline is, in essence, an automated implementation of your application’s
+build, deploy, test, and release process.
+
+The practice of building and testing your application on every check-in
+is known as continuous integration.
+
 #### Microservices
 
 The less well you understand a domain,

@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# sudo apt-get install awscli
 # sudo chmod +x /home/kovpak/web/kovpak/gh/ed/bash/examples/executeCommandOnAws.sh
 # sudo ln -s /home/kovpak/web/kovpak/gh/ed/bash/examples/executeCommandOnAws.sh /usr/bin/ecoa
 

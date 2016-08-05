@@ -41,7 +41,7 @@ curl -XPUT localhost:9200/megacorp/employee/1?routing=JohnSmith -d '{
     "city": "London",
     "location": {"lat": 51.5072, "lon": 0.1275},
     "interests": [ "sports", "music" ],
-    "fetish": {"name": "none"}
+    "fetish": {"name": "none", "count": "no count", "desc": "no desc"}
 }'
 curl -XPUT localhost:9200/megacorp/employee/2 -d '{
     "first_name" : "Jane",
