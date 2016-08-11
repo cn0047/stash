@@ -1,9 +1,9 @@
 AWS
 -
 
-# EC2 (Elastic Compute Cloud)
+## EC2 (Elastic Compute Cloud)
 
-### Launch instance
+#### Launch instance
 
 On step 3: At `Advanced Details` in `User data` it is possible to write bash, like:
 
@@ -25,7 +25,7 @@ aws ec2 run-instances \
     --client-token KovpakTest2 \
 ````
 
-### Convenient information about instances:
+#### Convenient information about instances:
 
 ````
 aws ec2 describe-instances \
@@ -41,13 +41,13 @@ aws ec2 describe-instances \
 load balancer -> description -> port configuration = Stickiness: LBCookieStickinessPolicy, expirationPeriod='1800'
 ````
 
-# EBS (Elastic Block Store)
+### EBS (Elastic Block Store)
 
-# VPC (Virtual Private Cloud)
+### VPC (Virtual Private Cloud)
 
-# ELB (Elastic Load Balancing)
+### ELB (Elastic Load Balancing)
 
-# S3
+## S3
 
 ````
 # s3

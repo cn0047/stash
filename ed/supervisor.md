@@ -12,6 +12,7 @@ http://localhost:9001/
 service supervisor status
 service supervisord status
 /etc/init.d/supervisor restart
+/etc/init.d/supervisord.sh restart
 
 sudo /usr/local/bin/supervisorctl status
 sudo /usr/local/bin/supervisorctl restart all

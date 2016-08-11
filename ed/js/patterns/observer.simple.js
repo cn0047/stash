@@ -1,5 +1,3 @@
-<?php
-
 var Subject = function () {
     this.listeners = [];
     this.attach = function (l) {

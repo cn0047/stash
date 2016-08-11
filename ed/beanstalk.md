@@ -23,4 +23,9 @@ put 1024 0 60 95
 put 1024 0 60 95
 {"folder":"000009345","thumbnail":true,"file":"public/photo_2016-07-05_17-07-34_thumbnail.jpg"}
 
+# delete job from tube
+use tube_documents
+delete {jobId}
 ````
+
+https://github.com/kr/beanstalkd/blob/master/doc/protocol.txt
