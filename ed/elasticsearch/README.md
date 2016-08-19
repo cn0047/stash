@@ -108,8 +108,8 @@ curl -XPUT http://localhost:9200/test/ -d '{
 }
 }'
 
-# delete mapping
-curl -XDELETE 'http://localhost:9200/megacorp/employee'
+# delete mapping, from v2.3 NOT possible, need delete whole index
+# curl -XDELETE 'http://localhost:9200/megacorp/employee'
 
 # create alias
 curl -XPOST localhost:9200/_aliases -d '{
