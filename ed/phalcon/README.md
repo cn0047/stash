@@ -14,7 +14,7 @@ $this->getDI()->getShared('config')->get('admin_module')->get('version')
 
 #### Controller
 
-````
+````php
 $this->request->getQuery(); // $_GET
 $this->request->getPost(); // $_POST
 $this->request->getQuery('_GET');
@@ -22,6 +22,26 @@ $this->request->getPost('_POST');
 ````
 ````
 php app/cli.php main
+````
+
+#### Model
+````php
+Users::find([
+    'created_at BETWEEN :from: AND :to:',
+    'bind' => [
+        'from' => $from,
+        'to' => $to,
+    ],
+]);
+
+// IN clause
+$di = Di::getDefault();
+/** @var QueryBuilder $qb */
+$qb = $di->get('modelsManager')->createBuilder();
+$qb->columns('v.*');
+$qb->from(['v' => VideoModel::class]);
+$qb->inWhere('v.userId', $userIds);
+var_dump($qb->getQuery()->getSingleResult());
 ````
 
 #### Devtools

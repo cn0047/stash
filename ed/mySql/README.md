@@ -7,8 +7,13 @@ MySql
 ````sql
 -- Create new user like root
 -- mysql --user=root mysql
-CREATE USER 'ziipr'@'localhost' IDENTIFIED BY '';
-GRANT ALL PRIVILEGES ON *.* TO 'ziipr'@'localhost' WITH GRANT OPTION;
+CREATE USER 'test2'@'localhost' IDENTIFIED BY 'pass';
+GRANT ALL PRIVILEGES ON *.* TO 'test2'@'localhost' WITH GRANT OPTION;
+-- grant user
+GRANT ALL PRIVILEGES ON testDB.* TO 'test2'@'localhost' IDENTIFIED BY 'pass';
+GRANT ALL PRIVILEGES ON testDB.* TO 'test2'@'%' IDENTIFIED BY 'pass';
+-- set password for user
+SET PASSWORD FOR 'ziipr'@'localhost' = PASSWORD('12345');
 
 INSERT INTO brand2 (name) SELECT name FROM brand;
 
@@ -36,7 +41,8 @@ SELECT
 FROM information_schema.tables
 WHERE table_schema='dataBaseName' AND create_time BETWEEN '2014-05-05' AND '2014-05-07'
 ;
-SHOW COLUMNS FROM table LIKE '%';
+-- get AUTO_INCREMENT
+SHOW COLUMNS FROM table LIKE '%'; -- columns in table format like DESC tableName
 SELECT AUTO_INCREMENT FROM information_schema.TABLES
 WHERE TABLE_SCHEMA = 'databaseName' AND TABLE_NAME = 'table';
 
@@ -57,9 +63,9 @@ The exception to this is COUNT(*), which counts rows
 ````sql
 force index (createdAt)
 
-// SELECT DISTINCT faster than SELECT GROUB BY.
+-- SELECT DISTINCT faster than SELECT GROUB BY.
 SELECT DISTINCT id FROM table;
-// vs
+-- vs
 SELECT id FROM table GROUP BY id;
 ````
 
@@ -75,16 +81,17 @@ SELECT SQL_NO_CACHE
 
 ####Sizes
 
-Maximum Length:
+Every table (regardless of storage engine) has a maximum row size of 65,535 bytes.
 
+Maximum Names Length:
 | Identifier                                                                                                 | Maximum Length (characters) |
 |------------------------------------------------------------------------------------------------------------|-----------------------------|
 | Database, Table                                                                                            | 64 (NDB engine: 63) |
 | Column, Index, Constraint, Stored Program, View, Tablespace, Server, Log File Group, User-Defined Variable | 64 |
 | Alias                                                                                                      | 256 |
 
-
 ````sql
+-- tables sizes
 SELECT
     table_name AS 'Table',
     round(((data_length + index_length) / 1024 / 1024), 2) 'Size in MB'
@@ -117,7 +124,7 @@ SELECT TABLE_NAME, TABLE_ROWS FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA 
 ####Functions
 ````sql
 CONV(2, 10, 2) -- CONV(num , from_base, to_base)
-LPAD(ZipCode, 5, '0')
+LPAD('ZipCode', 10, '0') -- 000ZipCode
 
 ROW_COUNT()                        -- after insert, update, delete
 LAST_INSERT_ID()
@@ -129,7 +136,7 @@ sysdate()                          -- now
 LAST_DAY(date)                     -- last day in month
 CURRENT_DATE                       -- today
 
-REPLACE('vvv.site.com', 'v', 'w')
+REPLACE('vvv.site.com', 'v', 'w')  -- www.site.com
 
 SELECT ELT(1, 'foo', 'bar');       -- foo
 SELECT FIELD('foo', 'foo', 'bar'); -- 1
@@ -148,15 +155,9 @@ mysqldump -h hostname -u user -pPassWord --skip-triggers --single-transaction --
 -- mysqldump -h hostname -u user -d --skip-triggers --single-transaction --complete-insert --extended-insert --quote-names dbname table |gzip > sql.gz
 -- mysqldump -hHost Base table | gzip | uuencode table.gz | mail mail@com.com -s table
 -- mysqldump -h Host Base table --where="id=11" | mail mail@com.com
--- php-mysqldump -h HOST -u USER -a table -f sql -e "SELECT * FROM table LIMIT 10"
- mail@com.com -s "query result"
--- zcat table.gz | host -uUser -pPass base
--- zcat DUMP_dataBaseName.sql.gz | mysql
 mysql -hHost -uUser -pPass -DBase < dumpFile.sql
 ````
 ````
--- mysql -h Host -D Base -te "SELECT NOW()" | mail mail@com.com
--- mysql -hHost -uUser -pPass base ~ table
 -- mysql -h Host -D Base -e "select * from table where id in (1,2);" | gzip | pv | uuencode result.csv.gz | mail
 ````
 
@@ -260,6 +261,7 @@ mysql> \s
     * Table level locking. Slower than InnoDB for tables that are frequently being inserted to or updated, because the entire table is locked for any insert or update.
     * Faster than InnoDB on the whole as a result of the simpler structure thus much less costs of server resources.
     * Especially good for read-intensive (select) tables.
+    * (The maximum number of indexes per MyISAM table is 64. The maximum number of columns per index is 16.)
 * MEMORY
 * CSV
 * ARCHIVE
@@ -307,8 +309,8 @@ mysql> \s
         * Text (65535 bytes).
         * Mediumtext (16 777 215 bytes).
         * Longtext (4 294 967 295 bytes).
-    * Enum.
-    * Set (Is a string object that can have zero or more values).
+    * Enum (You cannot employ a user variable as an enumeration value, an enumeration value can also be the empty string ('') or NULL).
+    * Set (Is a string object that can have zero or more values, can have a maximum of 64 distinct members, cannot contain comma).
 * Spatial Data Types:
     * Geometry.
     * Point.

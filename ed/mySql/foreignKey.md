@@ -17,6 +17,7 @@ The parent and child tables must use the same storage engine.
 Corresponding columns in the foreign key and the referenced key must have similar data types
 (the size and sign of integer types must be the same, the length of string types need not be the same,
 BLOB and TEXT columns cannot be included in a foreign key).
+Tables must be not partitioned.
 
 MySQL requires indexes on foreign keys and referenced keys
 so that foreign key checks can be fast and not require a table scan.
@@ -79,7 +80,7 @@ CREATE TABLE child (
     id INT KEY,
     parent_id INT,
     INDEX par_ind (parent_id),
-    FOREIGN KEY (parent_id) REFERENCES parent(id) ON DELETE CASCADE
+    FOREIGN KEY (parent_id) REFERENCES parent(id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=INNODB;
 
 SELECT
@@ -120,6 +121,7 @@ SELECT * FROM child;
 +------+-----------+
 
 DELETE FROM parent WHERE id = 2;
+
 SELECT * FROM parent;
 +----+
 | id |
@@ -139,6 +141,29 @@ SELECT *
 FROM parent
 JOIN child ON parent.id = child.parent_id
 ;
++----+----+-----------+
+| id | id | parent_id |
++----+----+-----------+
+|  1 |  1 |         1 |
+|  3 |  3 |         3 |
++----+----+-----------+
+
+UPDATE parent SET id = 11 WHERE id = 1;
+
+SELECT * FROM parent;
++----+
+| id |
++----+
+|  3 |
+| 11 |
++----+
+SELECT * FROM child;
++----+-----------+
+| id | parent_id |
++----+-----------+
+|  3 |         3 |
+|  1 |        11 |
++----+-----------+
 
 DELETE FROM child
 WHERE parent_id IN (SELECT id FROM parent)

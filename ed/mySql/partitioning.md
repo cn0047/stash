@@ -151,8 +151,11 @@ PARTITIONS 4;
 ````
 
 ####LINEAR HASH Partitioning
-Linear hashing, which differs from regular hashing in that linear hashing utilizes a linear powers-of-two algorithm whereas regular hashing employs the modulus of the hashing function's value.
-The advantage in partitioning by linear hash is that the adding, dropping, merging, and splitting of partitions is made much faster.
+Linear hashing, which differs from regular hashing
+in that linear hashing utilizes a linear powers-of-two algorithm
+whereas regular hashing employs the modulus of the hashing function&#39;s value.
+The advantage in partitioning by linear hash
+is that the adding, dropping, merging, and splitting of partitions is made much faster.
 The disadvantage is that data is less likely to be evenly distributed between partitions.
 ````sql
 PARTITION BY LINEAR HASH( YEAR(hired) )
@@ -169,12 +172,19 @@ PARTITIONS 3;
 ````
 
 ####How MySQL Partitioning Handles NULL
-Partitioning in MySQL does nothing to disallow NULL. Even though it is permitted to use NULL as the value of an expression that must otherwise yield an integer.
-This means that treatment of NULL varies between partitioning of different types, and may produce behavior which you do not expect.
+Partitioning in MySQL does nothing to disallow NULL.
+Even though it is permitted to use NULL as the value of an expression that must otherwise yield an integer.
+This means that treatment of NULL varies between partitioning of different types,
+and may produce behavior which you do not expect.
 
-* Handling of NULL with RANGE partitioning.  If you insert a row into a table partitioned by RANGE such that the column value used to determine the partition is NULL, the row is inserted into the lowest partition.
+* Handling of NULL with RANGE partitioning.
+  If you insert a row into a table partitioned by RANGE such that the column value used to determine the partition is NULL,
+  the row is inserted into the lowest partition.
 
-* Handling of NULL with LIST partitioning.  A table that is partitioned by LIST admits NULL values if and only if one of its partitions is defined using that value-list that contains NULL.
+* Handling of NULL with LIST partitioning.
+  A table that is partitioned by LIST admits NULL values
+  if and only if one of its partitions is defined using that value-list that contains NULL.
+
 ````sql
 PARTITION BY LIST(c1) (
     PARTITION p0 VALUES IN (0, 3, 6),
@@ -183,7 +193,9 @@ PARTITION BY LIST(c1) (
 );
 ````
 
-* Handling of NULL with HASH and KEY partitioning.  NULL is handled somewhat differently for tables partitioned by HASH or KEY. In these cases, any partition expression that yields a NULL value is treated as though its return value were zero.
+* Handling of NULL with HASH and KEY partitioning.
+  NULL is handled somewhat differently for tables partitioned by HASH or KEY.
+  In these cases, any partition expression that yields a NULL value is treated as though its return value were zero.
 
 ###Partition Management
 

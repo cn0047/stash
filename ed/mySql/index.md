@@ -12,6 +12,19 @@ If you use latin1 then the largest column you can index is varchar(767),
 <br>So you can include multiple columns (each 767 bytes or smaller) up to 3072 total bytes per index.
 <br>Using **innodb_large_prefix** allows you to include columns up to 3072 bytes long in InnoDB indexes.
 
+BLOB/TEXT cannot be indexed.
+
+Kinds:
+
+Covering index - a covering index refers to the case
+when all fields selected in a query are covered by an index,
+in that case InnoDB (not MyISAM) will never read the data in the table,
+but only use the data in the index, significantly speeding up the select.
+Note that in InnoDB the primary key is included in all secondary indexes,
+so in a way all secondary indexes are compound indexes.
+
+Compound index.
+
 Types:
 
 KEY or INDEX: refers to a normal non-unique index.

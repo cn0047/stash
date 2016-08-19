@@ -49,6 +49,14 @@ if (json_last_error() !== JSON_ERROR_NONE) {
 }
 ````
 
+####
+
+````
+STDIN  'php://stdin'
+       'php://stdout'
+STDERR 'php://stderr'
+````
+
 ####opCache
 
 https://gist.github.com/ck-on/4959032/?ocp.php

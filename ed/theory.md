@@ -12,6 +12,8 @@ build, deploy, test, and release process.
 The practice of building and testing your application on every check-in
 is known as continuous integration.
 
+Pre-alpha -> Alpha -> Beta -> Release candidate -> Gold
+
 #### Microservices
 
 The less well you understand a domain,

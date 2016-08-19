@@ -15,6 +15,9 @@ convert bond.origin.jpg -resize 200x150 bond.res.jpg
 jpegtran -copy none -optimize -outfile res.jpg origin.jpg
 
 pngquant --force --quality=25-25 ~/Downloads/origin.png --ext .25.png
+
+# resize image to particular size.
+mogrify -resize 400x400! src.png
 ````
 ````
 # install jpegoptim on centos 6
@@ -210,6 +213,10 @@ CRUN_WORK_DIR=/var/www/vhosts/host/htdocs
 rm /tmp/crun_user_at_server_or_host_3a30db060f74d9390a2eb6f8a92eab8d # crun lock file. Should be removed when execution fails...
 
 grep cron /var/log/syslog
+````
+````
+# restart on centos
+sudo service crond restart
 ````
 
 ####curl

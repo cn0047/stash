@@ -98,6 +98,7 @@ $csv = array_map('str_getcsv', file('/home/kovpak/csv.csv'));
 foreach ($csv as $el) {
     list($email, $userId, $qbUserId, $password) = $el;
     $error = 0;
+    $haveUnreadMessage = false;
     try {
         $qbb = new QuickBloxBridge(sprintf('user_%s', trim($userId)), trim($password));
         $haveUnreadMessage = $qbb->getHaveUnreadMessage();
