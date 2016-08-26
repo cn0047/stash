@@ -5,10 +5,15 @@ The update operation supports the following query-string
 [parameters](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-update.html#_parameters_3).
 
 ````json
-# Update particular document
+# Update particular document and particular property
 curl -XPOST 'localhost:9200/megacorp/employee/1/_update?pretty' -d '{
   "doc": { "first_name": "JohnnNnn" }
 }'
+# another example
+curl -XPOST 'localhost:9200/megacorp/employee/2/_update?pretty' -d '{
+  "doc": { "first_name": "JJJane" }
+}'
+
 
 # Update particular document using script
 curl -XPOST 'localhost:9200/megacorp/employee/1/_update?pretty' -d '{

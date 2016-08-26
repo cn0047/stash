@@ -95,8 +95,7 @@ class QuickBloxBridge
 // var_export($qbb->getHaveUnreadMessage());
 
 $csv = array_map('str_getcsv', file('/home/kovpak/csv.csv'));
-foreach ($csv as $el) {
-    list($email, $userId, $qbUserId, $password) = $el;
+foreach ($csv as list($email, $userId, $qbUserId, $password)) {
     $error = 0;
     $haveUnreadMessage = false;
     try {

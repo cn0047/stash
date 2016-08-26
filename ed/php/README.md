@@ -274,13 +274,16 @@ tempnam($dir, $prefix);
 
 ####Interface vs abstract class
 
-Interface: describes class behaviour at all,
-implements, multiple implements, can contains only declatations of public methods,
+Interface:
+describes class behaviour at all,
+implements, multiple implements,
+can contains only declatations of public methods,
 contains constants that cannot be overrided in child class.
 
-Abstract class: describes particular class,
-extends, can contains properties, constants and methods,
-must contains abstract methods protected or public,
+Abstract class:
+describes particular class,
+extends,
+can contains properties, constants and methods, must contains abstract methods protected or public,
 cannot be instantiated.
 
 ####Memcache
