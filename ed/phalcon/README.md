@@ -42,6 +42,12 @@ $qb->columns('v.*');
 $qb->from(['v' => VideoModel::class]);
 $qb->inWhere('v.userId', $userIds);
 var_dump($qb->getQuery()->getSingleResult());
+
+// Raw SQL
+/** @var ResultSet $rs */
+$rs = Di::getDefault()->get('dbSlave')->query('SELECT NOW()');
+$rs->setFetchMode(\Phalcon\Db::FETCH_ASSOC);
+return $rs->fetchAll($rs);
 ````
 
 #### Devtools

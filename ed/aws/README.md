@@ -47,7 +47,7 @@ load balancer -> description -> port configuration = Stickiness: LBCookieStickin
 
 ### ELB (Elastic Load Balancing)
 
-## S3
+## S3 (Simple Storage Service)
 
 ````
 # s3
