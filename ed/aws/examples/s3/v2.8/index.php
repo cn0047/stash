@@ -4,6 +4,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/../../config.php';
 
 use Aws\S3\S3Client;
+use Aws\S3\Exception\NoSuchKeyException;
 
 /**
  * @example php index.php getUrl
@@ -96,24 +97,32 @@ class Command
         fclose($fp);
     }
 
-    private function copy($config_aws, $key = 'test/BOND.jpg')
+    private function copy($config_aws, $source, $target)
     {
         $r = $this->s3->copyObject([
             'Bucket' => $config_aws->s3->bucket,
-            'Key' => $key.'.copy',
-            'CopySource' => urlencode($config_aws->s3->bucket . '/' . $key),
+            'CopySource' => urlencode($config_aws->s3->bucket . '/' . $source),
+            'Key' => $target,
         ]);
         return $r;
     }
 
+    private function createCopy($config_aws, $key = 'test/BOND.jpg')
+    {
+        return $this->copy($config_aws, $key, $key.'.copy');
+    }
+
     private function fileExists($config_aws, $key = 'test/BOND.jpg')
     {
-        $r = $this->s3->getObject([
-            'Bucket' => $config_aws->s3->bucket,
-            'Key' => $key,
-        ]);
-        var_export($r);
-        return $r;
+        try {
+            $r = $this->s3->getObject([
+                'Bucket' => $config_aws->s3->bucket,
+                'Key' => $key,
+            ]);
+            return $r;
+        } catch (NoSuchKeyException $e) {
+            return false;
+        }
     }
 
     private function deleteFile($config_aws, $key = '')
@@ -125,11 +134,11 @@ class Command
         return $r;
     }
 
-    private function getObjectsList($config_aws)
+    private function getObjectsList($config_aws, $prefix = '')
     {
         $r = $this->s3->getIterator(
             'ListObjects',
-            ['Bucket' => $config_aws->s3->bucket, 'Prefix' => '']
+            ['Bucket' => $config_aws->s3->bucket, 'Prefix' => $prefix]
         );
         return $r;
     }
@@ -139,6 +148,20 @@ class Command
         foreach ($this->getObjectsList($config_aws) as $el) {
             if (preg_match('/.*\.copy$/', $el['Key'])) {
                 var_export($this->deleteFile($config_aws, $el['Key']));
+            }
+        }
+    }
+
+    public function findAbandonedThumbnails($config_aws)
+    {
+        foreach ($this->getObjectsList($config_aws, '') as $el) {
+            if (preg_match('/_thumbnail.jpg$/', $el['Key'])) {
+                $key = str_replace('_thumbnail.jpg', '.jpg', $el['Key']);
+                if (!$this->fileExists($config_aws, $key)) {
+                    $this->copy($config_aws, $el['Key'], "trash/$key");
+                    $this->deleteFile($config_aws, $el['Key']);
+                    var_dump($el['Key']);
+                }
             }
         }
     }

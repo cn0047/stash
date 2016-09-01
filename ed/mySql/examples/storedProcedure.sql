@@ -1,7 +1,3 @@
-Stored procedures
--
-
-````sql
 create table countries (id int auto_increment primary key, name varchar(100));
 insert into countries values
  (null, 'usa')
@@ -26,4 +22,3 @@ call getCountry('ua');
 +----+------+
 |  3 | ua   |
 +----+------+
-````

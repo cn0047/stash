@@ -1,7 +1,3 @@
-JOIN
--
-
-````sql
 CREATE TABLE `table1` (
   `id` int(11) NOT NULL DEFAULT 0,
   `value` text not null DEFAULT '',
@@ -82,4 +78,3 @@ SELECT t1.*, t2.* FROM table1 t1 LEFT JOIN table2 t2 on t1.id = t2.id WHERE t2.i
 |  1 | one   | NULL | NULL  |
 |  2 | two   | NULL | NULL  |
 +----+-------+------+-------+
-````
