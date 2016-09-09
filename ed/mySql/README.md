@@ -84,11 +84,13 @@ SELECT SQL_NO_CACHE
 Every table (regardless of storage engine) has a maximum row size of 65,535 bytes.
 
 Maximum Names Length:
+
+
 | Identifier                                                                                                 | Maximum Length (characters) |
 |------------------------------------------------------------------------------------------------------------|-----------------------------|
-| Database, Table                                                                                            | 64 (NDB engine: 63) |
-| Column, Index, Constraint, Stored Program, View, Tablespace, Server, Log File Group, User-Defined Variable | 64 |
-| Alias                                                                                                      | 256 |
+| Database, Table                                                                                            | 64 (NDB engine: 63)         |
+| Column, Index, Constraint, Stored Program, View, Tablespace, Server, Log File Group, User-Defined Variable | 64                          |
+| Alias                                                                                                      | 256                         |
 
 ````sql
 -- tables sizes
