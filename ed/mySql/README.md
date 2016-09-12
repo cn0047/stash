@@ -138,6 +138,7 @@ CURRENT_DATE                       -- today
 
 REPLACE('vvv.site.com', 'v', 'w')  -- www.site.com
 
+SELECT SUBSTRING_INDEX('yoyo3450@hotmail.com', '@', -1); -- hotmail.com
 SELECT ELT(1, 'foo', 'bar');       -- foo
 SELECT FIELD('foo', 'foo', 'bar'); -- 1
 SELECT FIND_IN_SET('b', 'a,b,cd'); -- 2
@@ -177,8 +178,6 @@ COLLATE UTF8_GENERAL_CI LIKE
 SELECT COALESCE(field, 0) FROM table; -- if field is null returns 0
 
 OREDER BY ASC                         -- default ASC
-
-LEFT OUTER JOIN                       -- search rows that not exists in second table
 
 INSERT INTO table VALUES (default);   -- default value
 
