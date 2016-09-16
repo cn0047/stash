@@ -95,7 +95,9 @@ class QuickBloxBridge
 // var_export($qbb->getHaveUnreadMessage());
 
 $csv = array_map('str_getcsv', file('/home/kovpak/csv.csv'));
+$i = 0;
 foreach ($csv as list($email, $userId, $qbUserId, $password)) {
+    $i++;
     $error = 0;
     $haveUnreadMessage = false;
     try {
@@ -104,8 +106,7 @@ foreach ($csv as list($email, $userId, $qbUserId, $password)) {
     } catch (Exception $e) {
         $error = 1;
     }
-    // printf('%s99s, %s, %d, %d %s', trim($email), trim($userId), (int)$haveUnreadMessage, $error, PHP_EOL);
     if ($haveUnreadMessage) {
-        printf('| %50s | %s | %s', trim($email), trim($userId), PHP_EOL);
+        printf('| %5d | %50s | %s | %s', $i, trim($email), trim($userId), PHP_EOL);
     }
 }

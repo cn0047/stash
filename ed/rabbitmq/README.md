@@ -1,17 +1,29 @@
 RabbitMQ
 -
 
+[sourcecode](https://github.com/rabbitinaction/sourcecode)
+
+````
+erl -sname test
+````
 ````
 sudo service rabbitmq-server status
 
 sudo rabbitmqctl status
+sudo rabbitmqctl stop_app
 
 sudo rabbitmqctl list_queues
-sudo rabbitmqctl list_queues name messages_ready messages_unacknowledged
+sudo rabbitmqctl list_queues name durable auto_delete messages consumers memory messages_ready messages_unacknowledged
 
 sudo rabbitmqctl list_exchanges
 
 sudo rabbitmqctl list_bindings
+
+sudo rabbitmqctl list_users
+
+sudo rabbitmqctl list_permissions
+
+sudo rabbitmqctl change_password cashing-tier compl3xPassword
 ````
 
 Declaring a queue is idempotent - it will only be created if it doesn't exist already.

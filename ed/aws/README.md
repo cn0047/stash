@@ -23,6 +23,9 @@ aws ec2 run-instances \
     --key-name ziipr \
     --user-data IyEvYmluL3NoCnl1bSAteSBpbnN0YWxsIHZpbSBodG9wCg== \
     --client-token KovpakTest2 \
+
+--user-data file://my_script.txt
+
 ````
 
 #### Convenient information about instances:
@@ -41,11 +44,18 @@ aws ec2 describe-instances \
 load balancer -> description -> port configuration = Stickiness: LBCookieStickinessPolicy, expirationPeriod='1800'
 ````
 
+### cloudwatch
+
+````
+aws cloudwatch put-metric-data --namespace 'prod.supervisor' --metric-name 'instance1.document' --value 1
+````
+
 ### EBS (Elastic Block Store)
 
 ### VPC (Virtual Private Cloud)
 
 ### ELB (Elastic Load Balancing)
+
 
 ## S3 (Simple Storage Service)
 
