@@ -36,6 +36,8 @@ aws ec2 describe-instances \
 --query 'Reservations[*].Instances[*].[Tags[0].Value,PublicDnsName,ImageId,State.Name]' \
 --filter Name=tag:Name,Values=*prod*web*
 
+--filter Name=dns-name,Values=ec2-52-51-65-182.eu-west-1.compute.amazonaws.com
+
 ````
 
 #### One php session storage per several instances

@@ -23,6 +23,18 @@ aws ec2 describe-instances \
 )
 
 for host in $hosts; do
-    printf "\n \033[34m $host \033[0m \n\n"
+    if [ $host = 'None' ];
+    then
+        continue
+    fi
+    tagName=$(
+        aws ec2 describe-instances \
+        --output text --query 'Reservations[*].Instances[*].[Tags[0].Value]' \
+        --filter Name=dns-name,Values=$host
+    )
+    printf "\n"
+    printf "\033[32m $tagName \033[0m"
+    printf "\033[34m $host \033[0m"
+    printf "\n\n"
     ssh -i /home/kovpak/web/storage/ziipr.pem ec2-user@$host $commandStr
 done
