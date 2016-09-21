@@ -10,6 +10,7 @@ erl -sname test
 sudo service rabbitmq-server status
 
 sudo rabbitmqctl status
+sudo rabbitmqctl cluster_status
 sudo rabbitmqctl stop_app
 
 sudo rabbitmqctl list_queues
@@ -43,3 +44,21 @@ Avoid black hole messages:
 * Have its delivery mode option set to 2 (persistent)
 * Be published into a durable exchange
 * Arrive in a durable queue
+
+## Cluster
+
+RabbitMQ only requires that one node in a cluster be a disk node.
+Every other node can be a RAM node.
+
+If you only have one disk node and that node happens to be down,
+your cluster can continue to route messages but you can’t do any of the following:
+
+* Create queues
+* Create exchanges
+* Create bindings
+* Add users
+* Change permissions
+* Add or remove cluster nodes
+
+When RAM nodes restart, they connect to the disk nodes they’re preconfigured with
+to download the current copy of the cluster’s metadata.

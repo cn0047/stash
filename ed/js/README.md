@@ -287,6 +287,14 @@ a = new Date();      typeof a; // "object"
 "3" + 4 + 5 // "345" - as string.
 3 + 4 + "5" // "75"  - as int and as string.
 
+0 == false // true
+0 == null // false
+false == null // false
+null == null // true
+NaN === NaN // false
+[] === [] // false
+{} === {} // false
+
 if (true) {} elseif (true) {} // Uncaught SyntaxError: Unexpected token {
 if (true) {} else if (true) {} // OK.
 

@@ -12,6 +12,7 @@ var_dump(empty(false)); // bool(true)
 var_dump(count(false)); // int(1) !!!
 var_dump(count(true)); // int(1)
 var_dump(count(null)); // int(0)
+$b = 3; $c = 1; var_export($b+++$c); // 4
 
 /**
  * NOT Interesting.

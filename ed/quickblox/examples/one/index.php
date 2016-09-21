@@ -10,6 +10,7 @@ class QuickBloxBridge
 {
     private $login;
     private $password;
+    private $token;
 
     public function __construct($login, $password)
     {
@@ -19,6 +20,9 @@ class QuickBloxBridge
 
     public function getToken()
     {
+        if ($this->token !== null) {
+            return $this->token;
+        }
         $body = [
             'application_id' => APPLICATION_ID,
             'auth_key' => AUTH_KEY,
@@ -36,7 +40,8 @@ class QuickBloxBridge
         curl_setopt($curl, CURLOPT_POSTFIELDS, $post_body);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         $response = curl_exec($curl);
-        return json_decode($response, true)['session']['token'];
+        $this->token = json_decode($response, true)['session']['token'];
+        return $this->token;
     }
 
     public function createUser()
@@ -87,10 +92,35 @@ class QuickBloxBridge
         }
         return false;
     }
+
+    public function createChat($userId)
+    {
+        $headers = [
+            'QB-Token: '. $this->getToken(),
+            'Content-Type: application/json',
+        ];
+        $body = [
+            'type' => 3, // private chat
+            'type' => 2, // group chat
+            'name' => 'chat with ziipr admin',
+            'occupants_ids' => $userId,
+        ];
+        $post_body = http_build_query($body);
+        $data = json_encode($body);
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, QB_API_ENDPOINT . '/chat/Dialog.json');
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($curl);
+        var_export($response);
+    }
 }
 
 // $qbb = new QuickBloxBridge(USER_LOGIN, USER_PASSWORD);
 // var_export($qbb->getToken());
+// var_export($qbb->createChat(203379));
 // var_export($qbb->createUser());
 // var_export($qbb->getHaveUnreadMessage());
 
