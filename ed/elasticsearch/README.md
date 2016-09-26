@@ -74,7 +74,7 @@ curl http://localhost:9200/_cat/nodes?v
 curl http://localhost:9200/_cat/indices?v
 
 # get all mappings (types)
-curl -XGET http://localhost:9200/_mapping
+curl -XGET http://localhost:9200/_mapping?pretty
 
 # get mapping
 curl -XGET http://localhost:9200/megacorp/_mapping/employee

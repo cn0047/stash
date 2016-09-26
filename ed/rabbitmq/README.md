@@ -62,3 +62,22 @@ your cluster can continue to route messages but you can’t do any of the follow
 
 When RAM nodes restart, they connect to the disk nodes they’re preconfigured with
 to download the current copy of the cluster’s metadata.
+
+## Rabbitmq management pugin
+
+````
+sudo /usr/lib/rabbitmq/bin/rabbitmq-plugins list
+sudo /usr/lib/rabbitmq/bin/rabbitmq-plugins enable rabbitmq_management
+sudo /usr/sbin/rabbitmqctl stop
+sudo /usr/sbin/rabbitmq-server -detached
+
+# go to: http://localhost:15672/
+# use guest:guest
+
+wget http://localhost:15672/cli/rabbitmqadmin
+chmod +x rabbitmqadmin
+./rabbitmqadmin -V "/" list exchanges
+./rabbitmqadmin purge queue name=test
+./rabbitmqadmin -u guest -p guest declare exchange name=cli_test type=direct
+./rabbitmqadmin list connections name
+````

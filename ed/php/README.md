@@ -41,9 +41,8 @@ php -d extension=xhprof.so foo.php
 ````php
 // Primitive validation
 preg_match('/^\d{4}(-\d{2}){2}$/', $args['date']); // 2015-06-10
-if (!filter_var($args['email'], FILTER_VALIDATE_EMAIL)) {
-    return $this->jsonResponse(['error' => 'Invalid email.']);
-}
+(!filter_var($args['email'], FILTER_VALIDATE_EMAIL))
+(!filter_var($args['url'], FILTER_VALIDATE_URL))
 
 if (json_last_error() !== JSON_ERROR_NONE) {
     throw new RuntimeException(__FILE__.__LINE__);
