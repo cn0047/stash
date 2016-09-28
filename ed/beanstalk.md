@@ -24,6 +24,10 @@ put 1024 0 60 95
 # delete job from tube
 use tube_documents
 delete {jobId}
+
+#  shows the next job to be processed
+use tube_documents
+peek-ready
 ````
 
 https://github.com/kr/beanstalkd/blob/master/doc/protocol.txt

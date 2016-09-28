@@ -37,7 +37,13 @@ It tells RabbitMQ to save the message to disk.
 Exchange - receives messages from producers and pushes them to queues.
 There are a few exchange types available: direct, topic, headers, fanout.
 
+The difference between the direct exchange versus the fanout exchange
+is that the latter ignores the routing key.
+
 That relationship between exchange and a queue is called a binding.
+
+Keep in mind that, usually, bindings on
+topic exchanges use more memory than in direct or fanout exchanges.
 
 Avoid black hole messages:
 

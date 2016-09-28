@@ -19,6 +19,8 @@ $this->request->getQuery(); // $_GET
 $this->request->getPost(); // $_POST
 $this->request->getQuery('_GET');
 $this->request->getPost('_POST');
+
+sprintf('%s://%s',$this->request->getScheme(), $this->request->getServerName());
 ````
 ````
 php app/cli.php main
