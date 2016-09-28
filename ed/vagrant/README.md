@@ -11,6 +11,8 @@ vagrant plugin install vagrant-vbguest
 vagrant plugin install vagrant-cachier
 
 ````
+vagrant global-status
+
 vagrant up
 vagrant reload
 vagrant provision
@@ -23,3 +25,6 @@ vagrant destroy # power down, and remove all of the guest hard disks
 
 vagrant resume # after suspend
 ````
+
+guest machine - virtual box.
+host machine - your laptop.
