@@ -33,15 +33,6 @@ git config http.sslVerify 0
 # avoid git push prompt
 git remote set-url origin git+ssh://git@github.com/cn007b/my.git
 ````
-````
-git st -s
- M cron/.htaccess
-?? ppc/Google/AdWords/AdWordsApiLibrary/src/Google/Api/Ads/AdWords/v201402/
-# Output second colunm. ' ' at `awk -F ' '` - separator
-git st -s | awk -F ' ' '{print $2}'
-cron/.htaccess
-ppc/Google/AdWords/AdWordsApiLibrary/src/Google/Api/Ads/AdWords/v201402/
-````
 
 ####bisect
 ````
@@ -71,7 +62,7 @@ git log -2                # last 2 commits
 git log -p                # shows commits & code in commit
 git log --stat            # statiistic about changes
 git log --no-meges        # log without merges
-git log --follow file.txt # Viewing GIT history of moved files.
+git log --follow file.txt # Viewing GIT history of deleted files.
 ````
 
 ####branch
