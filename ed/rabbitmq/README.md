@@ -17,6 +17,7 @@ sudo rabbitmqctl list_queues
 sudo rabbitmqctl list_queues name durable auto_delete messages consumers memory messages_ready messages_unacknowledged
 
 sudo rabbitmqctl list_exchanges
+sudo rabbitmqctl list_exchanges name durable auto_delete
 
 sudo rabbitmqctl list_bindings
 

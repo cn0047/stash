@@ -3,10 +3,9 @@ AWS
 
 ## EC2 (Elastic Compute Cloud)
 
-#### Launch instance
+Launch instance:
 
 On step 3: At `Advanced Details` in `User data` it is possible to write bash, like:
-
 ````sh
 #!/bin/sh
 yum -y install vim htop
@@ -28,7 +27,7 @@ aws ec2 run-instances \
 
 ````
 
-#### Convenient information about instances:
+Convenient information about instances:
 
 ````
 aws ec2 describe-instances \
@@ -40,17 +39,19 @@ aws ec2 describe-instances \
 
 ````
 
-#### One php session storage per several instances
+One php session storage per several instances:
 
 ````
 load balancer -> description -> port configuration = Stickiness: LBCookieStickinessPolicy, expirationPeriod='1800'
 ````
 
-### cloudwatch
+### CloudWatch
 
 ````
 aws cloudwatch put-metric-data --namespace 'prod.supervisor' --metric-name 'instance1.document' --value 1
 ````
+
+### AMI (Amazon Machine Image)
 
 ### EBS (Elastic Block Store)
 

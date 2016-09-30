@@ -3,7 +3,6 @@ Acronyms
 
 [ACID](#ACID)
 [AJAX](#AJAX)
-[AMI](#AMI)
 [AMQP](#AMQP)
 [API](#API)
 [B2B](#B2B)
@@ -59,9 +58,6 @@ Acronyms
 
 <dt><a name="AJAX"></a>AJAX</dt>
 <dd>Asynchronous JavaScript and XML</dd>
-
-<dt><a name="AMI"></a>AMI</dt>
-<dd>Amazon Machine Image</dd>
 
 <dt><a name="AMQP"></a>AMQP</dt>
 <dd>Advanced Message Queuing Protocol.</dd>

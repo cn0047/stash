@@ -1,5 +1,7 @@
 <?php
 
+$from = "cn2010_1@yahoo.com"; mail("cnfxlr@gmail.com", "TEST 2", "TEST", "From: $from\r\n", "-f$from");
+
 mail('cnfxlr@gmail.com', 'TEST 0', 'TEST');
 
 $from = 'cn2010_1@yahoo.com';
