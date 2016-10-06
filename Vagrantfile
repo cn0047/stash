@@ -1,0 +1,1 @@
+ed/vagrant/examples/ed/Vagrantfile

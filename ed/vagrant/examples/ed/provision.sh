@@ -15,6 +15,6 @@ service apache2 stop
 
 # nginx
 apt-get install -y nginx
-cp /vagrant/nginx.default.conf /etc/nginx/sites-available/default
+# cp /vagrant/nginx.default.conf /etc/nginx/sites-available/default
 mkdir -p /var/www/html
 service nginx restart
