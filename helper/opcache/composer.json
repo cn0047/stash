@@ -1,6 +1,0 @@
-{
-    "require": {
-        "peehaa/opcachegui": "^1.0",
-        "amnuts/opcache-gui": "^2.2"
-    }
-}
