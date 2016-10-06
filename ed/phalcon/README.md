@@ -27,6 +27,7 @@ php app/cli.php main
 ````
 
 #### Model
+
 ````php
 Users::find([
     'created_at BETWEEN :from: AND :to:',
@@ -75,31 +76,56 @@ phalcon project --name dbRelationships --type=cli
 # generate model from db table
 phalcon model languages --get-set --namespace=W3\\Ziipr\\Models\\v1
 
+````
+
+#### DB migrations
+
+````
 # create db migration
-phalcon migration --action=generate --table=template --no-auto-increment
+phalcon migration --action=generate --table=captions_new --no-auto-increment --config=config/config_db.php
 
 # run db migration
+phalcon migration --action=run --version=1.0.0
+phalcon migration --action=run --version=1.0.6 --config=config/config_db.php
 phalcon migration --action=run --table=template --version=1.0.0
 ````
 
 # db-migration insert
 ````php
-    /**
-     * Run the migrations
-     *
-     * @return void
-     */
-    public function up()
-    {
-        self::$_connection->insert(
-            "taxonomy",
-            [11111, "BLABLBALA", "blabalbal"],
-            ["TaxonomyID", "Code", "Name", ]
-        );
-    }
+public function up()
+{
+    self::$_connection->insert(
+        "taxonomy",
+        [11111, "BLABLBALA", "blabalbal"],
+        ["TaxonomyID", "Code", "Name", ]
+    );
+    $column = new Column(
+        'UpdatedAt',
+        [
+            'type' => Column::TYPE_TIMESTAMP,
+            'size' => 1,
+        ]
+    );
+    self::$_connection->addColumn('captions_new', 'ziipr', $column);
+}
+public function up()
+{
+    // create table
+    $this->morphTable('moderatorComment', array(/* ... */));
+}
+public function down()
+{
+    self::$_connection->delete(
+        "taxonomy",
+        "TaxonomyID IN (201600, 201601, 201602, 201603, 201604, 201605)"
+    );
+    self::$_connection->dropTable('user_auth');
+    self::$_connection->dropColumn('captions_new', 'ziipr', 'UpdatedAt');
+}
 ````
 
 #### Volt
+
 ````twig
 {{ select('email_template_name', email_templates_names, 'class': 'hidden') }}
 

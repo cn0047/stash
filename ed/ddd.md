@@ -32,6 +32,21 @@ layers. It provides communication between layers,
 implements persistence for business objects, contains
 supporting libraries for the user interface layer, etc.
 
+Example:
+
+````
+src/Domain/Model/ParticularModel/ParticularModel.php - Doctrine entity.
+src/Domain/Model/ParticularModel/DTO/ParticularModel.php.
+src/Domain/Model/ParticularModel/Service/Command/CreateParticularModel.php - (CQRS) Call persister commands.
+src/Domain/Model/ParticularModel/Service/Query/CreateParticularModel.php - (CQRS) Call persister commands.
+src/Domain/Service/
+src/Domain/VO/
+src/Infrastructure/Command/ParticularModel/PersisterDoctrine.php - Doctrine EM Wrapper.
+src/Infrastructure/DataProvider/
+src/Infrastructure/Persistence/Doctrine/ORM/Model.ParticularModel.ParticularModel.orm.xml
+src/ProjectFrameworkFiles/
+````
+
 Entities - An object that is not defined by its attributes,
 but rather by a thread of continuity and its identity.
 Is a category of objects which seem to have an identity.
@@ -71,6 +86,8 @@ We should not create a Service for
 every operation needed. But when such an operation stands out
 as an important concept in the domain, a Service should be
 created for it.
+
+DTO - Data transfer object.
 
 There are three characteristics of a Service:
 

@@ -1,6 +1,15 @@
 Linux
 -
 
+####screen
+
+````
+screen -S sessionName # new named session
+screen -ls            # list of active sessions
+screen -x sessionName # attach to session
+````
+Ctrl+A followed by D = detach screen
+
 ####image optimization
 
 ````
@@ -112,7 +121,6 @@ ln -s {file} {symbolic-name}
 cat
 tail
 
-screen
 which
 
 DISPLAY=:7
@@ -257,4 +265,7 @@ cat /tmp/alcuda_tech.log | grep -Eo --color=never '^\[\S+\s+[^\*][^:]+' | sed -r
 find -type f -name '*.php' -exec egrep -l 'class\s+ProfileManager' {} \;
 find -name '*.htm' -exec touch {} \;
 find -type f -name '*.php' -exec egrep -Hn --color=always 'is_failed' {} \; | grep profile
+
+# date, in next format [02/жов/2016:00:21
+date +'[%d/%b'/%Y:%H:%M
 ````

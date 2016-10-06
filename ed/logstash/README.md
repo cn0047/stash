@@ -17,33 +17,25 @@ output {
   statsd {increment => "apache.%{[ua][os]}"}
 }
 ````
-````
-input { file { path => "/tmp/logstash.txt" } } output { elasticsearch { host => "localhost" protocol => "http" } }
-````
-````
-input {
-  file {
-    type => "nginx-access"
-    path => "/var/log/nginx/access.log"
-  }
-}
-filter {
-}
-output {
-  elasticsearch {
-    index => "nginx"
-    type => "accessLog"
-    embedded => false
-    host => "localhost"
-    protocol => "http"
-    port => "9200"
-  }
-}
+
+Siple test:
 
 ````
-````
-# siple test
 /opt/logstash/bin/logstash -e 'input { stdin { } } output { stdout {} }'
 
+````
+
+Simple elasticsearch config:
+
+````
+input { file { path => "/tmp/logstash.txt" } } output { elasticsearch { hosts => ["localhost:9200"] } }
+````
+````
 /opt/logstash/bin/logstash -f /etc/logstash/conf.d/my.conf
+````
+
+Nginx conf:
+
+````
+input { file { path => "/var/log/nginx/access.log" } } output { elasticsearch { hosts => ["localhost:9200"] index => "nginx" } }
 ````
