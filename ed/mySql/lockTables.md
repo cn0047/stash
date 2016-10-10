@@ -64,3 +64,62 @@ Example:
 |                                                      |                               | select count(*) from product; | --hang           |
 | unlock tables;                                       |                               |                               |                  |
 |                                                      |                               |                               | 6                |
+
+
+# Optimistic Locking.
+
+Optimistic Locking is not a database feature, not for MySQL nor for others.
+
+Optimistic locking takes the “optimistic” view
+that data corruptions due to concurrent edits will occur rarely and no locking is needed,
+so it’s more important to allow concurrent access than to lock out concurrent updates.
+If a conflict occurs, the transaction must be aborted and repeated.
+Frameworks which support optimistic locking typically maintain a version field
+and raise an exception if one tries to update an object with an outdated version number.
+
+Example:
+1 SELECT data from a row having one ID filed (iD) and two data fields (val1, val2).
+2 UPDATE data of that row.
+
+Optimistic locking way is:
+1 SELECT.
+2 UPDATE.
+3 if AffectedRows == 1 OK else FAIL.
+
+All has been done without transactions!
+
+Solutions:
+* UPDATE in transaction and if AffectedRows == 1 COMMIT else ROLLBACK.
+* Add aditonal field version and increment value during each UPDATE.
+
+# Pessimistic locking.
+
+Pessimistic Locking is when you lock the record for your exclusive use until you have finished with it.
+
+Pessimistic locking takes the “pessimistic” view that users are highly likely to corrupt each other’s data,
+and that the only safe option is to lock the database and serialize data access,
+so at most one user has control of any piece of data at one time.
+This ensures data integrity, but reduces speed and the amount of concurrent activity the system can support.
+
+# Deadlocks
+
+A deadlock is a situation where different transactions are unable to proceed
+because each holds a lock that the other needs.
+Because both transactions are waiting for a resource to become available,
+neither will ever release the locks it holds.
+
+deadlocks occur because of write operations.
+
+To reduce the possibility of deadlocks, use transactions rather than LOCK TABLES statements;
+To see the last deadlock in an InnoDB user transaction, use the `SHOW ENGINE INNODB STATUS` command.
+
+| Session 1 | Session 2 |
+|-----------|-----------|
+| CREATE TABLE t (i INT) ENGINE = InnoDB; | |
+| INSERT INTO t (i) VALUES(1); | |
+| START TRANSACTION; | |
+| SELECT * FROM t WHERE i = 1 LOCK IN SHARE MODE; | |
+| | START TRANSACTION; |
+| | DELETE FROM t WHERE i = 1; |
+| DELETE FROM t WHERE i = 1; | |
+| | -- ERROR 1213 (40001): Deadlock found when trying to get lock; try restarting transaction |

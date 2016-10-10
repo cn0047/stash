@@ -25,3 +25,6 @@ Route::get('/get200', function () {
 Route::get('/get/{code}', 'Home@index');
 Route::get('/home', 'Home@home');
 Route::resource('photos', 'PhotoController');
+
+Route::auth();
+Route::get('/home', 'HomeController@index');

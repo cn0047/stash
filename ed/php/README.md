@@ -40,6 +40,7 @@ php -d extension=xhprof.so foo.php
 
 ````php
 // Primitive validation
+ctype_digit($testcase) // string with integer value
 preg_match('/^\d{4}(-\d{2}){2}$/', $args['date']); // 2015-06-10
 (!filter_var($args['email'], FILTER_VALIDATE_EMAIL))
 (!filter_var($args['url'], FILTER_VALIDATE_URL))

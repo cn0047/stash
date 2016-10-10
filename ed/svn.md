@@ -7,7 +7,11 @@ svn di file # diff
 ````
 
 #### The typical work cycle looks like this:
+
 ````
+# Check out a working copy from a repository.
+svn checkout your_name https://svn.server.com/repository/trunk
+
 # Update your working copy
 svn update
 

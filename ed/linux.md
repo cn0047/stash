@@ -1,6 +1,8 @@
 Linux
 -
 
+sudo dpkg -i {name}
+
 ####screen
 
 ````

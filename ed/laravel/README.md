@@ -31,4 +31,4 @@ php artisan route:clear
 @lang('messages.welcome')
 ````
 
-https://laravel.com/docs/5.3/authentication
+https://laravel.com/docs/5.3/passport
