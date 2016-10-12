@@ -14,7 +14,7 @@ istanbul report
 /usr/bin/chromium-browser coverage/lcov-report/index.html
 ````
 ````
-$rs = Stub::create([
+$rs = kahlan\plugin\Stub::create([
     'extends' => SimpleResultSet::class,
     'layer' => true,
     'params' => [[], new VideoModel(), null]

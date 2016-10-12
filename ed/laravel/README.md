@@ -31,4 +31,13 @@ php artisan route:clear
 @lang('messages.welcome')
 ````
 
+## Misc
+
+````
+Illuminate\Support\Facades\Hash::make('str');
+Illuminate\Support\Facades\Hash::check('plain-text', $hash);
+````
+
 https://laravel.com/docs/5.3/passport
+
+https://laravel.com/docs/5.3/broadcasting
