@@ -17,4 +17,15 @@ class Home extends Controller
     {
         return view('front.home', ['time' => time()]);
     }
+
+    public function conf()
+    {
+        echo '<pre>';
+        var_export([
+            config('app.timezone'),
+            \App::environment(),
+        ]);
+        // Print log to ./storage/logs/laravel.log.
+        \Log::info('Showed configs.');
+    }
 }

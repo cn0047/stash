@@ -3,6 +3,18 @@ Linux
 
 sudo dpkg -i {name}
 
+####mount
+
+On server machine:
+````
+echo '/tmp 52.48.208.239(rw,sync,no_subtree_check,no_root_squash)' >> /etc/exports
+````
+
+On client machine:
+````
+mount -t nfs {remote_machine_ip}:/remote/dir /local/dir
+````
+
 ####screen
 
 ````
