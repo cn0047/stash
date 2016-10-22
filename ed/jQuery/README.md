@@ -147,8 +147,8 @@ $.ajax({
     dataType: 'json',
     type: 'post',
     data: {},
-    success: function (r) {
-        console.log(r);
+    success: function (res) {
+        console.log(res);
     },
     error: function (xhr, status, error) {
         console.error(xhr, status, error);

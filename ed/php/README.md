@@ -21,6 +21,12 @@ http://git.php.net/
 [php-src](https://github.com/php/php-src)
 
 ````
+error_reporting(E_ALL); // error_reporting(E_ALL & ~E_NOTICE);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors','On');
+````
+
+````
 /etc/php5/apache2/php.ini
 /etc/php5/cli/php.ini
 /etc/php5/fpm/php.ini
@@ -195,10 +201,6 @@ foreach (debug_backtrace() as $v) {
 
 $t =microtime();
 var_export(sprintf('%f', microtime()-$t));
-
-error_reporting(E_ALL); // error_reporting(E_ALL & ~E_NOTICE);
-ini_set('display_errors', 1);
-ini_set('display_startup_errors','On');
 
 // debug tables:
 array_walk($d, create_function('&$i, $k, $c', 'if (empty($c)) {$c=array_keys($i);} $i="<tr><td>".implode("</td><td>",$i)."</td></tr>";'), &$c);

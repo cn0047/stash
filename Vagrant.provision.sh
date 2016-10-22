@@ -10,7 +10,7 @@ apt-get install -y php7.0 php7.0-fpm php7.0-cli
 apt-get install -y php7.0-mcrypt php7.0-mbstring php7.0-opcache
 apt-get install -y php7.0-mysql php7.0-pdo
 apt-get install -y php7.0-dom php7.0-xml
-apt-get install -y php7.0-zip
+apt-get install -y php7.0-zip php7.0-curl php7.0-gd
 # php7.0-bcmath
 # php7.0-bz2
 # php7.0-calendar
@@ -18,7 +18,6 @@ apt-get install -y php7.0-zip
 # php7.0-cli
 # php7.0-common
 # php7.0-ctype
-# php7.0-curl
 # php7.0-dba
 # php7.0-dev
 # php7.0-enchant
@@ -26,7 +25,6 @@ apt-get install -y php7.0-zip
 # php7.0-fileinfo
 # php7.0-fpm
 # php7.0-ftp
-# php7.0-gd
 # php7.0-gettext
 # php7.0-gmp
 # php7.0-iconv

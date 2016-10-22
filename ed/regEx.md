@@ -97,6 +97,10 @@ RegEx
 ````
 grep '$DC' # environment var
 grep -Pz 'r\nw' # match new line pattern
+
+echo "Nate or nate" | grep -P '(?<!N)a'
+echo '{"token":"123"}' | grep -Po '(?<="token":")[^"]*'
+echo '"total":127,' | grep -P '(?!"total":)[0-9]*'
 ````
 
 ````php

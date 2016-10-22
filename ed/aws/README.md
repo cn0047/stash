@@ -15,15 +15,19 @@ From cli:
 
 ````
 aws ec2 run-instances \
-    --image-id ami-f9dd458a \
-    --instance-type t2.micro \
+    --image-id ami-17a3e164 \
+    --instance-type t2.medium \
     --count 1 \
     --security-groups ssh Ciklum web default \
     --key-name ziipr \
-    --user-data IyEvYmluL3NoCnl1bSAteSBpbnN0YWxsIHZpbSBodG9wCg== \
-    --client-token KovpakTest2 \
+    --user-data 'echo 200' \
+    --client-token KovpakTest4 \
 
---user-data file://my_script.txt
+    --instance-type t2.micro \
+
+    --iam-instance-profile Name='aws-opsworks-ec2-role' \
+
+    --user-data file://my_script.txt
 
 ````
 
@@ -33,6 +37,8 @@ Convenient information about instances:
 aws ec2 describe-instances \
 --output table \
 --query 'Reservations[*].Instances[*].[Tags[0].Value,PublicDnsName,ImageId,State.Name]' \
+--filter Name=image-id,Values=ami-17a3e164
+
 --filter Name=tag:Name,Values=*prod*web*
 
 --filter Name=dns-name,Values=ec2-52-51-65-182.eu-west-1.compute.amazonaws.com

@@ -5,7 +5,10 @@ Apache
 sudo apt-get install tasksel
 sudo tasksel install lamp-server
 
+sudo service httpd restart
 sudo service apache2 restart
+
+/usr/sbin/apache2 -v
 ````
 
 ````
