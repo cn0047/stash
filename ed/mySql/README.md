@@ -55,6 +55,25 @@ INSERT LOW_PRIORITY INTO table1 SELECT field FROM table2;
 SELECT * FROM stockTable ORDER BY field(stockid, 33, 12, 53); -- ordered result: 33, 12, 53
 ````
 
+####Set
+````sql
+SET @id = 1;
+SELECT @id;
++------+
+| @id  |
++------+
+|    1 |
++------+
+
+SELECT @myRight := rgt FROM nested_category WHERE name = 'TELEVISIONS';
+SELECT @myRight;
++----------+
+| @myRight |
++----------+
+|        9 |
++----------+
+````
+
 ####NULL
 Aggregate (summary) functions such as COUNT(), MIN(), and SUM() ignore NULL values.
 The exception to this is COUNT(*), which counts rows
