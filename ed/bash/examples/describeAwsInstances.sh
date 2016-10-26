@@ -11,5 +11,5 @@ name=$1
 
 aws ec2 describe-instances \
 --output table \
---query 'Reservations[*].Instances[*].[Tags[0].Value,PublicDnsName,ImageId,State.Name]' \
+--query 'Reservations[*].Instances[*].[Tags[0].Value,PublicDnsName,ImageId,LaunchTime,State.Name]' \
 --filter Name=tag:Name,Values=$1

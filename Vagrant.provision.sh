@@ -6,20 +6,19 @@ apt-get update
 # php
 add-apt-repository ppa:ondrej/php
 apt-get update
-apt-get install -y php7.0 php7.0-fpm php7.0-cli
-apt-get install -y php7.0-mcrypt php7.0-mbstring php7.0-opcache
+apt-get install -y php7.0 php7.0-fpm php7.0-cli php7.0-opcache php7.0-common php7.0-phpdbg php7.0-dev
+apt-get install -y php7.0-mcrypt php7.0-mbstring
 apt-get install -y php7.0-mysql php7.0-pdo
-apt-get install -y php7.0-dom php7.0-xml
+apt-get install -y php7.0-dom php7.0-xml php7.0-json
 apt-get install -y php7.0-zip php7.0-curl php7.0-gd
+
 # php7.0-bcmath
 # php7.0-bz2
 # php7.0-calendar
 # php7.0-cgi
 # php7.0-cli
-# php7.0-common
 # php7.0-ctype
 # php7.0-dba
-# php7.0-dev
 # php7.0-enchant
 # php7.0-exif
 # php7.0-fileinfo
@@ -31,7 +30,6 @@ apt-get install -y php7.0-zip php7.0-curl php7.0-gd
 # php7.0-imap
 # php7.0-interbase
 # php7.0-intl
-# php7.0-json
 # php7.0-ldap
 # php7.0-mcrypt
 # php7.0-mysql
@@ -46,7 +44,6 @@ apt-get install -y php7.0-zip php7.0-curl php7.0-gd
 # php7.0-pdo-sqlite
 # php7.0-pgsql
 # php7.0-phar
-# php7.0-phpdbg
 # php7.0-posix
 # php7.0-pspell
 # php7.0-readline
