@@ -10,7 +10,8 @@ apt-get install -y php7.0 php7.0-fpm php7.0-cli php7.0-opcache php7.0-common php
 apt-get install -y php7.0-mcrypt php7.0-mbstring
 apt-get install -y php7.0-mysql php7.0-pdo
 apt-get install -y php7.0-dom php7.0-xml php7.0-json
-apt-get install -y php7.0-zip php7.0-curl php7.0-gd
+apt-get install -y php7.0-zip php7.0-curl php7.0-gd php7.0-imap
+sudo apt-get install php-mongodb
 
 # php7.0-bcmath
 # php7.0-bz2
@@ -27,7 +28,6 @@ apt-get install -y php7.0-zip php7.0-curl php7.0-gd
 # php7.0-gettext
 # php7.0-gmp
 # php7.0-iconv
-# php7.0-imap
 # php7.0-interbase
 # php7.0-intl
 # php7.0-ldap
@@ -75,11 +75,20 @@ service apache2 stop
 
 # nginx
 apt-get install -y nginx
-cp /vagrant/Vagrant.nginx.conf /etc/nginx/sites-available/default
+cp /vagrant/vagrant/nginx.conf /etc/nginx/sites-available/default/
 service nginx restart
 
 # mysql
 apt-get install -y mysql-server
+
+# mongodb
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
+echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
+sudo apt-get update
+sudo apt-get install -y mongodb-org
+sudo cp /vagrant/vagrant/mongodb.service /etc/systemd/system/
+sudo systemctl start mongodb
+sudo systemctl enable mongodb
 
 
 
@@ -98,3 +107,4 @@ mysql -uroot -e "CREATE USER 'homestead'@'localhost' IDENTIFIED BY 'secret'"
 mysql -uroot -e "GRANT ALL PRIVILEGES ON homestead.* TO 'homestead'@'localhost' WITH GRANT OPTION;"
 mysql -uhomestead -psecret -Dhomestead
 cd /vagrant/ed/laravel/examples/one && php artisan migrate
+
