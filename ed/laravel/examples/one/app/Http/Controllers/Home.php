@@ -28,4 +28,8 @@ class Home extends Controller
         // Print log to ./storage/logs/laravel.log.
         \Log::info('Showed configs.');
     }
+
+    public function di()
+    {
+    }
 }

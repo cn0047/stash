@@ -18,12 +18,15 @@ Route::get('blade', function () {
     return view('layouts.child');
 });
 
-Route::get('/get200', function () {
-    echo 200;
+Route::group(['middleware' => 'age'], function () {
+    Route::get('/get200', function () {
+        echo 200;
+    });
 });
 
 Route::get('/get/{code}', 'Home@index');
 Route::get('/home', 'Home@home');
+Route::get('/di', 'Home@di');
 Route::get('/conf', 'Home@conf');
 Route::resource('photos', 'PhotoController');
 

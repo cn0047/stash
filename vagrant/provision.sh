@@ -71,11 +71,11 @@ curl -sS https://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer
 
 # apache
-service apache2 stop
+# service apache2 stop
 
 # nginx
 apt-get install -y nginx
-cp /vagrant/vagrant/nginx.conf /etc/nginx/sites-available/default/
+cp /vagrant/vagrant/nginx.conf /etc/nginx/sites-available/default
 service nginx restart
 
 # mysql

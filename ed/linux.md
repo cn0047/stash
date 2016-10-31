@@ -198,6 +198,9 @@ On server:
 directory - drwxrwxr-x (775)
 file      - -rw-rw-r-- (664)
 ````
+````
+chown -R www-data:www-data /var/www/html/
+````
 
 ####mail
 ````

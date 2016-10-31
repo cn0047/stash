@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Services\Helper;
 
 class RiakServiceProvider extends ServiceProvider
 {
@@ -13,8 +14,11 @@ class RiakServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        var_dump(__METHOD__);
-        var_export(func_get_args());
+        $this->app->bind('App\Services\Helper', function ($app) {
+            return new Helper();
+        });
+
+        $this->app->tag(['App\Services\Helper'], 'myFromRiakServiceProvider');
     }
 
     /**
@@ -24,7 +28,6 @@ class RiakServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        var_dump(__METHOD__);
-        var_export(func_get_args());
+        $h = $this->app->make('App\Services\Helper');
     }
 }

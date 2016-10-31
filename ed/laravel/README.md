@@ -38,4 +38,4 @@ Illuminate\Support\Facades\Hash::make('str');
 Illuminate\Support\Facades\Hash::check('plain-text', $hash);
 ````
 
-https://laravel.com/docs/5.3/container
+https://laravel.com/docs/5.3/session
