@@ -28,6 +28,9 @@ Route::get('/get/{code}', 'Home@index');
 Route::get('/home', 'Home@home');
 Route::get('/di', 'Home@di');
 Route::get('/conf', 'Home@conf');
+Route::get('/flash', 'Home@flash');
+Route::get('/validation', 'Home@validation');
+Route::get('/localization', 'Home@localization');
 Route::resource('photos', 'PhotoController');
 
 Route::auth();
