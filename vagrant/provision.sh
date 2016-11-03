@@ -93,7 +93,11 @@ sudo systemctl enable mongodb
 
 
 #
-cd /vagrant/ed/laravel/examples/one && composer install && php artisan cache:clear && php artisan config:cache
+cd /vagrant/ed/laravel/examples/one \
+&& composer install \
+&& php artisan cache:clear \
+&& php artisan config:cache \
+&& php artisan migrate \
 # chmod 777 -R /vagrant/ed/laravel/examples/one/storage/
 # chmod 777 -R /vagrant/ed/laravel/examples/one/bootstrap/cache/
 #

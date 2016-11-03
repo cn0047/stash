@@ -10,10 +10,17 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class Home extends BaseController
 {
     use DispatchesJobs, ValidatesRequests;
+
+    public function __construct()
+    {
+        $this->middleware('auth.basic', ['only' => 'auth']);
+    }
 
     public function index($code)
     {
@@ -64,5 +71,16 @@ class Home extends BaseController
     {
         echo App::getLocale();
         echo trans('messages.welcome');
+    }
+
+    public function db()
+    {
+        var_dump(DB::connection()->getPdo());
+    }
+
+    public function auth()
+    {
+        Auth::onceBasic();
+        echo 200;
     }
 }

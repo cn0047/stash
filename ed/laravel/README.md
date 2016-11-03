@@ -5,6 +5,8 @@ Laravel
 ````
 composer global require "laravel/installer" 
 laravel new blogProject
+
+composer require barryvdh/laravel-ide-helper
 ````
 ````
 php artisan serve
@@ -38,4 +40,10 @@ Illuminate\Support\Facades\Hash::make('str');
 Illuminate\Support\Facades\Hash::check('plain-text', $hash);
 ````
 
-https://laravel.com/docs/5.3/authentication
+## Migrations
+
+````
+php artisan migrate # running migrations
+````
+
+https://laravel.com/docs/5.3/authorization

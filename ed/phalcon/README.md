@@ -133,6 +133,7 @@ $this->view->setVar('type', $type);
 
 ````twig
 {{ select('email_template_name', email_templates_names, 'class': 'hidden') }}
+{{ check_field(item.getLanguageId(), 'checked': item.getEnabled() === '1' ? 'true' : null) }}
 
 {% if not (users is empty) %}{% endif %}
 ````
