@@ -25,6 +25,8 @@ Problems:
 
 #### Microservices
 
+Two-pizza teams - where no team should be so big that it could not be fed with two pizzas.
+
 The less well you understand a domain,
 the harder it will be for you to find proper bounded contexts for your services.
 

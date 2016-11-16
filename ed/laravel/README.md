@@ -46,4 +46,4 @@ Illuminate\Support\Facades\Hash::check('plain-text', $hash);
 php artisan migrate # running migrations
 ````
 
-https://laravel.com/docs/5.3/authorization
+https://laravel.com/docs/5.3/passport
