@@ -32,6 +32,9 @@ git config http.sslVerify 0
 
 # avoid git push prompt
 git remote set-url origin git+ssh://git@github.com/cn007b/my.git
+
+# grab commit from another branch into current
+git cherry-pick hash-to-commit
 ````
 
 ####bisect
