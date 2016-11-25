@@ -3,6 +3,12 @@ Linux
 
 sudo dpkg -i {name}
 
+####netstat
+
+````
+netstat -anp | grep LISTEN
+````
+
 ####mount
 
 On server machine:

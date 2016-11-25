@@ -27,20 +27,24 @@ It is often unclear in what context a model should not be applied.
 
 * User Interface - Responsible for presenting information to the user and
 interpreting user commands.
-* Application - This is a thin layer which coordinates the application
-activity. It does not contain business logic. It does not
-hold the state of the business objects, but it can hold
-the state of an application task progress.
-* Domain - This layer contains information about the domain. This
-is the heart of the business software. The state of
-business objects is held here. Persistence of the
-business objects and possibly their state is delegated to
+* Application - This is a thin layer which coordinates the application activity.
+It does not contain business logic.
+It does not hold the state of the business objects,
+but it can hold the state of an application task progress.
+(Used by external consumers to talk to your system).
+(Application services should generally represent all possible use cases).
+(It can check whether a domain object exists or not and throw exceptions accordingly).
+* Domain - This layer contains information about the domain.
+This is the heart of the business software.
+The state of business objects is held here.
+Persistence of the business objects and possibly their state is delegated to
 the infrastructure layer.
-* Infrastructure - This layer acts as a supporting library for all the other
-layers. It provides communication between layers,
+* Infrastructure - This layer acts as a supporting library for all the other layers.
+It provides communication between layers,
 implements persistence for business objects, contains
 supporting libraries for the user interface layer, etc.
 (Order is a domain concept whereas Table, Column and so on are infrastructure concerns.)
+(Here we put all the implementations of the interfaces defined in the domain layer.)
 
 Example:
 
@@ -58,35 +62,34 @@ src/ProjectFrameworkFiles/
 ````
 
 ````
-Application\Service
-BuyIt\Billing\Infrastructure\FullTextSearching\Elastica
-Ddd\Billing\Domain\Model\Order
-Ddd\Billing\Domain\Model\Order\Order
-Ddd\Billing\Domain\Model\Order\OrderId
-Ddd\Billing\Domain\Model\Order\OrderRepository
-Ddd\Billing\Infrastructure\Doctrine\Order\DoctrineOrderRepository
-Ddd\Catalog\Domain\Model\Book
-Ddd\Common\Domain\Model
+Ddd\Application\Service
+Ddd\Domain\Event\PublishedMessage
+Ddd\Domain\Event\StoredEvent
+Ddd\Domain\Model
+Ddd\Domain\Model\Body
+Ddd\Domain\Model\Book
 Ddd\Domain\Model\Currency
 Ddd\Domain\Model\Money
-Ddd\Identity\Domain\Model
-Doctrine\DBAL\Platforms\AbstractPlatform
-Doctrine\DBAL\Types\Type
-Doctrine\ORM\EntityManager
-Doctrine\ORM\EntityRepository
-Doctrine\ORM\Tools
-Doctrine\ORM\Tools\Setup
-Domain\Model\Body
-Domain\Model\Post
-Domain\Model\PostId
-Domain\Model\PostRepository
-Domain\Model\PostSpecificationFactory
-Idy\Console\Command
-Infrastructure\Persistence\Doctrine
-Infrastructure\Persistence\Doctrine\Types
-Infrastructure\Persistence\InMemory
-Infrastructure\Persistence\Redis
-Infrastructure\Persistence\Sql
+Ddd\Domain\Model\Order
+Ddd\Domain\Model\Order\Order
+Ddd\Domain\Model\Order\OrderId
+Ddd\Domain\Model\Order\OrderRepository
+Ddd\Domain\Model\Post
+Ddd\Domain\Model\PostId
+Ddd\Domain\Model\PostRepository
+Ddd\Domain\Model\PostSpecificationFactory
+Ddd\Infrastructure\Doctrine\Order\DoctrineOrderRepository
+Ddd\Infrastructure\Persistence\Doctrine
+Ddd\Infrastructure\Persistence\Doctrine\DBAL\Platforms\AbstractPlatform
+Ddd\Infrastructure\Persistence\Doctrine\DBAL\Types\Type
+Ddd\Infrastructure\Persistence\Doctrine\ORM\EntityManager
+Ddd\Infrastructure\Persistence\Doctrine\ORM\EntityRepository
+Ddd\Infrastructure\Persistence\Doctrine\ORM\Tools
+Ddd\Infrastructure\Persistence\Doctrine\ORM\Tools\Setup
+Ddd\Infrastructure\Persistence\Doctrine\Types
+Ddd\Infrastructure\Persistence\InMemory
+Ddd\Infrastructure\Persistence\Redis
+Ddd\Infrastructure\Persistence\Sql
 ````
 
 ### Entities
@@ -109,6 +112,43 @@ reason, it is necessary to organize the model into modules.
 Modules are used as a method of organizing related concepts
 and tasks in order to reduce complexity.
 
+Each module must have src directory.
+This folder contains all the code necessary for this bounded context to work:
+domain code and infrastructure code.
+
+Something like:
+
+````
+├──composer.json
+├──composer.lock
+├──src
+│  └── BuyIt
+│      ├── Billing
+│      │   ├── Domain
+│      │   │   ├── Model
+│      │   │   │   ├ Bill (contains: factory + model|entity + events + interface for repository & cqrs)
+│      │   │   │   ├ Order
+│      │   │   │   └ Waybill
+│      │   │   └── Service
+│      │   └── Infrastructure
+│      │       ├── Logging
+│      │       ├── Messaging
+│      │       ├── FullTextSearching
+│      │       │   └── Elastica
+│      │       └── Persistence
+│      │           ├── Doctrine
+│      │           ├── SQL
+│      │           ├── InMemory
+│      │           └── Redis
+│      ├── Catalog
+│      ├── Common
+│      └── Identity
+└── tests
+````
+
+Domain Services are used to describe things into the domain,
+operations that don’t belong to entities nor value objects.
+
 ### Aggregates
 
 A collection of objects that are bound together by a root entity.
@@ -118,9 +158,18 @@ that many objects are associated with one another, creating a
 complex net of relationships.
 There are several types of associations (one-to-one, many-to-many...).
 
+A DDD aggregate is a cluster of domain objects
+that can be treated as a single unit.
+
+Car it is aggregate for: wheels, engine, spark and fuel, etc.
+
 ### Domain Event
 
 A domain object that defines an event (something that happens).
+
+• Modeling a Domain Event is like writing a news article
+• Publishing a Domain Event is like printing the article in the paper
+• Spreading a Domain Event is like sending the newspaper so everyone can read the article
 
 ### DBAL
 
@@ -146,11 +195,22 @@ So better use XML mapping files.
 
 ### DTO - Data transfer object.
 
+Communication between the delivery mechanism
+and the domain is carried by data structures called DTO.
+
+DTO it is something like request/response VO for domain.
+
 ### Repositories
 
 Methods for retrieving domain objects
 should delegate to a specialized Repository object
 such that alternative storage implementations may be easily interchanged.
+
+Repositories are not DAOs.
+
+### DAO
+
+Typically a DAO would contain CRUD methods for a particular domain object.
 
 ### Factory
 
@@ -180,3 +240,15 @@ Object.
 2. The operation performed refers to other objects in the domain.
 
 3. The operation is stateless.
+
+There are typically three different types of service:
+* Application (middleware between the outside world and the domain logic)
+* Domain (domain services are stateless)
+* Infrastructure (sending emails, logging meaningful data etc)
+
+In DDD, transactions are handled at the Application Service level (for example TransactionalApplicationService).
+
+What must be inside application layer?
+Where must be configs? di for services?
+Where must be vo & dao & dto?
+Where must be DomainEventPublisher? Exceptions?
