@@ -174,7 +174,8 @@ UUID()
 ####mySqlDump
 ````
 mysqldump -h hostname -u user -pPassWord --skip-triggers --single-transaction --complete-insert --extended-insert --quote-names --disable-keys dataBaseName | gzip -с > DUMP_dataBaseName.sql.gz
--- mysqldump -h hostname -u user -d --skip-triggers --single-transaction --complete-insert --extended-insert --quote-names dbname table |gzip > sql.gz
+# dump only db schema
+mysqldump -h hostname -u user -pPassWord --no-data --single-transaction --complete-insert --extended-insert --quote-names dbname table > dump.sql.gz
 -- mysqldump -hHost Base table | gzip | uuencode table.gz | mail mail@com.com -s table
 -- mysqldump -h Host Base table --where="id=11" | mail mail@com.com
 mysql -hHost -uUser -pPass -DBase < dumpFile.sql

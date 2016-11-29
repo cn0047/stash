@@ -1,4 +1,4 @@
-cluster
+Cluster
 -
 
 Running Elasticsearch:
@@ -75,7 +75,7 @@ curl -XPUT http://localhost:9200/megacorp/_mapping/employee -d '{
   }
 }'
 
-# Fields in the same index with the same name in two different types must have the same mapping
+# IMPORTANT! Fields in the same index with the same name in two different types must have the same mapping
 # Next code will spawn error
 curl -XPUT http://localhost:9200/test/ -d '{
 "mappings" : {

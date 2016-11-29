@@ -1,0 +1,1 @@
+ed/bash/examples/describeAwsInstances.sh

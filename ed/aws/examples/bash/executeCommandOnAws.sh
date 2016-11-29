@@ -1,1 +1,1 @@
-../../../bash/examples/executeCommandOnAws.sh
+ed/bash/examples/executeCommandOnAws.sh

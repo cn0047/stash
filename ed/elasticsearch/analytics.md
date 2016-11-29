@@ -115,12 +115,6 @@ curl -XGET localhost:9200/megacorp/employee/_search?pretty -d '{
 }'
 
 curl -XGET localhost:9200/megacorp/employee/_search -d '{
-    "aggs": {
-        "all_interests": { "terms": { "field": "interests" } }
-    }
-}'
-
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
     "query": {
         "match": { "last_name": "smith" }
     },

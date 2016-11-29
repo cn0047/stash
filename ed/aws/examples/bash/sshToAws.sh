@@ -1,1 +1,1 @@
-../../../bash/examples/sshToAws.sh
+ed/bash/examples/sshToAws.sh
