@@ -81,12 +81,7 @@ mv composer.phar /usr/local/bin/composer
 # service apache2 stop
 
 # nginx
-apt-get install -y nginx
 cp /vagrant/vagrant/nginx.conf /etc/nginx/sites-available/default
-service nginx restart
-
-# mysql
-apt-get install -y mysql-server
 
 # mongodb
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927

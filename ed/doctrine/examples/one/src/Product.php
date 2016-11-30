@@ -1,6 +1,7 @@
 <?php
 /**
  * Run from shell:
+ * vendor/bin/doctrine orm:schema:update --force
  * vendor/bin/doctrine orm:schema-tool:update --force --dump-sql
  */
 

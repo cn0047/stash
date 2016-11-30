@@ -35,10 +35,10 @@ Accept: application/x-collection+yaml
 3xx Redirection
 
 * 300 Multiple Choices
-* 301 Moved Permanently
+* 301 **Moved Permanently**
 * 302 Found
 * 303 See Other (since HTTP/1.1)
-* 304 Not Modified
+* 304 **Not Modified**
 * 305 Use Proxy (since HTTP/1.1)
 * 306 Switch Proxy
 * 307 Temporary Redirect (since HTTP/1.1)

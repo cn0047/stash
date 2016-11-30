@@ -114,9 +114,6 @@ df    # Show information about the file system.
 df -h
 du    # Summarize disk usage of each FILE.
 
-service memcached restart
-
-
 uptime # CPU load average
 
 pkill /var/www/x.php # Kill runned script x.php.
@@ -146,6 +143,7 @@ which
 DISPLAY=:7
 echo $DISPLAY
 
+# print screen from url
 cutycapt --url=cn007b.tumblr.com --out=out.png
 wkhtmltoimage cn007b.tumblr.com i.jpg
 webkit-image-gtk http://cn007b.tumblr.com > i.png
@@ -217,10 +215,10 @@ uuencode card.jpg card.jpg | mail mail@com.com
 ####grep
 ````
 -z, --null-data             строки разделяются байтом с нулевым значением, а не символом конца строки
--v, --revert-match          выбирать не подходящие строки
--m, --max-count=ЧИСЛО       остановиться после указанного ЧИСЛА совпадений
--h, --no-filename           не начинать вывод с имени файла
--L, --files-without-match   печатать только имена ФАЙЛОВ без совпадений
+-v, --revert-match          #
+-m, --max-count=ЧИСЛО       #
+-h, --no-filename           #
+-L, --files-without-match   # print only file names
 ````
 
 `grep pattern -Pz` # несколько строк

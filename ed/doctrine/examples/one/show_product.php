@@ -17,9 +17,5 @@ if (isset($argv[1])) {
     }
     echo sprintf("-%s\n", $product->getName());
 } else {
-    $productRepository = $entityManager->getRepository('Product');
-    $products = $productRepository->findAll();
-    foreach ($products as $product) {
-        echo sprintf("- %s\n", $product->getName());
-    }
+    require_once 'show_all_products.php';
 }

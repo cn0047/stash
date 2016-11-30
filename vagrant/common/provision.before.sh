@@ -10,8 +10,20 @@ sudo mv composer.phar /usr/local/bin/composer
 # apache
 sudo service apache2 stop
 
+# nginx
+sudo apt-get install -y nginx
+
 # git
 sudo apt-get install -y git
+
+# mysql
+# sudo apt-get install -y mysql-server
+# mysql -uroot -e 'create database test'
+# mysql -uroot -e "SET global general_log_file='/var/log/mysql/general.log';"
+# mysql -uroot -e "SET global general_log = 1;"
+
+# sqlite
+sudo apt-get install sqlite3 libsqlite3-dev
 
 # elasticsearch
 sudo apt-get install -y openjdk-7-jre
