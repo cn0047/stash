@@ -123,7 +123,7 @@ Acronyms
 <dd>Multipurpose Internet Mail Extensions.</dd>
 
 <dt><a name="MTA"></a>MTA</dt>
-<dd>Message Transfer Agent or Mail Transfer Agent.</dd>
+<dd>Message (or Mail) Transfer Agent.</dd>
 
 <dt><a name="ORM"></a>ORM</dt>
 <dd>Object-relational mapping.</dd>
@@ -153,7 +153,7 @@ Acronyms
 <dd>Software as a service.</dd>
 
 <dt><a name="SFTP"></a>SFTP</dt>
-<dd>SSH File Transfer Protocol (also Secure File Transfer Protocol).</dd>
+<dd>SSH (also Secure) File Transfer Protocol.</dd>
 
 <dt><a name="SMTP"></a>SMTP</dt>
 <dd>Simple Mail Transfer Protocol.</dd>
@@ -162,7 +162,7 @@ Acronyms
 <dd>Service-oriented architecture (architectural pattern).</dd>
 
 <dt><a name="SOAP"></a>SOAP</dt>
-<dd>Simple Object Access protocol.</dd>
+<dd>Simple Object Access Protocol.</dd>
 
 <dt><a name="SOLID"></a>SOLID</dt>
 <dd>Single responsibility; Open/closed; Liskov substitution; Interface segregation; Dependency inversion;</dd>

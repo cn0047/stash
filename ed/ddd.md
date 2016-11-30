@@ -250,5 +250,5 @@ In DDD, transactions are handled at the Application Service level (for example T
 
 What must be inside application layer?
 Where must be configs? di for services?
-Where must be vo & dao & dto?
+Where must be vo & dao & dto? Dao example?
 Where must be DomainEventPublisher? Exceptions?
