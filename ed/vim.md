@@ -29,7 +29,7 @@ J   - join lines
 
 v  - visual mode
 d  - delete selected
-y  - cope
+y  - copy
 j  - join
 gJ - join without spaces
 

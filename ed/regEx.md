@@ -70,8 +70,8 @@ RegEx
 | u | upgready|unicode |
 
 ````
-/Jave(?!Script)/ - Java, not Script
-/[Jj]ava(?=\:)/ - Java with : but don't include : to ruzult
+/Jave(?!Script)/   # Java, not Script
+/[Jj]ava(?=\:)/    # Java with : but don't include : to rezult!!!
 
 /a*?b/
 /foo(?=bar)/
@@ -82,14 +82,12 @@ RegEx
 /(?<!td)/
 /(['"])[^'"]*\1/
 
-(aa){1,2}? # exactly 2 aa, not 4 aa (2 aa & 2 aa)
-<em>(.+?)</em> # exactly what in em tag
-(['"])\w+\1 # 's' or "d" but not 'mess". (back reference)
+(aa){1,2}?                   # exactly 2 aa, not 4 aa (2 aa & 2 aa)
+<em>(.+?)</em>               # exactly what in em tag
+(['"])\w+\1                  # 's' or "d" but not 'mess". (back reference)
 (?P<quote>['"])\w+(?P=quote) # named back reference
-````
 
-````
-\*\w+\* # *keep* or *secret* https://regex101.com/r/yO6wI6/1
+\*\w+\*          # *keep* or *secret* https://regex101.com/r/yO6wI6/1
 (?<=\*)\w+(?=\*) # same as prev pattern
 (?<!\*)\w+(?!\*) # https://regex101.com/r/hC8pG6/1
 ````

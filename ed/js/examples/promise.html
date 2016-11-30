@@ -11,6 +11,25 @@ Promise States:
 
 */
 
+// Simplest example.
+
+var increaseScore = function (currentScore, valueBeingAdded, callback) {
+    var result = currentScore + valueBeingAdded;
+    callback(result);
+};
+
+var printScorePromise = new Promise(function (resolve, reject) {
+    var myCurrentScore = 100;
+    var myValueBeingAdded = 25;
+    increaseScore(myCurrentScore, myValueBeingAdded, function (res) {
+        resolve(res);
+    });
+});
+
+printScorePromise.then(function (newScore) {
+    console.log('Your new score is: %s', newScore);
+});
+
 // Simple example.
 
 var hello = function (cb) {
