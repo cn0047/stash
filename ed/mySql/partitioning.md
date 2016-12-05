@@ -315,6 +315,7 @@ SQL statements supporting explicit partition selection are listed here:
 * LOAD DATA
 * LOAD XML
 
+````sql
 SELECT * FROM orders PARTITION(p_old, p_2008) ORDER BY date;
 +------------+------+
 | date       | note |
@@ -322,6 +323,7 @@ SELECT * FROM orders PARTITION(p_old, p_2008) ORDER BY date;
 | 2007-06-11 | 3    |
 | 2008-06-11 | 4    |
 +------------+------+
+````
 
 ##Restrictions and Limitations on Partitioning
 
