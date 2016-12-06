@@ -41,8 +41,8 @@ SELECT
 FROM information_schema.tables
 WHERE table_schema='dataBaseName' AND create_time BETWEEN '2014-05-05' AND '2014-05-07'
 ;
--- get AUTO_INCREMENT
 SHOW COLUMNS FROM table LIKE '%'; -- columns in table format like DESC tableName
+-- get AUTO_INCREMENT
 SELECT AUTO_INCREMENT FROM information_schema.TABLES
 WHERE TABLE_SCHEMA = 'databaseName' AND TABLE_NAME = 'table';
 

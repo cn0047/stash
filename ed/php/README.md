@@ -6,15 +6,15 @@ PHP
 <br>*PHP 5.3.3*
 <br>*PHP 5.1.6*
 
-https://dev.twitter.com/
+https://dev.twitter.com
 |
 [paypal api](https://developer.paypal.com/docs/api/)
 |
-http://www.phpdeveloper.org/
+http://www.phpdeveloper.org
 |
 [conferences](http://php.net/conferences/index.php)
 |
-http://git.php.net/
+http://git.php.net
 |
 [functions](http://php.net/manual/en/funcref.php)
 |
@@ -60,7 +60,7 @@ if (json_last_error() !== JSON_ERROR_NONE) {
 
 ````
 STDIN  'php://stdin'
-       'php://stdout'
+STDOUT 'php://stdout'
 STDERR 'php://stderr'
 ````
 
@@ -289,9 +289,8 @@ can contains properties, constants and methods, must contains abstract methods p
 cannot be instantiated.
 
 ####Memcache
-````
+
 When memcache overflows, it will expire oldest keys and flush them.
-````
 
 ####Data Types
 * Scalar types:

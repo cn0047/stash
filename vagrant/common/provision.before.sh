@@ -33,3 +33,12 @@ sudo /etc/init.d/elasticsearch start
 
 # import elasticsearch megacorp test index
 sh /vagrant/ed/elasticsearch/megacorp.sh
+
+# mongodb
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
+sudo echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
+sudo apt-get update
+sudo apt-get install -y mongodb-org
+sudo cp /vagrant/vagrant/common/mongodb.service /etc/systemd/system/
+sudo systemctl start mongodb
+sudo systemctl enable mongodb

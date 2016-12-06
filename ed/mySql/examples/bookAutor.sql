@@ -62,6 +62,15 @@ join author a on ba.author_id = a.id and a.name = 'Hemingway' and ba.book_id in 
   join author a on ba.author_id = a.id and a.name = 'Ernest'
 )
 ;
+-- OR
+select @ernestBookIds := book_id
+from book_autor ba
+join author a on ba.author_id = a.id and a.name = 'Ernest'
+;
+select *
+from book_autor ba
+join author a on ba.author_id = a.id and a.name = 'Hemingway' and ba.book_id in (@ernestBookIds)
+;
 
 -- V2 for Doctrine
 create table author (

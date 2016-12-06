@@ -14,52 +14,44 @@ console.log(typeof v !== 'undefined'); // isset variable v.
 console.log('Code:%s', 200); // Code:200
 ````
 
-#### Ajax query without jQuery.
+#### Prototype
+
+Prototype helps objects to be linked together in a hierarchy.
+Each function in JavaScript has a member called prototype,
+which is responsible for providing values when an object is asked for them.
+Adding a property to the prototype of a function object will make it available at the constructed object.
+When an object is asked for a property that it does not have,
+its parent object will be asked.
+
 ````js
-// prepare post parameters
-var form = document.getElementById('create');
-var parameters = [];
-for (i = form.elements.length - 1; i >= 0; i = i - 1) {
-    var type = form.elements[i].nodeName;
-    if (type.toLowerCase() === 'input') {
-        parameters.push(
-            form.elements[i].name+'='+encodeURIComponent(form.elements[i].value)
-        );
-    }
+function f () {}
+f.prototype.p = 200;
+
+console.log(f.p); // undefined
+
+f.prototype.getP = function () {
+    return this.p;
 }
-parameters = parameters.join('&');
-// process request
-var xmlHttp = new XMLHttpRequest();
-var url = 'http://dev.server.com/?page=reg';
-xmlHttp.open('POST', url, true);
-xmlHttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-xmlHttp.setRequestHeader('Content-length', parameters.length);
-xmlHttp.setRequestHeader('Connection', 'close');
-xmlHttp.onreadystatechange = function () {
-    if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
-        var r = JSON.parse(xmlHttp.responseText);
-        if (typeof r.status !== 'undefined' && r.status === 'fail') {
-            if (typeof r.errors !== 'undefined') {
-                for (inputName in r.errors) {
-                    var el = document.getElementsByName(inputName)[0];
-                    el.classList.add('error');
-                    setTimeout(
-                        function () {
-                            el.classList.remove('error');
-                        },
-                        4000
-                    );
-                    addNotification('error', r.errors[inputName]);
-                }
-            }
-        }
-        if (r.status === 'ok') {
-            console.log(200);
-            hide();
-        }
-    }
-}
-xmlHttp.send(parameters);
+
+console.log(f.getP()); // Uncaught TypeError: f.getP is not a function(…)
+
+var i = new f();
+console.log(i.p); // 200
+console.log(i.getP()); // 200
+````
+````js
+function f () {}
+f.prototype.p = 200;
+f.prototype.ff = function () {};
+f.prototype.ff.prototype.pp = 204;
+
+i = new f();
+console.log(i.p); // 200
+console.log(i.ff.pp); // undefined
+
+i.ff = new f();
+console.log(i.ff.pp); // undefined
+console.log(i.ff.p); // 200
 ````
 
 ####Flashback

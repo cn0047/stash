@@ -1,6 +1,8 @@
 INDEX
 -
+
 [reference](http://docs.mongodb.org/manual/reference/indexes/)
+
 ````js
 // MongoDB indexes may be ascending, (i.e. 1) or descending (i.e. -1)
 db.collection.getIndexes();

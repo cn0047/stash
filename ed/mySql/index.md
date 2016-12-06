@@ -28,7 +28,7 @@ Compound index.
 Types:
 
 KEY or INDEX: refers to a normal non-unique index.
-Non-distinct values for the index are allowed
+Non-distinct values for the index are allowed.
 
 UNIQUE: refers to an index where all rows of the index must be unique.
 

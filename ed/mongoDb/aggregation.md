@@ -1,7 +1,7 @@
 Aggregation
 -
 
-Additionally, map-reduce operations can have output sets that exceed the 16 megabyte output limitation of the aggregation pipeline.
+Map-reduce operations can have output sets that exceed the 16 megabyte output limitation of the aggregation pipeline.
 The aggregation pipeline can use indexes to improve its performance during some of its stages.
 In addition, the aggregation pipeline has an internal optimization phase.
 Map-reduce operations can also output to a sharded collection
