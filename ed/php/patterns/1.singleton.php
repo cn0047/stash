@@ -2,6 +2,8 @@
 /**
  * Singleton
  *
+ * Singletons are bad, they create dependency between classes.
+ *
  * @category Creational
  */
 
