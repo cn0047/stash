@@ -57,14 +57,13 @@ Consultation in object-oriented programming occurs when an object's method imple
 of a message send of the same message to another constituent object.
 
 ````
-Adapter vs Bridge: adapter works with defined objects,
-                   bridge can accept objects on fly, because it is abstraction over implementation.
-Facade vs Proxy: facade cover defined objects, proxy provide access to objects and filtrate or restrict access to object.
-Prototype vs Interpreter: ?
-Bridge vs Mediator: ?
-Command vs Strategy: ?
+Adapter vs Bridge:
+Adapter works with defined objects,
+bridge can accept objects on fly, because it is abstraction over implementation.
 
-Singletons are bad, they create dependency between classes.
+Prototype vs Interpreter: ?
+
+Command vs Strategy: ?
 ````
 
 ####Architectural patterns:
