@@ -21,9 +21,6 @@ echo Bar::B.PHP_EOL;
 Foo A
 Bar B
 */
-?>
-
-<?php
 
 interface Foo2
 {

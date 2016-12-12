@@ -1,6 +1,6 @@
 <?php
 
-class Error
+class ExError
 {
     private function privateGet()
     {
@@ -15,7 +15,7 @@ class Error
     }
 }
 
-class MyError extends Error
+class MyError extends ExError
 {
     private function protectedGet()
     {
@@ -24,4 +24,5 @@ class MyError extends Error
 
 /*
 PHP Fatal error:  Access level to MyError::protectedGet() must be protected (as in class Error) or weaker
+(public - OK).
 */

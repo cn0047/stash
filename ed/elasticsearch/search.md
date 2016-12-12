@@ -221,6 +221,19 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
     }
 }'
 
+# Search which IF CONDITION
+curl -XGET localhost:9200/megacorp/employee/_search?pretty -d '{
+    "fields": ["city", "first_name", "last_name", "last_login_at"],
+    "post_filter":{
+        "script": {
+            "script": {
+              "script": " if ( _source.city == \"London\" ) { _source.last_login_at == param1 } else { _source.last_login_at == param2 }",
+              "params": {"param1" : "2016-01-21", "param2" : "2016-07-11"}
+            }
+        }
+    }
+}'
+
 curl -XGET localhost:9200/megacorp/employee/_search -d '{
     "query" : {"bool": {
         "filter": {

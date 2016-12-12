@@ -2,6 +2,10 @@
 
 namespace examples;
 
+/**
+ * Classes defined as abstract may not be instantiated,
+ * and any class that contains at least one abstract method must also be abstract.
+ */
 abstract class Foo
 {
     const BAR = 'BAR';

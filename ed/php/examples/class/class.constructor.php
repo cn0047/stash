@@ -34,7 +34,7 @@ class e
 class f extends a
 {
     /**
-     * PHP Fatal error:  Access level to f::__construct() must be public (as in class a)
+     * PHP Fatal error:  Access level to e::__construct() must be public (as in class a)
      */
     // private function __construct() {}
 }

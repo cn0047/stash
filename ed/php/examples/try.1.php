@@ -3,6 +3,7 @@
 try {
     foo(200);
 } catch (Exception $e) {
+    echo 'CAUGHT ERROR'.PHP_EOL;
     var_export($e->getMessage().PHP_EOL);
 }
 
