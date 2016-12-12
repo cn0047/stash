@@ -139,7 +139,7 @@ $this->view->setVar('type', $type);
 ````
 
 # Pagination:
-````
+````twig
 {% for item in paginator.items %}
 {% endfor %}
 {{ paginator.total_items }}
