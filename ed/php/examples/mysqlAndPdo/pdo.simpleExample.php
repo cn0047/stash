@@ -7,22 +7,22 @@ try {
 }
 
 $date = '2015-03-13';
-$sth = $dbh->prepare('SELECT :date AS `date`');
-$sth->bindParam(':date', $date, PDO::PARAM_STR);
-if (!$sth->execute()) {
-    throw new Exception($sth->errorInfo());
+$s = $dbh->prepare('SELECT :date AS `date`');
+$s->bindParam(':date', $date, PDO::PARAM_STR);
+if (!$s->execute()) {
+    throw new Exception($s->errorInfo());
 }
-$result = $sth->fetchColumn();
+$result = $s->fetchColumn();
 print($result);
 
 /**
  * In loop.
  */
 foreach (['one', 'tow', 'three'] as $value) {
-    $sth->bindParam(':date', $value, PDO::PARAM_STR);
-    if (!$sth->execute()) {
-        throw new Exception($sth->errorInfo());
+    $s->bindParam(':date', $value, PDO::PARAM_STR);
+    if (!$s->execute()) {
+        throw new Exception($s->errorInfo());
     }
-    $result = $sth->fetch(PDO::FETCH_ASSOC);
+    $result = $s->fetch(PDO::FETCH_ASSOC);
     var_export($result);
 }

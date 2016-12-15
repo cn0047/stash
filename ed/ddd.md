@@ -53,43 +53,8 @@ src/Domain/Model/ParticularModel/ParticularModel.php - Doctrine entity.
 src/Domain/Model/ParticularModel/DTO/ParticularModel.php.
 src/Domain/Model/ParticularModel/Service/Command/CreateParticularModel.php - (CQRS) Call persister commands.
 src/Domain/Model/ParticularModel/Service/Query/CreateParticularModel.php - (CQRS) Call persister commands.
-src/Domain/Service/
-src/Domain/VO/
 src/Infrastructure/Command/ParticularModel/PersisterDoctrine.php - Doctrine EM Wrapper.
 src/Infrastructure/DataProvider/
-src/Infrastructure/Persistence/Doctrine/ORM/Model.ParticularModel.ParticularModel.orm.xml
-src/ProjectFrameworkFiles/
-````
-
-````
-Ddd\Application\Service
-Ddd\Domain\Event\PublishedMessage
-Ddd\Domain\Event\StoredEvent
-Ddd\Domain\Model
-Ddd\Domain\Model\Body
-Ddd\Domain\Model\Book
-Ddd\Domain\Model\Currency
-Ddd\Domain\Model\Money
-Ddd\Domain\Model\Order
-Ddd\Domain\Model\Order\Order
-Ddd\Domain\Model\Order\OrderId
-Ddd\Domain\Model\Order\OrderRepository
-Ddd\Domain\Model\Post
-Ddd\Domain\Model\PostId
-Ddd\Domain\Model\PostRepository
-Ddd\Domain\Model\PostSpecificationFactory
-Ddd\Infrastructure\Doctrine\Order\DoctrineOrderRepository
-Ddd\Infrastructure\Persistence\Doctrine
-Ddd\Infrastructure\Persistence\Doctrine\DBAL\Platforms\AbstractPlatform
-Ddd\Infrastructure\Persistence\Doctrine\DBAL\Types\Type
-Ddd\Infrastructure\Persistence\Doctrine\ORM\EntityManager
-Ddd\Infrastructure\Persistence\Doctrine\ORM\EntityRepository
-Ddd\Infrastructure\Persistence\Doctrine\ORM\Tools
-Ddd\Infrastructure\Persistence\Doctrine\ORM\Tools\Setup
-Ddd\Infrastructure\Persistence\Doctrine\Types
-Ddd\Infrastructure\Persistence\InMemory
-Ddd\Infrastructure\Persistence\Redis
-Ddd\Infrastructure\Persistence\Sql
 ````
 
 ### Entities
@@ -199,6 +164,8 @@ Communication between the delivery mechanism
 and the domain is carried by data structures called DTO.
 
 DTO it is something like request/response VO for domain.
+DTO does not have any behavior except for storage and retrieval of its own data.
+DTOs are simple objects that should not contain any business logic.
 
 ### Repositories
 

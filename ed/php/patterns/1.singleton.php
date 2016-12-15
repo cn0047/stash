@@ -17,7 +17,7 @@ class Singleton
 
     public static function getInstance()
     {
-        if (!isset(static::$instance)) {
+        if (static::$instance === null) {
             // late static binding
             static::$instance = new static;
         }

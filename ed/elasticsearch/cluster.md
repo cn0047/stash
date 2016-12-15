@@ -36,7 +36,7 @@ curl localhost:9200/_cat/shards?v
 curl -XPUT http://localhost:9200/megacorp/
 
 # delete index
-curl -XDELETE http://localhost:9200/ziipt/
+curl -XDELETE http://localhost:9200/ziipr/
 
 # get index settings
 curl localhost:9200/megacorp/_settings

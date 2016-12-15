@@ -7,11 +7,11 @@ $dbh = new PDO('mysql:dbname=test;host=127.0.0.1', 'root');
  *
  * Everything OK.
  */
-$sth = $dbh->prepare('INSERT INTO stockists VALUES (null, :s1, :s2)');
-$sth->bindValue(':s1', uniqid(), PDO::PARAM_STR);
-$sth->bindValue(':s2', uniqid(), PDO::PARAM_STR);
-if (!$sth->execute()) {
-    var_dump($sth->errorInfo());
+$s = $dbh->prepare('INSERT INTO stockists VALUES (null, :s1, :s2)');
+$s->bindValue(':s1', uniqid(), PDO::PARAM_STR);
+$s->bindValue(':s2', uniqid(), PDO::PARAM_STR);
+if (!$s->execute()) {
+    var_dump($s->errorInfo());
 } else {
     echo 'VARIANT 1 - OK, at: '.time();
 }
@@ -21,9 +21,9 @@ if (!$sth->execute()) {
  *
  * Everything OK.
  */
-$sth = $dbh->prepare('INSERT INTO stockists VALUES (null, :s1, :s2)');
-if (!$sth->execute([':s1' => uniqid(), ':s2' => uniqid()])) {
-    var_dump($sth->errorInfo());
+$s = $dbh->prepare('INSERT INTO stockists VALUES (null, :s1, :s2)');
+if (!$s->execute([':s1' => uniqid(), ':s2' => uniqid()])) {
+    var_dump($s->errorInfo());
 } else {
     echo 'VARIANT 2 - OK, at: '.time();
 }
@@ -33,9 +33,9 @@ if (!$sth->execute([':s1' => uniqid(), ':s2' => uniqid()])) {
  *
  * Everything OK.
  */
-$sth = $dbh->prepare('INSERT INTO stockists (state1, state2) VALUES (:s1, :s2)');
-if (!$sth->execute([':s1' => uniqid(), ':s2' => uniqid()])) {
-    var_dump($sth->errorInfo());
+$s = $dbh->prepare('INSERT INTO stockists (state1, state2) VALUES (:s1, :s2)');
+if (!$s->execute([':s1' => uniqid(), ':s2' => uniqid()])) {
+    var_dump($s->errorInfo());
 } else {
     echo 'VARIANT 3 - OK, at: '.time();
 }
@@ -45,9 +45,9 @@ if (!$sth->execute([':s1' => uniqid(), ':s2' => uniqid()])) {
  *
  * Everything OK.
  */
-$sth = $dbh->prepare('INSERT INTO stockists SET state1 = :s1, state2 = :s2');
-if (!$sth->execute([':s1' => uniqid(), ':s2' => uniqid()])) {
-    var_dump($sth->errorInfo());
+$s = $dbh->prepare('INSERT INTO stockists SET state1 = :s1, state2 = :s2');
+if (!$s->execute([':s1' => uniqid(), ':s2' => uniqid()])) {
+    var_dump($s->errorInfo());
 } else {
     echo 'VARIANT 4 - OK, at: '.time();
 }
@@ -57,9 +57,9 @@ if (!$sth->execute([':s1' => uniqid(), ':s2' => uniqid()])) {
  *
  * Everything OK.
  */
-$sth = $dbh->prepare('INSERT INTO stockists SET state1 = ?, state2 = ?');
-if (!$sth->execute([uniqid(), uniqid()])) {
-    var_dump($sth->errorInfo());
+$s = $dbh->prepare('INSERT INTO stockists SET state1 = ?, state2 = ?');
+if (!$s->execute([uniqid(), uniqid()])) {
+    var_dump($s->errorInfo());
 } else {
     echo 'VARIANT 5 - OK, at: '.time();
 }

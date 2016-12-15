@@ -19,9 +19,9 @@ class User
 }
 
 $dbh = new PDO('mysql:dbname=test;host=127.0.0.1', 'root');
-$sth = $dbh->prepare('SELECT * FROM user');
-$sth->execute();
-$result = $sth->fetchAll(PDO::FETCH_CLASS, 'User');
+$s = $dbh->prepare('SELECT * FROM user');
+$s->execute();
+$result = $s->fetchAll(PDO::FETCH_CLASS, 'User');
 foreach ($result as $obj) {
     echo $obj;
 }

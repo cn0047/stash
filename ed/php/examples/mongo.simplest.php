@@ -1,5 +1,6 @@
 <?php
 
+trigger_error('Class [deprecated] use MongoClient.');
 $m = new Mongo();
 $db = $m->selectDB('mydb');
 $collection = new MongoCollection($db, 'users');

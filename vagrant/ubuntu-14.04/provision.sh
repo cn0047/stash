@@ -32,5 +32,4 @@ composer update -o
 
 
 
-
 . vagrant/common/provision.after.sh

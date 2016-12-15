@@ -18,7 +18,7 @@ if (isset($text)) {
     $sql .= ' AND `text` = :text';
     $params[':text'] = $text;
 }
-$sth = $dbh->prepare($sql);
-$sth->execute($params);
-$result = $sth->fetchAll(PDO::FETCH_ASSOC);
+$s = $dbh->prepare($sql);
+$s->execute($params);
+$result = $s->fetchAll(PDO::FETCH_ASSOC);
 var_export($result);

@@ -1,25 +1,21 @@
 #!/usr/bin/env bash
 
+. /vagrant/vagrant/common/provision.before.sh
+
 ###############################################################################
 # GENERAL
 ###############################################################################
 
-# php 5.5
-sudo apt-get install software-properties-common
-sudo add-apt-repository ppa:ondrej/php5-5.6
-sudo apt-get update
-sudo apt-get upgrade
-sudo apt-get install php5 php5.6-fpm
-
 # php 7
-# add-apt-repository ppa:ondrej/php
-# apt-get update
-# apt-get install -y php7.0 php7.0-fpm php7.0-cli php7.0-opcache php7.0-common php7.0-phpdbg php7.0-dev
-# apt-get install -y php7.0-mcrypt php7.0-mbstring
-# apt-get install -y php7.0-mysql php7.0-pdo
-# apt-get install -y php7.0-dom php7.0-xml php7.0-json
-# apt-get install -y php7.0-zip php7.0-curl php7.0-gd php7.0-imap
-# apt-get install -y php-mongodb
+# sudo add-apt-repository -y ppa:ondrej/php
+# sudo apt-get update
+# sudo apt-get install -y php7.0 php7.0-fpm php7.0-cli php7.0-opcache php7.0-common php7.0-phpdbg php7.0-dev
+# sudo apt-get install -y php7.0-mcrypt php7.0-mbstring
+# sudo apt-get install -y php7.0-mysql php7.0-pdo
+# sudo apt-get install -y php7.0-dom php7.0-xml php7.0-json
+# sudo apt-get install -y php7.0-zip php7.0-curl php7.0-gd php7.0-imap
+# sudo apt-get install -y php-mongodb
+
 # php7.0-bcmath
 # php7.0-bz2
 # php7.0-calendar
@@ -73,56 +69,37 @@ sudo apt-get install php5 php5.6-fpm
 # php7.0-xmlwriter
 # php7.0-xsl
 
-# composer
-curl -sS https://getcomposer.org/installer | php
-mv composer.phar /usr/local/bin/composer
-
-# apache
-# service apache2 stop
-
 # nginx
-cp /vagrant/vagrant/nginx.conf /etc/nginx/sites-available/default
-
-# java
-sudo add-apt-repository -y ppa:webupd8team/java
-sudo apt-get update
-sudo apt-get -y install oracle-java8-installer
-
-# logstash
-echo 'deb http://packages.elastic.co/logstash/2.2/debian stable main' | sudo tee /etc/apt/sources.list.d/logstash-2.2.x.list
-sudo apt-get update
-sudo apt-get install logstash
-
-
+sudo cp /vagrant/vagrant/ubuntu-16.04/nginx.conf /etc/nginx/sites-available/default
 
 ###############################################################################
 # LARAVEL
 ###############################################################################
 
 # one
-cd /vagrant/ed/laravel/examples/one \
-    && composer install \
-    && php artisan cache:clear \
-    && php artisan config:cache \
-    && php artisan migrate \
-# chmod 777 -R /vagrant/ed/laravel/examples/one/storage/
-# chmod 777 -R /vagrant/ed/laravel/examples/one/bootstrap/cache/
-mysql -uroot -e 'create database homestead'
-mysql -uroot -e "CREATE USER 'homestead'@'localhost' IDENTIFIED BY 'secret'"
-mysql -uroot -e "GRANT ALL PRIVILEGES ON homestead.* TO 'homestead'@'localhost' WITH GRANT OPTION;"
-mysql -uhomestead -psecret -Dhomestead
-cd /vagrant/ed/laravel/examples/one && php artisan migrate
+# cd /vagrant/ed/laravel/examples/one \
+#     && composer install \
+#     && php artisan cache:clear \
+#     && php artisan config:cache \
+#     && php artisan migrate \
+# # chmod 777 -R /vagrant/ed/laravel/examples/one/storage/
+# # chmod 777 -R /vagrant/ed/laravel/examples/one/bootstrap/cache/
+# mysql -uroot -e 'create database homestead'
+# mysql -uroot -e "CREATE USER 'homestead'@'localhost' IDENTIFIED BY 'secret'"
+# mysql -uroot -e "GRANT ALL PRIVILEGES ON homestead.* TO 'homestead'@'localhost' WITH GRANT OPTION;"
+# mysql -uhomestead -psecret -Dhomestead
+# cd /vagrant/ed/laravel/examples/one && php artisan migrate
 
 ###############################################################################
 # Phalcon
 ###############################################################################
 
 # phalcon
-curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | bash
-apt-get install php5-phalcon
+# curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | bash
 # apt-get install php7.0-phalcon
 
-# dirtondirt
-mysql -uroot -e 'create database dirtondirt'
-mysql -uroot -e "CREATE USER 'dod'@'localhost' IDENTIFIED BY '111'"
-mysql -uroot -e "GRANT ALL PRIVILEGES ON dirtondirt.* TO 'dod'@'localhost' WITH GRANT OPTION;"
+
+
+
+
+. /vagrant/vagrant/common/provision.after.sh

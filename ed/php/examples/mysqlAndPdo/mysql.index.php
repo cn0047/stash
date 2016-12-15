@@ -11,16 +11,16 @@ $sql = '
         key field1 (field1)
     );
 ';
-$sth = $dbh->prepare($sql);
-$sth->execute();
+$s = $dbh->prepare($sql);
+$s->execute();
 $i = 0;
 while ($i < 1000) {
     $i++;
     $field = mt_rand(0, 1);
-    $sth = $dbh->prepare('insert into indexCheck values (null, md5(rand(32)), :field1, :field2)');
-    $sth->bindParam(':field1', $field, PDO::PARAM_INT);
-    $sth->bindParam(':field2', $field, PDO::PARAM_INT);
-    $sth->execute();
+    $s = $dbh->prepare('insert into indexCheck values (null, md5(rand(32)), :field1, :field2)');
+    $s->bindParam(':field1', $field, PDO::PARAM_INT);
+    $s->bindParam(':field2', $field, PDO::PARAM_INT);
+    $s->execute();
 }
 /*
 explain select count(*) from indexCheck where field1 = 1;
