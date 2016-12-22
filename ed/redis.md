@@ -4,6 +4,9 @@ Redis
 #### redis-cli
 
 ````
+set mykey "Hello"
+get mykey
+
 flushdb # delete data from current database
 
 keys *
