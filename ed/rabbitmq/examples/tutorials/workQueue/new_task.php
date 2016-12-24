@@ -10,8 +10,7 @@ $channel = $connection->channel();
 $durable = true;
 $channel->queue_declare('durable_task_queue', false, $durable, false, false);
 
-$data = implode(' ', array_slice($argv, 1));
-if(empty($data)) $data = "Hello World!";
+$data = $argv[1] ?? 'Hello World!';
 $msg = new AMQPMessage($data, array('delivery_mode' => 2) /* make message persistent */);
 
 $channel->basic_publish($msg, '', 'durable_task_queue');

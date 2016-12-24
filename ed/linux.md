@@ -162,6 +162,15 @@ vim /etc/ssh/sshd_config
 
 sshfs -o nonempty -p22 root@host:/home/host/www /home/user/web/www
 fusermount -u /home/user/web/www
+
+````
+
+`vim ~/.ssh/config`
+````
+Host ec2
+    Hostname ec2-52-211-26-56.eu-west-1.compute.amazonaws.com
+    User ec2-user
+    IdentifyFile ~/path_to_ssh_key
 ````
 
 ####ps

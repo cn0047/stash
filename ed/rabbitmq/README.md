@@ -14,6 +14,7 @@ sudo rabbitmqctl cluster_status
 sudo rabbitmqctl stop_app
 
 sudo rabbitmqctl list_queues
+sudo rabbitmqctl list_queues name messages messages_ready messages_unacknowledged
 sudo rabbitmqctl list_queues name durable auto_delete messages consumers memory messages_ready messages_unacknowledged
 
 sudo rabbitmqctl list_exchanges
