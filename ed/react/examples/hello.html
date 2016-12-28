@@ -9,11 +9,36 @@
   </head>
   <body>
     <div id="root"></div>
+    <hr>
+    <div id="root2"></div>
+    <hr>
+    <div id="root3"></div>
     <script type="text/babel">
+      // Example #1.
       ReactDOM.render(
         <h1>Hello, world!</h1>,
         document.getElementById('root')
       );
+
+      // Example #2.
+      function formatName(user) {
+        return user.firstName + ' ' + user.lastName;
+      }
+      const user = {
+        firstName: 'Harper',
+        lastName: 'Perez'
+      };
+      const element = (
+        <h1> Hello, {formatName(user)}! </h1>
+      );
+      ReactDOM.render(element, document.getElementById('root2'));
+
+      // Example #3.
+      function Welcome(props) {
+        return <h1>Hello, {props.name}</h1>;
+      }
+      const element3 = <Welcome name="Sara" />;
+      ReactDOM.render(element3, document.getElementById('root3'));
     </script>
   </body>
 </html>

@@ -14,6 +14,27 @@ console.log(typeof v !== 'undefined'); // isset variable v.
 console.log('Code:%s', 200); // Code:200
 ````
 
+#### Fetch
+
+````js
+// GET
+fetch(`http://jsonplaceholder.typicode.com/posts`)
+    .then(result => result.json())
+    .then(items => console.log(items))
+;
+// POST
+fetch('https://davidwalsh.name/submit-json', {
+    method: 'post',
+    headers: {
+        "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+    },
+    body: JSON.stringify({
+        email: document.getElementById('email').value,
+        answer: document.getElementById('answer').value
+    })
+});
+````
+
 #### Prototype
 
 Prototype helps objects to be linked together in a hierarchy.
@@ -100,6 +121,11 @@ array.sort(function (a, b) { return a - b; });
 array.split();
 array.join('.');
 array.concat(varName);
+
+var a = ["dog", "cat", "hen"];
+a[100] = "fox";
+a.length; // 101
+// Remember — the length of the array is one more than the highest index.
 
 str.length;
 str.toUpperCase();
@@ -200,6 +226,10 @@ with (frames[1].document.forms[0]) {
 // Better use:
 var form = frames[1].document.forms[0];
 form.name.value = '007';
+
+["dog", "cat", "hen"].forEach(function(currentValue, index, array) {
+  console.log(currentValue);
+});
 
 setTimeout("alert(200);", 3000);
 clearTimeout();
