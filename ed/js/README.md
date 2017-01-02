@@ -18,11 +18,14 @@ console.log('Code:%s', 200); // Code:200
 
 ````js
 // GET
-fetch(`http://jsonplaceholder.typicode.com/posts`)
-    .then(result => result.json())
+fetch('http://jsonplaceholder.typicode.com/posts')
+    .then(res => res.json())
     .then(items => console.log(items))
 ;
 // POST
+var data = new FormData();
+data.append('userId', 0);
+data.append('message', '');
 fetch('https://davidwalsh.name/submit-json', {
     method: 'post',
     headers: {
@@ -31,7 +34,8 @@ fetch('https://davidwalsh.name/submit-json', {
     body: JSON.stringify({
         email: document.getElementById('email').value,
         answer: document.getElementById('answer').value
-    })
+    }),
+    body: data
 });
 ````
 
