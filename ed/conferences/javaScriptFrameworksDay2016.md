@@ -33,11 +33,21 @@ javaScript frameworks day 2016
 
 #### Michael North - Ember.js 2 - Future-friendly ambitious apps, that scale!
 
-Алексей Швайка - Bundling: you are doing it wrong
-Михаил Боднарчук - Acceptance Testing in NodeJS: Tools & Approaches
-Денис Яремов - Offline-first приложение на Reflex
-Максим Климишин - Борьба с асинхронностью в JS
+#### Алексей Швайка - Bundling: you are doing it wrong
+
+#### Михаил Боднарчук - Acceptance Testing in NodeJS: Tools & Approaches
+
+#### Денис Яремов - Offline-first приложение на Reflex
+
+#### Максим Климишин - Борьба с асинхронностью в JS
+
+* promise
+* await
+* actor model
+* csp
+
 Евгений Обрезков - Behind the terminal
+
 Martin Naumann - Workshop: Shaders - unlocking the GPU with JavaScript
 Martin Naumann - Workshop: Shaders - unlocking the GPU with JavaScript
 Michael North - Ember Workshop
