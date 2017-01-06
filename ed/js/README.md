@@ -2,6 +2,9 @@ js
 -
 
 ````js
+document.getElementById('wrapper').getElementsByTagName('img').length
+document.querySelectorAll('#wrapper img').length
+
 console.group('Application Log');
 console.log('Application Log');
 console.groupEnd();

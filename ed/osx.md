@@ -14,4 +14,6 @@ Command–L|R # Move B/E current line.
 Option–L|R  # Move B/E previous word.
 
 Shift–Option–U|D|L|R # Extended text selection
+
+Command+Shift+4 # screenshot
 ````

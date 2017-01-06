@@ -93,8 +93,11 @@ echo 'cat and dog' | sed -r "s/(cat|dog)s?/\1s/g" # cats and dogs
 echo 'xxx and zzz' | sed 's/x/y/g' # yyy and zzz
 echo '1 one; 2 two' | sed 's/1//g; s/2//g' #  one;  two
 
-````
 sed -i "s/admin_user/user/" /var/www/html/config.php
+
+# delete 2nd line from file
+sed -e '2d;' file.txt > res.file.txt
+````
 
 ####awk
 
@@ -163,6 +166,7 @@ vim /etc/ssh/sshd_config
 sshfs -o nonempty -p22 root@host:/home/host/www /home/user/web/www
 fusermount -u /home/user/web/www
 
+sudo ssh-add ~/.ssh/id_rsa
 ````
 
 `vim ~/.ssh/config`

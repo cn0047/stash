@@ -1,6 +1,10 @@
 AWS
 -
 
+````
+~/.aws/config
+````
+
 ## EC2 (Elastic Compute Cloud)
 
 Launch instance:

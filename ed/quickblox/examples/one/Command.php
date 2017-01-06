@@ -25,6 +25,9 @@ class Command
     }
 
     /**
+     * CSV format:
+     * | qbUserId |
+     * 
      * @example php index.php sendChatMessageFromAdminToUsersFromCsvFile '/home/kovpak/csv.csv'
      */
     public function sendChatMessageFromAdminToUsersFromCsvFile(
@@ -56,6 +59,41 @@ class Command
         var_export($qbb->getChats());
     }
 
+    /**
+     * @example php index.php getAdminChatMessages
+     */
+    public function getAdminChatMessages()
+    {
+        $qbb = new QuickBloxBridge('user_80716', 'vDxIEM5I7iaqy4p4e78e');
+        $chatId = $qbb->getChatBetweenAdminAndTargetUser(280068)['_id'];
+        var_export($qbb->getChatMessages($chatId));
+    }
+
+    /**
+     * @example php index.php markAdminMessageAsReadForQbUser user_46059 '3elkFCQcPS243QDiTxem' 202636
+     */
+    public function markAdminMessageAsReadForQbUser($controller, $action, $login, $password, $qbUserId)
+    {
+        Command::markAdminMessageAsRead($login, $password, $qbUserId);
+    }
+
+    private static function markAdminMessageAsRead($login, $password, $qbUserId)
+    {
+        $msg1 = 'La semaine est presque finie, bientôt les fêtes🎉 🎉 ! Bon courage 😀';
+        $msg2 = "Noël est presque là 🎄Meilleurs voeux de la part de toute l'équipe de Ziipr !";
+        $qbb = new QuickBloxBridge($login, $password);
+        $chatId = $qbb->getChatBetweenAdminAndTargetUser($qbUserId)['_id'];
+        $messages = $qbb->getChatMessages($chatId)['items'];
+        foreach ($messages as $message) {
+            var_export($message);
+            if (($message['message'] === $msg1 || $message['message'] === $msg2) && $message['read'] === 0) {
+                // $r = $qbb->markMessageAsRead($chatId, $message['_id']);
+                // var_dump($r);
+                // die;
+            }
+        }
+    }
+
     private function getCsvRow($csvFile = '/home/kovpak/csv.csv')
     {
         $handle = fopen($csvFile, 'rb');
@@ -65,6 +103,10 @@ class Command
         fclose($handle);
     }
 
+    /**
+     * CSV format:
+     * | id | email | userId | qbUserId | password |
+     */
     public function exportUsersWithUnreadMessages()
     {
         $i = 0;
@@ -86,18 +128,41 @@ class Command
         }
     }
 
+    /**
+     * CSV format:
+     * | qbUserId |
+     */
+    private function fromvCsvRowToStrWithTargetQBUserId($row)
+    {
+        return json_encode(preg_replace('( |\|)', '', $row)[0]);
+    }
+
+    /**
+     * CSV format:
+     * | quickBloxId | userId | quickBloxUserId | password |
+     */
+    private function fromvCsvRowToStrWithUserJson($row)
+    {
+        return json_encode(array_combine(
+            ['_id', 'userId', 'qbUserId', 'password'],
+            array_map('trim', array_filter(str_getcsv($row[0], '|')))
+        ));
+    }
+
     public function importCsvIntoRabbitMQ()
     {
+        $cb = 'fromvCsvRowToStrWithUserJson';
+
         $connection = new AMQPStreamConnection('localhost', 5672, 'guest', 'guest');
         $channel = $connection->channel();
         $durable = true;
         $channel->queue_declare('durable_task_queue', false, $durable, false, false);
 
-        foreach ($this->getCsvRow() as $row) {
-            $targetQBUserId = preg_replace('( |\|)', '', $row)[0];
-            $msg = new AMQPMessage($targetQBUserId, array('delivery_mode' => 2) /* make message persistent */);
+        foreach ($this->getCsvRow('/vagrant/csv.csv1') as $row) {
+            $body = $this->$cb($row);
+            $msg = new AMQPMessage($body, array('delivery_mode' => 2) /* make message persistent */);
             $channel->basic_publish($msg, '', 'durable_task_queue');
-            echo " [v] User added to queue: ", $targetQBUserId, "\n";
+            echo " [v] User added to queue: ", $body, "\n";
         }
 
         $channel->close();
@@ -128,6 +193,40 @@ class Command
             $msg->delivery_info['channel']->basic_ack($msg->delivery_info['delivery_tag']);
             echo " [x] Done user: $targetQBUserId \n";
             usleep(100);
+        };
+
+        $channel->basic_qos(null, 1, null);
+        $noAck = false;
+        $channel->basic_consume('durable_task_queue', '', false, $noAck, false, false, $callback);
+        while(count($channel->callbacks)) {
+            $channel->wait();
+        }
+        $channel->close();
+        $connection->close();
+    }
+
+    public function markAdminMessageAsReadFromRabbitMQ()
+    {
+        echo ' [*] Waiting for messages. To exit press CTRL+C', "\n";
+
+        $connection = new AMQPStreamConnection('localhost', 5672, 'guest', 'guest');
+        $channel = $connection->channel();
+        $durable = true;
+        $channel->queue_declare('durable_task_queue', false, $durable, false, false);
+
+        $callback = function ($msg) {
+            $body = $msg->body;
+            echo $body . PHP_EOL;
+            $data = json_decode($body, true);
+            try {
+                Command::markAdminMessageAsRead('user_' . $data['userId'], $data['password'], $data['qbUserId']);
+            } catch (ChatBetweenAdminAndTargetUserNotFound $e) {
+                echo 'ChatBetweenAdminAndTargetUserNotFound ';
+            }
+
+            $msg->delivery_info['channel']->basic_ack($msg->delivery_info['delivery_tag']);
+            echo "[✅] Done:  \n";
+            usleep(50);
         };
 
         $channel->basic_qos(null, 1, null);

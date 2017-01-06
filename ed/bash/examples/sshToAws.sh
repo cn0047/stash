@@ -14,5 +14,10 @@ if [ "$2" ]; then
     user=$2
 fi
 
+keyFile='/home/kovpak/web/storage/ziipr.pem'
+if [ ! -f "$file" ]; then
+    keyFile='/vagrant/ziipr.pem'
+fi
+
 uri="$user@$host.eu-west-1.compute.amazonaws.com"
-ssh -i /home/kovpak/web/storage/ziipr.pem "$uri"
+ssh -i "$keyFile" "$uri"

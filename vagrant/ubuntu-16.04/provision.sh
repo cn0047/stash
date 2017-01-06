@@ -7,16 +7,15 @@
 ###############################################################################
 
 # php 7
-# sudo add-apt-repository -y ppa:ondrej/php
-# sudo apt-get update
-# sudo apt-get install -y php7.0 php7.0-fpm php7.0-cli php7.0-opcache php7.0-common php7.0-phpdbg php7.0-dev
-# sudo apt-get install -y php7.0-mcrypt php7.0-mbstring
-# sudo apt-get install -y php7.0-mysql php7.0-pdo
-# sudo apt-get install -y php7.0-dom php7.0-xml php7.0-json
-# sudo apt-get install -y php7.0-zip php7.0-curl php7.0-gd php7.0-imap
-# sudo apt-get install -y php-mongodb
-
-# php7.0-bcmath
+sudo add-apt-repository -y ppa:ondrej/php
+sudo apt-get update
+sudo apt-get install -y php7.0 php7.0-fpm php7.0-cli php7.0-opcache php7.0-common php7.0-phpdbg php7.0-dev
+sudo apt-get install -y php7.0-mcrypt php7.0-mbstring
+sudo apt-get install -y php7.0-mysql php7.0-pdo
+sudo apt-get install -y php7.0-dom php7.0-xml php7.0-json
+sudo apt-get install -y php7.0-zip php7.0-curl php7.0-gd php7.0-imap
+sudo apt-get install -y php-mongodb
+sudo apt-get install -y php7.0-bcmath
 # php7.0-bz2
 # php7.0-calendar
 # php7.0-cgi

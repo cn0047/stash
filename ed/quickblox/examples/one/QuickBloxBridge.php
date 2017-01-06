@@ -68,7 +68,7 @@ class QuickBloxBridge
         $chatName = "chat between ziipr admin and $targetUserId";
         $chats = $this->getChats($chatName)['items'];
         if (!isset($chats[0])) {
-            throw new \DomainException('Chat between admin and target user not found.');
+            throw new ChatBetweenAdminAndTargetUserNotFound($chatName);
         }
         return $chats[0];
     }
@@ -168,6 +168,55 @@ class QuickBloxBridge
             throw new \RuntimeException($response);
         }
         $payload['oldDialog'] = $oldDialog;
+        return $payload;
+    }
+
+    public function getChatMessages($chatDialogId)
+    {
+        $headers = [
+            'QB-Token: '. $this->getToken(),
+            'Content-Type: application/json',
+        ];
+        $query = http_build_query([
+            'chat_dialog_id' => $chatDialogId,
+        ]);
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, QB_API_ENDPOINT . '/chat/Message.json?' . $query);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($curl);
+        $payload = json_decode($response, true);
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            throw new \RuntimeException($response);
+        }
+        return $payload;
+    }
+
+    public function markMessageAsRead($chatDialogId, $messageId)
+    {
+        $headers = [
+            'QB-Token: '. $this->getToken(),
+            'Content-Type: application/json',
+        ];
+        $put = [
+            'chat_dialog_id' => $chatDialogId,
+            'read' => 1,
+        ];
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, QB_API_ENDPOINT . "/chat/Message/$messageId.json");
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($put));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($ch);
+        return $response;
+        if ($response === false) {
+            throw new RuntimeException(curl_error($ch));
+        }
+        $payload = json_decode($response, true);
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            throw new \RuntimeException($response);
+        }
         return $payload;
     }
 }

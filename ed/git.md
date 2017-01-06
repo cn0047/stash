@@ -90,6 +90,7 @@ git push remoteRepoName :newBranch                # delete branch from remote re
 .vagrant/
 node_modules/
 vendor/
+.DS_Store
 ````
 
 ````

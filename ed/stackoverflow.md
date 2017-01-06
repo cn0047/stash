@@ -17,6 +17,9 @@ https://regex101.com/r/zO0kO8/1
 
 ````
 <!-- language: lang-html -->
+<!-- end snippet -->
 
+<!-- begin snippet: js hide: false console: true babel: false -->
+<!-- language: lang-js -->
 <!-- end snippet -->
 ````

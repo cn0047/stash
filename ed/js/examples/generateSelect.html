@@ -1,0 +1,36 @@
+<html>
+<body>
+    <form name="mainForm">
+        <select id="mainSelect" name="mainSelect"></select>
+    </form>
+</body>
+<script>
+function putDropDown(dataArr, fnVars){
+    var dropField = document.forms[fnVars['formName']].elements[fnVars['fieldName']];
+    if (dropField) {
+        dropField.options.length = 0;
+        if (dataArr != 'empty') {
+            for (var i in dataArr[fnVars['valFld']]) {
+                var groupData = dataArr[fnVars['valFld']][i];
+                var group = document.createElement('optgroup');
+                group.label = groupData.group;
+                for (var key in groupData.options) {
+                    var opt = document.createElement('option');
+                    opt.value = key;
+                    opt.innerHTML = groupData.options[key];
+                    group.appendChild(opt);
+                }
+                dropField.appendChild(group);
+            }
+        }
+    }
+}
+putDropDown(
+    {mSelect: [
+        {group: 'top', options: {1: 'one', 2: 'two'}},
+        {group: 'bottom', options: {f: 'foo', b: 'bar'}}
+    ]},
+    {formName: 'mainForm', fieldName: 'mainSelect', valFld: 'mSelect'}
+);
+</script>
+</html>

@@ -74,7 +74,7 @@ sudo chmod ugo+x /usr/bin/phalcon
 phalcon project --name dbRelationships --type=cli
 
 # generate model from db table
-phalcon model languages --get-set --output=app/models --namespace=W3\\Ziipr\\Models\\v1
+phalcon model video --get-set --output=models/v1/ --namespace=W3\\Ziipr\\Models\\v1
 
 ````
 
@@ -82,11 +82,11 @@ phalcon model languages --get-set --output=app/models --namespace=W3\\Ziipr\\Mod
 
 ````
 # create db migration
-phalcon migration --action=generate --table=captions_new --no-auto-increment --config=config/config_db.php
+phalcon migration --action=generate --table=video --no-auto-increment --config=config/config.php
 
 # run db migration
 phalcon migration --action=run --version=1.0.0
-phalcon migration --action=run --version=1.0.6 --config=config/config_db.php
+phalcon migration --action=run --version=1.0.6 --config=config/config.php
 phalcon migration --action=run --table=template --version=1.0.0
 ````
 

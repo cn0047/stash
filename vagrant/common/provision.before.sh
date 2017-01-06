@@ -21,28 +21,11 @@ sudo apt-get install python-software-properties
 curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 sudo apt-get install nodejs
 
-# mysql
-# # sudo apt-get install -y mysql-server
-# # mysql -uroot -e 'create database test'
-# # mysql -uroot -e "SET global general_log_file='/var/log/mysql/general.log';"
-# # mysql -uroot -e "SET global general_log = 1;"
+# beanstalk
+sudo apt-get install -y beanstalkd
 
 # # sqlite
 # sudo apt-get install sqlite3 libsqlite3-dev
-
-# # java
-# sudo add-apt-repository -y ppa:webupd8team/java
-# sudo apt-get update
-# sudo apt-get -y install oracle-java8-installer
-
-# # elasticsearch
-# sudo apt-get install -y openjdk-7-jre
-# curl -L -O https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-2.3.3.deb
-# sudo dpkg -i elasticsearch-2.3.3.deb
-# sudo /etc/init.d/elasticsearch start
-
-# # import elasticsearch megacorp test index
-# sh /vagrant/ed/elasticsearch/megacorp.sh
 
 # # mongodb
 # sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
@@ -71,3 +54,17 @@ sudo apt-get install nodejs
 # cd utils
 # sudo ./install_server.sh
 # sudo service redis_6379 start
+
+# rabbit
+sudo apt-get install -y rabbitmq-server
+
+# aws cli
+sudo apt-get -y install python-pip
+sudo pip install awscli --ignore-installed six
+# init aws commands
+sudo chmod +x /vagrant/ed/bash/examples/describeAwsInstances.sh
+sudo ln -s /vagrant/ed/bash/examples/describeAwsInstances.sh /usr/bin/dai
+sudo chmod +x /vagrant/ed/bash/examples/executeCommandOnAws.sh
+sudo ln -s /vagrant/ed/bash/examples/executeCommandOnAws.sh /usr/bin/ecoa
+sudo chmod +x /vagrant/ed/bash/examples/sshToAws.sh
+sudo ln -s /vagrant/ed/bash/examples/sshToAws.sh /usr/bin/sta
