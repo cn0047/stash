@@ -7,6 +7,9 @@ sudo dpkg -i {name}
 
 ````
 netstat -anp | grep LISTEN
+
+# Active Internet connections
+netstat -tpne
 ````
 
 ####mount

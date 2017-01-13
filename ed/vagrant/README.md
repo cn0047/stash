@@ -28,3 +28,5 @@ vagrant resume # after suspend
 
 guest machine - virtual box.
 host machine - your laptop.
+
+https://www.vagrantup.com/docs/multi-machine/

@@ -1,4 +1,5 @@
 .idea/
 .vagrant/
+composer.lock
 node_modules/
 vendor/

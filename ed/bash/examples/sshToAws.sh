@@ -18,6 +18,9 @@ keyFile='/home/kovpak/web/storage/ziipr.pem'
 if [ ! -f "$file" ]; then
     keyFile='/vagrant/ziipr.pem'
 fi
+if [ ! -f "$file" ]; then
+    keyFile='/Users/kvol/web/storage/ziipr.pem'
+fi
 
 uri="$user@$host.eu-west-1.compute.amazonaws.com"
 ssh -i "$keyFile" "$uri"

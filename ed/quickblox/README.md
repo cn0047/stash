@@ -5,7 +5,7 @@ Quickblox
 export host='apiziipr.quickblox.com'
 `
 
-### Create new qb user
+#### Create new qb user
 
 ````bash
 curl -X POST \
@@ -13,6 +13,36 @@ curl -X POST \
 -H "QB-Token: afba4149fd977ffd2f7b2ea6cf3535af9e785a7a" \
 -d '{"user": {"login": "test_'`date +%s`'", "password": "LenaLena", "external_user_id": "'`date +%s`'"}}' \
 https://$host/users.json
+````
+
+#### Get TOKEN
+
+````
+php -r "
+define('USER_LOGIN', '');
+define('USER_PASSWORD', '.');
+
+define('QB_APP_SECRET', '');
+
+$body = [
+    'application_id' => '3',
+    'auth_key' => '',
+    'nonce' => time(),
+    'timestamp' => time(),
+    'user' => ['login' => USER_LOGIN, 'password' => USER_PASSWORD]
+];
+$built_query = urldecode(http_build_query($body));
+$signature = hash_hmac('sha1', $built_query , QB_APP_SECRET);
+$body['signature'] = $signature;
+$post_body = http_build_query($body);
+$curl = curl_init();
+curl_setopt($curl, CURLOPT_URL, 'https://apiziipr.quickblox.com/session.json');
+curl_setopt($curl, CURLOPT_POST, true);
+curl_setopt($curl, CURLOPT_POSTFIELDS, $post_body);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+$response = curl_exec($curl);
+echo json_decode($response, true)['session']['token'];
+"
 ````
 
 #### Push
@@ -34,54 +64,111 @@ https://$host/events.json
 #### Chat
 
 ````bash
-4 qb:165178(user_4:8HoLePxFJqN4l2ZyRaca)   a3c05a224ebd06208523b04cedaafaa5655a94d7
-17891 qb:167555(user_17891:tJmi7hLtknPFKibngp5C)   ea29f867fa09452de973f84fe5a733275999ea14
-admin                                              09db68bab40795cf700f37e32d96d9ed9f60521a
+# user 1
+cnfxlr+24
+user_126566 wr07btLkzHqiP0oLy5Ve
+export qbIdForUser1=357806
+export tokenForUser1='42cf66556833bdb41275bcb51a392f8a9fb82c4c'
 
-# get dialogs for user 17891
-curl -X GET -H "QB-Token: ea29f867fa09452de973f84fe5a733275999ea14" https://$host/chat/Dialog
+# user 2
+cnfxlr+25
+user_126567 XUyBPtN4YaN60YbOKEKm
+export qbIdForUser2=357807
+export tokenForUser2='44c9c9a2fd5f5de49e69e7f73355bf9a10bd35f5'
 
-# get messages from dialog
-curl -X GET -H "QB-Token: ea29f867fa09452de973f84fe5a733275999ea14" \
-https://$host/chat/Message?chat_dialog_id=56e03c6bf53b265e7d001aa1
+#######################################################################################################################
 
-# send message from 17891 to 4
-curl https://$host/chat/Message.json \
--H "QB-Token: ea29f867fa09452de973f84fe5a733275999ea14" \
--H "QuickBlox-REST-API-Version: 0.1.0" \
--H "Content-Type: application/json" \
--XPOST -H 'application/json' -d '{
-"chat_dialog_id": "56e03c6bf53b265e7d001aa1",
-"message": "cli test",
-"recipient_id": "165178"
-}'
+# get chats for user 1
+curl -X GET -H "QB-Token: "$tokenForUser1 https://$host/chat/Dialog.json | grep name --color=always
 
-# user 4 send reply to user 17891
-curl https://$host/chat/Message.json \
--H "QB-Token: a3c05a224ebd06208523b04cedaafaa5655a94d7" \
--H "QuickBlox-REST-API-Version: 0.1.0" \
--H "Content-Type: application/json" \
--XPOST -H 'application/json' -d '{
-"chat_dialog_id": "56e03c6bf53b265e7d001aa1",
-"message": "reply to your cli test",
-"recipient_id": "167555"
-}'
+# get chats for user 2
+curl -X GET -H "QB-Token: "$tokenForUser2 https://$host/chat/Dialog.json | grep name --color=always
 
-# create direct chat
+#######################################################################################################################
+
+# user 1 create chat with user 2
+# where `type=3` - private chat, `type=2` - group char.
 curl -X POST \
 -H "Content-Type: application/json" \
--H "QB-Token: 5829415b1d81dd70d9432e3deee889d2431cde92" \
--d '{"type": 3, "name": "Chat_to_203379", "occupants_ids": "203379"}' \
-https://$host/chat/Dialog
+-H "QB-Token: "$tokenForUser1 \
+-d '{"type": 3, "name": "u1_to_u2", "occupants_ids": "'$qbIdForUser2'"}' \
+https://$host/chat/Dialog.json
 
-# user 18039 send direct message to 17891
-curl https://$host/chat/Message.json \
--H "QB-Token: a7353d479ca0c496de1a2fb9b2933ea7742ec8fb" \
--H "QuickBlox-REST-API-Version: 0.1.0" \
+# user 2 create chat with user 1
+# where `type=3` - private chat, `type=2` - group char.
+curl -X POST \
 -H "Content-Type: application/json" \
--XPOST -H 'application/json' -d '{
-"chat_dialog_id": "56e04642f53b265e7d001b83",
-"message": "BOLD cli test",
-"recipient_id": "167555"
-}'
+-H "QB-Token: "$tokenForUser2 \
+-d '{"type": 3, "name": "u2_to_u1", "occupants_ids": "'$qbIdForUser1'"}' \
+https://$host/chat/Dialog.json
+
+# !!! IMPORTANT
+export chatId='5877815bf53b26456400a704'
+
+#######################################################################################################################
+
+# show messages for user 1
+curl -X GET -H "QB-Token: "$tokenForUser1 https://$host/chat/Message.json?chat_dialog_id=$chatId
+
+# show messages for user 2
+curl -X GET -H "QB-Token: "$tokenForUser2 https://$host/chat/Message.json?chat_dialog_id=$chatId
+
+#######################################################################################################################
+
+# user 1 send message to user 2
+curl -X POST \
+-H "Content-Type: application/json" \
+-H "QB-Token: "$tokenForUser1 \
+-d '{
+"chat_dialog_id": "'$chatId'",
+"message": "msg1",
+"recipient_id": '$qbIdForUser2'
+}' \
+https://$host/chat/Message.json
+
+# user 2 send message to user 1
+curl -X POST \
+-H "Content-Type: application/json" \
+-H "QB-Token: "$tokenForUser2 \
+-d '{
+"chat_dialog_id": "'$chatId'",
+"message": "msg2",
+"recipient_id": '$qbIdForUser1'
+}' \
+https://$host/chat/Message.json
+
+#######################################################################################################################
+
+# user 1 create GROUP chat with user 2
+# where `type=3` - private chat, `type=2` - group char.
+curl -X POST \
+-H "Content-Type: application/json" \
+-H "QB-Token: "$tokenForUser1 \
+-d '{"type": 2, "name": "GROUP_u1_to_u2", "occupants_ids": "'$qbIdForUser2'"}' \
+https://$host/chat/Dialog.json
+
+# user 2 create GROUP chat with user 1
+# where `type=3` - private chat, `type=2` - group char.
+curl -X POST \
+-H "Content-Type: application/json" \
+-H "QB-Token: "$tokenForUser2 \
+-d '{"type": 3, "name": "GROUP_u2_to_u1", "occupants_ids": "'$qbIdForUser1'"}' \
+https://$host/chat/Dialog.json
+
+# !!! IMPORTANT
+export chatId='587783fff53b265bcd007449'
+
+#######################################################################################################################
+
+# user 1 send message to user 2 into GROUP chat
+curl -X POST \
+-H "Content-Type: application/json" \
+-H "QB-Token: "$tokenForUser1 \
+-d '{
+"chat_dialog_id": "'$chatId'",
+"message": "msg4",
+"recipient_id": '$qbIdForUser2'
+}' \
+https://$host/chat/Message.json
+
 ````

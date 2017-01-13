@@ -6,15 +6,21 @@
 
 if [ -z "$1" ]; then
     echo 'Please specify filter.'
-    exit 1
 fi
 tagLike=$1
 
 if [ -z "$2" ]; then
     echo 'Please specify command.'
-    exit 2
 fi
 commandStr=$2
+
+keyFile='/home/kovpak/web/storage/ziipr.pem'
+if [ ! -f "$file" ]; then
+    keyFile='/vagrant/ziipr.pem'
+fi
+if [ ! -f "$file" ]; then
+    keyFile='/Users/kvol/web/storage/ziipr.pem'
+fi
 
 hosts=$(\
 aws ec2 describe-instances \
@@ -36,5 +42,5 @@ for host in $hosts; do
     printf "\033[32m $tagName \033[0m"
     printf "\033[34m $host \033[0m"
     printf "\n\n"
-    ssh -i /home/kovpak/web/storage/ziipr.pem ec2-user@$host $commandStr
+    ssh -i $keyFile ec2-user@$host $commandStr
 done

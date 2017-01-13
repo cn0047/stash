@@ -10,40 +10,60 @@ use Aws\S3\S3Client;
  */
 class Command
 {
-    private $s3;
+    public $config;
+    public $s3;
 
-    public function __construct($config_aws, $commandName)
+    public function __construct($configAws)
     {
+        $this->config = $configAws;
         $this->s3 = S3Client::factory([
-            'region'      => $config_aws->region,
-            'credentials' => (array) $config_aws->credentials,
+            'region' => $configAws->region,
+            'credentials' => (array)$configAws->credentials,
             'version' => 'latest',
         ]);
-        $this->$commandName($config_aws);
     }
 
-    private function upload()
+    public function upload()
     {
     }
 
-    private function getUrl($config_aws)
+    public function getUrl($configAws)
     {
         $command = $this->s3->getCommand('GetObject', [
-            'Bucket' => $config_aws->s3->bucket,
+            'Bucket' => $configAws->s3->bucket,
             'Key'    => 'test/logo.jpg',
         ]);
         $url = $command->createPresignedUrl('+5 minutes');
         echo "$url \n";
     }
+
+    /**
+     * @example php index.php fileExists '00000x/public/photo1.jpg'
+     */
+    public function fileExists($key)
+    {
+        try {
+            $o = $this->s3->getObject([
+                'Bucket' => $this->config->s3->bucket,
+                'Key' => $key,
+            ]);
+            $r = $o;
+        } catch (\Aws\S3\Exception\S3Exception $e) {
+            $r = false;
+        }
+        var_export($r);
+    }
 }
 
-new Command($config_aws, $argv[1]);
+$phpSelf = array_shift($argv);
+$action = array_shift($argv);
+(new Command($config_aws))->$action(...$argv);
 
 
 // Upload image to s3.
 // Next code works, uncomment when you need it.
 // $s3->putObject([
-//     'Bucket' => $config_aws->s3->bucket,
+//     'Bucket' => $configAws->s3->bucket,
 //     'Key'    => 'my-object',
 //     'Body'   => fopen('/home/kovpak/Downloads/images.jpg', 'r'),
 //     'ACL'    => 'public-read',
@@ -58,9 +78,9 @@ new Command($config_aws, $argv[1]);
 // var_export(($result));
 
 // $aws = new \Aws\Sdk([
-//     'region' => $config_aws->region,
+//     'region' => $configAws->region,
 //     'version' => 'latest',
-//     'credentials' => (array)$config_aws->credentials,
+//     'credentials' => (array)$configAws->credentials,
 //     'signature_version' => 'v4',
 //     // 'debug'   => true
 // ]);
@@ -74,7 +94,7 @@ new Command($config_aws, $argv[1]);
 // }
 // $s3->putObject([
 //    'Bucket' => 'w3.ziipr.bucket',
-//    'Key' => '000046059/private/1.jpg',
+//    'Key' => '000046059/public/1.jpg',
 //    'SourceFile' => '/home/kovpak/Downloads/images.jpg',
 //    'ACL' => 'public-read',
 // ]);
