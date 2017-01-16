@@ -44,40 +44,23 @@ $response = curl_exec($curl);
 echo json_decode($response, true)['session']['token'];
 "
 ````
+````
+# user 1
+cnfxlr+27
+user_1lgn lpass
+export qbIdForUser1=1
+export tokenForUser1='43c8b3621f71391d565084906dd0e382450f4ae5'
 
-#### Push
-
-````bash
-curl -X POST \
--H "Content-Type: application/json" \
--H "QuickBlox-REST-API-Version: 0.1.1" \
--H "QB-Token: ad7b695025ad11a068fdb3459f9e5ce1c5a7ce60" \
--d '{"event": {
-    "notification_type": "push",
-    "environment": "production",
-    "user": { "ids": "177914"},
-    "message": "MDA3IHBpbmcK"
-}}' \
-https://$host/events.json
+# user 2
+cnfxlr+28
+user_2lgn pass
+export qbIdForUser2=2
+export tokenForUser2='290b604166a06efd306467664e432ca9b6516acf'
 ````
 
 #### Chat
 
 ````bash
-# user 1
-cnfxlr+24
-user_126566 wr07btLkzHqiP0oLy5Ve
-export qbIdForUser1=357806
-export tokenForUser1='42cf66556833bdb41275bcb51a392f8a9fb82c4c'
-
-# user 2
-cnfxlr+25
-user_126567 XUyBPtN4YaN60YbOKEKm
-export qbIdForUser2=357807
-export tokenForUser2='44c9c9a2fd5f5de49e69e7f73355bf9a10bd35f5'
-
-#######################################################################################################################
-
 # get chats for user 1
 curl -X GET -H "QB-Token: "$tokenForUser1 https://$host/chat/Dialog.json | grep name --color=always
 
@@ -103,7 +86,7 @@ curl -X POST \
 https://$host/chat/Dialog.json
 
 # !!! IMPORTANT
-export chatId='5877815bf53b26456400a704'
+export chatId='585cc3eef53b26bd3e002066'
 
 #######################################################################################################################
 
@@ -171,4 +154,20 @@ curl -X POST \
 }' \
 https://$host/chat/Message.json
 
+````
+
+#### Push
+
+````bash
+curl -X POST \
+-H "Content-Type: application/json" \
+-H "QuickBlox-REST-API-Version: 0.1.1" \
+-H "QB-Token: ad7b695025ad11a068fdb3459f9e5ce1c5a7ce60" \
+-d '{"event": {
+    "notification_type": "push",
+    "environment": "production",
+    "user": { "ids": "177914"},
+    "message": "MDA3IHBpbmcK"
+}}' \
+https://$host/events.json
 ````
