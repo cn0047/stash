@@ -1,15 +1,39 @@
 <?php
 
+class TokenException1 extends RuntimeException {};
+class TokenException2 extends RuntimeException {};
+
 class QuickBloxBridge
 {
     private $login;
     private $password;
     private $token;
+    private $tokenCacheFile = '/tmp/qb.admin.token';
 
     public function __construct($login, $password)
     {
         $this->login = $login;
         $this->password = $password;
+        if ($this->isAdmin()) {
+            $this->initTokenFromCache();
+        }
+    }
+
+    private function isAdmin()
+    {
+        return $this->login === 'l' && $this->password === 'p';
+    }
+
+    private function initTokenFromCache()
+    {
+        if (file_exists($this->tokenCacheFile)) {
+            $this->token = file_get_contents($this->tokenCacheFile);
+        }
+    }
+
+    private function saveTokenToCache($token)
+    {
+        `echo $token > $this->tokenCacheFile`;
     }
 
     public function getToken()
@@ -33,8 +57,32 @@ class QuickBloxBridge
         curl_setopt($curl, CURLOPT_POST, true);
         curl_setopt($curl, CURLOPT_POSTFIELDS, $post_body);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_HEADER, true);
         $response = curl_exec($curl);
-        $this->token = json_decode($response, true)['session']['token'];
+        $responseHttpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+        $payload = json_decode($response, true);
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            // throw new \TokenException1('ERROR-1');
+            // Try remove from response headers info.
+            echo "💊 ";
+            $response = substr($response, strpos($response, '{"'));
+            $payload = json_decode($response, true);
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                var_dump($response);
+                echo PHP_EOL, PHP_EOL, "================================", PHP_EOL, PHP_EOL;
+                var_dump($responseHttpCode);
+                echo PHP_EOL, PHP_EOL, "================================", PHP_EOL, PHP_EOL;
+                throw new \RuntimeException('ERROR-1');
+            }
+        }
+        if (!isset($payload['session'])) {
+            file_put_contents('/tmp/debug.tmp', var_export([$this->login, $this->password, $payload], 1)."\n", FILE_APPEND); /// tail -f /tmp/debug.tmp
+            throw new \TokenException2('ERROR-2');
+        }
+        $this->token = $payload['session']['token'];
+        if ($this->isAdmin()) {
+            $this->saveTokenToCache($this->token);
+        }
         return $this->token;
     }
 
@@ -73,30 +121,67 @@ class QuickBloxBridge
         return $chats[0];
     }
 
-    public function getChats($name = '')
+    public function getChats($name = '', $type = 0, $limit = 100, $offset = 0)
     {
         $headers = [
             'QB-Token: '. $this->getToken(),
             'Content-Type: application/json',
         ];
-        $get = [];
+        $get = [
+            'limit' => $limit,
+            'skip' => ($offset > 0) ? $offset : 0,
+        ];
+        if ($type > 0) {
+            $get['type'] = $type;
+        }
         if ($name !== '') {
-            $get = [
-                'name' => $name,
-                'sort_desc' => 'created_at',
-            ];
+            $get['name'] = $name;
+            $get['sort_desc'] = 'created_at';
         }
         $query = http_build_query($get);
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, QB_API_ENDPOINT . '/chat/Dialog.json?' . $query);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_HEADER, true);
         $response = curl_exec($curl);
+        $responseHttpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+        // If token expired - we need re-try request.
         $payload = json_decode($response, true);
         if (json_last_error() !== JSON_ERROR_NONE) {
-            throw new \RuntimeException($response);
+            // var_dump($query);
+            // var_dump($responseHttpCode);
+            // var_dump($response);
+            // throw new \RuntimeException('ERROR-3');
+            echo "💉 ";
+            $response = substr($response, strpos($response, '{"'));
+            $payload = json_decode($response, true);
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                var_dump($response);
+                echo PHP_EOL, PHP_EOL, "================================", PHP_EOL, PHP_EOL;
+                var_dump($responseHttpCode);
+                echo PHP_EOL, PHP_EOL, "================================", PHP_EOL, PHP_EOL;
+                throw new \RuntimeException('ERROR-1');
+            }
         }
         return $payload;
+    }
+
+    public function deleteChat($id)
+    {
+        $headers = [
+            'QB-Token: '. $this->getToken(),
+            'Content-Type: application/json',
+        ];
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, QB_API_ENDPOINT . "/chat/Dialog/$id.json");
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HEADER, true);
+        $response = curl_exec($ch);
+        $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        return $code;
     }
 
     public function getHaveUnreadMessage()

@@ -19,7 +19,9 @@ curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post));
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HEADER, true);
 $response = curl_exec($ch);
+$responseHttpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 if ($response === false) {
     throw new RuntimeException(curl_error($ch));
 }

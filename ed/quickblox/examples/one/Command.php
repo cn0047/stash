@@ -51,12 +51,14 @@ class Command
     }
 
     /**
-     * @example php index.php getChats user_82273 NnMPG8AxFMJpBuCbUQby
+     * @example php index.php getChats user_x pass
      */
-    public function getChats($controller, $action, $userId, $qbUserPassword)
+    public function getChats($controller, $action, $userId, $qbUserPassword, $limit = 100, $offset = 0)
     {
+        $type = 0; // all chats
+        $type = 2;
         $qbb = new QuickBloxBridge($userId, $qbUserPassword);
-        var_export($qbb->getChats());
+        var_export($qbb->getChats('', $type, $limit, $offset));
     }
 
     /**
@@ -67,6 +69,26 @@ class Command
         $qbb = new QuickBloxBridge('user_80716', 'vDxIEM5I7iaqy4p4e78e');
         $chatId = $qbb->getChatBetweenAdminAndTargetUser(280068)['_id'];
         var_export($qbb->getChatMessages($chatId));
+    }
+
+    /**
+     * @example php index.php addChatIndexesForGrabFromQBIntoRabbitMQ
+     */
+    public function addChatIndexesForGrabFromQBIntoRabbitMQ()
+    {
+        $connection = new AMQPStreamConnection('localhost', 5672, 'guest', 'guest');
+        $channel = $connection->channel();
+        $durable = true;
+        $channel->queue_declare('durable_task_queue', false, $durable, false, false);
+        $i = 49;
+        while ($i > 0) {
+            $i--;
+            $msg = new AMQPMessage($i, array('delivery_mode' => 2) /* make message persistent */);
+            $channel->basic_publish($msg, '', 'durable_task_queue');
+            echo " [v] User added to queue: ", $i, "\n";
+        }
+        $channel->close();
+        $connection->close();
     }
 
     /**
@@ -227,6 +249,68 @@ class Command
             $msg->delivery_info['channel']->basic_ack($msg->delivery_info['delivery_tag']);
             echo "[✅] Done:  \n";
             usleep(50);
+        };
+
+        $channel->basic_qos(null, 1, null);
+        $noAck = false;
+        $channel->basic_consume('durable_task_queue', '', false, $noAck, false, false, $callback);
+        while(count($channel->callbacks)) {
+            $channel->wait();
+        }
+        $channel->close();
+        $connection->close();
+    }
+
+    public function deleteAdminChatFromRabbitMQ()
+    {
+        echo '[💡 ] To exit press CTRL+C', PHP_EOL;
+        $connection = new AMQPStreamConnection('localhost', 5672, 'guest', 'guest');
+        $channel = $connection->channel();
+        $durable = true;
+        $channel->queue_declare('durable_task_queue', false, $durable, false, false);
+
+        $type = 2;
+        $qbb = new QuickBloxBridge('user_x', 'pass');
+
+        $callback = function ($msg) use ($qbb) {
+            $offset = $msg->body;
+            $offset--;
+            $chats = $qbb->getChats('', 2, 1, $offset);
+            if (!isset($chats['items'][0])) {
+                echo "[✅ ] Skip. ", $chats['total_entries'] ?? '' , PHP_EOL;
+                $msg->delivery_info['channel']->basic_ack($msg->delivery_info['delivery_tag']);
+                return;
+            }
+            $chat = $chats['items'][0];
+            // Delete admin chat from admin chats.
+            $qbb->deleteChat($chat['_id']);
+            // Delete user's chat in case when we have not only admin in occupants of chat.
+            $step2NotStarted = false;
+            $step2Failed = false;
+            $qbUserId = 0;
+            if (count($chat['occupants_ids']) > 1) {
+                $qbUserId = ($chat['occupants_ids'][1] !== 203379) ? $chat['occupants_ids'][1] : $chat['occupants_ids'][0];
+                list(, , $ziiprUserId, ,$qbUserPassword) = array_map(
+                    'trim',
+                    str_getcsv(trim(`grep $qbUserId -wri /vagrant/qb.csv`), '|')
+                );
+                try {
+                    $qbb2 = new QuickBloxBridge("user_$ziiprUserId", $qbUserPassword);
+                    // Delete admin chat from user's chats.
+                    $qbb2->deleteChat($chat['_id']);
+                } catch (\TokenException1 $e) {
+                    $step2NotStarted = true;
+                } catch (\TokenException2 $e) {
+                    $step2Failed = true;
+                }
+            }
+            echo
+                "[✅ ] Done. Offset: $offset, Chat: {$chat['_id']} with user: $qbUserId Left: {$chats['total_entries']} ",
+                $step2Failed ? '🆘' : '',
+                $step2NotStarted ? '🚧' : '',
+                PHP_EOL
+            ;
+            $msg->delivery_info['channel']->basic_ack($msg->delivery_info['delivery_tag']);
         };
 
         $channel->basic_qos(null, 1, null);
