@@ -72,7 +72,7 @@ curl -X GET -H "QB-Token: "$tokenForUser2 https://$host/chat/Dialog.json | grep 
 # get GROUP chats for user 1
 curl -X GET -H "QB-Token: "$tokenForUser1 https://$host/chat/Dialog.json?type=2
 
-#######################################################################################################################
+###############################################################################
 
 # user 1 create chat with user 2
 curl -X POST \
@@ -91,7 +91,7 @@ https://$host/chat/Dialog.json
 # !!! IMPORTANT
 export chatId='5758460ff53b264c440264c9'
 
-#######################################################################################################################
+###############################################################################
 
 # show messages for user 1
 curl -X GET -H "QB-Token: "$tokenForUser1 https://$host/chat/Message.json?chat_dialog_id=$chatId
@@ -99,7 +99,7 @@ curl -X GET -H "QB-Token: "$tokenForUser1 https://$host/chat/Message.json?chat_d
 # show messages for user 2
 curl -X GET -H "QB-Token: "$tokenForUser2 https://$host/chat/Message.json?chat_dialog_id=$chatId
 
-#######################################################################################################################
+###############################################################################
 
 # user 1 send message to user 2
 curl -X POST \
@@ -123,7 +123,7 @@ curl -X POST \
 }' \
 https://$host/chat/Message.json
 
-#######################################################################################################################
+###############################################################################
 
 # user 1 create GROUP chat with user 2
 curl -X POST \
@@ -142,7 +142,7 @@ https://$host/chat/Dialog.json
 # !!! IMPORTANT
 export chatId='585d0f52f53b26f96c009700'
 
-#######################################################################################################################
+###############################################################################
 
 # user 1 send message to user 2 into GROUP chat
 curl -X POST \
@@ -155,7 +155,7 @@ curl -X POST \
 }' \
 https://$host/chat/Message.json
 
-#######################################################################################################################
+###############################################################################
 
 # delete chats for user by chat ids
 curl -X DELETE \
