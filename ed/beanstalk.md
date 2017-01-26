@@ -43,7 +43,7 @@ use tube_chat
 # where 95 - str length of data
 # use tube_chat
 put 1024 0 60 95
-{"login":"user_46205","password":"4rfOoPdwzveveN/XWRFC","target_user_id":202636,"message":"x5"}
+{"login":"user_46205","password":"4rfOoPdwz====___","target_user_id":282040,"message":"x5"}
 # use tube_pictureCompression
 put 1024 0 60 95
 {"folder":"000009345","thumbnail":true,"file":"public/photo_2016-07-05_17-07-34_thumbnail.jpg"}

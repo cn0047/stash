@@ -59,6 +59,8 @@ load balancer -> description -> port configuration = Stickiness: LBCookieStickin
 
 ````
 aws cloudwatch put-metric-data --namespace 'prod.supervisor' --metric-name 'instance1.document' --value 1
+
+aws logs put-log-events --log-group-name cli_prod --log-stream-name x --log-events timestamp=`date +%s`,message=000
 ````
 
 ### AMI (Amazon Machine Image)
@@ -68,7 +70,6 @@ aws cloudwatch put-metric-data --namespace 'prod.supervisor' --metric-name 'inst
 ### VPC (Virtual Private Cloud)
 
 ### ELB (Elastic Load Balancing)
-
 
 ## S3 (Simple Storage Service)
 
@@ -80,3 +81,5 @@ aws s3 cp /home/kovpak/Downloads/images.jpg s3://w3.stage.ziipr.bucket/test/x.jp
 aws s3api list-objects --bucket w3.stage.ziipr.bucket --query "[sum(Contents[].Size), length(Contents[])]"
 
 ````
+
+## CodeDeploy
