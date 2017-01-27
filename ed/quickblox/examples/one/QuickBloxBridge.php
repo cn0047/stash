@@ -2,6 +2,7 @@
 
 class TokenException1 extends RuntimeException {};
 class TokenException2 extends RuntimeException {};
+class ItIs502 extends RuntimeException {};
 
 class QuickBloxBridge
 {
@@ -17,6 +18,7 @@ class QuickBloxBridge
         if ($this->isAdmin()) {
             $this->initTokenFromCache();
         }
+        printf('%s %s ', $this->login, $this->password);
     }
 
     private function isAdmin()
@@ -33,7 +35,12 @@ class QuickBloxBridge
 
     private function saveTokenToCache($token)
     {
-        `echo $token > $this->tokenCacheFile`;
+        file_put_contents($this->tokenCacheFile, $token);
+    }
+
+    public function getTokenValue()
+    {
+        return $this->token;
     }
 
     public function getToken()
@@ -60,11 +67,14 @@ class QuickBloxBridge
         curl_setopt($curl, CURLOPT_HEADER, true);
         $response = curl_exec($curl);
         $responseHttpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+        if ($responseHttpCode === 502) {
+            throw new ItIs502();
+        }
         $payload = json_decode($response, true);
         if (json_last_error() !== JSON_ERROR_NONE) {
             // throw new \TokenException1('ERROR-1');
             // Try remove from response headers info.
-            echo "💊 ";
+            print('💊 ');
             $response = substr($response, strpos($response, '{"'));
             $payload = json_decode($response, true);
             if (json_last_error() !== JSON_ERROR_NONE) {
@@ -167,20 +177,22 @@ class QuickBloxBridge
         return $payload;
     }
 
-    public function deleteChat($id)
+    public function deleteChat($id, $forse = false)
     {
         $headers = [
             'QB-Token: '. $this->getToken(),
             'Content-Type: application/json',
         ];
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, QB_API_ENDPOINT . "/chat/Dialog/$id.json");
+        $query = $forse ? 'forse=1' : '';
+        curl_setopt($ch, CURLOPT_URL, QB_API_ENDPOINT . "/chat/Dialog/$id.json&$query");
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HEADER, true);
         $response = curl_exec($ch);
         $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        var_dump($code, $response);
         return $code;
     }
 

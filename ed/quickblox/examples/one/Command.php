@@ -171,16 +171,21 @@ class Command
         ));
     }
 
-    public function importCsvIntoRabbitMQ()
-    {
-        $cb = 'fromvCsvRowToStrWithUserJson';
-
+    /**
+     * @example php index.php importCsvIntoRabbitMQ /vagrant/ed/quickblox/csv.csv
+     */
+    public function importCsvIntoRabbitMQ(
+        $controller,
+        $action,
+        $fromFile,
+        $cb = 'fromvCsvRowToStrWithUserJson'
+    ) {
         $connection = new AMQPStreamConnection('localhost', 5672, 'guest', 'guest');
         $channel = $connection->channel();
         $durable = true;
         $channel->queue_declare('durable_task_queue', false, $durable, false, false);
 
-        foreach ($this->getCsvRow('/vagrant/csv.csv1') as $row) {
+        foreach ($this->getCsvRow($fromFile) as $row) {
             $body = $this->$cb($row);
             $msg = new AMQPMessage($body, array('delivery_mode' => 2) /* make message persistent */);
             $channel->basic_publish($msg, '', 'durable_task_queue');
@@ -310,6 +315,77 @@ class Command
                 $step2NotStarted ? '🚧' : '',
                 PHP_EOL
             ;
+            $msg->delivery_info['channel']->basic_ack($msg->delivery_info['delivery_tag']);
+        };
+
+        $channel->basic_qos(null, 1, null);
+        $noAck = false;
+        $channel->basic_consume('durable_task_queue', '', false, $noAck, false, false, $callback);
+        while(count($channel->callbacks)) {
+            $channel->wait();
+        }
+        $channel->close();
+        $connection->close();
+    }
+
+    /**
+     * php /vagrant/ed/quickblox/examples/one/index.php deleteAdminChOtonBehalfOfUserFromRabbitMQ
+     */
+    public function deleteAdminChOtonBehalfOfUserFromRabbitMQ()
+    {
+        echo '[💡 ] To exit press CTRL+C', PHP_EOL;
+        $connection = new AMQPStreamConnection('localhost', 5672, 'guest', 'guest');
+        $channel = $connection->channel();
+        $durable = true;
+        $channel->queue_declare('durable_task_queue', false, $durable, false, false);
+
+        $callback = function ($msg) {
+            $body = $msg->body;
+            $data = json_decode($body, true);
+            $qbb = new QuickBloxBridge('user_' . $data['userId'], $data['password']);
+            $chatName = 'chat between ziipr admin and ' . $data['qbUserId'];
+            $isKeepGoing = true;
+            start:
+            try {
+                $chats = $qbb->getChats($chatName);
+            } catch (TokenException2 $e) {
+                print('⏱ ');
+                sleep(3);
+                try {
+                    $chats = $qbb->getChats($chatName);
+                } catch (TokenException2 $e) {
+                    print('⏳ ');
+                    sleep(5);
+                    try {
+                        $chats = $qbb->getChats($chatName);
+                    } catch (TokenException2 $e) {
+                        $isKeepGoing = false;
+                        print('🚑 ');
+                        file_put_contents('/tmp/debug.tmp', "$body\n", FILE_APPEND);
+                    } catch (ItIs502 $e) {
+                        sleep(5*60);
+                    }
+                } catch (ItIs502 $e) {
+                    sleep(5*60);
+                }
+            } catch (ItIs502 $e) {
+                sleep(5*60);
+                goto start;
+            }
+            $isChatFound = false;
+            if ($isKeepGoing && !empty($chats['items'])) {
+                $isChatFound = true;
+                $chatId = $chats['items'][0]['_id'];
+                $qbb->deleteChat($chatId);
+            }
+            printf(
+                '✅ Token: %s %s %s %s',
+                // var_export(json_encode(array_values($data)), true),
+                $qbb->getTokenValue(),
+                $isChatFound ? ' Chat: ' : '',
+                $isChatFound ? '🎯 ' : '',
+                PHP_EOL
+            );
             $msg->delivery_info['channel']->basic_ack($msg->delivery_info['delivery_tag']);
         };
 

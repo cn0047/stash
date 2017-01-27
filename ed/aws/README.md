@@ -5,7 +5,9 @@ AWS
 ~/.aws/config
 ````
 
-## EC2 (Elastic Compute Cloud)
+# EC2 (Elastic Compute Cloud)
+
+[Types](https://aws.amazon.com/ec2/instance-types/).
 
 Launch instance:
 
@@ -55,23 +57,15 @@ One php session storage per several instances:
 load balancer -> description -> port configuration = Stickiness: LBCookieStickinessPolicy, expirationPeriod='1800'
 ````
 
-### CloudWatch
+#### AMI (Amazon Machine Image)
 
-````
-aws cloudwatch put-metric-data --namespace 'prod.supervisor' --metric-name 'instance1.document' --value 1
+#### EBS (Elastic Block Store)
 
-aws logs put-log-events --log-group-name cli_prod --log-stream-name x --log-events timestamp=`date +%s`,message=000
-````
+#### VPC (Virtual Private Cloud)
 
-### AMI (Amazon Machine Image)
+#### ELB (Elastic Load Balancing)
 
-### EBS (Elastic Block Store)
-
-### VPC (Virtual Private Cloud)
-
-### ELB (Elastic Load Balancing)
-
-## S3 (Simple Storage Service)
+# S3 (Simple Storage Service)
 
 ````
 # s3
@@ -82,4 +76,17 @@ aws s3api list-objects --bucket w3.stage.ziipr.bucket --query "[sum(Contents[].S
 
 ````
 
-## CodeDeploy
+# CloudWatch
+
+````
+sudo service awslogs stop
+````
+````
+aws cloudwatch put-metric-data --namespace 'prod.supervisor' --metric-name 'instance1.document' --value 1
+
+aws logs put-log-events --log-group-name cli_prod --log-stream-name x --log-events timestamp=`date +%s`,message=000
+````
+
+# SQS (Simple Queue Service)
+
+# CodeDeploy
