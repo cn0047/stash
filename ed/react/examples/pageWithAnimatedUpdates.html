@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <style>
+        .blink {
+            background-color: white;
+            -webkit-animation-name: example;
+            -webkit-animation-duration: 2s;
+            animation-name: example;
+            animation-duration: 2s;
+        }
+        @-webkit-keyframes example {
+            0%   {background-color: yellow;}
+        }
+        @keyframes example {
+            0%   {background-color: yellow;}
+        }
+    </style>
+    <script src="https://unpkg.com/react@latest/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        class Header extends React.Component {
+            render() {
+                return (<b>{this.props.text}</b>);
+            }
+        }
+        class Text extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {elementId: 'p' + this.props.id, textVal: this.props.text, className: ''};
+            }
+            shouldComponentUpdate(nextProps, nextState) {
+                // Previous state equals to new state - so we have update nothing.
+                if (this.state.textVal === nextProps.text) {
+                    this.state.className = '';
+                    return false;
+                }
+                // Here we have new state, so it is exactly our case!!!
+                this.state.textVal = nextProps.text;
+                // Animation 1 - CSS.
+                this.state.className = 'blink';
+                // Animation 2 - jQuery.
+                $('#' + this.state.elementId).css('backgroundColor', 'lightgreen');
+                $('#' + this.state.elementId).animate({backgroundColor: 'white'}, 1000);
+                return true;
+            }
+            render() {
+                console.log('e');
+                return (
+                    <i id={this.state.elementId} className={this.state.className}>
+                        {this.state.textVal}
+                    </i>
+                );
+            }
+        }
+        class Paragraph extends React.Component {
+            render() {
+                return (
+                    <fieldset>
+                        <Header text={this.props.data.header} />
+                        <p><Text id={this.props.data.id} text={this.props.data.text} /></p>
+                    </fieldset>
+                );
+            }
+        }
+        class Page extends React.Component {
+            render() {
+                let paragraphs = [];
+                this.props.paragraphs.forEach((p) => {
+                    paragraphs.push(<Paragraph data={p} key={p.id} />);
+                });
+                return (<div>{paragraphs}</div>);
+            }
+        }
+        let paragraphs = [
+            {id: 1, header: 'Sport', text: 'Football'},
+            {id: 2, header: 'JS', text: 'React'},
+            {id: 3, header: 'Music', text: 'Deep'},
+            {id: 4, header: 'Timestamp', text: Date.now()},
+        ];
+
+        ReactDOM.render(<Page paragraphs={paragraphs}/>, document.getElementById('root'));
+
+        setTimeout(function () {
+            paragraphs[0] = {id: 1, header: 'Sport', text: 'Boxing'};
+            ReactDOM.render(<Page paragraphs={paragraphs}/>, document.getElementById('root'));
+        }, 3000);
+
+        setInterval(function () {
+            paragraphs[3] = {id: 4, header: 'Timestamp', text: Date.now()};
+            ReactDOM.render(<Page paragraphs={paragraphs}/>, document.getElementById('root'));
+        }, 4000);
+    </script>
+</body>
+</html>

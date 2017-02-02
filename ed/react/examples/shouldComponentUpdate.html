@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@latest/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        class CounterButton extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {count: 1};
+            }
+            shouldComponentUpdate(nextProps, nextState) {
+                if (this.props.color !== nextProps.color) {
+                    return true;
+                }
+                if (this.state.count !== nextState.count) {
+                    if (nextState.count < 10) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+                return false;
+            }
+            render() {
+                return (
+                    <button
+                            color={this.props.color}
+                            onClick={() => this.setState(state => ({count: state.count + 1}))}>
+                        Count: {this.state.count}, it will be updated if you press less than 10 times.
+                    </button>
+                );
+            }
+        }
+        ReactDOM.render(<CounterButton />, document.getElementById('root'));
+    </script>
+</body>
+</html>

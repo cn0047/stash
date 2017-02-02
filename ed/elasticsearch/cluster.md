@@ -104,7 +104,7 @@ curl -XPOST localhost:9200/_aliases -d '{
 curl localhost:9200/_nodes/_local?pretty
 curl localhost:9200/_cluster/health?pretty
 
-curl -XGET http://localhost:9200/_cluster/stats
+curl -XGET http://localhost:9200/_cluster/stats?pretty
 
 curl -XGET 'http://localhost:9200/_nodes'
 
