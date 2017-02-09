@@ -38,6 +38,7 @@ class Command
     }
 
     /**
+     * @example php index.php fileExists '000010215/big.mp4'
      * @example php index.php fileExists '00000x/public/photo1.jpg'
      */
     public function fileExists($key)
@@ -52,6 +53,62 @@ class Command
             $r = false;
         }
         var_export($r);
+    }
+
+    /**
+     * Downloads picture by public url and save it in temporary file.
+     *
+     * @param string $url Public url to picture.
+     * @param string $file Target file name.
+     *
+     * @throws \RuntimeException In case when picture download failed.
+     *
+     * @example php index.php download 'https://s3-eu-west-1.amazonaws.com/w3.stage.ziipr.bucket/000010215/big.mp4' '/tmp/ziipr.v.mp4'
+     */
+    public function download($url, $file)
+    {
+        ini_set('memory_limit', '16M');
+
+        // Download picture.
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HEADER, false);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_BINARYTRANSFER, true);
+        $response = curl_exec($ch);
+        if ($response === false) {
+            throw new \RuntimeException(curl_error($ch));
+        }
+        // Save picture to temporary file.
+        // With purpose to avoid image collisions, remove picture that might be left.
+        if (file_exists($file)) {
+            unlink($file);
+        }
+        $fp = fopen($file, 'bx');
+        fwrite($fp, $response);
+        fclose($fp);
+    }
+
+    /**
+     * Downloads picture by public url and save it in temporary file.
+     *
+     * @param string $url Public url to picture.
+     * @param string $file Target file name.
+     *
+     * @throws \RuntimeException In case when picture download failed.
+     *
+     * @example php index.php download2 'https://s3-eu-west-1.amazonaws.com/w3.stage.ziipr.bucket/000010215/big.mp4' '/tmp/ziipr.v.mp4'
+     */
+    public function download2($url, $file)
+    {
+        ini_set('memory_limit', '16M');
+
+        // Yes, it looks tricky - but it really works!!!
+        // Previous implementation was with using curl_* functions,
+        // but for huge files we obtained FATAL error about allowed memory size
+        // in line: $response = curl_exec($ch);
+        // With this implementation we don't have such errors.
+        `curl -s -o $file $url`;
     }
 }
 

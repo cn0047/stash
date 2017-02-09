@@ -27,10 +27,10 @@ class Command
     {
         if ($key === null) {
             // p
-            $key = '000046059/public/photo_2016-06-06_11-30-41_thumbnail.jpg';
+            $key = '0000id/type/file.jpg';
             // s
             $key = 'test/logo.jpg';
-            $key = '000009355/public/photo_2016-07-06_13-32-57.jpg';
+            $key = '00000id/type2/img.jpg';
         }
         $command = $this->s3->getCommand('GetObject', [
             'Bucket' => $config_aws->s3->bucket,

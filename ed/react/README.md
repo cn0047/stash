@@ -24,6 +24,8 @@ Simply ask three questions about each piece of data:
 * Does it remain unchanged over time? If so, it probably isn't state.
 * Can you compute it based on any other state or props in your component? If so, it isn't state.
 
+Treat `this.state` as if it were immutable.
+
 When an element type starts with a lowercase letter, it refers to `React.createElement` (<div>, <span>).
 Types that start with a capital letter compile to `React.createElement(Foo)` (<Foo />).
 
@@ -52,6 +54,9 @@ function updateColorMap(colormap) {
 
 The Component Lifecycle.
 
+Methods prefixed with *will* are called right before something happens,
+and methods prefixed with *did* are called right after something happens.
+
 Mounting:
 
 * constructor()
@@ -67,6 +72,16 @@ Updating:
 * render()
 * componentDidUpdate()
 
+Other:
+
+* forceUpdate()
+* setState()
+
+`ReactDOM.findDOMNode(node)`.
+
+All Supported HTML Attributes available
+[here](https://facebook.github.io/react/docs/dom-elements.html#all-supported-html-attributes).
+
 [Wall](https://github.com/cn007b/wall/blob/master/wall/src/web/js/implementation/react/babel/app.babel)
 
-https://facebook.github.io/react/docs/context.html
+https://facebook.github.io/react/docs/events.html
