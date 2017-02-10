@@ -13,8 +13,6 @@ curl 'http://localhost:9200/?pretty'
 ````
 # enable scripting
 # appent into file /etc/elasticsearch/elasticsearch.yml
-script.engine.groovy.inline.search: on
-script.engine.groovy.inline.update: on
 ````
 
 Shut down

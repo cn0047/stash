@@ -7,3 +7,6 @@
 
 network.bind_host: ["0.0.0.0"]
 http.port: 9201
+
+script.engine.groovy.inline.search: on
+script.engine.groovy.inline.update: on

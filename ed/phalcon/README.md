@@ -5,6 +5,8 @@ Phalcon
 
 ````
 php -S localhost:8000 -t ./public
+
+php -r 'var_dump(Phalcon\Version::get());'
 ````
 
 ````php

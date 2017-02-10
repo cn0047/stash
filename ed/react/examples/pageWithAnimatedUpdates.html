@@ -18,9 +18,11 @@
             0%   {background-color: yellow;}
         }
     </style>
+
     <script src="https://unpkg.com/react@latest/dist/react.js"></script>
     <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
     <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
@@ -52,8 +54,11 @@
                 $('#' + this.state.elementId).animate({backgroundColor: 'white'}, 1000);
                 return true;
             }
+            componentDidUpdate() {
+                // $('#' + this.state.elementId).css('backgroundColor', 'lightgreen');
+                // $('#' + this.state.elementId).animate({backgroundColor: 'white'}, 1000);
+            }
             render() {
-                console.log('e');
                 return (
                     <i id={this.state.elementId} className={this.state.className}>
                         {this.state.textVal}
