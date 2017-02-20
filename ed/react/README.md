@@ -57,31 +57,13 @@ function updateColorMap(colormap) {
 Methods prefixed with *will* are called right before something happens,
 and methods prefixed with *did* are called right after something happens.
 
-Mounting:
-
-* constructor()
-* componentWillMount()
-* render()
-* componentDidMount()
-
-Updating:
-
-* componentWillReceiveProps()
-* shouldComponentUpdate()
-* componentWillUpdate()
-* render()
-* componentDidUpdate()
-
-Other:
-
-* forceUpdate()
-* setState()
-
 `ReactDOM.findDOMNode(node)`.
 
 All Supported HTML Attributes available
 [here](https://facebook.github.io/react/docs/dom-elements.html#all-supported-html-attributes).
 
+[SyntheticEvent](https://facebook.github.io/react/docs/events.html#supported-events).
+
 [Wall](https://github.com/cn007b/wall/blob/master/wall/src/web/js/implementation/react/babel/app.babel)
 
-https://facebook.github.io/react/docs/events.html
+https://facebook.github.io/react/docs/animation.html

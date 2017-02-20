@@ -10,3 +10,39 @@ http.port: 9201
 
 script.engine.groovy.inline.search: on
 script.engine.groovy.inline.update: on
+
+# I am a Pure Master node
+
+cluster.name: prod-zii
+node.data: true
+node.master: true
+node.name: node01
+
+discovery.zen.minimum_master_nodes: 1
+discovery.zen.ping.timeout: 10s
+discovery.zen.ping.multicast.enabled: false
+# discovery.zen.ping.unicast.hosts: ["172.31.11.226", "172.31.3.106"]
+
+network.host: _eth0:ipv4_
+bootstrap.mlockall: true
+
+index.number_of_shards: 5
+index.number_of_replicas: 1
+
+action.disable_delete_all_indices: true
+action.destructive_requires_name: true
+
+cloud.aws.access_key: "sdfsd"
+cloud.aws.secret_key: "Lropthlfk"
+
+http.port: 9201
+http.cors.enabled: true
+
+# Needed for Ziipr
+
+script.engine.groovy.inline.search: true
+script.groovy.sandbox.enabled: true
+
+discovery.zen.minimum_master_nodes: 2
+discovery.zen.ping.multicast.enabled: false
+discovery.zen.ping.unicast.hosts: ["esm2.mydomain.pvt", "esm3.mydomain.pvt"]

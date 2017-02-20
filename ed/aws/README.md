@@ -7,6 +7,8 @@ AWS
 
 # EC2 (Elastic Compute Cloud)
 
+Default OS is Amazon Linux.
+
 [Types](https://aws.amazon.com/ec2/instance-types/).
 
 Launch instance:
@@ -60,6 +62,8 @@ load balancer -> description -> port configuration = Stickiness: LBCookieStickin
 #### AMI (Amazon Machine Image)
 
 #### EBS (Elastic Block Store)
+
+EBS provides persistent block storage volumes for use with Amazon EC2 instances in the AWS Cloud.
 
 #### VPC (Virtual Private Cloud)
 

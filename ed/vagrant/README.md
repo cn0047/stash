@@ -7,8 +7,14 @@ Vagrant
 [download virtualbox](https://www.virtualbox.org/wiki/Linux_Downloads),
 [download vagrant](https://www.vagrantup.com/downloads.html).
 
+````
+vboxmanage --version
+````
+
+````
 vagrant plugin install vagrant-vbguest
 vagrant plugin install vagrant-cachier
+````
 
 ````
 vagrant global-status

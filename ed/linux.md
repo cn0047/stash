@@ -3,6 +3,13 @@ Linux
 
 sudo dpkg -i {name}
 
+
+####centos
+
+````
+yum --showduplicates list available elasticsearch\*
+````
+
 ####netstat
 
 ````
