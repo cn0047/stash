@@ -1,5 +1,11 @@
 Cluster
 -
+````
+export host='localhost'
+export port=9201
+export index=megacorp
+export type=users
+````
 
 Running Elasticsearch:
 ````
@@ -8,7 +14,7 @@ Running Elasticsearch:
 sudo /etc/init.d/elasticsearch status
 sudo /etc/init.d/elasticsearch restart
 
-curl 'http://localhost:9200/?pretty'
+curl 'http://$host:$port/?pretty'
 ````
 ````
 # enable scripting
@@ -17,48 +23,48 @@ curl 'http://localhost:9200/?pretty'
 
 Shut down
 ````
-curl -XPOST 'http://localhost:9200/_shutdown'
+curl -XPOST 'http://$host:$port/_shutdown'
 ````
 
 #### [Upgrade](https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-upgrade.html).
 
 ````json
-curl 'localhost:9200/_cat/health?v'
-curl 'localhost:9200/_cat/nodes?v'
-curl 'localhost:9200/_nodes/stats/process?pretty'
+curl $host:$port'/_cat/health?v'
+curl $host:$port'/_cat/nodes?v'
+curl $host:$port'/_nodes/stats/process?pretty'
 
 # show shards
-curl localhost:9200/_cat/shards?v
+curl $host:$port/_cat/shards?v
 
 # create index
-curl -XPUT http://localhost:9200/megacorp/
+curl -XPUT http://$host:$port/$index/
 
 # delete index
-curl -XDELETE http://localhost:9200/ziipr/
+curl -XDELETE http://$host:$port/$index/
 
 # get index settings
-curl localhost:9200/megacorp/_settings
+curl $host:$port/$index/_settings?pretty
 # or
-curl localhost:9200/_cat/indices?v
+# BEST ONE + SIZES !!! 👍
+curl http://$host:$port/_cat/indices?v
 
 # master
-curl http://localhost:9200/_cat/master?v
+curl http://$host:$port/_cat/master?v
 # node
-curl http://localhost:9200/_cat/nodeattrs?v
+curl http://$host:$port/_cat/nodeattrs?v
 # nodes
-curl http://localhost:9200/_cat/nodes?v
-
+curl http://$host:$port/_cat/nodes?v
 # get indexes
-curl http://localhost:9200/_cat/indices?v
+curl http://$host:$port/_cat/indices?v
 
 # get all mappings (types)
-curl -XGET http://localhost:9200/_mapping?pretty
+curl -XGET http://$host:$port/_mapping?pretty
 
 # get mapping
-curl -XGET http://localhost:9200/megacorp/_mapping/employee
+curl -XGET http://$host:$port/$index/_mapping/$type
 
 # put mapping for employee
-curl -XPUT http://localhost:9200/megacorp/_mapping/employee -d '{
+curl -XPUT http://$host:$port/$index/_mapping/$type -d '{
   "employee": {
       "properties": {
           "first_name": {"type": "string"},
@@ -75,7 +81,7 @@ curl -XPUT http://localhost:9200/megacorp/_mapping/employee -d '{
 
 # IMPORTANT! Fields in the same index with the same name in two different types must have the same mapping
 # Next code will spawn error
-curl -XPUT http://localhost:9200/test/ -d '{
+curl -XPUT http://$host:$port/test/ -d '{
 "mappings" : {
       "boxing": {
         "properties": {"email": {"type": "string", "index": "not_analyzed"}}
@@ -87,40 +93,43 @@ curl -XPUT http://localhost:9200/test/ -d '{
 }'
 
 # delete mapping, from v2.3 NOT possible, need delete whole index
-# curl -XDELETE 'http://localhost:9200/megacorp/employee'
+# curl -XDELETE 'http://$host:$port/$index/$type'
 
 # create alias
-curl -XPOST localhost:9200/_aliases -d '{
+curl -XPOST $host:$port/_aliases -d '{
 "actions": [
     {"add": {"alias": "megacorp", "index": "megacorp_v1"}}
 ]
 }'
+
+# get aliases
+curl -XGET $host:$port/_alias/
 ````
 
 ````
 # Local
-curl localhost:9200/_nodes/_local?pretty
-curl localhost:9200/_cluster/health?pretty
+curl $host:$port/_nodes/_local?pretty
+curl $host:$port/_cluster/health?pretty
 
-curl -XGET http://localhost:9200/_cluster/stats?pretty
+curl -XGET http://$host:$port/_cluster/stats?pretty
 
-curl -XGET 'http://localhost:9200/_nodes'
+curl -XGET http://$host:$port/_nodes?pretty
 
-curl -XGET 'http://localhost:9200/_nodes/stats?pretty'
+curl -XGET http://$host:$port/_nodes/stats?pretty
 
 # Cluster Settings
-curl -XGET localhost:9200/_cluster/settings
+curl -XGET $host:$port/_cluster/settings
 
 # Cluster Update Settings
-curl -XPUT localhost:9200/_cluster/settings -d '{
+curl -XPUT $host:$port/_cluster/settings -d '{
     "persistent" : {
         "discovery.zen.minimum_master_nodes" : 2
     }
 }'
 
 # tasks
-curl -XGET 'http://localhost:9200/_tasks?pretty'
+curl -XGET http://$host:$port/_tasks?pretty
 
-Disk space available in your cluster#
-curl -s 'localhost:9200/_cat/allocation?v'
+# DISK SPACE available in your cluster 💿 .
+curl -s $host:$port'/_cat/allocation?v'
 ````
