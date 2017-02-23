@@ -94,10 +94,12 @@ sudo cp /vagrant/vagrant/ubuntu-16.04/nginx.conf /etc/nginx/sites-available/defa
 ###############################################################################
 
 # phalcon
-# curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | bash
-# apt-get install php7.0-phalcon
-
-
+sudo curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
+sudo apt-get install php7.0-phalcon
+# phalcon dev-tools
+cd /vagrant/ed/phalcon/examples/one && composer install
+sudo ln -s /vagrant/ed/phalcon/examples/one/vendor/bin/phalcon.php /usr/bin/phalcon
+sudo chmod ugo+x /usr/bin/phalcon
 
 
 

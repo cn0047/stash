@@ -12,8 +12,11 @@ vboxmanage --version
 ````
 
 ````
+vagrant plugin list
+
 vagrant plugin install vagrant-vbguest
 vagrant plugin install vagrant-cachier
+vagrant plugin install vagrant-hosts
 ````
 
 ````
@@ -24,6 +27,7 @@ vagrant reload
 vagrant provision
 
 vagrant ssh
+vagrant ssh-config
 
 vagrant suspend # stop machine
 vagrant halt    # power down the guest machine

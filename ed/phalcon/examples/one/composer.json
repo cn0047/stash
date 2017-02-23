@@ -1,6 +1,7 @@
 {
     "require": {
-        "crysalead/kahlan": "^2.4"
+        "crysalead/kahlan": "^2.4",
+        "phalcon/devtools": "^3.0"
     },
     "autoload": {
         "psr-4": {
