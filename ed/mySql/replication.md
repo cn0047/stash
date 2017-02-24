@@ -10,111 +10,68 @@ Depending on the configuration, you can replicate all databases, selected databa
 * Statement Based Replication (SBR) - which replicates entire SQL statements.
 * Row Based Replication (RBR) - which replicates only the changed rows.
 
-Replication between servers in MySQL is based on the binary logging mechanism. The information in the binary log is stored in different logging formats according to the database changes being recorded.
+Replication between servers in MySQL is based on the binary logging mechanism.
+The information in the binary log is stored in different logging formats according to the database changes being recorded.
 
-####Setting the Replication Master Configuration
-You will need to shut down your MySQL server and edit the my.cnf or my.ini file (/etc/mysql/my.cnf):
+#### Master Configuration
+
+You will need to shut down your MySQL server and edit /etc/mysql/my.cnf (/etc/mysql/mysql.conf.d/mysqld.cnf):
+
 ````sql
 [mysqld]
-log-bin=mysql-bin
 server-id=1
-````
-After making the changes, restart the server.
-<br>For the greatest possible durability and consistency in a replication setup using InnoDB with transactions, you should use innodb_flush_log_at_trx_commit=1 and sync_binlog=1 in the master my.cnf file.
+log_bin=/var/log/mysql/mysql-bin.log
 
-####Setting the Replication Slave Configuration
+# For the greatest possible durability and consistency
+# in a replication setup using InnoDB with transactions,
+# you should use:
+innodb_flush_log_at_trx_commit=1
+# and
+sync_binlog=1
+````
+````
+sudo service mysql restart
+````
+
+````sql
+CREATE USER 'repl'@'192.168.56.%' IDENTIFIED BY 'slavepass';
+GRANT REPLICATION SLAVE ON *.* TO 'repl'@'192.168.56.%';
+````
+
+````
+USE test;
+CREATE TABLE tt (msg VARCHAR(25) KEY);
+INSERT INTO tt VALUES ('this'), ('is'), ('test');
+````
+
+````
+mysqldump -uroot -proot --all-databases --master-data > dump.db.sql
+scp dump.db.sql vagrant@192.168.56.103:/tmp
+````
+
+#### Setting the Replication Slave Configuration
+
  You should shut down your slave server and edit the configuration to specify a unique server ID. For example:
 ````sql
 [mysqld]
 server-id=2
 ````
-After making the changes, restart the server.
-<br>You do not have to enable binary logging on the slave for replication to be enabled.
-
-####Creating a User for Replication
-Each slave must connect to the master using a MySQL user name and password.
-````sql
-CREATE USER 'repl'@'%.mydomain.com' IDENTIFIED BY 'slavepass';
-GRANT REPLICATION SLAVE ON *.* TO 'repl'@'%.mydomain.com';
 ````
-
-####Obtaining the Replication Master Binary Log Coordinates
-Start a session on the master by connecting to it with the command-line client, and:
-````sql
-FLUSH TABLES WITH READ LOCK;
+sudo service mysql restart
 ````
-For InnoDB tables, note that FLUSH TABLES WITH READ LOCK also blocks COMMIT operations.
-<br>If you exit the client, the lock is released.
-<br>On the master:
 ````sql
-SHOW MASTER STATUS;
-+------------------+----------+--------------+------------------+
-| File             | Position | Binlog_Do_DB | Binlog_Ignore_DB |
-+------------------+----------+--------------+------------------+
-| mysql-bin.000003 | 73       | test         | manual,mysql     |
-+------------------+----------+--------------+------------------+
+CHANGE MASTER TO
+    MASTER_HOST='192.168.56.102',
+    MASTER_USER='repl',
+    MASTER_PASSWORD='slavepass'
+;
 ````
-
-####Creating a Data Snapshot Using mysqldump
-````sql
-mysqldump --all-databases --master-data > dbdump.db
 ````
-
-####Creating a Data Snapshot Using Raw Data Files
-In a separate session, shut down the master server:
-````sql
-shell> mysqladmin shutdown
+mysql -uroot -proot < /tmp/dump.db.sql
 ````
-Make a copy of the MySQL data files, choose only one of them:
-````sql
-shell> tar cf /tmp/db.tar ./data
-shell> zip -r /tmp/db.zip ./data
-shell> rsync --recursive ./data /tmp/dbdata
 ````
-Restart the master server. Copy the files to each slave before starting the slave replication process.
-
-####Setting Up Replication with New Master and Slaves
-
-####Setting Up Replication with Existing Data
-````sql
 START SLAVE;
+SHOW SLAVE STATUS \G
 ````
 
-####Introducing Additional Slaves to an Existing Replication Environment
-Shut down the existing slave:
-````sql
-shell> mysqladmin shutdown
-````
-Copy the data directory from the existing slave to the new slave.
-
-####Setting the Master Configuration on the Slave
-Execute the following statement on the slave:
-````sql
-mysql> CHANGE MASTER TO
-    MASTER_HOST='master_host_name',
-    MASTER_USER='replication_user_name',
-    MASTER_PASSWORD='replication_password',
-    MASTER_LOG_FILE='recorded_log_file_name',
-    MASTER_LOG_POS=recorded_log_position;
-````
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-http://dev.mysql.com/doc/refman/5.5/en/replication-formats.html
+https://dev.mysql.com/doc/refman/5.7/en/replication-rbr-usage.html

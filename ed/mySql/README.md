@@ -9,11 +9,13 @@ MySql
 -- mysql --user=root mysql
 CREATE USER 'test2'@'localhost' IDENTIFIED BY 'pass';
 GRANT ALL PRIVILEGES ON *.* TO 'test2'@'localhost' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON testDb.* TO 'client'@'%' IDENTIFIED BY 'pwd' WITH GRANT OPTION
 -- grant user
 GRANT ALL PRIVILEGES ON testDB.* TO 'test2'@'localhost' IDENTIFIED BY 'pass';
 GRANT ALL PRIVILEGES ON testDB.* TO 'test2'@'%' IDENTIFIED BY 'pass';
 -- set password for user
 SET PASSWORD FOR 'ziipr'@'localhost' = PASSWORD('12345');
+DROP USER 'jeffrey'@'localhost';
 
 INSERT INTO brand2 (name) SELECT name FROM brand;
 
