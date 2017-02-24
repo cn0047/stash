@@ -65,5 +65,3 @@ All Supported HTML Attributes available
 [SyntheticEvent](https://facebook.github.io/react/docs/events.html#supported-events).
 
 [Wall](https://github.com/cn007b/wall/blob/master/wall/src/web/js/implementation/react/babel/app.babel)
-
-https://facebook.github.io/react/docs/animation.html

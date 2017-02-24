@@ -13,6 +13,7 @@ sudo mv composer.phar /usr/local/bin/composer
 
 # mysql
 # sudo apt-get install -y mysql-server
+# sudo apt-get install -y mysql-client
 # mysql -uroot -e 'create database test'
 # mysql -uroot -e "create user 'user'@'localhost' identified by 'pass'"
 # mysql -uroot -e "grant all privileges on test.* to 'user'@'localhost' with grant option"
