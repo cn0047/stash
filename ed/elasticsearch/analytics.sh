@@ -1,7 +1,5 @@
-Analytics (Aggregations)
--
+# Analytics (Aggregations)
 
-````json
 # SELECT city, COUNT(*) FROM employee GROUP BY city ORDER BY COUNT(*) DESC
 # size=0 to not show search hits
 curl -XPOST 'localhost:9200/megacorp/employee/_search?pretty' -d '{
@@ -11,6 +9,25 @@ curl -XPOST 'localhost:9200/megacorp/employee/_search?pretty' -d '{
       "terms": {"field": "city"}
     }
   }
+}'
+# same, but ordered by aggregated value (also can use: _term)
+curl -XPOST 'localhost:9200/megacorp/employee/_search?pretty' -d '{
+  "size": 0,
+  "aggs": {
+    "group_by_city": {
+      "terms": {"field": "city", "order": {"_count": "asc"}}
+    }
+  }
+}'
+# same, but ordered by city
+curl -XPOST 'localhost:9200/megacorp/employee/_search?pretty' -d '{
+  "size": 0,
+  "aggs": {
+    "group_by_city": {
+      "terms": {"field": "city"}
+    }
+  },
+  "sort" : [{ "city" : {"order" : "desc"} }]
 }'
 
 # like prev example + AVG(age)
@@ -135,4 +152,3 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
         }
     }
 }'
-````

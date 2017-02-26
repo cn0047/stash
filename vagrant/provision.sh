@@ -62,6 +62,18 @@ sudo service mysql restart
 # sudo systemctl start mongodb
 # sudo systemctl enable mongodb
 
+# # java
+sudo add-apt-repository -y ppa:webupd8team/java
+sudo apt-get update
+echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
+echo debconf shared/accepted-oracle-license-v1-1 seen true | sudo debconf-set-selections
+sudo apt-get -y install oracle-java8-installer
+
+# # elasticsearch
+curl -L -O https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-2.4.4.deb
+sudo dpkg -i elasticsearch-2.4.4.deb
+sudo /etc/init.d/elasticsearch start
+
 # rabbit
 sudo apt-get install -y rabbitmq-server
 
@@ -144,3 +156,10 @@ sudo mv composer.phar /usr/local/bin/composer
 # cd /vagrant/ed/symfony/examples/bulletinBoard/ && sudo php app/console cache:clear --env=prod --no-debug
 # cd /vagrant/ed/symfony/examples/bulletinBoard/ && sudo php app/console assetic:dump --env=prod --no-debug
 # composer update -o
+
+###############################################################################
+# ElasticSearch
+###############################################################################
+
+# import elasticsearch megacorp test index
+sh /vagrant/ed/elasticsearch/megacorp.sh
