@@ -284,7 +284,8 @@ mysql> \s
     * Table level locking. Slower than InnoDB for tables that are frequently being inserted to or updated, because the entire table is locked for any insert or update.
     * Faster than InnoDB on the whole as a result of the simpler structure thus much less costs of server resources.
     * Especially good for read-intensive (select) tables.
-    * (The maximum number of indexes per MyISAM table is 64. The maximum number of columns per index is 16.)
+    * (The maximum number of indexes per MyISAM table is 64. The maximum number of columns per index is 16).
+    * (Uses one file for data rows and another for index records).
 * MEMORY
 * CSV
 * ARCHIVE

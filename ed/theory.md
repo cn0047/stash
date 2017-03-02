@@ -64,6 +64,7 @@ Tell, Don’t Ask (Law of Demeter).
 * Encourage solid
 * Haven't memory leaks
 * Haven't vulnerabilities and be secure
+* Predictability
 
 #### ACID
 

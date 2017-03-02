@@ -4,9 +4,19 @@ Replication
 *MySQL 5.5*
 
 Depending on the configuration, you can replicate all databases, selected databases, or even selected tables within a database.
-<br>Asynchronous replication - one server acts as the master, while one or more other servers act as slaves.
-<br>Synchronous replication which is a characteristic of MySQL Cluster.
-<br>There are two core types of replication format:
+
+* Asynchronous replication - one server acts as the master, while one or more other servers act as slaves.
+The master writes events to its binary log and slaves request them when they are ready.
+
+* Synchronous replication which is a characteristic of MySQL Cluster.
+When a master commits a transaction, all slaves also will have committed the transaction
+before the master returns to the session that performed the transaction.
+
+* Semisynchronous replication (is implemented using plugins).
+The master waits only until at least one slave has received and logged the events.
+
+There are two core types of replication format:
+
 * Statement Based Replication (SBR) - which replicates entire SQL statements.
 * Row Based Replication (RBR) - which replicates only the changed rows.
 
@@ -74,4 +84,13 @@ START SLAVE;
 SHOW SLAVE STATUS \G
 ````
 
-https://dev.mysql.com/doc/refman/5.7/en/replication-rbr-usage.html
+#### Unsafe Statements in Binary Logging
+
+* Functions: RAND, UUID ...
+* Trigger or stored program .
+* INSERT ... ON DUPLICATE KEY UPDATE.
+* Updates using LIMIT.
+
+binlog_format=ROW
+
+https://dev.mysql.com/doc/refman/5.7/en/replication-features-functions.html

@@ -1,7 +1,5 @@
-Full-text search
--
+# Full-text search
 
-````json
 curl -XGET localhost:9200/megacorp/employee/_search -d '{
     "query" : { "match" : { "about" : "rock climbing" } }
 }'
@@ -37,4 +35,3 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
         "prefix" : { "about" : "REALLY" }
     }
 }'
-````

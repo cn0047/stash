@@ -72,7 +72,7 @@ EBS provides persistent block storage volumes for use with Amazon EC2 instances 
 # S3 (Simple Storage Service)
 
 ````
-# s3
+# upload picture to s3
 aws s3 cp /home/kovpak/Downloads/images.jpg s3://w3.stage.ziipr.bucket/test/x.jpg
 
 # size of bucket and count of elements in bucket
@@ -94,3 +94,5 @@ aws logs put-log-events --log-group-name cli_prod --log-stream-name x --log-even
 # SQS (Simple Queue Service)
 
 # CodeDeploy
+
+# (RDS) Relational Database Service

@@ -25,6 +25,19 @@ so in a way all secondary indexes are compound indexes.
 
 Compound index.
 
+Clustered index is synonymous with the primary key.
+If you do not define a PRIMARY KEY for your table,
+MySQL locates the first UNIQUE index where all the key columns are NOT NULL
+and InnoDB uses it as the clustered index.
+If the table has no PRIMARY KEY or suitable UNIQUE index,
+InnoDB internally generates a hidden clustered index on a synthetic column containing row ID values
+(is a 6-byte field that increases monotonically as new rows are inserted).
+
+All indexes other than the clustered index are known as secondary indexes. 
+
+If the primary key is long, the secondary indexes use more space,
+so it is advantageous to have a short primary key.
+
 Types:
 
 KEY or INDEX: refers to a normal non-unique index.

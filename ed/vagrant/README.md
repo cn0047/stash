@@ -26,6 +26,8 @@ vagrant up
 vagrant reload
 vagrant provision
 
+vagrant rsync # forces a re-sync of any rsync synced folders
+
 vagrant ssh
 vagrant ssh-config
 

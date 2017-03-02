@@ -134,6 +134,7 @@ pkill -f php # Kill runned script with name like php.
 
 kill -9 `ps -aux|grep {{PROCESS_NAME}}|grep -v grep|awk '{print $2}'`
 
+uname -a # Shows 32 or 64 bit OS.
 uname -r # Show the kernel version.
 
 host github.com # Shows ip by host.
