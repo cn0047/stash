@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Ubuntu 16.04
+
 ###############################################################################
 # GENERAL
 ###############################################################################
@@ -10,6 +12,9 @@ sudo apt-get update
 # htop
 sudo apt-get install -y htop
 
+# git
+sudo apt-get install -y git
+
 # apache
 sudo service apache2 stop
 
@@ -18,27 +23,11 @@ sudo apt-get install -y nginx
 sudo cp /vagrant/vagrant/nginx.conf /etc/nginx/sites-available/default
 sudo service nginx restart
 
-# git
-sudo apt-get install -y git
-
-# nodejs
-# sudo apt-get install python-software-properties
-# curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
-# sudo apt-get install -y nodejs
-# sudo apt-get install -y npm
-# # npm packages
-# sudo npm install -g nodemon
-# sudo npm install -g create-react-app
-# sudo npm install -g react react-dom
-
-# beanstalk
-# sudo apt-get install -y beanstalkd
-
 # mysql
 sudo debconf-set-selections <<< 'mysql-server-5.7 mysql-server/root_password password root'
 sudo debconf-set-selections <<< 'mysql-server-5.7 mysql-server/root_password_again password root'
 sudo apt-get -y install mysql-server-5.7
-# sudo apt-get install -y mysql-server
+sudo apt-get install -y mysql-server
 # sudo apt-get install -y mysql-client
 sudo mysql -uroot -proot -e 'create database test'
 sudo mysql -uroot -proot -e "create user 'user'@'%' identified by 'pass'"
@@ -49,33 +38,39 @@ sudo mysql -uroot -proot -e "SET global general_log = 1;"
 sudo sed -i "s/127.0.0.1/0.0.0.0/" `sudo grep bind-address -ril /etc/mysql/`
 sudo service mysql restart
 
-# # sqlite
+# sqlite
 # sudo apt-get install sqlite3 libsqlite3-dev
 
-# # mongodb
+# mongodb
 # sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
 # sudo echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
 # sudo apt-get update
 # sudo apt-get install -y mongodb
 # sudo apt-get install -y mongodb-org
-# sudo cp /vagrant/vagrant/common/mongodb.service /etc/systemd/system/
+# sudo cp /vagrant/vagrant/mongodb.service /etc/systemd/system/
 # sudo systemctl start mongodb
 # sudo systemctl enable mongodb
 
-# # java
+# redis
+sudo apt-get install redis-server
+
+# java
 sudo add-apt-repository -y ppa:webupd8team/java
 sudo apt-get update
 echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
 echo debconf shared/accepted-oracle-license-v1-1 seen true | sudo debconf-set-selections
 sudo apt-get -y install oracle-java8-installer
 
-# # elasticsearch
+# elasticsearch
 curl -L -O https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-2.4.4.deb
 sudo dpkg -i elasticsearch-2.4.4.deb
 sudo /etc/init.d/elasticsearch start
 
 # rabbit
 sudo apt-get install -y rabbitmq-server
+
+# beanstalk
+# sudo apt-get install -y beanstalkd
 
 # aws cli
 sudo apt-get -y install python-pip
@@ -88,6 +83,14 @@ sudo ln -s /vagrant/ed/bash/examples/executeCommandOnAws.sh /usr/bin/ecoa
 sudo chmod +x /vagrant/ed/bash/examples/sshToAws.sh
 sudo ln -s /vagrant/ed/bash/examples/sshToAws.sh /usr/bin/sta
 
+# nodejs
+sudo apt-get install python-software-properties
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+sudo apt-get install -y nodejs
+sudo apt-get install -y npm
+# npm packages
+# sudo npm install -g create-react-app react react-dom
+sudo npm install webpack -g webpack webpack-dev-server
 
 # php 5.6
 # sudo add-apt-repository ppa:ondrej/php

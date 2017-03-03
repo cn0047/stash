@@ -37,3 +37,10 @@ Elasticsearch cleans up deleted documents in the background as you continue to i
 
 A shard is a single Lucene instance.
 An index is a logical namespace which points to primary and replica shards.
+
+https://www.elastic.co/guide/en/elasticsearch/reference/2.2/release-notes-2.2.0.html
+
+Pay attention:
+
+* Messure marvel & JVM.
+* Not use open JDK but latest Oracle JDK.

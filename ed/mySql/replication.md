@@ -93,4 +93,4 @@ SHOW SLAVE STATUS \G
 
 binlog_format=ROW
 
-https://dev.mysql.com/doc/refman/5.7/en/replication-features-functions.html
+https://dev.mysql.com/doc/refman/5.7/en/replication-features-server-side-help.html

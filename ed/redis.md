@@ -4,6 +4,9 @@ Redis
 #### redis-cli
 
 ````
+redis-cli # connect to redis
+````
+````
 set mykey "Hello"
 get mykey
 

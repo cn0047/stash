@@ -1,5 +1,7 @@
 <?php
 
+newrelic_background_job(true);
+
 newrelic_set_appname('test');
 newrelic_name_transaction('cli-test');
 set_error_handler('newrelic_notice_error');
