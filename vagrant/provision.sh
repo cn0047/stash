@@ -52,7 +52,7 @@ sudo service mysql restart
 # sudo systemctl enable mongodb
 
 # redis
-sudo apt-get install redis-server
+sudo apt-get install -y redis-server
 
 # java
 sudo add-apt-repository -y ppa:webupd8team/java
@@ -90,7 +90,7 @@ sudo apt-get install -y nodejs
 sudo apt-get install -y npm
 # npm packages
 # sudo npm install -g create-react-app react react-dom
-sudo npm install webpack -g webpack webpack-dev-server
+# sudo npm install webpack -g webpack webpack-dev-server
 
 # php 5.6
 # sudo add-apt-repository ppa:ondrej/php
