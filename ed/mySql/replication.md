@@ -19,6 +19,12 @@ There are two core types of replication format:
 
 * Statement Based Replication (SBR) - which replicates entire SQL statements.
 * Row Based Replication (RBR) - which replicates only the changed rows.
+and
+* MIXED
+
+````
+SET GLOBAL binlog_format = 'STATEMENT';
+````
 
 Replication between servers in MySQL is based on the binary logging mechanism.
 The information in the binary log is stored in different logging formats according to the database changes being recorded.
@@ -92,5 +98,3 @@ SHOW SLAVE STATUS \G
 * Updates using LIMIT.
 
 binlog_format=ROW
-
-https://dev.mysql.com/doc/refman/5.7/en/replication-problems.html
