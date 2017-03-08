@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Cell1 from './Cell1';
+import { MainConfig } from './../Config/Main';
 
 class SummaryScreen extends Component {
 
@@ -15,7 +16,8 @@ class SummaryScreen extends Component {
   }
 
   load(from) {
-    let request = new Request('https://api.ziipr.com/v1/users?online=1&pictures=1&from=' + from + '&limit=50', {
+    let url = MainConfig.apiUrl + '/users?online=1&pictures=1&from=' + from + '&limit=50';
+    let request = new Request(url, {
       headers: new Headers({'X-AUTH-TOKEN': this.props.route.user.token})
     });
     fetch(request).then((res) => {

@@ -87,10 +87,10 @@ SHOW SLAVE STATUS \G
 #### Unsafe Statements in Binary Logging
 
 * Functions: RAND, UUID ...
-* Trigger or stored program .
+* Trigger or stored program.
 * INSERT ... ON DUPLICATE KEY UPDATE.
 * Updates using LIMIT.
 
 binlog_format=ROW
 
-https://dev.mysql.com/doc/refman/5.7/en/replication-features-server-side-help.html
+https://dev.mysql.com/doc/refman/5.7/en/replication-problems.html

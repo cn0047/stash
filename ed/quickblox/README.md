@@ -121,6 +121,10 @@ export chatId='587cfafdf53b26701d012d41'
 curl -X GET -H "QB-Token: "$tokenForUser1 \
 https://$host/chat/Message/unread.json?chat_dialog_ids=$chatId
 
+# or (to get total count of unread messages)
+curl -X GET -H "QB-Token: "$tokenForUser1 \
+https://$host/chat/Message/unread.json
+
 -----------------------------------------------------------------------------------------------------------------------
 
 # show messages for user from chat

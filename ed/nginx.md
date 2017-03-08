@@ -38,3 +38,20 @@ if ($host = 'ziipr.dev') {
     rewrite  ^/(.*)$  $scheme://www.ziipr.com/$1  permanent;
 }
 ````
+
+Nginx
+
+````
+server {
+    listen 80;
+    server_name z.dev;
+    location / {
+        proxy_pass http://192.168.56.101:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+````

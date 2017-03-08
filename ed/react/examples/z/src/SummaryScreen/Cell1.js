@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import AWS from 'aws-sdk';
 
+import { MainConfig } from './../Config/Main';
+
 class Cell1 extends Component {
 
   constructor(props) {
@@ -16,14 +18,10 @@ class Cell1 extends Component {
     if (p.type_id !== 201201) {
       return;
     }
-    AWS.config.update({
-      accessKeyId: '',
-      secretAccessKey: '',
-      region: ''
-    });
+    AWS.config.update(MainConfig.aws.mail);
     let s3 = new AWS.S3();
     let args = {
-      Bucket: 'w3.ziipr.bucket',
+      Bucket: MainConfig.aws.bucket,
       Key: this.state.data.bucket_folder + '/public/' + p.file_name.replace('.jpg', '_thumbnail.jpg')
     };
     let that = this;
