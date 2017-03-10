@@ -14,3 +14,5 @@ newrelic_notice_error('Exception: ' . get_class($e), $e2);
 throw new BadMethodCallException('BadMethodCallException-1');
 
 newrelic_custom_metric('myMetric', 1);
+
+newrelic_end_transaction();

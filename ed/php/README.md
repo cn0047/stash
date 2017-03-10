@@ -39,6 +39,8 @@ request_slowlog_timeout = 1
 
 ````
 php -S localhost:8000 index.php
+# on vagrant
+php -S 0.0.0.0:80 index.php
 
 php -d short_open_tag=1 x.php
 php -d extension=xhprof.so foo.php
@@ -313,7 +315,17 @@ When memcache overflows, it will expire oldest keys and flush them.
 
 http://php.net/manual/en/appendices.php
 
-####PHP 7.x
+####PHP 7.1.x
+* Nullable types.
+* Void functions.
+* Symmetric array destructuring (like list()).
+* Class constant visibility.
+* Iterable pseudo-type.
+* Multi catch exception handling.
+* Asynchronous signal handling (no need use tick).
+* HTTP/2 server push support in ext/curl.
+
+####PHP 7.0.x
 * Scalar type declarations.
 * Return type declarations.
 * Null coalescing operator (??).

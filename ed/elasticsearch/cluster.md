@@ -80,6 +80,9 @@ curl -XPUT http://$host:$port/$index/_mapping/$type -d '{
   }
 }'
 
+# put mapping from file
+curl -XPUT http://localhost:9200/ziipr -d @/vagrant/vagrant/elasticsearch.mapping.json
+
 # IMPORTANT! Fields in the same index with the same name in two different types must have the same mapping
 # Next code will spawn error
 curl -XPUT http://$host:$port/test/ -d '{
