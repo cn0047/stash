@@ -34,6 +34,10 @@ action.destructive_requires_name: true
 
 cloud.aws.access_key: "sdfsd"
 cloud.aws.secret_key: "Lropthlfk"
+discovery.type: ec2
+discovery.ec2.groups: sg-b39627d4
+plugin.mandatory: cloud-aws
+cloud.aws.region: eu-west-1
 
 http.port: 9201
 http.cors.enabled: true
@@ -41,8 +45,5 @@ http.cors.enabled: true
 # Needed for Ziipr
 
 script.engine.groovy.inline.search: true
+script.engine.groovy.inline.update: true
 script.groovy.sandbox.enabled: true
-
-discovery.zen.minimum_master_nodes: 2
-discovery.zen.ping.multicast.enabled: false
-discovery.zen.ping.unicast.hosts: ["esm2.mydomain.pvt", "esm3.mydomain.pvt"]

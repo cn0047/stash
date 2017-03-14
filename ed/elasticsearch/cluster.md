@@ -2,9 +2,9 @@ Cluster
 -
 
 ````
-export host='localhost'
+export host=''
 export port=9201
-export index=megacorp
+export index=
 export type=users
 ````
 
@@ -32,11 +32,51 @@ curl -XPOST 'http://$host:$port/_shutdown'
 ````json
 curl $host:$port'/_cat/health?v'
 curl $host:$port'/_cat/nodes?v'
-curl $host:$port'/_nodes/stats/process?pretty'
 
 # show shards
 curl $host:$port/_cat/shards?v
 
+# master
+curl http://$host:$port/_cat/master?v
+
+# node
+curl http://$host:$port/_cat/nodeattrs?v
+
+# nodes
+curl http://$host:$port/_cat/nodes?v
+
+# DISK SPACE available in your cluster 💿 .
+curl -s $host:$port'/_cat/allocation?v'
+
+# STATS
+curl $host:$port/$index/'_stats?pretty'
+curl $host:$port'/_nodes/stats/process?pretty'
+
+# Local
+curl $host:$port/_nodes/_local?pretty
+curl $host:$port/_cluster/health?pretty
+
+curl -XGET http://$host:$port/_cluster/stats?pretty
+
+curl -XGET http://$host:$port/_nodes?pretty
+
+curl -XGET http://$host:$port/_nodes/stats?pretty
+
+# Cluster Settings
+curl -XGET $host:$port/_cluster/settings
+
+# Cluster Update Settings
+curl -XPUT $host:$port/_cluster/settings -d '{
+    "persistent" : {
+        "discovery.zen.minimum_master_nodes" : 2
+    }
+}'
+
+# tasks
+curl -XGET http://$host:$port/_tasks?pretty
+````
+
+````json
 # create index
 curl -XPUT http://$host:$port/$index/
 
@@ -49,12 +89,6 @@ curl $host:$port/$index/_settings?pretty
 # BEST ONE + SIZES !!! 👍
 curl http://$host:$port/_cat/indices?v
 
-# master
-curl http://$host:$port/_cat/master?v
-# node
-curl http://$host:$port/_cat/nodeattrs?v
-# nodes
-curl http://$host:$port/_cat/nodes?v
 # get indexes
 curl http://$host:$port/_cat/indices?v
 
@@ -108,32 +142,4 @@ curl -XPOST $host:$port/_aliases -d '{
 
 # get aliases
 curl -XGET $host:$port/_alias/
-````
-
-````
-# Local
-curl $host:$port/_nodes/_local?pretty
-curl $host:$port/_cluster/health?pretty
-
-curl -XGET http://$host:$port/_cluster/stats?pretty
-
-curl -XGET http://$host:$port/_nodes?pretty
-
-curl -XGET http://$host:$port/_nodes/stats?pretty
-
-# Cluster Settings
-curl -XGET $host:$port/_cluster/settings
-
-# Cluster Update Settings
-curl -XPUT $host:$port/_cluster/settings -d '{
-    "persistent" : {
-        "discovery.zen.minimum_master_nodes" : 2
-    }
-}'
-
-# tasks
-curl -XGET http://$host:$port/_tasks?pretty
-
-# DISK SPACE available in your cluster 💿 .
-curl -s $host:$port'/_cat/allocation?v'
 ````
