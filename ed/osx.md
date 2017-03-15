@@ -2,6 +2,9 @@ osx
 -
 
 ````
+Option = Alt
+````
+````
 Option-Del  # Del word
 Control-K   # Del row
 Command-Del # Del to home
