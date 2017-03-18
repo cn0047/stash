@@ -142,12 +142,17 @@ echo "<pre>$output</pre>";
 ````
 # /etc/php5/fpm/php.ini
 [xdebug]
+;
 zend_extension=/usr/lib/php5/20131226/xdebug.so
 xdebug.remote_port=9000
 xdebug.remote_enable=On
 xdebug.remote_connect_back=On
 xdebug.remote_log=/var/log/xdebug.log
 xdebug.idekey=PHPSTORM
+;
+xdebug.profiler_enable=On
+xdebug.profiler_output_nam=xdebug.profiler.%p
+xdebug.profiler_output_dir=/var/www/html/public/rest-api/prof/
 
 # Debug
 # ?XDEBUG_SESSION_START=sublime.xdebug
@@ -169,7 +174,6 @@ xdebug_stop_trace();
 php_value xdebug.profiler_enable 1
 php_value xdebug.profiler_output_name xdebug.profiler.%t
 php_value xdebug.profiler_output_dir /home/debug/d
-php_value xdebug.profiler_enable_trigger 1
 # Generated file open with KCachegrind.
 ````
 ````

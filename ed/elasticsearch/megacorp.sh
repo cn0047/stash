@@ -13,7 +13,8 @@ curl -XPUT http://localhost:9200/megacorp -d '{
             "city": {"type": "string", "index": "not_analyzed"},
             "location": {"type": "geo_point", "lat_lon": "true"},
             "interests": {"type": "string"},
-            "fetish": {"type": "nested"}
+            "fetish": {"type": "nested"},
+            "pictures": {"type": "nested"}
         }
       },
       "car": {
@@ -39,7 +40,11 @@ curl -XPUT localhost:9200/megacorp/employee/1?routing=JohnSmith -d '{
     "city": "London",
     "location": {"lat": 51.5072, "lon": 0.1275},
     "interests": [ "sports", "music" ],
-    "fetish": {"name": "none", "count": "no count", "desc": "no desc"}
+    "fetish": {"name": "none", "count": "no count", "desc": "no desc"},
+    "pictures": [
+      {"type": 1, "name": "mainForUser1"},
+      {"type": 2, "name": "private1"}
+    ]
 }'
 curl -XPUT localhost:9200/megacorp/employee/2 -d '{
     "first_name" : "Jane",
@@ -49,7 +54,10 @@ curl -XPUT localhost:9200/megacorp/employee/2 -d '{
     "last_login_at": "2016-01-10",
     "city": "Manchester",
     "location": {"lat": 53.4667, "lon": 2.2333},
-    "interests": [ "music" ]
+    "interests": [ "music" ],
+    "pictures": [
+      {"type": 1, "name": "mainForUser2"}
+    ]
 }'
 curl -XPUT localhost:9200/megacorp/employee/3 -d '{
     "first_name" : "Douglas",
@@ -59,7 +67,10 @@ curl -XPUT localhost:9200/megacorp/employee/3 -d '{
     "last_login_at": "2016-02-14",
     "city": "Kyiv",
     "location": {"lat": 50.4500, "lon": 30.5233},
-    "interests": [ "forestry", "cars" ]
+    "interests": [ "forestry", "cars" ],
+    "pictures": [
+      {"type": 2, "name": "mainForUser3"}
+    ]
 }'
 curl -XPUT localhost:9200/megacorp/employee/4 -d '{
     "first_name" : "Louis",
