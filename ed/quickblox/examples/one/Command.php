@@ -28,23 +28,23 @@ class Command
      * CSV format:
      * | qbUserId |
      * 
-     * @example php index.php sendChatMessageFromAdminToUsersFromCsvFile '/home/kovpak/csv.csv'
+     * @example php index.php sendChatMessageFromAdminToUsersFromCsvFile '/home/kovpak/csv.csv' 'Hi 😀'
      */
     public function sendChatMessageFromAdminToUsersFromCsvFile(
         $controller,
         $action,
         $csvFile,
-        $message = 'La semaine est presque finie, bientôt les fêtes🎉 🎉 ! Bon courage 😀'
+        $message
     ) {
         $qbb = new QuickBloxBridge(USER_LOGIN, USER_PASSWORD);
         foreach ($this->getCsvRow($csvFile) as $row) {
             $targetQBUserId = preg_replace('( |\|)', '', $row)[0];
             try {
                 $result = $qbb->sendChatMessageFromAdmin($targetQBUserId, $message);
-                file_put_contents('/home/kovpak/quickblox.chat-message-raw-response.log', var_export(json_encode($result), 1)."\n", FILE_APPEND);
+                file_put_contents('/tmp/quickblox.chat-message-raw-response.log', var_export(json_encode($result), 1)."\n", FILE_APPEND);
             } catch (\RuntimeException $e) {
                 $result = $e->getMessage();
-                file_put_contents('/home/kovpak/quickblox.chat-message-raw-response.log', $result."\n", FILE_APPEND);
+                file_put_contents('/tmp/quickblox.chat-message-raw-response.log', $result."\n", FILE_APPEND);
             }
             echo $targetQBUserId . PHP_EOL;
         }

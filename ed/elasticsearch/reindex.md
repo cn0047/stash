@@ -2,10 +2,10 @@ Reindex (with ALIAS) wihout downtime
 -
 
 export host='localhost'
-export port=9201
-export index=indexName
-export alias=aliasName
-export type=typeName
+export port=9200
+export index=megacorp
+export alias=megacorp2
+export type=employee
 
 ## Reindex (with ALIAS) wihout downtime
 

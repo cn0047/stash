@@ -8,9 +8,10 @@ $search = new Elastica\Search($client);
 $search->addIndex('megacorp');
 $search->addType('employee');
 
-$index = $client->getIndex('index');
-$type = $index->getType('type');
-$document = $tpype->getDocument(1);
+$index = $client->getIndex('megacorp');
+$type = $index->getType('employee');
+$document = $type->getDocument(2);
+$document = $type->deleteById(2);
 
 // Sort by geo distance.
 $query = new Elastica\Query();

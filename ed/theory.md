@@ -1,6 +1,8 @@
 Theory
 -
 
+Resilience - is the ability of a system to adapt or keep working when challenges occur.
+
 #### Continuous Delivery
 
 How long would it take your organization to deploy a change that involves just one single line of code?
