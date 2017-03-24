@@ -74,8 +74,13 @@ $USER_PASSWORD = "";
 export qbIdForUser3=
 export tokenForUser3=''
 
+# user 1
+user_130873
+export qbIdForUser1=
+export tokenForUser1=''
+
 # user 2
-user_130873 
+user_130873
 export qbIdForUser2=
 export tokenForUser2=''
 
@@ -84,6 +89,12 @@ user_130874
 export qbIdForUser3=
 export tokenForUser3=''
 ````
+
+#### User
+
+curl -X DELETE \
+-H "QB-Token: "$tokenForUser1 \
+https://$host/users/$qbIdForUser1.json
 
 #### Chat
 

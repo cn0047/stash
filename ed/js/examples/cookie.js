@@ -7,6 +7,7 @@ if (matches) {
     d.setYear(d.getFullYear()+1);
     var expires = "expires=" + d.toUTCString();
     document.cookie = 'countdown=' + countdown + '; ' + expires;
+    document.cookie = 'ip_address=88.37.52.171; ' + expires;
 }
 // delete
 

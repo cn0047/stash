@@ -1,0 +1,42 @@
+<html>
+<header>
+    <title></title>
+    <style>
+        .blink {
+            background-color: white;
+            -webkit-animation-name: example;
+            -webkit-animation-duration: 2s;
+            animation-name: example;
+            animation-duration: 2s;
+        }
+        @-webkit-keyframes example {
+            0% {background-color: lightyellow;}
+        }
+        @keyframes example {
+            0% {background-color: lightyellow;}
+        }
+    </style>
+</header>
+<body>
+    <div id="root"></div>
+    <script>
+        var autoScrool = true;
+        window.onscroll = function(e) {
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                autoScrool = true;
+            } else {
+              autoScrool = false;
+            }
+        };
+        setInterval(function () {
+            var p = document.createElement('p');
+            p.innerHTML = String(new Date());
+            p.className = 'blink';
+            document.getElementById('root').appendChild(p);
+            if (autoScrool === true) {
+                window.scrollTo(0, document.body.scrollHeight);
+            }
+        }, 70);
+    </script>
+</body>
+</html>

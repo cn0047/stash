@@ -6,4 +6,12 @@ than don't provide video with high quality at all...
 
 * HTTP2
 
-https://www.youtube.com/watch?v=vUCr1oTtaKA&index=13&list=PLe9psSNJBf76DOOKMkDpyo_A5PfZk7JWc
+* maps
+
+* serverless (AWS Lambda)
+
+* graphql
+
+* immutability
+
+* https://get.webgl.org/

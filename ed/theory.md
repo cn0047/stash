@@ -1,7 +1,15 @@
 Theory
 -
 
+Orchestration VS Choreography.
+
 Resilience - is the ability of a system to adapt or keep working when challenges occur.
+
+#### Architecture
+
+* Durability
+* Utility
+* Beauty
 
 #### Continuous Delivery
 
