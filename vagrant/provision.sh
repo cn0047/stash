@@ -62,12 +62,17 @@ echo debconf shared/accepted-oracle-license-v1-1 seen true | sudo debconf-set-se
 sudo apt-get -y install oracle-java8-installer
 
 # elasticsearch
-curl -L -O https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-2.4.4.deb
+sudo curl -L -O https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-2.4.4.deb
 sudo dpkg -i elasticsearch-2.4.4.deb
 sudo /etc/init.d/elasticsearch start
 
 # rabbit
 sudo apt-get install -y rabbitmq-server
+#
+sudo curl -L -O https://dl.bintray.com/rabbitmq/community-plugins/rabbitmq_delayed_message_exchange-0.0.1-rmq3.4.x-9bf265e4.ez
+sudo mv rabbitmq_delayed_message_exchange-0.0.1-rmq3.4.x-9bf265e4.ez \
+    /usr/lib/rabbitmq/lib/`ls /usr/lib/rabbitmq/lib/`/plugins
+sudo /usr/lib/rabbitmq/bin/rabbitmq-plugins enable rabbitmq_delayed_message_exchange
 
 # beanstalk
 # sudo apt-get install -y beanstalkd
@@ -85,7 +90,7 @@ sudo ln -s /vagrant/ed/bash/examples/sshToAws.sh /usr/bin/sta
 
 # nodejs
 sudo apt-get install python-software-properties
-curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+sudo curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 sudo apt-get install -y nodejs
 sudo apt-get install -y npm
 # npm packages
@@ -129,7 +134,7 @@ sudo mv composer.phar /usr/local/bin/composer
 # heroku
 sudo apt-get install -y software-properties-common
 sudo add-apt-repository "deb https://cli-assets.heroku.com/branches/stable/apt ./"
-curl -L https://cli-assets.heroku.com/apt/release.key | sudo apt-key add -
+sudo curl -L https://cli-assets.heroku.com/apt/release.key | sudo apt-key add -
 sudo apt-get update
 sudo apt-get install -y heroku
 

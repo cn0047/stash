@@ -16,9 +16,9 @@ $channel->queue_bind('delayed_queue', 'delayed_exchange');
 
 $callback = function (AMQPMessage $message) {
     printf(' [x] Message received: %s %s', $message->body, PHP_EOL);
-    $message->delivery_info['channel']->basic_nack($message->delivery_info['delivery_tag']);
+    $message->delivery_info['channel']->basic_ack($message->delivery_info['delivery_tag']);
 };
-$channel->basic_consume('delayed_queue', '', false, true, false, false, $callback);
+$channel->basic_consume('delayed_queue', '', false, false, false, false, $callback);
 while(count($channel->callbacks)) {
     $channel->wait();
 }
