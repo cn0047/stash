@@ -75,6 +75,11 @@ sudo service elasticsearch start
 
 # rabbit
 sudo apt-get install -y rabbitmq-server
+#
+sudo curl -L -O https://dl.bintray.com/rabbitmq/community-plugins/rabbitmq_delayed_message_exchange-0.0.1-rmq3.4.x-9bf265e4.ez
+sudo mv rabbitmq_delayed_message_exchange-0.0.1-rmq3.4.x-9bf265e4.ez \
+    /usr/lib/rabbitmq/lib/`ls /usr/lib/rabbitmq/lib/`/plugins
+sudo /usr/lib/rabbitmq/bin/rabbitmq-plugins enable rabbitmq_delayed_message_exchange
 
 # beanstalk
 # sudo apt-get install -y beanstalkd
@@ -92,14 +97,15 @@ sudo ln -s /vagrant/ed/bash/examples/sshToAws.sh /usr/bin/sta
 
 # nodejs
 sudo apt-get install python-software-properties
-curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+sudo curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 sudo apt-get install -y nodejs
 sudo apt-get install -y npm
 # npm packages
 # sudo npm install -g create-react-app react react-dom
 # sudo npm install webpack -g webpack webpack-dev-server
 
-# php 5.6
+# php
+# 5.6
 # sudo add-apt-repository ppa:ondrej/php
 # sudo apt-get update
 # sudo apt-get install -y php5.6 php5.6-cli php5.6-fpm php5.6-mongo php5.6-common php5.6-dev
@@ -107,8 +113,7 @@ sudo apt-get install -y npm
 # sudo apt-get install -y php5.6-pdo php5.6-mysql php5.6-mysqli php5.6-sqlite
 # sudo apt-get install -y php5.6-dom php5.6-xml php5.6-json
 # sudo apt-get install -y php5.6-zip  php5.6-curl php5.6-gd php5.6-imap
-
-# php 7.0
+# 7.0
 sudo add-apt-repository -y ppa:ondrej/php
 sudo apt-get update
 sudo apt-get install -y php7.0 php7.0-fpm php7.0-cli php7.0-opcache php7.0-common php7.0-phpdbg php7.0-dev
@@ -117,8 +122,7 @@ sudo apt-get install -y php7.0-mysql php7.0-pdo php-mongodb php7.0-sqlite php7.0
 sudo apt-get install -y php7.0-dom php7.0-xml php7.0-json
 sudo apt-get install -y php7.0-zip php7.0-curl php7.0-gd php7.0-imap
 sudo apt-get install -y php7.0-imagick
-
-# php 7.1
+# 7.1
 sudo add-apt-repository -y ppa:ondrej/php
 sudo apt-get update
 sudo apt-get install -y php7.1 php7.1-fpm php7.1-cli php7.1-opcache php7.1-common php7.1-phpdbg php7.1-dev
@@ -147,7 +151,7 @@ sudo mv composer.phar /usr/local/bin/composer
 # heroku
 sudo apt-get install -y software-properties-common
 sudo add-apt-repository "deb https://cli-assets.heroku.com/branches/stable/apt ./"
-curl -L https://cli-assets.heroku.com/apt/release.key | sudo apt-key add -
+sudo curl -L https://cli-assets.heroku.com/apt/release.key | sudo apt-key add -
 sudo apt-get update
 sudo apt-get install -y heroku
 
