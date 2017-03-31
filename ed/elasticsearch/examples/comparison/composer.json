@@ -1,0 +1,6 @@
+{
+    "require": {
+        "ruflin/elastica": "^5.1",
+        "elasticsearch/elasticsearch": "^5.1"
+    }
+}

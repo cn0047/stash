@@ -62,9 +62,16 @@ echo debconf shared/accepted-oracle-license-v1-1 seen true | sudo debconf-set-se
 sudo apt-get -y install oracle-java8-installer
 
 # elasticsearch
-curl -L -O https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-2.4.4.deb
+# 2.4.4
+sudo curl -L -O https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-2.4.4.deb
 sudo dpkg -i elasticsearch-2.4.4.deb
-sudo /etc/init.d/elasticsearch start
+sudo service elasticsearch start
+# 5.3.0
+sudo wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+sudo apt-get install apt-transport-https
+sudo echo "deb https://artifacts.elastic.co/packages/5.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-5.x.list
+sudo apt-get update && sudo apt-get install elasticsearch
+sudo service elasticsearch start
 
 # rabbit
 sudo apt-get install -y rabbitmq-server
@@ -101,7 +108,7 @@ sudo apt-get install -y npm
 # sudo apt-get install -y php5.6-dom php5.6-xml php5.6-json
 # sudo apt-get install -y php5.6-zip  php5.6-curl php5.6-gd php5.6-imap
 
-# php 7
+# php 7.0
 sudo add-apt-repository -y ppa:ondrej/php
 sudo apt-get update
 sudo apt-get install -y php7.0 php7.0-fpm php7.0-cli php7.0-opcache php7.0-common php7.0-phpdbg php7.0-dev
@@ -110,6 +117,17 @@ sudo apt-get install -y php7.0-mysql php7.0-pdo php-mongodb php7.0-sqlite php7.0
 sudo apt-get install -y php7.0-dom php7.0-xml php7.0-json
 sudo apt-get install -y php7.0-zip php7.0-curl php7.0-gd php7.0-imap
 sudo apt-get install -y php7.0-imagick
+
+# php 7.1
+sudo add-apt-repository -y ppa:ondrej/php
+sudo apt-get update
+sudo apt-get install -y php7.1 php7.1-fpm php7.1-cli php7.1-opcache php7.1-common php7.1-phpdbg php7.1-dev
+sudo apt-get install -y php7.1-mcrypt php7.1-mbstring php7.1-bcmath
+sudo apt-get install -y php7.1-mysql php7.1-pdo php-mongodb php7.1-sqlite php7.1-sqlite3 php7.1-redis
+sudo apt-get install -y php7.1-dom php7.1-xml php7.1-json
+sudo apt-get install -y php7.1-zip php7.1-curl php7.1-gd php7.1-imap
+sudo apt-get install -y php7.1-imagick
+
 # bz2 calendar cgi cli ctype dba enchant exif fileinfo fpm ftp gettext gmp iconv
 # interbase intl ldap mcrypt mysql mysqli mysqlnd odbc pdo-dblib pdo-firebird
 # pdo-mysql pdo-odbc pdo-pgsql pgsql phar posix pspell readline recode
