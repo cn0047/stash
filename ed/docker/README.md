@@ -91,4 +91,13 @@ docker-compose start
 Docker [Swarm](https://docs.docker.com/swarm) is native clustering for Docker.
 It turns a pool of Docker hosts into a single, virtual Docker host.
 
-https://docs.docker.com/engine/userguide/networking/
+## Network
+
+````
+# list these networks
+docker network ls
+
+docker network inspect
+````
+
+https://docs.docker.com/engine/userguide/networking/work-with-networks/#limitations-of-docker-network
