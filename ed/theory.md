@@ -5,6 +5,18 @@ Orchestration VS Choreography.
 
 Resilience - is the ability of a system to adapt or keep working when challenges occur.
 
+#### Low coupling and high cohesion.
+
+COUPLING refers to the interdependencies between modules.
+
+LOW COUPLING is often a sign of a well-structured computer system and a **good** design.
+
+COHESION describes how related the functions within a single module are.
+<br>
+Classes should have a small number of instance variables.
+In general the more variables a method manipulates the more cohesive that method is to its class.
+A class in which each variable is used by each method is maximally cohesive.
+
 #### Architecture
 
 * Durability

@@ -58,28 +58,6 @@ pngquant --force --quality=25-25 ~/Downloads/origin.png --ext .25.png
 # resize image to particular size.
 mogrify -resize 400x400! src.png
 ````
-````
-# install jpegoptim on centos 6
-sudo yum install libjpeg*
-cd /tmp
-wget http://www.kokkonen.net/tjko/src/jpegoptim-1.4.1.tar.gz
-tar -xzf jpeg*
-cd ./jpeg*
-./configure
-make
-make install
-sudo ln -s /usr/local/bin/jpegoptim /usr/bin/
-
-# install pngquant on centos 6
-sudo yum install libpng*
-wget http://pngquant.org/pngquant-2.4.0-src.tar.bz2
-bunzip2 pngquant-2.4.0-src.tar.bz2
-tar -xvf pngquant-2.4.0-src.tar
-./configure
-make
-make install
-sudo ln -s /usr/local/bin/pngquant /usr/bin/
-````
 
 ####rsync
 
@@ -123,6 +101,8 @@ printf "1\n 2\n 3\n" | awk 'ORS=NR?",":"\n"' # Replace new line with comma
 
 ####shell
 ````
+cut -d' ' -f2 /tmp/file.txt # print column 2 from file using ' ' as delimer
+
 df    # Show information about the file system.
 df -h
 du    # Summarize disk usage of each FILE.
@@ -148,9 +128,6 @@ scp -rp access@host:~/dir/ ~/dir/
 ~/.bash_history
 
 ln -s {file} {symbolic-name}
-
-cat
-tail
 
 which
 

@@ -100,4 +100,4 @@ docker network ls
 docker network inspect
 ````
 
-https://docs.docker.com/engine/userguide/networking/work-with-networks/#limitations-of-docker-network
+https://docs.docker.com/engine/userguide/networking/default_network/dockerlinks/
