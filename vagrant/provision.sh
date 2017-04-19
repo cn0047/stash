@@ -114,14 +114,14 @@ sudo apt-get install -y npm
 # sudo apt-get install -y php5.6-dom php5.6-xml php5.6-json
 # sudo apt-get install -y php5.6-zip  php5.6-curl php5.6-gd php5.6-imap
 # 7.0
-sudo add-apt-repository -y ppa:ondrej/php
-sudo apt-get update
-sudo apt-get install -y php7.0 php7.0-fpm php7.0-cli php7.0-opcache php7.0-common php7.0-phpdbg php7.0-dev
-sudo apt-get install -y php7.0-mcrypt php7.0-mbstring php7.0-bcmath
-sudo apt-get install -y php7.0-mysql php7.0-pdo php-mongodb php7.0-sqlite php7.0-sqlite3 php7.0-redis
-sudo apt-get install -y php7.0-dom php7.0-xml php7.0-json
-sudo apt-get install -y php7.0-zip php7.0-curl php7.0-gd php7.0-imap
-sudo apt-get install -y php7.0-imagick
+# sudo add-apt-repository -y ppa:ondrej/php
+# sudo apt-get update
+# sudo apt-get install -y php7.0 php7.0-fpm php7.0-cli php7.0-opcache php7.0-common php7.0-phpdbg php7.0-dev
+# sudo apt-get install -y php7.0-mcrypt php7.0-mbstring php7.0-bcmath
+# sudo apt-get install -y php7.0-mysql php7.0-pdo php-mongodb php7.0-sqlite php7.0-sqlite3 php7.0-redis
+# sudo apt-get install -y php7.0-dom php7.0-xml php7.0-json
+# sudo apt-get install -y php7.0-zip php7.0-curl php7.0-gd php7.0-imap
+# sudo apt-get install -y php7.0-imagick
 # 7.1
 sudo add-apt-repository -y ppa:ondrej/php
 sudo apt-get update

@@ -7,15 +7,18 @@ class Cell1 extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {img: '', data: props};
+    this.state = {img: '', imgError: 0, data: props};
   }
 
   componentDidMount() {
     if (typeof this.state.data.pictures[0] === 'undefined') {
+      this.setState({imgError: 1});
       return;
     }
     let p = this.state.data.pictures[0];
     if (p.type_id !== 201201) {
+      console.log(this.state.data.user_id, p.type_id);
+      this.setState({imgError: 2});
       return;
     }
     AWS.config.update(MainConfig.aws.mail);
@@ -25,15 +28,17 @@ class Cell1 extends Component {
       Key: this.state.data.bucket_folder + '/public/' + p.file_name.replace('.jpg', '_thumbnail.jpg')
     };
     let that = this;
+    that.setState({imgError: 3});
     s3.getSignedUrl('getObject', args, (err, url) => {
-      that.setState({img: url});
+      that.setState({img: url, imgError: 0});
     });
   }
 
   render() {
     let img = '';
     if (this.state.img === '') {
-      img = <div className="noImg">No image</div>;
+      let em = (this.state.imgError > 1) ? '(ERROR: ' + this.state.imgError + ')' : '';
+      img = <div className="noImg">No image <br/>{em}</div>;
     } else {
       img = <img className="img" src={this.state.img} alt="" />;
     }
