@@ -45,10 +45,9 @@ Convenient information about instances:
 aws ec2 describe-instances \
 --output table \
 --query 'Reservations[*].Instances[*].[Tags[0].Value,PublicDnsName,ImageId,LaunchTime,State.Name]' \
---filter Name=image-id,Values=ami-17a3e164
-
 --filter Name=tag:Name,Values=*prod*web*
 
+--filter Name=image-id,Values=ami-17a3e164
 --filter Name=dns-name,Values=ec2-52-51-65-182.eu-west-1.compute.amazonaws.com
 
 ````

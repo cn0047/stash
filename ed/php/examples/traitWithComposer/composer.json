@@ -1,0 +1,10 @@
+{
+  "name": "kint/ed",
+  "description": "trait",
+  "autoload": {
+    "psr-4": {
+      "Example\\": "src/"
+    }
+  },
+  "require": {}
+}

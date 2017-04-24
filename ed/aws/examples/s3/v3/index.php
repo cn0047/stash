@@ -97,7 +97,7 @@ class Command
      *
      * @throws \RuntimeException In case when picture download failed.
      *
-     * @example php index.php download2 'https://s3-eu-west-1.amazonaws.com/w3.stage.ziipr.bucket/000010215/big.mp4' '/tmp/ziipr.v.mp4'
+     * @example php index.php download2 'https://s3-eu-west-1.amazonaws.com/bucket/000010215/big.mp4' '/tmp/ziipr.v.mp4'
      */
     public function download2($url, $file)
     {
@@ -109,6 +109,21 @@ class Command
         // in line: $response = curl_exec($ch);
         // With this implementation we don't have such errors.
         `curl -s -o $file $url`;
+    }
+
+    /**
+     * @param string $key
+     *
+     * @example php index.php putObjectAcl '000239685/p/pl.jpg'
+     */
+    public function putObjectAcl($key)
+    {
+        $r = $this->s3->putObjectAcl([
+            'Bucket' => $this->config->s3->bucket,
+            'Key' => $key,
+            'ACL' => 'public-read'
+        ]);
+        var_export($r);
     }
 }
 
