@@ -81,6 +81,7 @@ docker-compose up
 
 # runs a one-time command against a service
 docker-compose run
+docker-compose run php php /var/beeGame/index.php
 
 # restart stopped container
 docker-compose start

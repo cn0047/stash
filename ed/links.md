@@ -166,3 +166,4 @@ http://free-proxy-list.net/
 <a href="https://reacttraining.com/react-router/">
     React router
 </a>
+[Domain-Driven Design in PHP](https://leanpub.com/ddd-in-php)

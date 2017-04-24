@@ -1,0 +1,11 @@
+{
+  "name": "kint/ed",
+  "description": "namespaceDI",
+  "autoload": {
+    "psr-4": {
+      "Domain\\": "src/Domain",
+      "Persistence\\": "src/MySQL"
+    }
+  },
+  "require": {}
+}
