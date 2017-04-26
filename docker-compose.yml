@@ -1,0 +1,21 @@
+php-fpm:
+    build: ./docker/php-fpm
+    volumes:
+      - ./ed:/var/www/html/ed
+    links:
+        - mysql
+php-cli:
+    build: ./docker/php-cli
+    volumes:
+        - ./:/gh
+    links:
+        - mysql
+mysql:
+    image: mysql:latest
+    environment:
+        - MYSQL_ROOT_PASSWORD=root
+        - MYSQL_DATABASE=test
+        - MYSQL_USER=dbu
+        - MYSQL_PASSWORD=dbp
+    ports:
+        - "3306:3306"

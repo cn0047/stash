@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # mapping for megacorp
-curl -XPUT http://localhost:9200/megacorp -d '{
+curl -XPUT $host:$port/$index -d '{
     "mappings" : {
       "employee": {
         "properties": {
@@ -11,7 +11,7 @@ curl -XPUT http://localhost:9200/megacorp -d '{
             "about": {"type": "string", "index": "not_analyzed"},
             "last_login_at": {"type": "date", "format": "yyy-MM-dd"},
             "city": {"type": "string", "index": "not_analyzed"},
-            "location": {"type": "geo_point", "lat_lon": "true"},
+            "location": {"type": "geo_point"},
             "interests": {"type": "string"},
             "fetish": {"type": "nested"},
             "pictures": {"type": "nested"}
@@ -31,7 +31,7 @@ curl -XPUT http://localhost:9200/megacorp -d '{
 }'
 
 # Create new documents (employee)
-curl -XPUT localhost:9200/megacorp/employee/1?routing=JohnSmith -d '{
+curl -XPUT $host:$port/$index/$type/1?routing=JohnSmith -d '{
     "first_name" : "John",
     "last_name" : "Smith",
     "age" : 25,
@@ -46,7 +46,7 @@ curl -XPUT localhost:9200/megacorp/employee/1?routing=JohnSmith -d '{
       {"type": 2, "name": "private1"}
     ]
 }'
-curl -XPUT localhost:9200/megacorp/employee/2 -d '{
+curl -XPUT $host:$port/$index/$type/2 -d '{
     "first_name" : "Jane",
     "last_name" : "Smith",
     "age" : 32,
@@ -59,7 +59,7 @@ curl -XPUT localhost:9200/megacorp/employee/2 -d '{
       {"type": 1, "name": "mainForUser2"}
     ]
 }'
-curl -XPUT localhost:9200/megacorp/employee/3 -d '{
+curl -XPUT $host:$port/$index/$type/3 -d '{
     "first_name" : "Douglas",
     "last_name" : "Fir",
     "age" : 35,
@@ -72,7 +72,7 @@ curl -XPUT localhost:9200/megacorp/employee/3 -d '{
       {"type": 2, "name": "mainForUser3"}
     ]
 }'
-curl -XPUT localhost:9200/megacorp/employee/4 -d '{
+curl -XPUT $host:$port/$index/$type/4 -d '{
     "first_name" : "Louis",
     "last_name" : "de Funès",
     "age" : 70,
@@ -82,7 +82,7 @@ curl -XPUT localhost:9200/megacorp/employee/4 -d '{
     "location": {"lat": 48.8567, "lon": 2.3508},
     "interests": [ "fantomas", "theatre", "hollywood" ]
 }'
-curl -XPUT localhost:9200/megacorp/employee/5 -d '{
+curl -XPUT $host:$port/$index/$type/5 -d '{
     "first_name" : "Cristiano",
     "last_name" : "Ronaldo",
     "age" : 31,
@@ -92,7 +92,7 @@ curl -XPUT localhost:9200/megacorp/employee/5 -d '{
     "location": {"lat": 37.1939, "lon": 7.4158},
     "interests": [ "football", "cars", "casino" ]
 }'
-curl -XPUT localhost:9200/megacorp/employee/6 -d '{
+curl -XPUT $host:$port/$index/$type/6 -d '{
     "first_name" : "Gennady",
     "last_name" : "Golovkin",
     "age" : 33,
@@ -102,7 +102,7 @@ curl -XPUT localhost:9200/megacorp/employee/6 -d '{
     "location": {"lat": 49.8333, "lon": 73.1667},
     "interests": [ "boxing", "WBA", "IBO", "cars" ]
 }'
-curl -XPUT localhost:9200/megacorp/employee/7 -d '{
+curl -XPUT $host:$port/$index/$type/7 -d '{
     "first_name" : "Jackie",
     "last_name" : "Chan",
     "age" : 61,
@@ -112,7 +112,7 @@ curl -XPUT localhost:9200/megacorp/employee/7 -d '{
     "location": {"lat": 22.2783, "lon": 114.1747},
     "interests": [ "movie", "hollywood", "kong foo" ]
 }'
-curl -XPUT localhost:9200/megacorp/employee/13 -d '{
+curl -XPUT $host:$port/$index/$type/13 -d '{
     "first_name" : "Wladimir",
     "last_name" : "Klitschko",
     "age" : 40,
@@ -122,7 +122,7 @@ curl -XPUT localhost:9200/megacorp/employee/13 -d '{
     "location": {"lat": 50.4501, "lon": 30.5234},
     "interests": [ "boxing", "sport", "movie", "hollywood" ]
 }'
-curl -XPUT localhost:9200/megacorp/employee/14 -d '{
+curl -XPUT $host:$port/$index/$type/14 -d '{
     "first_name" : "Paul",
     "last_name" : "McCartney",
     "age" : 74,
@@ -132,7 +132,7 @@ curl -XPUT localhost:9200/megacorp/employee/14 -d '{
     "location": {"lat": 51.5074, "lon": 0.1278},
     "interests": [ "london", "music" ]
 }'
-curl -XPUT localhost:9200/megacorp/employee/15 -d '{
+curl -XPUT $host:$port/$index/$type/15 -d '{
     "first_name" : "Wayne",
     "last_name" : "Rooney",
     "age" : 30,
@@ -143,7 +143,7 @@ curl -XPUT localhost:9200/megacorp/employee/15 -d '{
     "interests": ["football", "sport", "cars"],
     "fetish": {"name": "RANGE_ROVER_SPORT"}
 }'
-curl -XPUT localhost:9200/megacorp/employee/16 -d '{
+curl -XPUT $host:$port/$index/$type/16 -d '{
     "first_name" : "Jayce",
     "last_name" : "Chan",
     "age" : 33,

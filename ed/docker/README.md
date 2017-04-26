@@ -69,7 +69,7 @@ or on cloud providers like AWS or Digital Ocean.
 for defining and running multi-container Docker applications.
 
 ````
-# build the project
+# build the project and detached
 docker-compose up -d
 
 # shutdown/clean up
@@ -82,6 +82,7 @@ docker-compose up
 # runs a one-time command against a service
 docker-compose run
 docker-compose run php php /var/beeGame/index.php
+docker-compose run mysql /bin/bash
 
 # restart stopped container
 docker-compose start
