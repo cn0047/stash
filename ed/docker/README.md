@@ -81,7 +81,7 @@ docker-compose up
 
 # runs a one-time command against a service
 docker-compose run
-docker-compose run php php /var/beeGame/index.php
+docker-compose run php-cli php /gh/x.php
 docker-compose run mysql /bin/bash
 
 # restart stopped container

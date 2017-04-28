@@ -82,6 +82,11 @@ $resultSet = json_decode($response, true);
 $users4 = $getUsers($resultSet['hits']['hits']);
 $d4 = microtime(true) - $t4;
 
+printf('Elastica      took: %f, result hash: %s %s', $d1, md5(serialize($users1)), PHP_EOL);
+printf('Elasticsearch took: %f, result hash: %s %s', $d2, md5(serialize($users2)), PHP_EOL);
+printf('Curl          took: %f, result hash: %s %s', $d3, md5(serialize($users3)), PHP_EOL);
+printf('Bash          took: %f, result hash: %s %s', $d4, md5(serialize($users4)), PHP_EOL);
+
 /**
  * Result.
  *
@@ -112,7 +117,3 @@ $d4 = microtime(true) - $t4;
  * Curl          took: 0.005068, result hash: 0b472524a817277d06b3fac3f136de76
  * Bash          took: 0.019623, result hash: 0b472524a817277d06b3fac3f136de76
  */
-printf('Elastica      took: %f, result hash: %s %s', $d1, md5(serialize($users1)), PHP_EOL);
-printf('Elasticsearch took: %f, result hash: %s %s', $d2, md5(serialize($users2)), PHP_EOL);
-printf('Curl          took: %f, result hash: %s %s', $d3, md5(serialize($users3)), PHP_EOL);
-printf('Bash          took: %f, result hash: %s %s', $d4, md5(serialize($users4)), PHP_EOL);

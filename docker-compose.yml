@@ -19,3 +19,5 @@ mysql:
         - MYSQL_PASSWORD=dbp
     ports:
         - "3306:3306"
+es:
+    image: elasticsearch:latest
