@@ -7,6 +7,4 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install intl \
     && docker-php-ext-install opcache \
     && docker-php-ext-install mbstring 
-COPY . /var/www/html/gh
-WORKDIR /var/www/html/gh
 CMD ["php-fpm"]

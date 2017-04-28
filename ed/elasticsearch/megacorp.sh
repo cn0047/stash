@@ -1,5 +1,10 @@
 #!/bin/sh
 
+export host=localhost
+export port=9200
+export index=megacorp
+export type=employee
+
 # mapping for megacorp
 curl -XPUT $host:$port/$index -d '{
     "mappings" : {

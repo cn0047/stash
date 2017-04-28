@@ -7,4 +7,4 @@ Just run:
 docker-compose up
 ```
 
-And open: http://one.d.dev:8080/
+And open: http://1.d.dev/

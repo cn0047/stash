@@ -2,10 +2,10 @@ Cluster
 -
 
 ````
-export host=''
-export port=9201
-export index=
-export type=users
+export host=localhost
+export port=9200
+export index=megacorp
+export type=employee
 ````
 
 Running Elasticsearch:
@@ -142,4 +142,5 @@ curl -XPOST $host:$port/_aliases -d '{
 
 # get aliases
 curl -XGET $host:$port/_alias/
+curl -XGET $host:$port/_cat/aliases?v
 ````

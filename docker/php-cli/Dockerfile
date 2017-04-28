@@ -6,6 +6,4 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install mysql pdo pdo_mysql php-mongodb sqlite sqlite3 redis
     && docker-php-ext-install dom xml json
     && docker-php-ext-install zip curl gd imap
-COPY . /usr/src/gh
-WORKDIR /usr/src/gh
 CMD ["php"]

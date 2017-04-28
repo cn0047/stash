@@ -1,23 +1,52 @@
-php-fpm:
+nginx:
+    image: nginx:latest
+    restart: always
+    ports:
+        - "80:80"
+    volumes:
+        - ./ed:/var/www/html/gh/ed
+        - ./docker/nginx/config.conf:/etc/nginx/conf.d/default.conf
+    links:
+        - php
+
+php:
     build: ./docker/php-fpm
     volumes:
-      - ./ed:/var/www/html/ed
+        - ./ed:/var/www/html/gh/ed
     links:
-        - mysql
-php-cli:
-    build: ./docker/php-cli
+        # - mysql
+        - es
+
+composer:
+    image: composer/composer
     volumes:
-        - ./:/gh
-    links:
-        - mysql
-mysql:
-    image: mysql:latest
-    environment:
-        - MYSQL_ROOT_PASSWORD=root
-        - MYSQL_DATABASE=test
-        - MYSQL_USER=dbu
-        - MYSQL_PASSWORD=dbp
-    ports:
-        - "3306:3306"
+        - ./web/app:/app
+    command: install
+
 es:
     image: elasticsearch:latest
+    restart: always
+    ports:
+        - "9200:9200"
+        - "9300:9300"
+    volumes:
+        - ./docker/elasticsearch/config.yml:/etc/elasticsearch/elasticsearch.yml
+
+# php-cli:
+#     build: ./docker/php-cli
+#     volumes:
+#         - ./:/gh
+#     links:
+#         - mysql
+#         - es
+
+# mysql:
+#     image: mysql:latest
+#     restart: always
+#     environment:
+#         - MYSQL_ROOT_PASSWORD=root
+#         - MYSQL_DATABASE=test
+#         - MYSQL_USER=dbu
+#         - MYSQL_PASSWORD=dbp
+#     ports:
+#         - "3306:3306"
