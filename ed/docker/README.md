@@ -25,6 +25,7 @@ docker run -t -i ubuntu:latest /bin/bash
 # ` -P` maps any required network ports
 # `-p`
 docker run -d -p 8081:80 timber/ziipr
+docker run -d -p 192.168.0.32:1111:1111 timber/ziipr
 
 docker-machine ip
 

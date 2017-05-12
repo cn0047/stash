@@ -1,2 +1,2 @@
 network.bind_host: ["0.0.0.0"]
-http.port: 9201
+http.port: 9200
