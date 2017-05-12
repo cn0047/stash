@@ -45,12 +45,3 @@ javaScript frameworks day 2016
 * await
 * actor model
 * csp
-
-Евгений Обрезков - Behind the terminal
-
-Martin Naumann - Workshop: Shaders - unlocking the GPU with JavaScript
-Martin Naumann - Workshop: Shaders - unlocking the GPU with JavaScript
-Michael North - Ember Workshop
-Michael North - Ember Workshop
-
-https://frameworksdays.com/event/js-frameworks-day-2016/page/program

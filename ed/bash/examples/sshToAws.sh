@@ -3,6 +3,10 @@
 # sudo chmod +x /home/kovpak/web/kovpak/gh/ed/bash/examples/sshToAws.sh
 # sudo ln -s /home/kovpak/web/kovpak/gh/ed/bash/examples/sshToAws.sh /usr/bin/sta
 
+# OSX
+# sudo chmod +x /Users/kvol/web/kovpak/gh/ed/bash/examples/sshToAws.sh
+# sudo ln -s /Users/kvol/web/kovpak/gh/ed/bash/examples/sshToAws.sh /usr/local/bin/sta
+
 esc() {
     printf "\n";
     exit

@@ -3,6 +3,10 @@
 # sudo chmod +x /home/kovpak/web/kovpak/gh/ed/bash/examples/describeAwsInstances.sh
 # sudo ln -s /home/kovpak/web/kovpak/gh/ed/bash/examples/describeAwsInstances.sh /usr/bin/dai
 
+# OSX
+# sudo chmod +x /Users/kvol/web/kovpak/gh/ed/bash/examples/describeAwsInstances.sh
+# sudo ln -s /Users/kvol/web/kovpak/gh/ed/bash/examples/describeAwsInstances.sh /usr/local/bin/dai
+
 if [ -z "$1" ]; then
     echo 'Please specify name.'
     exit 1

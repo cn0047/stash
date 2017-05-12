@@ -1,8 +1,6 @@
 Php frameworks day 2014
 -
 
-http://frameworksdays.com/event/php-frameworks-day-2014/page/program
-
 ####Олег Зинченко - Symfony best practices и не только
 * routing better in yaml.
 

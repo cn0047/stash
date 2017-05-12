@@ -50,6 +50,7 @@ Acronyms
 [VPN](#VPN)
 [WSDL](#WSDL)
 [XML](#XML)
+[YAGNI](#YAGNI)
 
 <dl>
 
@@ -199,5 +200,8 @@ Acronyms
 
 <dt><a name="XML"></a>XML</dt>
 <dd>Extensible Markup Language.</dd>
+
+<dt><a name="YAGNI"></a>YAGNI</dt>
+<dd>You ain't gonna need it.</dd>
 
 </dl>
