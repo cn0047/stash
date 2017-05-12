@@ -1,20 +1,19 @@
 <?php
 
 require_once __DIR__ . '/vendor/autoload.php';
-require_once __DIR__ . '/../../config.php';
 
 use Aws\S3\S3Client;
+use PhpAmqpLib\Connection\AMQPStreamConnection;
+use PhpAmqpLib\Message\AMQPMessage;
 
-/**
- * @example  php index.php upload
- */
-class Command
+class Bridge
 {
     public $config;
     public $s3;
 
-    public function __construct($configAws)
+    public function __construct()
     {
+        $configAws = include __DIR__ . '/../../config.php';
         $this->config = $configAws;
         $this->s3 = S3Client::factory([
             'region' => $configAws->region,
@@ -23,6 +22,25 @@ class Command
         ]);
     }
 
+    public function fileExists($key)
+    {
+        try {
+            $this->s3->getObject([
+                'Bucket' => $this->config->s3->bucket,
+                'Key' => $key,
+            ]);
+            return true;
+        } catch (\Aws\S3\Exception\S3Exception $e) {
+        }
+        return false;
+    }
+}
+
+class Command
+{
+    /**
+     * @example  php index.php upload
+     */
     public function upload()
     {
     }
@@ -43,16 +61,6 @@ class Command
      */
     public function fileExists($key)
     {
-        try {
-            $o = $this->s3->getObject([
-                'Bucket' => $this->config->s3->bucket,
-                'Key' => $key,
-            ]);
-            $r = $o;
-        } catch (\Aws\S3\Exception\S3Exception $e) {
-            $r = false;
-        }
-        var_export($r);
     }
 
     /**
@@ -125,11 +133,104 @@ class Command
         ]);
         var_export($r);
     }
+
+    /**
+     * @example php index.php importCsvIntoRabbitMQ /vagrant/p.csv
+     */
+    public function importCsvIntoRabbitMQ($fromFile) {
+        (new Helper())->importCsvIntoRabbitMQ($fromFile);
+    }
+
+    /**
+     * @example php index.php checkS3FromRabbitMQ
+     */
+    public function checkS3FromRabbitMQ() {
+        (new Helper())->checkS3FromRabbitMQ();
+    }
+
+}
+
+class Helper
+{
+    private function getCsvRow($csvFile)
+    {
+        $handle = fopen($csvFile, 'rb');
+        while (feof($handle) === false) {
+            yield fgetcsv($handle);
+        }
+        fclose($handle);
+    }
+
+    public function importCsvIntoRabbitMQ($fromFile) {
+        $connection = new AMQPStreamConnection('localhost', 5672, 'guest', 'guest');
+        $channel = $connection->channel();
+        $channel->queue_declare('aws_s3', false, true, false, false);
+
+        $i = 0;
+        foreach ($this->getCsvRow($fromFile) as $row) {
+            $data = array_map('trim', array_filter(str_getcsv($row[0], '|')));
+            if (empty($data)) {
+                break;
+            }
+            $body = json_encode(array_combine(
+                ['id', 'user', 'type', 'status', 'fileName', 'createdAt'],
+                $data
+            ));
+            $msg = new AMQPMessage($body, ['delivery_mode' => 2] /* make message persistent */);
+            $channel->basic_publish($msg, '', 'aws_s3');
+            $i++;
+            echo "\r [✅] $i";
+        }
+
+        $channel->close();
+        $connection->close();
+    }
+
+    public function checkS3FromRabbitMQ()
+    {
+        echo ' [*] Waiting for messages. To exit press CTRL+C', "\n";
+
+        $connection = new AMQPStreamConnection('localhost', 5672, 'guest', 'guest');
+        $channel = $connection->channel();
+        $channel->queue_declare('aws_s3', false, true, false, false);
+
+        $s3 = new Bridge();
+        $redis = new Redis();
+        $redis->connect('127.0.0.1', 6379);
+
+        $callback = function ($msg) use ($s3, $redis) {
+            $body = $msg->body;
+            $data = json_decode($body, true);
+            $user = sprintf('%09s', $data['user']);
+            $type = $data['type'] === '201203' ? 'private' : 'public';
+            foreach (['', '_thumbnail.jpg', '_w400_high_thumbnail.jpg', '_w400_low_thumbnail.jpg'] as $suffix) {
+                if (empty($suffix)) {
+                    $name = $data['fileName'];
+                } else {
+                    $name = str_replace('.jpg', $suffix, $data['fileName']);
+                }
+                $key = "$user/$type/$name";
+                $exists = (string)$s3->fileExists($key);
+                $sign = $exists === '1' ? '✅' : '❌';
+                $redis->incr("$exists.$suffix");
+                echo "[$sign ] Done: $key \n";
+            }
+            $msg->delivery_info['channel']->basic_ack($msg->delivery_info['delivery_tag']);
+        };
+
+        $channel->basic_qos(null, 1, null);
+        $channel->basic_consume('aws_s3', '', false, false, false, false, $callback);
+        while(count($channel->callbacks)) {
+            $channel->wait();
+        }
+        $channel->close();
+        $connection->close();
+    }
 }
 
 $phpSelf = array_shift($argv);
 $action = array_shift($argv);
-(new Command($config_aws))->$action(...$argv);
+(new Command())->$action(...$argv);
 
 
 // Upload image to s3.

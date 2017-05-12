@@ -14,7 +14,7 @@ Vagrant.configure(2) do |config|
     node.vm.hostname = 'ed'
     node.vm.network :private_network, ip: "192.168.56.101"
     node.vm.network :forwarded_port, guest: 22, host: 10121, id: "ssh"
-    node.vm.provision :hosts, :sync_hosts => true
+    # node.vm.provision :hosts, :sync_hosts => true
     node.vm.provider "virtualbox" do |v|
       v.memory = 8192
       v.cpus = 4

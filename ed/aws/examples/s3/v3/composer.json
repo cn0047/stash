@@ -1,5 +1,6 @@
 {
     "require": {
-        "aws/aws-sdk-php": "^3.18"
+        "aws/aws-sdk-php": "^3.18",
+        "php-amqplib/php-amqplib": "^2.6"
     }
 }
