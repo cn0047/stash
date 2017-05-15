@@ -82,8 +82,9 @@ docker-compose up
 
 # runs a one-time command against a service
 docker-compose run
-docker-compose run php-cli php /gh/x.php
-docker-compose run mysql /bin/bash
+
+docker-compose exec php-cli php /gh/x.php
+docker-compose exec mysql /bin/bash
 
 # restart stopped container
 docker-compose start

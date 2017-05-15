@@ -14,24 +14,25 @@ php-fpm:
     volumes:
         - ./ed:/var/www/html/gh/ed
     links:
-        # - mysql
+        - mysql
         - es
 
 # With purpose to check php-cli just run:
-# docker-compose run php-cli php /gh/ed/docker/examples/one/src/es.php
+# docker-compose exec php-cli php /gh/ed/docker/examples/one/src/es.php
 php-cli:
     build: ./docker/php-cli
     volumes:
         - ./ed:/gh/ed
     links:
-        # - mysql
+        - mysql
         - es
 
-# composer:
-#     image: composer/composer
-#     volumes:
-#         - ./ed:/gh/ed
-#     command: install
+composer:
+    image: composer/composer
+    working_dir: /gh/ed
+    volumes:
+        - ./ed/docker/examples/one/src:/gh/ed
+    command: install
 
 es:
     image: elasticsearch:latest
@@ -42,8 +43,8 @@ es:
     volumes:
         - ./docker/elasticsearch/config.yml:/etc/elasticsearch/elasticsearch.yml
 
-# docker-compose run mysql /bin/bash
-# docker run -d --name mydb --expose 3306 \     alpine:latest nc -l 0.0.0.0:3306
+# docker-compose exec mysql /bin/bash
+# docker-compose exec mysql service mysql status
 mysql:
     image: mysql:latest
     restart: always
@@ -54,3 +55,7 @@ mysql:
         - MYSQL_PASSWORD=dbp
     ports:
         - "3306:3306"
+
+# sudo docker pull mongo:latest
+# sudo mkdir -p /data
+# sudo docker run -t -i -v /data:/data --name mongodb -d mongo
