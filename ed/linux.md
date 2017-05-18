@@ -103,9 +103,10 @@ printf "1\n 2\n 3\n" | awk 'ORS=NR?",":"\n"' # Replace new line with comma
 ````
 cut -d' ' -f2 /tmp/file.txt # print column 2 from file using ' ' as delimer
 
-df    # Show information about the file system.
+df            # Show information about the file system.
 df -h
-du    # Summarize disk usage of each FILE.
+du            # Summarize disk usage of each FILE.
+du -sh foto/* # Summarize disk usage of each dir in foto dir.
 
 uptime # CPU load average
 

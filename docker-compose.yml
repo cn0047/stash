@@ -15,6 +15,7 @@ php-fpm:
         - ./ed:/var/www/html/gh/ed
     links:
         - mysql
+        - mongo
         - es
 
 # With purpose to check php-cli just run:
@@ -25,8 +26,13 @@ php-cli:
         - ./ed:/gh/ed
     links:
         - mysql
+        - mongo
         - es
 
+phalcon:
+    build: ./docker/phalcon
+
+# cd ./ed/docker/examples/one/src && docker run --rm -ti -v $PWD:/app composer install
 composer:
     image: composer/composer
     working_dir: /gh/ed
@@ -45,6 +51,7 @@ es:
 
 # docker-compose exec mysql /bin/bash
 # docker-compose exec mysql service mysql status
+# docker-compose exec mysql sh -c 'mysql -uUSR -pPWD -DDB < /data/mysql.dump.sql'
 mysql:
     image: mysql:latest
     restart: always
@@ -56,6 +63,5 @@ mysql:
     ports:
         - "3306:3306"
 
-# sudo docker pull mongo:latest
-# sudo mkdir -p /data
-# sudo docker run -t -i -v /data:/data --name mongodb -d mongo
+mongo:
+    image: mongo:latest
