@@ -148,6 +148,19 @@ class Command
         (new Helper())->checkS3FromRabbitMQ();
     }
 
+    /**
+     * @example php index.php deleteAbandonedFilesFromS3
+     */
+    public function deleteAbandonedFilesFromS3() {
+        (new Helper())->deleteAbandonedFilesFromS3();
+    }
+
+    /**
+     * @example php index.php recreateMissedFilesOnS3
+     */
+    public function recreateMissedFilesOnS3() {
+        (new Helper())->recreateMissedFilesOnS3();
+    }
 }
 
 class Helper
@@ -181,6 +194,7 @@ class Helper
             $i++;
             echo "\r [✅] $i";
         }
+        echo PHP_EOL;
 
         $channel->close();
         $connection->close();
@@ -214,6 +228,113 @@ class Helper
                 $sign = $exists === '1' ? '✅' : '❌';
                 $redis->incr("$exists.$suffix");
                 echo "[$sign ] Done: $key \n";
+            }
+            $msg->delivery_info['channel']->basic_ack($msg->delivery_info['delivery_tag']);
+        };
+
+        $channel->basic_qos(null, 1, null);
+        $channel->basic_consume('aws_s3', '', false, false, false, false, $callback);
+        while(count($channel->callbacks)) {
+            $channel->wait();
+        }
+        $channel->close();
+        $connection->close();
+    }
+
+    public function deleteAbandonedFilesFromS3()
+    {
+        echo ' [*] Waiting for messages. To exit press CTRL+C', "\n";
+
+        $connection = new AMQPStreamConnection('localhost', 5672, 'guest', 'guest');
+        $channel = $connection->channel();
+        $channel->queue_declare('aws_s3', false, true, false, false);
+
+        $s3 = new Bridge();
+        $redis = new Redis();
+        $redis->connect('127.0.0.1', 6379);
+
+        $callback = function ($msg) use ($s3, $redis) {
+            $body = $msg->body;
+            $data = json_decode($body, true);
+            $user = sprintf('%09s', $data['user']);
+            $type = $data['type'] === '201203' ? 'private' : 'public';
+            foreach (['', '_thumbnail.jpg', '_w400_high_thumbnail.jpg', '_w400_low_thumbnail.jpg'] as $suffix) {
+                if (empty($suffix)) {
+                    $name = $data['fileName'];
+                } else {
+                    $name = str_replace('.jpg', $suffix, $data['fileName']);
+                }
+                $key = "$user/$type/$name";
+                $exists = $s3->fileExists($key);
+                $keyBackup = "backup/$user/$type/$name";
+                $existsBackup = $s3->fileExists($keyBackup);
+                var_export([$key, $exists, $existsBackup]);
+            }
+            die;
+            $msg->delivery_info['channel']->basic_ack($msg->delivery_info['delivery_tag']);
+        };
+
+        $channel->basic_qos(null, 1, null);
+        $channel->basic_consume('aws_s3', '', false, false, false, false, $callback);
+        while(count($channel->callbacks)) {
+            $channel->wait();
+        }
+        $channel->close();
+        $connection->close();
+    }
+
+    public function recreateMissedFilesOnS3()
+    {
+        echo ' [*] Waiting for messages. To exit press CTRL+C', "\n";
+
+        $connection = new AMQPStreamConnection('localhost', 5672, 'guest', 'guest');
+        $channel = $connection->channel();
+        $channel->queue_declare('aws_s3', false, true, false, false);
+
+        $s3 = new Bridge();
+        $redis = new Redis();
+        $redis->connect('127.0.0.1', 6379);
+
+        $callback = function ($msg) use ($s3, $redis) {
+            $body = $msg->body;
+            $data = json_decode($body, true);
+            $user = sprintf('%09s', $data['user']);
+            $type = $data['type'] === '201203' ? 'private' : 'public';
+            // All keys.
+            $o = "$user/$type/" . $data['fileName'];
+            $t = "$user/$type/" . str_replace('.jpg', '_thumbnail.jpg', $data['fileName']);
+            $th = "$user/$type/" . str_replace('.jpg', '_w400_high_thumbnail.jpg', $data['fileName']);
+            $tl = "$user/$type/" . str_replace('.jpg', '_w400_low_thumbnail.jpg', $data['fileName']);
+            $bo = "backup/$o";
+            $bt = "backup/$t";
+            // Existence of all keys.
+            $eo = (int)$s3->fileExists($o);
+            $et = (int)$s3->fileExists($t);
+            $eth = (int)$s3->fileExists($th);
+            $etl = (int)$s3->fileExists($tl);
+            $ebo = (int)$s3->fileExists($bo);
+            $ebt = (int)$s3->fileExists($bt);
+            //
+            if ($eo === 0 || $et === 0 || $eth === 0 || $etl === 0) {
+                $s = $eo + $et + $eth + $etl + $ebo + $ebt;
+                if ($s === 0) {
+                    $sign = '❌';
+                } else {
+                    $sign = '2️⃣';
+                    echo 'Keys: ';
+                    var_export([
+                        $o => $eo,
+                        $t => $et,
+                        $th => $eth,
+                        $tl => $etl,
+                        $bo => $ebo,
+                        $bt => $ebt,
+                        $bth => $ebth,
+                        $btl => $ebtl,
+                    ]);
+                    die;
+                }
+                echo " [$sign] SUM = $s";
             }
             $msg->delivery_info['channel']->basic_ack($msg->delivery_info['delivery_tag']);
         };

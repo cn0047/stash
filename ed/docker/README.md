@@ -11,7 +11,8 @@ docker
 docker build -t docker-whale .
 
 # run
-docker run docker-whale
+docker run -it --rm node:latest node -v
+docker run -it --rm --name log -p 3000:3000 -v "$PWD":/usr/src/app -w /usr/src/app node:latest node src/index.js
 
 docker pull ubuntu
 

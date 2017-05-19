@@ -1,0 +1,6 @@
+[mysqld]
+server-id=1
+binlog_format=ROW
+log_bin=/var/log/mysql/mysql-bin.log
+innodb_flush_log_at_trx_commit=1
+sync_binlog=1
