@@ -1,0 +1,6 @@
+network.bind_host: ["0.0.0.0"]
+http.port: 9200
+cluster.name: es
+node.name: master-1
+node.master: true
+node.data: false

@@ -17,7 +17,7 @@ php-fpm:
         - mysql-master
         - mysql-slave-1
         - mongo
-        - es
+        - es-master-1
 
 # With purpose to check php-cli just run:
 # docker-compose exec php-cli php /gh/ed/docker/examples/one/src/es.php
@@ -29,7 +29,7 @@ php-cli:
         - mysql-master
         - mysql-slave-1
         - mongo
-        - es
+        - es-master-1
 
 phalcon:
     build: ./docker/phalcon
@@ -42,14 +42,43 @@ composer:
         - ./ed/docker/examples/one/src:/gh/ed
     command: install
 
-es:
+es-master-1:
+    container_name: es-master-1
     image: elasticsearch:latest
     restart: always
     ports:
-        - "9200:9200"
-        - "9300:9300"
+        - "9201:9200"
+        - "9301:9300"
     volumes:
-        - ./docker/elasticsearch/config.yml:/etc/elasticsearch/elasticsearch.yml
+        - ./docker/elasticsearch/config-master-1.yml:/etc/elasticsearch/elasticsearch.yml
+    links:
+        - es-data-1
+    environment:
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    mem_limit: 1g
+
+es-data-1:
+    container_name: es-data-1
+    image: elasticsearch:latest
+    restart: always
+    ports:
+        - "9202:9200"
+        - "9302:9300"
+    volumes:
+        - ./docker/elasticsearch/config-data-1.yml:/etc/elasticsearch/elasticsearch.yml
+    environment:
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    mem_limit: 1g
 
 #
 # docker-compose exec mysql /bin/bash
@@ -82,13 +111,13 @@ mysql-slave-1:
     environment:
         - MYSQL_ROOT_PASSWORD=root
         - MYSQL_DATABASE=test
-        - MYSQL_USER=dbu
-        - MYSQL_PASSWORD=dbp
+        - MYSQL_USER=dbu2
+        - MYSQL_PASSWORD=dbp2
     ports:
         - "3308:3306"
     volumes:
         - ./docker/mysql/mysql-bin.log:/var/log/mysql/mysql-bin.log
-        - ./docker/mysql/config-master.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf
+        - ./docker/mysql/config-slave-1.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf
     links:
         - mysql-master
 

@@ -8,9 +8,6 @@
 network.bind_host: ["0.0.0.0"]
 http.port: 9201
 
-script.engine.groovy.inline.search: on
-script.engine.groovy.inline.update: on
-
 # I am a Pure Master node
 
 cluster.name: prod-zii
@@ -39,11 +36,12 @@ discovery.ec2.groups: sg-b39627d4
 plugin.mandatory: cloud-aws
 cloud.aws.region: eu-west-1
 
-http.port: 9201
 http.cors.enabled: true
 
 # Needed for Ziipr
 
+script.engine.groovy.inline.search: on
+script.engine.groovy.inline.update: on
 script.engine.groovy.inline.search: true
 script.engine.groovy.inline.update: true
 script.groovy.sandbox.enabled: true
