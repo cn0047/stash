@@ -34,6 +34,15 @@ class Bridge
         }
         return false;
     }
+
+    public function copy($fromKey, $toKey)
+    {
+        return $this->s3->copyObject([
+            'Bucket' => $this->config->s3->bucket,
+            'Key' => $toKey,
+            'CopySource' => urlencode($this->config->s3->bucket . '/' . $fromKey),
+        ]);
+    }
 }
 
 class Command
@@ -61,6 +70,45 @@ class Command
      */
     public function fileExists($key)
     {
+    }
+
+    /**
+     * @example php index.php filesExists
+     */
+    public function filesExists()
+    {
+        $s3 = new Bridge();
+
+        $a = [
+        ];
+
+        foreach ($a as $key) {
+            $o = $key;
+            $t = str_replace('.jpg', '_thumbnail.jpg', $key);
+            $eo = $s3->fileExists($o);
+            $et = $s3->fileExists($t);
+            //
+            if ($eo === true && $et === false) {
+                $s3->copy($o, $t);
+                echo "[➡️] Copied: $o -> $t" . PHP_EOL;
+            }
+            if ($eo === false && $et === true) {
+                $s3->copy($t, $o);
+                echo "[➡️] Copied: $t -> $o" . PHP_EOL;
+            }
+
+//            echo PHP_EOL;
+//            foreach (['', '_thumbnail.jpg', '_w400_high_thumbnail.jpg', '_w400_low_thumbnail.jpg'] as $suffix) {
+//                if (empty($suffix)) {
+//                    $name = $key;
+//                } else {
+//                    $name = str_replace('.jpg', $suffix, $key);
+//                }
+//                $exists = (string)$b->fileExists($name);
+//                $sign = $exists === '1' ? '✅' : '❌';
+//                echo "[$sign ] Done: $name \n";
+//            }
+        }
     }
 
     /**
@@ -224,10 +272,51 @@ class Helper
                     $name = str_replace('.jpg', $suffix, $data['fileName']);
                 }
                 $key = "$user/$type/$name";
-                $exists = (string)$s3->fileExists($key);
+                $e = $s3->fileExists($key);
+                $exists = (string)$e;
                 $sign = $exists === '1' ? '✅' : '❌';
                 $redis->incr("$exists.$suffix");
-                echo "[$sign ] Done: $key \n";
+                echo "\n [$sign ] Done: $key";
+                if ($e === false) {
+                    if (in_array($data['fileName'], [
+                        'photo_2017-05-22_08-17-09.jpg',
+                        'photo_2017-05-22_11-24-29.jpg',
+                    ], true)) {
+                        echo '🙈';
+                        continue;
+                    }
+                    if (preg_match('/_w400_....?_thumbnail\.jpg$/', $key)) {
+                        echo '🙈2️⃣';
+                        continue;
+                    }
+                    $url = 'http://ec2-52-31-39-186.eu-west-1.compute.amazonaws.com/x?f=' . $data['fileName'];
+                    $r = `curl -s $url`;
+                    $d = json_decode($r, true);
+                    if (json_last_error() !== JSON_ERROR_NONE) {
+                        var_export($r);
+                        die;
+                    }
+                    if (count($d) === 1) {
+                        if ($d[0]['StatusID'] === '201303' || $d[0]['StatusID'] === '201304') {
+                            echo '🚮';
+                        } elseif ($d[0]['TypeID'] === '201203') {
+                            echo '⬇️';
+                        } else {
+                            die;
+                        }
+                    } elseif (count($d) === 2) {
+                        if (
+                            ($d[0]['StatusID'] === '201303' || $d[0]['StatusID'] === '201304')
+                            && ($d[1]['StatusID'] === '201303' || $d[1]['StatusID'] === '201304')
+                        ) {
+                            echo '🚮 2️⃣';
+                        } else {
+                            die;
+                        }
+                    } else {
+                        die;
+                    }
+                }
             }
             $msg->delivery_info['channel']->basic_ack($msg->delivery_info['delivery_tag']);
         };
