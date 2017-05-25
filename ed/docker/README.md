@@ -5,16 +5,12 @@ docker
 ## Overview
 
 ````
+docker pull ubuntu
+
 # build image from Dokerfile in dir ./examples/mydockerbuild
 # `-t` it is tag
 # `.` it is current directory 
 docker build -t docker-whale .
-
-# run
-docker run -it --rm node:latest node -v
-docker run -it --rm --name log -p 3000:3000 -v "$PWD":/usr/src/app -w /usr/src/app node:latest node src/index.js
-
-docker pull ubuntu
 
 # run an interactive container 
 # `-t` terminal
@@ -28,6 +24,11 @@ docker run -t -i ubuntu:latest /bin/bash
 docker run -d -p 8081:80 timber/ziipr
 docker run -d -p 192.168.0.32:1111:1111 timber/ziipr
 
+# exec
+docker exec -it happy_babbage
+docker exec -it happy_babbage bash
+cd /opt/docker/etc/supervisor.d
+
 docker-machine ip
 
 # information about all the containers
@@ -35,6 +36,9 @@ docker ps -a
 
 # shows the standard output of a container
 docker logs
+
+# show containers & images
+docker images
 
 # stop the running container
 docker stop
@@ -50,13 +54,20 @@ docker rmi -f docker-whale
 exit
 ````
 
-````
-# show containers & images
-docker images
+#### RUN
 
-docker exec -it happy_babbage
-docker exec -it happy_babbage bash
-cd /opt/docker/etc/supervisor.d
+````
+docker run -ti --rm -v $PWD:/app composer install
+
+docker run -it --rm node:latest node -v
+docker run -it --rm --name log -p 3000:3000 -v $PWD:/usr/src/app -w /usr/src/app node:latest node src/index.js
+
+# ES cluster
+docker run -it --rm -p 9200:9200 --name es-master-1 elasticsearch:2.2 \
+    elasticsearch -Des.network.host=_eth0_ -Des.cluster.name=ec -Des.node.master=true -Des.node.data=false
+docker run -it --rm -p 9201:9200 --name es-data-1 --link es-master-1 elasticsearch:2.2 \
+    elasticsearch -Des.network.host=_eth0_ -Des.cluster.name=ec -Des.node.master=false -Des.node.data=true \
+    -Des.discovery.zen.ping.unicast.hosts=es-master-1
 ````
 
 ## Machine

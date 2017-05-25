@@ -14,25 +14,18 @@ php-fpm:
     volumes:
         - ./ed:/var/www/html/gh/ed
     links:
-        - mysql-master
-        - mysql-slave-1
         - mongo
 
-# With purpose to check php-cli just run:
-# docker-compose exec php-cli php /gh/ed/docker/examples/one/src/es.php
 php-cli:
     build: ./docker/php-cli
     volumes:
         - ./ed:/gh/ed
     links:
-        - mysql-master
-        - mysql-slave-1
         - mongo
 
 phalcon:
     build: ./docker/phalcon
 
-# cd ./ed/docker/examples/one/src && docker run --rm -ti -v $PWD:/app composer install
 composer:
     image: composer/composer
     working_dir: /gh/ed

@@ -70,6 +70,7 @@ class Command
      */
     public function fileExists($key)
     {
+        var_export((new Bridge())->fileExists($key));
     }
 
     /**
