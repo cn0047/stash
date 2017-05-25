@@ -54,20 +54,51 @@ docker rmi -f docker-whale
 exit
 ````
 
-#### RUN
+### RUN
 
 ````
 docker run -ti --rm -v $PWD:/app composer install
 
 docker run -it --rm node:latest node -v
 docker run -it --rm --name log -p 3000:3000 -v $PWD:/usr/src/app -w /usr/src/app node:latest node src/index.js
+````
 
-# ES cluster
+#### ES cluster
+
+````
+# init master 1 node
 docker run -it --rm -p 9200:9200 --name es-master-1 elasticsearch:2.2 \
     elasticsearch -Des.network.host=_eth0_ -Des.cluster.name=ec -Des.node.master=true -Des.node.data=false
+
+# init data 1 node
 docker run -it --rm -p 9201:9200 --name es-data-1 --link es-master-1 elasticsearch:2.2 \
     elasticsearch -Des.network.host=_eth0_ -Des.cluster.name=ec -Des.node.master=false -Des.node.data=true \
     -Des.discovery.zen.ping.unicast.hosts=es-master-1
+````
+
+#### MYSQL cluster
+
+````
+# init master node
+docker run -it --rm -p 3307:3306 --name mysql-master \
+    -v $PWD/docker/mysql/mysql-bin.log:/var/log/mysql/mysql-bin.log \
+    -v $PWD/docker/mysql/config-master.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf \
+    -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=test -e MYSQL_USER=dbu -e MYSQL_PASSWORD=dbp mysql:latest
+
+# replication user on master
+docker exec mysql-master mysql -uroot -proot -e "CREATE USER 'repl'@'%' IDENTIFIED BY 'slavepass'"
+docker exec mysql-master mysql -uroot -proot -e "GRANT REPLICATION SLAVE ON *.* TO 'repl'@'%'"
+
+# init slave 1 node
+docker run -it --rm -p 3308:3306 --name mysql-slave-1 --link mysql-master \
+    -v $PWD/docker/mysql/mysql-bin.log:/var/log/mysql/mysql-bin.log \
+    -v $PWD/docker/mysql/config-slave-1.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf \
+    -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=test -e MYSQL_USER=dbu2 -e MYSQL_PASSWORD=dbp2 mysql:latest
+
+# start slave 1
+docker exec mysql-slave-1 mysql -uroot -proot -e "CHANGE MASTER TO MASTER_HOST='mysql-master', MASTER_USER='repl', MASTER_PASSWORD='slavepass'"
+docker exec mysql-slave-1 mysql -uroot -proot -e "START SLAVE"
+docker exec mysql-slave-1 mysql -uroot -proot -e "SHOW SLAVE STATUS \G"
 ````
 
 ## Machine
