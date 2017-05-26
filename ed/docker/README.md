@@ -68,6 +68,9 @@ docker run -it --rm --name php-cli -v $PWD/ed:/gh/ed php-cli php -v
 # nodejs
 docker run -it --rm node:latest node -v
 docker run -it --rm --name log -p 3000:3000 -v $PWD:/usr/src/app -w /usr/src/app node:latest node src/index.js
+
+docker run -it --rm -v $PWD/ed/react/examples/hw/package.json:/package.json node:latest npm install
+docker run -it --rm --name react -p 3000:3000 -v $PWD/ed/react/examples/hw/package.json:/package.json node:latest npm start
 ````
 
 #### ES cluster

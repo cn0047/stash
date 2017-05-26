@@ -101,6 +101,9 @@ printf "1\n 2\n 3\n" | awk 'ORS=NR?",":"\n"' # Replace new line with comma
 
 ####shell
 ````
+sudo bash -c 'echo "APP_ENVIRONMENT=prod" > /etc/environment'
+sh -c 'echo 200'
+
 cut -d' ' -f2 /tmp/file.txt # print column 2 from file using ' ' as delimer
 
 df            # Show information about the file system.
