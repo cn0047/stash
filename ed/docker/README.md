@@ -57,8 +57,15 @@ exit
 ### RUN
 
 ````
-docker run -ti --rm -v $PWD:/app composer install
+# composer
+docker build -t xcomposer ./docker/composer
+docker run -ti --rm -v $PWD:/app xcomposer install
 
+# php-cli
+docker build -t php-cli ./docker/php-cli
+docker run -it --rm --name php-cli -v $PWD/ed:/gh/ed php-cli php -v
+
+# nodejs
 docker run -it --rm node:latest node -v
 docker run -it --rm --name log -p 3000:3000 -v $PWD:/usr/src/app -w /usr/src/app node:latest node src/index.js
 ````
@@ -74,6 +81,20 @@ docker run -it --rm -p 9200:9200 --name es-master-1 elasticsearch:2.2 \
 docker run -it --rm -p 9201:9200 --name es-data-1 --link es-master-1 elasticsearch:2.2 \
     elasticsearch -Des.network.host=_eth0_ -Des.cluster.name=ec -Des.node.master=false -Des.node.data=true \
     -Des.discovery.zen.ping.unicast.hosts=es-master-1
+````
+
+````
+# init master 1 node
+docker run -it --rm -p 9200:9200 --name es-master-1 \
+    -e "bootstrap.memory_lock=true" -e "ES_JAVA_OPTS=-Xms256m -Xmx256m" \
+    -e "http.host=_eth0_" -e "cluster.name=ec" \
+    -e "node.master=true" -e "node.data=false" elasticsearch:5.4
+
+# init data 1 node
+docker run -it --rm -p 9201:9200 --name es-data-1 --link es-master-1  \
+    -e "bootstrap.memory_lock=true" -e "ES_JAVA_OPTS=-Xms256m -Xmx256m" \
+    -e "http.host=_eth0_" -e "cluster.name=ec" \
+    -e "node.master=false" -e "node.data=true" -e "discovery.zen.ping.unicast.hosts=es-master-1" elasticsearch:5.4
 ````
 
 #### MYSQL cluster
@@ -101,11 +122,65 @@ docker exec mysql-slave-1 mysql -uroot -proot -e "START SLAVE"
 docker exec mysql-slave-1 mysql -uroot -proot -e "SHOW SLAVE STATUS \G"
 ````
 
+#### RabbitMQ
+
+````
+# init rabbit
+docker run -it --rm --hostname localhost --name rabbit rabbitmq:latest
+
+# check rabbitmq queues
+docker exec rabbit rabbitmqctl list_queues name messages messages_ready messages_unacknowledged
+
+# test rabbitmq with php
+docker run -it --rm --name php-cli-rabbitmq-c-1 -v $PWD/ed:/gh/ed --link rabbit \
+    php-cli php /gh/ed/php/examples/rabbitmq/tutorials/workQueue/worker.php
+docker run -it --rm --name php-cli-rabbitmq-p-1 -v $PWD/ed:/gh/ed --link rabbit \
+    php-cli php /gh/ed/php/examples/rabbitmq/tutorials/workQueue/new_task.php
+````
+
+#### Non-finished swarm.
+
+````
+# init rabbit
+
+#
+docker run -it --rm --name php-cli-rabbitmq-c -v $PWD/ed:/gh/ed --link rabbit php-cli
+
+#
+docker-machine create --driver virtualbox manager1
+docker-machine ip manager1
+# 192.168.99.100
+docker-machine ssh manager1
+docker swarm init --advertise-addr 192.168.99.100
+docker node ls
+#
+docker service create --replicas 3 --name php-cli-rabbitmq-swarm php-cli-rabbitmq-c \
+    php /gh/ed/php/examples/rabbitmq/tutorials/workQueue/worker.php
+docker service ls
+docker service ps php-cli-rabbitmq-swarm
+
+#
+docker-machine create --driver virtualbox worker1
+docker-machine ssh worker1
+docker swarm join \
+    --token SWMTKN-1-3ie1vxyfmvh1756tv37dyp8datyyfcsfrnkhmzofwk3nsle7ud-cblwlb51iv251evjiudwxs6li \
+    192.168.99.100:2377
+docker node ls
+````
+
 ## Machine
 
 Use [machine/](https://docs.docker.com/machine) to create Docker hosts on your local box,
 on your company network, in your data center,
 or on cloud providers like AWS or Digital Ocean.
+
+````
+docker-machine version
+
+docker-machine ls
+
+docker-machine create --driver virtualbox manager1
+````
 
 ## Compose
 

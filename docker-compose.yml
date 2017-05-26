@@ -16,13 +16,6 @@ php-fpm:
     links:
         - mongo
 
-php-cli:
-    build: ./docker/php-cli
-    volumes:
-        - ./ed:/gh/ed
-    links:
-        - mongo
-
 phalcon:
     build: ./docker/phalcon
 

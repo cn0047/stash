@@ -10,7 +10,7 @@ $channel = $connection->channel();
 $durable = true;
 $channel->queue_declare('durable_task_queue', false, $durable, false, false);
 
-echo ' [*] Waiting for messages. To exit press CTRL+C', "\n";
+echo ' [*] Waiting for messages. To exit press CTRL+C' . PHP_EOL;
 
 $callback = function($msg) {
     echo " [x] Received ", $msg->body, "\n";

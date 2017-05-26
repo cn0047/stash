@@ -10,12 +10,13 @@ $channel = $connection->channel();
 $durable = true;
 $channel->queue_declare('durable_task_queue', false, $durable, false, false);
 
-$data = $argv[1] ?? 'Hello World!';
-$msg = new AMQPMessage($data, array('delivery_mode' => 2) /* make message persistent */);
+$uid = uniqid('', false);
+$data = $argv[1] ?? "Hello World! [$uid]";
+$msg = new AMQPMessage($data, ['delivery_mode' => 2] /* make message persistent */);
 
 $channel->basic_publish($msg, '', 'durable_task_queue');
 
-echo " [x] Sent ", $data, "\n";
+echo " [v] Sent $data" . PHP_EOL;
 
 $channel->close();
 $connection->close();
