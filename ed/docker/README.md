@@ -57,13 +57,17 @@ exit
 ### RUN
 
 ````
+# bash
+docker build -t xubuntu ./docker/ubuntu
+docker run -ti --rm -v $PWD/u.sh:/u.sh xubuntu /u.sh
+
 # composer
 docker build -t xcomposer ./docker/composer
 docker run -ti --rm -v $PWD:/app xcomposer install
 
 # php-cli
 docker build -t php-cli ./docker/php-cli
-docker run -it --rm --name php-cli -v $PWD/ed:/gh/ed php-cli php -v
+docker run -it --rm --name php-cli -v $PWD:/gh php-cli php -v
 
 # nodejs
 docker run -it --rm node:latest node -v
@@ -103,6 +107,8 @@ docker run -it --rm -p 9201:9200 --name es-data-1 --link es-master-1  \
 #### MYSQL cluster
 
 ````
+docker run -it --rm -e MYSQL_ROOT_PASSWORD=root mysql:latest bash
+
 # init master node
 docker run -it --rm -p 3307:3306 --name mysql-master \
     -v $PWD/docker/mysql/mysql-bin.log:/var/log/mysql/mysql-bin.log \

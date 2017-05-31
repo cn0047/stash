@@ -40,6 +40,8 @@ fetch('https://davidwalsh.name/submit-json', {
     }),
     body: data
 });
+// Var in url
+fetch(`http://myapi.com/posts/${postId}/comments`, {});
 ````
 
 #### Prototype

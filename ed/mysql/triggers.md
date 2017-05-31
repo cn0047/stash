@@ -53,6 +53,9 @@ END;//
 delimiter ;
 ````
 
+With purpose abort action (insert, update, etc) from trigger
+you need use this: `SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'My error.';`.
+
 ````sql
 CREATE TABLE test1(a1 INT);
 CREATE TABLE test2(a2 INT);
