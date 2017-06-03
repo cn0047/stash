@@ -346,7 +346,25 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
 }'
 ````
 
-# Z examples
+#### Scroll
+
+````
+curl 'localhost:9200/ziipr/users/_search?scroll=1m' -d '{
+    "query": {"match_all" : {}}
+    "sort" : [{ "last_seen_at" : "desc" }],
+    "from": 0,
+    "size": 100,
+    "_source": true
+}'
+
+curl 'localhost:9200/_search/scroll ' -d '{
+    "scroll" : "1m", 
+    "scroll_id" : "cXVlcnlUaGVuRmV0Y2g7NTsxMzU0MDQzNjY6QnNHMjd0bXlTZ3Ftd1dkblRUd3NQZzsxMDE1NzI4Mjc6ajFzVmtLQUdSaEduRWFRVi1GZE05UTsxMDE1NzI4MjY6ajFzVmtLQUdSaEduRWFRVi1GZE05UTsxMDE1ODAzODc6TURuUG5nbzRUVU9NUUFjSERqM2hIQTsxMDE1ODAzODg6TURuUG5nbzRUVU9NUUFjSERqM2hIQTswOw==" 
+}'
+````
+
+#### Z examples
+
 ````
 curl -XGET localhost:9200/ziipr/users/_search -d '{
     "query" : {

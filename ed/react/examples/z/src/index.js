@@ -1,14 +1,15 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { browserHistory } from 'react-router';
+import { render } from 'react-dom';
+import { syncHistoryWithStore } from 'react-router-redux';
 
-import '../public/main.css';
-import App from './App';
-import { MainConfig } from './Config/Main';
+import './../public/main.css';
+import App from './containers/app';
+import configureStore from './store/main';
 
-let rb = JSON.stringify(MainConfig.auth);
-fetch(MainConfig.apiUrl + '/auth', {method: 'post', body: rb}).then((res) => {
-  return res.json().then(d => {
-    let user = {token: d.token, userId: d.user.user_id};
-    ReactDOM.render(<App user={user} />, document.getElementById('root'));
-  });
-});
+const store = configureStore();
+const history = syncHistoryWithStore(browserHistory, store);
+render(
+  <App store={store} history={history} />,
+  document.getElementById('root')
+);
