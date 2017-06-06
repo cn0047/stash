@@ -2,7 +2,7 @@ Z
 -
 
 This is my tiny project created for exhibition purposes.
-<br>Here I used fancy front-end technologies like: `react`, `react-router`, `redux` and `aws`...
+<br>Here I used fancy front-end technologies like: `react`, `react-router`, `redux`, `aws` and else...
 
 This project is a social network.
 
