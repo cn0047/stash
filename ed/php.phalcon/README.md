@@ -49,6 +49,7 @@ $qb->inWhere('v.userId', $userIds);
 var_dump($qb->getQuery()->getSingleResult());
 
 // Join
+/** @var \Phalcon\Mvc\Model\Query\Builder $qb */
 $qb = Di::getDefault()->get('modelsManager')->createBuilder();
 $qb->columns('DISTINCT(u.country) AS country');
 $qb->from(['ue' => UserEventModel::class]);

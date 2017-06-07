@@ -74,9 +74,6 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
     }
 }'
 
-# Indices Stats
-curl localhost:9200/megacorp/_stats
-
 # Filter Aggregation
 curl -XGET localhost:9200/megacorp/employee/_search?pretty -d '{
     "aggs" : {

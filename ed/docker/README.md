@@ -19,8 +19,7 @@ docker run -t -i ubuntu:latest /bin/bash
 
 # run a web application
 # `-d` runs the container as daemon
-# ` -P` maps any required network ports
-# `-p`
+# `-p` maps any required network ports
 docker run -d -p 8081:80 timber/ziipr
 docker run -d -p 192.168.0.32:1111:1111 timber/ziipr
 
@@ -179,7 +178,7 @@ docker node ls
 
 ## Machine
 
-Use [machine/](https://docs.docker.com/machine) to create Docker hosts on your local box,
+Use [machine](https://docs.docker.com/machine) to create Docker hosts on your local box,
 on your company network, in your data center,
 or on cloud providers like AWS or Digital Ocean.
 
@@ -193,7 +192,7 @@ docker-machine create --driver virtualbox manager1
 
 ## Compose
 
-[Compose](https://docs.docker.com/compose)) is a tool
+[Compose](https://docs.docker.com/compose) is a tool
 for defining and running multi-container Docker applications.
 
 ````

@@ -2,7 +2,9 @@ js
 -
 
 ````js
-document.getElementById('wrapper').getElementsByTagName('img').length
+'use strict';
+
+document.getElementById('wrapper').getElementsByClassName('block').getElementsByTagName('img').length
 document.querySelectorAll('#wrapper img').length
 
 console.group('Application Log');
@@ -84,7 +86,8 @@ console.log(i.ff.pp); // undefined
 console.log(i.ff.p); // 200
 ````
 
-####Flashback
+#### Flashback
+
 ````js
 for (key in array) {
     console.log(array[key]);
@@ -120,7 +123,7 @@ var array = new Array(10); // length = 10
 array.length;
 array.length = 5; // truncate or increase array
 array.push('one');
-array.unshift('one');
+array.unshift('one'); // adds to the beginning of an array
 array.pop();
 array.shift();
 array.splice(3, 2);
@@ -282,7 +285,8 @@ window.defaultStatus = 'status bar string';
 window.onerror = function (msg, url, line) {}
 ````
 
-####Data Types
+#### Data Types
+
 * Primitives:
     * String.
     * Number.
@@ -322,8 +326,11 @@ a = new Date();      typeof a; // "object"
 0 == null // false
 false == null // false
 null == null // true
+NaN == NaN // false
 NaN === NaN // false
+[] == [] // false
 [] === [] // false
+{} == {} // false
 {} === {} // false
 
 if (true) {} elseif (true) {} // Uncaught SyntaxError: Unexpected token {

@@ -4,6 +4,7 @@ Theory
 Orchestration VS Choreography.
 
 Resilience - is the ability of a system to adapt or keep working when challenges occur.
+Pure function - 1) always return the same result for same arguments, and 2) no mutation or output to I/O etc.
 
 #### Low coupling and high cohesion.
 
