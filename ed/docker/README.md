@@ -64,16 +64,34 @@ docker run -ti --rm -v $PWD/u.sh:/u.sh xubuntu /u.sh
 docker build -t xcomposer ./docker/composer
 docker run -ti --rm -v $PWD:/app xcomposer install
 
-# php-cli
-docker build -t php-cli ./docker/php-cli
-docker run -it --rm --name php-cli -v $PWD:/gh php-cli php -v
+# mongo
+docker run -it --rm --name mongo mongo:latest
+````
 
-# nodejs
+#### Node
+
+````
 docker run -it --rm node:latest node -v
+docker run -it --rm -v $PWD:/gh -w /gh node:latest node /gh/x.js
 docker run -it --rm --name log -p 3000:3000 -v $PWD:/usr/src/app -w /usr/src/app node:latest node src/index.js
 
 docker run -it --rm -v $PWD/ed/react/examples/hw/package.json:/package.json node:latest npm install
 docker run -it --rm --name react -p 3000:3000 -v $PWD/ed/react/examples/hw/package.json:/package.json node:latest npm start
+````
+
+#### PHP
+
+````
+# php-cli
+docker build -t php-cli ./docker/php-cli
+docker run -it --rm -v $PWD:/gh php-cli php -v
+docker run -it --rm -v $PWD:/gh php-cli php /gh/x.php
+
+# RabbitMQ with php
+docker run -it --rm --name php-cli-rabbitmq-c-1 -v $PWD/ed:/gh/ed --link rabbit \
+    php-cli php /gh/ed/php/examples/rabbitmq/tutorials/workQueue/worker.php
+docker run -it --rm --name php-cli-rabbitmq-p-1 -v $PWD/ed:/gh/ed --link rabbit \
+    php-cli php /gh/ed/php/examples/rabbitmq/tutorials/workQueue/new_task.php
 ````
 
 #### ES cluster
@@ -138,12 +156,6 @@ docker run -it --rm --hostname localhost --name rabbit rabbitmq:latest
 
 # check rabbitmq queues
 docker exec rabbit rabbitmqctl list_queues name messages messages_ready messages_unacknowledged
-
-# test rabbitmq with php
-docker run -it --rm --name php-cli-rabbitmq-c-1 -v $PWD/ed:/gh/ed --link rabbit \
-    php-cli php /gh/ed/php/examples/rabbitmq/tutorials/workQueue/worker.php
-docker run -it --rm --name php-cli-rabbitmq-p-1 -v $PWD/ed:/gh/ed --link rabbit \
-    php-cli php /gh/ed/php/examples/rabbitmq/tutorials/workQueue/new_task.php
 ````
 
 #### Non-finished swarm.

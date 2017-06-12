@@ -11,6 +11,23 @@ Promise States:
 
 */
 
+// The simplest example.
+
+let l = function (t, cb) {
+  throw 'ERR from l.';
+  cb('From l '+ t);
+};
+let p = new Promise((r) => {
+  l('Hey', (a) => {
+    r(a);
+  });
+});
+p.then((r) => {
+  console.log(r);
+}, (e) => {
+  console.error(e);
+});
+
 // Simplest example.
 
 var increaseScore = function (currentScore, valueBeingAdded, callback) {

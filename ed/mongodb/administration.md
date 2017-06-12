@@ -65,6 +65,7 @@ mongoimport --collection collection --file collection.json
 db.createCollection("log", { capped : true, size : 5242880, max : 5000 })
 
 // Check if a Collection is Capped
+// Capped collections are fixed-size collections. Work in a way similar to circular buffers.
 db.collection.isCapped()
 db.cappedCollection.find().sort( { $natural: -1 } )
 // Convert a Collection to Capped

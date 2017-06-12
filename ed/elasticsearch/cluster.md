@@ -31,7 +31,6 @@ curl -XPOST 'http://$host:$port/_shutdown'
 
 ````json
 curl $host:$port'/_cat/health?v'
-curl $host:$port'/_cat/nodes?v'
 
 # show shards
 curl $host:$port/_cat/shards?v

@@ -3,6 +3,8 @@ LINKS
 
 http://choosealicense.com/
 http://jsbin.com/
+http://codepad.org/
+https://3v4l.org/
 http://markup.su/highlighter/
 http://myjson.com/         http://mockbin.org/
 http://sqlfiddle.com/

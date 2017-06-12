@@ -8,6 +8,7 @@ Acronyms
 [B2B](#B2B)
 [BDD](#BDD)
 [CDN](#CDN)
+[CORS](#CORS)
 [CRM](#CRM)
 [CSRF](#CSRF)
 [DAO](#DAO)
@@ -74,6 +75,9 @@ Acronyms
 
 <dt><a name="CDN"></a>CDN</dt>
 <dd>Content distribution network.</dd>
+
+<dt><a name="CORS"></a>CORS</dt>
+<dd>Cross-origin resource sharing.</dd>
 
 <dt><a name="CRM"></a>CRM</dt>
 <dd>Customer relationship management.</dd>

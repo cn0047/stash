@@ -165,13 +165,13 @@ r.area === 1000
 let s = new Set()
 s.add("hello").add("goodbye").add("hello")
 s.has("hello") === true
-s.values()
+s.values() // SetIterator {"hello", "goodbye"}
 
 // Map Data-Structure
 let m = new Map()
 m.set("hello", 42)
 m.get("hello") === 42
-m.entries()
+m.entries() // MapIterator {"hello" => 42}
 
 // Object Property Assignment
 var dst  = { quux: 0 }
@@ -193,7 +193,7 @@ console.log(Math.trunc(-0.1)) // -0
 
 // Reflection
 let obj = { a: 1 }
-Reflect.ownKeys(obj)
+Reflect.ownKeys(obj) // Reflect.ownKeys(obj)
 
 // Currency Formatting
 var l10nUSD = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" })

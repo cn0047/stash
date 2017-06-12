@@ -2,6 +2,12 @@ http
 -
 1.1
 
+````
+# CORS
+Access-Control-Allow-Origin: http://www.example.com
+Access-Control-Allow-Origin: *
+````
+
 #### Request
 
 ````
