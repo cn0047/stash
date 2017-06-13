@@ -63,20 +63,25 @@ docker run -ti --rm -v $PWD/u.sh:/u.sh xubuntu /u.sh
 # composer
 docker build -t xcomposer ./docker/composer
 docker run -ti --rm -v $PWD:/app xcomposer install
-
-# mongo
-docker run -it --rm --name mongo mongo:latest
 ````
 
-#### Node
+#### NODE
 
 ````
 docker run -it --rm node:latest node -v
 docker run -it --rm -v $PWD:/gh -w /gh node:latest node /gh/x.js
-docker run -it --rm --name log -p 3000:3000 -v $PWD:/usr/src/app -w /usr/src/app node:latest node src/index.js
 
-docker run -it --rm -v $PWD/ed/react/examples/hw/package.json:/package.json node:latest npm install
-docker run -it --rm --name react -p 3000:3000 -v $PWD/ed/react/examples/hw/package.json:/package.json node:latest npm start
+# simple mysql test
+docker run -it --rm -v $PWD:/gh -w /gh/ed/nodejs/examples/mysql node:latest npm install
+docker run -it --rm -v $PWD:/gh -w /gh/ed/nodejs/examples/mysql --link mysql-master node:latest node index.js
+
+# simple elasticsearch test
+docker run -it --rm -v $PWD:/gh -w /gh/ed/nodejs/examples/elasticsearch node:latest npm install
+docker run -it --rm -v $PWD:/gh -w /gh/ed/nodejs/examples/elasticsearch --link es node:latest node index.js
+
+# simple mongo test
+docker run -it --rm -v $PWD:/gh -w /gh/ed/nodejs/examples/mongo node:latest npm install
+docker run -it --rm -v $PWD:/gh -w /gh/ed/nodejs/examples/mongo --link xmongo node:latest node index.js
 ````
 
 #### PHP
@@ -94,9 +99,21 @@ docker run -it --rm --name php-cli-rabbitmq-p-1 -v $PWD/ed:/gh/ed --link rabbit 
     php-cli php /gh/ed/php/examples/rabbitmq/tutorials/workQueue/new_task.php
 ````
 
+### MONGO
+
+````
+docker run -it --rm --name xmongo -p 27017:27017 mongo:latest
+
+docker exec -it xmongo mongo test --eval 'db.test.insert({code : 200, status: "ok"})'
+docker exec -it xmongo mongo test \
+    --eval 'db.createUser({user: "dbu", pwd: "dbp", roles: ["readWrite", "dbAdmin"]})'
+````
+
 #### ES cluster
 
 ````
+docker run -it --rm -p 9200:9200 --name es elasticsearch:latest
+
 # init master 1 node
 docker run -it --rm -p 9200:9200 --name es-master-1 elasticsearch:2.2 \
     elasticsearch -Des.network.host=_eth0_ -Des.cluster.name=ec -Des.node.master=true -Des.node.data=false
