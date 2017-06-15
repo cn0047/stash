@@ -176,7 +176,7 @@ xdebug_stop_trace();
 php_value xdebug.profiler_enable 1
 php_value xdebug.profiler_output_name xdebug.profiler.%t
 php_value xdebug.profiler_output_dir /home/debug/d
-# Generated file open with KCachegrind.
+# Generated file open with KCachegrind or qcachegrind on OSX.
 ````
 ````
 vim ~/.bashrc

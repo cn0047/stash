@@ -2,6 +2,7 @@ History of MySQL
 -
 
 ####MySQL 5.7
+* JSON functions.
 * Security improvements.
 * SQL mode changes.
 * Online ALTER TABLE (RENAME INDEX).

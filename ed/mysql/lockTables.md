@@ -78,10 +78,12 @@ Frameworks which support optimistic locking typically maintain a version field
 and raise an exception if one tries to update an object with an outdated version number.
 
 Example:
-1 SELECT data from a row having one ID filed (iD) and two data fields (val1, val2).
+
+1 `SELECT data from a row having one ID filed (ID) and two data fields (val1, val2)`.
 2 UPDATE data of that row.
 
 Optimistic locking way is:
+
 1 SELECT.
 2 UPDATE.
 3 if AffectedRows == 1 OK else FAIL.
@@ -89,6 +91,7 @@ Optimistic locking way is:
 All has been done without transactions!
 
 Solutions:
+
 * UPDATE in transaction and if AffectedRows == 1 COMMIT else ROLLBACK.
 * Add aditonal field version and increment value during each UPDATE.
 
@@ -108,7 +111,7 @@ because each holds a lock that the other needs.
 Because both transactions are waiting for a resource to become available,
 neither will ever release the locks it holds.
 
-deadlocks occur because of write operations.
+Deadlocks occur because of write operations.
 
 To reduce the possibility of deadlocks, use transactions rather than LOCK TABLES statements;
 To see the last deadlock in an InnoDB user transaction, use the `SHOW ENGINE INNODB STATUS` command.

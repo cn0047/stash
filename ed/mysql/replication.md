@@ -38,6 +38,8 @@ You will need to shut down your MySQL server and edit /etc/mysql/my.cnf (/etc/my
 server-id=1
 log_bin=/var/log/mysql/mysql-bin.log
 
+binlog_format=ROW
+
 # For the greatest possible durability and consistency
 # in a replication setup using InnoDB with transactions,
 # you should use:
@@ -96,5 +98,3 @@ SHOW SLAVE STATUS \G
 * Trigger or stored program.
 * INSERT ... ON DUPLICATE KEY UPDATE.
 * Updates using LIMIT.
-
-binlog_format=ROW

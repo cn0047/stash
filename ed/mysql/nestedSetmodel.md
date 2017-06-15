@@ -33,7 +33,7 @@ that is not naturally represented in a relational database table.
 Queries using nested sets can be expected to be faster
 than queries using a stored procedure to traverse an adjacency list.
 
-Nested sets are very slow for insertsbecause it requires updating left and right domain values
+Nested sets are very slow for inserts because it requires updating left and right domain values
 for all records in the table after the insert.
 
 ````sql
