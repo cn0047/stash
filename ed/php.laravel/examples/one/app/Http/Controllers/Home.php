@@ -75,7 +75,22 @@ class Home extends BaseController
 
     public function db()
     {
+        // simple part
+        $dbh = new \PDO('mysql:host=mysql-master;port=3306;dbname=test', 'dbu', 'dbp');
+        $s = $dbh->prepare('SELECT NOW()');
+        $s->execute();
+        $result = $s->fetchAll(\PDO::FETCH_ASSOC);
+        var_export($result);
+
+        echo '<hr>';
+
         var_dump(DB::connection()->getPdo());
+    }
+
+    public function userFromDb()
+    {
+        $user = DB::select('select * from users where email = ?', ['cnfxlr@gmail.com']);
+        var_export($user);
     }
 
     public function auth()

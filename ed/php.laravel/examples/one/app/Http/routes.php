@@ -30,6 +30,7 @@ Route::get('/get/{code}', 'Home@index');
 Route::get('/home', 'Home@home');
 Route::get('/di', 'Home@di');
 Route::get('/db', 'Home@db');
+Route::get('/userFromDb', 'Home@userFromDb');
 Route::get('/auth', 'Home@auth');
 Route::get('/conf', 'Home@conf');
 Route::get('/flash', 'Home@flash');

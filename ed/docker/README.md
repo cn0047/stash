@@ -92,11 +92,25 @@ docker build -t php-cli ./docker/php-cli
 docker run -it --rm -v $PWD:/gh php-cli php -v
 docker run -it --rm -v $PWD:/gh php-cli php /gh/x.php
 
+# buil-in web server
+docker run -it --rm -p 8000:8000 -v $PWD:/gh php-cli php -S 0.0.0.0:8000 /gh/ed/php/examples/isNumeric.php
+
+# mysql
+docker run -it --rm -v $PWD:/gh --link mysql-master php-cli php /gh/ed/php/examples/mysqlAndPdo/pdo.simplestExample.php
+
 # RabbitMQ with php
 docker run -it --rm --name php-cli-rabbitmq-c-1 -v $PWD/ed:/gh/ed --link rabbit \
     php-cli php /gh/ed/php/examples/rabbitmq/tutorials/workQueue/worker.php
 docker run -it --rm --name php-cli-rabbitmq-p-1 -v $PWD/ed:/gh/ed --link rabbit \
     php-cli php /gh/ed/php/examples/rabbitmq/tutorials/workQueue/new_task.php
+
+# laravel
+docker run -ti --rm -v $PWD/ed/php.laravel/examples/one:/app xcomposer install
+docker run -it --rm -v $PWD:/gh php-cli php /gh/ed/php.laravel/examples/one/artisan key:generate
+docker run -it --rm -v $PWD:/gh --link mysql-master php-cli php /gh/ed/php.laravel/examples/one/artisan migrate
+docker run -it --rm --hostname 0.0.0.0 -p 8181:8181 -v $PWD:/gh --link mysql-master \
+    php-cli php /gh/ed/php.laravel/examples/one/artisan serve --host=0.0.0.0 --port=8181
+
 ````
 
 ### MONGO
@@ -163,6 +177,9 @@ docker run -it --rm -p 3308:3306 --name mysql-slave-1 --link mysql-master \
 docker exec mysql-slave-1 mysql -uroot -proot -e "CHANGE MASTER TO MASTER_HOST='mysql-master', MASTER_USER='repl', MASTER_PASSWORD='slavepass'"
 docker exec mysql-slave-1 mysql -uroot -proot -e "START SLAVE"
 docker exec mysql-slave-1 mysql -uroot -proot -e "SHOW SLAVE STATUS \G"
+
+# test
+docker exec -ti mysql-master mysql -P3307 -udbu -pdbp -Dtest
 ````
 
 #### RabbitMQ
