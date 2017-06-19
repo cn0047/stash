@@ -1,7 +1,7 @@
 Patterns
 -
 
-####Design Patterns:
+#### Design Patterns:
 
 1. Creational.
 
@@ -66,11 +66,13 @@ Prototype vs Interpreter: ?
 Command vs Strategy: ?
 ````
 
-####Architectural patterns:
+#### Architectural patterns:
 
 * Active record
 * Blackboard system
-* Data mapper
+* Data mapper pattern (Object Relational Mapper (ORM) and the Database Abstraction Layer)
+  Object-relational mapping - is a programming technique
+  for converting data between incompatible type systems in object-oriented programming languages.
 * Event-driven architecture
 * Implicit invocation
 * Layers
@@ -82,9 +84,3 @@ Command vs Strategy: ?
 * Peer-to-peer
 * Pipe and filter architecture
 * Service-oriented architecture (SOA)
-
-####Else patterns:
-
-* Data mapper pattern (Object Relational Mapper (ORM) and the Database Abstraction Layer)
-  Object-relational mapping - is a programming technique
-  for converting data between incompatible type systems in object-oriented programming languages.

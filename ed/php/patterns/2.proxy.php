@@ -5,6 +5,8 @@
  * A proxy, in its most general form, is a class functioning as an interface to something else.
  *
  * @category Structural
+ *
+ * @see https://github.com/cn007b/my/blob/master/ed/javascript/patterns/proxy.simple.js
  */
 
 interface IMath
