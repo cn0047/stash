@@ -254,8 +254,6 @@ $_COOKIE['TestCookie'];
 
 header();
 
-settype($var, $type);
-
 gzuncompress(gzcompress($data));
 
 filter_var();

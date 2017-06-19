@@ -4,8 +4,12 @@ Theory
 Orchestration VS Choreography.
 
 Resilience - is the ability of a system to adapt or keep working when challenges occur.
+
 Pure function - 1) always return the same result for same arguments, and 2) no mutation or output to I/O etc.
+
 Function is DETERMINISTIC if it always produces the same result for the same input parameters.
+
+Tell, Don’t Ask (Law of Demeter).
 
 #### Low coupling and high cohesion.
 
@@ -73,8 +77,6 @@ Many of the challenges you’re going to face with microservices get worse with 
   (expect failure will occur anywhere and everywhere)
 * Highly Observable
   (aggregate your logs, aggregate your stats)
-
-Tell, Don’t Ask (Law of Demeter).
 
 #### Code quality
 

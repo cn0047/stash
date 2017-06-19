@@ -4,7 +4,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/vendor/sproutvideo/sproutvideo/lib/SproutVideo/Autoloader.php';
 
 SproutVideo_Autoloader::register();
-SproutVideo::$api_key = '6efe7f6b4a2a173eb0899524cd8cbf14';
+SproutVideo::$api_key = '00000000000000a2a173eb014';
 
 // var_export(SproutVideo\Video::create_video(
 //   '/home/kovpak/Downloads/video1.mp4',

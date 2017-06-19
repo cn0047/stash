@@ -33,6 +33,9 @@ y  - copy
 j  - join
 gJ - join without spaces
 
+ma  - bookmark a
+d'a - delete to bookmark a
+
 K  - LOOK TO SCREEN
 ````
 
