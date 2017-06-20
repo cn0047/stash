@@ -10,7 +10,9 @@
                 <div class="panel-body">
                     Your Application's Landing Page.
                     You can try something from:
-                    | <a href="{{ url('/get/200') }}">get 200</a>
+                    | <a href="{{ url('/blade') }}">blade</a>
+                    | <a href="{{ url('/get200') }}">get 200</a>
+                    | <a href="{{ url('/get/100') }}">get 100</a>
                     | <a href="{{ url('/home') }}">home</a>
                     | <a href="{{ url('/di') }}">di</a>
                     | <a href="{{ url('/db') }}">db</a>

@@ -26,7 +26,7 @@ Route::group(['middleware' => 'age'], function () {
     });
 });
 
-Route::get('/get/{code}', 'Home@index');
+Route::get('/get/{code}', 'Home@index')->middleware('consoleLog');
 Route::get('/home', 'Home@home');
 Route::get('/di', 'Home@di');
 Route::get('/db', 'Home@db');

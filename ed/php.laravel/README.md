@@ -12,6 +12,13 @@ composer require barryvdh/laravel-ide-helper
 php artisan serve
 ````
 
+* Service Container - for managing class dependencies.
+* Service Providers - central place of application bootstrapping
+  (registering service container bindings, event listeners, middleware, and even routes).
+* Facades - "static" interface to classes that are available in the application's service container.
+* Contracts - a set of interfaces that define the core services provided by the framework.
+* Response Macros - custom response that you can re-use.
+
 ## Controller
 
 ````
@@ -28,6 +35,7 @@ php artisan route:clear
 ````blade
 @section - section of content
 @yield - display the contents of a given section
+@include('sub-view')
 
 {{ trans('messages.welcome') }}
 @lang('messages.welcome')
@@ -45,5 +53,12 @@ Illuminate\Support\Facades\Hash::check('plain-text', $hash);
 ````
 php artisan migrate # running migrations
 ````
+
+DEBT:
+https://laravel.com/docs/5.4/lifecycle
+https://laravel.com/docs/5.4/providers
+https://laravel.com/docs/5.4/container
+https://laravel.com/docs/5.4/facades
+https://laravel.com/docs/5.4/contracts
 
 https://laravel.com/docs/5.3/passport
