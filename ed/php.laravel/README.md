@@ -19,6 +19,7 @@ php artisan serve
 * Contracts - a set of interfaces that define the core services provided by the framework.
 * Response Macros - custom response that you can re-use.
 * Collections - provides a fluent, convenient wrapper for working with arrays of data.
+* Collections - multi-result sets returned by Eloquen.
 
 ## Controller
 
@@ -64,5 +65,3 @@ https://laravel.com/docs/5.4/contracts
 https://laravel.com/docs/5.4/passport
 https://laravel.com/docs/5.4/broadcasting
 https://laravel.com/docs/5.4/events
-
-https://laravel.com/docs/5.4/helpers
