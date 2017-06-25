@@ -21,6 +21,7 @@
                     | <a href="{{ url('/flash') }}">flash</a>
                     | <a href="{{ url('/validation') }}">validation</a>
                     | <a href="{{ url('/localization') }}">localization</a>
+                    | <a href="{{ url('/event') }}">event</a>
                     @if (Auth::check())
                         <hr>
                         For logged users:

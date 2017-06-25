@@ -12,6 +12,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Events\OrderShipped;
 
 class Home extends BaseController
 {
@@ -97,5 +98,10 @@ class Home extends BaseController
     {
         Auth::onceBasic();
         echo 200;
+    }
+
+    public function event()
+    {
+        event(new OrderShipped(100));
     }
 }

@@ -1,7 +1,8 @@
 Theory
 -
 
-Orchestration VS Choreography.
+Orchestration - it is when one microservice supervise and manage else microservices.
+<br>Choreography - it is when microservice independent, and only have to know about message-queue.
 
 Resilience - is the ability of a system to adapt or keep working when challenges occur.
 

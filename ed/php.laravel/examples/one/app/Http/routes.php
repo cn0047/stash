@@ -36,6 +36,7 @@ Route::get('/conf', 'Home@conf');
 Route::get('/flash', 'Home@flash');
 Route::get('/validation', 'Home@validation');
 Route::get('/localization', 'Home@localization');
+Route::get('/event', 'Home@event');
 Route::resource('photos', 'PhotoController');
 
 Route::auth();

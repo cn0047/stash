@@ -64,4 +64,3 @@ https://laravel.com/docs/5.4/facades
 https://laravel.com/docs/5.4/contracts
 https://laravel.com/docs/5.4/passport
 https://laravel.com/docs/5.4/broadcasting
-https://laravel.com/docs/5.4/events
