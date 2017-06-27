@@ -8,6 +8,29 @@ Redis
 redis-cli # connect to redis
 ````
 
+#### Data types:
+
+* Strings - A String value can be at max 512 Megabytes in length.
+You can:
+Use Strings as atomic counters;
+Append to strings;
+Use Strings a random access vectors;
+
+* Lists - simply lists of strings.
+The max length of a list is 2^32 (more than 4 billion of elements per list).
+
+* Sets - an unordered non repeating collections of Strings.
+The max number of members in a set is 2^32.
+
+* Hashes - maps between string fields and string values.
+Every hash can store up to 2^32 field-value pairs.
+
+* Sorted sets - similarly to Sets,
+the difference is that every member of a Sorted Set is associated with score,
+that is used in order to take the sorted set ordered.
+
+* Bitmaps and HyperLogLogs
+
 ````
 set mykey 'Hello'
 set foo 'bar'

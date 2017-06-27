@@ -288,6 +288,17 @@ window.onerror = function (msg, url, line) {}
 #### Data Types
 
 * Primitives:
+    * String
+    * Number
+    * Boolean
+    * Symbol (new in ECMAScript 6)
+    * Null
+    * Undefined
+* Object
+
+OR
+
+* Primitives:
     * String.
     * Number.
     * Boolean.

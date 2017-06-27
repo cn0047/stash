@@ -116,7 +116,7 @@ docker run -it --rm --hostname 0.0.0.0 -p 8181:8181 -v $PWD:/gh --link mysql-mas
 ### MONGO
 
 ````
-docker run -it --rm --name xmongo -p 27017:27017 mongo:latest
+docker run -it --rm --name xmongo -v $PWD/docker/mongodb/db:/data/db -p 27017:27017 mongo:latest
 
 docker exec -it xmongo mongo test --eval 'db.test.insert({code : 200, status: "ok"})'
 docker exec -it xmongo mongo test \

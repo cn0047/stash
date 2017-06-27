@@ -6,6 +6,31 @@ The aggregation pipeline can use indexes to improve its performance during some 
 In addition, the aggregation pipeline has an internal optimization phase.
 Map-reduce operations can also output to a sharded collection
 
+#### Pipeline Aggregation Stages
+
+* $collStats - statistics regarding a collection.
+* $project
+* $match - filters the document stream.
+* $redact - can be used to implement field level redaction.
+* $limit
+* $skip
+* $unwind
+* $group
+* $sample
+* $sort
+* $geoNear
+* $lookup
+* $out - must be the last stage in the pipeline.
+* $indexStats - returns statistics regarding the use of each index for the collection.
+* $facet - processes multiple aggregation pipelines.
+* $bucket - categorizes incoming documents into groups.
+* $bucketAuto
+* $sortByCount - groups incoming documents based on the value of a specified expression.
+* $addFields - adds new fields to documents.
+* $replaceRoot - replaces a document with the specified embedded document.
+* $count - returns a count of the number of documents at this stage of the aggregation pipeline.
+* $graphLookup - Performs a recursive search on a collection.
+
 ####Aggregation with the Zip Code Data Set
 ````js
 // Return States with Populations above 10 Million.
@@ -149,6 +174,64 @@ db.ordersCollection.mapReduce(
     reduceFunction1,
     {out: "map_reduce_example"}
 );
+````
+
+Example 2.
+
+````js
+db.sites.insert({url: "www.google.com", date: new Date(), duration_seconds: 5 , scope: ["search", "open-source"]});
+db.sites.insert({url: "www.no-fucking-idea.com", date: new Date(), duration_seconds: 13 , scope: ["tech"]});
+db.sites.insert({url: "www.google.com", date: new Date(), duration_seconds: 1 , scope: ["search", "tech"]});
+db.sites.insert({url: "www.no-fucking-idea.com", date: new Date(), duration_seconds: 69 , scope: ["tech"]});
+db.sites.insert({url: "www.no-fucking-idea.com", date: new Date(), duration_seconds: 256 , scope: ["tech"]});
+db.sites.insert({url: "www.google.com", date: new Date(), duration_seconds: 1 , scope: ["search", "music"]});
+db.sites.insert({url: "www.youtube.com", date: new Date(), duration_seconds: 1256 , scope: ["music", "video"]});
+db.sites.insert({url: "stackoverflow.com", date: new Date(), duration_seconds: 256 , scope: ["tech", "open-source"]});
+db.sites.insert({url: "www.github.com", date: new Date(), duration_seconds: 256 , scope: ["tech", "open-source"]});
+db.sites.insert({url: "stackoverflow.com", date: new Date(), duration_seconds: 256 , scope: ["tech", "open-source", "music"]});
+// db.sites.insert({url: "www.youtube.com", date: new Date(), duration_seconds: 196 , scope: ["sport"]});
+````
+
+````js
+var map = function(){
+  emit(this.url, 1);
+}
+var reduce = function(key, values){
+  var res = 0;
+  values.forEach(function(v){ res += 1});
+  return {count: res};
+}
+db.sites.mapReduce(map, reduce, { out: "mapped_urls" });
+db.mapped_urls.find()
+/*
+Result:
+{ "_id" : "stackoverflow.com", "value" : { "count" : 2 } }
+{ "_id" : "www.github.com", "value" : 1 }
+{ "_id" : "www.google.com", "value" : { "count" : 3 } }
+{ "_id" : "www.no-fucking-idea.com", "value" : { "count" : 3 } }
+{ "_id" : "www.youtube.com", "value" : 1 }
+*/
+
+var map = function(){
+  for (var i in this.scope) {
+    emit(this.scope[i], 1);
+  }
+}
+var reduce = function(key, values){
+  var res = 0;
+  values.forEach(function(v){res += 1});
+  return {count: res};
+}
+db.sites.mapReduce(map, reduce, { out: "mapped_urls_2" });
+db.mapped_urls_2.find()
+/*
+Result:
+{ "_id" : "music", "value" : { "count" : 3 } }
+{ "_id" : "open-source", "value" : { "count" : 4 } }
+{ "_id" : "search", "value" : { "count" : 3 } }
+{ "_id" : "tech", "value" : { "count" : 7 } }
+{ "_id" : "video", "value" : 1 }
+*/
 ````
 
 ####Perform Incremental Map-Reduce
