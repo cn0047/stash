@@ -17,9 +17,9 @@ let l = function (t, cb) {
   throw 'ERR from l.';
   cb('From l '+ t);
 };
-let p = new Promise((r) => {
+let p = new Promise((resolve) => {
   l('Hey', (a) => {
-    r(a);
+    resolve(a);
   });
 });
 p.then((r) => {

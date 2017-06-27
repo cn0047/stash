@@ -1,1 +1,3 @@
-console.log('a');
+import foo from './foo';
+
+foo();
