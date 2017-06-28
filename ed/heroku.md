@@ -2,6 +2,11 @@ Heroku
 -
 
 ````
-heroku logs -a glacial-citadel-5508
+# start
+heroku apps
+
+heroku config:set GITHUB_USERNAME=joesmith
+
+heroku logs -a skipe
 
 ````
