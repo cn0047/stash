@@ -8,6 +8,19 @@ Redis
 redis-cli # connect to redis
 ````
 
+````
+set mykey 'Hello'
+set foo 'bar'
+get mykey
+mget mykey foo
+
+flushdb # delete data from current database
+
+keys *
+
+del mykey
+````
+
 #### Data types:
 
 * Strings - A String value can be at max 512 Megabytes in length.
@@ -30,19 +43,6 @@ the difference is that every member of a Sorted Set is associated with score,
 that is used in order to take the sorted set ordered.
 
 * Bitmaps and HyperLogLogs
-
-````
-set mykey 'Hello'
-set foo 'bar'
-get mykey
-mget mykey foo
-
-flushdb # delete data from current database
-
-keys *
-
-del mykey
-````
 
 #### List (Linked List):
 

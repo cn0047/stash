@@ -6,6 +6,27 @@ PHP
 <br>*PHP 5.3.3*
 <br>*PHP 5.1.6*
 
+#### zval
+
+````
+typedef struct _zval_struct {
+    zvalue_value value;        /* variable value */
+    zend_uint refcount__gc;    /* reference counter */
+    zend_uchar type;           /* value type */
+    zend_uchar is_ref__gc;     /* reference flag */
+} zval;
+typedef union _zvalue_value {
+    long lval;                 /* long value */
+    double dval;               /* double value */
+    struct {
+        char *val;
+        int len;               /* this will always be set for strings */
+    } str;                     /* string (always has length) */
+    HashTable *ht;             /* an array */
+    zend_object_value obj;     /* stores an object store handle, and handlers */
+} zvalue_value;
+````
+
 https://dev.twitter.com
 |
 [paypal api](https://developer.paypal.com/docs/api/)
@@ -333,7 +354,7 @@ http://php.net/manual/en/appendices.php
 * Scalar type declarations.
 * Return type declarations.
 * Null coalescing operator (??).
-* Spaceship operator (<=>).
+* Spaceship operator (<=> returns 0 if both operands are equal, 1 if the left is greater, and -1 if the right is greater).
 * Constant arrays using define().
 * Anonymous classes.
 * Closure::call().

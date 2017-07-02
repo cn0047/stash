@@ -11,6 +11,11 @@ sudo npm install -g nodemon
 nodemon ./server.js localhost 8080
 ````
 
+````js
+req.url    // Url string.
+req.params // Parsed params from url.
+````
+
 Execution nodejs code pushes variables into execution stack.
 Local variables are popped from the stack when the functions execution finishes.
 It happens only when you work with simple values such as numbers, strings and booleans.
@@ -59,12 +64,27 @@ V8 engine uses two different collection algorithms:
 Node.js is great for doing asynchronous I/O operations,
 but when it comes to real number-crunching, it’s not that great of a choice.
 
-````js
-req.url    // Url string.
-req.params // Parsed params from url.
-````
+#### Streams
+
+Streams are objects that let you read data from a source
+or write data to a destination in continuous fashion.
+
+* Readable − read operation.
+* Writable − write operation.
+* Duplex − both read and write operation.
+* Transform − duplex stream where the output is computed based on input.
+
+Each type of Stream is an EventEmitter instance and throws several events;
+
+* data − data is available to read.
+* end − there is no more data to read.
+* error − error receiving or writing data.
+* finish − all data has been flushed to underlying system.
+
+Piping is a mechanism where we provide the output of one stream as the input to another stream.
 
 #### Mongodb dereference
+
 ````js
 collection.find({}, function (err, cursor) {
     cursor.toArray(function (err, docs) {
