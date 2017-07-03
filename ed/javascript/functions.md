@@ -23,9 +23,9 @@ str.split();
 Number(bool);
 number.isInteger()
 number.isNan();
-number.NEGATIVE_INFINITY;
 number.parseFloat()
 number.parseInt()
+number.NEGATIVE_INFINITY;
 number.POSITIVE_INFINITY;
 
 Number(string); parseInt('3 girls'); // 3
@@ -76,6 +76,26 @@ my_obj.hasOwnProperty('cos'); // true
 my_obj.keys()
 my_obj.values()
 my_obj.toString()
+
+var o = {x: 1};
+o.toString();                // [object Object]
+o.toLocaleString();          // [object Object]
+o.valueOf();                 // Object {x: 1}
+o.propertyIsEnumerable('x'); // true
+o.isPrototypeOf();
+o[-1.23] = true;             // Create new property -1.23s
+````
+
+Date:
+
+````
+var d = new Date(); // Mon Apr 07 2014 23:09:01 GMT+0300 (EEST)
+d.getFullYear();    // 2014
+d.getMonth();       // 3
+d.getDay();         // 1
+d.getHours();       // 24
+d.getMinutes();     // 9
+d.getSeconds();     // 1
 ````
 
 #### Function
@@ -112,8 +132,8 @@ var array = new Array(10); // length = 10
 array.length;
 array.length = 5; // truncate or increase array
 array.push('one');
-array.unshift('one'); // adds to the beginning of an array
 array.pop();
+array.unshift('one'); // adds to the beginning of an array
 array.shift();
 array.reverse();
 array.sort(function (a, b) { return a - b; });
@@ -125,5 +145,29 @@ var a = ["dog", "cat", "hen"];
 a[100] = "fox";
 a.length; // 101
 // Remember — the length of the array is one more than the highest index.
+
+for (key in array) {
+    console.log(array[key]);
+}
+var a = [];
+a[5] = 5; // Perfectly legal JavaScript that resizes the array.
+for (var i=0; i<a.length; i++) {
+    // Iterates over numeric indexes from 0 to 5, as everyone expects.
+}
+
+var a = [];
+a[5] = 5;
+for (var x in a) {
+    // Shows only the explicitly set index of "5", and ignores 0-4
+}
+
+// Somewhere deep in your JavaScript library...
+Array.prototype.foo = 1;
+// Now you have no idea what the below code will do.
+var a = [1,2,3,4,5];
+for (var x in a){
+    // Now foo is a part of EVERY array and
+    // will show up here as a value of 'x'.
+}
 ````
 

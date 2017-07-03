@@ -95,46 +95,14 @@ console.log(i.ff.p); // 200
 #### Flashback
 
 ````js
-for (key in array) {
-    console.log(array[key]);
-}
-var a = [];
-a[5] = 5; // Perfectly legal JavaScript that resizes the array.
-for (var i=0; i<a.length; i++) {
-    // Iterates over numeric indexes from 0 to 5, as everyone expects.
-}
-
-var a = [];
-a[5] = 5;
-for (var x in a) {
-    // Shows only the explicitly set index of "5", and ignores 0-4
-}
-
-// Somewhere deep in your JavaScript library...
-Array.prototype.foo = 1;
-// Now you have no idea what the below code will do.
-var a = [1,2,3,4,5];
-for (var x in a){
-    // Now foo is a part of EVERY array and
-    // will show up here as a value of 'x'.
-}
-
 alert(message);
 prompt(message);
 confirm(message);
 
-var d = new Date(); // Mon Apr 07 2014 23:09:01 GMT+0300 (EEST)
-d.getFullYear();    // 2014
-d.getMonth();       // 3
-d.getDay();         // 1
-d.getHours();       // 24
-d.getMinutes();     // 9
-d.getSeconds();     // 1
-
 var o = {x: 1, y: 2};
 delete o.x; // delete property x
 typeof o.x; // undefined
-delete o; // false. Cant't delte global var.
+delete o; // false. Cant't delete global var.
 
 o['y']; // Access to associative array.
 
@@ -149,14 +117,6 @@ val instanceof Object;
 
 var d = new Date();
 d.constructor == Date; // true
-
-var o = {x: 1};
-o.toString();                // [object Object]
-o.toLocaleString();          // [object Object]
-o.valueOf();                 // Object {x: 1}
-o.propertyIsEnumerable('x'); // true
-o.isPrototypeOf();
-o[-1.23] = true;             // Create new property -1.23
 
 try {
 } catch (error) {

@@ -16,7 +16,9 @@ req.url    // Url string.
 req.params // Parsed params from url.
 ````
 
-Execution nodejs code pushes variables into execution stack.
+#### Under the hood
+
+Execution nodejs code pushes variables into **execution stack**.
 Local variables are popped from the stack when the functions execution finishes.
 It happens only when you work with simple values such as numbers, strings and booleans.
 Values of objects, arrays and such are stored in the heap and your variable is merely a pointer to them.
@@ -33,16 +35,19 @@ Whenever you call setTimeout, http.get or fs.readFile,
 Node.js sends these operations to a different thread allowing V8 to keep executing our code.
 Node also calls the callback when the counter has run down or the IO / http operation has finished.
 
-We only have one main thread and one call-stack.
+We only have **one main thread** and **one call-stack**.
 
 In case there is another request being served when the said file is read, its callback will need to wait for the stack to become empty.
 The limbo where callbacks are waiting for their turn to be executed is called the task queue or event queue, or message queue.
-Callbacks are being called in an infinite loop whenever the main thread has finished its previous task.
+*Callbacks are being called in an infinite loop whenever the main thread has finished its previous task.*
 
-If this wasn’t enough, we actually have more then one task queue.
-One for microtasks (process.nextTick, promises, Object.observe) and another for macrotasks (setTimeout, setInterval, setImmediate, I/O).
+If this wasn’t enough, we actually have more then one **task queue**.
+**One for microtasks** (process.nextTick, promises, Object.observe)
+and **another for macrotasks** (setTimeout, setInterval, setImmediate, I/O).
 
 After said macrotask has finished, all of the available microtasks will be processed within the same cycle.
+
+#### Garbage Collector
 
 Things to Keep in Mind When Using a Garbage Collector:
 

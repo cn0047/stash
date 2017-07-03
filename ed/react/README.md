@@ -26,9 +26,6 @@ Simply ask three questions about each piece of data:
 
 Treat `this.state` as if it were immutable.
 
-When an element type starts with a lowercase letter, it refers to `React.createElement` (<div>, <span>).
-Types that start with a capital letter compile to `React.createElement(Foo)` (<Foo />).
-
 Spread Attributes:
 ````
 function App2() {
