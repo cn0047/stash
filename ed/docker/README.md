@@ -111,6 +111,11 @@ docker run -it --rm -v $PWD:/gh --link mysql-master php-cli php /gh/ed/php.larav
 docker run -it --rm --hostname 0.0.0.0 -p 8181:8181 -v $PWD:/gh --link mysql-master \
     php-cli php /gh/ed/php.laravel/examples/one/artisan serve --host=0.0.0.0 --port=8181
 
+# symfony
+docker run -ti --rm -v $PWD/ed/php.symfony/examples/News/symfony/news:/app xcomposer install
+docker run -it --rm --hostname 0.0.0.0 -p 8181:8181 -v $PWD:/gh --link mysql-master \
+    php-cli php /gh/ed/php.symfony/examples/News/symfony/news/bin/console server:run 0.0.0.0:8181
+
 ````
 
 ### MONGO
