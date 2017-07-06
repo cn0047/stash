@@ -1,8 +1,14 @@
 Linux
 -
 
-sudo dpkg -i {name}
+````
+# HTTPS keys:
+openssl genrsa 1024 > private.key
+openssl req -new -key private.key -out cert.csr
+openssl x509 -req -in cert.csr -signkey private.key -out certificate.pem
+````
 
+sudo dpkg -i {name}
 
 ####centos
 
@@ -243,12 +249,17 @@ uuencode card.jpg card.jpg | mail mail@com.com
 -u, --user USER[:PASSWORD]           Server user and password
 
 # (REST) JSON at POST.
+curl -XPOST http://localhost:3000/dishes \
+    -H 'Content-Type: application/json' -d '{"name": "newDish", "description": "newDesc"}'
 curl -X POST -H 'application/json' -d '{"key":"val"}' http://url.com
 curl -X POST -H 'Content-Type: text/plain' -d @/tmp/foo.txt http://url.com
 curl http://url.com -d x=1 -d y=2
 
 curl http://login:pass@base-http-auth.com/
 curl -u login:pass http://base-http-auth.com/
+
+// user == 'admin' && pass == 'password'
+curl http://localhost:3000 -H 'Authorization: Basic YWRtaW46cGFzc3dvcmQ='
 
 # upload file
 curl http://localhost:8000 -F "file=@/home/kovpak/Downloads/download.jpg"

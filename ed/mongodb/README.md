@@ -29,7 +29,7 @@ db.test.insert({x :MaxKey})
 db.test.insert({x :MinKey})
 
 show collections
-db.testData.find()
+db.testData.find().pretty()
 db.getCollection('_foo').find()
 db.testData.findOne()
 db.testData.find().limit(3)

@@ -1,6 +1,14 @@
 nginx
 -
 
+Nginx relying on an asynchronous, events-driven architecture.
+
+Nginx spawns worker processes, each of which can handle thousands of connections.
+The worker processes accomplish this by implementing a fast looping mechanism
+that continuously checks for and processes events.
+
+Nginx was created to be both a web server and a proxy server.
+
 ````
 sudo nginx -t                 # check config file
 sudo nginx -s reload          # reload only configs

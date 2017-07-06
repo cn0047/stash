@@ -1,0 +1,32 @@
+{
+  "name": "simplerestapi",
+  "version": "1.0.0",
+  "description": "Simple REST API.",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cn007b/getthemall.git"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "cn007b",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cn007b/getthemall/issues"
+  },
+  "homepage": "https://github.com/cn007b/getthemall#readme",
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "express": "^4.15.3",
+    "express-validator": "^3.2.0",
+    "getthemall": "^1.1.2",
+    "mongodb": "^2.2.29",
+    "node-fetch": "^1.7.1"
+  },
+  "scripts": {
+    "start": "node src/index.js"
+  }
+}

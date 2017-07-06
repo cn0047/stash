@@ -6,6 +6,7 @@ Acronyms
 [AMQP](#AMQP)
 [API](#API)
 [B2B](#B2B)
+[BAAS](#BAAS)
 [BDD](#BDD)
 [CDN](#CDN)
 [CORS](#CORS)
@@ -69,6 +70,9 @@ Acronyms
 
 <dt><a name="B2B"></a>B2B</dt>
 <dd>Business to business.</dd>
+
+<dt><a name="BAAS"></a>BAAS</dt>
+<dd>Back-end as a service.</dd>
 
 <dt><a name="BDD"></a>BDD</dt>
 <dd>Behavior-driven development.</dd>

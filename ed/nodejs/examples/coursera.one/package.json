@@ -1,0 +1,20 @@
+{
+  "name": "none",
+  "version": "1.1.1",
+  "author": "Vladimir Kovpak <cn007b@gmail.com>",
+  "description": "204",
+  "private": false,
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.3",
+    "express-session": "^1.15.3",
+    "morgan": "^1.8.2",
+    "session-file-store": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0",
+    "webpack": "^3.0.0",
+    "webpack-dev-server": "^2.5.0"
+  }
+}

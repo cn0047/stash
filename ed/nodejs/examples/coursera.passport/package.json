@@ -1,0 +1,28 @@
+{
+  "name": "none",
+  "version": "1.1.1",
+  "author": "Vladimir Kovpak <cn007b@gmail.com>",
+  "description": "204",
+  "private": false,
+  "scripts": {
+    "start": "node_modules/.bin/nodemon ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.3",
+    "jsonwebtoken": "^7.4.1",
+    "mongoose": "^4.11.1",
+    "mongoose-currency": "^0.2.0",
+    "mongoose-find-one-or-create": "^0.2.0",
+    "morgan": "^1.8.2",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.1",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^4.0.0",
+    "serve-favicon": "^2.4.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}

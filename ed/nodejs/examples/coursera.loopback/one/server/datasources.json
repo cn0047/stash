@@ -1,0 +1,16 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "MongoDB": {
+    "host": "localhost",
+    "port": 27017,
+    "url": "mongodb://dbu:dbp@localhost:27017/conFusion",
+    "database": "conFusion",
+    "password": "dbp",
+    "name": "MongoDB",
+    "user": "dbu",
+    "connector": "mongodb"
+  }
+}

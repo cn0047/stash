@@ -14,6 +14,54 @@ nodemon ./server.js localhost 8080
 ````js
 req.url    // Url string.
 req.params // Parsed params from url.
+req.params.id
+````
+
+Node architecture:
+
+* node cod (js)
+* node bindings (c++)
+* chrome v8 (c++)
+* libuv (C)
+
+Boundary for node module - file. File is module.
+`module.exports` - for export module.
+`exports.perimeter` and `exports.area` - another way to export.
+`exports` alias to `module.exports`.
+
+Closure - if you define a function inside another function,
+the inner function will have full access to all the variables
+that are declared and available in the outer function's scope.
+If the outer functions completes execution and returns -
+the inner function will still have access to all of the variables
+that were part of the outer function when the inner function was returned.
+
+1st for callback must be ERROR.
+
+`yargs`
+
+````
+var argv = require('yargs')
+    .usage('Usage: node $0 --l=[num] --b=[num]')
+    .demand(['l','b'])
+    .argv;
+
+console.log(argv.l,argv.b);
+````
+````
+# npm install morgan --save
+var morgan = require('morgan');
+app.use(morgan('dev'));
+````
+
+````
+npm install express-generator -g
+express node-express-gen
+````
+````
+npm install strongloop -g
+slc loopback
+slc loopback:model
 ````
 
 #### Under the hood

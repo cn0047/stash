@@ -1,6 +1,12 @@
 Apache
 -
 
+Apache provides modules that dictate how client requests are handled:
+
+* `mpm_prefork` - 1 thread for each request. Good for `mod_php`.
+* `mpm_worker` - multiple threads.
+* `mpm_event` -similar to worker, but optimized to handle keep-alive connections.
+
 ````
 sudo apt-get install tasksel
 sudo tasksel install lamp-server

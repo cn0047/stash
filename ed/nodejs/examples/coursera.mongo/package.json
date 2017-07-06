@@ -1,0 +1,23 @@
+{
+  "name": "nm",
+  "version": "1.1.1",
+  "author": "Vladimir Kovpak <cn007b@gmail.com>",
+  "description": "204",
+  "private": false,
+  "dependencies": {
+    "assert": "^1.4.1",
+    "body-parser": "^1.17.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.3",
+    "express": "^4.15.3",
+    "jade": "~1.11.0",
+    "mongodb": "^2.2.28",
+    "mongoose": "^4.11.1",
+    "mongoose-currency": "^0.2.0",
+    "morgan": "^1.8.2",
+    "serve-favicon": "~2.4.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
