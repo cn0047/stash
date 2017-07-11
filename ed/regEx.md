@@ -28,7 +28,7 @@ RegEx
 |\f                                        | new page |
 |\r                                        | return |
 |\c                                        | control character |
-|\s                                        | white space |
+|\s                                        | white space [\s\t\r\n\f] |
 |\S                                        | not white space |
 |\d                                        | digit |
 |\D                                        | not digit |

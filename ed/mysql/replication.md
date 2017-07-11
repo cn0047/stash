@@ -10,7 +10,8 @@ The master writes events to its binary log and slaves request them when they are
 
 * Synchronous replication which is a characteristic of MySQL Cluster.
 When a master commits a transaction, all slaves also will have committed the transaction
-before the master returns to the session that performed the transaction.
+before the master returns to the session that performed the transaction
+(data loss is prevented by verifying replication after each data operation).
 
 * Semisynchronous replication (is implemented using plugins).
 The master waits only until at least one slave has received and logged the events.

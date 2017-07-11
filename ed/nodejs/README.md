@@ -36,6 +36,8 @@ If the outer functions completes execution and returns -
 the inner function will still have access to all of the variables
 that were part of the outer function when the inner function was returned.
 
+There are two types of flow control: serial and parallel.
+
 1st for callback must be ERROR.
 
 `yargs`
