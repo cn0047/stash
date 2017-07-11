@@ -10,6 +10,16 @@ ECMAScript 6:
 
 // Constants.
 const PI = 3.141593
+// If possible, use `const` everywhere for more robust code.
+// Only use `let` if you know its value needs to change.
+// `var` shouldn’t be used in ES6.
+// `const` means that the identifier can’t be reassigned.
+// IMPORTANT: Objects stored in constants are mutable!
+const colors = {red: "#f00"};
+colors.green = "#0f0";
+console.log(colors); // { "red": "#00f", "green": "#0f0" }
+// but
+colors = {code: 200}; // Error
 
 // Let - allows you to declare variables that are limited in scope to the block.
 // for (let i = 0; i < 3; i++) {}

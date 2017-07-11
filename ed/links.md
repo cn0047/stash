@@ -14,6 +14,11 @@ https://github.com/ifightcrime/bootstrap-growl/ PopUp
 https://platform.sh/
 https://github.com/sindresorhus/awesome
 
+share info (articles):
+    https://www.codementor.io/
+    https://medium.com/
+    https://www.airpair.com/
+
 http://www.internabroadusa.com/ - usa
 https://github.com/h5bp/Front-end-Developer-Interview-Questions
 https://www.toptal.com/

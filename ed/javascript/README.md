@@ -7,6 +7,8 @@ to support canvas (an HTML5 feature) in older browsers.
 
 A shim is more generalized. A polyfill is a type of shim.
 
+Variables can be hoisted. Hoisted means, declare them all on top of the function.
+
 ````js
 'use strict';
 
