@@ -2,6 +2,13 @@ Linux
 -
 
 ````
+# nginx
+telnet localhost 8080
+# php-fpm
+telnet localhost 9000
+````
+
+````
 # HTTPS keys:
 openssl genrsa 1024 > private.key
 openssl req -new -key private.key -out cert.csr
@@ -20,6 +27,9 @@ yum --showduplicates list available elasticsearch\*
 
 ````
 netstat -anp | grep LISTEN
+
+# osx
+sudo lsof -i -n -P | grep TCP.*80
 
 # Active Internet connections
 netstat -tpne

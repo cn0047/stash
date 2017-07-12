@@ -10,6 +10,9 @@ sudo service mongodb start|stop|restart
 sudo rm /var/lib/mongodb/mongod.lock
 sudo service mongodb restart
 
+# osx
+brew services start mongodb
+
 mongo
 ````
 

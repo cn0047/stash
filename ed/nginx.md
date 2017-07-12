@@ -14,14 +14,18 @@ sudo nginx -t                 # check config file
 sudo nginx -s reload          # reload only configs
 sudo s/etc/init.d/nginx reload
 sudo service nginx restart
+
+brew services start nginx
 ````
 
 osx:
 ````
-config:
+# config:
 /usr/local/etc/nginx/nginx.conf
-document root:
+# document root:
 /usr/local/Cellar/nginx/1.8.0/html
+# logs:
+/usr/local/etc/nginx/logs/
 ````
 
 linux:
@@ -46,8 +50,6 @@ if ($host = 'ziipr.dev') {
     rewrite  ^/(.*)$  $scheme://www.ziipr.com/$1  permanent;
 }
 ````
-
-Nginx
 
 ````
 server {

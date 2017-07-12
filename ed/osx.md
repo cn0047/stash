@@ -22,3 +22,9 @@ Command+Shift+4 # screenshot (selected shape) in file on desktop
 Command+Control+Shift+3 # screenshot in buffer
 Command+Control+Shift+4 # screenshot (selected shape) in buffer
 ````
+
+## Brew
+
+````
+brew services list
+````
