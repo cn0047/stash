@@ -2,17 +2,55 @@ http
 -
 1.1
 
-````
-# CORS
-Access-Control-Allow-Origin: http://www.example.com
-Access-Control-Allow-Origin: *
-````
-
 #### Request
 
 ````
 GET /api/collection
 Accept: application/x-collection+yaml
+
+Content-Type: application/json
+
+Authorization: Basic YWRtaW46cGFzc3dvcmQ=
+````
+
+#### Internet media type
+
+[source](http://en.wikipedia.org/wiki/Internet_media_type#List_of_common_media_types5)
+
+The currently registered top-level type names are:
+* application ("application/javascript", "application/json", "application/pdf", "application/soap+xml")
+* audio ("audio/mp4", "audio/mpeg")
+* example
+* image ("image/png")
+* message
+* model
+* multipart
+* text ("text/html", "text/csv", "text/rtf")
+* video ("video/avi", "ideo/mpeg")
+
+Currently the following trees are created:
+* standard ("application/xhtml+xml", "image/png")
+* vendor ("application/vnd.ms-excel", "application/vnd.oasis.opendocument.text")
+* personal or vanity
+* unregistered "x."
+
+#### Response
+
+````
+Server: nginx/1.10.2
+
+Set-Cookie: AWSELB=3B731DCB1E7B5DC042400ABD5CCF735F3FFEB4F54E46E6B7D...
+
+X-Powered-By: Express
+
+# CORS
+Access-Control-Allow-Origin: http://www.example.com
+Access-Control-Allow-Origin: *
+
+Content-Type: text/plain; charset=utf-8
+
+# indicate whether or not a browser should be allowed to render a page in a <frame>, <iframe> or <object>.
+X-Frame-Options: DENY
 ````
 
 #### Http codes

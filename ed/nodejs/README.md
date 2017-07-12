@@ -24,6 +24,10 @@ Node architecture:
 * chrome v8 (c++)
 * libuv (C)
 
+Currently, by default v8 has a memory limit of 512mb on 32-bit systems, and 1gb on 64-bit systems.
+To increase memory use `--max_old_space_size`
+`node --max-old-space-size=8192 server.js`
+
 Boundary for node module - file. File is module.
 `module.exports` - for export module.
 `exports.perimeter` and `exports.area` - another way to export.
@@ -96,6 +100,13 @@ If this wasn’t enough, we actually have more then one **task queue**.
 and **another for macrotasks** (setTimeout, setInterval, setImmediate, I/O).
 
 After said macrotask has finished, all of the available microtasks will be processed within the same cycle.
+
+#### Event Loop
+
+Blocked Event Loop:
+
+* I/O is blocking.
+* Call that does CPU work is blocking.
 
 #### Garbage Collector
 

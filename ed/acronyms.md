@@ -32,6 +32,7 @@ Acronyms
 [PECL](#PECL)
 [RBAC](#RBAC)
 [RCS](#RCS)
+[REPL](#REPL)
 [REST](#REST)
 [RFC](#RFC)
 [ROI](#ROI)
@@ -51,6 +52,7 @@ Acronyms
 [UTC](#UTC)
 [VPN](#VPN)
 [WSDL](#WSDL)
+[WYSIWYG](#WYSIWYG)
 [XML](#XML)
 [YAGNI](#YAGNI)
 
@@ -149,6 +151,9 @@ Acronyms
 <dt><a name="RCS"></a>RCS</dt>
 <dd>Revision control system.</dd>
 
+<dt><a name="REPL"></a>REPL</dt>
+<dd>Read–Eval–Print Loop (interactive toplevel or language shell).</dd>
+
 <dt><a name="REST"></a>REST</dt>
 <dd>Representational State Transfer.</dd>
 
@@ -205,6 +210,9 @@ Acronyms
 
 <dt><a name="WSDL"></a>WSDL</dt>
 <dd>Web Service Definition Language.</dd>
+
+<dt><a name="WYSIWYG"></a>WYSIWYG</dt>
+<dd>What you see is what you get.</dd>
 
 <dt><a name="XML"></a>XML</dt>
 <dd>Extensible Markup Language.</dd>
