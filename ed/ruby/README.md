@@ -1,6 +1,11 @@
 ruby
 -
-2.0.0p648
+2.4.0
+
+````
+rvm use ruby-2.4.0
+rvm default ruby-2.4.0
+````
 
 ## Data Types:
 
@@ -78,6 +83,8 @@ ARGV.each {|arg| p arg }
 ````
 
 ````rb
+count ||= 0 # count = count || 0
+
 if count > 10
   #
 elsif tries == 3
@@ -99,6 +106,10 @@ end
 
 while weight < 100 and num_pallets <= 30 pallet = next_pallet()
     #
+end
+
+do
+  #
 end
 
 6.times do

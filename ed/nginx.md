@@ -10,8 +10,13 @@ that continuously checks for and processes events.
 Nginx was created to be both a web server and a proxy server.
 
 ````
-sudo nginx -t                 # check config file
-sudo nginx -s reload          # reload only configs
+sudo nginx -t        # check config file
+sudo nginx -s reload # reload only configs
+sudo nginx -s stop
+sudo nginx -s quit
+sudo nginx -s reopen
+sudo nginx -c /usr/local/etc/nginx/ni.nginx.conf
+
 sudo s/etc/init.d/nginx reload
 sudo service nginx restart
 
@@ -22,10 +27,24 @@ osx:
 ````
 # config:
 /usr/local/etc/nginx/nginx.conf
+
 # document root:
 /usr/local/Cellar/nginx/1.8.0/html
+/usr/local/Cellar/nginx/1.12.1/html
+
+mkdir -p /usr/local/etc/nginx/conf.d
+mkdir -p /usr/local/etc/nginx/sites-enabled
+mkdir -p /usr/local/etc/nginx/sites-available
+touch    /usr/local/etc/nginx/sites-available/default
+ln -sfv  /usr/local/etc/nginx/sites-available/default /usr/local/etc/nginx/sites-enabled/default
+
 # logs:
-/usr/local/etc/nginx/logs/
+mkdir -p /usr/local/etc/nginx/logs
+touch /usr/local/etc/nginx/logs/access.log
+touch /usr/local/etc/nginx/logs/error.log
+# or
+tail -f /usr/local/var/log/nginx/access.log
+tail -f /usr/local/var/log/nginx/error.log
 ````
 
 linux:

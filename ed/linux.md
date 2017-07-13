@@ -227,6 +227,10 @@ file      - -rw-rw-r-- (664)
 chown -R www-data:www-data /var/www/html/
 ````
 
+````
+sudo chown -R `whoami` /var/log/
+````
+
 ####mail
 ````
 mail -s 'subject' mail@com.com < fileName
