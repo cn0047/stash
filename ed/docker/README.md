@@ -92,6 +92,10 @@ docker build -t php-cli ./docker/php-cli
 docker run -it --rm -v $PWD:/gh php-cli php -v
 docker run -it --rm -v $PWD:/gh php-cli php /gh/x.php
 
+# php-fpm
+docker build -t php-fpm ./docker/php-fpm
+docker run -it --rm -p 9000:9000 --hostname localhost --name php-fpm -v $PWD:/gh php-fpm
+
 # buil-in web server
 docker run -it --rm -p 8000:8000 -v $PWD:/gh php-cli php -S 0.0.0.0:8000 /gh/ed/php/examples/isNumeric.php
 
@@ -118,7 +122,30 @@ docker run -it --rm --hostname 0.0.0.0 -p 8181:8181 -v $PWD:/gh --link mysql-mas
 
 ````
 
-### MONGO
+#### NGINX
+
+````
+# html
+docker run -ti --rm --name nginx-html \
+    -v $PWD/docker/nginx/html.conf:/etc/nginx/conf.d/default.conf \
+    -v $PWD:/gh \
+    -p 8080:80 nginx:latest
+
+# test
+curl http://localhost:8081/bootstrap.popover.html
+
+# php
+docker run -ti --rm --name nginx-php --link php-fpm \
+    -v $PWD/docker/nginx/php-fpm.conf:/etc/nginx/conf.d/default.conf \
+    -v $PWD:/gh \
+    -p 8080:80 nginx:latest
+
+# test
+curl localhost:8080/healthCheck.php
+
+````
+
+#### MONGO
 
 ````
 docker run -it --rm --hostname localhost --name xmongo -v $PWD/docker/mongodb/db:/data/db -p 27017:27017 mongo:latest
