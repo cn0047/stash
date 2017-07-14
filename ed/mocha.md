@@ -11,3 +11,8 @@ mocha
 ````
 open coverage/lcov-report/*.html
 ````
+
+````js
+it.skip
+it.only
+````

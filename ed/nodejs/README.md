@@ -7,7 +7,6 @@ Node JS
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 ````
 ````
-sudo npm install -g nodemon
 nodemon ./server.js localhost 8080
 ````
 
@@ -17,35 +16,7 @@ req.params // Parsed params from url.
 req.params.id
 ````
 
-Node architecture:
-
-* node cod (js)
-* node bindings (c++)
-* chrome v8 (c++)
-* libuv (C)
-
-Currently, by default v8 has a memory limit of 512mb on 32-bit systems, and 1gb on 64-bit systems.
-To increase memory use `--max_old_space_size`
-`node --max-old-space-size=8192 server.js`
-
-Boundary for node module - file. File is module.
-`module.exports` - for export module.
-`exports.perimeter` and `exports.area` - another way to export.
-`exports` alias to `module.exports`.
-
-Closure - if you define a function inside another function,
-the inner function will have full access to all the variables
-that are declared and available in the outer function's scope.
-If the outer functions completes execution and returns -
-the inner function will still have access to all of the variables
-that were part of the outer function when the inner function was returned.
-
-There are two types of flow control: serial and parallel.
-
-1st for callback must be ERROR.
-
 `yargs`
-
 ````
 var argv = require('yargs')
     .usage('Usage: node $0 --l=[num] --b=[num]')
@@ -54,6 +25,7 @@ var argv = require('yargs')
 
 console.log(argv.l,argv.b);
 ````
+
 ````
 # npm install morgan --save
 var morgan = require('morgan');
@@ -70,7 +42,37 @@ slc loopback
 slc loopback:model
 ````
 
+#### Common info
+
+Currently, by default v8 has a memory limit of 512mb on 32-bit systems, and 1gb on 64-bit systems.
+To increase memory use `--max_old_space_size`
+`node --max-old-space-size=8192 server.js`
+
+Boundary for node module - file. File is module.
+`module.exports` - for export module.
+`exports.perimeter` and `exports.area` - another way to export.
+`exports` alias to `module.exports`.
+
+**Closure** - if you define a function inside another function,
+the inner function will have full access to all the variables
+that are declared and available in the outer function's scope.
+If the outer functions completes execution and returns -
+the inner function will still have access to all of the variables
+that were part of the outer function when the inner function was returned.
+
+There are two types of flow control: serial and parallel.
+
+**Generators** - function executions that can be suspended and resumed at a later point.
+`yield` & `yield;`;
+
 #### Under the hood
+
+Node architecture:
+
+* node cod (js)
+* node bindings (c++)
+* chrome v8 (c++)
+* libuv (C)
 
 Execution nodejs code pushes variables into **execution stack**.
 Local variables are popped from the stack when the functions execution finishes.
@@ -149,62 +151,6 @@ Each type of Stream is an EventEmitter instance and throws several events;
 
 Piping is a mechanism where we provide the output of one stream as the input to another stream.
 
-#### Mongodb dereference
-
-````js
-collection.find({}, function (err, cursor) {
-    cursor.toArray(function (err, docs) {
-        var count = docs.length - 1;
-        for (i in docs) {
-            (function (docs, i) {
-                db.dereference(docs[i].ref, function(err, doc) {
-                    docs[i].ref = doc;
-                    if (i == count) {
-                        (function (docs) {
-                            console.log(docs);
-                        })(docs);
-                    }
-                });
-            })(docs, i)
-        }
-    });
-});
-````
-
-####Redis Sessions
-````js
-var redisSessions = require('redis-sessions');
-global.session = new redisSessions();
-global.session.create(
-    {
-        app: 'skipe',
-        id: d._id,
-        ip: req.connection.remoteAddress,
-        ttl: 7200,
-        d: {sname: d.sname}
-    },
-    function(err, res) {
-        if (err) {
-            console.error(err);
-        }
-        global.user.sname = d.sname;
-        global.user.token = res.token;
-    }
-);
-global.session.set(
-    {
-        app: 'skipe',
-        token: global.user.token,
-        d: {sname: global.user.sname}
-    },
-    function(err, res) {
-        if (err) {
-            console.error(err);
-        }
-        console.log(res);
-    }
-);
-````
-
+ESLint
 https://blog.risingstack.com/finding-a-memory-leak-in-node-js/
 https://blog.risingstack.com/javascript-garbage-collection-orinoco/

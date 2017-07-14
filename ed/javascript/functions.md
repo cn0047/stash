@@ -99,6 +99,8 @@ d.getDay();         // 1
 d.getHours();       // 24
 d.getMinutes();     // 9
 d.getSeconds();     // 1
+
+d = Date.parse(str);
 ````
 
 #### Function

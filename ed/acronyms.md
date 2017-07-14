@@ -30,6 +30,7 @@ Acronyms
 [ORM](#ORM)
 [PEAR](#PEAR)
 [PECL](#PECL)
+[R&D](#R&D)
 [RBAC](#RBAC)
 [RCS](#RCS)
 [REPL](#REPL)
@@ -144,6 +145,9 @@ Acronyms
 
 <dt><a name="PECL"></a>PECL</dt>
 <dd>Php extension community library.</dd>
+
+<dt><a name="R&D">R&D</a></dt>
+<dd>Research and development</dd>
 
 <dt><a name="RBAC"></a>RBAC</dt>
 <dd>Role-based access control.</dd>
