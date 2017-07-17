@@ -74,6 +74,8 @@ var b = !! bool; // To boolean
 Object.assign(dst, src1, src2)
 fr_obj = Object.freeze(obj) // freeze obj, but freeze is not recursive! Nested objects won't be frozen.
 Object.isFrozen(obj);
+Object.seal(obj); // preventing add new properties and marking all existing properties as non-configurable.
+
 
 my_obj.hasOwnProperty('cos'); // true
 my_obj.keys()

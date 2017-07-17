@@ -10,6 +10,10 @@ sudo ln -s /usr/bin/nodejs /usr/bin/node
 nodemon ./server.js localhost 8080
 ````
 
+````
+require('fs').appendFile('/tmp/debug.tmp', JSON.stringify('ok'));
+````
+
 ````js
 req.url    // Url string.
 req.params // Parsed params from url.

@@ -15,4 +15,8 @@ open coverage/lcov-report/*.html
 ````js
 it.skip
 it.only
+this.retries(2);
+this.timeout(500);
 ````
+
+Reporters: spec, dot, nyan, landing, list, progress, json, min, doc, markdown, html

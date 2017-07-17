@@ -27,6 +27,7 @@ Acronyms
 [LDAP](#LDAP)
 [MIME](#MIME)
 [MTA](#MTA)
+[NVM](#NVM)
 [ORM](#ORM)
 [PEAR](#PEAR)
 [PECL](#PECL)
@@ -136,6 +137,9 @@ Acronyms
 
 <dt><a name="MTA"></a>MTA</dt>
 <dd>Message (or Mail) Transfer Agent.</dd>
+
+<dt><a name="NVM"></a>NVM</dt>
+<dd>Node Version Manager.</dd>
 
 <dt><a name="ORM"></a>ORM</dt>
 <dd>Object-relational mapping.</dd>
