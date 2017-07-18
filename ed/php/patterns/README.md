@@ -19,12 +19,12 @@ Patterns
     * facade - object that provides a simplified interface to a larger body of code
     * flyweight - lazy load
     * proxy
+    * decorator - dynamically allows behavior to be added to object
 
 3. Behaviour.
 
     * chainOfResponsibility - each object contains logic and link to the next
     * command - object encapsulate all information needed to call a method
-    * decorator - dynamically allows behavior to be added to object
     * dependencyInjection - IoC
     * interpreter
     * iterator - used to traverse a container
