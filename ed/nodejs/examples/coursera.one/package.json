@@ -10,6 +10,7 @@
     "express": "^4.15.3",
     "express-session": "^1.15.3",
     "morgan": "^1.8.2",
+    "pm2": "^2.5.0",
     "session-file-store": "^1.0.0"
   },
   "devDependencies": {

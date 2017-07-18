@@ -1,0 +1,14 @@
+{
+  "name": "async",
+  "version": "1.0.0",
+  "description": "",
+  "main": "one.js",
+  "scripts": {
+    "test": "node one.js"
+  },
+  "author": "cn007b",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^1.7.1"
+  }
+}

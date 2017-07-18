@@ -155,6 +155,13 @@ Each type of Stream is an EventEmitter instance and throws several events;
 
 Piping is a mechanism where we provide the output of one stream as the input to another stream.
 
-ESLint
-https://blog.risingstack.com/finding-a-memory-leak-in-node-js/
-https://blog.risingstack.com/javascript-garbage-collection-orinoco/
+#### Async/await
+
+Is new way to write asynchronous code (before were only callbacks and promises).
+
+The `await` keyword can only be used inside functions defined with `async`.
+
+This approach is:
+* Concise and clean.
+* Error handling (`try/catch` also works for asynchronous errors).
+* Easy to write conditions, easy to debug, better error stack.

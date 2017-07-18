@@ -11,7 +11,9 @@ History
 
 ## node.js 7
 
-## node.js 6
+* Async/await.
+
+## node.js 6 (Boron)
 
 * Performance Improvements
 * Security Improvements

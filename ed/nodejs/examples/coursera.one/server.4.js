@@ -53,6 +53,11 @@ dishRouter.route('/:dishId')
 
 app.use('/dishes',dishRouter);
 
+app.use('/err', function(req, res) {
+    throw Err; // Intentionally!
+    res.end('Error.');
+});
+
 app.use(express.static(__dirname + '/public'));
 
 app.listen(port, hostname, function(){
