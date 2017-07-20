@@ -2,6 +2,14 @@ AWS
 -
 
 ````
+# ubuntu
+sudo apt-get install awscli
+
+# osx
+brew install awscli
+
+aws configure
+
 ~/.aws/config
 ````
 

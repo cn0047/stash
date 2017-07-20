@@ -1,9 +1,19 @@
 Functions
 -
 
+````js
+setTimeout(() => { }, milliseconds);
+setInterval(() => { }, milliseconds);
+/*
+nanosecond  - 0,000 000 001
+microsecond - 0,000 001
+millisecond - 0,001
+*/
+````
+
 #### String
 
-````
+````js
 str.length;
 str.toUpperCase();
 str.toLowerCase();
@@ -19,7 +29,7 @@ str.split();
 
 #### Number
 
-````
+````js
 Number(bool);
 number.isInteger()
 number.isNan();
@@ -57,7 +67,7 @@ number.toPrecision(7);                                 // 12345.68
 
 #### Boolean
 
-````
+````js
 Boolean(bool);
 var b = !! bool; // To boolean
 ````
@@ -70,12 +80,12 @@ var b = !! bool; // To boolean
 
 #### Object
 
-````
+````js
 Object.assign(dst, src1, src2)
 fr_obj = Object.freeze(obj) // freeze obj, but freeze is not recursive! Nested objects won't be frozen.
 Object.isFrozen(obj);
 Object.seal(obj); // preventing add new properties and marking all existing properties as non-configurable.
-
+Object.defineProperties(obj, props); // defines|modifies object's properties
 
 my_obj.hasOwnProperty('cos'); // true
 my_obj.keys()
@@ -93,7 +103,7 @@ o[-1.23] = true;             // Create new property -1.23s
 
 Date:
 
-````
+````js
 var d = new Date(); // Mon Apr 07 2014 23:09:01 GMT+0300 (EEST)
 d.getFullYear();    // 2014
 d.getMonth();       // 3
@@ -107,7 +117,7 @@ d = Date.parse(str);
 
 #### Function
 
-````
+````js
 f.bind(object, 1, 2);
 f.call(object, 1, 2);
 f.apply(object, [1, 2]);
@@ -125,7 +135,7 @@ function f(x) {
 
 #### Array
 
-````
+````js
 Array.isArray({})
 Array.IndexOf(my_array, el);
 my_array.IndexOf(el);

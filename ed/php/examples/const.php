@@ -1,8 +1,10 @@
 <?php
 
-const foo = 200;
-echo foo."\n";
-echo constant('foo')."\n";
+const FOO = 200;
+
+echo FOO . PHP_EOL;
+echo constant('FOO') . PHP_EOL;
+
 /*
 200
 200
