@@ -151,7 +151,7 @@ Acronyms
 <dd>Php extension community library.</dd>
 
 <dt><a name="R&D">R&D</a></dt>
-<dd>Research and development</dd>
+<dd>Research and development.</dd>
 
 <dt><a name="RBAC"></a>RBAC</dt>
 <dd>Role-based access control.</dd>

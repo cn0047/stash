@@ -258,7 +258,7 @@ general-log-file = /var/log/mysql/general.log
 ````
 ````sql
 SET global general_log_file='/var/log/mysql/general.log';
-SET global general_log = 0;
+SET global general_log = 1;
 ````
 
 ####Tricks
