@@ -70,10 +70,10 @@ X-Frame-Options: DENY
 * 202 **Accepted**
 * 203 Non-Authoritative Information (since HTTP/1.1)
 * 204 **No Content**
-* 205 **Reset Content**
+* 205 Reset Content
 * 206 Partial Content
 * 207 Multi-Status (WebDAV; RFC 4918)
-* 208 **Already Reported** (WebDAV; RFC 5842)
+* 208 Already Reported (WebDAV; RFC 5842)
 * 226 IM Used (RFC 3229)
 
 3xx Redirection
