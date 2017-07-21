@@ -72,7 +72,7 @@ unlike simple dynamic arrays which maintain their data in one contiguous memory 
 
 #### Linked
 
-* `Linked list` - is a linear collection of data elements,
+* `Linked list` - is a linear **collection** of data elements,
 called nodes pointing to the next node by means of a pointer.
 It is a data structure consisting of a group of nodes which together represent a sequence.
 Under the simplest form, each node is composed of data and a **reference

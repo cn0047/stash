@@ -31,7 +31,7 @@ History of MySQL
 * Partitioning (Maximum number of partitions is increased to 8192).
 * Performance Schema.
 * MySQL Cluster.
-* Replication and logging (Transaction-based replication).
+* Replication and logging (Transaction-based replication (Synchronous replication)).
 * Optimizer enhancements (EXPLAIN for DELETE, INSERT, REPLACE, UPDATE.).
 * Condition handling.
 * Data types (Permits fractional seconds for TIME, DATETIME, and TIMESTAMP).

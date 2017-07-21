@@ -76,6 +76,8 @@ EBS provides persistent block storage volumes for use with Amazon EC2 instances 
 
 #### ELB (Elastic Load Balancing)
 
+#### ASG (Auto Scaling Group)
+
 # S3 (Simple Storage Service)
 
 ````
@@ -97,6 +99,8 @@ aws cloudwatch put-metric-data --namespace 'prod.supervisor' --metric-name 'inst
 
 aws logs put-log-events --log-group-name cli_prod --log-stream-name x --log-events timestamp=`date +%s`,message=000
 ````
+
+#### SNS (Simple Notification Service)
 
 # SQS (Simple Queue Service)
 

@@ -2,8 +2,10 @@ Functions
 -
 
 ````js
-setTimeout(() => { }, milliseconds);
-setInterval(() => { }, milliseconds);
+setTimeout(() => {}, milliseconds);
+setInterval(() => {}, milliseconds);
+setImmediate(() => {})
+// `setImmediate` will always be executed before `setTimeout` and `setInterval` if scheduled within an I/O cycle.
 /*
 nanosecond  - 0,000 000 001
 microsecond - 0,000 001

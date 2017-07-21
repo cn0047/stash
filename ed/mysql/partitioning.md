@@ -8,7 +8,7 @@ The user-selected rule by which the division of data is accomplished is known as
 <br>MySQL 5.5 does not support vertical partitioning, in which different columns of a table are assigned to different physical partitions.
 <br>This is known as horizontal partitioning—that is, different rows of a table may be assigned to different physical partitions.
 
-##Partitioning Types:
+## Partitioning Types:
 
     1 RANGE Partitioning
     2 LIST Partitioning
@@ -33,7 +33,7 @@ FROM INFORMATION_SCHEMA.PARTITIONS
 WHERE TABLE_NAME ='table';
 ````
 
-####RANGE Partitioning
+#### RANGE Partitioning
 ````sql
 CREATE TABLE orders (
     date DATE,
@@ -98,7 +98,7 @@ SELECT * FROM orders;
 | 2016-09-01 | 5 triggered |
 +------------+-------------+
 ````
-####LIST
+#### LIST
 ````sql
 PARTITION BY LIST(store_id) (
     PARTITION pNorth VALUES IN (3,5,6,9,17),
@@ -108,7 +108,7 @@ PARTITION BY LIST(store_id) (
 );
 ````
 
-####COLUMNS Partitioning
+#### COLUMNS Partitioning
 * All integer types: TINYINT, SMALLINT, MEDIUMINT, INT (INTEGER), and BIGINT. (This is the same as with partitioning by RANGE and LIST.)
 <br> Other numeric data types (such as DECIMAL or FLOAT) are not supported as partitioning columns.
 
@@ -118,7 +118,7 @@ PARTITION BY LIST(store_id) (
 * The following string types: CHAR, VARCHAR, BINARY, and VARBINARY.
 <br> TEXT and BLOB columns are not supported as partitioning columns.
 
-####RANGE COLUMNS partitioning
+#### RANGE COLUMNS partitioning
 ````sql
 PARTITION BY RANGE COLUMNS(a, b) (
     PARTITION p0 VALUES LESS THAN (5, 12),
@@ -139,7 +139,7 @@ SELECT (0,25,50) < (10,20,100), (10,20,100) < (10,30,50), (0,25,50) < (20,20,100
 +-------------------------+--------------------------+-------------------------+--------------------------+
 ````
 
-####LIST COLUMNS partitioning
+#### LIST COLUMNS partitioning
 ````sql
 PARTITION BY RANGE COLUMNS(renewal) (
     PARTITION pWeek_1 VALUES LESS THAN('2010-02-09'),
@@ -149,13 +149,13 @@ PARTITION BY RANGE COLUMNS(renewal) (
 );
 ````
 
-####HASH Partitioning
+#### HASH Partitioning
 ````sql
 PARTITION BY HASH( YEAR(hired) )
 PARTITIONS 4;
 ````
 
-####LINEAR HASH Partitioning
+#### LINEAR HASH Partitioning
 Linear hashing, which differs from regular hashing
 in that linear hashing utilizes a linear powers-of-two algorithm
 whereas regular hashing employs the modulus of the hashing function&#39;s value.
@@ -167,7 +167,7 @@ PARTITION BY LINEAR HASH( YEAR(hired) )
 PARTITIONS 4;
 ````
 
-####KEY Partitioning
+#### KEY Partitioning
 ````sql
 PARTITION BY KEY()
 PARTITIONS 2;
@@ -176,7 +176,8 @@ PARTITION BY LINEAR KEY (col1)
 PARTITIONS 3;
 ````
 
-##How MySQL Partitioning Handles NULL
+## How MySQL Partitioning Handles NULL
+
 Partitioning in MySQL does nothing to disallow NULL.
 Even though it is permitted to use NULL as the value of an expression that must otherwise yield an integer.
 This means that treatment of NULL varies between partitioning of different types,
@@ -202,9 +203,9 @@ PARTITION BY LIST(c1) (
   NULL is handled somewhat differently for tables partitioned by HASH or KEY.
   In these cases, any partition expression that yields a NULL value is treated as though its return value were zero.
 
-##Partition Management
+## Partition Management
 
-####Management of RANGE and LIST Partitions
+#### Management of RANGE and LIST Partitions
 It is very important to remember that, when you drop a partition, you also delete all the data that was stored in that partition.
 <br>With tables that are partitioned by range, you can use ADD PARTITION to add new partitions to the high end of the partitions list only.
 ````sql
@@ -226,7 +227,7 @@ ALTER TABLE tt REORGANIZE PARTITION p1,np INTO (
 );
 ````
 
-#####Management of HASH and KEY Partitions
+#### #Management of HASH and KEY Partitions
 ````sql
 CREATE TABLE clients (
     id INT,
@@ -278,19 +279,19 @@ SELECT PARTITION_NAME,TABLE_ROWS FROM INFORMATION_SCHEMA.PARTITIONS WHERE TABLE_
 ALTER TABLE clients ADD PARTITION PARTITIONS 6;
 ````
 
-####Maintenance of Partitions
+#### Maintenance of Partitions
 Rebuilds the partition; this has the same effect as dropping all records stored in the partition, then reinserting them.
 ````sql
 ALTER TABLE t1 REBUILD PARTITION p0, p1;
 ````
 
-####Obtaining Information About Partitions
+#### Obtaining Information About Partitions
 ````sql
 SHOW TABLE STATUS FROM dbName where Name = 'tableName'; -- look to Create_options
 EXPLAIN PARTITIONS SELECT * FROM clients;
 ````
 
-##Partition Pruning
+## Partition Pruning
 
 The core concept behind partition pruning is 
 “Do not scan partitions where there can be no matching values”.
@@ -303,7 +304,7 @@ when the partitioning expression uses the YEAR() or TO_DAYS() function.
 
 This optimization is used only if the range size is smaller than the number of partitions.
 
-##Partition Selection
+## Partition Selection
 
 SQL statements supporting explicit partition selection are listed here:
 
@@ -325,7 +326,7 @@ SELECT * FROM orders PARTITION(p_old, p_2008) ORDER BY date;
 +------------+------+
 ````
 
-##Restrictions and Limitations on Partitioning
+## Restrictions and Limitations on Partitioning
 
 You cannot use MyISAM for one partition and InnoDB for another.
 <br>MySQL partitioning cannot be used with the MERGE, CSV, or FEDERATED storage engines.

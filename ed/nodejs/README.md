@@ -57,13 +57,6 @@ Boundary for node module - file. File is module.
 `exports.perimeter` and `exports.area` - another way to export.
 `exports` alias to `module.exports`.
 
-**Closure** - if you define a function inside another function,
-the inner function will have full access to all the variables
-that are declared and available in the outer function's scope.
-If the outer functions completes execution and returns -
-the inner function will still have access to all of the variables
-that were part of the outer function when the inner function was returned.
-
 There are two types of flow control: serial and parallel.
 
 **Generators** - function executions that can be suspended and resumed at a later point.
@@ -73,10 +66,78 @@ There are two types of flow control: serial and parallel.
 
 Node architecture:
 
-* node cod (js)
+* node code (js)
 * node bindings (c++)
 * chrome v8 (c++)
 * libuv (C)
+
+`libuv` is the open source library that handles the thread-pool,
+doing signaling and all other magic that is needed to make the asynchronous tasks work.
+
+Javascript is a single-threaded, event-driven language (even V8 is single-threaded).
+
+We only have **one main thread** and **one call-stack**.
+
+Whenever you call setTimeout, http.get or fs.readFile,
+Node.js sends these operations to a different thread (system kernel threads) allowing V8 to keep executing our code.
+Node also calls the callback when the counter has run down or the IO / http operation has finished.
+
+In case there is another request being served when the said file is read, its callback will need to wait for the execution stack to become empty.
+The limbo where callbacks are waiting for their turn to be executed is called the **task queue** or **event queue**, or **message queue**.
+*Callbacks are being called in an infinite loop whenever the main thread has finished its previous task.*
+
+If this wasn’t enough, we actually have more then one **task queue**.
+**One for microtasks** (process.nextTick, promises, Object.observe)
+and **another for macrotasks** (setTimeout, setInterval, setImmediate, I/O).
+After said macrotask has finished, all of the available microtasks will be processed within the same cycle.
+
+#### Event Loop
+
+   ┌───────────────────────┐
+┌─>│        timers         │
+│  └──────────┬────────────┘
+│  ┌──────────┴────────────┐
+│  │     I/O callbacks     │
+│  └──────────┬────────────┘
+│  ┌──────────┴────────────┐
+│  │     idle, prepare     │
+│  └──────────┬────────────┘      ┌───────────────┐
+│  ┌──────────┴────────────┐      │   incoming:   │
+│  │         poll          │<─────┤  connections, │
+│  └──────────┬────────────┘      │   data, etc.  │
+│  ┌──────────┴────────────┐      └───────────────┘
+│  │        check          │
+│  └──────────┬────────────┘
+│  ┌──────────┴────────────┐
+└──┤    close callbacks    │
+   └───────────────────────┘
+
+Each phase has a FIFO queue of callbacks to execute.
+When the event loop enters a given phase, it will perform operations specific to that phase,
+then execute callbacks in that phase's queue
+until the queue has been exhausted or the maximum number of callbacks has executed,
+after that will move to the next phase, and so on.
+
+* timers - setTimeout(), setInterval().
+* I/O callbacks.
+* idle, prepare - only used internally.
+* poll - retrieve new I/O events.
+* check - setImmediate().
+* close callbacks - `socket.on('close', ...)` etc.
+
+Between each run of the event loop, Node.js checks if it is waiting for any asynchronous I/O or timers and shuts down...
+
+`process.nextTick()` it's a part of the asynchronous API,
+but not technically part of the event loop.
+The `nextTickQueue` will be processed after the current operation completes,
+regardless of the current phase of the event loop.
+
+Blocked Event Loop:
+
+* I/O is blocking.
+* Call that does CPU work is blocking.
+
+#### Garbage Collector
 
 Execution nodejs code pushes variables into **execution stack**.
 Local variables are popped from the stack when the functions execution finishes.
@@ -85,36 +146,6 @@ Values of objects, arrays and such are stored in the heap and your variable is m
 If you pass on this variable, you will only pass the said pointer, making these values mutable in different stack frames.
 When the function is popped from the stack, only the pointer to the Object gets popped with leaving the actual value in the heap.
 The garbage collector is the guy who takes care of freeing up space once the objects outlived their usefulness.
-
-`libuv` is the open source library that handles the thread-pool,
-doing signaling and all other magic that is needed to make the asynchronous tasks work.
-
-Javascript is a single-threaded, event-driven language (even V8 is single-threaded).
-
-Whenever you call setTimeout, http.get or fs.readFile,
-Node.js sends these operations to a different thread allowing V8 to keep executing our code.
-Node also calls the callback when the counter has run down or the IO / http operation has finished.
-
-We only have **one main thread** and **one call-stack**.
-
-In case there is another request being served when the said file is read, its callback will need to wait for the stack to become empty.
-The limbo where callbacks are waiting for their turn to be executed is called the task queue or event queue, or message queue.
-*Callbacks are being called in an infinite loop whenever the main thread has finished its previous task.*
-
-If this wasn’t enough, we actually have more then one **task queue**.
-**One for microtasks** (process.nextTick, promises, Object.observe)
-and **another for macrotasks** (setTimeout, setInterval, setImmediate, I/O).
-
-After said macrotask has finished, all of the available microtasks will be processed within the same cycle.
-
-#### Event Loop
-
-Blocked Event Loop:
-
-* I/O is blocking.
-* Call that does CPU work is blocking.
-
-#### Garbage Collector
 
 Things to Keep in Mind When Using a Garbage Collector:
 

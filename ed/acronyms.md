@@ -21,6 +21,7 @@ Acronyms
 [GUI](#GUI)
 [HTML](#HTML)
 [HTTP](#HTTP)
+[IIFE](#IIFE)
 [IMAP](#IMAP)
 [IoC](#IoC)
 [KISS](#KISS)
@@ -119,6 +120,9 @@ Acronyms
 
 <dt><a name="HTTP"></a>HTTP</dt>
 <dd>Hypertext Transfer Protocol.</dd>
+
+<dt><a name="IIFE"></a>IIFE</dt>
+<dd>Immediately-Invoked Function Expression (js: (function(){})()).</dd>
 
 <dt><a name="IMAP"></a>IMAP</dt>
 <dd>Internet Message Access Protocol.</dd>

@@ -1,6 +1,10 @@
 js
 -
 
+JS - is a high-level (not assembler), dynamic (behavior determines in runtime)
+weakly typed, object-based, multi-paradigm (event-driven, functional, imperative, prototype-based, object-oriented)
+and interpreted client-side programming language.
+
 A polyfill is a browser fallback, made in JavaScript,
 that allows functionality you expect to work in modern browsers to work in older browsers, e.g.,
 to support canvas (an HTML5 feature) in older browsers.
@@ -27,36 +31,16 @@ console.log(typeof v !== 'undefined'); // isset variable v.
 console.log('Code:%s', 200); // Code:200
 ````
 
-#### Fetch
+**Closure** - if you define a function inside another function,
+the inner function will have full access to all the variables
+that are declared and available in the outer function's scope.
+If the outer functions completes execution and returns -
+the inner function will still have access to all of the variables
+that were part of the outer function when the inner function was returned.
 
-````js
-// GET
-fetch('http://jsonplaceholder.typicode.com/posts')
-    .then(res => res.json())
-    .then(items => console.log(items))
-;
-// POST
-var data = new FormData();
-data.append('userId', 0);
-data.append('message', '');
-fetch('https://davidwalsh.name/submit-json', {
-    method: 'post',
-    headers: {
-        "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
-    },
-    body: JSON.stringify({
-        email: document.getElementById('email').value,
-        answer: document.getElementById('answer').value
-    }),
-    body: data
-});
-// Var in url
-fetch(`http://myapi.com/posts/${postId}/comments`, {});
-````
+**this**, The value of this within any given function call is determined by *how the function is called*.
 
-#### Prototype
-
-Prototype helps objects to be linked together in a hierarchy.
+**Prototype** helps objects to be linked together in a hierarchy.
 Each function in JavaScript has a member called prototype,
 which is responsible for providing values when an object is asked for them.
 Adding a property to the prototype of a function object will make it available at the constructed object.
@@ -92,6 +76,33 @@ console.log(i.ff.pp); // undefined
 i.ff = new f();
 console.log(i.ff.pp); // undefined
 console.log(i.ff.p); // 200
+````
+
+#### Fetch
+
+````js
+// GET
+fetch('http://jsonplaceholder.typicode.com/posts')
+    .then(res => res.json())
+    .then(items => console.log(items))
+;
+// POST
+var data = new FormData();
+data.append('userId', 0);
+data.append('message', '');
+fetch('https://davidwalsh.name/submit-json', {
+    method: 'post',
+    headers: {
+        "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+    },
+    body: JSON.stringify({
+        email: document.getElementById('email').value,
+        answer: document.getElementById('answer').value
+    }),
+    body: data
+});
+// Var in url
+fetch(`http://myapi.com/posts/${postId}/comments`, {});
 ````
 
 #### Flashback
@@ -167,6 +178,38 @@ window.document == self == parent == top
 window.defaultStatus = 'status bar string';
 window.onerror = function (msg, url, line) {}
 ````
+
+#### Events
+
+Phases (event flow) (`var phase = event.eventPhase;`):
+
+* CAPTURING_PHASE
+
+Event propagated through the target's ancestor objects: Window -> Document -> HTMLHtmlElement
+Event listeners registered for capture mode when `EventTarget.addEventListener()` was called are triggered during this phase.
+
+* AT_TARGET
+
+The event has arrived at the event's target.
+Event listeners registered for this phase are called at this time. 
+If `Event.bubbles` (`event.stopPropagation()`) is false, processing the event is finished.
+
+* BUBBLING_PHASE
+
+The event is propagating back up through the target's ancestors in reverse order,
+starting with the parent, and eventually reaching the containing Window.
+
+Page loading event:
+
+* `window.onload`
+
+Fires at the end of the document loading process.
+At this point, all of the objects in the document are in the DOM,
+and all the images, scripts, links and sub-frames have finished loading.
+
+* `document.onload`
+
+Called when the DOM tree is completed.
 
 #### Data Types
 

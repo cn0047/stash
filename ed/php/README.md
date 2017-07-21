@@ -6,6 +6,10 @@ PHP
 <br>*PHP 5.3.3*
 <br>*PHP 5.1.6*
 
+PHP - is high-level (not assembler), dynamic (behavior determines in runtime)
+weakly typed, object-oriented
+and interpreted server-side scripting language.
+
 #### zval
 
 ````

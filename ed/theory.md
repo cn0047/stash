@@ -15,7 +15,7 @@ Tell, Don’t Ask (Law of Demeter).
 #### Security
 
 Symmetric encryption (symmetric key cryptography) - sender and receiver have same secret key.
-Same key for encrypting and <decrypting class=""></decrypting>
+Same key for encrypting and decrypting.
 
 Public key cryptography - sender have public key, receiver have private key.
 It is expensive type of cryptography.
@@ -23,8 +23,8 @@ It is expensive type of cryptography.
 #### Full stack:
 
 * presentation layer (html, css, js)
-* business layer (node, php)
-* data access layer (mongo etc)
+* business layer (node, php, etc)
+* data access layer (mongo, mysql, etc)
 
 #### Low coupling and high cohesion.
 
@@ -127,7 +127,7 @@ is a service whose overhead (communications, maintenance etc.) outweighs its uti
 * Testable
 * Documentable
 * Well designed (patterns)
-* Encourage solid
+* Follow SOLID
 * Haven't memory leaks
 * Haven't vulnerabilities and be secure
 * Predictability
@@ -163,7 +163,7 @@ is a service whose overhead (communications, maintenance etc.) outweighs its uti
 <ul>
     <li>
         (SRP) Single responsibility principle - states that every class should have responsibility over a single part
-        of the functionality provided by the software. If description contains word **AND** or **OR** - it's not SRP.)
+        of the functionality provided by the software. If description contains word AND or OR - it's not SRP.)
     </li>
     <li>
         (OCP) Open/closed principle - (classes, modules, functions, etc.) should be open for extension, but closed for modification.

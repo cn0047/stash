@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<script>
+  window.addEventListener('load', function() {
+    console.log('window load 1');
+  });
+  document.addEventListener('load', function() {
+    console.log('document load 1');
+  });
+  window.document.addEventListener('load', function() {
+    console.log('document load 1.1');
+  });
+  // document.body.addEventListener('load', function() {
+  //   console.log('document load 1.2');
+  // });
+  // Uncaught TypeError: Cannot read property 'addEventListener' of null
+</script>
+<head>
+  <title>🐒</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+  <script>
+    window.addEventListener('load', function() {
+      console.log('window load in body top');
+    });
+    document.addEventListener('load', function() {
+      console.log('document load in body top 1');
+    });
+    window.document.addEventListener('load', function() {
+      console.log('document load in body top 1.1');
+    });
+    document.body.addEventListener('load', function() {
+      console.log('document load in body top 1.1');
+    });
+  </script>
+  <div class="container">
+    204
+  </div>
+
+</body>
+<script>
+  window.addEventListener('load', function() {
+    console.log('window load 2');
+  });
+  document.addEventListener('load', function() {
+    console.log('document load 2');
+  });
+  window.document.addEventListener('load', function() {
+    console.log('document load 2.1');
+  });
+</script>
+</html>
