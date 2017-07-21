@@ -8,10 +8,11 @@
  * how to receive data from ElasticSearch into PHP.
  * In this test, we have simple `type` inside ElasticSearch `index` which contains 1K records,
  * @see https://github.com/cn007b/my/blob/master/ed/php/examples/elasticsearch/comparison/imposrt.sh
- * I've used PHP from official docker container - ;
- * ElasticSearch from -
+ * I've used PHP from official docker container - php:7.1-cli;
+ * Composer from - composer:php7;
+ * ElasticSearch from - elasticsearch:5.3.0.
  * Also, I've used all default setting for PHP and ElasticSearch.
- * Hence you can easily retest my benchmark and prove or disproof it.
+ * Hence you can easily re-test my benchmark and prove or disproof it.
  *
  * CONTRIBUTING:
  *
