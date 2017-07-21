@@ -85,22 +85,20 @@ if (json_last_error() !== JSON_ERROR_NONE) {
 }
 ````
 
-####
-
 ````
 STDIN  'php://stdin'
 STDOUT 'php://stdout'
 STDERR 'php://stderr'
 ````
 
-####opCache
+#### opCache
 
 https://gist.github.com/ck-on/4959032/?ocp.php
 https://github.com/rlerdorf/opcache-status
 https://github.com/PeeHaa/OpCacheGUI
 https://github.com/amnuts/opcache-gui :+1:
 
-####Closures
+#### Closures
 Anonymous functions - functions which have no specified name.
 <br>They are most useful as the value of callback parameters.
 <br>*PHP automatically converts such expressions into instances of the Closure internal class.*
@@ -108,7 +106,7 @@ Anonymous functions - functions which have no specified name.
 and passed as an argument to other functions or methods.
 <br>A closure is a lambda function that is aware of its surrounding context.
 
-####Escaping from HTML
+#### Escaping from HTML
 ````php
 <?= 'print this string' ?>
 
@@ -123,7 +121,7 @@ and passed as an argument to other functions or methods.
 <?php endforeach; ?>
 ````
 
-####Exceptions
+#### Exceptions
 ````php
 throw new ErrorException('Unrecoverable Error', 456);
 
@@ -144,7 +142,7 @@ throw new \RuntimeException('Expectation Failed', 417);
 throw new \UnderflowException(404);
 ````
 
-####phpCs
+#### phpCs
 ````
 phpcs -sw --standard=PSR2 file.php
 
@@ -154,7 +152,7 @@ sudo cp phpcs.phar /usr/local/bin/phpcs
 sudo cp phpcs.phar /usr/bin/phpcs
 ````
 
-####[phpDoc](http://www.phpdoc.org/docs/latest/index.html)
+#### [phpDoc](http://www.phpdoc.org/docs/latest/index.html)
 ````
 phpdoc run -d . -t doc
 ````
@@ -165,7 +163,7 @@ $output = `ls -al`;
 echo "<pre>$output</pre>";
 ````
 
-####xDebug
+#### xDebug
 ````
 # /etc/php5/fpm/php.ini
 [xdebug]
@@ -213,7 +211,7 @@ export XDEBUG_CONFIG="idekey=sublime.xdebug remote_host={127.0.0.1} remote_enabl
 source ~/.bashrc
 ````
 
-####debug
+#### debug
 ````php
 php -r 'var_export(json_decode(`curl http://country.io/iso3.json`, 1));'
 
@@ -253,7 +251,7 @@ set_error_handler(function ($no, $str, $file, $line) {
 php_sapi_name() == 'cli' ? print("\n$error\n") : pr($error);
 ````
 
-####Flashback
+#### Flashback
 ````php
 <?php
 
@@ -305,7 +303,7 @@ property_exists($class, $property);
 tempnam($dir, $prefix);
 ````
 
-####Interface vs abstract class
+#### Interface vs abstract class
 
 Interface:
 describes class behaviour at all,
@@ -319,11 +317,41 @@ extends,
 can contains properties, constants and methods, must contains abstract methods protected or public,
 cannot be instantiated.
 
-####Memcache
+#### Memcache
 
 When memcache overflows, it will expire oldest keys and flush them.
 
-####Data Types
+#### Predefined variables
+
+* $GLOBALS
+* $_SERVER
+* $_GET
+* $_POST
+* $_FILES
+* $_REQUEST
+* $_SESSION
+* $_ENV
+* $_COOKIE
+
+#### Magic methods
+
+* __construct()
+* __destruct()
+* __call()
+* __callStatic()
+* __get()
+* __set()
+* __isset()
+* __unset()
+* __sleep()
+* __wakeup()
+* __toString()
+* __invoke()
+* __set_state()
+* __clone()
+* __debugInfo()
+
+#### Data Types
 * Scalar types:
     * Boolean.
     * Integer.
@@ -339,72 +367,3 @@ When memcache overflows, it will expire oldest keys and flush them.
     * Mixed.
     * Number.
     * Callback (aka callable).
-
-##History of PHP
-
-http://php.net/manual/en/appendices.php
-
-####PHP 7.1.x
-* Nullable types.
-* Void functions.
-* Symmetric array destructuring (like list()).
-* Class constant visibility.
-* Iterable pseudo-type.
-* Multi catch exception handling.
-* Asynchronous signal handling (no need use tick).
-* HTTP/2 server push support in ext/curl.
-
-####PHP 7.0.x
-* Scalar type declarations.
-* Return type declarations.
-* Null coalescing operator (??).
-* Spaceship operator (<=> returns 0 if both operands are equal, 1 if the left is greater, and -1 if the right is greater).
-* Constant arrays using define().
-* Anonymous classes.
-* Closure::call().
-* Filtered unserialize() (prevent code injections).
-* IntlChar.
-* Group use declarations.
-* Integer division with intdiv().
-* Session options (session_start() now accepts an array).
-* random_bytes() and random_int().
-
-####PHP 5.6.x
-* Constant scalar expressions.
-* Variadic functions via ...
-* Argument unpacking via ...
-* Exponentiation via **
-* Use function and use const.
-* Phpdbg.
-* Default character encoding.
-* Files larger than 2 gigabytes in size are now accepted.
-
-####PHP 5.5.x
-* Generators.
-* Try-catch blocks now support a finally.
-* New password hashing API.
-* Foreach now supports list().
-* Empty() supports arbitrary expressions.
-* Array and string literal dereferencing.
-* Class name resolution via ::class. `ClassName::class`
-* OPcache extension added.
-
-####PHP 5.4.x
-* Traits.
-* Short array syntax.
-* Function array dereferencing has been added. `foo()[0]`
-* Closures now support `$this`.
-* Class member access on instantiation has been added. `(new Foo)->bar()`
-* Binary number format.
-
-####PHP 5.3.x
-* Namespaces.
-* Late Static Bindings.
-* Native Closures.
-* Nowdoc syntax is now supported, similar to Heredoc syntax, but with single quotes.
-* Constants can now be declared outside a class using the const keyword.
-* Class can implement two interfaces that specified a method with the same name.
-
-####PHP 5.2.x
-
-####PHP 5.1.x
