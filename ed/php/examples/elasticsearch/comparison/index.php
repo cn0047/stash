@@ -38,7 +38,7 @@ docker run -ti --rm -v /tmp/php-es/:/app composer/composer:php7 install
 
 # Run ElasticSearch:
 docker run -d -p 9200:9200 --hostname localhost --name es elasticsearch:5.3.0
-# IMPORTANT: please wait few secconds...
+# IMPORTANT: please wait few secconds till request `curl localhost:9200` return valid response.
 
 # Import data into ElasticSearch:
 sh /tmp/php-es/import.sh
