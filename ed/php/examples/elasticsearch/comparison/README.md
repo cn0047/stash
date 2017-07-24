@@ -55,6 +55,17 @@ docker run -it --rm -v /tmp/php-es/:/app --link es php:7.1-cli php /app/index.ph
 
 ENJOY!!!
 
+## Result
+
+For me on ubuntu 16.04 with PHP 7.1.3 and ES 5.3.0 result was:
+
+````
+Elastica      took: 0.115600
+Elasticsearch took: 0.243299
+Curl          took: 0.006087
+Bash          took: 0.019164
+````
+
 ## CONTRIBUTING
 
 Ussing `docker` you can easily re-test my benchmark and prove or disproof it.
