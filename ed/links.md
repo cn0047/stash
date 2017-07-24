@@ -17,9 +17,7 @@ https://platform.sh/
 https://github.com/sindresorhus/awesome
 
 share info (articles):
-    https://hackernoon.com/
     https://www.codementor.io/
-    https://medium.com/
     https://www.airpair.com/
 
 http://www.internabroadusa.com/ - usa
