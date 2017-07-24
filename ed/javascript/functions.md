@@ -88,6 +88,7 @@ fr_obj = Object.freeze(obj) // freeze obj, but freeze is not recursive! Nested o
 Object.isFrozen(obj);
 Object.seal(obj); // preventing add new properties and marking all existing properties as non-configurable.
 Object.defineProperties(obj, props); // defines|modifies object's properties
+Object.create // Child.prototype = Object.create(Parent.prototype);
 
 my_obj.hasOwnProperty('cos'); // true
 my_obj.keys()

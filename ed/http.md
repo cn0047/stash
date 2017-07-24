@@ -53,6 +53,17 @@ Content-Type: text/plain; charset=utf-8
 X-Frame-Options: DENY
 ````
 
+A CORS preflight request is a CORS request that checks to see if the CORS protocol is understood.
+It is an OPTIONS request using two HTTP request headers: `Access-Control-Request-Method` and `Access-Control-Request-Headers`
+and the `Origin` header.
+
+````
+OPTIONS /resource/foo 
+Access-Control-Request-Method: DELETE 
+Access-Control-Request-Headers: origin, x-requested-with
+Origin: https://foo.bar.org
+````
+
 #### Http codes
 
 1xx Informational
