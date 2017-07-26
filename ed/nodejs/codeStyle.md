@@ -82,6 +82,8 @@ function isPercentage(val) {
 * Name your closures
 
 Will produce better stack traces, heap and cpu profiles...
+You can reuse this name for recursion.
+It is also description for code.
 
 ````
 req.on('end', function onEnd() {

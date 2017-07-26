@@ -31,6 +31,26 @@ console.log(typeof v !== 'undefined'); // isset variable v.
 console.log('Code:%s', 200); // Code:200
 ````
 
+Lexical scope - code author's scope...
+To cheat with lexical scope use `eval` or `with`.
+
+Runtime scope - Runtime.
+
+Create new scope - use function or catch block.
+
+`eval` is slow because no optimizaton for unknown code.
+
+IIFE - needed for creating new scope, and hide some stuff from outer scope.
+
+**Hoisting**. Variable can be used before it has been declared.
+Hoisting is JS's default behavior of moving all declarations to the top of the current scope.
+JS only hoists declarations, not initializations (definitions or expressions).
+Functions hoisted before variables.
+Hoisting provides ability to create mutual-recursion.
+
+**Temporal dead zone** - use block-scoped variable (let keyword) before `let` occurs.
+`let` don't hoists.
+
 **Closure** - if you define a function inside another function,
 the inner function will have full access to all the variables
 that are declared and available in the outer function's scope.
@@ -39,6 +59,14 @@ the inner function will still have access to all of the variables
 that were part of the outer function when the inner function was returned.
 
 **this**, The value of this within any given function call is determined by *how the function is called*.
+Function's own execution context.
+
+Rule 4: `new` keyword: new object will be created; this object linked to different object;
+this object bounded to function; function will implicit perform return `this`;
+`new` override hard binding.
+Rule 3: Explicit binding - `func.call` & `func.apply`;
+Rule 2: Implicit binding - reference to a function via object property reference (`obj.foo()`);
+Rule 1: Default binding - strict mode - undefined; non strict - global object (window);
 
 **Prototype** helps objects to be linked together in a hierarchy.
 Each function in JavaScript has a member called prototype,
@@ -143,7 +171,9 @@ switch (x) {
         break;
 }
 
-// Convenience method but slow
+// Convenience method but slow (many optimizations disabled here)...
+// It won't create new proberty in scope of object.
+// It creates new own execution scope...
 with (frames[1].document.forms[0]) {
     name.value = '007'; // Equal to frames[1].document.forms[0].name.value
 }

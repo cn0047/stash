@@ -63,6 +63,7 @@ http://php.net/manual/en/appendices.php
 * Nowdoc syntax is now supported, similar to Heredoc syntax, but with single quotes.
 * Constants can now be declared outside a class using the const keyword.
 * Class can implement two interfaces that specified a method with the same name.
+* $r = ($v) ?: 'No Value';
 
 #### PHP 5.2.x
 
