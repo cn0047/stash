@@ -10,6 +10,3 @@ expect({a: {b: ['x', 'y']}}).to.have.nested.property('a.b[1]');
 expect({a: 1}).to.have.own.property('a');
 expect('foo').to.be.a('string');
 ````
-
-````js
-````

@@ -44,7 +44,7 @@ A class in which each variable is used by each method is maximally cohesive.
 * Utility
 * Beauty
 
-#### Continuous Delivery
+#### Continuous Integration/Continuous Delivery
 
 How long would it take your organization to deploy a change that involves just one single line of code?
 Do you do this on a repeatable, reliable basis?
@@ -56,6 +56,19 @@ The practice of building and testing your application on every check-in
 is known as continuous integration.
 
 Pre-alpha ⇒ Alpha ⇒ Beta ⇒ Release candidate ⇒ Gold
+
+Continuous Integration - is a software development practice
+where members of a team use a version control system and integrate their work frequently to the same location,
+such as a master branch.
+Each change is built and verified by tests and other verifications
+in order to detect any integration errors as quickly as possible.
+
+Continuous Delivery - is a software development methodology where the release process is automated.
+Every software change is automatically built, tested, and deployed to production.
+
+Continuous Deployment - is a synonym to Continuous Delivery.
+
+The ideal task size is not bigger than a day's work...
 
 #### RPC
 
@@ -197,7 +210,7 @@ is a service whose overhead (communications, maintenance etc.) outweighs its uti
 #### IoC:
 
 Inversion of control - is used to increase modularity of the program and make it extensible.
-<br>Software frameworks, callbacks, schedulers, event loops and dependency injection
+<br>Software frameworks, CALLBACKS, schedulers, event loops and dependency injection
 are examples of design patterns that follow the inversion of control principle.
 
 IoC serves the following design purposes:

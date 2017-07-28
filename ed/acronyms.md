@@ -18,6 +18,7 @@ Acronyms
 [DDL](#DDL)
 [DRY](#DRY)
 [GMT](#GMT)
+[GREP](#GREP)
 [GUI](#GUI)
 [HTML](#HTML)
 [HTTP](#HTTP)
@@ -111,6 +112,9 @@ Acronyms
 
 <dt><a name="GMT"></a>GMT</dt>
 <dd>Greenwich Mean Time.</dd>
+
+<dt><a name="GREP"></a>GREP</dt>
+<dd>Global Regular Expression Print.</dd>
 
 <dt><a name="GUI"></a>GUI</dt>
 <dd>Graphical user interface.</dd>

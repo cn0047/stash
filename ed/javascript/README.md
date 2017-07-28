@@ -11,8 +11,6 @@ to support canvas (an HTML5 feature) in older browsers.
 
 A shim is more generalized. A polyfill is a type of shim.
 
-Variables can be hoisted. Hoisted means, declare them all on top of the function.
-
 ````js
 'use strict';
 
@@ -34,7 +32,7 @@ console.log('Code:%s', 200); // Code:200
 Lexical scope - code author's scope...
 To cheat with lexical scope use `eval` or `with`.
 
-Runtime scope - Runtime.
+Dynamical scope - Runtime scope.
 
 Create new scope - use function or catch block.
 
@@ -58,15 +56,41 @@ If the outer functions completes execution and returns -
 the inner function will still have access to all of the variables
 that were part of the outer function when the inner function was returned.
 
+Callback hell - IoC. We lose control of our code and rely on code which will call our callback,
+but how it will be called, how much time, etc - it is out of our control.
+
 **this**, The value of this within any given function call is determined by *how the function is called*.
 Function's own execution context.
 
-Rule 4: `new` keyword: new object will be created; this object linked to different object;
-this object bounded to function; function will implicit perform return `this`;
-`new` override hard binding.
+Rule 4: `new` keyword.
+
 Rule 3: Explicit binding - `func.call` & `func.apply`;
+
 Rule 2: Implicit binding - reference to a function via object property reference (`obj.foo()`);
+
 Rule 1: Default binding - strict mode - undefined; non strict - global object (window);
+
+**new**.
+
+1. Creates new object.
+
+2. Links new object to constructor function (`prototype`).
+
+3. Makes `this` variable point to the new object.
+
+4. Executes constructor function using the new object and implicit perform `return this`;
+
+5. Assigns constructor function name to new object's property `constructor`.
+
+`Object.create` - performs first 2 steps form `new`.
+
+`new` override hard binding.
+
+**Generators** - function executions that can be suspended and resumed at a later point.
+`function*` & `yield`.
+Generator function on 1st call returns iterator.
+`yield` in function will pause iterator, and `generatorFunctionIterator.next()` wil resume.
+`yield` - message pass mechanizm (in generator and out from generator).
 
 **Prototype** helps objects to be linked together in a hierarchy.
 Each function in JavaScript has a member called prototype,
@@ -74,6 +98,9 @@ which is responsible for providing values when an object is asked for them.
 Adding a property to the prototype of a function object will make it available at the constructed object.
 When an object is asked for a property that it does not have,
 its parent object will be asked.
+
+shadowing - it is when parent class* have method which is overridden in child class*,
+so child can't call parent class and have to use: `Parent.prototype.func.call(this)`.
 
 ````js
 function f () {}

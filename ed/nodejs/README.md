@@ -54,13 +54,9 @@ To increase memory use `--max_old_space_size`
 
 Boundary for node module - file. File is module.
 `module.exports` - for export module.
-`exports.perimeter` and `exports.area` - another way to export.
 `exports` alias to `module.exports`.
 
 There are two types of flow control: serial and parallel.
-
-**Generators** - function executions that can be suspended and resumed at a later point.
-`yield` & `yield;`;
 
 #### Under the hood
 
@@ -93,6 +89,7 @@ After said macrotask has finished, all of the available microtasks will be proce
 
 #### Event Loop
 
+````
    ┌───────────────────────┐
 ┌─>│        timers         │
 │  └──────────┬────────────┘
@@ -111,6 +108,7 @@ After said macrotask has finished, all of the available microtasks will be proce
 │  ┌──────────┴────────────┐
 └──┤    close callbacks    │
    └───────────────────────┘
+````
 
 Each phase has a FIFO queue of callbacks to execute.
 When the event loop enters a given phase, it will perform operations specific to that phase,

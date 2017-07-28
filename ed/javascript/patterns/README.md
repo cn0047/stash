@@ -3,19 +3,27 @@ patterns
 
 1 Creational:
 
-    * constructor
+    * constructor (builder)
     * module
     * factory
     * singleton
 
 2 Structural:
 
-    * decorator
+    * bridge
+    * composite
     * facade
-    * flyweight
+    * proxy
+    * decorator
 
 3 Behavioral:
 
+    * chain
     * command
+    * dependencyInjection
+    * iterator
     * mediator
+    * memento
     * observer
+    * state
+    * strategy
