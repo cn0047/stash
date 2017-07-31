@@ -78,6 +78,7 @@ Command vs Strategy: ?
 * Layers
 * Microservices
 * Model-View-Controller, Presentation-abstraction-control, Model View Presenter, and Model View ViewModel
+* Model–view–viewmodel (MVVM)
 * Multitier architecture (often three-tier or n-tier)
 * Naked objects
 * Operational Data Store (ODS)

@@ -3,6 +3,7 @@
  * Mediator
  *
  * This pattern defines an object that encapsulates how a set of objects interact.
+ * For example: brain is a mediator for all body parts.
  *
  * @category Behaviour
  */

@@ -10,6 +10,10 @@ Pure function - 1) always return the same result for same arguments, and 2) no m
 
 Function is DETERMINISTIC if it always produces the same result for the same input parameters.
 
+Internationalization (i18n) - process of changing your software so that it isn't hardwired to one language.
+
+Localization (l10n) - the process of adding the appropriate resources to your software so that a particular language/locale is supported.
+
 Tell, Don’t Ask (Law of Demeter).
 
 #### Security

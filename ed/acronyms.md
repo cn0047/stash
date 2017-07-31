@@ -25,6 +25,7 @@ Acronyms
 [IIFE](#IIFE)
 [IMAP](#IMAP)
 [IoC](#IoC)
+[JIT](#JIT)
 [KISS](#KISS)
 [LDAP](#LDAP)
 [MIME](#MIME)
@@ -133,6 +134,9 @@ Acronyms
 
 <dt><a name="IoC"></a>IoC</dt>
 <dd>Inversion of Control.</dd>
+
+<dt><a name="JIT"></a>JIT</dt>
+<dd>Just-in-time compilation.</dd>
 
 <dt><a name="KISS"></a>KISS</dt>
 <dd>Keep it simple, stupid (noted in 1960).</dd>
