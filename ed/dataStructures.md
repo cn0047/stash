@@ -64,16 +64,17 @@ Many hash table designs also allow arbitrary insertions and deletions of key-val
 Widely used in many kinds of computer software,
 particularly for associative arrays, database indexing, caches, and sets.
 
-ASCII implementation = sum ASCII's of string. Order in string don't effect hash (foo & oof have same hash).
-CRC32 - not secure.
-MD5 - not efficient, not secure.
-SHA-2 - not efficient.
+    * ASCII implementation = sum ASCII's of string. Order in string don't effect hash (foo & oof have same hash).
+    * CRC32 - not secure.
+    * MD5 - not efficient, not secure.
+    * SHA-2 - not efficient.
 
-Dealing with collisions:
-1 Open addressing - if hash is occupied -> hash++ and try again.
-2 chaining (simpler to support) - if hash is occupied -> create link list from old hash value and new hash value.
+    Dealing with collisions:
 
-Collisions depends on how many free slots available and how much slots populated (fill factor).
+    1. Open addressing - if hash is occupied -> hash++ and try again.
+    2. chaining (simpler to support) - if hash is occupied -> create linked list from old hash value and new hash value.
+
+    Collisions depends on how many free slots available and how much slots populated (fill factor).
 
 * Hashed array tree - is a dynamic array data-structure
 maintaining an array of **separate memory fragments (or "leaves")** to store the data elements,
@@ -117,9 +118,9 @@ and can be used to implement either dynamic sets of items,
 or lookup tables that allow finding an item by its keys.
 Keep their keys in sorted order, so that lookup and other operations can **use the principle of binary search**.
 
-Pre-order traversal - process inself -> visit left node -> visit right node; repeat recursive for each node.
-In-order traversal (sort order) -.visit left node -> process inself -> visit right node; repeat recursive for each node.
-Post-order traversal - visit left node -> visit right node -> process inself; repeat recursive for each node.
+    * Pre-order traversal - process inself -> visit left node -> visit right node; repeat recursive for each node.
+    * In-order traversal (sort order) -.visit left node -> process inself -> visit right node; repeat recursive for each node.
+    * Post-order traversal - visit left node -> visit right node -> process inself; repeat recursive for each node.
 
 * `Self-balancing binary search tree` (height-balanced) - is any node-based binary search tree
 that automatically **keeps its height small** in the face of arbitrary item insertions and deletions.

@@ -1,6 +1,10 @@
 Theory
 -
 
+The ideal task size is not bigger than a day's work...
+
+Two-pizza teams - where no team should be so big that it could not be fed with two pizzas.
+
 Orchestration - it is when one microservice supervise and manage else microservices.
 <br>Choreography - it is when microservice independent, and only have to know about message-queue.
 
@@ -59,8 +63,6 @@ build, deploy, test, and release process.
 The practice of building and testing your application on every check-in
 is known as continuous integration.
 
-Pre-alpha ⇒ Alpha ⇒ Beta ⇒ Release candidate ⇒ Gold
-
 Continuous Integration - is a software development practice
 where members of a team use a version control system and integrate their work frequently to the same location,
 such as a master branch.
@@ -72,7 +74,7 @@ Every software change is automatically built, tested, and deployed to production
 
 Continuous Deployment - is a synonym to Continuous Delivery.
 
-The ideal task size is not bigger than a day's work...
+Pre-alpha ⇒ Alpha ⇒ Beta ⇒ Release candidate ⇒ Gold
 
 #### RPC
 
@@ -106,8 +108,6 @@ It is modern interpretation of SOA used to build distributed software systems.
 Microservices-based architectures enable continuous delivery and deployment.
 
 Philosophy: Do one thing and do it well.
-
-Two-pizza teams - where no team should be so big that it could not be fed with two pizzas.
 
 The less well you understand a domain,
 the harder it will be for you to find proper bounded contexts for your services.

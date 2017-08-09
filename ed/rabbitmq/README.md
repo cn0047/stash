@@ -47,6 +47,11 @@ That relationship between exchange and a queue is called a binding.
 Keep in mind that, usually, bindings on
 topic exchanges use more memory than in direct or fanout exchanges.
 
+direct - workers; rpc; routing key `info`, `warning` etc.
+topic - producer `anonymous.info`; recipient `*.critical`, `#`, `kernel.*`...
+headers -
+fanout - recipient will receive only new data (no historical data).
+
 Avoid black hole messages:
 
 * Have its delivery mode option set to 2 (persistent)
