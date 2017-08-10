@@ -1,7 +1,7 @@
 Data structures
 -
 
-#### Abstract
+## Abstract
 
 * `Container` - is a class, a data structure, or an abstract data type (ADT)
 whose instances are collections of other objects. In other words, container store **objects in an organized way**.
@@ -45,7 +45,7 @@ but allows for **efficient removal of both the maximum and minimum**.
 * Disjoint-set (union–find or merge–find) - is a data structure
 that keeps track of a set of elements partitioned into a number of disjoint (nonoverlapping) subsets.
 
-#### Arrays
+## Arrays
 
 * Bit array (bitmap, bitset, bit string, or bit vector) - is an array data structure that compactly **stores bits**.
 Is effective at exploiting bit-level parallelism in hardware to perform operations quickly.
@@ -72,7 +72,7 @@ particularly for associative arrays, database indexing, caches, and sets.
     Dealing with collisions:
 
     1. Open addressing - if hash is occupied -> hash++ and try again.
-    2. chaining (simpler to support) - if hash is occupied -> create linked list from old hash value and new hash value.
+    2. Chaining (simpler to support) - if hash is occupied -> create linked list from old hash value and new hash value.
 
     Collisions depends on how many free slots available and how much slots populated (fill factor).
 
@@ -82,7 +82,7 @@ unlike simple dynamic arrays which maintain their data in one contiguous memory 
 
 * Sparse array - is an array in which most of the elements have the **default value** (usually 0 or null).
 
-#### Linked
+## Linked
 
 * `Linked list` - is a linear **collection** of data elements,
 called nodes pointing to the next node by means of a pointer.
@@ -109,7 +109,7 @@ It is related to the B-tree.
 * XOR linked list - it takes advantage of the bitwise XOR operation
 to decrease storage requirements for doubly linked lists.
 
-#### Trees
+## Trees
 
 * `Binary search trees` (ordered, sorted binary trees) - particular type of containers,
 data structures that store "items" in memory.
@@ -181,7 +181,7 @@ that is used to **store a dynamic set or associative array** where the keys are 
 * Hash tree - is a persistent data structure that can be **used to implement sets and maps**,
 intended to replace hash tables in purely functional programming.
 
-#### Graphs
+## Graphs
 
 * Binary decision diagram (BDD) -  is a data structure
 that is used to represent a Boolean function.

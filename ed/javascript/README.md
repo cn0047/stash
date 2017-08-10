@@ -34,7 +34,7 @@ To cheat with lexical scope use `eval` or `with`.
 
 Dynamical scope - Runtime scope.
 
-Create new scope - use function or catch block.
+Create new scope - use IIFE or catch block.
 
 `eval` is slow because no optimizaton for unknown code.
 

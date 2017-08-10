@@ -14,7 +14,7 @@ sinon.mock(myAPI);
 // Causes Sinon to replace the global:
 // setTimeout, clearTimeout, setInterval, clearInterval, setImmediate, clearImmediate and Date
 // with a custom implementation which is bound to the returned clock object.
-sinon.useFakeTimers();
+clock = sinon.useFakeTimers();
 
 // Simplifies cleanup.
 sinon.sandbox.create();

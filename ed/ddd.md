@@ -135,9 +135,9 @@ Car it is aggregate for: wheels, engine, spark and fuel, etc.
 
 A domain object that defines an event (something that happens).
 
-• Modeling a Domain Event is like writing a news article
-• Publishing a Domain Event is like printing the article in the paper
-• Spreading a Domain Event is like sending the newspaper so everyone can read the article
+* Modeling a Domain Event is like writing a news article
+* Publishing a Domain Event is like printing the article in the paper
+* Spreading a Domain Event is like sending the newspaper so everyone can read the article
 
 ### DBAL.
 

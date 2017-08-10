@@ -8,6 +8,7 @@ ps aux|grep beanstalkd|grep grep -v
 
 #### Commmands:
 
+````
 put - create job
 reserve - reserve for the worker
 delete - delete job
@@ -20,6 +21,7 @@ ignore - removes the named tube from the watch list
 peek - let the client inspect a job in the system
 peek-buried - return the next job in the list of buried jobs
 quit
+````
 
 Examples:
 
@@ -70,9 +72,11 @@ stats-job jobId
 
 Job status:
 
+````
 READY - put job
 DELAYED - put with delay
 RESERVED - reserve job for the worker
 BURIED
+````
 
 https://github.com/kr/beanstalkd/blob/master/doc/protocol.txt

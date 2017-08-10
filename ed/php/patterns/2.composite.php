@@ -2,7 +2,7 @@
 /**
  * Composite
  *
- * The intent of a composite is to "compose" objects into tree structures to represent part-whole hierarchies.
+ * The intent of a composite is to "compose" objects into tree structures.
  *
  * @category Structural
  */

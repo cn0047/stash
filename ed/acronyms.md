@@ -127,7 +127,7 @@ Acronyms
 <dd>Hypertext Transfer Protocol.</dd>
 
 <dt><a name="IIFE"></a>IIFE</dt>
-<dd>Immediately-Invoked Function Expression (js: (function(){})()).</dd>
+<dd>Immediately-Invoked Function Expression (js: `(function(){})()`).</dd>
 
 <dt><a name="IMAP"></a>IMAP</dt>
 <dd>Internet Message Access Protocol.</dd>

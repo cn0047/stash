@@ -37,20 +37,27 @@ Marking messages as persistent doesn't fully guarantee that a message won't be l
 It tells RabbitMQ to save the message to disk.
 
 Exchange - receives messages from producers and pushes them to queues.
-There are a few exchange types available: direct, topic, headers, fanout.
+There are a few exchange types available:
 
-The difference between the direct exchange versus the fanout exchange
-is that the latter ignores the routing key.
+* direct
+* topic
+* headers
+* fanout
+
+The difference between the `direct` exchange versus `fanout` exchange
+is that fanout ignores the routing key.
 
 That relationship between exchange and a queue is called a binding.
 
 Keep in mind that, usually, bindings on
 topic exchanges use more memory than in direct or fanout exchanges.
 
+````
 direct - workers; rpc; routing key `info`, `warning` etc.
 topic - producer `anonymous.info`; recipient `*.critical`, `#`, `kernel.*`...
 headers -
 fanout - recipient will receive only new data (no historical data).
+````
 
 Avoid black hole messages:
 
