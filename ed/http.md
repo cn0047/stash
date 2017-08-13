@@ -1,8 +1,28 @@
 http
 -
+2.0
 1.1
 
+HTTP 1.1 was standardized in 1997.
+
 #### Request
+
+````
+[method] [URL] [version]
+[headers]
+[body]
+````
+
+Headers:
+
+* Accept
+* Accept-Charset
+* Accept-Encoding
+* Accept-Language
+* Cookie
+* Referer
+* User-Agent
+* If-Modified-Since
 
 ````
 GET /api/collection
@@ -34,7 +54,29 @@ Currently the following trees are created:
 * personal or vanity
 * unregistered "x."
 
+#### Connections
+
+* parallel
+* persistent
+* pipeline
+
 #### Response
+
+````
+[version] [status] [reason]
+[headers]
+[body]
+````
+
+Headers:
+
+* Connection (close)
+* Location (path for 302 HTTP code)
+* Content-Length
+* Cache-Control (private, public, no-cache)
+* Last-Modified
+* Expires
+* ETag
 
 ````
 Server: nginx/1.10.2
@@ -64,7 +106,7 @@ Access-Control-Request-Headers: origin, x-requested-with
 Origin: https://foo.bar.org
 ````
 
-#### Http codes
+#### Codes
 
 1xx Informational
 
@@ -91,7 +133,7 @@ Origin: https://foo.bar.org
 
 * 300 Multiple Choices
 * 301 **Moved Permanently**
-* 302 Found
+* 302 **Found / Moved Temporary**
 * 303 See Other (since HTTP/1.1)
 * 304 **Not Modified**
 * 305 Use Proxy (since HTTP/1.1)
@@ -166,3 +208,10 @@ Origin: https://foo.bar.org
 * 524 A timeout occurred (Cloudflare)
 * 598 Network read timeout error (Unknown)
 * 599 Network connect timeout error (Unknown)
+
+## HTTP 2
+
+* Data compression (binary)
+* Server Push
+* Multiplexing
+* Pipelining

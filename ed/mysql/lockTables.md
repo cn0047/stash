@@ -1,5 +1,12 @@
-Lock and unlock tables
+Lock tables
 -
+
+InnoDB implements:
+
+* shared (S) lock - permits the transaction that holds the lock to read a row.
+* exclusive (X) lock - permits the transaction that holds the lock to update or delete a row.
+
+# Lock and unlock tables
 
 Locks may be used to emulate transactions or to get more speed when updating tables.
 A session holding a WRITE lock can perform table-level operations such as DROP TABLE or TRUNCATE TABLE.

@@ -37,6 +37,7 @@
 11. Avoid Redirects
 
   * Alternatives to Redirects (Missing Trailing Slash, and else)
+  * 301 HTTP Coode for any resource request
 
 12. Remove Duplicate Scripts
 

@@ -25,6 +25,7 @@ Acronyms
 [IIFE](#IIFE)
 [IMAP](#IMAP)
 [IoC](#IoC)
+[IP](#IP)
 [JIT](#JIT)
 [KISS](#KISS)
 [LDAP](#LDAP)
@@ -54,6 +55,7 @@ Acronyms
 [TDD](#TDD)
 [TLS](#TLS)
 [UDP](#UDP)
+[URL](#URL)
 [UTC](#UTC)
 [VPN](#VPN)
 [WSDL](#WSDL)
@@ -134,6 +136,9 @@ Acronyms
 
 <dt><a name="IoC"></a>IoC</dt>
 <dd>Inversion of Control.</dd>
+
+<dt><a name="IP"></a>IP</dt>
+<dd>Internet Protocol.</dd>
 
 <dt><a name="JIT"></a>JIT</dt>
 <dd>Just-in-time compilation.</dd>
@@ -221,6 +226,9 @@ Acronyms
 
 <dt><a name="UDP"></a>UDP</dt>
 <dd>User Datagram Protocol.</dd>
+
+<dt><a name="URL"></a></dt>
+<dd>Uniform Resource Locator.</dd>
 
 <dt><a name="UTC"></a>UTC</dt>
 <dd>Coordinated Universal Time</dd>

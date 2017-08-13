@@ -4,6 +4,10 @@ docker
 
 ## Overview
 
+Containers should be ephemeral (can be stopped and destroyed and a new one built and put in place).
+<br>Hence container must be stateless.
+<br>Each container should have only one concern.
+
 ````
 docker pull ubuntu
 
@@ -65,7 +69,7 @@ docker build -t xcomposer ./docker/composer
 docker run -ti --rm -v $PWD:/app xcomposer install
 ````
 
-#### NODE
+#### NODEJS
 
 ````
 docker run -it --rm node:latest node -v

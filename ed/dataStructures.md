@@ -125,6 +125,8 @@ Keep their keys in sorted order, so that lookup and other operations can **use t
 * `Self-balancing binary search tree` (height-balanced) - is any node-based binary search tree
 that automatically **keeps its height small** in the face of arbitrary item insertions and deletions.
 
+Search performance = O(log n)
+
 * `B-tree` - is a self-balancing tree data structure
 that keeps data sorted and allows searches,
 sequential access, insertions, and deletions in logarithmic time.
@@ -143,7 +145,7 @@ These color bits are used **to ensure the tree remains approximately balanced** 
 is a form of binary search tree which supports efficient addition and deletion of entries.
 **Unlike red-black** trees, **red nodes** on an AA tree **can only be added as a right subchild**.
 
-* AVL tree - the **heights of the two child subtrees of any node differ by at most one**.
+* AVL tree - (since 1962) the **heights of the two child subtrees of any node differ by at most one**.
 Are faster than red–black trees because they are more rigidly balanced.
 Similar to red–black trees, AVL trees are height-balanced.
 

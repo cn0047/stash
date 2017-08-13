@@ -1,6 +1,13 @@
 Theory
 -
 
+Bandwidth - count of lines on high-way.
+Latency - speed limit on high-way.
+
+Concurrency - single process use multiple threads.
+
+Race condition - when events do not happen in the order the programmer intended.
+
 The ideal task size is not bigger than a day's work...
 
 Two-pizza teams - where no team should be so big that it could not be fed with two pizzas.
