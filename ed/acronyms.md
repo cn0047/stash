@@ -55,6 +55,7 @@ Acronyms
 [TDD](#TDD)
 [TLS](#TLS)
 [UDP](#UDP)
+[URI](#URI)
 [URL](#URL)
 [UTC](#UTC)
 [VPN](#VPN)
@@ -226,6 +227,9 @@ Acronyms
 
 <dt><a name="UDP"></a>UDP</dt>
 <dd>User Datagram Protocol.</dd>
+
+<dt><a name="URI"></a></dt>
+<dd>Uniform Resource Identifier.</dd>
 
 <dt><a name="URL"></a></dt>
 <dd>Uniform Resource Locator.</dd>

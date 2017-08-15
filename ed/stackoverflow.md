@@ -1,6 +1,8 @@
 Stackoverflow
 -
 
+[Top Ukraine SO Users](http://data.stackexchange.com/stackoverflow/query/428486/top-ukraine-so-users)
+
 ````
 <kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>P</kbd>
 ````
@@ -22,4 +24,9 @@ https://regex101.com/r/zO0kO8/1
 <!-- begin snippet: js hide: false console: true babel: false -->
 <!-- language: lang-js -->
 <!-- end snippet -->
+````
+
+Hotkeys:
+````
+CTRL + K # Code
 ````

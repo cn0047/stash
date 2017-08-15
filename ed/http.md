@@ -132,13 +132,13 @@ Origin: https://foo.bar.org
 3xx Redirection
 
 * 300 Multiple Choices
-* 301 **Moved Permanently**
+* 301 **Moved Permanently** (http -> https)
 * 302 **Found / Moved Temporary**
 * 303 See Other (since HTTP/1.1)
 * 304 **Not Modified**
 * 305 Use Proxy (since HTTP/1.1)
 * 306 Switch Proxy
-* 307 Temporary Redirect (since HTTP/1.1)
+* 307 Temporary (Internal) Redirect (since HTTP/1.1)
 * 308 Permanent Redirect (approved as experimental RFC)[12]
 
 4xx Client Error
@@ -215,3 +215,35 @@ Origin: https://foo.bar.org
 * Server Push
 * Multiplexing
 * Pipelining
+
+## HTTPS
+
+The main point of HTTPS is
+authentication of the visited website and protection of the privacy and integrity of the exchanged data.
+HTTPS creates a secure channel over an insecure network.
+
+Solves problems with:
+
+* Man-In-The-Middle.
+* Phishing
+* DNS hijacking
+
+CA - Certification Authority.
+SSL - Secure Sockets Layer.
+TLS - Transport Layer Security.
+
+TLS handshake:
+Client sends hello to server, server responds with hello and public key back to client.
+Client verifies key against CAs.
+Than client performs client key exchange and server response with encryption using public key
+after that secure communication begins.
+
+HTTP Strict Transport Security:
+`strict-transport-security` header in response with `max-age` as value
+says to browser to reflect to 307 redirect and faster perform secure (not insecure) request.
+
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+https://hstspreload.org/ for add your site to preload.
+http://www.badssl.com/ helps to find problems with https.
+http://www.httpvshttps.com/
