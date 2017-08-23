@@ -37,6 +37,8 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    globals:
+        project_name: 'v3proj'
 
 doctrine:
     dbal:
@@ -94,3 +96,6 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: AppBundle\Entity\User
+    from_email:
+        address: you@example.com
+        sender_name: YouExample

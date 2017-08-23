@@ -124,6 +124,10 @@ docker run -ti --rm -v $PWD/ed/php.symfony/examples/News/symfony/news:/app xcomp
 docker run -it --rm --hostname 0.0.0.0 -p 8181:8181 -v $PWD:/gh --link mysql-master \
     php-cli php /gh/ed/php.symfony/examples/News/symfony/news/bin/console server:run 0.0.0.0:8181
 
+docker run -ti --rm -v $PWD/ed/php.symfony/examples/v3:/app xcomposer install
+docker run -it --rm --hostname 0.0.0.0 -p 8181:8181 -v $PWD:/gh --link mysql-master \
+    php-cli php /gh/ed/php.symfony/examples/v3/bin/console server:run 0.0.0.0:8181
+
 ````
 
 #### NGINX

@@ -211,6 +211,12 @@ export XDEBUG_CONFIG="idekey=sublime.xdebug remote_host={127.0.0.1} remote_enabl
 source ~/.bashrc
 ````
 
+````php
+print(true ? 'Yes' : 'No'); // Output: Yes
+print('My Value' ?: 'No Value'); // PHP 5.3 Output: My Value
+print(null ?? 'Default Value'); // PHP 7 (Equals to isset($var) ? $var : 'default') Output: Default Value
+````
+
 #### debug
 ````php
 php -r 'var_export(json_decode(`curl http://country.io/iso3.json`, 1));'
