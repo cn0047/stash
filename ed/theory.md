@@ -182,6 +182,18 @@ is a service whose overhead (communications, maintenance etc.) outweighs its uti
 * Who can I learn from?
   (You should never work anywhere where you are the smartest person in the room.)
 
+#### Programming:
+
+Imperative programming is a programming paradigm that uses statements that change a program's state.
+Imperative program consists of commands for the computer to perform.
+
+Declarative programming focuses on what the program should accomplish
+without specifying how the program should achieve the result.
+
+The declarative layer describes what the code will do,
+while the implementation layer describes how the code does it.
+(The declarative layer is, in effect, a small  domain-specific language).
+
 #### SOLID
 
 <ul>
@@ -276,15 +288,3 @@ and to solve it we inverse interfaces and create 1 interfaces for all any implem
 **Flow inversion** (Hollywood Principle - Don't call us, we'll call you).
 
 **Creation inversion** - use factory pattern or service locator or dependency injection.
-
-#### Programming:
-
-Imperative programming is a programming paradigm that uses statements that change a program's state.
-Imperative program consists of commands for the computer to perform.
-
-Declarative programming focuses on what the program should accomplish
-without specifying how the program should achieve the result.
-
-The declarative layer describes what the code will do,
-while the implementation layer describes how the code does it.
-(The declarative layer is, in effect, a small  domain-specific language).
