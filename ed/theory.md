@@ -254,7 +254,12 @@ There are several basic techniques to implement inversion of control:
 * Using a factory pattern
 * Using a service locator pattern
 * Using a dependency injection, for example
-  (constructor injection, parameter injection, setter injection, interface injection).
+
+  * constructor injection
+  * setter injection
+  * interface injection - define injector method in interface
+  * [parameter injection]
+
 * Using a contextualized lookup
 * Using template method design pattern
 * Using strategy design pattern
@@ -271,8 +276,6 @@ and to solve it we inverse interfaces and create 1 interfaces for all any implem
 **Flow inversion** (Hollywood Principle - Don't call us, we'll call you).
 
 **Creation inversion** - use factory pattern or service locator or dependency injection.
-
-Block # 3
 
 #### Programming:
 

@@ -2,6 +2,7 @@ Acronyms
 -
 
 [ACID](#ACID)
+[ACL](#ACL)
 [AJAX](#AJAX)
 [AMQP](#AMQP)
 [API](#API)
@@ -68,6 +69,9 @@ Acronyms
 
 <dt><a name="ACID"></a>ACID</dt>
 <dd>Atomicity, Consistency, Isolation, Durability.</dd>
+
+<dt><a name="ACL"></a>ACL</dt>
+<dd>Access Control Lists.</dd>
 
 <dt><a name="AJAX"></a>AJAX</dt>
 <dd>Asynchronous JavaScript and XML</dd>

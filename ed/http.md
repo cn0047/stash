@@ -13,6 +13,10 @@ HTTP 1.1 was standardized in 1997.
 [body]
 ````
 
+URL:
+
+Length up to 2048 chars.
+
 Headers:
 
 * Accept

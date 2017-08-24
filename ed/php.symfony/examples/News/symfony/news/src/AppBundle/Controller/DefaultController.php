@@ -18,4 +18,15 @@ class DefaultController extends Controller
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
         ]);
     }
+
+    /**
+     * @Route("/voter", name="voter")
+     */
+    public function voterGuestAction(Request $request)
+    {
+        $this->denyAccessUnlessGranted('view', ['page' => 'voterGuest']);
+        return $this->render('default/voter.html.twig', [
+            'code' => 200,
+        ]);
+    }
 }

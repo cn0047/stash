@@ -16,6 +16,7 @@ The FOREIGN KEY clause is specified in the child table.
 The parent and child tables must use the same storage engine.
 Corresponding columns in the foreign key and the referenced key must have similar data types
 (the size and sign of integer types must be the same, the length of string types need not be the same,
+the default value must be the same,
 BLOB and TEXT columns cannot be included in a foreign key).
 Tables must be not partitioned.
 

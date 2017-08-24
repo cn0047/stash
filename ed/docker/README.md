@@ -124,10 +124,28 @@ docker run -ti --rm -v $PWD/ed/php.symfony/examples/News/symfony/news:/app xcomp
 docker run -it --rm --hostname 0.0.0.0 -p 8181:8181 -v $PWD:/gh --link mysql-master \
     php-cli php /gh/ed/php.symfony/examples/News/symfony/news/bin/console server:run 0.0.0.0:8181
 
-docker run -ti --rm -v $PWD/ed/php.symfony/examples/v3:/app xcomposer install
-docker run -it --rm --hostname 0.0.0.0 -p 8181:8181 -v $PWD:/gh --link mysql-master \
-    php-cli php /gh/ed/php.symfony/examples/v3/bin/console server:run 0.0.0.0:8181
+# symfony + nginx
+docker run -ti --rm --name nginx-php --link php-fpm \
+    -v $PWD/docker/nginx/symfony.news.conf:/etc/nginx/conf.d/default.conf \
+    -v $PWD:/gh \
+    -p 8080:80 nginx:latest
 
+# prepare prod environment
+docker run -it --rm -v $PWD:/gh \
+    php-cli php /gh/ed/php.symfony/examples/News/symfony/news/bin/symfony_requirements
+docker run -ti --rm -v $PWD/ed/php.symfony/examples/News/symfony/news:/app \
+    xcomposer install --no-dev --optimize-autoloader
+docker run -it --rm -v $PWD:/gh \
+    php-cli php /gh/ed/php.symfony/examples/News/symfony/news/bin/console \
+    cache:clear --env=prod --no-debug --no-warmup
+docker run -it --rm -v $PWD:/gh \
+    php-cli php /gh/ed/php.symfony/examples/News/symfony/news/bin/console \
+    cache:warmup --env=prod
+docker run -it --rm -v $PWD:/gh \
+    php-cli php /gh/ed/php.symfony/examples/News/symfony/news/bin/console \
+    assets:dump --env=prod --no-debug
+
+curl localhost:8080/
 ````
 
 #### NGINX
