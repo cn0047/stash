@@ -127,8 +127,7 @@ docker run -it --rm --hostname 0.0.0.0 -p 8181:8181 -v $PWD:/gh --link mysql-mas
 # symfony + nginx
 docker run -ti --rm --name nginx-php --link php-fpm \
     -v $PWD/docker/nginx/symfony.news.conf:/etc/nginx/conf.d/default.conf \
-    -v $PWD:/gh \
-    -p 8080:80 nginx:latest
+    -v $PWD:/gh -p 8080:80 nginx:latest
 
 # prepare prod environment
 docker run -it --rm -v $PWD:/gh \

@@ -4,6 +4,10 @@
     <div id="wrapper">
         <div id="container">
             Here some stuff.
+            Your role is
+            {% if is_granted('ROLE_USER') %} user {% endif %}
+            {% if is_granted('ROLE_ADMIN') %} admin {% endif %}
+            .
         </div>
     </div>
 {% endblock %}

@@ -4,7 +4,7 @@ Doctrine
 ````php
 // Generate Entities from an Existing Database !!!
 php bin/console doctrine:mapping:import AppBundle xml
-php bin/console doctrine:mapping:convert annotation ./src
+php bin/console doctrine:mapping:convert -f annotation ./src
 php bin/console doctrine:generate:entities --no-backup AppBundle
 php bin/console doctrine:mapping:info
 

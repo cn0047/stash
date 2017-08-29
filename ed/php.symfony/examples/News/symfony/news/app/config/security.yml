@@ -14,7 +14,7 @@ security:
                         roles: 'ROLE_USER'
                     admin:
                         password: pwd
-                        roles: 'ROLE_ADMIN'
+                        roles: ['ROLE_USER', 'ROLE_ADMIN']
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs

@@ -9,7 +9,7 @@ class MockInterfaceTest extends PHPUnit_Framework_TestCase
 {
     public function testMock()
     {
-        $m = $this->getMock('Foo');
+        $m = $this->createMock('Foo');
         $m->expects($this->once())
             ->method('bar')
             ->will($this->returnValue('404'));

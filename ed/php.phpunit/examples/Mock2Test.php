@@ -24,7 +24,7 @@ class Mock2Test extends PHPUnit_Framework_TestCase
 
     public function testMock()
     {
-        $m = $this->getMock('Foo', ['boo']);
+        $m = $this->createMock('Foo', ['boo']);
         $m->expects($this->once())
             ->method('boo')
             ->will($this->returnValue('404'));

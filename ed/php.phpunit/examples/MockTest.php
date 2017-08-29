@@ -18,7 +18,7 @@ class MockTest extends PHPUnit_Framework_TestCase
 
     public function testMock()
     {
-        $m = $this->getMock('Foo');
+        $m = $this->createMock('Foo');
         $m->expects($this->once())
             ->method('bar')
             ->will($this->returnValue('404'));
@@ -27,7 +27,7 @@ class MockTest extends PHPUnit_Framework_TestCase
 
     public function test2Mock()
     {
-        $m = $this->getMock('Foo');
+        $m = $this->createMock('Foo');
         $m->expects($this->once())
             ->method('bar')
             ->with($this->equalTo('boo'))
