@@ -150,6 +150,10 @@ export SYMFONY__DATABASE__PASSWORD=secre
 
 #### Service Container
 
+Service Container works as fast with huge services.yml file as with tiny one.
+Same about memory usage.
+Proved by benchmarking.
+
 ````php
 # app/config/config.yml
 services:
@@ -165,6 +169,9 @@ public function sendEmailAction()
 {
     $mailer = $this->get('my_mailer');
     $mailer->send('ryan@foobar.net', ...);
+    // or
+    global $kernel;
+    var_dump($kernel->getContainer()->get('aws.s3'));
 }
 
 # app/config/config.yml

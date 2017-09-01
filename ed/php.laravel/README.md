@@ -21,6 +21,13 @@ php artisan serve
 * Collections - provides a fluent, convenient wrapper for working with arrays of data.
 * Collections - multi-result sets returned by Eloquen.
 
+## Service Container
+
+````
+# get service from container
+$h = $this->app->make('App\Services\Helper');
+````
+
 ## Controller
 
 ````
