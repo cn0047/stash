@@ -19,8 +19,10 @@ Option–L|R  # Move B/E previous word.
 Shift–Option–U|D|L|R # Extended text selection
 
 Command+Shift+3 # screenshot all screen in file on desktop
-Command+Shift+4 # screenshot (selected shape) in file on desktop
 Command+Control+Shift+3 # screenshot all screen in buffer
+
+# !!!
+Command+Shift+4 # screenshot (selected shape) in file on desktop
 Command+Control+Shift+4 # screenshot (selected shape) in buffer
 ````
 
