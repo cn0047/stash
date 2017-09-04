@@ -5,6 +5,9 @@ git version 2.5.0
 Git is a free and open source distributed version control system .
 
 ````
+# from jenkins
+git ls-remote -h https://github.com/W3Ltd/ziipr_core HEAD
+
 git init
 git clone ssh://gitolite@repo.com:1011/repoName.git
 

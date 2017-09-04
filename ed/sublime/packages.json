@@ -1,0 +1,26 @@
+~/.config/sublime-text-3/Packages/User/Package\ Control.sublime-settings
+
+"AlignTab",
+"Emmet",
+"FavoriteFiles",
+"FileClose",
+"Filter Lines",
+"Function Name Display",
+"Git",
+"JSX",
+"nginx",
+"Pretty JSON",
+"Sublime Bookmarks",
+"Super Calculator",
+"Theme - Soda"
+
+nodejs
+"ApacheConf.tmLanguage",
+"DocBlockr",
+"MarkdownHighlighting",
+"PhpDoc",
+"PhpSpec Snippets",
+"PHPUnit Completions",
+"Phpcs",
+"SFTP",,
+"Xdebug Client"

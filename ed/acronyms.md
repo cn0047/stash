@@ -58,6 +58,7 @@ Acronyms
 [UDP](#UDP)
 [URI](#URI)
 [URL](#URL)
+[URN](#URN)
 [UTC](#UTC)
 [VPN](#VPN)
 [WSDL](#WSDL)
@@ -172,7 +173,7 @@ Acronyms
 <dt><a name="PECL"></a>PECL</dt>
 <dd>Php extension community library.</dd>
 
-<dt><a name="R&D">R&D</a></dt>
+<dt><a name="R&D"></a>R&D</dt>
 <dd>Research and development.</dd>
 
 <dt><a name="RBAC"></a>RBAC</dt>
@@ -232,11 +233,14 @@ Acronyms
 <dt><a name="UDP"></a>UDP</dt>
 <dd>User Datagram Protocol.</dd>
 
-<dt><a name="URI"></a></dt>
-<dd>Uniform Resource Identifier.</dd>
+<dt><a name="URI"></a>URI</dt>
+<dd>Uniform Resource Identifier (protocol + host + path + all after question mark).</dd>
 
-<dt><a name="URL"></a></dt>
-<dd>Uniform Resource Locator.</dd>
+<dt><a name="URL"></a>URL</dt>
+<dd>Uniform Resource Locator (protocol + host + path).</dd>
+
+<dt><a name="URN"></a>URN</dt>
+<dd>Uniform Resource Name (host + path + all after question mark).</dd>
 
 <dt><a name="UTC"></a>UTC</dt>
 <dd>Coordinated Universal Time</dd>
