@@ -128,7 +128,6 @@ docker run -it --rm --hostname 0.0.0.0 -p 8181:8181 -v $PWD:/gh --link mysql-mas
 docker run -ti --rm --name nginx-php --link php-fpm \
     -v $PWD/docker/nginx/symfony.news.conf:/etc/nginx/conf.d/default.conf \
     -v $PWD:/gh -p 8080:80 nginx:latest
-
 # prepare prod environment
 docker run -it --rm -v $PWD:/gh \
     php-cli php /gh/ed/php.symfony/examples/News/symfony/news/bin/symfony_requirements
@@ -143,7 +142,7 @@ docker run -it --rm -v $PWD:/gh \
 docker run -it --rm -v $PWD:/gh \
     php-cli php /gh/ed/php.symfony/examples/News/symfony/news/bin/console \
     assets:dump --env=prod --no-debug
-
+# test
 curl localhost:8080/
 ````
 
@@ -301,7 +300,7 @@ for defining and running multi-container Docker applications.
 docker-compose up -d
 
 # shutdown/clean up
-docker-compose down 
+docker-compose down
 docker-compose down --volumes
 
 # builds, (re)creates, starts, and attaches to containers for a service.
