@@ -50,7 +50,7 @@ parseInt('zz', 36);                  // 1295
 parseInt('077', 8);                  // 63
 parseInt('077', 10);                 // 77
 
-Math.round(number);
+Math.round(number); // number rounded to the nearest integer
 Math.ceil(number);
 Math.floor(number);
 Math.random();

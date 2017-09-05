@@ -28,7 +28,6 @@ The old version of the document doesn’t disappear immediately,
 although you won’t be able to access it.
 Elasticsearch cleans up deleted documents in the background as you continue to index more data.
 
-
 [Meta-Fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-fields.html).
 
 [Groovy](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-scripting.html#_document_fields).

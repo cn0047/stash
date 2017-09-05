@@ -22,7 +22,7 @@ console.log(colors); // { "red": "#00f", "green": "#0f0" }
 colors = {code: 200}; // Error
 
 // Let - allows you to declare variables that are limited in scope to the block.
-// for (let i = 0; i < 3; i++) {}
+for (let i = 0; i < 3; i++) {}
 
 // Block-Scoped Functions.
 {
@@ -40,15 +40,15 @@ var hello = function (cb) {
 };
 hello(v => console.log(v));
 
-// odds  = evens.map(v => v + 1)
-// pairs = evens.map(v => ({ even: v, odd: v + 1 }))
-// nums  = evens.map((v, i) => v + i)
+odds  = evens.map(v => v + 1)
+pairs = evens.map(v => ({ even: v, odd: v + 1 }))
+nums  = evens.map((v, i) => v + i)
 
 // Default Parameter Values.
-// function f (x, y = 7, z = 42) {
-//     return x + y + z
-// }
-// f(1) === 50
+function f (x, y = 7, z = 42) {
+    return x + y + z
+}
+f(1) === 50
 
 // Variadic functions.
 function f (x, y, ...a) {
@@ -80,7 +80,7 @@ obj = {
 // Array Matching
 var list = [ 1, 2, 3 ]
 var [ a, , b ] = list
-// a === 1; b === 3
+a === 1; b === 3;
 
 // Parameter Context Matching
 function f ([ name, val ]) {
