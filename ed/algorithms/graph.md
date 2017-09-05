@@ -19,3 +19,8 @@ Also all vertex have even degree.
 
 Euler path - includes exactly once all the edges and has different first and last veritces.
 Also all vertex have even degree but 2 have odd degree.
+
+## Search
+
+DFS (Depth First Search)
+BFS (Breadth First Search)

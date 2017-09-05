@@ -8,7 +8,7 @@ var parentControlProxy = function () {
         var d = new Date();
         if (d.getHours() >= 22) {
             console.log('you should go sleep...');
-            return;;
+            return;
         }
         var tv = new TV();
         tv.watch();
