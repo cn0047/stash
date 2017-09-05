@@ -10,6 +10,7 @@ function Child (name) {
 Child.prototype = new Parent();
 
 var kid = new Child('Patrick');
+Child.prototype = Object.create(Parent.prototype);
 kid.name;           // 'Patrick'
 kid.say();          // 'Patrick'
 delete kid.name;
