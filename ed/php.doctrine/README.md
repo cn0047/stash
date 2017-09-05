@@ -5,6 +5,26 @@ doctrine
 
 For relationships between entities, you don't have to have physical foreign key in db.
 
+@HasLifecycleCallbacks - required for:
+
+* @PostLoad
+* @PrePersist
+* @PostPersist
+* @PreRemove
+* @PostRemove
+* @PreUpdate
+* @PostUpdate
+
+@GeneratedValue - strategy for identifier generation annotated by @Id. Available values:
+
+* AUTO (default)
+* SEQUENCE - Oracle, PostgreSql and SQL Anywhere.
+* TABLE - Use a separate table for ID generation (Not implemented).
+* IDENTITY - MySQL (AUTO_INCREMENT), MSSQL (IDENTITY), PostgreSQL (SERIAL.
+* UUID - Built-in Universally Unique Identifier generator.
+* CUSTOM
+* NONE
+
 #### Installing
 
 ````

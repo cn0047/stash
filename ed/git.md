@@ -115,6 +115,7 @@ vendor/
     st  = status
     sl  = stash list
     f   = fetch origin
+    po  = pull origin
     ml  = merge origin/live
     mm  = merge origin/master
     d   = diff --word-diff
