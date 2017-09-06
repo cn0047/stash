@@ -25,7 +25,10 @@ Internationalization (i18n) - process of changing your software so that it isn't
 
 Localization (l10n) - the process of adding the appropriate resources to your software so that a particular language/locale is supported.
 
-Tell, Don’t Ask (Law of Demeter).
+Tell, Don’t Ask.
+
+Law of Demeter - object A can call method of object B,
+but object A should not "reach through" object B to access yet another object C, to request its services.
 
 #### Security
 

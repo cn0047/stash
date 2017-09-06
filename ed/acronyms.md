@@ -9,6 +9,7 @@ Acronyms
 [B2B](#B2B)
 [BAAS](#BAAS)
 [BDD](#BDD)
+[CA](#CA)
 [CDN](#CDN)
 [CORS](#CORS)
 [CRM](#CRM)
@@ -91,6 +92,9 @@ Acronyms
 
 <dt><a name="BDD"></a>BDD</dt>
 <dd>Behavior-driven development.</dd>
+
+<dt><a name="CA"></a>CA</dt>
+<dd>Certification Authority.</dd>
 
 <dt><a name="CDN"></a>CDN</dt>
 <dd>Content distribution network.</dd>

@@ -19,11 +19,13 @@ Length up to 2048 chars.
 
 Headers:
 
+* Authorization
 * Accept
 * Accept-Charset
 * Accept-Encoding
 * Accept-Language
 * Cookie
+* Content-Type
 * Referer
 * User-Agent
 * If-Modified-Since
@@ -60,9 +62,9 @@ Currently the following trees are created:
 
 #### Connections
 
-* parallel
-* persistent
-* pipeline
+* parallel (in the past, browsers have used multiple TCP connections to issue parallel requests)
+* persistent (HTTP 2 connections are persistent, only one connection per origin is required)
+* pipeline (multiple HTTP requests are sent on a single TCP connection)
 
 #### Response
 
@@ -74,13 +76,18 @@ Currently the following trees are created:
 
 Headers:
 
+* Access-Control-Allow-Origin
 * Connection (close)
 * Location (path for 302 HTTP code)
+* Set-Cookie
+* Content-Type
 * Content-Length
 * Cache-Control (private, public, no-cache)
 * Last-Modified
 * Expires
 * ETag
+* X-Powered-By
+* X-Frame-Options
 
 ````
 Server: nginx/1.10.2
@@ -137,7 +144,7 @@ Origin: https://foo.bar.org
 
 * 300 Multiple Choices
 * 301 **Moved Permanently** (http -> https)
-* 302 **Found / Moved Temporary**
+* 302 **Found / Moved Temporary** (location header)
 * 303 See Other (since HTTP/1.1)
 * 304 **Not Modified**
 * 305 Use Proxy (since HTTP/1.1)

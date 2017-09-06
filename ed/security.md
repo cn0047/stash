@@ -1,9 +1,7 @@
 Security
 -
 
-## Web Application Security Risks:
-
-### Top:
+Web Application Security Risks:
 
 #### A1 Injection
 
@@ -45,9 +43,9 @@ Perform action on the victim's behalf.
 
 #### Using Components with Known Vulnerabilities
 
-### Else:
-
 #### Clickjacking (UI redress attack)
+
+The hacker can only send a single click.
 
 For example, imagine an attacker who builds a web site that has a button on it that says "click here for a free iPod".
 However, on top of that web page, the attacker has loaded an iframe with your mail account,
@@ -74,3 +72,9 @@ Cookie: TEMPLATE=../../../../../../../../../etc/passwd
 ````
 
 FIX: Query string is usually URI decoded before use.
+
+## Man-In-The-Middle
+
+## Phishing
+
+## DNS hijacking

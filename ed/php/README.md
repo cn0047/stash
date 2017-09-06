@@ -323,10 +323,6 @@ extends,
 can contains properties, constants and methods, must contains abstract methods protected or public,
 cannot be instantiated.
 
-#### Memcache
-
-When memcache overflows, it will expire oldest keys and flush them.
-
 #### Predefined variables
 
 * $GLOBALS

@@ -3,7 +3,7 @@ MySql
 
 *5.1.72-rel14.10*
 
-####Snippets
+#### Snippets
 ````sql
 -- Create new user like root
 -- mysql --user=root mysql
@@ -16,9 +16,9 @@ GRANT ALL PRIVILEGES ON testDB.* TO 'test2'@'%' IDENTIFIED BY 'pass';
 -- set password for user
 SET PASSWORD FOR 'ziipr'@'localhost' = PASSWORD('12345');
 DROP USER 'jeffrey'@'localhost';
+````
 
-INSERT INTO brand2 (name) SELECT name FROM brand;
-
+````sql
 ALTER  TABLE table    ADD field INTEGER(1) NOT NULL AFTER anotherFieldName;
 ALTER  TABLE table    ADD UNIQUE KEY (field);
 ALTER  TABLE engineer ADD UNIQUE KEY username_email (username, email);
@@ -34,6 +34,10 @@ RENAME TABLE table TO tableNewName;
 CREATE INDEX indexName ON table (column);
 DROP   TABLE IF EXISTS tableNewName;
 DROP   INDEX indexName ON table;
+````
+
+````sql
+SHOW ENGINE INNODB STATUS\G -- show lot of helpful info including last error
 
 SHOW OPEN TABLES from  dataBaseName; -- Show locked tables.
 
@@ -57,7 +61,7 @@ INSERT LOW_PRIORITY INTO table1 SELECT field FROM table2;
 SELECT * FROM stockTable ORDER BY field(stockid, 33, 12, 53); -- ordered result: 33, 12, 53
 ````
 
-####Set
+#### Set
 ````sql
 SET @id = 1;
 SELECT @id;
@@ -76,11 +80,11 @@ SELECT @myRight;
 +----------+
 ````
 
-####NULL
+#### NULL
 Aggregate (summary) functions such as COUNT(), MIN(), and SUM() ignore NULL values.
 The exception to this is COUNT(*), which counts rows
 
-####Optimizations
+#### Optimizations
 ````sql
 force index (createdAt)
 
@@ -90,7 +94,7 @@ SELECT DISTINCT id FROM table;
 SELECT id FROM table GROUP BY id;
 ````
 
-####Options
+#### Options
 ````sql
 SET SQL_BIG_SELECTS  = 1;
 SET SQL_SAFE_UPDATES = 0;
@@ -100,7 +104,7 @@ SELECT SQL_CACHE
 SELECT SQL_NO_CACHE
 ````
 
-####Sizes
+#### Sizes
 
 Every table (regardless of storage engine) has a maximum row size of 65,535 bytes.
 
@@ -144,7 +148,7 @@ LIMIT 50
 SELECT TABLE_NAME, TABLE_ROWS FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'dbName';
 ````
 
-####Functions
+#### Functions
 ````sql
 CONV(2, 10, 2) -- CONV(num , from_base, to_base)
 LPAD('ZipCode', 10, '0') -- 000ZipCode
@@ -174,7 +178,7 @@ INET_NTOA(i)
 UUID()
 ````
 
-####mySqlDump
+#### mySqlDump
 ````
 mysqldump -h hostname -u user -pPassWord --skip-triggers --single-transaction --complete-insert --extended-insert --quote-names --disable-keys dataBaseName | gzip -с > DUMP_dataBaseName.sql.gz
 # dump only db schema
@@ -187,8 +191,10 @@ mysql -hHost -uUser -pPass -DBase < dumpFile.sql
 -- mysql -h Host -D Base -e "select * from table where id in (1,2);" | gzip | pv | uuencode result.csv.gz | mail
 ````
 
-####Flashback
+#### Flashback
 ````sql
+INSERT INTO brand2 (name) SELECT name FROM brand;
+
 LIMIT OFFSET, COUNT
 
 -- First works AND than OR
@@ -226,7 +232,7 @@ Horizontal scaling means that you scale by adding more machines into your pool o
 Vertical scaling means that you scale by adding more power (CPU, RAM) to your existing machine.
 ````
 
-####Slow query log
+#### Slow query log
 ````
 mkdir /var/log/mysql
 touch /var/log/mysql/logSlowQueries.log
@@ -255,13 +261,12 @@ general-log-file = /var/log/mysql/general.log
 # sudo mkdir -p /var/log/mysql
 # sudo touch /var/log/mysql/general.log
 # sudo chown mysql:mysql /var/log/mysql/general.log
-````
-````sql
+
 SET global general_log_file='/var/log/mysql/general.log';
 SET global general_log = 1;
 ````
 
-####Tricks
+#### Tricks
 ````
 ~/.mysql_history
 
@@ -274,7 +279,7 @@ mysql> pager less -SFX
 mysql> \s
 ````
 
-####Storage engines
+#### Storage engines
 * InnoDB
     * Support for transactions (giving you support for the ACID property).
     * Foreign key constraints (take more time in designing).
@@ -295,7 +300,7 @@ mysql> \s
 * FEDERATED
 * EXAMPLE
 
-####[Data Types](http://dev.mysql.com/doc/refman/5.0/en/data-types.html)
+#### [Data Types](http://dev.mysql.com/doc/refman/5.0/en/data-types.html)
 * Numeric Types:
     * [Integer](http://dev.mysql.com/doc/refman/5.0/en/integer-types.html):
         * Tinyint (Bytes 1).
