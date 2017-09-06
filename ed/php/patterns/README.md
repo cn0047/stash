@@ -56,16 +56,6 @@ but a department could not be part of more than one university.
 Consultation in object-oriented programming occurs when an object's method implementation consists
 of a message send of the same message to another constituent object.
 
-````
-Adapter vs Bridge:
-Adapter works with defined objects,
-bridge can accept objects on fly, because it is abstraction over implementation.
-
-Prototype vs Interpreter: ?
-
-Command vs Strategy: ?
-````
-
 #### Architectural patterns:
 
 * Active record

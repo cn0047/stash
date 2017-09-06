@@ -6,11 +6,11 @@ var es = new elasticsearch.Client({
 });
 
 es.search({
-index: 'megacorp',
-type: 'employee',
-body: {
-  query: {ids: {values: [1]}}
-}
+    index: 'megacorp',
+    type: 'employee',
+    body: {
+      query: {ids: {values: [1]}}
+    }
 }).then(function (resp) {
     var hits = resp.hits.hits;
     console.log(hits[0]._source);

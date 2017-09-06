@@ -1,7 +1,7 @@
 Index
 -
 
-If Cardinality to low - index will not uses!
+If Cardinality to low - index will not used!
 
 Max key length is 767 bytes.
 

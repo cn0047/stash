@@ -50,14 +50,14 @@ INSERT INTO t SELECT * FROM t AS t1;
 ````
 
 Rules for Lock Release:
-* A session can release its locks explicitly with UNLOCK TABLES.
-* If a session issues a LOCK TABLES statement to acquire a lock while already holding locks,
+* A session can release its locks explicitly with **UNLOCK TABLES**.
+* If a session issues a **LOCK TABLES** statement to acquire a lock while already holding locks,
   its existing locks are released implicitly before the new locks are granted.
-* If a session begins a transaction (for example, with START TRANSACTION),
+* If a session **begins a transaction** (for example, with START TRANSACTION),
   an implicit UNLOCK TABLES is performed, which causes existing locks to be released.
-* If the connection for a client session terminates, whether normally or abnormally,
+* If the **connection** for a client session **terminates**, whether normally or abnormally,
   the server implicitly releases all table locks held by the session.
-* If you use ALTER TABLE on a locked table, it may become unlocked.
+* If you use **ALTER TABLE** on a locked table, it may become unlocked.
 
 Example:
 

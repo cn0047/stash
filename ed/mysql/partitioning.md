@@ -329,11 +329,14 @@ SELECT * FROM orders PARTITION(p_old, p_2008) ORDER BY date;
 ## Restrictions and Limitations on Partitioning
 
 You cannot use MyISAM for one partition and InnoDB for another.
-<br>MySQL partitioning cannot be used with the MERGE, CSV, or FEDERATED storage engines.
+
+MySQL partitioning cannot be used with the MERGE, CSV, or FEDERATED storage engines.
 
 Temporary tables cannot be partitioned.
-<br>Use of INSERT DELAYED to insert rows into a partitioned table is not supported.
-<br>All columns used in the partitioning expression for a partitioned table must be part of every unique key that the table may have.
+
+Use of INSERT DELAYED to insert rows into a partitioned table is not supported.
+
+All columns used in the partitioning expression for a partitioned table must be part of every unique key that the table may have.
 This also includes the table's primary key, since it is by definition a unique key.
 
 For a partitioned MyISAM table, MySQL uses 2 file descriptors for each partition, for each such table that is open.
