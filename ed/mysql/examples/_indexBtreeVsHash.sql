@@ -1,12 +1,3 @@
-/*
-Storage Engine | Permissible Index Types
----------------+------------------------
-MyISAM         | BTREE
-InnoDB         | BTREE
-MEMORY/HEAP    | HASH, BTREE
-NDB            | BTREE, HASH
-*/
-
 CREATE TABLE `lookup` (
   `id` int(11) NOT NULL DEFAULT '0',
   `location1` varchar(50) DEFAULT NULL,

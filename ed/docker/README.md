@@ -107,9 +107,16 @@ docker run -it --rm -p 8000:8000 -v $PWD:/gh php-cli php -S 0.0.0.0:8000 /gh/ed/
 docker run -it --rm -v $PWD:/gh --link mysql-master php-cli php /gh/ed/php/examples/mysqlAndPdo/pdo.simplestExample.php
 
 # RabbitMQ with php
-docker run -it --rm --name php-cli-rabbitmq-c-1 -v $PWD/ed:/gh/ed --link rabbit \
+docker run -ti --rm -v $PWD/ed/php/examples/rabbitmq/tutorials:/app xcomposer install
+# direct
+docker run -it --rm -v $PWD/ed:/gh/ed --link rabbit \
+    php-cli php /gh/ed/php/examples/rabbitmq/tutorials/routingLikeStream/emit_log_direct.php
+docker run -it --rm -v $PWD/ed:/gh/ed --link rabbit \
+    php-cli php /gh/ed/php/examples/rabbitmq/tutorials/routingLikeStream/receive_logs_direct.php
+# worker
+docker run -it --rm -v $PWD/ed:/gh/ed --link rabbit \
     php-cli php /gh/ed/php/examples/rabbitmq/tutorials/workQueue/worker.php
-docker run -it --rm --name php-cli-rabbitmq-p-1 -v $PWD/ed:/gh/ed --link rabbit \
+docker run -it --rm -v $PWD/ed:/gh/ed --link rabbit \
     php-cli php /gh/ed/php/examples/rabbitmq/tutorials/workQueue/new_task.php
 
 # laravel

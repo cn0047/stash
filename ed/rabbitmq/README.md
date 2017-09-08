@@ -33,31 +33,34 @@ Declaring a queue is idempotent - it will only be created if it doesn't exist al
 Keep in mind that messages are sent asynchronously from the server to the clients.
 The `durable` queue won't be lost even if RabbitMQ restarts.
 
-Marking messages as persistent doesn't fully guarantee that a message won't be lost...
-It tells RabbitMQ to save the message to disk.
-
 Exchange - receives messages from producers and pushes them to queues.
 There are a few exchange types available:
 
 * direct
+* fanout
 * topic
 * headers
-* fanout
 
-The difference between the `direct` exchange versus `fanout` exchange
-is that fanout ignores the routing key.
+Direct (workers; rpc; routing key `info`, `warning` etc) exchange
+delivers messages to queues based on the message routing key.
+
+Fanout ignores the routing key (ideal for the broadcast).
+If N queues are bound to a fanout exchange, when a new message is published to that exchange
+a copy of the message is delivered to all N queues. 
+
+Topic (producer `anonymous.info`; recipient `*.critical`, `#`, `kernel.*` ...) exchanges
+route messages to one or many queues
+based on matching between a message routing key
+and the pattern that was used to bind a queue to an exchange. 
+Keep in mind that, usually, bindings on topic exchanges use more memory than in direct or fanout exchanges.
+
+Headers exchanges ignore the routing key attribute.
+Instead, the attributes used for routing are taken from the headers attribute.
 
 That relationship between exchange and a queue is called a binding.
 
-Keep in mind that, usually, bindings on
-topic exchanges use more memory than in direct or fanout exchanges.
-
-````
-direct - workers; rpc; routing key `info`, `warning` etc.
-topic - producer `anonymous.info`; recipient `*.critical`, `#`, `kernel.*`...
-headers -
-fanout - recipient will receive only new data (no historical data).
-````
+Marking messages as persistent doesn't fully guarantee that a message won't be lost...
+It tells RabbitMQ to save the message to disk.
 
 Avoid black hole messages:
 
@@ -67,8 +70,8 @@ Avoid black hole messages:
 
 ## Cluster
 
-RabbitMQ only requires that one node in a cluster be a disk node.
-Every other node can be a RAM node.
+RabbitMQ only requires that one node in a cluster be a `disk` node.
+Every other node can be a `RAM` node.
 
 If you only have one disk node and that node happens to be down,
 your cluster can continue to route messages but you can’t do any of the following:

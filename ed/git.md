@@ -124,6 +124,7 @@ vendor/
     dfl = diff origin/live
     dfm = diff origin/master
     dff = diff origin/live --name-only
+    rh  = reset HEAD
     ca  = commit -am
     cm  = commit -m
     ph  = push origin HEAD

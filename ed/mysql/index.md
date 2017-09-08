@@ -1,6 +1,13 @@
 Index
 -
 
+Storage Engine | Permissible Index Types
+---------------+------------------------
+MyISAM         | BTREE
+InnoDB         | BTREE
+MEMORY/HEAP    | HASH, BTREE
+NDB            | BTREE, HASH
+
 If Cardinality to low - index will not used!
 
 Max key length is 767 bytes.

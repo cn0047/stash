@@ -11,6 +11,11 @@ Example:
 +----+-------------+-------+------------+-------+---------------+---------+---------+------+------+----------+-------------+
 ````
 
+`key_len` - length of the key that MySQL decided to use.
+Determine how many parts of a multiple-part key MySQL actually uses.
+
+`filtered` - estimated percentage of table rows that will be filtered by the table condition.
+
 ## Column type
 
 В руководстве по MySQL сказано, что в этом столбце отражается «тип
