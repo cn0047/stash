@@ -143,3 +143,6 @@ Books
 <a href="http://php.net/index.php">
     PHP
 </a>
+[Delphi 7](http://bizkniga.com.ua/kniga/435)
+Assembler
+Pascal

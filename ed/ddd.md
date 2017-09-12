@@ -239,6 +239,4 @@ DAOs must be placed in domain layer.
 
 Exceptions must be present in each layer, with purpose describe problems of certain layer.
 
-#### DTO.
-
 #### Domain event publisher.

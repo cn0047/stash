@@ -99,12 +99,17 @@ https://github.com/PeeHaa/OpCacheGUI
 https://github.com/amnuts/opcache-gui :+1:
 
 #### Closures
+
 Anonymous functions - functions which have no specified name.
 <br>They are most useful as the value of callback parameters.
-<br>*PHP automatically converts such expressions into instances of the Closure internal class.*
-<br>Lambda function is an anonymous PHP function that can be stored in a variable
+
+Lambda function is an anonymous PHP function that can be stored in a variable
 and passed as an argument to other functions or methods.
+
+PHP automatically converts such expressions into instances of the Closure internal class.
 <br>A closure is a lambda function that is aware of its surrounding context.
+
+`this` - context of function declaration. In global scope equals to NULL, in class - class itself.
 
 #### Escaping from HTML
 ````php
@@ -338,18 +343,18 @@ cannot be instantiated.
 #### Magic methods
 
 * __construct()
-* __destruct()
+* __destruct() - uset, unload from function, shutdown
 * __call()
 * __callStatic()
 * __get()
 * __set()
-* __isset()
-* __unset()
-* __sleep()
+* __isset() - calling isset() or empty() on properties.
+* __unset() - unset() properties.
+* __sleep() - serialize()
 * __wakeup()
 * __toString()
 * __invoke()
-* __set_state()
+* __set_state() - var_export()
 * __clone()
 * __debugInfo()
 

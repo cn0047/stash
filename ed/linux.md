@@ -17,13 +17,13 @@ openssl x509 -req -in cert.csr -signkey private.key -out certificate.pem
 
 sudo dpkg -i {name}
 
-####centos
+#### centos
 
 ````
 yum --showduplicates list available elasticsearch\*
 ````
 
-####netstat
+#### netstat
 
 ````
 netstat -anp | grep LISTEN
@@ -35,7 +35,7 @@ sudo lsof -i -n -P | grep TCP.*80
 netstat -tpne
 ````
 
-####mount
+#### mount
 
 On server machine:
 ````
@@ -47,7 +47,7 @@ On client machine:
 mount -t nfs {remote_machine_ip}:/remote/dir /local/dir
 ````
 
-####screen
+#### screen
 
 ````
 screen -S sessionName # new named session
@@ -56,7 +56,7 @@ screen -x sessionName # attach to session
 ````
 Ctrl+A followed by D = detach screen
 
-####image optimization
+#### image optimization
 
 ````
 jpegoptim --size=12k --dest a/ -o origin.jpg
@@ -75,14 +75,14 @@ pngquant --force --quality=25-25 ~/Downloads/origin.png --ext .25.png
 mogrify -resize 400x400! src.png
 ````
 
-####rsync
+#### rsync
 
 ````
 rsync -az --progress --exclude=.git/* --rsh='ssh -p26' kovpak@trunk-web-php.pmmedia.priv:/usr/share/yii/ /home/volodymyr/web/kovpak/yii/framework/
 rsync -az --progress --rsh='ssh -i /home/kovpak/web/storage/ziipr.pem' ./ ec2-user@ec2-52-210-246-232.eu-west-1.compute.amazonaws.com:/var/www/
 ````
 
-####sed
+#### sed
 
 Sed was developed from 1973.
 
@@ -103,7 +103,7 @@ sed -i "s/admin_user/user/" /var/www/html/config.php
 sed -e '2d;' file.txt > res.file.txt
 ````
 
-####awk
+#### awk
 
 AWK was created in the 1970s.
 
@@ -115,7 +115,7 @@ printf "one\n* two\n" | awk '{print ($1=="*" ? $2 : $1)}' # Print one \n two
 printf "1\n 2\n 3\n" | awk 'ORS=NR?",":"\n"' # Replace new line with comma
 ````
 
-####shell
+#### shell
 ````
 sudo bash -c 'echo "APP_ENVIRONMENT=prod" > /etc/environment'
 sh -c 'echo 200'
@@ -166,7 +166,7 @@ popd       # got to pushed path (and delete it from stack)
 history
 ````
 
-####ssh
+#### ssh
 ````
 ssh-add ~/.ssh/id_rsa
 vim /etc/ssh/sshd_config
@@ -185,7 +185,7 @@ Host ec2
     IdentifyFile ~/path_to_ssh_key
 ````
 
-####ps
+#### ps
 ````
 ps ax                             # Display all processess
 ps aux                            # Detailed information about processess
@@ -202,7 +202,7 @@ ps -e -o pid,comm,etime           # Display elapsed time of processes
 watch -n 1 'ps -e -o pid,uname,cmd,pmem,pcpu --sort=-pmem,-pcpu | head -15' # Turn ps into an realtime process viewer
 ````
 
-####chmod
+#### chmod
 ````
 -rwxrwxrwx
 drwxr-xr-x
@@ -231,13 +231,13 @@ chown -R www-data:www-data /var/www/html/
 sudo chown -R `whoami` /var/log/
 ````
 
-####mail
+#### mail
 ````
 mail -s 'subject' mail@com.com < fileName
 uuencode card.jpg card.jpg | mail mail@com.com
 ````
 
-####grep
+#### grep
 ````
 -z, --null-data             строки разделяются байтом с нулевым значением, а не символом конца строки
 -v, --revert-match          #
@@ -252,7 +252,7 @@ uuencode card.jpg card.jpg | mail mail@com.com
 
 `grep match -wrni --color=always --include=*.php . | grep notMatch -v --color=always`
 
-####curl
+#### curl
 ````
 -b, --cookie STRING/FILE             String or file to read cookies from (H)
 -d, --data DATA                      HTTP POST data (H)
@@ -279,7 +279,7 @@ curl http://localhost:3000 -H 'Authorization: Basic YWRtaW46cGFzc3dvcmQ='
 curl http://localhost:8000 -F "file=@/home/kovpak/Downloads/download.jpg"
 ````
 
-####SNIPPETS
+#### SNIPPETS
 ````
 fwrite(STDOUT, __METHOD__ . "\n");
 prompt \u@\h [\d]>

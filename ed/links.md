@@ -3,6 +3,10 @@ LINKS
 
 https://developers.google.com/speed/pagespeed/insights/
 
+data generator:
+    https://www.mockaroo.com/
+    http://www.json-generator.com/
+
 http://choosealicense.com/
 http://jsbin.com/
 http://codepad.org/
@@ -10,7 +14,6 @@ https://3v4l.org/
 http://markup.su/highlighter/
 http://myjson.com/         http://mockbin.org/
 http://sqlfiddle.com/
-http://www.json-generator.com/
 https://code.facebook.com/projects/
 https://github.com/ifightcrime/bootstrap-growl/ PopUp
 https://platform.sh/

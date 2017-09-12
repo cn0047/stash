@@ -1,6 +1,7 @@
 .idea/
 .vagrant/
 composer.lock
+docker/.data/
 ed/index.nginx-debian.html
 node_modules/
 vendor/

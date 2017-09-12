@@ -57,9 +57,25 @@ should not be used on any columns which allow NULL values, can be auto_increment
 
 FULLTEXT: are different from all of the above, it's only used for a "full text search" feature.
 
-####Detection of bad index
+
+#### Detection of bad index
+
 
 ````sql
+SELECT
+    CONCAT(table_schema, '.', table_name),
+    CONCAT(ROUND(table_rows / 1000000, 2), 'M')                                    rows,
+    CONCAT(ROUND(data_length / ( 1024 * 1024 * 1024 ), 2), 'G')                    data,
+    CONCAT(ROUND(index_length / ( 1024 * 1024 * 1024 ), 2), 'G')                   idx,
+    CONCAT(ROUND(( data_length + index_length ) / ( 1024 * 1024 * 1024 ), 2), 'G') total_size,
+    ROUND(index_length / data_length, 2)                                           idx_frac
+FROM information_schema.TABLES
+ORDER BY data_length + index_length DESC
+LIMIT 50
+;
+
+-- this query need improve
+SET @db = 'test';
 SELECT
     t.TABLE_NAME,
     SUM(t.ROWS_READ) AS raw_readed,
@@ -67,7 +83,7 @@ SELECT
     ROUND((SUM(i.ROWS_READ)/SUM(t.ROWS_READ))*100, 2) AS index_coverage
 FROM information_schema.TABLE_STATISTICS t
 LEFT join information_schema.INDEX_STATISTICS i ON t.TABLE_SCHEMA = i.TABLE_SCHEMA AND t.TABLE_NAME = i.TABLE_NAME
-WHERE t.TABLE_SCHEMA = 'dbName'
+WHERE t.TABLE_SCHEMA = @db
 GROUP BY t.TABLE_NAME
 HAVING raw_readed > 10000
 ORDER BY raw_readed DESC

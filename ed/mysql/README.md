@@ -126,22 +126,12 @@ FROM information_schema.TABLES
 WHERE table_schema = 'dbName' AND table_name = 'tableName'
 ;
 
+-- data usage
+SET @tbl1 = 'user';
 SELECT
     TABLE_NAME, TABLE_ROWS, AVG_ROW_LENGTH, DATA_LENGTH, INDEX_LENGTH, DATA_FREE
 FROM information_schema.TABLES
-WHERE table_schema = 'test' AND table_name IN ('testBinUniqueKey20', 'testBinUniqueKey200')
-;
-
-SELECT
-    CONCAT(table_schema, '.', table_name),
-    CONCAT(ROUND(table_rows / 1000000, 2), 'M')                                    rows,
-    CONCAT(ROUND(data_length / ( 1024 * 1024 * 1024 ), 2), 'G')                    data,
-    CONCAT(ROUND(index_length / ( 1024 * 1024 * 1024 ), 2), 'G')                   idx,
-    CONCAT(ROUND(( data_length + index_length ) / ( 1024 * 1024 * 1024 ), 2), 'G') total_size,
-    ROUND(index_length / data_length, 2)                                           idx_frac
-FROM information_schema.TABLES
-ORDER BY data_length + index_length DESC
-LIMIT 50
+WHERE table_schema = 'test' AND table_name IN (@tbl1)
 ;
 
 -- Count of rows in db.
@@ -218,7 +208,7 @@ CHECK TABLE tab; -- checks a table for errors, for MyISAM - update key statistic
 ANALYZE TABLE tab; -- performs a key distribution analysis
 REPAIR TABLE tab; -- repairs a possibly corrupted table (MyISAM, ARCHIVE, and CSV)
 OPTIMIZE TABLE tab; -- reorganizes the physical storage of table data and associated index data,
-to reduce storage space and improve I/O efficiency when accessing the table.
+                    -- to reduce storage space and improve I/O efficiency when accessing the table.
 
 SELECT VERSION();
 SELECT USER();
@@ -282,15 +272,15 @@ mysql> \s
 
 #### Storage engines
 * InnoDB
-    * Support for transactions (giving you support for the ACID property).
-    * Foreign key constraints (take more time in designing).
-    * Row level locking. Faster in write-intensive because it utilizes row-level locking and only hold up changes to the same row that’s being inserted or updated.
-    * Recovers from a crash or other unexpected shutdown by replaying its logs.
+    * Support for **transactions** (giving you support for the ACID property).
+    * **Foreign key** constraints (take more time in designing).
+    * **Row level locking**. Faster in **write-intensive** because it utilizes row-level locking and only hold up changes to the same row that’s being inserted or updated.
+    * **Recovers from a crash** or other unexpected shutdown by replaying its logs.
     * Consumes more system resources such as RAM.
 * MyISAM
-    * Table level locking. Slower than InnoDB for tables that are frequently being inserted to or updated, because the entire table is locked for any insert or update.
+    * **Table level locking**. Slower than InnoDB for tables that are frequently being inserted to or updated, because the entire table is locked for any insert or update.
     * Faster than InnoDB on the whole as a result of the simpler structure thus much less costs of server resources.
-    * Especially good for read-intensive (select) tables.
+    * Especially good for **read-intensive** (select) tables.
     * (The maximum number of indexes per MyISAM table is 64. The maximum number of columns per index is 16).
     * (Uses one file for data rows and another for index records).
 * MEMORY

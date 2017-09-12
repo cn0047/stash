@@ -222,6 +222,7 @@ docker run -it --rm -p 9201:9200 --name es-data-1 --link es-master-1  \
 docker run -it --rm -p 3307:3306 --name mysql-master --hostname mysql-master \
     -v $PWD/docker/mysql/mysql-bin.log:/var/log/mysql/mysql-bin.log \
     -v $PWD/docker/mysql/config-master.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf \
+    -v $PWD/docker/.data/mysql:/var/lib/mysql \
     -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=test -e MYSQL_USER=dbu -e MYSQL_PASSWORD=dbp mysql:latest
 
 # replication user on master

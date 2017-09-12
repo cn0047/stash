@@ -15,6 +15,7 @@ Example:
 Determine how many parts of a multiple-part key MySQL actually uses.
 
 `filtered` - estimated percentage of table rows that will be filtered by the table condition.
+100.00 - good.
 
 ## Column type
 

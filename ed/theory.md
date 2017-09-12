@@ -1,6 +1,8 @@
 Theory
 -
 
+Even - `x % 2 = 0`.
+
 Bandwidth - count of lines on high-way.
 Latency - speed limit on high-way.
 
