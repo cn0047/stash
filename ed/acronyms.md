@@ -46,6 +46,7 @@ Acronyms
 [RFC](#RFC)
 [ROI](#ROI)
 [SaaS](#SaaS)
+[SDLC](#SDLC)
 [SFTP](#SFTP)
 [SMTP](#SMTP)
 [SOA](#SOA)
@@ -204,6 +205,9 @@ Acronyms
 
 <dt><a name="SaaS"></a>SaaS</dt>
 <dd>Software as a service.</dd>
+
+<dt><a name="SDLC"></a>SDLC</dt>
+<dd>Software development life-cycle.</dd>
 
 <dt><a name="SFTP"></a>SFTP</dt>
 <dd>SSH (also Secure) File Transfer Protocol.</dd>

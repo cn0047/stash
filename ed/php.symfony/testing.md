@@ -117,4 +117,3 @@ $client->request(
     array('PHP_AUTH_USER' => 'username', 'PHP_AUTH_PW' => 'pa$$word')
 );
 ````
-a

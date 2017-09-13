@@ -263,6 +263,7 @@ uuencode card.jpg card.jpg | mail mail@com.com
 -u, --user USER[:PASSWORD]           Server user and password
 
 # (REST) JSON at POST.
+# More examples available here: https://github.com/cn007b/my/blob/master/ed/php.symfony/generateRESTapi.md
 curl -XPOST http://localhost:3000/dishes \
     -H 'Content-Type: application/json' -d '{"name": "newDish", "description": "newDesc"}'
 curl -X POST -H 'application/json' -d '{"key":"val"}' http://url.com

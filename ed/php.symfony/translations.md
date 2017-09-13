@@ -36,7 +36,9 @@ public function indexAction()
         </body>
     </file>
 </xliff>
+````
 
+````twig
 {% trans %}Hello %name%{% endtrans %}
 {% transchoice count %}
     {0} There are no apples|{1} There is one apple|]1,Inf] There are %count% apples
@@ -93,7 +95,9 @@ $view['translator']->transChoice('Symfony2 is great', 1);
 
 {% set message = 'Symfony2 is great' %}
 {{ message|trans }}
+````
 
+````bash
 // To inspect all messages in the fr locale for the AcmeDemoBundle, run:
 php bin/console debug:translation fr AcmeDemoBundle
 php bin/console debug:translation en AcmeDemoBundle --domain=messages

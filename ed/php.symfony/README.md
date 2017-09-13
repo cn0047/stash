@@ -1,5 +1,6 @@
 Symfony
 -
+3.1.1
 2.6.6
 
 [book](http://symfony.com/pdf/Symfony_book_2.6.pdf?v=4)
@@ -40,6 +41,20 @@ symfony new my_project_name 2.3.26
 composer create-project symfony/framework-standard-edition my_project_name
 composer create-project symfony/framework-standard-edition my_project_name "2.3.*"
 ````
+
+#### Components
+
+* asset (js, css files)
+* console (for console command)
+* form
+* process (to execute external console command)
+* lockHandler (for mutex)
+* routing
+* security (firewalls, voters)
+* authentication
+* authorization
+* translation
+* validator
 
 #### The Directory Structure
 
@@ -150,9 +165,8 @@ export SYMFONY__DATABASE__PASSWORD=secre
 
 #### Service Container
 
-Service Container works as fast with huge services.yml file as with tiny one.
-Same about memory usage.
-Proved by benchmarking.
+Service Container works with huge services.yml file as fast as with tiny one,
+same about memory usage (Proved by benchmarking).
 
 ````php
 # app/config/config.yml

@@ -1,7 +1,7 @@
 Deploy
 -
 
-````
+````sh
 php bin/symfony_requirements
 
 # check all parameters in parameters.yml.dist
