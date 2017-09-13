@@ -163,7 +163,7 @@ docker run -ti --rm --name nginx-html \
     -p 8080:80 nginx:latest
 
 # test
-curl http://localhost:8081/bootstrap.popover.html
+curl http://localhost:8080/bootstrap.popover.html
 
 # php
 docker run -ti --rm --name nginx-php --link php-fpm \

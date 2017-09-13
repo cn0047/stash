@@ -109,7 +109,7 @@ and passed as an argument to other functions or methods.
 PHP automatically converts such expressions into instances of the Closure internal class.
 <br>A closure is a lambda function that is aware of its surrounding context.
 
-`this` - context of function declaration. In global scope equals to NULL, in class - class itself.
+`this` in closure - context of function declaration. In global scope equals to NULL, in class - class itself.
 
 #### Escaping from HTML
 ````php
@@ -218,7 +218,7 @@ source ~/.bashrc
 
 ````php
 print(true ? 'Yes' : 'No'); // Output: Yes
-print('My Value' ?: 'No Value'); // PHP 5.3 Output: My Value
+print('My Value' ?: 'No Value'); // PHP 5.3 (Equals to !empty($var) ? $var : 'default') Output: My Value
 print(null ?? 'Default Value'); // PHP 7 (Equals to isset($var) ? $var : 'default') Output: Default Value
 ````
 

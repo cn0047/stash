@@ -32,6 +32,28 @@ Tell, Don’t Ask.
 Law of Demeter - object A can call method of object B,
 but object A should not "reach through" object B to access yet another object C, to request its services.
 
+#### OOD
+
+Concepts of **delegation**, **aggregation**, and **consultation**.
+
+Delegation is the simple yet powerful concept of handing a task over to another part of the program.
+Object assigns a task to another object, known as the delegate.
+
+In aggregation, the object may only contain a reference or pointer to the object
+(and not have lifetime responsibility for it).
+<i>
+For example, a university owns various departments, and each department has a number of professors.
+If the university closes, the departments will no longer exist,
+but the professors in those departments will continue to exist.
+University can be seen as a composition of departments,
+whereas departments have an aggregation of professors.
+In addition, a Professor could work in more than one department,
+but a department could not be part of more than one university.
+</i>
+
+Consultation in object-oriented programming occurs when an object's method implementation consists
+of a message send of the same message to another constituent object.
+
 #### Security
 
 Symmetric encryption (symmetric key cryptography) - sender and receiver have same secret key.
@@ -57,12 +79,6 @@ COHESION describes how related the functions within a single module are.
 Classes should have a small number of instance variables.
 In general the more variables a method manipulates the more cohesive that method is to its class.
 A class in which each variable is used by each method is maximally cohesive.
-
-#### Architecture
-
-* Durability
-* Utility
-* Beauty
 
 #### Continuous Integration/Continuous Delivery
 
@@ -96,56 +112,6 @@ Problems:
 * Should a client have some kind of timeout for the RPC?
 * If the server malfunctions and raises an exception, should it be forwarded to the client?
 * Protecting against invalid incoming messages (eg checking bounds, type) before processing.
-
-#### Service Oriented Architecture
-
-SOA is less about how to modularize an application,
-and more about how to compose an application by integration
-of distributed, separately-maintained and deployed software components.
-
-In SOA, services use protocols that describe how they pass and parse messages using description metadata.
-
-Each SOA building block can be:
-
-* Service provider
-* Service broker
-* Service requester/consumer
-
-#### Microservices
-
-Microservices is a variant of the SOA
-architectural style that structures an application as a collection of loosely coupled services.
-It is modern interpretation of SOA used to build distributed software systems.
-
-Microservices-based architectures enable continuous delivery and deployment.
-
-Philosophy: Do one thing and do it well.
-
-The less well you understand a domain,
-the harder it will be for you to find proper bounded contexts for your services.
-
-Greenfield development is also quite challenging.
-So again, consider starting monolithic first and break things out when you’re stable.
-
-Many of the challenges you’re going to face with microservices get worse with scale.
-
-* Model Around Business Concepts
-  (use bounded contexts)
-* Adopt a Culture of Automation
-  (automated testing, deploy the same way everywhere, continuous delivery)
-* Hide Internal Implementation Details
-  (modeling bounded contexts, services should also hide their databases, consider using REST)
-* Decentralize All the Things
-  (teams own their services, align teams to the organization, prefer choreography over orchestration)
-* Independently Deployable
-  (coexist versioned endpoints, one-service-per-host)
-* Isolate Failure
-  (expect failure will occur anywhere and everywhere)
-* Highly Observable
-  (aggregate your logs, aggregate your stats)
-
-Anti-pattern - nanoservice,
-is a service whose overhead (communications, maintenance etc.) outweighs its utility.
 
 #### Code quality
 
@@ -234,62 +200,3 @@ while the implementation layer describes how the code does it.
         </ul>
     </li>
 </ul>
-
-#### IoC:
-
-When high-level module depends on low-level module - you cann't reuse high-level module.
-
-Bob Martin's (uncle Bob) CopyProgram:
-
-````
-              +------+
-              | Copy |
-              +------+
-                 /\
-                /  \
-+---------------+  +------------------+
-| Read keyboard |  | Write to printer |
-+---------------+  +------------------+
-````
-
-Now we need add ability to: Write to disc...
-
-Inversion of control - is used to increase modularity of the program and make it extensible.
-<br>Software frameworks, CALLBACKS, schedulers, event loops and dependency injection
-are examples of design patterns that follow the inversion of control principle.
-
-IoC serves the following design purposes:
-
-* To decouple the execution of a task from implementation.
-* To focus a module on the task it is designed for.
-* To free modules from assumptions about how other systems do
-  what they do and instead rely on contracts.
-* To prevent side effects when replacing a low-level module.
-
-There are several basic techniques to implement inversion of control:
-
-* Using a factory pattern
-* Using a service locator pattern
-* Using a dependency injection, for example
-
-  * constructor injection
-  * setter injection
-  * interface injection - define injector method in interface
-  * [parameter injection]
-
-* Using a contextualized lookup
-* Using template method design pattern
-* Using strategy design pattern
-
-Dependency inversion principle -
-High-level modules should not depend on low-level modules. Both should depend on abstractions.
-IoC - way that we provide this abstraction.
-
-**Interface inversion** - interface must have more than 1 implementation,
-not 1 interface for 1 particular class (there is no benefit).
-Because in this case 2 classes will have 2 interfaces which may differ
-and to solve it we inverse interfaces and create 1 interfaces for all any implementations.
-
-**Flow inversion** (Hollywood Principle - Don't call us, we'll call you).
-
-**Creation inversion** - use factory pattern or service locator or dependency injection.

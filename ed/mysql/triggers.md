@@ -4,7 +4,11 @@ Triggers
 A trigger is activates when a statement inserts, updates, or deletes
 (they do not activate for changes in views).
 There cannot be multiple triggers for a given table that have
-the same trigger event and action time.
+the same trigger event and action time (till version 5.7).
+
+WARNING:
+Cascaded foreign key actions do not activate triggers.
+Triggers work unsafe in statement based replication.
 
 In an INSERT trigger, only NEW.col_name can be used.
 In a DELETE trigger, only OLD.col_name can be used.
