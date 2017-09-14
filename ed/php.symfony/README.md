@@ -178,6 +178,16 @@ services:
         arguments: ["@=container.hasParameter('some_param') ? parameter('some_param') : 'default_value'"]
         calls:
             - [setMailer, ["@my_mailer"]]
+        #
+        resource: '../../src/AppBundle/*'
+        exclude: '../../src/AppBundle/{Entity,Repository}'
+        #
+        tags: [twig.extension]
+        #
+        public: false # When a service is not public, you cannot access it directly from the container.
+        #
+        lazy: true # don't instantiate service for DI into another service, but instantiate when it needed.
+
 
 public function sendEmailAction()
 {
@@ -214,6 +224,16 @@ php bin/console debug:container
 php bin/console debug:container --show-private
 php bin/console debug:container my_mailer
 ````
+
+#### Kernel events
+
+kernel.request
+kernel.controller
+kernel.view
+kernel.response
+kernel.finish_request - Triggered whenever a request is fully processed.
+kernel.terminate - Allows to execute logic after a response was sent.
+kernel.exception
 
 #### Performance
 

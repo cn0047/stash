@@ -81,7 +81,25 @@ public function contactAction(Request $request)
         $data = $form->getData();
     }
 }
+````
 
+Form Events:
+
+* PRE_SUBMIT - at the beginning of the Form::submit()
+* SUBMIT - just before the Form::submit()
+* POST_SUBMIT - after the Form::submit()
+* PRE_SET_DATA - at the beginning of the Form::setData()
+* POST_SET_DATA - at the end of the Form::setData()
+
+setData - `$form->get('firstname')->setData('John');`
+
+````
+$form = $formFactory->createBuilder()
+    // ... add form fields
+    ->addEventListener(FormEvents::PRE_SUBMIT, $listener);
+````
+
+````twig
 # Built-in Field Types:
 // Text Fields
 • text

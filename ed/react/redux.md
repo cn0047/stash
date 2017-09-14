@@ -12,3 +12,6 @@ redux-devtools
 redux-thunk
 redux-promise-middleware
 ````
+
+To bind react component state to redux state use `react-redux` package
+and especially `connect` method (`connect(mapStateToProps, { loadFeedAction })(SummaryScreenConainer)`).

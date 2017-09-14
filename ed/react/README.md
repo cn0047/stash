@@ -34,6 +34,12 @@ function App2() {
 }
 ````
 
+To pass data through the component tree without having to pass props down into each component - use `context`.
+
+Uncontrolled Component - (use a `ref`) gets form values from the DOM.
+
+Reconciliation - all path from virtual DOM to the actual DOM.
+
 Conditionally render React elements: `{showHeader && <Header />}`.
 
 Convert false, true, null, undefined to string: `<div>My JavaScript variable is {String(myVariable)}.</div>`.

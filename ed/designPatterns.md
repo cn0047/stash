@@ -1,25 +1,26 @@
-Patterns
+Design Patterns
 -
-
-#### Design Patterns:
 
 1. Creational.
 
-    * abstractFactory
-    * builder
+    * abstractFactory (in php)
+
+    * builder (constructor)
     * factoryMethod
     * prototype
     * singleton
+
+    * module (in js)
 
 2. Structural.
 
     * adapter
     * bridge - decouple an abstraction from its implementation
     * composite - "compose" objects into tree structures
+    * decorator - dynamically allows behavior to be added to object
     * facade - object that provides a simplified interface to a larger body of code
     * flyweight - lazy load
     * proxy
-    * decorator - dynamically allows behavior to be added to object
 
 3. Behaviour.
 
@@ -30,7 +31,7 @@ Patterns
     * iterator - used to traverse a container
     * mediator - object that encapsulates how a set of objects interact
     * memento - provides the ability to restore an object to its previous state
-    * observer
+    * observer (publish-subscribe)
     * state - encapsulate varying behavior based on an object's state
     * strategy - behavior to be selected at runtime
     * templateMethod

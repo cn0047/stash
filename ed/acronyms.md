@@ -35,6 +35,7 @@ Acronyms
 [MTA](#MTA)
 [NDA](#NDA)
 [NVM](#NVM)
+[ODM](#ODM)
 [ORM](#ORM)
 [PEAR](#PEAR)
 [PECL](#PECL)
@@ -172,6 +173,9 @@ Acronyms
 
 <dt><a name="NVM"></a>NVM</dt>
 <dd>Node Version Manager.</dd>
+
+<dt><a name="ODM"></a>ODM</dt>
+<dd>Object-document mapping.</dd>
 
 <dt><a name="ORM"></a>ORM</dt>
 <dd>Object-relational mapping.</dd>

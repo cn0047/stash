@@ -3,6 +3,14 @@ doctrine
 
 2.0
 
+Object relational mapper (ORM) for PHP that sits on top of a powerful database abstraction layer (DBAL).
+One of its key features is the option to write database queries
+in a proprietary object oriented SQL dialect called Doctrine Query Language (DQL).
+DBAL - database abstraction layer
+with many features for database schema introspection, schema management and PDO abstraction.
+
+Doctrine use ODM (Object Document Mapper) for mongodb.
+
 For relationships between entities, you don't have to have physical foreign key in db.
 
 @HasLifecycleCallbacks - required for:
