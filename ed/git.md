@@ -25,6 +25,11 @@ HEAD^^ == HEAD~2
 
 git commit -m 'Message'
 
+# Rebasing is changing the base of your branch from one commit to another
+# making it appear as if you'd created your branch from a different commit.
+# Reason - maintain a linear project history.
+git rebase master
+
 git tag 1.1.1
 git push origin --tags
 
@@ -40,7 +45,7 @@ git remote set-url origin git+ssh://git@github.com/cn007b/my.git
 git cherry-pick hash-to-commit
 ````
 
-####bisect
+#### bisect
 ````
 git bisect start
 git bisect bad       -- tell that current situation is bad
@@ -55,14 +60,14 @@ git bisect good
 git bisect reset
 ````
 
-####diff
+#### diff
 ````
 git diff --cached or diff --staged # after git add shows diff
 git diff branch..subBrach
 git diff branch:file file
 ````
 
-####log
+#### log
 ````
 git log -2                # last 2 commits
 git log -p                # shows commits & code in commit
@@ -71,7 +76,7 @@ git log --no-meges        # log without merges
 git log --follow file.txt # Viewing GIT history of deleted files.
 ````
 
-####branch
+#### branch
 ````
 git checkout --track -b master origin/master
 
@@ -85,7 +90,7 @@ git push remoteRepoName pusedBranch:newBranchName
 git push remoteRepoName :newBranch                # delete branch from remote repo
 ````
 
-####config
+#### config
 
 .gitignore
 ````

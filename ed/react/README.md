@@ -36,7 +36,11 @@ function App2() {
 
 To pass data through the component tree without having to pass props down into each component - use `context`.
 
-Uncontrolled Component - (use a `ref`) gets form values from the DOM.
+Changes in context won't cause re-render not in parent nor child.
+`component.forceUpdate()` - call `render` skipping `shouldComponentUpdate`,
+but trigger the normal lifecycle methods for child.
+
+Uncontrolled Component - (use a `ref`) gets values from the DOM.
 
 Reconciliation - all path from virtual DOM to the actual DOM.
 

@@ -14,9 +14,6 @@ The ideal task size is not bigger than a day's work...
 
 Two-pizza teams - where no team should be so big that it could not be fed with two pizzas.
 
-Orchestration - it is when one microservice supervise and manage else microservices.
-<br>Choreography - it is when microservice independent, and only have to know about message-queue.
-
 Resilience - is the ability of a system to adapt or keep working when challenges occur.
 
 Pure function - 1) always return the same result for same arguments, and 2) no mutation or output to I/O etc.

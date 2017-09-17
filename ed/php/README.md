@@ -85,10 +85,18 @@ if (json_last_error() !== JSON_ERROR_NONE) {
 }
 ````
 
+Streams:
 ````
 STDIN  'php://stdin'
 STDOUT 'php://stdout'
 STDERR 'php://stderr'
+
+php://input # read-only
+php://output # write-only
+php://fd # direct access to the given file descriptor
+php://memory
+php://temp
+php://filter
 ````
 
 #### opCache

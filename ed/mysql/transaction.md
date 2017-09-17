@@ -12,9 +12,9 @@ The default isolation level for InnoDB is REPEATABLE READ.
 * READ COMMITTED -
   Each consistent read, even within the same transaction, sets and reads its own fresh snapshot.
 
-* READ UNCOMMITTED - This is also called a dirty read.
+* READ UNCOMMITTED (weakest) - This is also called a dirty read.
 
-* SERIALIZABLE
+* SERIALIZABLE (strongest)
   This level is like REPEATABLE READ, 
   but InnoDB implicitly converts all plain `SELECT` statements to `SELECT ... LOCK IN SHARE MODE`.
   It therefore is known to be read only and can be serialized if performed as a consistent (nonlocking) read

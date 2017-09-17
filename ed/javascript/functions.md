@@ -13,6 +13,15 @@ millisecond - 0,001
 */
 ````
 
+````js
+window.history.back
+window.history.forward
+````
+
+````js
+target.addEventListener(type, listener, options);
+````
+
 #### String
 
 ````js
@@ -121,9 +130,9 @@ d = Date.parse(str);
 #### Function
 
 ````js
-f.bind(object, 1, 2);
 f.call(object, 1, 2);
 f.apply(object, [1, 2]);
+functionWithBoundedContext = f.bind(object, 1, 2);
 
 function f(a, b, c) {
     console.log(b.callee.length);

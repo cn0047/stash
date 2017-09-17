@@ -99,7 +99,9 @@ Adding a property to the prototype of a function object will make it available a
 When an object is asked for a property that it does not have,
 its parent object will be asked.
 
-shadowing - it is when parent class* have method which is overridden in child class*,
+__proto__ - internal property used by the js engine for inheritance.
+
+Shadowing - it is when parent class* have method which is overridden in child class*,
 so child can't call parent class and have to use: `Parent.prototype.func.call(this)`.
 
 ````js
@@ -241,20 +243,16 @@ window.onerror = function (msg, url, line) {}
 Phases (event flow) (`var phase = event.eventPhase;`):
 
 * CAPTURING_PHASE
-
-Event propagated through the target's ancestor objects: Window -> Document -> HTMLHtmlElement
-Event listeners registered for capture mode when `EventTarget.addEventListener()` was called are triggered during this phase.
+  Event propagated through the target's ancestor objects: Window -> Document -> HTMLHtmlElement
 
 * AT_TARGET
-
-The event has arrived at the event's target.
-Event listeners registered for this phase are called at this time. 
-If `Event.bubbles` (`event.stopPropagation()`) is false, processing the event is finished.
+  The event has arrived at the event's target.
+  Event listeners registered for this phase are called at this time. 
+  If `Event.bubbles` (`event.stopPropagation()`) is false, processing the event is finished.
 
 * BUBBLING_PHASE
-
-The event is propagating back up through the target's ancestors in reverse order,
-starting with the parent, and eventually reaching the containing Window.
+  The event is propagating back up through the target's ancestors in reverse order,
+  starting with the parent, and eventually reaching the containing Window.
 
 Page loading event:
 
@@ -279,7 +277,7 @@ Called when the DOM tree is completed.
 * Object
     * Null (a = null; typeof a; // "object")
     * Object
-    * Function (it isn't object because pass by value not by link, @see examples/bubbleSort.js)
+    * Function (it isn't object because pass by value not by link, @see examples/function.js)
 
 OR
 

@@ -48,6 +48,9 @@ It is modern interpretation of SOA used to build distributed software systems.
 
 Microservices-based architectures enable continuous delivery and deployment.
 
+Orchestration - it is when one microservice supervise and manage else microservices.
+<br>Choreography - it is when microservice independent, and only have to know about message-queue.
+
 Philosophy: Do one thing and do it well.
 
 The less well you understand a domain,
