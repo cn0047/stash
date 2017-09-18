@@ -1,6 +1,8 @@
 RegEx
 -
 
+https://regex101.com/
+
 | syntax                                   | description |
 |------------------------------------------|-------------|
 |^                                         | start of string |
@@ -12,6 +14,7 @@ RegEx
 |0                                         | 0 or more |
 |+                                         | repetitive match, 1 or more |
 |?                                         | optional match, 0 or 1 |
+|*?                                        | optional match, 0 or many |
 |{3}                                       | exactly 3 |
 |{3,}                                      | 3 or more |
 |{3,5}                                     | 3 or 4 or 5 |
@@ -42,21 +45,23 @@ RegEx
 |\E                                        | end quote |
 |\<                                        | start of word |
 |\>                                        | end of word |
-|?=                                        | lookahead assertion |
-|?!                                        | negative lookahead |
-|?<=                                       | lookbehind assetion |
-| ?! or ?<!                                | negative lookbehind |
-| ?>                                       | once-only sebexpression |
-| /?(condition)true-pattern\|false-pattern/| condition |
-| /?(condition)true-pattern/               | condition |
-| ?#                                       | comment |
-| (?:...)                                  | pasive group, just group, cannot be linked by \1 |
-| \1\2                                     | back reference to matches that was in (...) |
-| $1                                       | |
-| $2                                       | |
-| $`                                       | before matched string |
-| $'                                       | after matched string |
-| $+                                       | last matched string |
+|?=                                        | positive lookahead assertion # /foo(?=bar)/ -> foobar, but bar not included in result |
+|?!                                        | negative lookahead # /Jave(?!Script)/ -> Java, not JavaScript |
+|?<=                                       | positive lookbehind assetion # /(?<=td)ms/ -> tdms, but td not included in result |
+|?<!                                       | negative lookbehind # /(?<!bar)foo/ -> not barfoo, but bazfoo, and baz not included in result |
+|?>                                        | once-only sebexpression |
+|/?(condition)true-pattern\|false-pattern/ | condition |
+|/?(condition)true-pattern/                | condition |
+|(?|(regex1)|(regex2))                     | branch reset group |
+|(\2two|(one))+                            | forward references # /(\2two|(one))+/ -> oneonetwo
+|?#                                        | comment |
+|(?:...)                                   | pasive group, just group, cannot be linked by \1 # /(?:h.*)(f.*)/ -> htfm, group 1 = fm |
+|\1\2                                      | back reference to matches that was in (...) |
+|$1                                        | |
+|$2                                        | |
+|$`                                        | before matched string |
+|$'                                        | after matched string |
+|$+                                        | last matched string |
 |((?<=^)\|(?<=,))                          | Begin match with start of string (^) or comma. The `?<=` makes sure this is will not be replaced in preg_replace. |
 
 |   |   |
@@ -70,16 +75,6 @@ RegEx
 | u | upgready|unicode |
 
 ````
-/Jave(?!Script)/   # Java, not Script
-/[Jj]ava(?=\:)/    # Java with : but don't include : to rezult!!!
-
-/a*?b/
-/foo(?=bar)/
-/^(?=q)qu|f)/
-/(?<!foo)bar/
-/(?:h.*)(f.*)/
-/(?<=td)/
-/(?<!td)/
 /(['"])[^'"]*\1/
 
 (aa){1,2}?                   # exactly 2 aa, not 4 aa (2 aa & 2 aa)

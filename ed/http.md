@@ -246,7 +246,7 @@ TLS - Transport Layer Security.
 TLS handshake:
 Client sends hello to server, server responds with hello and public key back to client.
 Client verifies key against CAs.
-Than client performs client key exchange and server response with encryption using public key
+Than client performs `client key exchange` and server response with encryption using public key
 after that secure communication begins.
 
 HTTP Strict Transport Security:

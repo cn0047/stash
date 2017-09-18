@@ -1,7 +1,8 @@
 Theory
 -
 
-Even - `x % 2 = 0`.
+Even (2, 4, 6...) - `x % 2 = 0`.
+Odd (1, 3, 5...) - `x % 2 = 1`.
 
 Bandwidth - count of lines on high-way.
 Latency - speed limit on high-way.

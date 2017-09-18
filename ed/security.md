@@ -9,7 +9,7 @@ Web Application Security Risks:
 
 Occur when:
 data enters through an untrusted source;
-dynamic content dynamic content validation.
+dynamic content validation.
 
 Categories: stored (database) and reflected (response includes some malicious input).
 

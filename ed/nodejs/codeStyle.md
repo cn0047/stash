@@ -112,6 +112,6 @@ User
 
 ## Miscellaneous
 
-* Requires At Top
+* Requires at top
 
 * Do not extend built-in prototypes
