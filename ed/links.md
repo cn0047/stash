@@ -2,6 +2,7 @@ LINKS
 -
 
 https://developers.google.com/speed/pagespeed/insights/
+[Google Trends](https://trends.google.com/trends/explore?date=all&q=php,javascript)
 
 data generator:
     https://www.mockaroo.com/

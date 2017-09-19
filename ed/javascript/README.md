@@ -210,16 +210,6 @@ with (frames[1].document.forms[0]) {
 var form = frames[1].document.forms[0];
 form.name.value = '007';
 
-setTimeout("alert(200);", 3000);
-clearTimeout();
-var i = setInterval("alert(200);", 3000);
-clearInterval(i);
-
-navigator.cookieEnabled; // Show is cookie allowed.
-
-location.reload();  // Reload document
-location.replace(); // Reload document, and don't save action in history
-
 el.childNodes;      // child
 el.parentNode;      // parent
 el.nextSibling;     // next brother

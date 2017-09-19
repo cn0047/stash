@@ -2,7 +2,7 @@ Stackoverflow
 -
 
 [Top Ukraine SO Users](http://data.stackexchange.com/stackoverflow/query/428486/top-ukraine-so-users)
-[Trends](https://insights.stackoverflow.com/trends?tags=javascript%2Cphp&utm_source=so-owned&utm_medium=blog&utm_campaign=gen-blog&utm_content=blog-link&utm_term=incredible-growth-python)
+[Trends](https://insights.stackoverflow.com/trends?tags=javascript%2Cphp)
 
 ````
 <kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>P</kbd>

@@ -4,4 +4,5 @@ composer.lock
 docker/.data/
 ed/index.nginx-debian.html
 node_modules/
+package-lock.json
 vendor/

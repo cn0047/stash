@@ -1,4 +1,4 @@
-Memcache
+Memcached
 -
 
 When memcache overflows, it will expire oldest keys and flush them.

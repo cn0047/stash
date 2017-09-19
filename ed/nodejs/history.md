@@ -5,8 +5,9 @@ History
 
 * Stable
 * Async Hooks
-* N-API
+* N-API (API for building native Addons)
 * Buffer security improvements (`new Buffer(Number)`)
+* Added `promisify`
 * npm 5
 
 ## node.js 7

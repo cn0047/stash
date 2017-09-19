@@ -50,6 +50,9 @@ docker run -it --rm -p 8000:8000 -v $PWD:/gh php-cli php -S 0.0.0.0:8000 /gh/ed/
 # mysql
 docker run -it --rm -v $PWD:/gh --link mysql-master php-cli php /gh/ed/php/examples/mysqlAndPdo/pdo.simplestExample.php
 
+# mongo
+docker run -it --rm -v $PWD:/gh --link xmongo php-cli php /gh/ed/php/examples/mongo.simplest.php
+
 # RabbitMQ with php
 docker run -ti --rm -v $PWD/ed/php/examples/rabbitmq/tutorials:/app xcomposer install
 # direct

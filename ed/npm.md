@@ -2,6 +2,10 @@ npm
 -
 
 ````
+npm -g i npm@latest
+````
+
+````
 npm help npm
 npm -g install connect
 npm uninstall modulename
@@ -40,3 +44,10 @@ colors.setTheme({
 console.log("This is a helpful message".mod2_note);
 console.log("This is a bad message".mod1_error);
 ````
+
+### History
+
+npm@5
+
+* faster
+* lockfiles

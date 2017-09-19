@@ -1,13 +1,7 @@
-<html>
-<body>
-<script>
+ECMAScript 6
+-
 
-/*
-
-ECMAScript 6:
-
-*/
-
+````js
 // Constants.
 const PI = 3.141593
 // If possible, use `const` everywhere for more robust code.
@@ -115,6 +109,50 @@ console.log("2π = " + math.sum(math.pi, math.pi))
 import { sum, pi } from "lib/math"
 console.log("2π = " + sum(pi, pi))
 
+// Set Data-Structure
+let s = new Set()
+s.add("hello").add("goodbye").add("hello")
+s.has("hello") === true
+s.values() // SetIterator {"hello", "goodbye"}
+
+// Map Data-Structure
+let m = new Map()
+m.set("hello", 42)
+m.get("hello") === 42
+m.entries() // MapIterator {"hello" => 42}
+
+// Object Property Assignment
+var dst  = { quux: 0 }
+var src1 = { foo: 1, bar: 2 }
+var src2 = { foo: 3, baz: 4 }
+Object.assign(dst, src1, src2)
+dst.quux === 0
+dst.foo  === 3
+dst.bar  === 2
+dst.baz  === 4
+
+// Array Element Finding
+[ 1, 3, 4, 2 ].find(x => x > 3) // 4
+
+// Number Truncation
+console.log(Math.trunc(42.7)) // 42
+console.log(Math.trunc( 0.1)) // 0
+console.log(Math.trunc(-0.1)) // -0
+
+// Reflection
+let obj = { a: 1 }
+Reflect.ownKeys(obj) // Reflect.ownKeys(obj)
+
+// Currency Formatting
+var l10nUSD = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" })
+var l10nGBP = new Intl.NumberFormat("en-GB", { style: "currency", currency: "GBP" })
+var l10nEUR = new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" })
+l10nUSD.format(100200300.40) === "$100,200,300.40"
+l10nGBP.format(100200300.40) === "£100,200,300.40"
+l10nEUR.format(100200300.40) === "100.200.300,40 €"
+````
+
+````js
 // Class Definition
 class Shape {
     constructor (id, x, y) {
@@ -170,55 +208,6 @@ class Rectangle {
 }
 var r = new Rectangle(50, 20);
 r.area === 1000
-
-// Set Data-Structure
-let s = new Set()
-s.add("hello").add("goodbye").add("hello")
-s.has("hello") === true
-s.values() // SetIterator {"hello", "goodbye"}
-
-// Map Data-Structure
-let m = new Map()
-m.set("hello", 42)
-m.get("hello") === 42
-m.entries() // MapIterator {"hello" => 42}
-
-// Object Property Assignment
-var dst  = { quux: 0 }
-var src1 = { foo: 1, bar: 2 }
-var src2 = { foo: 3, baz: 4 }
-Object.assign(dst, src1, src2)
-dst.quux === 0
-dst.foo  === 3
-dst.bar  === 2
-dst.baz  === 4
-
-// Array Element Finding
-[ 1, 3, 4, 2 ].find(x => x > 3) // 4
-
-// Number Truncation
-console.log(Math.trunc(42.7)) // 42
-console.log(Math.trunc( 0.1)) // 0
-console.log(Math.trunc(-0.1)) // -0
-
-// Reflection
-let obj = { a: 1 }
-Reflect.ownKeys(obj) // Reflect.ownKeys(obj)
-
-// Currency Formatting
-var l10nUSD = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" })
-var l10nGBP = new Intl.NumberFormat("en-GB", { style: "currency", currency: "GBP" })
-var l10nEUR = new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" })
-l10nUSD.format(100200300.40) === "$100,200,300.40"
-l10nGBP.format(100200300.40) === "£100,200,300.40"
-l10nEUR.format(100200300.40) === "100.200.300,40 €"
-
-/*
+````
 
 All features available here: http://es6-features.org/
-
-*/
-
-</script>
-</body>
-</html>

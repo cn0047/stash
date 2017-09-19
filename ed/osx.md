@@ -4,6 +4,13 @@ osx
 ````
 Option = Alt
 ````
+
+````
+Command-H: Hide
+Command-M: Minimize
+Command-Option-W: Close all windows at once
+````
+
 ````
 Option-Del  # Del word
 Control-K   # Del row
@@ -18,12 +25,11 @@ Option–L|R  # Move B/E previous word.
 
 Shift–Option–U|D|L|R # Extended text selection
 
-Command+Shift+3 # screenshot all screen in file on desktop
-Command+Control+Shift+3 # screenshot all screen in buffer
-
+Command-Shift-3 # screenshot all screen in file on desktop
+Command-Control-Shift-3 # screenshot all screen in buffer
 # !!!
-Command+Shift+4 # screenshot (selected shape) in file on desktop
-Command+Control+Shift+4 # screenshot (selected shape) in buffer
+Command-Shift-4 # screenshot (selected shape) in file on desktop
+Command-Control-Shift-4 # screenshot (selected shape) in buffer
 ````
 
 ## Brew
