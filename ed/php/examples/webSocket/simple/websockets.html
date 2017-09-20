@@ -1,22 +1,15 @@
-<!DOCTYPE HTML>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Web Sockets</title>
-    <script>
-        if (window.WebSocket) {
-            var server;
-            function init(){
-                var host = "ws://localhost:12345/websockets.php";
-                var socket = new WebSocket(host);
-                socket.onmessage = function(e){ 
-                    document.getElementById("message_board").innerHTML = e.data; 
-                };
-            }
-        }
-    </script>
 </head>
-<body onload="init()">
-    <div id="message_board"></div>
+<body>
+    <div id="root"></div>
+    <script>
+        var host = 'ws://0.0.0.0:12345/websockets.php';
+        var socket = new WebSocket(host);
+        socket.onmessage = function(e) {
+            document.getElementById('root').innerHTML = e.data;
+        };
+    </script>
 </body>
 </html>

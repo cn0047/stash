@@ -112,7 +112,7 @@ docker run -ti --rm --name nginx-html \
 # test
 curl http://localhost:8080/bootstrap.popover.html
 
-# php
+# php (all scripts from `ed/php/examples`)
 docker run -ti --rm --name nginx-php --link php-fpm \
     -v $PWD/docker/nginx/php-fpm.conf:/etc/nginx/conf.d/default.conf \
     -v $PWD:/gh \
@@ -120,7 +120,6 @@ docker run -ti --rm --name nginx-php --link php-fpm \
 
 # test
 curl localhost:8080/healthCheck.php
-
 ````
 
 #### MONGO
