@@ -25,10 +25,7 @@ HEAD^^ == HEAD~2
 
 git commit -m 'Message'
 
-# Rebasing is changing the base of your branch from one commit to another
-# making it appear as if you'd created your branch from a different commit.
-# Reason - maintain a linear project history.
-git rebase master
+git commit --amend # update commit message
 
 git tag 1.1.1
 git push origin --tags
@@ -43,6 +40,18 @@ git remote set-url origin git+ssh://git@github.com/cn007b/my.git
 
 # grab commit from another branch into current
 git cherry-pick hash-to-commit
+````
+
+#### rebase
+
+Rebasing is changing the base of your branch from one commit to another
+making it appear as if you'd created your branch from a different commit.
+Reason - maintain a linear project history.
+
+`squash` - rebase 2 commits into 1.
+
+````
+git rebase -i HEAD~2
 ````
 
 #### bisect

@@ -66,6 +66,10 @@ parseInt('zz', 36);                  // 1295
 parseInt('077', 8);                  // 63
 parseInt('077', 10);                 // 77
 
+// Faster than parseInt(inputValue, 10);
+// But be careful bitshift operations always return a 32-bit integer.
+const val = inputValue >> 0;
+
 Math.round(number); // number rounded to the nearest integer
 Math.ceil(number);
 Math.floor(number);
@@ -88,6 +92,10 @@ number.toPrecision(7);                                 // 12345.68
 ````js
 Boolean(bool);
 var b = !! bool; // To boolean
+
+const foo = a || b; // a ? a : b;
+const bar = !!c; // c ? true : false;
+const baz = !c; // c ? false : true;
 ````
 
 #### Symbol

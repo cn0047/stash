@@ -2,6 +2,7 @@ Code style
 -
 
 [source](https://github.com/felixge/node-style-guide)
+[airbnb](https://github.com/airbnb/javascript)
 
 ## Formatting
 

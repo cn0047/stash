@@ -1,4 +1,4 @@
-Full Stack Fest
+Full Stack Fest 2016
 -
 
 * It is better for video service to provide video with not perfect quality but provide it,
