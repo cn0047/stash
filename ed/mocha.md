@@ -3,8 +3,10 @@ mocha
 
 ````json
 "scripts": {
-  "test": "mocha --reporter spec",
-  "cover": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec test/*"
+  "test": "mocha",
+  "test": "mocha --reporter spec --compilers js:babel-core/register",
+  "cover": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec test/*",
+  "cover": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- --compilers js:babel-core/register -R spec test/*",
 }
 ````
 

@@ -29,7 +29,7 @@ console.log(typeof v !== 'undefined'); // isset variable v.
 console.log('Code:%s', 200); // Code:200
 ````
 
-Lexical scope - code author's scope...
+Lexical scope - code author's scope (context of the surrounding code)...
 To cheat with lexical scope use `eval` or `with`.
 
 Dynamical scope - Runtime scope.

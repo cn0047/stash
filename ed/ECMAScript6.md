@@ -28,7 +28,9 @@ for (let i = 0; i < 3; i++) {}
     }
 }
 
+// Arrow Functions.
 // More expressive closure syntax. Expression Bodies.
+// Arrow functions are lexically scoped.
 var hello = function (cb) {
     cb({code: 200, message: 'hello world'});
 };
