@@ -36,6 +36,9 @@ function App2() {
 
 To pass data through the component tree without having to pass props down into each component - use `context`.
 
+By adding `childContextTypes` and `getChildContext` to component
+React passes the information down automatically and any component in the subtree can access it by defining `contextTypes`.
+
 Changes in context won't cause re-render not in parent nor child.
 `component.forceUpdate()` - call `render` skipping `shouldComponentUpdate`,
 but trigger the normal lifecycle methods for child.

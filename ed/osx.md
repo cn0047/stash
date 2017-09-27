@@ -3,6 +3,8 @@ osx
 
 ````
 Option = Alt
+
+Control-Shift-Power # Lock screen
 ````
 
 ````

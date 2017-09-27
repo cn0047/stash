@@ -20,6 +20,8 @@ npm config delete keyname
 npm config set keyname value
 
 npm publish
+
+npm prune
 ````
 
 ````

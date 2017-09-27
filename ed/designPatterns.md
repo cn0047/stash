@@ -1,6 +1,8 @@
 Design Patterns
 -
 
+Design patterns offer a common solution for a common problem in the form of classes working together.
+
 1. Creational.
 
     * abstractFactory (in php)

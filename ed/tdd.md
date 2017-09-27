@@ -28,6 +28,12 @@ The ORM flushes the state of the objects it is managing in memory to the databas
 The database, in turn, checks its integrity constraints.
 A test that never commits does not fully exercise how the code under test interacts with the database.
 
+What not to automate with tests:
+* Database schema changes - slow...
+* Software and hardware configuration changes.
+
+Regression testing - is designed to avoid regressing your application to a previous buggy state.
+
 <ul>
     <li><b>Acceptance</b>: Does the whole system work?</li>
     <li><b>Integration</b>: Does our code work against code we can't change?</li>

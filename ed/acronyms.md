@@ -6,6 +6,7 @@ Acronyms
 [AJAX](#AJAX)
 [AMQP](#AMQP)
 [API](#API)
+[AST](#AST)
 [B2B](#B2B)
 [BAAS](#BAAS)
 [BDD](#BDD)
@@ -28,6 +29,7 @@ Acronyms
 [IMAP](#IMAP)
 [IoC](#IoC)
 [IP](#IP)
+[IPC](#IPC)
 [JIT](#JIT)
 [KISS](#KISS)
 [LDAP](#LDAP)
@@ -86,6 +88,9 @@ Acronyms
 
 <dt><a name="API"></a>API</dt>
 <dd>Application programming interface.</dd>
+
+<dt><a name="AST"></a>AST</dt>
+<dd>Abstract Syntax Tree (used by webpack, babel, etc). https://astexplorer.net/</dd>
 
 <dt><a name="B2B"></a>B2B</dt>
 <dd>Business to business.</dd>
@@ -152,6 +157,9 @@ Acronyms
 
 <dt><a name="IP"></a>IP</dt>
 <dd>Internet Protocol.</dd>
+
+<dt><a name="IPC"></a>IPC</dt>
+<dd>Inter-process communication (processes manage shared data).</dd>
 
 <dt><a name="JIT"></a>JIT</dt>
 <dd>Just-in-time compilation.</dd>

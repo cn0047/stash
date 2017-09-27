@@ -9,7 +9,7 @@ $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, 'http://www.domain.com');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post));
-curl_setopt($ch, CURLOPT_HEADER, true);
+// curl_setopt($ch, CURLOPT_HEADER, true); // Not affects $responseHttpCode just grab headers into $response
 $response = curl_exec($ch);
 $responseHttpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 if ($response === false) {
