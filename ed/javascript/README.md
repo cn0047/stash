@@ -1,6 +1,8 @@
 js
 -
 
+[jsdoc](http://usejsdoc.org/).
+
 JS - is a high-level (not assembler), dynamic (behavior determines in runtime)
 weakly typed, object-based, multi-paradigm (event-driven, functional, imperative, prototype-based, object-oriented)
 and interpreted client-side programming language.
@@ -48,6 +50,9 @@ Hoisting provides ability to create mutual-recursion.
 
 **Temporal dead zone** - use block-scoped variable (let keyword) before `let` occurs.
 `let` don't hoists.
+
+**Lambda** - function that is used as data (value) (assigned to variable or passed between functions).
+Parameter for another function, return value of a function etc.
 
 **Closure** - if you define a function inside another function,
 the inner function will have full access to all the variables

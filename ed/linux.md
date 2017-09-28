@@ -175,6 +175,8 @@ sshfs -o nonempty -p22 root@host:/home/host/www /home/user/web/www
 fusermount -u /home/user/web/www
 
 sudo ssh-add ~/.ssh/id_rsa
+
+ssh user@server.com
 ````
 
 `vim ~/.ssh/config`
