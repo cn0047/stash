@@ -66,6 +66,7 @@ Acronyms
 [URL](#URL)
 [URN](#URN)
 [UTC](#UTC)
+[VOIP](#VOIP)
 [VPN](#VPN)
 [WSDL](#WSDL)
 [WYSIWYG](#WYSIWYG)
@@ -268,6 +269,9 @@ Acronyms
 
 <dt><a name="UTC"></a>UTC</dt>
 <dd>Coordinated Universal Time</dd>
+
+<dt><a name="VOIP"></a>VOIP</dt>
+<dd>Voice over Internet Protocol</dd>
 
 <dt><a name="VPN"></a>VPN</dt>
 <dd>Virtual Private Network</dd>

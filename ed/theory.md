@@ -129,6 +129,7 @@ Problems:
 * Haven't memory leaks
 * Haven't vulnerabilities and be secure
 * Predictability
+* Cares about backward compatibility
 
 #### ACID
 

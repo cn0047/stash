@@ -1,7 +1,7 @@
 js
 -
 
-[jsdoc](http://usejsdoc.org/).
+[jsdoc](http://usejsdoc.org/) `node_modules/.bin/jsdoc -r src -d docs`.
 
 JS - is a high-level (not assembler), dynamic (behavior determines in runtime)
 weakly typed, object-based, multi-paradigm (event-driven, functional, imperative, prototype-based, object-oriented)

@@ -30,8 +30,7 @@ package.json:
     },
     "parserOptions": { "ecmaVersion": 5 },
     "globals": {
-      "var1": true,
-      "var2": false
+      "window": true
     },
     "extends": [
       "airbnb-base",

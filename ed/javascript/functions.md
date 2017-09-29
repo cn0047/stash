@@ -142,6 +142,24 @@ d.getSeconds();     // 1
 d = Date.parse(str);
 ````
 
+Errors:
+
+* Error
+* EvalError
+* InternalError
+* RangeError
+* ReferenceError
+* SyntaxError
+* TypeError
+* URIError
+
+````
+const err = new Error('Name required');
+err.status = 400;
+err.expose = true;
+throw err;
+````
+
 #### Function
 
 ````js

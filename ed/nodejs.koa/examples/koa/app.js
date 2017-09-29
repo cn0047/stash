@@ -1,17 +1,25 @@
-/**
- * @example node --harmony app.js
- */
-
 const koa = require('koa');
 const app = new koa();
-const route = require('koa-route');
-const parse = require('co-body');
 
-// app.use(function* () {
-//   this.body = 'HW';
-// });
+app.use(async (ctx, next) => {
+  const start = Date.now();
+  await next();
+  const ms = Date.now() - start;
+  ctx.set('X-Response-Time', `${ms}ms`);
+});
 
-app.use
+// logger
+app.use(async (ctx, next) => {
+  const start = Date.now();
+  await next();
+  const ms = Date.now() - start;
+  console.log(`${ctx.method} ${ctx.url} - ${ms}`);
+});
+
+// response
+app.use(async ctx => {
+  ctx.body = 'Hello World';
+});
 
 app.listen(3000);
 console.log('Started on port 3000.');
