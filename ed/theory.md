@@ -22,10 +22,6 @@ Two-pizza teams - where no team should be so big that it could not be fed with t
 
 Resilience - is the ability of a system to adapt or keep working when challenges occur.
 
-Pure function - 1) always return the same result for same arguments, and 2) no mutation or output to I/O etc.
-
-Function is DETERMINISTIC if it always produces the same result for the same input parameters.
-
 Internationalization (i18n) - process of changing your software so that it isn't hardwired to one language.
 
 Localization (l10n) - the process of adding the appropriate resources to your software so that a particular language/locale is supported.
@@ -34,28 +30,6 @@ Tell, Don’t Ask.
 
 Law of Demeter - object A can call method of object B,
 but object A should not "reach through" object B to access yet another object C, to request its services.
-
-#### OOD
-
-Concepts of **delegation**, **aggregation**, and **consultation**.
-
-Delegation is the simple yet powerful concept of handing a task over to another part of the program.
-Object assigns a task to another object, known as the delegate.
-
-In aggregation, the object may only contain a reference or pointer to the object
-(and not have lifetime responsibility for it).
-<i>
-For example, a university owns various departments, and each department has a number of professors.
-If the university closes, the departments will no longer exist,
-but the professors in those departments will continue to exist.
-University can be seen as a composition of departments,
-whereas departments have an aggregation of professors.
-In addition, a Professor could work in more than one department,
-but a department could not be part of more than one university.
-</i>
-
-Consultation in object-oriented programming occurs when an object's method implementation consists
-of a message send of the same message to another constituent object.
 
 #### Security
 
@@ -156,18 +130,6 @@ Problems:
   (Start from the assumption that whatever you want to do is possible.)
 * Who can I learn from?
   (You should never work anywhere where you are the smartest person in the room.)
-
-#### Programming:
-
-Imperative programming is a programming paradigm that uses statements that change a program's state.
-Imperative program consists of commands for the computer to perform.
-
-Declarative programming focuses on what the program should accomplish
-without specifying how the program should achieve the result.
-
-The declarative layer describes what the code will do,
-while the implementation layer describes how the code does it.
-(The declarative layer is, in effect, a small  domain-specific language).
 
 #### SOLID
 
