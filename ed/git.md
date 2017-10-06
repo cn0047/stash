@@ -128,6 +128,7 @@ vendor/
     s   = status -sb
     st  = status
     sl  = stash list
+    ss  = stash save --include-untracked
     f   = fetch origin
     po  = pull origin
     ml  = merge origin/live

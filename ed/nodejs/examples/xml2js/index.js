@@ -2,21 +2,29 @@ const fs = require('fs');
 const { parseString } = require('xml2js');
 
 class Reader {
-  static read () {
-    const xml = fs.readFileSync('./ne.xml', { encoding: 'utf8' });
-    const promise = new Promise(resolve => {
+  static readSemiSync () {
+    const xml = fs.readFileSync('./e.xml', { encoding: 'utf8' });
+    return new Promise(resolve => {
       parseString(xml, (er, json) => {
         resolve(json);
       });
     });
-    promise.then(data => {
-      data = data['Manager']['C'];
+  }
+
+  static read () {
+    return new Promise(resolve => {
+      fs.readFile('./e.xml', (err, xml) => {
+        if (err) throw err;
+        parseString(xml, (er, json) => {
+          if (er) throw er;
+          resolve(json);
+        });
+      });
     });
-    return promise;
   }
 }
 
-Reader.read().then(d => {
-  console.log(d['Manager']['S']);
-});
-
+(async () => {
+  const r = await Reader.read();
+  console.log(r['Manager']['C']);
+})();
