@@ -23,6 +23,40 @@ Basic types:
 * Boolean
 * String
 
+
+Traversable:
+
+Iterable
+  Seq
+  Set
+  Map
+  IndexedSeq
+  Vector
+  ResizableArray
+  GenericArray
+  LinearSeq
+  MutableList
+  List
+  Stream
+  Buffer
+  ListBuffer
+  ArrayBuffer
+  SortedSet
+  TreeSet
+  HashSet (mutable)
+  LinkedHashSet
+  HashSet (immutable)
+  BitSet
+  EmptySet,
+  Set1, Set2, Set3, Set4
+  SortedMap
+  TreeMap
+  HashMap (mutable)
+  LinkedHashMap (mutable)
+  HashMap (immutable)
+  EmptyMap,
+  Map1, Map2, Map3, Map4
+
 ````
 // keywords
 4 to 6 
@@ -58,6 +92,8 @@ args.foreach(arg => println(arg))
 args.foreach((arg: String) => println(arg))
 
 for (i <-0.to(2)) print(greetStrings.apply(i))
+for (z <- arr.zipWithIndex if z._2 % 2 == 1) yield z._1
+{for{a <- arr; if a%2 !=0 }yield a}.sum
 
 while (a != 0) {
     val temp = a a = b % a b = temp
@@ -66,6 +102,8 @@ while (a != 0) {
 do {
     line = readLine() println("Read: "+ line)
 } while (line != "")
+
+list.map(_.grouped(2).map(_.reverse).mkString("")).map(println)
 ````
 
 Functions:
@@ -74,6 +112,8 @@ Functions:
 def f () = println("Hello World")
 
 def f(delim:Int,arr:List[Int]):List[Int] = for{a <- arr if a < delim } yield a
+
+arr.flatMap(e => List.fill(num)(e))
 
 def factorial(x: BigInt): BigInt = if (x == 0) 1 else x * factorial(x -1)
 
@@ -87,7 +127,23 @@ def f (args: Number) {
 Data structures:
 
 ````
+val buf = collection.mutable.ArrayBuffer.empty[Int]
+
+val input = io.Source.stdin.getLines.drop(1).toList;
+
 val x: HashMap[Int, String] = new HashMap[Int, String]()
+
+import scala.collection.mutable.ArrayBuffer
+val ab = ArrayBuffer[String]()
+ab += "hello"
+ab += "world"
+ab += "!"
+ab.toArray
+println(ab.mkString(" "))
+
+import scala.collection.mutable.MutableList
+val x = MutableList(1, 2, 3, 4, 5)
+x += 6
 
 val twoThree = List(2, 3)
 val oneTwoThree = 1 :: twoThree
@@ -100,6 +156,10 @@ println(capital("France"))
 var jetSet = Set("Boeing", "Airbus")
 jetSet += "Lear"
 println(jetSet.contains("Cessna"))
+
+var jetSet = scala.collection.mutable.SortedSet[String]()
+jetSet += "Lear"
+println(jetSet)
 
 import scala.collection.mutable.Map
 val treasureMap = Map[Int, String]() 

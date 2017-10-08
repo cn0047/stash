@@ -5,6 +5,10 @@ Node JS
 *v0.10.26*
 
 ````
+/etc/init.d/http-server stop
+````
+
+````
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 ````
 ````
