@@ -141,7 +141,7 @@ UPDATE tab SET field = DEFAULT(field);
 CHECK TABLE tab; -- checks a table for errors, for MyISAM - update key statistics 
 ANALYZE TABLE tab; -- performs a key distribution analysis
 REPAIR TABLE tab; -- repairs a possibly corrupted table (MyISAM, ARCHIVE, and CSV)
-OPTIMIZE TABLE tab; -- reorganizes the physical storage of table data and associated index data,
+OPTIMIZE TABLE tab; -- (defragmentation) reorganizes the physical storage of table data and associated index data,
                     -- to reduce storage space and improve I/O efficiency when accessing the table.
 
 SELECT VERSION();

@@ -306,6 +306,10 @@ a = /.*/;            typeof a; // "object" But: a instanceof RegExp; // true
 a = new RegExp();    typeof a; // "object"
 a = new Date();      typeof a; // "object"
 
+function isObject(o) {
+    return o instanceof Object && o.constructor === Object;
+}
+
 6 + '1'     // 61    - as string.
 6 - '1'     // 5     - as int.
 "3" + 4 + 5 // "345" - as string.

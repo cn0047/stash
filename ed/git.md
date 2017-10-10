@@ -131,6 +131,7 @@ vendor/
     ss  = stash save --include-untracked
     f   = fetch origin
     po  = pull origin
+    pt  = push origin --tags
     ml  = merge origin/live
     mm  = merge origin/master
     d   = diff --word-diff

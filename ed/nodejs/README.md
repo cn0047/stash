@@ -16,6 +16,7 @@ nodemon ./server.js localhost 8080
 ````
 
 ````
+console.log(require('util').inspect('ok', false, null));
 require('fs').appendFile('/tmp/debug.tmp', JSON.stringify('ok'));
 ````
 

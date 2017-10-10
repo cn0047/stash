@@ -23,18 +23,25 @@ If you use latin1 then the largest column you can index is varchar(767),
 
 BLOB/TEXT cannot be indexed.
 
+BTREE - stores data only in leaf nodes.
+
+HASH - stores pointers to data. Effective in memory usage.
+Not effective in: sorting, partial matching.
+
+Adaptive HASH - hash index in top of btree.
+
 Kinds:
 
-Covering index - a covering index refers to the case
+`Covering` index - a covering index refers to the case
 when all fields selected in a query are covered by an index,
 in that case InnoDB (not MyISAM) will never read the data in the table,
 but only use the data in the index, significantly speeding up the select.
 Note that in InnoDB the primary key is included in all secondary indexes,
 so in a way all secondary indexes are compound indexes.
 
-Compound index.
+`Compound` index.
 
-Clustered index is synonymous with the primary key.
+`Clustered` index is synonymous with the primary key.
 If you do not define a PRIMARY KEY for your table,
 MySQL locates the first UNIQUE index where all the key columns are NOT NULL
 and InnoDB uses it as the clustered index.
@@ -42,10 +49,16 @@ If the table has no PRIMARY KEY or suitable UNIQUE index,
 InnoDB internally generates a hidden clustered index on a synthetic column containing row ID values
 (is a 6-byte field that increases monotonically as new rows are inserted).
 
-All indexes other than the clustered index are known as secondary indexes. 
+All indexes other than the clustered index are known as `secondary` indexes.
 
 If the primary key is long, the secondary indexes use more space,
 so it is advantageous to have a short primary key.
+
+Clustered index store data in leaf nodes.
+Secondary index store in leaf nodes only pointers to clustered index.
+If no clustered index on table - secondary index will contain row pointer.
+
+All data stored in leaf nodes, intermediate nodes contains only pointers.
 
 Types:
 
@@ -59,9 +72,7 @@ should not be used on any columns which allow NULL values, can be auto_increment
 
 FULLTEXT: are different from all of the above, it's only used for a "full text search" feature.
 
-
 #### Detection of bad index
-
 
 ````sql
 SELECT
@@ -91,3 +102,22 @@ HAVING raw_readed > 10000
 ORDER BY raw_readed DESC
 ;
 ````
+
+#### Improve performance
+
+`... WHERE duration = 6 OR length = 10;`
+Mysql converts `OR` to `UNION` (if not - we have to rewrite query and use union)
+and can use 2 indexes (1st for duration, 2nd for length), hence we can create 2 indexes.
+
+`... WHERE duration = 6 AND length = 10;`
+it's possible to create 2 separated indexes and mysql will use both...
+
+`... WHERE rightPartOfCompoundIndex ORDER by leftPartOfCompoundIndex` - compound index will be used.
+
+`ORDER BY` one of the most expensive operation for mysql.
+
+#### Index hints
+
+* `FORCE`
+* `USE` - just suggestion which key mysql can use.
+* `IGNORE`

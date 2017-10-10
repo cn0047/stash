@@ -1,6 +1,8 @@
 Books
 -
 
+[An Introduction to Programming in Go](https://www.amazon.com/Introduction-Programming-Go-Caleb-Doxsey/dp/1478355824)
+[Programming in Scala, 2nd Edition](https://booksites.artima.com/programming_in_scala_2ed)
 [Programming JavaScript Applications](http://shop.oreilly.com/product/0636920033141.do)
 [Building Scalable Web Sites](http://shop.oreilly.com/product/9780596102357.do)
 [Professional Node.js: Building Javascript Based Scalable Software](https://www.amazon.com/Professional-Node-js-Building-Javascript-Scalable/dp/1118185463)

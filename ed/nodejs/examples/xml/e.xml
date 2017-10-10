@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Manager xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <C>
-        <Co>
-            <Name>G722</Name>
-        </Co>
+        <Co><Name>G722</Name><isEnabled>true</isEnabled></Co>
+        <Co><Name>G723</Name><isEnabled>false</isEnabled></Co>
     </C>
     <S>
-        <Se>
-            <Name>LKDJ034</Name>
-        </Se>
+        <Se><Name>LKDJ034</Name><aId>1474</aId></Se>
     </S>
 </Manager>

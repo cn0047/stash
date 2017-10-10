@@ -104,6 +104,16 @@ docker exec mysql-slave-1 mysql -uroot -proot -e "SHOW SLAVE STATUS \G"
 docker exec -ti mysql-master mysql -P3307 -udbu -pdbp -Dtest
 ````
 
+#### REDIS
+
+````
+# init redis
+docker run -it --rm --hostname localhost --name redis redis:latest
+
+# check redis
+docker exec -ti redis redis-cli
+````
+
 #### RabbitMQ
 
 ````

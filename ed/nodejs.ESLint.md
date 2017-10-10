@@ -26,6 +26,7 @@ package.json:
   "eslintConfig": {
     "env": {
       "browser": true,
+      "jest": true,
       "node": true
     },
     "parserOptions": { "ecmaVersion": 5 },
