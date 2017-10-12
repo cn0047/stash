@@ -32,7 +32,11 @@ sudo rabbitmqctl change_password cashing-tier compl3xPassword
 Declaring a queue is idempotent - it will only be created if it doesn't exist already.
 Keep in mind that messages are sent asynchronously from the server to the clients.
 
-The `durable` queue won't be lost even if RabbitMQ restarts.
+Queue can be:
+
+* `durable` - queue won't be lost even if RabbitMQ restarts (persisting queue to disk).
+* `exclusive` - delete queue when not needed (when all connections to queue closed).
+* `auto delete` - delete queue when consumer unsubscribes.
 
 Marking messages as persistent doesn't fully guarantee that a message won't be lost...
 It tells RabbitMQ to save the message to disk.

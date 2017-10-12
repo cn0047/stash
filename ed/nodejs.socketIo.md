@@ -5,6 +5,7 @@ socket.io
 ````
 emit - will send to all the clients
 broadcast - will send the message to all except sender
+volatile messages - use this type in case when some message may be lost.
 ````
 
 ````

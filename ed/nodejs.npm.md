@@ -1,6 +1,8 @@
 npm
 -
 
+[Trends](http://www.npmtrends.com/ws-vs-socket.io)
+
 ````
 npm -g i npm@latest
 ````

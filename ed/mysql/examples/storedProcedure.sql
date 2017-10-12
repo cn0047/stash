@@ -1,5 +1,5 @@
-create table countries (id int auto_increment primary key, name varchar(100));
-insert into countries values
+CREATE TABLE countries (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(100));
+INSERT INTO countries VALUES
  (null, 'usa')
 ,(null, 'gb')
 ,(null, 'ua')
@@ -16,9 +16,26 @@ CREATE PROCEDURE getCountry (IN countryName VARCHAR(255))
     END //
 DELIMITER ;
 
-call getCountry('ua');
+CALL getCountry('ua');
 +----+------+
 | id | name |
 +----+------+
 |  3 | ua   |
 +----+------+
+
+-- Example with loop
+DROP PROCEDURE IF EXISTS getHi;
+
+DELIMITER //
+CREATE PROCEDURE getHi (IN count INT)
+    BEGIN
+    DECLARE i INT;
+    SET i = 1;
+    WHILE i  <= count DO
+      SELECT i;
+      SET  i = i + 1; 
+    END WHILE;
+    END //
+DELIMITER ;
+
+CALL getHi(3);

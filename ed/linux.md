@@ -4,8 +4,12 @@ Linux
 ````
 # nginx
 telnet localhost 8080
+
 # php-fpm
 telnet localhost 9000
+
+# websocket
+telnet 0.0.0.0 12345
 ````
 
 ````

@@ -37,6 +37,14 @@ SET @alias = (SELECT Alias FROM Aliases WHERE id = 1);
 SET @sql = CONCAT('INSERT INTO ', @alias, ' (somevalue) VALUES (value)');
 PREPARE stmt1 FROM @sql;
 EXECUTE stmt1;
+
+-- hackerrank
+SET @n = 20;
+set @i = 0;
+SET @f = CONCAT('SELECT 0', REPEAT(' UNION ALL SELECT 1', @n - 1));
+SET @s = CONCAT("SELECT REPEAT('* ', @i := @i + 1) AS RESULT FROM (", @f, ") t");
+PREPARE stmt FROM @s;
+EXECUTE stmt;
 ````
 
 The following SQL statements can be used in prepared statements:

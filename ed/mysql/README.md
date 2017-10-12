@@ -196,17 +196,6 @@ SELECT @myRight;
 Aggregate (summary) functions such as COUNT(), MIN(), and SUM() ignore NULL values.
 The exception to this is COUNT(*), which counts rows
 
-#### Optimizations
-
-````sql
-force index (createdAt)
-
--- SELECT DISTINCT faster than SELECT GROUB BY.
-SELECT DISTINCT id FROM table;
--- vs
-SELECT id FROM table GROUP BY id;
-````
-
 #### Options
 
 ````sql

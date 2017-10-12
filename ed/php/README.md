@@ -226,7 +226,7 @@ source ~/.bashrc
 
 ````php
 print(true ? 'Yes' : 'No'); // Output: Yes
-print('My Value' ?: 'No Value'); // PHP 5.3 (Equals to !empty($var) ? $var : 'default') Output: My Value
+print('My Value' ?: 'No Value'); // PHP 5.3 (Equals to empty($var) ? 'default' : $var) Output: My Value
 print(null ?? 'Default Value'); // PHP 7 (Equals to isset($var) ? $var : 'default') Output: Default Value
 ````
 

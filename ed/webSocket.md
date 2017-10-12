@@ -21,3 +21,28 @@ API:
 
 * send
 * close
+
+#### Example
+
+Request:
+
+````
+GET /wss1 HTTP/1.1
+Sec-WebSocket-Version: 13
+Sec-WebSocket-Key: oGa9MDamyL5gC8sPP1qJzA==
+Connection: Upgrade
+Upgrade: websocket
+Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
+Host: localhost:5432
+````
+
+Response:
+
+````
+HTTP/1.1 101 Switching Protocols
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Accept: bwI9ib/E/FPBJpKWfglHvRJVnDo=
+
+...4.Z.[.?.\.4...(.Y.9.].4....Something from server.
+````

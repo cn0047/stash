@@ -23,6 +23,8 @@ If you use latin1 then the largest column you can index is varchar(767),
 
 BLOB/TEXT cannot be indexed.
 
+#### Index types
+
 BTREE - stores data only in leaf nodes.
 
 HASH - stores pointers to data. Effective in memory usage.
@@ -30,7 +32,7 @@ Not effective in: sorting, partial matching.
 
 Adaptive HASH - hash index in top of btree.
 
-Kinds:
+#### Kinds
 
 `Covering` index - a covering index refers to the case
 when all fields selected in a query are covered by an index,
@@ -60,7 +62,7 @@ If no clustered index on table - secondary index will contain row pointer.
 
 All data stored in leaf nodes, intermediate nodes contains only pointers.
 
-Types:
+#### Keys
 
 KEY or INDEX: refers to a normal non-unique index.
 Non-distinct values for the index are allowed.
@@ -102,22 +104,3 @@ HAVING raw_readed > 10000
 ORDER BY raw_readed DESC
 ;
 ````
-
-#### Improve performance
-
-`... WHERE duration = 6 OR length = 10;`
-Mysql converts `OR` to `UNION` (if not - we have to rewrite query and use union)
-and can use 2 indexes (1st for duration, 2nd for length), hence we can create 2 indexes.
-
-`... WHERE duration = 6 AND length = 10;`
-it's possible to create 2 separated indexes and mysql will use both...
-
-`... WHERE rightPartOfCompoundIndex ORDER by leftPartOfCompoundIndex` - compound index will be used.
-
-`ORDER BY` one of the most expensive operation for mysql.
-
-#### Index hints
-
-* `FORCE`
-* `USE` - just suggestion which key mysql can use.
-* `IGNORE`

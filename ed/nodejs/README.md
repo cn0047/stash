@@ -26,7 +26,7 @@ req.params // Parsed params from url.
 req.params.id
 ````
 
-`yargs`
+`yargs` - alternative to `process.argv[2]`
 ````
 var argv = require('yargs')
     .usage('Usage: node $0 --l=[num] --b=[num]')
