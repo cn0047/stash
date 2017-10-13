@@ -53,6 +53,8 @@ config:
 /etc/nginx/sites-enabled/app.conf
 ````
 
+#### [Congif](http://nginx.org/en/docs/ngx_core_module.html)
+
 ````
 server {
     root /var/www/birthplace/app/web;
@@ -71,16 +73,27 @@ if ($host = 'ziipr.dev') {
 ````
 
 ````
-server {
-    listen 80;
-    server_name z.dev;
-    location / {
-        proxy_pass http://192.168.56.101:3000;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
+events {
+    worker_connections 2048;
+}
+http {
+    gzip on;
+    server_tokens off; # Delete X-Powered-By
+    add_header X-Frame-Options Deny;
+    server {
+        listen 80;
+        server_name z.dev;
+        location ~ \. (xml|ini) {
+            deny all;
+        }
+        location / {
+            proxy_pass http://192.168.56.101:3000;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection 'upgrade';
+            proxy_set_header Host $host;
+            proxy_cache_bypass $http_upgrade;
+        }
     }
 }
 ````

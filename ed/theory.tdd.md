@@ -53,6 +53,12 @@ They test whole stories at a time against a running version of the application i
 The objective of acceptance tests is to prove that our application does
 what the customer meant it to, not that it works the way its programmers think it should.
 
+## Functional
+
+Functional testing tests a slice of functionality of the whole system.
+Functional testing bases on the specifications of the software.
+Functions are tested by feeding them input and examining the output (type of black-box testing).
+
 ## Unit
 
 The aim of a unit test is to show that a single part of the application does what the programmer intends it to.

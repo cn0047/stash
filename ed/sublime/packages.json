@@ -15,14 +15,14 @@ Boxy Theme
 "Pretty JSON",
 "Sublime Bookmarks",
 "Super Calculator",
+"DocBlockr",
+"SFTP",
 
 "Theme - Soda"
 "ApacheConf.tmLanguage",
-"DocBlockr",
 "MarkdownHighlighting",
 "PhpDoc",
 "PhpSpec Snippets",
 "PHPUnit Completions",
 "Phpcs",
-"SFTP",,
-"Xdebug Client"
+"Xdebug Client",

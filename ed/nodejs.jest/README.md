@@ -1,6 +1,12 @@
 Jest
 -
 
+````
+node_modules/.bin/jest --forceExit -i -t name-of-spec
+node_modules/.bin/jest -t test/unit/middlewares/
+node_modules/.bin/jest -t xPoweredBy.test.js
+````
+
 Jest - Jasmine-based js testing framework.
 
 In jest all modules mocked by default.

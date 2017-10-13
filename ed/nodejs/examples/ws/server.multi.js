@@ -15,7 +15,14 @@ wss1.on('connection', function connection(ws) {
   });
 });
 
-// wss1. ...
+wss2.on('connection', function connection(ws) {
+  console.log('[WSS2] Established new connection.');
+
+  ws.on('message', function incoming(message) {
+    console.log('[WSS2] Received: %s', message);
+    ws.send('[WSS2] Something from server.');
+  });
+});
 
 server.on('upgrade', (request, socket, head) => {
   const pathname = url.parse(request.url).pathname;
@@ -28,7 +35,8 @@ server.on('upgrade', (request, socket, head) => {
     });
   } else if (pathname === '/wss2') {
     wss2.handleUpgrade(request, socket, head, (ws) => {
-      // ...
+      wss2.emit('connection', ws);
+      console.log('Connected with path /wss2');
     });
   } else {
     socket.destroy();

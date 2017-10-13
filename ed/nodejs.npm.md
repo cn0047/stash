@@ -16,6 +16,8 @@ npm update modulename
 npm ls
 npm ls -g
 
+npm run-script lint
+
 npm config list
 npm config ls -l
 npm config delete keyname

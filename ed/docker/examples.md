@@ -6,6 +6,7 @@ Examples
 ````
 # bash
 docker build -t xubuntu ./docker/ubuntu
+docker run -ti --rm xubuntu /bin/bash
 docker run -ti --rm -v $PWD/u.sh:/u.sh xubuntu /u.sh
 
 # composer

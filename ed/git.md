@@ -129,6 +129,7 @@ vendor/
     st  = status
     sl  = stash list
     ss  = stash save --include-untracked
+    sa = stash apply
     f   = fetch origin
     po  = pull origin
     pt  = push origin --tags

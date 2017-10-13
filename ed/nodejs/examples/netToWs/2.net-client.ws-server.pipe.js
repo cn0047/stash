@@ -11,7 +11,6 @@ const wss = new WebSocket.Server({ port: 5430 });
 
 netClient.pipe(wss);
 // wss.on('connection', function connection(ws) {
-//   console.log('Established new [WebSocket] connection.');
-//
+//   console.log('Established new [WebSocket] connection, gonna pipe NET into WebSocket.');
 //   netClient.pipe(wss);
 // });
