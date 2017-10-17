@@ -36,6 +36,7 @@ curl -XPUT $host:$port/$index -d '{
 }'
 
 # Create new documents (employee)
+# routing - routing to paritcular shard in cluster
 curl -XPUT $host:$port/$index/$type/1?routing=JohnSmith -d '{
     "first_name" : "John",
     "last_name" : "Smith",

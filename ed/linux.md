@@ -21,6 +21,23 @@ openssl x509 -req -in cert.csr -signkey private.key -out certificate.pem
 
 sudo dpkg -i {name}
 
+On Linux systems, a kernel configuration parameter called `net.core.somaxconn`
+provides an upper limit on the value of the backlog parameter passed to the listen function
+that is used to create the servers listening socket.
+If the backlog argument is greater than the value in /proc/sys/net/core/somaxconn,
+then it is silently truncated to that value.
+The default value in this file is 128.
+
+````
+cat /proc/sys/net/core/somaxconn
+sysctl -n net.core.somaxconn
+# on server must be at least 1024
+````
+
+#### upstart
+
+Is an event-based replacement for the traditional init daemon.
+
 #### centos
 
 ````
@@ -119,57 +136,6 @@ printf "one\n* two\n" | awk '{print ($1=="*" ? $2 : $1)}' # Print one \n two
 printf "1\n 2\n 3\n" | awk 'ORS=NR?",":"\n"' # Replace new line with comma
 ````
 
-#### shell
-````
-sudo bash -c 'echo "APP_ENVIRONMENT=prod" > /etc/environment'
-sh -c 'echo 200'
-
-cut -d' ' -f2 /tmp/file.txt # print column 2 from file using ' ' as delimer
-
-df            # Show information about the file system.
-df -h
-du            # Summarize disk usage of each FILE.
-du -sh IraFoto/* # Summarize disk usage of each dir in foto dir.
-
-uptime # CPU load average
-
-pkill /var/www/x.php # Kill runned script x.php.
-pkill -f php # Kill runned script with name like php.
-
-kill -9 `ps -aux|grep {{PROCESS_NAME}}|grep -v grep|awk '{print $2}'`
-
-uname -a # Shows 32 or 64 bit OS.
-uname -r # Show the kernel version.
-
-host github.com # Shows ip by host.
-dig domain
-whois ip
-
-colordiff -u file1 file2
-
-scp -rp access@host:~/dir/ ~/dir/
-
-~/.bash_history
-
-ln -s {file} {symbolic-name}
-
-which
-
-DISPLAY=:7
-echo $DISPLAY
-
-# print screen from url
-cutycapt --url=cn007b.tumblr.com --out=out.png
-wkhtmltoimage cn007b.tumblr.com i.jpg
-webkit-image-gtk http://cn007b.tumblr.com > i.png
-````
-````
-cd -       # go to previous dir
-pushd path # remember path (save it at stack)
-popd       # got to pushed path (and delete it from stack)
-history
-````
-
 #### ssh
 ````
 ssh-add ~/.ssh/id_rsa
@@ -181,6 +147,9 @@ fusermount -u /home/user/web/www
 sudo ssh-add ~/.ssh/id_rsa
 
 ssh user@server.com
+
+ssh -i key -N -L 9229:127.0.0.1:9229 root@server
+# -L local_socket:remote_socket
 ````
 
 `vim ~/.ssh/config`
@@ -284,6 +253,57 @@ curl http://localhost:3000 -H 'Authorization: Basic YWRtaW46cGFzc3dvcmQ='
 
 # upload file
 curl http://localhost:8000 -F "file=@/home/kovpak/Downloads/download.jpg"
+````
+
+#### shell
+````
+sudo bash -c 'echo "APP_ENVIRONMENT=prod" > /etc/environment'
+sh -c 'echo 200'
+
+cut -d' ' -f2 /tmp/file.txt # print column 2 from file using ' ' as delimer
+
+df            # Show information about the file system.
+df -h
+du            # Summarize disk usage of each FILE.
+du -sh IraFoto/* # Summarize disk usage of each dir in foto dir.
+
+uptime # CPU load average
+
+pkill /var/www/x.php # Kill runned script x.php.
+pkill -f php # Kill runned script with name like php.
+
+kill -9 `ps -aux|grep {{PROCESS_NAME}}|grep -v grep|awk '{print $2}'`
+
+uname -a # Shows 32 or 64 bit OS.
+uname -r # Show the kernel version.
+
+host github.com # Shows ip by host.
+dig domain
+whois ip
+
+colordiff -u file1 file2
+
+scp -rp access@host:~/dir/ ~/dir/
+
+~/.bash_history
+
+ln -s {file} {symbolic-name}
+
+which
+
+DISPLAY=:7
+echo $DISPLAY
+
+# print screen from url
+cutycapt --url=cn007b.tumblr.com --out=out.png
+wkhtmltoimage cn007b.tumblr.com i.jpg
+webkit-image-gtk http://cn007b.tumblr.com > i.png
+````
+````
+cd -       # go to previous dir
+pushd path # remember path (save it at stack)
+popd       # got to pushed path (and delete it from stack)
+history
 ````
 
 #### SNIPPETS

@@ -37,6 +37,9 @@ Pay attention:
 * Messure marvel & JVM.
 * Not use open JDK but latest Oracle JDK.
 
+In mapping `_source: {"enabled": "false"}` - don't save _source only indexed data.
+It can save space on prod.
+
 #### Versioning
 
 Internally, Elasticsearch has marked the old document as deleted and added an entirely new document.

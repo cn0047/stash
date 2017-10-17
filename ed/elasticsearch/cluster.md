@@ -1,6 +1,43 @@
 Cluster
 -
 
+States:
+
+* green - all ok.
+* yellow - some replicas shards are missing
+  but primaries are all available and serving data.
+* red - at least 1 primary and all it\'s replicas are offline,
+  data posibly broken.  
+
+Node types:
+
+* master - brain of the whole operatioln.
+* data
+* client - gateway to your cluster (node.master and node.data eq to false). Need half of data node capacity.
+
+cluster = 1 client + 3 master + 4 data
+
+`export ES_HEAP_SIZE=32g` - for best performance
+`bootstrap.mlockall: true` - no swap files
+
+For OS:
+
+````
+File Descriptors: 64000
+MMap: unlimited
+````
+
+Temporary disable shards rebalance:
+
+````
+curl -XPUT $host:$port/_cluster/settings -d '{
+    "transient" : {
+        "cluster.routing.allocation.enable" : "none",
+        "cluster.routing.allocation.enable" : "all"
+    }
+}'
+````
+
 ````
 export host=localhost
 export port=9200
@@ -65,6 +102,13 @@ curl -XGET http://$host:$port/_nodes/stats?pretty
 curl -XGET $host:$port/_cluster/settings
 
 # Cluster Update Settings
+# temporary
+curl -XPUT $host:$port/_cluster/settings -d '{
+    "transient" : {
+        "discovery.zen.minimum_master_nodes" : 2
+    }
+}'
+# persistent
 curl -XPUT $host:$port/_cluster/settings -d '{
     "persistent" : {
         "discovery.zen.minimum_master_nodes" : 2

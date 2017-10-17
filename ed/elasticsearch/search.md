@@ -1,10 +1,20 @@
 Search
 -
 
+Query context - How well does document match query (score).
+Filter context - does document match query clause (yes/no).
+
 The parameters allowed in the URI search
 [are](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-uri-request.html#_parameters_4)
 
 There are three types of `match` query: `boolean`, `phrase`, and `phrase_prefix`.
+
+Boolean:
+
+* must - clause must appear in matching documents.
+* should - may appear but may ney not.
+* must_not
+* filter - must appear in result but result not scored.
 
 [Dates math](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html#_date_math_and_rounding).
 [Regexp syntax](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-regexp-query.html#regexp-syntax).

@@ -18,6 +18,8 @@ node.name: node01
 discovery.zen.minimum_master_nodes: 1
 discovery.zen.ping.timeout: 10s
 discovery.zen.ping.multicast.enabled: false
+# Important
+# Important to avoid undesared shards rebalancing between nodes.
 # discovery.zen.ping.unicast.hosts: ["172.31.11.226", "172.31.3.106"]
 
 network.host: _eth0:ipv4_
@@ -38,6 +40,8 @@ cloud.aws.region: eu-west-1
 
 http.cors.enabled: true
 
+http.enabled: false # for data node - no query directly
+
 # Needed for Ziipr
 
 script.engine.groovy.inline.search: on
@@ -45,3 +49,12 @@ script.engine.groovy.inline.update: on
 script.engine.groovy.inline.search: true
 script.engine.groovy.inline.update: true
 script.groovy.sandbox.enabled: true
+
+# Important for performance after cluster maintenance.
+
+# Wait until at least 8 nodes are present
+# and start recovery when either 3 minutes passed
+# or all 9 nodes are present and active.
+gateway.recover_after_nodes: 8
+gateway.expected_nodes: 9
+gateway.recover_after_nodes: 3m

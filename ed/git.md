@@ -130,6 +130,7 @@ vendor/
     sl  = stash list
     ss  = stash save --include-untracked
     sa = stash apply
+    sp = stash pop
     f   = fetch origin
     po  = pull origin
     pt  = push origin --tags
@@ -146,6 +147,7 @@ vendor/
     cm  = commit -m
     ph  = push origin HEAD
     lg  = log --pretty=format:\"%h %ad | [%an] %s%d\" --graph --date=short --no-merges
+    lg  = log --pretty=format:\"%h %ad | [%an] %s%d\" --graph --date=short
 [user]
     name  = Vladimir Kovpak
     email = cn007b@gmail.com

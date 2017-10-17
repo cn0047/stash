@@ -114,3 +114,20 @@ smembers users:name
 [Php client](https://github.com/phpredis/phpredis).
 
 https://redis.io/documentation
+
+#### Transaction
+
+`MULTI`, `EXEC`, `DISCARD` and `WATCH` are the foundation of transactions in Redis.
+Transaction is atomic.
+
+No roll back(
+
+````
+set a 100
+set b 200
+
+multi
+incrby a -50
+incrby b 50
+exec
+````

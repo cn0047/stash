@@ -2,6 +2,15 @@ osx
 -
 
 ````
+man grep
+
+# open fonts
+open /Applications/Utilities/Terminal.app/Contents/Resources/Fonts/
+````
+
+## HotKeys
+
+````
 Option = Alt
 
 Control-Shift-Power # Lock screen

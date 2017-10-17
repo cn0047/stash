@@ -16,6 +16,12 @@ nodemon ./server.js localhost 8080
 ````
 
 ````
+node --inspect --inspect-brk x.js
+# or
+# inject debug in already runned process
+kill -SIGUSR1 2128
+# and open in browser chrome://inspect
+
 console.log(require('util').inspect('ok', false, null));
 require('fs').appendFile('/tmp/debug.tmp', JSON.stringify('ok')); // tail -f /tmp/debug.tmp
 process.exit();
