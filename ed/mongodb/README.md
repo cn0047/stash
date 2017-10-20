@@ -3,6 +3,8 @@ mongo
 
 *MongoDB shell version: 2.4.6*
 
+`printjson()`, `.pretty()`
+
 #### Introduction
 ````
 sudo service mongodb start|stop|restart
@@ -24,6 +26,8 @@ MongoDB implements locks on a per-database basis for most read and write operati
 db
 show dbs
 use mydb
+
+db = connect("myhost:30002/mydb")
 
 // insert a collection
 j = {name : "mongo"}
@@ -103,6 +107,8 @@ db.collection.copyTo(newCollection)
 
 // EXPLAIN
 db.collection.find().explain()
+// "stage": "COLLSCAN" - very bad case.
+// "stage": "IXSCAN" - index scan.
 // hint - Forces MongoDB to use a specific index for a query.
 db.inventory.find( { type: 'food' } ).hint( { type: 1 } ).explain()
 db.inventory.find( { type: 'food' } ).hint( { type: 1, name: 1 } ).explain()

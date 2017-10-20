@@ -39,7 +39,7 @@ Space required = O(n)
 
 Good for small arrays. Bad for big arrays.
 In practice it better than bubble sort but worst than insertion sort.
-Don't do many swaps but do lot of comparisons.
+Don\'t do many swaps but do lot of comparisons.
 
 ### Merge sort
 

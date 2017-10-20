@@ -1,8 +1,8 @@
 {
-    "color_scheme": "Packages/Color Scheme - Default/Sixteen.tmTheme",
+    "color_scheme": "Packages/User/SublimeLinter/Solarized V (Light) (SL).tmTheme",
     "draw_white_space": "all",
     "ensure_newline_at_eof_on_save": true,
-    "font_size": 12,
+    "font_size": 11,
     "highlight_line": true,
     "highlight_modified_tabs": true,
     "ignored_packages":
@@ -22,9 +22,11 @@
     "show_tab_close_buttons": false,
     "soda_classic_tabs": true,
     "spell_check": false,
+    "tab_size": 2,
     "theme": "Soda Light 3.sublime-theme",
     "translate_tabs_to_spaces": true,
     "trim_trailing_white_space_on_save": false,
+    "indent_guide_options": ["draw_active"],
     "word_wrap": false,
     "wrap_width": 80
 }

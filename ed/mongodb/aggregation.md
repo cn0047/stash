@@ -6,6 +6,15 @@ The aggregation pipeline can use indexes to improve its performance during some 
 In addition, the aggregation pipeline has an internal optimization phase.
 Map-reduce operations can also output to a sharded collection
 
+Result is limited by size = 16MB.
+
+For performance (follow this flow):
+
+1. $match as early as possible
+2. $project as early as possible
+3. $sort as early as possible
+4. use index
+
 #### Pipeline Aggregation Stages
 
 * $collStats - statistics regarding a collection.
@@ -14,7 +23,7 @@ Map-reduce operations can also output to a sharded collection
 * $redact - can be used to implement field level redaction.
 * $limit
 * $skip
-* $unwind
+* $unwind - from document with array to documents with only one element
 * $group
 * $sample
 * $sort
@@ -30,6 +39,20 @@ Map-reduce operations can also output to a sharded collection
 * $replaceRoot - replaces a document with the specified embedded document.
 * $count - returns a count of the number of documents at this stage of the aggregation pipeline.
 * $graphLookup - Performs a recursive search on a collection.
+
+`$group: {"_id": "all", ...}`
+
+####[Group Accumulator Operators](http://docs.mongodb.org/manual/reference/operator/aggregation-group/)
+````js
+$addToSet - put grouped documents into one (only distinct)
+$avg
+$first - `{"$group": {_id: "$smt", sample: {"$first": "$item"}}}`
+$last
+$max
+$min
+$push - put grouped documents into one
+$sum
+````
 
 ####Aggregation with the Zip Code Data Set
 ````js
@@ -162,6 +185,9 @@ db.users.aggregate([
 ````
 
 ####Map-Reduce Examples
+
+Reduce operations can run in parallel across shards.
+
 ````js
 var mapFunction1 = function () {
     emit(this.cust_id, this.price);

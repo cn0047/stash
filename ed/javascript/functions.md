@@ -102,6 +102,10 @@ const baz = !c; // c ? false : true;
 
 #### Undefined
 
+````
+console.log(typeof v !== 'undefined'); // isset variable v.
+````
+
 #### Null
 
 #### Object

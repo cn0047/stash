@@ -34,6 +34,12 @@ sysctl -n net.core.somaxconn
 # on server must be at least 1024
 ````
 
+#### about linux
+
+````
+cat /etc/os-release
+````
+
 #### upstart
 
 Is an event-based replacement for the traditional init daemon.
@@ -257,6 +263,9 @@ curl http://localhost:8000 -F "file=@/home/kovpak/Downloads/download.jpg"
 
 #### shell
 ````
+# md5 for directory
+find src/ -type f -exec md5sum '{}' \; | md5sum
+
 sudo bash -c 'echo "APP_ENVIRONMENT=prod" > /etc/environment'
 sh -c 'echo 200'
 

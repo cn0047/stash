@@ -97,3 +97,28 @@ http {
     }
 }
 ````
+
+For socket.io:
+
+````
+upstream io_nodes {
+  ip_hash;
+  server 127.0.0.1:6001;
+  server 127.0.0.1:6002;
+  server 127.0.0.1:6003;
+  server 127.0.0.1:6004;
+}
+
+server {
+  listen 3000;
+  server_name io.yourhost.com;
+  location / {
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header Host $host;
+    proxy_http_version 1.1;
+    proxy_pass http://io_nodes;
+  }
+}
+````

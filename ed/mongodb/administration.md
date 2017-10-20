@@ -1,6 +1,11 @@
 Administration
 -
 
+`ext4` - the best file system for mongo.
+`/etc/fstab` - add `noatime` (last access time) to this file = os won't update atime.
+
+`--oplogSize` - must be 5% of disck space and <= 50GB.
+
 ````js
 db.version();
 

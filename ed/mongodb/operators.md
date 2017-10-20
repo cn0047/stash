@@ -211,18 +211,6 @@ $cond // $cond: { if: { $gte: [ "$qty", 250 ] }, then: 30, else: 20 }
 $ifNull
 ````
 
-####[Group Accumulator Operators](http://docs.mongodb.org/manual/reference/operator/aggregation-group/)
-````js
-$addToSet
-$avg
-$first
-$last
-$max
-$min
-$push
-$sum
-````
-
 ####[Query Modifiers](http://docs.mongodb.org/manual/reference/operator/query-modifier/)
 ````js
 $comment

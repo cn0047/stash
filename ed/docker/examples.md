@@ -6,6 +6,7 @@ Examples
 ````
 # bash
 docker build -t xubuntu ./docker/ubuntu
+docker exec -it xubuntu node -v
 docker run -ti --rm xubuntu /bin/bash
 docker run -ti --rm -v $PWD/u.sh:/u.sh xubuntu /u.sh
 
@@ -129,6 +130,8 @@ docker exec rabbit rabbitmqctl list_queues name messages messages_ready messages
 
 ````
 docker run -it --rm node:latest node -v
+# based on Alpine Linux
+docker run -it --rm node:alpine node -v
 docker run -it --rm -v $PWD:/gh -w /gh node:latest node /gh/x.js
 
 # simple mysql test

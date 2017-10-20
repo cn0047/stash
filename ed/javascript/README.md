@@ -26,8 +26,6 @@ console.groupEnd();
 JSON.stringify(object);                // object to JSON string
 JSON.parse(string)                     // JSON string to object
 
-console.log(typeof v !== 'undefined'); // isset variable v.
-
 console.log('Code:%s', 200); // Code:200
 ````
 
