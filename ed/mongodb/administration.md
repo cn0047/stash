@@ -23,13 +23,20 @@ db.getRoles({showBuiltinRoles: true});
 db.currentOp()
 // kill <mongod process ID>
 db.serverStatus()
-db.stats()
 db.isMaster()
 // replica set’s status
 rs.status()
 // sharding status
 sh.status()
 db.killOp()
+
+db.stats()
+// slow queries log
+db.setProfilingLevel(1, 3) // 3 millisecond
+// tool with stats
+mongostat
+// shows time spend
+mongotop
 
 // measure working set
 db.runCommand({serverStatus: 1, workingSet: 1})

@@ -38,11 +38,21 @@ SET @sql = CONCAT('INSERT INTO ', @alias, ' (somevalue) VALUES (value)');
 PREPARE stmt1 FROM @sql;
 EXECUTE stmt1;
 
--- hackerrank
+-- HACKERRANK
+
+-- generate table with incremented numbers
+SET @n = 10;
+set @i = 1;
+SET @t = CONCAT('SELECT 1 AS n', REPEAT(' UNION ALL SELECT @i := @i + 1', @n - 1));
+SET @s = CONCAT("SELECT * FROM (", @t, ") t");
+PREPARE stmt FROM @s;
+EXECUTE stmt;
+
+-- stars
 SET @n = 20;
-set @i = 0;
-SET @f = CONCAT('SELECT 0', REPEAT(' UNION ALL SELECT 1', @n - 1));
-SET @s = CONCAT("SELECT REPEAT('* ', @i := @i + 1) AS RESULT FROM (", @f, ") t");
+set @i = 1;
+SET @t = CONCAT('SELECT 1 AS n', REPEAT(' UNION ALL SELECT @i := @i + 1', @n - 1));
+SET @s = CONCAT("SELECT REPEAT('* ', t.n) AS RESULT FROM (", @t, ") t");
 PREPARE stmt FROM @s;
 EXECUTE stmt;
 ````

@@ -6,11 +6,6 @@ const t = setTimeout(() => {}, milliseconds);
 const i = setInterval(() => {}, milliseconds);
 setImmediate(() => {})
 // `setImmediate` will always be executed before `setTimeout` and `setInterval` if scheduled within an I/O cycle.
-/*
-nanosecond  - 0,000 000 001
-microsecond - 0,000 001
-millisecond - 0,001
-*/
 clearTimeout();
 clearInterval(i);
 ````

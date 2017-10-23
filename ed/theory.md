@@ -1,6 +1,10 @@
 Theory
 -
 
+nanosecond  - 0,000 000 001
+microsecond - 0,000 001
+millisecond - 0,001
+
 AJAX polling - send request in loop.
 Long-polling - ...
 Forewer frame - ...
@@ -151,7 +155,7 @@ Odd (1, 3, 5...) - `x % 2 = 1`.
 ' Single Quote
 " Double Quote
 ` Back quote
-/ Slash
+/ Slash (forward slash)
 \ Backward Slash
 # Pound Sign
 $ Dollar Sign
