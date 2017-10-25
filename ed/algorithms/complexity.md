@@ -25,12 +25,13 @@ O(N^2) = for fibonacci
 O(N!) = salesman problem
 ````
 
-For array inside another array - O(a * b),
+For array inside another array - `Big O(a * b)`,
 whre a - 1st array length, b - 2nd.
 
-If algorithm takes half of elements on iteration than Big O = O(log N).
+If algorithm takes half of elements on iteration - `Big O = O(log N)`.
 
-`for (var i = 0; i < n; i++) for (var j = i; j < n; j++) {}` - O(N^2/2) = O(N^2)
+`for (var i = 0; i < n; i++) for (var j = i; j < n; j++) {}` - `O(N^2/2) = O(N^2)`.
+`for (int i = N; i > 0; i /= 2) for (int j = 0; j < i; j++) {}` - `O(N)`
 
 In case of if statement Big O will be equal to worst case.
 
