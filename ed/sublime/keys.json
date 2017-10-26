@@ -57,9 +57,11 @@
     //     ]
     // },
 
-    //Favorite Files
+    // Favorite Files
     ,{ "keys": ["ctrl+alt+o"], "command": "select_favorite_file" }
     ,{ "keys": ["ctrl+alt+a"], "command": "add_favorite_file" }
+    // Quick File Open
+    ,{ "keys": ["ctrl+alt+o"], "command": "show_overlay", "args": {"overlay": "command_palette", "text": "Quick File Open"} }
 
     // FOLD
     ,{ "keys": ["ctrl+0"], "command": "unfold_all" }
@@ -75,7 +77,7 @@
     ,{ "keys": ["alt+shift+f"], "command": "show_overlay", "args": {"overlay": "command_palette", "text": "Filer Lines: Fold with"} }
     // { "keys": ["alt+f"], "command": "fold_tab" },
 
-    // // GIT
+    // GIT
     ,{ "keys": ["alt+a"], "command": "git_raw", "args": { "command": "git add", "append_current_file": true } }
     ,{ "keys": ["alt+l"], "command": "git_log" }
     ,{ "keys": ["alt+r"], "command": "git_raw", "args": { "command": "git checkout", "append_current_file": true } }

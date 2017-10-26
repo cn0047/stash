@@ -1,0 +1,19 @@
+<html>
+<head>
+<script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+  [Room 1] I've got: <div id="root"></div>
+</body>
+<script>
+  const socket = io.connect('http://localhost:8080');
+  socket.on('connect', () => {
+    socket.emit('join-room', 'room1');
+  });
+  socket.on('msg', function (data) {
+    const p = document.createElement('p');
+    p.innerText = data;
+    document.getElementById('root').appendChild(p);
+  });
+</script>
+</html>

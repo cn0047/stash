@@ -64,6 +64,8 @@ netstat -tpne
 
 #### mount
 
+Run `mount` command to see types of mounted filesystems.
+
 On server machine:
 ````
 echo '/tmp 52.48.208.239(rw,sync,no_subtree_check,no_root_squash)' >> /etc/exports
@@ -166,6 +168,11 @@ Host ec2
     IdentifyFile ~/path_to_ssh_key
 ````
 
+#### ftp
+````
+ncftpput -R -v -u {user} {host} remote_path ./local_path/*
+````
+
 #### ps
 ````
 ps ax                             # Display all processess
@@ -260,6 +267,8 @@ curl http://localhost:3000 -H 'Authorization: Basic YWRtaW46cGFzc3dvcmQ='
 # upload file
 curl http://localhost:8000 -F "file=@/home/kovpak/Downloads/download.jpg"
 curl http://localhost:8000 -H "Content-Type: multipart/form-data" -F "file=@/Users/k/f.txt" -F "msg=MyFile"
+
+curl -T firmware.bin http://0.0.0.48/cgi-bin/package_install?hash=017
 ````
 
 #### shell
@@ -334,4 +343,23 @@ find -type f -name '*.php' -exec egrep -Hn --color=always 'is_failed' {} \; | gr
 
 # date, in next format [02/жов/2016:00:21
 date +'[%d/%b'/%Y:%H:%M
+````
+
+#### H
+````sh
+# osx proxy
+
+sudo networksetup -setwebproxy "Wi-Fi" 54.174.16.166 80
+sudo networksetup -setwebproxystate "Wi-Fi" off
+
+netstat -an
+
+nc -zv 10.0.2.2 22
+
+nc -zv 78.140.186.238 1-65535
+nc -zv 10.0.2.2 22
+
+Public DNS IP addresses:
+8.8.8.8
+8.8.4.4
 ````

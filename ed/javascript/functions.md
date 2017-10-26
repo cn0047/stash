@@ -2,6 +2,46 @@ Functions
 -
 
 ````js
+a = 1;               typeof a; // "number"
+a = 1.1;             typeof a; // "number"
+a = '1';             typeof a; // "string"
+a = true;            typeof a; // "boolean"
+a = {};              typeof a; // "object"
+a = [];              typeof a; // "object" But: a instanceof Array; // true
+a = new Array(1, 2); typeof a; // "object"
+a = null;            typeof a; // "object" And: a instanceof null; //  Uncaught TypeError: Expecting a function in instanceof check, but got null
+a = undefined;       typeof a; // "undefined"
+a = NaN;             typeof a; // "number"
+a = function () {};  typeof a; // "function"
+a = /.*/;            typeof a; // "object" But: a instanceof RegExp; // true
+a = new RegExp();    typeof a; // "object"
+a = new Date();      typeof a; // "object"
+
+function isObject(o) {
+    return o instanceof Object && o.constructor === Object;
+}
+
+6 + '1'     // 61    - as string.
+6 - '1'     // 5     - as int.
+"3" + 4 + 5 // "345" - as string.
+3 + 4 + "5" // "75"  - as int and as string.
+
+0 == false // true
+0 == null // false
+false == null // false
+null == null // true
+NaN == NaN // false
+NaN === NaN // false
+[] == [] // false
+[] === [] // false
+{} == {} // false
+{} === {} // false
+
+if (true) {} elseif (true) {} // Uncaught SyntaxError: Unexpected token {
+if (true) {} else if (true) {} // OK.
+````
+
+````js
 const t = setTimeout(() => {}, milliseconds);
 const i = setInterval(() => {}, milliseconds);
 setImmediate(() => {})
@@ -21,7 +61,119 @@ window.history.forward
 ````
 
 ````js
+'use strict';
+
+document.getElementById('wrapper').getElementsByClassName('block').getElementsByTagName('img').length
+document.querySelectorAll('#wrapper img').length
+
+console.group('Application Log');
+console.log('Application Log');
+console.groupEnd();
+
+JSON.stringify(object);                // object to JSON string
+JSON.parse(string)                     // JSON string to object
+
+console.log('Code:%s', 200); // Code:200
+````
+
+````js
 target.addEventListener(type, listener, options);
+document.getElementById('close').addEventListener('click', (e) => {
+  e.target.parentElement.style.display = 'none';
+});
+````
+
+#### Flashback
+
+````js
+alert(message);
+prompt(message);
+confirm(message);
+
+var o = {x: 1, y: 2};
+delete o.x; // delete property x
+typeof o.x; // undefined
+delete o; // false. Cant't delete global var.
+
+o['y']; // Access to associative array.
+
+void varName; // Set undefined to var;
+
+null == undefined  // true
+null === undefined // false
+
+typeof val;
+tepeof(val);
+val instanceof Object;
+
+var d = new Date();
+d.constructor == Date; // true
+
+try {
+} catch (error) {
+} finally {
+}
+
+switch (x) {
+    case 1:
+        break;
+    default:
+        break;
+}
+
+// Convenience method but slow (many optimizations disabled here)...
+// It won't create new proberty in scope of object.
+// It creates new own execution scope...
+with (frames[1].document.forms[0]) {
+    name.value = '007'; // Equal to frames[1].document.forms[0].name.value
+}
+// Better use:
+var form = frames[1].document.forms[0];
+form.name.value = '007';
+
+el.childNodes;      // child
+el.parentNode;      // parent
+el.nextSibling;     // next brother
+el.previousSibling; // prev brother
+
+function rectangle(w, h) {
+    this.with = w;
+    this.height = h;
+}
+rectangle.protytype.area = function () {
+    console.log(this.superclass);
+}
+
+window.document == self == parent == top
+window.defaultStatus = 'status bar string';
+window.onerror = function (msg, url, line) {}
+````
+
+#### Fetch
+
+````js
+// GET
+fetch('http://jsonplaceholder.typicode.com/posts')
+    .then(res => res.json())
+    .then(items => console.log(items))
+;
+// POST
+var data = new FormData();
+data.append('userId', 0);
+data.append('message', '');
+fetch('https://davidwalsh.name/submit-json', {
+    method: 'post',
+    headers: {
+        "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+    },
+    body: JSON.stringify({
+        email: document.getElementById('email').value,
+        answer: document.getElementById('answer').value
+    }),
+    body: data
+});
+// Var in url
+fetch(`http://myapi.com/posts/${postId}/comments`, {});
 ````
 
 #### String

@@ -1,7 +1,7 @@
 pm2
 -
 
-PM2 is a production process manager for + built-in load balancer.
+PM2 is a production process manager for built-in load balancer.
 Allows keep applications alive forever, reload without downtime etc.
 
 ````

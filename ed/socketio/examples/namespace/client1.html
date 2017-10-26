@@ -1,0 +1,15 @@
+<html>
+<head>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io.connect('http://localhost:8080/space1');
+  socket.emit('req', 'Hi, I am client 1 in space 1.');
+  socket.on('res', function (data) {
+    console.log(data);
+  });
+</script>
+</head>
+<body>
+    Watch console...
+</body>
+</html>

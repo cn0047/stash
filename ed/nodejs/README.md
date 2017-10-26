@@ -5,14 +5,20 @@ Node JS
 *v0.10.26*
 
 ````
-/etc/init.d/http-server stop
+sudo ln -s /usr/bin/nodejs /usr/bin/node
 ````
 
 ````
-sudo ln -s /usr/bin/nodejs /usr/bin/node
-````
-````
+npm install -g nodemon
 nodemon ./server.js localhost 8080
+
+npm install -g express-generator
+express node-express-gen
+
+npm install -g strongloop
+slc loopback
+slc loopback:model
+
 ````
 
 ````
@@ -25,38 +31,23 @@ kill -SIGUSR1 2128
 console.log(require('util').inspect('ok', false, null));
 require('fs').appendFile('/tmp/debug.tmp', JSON.stringify('ok')); // tail -f /tmp/debug.tmp
 process.exit(); // die;
+
+# npm install morgan --save
+var morgan = require('morgan');
+app.use(morgan('dev'));
 ````
 
 ````js
 req.url    // Url string.
 req.params // Parsed params from url.
 req.params.id
-````
 
-`yargs` - alternative to `process.argv[2]`
-````
+# yargs - alternative to `process.argv[2]`
 var argv = require('yargs')
-    .usage('Usage: node $0 --l=[num] --b=[num]')
-    .demand(['l','b'])
-    .argv;
-
+  .usage('Usage: node $0 --l=[num] --b=[num]')
+  .demand(['l','b'])
+  .argv;
 console.log(argv.l,argv.b);
-````
-
-````
-# npm install morgan --save
-var morgan = require('morgan');
-app.use(morgan('dev'));
-````
-
-````
-npm install express-generator -g
-express node-express-gen
-````
-````
-npm install strongloop -g
-slc loopback
-slc loopback:model
 ````
 
 #### Common info
