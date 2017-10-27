@@ -135,6 +135,7 @@ vendor/
     b   = branch
     br  = branch
     ch  = checkout
+    cb = !sh -c 'git checkout --track -b $1 origin/$1' -
     s   = status -sb
     st  = status
     sl  = stash list
