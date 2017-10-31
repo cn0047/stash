@@ -3,7 +3,7 @@
 1. Make Fewer HTTP Requests
 
   * Image Maps
-  * CSS Sprites
+  * ~~CSS Sprites~~
   * Inline Images
   * Combined Scripts and Stylesheets
 

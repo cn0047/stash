@@ -19,6 +19,8 @@ npm install -g strongloop
 slc loopback
 slc loopback:model
 
+npm i circular-require
+node_modules/.bin/circular-require ./src
 ````
 
 ````

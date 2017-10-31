@@ -37,3 +37,7 @@ In case of if statement Big O will be equal to worst case.
 
 Algorithm X is asymptotically more efficient than Y -
 X will always be a better choice for large inputs.
+
+Big O notation - Upper bound.
+Omega notation - Lower bound.
+Theta notation - Tight bound.

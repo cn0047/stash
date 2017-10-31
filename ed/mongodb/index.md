@@ -13,10 +13,12 @@ Types:
 
 Limitations:
 
+````
 Key value size - 1024 bytes
 Key name size - 128 chars
 Keys per index (fields in compound index) - 31
 Indexes per collection - 64
+````
 
 ````js
 // MongoDB indexes may be ascending, (i.e. 1) or descending (i.e. -1)

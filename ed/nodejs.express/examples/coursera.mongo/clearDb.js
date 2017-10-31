@@ -16,15 +16,15 @@ db.once('open', function () {
     // we're connected!
     console.log("Connected correctly to server");
 
-db.collection('dishes').drop(function () {
-    db.collection('promotions').drop(function () {
-        db.collection('leaderships').drop(function () {
-            db.collection('users').drop(function () {
-                db.close();
-                console.log("Done.");
-                process.exit();
+    db.collection('dishes').drop(function () {
+        db.collection('promotions').drop(function () {
+            db.collection('leaderships').drop(function () {
+                db.collection('users').drop(function () {
+                    db.close();
+                    console.log("Done.");
+                    process.exit();
+                });
             });
         });
     });
-});
 });

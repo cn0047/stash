@@ -1,4 +1,4 @@
-js
+JavaScript
 -
 
 [jsdoc](http://usejsdoc.org/) `node_modules/.bin/jsdoc -r src -d docs`.

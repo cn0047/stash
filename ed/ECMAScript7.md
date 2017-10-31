@@ -1,7 +1,7 @@
 ECMAScript 7
 -
 
-````
+````js
 // Object Observe
 var obj = {};
 Object.observe(obj,function(changes) {console.log(changes);});

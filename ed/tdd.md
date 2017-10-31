@@ -8,7 +8,7 @@ Fixture - is the fixed state that exists at the start of a test.
 ````
 
 Better to use stubbing widely for large-scale components and subsystems,
-but less so for the components at the programming language level,
+but less for the components at the programming language level,
 at this level, we generally prefer mocking.
 Mocking allows you to effectively say, "Build me an object that can pretend to be a class of type X."
 

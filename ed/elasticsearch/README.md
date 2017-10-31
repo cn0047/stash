@@ -49,7 +49,7 @@ Elasticsearch cleans up deleted documents in the background as you continue to i
 
 #### Analyzers
 
-Analyzers are usededit - when we index a document.
+Analyzers are used - when we index a document.
 
 * `Standard` - divides text into terms on word boundaries.
 * `Simple` - divides whenever it encounters a character which is not a letter.

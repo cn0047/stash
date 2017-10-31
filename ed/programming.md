@@ -44,6 +44,14 @@ that treats computation as the evaluation of mathematical (pure & deterministic)
 and avoids changing-state and mutable data.
 (JavaScript, Scala).
 
+Functional programming - What not How.
+
+Pure function - no side effects!
+
+Important:
+Separate mutation from calculation.
+Separate function from rule.
+
 **Object-oriented** programming - is a programming paradigm based on the concept of objects,
 which may contain data, in the form of fields, often known as attributes,
 and code, in the form of procedures, often known as methods.
@@ -55,13 +63,3 @@ and code, in the form of procedures, often known as methods.
 in which computer programs have the ability to treat programs as their data.
 It means that a program can be designed to read, generate, analyse or transform
 other programs, and even modify itself while running.
-
-#### Functional programming
-
-Functional programming - What not How.
-
-Pure function - no side effects!
-
-Important:
-Separate mutation from calculation.
-Separate function from rule.

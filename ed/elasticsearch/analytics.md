@@ -8,7 +8,7 @@ Types:
 * matrix - may be deleted in future releases
 * pipeline - may be deleted in future releases
 
-````
+````sh
 # SELECT city, COUNT(*) FROM employee GROUP BY city ORDER BY COUNT(*) DESC
 # size=0 to not show search hits
 curl -XPOST 'localhost:9200/megacorp/employee/_search?pretty' -d '{

@@ -9,6 +9,7 @@ Memcached:
 Redis:
 
 * In-memory data structure store, used as database.
+* Transactions - yes.
 * Durability - yes.
 * Server-side scripts - lua.
 * Can store string up to 512MB.
