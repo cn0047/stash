@@ -23,6 +23,7 @@ vagrant plugin install vagrant-hosts
 vagrant global-status
 
 vagrant up
+vagrant up --provider virtualbox
 vagrant provision
 
 vagrant rsync # forces a re-sync of any rsync synced folders

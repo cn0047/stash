@@ -2,6 +2,8 @@ npm
 -
 
 [Trends](http://www.npmtrends.com/ws-vs-socket.io)
+[Counts](https://github.com/npm/registry/blob/master/docs/download-counts.md)
+[Stat](https://npm-stat.com)
 
 ````
 npm -g i npm@latest

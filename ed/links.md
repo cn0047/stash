@@ -7,7 +7,7 @@ page speed:
 data generator:
     https://www.mockaroo.com/
     http://www.json-generator.com/
-http://myjson.com/
+http://myjson.com/ # mock for REST-API
 http://mockbin.org/
 
 http://markup.su/highlighter/
