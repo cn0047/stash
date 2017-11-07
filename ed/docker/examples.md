@@ -106,6 +106,17 @@ docker exec mysql-slave-1 mysql -uroot -proot -e "SHOW SLAVE STATUS \G"
 docker exec -ti mysql-master mysql -P3307 -udbu -pdbp -Dtest
 ````
 
+#### POSTGRESQL
+
+````
+docker run -it --rm --name postgres-master --hostname postgres-master \
+    -v $PWD/docker/.data/postgresql:/var/lib/postgresql/data \
+    -e POSTGRES_DB=test -e POSTGRES_USER=dbu -e POSTGRES_PASSWORD=dbp postgres
+
+# test
+docker exec -ti postgres-master psql -h localhost -p 5432 -U dbu -d test
+````
+
 #### REDIS
 
 ````
@@ -164,6 +175,9 @@ docker run -it --rm -p 8000:8000 -v $PWD:/gh php-cli php -S 0.0.0.0:8000 /gh/ed/
 
 # mysql
 docker run -it --rm -v $PWD:/gh --link mysql-master php-cli php /gh/ed/php/examples/mysqlAndPdo/pdo.simplestExample.php
+
+# postgres
+docker run -it --rm -v $PWD:/gh --link postgres-master php-cli php /gh/ed/php/examples/mysqlAndPdo/pdo.postgresql.simplestExample.php
 
 # mongo
 docker run -it --rm -v $PWD:/gh --link xmongo php-cli php /gh/ed/php/examples/mongo.simplest.php

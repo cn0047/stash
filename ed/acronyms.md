@@ -259,7 +259,7 @@ Acronyms
 <dd>User Datagram Protocol.</dd>
 
 <dt><a name="URI"></a>URI</dt>
-<dd>Uniform Resource Identifier (protocol + host + path + all after question mark).</dd>
+<dd>Uniform Resource Identifier (protocol + URN).</dd>
 
 <dt><a name="URL"></a>URL</dt>
 <dd>Uniform Resource Locator (protocol + host + path).</dd>
