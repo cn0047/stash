@@ -274,6 +274,9 @@ curl -T firmware.bin http://0.0.0.48/cgi-bin/package_install?hash=017
 
 #### shell
 ````
+# copy data into clipboard buffer.
+echo 200 | pbcopy
+
 # md5 for directory
 find src/ -type f -exec md5sum '{}' \; | md5sum
 

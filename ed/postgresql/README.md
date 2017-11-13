@@ -3,15 +3,31 @@ PostgreSQL
 
 (ORDBMS) Object-Relational Database Management System.
 
+#### REPL:
+
 ````
+\pset pager off
+
+# show databases
 \l
 \d
+# show tables
 \dt *.*
+\dt *test*
 ````
 
 ````
 pg_dump -h localhost -p 5432 -U dbu -d test > /var/lib/postgresql/data/dump.sql
 psql -h localhost -p 5432 -U dbu -d td < /var/lib/postgresql/data/dump.sql
+````
+
+````sql
+create table test (
+  id serial not null primary key,
+  n int,
+  d double precision,
+  s character varying(20)
+);
 ````
 
 #### Data Types:

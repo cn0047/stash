@@ -158,7 +158,7 @@ vendor/
     ca  = commit -am
     cm  = commit -m
     ph  = push origin HEAD
-    lg  = log --pretty=format:\"%h %ad | [%an] %s%d\" --graph --date=short --no-merges
+    l   = log --pretty=format:\"%h %ad | [%an] %s%d\" --graph --date=short --no-merges
     lg  = log --pretty=format:\"%h %ad | [%an] %s%d\" --graph --date=short
 [user]
     name  = Vladimir Kovpak
