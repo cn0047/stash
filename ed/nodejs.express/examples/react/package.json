@@ -1,0 +1,17 @@
+{
+  "name": "none",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2",
+    "express-react-views": "^0.10.4",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1"
+  }
+}

@@ -52,7 +52,7 @@ The currently registered top-level type names are:
 * message
 * model
 * multipart
-* text ("text/html", "text/csv", "text/rtf")
+* text ("text/plain", "text/html", "text/csv", "text/rtf")
 * video ("video/avi", "ideo/mpeg")
 
 Currently the following trees are created:

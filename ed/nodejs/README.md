@@ -9,21 +9,6 @@ sudo ln -s /usr/bin/nodejs /usr/bin/node
 ````
 
 ````
-npm install -g nodemon
-nodemon ./server.js localhost 8080
-
-npm install -g express-generator
-express node-express-gen
-
-npm install -g strongloop
-slc loopback
-slc loopback:model
-
-npm i circular-require
-node_modules/.bin/circular-require ./src
-````
-
-````
 node --inspect --inspect-brk x.js
 # or
 # inject debug in already runned process
@@ -33,10 +18,16 @@ kill -SIGUSR1 2128
 console.log(require('util').inspect('ok', false, null));
 require('fs').appendFile('/tmp/debug.tmp', JSON.stringify('ok')); // tail -f /tmp/debug.tmp
 process.exit(); // die;
+console.time('test');
+console.timeEnd('test');
+````
 
-# npm install morgan --save
-var morgan = require('morgan');
-app.use(morgan('dev'));
+````
+process.on('exit', () => {});
+process.on('uncaughtException', () => {});
+process.stdin.resume();
+
+require.main == module // script executed from shell (not required into another script)
 ````
 
 ````js
@@ -60,6 +51,7 @@ To increase memory use `--max_old_space_size`
 
 Boundary for node module - file. File is module.
 `module.exports` - for export module.
+# `module.exports.defaults`
 `exports` alias to `module.exports`.
 
 There are two types of flow control: serial and parallel.

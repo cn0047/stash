@@ -31,6 +31,10 @@ for (let i = 0; i < 3; i++) {}
 // Arrow Functions.
 // More expressive closure syntax. Expression Bodies.
 // Arrow functions are lexically scoped.
+// @IMPORTANT:
+// this in arrow function - context of running code!
+// call, bind, apply useless with arrow functions!
+// Arrow functions don't have prototype!
 var hello = function (cb) {
     cb({code: 200, message: 'hello world'});
 };
@@ -77,6 +81,9 @@ obj = {
 var list = [ 1, 2, 3 ]
 var [ a, , b ] = list
 a === 1; b === 3;
+
+// Array.of(9000);
+// Array.entries();
 
 // Parameter Context Matching
 function f ([ name, val ]) {
@@ -133,6 +140,8 @@ dst.foo  === 3
 dst.bar  === 2
 dst.baz  === 4
 
+// Object.is(obj1, obj2)
+
 // Array Element Finding
 [ 1, 3, 4, 2 ].find(x => x > 3) // 4
 
@@ -156,6 +165,8 @@ l10nEUR.format(100200300.40) === "100.200.300,40 €"
 
 ````js
 // Class Definition
+// If parent class has constructor - child class must call `super()`!
+// `new.target`- access to child clas from parent class.
 class Shape {
     constructor (id, x, y) {
         this.id = id

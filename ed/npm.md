@@ -5,8 +5,15 @@ npm
 [Counts](https://github.com/npm/registry/blob/master/docs/download-counts.md)
 [Stat](https://npm-stat.com)
 
+[Shorthands](https://docs.npmjs.com/misc/config#shorthands-and-other-cli-niceties)
+
 ````
 npm -g i npm@latest
+````
+
+````
+^4.13.3 # equals to 4.*.* which is same major version
+~4.13.3 # equals to 4.13.* which is same minor version
 ````
 
 ````
@@ -15,6 +22,7 @@ npm -g install connect
 npm uninstall modulename
 npm update modulename
 
+npm ll
 npm ls
 npm ls -g
 
@@ -31,8 +39,64 @@ npm prune
 ````
 
 ````
+# npm install -g nodemon
+nodemon ./server.js localhost 8080
+
+# npm install -g express-generator
+express node-express-gen
+
+# npm install -g strongloop
+slc loopback
+slc loopback:model
+
+# npm i circular-require
+node_modules/.bin/circular-require ./src
+
+# npm install morgan --save
+var morgan = require('morgan');
+app.use(morgan('dev'));
+
+nsp # CLI tool to help identify known vulnerabilities
+
+@nuxtjs/localtunnel # expose your localhost as public server
+````
+
+````
 console.log(argv.one + " " + argv.two);
 ./app2.js --one="My" --two="Name"
+````
+
+### File
+
+````
+{
+  "scripts": {
+    "prestart": "will run before start",
+    "start": "",
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "jest": true,
+      "node": true
+    },
+    "globals": {
+      "window": true,
+      "io": true,
+      "hljs": true
+    },
+    "extends": [
+      "airbnb-base"
+    ]
+  },
+  "eslintIgnore": [
+    "src/public/*"
+  ],
+  "jest": {
+    "collectCoverage": true,
+    "coverageDirectory": ".coverage"
+  }
+}
 ````
 
 ### Colors

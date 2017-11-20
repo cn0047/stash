@@ -59,6 +59,11 @@ Functional testing tests a slice of functionality of the whole system.
 Functional testing bases on the specifications of the software.
 Functions are tested by feeding them input and examining the output (type of black-box testing).
 
+## Integration
+
+Test multiple units.
+
 ## Unit
 
 The aim of a unit test is to show that a single part of the application does what the programmer intends it to.
+Unit tests MUST be fast.

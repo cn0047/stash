@@ -31,7 +31,7 @@ Functions hoisted before variables.
 Hoisting provides ability to create mutual-recursion.
 
 **Temporal dead zone** - use block-scoped variable (let keyword) before `let` occurs.
-`let` don't hoists.
+`let`, `class` don't hoists.
 
 **Lambda** - function that is used as data (value) (assigned to variable or passed between functions).
 Parameter for another function, return value of a function etc.

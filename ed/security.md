@@ -1,7 +1,22 @@
 Security
 -
 
-Web Application Security Risks:
+## Unclassified:
+
+* Man-In-The-Middle
+
+* Phishing
+
+* DNS hijacking
+
+#### DDos (Denial-of-service attack)
+
+A distributed DDoS is a cyber-attack where the perpetrator uses more than one unique IP address,
+often thousands of them.
+
+Distributed autoscale systems may try to cope with DDoS.
+
+## Web Application Security Risks:
 
 #### A1 Injection
 
@@ -72,9 +87,3 @@ Cookie: TEMPLATE=../../../../../../../../../etc/passwd
 ````
 
 FIX: Query string is usually URI decoded before use.
-
-## Man-In-The-Middle
-
-## Phishing
-
-## DNS hijacking

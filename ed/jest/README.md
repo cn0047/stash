@@ -16,6 +16,11 @@ If you want to check the value of an object, use `toEqual` instead.
 
 [Expect](https://facebook.github.io/jest/docs/en/expect.html#content).
 
+````js
+const cb = jest.fn();
+expect(tpl).toBe('index');
+````
+
 `__tests__` - Tests.
 `__mocks__` - Manual mocks.
 
