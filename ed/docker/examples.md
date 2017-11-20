@@ -80,6 +80,10 @@ docker run -it --rm -p 9201:9200 --name es-data-1 --link es-master-1  \
 #### MYSQL cluster
 
 ````
+docker run -it --rm -p 3307:3306 --name xmysql --hostname xmysql \
+    -v $PWD/docker/.data/mysql:/var/lib/mysql \
+    -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=test -e MYSQL_USER=dbu -e MYSQL_PASSWORD=dbp mysql:latest
+
 # init master node
 docker run -it --rm -p 3307:3306 --name mysql-master --hostname mysql-master \
     -v $PWD/docker/mysql/mysql-bin.log:/var/log/mysql/mysql-bin.log \
@@ -103,6 +107,7 @@ docker exec mysql-slave-1 mysql -uroot -proot -e "START SLAVE"
 docker exec mysql-slave-1 mysql -uroot -proot -e "SHOW SLAVE STATUS \G"
 
 # test
+docker exec -ti xmysql mysql -P3307 -udbu -pdbp -Dtest
 docker exec -ti mysql-master mysql -P3307 -udbu -pdbp -Dtest
 ````
 
@@ -122,7 +127,7 @@ docker exec -ti postgres-master psql -h localhost -p 5432 -U dbu -d test
 
 ````
 # init redis
-docker run -it --rm --hostname localhost --name redis redis:latest
+docker run -it --rm -p 6379:6379 --hostname xredis --name xredis redis:latest
 
 # check redis
 docker exec -ti redis redis-cli

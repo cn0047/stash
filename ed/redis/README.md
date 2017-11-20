@@ -131,3 +131,10 @@ incrby a -50
 incrby b 50
 exec
 ````
+
+#### Pipelining
+
+Pipelining - to send multiple commands to the server without waiting for the replies at all,
+and finally read the replies in a single step.
+
+For best performance - use pipelining.

@@ -1,0 +1,15 @@
+{
+  "name": "none",
+  "version": "1.0.0",
+  "description": "",
+  "main": "sessions.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ioredis": "^3.2.1",
+    "redis": "^2.8.0"
+  }
+}
