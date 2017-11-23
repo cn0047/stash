@@ -47,12 +47,24 @@ Held Karp Algorithm.
 ## Search
 
 BFS (Breadth First Search).
-Uses queue: add node to queu -> add non visited neightors to queue -> deque top of queue.
 BFS generates a spanning tree.
 
+Uses queue:
+````
+add node to queu
+  -> add ALL non visited CHILDs to queue
+  -> deque top of queue
+````
+
 DFS (Depth First Search).
-Uses recursion or
-Uses stack: add node to stack -> ...
+
+Uses recursion or stack:
+````
+add node to stack
+  -> add non visited CHILD (only one child) to stack
+  -> go deep and add next non visited CHILD to stack
+    -> if no childs to add - pop element from stack
+````
 
 ## Tree
 

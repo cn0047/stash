@@ -20,7 +20,7 @@
 
 6. Put Scripts at the Bottom
 
-  * Don't forget about parallel|subsequent downloads
+  * Don't forget about parallel(async)|subsequent|defer(page parsed) downloads
   * Scripts Block Downloads
 
 7. Avoid CSS Expressions

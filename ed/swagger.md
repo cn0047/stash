@@ -47,19 +47,45 @@ oneOf:
 
 [Supported JSON Schema Keywords](https://swagger.io/docs/specification/data-models/keywords/).
 
+#### YAML
+
+````yaml
+swagger: '2.0'
+info:
+  title: MyApi
+  description: MyRestApi
+basePath: /api/v1
+paths:
+  /systems/{systemId}/events:
+    get:
+      parameters:
+        - $ref: '#/parameters/systemId'
+        - $ref: '#/parameters/limit'
+        - $ref: '#/parameters/offset'
+      responses:
+        200:
+          description: Successfully retrieved events
+          schema:
+            type: object
+            properties:
+              items:
+                type: array
+                items:
+                  $ref: '#/definitions/Event'
+              count:
+                type: number
+        404:
+          description: System not found
+          schema:
+            $ref: '#/definitions/Error'
+````
+
 #### NodeJS
 
 ````javascript
 /**
- * @swagger
- * /v1/something/some
- */
-````
-
-````javascript
-/**
   * @swagger
-  * /users:
+  * /v1/users:
   *   put:
   *     summary: Creates a new user
   *     description:

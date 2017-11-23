@@ -378,7 +378,7 @@ for (var x in a) {
 Array.prototype.foo = 1;
 // Now you have no idea what the below code will do.
 var a = [1,2,3,4,5];
-for (var x in a){
+for (var x in a) {
     // Now foo is a part of EVERY array and
     // will show up here as a value of 'x'.
 }

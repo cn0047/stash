@@ -6,7 +6,7 @@ const stat = util.promisify(fs.stat);
 stat('.').then((data) => {
   console.log(data);
 }).catch((error) => {
-  // Handle the error.
+  console.error('ERROR:', error);
 });
 // OR
 (async () => {

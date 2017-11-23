@@ -1,6 +1,8 @@
 DDD
 -
 
+Domain-driven design.
+
 ### Domain.
 
 A sphere of knowledge, influence, or activity. The subject area.
@@ -139,7 +141,7 @@ A domain object that defines an event (something that happens).
 * Publishing a Domain Event is like printing the article in the paper
 * Spreading a Domain Event is like sending the newspaper so everyone can read the article
 
-### DBAL.
+### DBAL - Database Abstraction Layer.
 
 Active Record ORMs not good for DDD, because:
 
@@ -178,9 +180,10 @@ such that alternative storage implementations may be easily interchanged.
 
 Repositories are not DAOs.
 
-### DAO.
+### DAO - Data access object.
 
 Typically a DAO would contain CRUD methods for a particular domain object.
+DAOs must be placed in domain layer.
 
 ### Factory.
 
@@ -228,10 +231,6 @@ because they are not part of any layer.
 #### VO.
 
 VOs must be placed in application layer.
-
-#### DAO.
-
-DAOs must be placed in domain layer.
 
 #### DTO.
 

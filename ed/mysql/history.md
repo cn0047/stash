@@ -1,7 +1,8 @@
 History of MySQL
 -
 
-####MySQL 5.7
+#### MySQL 5.7
+
 * JSON functions.
 * Security improvements.
 * SQL mode changes.
@@ -23,7 +24,8 @@ History of MySQL
 * Deprecated EXPLAIN EXTENDED and PARTITIONS.
 * INSERT DELAYED is no longer supported.
 
-####MySQL 5.6
+#### MySQL 5.6
+
 * Security improvements.
 * MySQL Enterprise.
 * Changes to server defaults.
@@ -38,7 +40,8 @@ History of MySQL
 * Host cache.
 * OpenGIS.
 
-####MySQL 5.5
+#### MySQL 5.5
+
 * MySQL Enterprise Thread Pool.
 * MySQL Enterprise Audit (audit_log).
 * Pluggable authentication.
@@ -57,7 +60,8 @@ History of MySQL
 * XML (LOAD XML INFILE).
 * Build configuration.
 
-####MySQL 5.1
+#### MySQL 5.1
+
 * Partitioning.
 * Row-based replication.
 * Plugin API.
@@ -70,7 +74,8 @@ History of MySQL
 * XML functions with XPath support.
 * Load emulator ([mysqlslap](http://dev.mysql.com/doc/refman/5.1/en/mysqlslap.html) program).
 
-####MySQL 5.0
+#### MySQL 5.0
+
 * Information Schema.
 * Instance Manager.
 * Precision Math.

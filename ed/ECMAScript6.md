@@ -30,9 +30,9 @@ for (let i = 0; i < 3; i++) {}
 
 // Arrow Functions.
 // More expressive closure syntax. Expression Bodies.
-// Arrow functions are lexically scoped.
 // @IMPORTANT:
-// this in arrow function - context of running code!
+// Arrow functions are LEXICALLY scoped,
+// `this` in arrow function - context of running code!
 // call, bind, apply useless with arrow functions!
 // Arrow functions don't have prototype!
 var hello = function (cb) {

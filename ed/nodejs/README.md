@@ -45,13 +45,15 @@ console.log(argv.l,argv.b);
 
 #### Common info
 
+Node.js is great for doing asynchronous I/O operations,
+but when it comes to real number-crunching, it’s not that great of a choice.
+
 Currently, by default v8 has a memory limit of 512mb on 32-bit systems, and 1gb on 64-bit systems.
 To increase memory use `--max_old_space_size`
 `node --max-old-space-size=8192 server.js`
 
 Boundary for node module - file. File is module.
 `module.exports` - for export module.
-# `module.exports.defaults`
 `exports` alias to `module.exports`.
 
 There are two types of flow control: serial and parallel.
@@ -159,9 +161,6 @@ V8 engine uses two different collection algorithms:
 
 * Scavenge - fast and runs on the Young Generation
 * Mark-Sweep collection - slower and runs on the Old Generation.
-
-Node.js is great for doing asynchronous I/O operations,
-but when it comes to real number-crunching, it’s not that great of a choice.
 
 #### Streams
 

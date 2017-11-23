@@ -9,13 +9,13 @@ Memcached:
 Redis:
 
 * In-memory data structure store, used as database.
+* Can store string up to 512MB.
 * Transactions - yes.
 * Durability - yes.
 * Server-side scripts - lua.
-* Can store string up to 512MB.
 
-* Partitioning methods - sharding.
-* Replication methods - master-slave replication.
+* *Partitioning methods - sharding.*
+* *Replication methods - master-slave replication.*
 
 Redis vs Memcached:
 

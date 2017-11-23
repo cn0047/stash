@@ -15,14 +15,14 @@ A shim is more generalized. A polyfill is a type of shim.
 
 Lexical scope - code author's scope (context of the surrounding code)...
 To cheat with lexical scope use `eval` or `with`.
+`eval` is slow because no optimizaton for unknown code.
 
 Dynamical scope - Runtime scope.
 
 Create new scope - use IIFE or catch block.
 
-`eval` is slow because no optimizaton for unknown code.
-
-IIFE - needed for creating new scope, and hide some stuff from outer scope.
+IIFE (Immediately-Invoked Function Expression) - needed for creating new scope,
+and hide some stuff from outer scope.
 
 **Hoisting**. Variable can be used before it has been declared.
 Hoisting is JS's default behavior of moving all declarations to the top of the current scope.

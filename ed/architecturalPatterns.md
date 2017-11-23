@@ -14,9 +14,9 @@ MVC, MVP, MVVM etc:
 * What about helpers?
 * What about stuff common for 2, 3 models?
 
-An architectural pattern is a proven structural organization schema for software systems.
-
 ## Architectural patterns:
+
+An architectural pattern is a proven structural organization schema for software systems.
 
 * Layers
 * Client-server

@@ -9,15 +9,10 @@ Acronyms
 [AST](#AST)
 [B2B](#B2B)
 [BAAS](#BAAS)
-[BDD](#BDD)
 [CA](#CA)
 [CDN](#CDN)
 [CORS](#CORS)
 [CRM](#CRM)
-[CSRF](#CSRF)
-[DAO](#DAO)
-[DBAL](#DBAL)
-[DDD](#DDD)
 [DDL](#DDL)
 [DRY](#DRY)
 [GMT](#GMT)
@@ -25,9 +20,7 @@ Acronyms
 [GUI](#GUI)
 [HTML](#HTML)
 [HTTP](#HTTP)
-[IIFE](#IIFE)
 [IMAP](#IMAP)
-[IoC](#IoC)
 [IP](#IP)
 [IPC](#IPC)
 [JIT](#JIT)
@@ -52,14 +45,11 @@ Acronyms
 [SDLC](#SDLC)
 [SFTP](#SFTP)
 [SMTP](#SMTP)
-[SOA](#SOA)
 [SOAP](#SOAP)
-[SOLID](#SOLID)
 [SPL](#SPL)
 [SSH](#SSH)
 [SSL](#SSL)
 [TCP](#TCP)
-[TDD](#TDD)
 [TLS](#TLS)
 [UDP](#UDP)
 [URI](#URI)
@@ -99,9 +89,6 @@ Acronyms
 <dt><a name="BAAS"></a>BAAS</dt>
 <dd>Back-end as a service.</dd>
 
-<dt><a name="BDD"></a>BDD</dt>
-<dd>Behavior-driven development.</dd>
-
 <dt><a name="CA"></a>CA</dt>
 <dd>Certification Authority.</dd>
 
@@ -113,18 +100,6 @@ Acronyms
 
 <dt><a name="CRM"></a>CRM</dt>
 <dd>Customer relationship management.</dd>
-
-<dt><a name="CSRF"></a>CSRF</dt>
-<dd>Cross-site request forgery.</dd>
-
-<dt><a name="DAO"></a>DAO</dt>
-<dd>Data access object.</dd>
-
-<dt><a name="DBAL"></a>DBAL</dt>
-<dd>Database Abstraction Layer.</dd>
-
-<dt><a name="DDD"></a>DDD</dt>
-<dd>Domain-driven design.</dd>
 
 <dt><a name="DDL"></a>DDL</dt>
 <dd>Data description language.</dd>
@@ -147,14 +122,8 @@ Acronyms
 <dt><a name="HTTP"></a>HTTP</dt>
 <dd>Hypertext Transfer Protocol.</dd>
 
-<dt><a name="IIFE"></a>IIFE</dt>
-<dd>Immediately-Invoked Function Expression (js: `(function(){})()`).</dd>
-
 <dt><a name="IMAP"></a>IMAP</dt>
 <dd>Internet Message Access Protocol.</dd>
-
-<dt><a name="IoC"></a>IoC</dt>
-<dd>Inversion of Control.</dd>
 
 <dt><a name="IP"></a>IP</dt>
 <dd>Internet Protocol.</dd>
@@ -228,14 +197,8 @@ Acronyms
 <dt><a name="SMTP"></a>SMTP</dt>
 <dd>Simple Mail Transfer Protocol.</dd>
 
-<dt><a name="SOA"></a>SOA</dt>
-<dd>Service-oriented architecture (architectural pattern).</dd>
-
 <dt><a name="SOAP"></a>SOAP</dt>
 <dd>Simple Object Access Protocol.</dd>
-
-<dt><a name="SOLID"></a>SOLID</dt>
-<dd>Single responsibility; Open/closed; Liskov substitution; Interface segregation; Dependency inversion;</dd>
 
 <dt><a name="SPL"></a>SPL</dt>
 <dd>Standard PHP Library.</dd>
@@ -248,9 +211,6 @@ Acronyms
 
 <dt><a name="TCP"></a>TCP</dt>
 <dd>Transmission Control Protocol.</dd>
-
-<dt><a name="TDD"></a>TDD</dt>
-<dd>Test-driven development.</dd>
 
 <dt><a name="TLS"></a>TLS</dt>
 <dd>Transport Layer Security.</dd>

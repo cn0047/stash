@@ -58,9 +58,9 @@ Reason - maintain a linear project history.
 git rebase -i HEAD~2
 ````
 
-Rebase is bad for bisect (commit is deleted)
-and rebase hide conflicts inside rebased commit
-and rebase corrupts history of comments in github and bitbucket.
+Rebase is bad for bisect (it's destructing - commit is deleted)
+<br>and rebase hide conflicts inside rebased commit
+<br>and rebase corrupts history of comments in github and bitbucket.
 
 And you have to:
 

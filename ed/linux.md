@@ -274,6 +274,12 @@ curl -T firmware.bin http://0.0.0.48/cgi-bin/package_install?hash=017
 
 #### shell
 ````
+# watch changes in directory
+fswatch ./src | while read f; do echo $f; done
+
+# prettify json output
+echo '{ "foo": "lorem", "bar": "ipsum" }' | jq
+
 # copy data into clipboard buffer.
 echo 200 | pbcopy
 

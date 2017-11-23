@@ -114,6 +114,18 @@ INET_NTOA(i)
 UUID()
 ````
 
+Privilege needed to create a function:
+
+````
++-------------------------+---------------------------------------+-------------------------------------------------------+
+| Privilege               | Context                               | Comment                                               |
++-------------------------+---------------------------------------+-------------------------------------------------------+
+| Create routine          | Databases                             | To use CREATE FUNCTION/PROCEDURE                      |
++-------------------------+---------------------------------------+-------------------------------------------------------+
+````
+
+A routine is considered DETERMINISTIC if it always produces the same result for the same input parameters.
+
 #### Flashback
 
 ````sql
@@ -157,6 +169,21 @@ Horizontal scaling means that you scale by adding more machines into your pool o
 Vertical scaling means that you scale by adding more power (CPU, RAM) to your existing machine.
 ````
 
+#### Truncate Vs delete
+
+TRUNCATE:
+It requires the DROP privilege.
+Does not invoke ON DELETE triggers.
+It cannot be performed for InnoDB tables with parent-child foreign key relationships.
+Truncate operations drop and re-create the table.
+Cannot be rolled back.
+Any AUTO_INCREMENT value is reset to its start value.
+
+DELETE:
+The DELETE statement deletes rows from tbl_name and returns the number of deleted rows.
+Need the DELETE privilege on a table to delete rows from it.
+You cannot delete from a table and select from the same table in a subquery.
+
 #### Tricks
 
 ````
@@ -195,6 +222,16 @@ SELECT @myRight;
 
 Aggregate (summary) functions such as COUNT(), MIN(), and SUM() ignore NULL values.
 The exception to this is COUNT(*), which counts rows
+
+Not NULL is important because we do not have to work on code level with int number `0` or `11` or `NULL` (wtf)!
+Also all data in DB have CONSISTENT representation.
+But `text` datatype is exception((( It's impossible to specify default value for `text`.
+
+It also depends on data stored in table,
+if we grab some data from somewhere and we cannot guarantee consistency on app level - have to use NULL.
+For example: we have spy bot, and bot can grab only email, or email and phone, or only name...
+So it is no way to figure out did bot found empty info or didn't find info,
+unless we use NULL.
 
 #### Options
 
@@ -312,6 +349,9 @@ SET global general_log = 1;
 * MERGE
 * FEDERATED
 * EXAMPLE
+* NDB
+
+ndb_config — Extract MySQL Cluster Configuration Information.
 
 #### [Data Types](http://dev.mysql.com/doc/refman/5.0/en/data-types.html)
 
