@@ -56,14 +56,6 @@ Separate function from rule.
 which may contain data, in the form of fields, often known as attributes,
 and code, in the form of procedures, often known as methods.
 
-Encapsulation - hide the values or state of a structured data object inside a class.
-
-Polymorphism - provision of a single interface to entities of different types
-(same name, different behavior).
-
-Inheritance - when an object or class is based on another object (prototypal inheritance)
-or class (class-based inheritance).
-
 **Event-driven** programming – program control flow is determined by events.
 (JavaScript).
 

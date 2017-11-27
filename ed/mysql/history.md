@@ -3,14 +3,14 @@ History of MySQL
 
 #### MySQL 5.7
 
-* JSON functions.
+* **JSON functions.**
 * Security improvements.
 * SQL mode changes.
 * Online ALTER TABLE (RENAME INDEX).
 * InnoDB enhancements.
 * Condition handling.
 * Optimizer.
-* Triggers (Multiple triggers are permitted.).
+* **Triggers (Multiple triggers are permitted).**
 * Logging.
 * Test suite.
 * mysql client.
@@ -20,8 +20,8 @@ History of MySQL
 * WITHOUT VALIDATION support for ALTER TABLE ... EXCHANGE PARTITION.
 * Master dump thread improvements.
 * Globalization improvements.
-* Changing the replication master without STOP SLAVE.
-* Deprecated EXPLAIN EXTENDED and PARTITIONS.
+* **Changing the replication master without STOP SLAVE.**
+* **Deprecated EXPLAIN EXTENDED and PARTITIONS.**
 * INSERT DELAYED is no longer supported.
 
 #### MySQL 5.6
@@ -29,12 +29,12 @@ History of MySQL
 * Security improvements.
 * MySQL Enterprise.
 * Changes to server defaults.
-* InnoDB enhancements (FULLTEXT indexes, ALTER TABLE without blocking, DATA DIRECTORY clause of the CREATE TABLE (which allows you to create InnoDB file-per-table tablespaces)).
+* **InnoDB enhancements** (FULLTEXT indexes, ALTER TABLE without blocking, DATA DIRECTORY clause of the CREATE TABLE (which allows you to create InnoDB file-per-table tablespaces)).
 * Partitioning (Maximum number of partitions is increased to 8192).
 * Performance Schema.
 * MySQL Cluster.
 * Replication and logging (Transaction-based replication (Synchronous replication)).
-* Optimizer enhancements (EXPLAIN for DELETE, INSERT, REPLACE, UPDATE.).
+* **Optimizer enhancements** (EXPLAIN for DELETE, INSERT, REPLACE, UPDATE.).
 * Condition handling.
 * Data types (Permits fractional seconds for TIME, DATETIME, and TIMESTAMP).
 * Host cache.
@@ -49,9 +49,9 @@ History of MySQL
 * InnoDB I/O subsystem.
 * Diagnostic improvements.
 * Solaris.
-* Default storage engine (Is InnoDB).
+* **Default storage engine (Is InnoDB).**
 * MySQL Cluster.
-* Semisynchronous replication.
+* **Semisynchronous replication.**
 * Unicode.
 * Partitioning (RANGE COLUMNS, LIST COLUMNS, and else).
 * SIGNAL and RESIGNAL.
@@ -62,10 +62,10 @@ History of MySQL
 
 #### MySQL 5.1
 
-* Partitioning.
-* Row-based replication.
+* **Partitioning.**
+* **Row-based replication.**
 * Plugin API.
-* Event scheduler.
+* **Event scheduler.**
 * Server log tables.
 * Upgrade program.
 * MySQL Cluster.
@@ -80,8 +80,8 @@ History of MySQL
 * Instance Manager.
 * Precision Math.
 * Storage Engines.
-* Stored Routines.
-* Triggers.
+* **Stored Routines.**
+* **Triggers.**
 * Views.
 * Cursors.
 * Strict Mode and Standard Error Handling.

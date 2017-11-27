@@ -163,9 +163,9 @@ Odd (1, 3, 5...) - `x % 2 = 1`.
 ` Back quote
 / Slash (forward slash)
 \ Backward Slash
-# Pound Sign
-$ Dollar Sign
-% Percent Sign
+# Pound
+$ Dollar
+% Percent
 & Ampersand
 * Asterisk
 - Dash

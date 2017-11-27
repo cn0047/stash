@@ -1,7 +1,7 @@
 Stackoverflow
 -
 
-[Top Ukraine SO Users](http://data.stackexchange.com/stackoverflow/query/428486/top-ukraine-so-users)
+[Top Ukraine SO Users](http://data.stackexchange.com/stackoverflow/query/763779/top-ukrainian-stackoverflow-users)
 [Trends](https://insights.stackoverflow.com/trends?tags=javascript%2Cphp)
 
 ````

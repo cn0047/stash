@@ -5,7 +5,7 @@ Test-driven development.
 
 ````
 Stub    - an object that provides predefined answers to method calls.
-Mock    - an object on which you set expectations.
+Mock    - (->createMock()) an object on which you set expectations.
 Fixture - is the fixed state that exists at the start of a test.
 ````
 

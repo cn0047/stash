@@ -1,6 +1,14 @@
 OOP
 -
 
+Encapsulation - hide the values or state of a structured data object inside a class.
+
+Polymorphism - provision of a single interface to entities of different types
+(same name, different behavior).
+
+Inheritance - when an object or class is based on another object (prototypal inheritance)
+or class (class-based inheritance).
+
 #### Problems
 
 Inheritance:

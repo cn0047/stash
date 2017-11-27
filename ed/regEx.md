@@ -52,7 +52,7 @@ https://regex101.com/
 |?>                                        | once-only sebexpression |
 |/?(condition)true-pattern\|false-pattern/ | condition |
 |/?(condition)true-pattern/                | condition |
-|(?|(regex1)|(regex2))                     | branch reset group |
+|`(?|(regex1)|(regex2))`                   | branch reset group |
 |(\2two|(one))+                            | forward references # /(\2two|(one))+/ -> oneonetwo
 |?#                                        | comment |
 |(?:...)                                   | pasive group, just group, cannot be linked by \1 # /(?:h.*)(f.*)/ -> htfm, group 1 = fm |
