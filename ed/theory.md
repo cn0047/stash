@@ -46,6 +46,12 @@ It is expensive type of cryptography.
 * business layer (node, php, etc)
 * data access layer (mongo, mysql, etc)
 
+#### Aggregation and Composition
+
+Aggregation - child can exist independently of the parent (Car -> Tires).
+
+Composition - child can NOT exist independent of the parent (House -> Room).
+
 #### Low coupling and high cohesion.
 
 COUPLING refers to the interdependencies between modules.

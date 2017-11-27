@@ -24,6 +24,14 @@ Update range array (tree) - O(N).
 Segment tree - better for many updates.
 Range array (tree) - better for many reads.
 
+Diameter of a Binary Tree - longest path of tree between 2 leafs.
+
+2 trees are isomorphic - if subtrees are isomorphic to each other.
+
+Height of BT = 1 + numbers of edges on the longest path from root to leaf.
+
+Delete a Binary Tree = Postorder + function free()
+
 ## AVL
 
 Balance factor: +1, 0, -1
@@ -31,9 +39,9 @@ Balance factor: +1, 0, -1
 LL | RR rotations.
 
 Height h = log N
-Worst time complexity for search = h = log N
+Worst time complexity for search = h = O(h) = log N
 
-## Binary Search
+## Binary Search Tree (BST)
 
 #### Find inorder predecessor
 
@@ -49,7 +57,7 @@ otherwise - search from where we take the [last left turn](http://prntscr.com/hd
 
 For example, for: [5, 6] Result: [5, 6], [6, 5]
 
-#### TBT (Threaded Binary Tree)
+#### Threaded binary tree (TBT)
 
 Every node have value and left pointer and right pointer.
 In case we have left or right pointer empty - we can fill it with link to inorder predecessor/successor,
@@ -61,3 +69,49 @@ To differentiate is it a pointer to child or to predecessor/successor TBT has le
 1. go to left child
 2. go to right child
 3. print node
+
+#### Preorder Traversal (Shortcut Trick)
+
+1. print node
+2. go to left child
+3. go to right child
+
+#### Inorder Traversal (Shortcut Trick)
+
+1. go to left child
+2. print node
+3. go to right child
+
+### DFS (Depth First Search) in binary tree
+
+1. print data
+2. visit left
+3. visit right
+
+### BFS (Breadth First Search) in binary tree
+
+1. print data
+2. visit left and right chilsd in 1 iteration
+
+### Delete a node from binary search tree
+
+Delete leaf node - just delete it.
+Delete node with 1 child - replace node with it's child.
+Delete node with 2 childs - replace with node wich is minimum in right child.
+
+### Print Root to Leaf Path with Given sum (K-Sum paths) 
+
+````
+1. push root value into stack
+2. -> go into left child push value into stack and calculate stack sum
+  -> if it's:
+    node - go to step 2
+    leaf - pop value from stack and go into parent right child and go to step 2
+````
+
+### Spiral (zig-zag) traversal of a binary tree
+
+1. add root to Stack1
+2. pop all from Stack1 and push left child into Stack2 and right child into Stack2
+3. pop all from Stack2 and push right child into Stack1 and left child into Stack1
+4. go to step 2
