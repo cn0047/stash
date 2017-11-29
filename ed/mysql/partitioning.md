@@ -334,16 +334,16 @@ MySQL partitioning cannot be used with the MERGE, CSV, or FEDERATED storage engi
 
 Temporary tables cannot be partitioned.
 
-Use of INSERT DELAYED to insert rows into a partitioned table is not supported.
+Use of **INSERT DELAYED** to insert rows into a partitioned table **is not supported**.
 
-All columns used in the partitioning expression for a partitioned table must be part of every unique key that the table may have.
+All **columns used in the partitioning expression** for a partitioned table **must be part of every unique key** that the table may have.
 This also includes the table's primary key, since it is by definition a unique key.
 
 For a partitioned MyISAM table, MySQL uses 2 file descriptors for each partition, for each such table that is open.
 
 The maximum possible number of partitions for a given table not using the NDB storage engine is 8192.
 
-The query cache is not supported for partitioned tables,
+The **query cache is not supported for partitioned tables**,
 and is automatically disabled for queries involving partitioned tables.
 The query cache cannot be enabled for such queries.
 
@@ -353,12 +353,12 @@ with partitioned tables that use the InnoDB storage engine.
 Use `ALTER TABLE ... REBUILD PARTITION`
 and `ALTER TABLE ... ANALYZE PARTITION`, instead, for such tables.
 
-Partitioned tables do not support FULLTEXT indexes.
+Partitioned tables **do not support FULLTEXT indexes**.
 
 Columns with spatial data types such as POINT or GEOMETRY cannot be used in partitioned tables.
 
 A partitioning key must be either an integer column or an expression that resolves to an integer.
-Expressions employing ENUM columns cannot be used.
+Expressions employing **ENUM columns cannot be used**.
 
 Only the MySQL functions shown here are allowed in partitioning expressions:
 

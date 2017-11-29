@@ -10,27 +10,6 @@ PHP - is high-level (not assembler), dynamic (behavior determines in runtime)
 weakly typed, object-oriented
 and interpreted server-side scripting language.
 
-#### zval
-
-````
-typedef struct _zval_struct {
-    zvalue_value value;        /* variable value */
-    zend_uint refcount__gc;    /* reference counter */
-    zend_uchar type;           /* value type */
-    zend_uchar is_ref__gc;     /* reference flag */
-} zval;
-typedef union _zvalue_value {
-    long lval;                 /* long value */
-    double dval;               /* double value */
-    struct {
-        char *val;
-        int len;               /* this will always be set for strings */
-    } str;                     /* string (always has length) */
-    HashTable *ht;             /* an array */
-    zend_object_value obj;     /* stores an object store handle, and handlers */
-} zvalue_value;
-````
-
 https://dev.twitter.com
 |
 [paypal api](https://developer.paypal.com/docs/api/)
@@ -249,7 +228,7 @@ foreach (debug_backtrace() as $v) {
 
 (mt_rand(0, 10) > 1) or var_dump(200);
 
-$t =microtime();
+$t = microtime();
 var_export(sprintf('%f', microtime()-$t));
 
 // debug tables:

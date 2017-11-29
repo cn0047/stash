@@ -1,6 +1,8 @@
 mongo
 -
 
+[university](https://university.mongodb.com)
+
 *MongoDB shell version: 2.4.6*
 
 `printjson()`, `.pretty()`

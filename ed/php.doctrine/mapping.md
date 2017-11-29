@@ -35,7 +35,7 @@ Built-in mapping types:
 * date: Type that maps an SQL DATETIME to a PHP DateTime object.
 * time: Type that maps an SQL TIME to a PHP DateTime object.
 * datetime: Type that maps an SQL DATETIME/TIMESTAMP to a PHP DateTime object.
-* text: Type that maps an SQL CLOB to a PHP string.
+* text: Type that maps an SQL BLOB to a PHP string.
 
 Column annotation attributes:
 

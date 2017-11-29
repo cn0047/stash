@@ -16,7 +16,7 @@ kill -SIGUSR1 2128
 # and open in browser chrome://inspect
 
 console.log(require('util').inspect('ok', false, null));
-require('fs').appendFile('/tmp/debug.tmp', JSON.stringify('ok')); // tail -f /tmp/debug.tmp
+require('fs').appendFile('/tmp/debug.tmp', JSON.stringify({code: 204})); // tail -f /tmp/debug.tmp
 process.exit(); // die;
 console.time('test');
 console.timeEnd('test');

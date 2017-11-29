@@ -1,0 +1,11 @@
+<html>
+<body>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  const socket = io.connect('ws://localhost:8080');
+  socket.on('foo', (data) => {
+    console.log(data);
+  });
+</script>
+</body>
+</html>

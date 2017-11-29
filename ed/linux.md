@@ -278,7 +278,8 @@ curl -T firmware.bin http://0.0.0.48/cgi-bin/package_install?hash=017
 fswatch ./src | while read f; do echo $f; done
 
 # prettify json output
-echo '{ "foo": "lorem", "bar": "ipsum" }' | jq
+echo '{"foo": "f", "bar": "b", "items": [1, 2, 3] }' | jq
+echo '{"foo": "f", "bar": "b", "items": [1, 2, 3] }' | jq '.items | length'
 
 # copy data into clipboard buffer.
 echo 200 | pbcopy

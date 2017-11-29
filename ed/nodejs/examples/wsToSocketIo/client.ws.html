@@ -1,0 +1,10 @@
+<html>
+<body>
+<script>
+  const ws = new WebSocket('ws://localhost:8080/socket.io/?EIO=3&transport=websocket');
+  ws.onmessage = (e) => {
+    console.log(e.data);
+  };
+</script>
+</body>
+</html>

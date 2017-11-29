@@ -1,7 +1,7 @@
 Symfony
 -
-3.1.1
-2.6.6
+<br>3.1.1
+<br>2.6.6
 
 [book](http://symfony.com/pdf/Symfony_book_2.6.pdf?v=4)
 |

@@ -61,7 +61,7 @@ select
     d.*
     ,m.*
 from prod_details d
-left join materials m on find_in_set(m.mat_id, d.mat_id) > 0
+left join materials m on FIND_IN_SET(m.mat_id, d.mat_id) > 0
 ;
 +-------+----------+--------+-------------+
 | codes | mat_id   | mat_id | mat_name    |

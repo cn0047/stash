@@ -115,3 +115,9 @@ Delete node with 2 childs - replace with node wich is minimum in right child.
 2. pop all from Stack1 and push left child into Stack2 and right child into Stack2
 3. pop all from Stack2 and push right child into Stack1 and left child into Stack1
 4. go to step 2
+
+### Diagonal distance
+
+root = 0
+left child = parent d - 1
+left child = parent d

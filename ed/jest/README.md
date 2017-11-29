@@ -5,6 +5,7 @@ Jest
 node_modules/.bin/jest --forceExit -i -t name-of-spec
 node_modules/.bin/jest -t test/unit/middlewares/
 node_modules/.bin/jest -t xPoweredBy.test.js
+node_modules/.bin/jest --coverage=false
 ````
 
 Jest - Jasmine-based js testing framework.

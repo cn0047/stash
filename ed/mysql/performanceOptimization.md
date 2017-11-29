@@ -1,7 +1,7 @@
 Performance optimization
 -
 
-`SHOW STATUS LIKE 'Last_Query_Cost`;
+`SHOW STATUS LIKE 'Last_Query_Cost'`;
 
 #### Improve query performance
 
