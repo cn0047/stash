@@ -12,7 +12,7 @@ Performance also depends on size and data structure presented in array.
 
 [Example](https://upload.wikimedia.org/wikipedia/commons/c/c8/Bubble-sort-example-300px.gif)
 
-Worst case = O(n^2)
+Worst case = **O(n^2)**
 Average case = O(n^2)
 Best case = O(n)
 
@@ -23,7 +23,7 @@ No extra memmory allocations needed for bubble sort!
 
 [Example](https://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif)
 
-Worst case = O(n^2)
+Worst case = **O(n^2)**
 Average case = O(n^2)
 Best case = O(n)
 
@@ -32,7 +32,7 @@ No extra memmory allocations needed for bubble sort!
 
 ### Selection sort
 
-Worst case = O(n^2)
+Worst case = **O(n^2)**
 Average case = O(n^2)
 Best case = O(n^2)
 Space required = O(n)
@@ -47,7 +47,7 @@ Don\'t do many swaps but do lot of comparisons.
 
 reqursive
 
-Worst case = O(n log n) # less than O(n^2)
+Worst case = **O(n log n)** # less than O(n^2)
 Average case = O(n log n)
 Best case = O(n log n)
 Space required = O(n)
@@ -59,7 +59,7 @@ Predicteble algorithm because only size of array influence performance.
 
 reqursive
 
-Worst case = O(n^2)
+Worst case = **O(n^2)**
 Average case = O(n log n)
 Best case = O(n log n)
 Space required = O(n)
