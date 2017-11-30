@@ -5,5 +5,6 @@ nvm
 
 ````
 nvm ls
-nvm use 7
+nvm use 8.9.1
+nvm alias default 8.9.1
 ````

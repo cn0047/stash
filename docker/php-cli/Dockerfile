@@ -15,4 +15,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y uuid-dev \
     && pecl install uuid \
     && docker-php-ext-enable uuid
 
+RUN curl -sS https://getcomposer.org/installer | php \
+  && mv composer.phar /usr/local/bin/composer
+
 CMD ["php"]

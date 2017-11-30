@@ -171,6 +171,8 @@ docker run -it --rm -v $PWD:/gh -w /gh/ed/nodejs/examples/mongo --link xmongo no
 docker build -t php-cli ./docker/php-cli
 docker run -it --rm -v $PWD:/gh php-cli php -v
 docker run -it --rm -v $PWD:/gh php-cli php /gh/x.php
+# composer
+docker run -it --rm -v $PWD:/gh php-cli composer --help
 
 # php-fpm
 docker build -t php-fpm ./docker/php-fpm
