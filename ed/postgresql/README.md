@@ -69,3 +69,10 @@ device specifications:
 
 @TODO:
 inherits
+https://app.pluralsight.com/library/courses/postgresql-playbook/table-of-contents
+https://app.pluralsight.com/library/courses/postgresql-document-database/table-of-contents
+https://app.pluralsight.com/library/courses/postgresql-index-tuning-performance-optimization/table-of-contents
+https://app.pluralsight.com/library/courses/postgresql-advanced-sql-queries/table-of-contents
+https://app.pluralsight.com/library/courses/postgresql-sql-queries-introduction/table-of-contents
+https://app.pluralsight.com/library/courses/postgresql-advanced-server-programming/table-of-contents
+https://app.pluralsight.com/library/courses/postgresql-time-temporal-data/table-of-contents
