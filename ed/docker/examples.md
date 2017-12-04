@@ -114,12 +114,16 @@ docker exec -ti mysql-master mysql -P3307 -udbu -pdbp -Dtest
 #### POSTGRESQL
 
 ````
-docker run -it --rm -p 5432:5432 --name postgres-master --hostname postgres-master \
+docker run -it --rm --name xpostgres --hostname xpostgres \
+    -e POSTGRES_DB=test -e POSTGRES_USER=dbu -e POSTGRES_PASSWORD=dbp postgres
+
+docker run -it --rm -p 5432:5432 --name xpostgres-master --hostname postgres-master \
     -v $PWD/docker/.data/postgresql:/var/lib/postgresql/data \
     -v $PWD/docker/postgresql/master.conf:/var/lib/postgresql/data/postgresql.conf \
     -e POSTGRES_DB=test -e POSTGRES_USER=dbu -e POSTGRES_PASSWORD=dbp postgres
 
 # test
+docker exec -ti xpostgres psql -h localhost -p 5432 -U dbu -d test
 docker exec -ti postgres-master psql -h localhost -p 5432 -U dbu -d test
 ````
 

@@ -3,6 +3,8 @@ PostgreSQL
 
 (ORDBMS) Object-Relational Database Management System.
 
+[online config](http://pgtune.leopard.in.ua/).
+
 #### REPL:
 
 ````
@@ -28,6 +30,15 @@ create table test (
   d double precision,
   s character varying(20)
 );
+````
+
+#### JSON:
+
+````
+row_to_json(fieldFromDB)
+to_json(string)
+json_agg(fieldFromDB)
+json_object('{a, 1, b, "def", c, 3.5}')
 ````
 
 #### Data Types:
@@ -69,8 +80,6 @@ device specifications:
 
 @TODO:
 inherits
-https://app.pluralsight.com/library/courses/postgresql-playbook/table-of-contents
-https://app.pluralsight.com/library/courses/postgresql-document-database/table-of-contents
 https://app.pluralsight.com/library/courses/postgresql-index-tuning-performance-optimization/table-of-contents
 https://app.pluralsight.com/library/courses/postgresql-advanced-sql-queries/table-of-contents
 https://app.pluralsight.com/library/courses/postgresql-sql-queries-introduction/table-of-contents

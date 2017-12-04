@@ -32,6 +32,7 @@ npm config list
 npm config ls -l
 npm config delete keyname
 npm config set keyname value
+npm config set @qsc:registry "http://npm.qrmmlab.qsc.com/repository/npm/"
 
 npm publish
 

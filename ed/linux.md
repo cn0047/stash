@@ -191,6 +191,16 @@ ps -e -o pid,comm,etime           # Display elapsed time of processes
 watch -n 1 'ps -e -o pid,uname,cmd,pmem,pcpu --sort=-pmem,-pcpu | head -15' # Turn ps into an realtime process viewer
 ````
 
+````
+adduser rob
+visudo
+su rob
+# on host machine
+cat ~/.ssh/id_rsa.pub
+# on remote machine
+echo 'key from id_rsa.pub from host machine' >> ~/.ssh/authorized_keys
+````
+
 #### chmod
 ````
 -rwxrwxrwx
