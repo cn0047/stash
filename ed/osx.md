@@ -14,6 +14,7 @@ open /Applications/Utilities/Terminal.app/Contents/Resources/Fonts/
 Option = Alt
 
 Control-Shift-Power # Lock screen
+Command-Option-Power # Put MacBook to sleep
 ````
 
 ````

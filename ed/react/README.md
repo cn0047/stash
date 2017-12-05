@@ -3,6 +3,8 @@ React
 
 v15.4.0
 
+[Wall](https://github.com/cn007b/wall/blob/master/wall/src/web/js/implementation/react/babel/app.babel)
+
 React is a declarative, efficient, and flexible JavaScript library for building user interfaces.
 
 ````
@@ -11,6 +13,10 @@ create-react-app hello-world
 cd hello-world
 npm start
 ````
+
+Component may be:
+* function component (`const MyCmpnt = () => { return someJSX }`)
+* class component
 
 All React components must act like pure functions with respect to their props.
 Functions are called "pure" because they do not attempt to change their inputs, and they always deterministic.
@@ -32,6 +38,8 @@ function App2() {
   const props = {firstName: 'Ben', lastName: 'Hector'};
   return <Greeting {...props} />;
 }
+
+<div> {props.cards.map(card => <Card {...card} />)} </div>
 ````
 
 To pass data through the component tree without having to pass props down into each component - use `context`.
@@ -44,6 +52,13 @@ Changes in context won't cause re-render not in parent nor child.
 but trigger the normal lifecycle methods for child.
 
 Uncontrolled Component - (use a `ref`) gets values from the DOM.
+````
+return <input ref="inp" />;
+...
+componentDidMount: () => {
+  console.log(this.refs.inp.getDOMNode().value);
+}
+````
 
 Reconciliation - all path from virtual DOM to the actual DOM.
 
@@ -84,4 +99,23 @@ All Supported HTML Attributes available
 
 [SyntheticEvent](https://facebook.github.io/react/docs/events.html#supported-events).
 
-[Wall](https://github.com/cn007b/wall/blob/master/wall/src/web/js/implementation/react/babel/app.babel)
+````
+var Settings = React.createClass({
+  statics: {
+    willTransitionTo: function (transition, params, query, callback) {
+      callback();
+    },
+    willTransitionFrom: function (transition, params, query, callback) {
+      callback();
+    },
+  }
+});
+````
+
+
+https://app.pluralsight.com/library/courses/react-redux-react-router-es6/table-of-contents
+https://app.pluralsight.com/library/courses/react-boilerplate-building-scalable-apps/table-of-contents
+https://app.pluralsight.com/library/courses/react-styling-components/table-of-contents
+https://app.pluralsight.com/library/courses/reactjs-advanced/table-of-contents
+https://app.pluralsight.com/library/courses/jest-mastering-react-testing/table-of-contents
+https://app.pluralsight.com/library/courses/react-express-full-stack-app-build/table-of-contents
