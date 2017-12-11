@@ -311,6 +311,12 @@ err.expose = true;
 throw err;
 ````
 
+Regex:
+
+````
+ /hello/.test('hello world');
+````
+
 #### Function
 
 ````js

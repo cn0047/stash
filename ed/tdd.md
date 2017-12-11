@@ -36,13 +36,9 @@ What not to automate with tests:
 
 Regression testing - is designed to avoid regressing your application to a previous buggy state.
 
-<ul>
-    <li><b>Acceptance</b>: Does the whole system work?</li>
-    <li><b>Integration</b>: Does our code work against code we can't change?</li>
-    <li><b>Unit</b>: Do our objects do the right thing, are they convenient to work with?</li>
-</ul>
-
 ## Acceptance
+
+Does the whole system work?
 
 Acceptance criteria come in many different varieties; for one thing, they can be functional or nonfunctional.
 Nonfunctional acceptance criteria include things like:
@@ -64,8 +60,11 @@ Functions are tested by feeding them input and examining the output (type of bla
 ## Integration
 
 Test multiple units.
+Does our code work against code we can't change (db, external service etc)?
 
 ## Unit
+
+Do our objects do the right thing, are they convenient to work with?
 
 The aim of a unit test is to show that a single part of the application does what the programmer intends it to.
 Unit tests MUST be fast.

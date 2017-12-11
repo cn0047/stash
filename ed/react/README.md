@@ -18,6 +18,21 @@ Component may be:
 * function component (`const MyCmpnt = () => { return someJSX }`)
 * class component
 
+Use class component when you need: to work with state, refs, lifecycle events, child functions.
+Everywhere else use function component (stateless component).
+
+Container (aka controller-view):
+* no markup
+* pass data and actions down
+* knows about redux
+* statful
+
+Presentation component (aka view):
+* no business logic just markup
+* receive data and actions via props
+* doesn't know about redux
+* functional component
+
 All React components must act like pure functions with respect to their props.
 Functions are called "pure" because they do not attempt to change their inputs, and they always deterministic.
 
@@ -112,8 +127,6 @@ var Settings = React.createClass({
 });
 ````
 
-
-https://app.pluralsight.com/library/courses/react-redux-react-router-es6/table-of-contents
 https://app.pluralsight.com/library/courses/react-boilerplate-building-scalable-apps/table-of-contents
 https://app.pluralsight.com/library/courses/react-styling-components/table-of-contents
 https://app.pluralsight.com/library/courses/reactjs-advanced/table-of-contents

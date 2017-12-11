@@ -2,10 +2,9 @@ Complexity of algorithms
 -
 
 Important to find upper bound for algorithm.
-
-`time` - it isn't possible to estimate time because it's vary on different machines (CPU, memory, etc.)
-`memory (space)`
-`count of steps (actions)`
+<br>`time` - it isn't possible to estimate time because it's vary on different machines (CPU, memory, etc.)
+<br>`memory (space)`
+<br>`count of steps (actions)`
 
 Big O - Dependency between count of iterations and input parameters.
 
@@ -30,10 +29,8 @@ whre a - 1st array length, b - 2nd.
 
 If algorithm takes half of elements on iteration - `Big O = O(log N)`.
 
-`for (var i = 0; i < n; i++) for (var j = i; j < n; j++) {}` - `O(N^2/2) = O(N^2)`.
-`for (int i = N; i > 0; i /= 2) for (int j = 0; j < i; j++) {}` - `O(N)`
-
-In case of if statement Big O will be equal to worst case.
+<br>`for (var i = 0; i < n; i++) for (var j = i; j < n; j++) {}` - `O(N^2/2) = O(N^2)`.
+<br>`for (int i = N; i > 0; i /= 2) for (int j = 0; j < i; j++) {}` - `O(N)`
 
 Algorithm X is asymptotically more efficient than Y -
 X will always be a better choice for large inputs.

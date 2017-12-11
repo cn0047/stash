@@ -245,10 +245,15 @@ SSL - Secure Sockets Layer.
 TLS - Transport Layer Security.
 
 TLS handshake:
-Client sends hello to server, server responds with hello and public key back to client.
-Client verifies key against CAs.
-Than client performs `client key exchange` and server response with encryption using public key
-after that secure communication begins.
+
+1. Client sends hello to server.
+2. Server responds with hello and certificate which contains public key back to client.
+3. Client verifies certificate against CAs.
+4. Client generates symmetric pre-master key and encrypt it with public key from certificate
+   and transmits it to the server.
+5. Server decrypt pre-master and generates symmetric key.
+   Now both client and server have symmetric key (session key).
+5. SSL is established and secure communication begins.
 
 HTTP Strict Transport Security:
 `strict-transport-security` header in response with `max-age` as value
