@@ -15,6 +15,7 @@ http://jsbin.com/
 http://codepad.org/
 https://3v4l.org/
 http://sqlfiddle.com/
+http://choosealicense.com/
 https://www.box.com/en-gb/home
 
 https://code.facebook.com/projects/
@@ -24,7 +25,6 @@ https://github.com/sindresorhus/awesome
 https://github.com/h5bp/Front-end-Developer-Interview-Questions
 https://github.com/ifightcrime/bootstrap-growl/ PopUp
 
-http://choosealicense.com/
 http://www.xe.com/
 http://free-proxy-list.net/
 
