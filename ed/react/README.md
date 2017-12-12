@@ -127,8 +127,13 @@ var Settings = React.createClass({
 });
 ````
 
-https://app.pluralsight.com/library/courses/react-boilerplate-building-scalable-apps/table-of-contents
-https://app.pluralsight.com/library/courses/react-styling-components/table-of-contents
-https://app.pluralsight.com/library/courses/reactjs-advanced/table-of-contents
-https://app.pluralsight.com/library/courses/jest-mastering-react-testing/table-of-contents
-https://app.pluralsight.com/library/courses/react-express-full-stack-app-build/table-of-contents
+## Server side rendering
+
+````
+import ReactDOMServer from 'react-dom/server';
+const = ssRender = () => {
+  return ReactDOMServer.renderToString(
+    <App />
+  );
+};
+````

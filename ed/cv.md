@@ -1,0 +1,85 @@
+CV
+-
+
+## What I've already done on PRODUCTION
+
+* ***apache*** - restart; enable log; configure virtual host; add redirect rule;
+* ***api*** - google adwords; facebook; payoneer; paypal; pipedrive; quickblox; aws s3; sparkpost; sproutvideo;
+* ***aws*** - ec2; ami; security group; auto scaling group; launch configuration; load balancer; s3; custom cloudwatch metrics; sns; sqs; iam; codedeploy;
+* ***backbone.js*** - custom router; i18n; load controller on fly;
+* ***bash*** - for; grep; ps aux; find; array; function; if-else;
+* ***beanstalkd*** - add message; retrieve message; tube stats; general stats;
+* ***digitalocean*** - create droplet; upgrade droplet;
+* ***elasticsearch*** - search geo_distance; full-text search; scripts; upgrade 1.6 → 2.2 → 5.4; reindex without downtime; move cluster from yellow to green status; aggregations;
+* ***git*** - clone; merge; hooks; blame; diff; log; stash; apply patch; cherry-pick; bisect; rebase;
+* ***javascript*** - parse json; XMLHttpRequest; use call, apply, bind; lambda; closure; prototype; error handling; include other js file; IIFE; fetch;
+* ***jquery*** - serialize form; ajax; bind events on fly; delegate event;
+* ***kahlan*** - stub; monkey;
+* ***koa*** - route; middleware;
+* ***linux*** - find file; cron; supervisord; mc; grep; vim; ps aux; htop; ssh; rsync; wkhtmltoimage; wkhtmltopdf; simple bash; curl; awscli; jpegoptim; pngquant; mogrify (imagemagick); screen; mount; fswatch;
+* ***mercurial*** - clone; merge; diff; log; import;
+* ***mongodb*** - insert; update; find;
+* ***mysql*** - insert into select from; replace; explain; join; union; transaction; partitioning; show table status; show index from table; trigger; prepared statements; create relational db schema with foreign keys; normalization db schema; alter table; mysqldump; use myisam, innodb, memory; optimize query performance;
+* ***nginx*** - restart; enable log; configure virtual host; add redirect rule;
+* ***node.js*** - fs; promise; es6; promisify; events; streams;
+* ***npm*** - publish;
+* ***oauth2*** - google; facebook;
+* ***phalcon*** - volt; cli tasks; migration; rest api; upgrade 1.4 → 2.0.10; custom events; translation;
+* ***php*** - curl; session; regexp; pdo; spl; reflection; error handling; mcrypt; password hashing; xml-rpc; memcache; heredoc; interface; class; trait; cli; upgrade PHP 5.1.6 → PHP 5.3.3 → PHP 5.4.35 → PHP 5.5; semaphore; pcntl_* functions (fork, wait, etc); imap_* functions; opcache; apcu; imagick; generators;
+* ***phpunit*** - stub; mock; dataProvider; fixture; dbTest;
+* ***require.js*** - i18n; text.js;
+* ***slack*** - incoming-webhooks;
+* ***smarty*** - debug; capture; html_options; include; extends; plugin;
+* ***svn*** - checkout; merge; diff; log; 
+* ***symfony*** - doctrine; twig; components (asset, console, form, process, lockHandler, routing, security firewalls, voters, authentication, authorization, translation, validator);
+* ***twig*** - dump; set; include; extends;
+* ***underscore.js*** - each; escape; isEmpty; isFunction; template;
+* ***yii*** - controller filter; form; relational model; module; component; extension; db test; internationalization; custom filters; events; rest api;
+
+## What I've already tried on my sandbox
+
+* ***aws*** - rds; codedeploy;
+* ***ci*** - jenkins; travis;
+* ***codeigniter*** - mvc;
+* ***docker*** - dockerfile; compose; elasticsearch cluster; mysql cluster;
+* ***elasticsearch*** - create cluster; scroll;
+* ***express*** - route; middleware; validator; i18n; cookieParser; session; render react (server side rendering);
+* ***google*** - chart;
+* ***haproxy*** - round robin for 3 mysql replicas;
+* ***heroku*** - pipeline; cli; add-ons;
+* ***jmeter*** - header manager; expression extractor; csv data set; os process; response assertion;
+* ***kibana*** - simple dashboards;
+* ***laravel*** - mvc; facade; service; blade;
+* ***logstash*** - parse nginx access log; output to elasticsearch;  
+* ***mongodb*** - insert; find; explain; references; index; aggregation; map-reduce; two phase commit (transaction); administration; dump;
+* ***mysql*** - slow query log; replication;
+* ***node.js*** - mongodb; mongoose; mailer; i18n; socket.io; mysql; node-fetch; nodemon; tests (jest, mocha, chai, sinon, nock); assert; loopback; webpack;
+* ***oauth2*** - github;
+* ***php*** - xdebug; websockets;
+* ***phpdoc*** - generate documentation;
+* ***postgresql*** - insert; select; dump; repl;
+* ***rabbitmq*** - queue worker; topic and routing exchanges; delayed message;
+* ***react*** - component; router; context; es6; jsx;
+* ***redis*** - set; hash; transaction; pipelining;
+* ***redux*** - store; combineReducers;
+* ***seleniumide*** - if; loop; generate random data (username, email, telephone);
+* ***silex*** - rest api;
+* ***vagrant*** - provisioning with bash and puphpet; multi-machine;
+* ***wireshark*** - follow tcp stream;
+* ***yii2*** - mvc;
+
+## Programming Languages
+
+* **scala** since 2017 - I've used this language for solving tasks related to functional programming on hackerrank.
+* **ruby** since 2017 - Used at a simple level.
+* **bash** since 2013 - I work with this language on regular basis many years.
+* **php** since 2011 - I hope I know something little bit about this language...
+* **c#** since 2008 - Used in home project. Remember something very hazy. Only remember I felt that this language really powerful and has lot of great features...
+* **lisp** since 2006 - Used in university. Completely remember nothing.
+* **c++** since 2006 - Used in university. Completely remember nothing.
+* **c** since 2006 - Used in university. Completely remember nothing.
+* **basic** since 2004 - Used in college. Accomplished super simple stuff. Almost don't remember.
+* **javascript** since 2003 - Used in college. I've abandoned this language for a while... Since 2012 I've been working with this language on regular basis.
+* **delphi** since 2003 - Used in college. Remember something very hazy. It was my main language for many years. I thought It should be my future... (((
+* **assembler** since 2003 - Used in college. I still remember something - because of simple syntax). And clearly remember - that it was really cool!
+* **pascal** since 2002 - Used in college for simple algorithms. Remember something very hazy.

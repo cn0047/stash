@@ -108,6 +108,8 @@ PARTITION BY LIST(store_id) (
 );
 ````
 
+In case value not present in any list - `ERROR 1526 (HY000): Table has no partition for value 77`.
+
 #### COLUMNS Partitioning
 * All integer types: TINYINT, SMALLINT, MEDIUMINT, INT (INTEGER), and BIGINT. (This is the same as with partitioning by RANGE and LIST.)
 <br> Other numeric data types (such as DECIMAL or FLOAT) are not supported as partitioning columns.

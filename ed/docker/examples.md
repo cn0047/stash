@@ -77,13 +77,19 @@ docker run -it --rm -p 9201:9200 --name es-data-1 --link es-master-1  \
     -e "node.master=false" -e "node.data=true" -e "discovery.zen.ping.unicast.hosts=es-master-1" elasticsearch:5.4
 ````
 
-#### MYSQL cluster
+#### MYSQL
 
 ````
 docker run -it --rm -p 3307:3306 --name xmysql --hostname xmysql \
     -v $PWD/docker/.data/mysql:/var/lib/mysql \
     -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=test -e MYSQL_USER=dbu -e MYSQL_PASSWORD=dbp mysql:latest
 
+docker exec -ti xmysql mysql -P3307 -udbu -pdbp -Dtest
+````
+
+#### MYSQL cluster
+
+````
 # init master node
 docker run -it --rm -p 3307:3306 --name mysql-master --hostname mysql-master \
     -v $PWD/docker/mysql/mysql-bin.log:/var/log/mysql/mysql-bin.log \
@@ -107,7 +113,6 @@ docker exec mysql-slave-1 mysql -uroot -proot -e "START SLAVE"
 docker exec mysql-slave-1 mysql -uroot -proot -e "SHOW SLAVE STATUS \G"
 
 # test
-docker exec -ti xmysql mysql -P3307 -udbu -pdbp -Dtest
 docker exec -ti mysql-master mysql -P3307 -udbu -pdbp -Dtest
 ````
 
