@@ -1,10 +1,10 @@
 {
-  "name": "kint/ed",
-  "description": "namespaceDI",
+  "name": "namespace-dependency-injection",
+  "description": "Namespace dependency injection example in PHP.",
   "autoload": {
     "psr-4": {
       "Domain\\": "src/Domain",
-      "Persistence\\": "src/MySQL"
+      "Persistence\\": "src/Infrastructure/Persistence/MongoDB"
     }
   },
   "require": {}

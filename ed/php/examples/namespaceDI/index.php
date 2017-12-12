@@ -1,5 +1,8 @@
 <?php
 
+use Persistence\User;
+
 require_once __DIR__ . '/vendor/autoload.php';
 
-(new \Persistence\User())->getById(1);
+$user = (new User())->getById(1);
+var_export($user);
