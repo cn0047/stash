@@ -12,4 +12,5 @@ heroku config -a realtimelog
 
 heroku logs -a realtimelog --tail
 
+heroku run bash -a realtimelog
 ````

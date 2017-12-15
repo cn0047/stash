@@ -221,7 +221,11 @@ There are typically three different types of service:
 
 In DDD, transactions are handled at the Application Service level (for example TransactionalApplicationService).
 
-### Real problems.
+## Real problems.
+
+Domain event publisher, and technical stuff (publisher-subscriber or bus patterns internal implementations)?
+Switch from one php framework to another?
+Switch from one front-end framework to another? And server-side rendering?
 
 #### Configs.
 
@@ -237,5 +241,3 @@ VOs must be placed in application layer.
 #### Exception.
 
 Exceptions must be present in each layer, with purpose describe problems of certain layer.
-
-#### Domain event publisher.

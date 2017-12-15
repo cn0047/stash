@@ -127,8 +127,16 @@ for managing product development.
 
 Roles:
 
-* Product Owner
+* Product Owner:
+  * final authority
+  * prioritize backlog
+  * provide
+
 * Scrum Master
+  * facilitator, negotiator
+  * responsible for guiding team
+  * removes impediments
+
 * Development Team
 
 Events:
@@ -137,7 +145,7 @@ Events:
 * grooming (backlog refinement)
 * daily scrum
 * demo
-* sprint review and retrospective
+* sprint review and retrospective (what to start/stop/continue to do)
 
 Artifacts:
 
@@ -159,6 +167,12 @@ Teams whose members have very specialized skills
 Products with many external dependencies
 Products that are mature or legacy or with regulated quality control
 
+User story.
+Epic.
+
+Burndown chart.
+Velocity.
+
 #### Adaptive software development
 
 Continuous learning and adaptation to the emergent state of the project.
@@ -170,3 +184,16 @@ The characteristics of an ASD life cycle are that it is:
 * timeboxed
 * risk driven
 * change tolerant
+
+#### Rapid-application development
+
+RAD approaches to software development put less emphasis on planning
+and more emphasis on process.
+
+Focus on business problems that are critical to end users rather than technical problems.
+
+Provides a flexible adaptable process.
+The ideal is to be able to adapt quickly to both problems and opportunities.
+(There is an inevitable trade-off between flexibility and control, more of one means less of the other).
+
+Good for small and medium-sized projects.
