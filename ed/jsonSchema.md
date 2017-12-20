@@ -2,13 +2,76 @@ JSON-Schema
 -
 
 https://spacetelescope.github.io/understanding-json-schema/
+https://github.com/epoberezkin/ajv-keywords
 
 ````
+{ "type": "string" }
+{ "type": "array", "uniqueItems": true }
+{ "type": "string", "enum": ["red", "amber", "green"] }
+
+{ "id": "http://yourdomain.com/schemas/myschema.json" }
+{ "$schema": "http://json-schema.org/draft-04/schema#" }
 { "$ref": "#/definitions/address" }
+
+{ "allOf": [ { "type": "string" }, { "maxLength": 5 } ] }
+{ "anyOf": [ { "type": "string" }, { "type": "number" } ] } # valid against any (one or more) 
+{ "oneOf": [ { "type": "number", "multipleOf": 5 }, { "type": "number", "multipleOf": 3 } ] } # valid against exactly one
+{ "not": { "type": "string" } }
 ````
 
 ````
-const httpSchema = {
+# dependencies
+{
+  "type": "object",
+  "properties": {
+    "name": { "type": "string" },
+    "credit_card": { "type": "number" },
+    "billing_address": { "type": "string" }
+  },
+  "required": ["name"],
+  "dependencies": {
+    "credit_card": ["billing_address"]
+  }
+}
+
+const schema = {
+  type: 'object',
+  required: [
+    // 'multicastAddressBlock',
+    'isAutoMulticast',
+  ],
+  properties: {
+    multicastAddressBlock: {
+      oneOf: [
+        { type: 'null' },
+        { type: 'string', format: 'ipv4' },
+      ],
+    },
+    isAutoMulticast: {
+      type: 'boolean',
+    },
+  },
+  switch: [
+    {
+      if: {
+        properties: {
+          isAutoMulticast: { enum: [false] },
+        },
+      },
+      then: {
+        required: ['multicastAddressBlock'],
+        properties: {
+          multicastAddressBlock: {
+            not: { type: 'null' },
+          },
+        },
+      },
+      continue: true,
+    },
+  ],
+};
+
+const schema = {
   type: 'object',
   required: [
     'interface',
@@ -105,10 +168,10 @@ const httpSchema = {
         },
       },
       then: {
-````
         required: ['stunServer'],
       },
       continue: true,
     },
   ],
 };
+````

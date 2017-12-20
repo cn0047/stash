@@ -1,6 +1,7 @@
 docker
 -
-1.12.5
+<br>17.09.1
+<br>1.12.5
 
 ## Overview
 
@@ -57,6 +58,18 @@ docker rmi -f docker-whale
 exit
 ````
 
+## Dockerfile
+
+* FROM
+* MAINTAINER
+* RUN
+* COPY
+* WORKDIR
+* ENTRYPOINT
+* EXPOSE
+* ENV
+* VOLUME
+
 ## Machine
 
 Use [machine](https://docs.docker.com/machine) to create Docker hosts on your local box,
@@ -69,6 +82,10 @@ docker-machine version
 docker-machine ls
 
 docker-machine create --driver virtualbox manager1
+
+docker-machine ip default
+docker-machine status default
+docker-machine stop default
 ````
 
 ## Compose
@@ -108,24 +125,24 @@ Non-finished swarm:
 # init rabbit
 
 #
-docker run -it --rm --name php-cli-rabbitmq-c -v $PWD/ed:/gh/ed --link rabbit php-cli
+# docker run -it --rm --name php-cli-rabbitmq-c -v $PWD/ed:/gh/ed --link rabbit php-cli
 
 #
-docker-machine create --driver virtualbox manager1
-docker-machine ip manager1
+# docker-machine create --driver virtualbox manager1
+# docker-machine ip manager1
 # 192.168.99.100
-docker-machine ssh manager1
+# docker-machine ssh manager1
 docker swarm init --advertise-addr 192.168.99.100
 docker node ls
 #
-docker service create --replicas 3 --name php-cli-rabbitmq-swarm php-cli-rabbitmq-c \
-    php /gh/ed/php/examples/rabbitmq/tutorials/workQueue/worker.php
+# docker service create --replicas 3 --name php-cli-rabbitmq-swarm php-cli-rabbitmq-c \
+#     php /gh/ed/php/examples/rabbitmq/tutorials/workQueue/worker.php
 docker service ls
-docker service ps php-cli-rabbitmq-swarm
+# docker service ps php-cli-rabbitmq-swarm
 
 #
-docker-machine create --driver virtualbox worker1
-docker-machine ssh worker1
+# docker-machine create --driver virtualbox worker1
+# docker-machine ssh worker1
 docker swarm join \
     --token SWMTKN-1-3ie1vxyfmvh1756tv37dyp8datyyfcsfrnkhmzofwk3nsle7ud-cblwlb51iv251evjiudwxs6li \
     192.168.99.100:2377
@@ -138,9 +155,8 @@ docker node ls
 # list these networks
 docker network ls
 
-docker network inspect
+docker network create --driver bridge x_node_mongo
+docker network inspect x_node_mongo
 ````
 
-https://docs.docker.com/engine/userguide/networking/default_network/dockerlinks/
-
-https://docs.docker.com/compose/compose-file/
+https://app.pluralsight.com/library/courses/getting-started-kubernetes/table-of-contents

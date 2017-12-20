@@ -1,5 +1,6 @@
 PHP
 -
+<br>*PHP 7.1.7*
 <br>*PHP 5.6.23*
 <br>*PHP 5.5.9*
 <br>*PHP 5.4.35*

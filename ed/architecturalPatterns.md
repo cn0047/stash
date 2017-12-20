@@ -7,6 +7,12 @@ Architecture must care about:
 * Utility
 * Beauty
 
+Functional organization:
+Create directories: Customers, Products, Vendors
+instead of Controllers, Models, Views.
+Pros: easy to navigate.
+Cons: lose framework convention.
+
 Common questions.
 
 MVC, MVP, MVVM etc:
@@ -26,6 +32,7 @@ An architectural pattern is a proven structural organization schema for software
 * Peer-to-peer
 * Blackboard
 * Event-bus
+* CQRS
 
 * Event-driven architecture
 * Active record
@@ -42,18 +49,22 @@ An architectural pattern is a proven structural organization schema for software
 * Model-View-ViewModel (MVVM)
 * Entity-Control-Boundary
 
-#### Layers (AKA multitier or three-tier or n-tier)
+#### Layers (AKA multitier or 3-tier or n-tier)
 
 * Presentation layer (UI layer)
 * Application layer (service layer)
 * Business logic layer (domain layer)
 * Data access layer (persistence layer)
 
+Classic 3-tier: Presentation -> Business -> Data.
+
 Usage: desktop app, E-commerce web app.
 
 #### Client-server
 
 Usage: online app like email, document sharing and banking.
+
+#### Master-slave
 
 #### Pipe-filter
 
@@ -77,20 +88,6 @@ and as a `server` providing services to other peers.
 
 Usage: file-sharing networks, multimedia protocols, something like spotify.
 
-#### Event-bus
-
-`event source`, `event listener`, `channel` and `event bus`.
-
-Usage: android development, notification services.
-
-#### Model-View-Controller
-
-1. model — contains the core functionality and data.
-2. view — displays the information to the user.
-3. controller — handles the input from the user.
-
-Usage: architecture for World Wide Web app.
-
 #### Blackboard
 
 Useful for problems for which no deterministic solution strategies are known.
@@ -98,15 +95,48 @@ Useful for problems for which no deterministic solution strategies are known.
 Usage: speech recognition, vehicle identification and tracking,
 protein structure identification, sonar signals interpretation.
 
+#### Event-bus
+
+`event source`, `event listener`, `channel` and `event bus`.
+
+Usage: android development, notification services.
+
+#### CQRS
+
+Type 1 - Single database CQRS.
+
+Type 2 - Two database CQRS:
+
+* Commands use write DB
+* Queries use read DB
+
+Type 3 - Event Sourcing:
+
+Store events -> Replay events -> Modify entity -> Store new event -> Update read DB.
+
+Pros:
+
+* Roint-in-time reconstruction.
+* Multiple read DBs.
+* Rebuild PROD DB.
+
+-
+
+#### Event-driven architecture
+
+#### Active record
+
 #### Data mapper
 
 (Object Relational Mapper (ORM) and the Database Abstraction Layer (DAL))
 Object-relational mapping - is a programming technique
 for converting data between incompatible type systems in object-oriented programming languages.
 
-#### Entity-Control-Boundary
+#### Implicit invocation
 
-Action -> Boundary -> Control (mediator) -> Entity.
+#### Naked objects
+
+#### Operational Data Store
 
 #### Service Oriented Architecture
 
@@ -124,39 +154,22 @@ Each SOA building block can be:
 
 #### Microservices
 
-Microservices is a variant of the SOA
-architectural style that structures an application as a collection of loosely coupled services.
-It is modern interpretation of SOA used to build distributed software systems.
+-
 
-Microservices-based architectures enable continuous delivery and deployment.
+#### Model-View-Controller
 
-Orchestration - it is when one microservice supervise and manage else microservices.
-<br>Choreography - it is when microservice independent, and only have to know about message-queue.
+1. model — contains the core functionality and data.
+2. view — displays the information to the user.
+3. controller — handles the input from the user.
 
-Philosophy: Do one thing and do it well.
+Usage: architecture for World Wide Web app.
 
-The less well you understand a domain,
-the harder it will be for you to find proper bounded contexts for your services.
+#### Presentation-Abstraction-Control
 
-Greenfield development is also quite challenging.
-So again, consider starting monolithic first and break things out when you’re stable.
+#### Model-View-Presenter
 
-Many of the challenges you’re going to face with microservices get worse with scale.
+#### Model-View-ViewModel (MVVM)
 
-* Model Around Business Concepts
-  (use bounded contexts)
-* Adopt a Culture of Automation
-  (automated testing, deploy the same way everywhere, continuous delivery)
-* Hide Internal Implementation Details
-  (modeling bounded contexts, services should also hide their databases, consider using REST)
-* Decentralize All the Things
-  (teams own their services, align teams to the organization, prefer choreography over orchestration)
-* Independently Deployable
-  (coexist versioned endpoints, one-service-per-host)
-* Isolate Failure
-  (expect failure will occur anywhere and everywhere)
-* Highly Observable
-  (aggregate your logs, aggregate your stats)
+#### Entity-Control-Boundary
 
-Anti-pattern - nanoservice,
-is a service whose overhead (communications, maintenance etc.) outweighs its utility.
+Action -> Boundary -> Control (mediator) -> Entity.

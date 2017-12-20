@@ -1,4 +1,5 @@
-####Using Two-Phase Commits in Production Applications
+#### Using Two-Phase Commits in Production Applications
+
 ````js
 db.accounts.save({name: "A", balance: 1000, pendingTransactions: []})
 db.accounts.save({name: "B", balance: 1000, pendingTransactions: []})

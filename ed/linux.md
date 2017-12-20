@@ -220,6 +220,7 @@ chmod u-rx,g+x,o+w fileName
 
 On server:
 directory - drwxrwxr-x (775)
+socket    - srw-rw---- (660)
 file      - -rw-rw-r-- (664)
 ````
 ````

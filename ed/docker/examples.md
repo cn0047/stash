@@ -40,7 +40,7 @@ curl localhost:8080/healthCheck.php
 #### MONGO
 
 ````
-docker run -it --rm --hostname localhost --name xmongo \
+docker run -it --rm --hostname localhost --name xmongo --net=x_node_mongo \
     -v $PWD/docker/.data/mongodb:/data/db -p 27017:27017 mongo:latest
 
 docker exec -it xmongo mongo test --eval 'db.test.insert({code : 200, status: "ok"})'
@@ -120,15 +120,22 @@ docker exec -ti mysql-master mysql -P3307 -udbu -pdbp -Dtest
 
 ````
 docker run -it --rm --name xpostgres --hostname xpostgres \
+    -v $PWD/docker/.data/postgresql/xpostgres:/var/lib/postgresql/data \
     -e POSTGRES_DB=test -e POSTGRES_USER=dbu -e POSTGRES_PASSWORD=dbp postgres
 
-docker run -it --rm -p 5432:5432 --name xpostgres-master --hostname postgres-master \
+# test
+docker exec -ti xpostgres psql -h localhost -p 5432 -U dbu -d test
+````
+
+#### POSTGRESQL cluster
+
+````
+docker run -it --rm -p 5432:5432 --name postgres-master --hostname postgres-master \
     -v $PWD/docker/.data/postgresql:/var/lib/postgresql/data \
     -v $PWD/docker/postgresql/master.conf:/var/lib/postgresql/data/postgresql.conf \
     -e POSTGRES_DB=test -e POSTGRES_USER=dbu -e POSTGRES_PASSWORD=dbp postgres
 
 # test
-docker exec -ti xpostgres psql -h localhost -p 5432 -U dbu -d test
 docker exec -ti postgres-master psql -h localhost -p 5432 -U dbu -d test
 ````
 
@@ -156,6 +163,13 @@ docker exec rabbit rabbitmqctl list_queues name messages messages_ready messages
 
 ````
 docker run -it --rm node:latest node -v
+
+# from Dockerfile
+docker build -t xnodejs ./docker/nodejs
+docker run -it --rm -p 8080:3000 xnodejs
+# to test
+curl 0.0.0.0:8080
+
 # based on Alpine Linux
 docker run -it --rm node:alpine node -v
 docker run -it --rm -v $PWD:/gh -w /gh node:latest node /gh/x.js
@@ -171,6 +185,9 @@ docker run -it --rm -v $PWD:/gh -w /gh/ed/nodejs/examples/elasticsearch --link e
 # simple mongo test
 docker run -it --rm -v $PWD:/gh -w /gh/ed/nodejs/examples/mongo node:latest npm install
 docker run -it --rm -v $PWD:/gh -w /gh/ed/nodejs/examples/mongo --link xmongo node:latest node index.js
+# simple mongo test with bridge
+docker network create --driver bridge x_node_mongo
+docker run -it --rm -v $PWD:/gh -w /gh/ed/nodejs/examples/mongo --net=x_node_mongo node:latest node index.js
 ````
 
 #### PHP

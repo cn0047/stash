@@ -95,6 +95,7 @@ SELECT t1.*, t2.* FROM table1 t1 CROSS JOIN table2 t2;
   5 | five  |  6 | six
   5 | five  |  7 | seven
 
+SELECT t1.*, t2.* FROM table1 t1 FULL JOIN table2 t2 on t1.id = t2.id;
 SELECT t1.*, t2.* FROM table1 t1 FULL OUTER JOIN table2 t2 on t1.id = t2.id;
  id | value | id | value
 ----+-------+----+-------
@@ -105,3 +106,10 @@ SELECT t1.*, t2.* FROM table1 t1 FULL OUTER JOIN table2 t2 on t1.id = t2.id;
   5 | five  |  5 | five
     |       |  6 | six
     |       |  7 | seven
+
+SELECT t1.*, t2.* FROM table1 t1 NATURAL INNER JOIN table2 t2;
+ id | value | id | value
+----+-------+----+-------
+  3 | three |  3 | three
+  4 | four  |  4 | four
+  5 | five  |  5 | five

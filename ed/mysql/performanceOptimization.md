@@ -42,6 +42,38 @@ and relationship is 1 - 1.
 
 `UNION ALL` in general faster than `UNION` because mysql don't have to care about duplicates.
 
+Any index that does not span all `AND` levels in the WHERE clause is not used
+to optimize the query. In other words, to be able to use an index,
+a prefix of the index must be used in every AND group.
+
+use indexes:
+
+````sql
+WHERE index_part1=1 AND index_part2=2 AND other_column=3
+
+/* index = 1 OR index = 2 */
+WHERE index=1 OR A=10 AND index=2
+
+/* optimized like "index_part1='hello'" */
+WHERE index_part1='hello' AND index_part3=5
+
+/* Can use index on index1 but not on index2 or index3 */
+WHERE index1=1 AND index2=2 OR index1=3 AND index3=3;
+````
+
+do not use indexes:
+
+````
+/* index_part1 is not used */
+WHERE index_part2=1 AND index_part3=2
+
+/*  Index is not used in both parts of the WHERE clause  */
+WHERE index=1 OR A=10
+
+/* No index spans all rows  */
+WHERE index_part1=1 OR index_part2=10
+````
+
 #### Index hints
 
 * `FORCE`

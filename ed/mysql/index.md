@@ -26,11 +26,17 @@ BLOB/TEXT cannot be indexed.
 #### Index types
 
 BTREE - stores data only in leaf nodes.
+Used for comparisons: =, >, >=, <, <=, or BETWEEN.
 
 HASH - stores pointers to data. Effective in memory usage.
 Not effective in: sorting, partial matching.
+Used for comparisons: =, <=>.
 
 Adaptive HASH - hash index in top of btree.
+The hash index is always built based on an existing InnoDB secondary index,
+which is organized as a B-tree structure.
+MySQL builds a hash index using a prefix of the index key. The prefix of the key can be any length...
+You should benchmark with `innodb_adaptive_hash_index` configuration feature both enabled and disabled.
 
 #### Kinds
 

@@ -10,6 +10,7 @@ A sphere of knowledge, influence, or activity. The subject area.
 ### Model.
 
 A system of abstractions that describes selected aspects of a domain.
+(aggregates, entities, factories)
 
 ### Ubiquitous Language.
 
@@ -116,9 +117,6 @@ Something like:
 └── tests
 ````
 
-Domain Services are used to describe things into the domain,
-operations that don’t belong to entities nor value objects.
-
 ### Aggregates.
 
 A collection of objects that are bound together by a root entity.
@@ -163,28 +161,6 @@ manager and with a different mapping metadata, it would not be possible.
 
 So better use XML mapping files.
 
-### DTO - Data transfer object.
-
-Communication between the delivery mechanism
-and the domain is carried by data structures called DTO.
-
-DTO it is something like request/response VO for domain.
-DTO does not have any behavior except for storage and retrieval of its own data.
-DTOs are simple objects that should not contain any business logic.
-
-### Repositories.
-
-Methods for retrieving domain objects
-should delegate to a specialized Repository object
-such that alternative storage implementations may be easily interchanged.
-
-Repositories are not DAOs.
-
-### DAO - Data access object.
-
-Typically a DAO would contain CRUD methods for a particular domain object.
-DAOs must be placed in domain layer.
-
 ### Factory.
 
 Methods for creating domain objects
@@ -220,6 +196,32 @@ There are typically three different types of service:
 * Infrastructure (sending emails, logging meaningful data etc)
 
 In DDD, transactions are handled at the Application Service level (for example TransactionalApplicationService).
+
+Domain Services are used to describe things into the domain,
+operations that don’t belong to entities nor value objects.
+(Cross-aggregate behavor, repositories, external services).
+
+### DTO - Data transfer object.
+
+Communication between the delivery mechanism
+and the domain is carried by data structures called DTO.
+
+DTO it is something like request/response VO for domain.
+DTO does not have any behavior except for storage and retrieval of its own data.
+DTOs are simple objects that should not contain any business logic.
+
+### Repositories.
+
+Methods for retrieving domain objects
+should delegate to a specialized Repository object
+such that alternative storage implementations may be easily interchanged.
+
+Repositories are not DAOs.
+
+### DAO - Data access object.
+
+Typically a DAO would contain CRUD methods for a particular domain object.
+DAOs must be placed in domain layer.
 
 ## Real problems.
 

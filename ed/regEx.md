@@ -3,6 +3,8 @@ RegEx
 
 https://regex101.com/
 
+Ip address range: https://regex101.com/r/O4t93o/2/
+
 | syntax                                   | description |
 |------------------------------------------|-------------|
 |^                                         | start of string |
@@ -15,6 +17,7 @@ https://regex101.com/
 |+                                         | repetitive match, 1 or more |
 |?                                         | optional match, 0 or 1 |
 |*?                                        | optional match, 0 or many |
+|*?, +?, ??                                | the *, +, and ? qualifiers are all greedy, `?` helps avoid it |
 |{3}                                       | exactly 3 |
 |{3,}                                      | 3 or more |
 |{3,5}                                     | 3 or 4 or 5 |

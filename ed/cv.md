@@ -14,6 +14,7 @@ CV
 * ***git*** - clone; merge; hooks; blame; diff; log; stash; apply patch; cherry-pick; bisect; rebase;
 * ***javascript*** - parse json; XMLHttpRequest; use call, apply, bind; lambda; closure; prototype; error handling; include other js file; IIFE; fetch;
 * ***jquery*** - serialize form; ajax; bind events on fly; delegate event;
+* ***jsonschema*** - simple schema;
 * ***kahlan*** - stub; monkey;
 * ***koa*** - route; middleware;
 * ***linux*** - find file; cron; supervisord; mc; grep; vim; ps aux; htop; ssh; rsync; wkhtmltoimage; wkhtmltopdf; simple bash; curl; awscli; jpegoptim; pngquant; mogrify (imagemagick); screen; mount; fswatch;
