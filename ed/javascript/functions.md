@@ -240,7 +240,8 @@ number.toPrecision(7);                                 // 12345.68
 Boolean(bool);
 var b = !! bool; // To boolean
 
-const foo = a || b; // a ? a : b;
+const foo = a || b; // a ? a : b; # better use code below
+[target = 'default'] = [valueProvidedInFunction] // it works like isset
 const bar = !!c; // c ? true : false;
 const baz = !c; // c ? false : true;
 ````

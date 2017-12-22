@@ -7,7 +7,9 @@ docker
 
 Containers should be ephemeral (can be stopped and destroyed and a new one built and put in place).
 <br>Hence container must be stateless.
-<br>Each container should have only one concern.
+<br>Each container should have only one concern (1 process per container).
+
+Ctrl + P + Q # detach from container
 
 ````
 docker pull ubuntu
@@ -16,6 +18,9 @@ docker pull ubuntu
 # `-t` it is tag
 # `.` it is current directory 
 docker build -t docker-whale .
+
+# THE BEST COMMAND
+docker inspect docker-whale
 
 # run an interactive container 
 # `-t` terminal
@@ -27,6 +32,8 @@ docker run -t -i ubuntu:latest /bin/bash
 # `-p` maps any required network ports
 docker run -d -p 8081:80 timber/ziipr
 docker run -d -p 192.168.0.32:1111:1111 timber/ziipr
+
+docker attach container_name
 
 # exec
 docker exec -it happy_babbage
@@ -40,6 +47,8 @@ docker ps -a
 
 # shows the standard output of a container
 docker logs
+# follow
+docker logs -f
 
 # show containers & images
 docker images
@@ -55,7 +64,24 @@ docker rm nostalgic_morse
 # delete
 docker rmi -f docker-whale
 
+# layers of image
+# less commands in dockerfile - least layers
+docker history php-cli
+
+docker port xmongo
+
 exit
+````
+
+Copy container manually:
+
+````
+# on machine 1
+docker commit {CONTEINER_ID} new_name
+docker save -o new_name.dump.tar new_name
+
+# on machine 2
+docker load -i new_name.dump.tar
 ````
 
 ## Dockerfile
@@ -69,6 +95,8 @@ exit
 * EXPOSE
 * ENV
 * VOLUME
+
+Less instructions in Dockerfile - least layers in built image.
 
 ## Machine
 
@@ -158,5 +186,3 @@ docker network ls
 docker network create --driver bridge x_node_mongo
 docker network inspect x_node_mongo
 ````
-
-https://app.pluralsight.com/library/courses/getting-started-kubernetes/table-of-contents

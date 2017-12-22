@@ -285,6 +285,14 @@ curl -T firmware.bin http://0.0.0.48/cgi-bin/package_install?hash=017
 
 #### shell
 ````
+cat <<TXT
+---------
+204
+---------
+TXT
+
+ping 8.8.8.8 -c 15
+
 # watch changes in directory
 fswatch ./src | while read f; do echo $f; done
 
@@ -318,6 +326,7 @@ kill -9 `ps -aux|grep {{PROCESS_NAME}}|grep -v grep|awk '{print $2}'`
 uname -a # Shows 32 or 64 bit OS.
 uname -r # Show the kernel version.
 
+ip a
 host github.com # Shows ip by host.
 dig domain
 whois ip
@@ -368,7 +377,11 @@ date +'[%d/%b'/%Y:%H:%M
 ````
 
 #### H
+
 ````sh
+# scan ports:
+nmap --script=http-headers www.ziipr.com
+
 # osx proxy
 
 sudo networksetup -setwebproxy "Wi-Fi" 54.174.16.166 80

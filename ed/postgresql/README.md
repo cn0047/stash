@@ -1,6 +1,8 @@
 PostgreSQL
 -
 
+PostgreSQL 10.0
+
 (ORDBMS) Object-Relational Database Management System.
 
 [online config](http://pgtune.leopard.in.ua/).
@@ -21,56 +23,6 @@ PostgreSQL
 ````
 pg_dump -h localhost -p 5432 -U dbu -d test > /var/lib/postgresql/data/dump.sql
 psql -h localhost -p 5432 -U dbu -d td < /var/lib/postgresql/data/dump.sql
-````
-
-````sql
-create table test (
-  id serial NOT NULL PRIMARY KEY,
-  n int,
-  d double precision,
-  s character varying(20)
-);
-create table products (
-  product_no integer,
-  name text,
-  price numeric,
-  CHECK (price > 0),
-  discounted_price numeric,
-  CHECK (discounted_price > 0),
-  CHECK (price > discounted_price) 
-);
-create table example (
-  a integer,
-  b integer,
-  c integer,
-  PRIMARY KEY (a, b),
-  UNIQUE (a, c) 
-);
-````
-
-Random stuff:
-
-````
-SELECT ARRAY[1, 2, 1+2];
-  array
----------
- {1,2,3}
-
- SELECT ARRAY[1, 2, 1+2, '4', true]::integer[];
-    array
--------------
- {1,2,3,4,1}
-
-SELECT ROW(1,2.5,'this is a test');
-````
-
-#### JSON:
-
-````
-row_to_json(fieldFromDB)
-to_json(string)
-json_agg(fieldFromDB)
-json_object('{a, 1, b, "def", c, 3.5}')
 ````
 
 #### System Columns:
@@ -120,7 +72,35 @@ device specifications:
   inet
   macaddr
 
+Pseudo-Types:
+
+* any
+* anyelement
+* anyarray
+* anynonarray
+* anyenum
+* anyrange
+* cstring
+* internal
+* language_handler
+* fdw_handler
+* index_am_handler
+* tsm_handler
+* record
+* trigger
+* event_trigger
+* pg_ddl_command
+* void
+* unknown
+* opaque
+
 @TODO:
+json field
+array field
+window functions
+ANY/SOME/ALL
+explain analyze
+parallel query
 https://app.pluralsight.com/library/courses/postgresql-index-tuning-performance-optimization/table-of-contents
 https://app.pluralsight.com/library/courses/postgresql-advanced-sql-queries/table-of-contents
 https://app.pluralsight.com/library/courses/postgresql-sql-queries-introduction/table-of-contents

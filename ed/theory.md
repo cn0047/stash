@@ -57,6 +57,7 @@ Composition - child can NOT exist independent of the parent (House -> Room).
 COUPLING refers to the interdependencies between modules.
 
 LOW COUPLING is often a sign of a well-structured computer system and a **good** design.
+synonym: lose coupling, antonym: coupling.
 
 COHESION describes how related the functions within a single module are.
 <br>
@@ -87,6 +88,30 @@ Every software change is automatically built, tested, and deployed to production
 Continuous Deployment - is a synonym to Continuous Delivery.
 
 Pre-alpha ⇒ Alpha ⇒ Beta ⇒ Release candidate ⇒ Gold
+
+#### Deployments Strategies
+
+Highlander (most traditional deployment patten) - all instances are deploying simultaneously.
+
+Canary Deployment - deploys to only a small portion of the available servers.
+Some kind of A/B testing.
+
+Rolling Deploy (continuation of the canary deploy) - update one server after another.
+
+Blue-Green - Once you have deployed and fully tested the software in Green,
+you switch the router so all incoming requests now go to Green instead of Blue.
+Green is now live, and Blue is idle.
+
+Canary with two groups - Blue-Green and add 1 node from new cluster into old one.
+
+Rolling Deploy with two groups - continuation of the canary with two groups.
+
+Don't forget about:
+Users may see V1 of a page on one click, then see V2 on refresh and back to V1 on yet another refresh.
+As solution you can suggest:
+* to use separated site for some users (http://beta.yourcompany.com)
+* or use "Feature Toggles"
+* or A/B
 
 #### RPC
 

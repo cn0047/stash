@@ -1,3 +1,4 @@
+// IMPORTANT: Proxy slooooow right now...
 var handler = {
     get: function(target, name){
         return name in target ? target[name] : 37
