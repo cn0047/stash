@@ -21,8 +21,15 @@ PostgreSQL 10.0
 ````
 
 ````
+COPY tableName TO 'filePath' CSV (DELIMER ',');
+COPY tableName FROM 'filePath' DELIMER ',';
+
 pg_dump -h localhost -p 5432 -U dbu -d test > /var/lib/postgresql/data/dump.sql
 psql -h localhost -p 5432 -U dbu -d td < /var/lib/postgresql/data/dump.sql
+````
+
+````
+VACUUM VERBOSE tableName; -- helpful info
 ````
 
 #### System Columns:
@@ -99,9 +106,8 @@ json field
 array field
 window functions
 ANY/SOME/ALL
-explain analyze
 parallel query
-https://app.pluralsight.com/library/courses/postgresql-index-tuning-performance-optimization/table-of-contents
+index diff unique/primary
 https://app.pluralsight.com/library/courses/postgresql-advanced-sql-queries/table-of-contents
 https://app.pluralsight.com/library/courses/postgresql-sql-queries-introduction/table-of-contents
 https://app.pluralsight.com/library/courses/postgresql-advanced-server-programming/table-of-contents
