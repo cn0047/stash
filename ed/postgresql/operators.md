@@ -1,7 +1,7 @@
 Operators
 -
 
-`@>` - contains
+`@>` - contains.
 
 ````
 # true
@@ -19,7 +19,7 @@ SELECT '[1, 2, [1, 3]]'::jsonb @> '[1, 3]'::jsonb;
 SELECT '{"foo": {"bar": "baz"}}'::jsonb @> '{"bar": "baz"}'::jsonb;
 ````
 
-`||` - concat
+`||` - strings concatenation.
 
 ````
 SELECT 'foo ' || 'bar';
@@ -27,3 +27,9 @@ SELECT 'foo ' || 'bar';
 ----------
  foo bar
 ````
+
+`%` - modulo.
+`|/` - square root.
+`||/` - cube root.
+`!` - factorial.
+`@` - absolute value.

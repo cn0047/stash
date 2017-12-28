@@ -107,3 +107,5 @@ aws logs put-log-events --log-group-name cli_prod --log-stream-name x --log-even
 # CodeDeploy
 
 # (RDS) Relational Database Service
+
+# (ECS) Elastic Container Service

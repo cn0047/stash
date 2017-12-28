@@ -19,6 +19,8 @@ https://regex101.com/r/zO0kO8/1
 ````
 
 ````
+[tag:xdebug]
+
 <!-- language: lang-html -->
 <!-- end snippet -->
 

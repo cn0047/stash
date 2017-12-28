@@ -285,11 +285,20 @@ curl -T firmware.bin http://0.0.0.48/cgi-bin/package_install?hash=017
 
 #### shell
 ````
+apt-get install -y --force-yes
+# search package
+apt-cache search htop
+
 cat <<TXT
 ---------
 204
 ---------
 TXT
+
+cat << EOF >> /tmp/yourfilehere
+These contents will be written to the file.
+        This line is indented.
+EOF
 
 ping 8.8.8.8 -c 15
 
@@ -326,7 +335,7 @@ kill -9 `ps -aux|grep {{PROCESS_NAME}}|grep -v grep|awk '{print $2}'`
 uname -a # Shows 32 or 64 bit OS.
 uname -r # Show the kernel version.
 
-ip a
+nslookup git.mdm.comodo.od.ua
 host github.com # Shows ip by host.
 dig domain
 whois ip

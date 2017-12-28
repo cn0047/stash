@@ -7,6 +7,9 @@ PostgreSQL 10.0
 
 [online config](http://pgtune.leopard.in.ua/).
 
+DB can contains schema, and schema contains tables.
+Schema - like directory in file system.
+
 #### REPL:
 
 ````
@@ -108,7 +111,6 @@ window functions
 ANY/SOME/ALL
 parallel query
 index diff unique/primary
-https://app.pluralsight.com/library/courses/postgresql-advanced-sql-queries/table-of-contents
-https://app.pluralsight.com/library/courses/postgresql-sql-queries-introduction/table-of-contents
+
 https://app.pluralsight.com/library/courses/postgresql-advanced-server-programming/table-of-contents
 https://app.pluralsight.com/library/courses/postgresql-time-temporal-data/table-of-contents

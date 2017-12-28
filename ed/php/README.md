@@ -37,6 +37,7 @@ ini_set('display_startup_errors','On');
 /etc/php5/apache2/php.ini
 /etc/php5/cli/php.ini
 /etc/php5/fpm/php.ini
+/usr/local/etc/php/7.1/php.ini
 
 slowlog = /tmp/php.log
 request_slowlog_timeout = 1
@@ -51,6 +52,12 @@ php -S 0.0.0.0:80 index.php
 
 php -d short_open_tag=1 x.php
 php -d extension=xhprof.so foo.php
+````
+
+````php
+print(true ? 'Yes' : 'No'); // Output: Yes
+print('My Value' ?: 'No Value'); // PHP 5.3 (Equals to empty($var) ? 'default' : $var) Output: My Value
+print(null ?? 'Default Value'); // PHP 7 (Equals to isset($var) ? $var : 'default') Output: Default Value
 ````
 
 ````php
@@ -158,14 +165,13 @@ echo "<pre>$output</pre>";
 
 #### xDebug
 ````
-# /etc/php5/fpm/php.ini
 [xdebug]
 ;
 zend_extension=/usr/lib/php5/20131226/xdebug.so
 xdebug.remote_port=9000
 xdebug.remote_enable=On
 xdebug.remote_connect_back=On
-xdebug.remote_log=/var/log/xdebug.log
+xdebug.remote_log=/tmp/xdebug.log
 xdebug.idekey=PHPSTORM
 ;
 xdebug.profiler_enable=On
@@ -181,7 +187,7 @@ php_value xdebug.remote_enable 1
 # php_value xdebug.remote_host localhost
 # php_value xdebug.remote_handler dbgp
 # php_value xdebug.remote_port 9000
-# php_value xdebug.remote_log '/var/log/xdebug.log'
+# php_value xdebug.remote_log '/tmp/xdebug.log'
 
 # Trace
 xdebug_start_trace('/tmp/xdebug.trace'); // output will be in file /tmp/xdebug.trace.xt
@@ -198,16 +204,11 @@ php_value xdebug.profiler_output_dir /home/debug/d
 vim ~/.bashrc
 
 export PHP_IDE_CONFIG="serverName=trunk-007" 
+export XDEBUG_CONFIG="idekey=PHPSTORM remote_enable=1 remote_autostart=1"
 export XDEBUG_CONFIG="idekey=PHPSTORM remote_host={192.168.56.101} remote_enable=1 remote_autostart=1"
 export XDEBUG_CONFIG="idekey=sublime.xdebug remote_host={127.0.0.1} remote_enable=1 remote_autostart=1"
 
 source ~/.bashrc
-````
-
-````php
-print(true ? 'Yes' : 'No'); // Output: Yes
-print('My Value' ?: 'No Value'); // PHP 5.3 (Equals to empty($var) ? 'default' : $var) Output: My Value
-print(null ?? 'Default Value'); // PHP 7 (Equals to isset($var) ? $var : 'default') Output: Default Value
 ````
 
 #### debug

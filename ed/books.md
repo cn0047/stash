@@ -1,6 +1,9 @@
 Books
 -
 
+[protocol-buffers](https://developers.google.com/protocol-buffers/)
+[PostgreSQL 10.1 Documentation](https://www.postgresql.org/docs/manuals/)
+[JSON Schema](https://spacetelescope.github.io/understanding-json-schema/)
 [socket.io](https://socket.io/docs/)
 [Node.js the Right Way](http://shop.oreilly.com/product/9781937785734.do)
 [An Introduction to Programming in Go](https://www.amazon.com/Introduction-Programming-Go-Caleb-Doxsey/dp/1478355824)

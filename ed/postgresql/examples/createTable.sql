@@ -9,7 +9,7 @@ create table products (
   product_no integer,
   name text,
   price numeric,
-  CHECK (price > 0),
+  CHECK (price > 0), -- constraint
   discounted_price numeric,
   CHECK (discounted_price > 0),
   CHECK (price > discounted_price) 

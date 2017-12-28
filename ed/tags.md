@@ -28,6 +28,7 @@ CV
 * ***phalcon*** - volt; cli tasks; migration; rest api; upgrade 1.4 → 2.0.10; custom events; translation;
 * ***php*** - curl; session; regexp; pdo; spl; reflection; error handling; mcrypt; password hashing; xml-rpc; memcache; heredoc; interface; class; trait; cli; upgrade PHP 5.1.6 → PHP 5.3.3 → PHP 5.4.35 → PHP 5.5; semaphore; pcntl_* functions (fork, wait, etc); imap_* functions; opcache; apcu; imagick; generators;
 * ***phpunit*** - stub; mock; dataProvider; fixture; dbTest;
+* ***protocols*** - http; xml-rpc; soap; imap; json-rpc; websockets;
 * ***require.js*** - i18n; text.js;
 * ***slack*** - incoming-webhooks;
 * ***smarty*** - debug; capture; html_options; include; extends; plugin;
@@ -58,7 +59,9 @@ CV
 * ***oauth2*** - github;
 * ***php*** - xdebug; websockets;
 * ***phpdoc*** - generate documentation;
+* ***postgresql*** -
 * ***postgresql*** - insert; select; dump; repl;
+* ***protocols*** - http2;
 * ***rabbitmq*** - queue worker; topic and routing exchanges; delayed message;
 * ***react*** - component; router; context; es6; jsx;
 * ***redis*** - set; hash; transaction; pipelining;

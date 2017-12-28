@@ -23,6 +23,7 @@ $args = json_decode(\Yii::app()->request->getRawBody(), true);
 ````
 
 #### Validation
+
 ````php
 ['siteId, countryCode, userId, userMsisdn', 'required', 'on' => 'insert'],
 ['status', 'numerical', 'min' => 0, 'max' => 255],
@@ -36,6 +37,7 @@ $args = json_decode(\Yii::app()->request->getRawBody(), true);
 ````
 
 #### DB
+
 ````php
 php protected/yiic.php migrate create LastName_Desc
 php protected/yiic.php migrate

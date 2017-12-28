@@ -55,6 +55,7 @@ docker images
 
 # stop the running container
 docker stop
+docker stop $(docker ps -a -q)
 
 docker start nostalgic_morse
 

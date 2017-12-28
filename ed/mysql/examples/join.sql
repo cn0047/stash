@@ -1,12 +1,12 @@
 CREATE TABLE `table1` (
   `id` int(11) NOT NULL DEFAULT 0,
-  `value` text not null DEFAULT '',
+  `value` text, -- not null DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
 CREATE TABLE `table2` (
   `id` int(11) NOT NULL DEFAULT 0,
-  `value` text not null DEFAULT '',
+  `value` text, -- not null DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
@@ -78,3 +78,26 @@ SELECT t1.*, t2.* FROM table1 t1 LEFT JOIN table2 t2 on t1.id = t2.id WHERE t2.i
 |  1 | one   | NULL | NULL  |
 |  2 | two   | NULL | NULL  |
 +----+-------+------+-------+
+
+
+
+-- SOMETHING LIKE FULL OUTER JOIN
+INSERT INTO table2 VALUES (1, 'one'), (2, 'two');
+
+SELECT *
+FROM table1 AS t1
+UNION
+SELECT *
+FROM table2 AS t2
+;
++----+-------+
+| id | value |
++----+-------+
+|  1 | one   |
+|  2 | two   |
+|  3 | three |
+|  4 | four  |
+|  5 | five  |
+|  6 | six   |
+|  7 | seven |
++----+-------+

@@ -20,7 +20,6 @@ Acronyms
 [GUI](#GUI)
 [HTML](#HTML)
 [HTTP](#HTTP)
-[IMAP](#IMAP)
 [IP](#IP)
 [IPC](#IPC)
 [JIT](#JIT)
@@ -45,7 +44,6 @@ Acronyms
 [SDLC](#SDLC)
 [SFTP](#SFTP)
 [SMTP](#SMTP)
-[SOAP](#SOAP)
 [SPL](#SPL)
 [SSH](#SSH)
 [SSL](#SSL)
@@ -122,9 +120,6 @@ Acronyms
 <dt><a name="HTTP"></a>HTTP</dt>
 <dd>Hypertext Transfer Protocol.</dd>
 
-<dt><a name="IMAP"></a>IMAP</dt>
-<dd>Internet Message Access Protocol.</dd>
-
 <dt><a name="IP"></a>IP</dt>
 <dd>Internet Protocol.</dd>
 
@@ -196,9 +191,6 @@ Acronyms
 
 <dt><a name="SMTP"></a>SMTP</dt>
 <dd>Simple Mail Transfer Protocol.</dd>
-
-<dt><a name="SOAP"></a>SOAP</dt>
-<dd>Simple Object Access Protocol.</dd>
 
 <dt><a name="SPL"></a>SPL</dt>
 <dd>Standard PHP Library.</dd>
