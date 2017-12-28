@@ -13,7 +13,7 @@ require __DIR__ . '/proto/Foo.php';
 
 $foo = new Foo();
 $foo->setId(911);
-$foo->setBar('This is BAR 😀');
+$foo->setBar('This is BAR.');
 $foo->setTags(['php', 'protobuf']);
 $packed = $foo->serializeToString();
 var_dump($packed);
