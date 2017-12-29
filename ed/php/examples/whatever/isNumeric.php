@@ -1,5 +1,5 @@
 <?php
-
+phpinfo();
 var_export([
     is_numeric('1.3'),
     is_numeric('+3'),

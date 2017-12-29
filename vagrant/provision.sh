@@ -15,94 +15,104 @@ sudo apt-get install -y htop
 # git
 sudo apt-get install -y git
 
+# tools
+sudo apt-get install -y unzip
+
 # apache
 sudo service apache2 stop
 
-# nginx
-sudo apt-get install -y nginx
-sudo cp /vagrant/vagrant/nginx.conf /etc/nginx/sites-available/default
-sudo service nginx restart
+# # nginx
+# sudo apt-get install -y nginx
+# sudo cp /vagrant/vagrant/nginx.conf /etc/nginx/sites-available/default
+# sudo service nginx restart
 
-# mysql
-sudo debconf-set-selections <<< 'mysql-server-5.7 mysql-server/root_password password root'
-sudo debconf-set-selections <<< 'mysql-server-5.7 mysql-server/root_password_again password root'
-sudo apt-get -y install mysql-server-5.7
-sudo apt-get install -y mysql-server
-# sudo apt-get install -y mysql-client
-sudo mysql -uroot -proot -e 'create database test'
-sudo mysql -uroot -proot -e "create user 'user'@'%' identified by 'pass'"
-sudo mysql -uroot -proot -e "grant all privileges on test.* to 'user'@'%' with grant option"
-sudo mysql -uroot -proot -e "set global general_log_file='/var/log/mysql/general.log';"
-sudo mysql -uroot -proot -e "set global general_log = 1;"
-# IMPORTANT
-sudo sed -i "s/127.0.0.1/0.0.0.0/" `sudo grep bind-address -ril /etc/mysql/`
-sudo service mysql restart
+# # mysql
+# sudo debconf-set-selections <<< 'mysql-server-5.7 mysql-server/root_password password root'
+# sudo debconf-set-selections <<< 'mysql-server-5.7 mysql-server/root_password_again password root'
+# sudo apt-get -y install mysql-server-5.7
+# sudo apt-get install -y mysql-server
+# # sudo apt-get install -y mysql-client
+# sudo mysql -uroot -proot -e 'create database test'
+# sudo mysql -uroot -proot -e "create user 'user'@'%' identified by 'pass'"
+# sudo mysql -uroot -proot -e "grant all privileges on test.* to 'user'@'%' with grant option"
+# sudo mysql -uroot -proot -e "set global general_log_file='/var/log/mysql/general.log';"
+# sudo mysql -uroot -proot -e "set global general_log = 1;"
+# # IMPORTANT
+# sudo sed -i "s/127.0.0.1/0.0.0.0/" `sudo grep bind-address -ril /etc/mysql/`
+# sudo service mysql restart
 
 # sqlite
 # sudo apt-get install sqlite3 libsqlite3-dev
 
-# mongodb
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
-sudo echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
-sudo apt-get update
-sudo apt-get install -y mongodb
-sudo apt-get install -y mongodb-org
-sudo cp /vagrant/vagrant/mongodb.service /etc/systemd/system/
-sudo systemctl start mongodb
-sudo systemctl enable mongodb
+# # mongodb
+# sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
+# sudo echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
+# sudo apt-get update
+# sudo apt-get install -y mongodb
+# sudo apt-get install -y mongodb-org
+# sudo cp /vagrant/vagrant/mongodb.service /etc/systemd/system/
+# sudo systemctl start mongodb
+# sudo systemctl enable mongodb
 
-# redis
-sudo apt-get install -y redis-server
+# # redis
+# sudo apt-get install -y redis-server
 
-# java
-sudo add-apt-repository -y ppa:webupd8team/java
-sudo apt-get update
-echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
-echo debconf shared/accepted-oracle-license-v1-1 seen true | sudo debconf-set-selections
-sudo apt-get -y install oracle-java8-installer
+# # java
+# sudo add-apt-repository -y ppa:webupd8team/java
+# sudo apt-get update
+# echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
+# echo debconf shared/accepted-oracle-license-v1-1 seen true | sudo debconf-set-selections
+# sudo apt-get -y install oracle-java8-installer
 
-# elasticsearch
-# 2.4.4
-sudo curl -L -O https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-2.4.4.deb
-sudo dpkg -i elasticsearch-2.4.4.deb
-sudo service elasticsearch start
-# 5.3.0
-sudo wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
-sudo apt-get install apt-transport-https
-sudo echo "deb https://artifacts.elastic.co/packages/5.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-5.x.list
-sudo apt-get update && sudo apt-get install elasticsearch
-sudo service elasticsearch start
+# # elasticsearch
+# # 2.4.4
+# sudo curl -L -O https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-2.4.4.deb
+# sudo dpkg -i elasticsearch-2.4.4.deb
+# sudo service elasticsearch start
+# # 5.3.0
+# sudo wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+# sudo apt-get install apt-transport-https
+# sudo echo "deb https://artifacts.elastic.co/packages/5.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-5.x.list
+# sudo apt-get update && sudo apt-get install elasticsearch
+# sudo service elasticsearch start
 
-# rabbit
-sudo apt-get install -y rabbitmq-server
-#
-sudo curl -L -O https://dl.bintray.com/rabbitmq/community-plugins/rabbitmq_delayed_message_exchange-0.0.1-rmq3.4.x-9bf265e4.ez
-sudo mv rabbitmq_delayed_message_exchange-0.0.1-rmq3.4.x-9bf265e4.ez \
-    /usr/lib/rabbitmq/lib/`ls /usr/lib/rabbitmq/lib/`/plugins
-sudo /usr/lib/rabbitmq/bin/rabbitmq-plugins enable rabbitmq_delayed_message_exchange
+# # rabbit
+# sudo apt-get install -y rabbitmq-server
+# #
+# sudo curl -L -O https://dl.bintray.com/rabbitmq/community-plugins/rabbitmq_delayed_message_exchange-0.0.1-rmq3.4.x-9bf265e4.ez
+# sudo mv rabbitmq_delayed_message_exchange-0.0.1-rmq3.4.x-9bf265e4.ez \
+#     /usr/lib/rabbitmq/lib/`ls /usr/lib/rabbitmq/lib/`/plugins
+# sudo /usr/lib/rabbitmq/bin/rabbitmq-plugins enable rabbitmq_delayed_message_exchange
 
 # beanstalk
 # sudo apt-get install -y beanstalkd
 
-# aws cli
-sudo apt-get -y install python-pip
-sudo pip install awscli --ignore-installed six
-# init aws commands
-sudo chmod +x /vagrant/ed/bash/examples/describeAwsInstances.sh
-sudo ln -s /vagrant/ed/bash/examples/describeAwsInstances.sh /usr/bin/dai
-sudo chmod +x /vagrant/ed/bash/examples/executeCommandOnAws.sh
-sudo ln -s /vagrant/ed/bash/examples/executeCommandOnAws.sh /usr/bin/ecoa
-sudo chmod +x /vagrant/ed/bash/examples/sshToAws.sh
-sudo ln -s /vagrant/ed/bash/examples/sshToAws.sh /usr/bin/sta
+# # aws cli
+# sudo apt-get -y install python-pip
+# sudo pip install awscli --ignore-installed six
+# # init aws commands
+# sudo chmod +x /vagrant/ed/bash/examples/describeAwsInstances.sh
+# sudo ln -s /vagrant/ed/bash/examples/describeAwsInstances.sh /usr/bin/dai
+# sudo chmod +x /vagrant/ed/bash/examples/executeCommandOnAws.sh
+# sudo ln -s /vagrant/ed/bash/examples/executeCommandOnAws.sh /usr/bin/ecoa
+# sudo chmod +x /vagrant/ed/bash/examples/sshToAws.sh
+# sudo ln -s /vagrant/ed/bash/examples/sshToAws.sh /usr/bin/sta
 
-# nodejs
-sudo apt-get install python-software-properties
-sudo curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
-sudo apt-get install -y nodejs
-sudo apt-get install -y npm
-# npm packages
-# sudo npm install -g create-react-app react react-dom
-# sudo npm install webpack -g webpack webpack-dev-server
+# # heroku
+# sudo apt-get install -y software-properties-common
+# sudo add-apt-repository "deb https://cli-assets.heroku.com/branches/stable/apt ./"
+# sudo curl -L https://cli-assets.heroku.com/apt/release.key | sudo apt-key add -
+# sudo apt-get update
+# sudo apt-get install -y heroku
+
+# # nodejs
+# sudo apt-get install python-software-properties
+# sudo curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+# sudo apt-get install -y nodejs
+# sudo apt-get install -y npm
+# # npm packages
+# # sudo npm install -g create-react-app react react-dom
+# # sudo npm install webpack -g webpack webpack-dev-server
 
 # php
 # 5.6
@@ -138,8 +148,8 @@ sudo apt-get install -y php7.1-imagick
 # shmop simplexml snmp soap sockets sqlite3 sybase sysvmsg sysvsem sysvshm tidy
 # tokenizer wddx xmlreader xmlrpc xmlwriter xsl
 
-# imagemagick
-sudo apt-get install -y imagemagick
+# # imagemagick
+# sudo apt-get install -y imagemagick
 
 # xdebug
 sudo apt-get install -y php-xdebug
@@ -148,12 +158,15 @@ sudo apt-get install -y php-xdebug
 sudo curl -sS https://getcomposer.org/installer | sudo php
 sudo mv composer.phar /usr/local/bin/composer
 
-# heroku
-sudo apt-get install -y software-properties-common
-sudo add-apt-repository "deb https://cli-assets.heroku.com/branches/stable/apt ./"
-sudo curl -L https://cli-assets.heroku.com/apt/release.key | sudo apt-key add -
-sudo apt-get update
-sudo apt-get install -y heroku
+# protobuf
+curl -OL https://github.com/google/protobuf/releases/download/v3.5.1/protoc-3.5.1-linux-x86_64.zip
+unzip protoc-3.5.1-linux-x86_64.zip -d protoc3
+sudo mv protoc3/bin/* /usr/local/bin/
+sudo mv protoc3/include/* /usr/local/include/
+sudo chown $(whoami) /usr/local/bin/protoc
+sudo chown -R $(whoami) /usr/local/include/google
+sudo pecl install protobuf-3.5.1
+echo 'extension=protobuf.so' >> cat /etc/php/7.1/mods-available/protobuf.ini
 
 ###############################################################################
 # LARAVEL
@@ -194,16 +207,16 @@ sudo apt-get install -y heroku
 # cd /vagrant/ed/symfony/examples/bulletinBoard/ && sudo php app/console assetic:dump --env=prod --no-debug
 # composer update -o
 
-# v3
-cd /vagrant/ed/symfony/examples/v3.2/ \
-    && rm -rf var/cache/* \
-    && rm -rf var/logs/* \
-    && sudo php bin/console cache:clear --env=prod --no-debug \
-    && sudo php bin/console cache:warmup --env=prod --no-debug \
+# # v3
+# cd /vagrant/ed/symfony/examples/v3.2/ \
+#     && rm -rf var/cache/* \
+#     && rm -rf var/logs/* \
+#     && sudo php bin/console cache:clear --env=prod --no-debug \
+#     && sudo php bin/console cache:warmup --env=prod --no-debug \
 
 ###############################################################################
 # ElasticSearch
 ###############################################################################
 
-# import elasticsearch megacorp test index
-sh /vagrant/ed/elasticsearch/megacorp.sh
+# # import elasticsearch megacorp test index
+# sh /vagrant/ed/elasticsearch/megacorp.sh

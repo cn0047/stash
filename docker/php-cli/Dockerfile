@@ -1,5 +1,6 @@
 # FROM php:5.6-cli
-FROM php:7.1-cli
+# FROM php:7.1-cli
+FROM php:7.1
 
 RUN apt-get update \
     && apt-get install -y git libmcrypt-dev libicu-dev mysql-client libpq-dev unzip \
@@ -13,20 +14,17 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y uuid-dev \
 
 # xdebug
 RUN pecl install xdebug && docker-php-ext-enable xdebug \
-    && echo 'xdebug.remote_enable=1' >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-    && echo 'xdebug.remote_autostart=1' >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-    && echo 'xdebug.remote_connect_back=0' >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-    && echo 'xdebug.remote_port=9000' >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-    && echo 'xdebug.remote_log=/tmp/xdebug.log' >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-    && echo 'xdebug.idekey=PHPSTORM' >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
-    # NEXT CODE IS REDUNDANT:
-    # 
-    # apt-get install -y protobuf-compiler
-    # 
-    # && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
-    # && echo "xdebug.profiler_enable=off" >> /usr/local/etc/php/conf.d/xdebug.ini \
+    && echo 'xdebug.remote_enable=1'                        >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo 'xdebug.remote_autostart=1'                     >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo 'xdebug.remote_connect_back=1'                  >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    # && echo 'xdebug.remote_host=localhost'                  >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    # && echo 'xdebug.remote_host=172.17.0.1'                 >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo 'xdebug.remote_port=9001'                       >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo 'xdebug.remote_log=/tmp/xdebug.log'             >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    # && echo "xdebug.profiler_enable=off"                    >> /usr/local/etc/php/conf.d/xdebug.ini \
     # && echo "xdebug.profiler_output_nam=xdebug.profiler.%p" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    # && echo "xdebug.profiler_output_dir=/app" >> /usr/local/etc/php/conf.d/xdebug.ini
+    # && echo "xdebug.profiler_output_dir=/app"               >> /usr/local/etc/php/conf.d/xdebug.ini \
+    && echo 'xdebug.idekey=PHPSTORM'                        >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
 # protobuf
 RUN curl -OL https://github.com/google/protobuf/releases/download/v3.5.1/protoc-3.5.1-linux-x86_64.zip \

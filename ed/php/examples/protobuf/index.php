@@ -2,8 +2,14 @@
 
 /*
 RUN in shell:
+
+# docker
 docker run -it --rm -v $PWD:/gh -w /gh/ed/php/examples/protobuf php-cli composer install
 docker run -it --rm -v $PWD:/gh -w /gh/ed/php/examples/protobuf php-cli php index.php
+
+# vagrant
+php /gh/ed/php/examples/protobuf/index.php
+
 */
 
 require __DIR__ . '/vendor/autoload.php';
@@ -21,5 +27,4 @@ var_dump($packed);
 $parsedFoo = new Foo();
 $parsedFoo->mergeFromString($packed);
 printf('RESULT: id=%s, bar=%s', $parsedFoo->getId(), $parsedFoo->getBar());
-var_export($parsedFoo->getTags());
-var_export($parsedFoo);
+var_dump($parsedFoo->getTags());

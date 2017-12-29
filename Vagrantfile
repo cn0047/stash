@@ -4,7 +4,7 @@ Vagrant.configure(2) do |config|
   # Ubuntu 16.04
   config.vm.box = "bento/ubuntu-16.04"
   config.vm.provision :shell, path: "vagrant/provision.sh"
-  config.vm.synced_folder "ed", "/var/www/html"
+  config.vm.synced_folder "ed", "/gh/ed"
   config.vm.provider "virtualbox" do |v|
     v.memory = 1024
     v.cpus = 2
@@ -16,8 +16,8 @@ Vagrant.configure(2) do |config|
     node.vm.network :forwarded_port, guest: 22, host: 10121, id: "ssh"
     # node.vm.provision :hosts, :sync_hosts => true
     node.vm.provider "virtualbox" do |v|
-      v.memory = 8192
-      v.cpus = 4
+      v.memory = 1024
+      v.cpus = 2
     end
   end
 
