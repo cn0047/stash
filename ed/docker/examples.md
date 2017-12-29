@@ -193,6 +193,10 @@ docker run -it --rm -v $PWD:/gh -w /gh/ed/nodejs/examples/mongo --net=x_node_mon
 #### PHP
 
 ````
+# php
+docker build -t xphp ./docker/php
+docker run -it --rm -v $PWD:/gh xphp php -v
+
 # php-cli
 docker build -t php-cli ./docker/php-cli
 docker run -it --rm -v $PWD:/gh php-cli php -v
@@ -205,7 +209,7 @@ docker build -t php-fpm ./docker/php-fpm
 docker run -it --rm -p 9000:9000 --hostname localhost --name php-fpm -v $PWD:/gh php-fpm
 
 # buil-in web server
-docker run -it --rm -p 8000:8000 -v $PWD:/gh php-cli php -S 0.0.0.0:8000 /gh/ed/php/examples/isNumeric.php
+docker run -it --rm -p 8000:8000 -v $PWD:/gh -v /tmp:/tmp xphp php -S 0.0.0.0:8000 /gh/ed/php/examples/whatever/isNumeric.php
 
 # mysql
 docker run -it --rm -v $PWD:/gh --link mysql-master php-cli php /gh/ed/php/examples/mysqlAndPdo/pdo.simplestExample.php
@@ -214,7 +218,7 @@ docker run -it --rm -v $PWD:/gh --link mysql-master php-cli php /gh/ed/php/examp
 docker run -it --rm -v $PWD:/gh --link postgres-master php-cli php /gh/ed/php/examples/mysqlAndPdo/pdo.postgresql.simplestExample.php
 
 # mongo
-docker run -it --rm -v $PWD:/gh --link xmongo php-cli php /gh/ed/php/examples/mongo.simplest.php
+docker run -it --rm -v $PWD:/gh --link xmongo php-cli php /gh/ed/php/examples/whatever/mongo.simplest.php
 
 # RabbitMQ with php
 docker run -ti --rm -v $PWD/ed/php/examples/rabbitmq/tutorials:/app xcomposer install

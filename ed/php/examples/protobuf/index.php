@@ -4,8 +4,8 @@
 RUN in shell:
 
 # docker
-docker run -it --rm -v $PWD:/gh -w /gh/ed/php/examples/protobuf php-cli composer install
-docker run -it --rm -v $PWD:/gh -w /gh/ed/php/examples/protobuf php-cli php index.php
+docker run -it --rm -v $PWD:/gh -w /gh/ed/php/examples/protobuf xphp composer install
+docker run -it --rm -v $PWD:/gh -w /gh/ed/php/examples/protobuf xphp php index.php
 
 # vagrant
 php /gh/ed/php/examples/protobuf/index.php

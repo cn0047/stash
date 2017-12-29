@@ -47,6 +47,7 @@ request_slowlog_timeout = 1
 
 ````
 php -S localhost:8000 index.php
+php -S localhost:8000 -t ./public
 # on vagrant
 php -S 0.0.0.0:80 index.php
 
@@ -107,6 +108,7 @@ PHP automatically converts such expressions into instances of the Closure intern
 `this` in closure - context of function declaration. In global scope equals to NULL, in class - class itself.
 
 #### Escaping from HTML
+
 ````php
 <?= 'print this string' ?>
 
@@ -122,6 +124,7 @@ PHP automatically converts such expressions into instances of the Closure intern
 ````
 
 #### Exceptions
+
 ````php
 throw new ErrorException('Unrecoverable Error', 456);
 
@@ -143,6 +146,7 @@ throw new \UnderflowException(404);
 ````
 
 #### phpCs
+
 ````
 phpcs -sw --standard=PSR2 file.php
 
@@ -153,6 +157,7 @@ sudo cp phpcs.phar /usr/bin/phpcs
 ````
 
 #### [phpDoc](http://www.phpdoc.org/docs/latest/index.html)
+
 ````
 phpdoc run -d . -t doc
 ````
@@ -164,6 +169,7 @@ echo "<pre>$output</pre>";
 ````
 
 #### xDebug
+
 ````
 [xdebug]
 ;
@@ -212,6 +218,7 @@ source ~/.bashrc
 ````
 
 #### debug
+
 ````php
 php -r 'var_export(json_decode(`curl http://country.io/iso3.json`, 1));'
 
@@ -252,6 +259,7 @@ php_sapi_name() == 'cli' ? print("\n$error\n") : pr($error);
 ````
 
 #### Flashback
+
 ````php
 <?php
 
@@ -348,6 +356,7 @@ cannot be instantiated.
 * __debugInfo()
 
 #### Data Types
+
 * Scalar types:
     * Boolean.
     * Integer.
@@ -363,3 +372,16 @@ cannot be instantiated.
     * Mixed.
     * Number.
     * Callback (aka callable).
+
+Type declarations (aka type hints):
+
+    * int
+    * float
+    * bool
+    * string
+    * array
+    * iterable
+    * callable
+    * self (`instanceof` the given class)
+
+It's ok to write `float[]` in phpDoc.
