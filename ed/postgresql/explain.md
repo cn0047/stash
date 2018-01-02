@@ -13,10 +13,12 @@ In output:
 * `rows` - estimated rows
 * `width` - what we got as result dividet to number of rows
 
-`Index San using name_of_key` - good,
-`Index Cond` - when field in where clause has index,
-`Filter` - when field in where clause has NOT index.
-`Heap Fetches` - very good.
+`Seq Scan` - not very good;
+`Gather ... Parallel Seq Scan` - parallel query (must be not bad);
+`Filter` - when field in where clause has NOT index;
+`Index Cond` - when field in where clause has index;
+`Index San using name_of_key` - good;
+`Heap Fetches` - very good;
 
 Stats about index usage:
 

@@ -22,7 +22,3 @@ create table example (
   PRIMARY KEY (a, b),
   UNIQUE (a, c) 
 );
-
-create table tictactoe (
-  squares integer[3][3]
-);

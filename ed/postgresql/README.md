@@ -45,42 +45,84 @@ VACUUM VERBOSE tableName; -- helpful info
 * `cmax` - The command identifier within the deleting transaction.
 * `ctid` - The physical location of the row version within its table.
 
+#### Rules
+
+* INSTEAD
+* ALSO (additional command to original command)
+
+Triggers better than rules.
+
+#### PL - Procedural Languages.
+
+* PL/pgSQL (default and has optimal performance)
+* PL/Tcl
+* PL/Perl
+* PL/Python
+
+We can return multiple values from procedures.
+
+#### Window Functions
+
+Like aggregate functions but doesn't cause rows to become grouped into a single output row.
+it is valid to include an aggregate function call in the arguments of a window function,
+but not vice versa.
+
+Example:
+
+````
+SELECT depname, empno, salary, avg(salary) OVER (PARTITION BY depname)
+FROM empsalary;
+````
+
+#### Parallel Query
+
+Only `Seq Scan` can be parallelized,
+but indexed column disable parallelism.
+
+````
+SHOW max_parallel_workers_per_gather;
+SET max_parallel_workers_per_gather = 4;
+````
+
+Also `dynamic_shared_memory_type` must be set to a value other than none,
+And the system must NOT be running in single-user mode.
+
 #### Data Types:
 
 boolean
 
-character values:
-  char: holds a single character
-  char (#): holds # number of characters.
-  varchar (#)
+* character values:
+  * char: holds a single character
+  * char (#): holds # number of characters.
+  * varchar (#)
 
-integer values:
-  smallint
-  int
-  serial
+* integer values:
+  * smallint
+  * int
+  * serial
 
-floating-point values:
-  float (#)
-  real: 8-byte floating point number
-  numeric (#,after_dec)
+* floating-point values:
+  * float (#)
+  * real: 8-byte floating point number
+  * numeric (#,after_dec)
 
-date and time values:
-  date
-  time
-  timestamp
-  timestamptz
-  interval
+* date and time values:
+  * date
+  * time
+  * timestamp
+  * timestamptz
+  * interval
 
-geometric data:
-  point
-  line
-  lseg
-  box
-  polygon
+* geometric data:
+  * point
+  * line
+  * lseg
+  * box
+  * polygon
 
-device specifications:
-  inet
-  macaddr
+* device specifications:
+  * inet
+  * macaddr
 
 Pseudo-Types:
 
@@ -103,14 +145,3 @@ Pseudo-Types:
 * void
 * unknown
 * opaque
-
-@TODO:
-json field
-array field
-window functions
-ANY/SOME/ALL
-parallel query
-index diff unique/primary
-
-https://app.pluralsight.com/library/courses/postgresql-advanced-server-programming/table-of-contents
-https://app.pluralsight.com/library/courses/postgresql-time-temporal-data/table-of-contents

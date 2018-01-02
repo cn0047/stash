@@ -3,18 +3,12 @@ JSON
 
 Operators:
 
-* `->` - int/text
-* `->>` - int/text
-* `#>` - path
-* `#>>` - path as text
-* `@>` -
-* `<@` -
-* `?` -
-* `?|` -
-* `?&` -
-* `||` -
-* `-` -
-* `#-` -
+* `->` - for int/text values.
+* `->>` - for int/text values.
+* `#>` - path.
+* `#>>` - path as text.
+* `@>`, `<@` - for JSONB.
+* `||` - concatenate two JSONB values.
 
 Functions:
 
@@ -31,14 +25,19 @@ Functions:
 * json_object('{a, 1, b, "def", c, 3.5}')
 * jsonb_object
 * json_agg(fieldFromDB)
-* and else ...
 
 ````
 CREATE TABLE books (id integer, data json);
 
-INSERT INTO books VALUES (1, '{ "name": "B-First", "tags": ["sql", "one"], "author": { "first_name": "Bob", "last_name": "White" } }');
-INSERT INTO books VALUES (2, '{ "name": "B-Second", "tags": ["sql"], "author": { "first_name": "Charles", "last_name": "Xavier" } }');
-INSERT INTO books VALUES (3, '{ "name": "B-Third", "tags": ["sql", "fun"], "author": { "first_name": "Jim", "last_name": "Brown" } }');
+INSERT INTO books VALUES
+     (1, '{ "name": "B-First",  "tags": ["sql", "one"], "author": { "first_name": "Bob", "last_name": "White" } }')
+    ,(2, '{ "name": "B-Second", "tags": ["sql"],        "author": { "first_name": "Charles", "last_name": "Xavier" } }')
+    ,(3, '{ "name": "B-Third",  "tags": ["sql", "fun"], "author": { "first_name": "Jim", "last_name": "Brown" } }')
+;
+````
+
+````
+-- SELECT:
 
 SELECT * FROM books;
  id |                                            data
@@ -47,16 +46,35 @@ SELECT * FROM books;
   2 | { "name": "Book the Second", "author": { "first_name": "Charles", "last_name": "Xavier" } }
   3 | { "name": "Book the Third", "author": { "first_name": "Jim", "last_name": "Brown" } }
 
-````
-
-````
 SELECT data->'name' FROM books;
+  ?column?
+------------
+ "B-First"
+ "B-Second"
+ "B-Third"
 
 SELECT * FROM books WHERE data->>'name' = 'B-First';
+ id |                                                  data
+----+---------------------------------------------------------------------------------------------------------
+  1 | { "name": "B-First",  "tags": ["sql", "one"], "author": { "first_name": "Bob", "last_name": "White" } }
 
+SELECT data::json#>'{author, first_name}' FROM books WHERE data->>'name' = 'B-First';
+ ?column?
+----------
+ "Bob"
 
+SELECT data::jsonb FROM books WHERE data::jsonb @> '{"name": "B-Third"}';
+----------------------------------------------------------------------------------------------------
+ {"name": "B-Third", "tags": ["sql", "fun"], "author": {"last_name": "Brown", "first_name": "Jim"}}
 
--- SELECT * FROM books WHERE jdoc -> 'tags' ? 'qui';
--- SELECT * FROM books WHERE data->'tags' @> '["sql"]';
--- SELECT * FROM books WHERE data->'tags' @> '{"name": "Book the First"}';
+SELECT data->'name'FROM books WHERE (data->'tags')::jsonb ? 'fun';
+ ?column?
+-----------
+ "B-Third"
+````
+
+````
+# INDEX:
+# 
+CREATE INDEX ON books ((data->>'author'));
 ````

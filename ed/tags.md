@@ -59,8 +59,7 @@ CV
 * ***oauth2*** - github;
 * ***php*** - xdebug; websockets;
 * ***phpdoc*** - generate documentation;
-* ***postgresql*** -
-* ***postgresql*** - insert; select; dump; repl;
+* ***postgresql*** - insert; select; dump; repl; explain; join; union; json; array;
 * ***protocols*** - http2;
 * ***rabbitmq*** - queue worker; topic and routing exchanges; delayed message;
 * ***react*** - component; router; context; es6; jsx;

@@ -5,16 +5,6 @@ Random Stuff
 SELECT format('Testing %s, %s, %s, %%', 'one', 'two', 'three');
 SELECT format('|%10s|', 'foo');
 
-SELECT ARRAY[1, 2, 1+2];
-  array
----------
- {1,2,3}
-
- SELECT ARRAY[1, 2, 1+2, '4', true]::integer[];
-    array
--------------
- {1,2,3,4,1}
-
 SELECT ROW(1,2.5,'this is a test');
            row
 --------------------------
