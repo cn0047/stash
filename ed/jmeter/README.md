@@ -4,6 +4,10 @@ jmeter
 ````
 # random hash wiht length 10 chars
 ${__javaScript(Math.random().toString(36).toUpperCase().substring(16))}
+
+# ENV variable
+${__P('host')}
+${__P('port', 3000)}
 ````
 
 ````
