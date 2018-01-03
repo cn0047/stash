@@ -29,10 +29,11 @@ CV
 * ***php*** - curl; session; regexp; pdo; spl; reflection; error handling; mcrypt; password hashing; xml-rpc; memcache; heredoc; interface; class; trait; cli; upgrade PHP 5.1.6 → PHP 5.3.3 → PHP 5.4.35 → PHP 5.5; semaphore; pcntl_* functions (fork, wait, etc); imap_* functions; opcache; apcu; imagick; generators;
 * ***phpunit*** - stub; mock; dataProvider; fixture; dbTest;
 * ***protocols*** - http; xml-rpc; soap; imap; json-rpc; websockets;
-* ***require.js*** - i18n; text.js;
+* ***requirejs*** - i18n; text.js;
 * ***slack*** - incoming-webhooks;
 * ***smarty*** - debug; capture; html_options; include; extends; plugin;
 * ***svn*** - checkout; merge; diff; log; 
+* ***swagger*** - yaml specification;
 * ***symfony*** - doctrine; twig; components (asset, console, form, process, lockHandler, routing, security firewalls, voters, authentication, authorization, translation, validator);
 * ***twig*** - dump; set; include; extends;
 * ***underscore.js*** - each; escape; isEmpty; isFunction; template;
@@ -62,7 +63,7 @@ CV
 * ***postgresql*** - insert; select; dump; repl; explain; join; union; json; array;
 * ***protocols*** - http2;
 * ***rabbitmq*** - queue worker; topic and routing exchanges; delayed message;
-* ***react*** - component; router; context; es6; jsx;
+* ***reactjs*** - component; router; context; es6; jsx;
 * ***redis*** - set; hash; transaction; pipelining;
 * ***redux*** - store; combineReducers;
 * ***seleniumide*** - if; loop; generate random data (username, email, telephone);
