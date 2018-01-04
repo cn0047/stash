@@ -1,6 +1,6 @@
 yii
 -
-1
+1.1.19
 
 [api](http://www.yiiframework.com/doc/api/1.1/CApcCache)
 |

@@ -1,14 +1,28 @@
 FROM ubuntu:17.10
 
-RUN apt-get update && apt-get install -y apt-utils net-tools unzip
+RUN apt-get update && apt-get install -y git vim curl wget apt-utils net-tools unzip libpcre3-dev
 
 # php
-RUN apt-get install -y php7.1 php7.1-fpm php7.1-cli php7.1-opcache php7.1-common php7.1-phpdbg php7.1-dev \
-    && apt-get install -y php7.1-mcrypt php7.1-mbstring php7.1-bcmath \
-    && apt-get install -y php7.1-mysql php7.1-pdo php-mongodb php7.1-sqlite php7.1-sqlite3 php7.1-redis \
-    && apt-get install -y php7.1-dom php7.1-xml php7.1-json \
-    && apt-get install -y php7.1-zip php7.1-curl php7.1-gd php7.1-imap \
-    && apt-get install -y php7.1-imagick
+RUN apt-get install -y \
+    php7.1 php7.1-fpm php7.1-cli php7.1-opcache php7.1-common php7.1-phpdbg php7.1-dev \
+    php7.1-mcrypt php7.1-mbstring php7.1-bcmath php7.1-gd php7.1-zip php7.1-curl php7.1-imagick \
+    php7.1-imap php7.1-ldap \
+    php7.1-dom php7.1-xml php7.1-json \
+    php7.1-mysql php7.1-pdo php-mongodb php7.1-sqlite php7.1-sqlite3 php7.1-pgsql \
+    php7.1-redis \
+    libzmq5 php-zmq \
+    php-pear php-soap php-ssh2
+
+# SPL_Types
+RUN \
+    # pecl install SPL_Types
+    git clone https://github.com/esminis/php_pecl_spl_types.git \
+    && cd php_pecl_spl_types \
+    && phpize \
+    && ./configure \
+    &&  make install \
+    && cd .. && rm -r php_pecl_spl_types \
+    && echo 'extension=spl_types.so' >> /etc/php/7.1/mods-available/spl_types.ini
 
 # xdebug
 RUN apt-get install -y php-xdebug \
@@ -33,8 +47,12 @@ RUN curl -OL https://github.com/google/protobuf/releases/download/v3.5.1/protoc-
     && pecl install protobuf-3.5.1 \
     && echo 'extension=protobuf.so' >> /etc/php/7.1/mods-available/protobuf.ini
 
+RUN service php7.1-fpm start
+
+EXPOSE 9000
+
 # composer
 RUN curl -sS https://getcomposer.org/installer | php \
   && mv composer.phar /usr/local/bin/composer
 
-CMD ["php"]
+CMD ['php', 'php-fpm']

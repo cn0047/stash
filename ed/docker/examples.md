@@ -4,6 +4,8 @@ Examples
 ### RUN
 
 ````
+docker network create --driver bridge xnet
+
 # bash
 docker build -t xubuntu ./docker/ubuntu
 docker exec -it xubuntu node -v
@@ -28,7 +30,12 @@ docker run -ti --rm --name nginx-html \
 curl http://localhost:8080/bootstrap.popover.html
 
 # php (all scripts from `ed/php/examples`)
-docker run -ti --rm --name nginx-php --link php-fpm \
+docker run -ti --rm --name nginx-php --link x-php-fpm \
+    -v $PWD/docker/nginx/php-fpm.conf:/etc/nginx/conf.d/default.conf \
+    -v $PWD:/gh \
+    -p 8080:80 nginx:latest
+# xphp with xnet
+docker run -ti --rm --name nginx-php --net=xnet \
     -v $PWD/docker/nginx/php-fpm.conf:/etc/nginx/conf.d/default.conf \
     -v $PWD:/gh \
     -p 8080:80 nginx:latest
@@ -195,7 +202,11 @@ docker run -it --rm -v $PWD:/gh -w /gh/ed/nodejs/examples/mongo --net=x_node_mon
 ````
 # php
 docker build -t xphp ./docker/php
+docker run -it --rm -v $PWD:/gh xphp /bin/bash
 docker run -it --rm -v $PWD:/gh xphp php -v
+# x-php-fpm
+docker run -it --rm -p 9000:9000 --hostname localhost --name x-php-fpm -v $PWD:/gh php-fpm
+docker run -it --rm -p 9000:9000 --hostname localhost --name x-php-fpm --net=xnet -v $PWD:/gh php-fpm
 
 # php-cli
 docker build -t php-cli ./docker/php-cli
@@ -208,8 +219,8 @@ docker run -it --rm -v $PWD:/app -w /app php-cli composer --help
 docker build -t php-fpm ./docker/php-fpm
 docker run -it --rm -p 9000:9000 --hostname localhost --name php-fpm -v $PWD:/gh php-fpm
 
-# buil-in web server
-docker run -it --rm -p 8000:8000 -v $PWD:/gh -v /tmp:/tmp xphp php -S 0.0.0.0:8000 /gh/ed/php/examples/whatever/isNumeric.php
+# built-in web server
+docker run -it --rm -p 8080:8080 -v $PWD:/gh -v /tmp:/tmp xphp php -S 0.0.0.0:8080 /gh/ed/php/examples/whatever/healthCheck.php
 
 # mysql
 docker run -it --rm -v $PWD:/gh --link mysql-master php-cli php /gh/ed/php/examples/mysqlAndPdo/pdo.simplestExample.php
