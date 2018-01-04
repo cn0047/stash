@@ -1,44 +1,47 @@
 LINKS
 -
 
-page speed:
-    www.bytecheck.com
+Page speed:
 
-data generator:
-    https://www.mockaroo.com/
-    http://www.json-generator.com/
-http://myjson.com/ # mock for REST-API
-http://mockbin.org/
+* www.bytecheck.com
 
-http://markup.su/highlighter/
-http://jsbin.com/
-http://codepad.org/
-https://3v4l.org/
-http://sqlfiddle.com/
-http://choosealicense.com/
-https://www.box.com/en-gb/home
+Data generator:
 
-https://code.facebook.com/projects/
-https://platform.sh/
+* https://www.mockaroo.com/
+* http://www.json-generator.com/
 
-https://github.com/sindresorhus/awesome
-https://github.com/h5bp/Front-end-Developer-Interview-Questions
-https://github.com/ifightcrime/bootstrap-growl/ PopUp
+<br> http://myjson.com/ - mock for REST-API
+<br> http://mockbin.org/
 
-http://www.xe.com/
-http://free-proxy-list.net/
+<br> http://markup.su/highlighter/
+<br> http://jsbin.com/
+<br> http://codepad.org/
+<br> https://3v4l.org/
+<br> http://sqlfiddle.com/
+<br> http://choosealicense.com/
+<br> https://www.box.com/en-gb/home
 
-share info (articles):
-    https://hackernoon.com/ IS https://medium.com/
-    https://www.codementor.io/
-    https://www.airpair.com/
+<br> https://code.facebook.com/projects/
+<br> https://platform.sh/
 
-trackjs.com # like sentry but for js
-draw.io
-app.zeplin.io
-app.teamweek.com
-app.asana.com
-mailchimp.com
-www.mailgun.com
-speakerdeck.com
-www.jetbrains.com/upsource/ code review
+<br> https://github.com/sindresorhus/awesome
+<br> https://github.com/h5bp/Front-end-Developer-Interview-Questions
+<br> https://github.com/ifightcrime/bootstrap-growl/ - PopUp
+
+<br> http://www.xe.com/
+<br> http://free-proxy-list.net/
+
+Share info (articles):
+
+* https://www.codementor.io/
+* https://www.airpair.com/
+
+<br> trackjs.com - like sentry but for js
+<br> draw.io
+<br> app.zeplin.io
+<br> app.teamweek.com
+<br> app.asana.com
+<br> mailchimp.com
+<br> mailgun.com
+<br> speakerdeck.com
+<br> jetbrains.com/upsource - code review

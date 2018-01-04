@@ -45,6 +45,9 @@ docker-machine ip
 # information about all the containers
 docker ps -a
 
+# top
+docker top CONTAINER_ID
+
 # shows the standard output of a container
 docker logs
 # follow

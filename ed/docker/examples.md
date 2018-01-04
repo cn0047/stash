@@ -8,40 +8,11 @@ docker network create --driver bridge xnet
 
 # bash
 docker build -t xubuntu ./docker/ubuntu
-docker exec -it xubuntu node -v
 docker run -ti --rm xubuntu /bin/bash
-docker run -ti --rm -v $PWD/u.sh:/u.sh xubuntu /u.sh
 
 # composer
 docker build -t xcomposer ./docker/composer
 docker run -ti --rm -v $PWD:/app xcomposer install
-````
-
-#### NGINX
-
-````
-# html
-docker run -ti --rm --name nginx-html \
-    -v $PWD/docker/nginx/html.conf:/etc/nginx/conf.d/default.conf \
-    -v $PWD:/gh \
-    -p 8080:80 nginx:latest
-
-# test
-curl http://localhost:8080/bootstrap.popover.html
-
-# php (all scripts from `ed/php/examples`)
-docker run -ti --rm --name nginx-php --link x-php-fpm \
-    -v $PWD/docker/nginx/php-fpm.conf:/etc/nginx/conf.d/default.conf \
-    -v $PWD:/gh \
-    -p 8080:80 nginx:latest
-# xphp with xnet
-docker run -ti --rm --name nginx-php --net=xnet \
-    -v $PWD/docker/nginx/php-fpm.conf:/etc/nginx/conf.d/default.conf \
-    -v $PWD:/gh \
-    -p 8080:80 nginx:latest
-
-# test
-curl localhost:8080/healthCheck.php
 ````
 
 #### MONGO
@@ -126,12 +97,13 @@ docker exec -ti mysql-master mysql -P3307 -udbu -pdbp -Dtest
 #### POSTGRESQL
 
 ````
-docker run -it --rm --name xpostgres --hostname xpostgres \
+docker run -it --rm --name xpostgres --hostname xpostgres --net=xnet \
     -v $PWD/docker/.data/postgresql/xpostgres:/var/lib/postgresql/data \
     -e POSTGRES_DB=test -e POSTGRES_USER=dbu -e POSTGRES_PASSWORD=dbp postgres
 
 # test
 docker exec -ti xpostgres psql -h localhost -p 5432 -U dbu -d test
+docker exec -ti -e PGPASSWORD=dbp xpostgres psql -h localhost -p 5432 -U dbu -d test
 ````
 
 #### POSTGRESQL cluster
@@ -197,16 +169,46 @@ docker network create --driver bridge x_node_mongo
 docker run -it --rm -v $PWD:/gh -w /gh/ed/nodejs/examples/mongo --net=x_node_mongo node:latest node index.js
 ````
 
+#### NGINX
+
+````
+# html
+docker run -ti --rm --name nginx-html \
+    -v $PWD/docker/nginx/html.conf:/etc/nginx/conf.d/default.conf \
+    -v $PWD:/gh \
+    -p 8080:80 nginx:latest
+
+# test
+curl http://localhost:8080/bootstrap.popover.html
+
+# php (all scripts from `ed/php/examples`)
+docker run -ti --rm --name nginx-and-php --link php-fpm \
+    -v $PWD/docker/nginx/php-fpm.conf:/etc/nginx/conf.d/default.conf \
+    -v $PWD:/gh \
+    -p 8080:80 nginx:latest
+# # php with xnet
+# docker run -ti --rm --name nginx-and-php --net=xnet \
+#     -v $PWD/docker/nginx/php-fpm.conf:/etc/nginx/conf.d/default.conf \
+#     -v $PWD:/gh \
+#     -p 8080:80 nginx:latest
+
+# test
+curl localhost:8080/healthCheck.php
+````
+
 #### PHP
 
 ````
-# php
-docker build -t xphp ./docker/php
-docker run -it --rm -v $PWD:/gh xphp /bin/bash
-docker run -it --rm -v $PWD:/gh xphp php -v
-# x-php-fpm
-docker run -it --rm -p 9000:9000 --hostname localhost --name x-php-fpm -v $PWD:/gh php-fpm
-docker run -it --rm -p 9000:9000 --hostname localhost --name x-php-fpm --net=xnet -v $PWD:/gh php-fpm
+# php-nginx
+docker build -t nphp ./docker/php-nginx
+docker run -it --rm -p 8080:80 -v $PWD:/gh nphp php -v
+# built-in web server
+docker run -it --rm -p 8080:80 -v $PWD:/gh nphp \
+    php -S 0.0.0.0:80 /gh/ed/php/examples/whatever/healthCheck.php
+docker run -it --rm -p 8080:80 -v $PWD:/gh nphp \
+    /bin/bash -c 'service php7.1-fpm start; service nginx start; tail -f /dev/stdout'
+# test
+curl http://localhost:8080/healthCheck.php?XDEBUG_SESSION_START=PHPSTORM
 
 # php-cli
 docker build -t php-cli ./docker/php-cli
@@ -218,15 +220,14 @@ docker run -it --rm -v $PWD:/app -w /app php-cli composer --help
 # php-fpm
 docker build -t php-fpm ./docker/php-fpm
 docker run -it --rm -p 9000:9000 --hostname localhost --name php-fpm -v $PWD:/gh php-fpm
-
-# built-in web server
-docker run -it --rm -p 8080:8080 -v $PWD:/gh -v /tmp:/tmp xphp php -S 0.0.0.0:8080 /gh/ed/php/examples/whatever/healthCheck.php
+docker run -it --rm -p 9000:9000 --hostname localhost --name php-fpm -v $PWD:/gh --net=xnet php-fpm
 
 # mysql
 docker run -it --rm -v $PWD:/gh --link mysql-master php-cli php /gh/ed/php/examples/mysqlAndPdo/pdo.simplestExample.php
 
 # postgres
-docker run -it --rm -v $PWD:/gh --link postgres-master php-cli php /gh/ed/php/examples/mysqlAndPdo/pdo.postgresql.simplestExample.php
+docker run -it --rm -v $PWD:/gh --net=xnet \
+    php-cli php /gh/ed/php/examples/mysqlAndPdo/pdo.postgresql.simplestExample.php
 
 # mongo
 docker run -it --rm -v $PWD:/gh --link xmongo php-cli php /gh/ed/php/examples/whatever/mongo.simplest.php

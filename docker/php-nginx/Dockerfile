@@ -1,6 +1,6 @@
 FROM ubuntu:17.10
 
-RUN apt-get update && apt-get install -y git vim curl wget apt-utils net-tools unzip libpcre3-dev
+RUN apt-get update && apt-get install -y git vim curl wget apt-utils telnet net-tools unzip libpcre3-dev
 
 # php
 RUN apt-get install -y \
@@ -34,7 +34,6 @@ RUN apt-get install -y php-xdebug \
     # sudo ifconfig lo0 alias 10.254.254.254
     && echo 'xdebug.remote_host=10.254.254.254'             >> /etc/php/7.1/mods-available/xdebug.ini \
     && echo 'xdebug.remote_port=9002'                       >> /etc/php/7.1/mods-available/xdebug.ini \
-    && echo 'xdebug.remote_log=/tmp/xdebug.log'             >> /etc/php/7.1/mods-available/xdebug.ini \
     && echo 'xdebug.idekey=PHPSTORM'                        >> /etc/php/7.1/mods-available/xdebug.ini
 
 # protobuf
@@ -48,11 +47,18 @@ RUN curl -OL https://github.com/google/protobuf/releases/download/v3.5.1/protoc-
     && echo 'extension=protobuf.so' >> /etc/php/7.1/mods-available/protobuf.ini
 
 RUN service php7.1-fpm start
+# EXPOSE 9000
 
-EXPOSE 9000
+# nginx
+RUN apt-get install -y nginx
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+RUN service nginx start
+# EXPOSE 80
 
 # composer
 RUN curl -sS https://getcomposer.org/installer | php \
   && mv composer.phar /usr/local/bin/composer
 
-CMD ['php', 'php-fpm']
+# CMD ['php', 'php-fpm', 'nginx']
+
+# ENTRYPOINT tail -f /dev/stdout
