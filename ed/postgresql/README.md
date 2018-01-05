@@ -27,6 +27,9 @@ Schema - like directory in file system.
 COPY tableName TO 'filePath' CSV (DELIMER ',');
 COPY tableName FROM 'filePath' DELIMER ',';
 
+psql -d postgres://dbu:dbp@localhost/test
+psql -h localhost -U dbu -d test -c 'select 204'
+
 pg_dump -h localhost -p 5432 -U dbu -d test > /var/lib/postgresql/data/dump.sql
 psql -h localhost -p 5432 -U dbu -d td < /var/lib/postgresql/data/dump.sql
 ````

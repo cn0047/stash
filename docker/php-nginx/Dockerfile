@@ -46,6 +46,21 @@ RUN curl -OL https://github.com/google/protobuf/releases/download/v3.5.1/protoc-
     && pecl install protobuf-3.5.1 \
     && echo 'extension=protobuf.so' >> /etc/php/7.1/mods-available/protobuf.ini
 
+RUN echo 'display_errors=On' >> /etc/php/7.1/cli/php.ini \
+    && echo 'display_errors=On' >> /etc/php/7.1/fpm/php.ini \
+    && echo 'display_startup_errors=On' >> /etc/php/7.1/cli/php.ini \
+    && echo 'display_startup_errors=On' >> /etc/php/7.1/fpm/php.ini \
+    && echo 'error_log=/dev/stdout' >> /etc/php/7.1/cli/php.ini \
+    && echo 'error_log=/dev/stdout' >> /etc/php/7.1/fpm/php.ini
+
+# for Yii 1 template engine
+RUN echo 'short_open_tag=On' >> /etc/php/7.1/cli/php.ini \
+    && echo 'short_open_tag=On' >> /etc/php/7.1/fpm/php.ini
+
+#
+RUN echo 'upload_max_filesize=50M' >> /etc/php/7.1/cli/php.ini \
+    && echo 'upload_max_filesize=50M' >> /etc/php/7.1/fpm/php.ini
+
 RUN service php7.1-fpm start
 # EXPOSE 9000
 

@@ -5,6 +5,7 @@ Node JS
 *v0.10.26*
 
 http://node.green/
+[https](https://github.com/cn007b/my/blob/master/ed/nodejs.express/examples/coursera.passport/bin/www#L42)
 
 ````
 sudo ln -s /usr/bin/nodejs /usr/bin/node

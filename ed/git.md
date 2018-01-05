@@ -171,4 +171,5 @@ vendor/
 [core]
     excludesfile = ~/.gitignore
     editor       = vim
+    ignoreCase   = false
 ````

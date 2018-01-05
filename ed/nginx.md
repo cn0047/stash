@@ -122,3 +122,36 @@ server {
   }
 }
 ````
+
+#### HTTPS
+
+````
+cd docker/nginx/https/
+
+openssl genrsa -des3 -out ca.orig.key 4096
+# password: aldfnvljs034ilsdkjf
+openssl req -new -x509 -days 365 -key ca.orig.key -out ca.crt
+echo 01 > ca.srl
+
+openssl genrsa -des3 -out ia.key 4096
+# password: WUIYlsdjlkio2309
+openssl req -new -key ia.key -out ia.csr
+# password: OIsldjflkwjedkL
+openssl x509 -req -days 730 -in ia.csr -CA ca.crt -CAkey ca.orig.key -out ia.crt
+echo 01 > ia.srl
+
+MYDOMAIN="localhost"
+openssl genrsa -des3 -out "$MYDOMAIN".orig.key 2048
+# password: salkdfjlkjIOIEDFds
+openssl rsa -in "$MYDOMAIN".orig.key -out "$MYDOMAIN".key
+openssl req -new -key "$MYDOMAIN".key -out "$MYDOMAIN".csr
+# password: TRYRTUYGjksdnlfksdle
+openssl x509 -req -days 365 -in "$MYDOMAIN".csr -CA ia.crt -CAkey ia.key -out "$MYDOMAIN".crt
+
+docker run -ti --rm --name nginx-html \
+    -v $PWD/docker/nginx/https/html.conf:/etc/nginx/conf.d/default.conf \
+    -v $PWD/docker/nginx/https/localhost.crt:/ssl/localhost.crt \
+    -v $PWD/docker/nginx/https/localhost.key:/ssl/localhost.key \
+    -v $PWD:/gh \
+    -p 3443:443 nginx:latest
+````

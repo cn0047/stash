@@ -101,9 +101,13 @@ docker run -it --rm --name xpostgres --hostname xpostgres --net=xnet \
     -v $PWD/docker/.data/postgresql/xpostgres:/var/lib/postgresql/data \
     -e POSTGRES_DB=test -e POSTGRES_USER=dbu -e POSTGRES_PASSWORD=dbp postgres
 
+# import dump
+# docker exec -ti cpqsql /bin/bash -c "psql -d postgres://dbu:dbp@cpqsql/test < /app/dump.sql"
+
 # test
 docker exec -ti xpostgres psql -h localhost -p 5432 -U dbu -d test
 docker exec -ti -e PGPASSWORD=dbp xpostgres psql -h localhost -p 5432 -U dbu -d test
+docker exec -ti xpostgres psql -d postgres://dbu:dbp@localhost/test
 ````
 
 #### POSTGRESQL cluster
@@ -181,6 +185,17 @@ docker run -ti --rm --name nginx-html \
 # test
 curl http://localhost:8080/bootstrap.popover.html
 
+# https html
+docker run -ti --rm --name nginx-html \
+    -v $PWD/docker/nginx/https/html.conf:/etc/nginx/conf.d/default.conf \
+    -v $PWD/docker/nginx/https/localhost.crt:/ssl/localhost.crt \
+    -v $PWD/docker/nginx/https/localhost.key:/ssl/localhost.key \
+    -v $PWD:/gh \
+    -p 3443:443 nginx:latest
+
+# test
+curl https://localhost:3443/bootstrap.popover.html
+
 # php (all scripts from `ed/php/examples`)
 docker run -ti --rm --name nginx-and-php --link php-fpm \
     -v $PWD/docker/nginx/php-fpm.conf:/etc/nginx/conf.d/default.conf \
@@ -205,6 +220,7 @@ docker run -it --rm -p 8080:80 -v $PWD:/gh nphp php -v
 # built-in web server
 docker run -it --rm -p 8080:80 -v $PWD:/gh nphp \
     php -S 0.0.0.0:80 /gh/ed/php/examples/whatever/healthCheck.php
+# nginx
 docker run -it --rm -p 8080:80 -v $PWD:/gh nphp \
     /bin/bash -c 'service php7.1-fpm start; service nginx start; tail -f /dev/stdout'
 # test
