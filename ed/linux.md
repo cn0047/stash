@@ -285,6 +285,12 @@ curl -T firmware.bin http://0.0.0.48/cgi-bin/package_install?hash=017
 
 #### shell
 ````
+# streams
+/dev/stderr
+/dev/stdin
+/dev/stdout
+/dev/null
+
 apt-get install -y --force-yes
 # search package
 apt-cache search htop
@@ -315,6 +321,7 @@ echo 200 | pbcopy
 # md5 for directory
 find src/ -type f -exec md5sum '{}' \; | md5sum
 
+env # to see all ENV variables
 sudo bash -c 'echo "APP_ENVIRONMENT=prod" > /etc/environment'
 sh -c 'echo 200'
 
@@ -334,6 +341,7 @@ kill -9 `ps -aux|grep {{PROCESS_NAME}}|grep -v grep|awk '{print $2}'`
 
 uname -a # Shows 32 or 64 bit OS.
 uname -r # Show the kernel version.
+cat /etc/*release # all ablut ubuntu
 
 nslookup git.mdm.comodo.od.ua
 host github.com # Shows ip by host.

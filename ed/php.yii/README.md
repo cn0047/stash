@@ -2,9 +2,9 @@ yii
 -
 1.1.19
 
-[api](http://www.yiiframework.com/doc/api/1.1/CApcCache)
+[api](http://www.yiiframework.com/doc/api/1.1)
 |
-[guide](http://yiiframework.ru/doc/guide/en/index)
+[guide](http://www.yiiframework.com/doc/guide/1.1/en/index)
 |
 [cookbook](http://yiiframework.ru/doc/cookbook/ru/index)
 

@@ -10,7 +10,7 @@ RUN apt-get install -y \
     php7.1-dom php7.1-xml php7.1-json \
     php7.1-mysql php7.1-pdo php-mongodb php7.1-sqlite php7.1-sqlite3 php7.1-pgsql \
     php7.1-redis \
-    libzmq5 php-zmq \
+    libzmq5 libzmq5-dev php-zmq \
     php-pear php-soap php-ssh2
 
 # SPL_Types
@@ -46,6 +46,7 @@ RUN curl -OL https://github.com/google/protobuf/releases/download/v3.5.1/protoc-
     && pecl install protobuf-3.5.1 \
     && echo 'extension=protobuf.so' >> /etc/php/7.1/mods-available/protobuf.ini
 
+# php conf
 RUN echo 'display_errors=On' >> /etc/php/7.1/cli/php.ini \
     && echo 'display_errors=On' >> /etc/php/7.1/fpm/php.ini \
     && echo 'display_startup_errors=On' >> /etc/php/7.1/cli/php.ini \

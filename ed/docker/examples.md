@@ -217,6 +217,8 @@ curl localhost:8080/healthCheck.php
 # php-nginx
 docker build -t nphp ./docker/php-nginx
 docker run -it --rm -p 8080:80 -v $PWD:/gh nphp php -v
+# composer
+docker run -it --rm -v $PWD:/app -w /app nphp composer --help
 # built-in web server
 docker run -it --rm -p 8080:80 -v $PWD:/gh nphp \
     php -S 0.0.0.0:80 /gh/ed/php/examples/whatever/healthCheck.php
@@ -230,8 +232,6 @@ curl http://localhost:8080/healthCheck.php?XDEBUG_SESSION_START=PHPSTORM
 docker build -t php-cli ./docker/php-cli
 docker run -it --rm -v $PWD:/gh php-cli php -v
 docker run -it --rm -v $PWD:/gh php-cli php /gh/x.php
-# composer
-docker run -it --rm -v $PWD:/app -w /app php-cli composer --help
 
 # php-fpm
 docker build -t php-fpm ./docker/php-fpm

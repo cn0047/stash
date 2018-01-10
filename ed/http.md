@@ -230,6 +230,10 @@ Origin: https://foo.bar.org
 
 ## HTTPS
 
+https://hstspreload.org/ for add your site to preload.
+http://www.badssl.com/ helps to find problems with https.
+http://www.httpvshttps.com/
+
 The main point of HTTPS is
 authentication of the visited website and protection of the privacy and integrity of the exchanged data.
 HTTPS creates a secure channel over an insecure network.
@@ -241,26 +245,11 @@ Solves problems with:
 * DNS hijacking
 
 CA - Certification Authority.
-SSL - Secure Sockets Layer.
-TLS - Transport Layer Security.
-
-TLS handshake:
-
-1. Client sends hello to server.
-2. Server responds with hello and certificate which contains public key back to client.
-3. Client verifies certificate against CAs.
-4. Client generates symmetric pre-master key and encrypt it with public key from certificate
-   and transmits it to the server.
-5. Server decrypt pre-master and generates symmetric key.
-   Now both client and server have symmetric key (session key).
-5. SSL is established and secure communication begins.
+SSL - Secure Sockets Layer (SSL 3.0 is vulnerable).
+TLS - is modern implementation of SSL.
 
 HTTP Strict Transport Security:
 `strict-transport-security` header in response with `max-age` as value
 says to browser to reflect to 307 redirect and faster perform secure (not insecure) request.
 
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-
-https://hstspreload.org/ for add your site to preload.
-http://www.badssl.com/ helps to find problems with https.
-http://www.httpvshttps.com/

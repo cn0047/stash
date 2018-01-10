@@ -47,7 +47,6 @@ Acronyms
 [SPL](#SPL)
 [SSH](#SSH)
 [SSL](#SSL)
-[TCP](#TCP)
 [TLS](#TLS)
 [UDP](#UDP)
 [URI](#URI)
@@ -200,9 +199,6 @@ Acronyms
 
 <dt><a name="SSL"></a>SSL</dt>
 <dd>Secure Sockets Layer.</dd>
-
-<dt><a name="TCP"></a>TCP</dt>
-<dd>Transmission Control Protocol.</dd>
 
 <dt><a name="TLS"></a>TLS</dt>
 <dd>Transport Layer Security.</dd>

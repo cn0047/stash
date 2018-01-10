@@ -10,6 +10,11 @@ PostgreSQL 10.0
 DB can contains schema, and schema contains tables.
 Schema - like directory in file system.
 
+````
+# general log
+log_statement = 'all'
+````
+
 #### REPL:
 
 ````
