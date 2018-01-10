@@ -58,23 +58,13 @@ RUN echo 'display_errors=On' >> /etc/php/7.1/cli/php.ini \
 RUN echo 'short_open_tag=On' >> /etc/php/7.1/cli/php.ini \
     && echo 'short_open_tag=On' >> /etc/php/7.1/fpm/php.ini
 
-#
+# For big files upload.
 RUN echo 'upload_max_filesize=50M' >> /etc/php/7.1/cli/php.ini \
     && echo 'upload_max_filesize=50M' >> /etc/php/7.1/fpm/php.ini
 
-RUN service php7.1-fpm start
-# EXPOSE 9000
-
 # nginx
 RUN apt-get install -y nginx
-COPY ./nginx.conf /etc/nginx/conf.d/default.conf
-RUN service nginx start
-# EXPOSE 80
 
 # composer
 RUN curl -sS https://getcomposer.org/installer | php \
   && mv composer.phar /usr/local/bin/composer
-
-# CMD ['php', 'php-fpm', 'nginx']
-
-# ENTRYPOINT tail -f /dev/stdout
