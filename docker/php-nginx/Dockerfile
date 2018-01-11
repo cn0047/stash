@@ -13,17 +13,6 @@ RUN apt-get install -y \
     libzmq5 libzmq5-dev php-zmq \
     php-pear php-soap php-ssh2
 
-# SPL_Types
-RUN \
-    # pecl install SPL_Types
-    git clone https://github.com/esminis/php_pecl_spl_types.git \
-    && cd php_pecl_spl_types \
-    && phpize \
-    && ./configure \
-    &&  make install \
-    && cd .. && rm -r php_pecl_spl_types \
-    && echo 'extension=spl_types.so' >> /etc/php/7.1/mods-available/spl_types.ini
-
 # xdebug
 RUN apt-get install -y php-xdebug \
     && echo 'xdebug.remote_enable=1'                        >> /etc/php/7.1/mods-available/xdebug.ini \
@@ -64,6 +53,9 @@ RUN echo 'upload_max_filesize=50M' >> /etc/php/7.1/cli/php.ini \
 
 # nginx
 RUN apt-get install -y nginx
+
+# # For ed/php/examples/whatever
+# COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 
 # composer
 RUN curl -sS https://getcomposer.org/installer | php \

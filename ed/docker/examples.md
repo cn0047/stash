@@ -18,9 +18,15 @@ docker run -ti --rm -v $PWD:/app xcomposer install
 #### MONGO
 
 ````
-docker run -it --rm --hostname localhost --name xmongo --net=x_node_mongo \
-    -v $PWD/docker/.data/mongodb:/data/db -p 27017:27017 mongo:latest
+docker run -it --rm -p 27017:27017 --hostname localhost --name xmongo --net=x_node_mongo \
+    -v /Users/k/Downloads/dump:/tmp/dump \
+    -v $PWD/docker/.data/mongodb:/data/db mongo:latest
 
+# dump
+docker exec -it xmongo mongorestore /tmp/dump
+
+# test
+docker exec -it xmongo mongo
 docker exec -it xmongo mongo test --eval 'db.test.insert({code : 200, status: "ok"})'
 docker exec -it xmongo mongo test \
     --eval 'db.createUser({user: "dbu", pwd: "dbp", roles: ["readWrite", "dbAdmin"]})'

@@ -31,7 +31,8 @@ use mydb
 
 db = connect("myhost:30002/mydb")
 
-// insert a collection
+// insert a document into collection
+// _id not specified - mongo'll generate _id for us
 j = {name : "mongo"}
 db.testData.insert(j)
 db.test.insert({x :MaxKey})
@@ -115,7 +116,10 @@ db.collection.find().explain()
 db.inventory.find( { type: 'food' } ).hint( { type: 1 } ).explain()
 db.inventory.find( { type: 'food' } ).hint( { type: 1, name: 1 } ).explain()
 
-// BSON-document size limit = 16MB
+// BSON-document size LIMIT = 16MB
+// Put the data in a separate collection when embedded data exceed 16MB.
+
+
 // In MongoDB, operations are atomic at the document level.
 // No single write operation can change more than one document.
 
@@ -203,9 +207,9 @@ db.runCommand( { getLastError: 1, j: "true" } )
 
 [SQL to MongoDB Mapping Chart](http://docs.mongodb.org/manual/reference/sql-comparison/#sql-to-mongodb-mapping-chart)
 
-In general, use embedded data models when: you have one-to-one or one-to-many model
+In general, use embedded data models when: you have `one-to-one` or `one-to-many` model
 ((link)[http://docs.mongodb.org/manual/core/data-model-design/]).
-<br>For model many-to-many use relationships with document references.
+<br>For model `many-to-many` use relationships with document references.
 
 ````js
 // Model Tree Structures with Parent References

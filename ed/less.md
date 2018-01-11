@@ -1,4 +1,4 @@
-less
+less (CSS pre-processor)
 -
 
 ````

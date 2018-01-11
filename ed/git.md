@@ -10,7 +10,10 @@ Git is a free and open source distributed version control system .
 git ls-remote -h https://github.com/W3Ltd/ziipr_core HEAD
 
 git init
+
 git clone ssh://gitolite@repo.com:1011/repoName.git
+# lightweight clone
+git clone --depth=1 git://github.com/imatix/zguide2.git
 
 git remote -v                      # shows remote repository
 git remote show remoteRepoName     # shows all about remote repo (remote show origin)

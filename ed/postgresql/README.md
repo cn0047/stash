@@ -26,6 +26,8 @@ log_statement = 'all'
 # show tables
 \dt *.*
 \dt *test*
+# more info
+\d+ viewName
 ````
 
 ````

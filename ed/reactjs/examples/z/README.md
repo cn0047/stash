@@ -2,7 +2,7 @@ Z - simple react-redux example
 -
 
 This is my tiny project created for exhibition purposes.
-<br>Here I used fancy front-end technologies like:
+<br>Here I used cutting edge front-end technologies like:
 `react`, `es6`, `jsx`, `babeljs`, `react-router`, `redux`, `aws` and else.
 
 This project is a social network.

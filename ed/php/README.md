@@ -222,17 +222,17 @@ source ~/.bashrc
 ````php
 php -r 'var_export(json_decode(`curl http://country.io/iso3.json`, 1));'
 
-file_put_contents('/tmp/debug.tmp', var_export(this, 1)."\n", FILE_APPEND); /// tail -f /tmp/debug.tmp
+file_put_contents('/tmp/debug.log', var_export(this, 1)."\n", FILE_APPEND); /// tail -f /tmp/debug.log
 
 echo "\033[31m ".var_export($e->getMessage(), 1)." \033[0m\n";
 
 echo '<script>console.log('.json_encode($_REQUEST).')</script>';
 
 array_walk(debug_backtrace(), create_function('$v', '
-    file_put_contents("/tmp/debug.tmp", sprintf("%s -> %s():%s\n", $v["file"], $v["function"], $v["line"]), FILE_APPEND); /// tail -f /tmp/debug.tmp
+    file_put_contents("/tmp/debug.log", sprintf("%s -> %s():%s\n", $v["file"], $v["function"], $v["line"]), FILE_APPEND); /// tail -f /tmp/debug.log
 '));
 foreach (debug_backtrace() as $v) {
-    file_put_contents('/tmp/debug.tmp', $v['file'].' -> '.$v['function'].'():'.$v['line']."\n", FILE_APPEND); /// tail -f /tmp/debug.tmp
+    file_put_contents('/tmp/debug.log', $v['file'].' -> '.$v['function'].'():'.$v['line']."\n", FILE_APPEND); /// tail -f /tmp/debug.log
 }
 
 (mt_rand(0, 10) > 1) or var_dump(200);
