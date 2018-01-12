@@ -249,6 +249,9 @@ $tbl->setHeaders(array_keys($d[0]));
 foreach($d as $v){$tbl->addRow($v);}
 echo '<pre>'.$tbl->getTable().'</pre>';
 
+set_error_handler(function ($code, $description) {
+    throw new ErrorException($description, $code);
+});
 set_error_handler(create_function('$n, $s, $f, $l', 'var_export(array($n, $s, $f, $l));'));
 set_error_handler(create_function('$n, $s, $f, $l', 'print("\033[01;31m ".$s." \033[0m \n");'));
 set_error_handler(function ($no, $str, $file, $line) {

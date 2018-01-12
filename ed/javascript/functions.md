@@ -66,14 +66,26 @@ window.history.forward
 document.getElementById('wrapper').getElementsByClassName('block').getElementsByTagName('img').length
 document.querySelectorAll('#wrapper img').length
 
-console.group('Application Log');
-console.log('Application Log');
-console.groupEnd();
-
 JSON.stringify(object);                // object to JSON string
 JSON.parse(string)                     // JSON string to object
 
+console.group('Application Log', 'font-size: x-large');
+console.time('ttt');
+console.log('Application Log');
+console.eror('E');
+console.debug('D');
+console.assert(true);
+console.dir(document);
+console.timeEnd();
+console.groupEnd();
+
 console.log('Code:%s', 200); // Code:200
+// %s - string
+// %d, %i - integer
+// %f - float
+// %o - DOM el
+// %O - object
+// %c - css
 ````
 
 ````js

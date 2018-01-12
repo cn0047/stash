@@ -19,7 +19,7 @@ docker run -ti --rm -v $PWD:/app xcomposer install
 
 ````
 docker run -it --rm -p 27017:27017 --hostname localhost --name xmongo --net=x_node_mongo \
-    -v /Users/k/Downloads/dump:/tmp/dump \
+    -v /Users/k/Downloads/hw1-3/dump:/tmp/dump \
     -v $PWD/docker/.data/mongodb:/data/db mongo:latest
 
 # dump

@@ -1,0 +1,5 @@
+{
+    "require": {
+        "react/promise-timer": "^1.2.1"
+    }
+}

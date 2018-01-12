@@ -33,22 +33,27 @@ RUN curl -OL https://github.com/google/protobuf/releases/download/v3.5.1/protoc-
     && chown $(whoami) /usr/local/bin/protoc \
     && chown -R $(whoami) /usr/local/include/google \
     && pecl install protobuf-3.5.1 \
-    && echo 'extension=protobuf.so' >> /etc/php/7.1/mods-available/protobuf.ini
+    && echo 'extension=protobuf.so' >> /etc/php/7.1/mods-available/protobuf.ini \
+    && rm protoc-3.5.1-linux-x86_64.zip
 
 # php conf
-RUN echo 'display_errors=On' >> /etc/php/7.1/cli/php.ini \
+RUN    echo 'display_errors=On' >> /etc/php/7.1/cli/php.ini \
     && echo 'display_errors=On' >> /etc/php/7.1/fpm/php.ini \
     && echo 'display_startup_errors=On' >> /etc/php/7.1/cli/php.ini \
     && echo 'display_startup_errors=On' >> /etc/php/7.1/fpm/php.ini \
-    && echo 'error_log=/dev/stdout' >> /etc/php/7.1/cli/php.ini \
-    && echo 'error_log=/dev/stdout' >> /etc/php/7.1/fpm/php.ini
+    && echo 'track_errors=On' >> /etc/php/7.1/cli/php.ini \
+    && echo 'track_errors=On' >> /etc/php/7.1/fpm/php.ini \
+    && echo 'log_errors=On' >> /etc/php/7.1/cli/php.ini \
+    && echo 'log_errors=On' >> /etc/php/7.1/fpm/php.ini \
+    && echo 'error_log=/tmp/php.log' >> /etc/php/7.1/cli/php.ini \
+    && echo 'error_log=/tmp/php.log' >> /etc/php/7.1/fpm/php.ini
 
 # for Yii 1 template engine
-RUN echo 'short_open_tag=On' >> /etc/php/7.1/cli/php.ini \
+RUN    echo 'short_open_tag=On' >> /etc/php/7.1/cli/php.ini \
     && echo 'short_open_tag=On' >> /etc/php/7.1/fpm/php.ini
 
 # For big files upload.
-RUN echo 'upload_max_filesize=50M' >> /etc/php/7.1/cli/php.ini \
+RUN    echo 'upload_max_filesize=50M' >> /etc/php/7.1/cli/php.ini \
     && echo 'upload_max_filesize=50M' >> /etc/php/7.1/fpm/php.ini
 
 # nginx
