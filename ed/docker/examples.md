@@ -277,6 +277,20 @@ docker run -it --rm --hostname 0.0.0.0 -p 8181:8181 -v $PWD:/gh --link mysql-mas
 # phalcon
 docker build -t php-cli-phalcon ./docker/php-cli-phalcon
 docker run -it --rm -v $PWD:/gh php-cli-phalcon php -v
+
+# phpspec
+docker run -ti --rm -v $PWD/ed/php.phpspec/examples/one:/app -w /app \
+    nphp php vendor/phpspec/phpspec/bin/phpspec desc App/Boo
+# run
+docker run -ti --rm -v $PWD/ed/php.phpspec/examples/one:/app -w /app \
+    nphp php vendor/phpspec/phpspec/bin/phpspec run
+
+# codeception
+docker run -ti --rm -v $PWD/ed/php.codeception/examples/one:/app -w /app \
+    nphp php vendor/bin/codecept bootstrap
+# run
+docker run -ti --rm -v $PWD/ed/php.codeception/examples/one:/app -w /app \
+    nphp php vendor/bin/codecept run
 ````
 
 #### PHP Symfony
@@ -307,4 +321,27 @@ docker run -it --rm -v $PWD:/gh \
     assets:dump --env=prod --no-debug
 # test
 curl localhost:8080/
+
+# ng
+docker run -ti --rm -v $PWD/ed/php.symfony/examples/ng:/app -w /app nphp composer install
+docker run -ti --rm -v $PWD/ed/php.symfony/examples/ng:/app -w /app \
+    nphp php vendor/phpspec/phpspec/bin/phpspec run
+````
+
+#### PHP Yii
+
+````
+mkdir ed/php.yii/examples/testdrive/protected/runtime
+mkdir ed/php.yii/examples/testdrive/assets
+
+docker run -it --rm -v $PWD/ed/php.yii/examples/testdrive:/app -w /app nphp composer install
+
+docker run -it --rm -v $PWD/ed/php.yii/examples/testdrive:/app -w /app nphp php protected/yiic.php migrate
+
+docker run -it --rm \
+    -v $PWD/ed/php.yii/examples/testdrive:/app -w /app/protected/tests \
+    nphp php ../../vendor/bin/phpunit ./
+
+docker run -it --rm -p 8080:8080 -v $PWD/ed/php.yii/examples/testdrive:/app nphp \
+    php -S 0.0.0.0:8080 -t /app
 ````

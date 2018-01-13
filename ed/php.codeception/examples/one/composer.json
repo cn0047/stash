@@ -1,0 +1,12 @@
+{
+        "require": {
+        },
+        "autoload": {
+            "psr-4": {
+                "": "src"
+            }
+        },
+        "require-dev": {
+                "codeception/codeception": "^2.3"
+        }
+}
