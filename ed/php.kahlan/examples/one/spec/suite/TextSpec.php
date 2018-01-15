@@ -1,25 +1,43 @@
 <?php
 
 use One\Text;
+use One\Foo;
 use Kahlan\Plugin\Stub;
+use Kahlan\Plugin\Double;
 
 describe('Text', function () {
     describe('->get()', function() {
 
-        it('test get 1', function () {
+        it('test', function () {
             $t = new Text();
-            $r = $t->get('-test-');
-            expect($r)->toBe('One\\Text::get-test-');
+            $r = $t->get();
+            expect($r)->toBe('BAR');
         });
 
         it('mock', function () {
-            Stub::on('Tex')->method('get', function ($str) {
-                return 'mocked method result';
+            Stub::on(Foo::class)->method('bar', function () {
+                return 'MyMockedText';
             });
-            $t = new Text();
-            $r = $t->get('-test-2-');
-            expect($r)->toBe('One\\Text::get-test-2-');
+            $r = (new Text())->get();
+            expect($r)->toBe('MyMockedText');
         });
 
+        it('mock 2', function () {
+             allow(Foo::class)->toReceive('bar')->andReturn('MyAnotherMockedText');
+             $r = (new Text())->get();
+             expect($r)->toBe('MyAnotherMockedText');
+        });
+
+        it('time', function () {
+            allow('time')->toBeCalled()->andReturn(100);
+            $r = (new Text())->time();
+            expect($r)->toBe(100);
+        });
+
+        it('dt', function () {
+            allow(DateTime::class)->toReceive('::createFromFormat')->andReturn('FormatED');
+            $r = (new Text())->dt();
+            expect($r)->toBe('FormatED');
+        });
     });
 });

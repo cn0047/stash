@@ -291,6 +291,11 @@ docker run -ti --rm -v $PWD/ed/php.codeception/examples/one:/app -w /app \
 # run
 docker run -ti --rm -v $PWD/ed/php.codeception/examples/one:/app -w /app \
     nphp php vendor/bin/codecept run
+
+# kahlan
+docker run -ti --rm -v $PWD/ed:/gh/ed -w /gh/ed/php.kahlan/examples/one \
+    -e PHP_IDE_CONFIG="serverName=docker" \
+    nphp php vendor/bin/kahlan
 ````
 
 #### PHP Symfony
