@@ -64,11 +64,16 @@ docker run -it --rm -p 9201:9200 --name es-data-1 --link es-master-1  \
 #### MYSQL
 
 ````
-docker run -it --rm -p 3307:3306 --name xmysql --hostname xmysql \
+docker run -it --rm --net=xnet -p 3307:3306 --name xmysql --hostname xmysql \
     -v $PWD/docker/.data/mysql:/var/lib/mysql \
     -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=test -e MYSQL_USER=dbu -e MYSQL_PASSWORD=dbp mysql:latest
 
 docker exec -ti xmysql mysql -P3307 -udbu -pdbp -Dtest
+
+# root
+docker run -it --rm -p 3307:3306 --net=xnet --name xmysql --hostname xmysql \
+    -v $PWD/docker/.data/mysql:/var/lib/mysql \
+    -e MYSQL_ROOT_PASSWORD=root mysql:latest
 ````
 
 #### MYSQL cluster
@@ -223,10 +228,14 @@ curl localhost:8080/healthCheck.php
 # php-nginx
 docker build -t nphp ./docker/php-nginx
 docker run -it --rm -p 8080:80 -v $PWD:/gh nphp php -v
+
 # composer
 docker run -it --rm -v $PWD:/app -w /app nphp composer --help
+
 # built-in web server
-docker run -it --rm -p 8080:80 -v $PWD:/gh nphp \
+# docker run -it --rm -p 8080:80 --link mysql-master -v $PWD:/gh nphp \
+#     php -S 0.0.0.0:80 /gh/ed/php/examples/whatever/healthCheck.php
+docker run -it --rm --net=xnet -p 8080:80 -v $PWD:/gh nphp \
     php -S 0.0.0.0:80 /gh/ed/php/examples/whatever/healthCheck.php
 # nginx
 docker run -it --rm -p 8080:80 -v $PWD:/gh nphp \
@@ -245,7 +254,8 @@ docker run -it --rm -p 9000:9000 --hostname localhost --name php-fpm -v $PWD:/gh
 docker run -it --rm -p 9000:9000 --hostname localhost --name php-fpm -v $PWD:/gh --net=xnet php-fpm
 
 # mysql
-docker run -it --rm -v $PWD:/gh --link mysql-master php-cli php /gh/ed/php/examples/mysqlAndPdo/pdo.simplestExample.php
+# docker run -it --rm --link mysql-master -v $PWD:/gh php-cli php /gh/ed/php/examples/mysqlAndPdo/pdo.simplestExample.php
+docker run -it --rm --net=xnet -v $PWD:/gh php-cli php /gh/ed/php/examples/mysqlAndPdo/pdo.simplestExample.php
 
 # postgres
 docker run -it --rm -v $PWD:/gh --net=xnet \
@@ -341,12 +351,13 @@ mkdir ed/php.yii/examples/testdrive/assets
 
 docker run -it --rm -v $PWD/ed/php.yii/examples/testdrive:/app -w /app nphp composer install
 
-docker run -it --rm -v $PWD/ed/php.yii/examples/testdrive:/app -w /app nphp php protected/yiic.php migrate
+docker run -it --rm --net=xnet -v $PWD/ed/php.yii/examples/testdrive:/app -w /app \
+    nphp php protected/yiic.php migrate
 
 docker run -it --rm \
     -v $PWD/ed/php.yii/examples/testdrive:/app -w /app/protected/tests \
     nphp php ../../vendor/bin/phpunit ./
 
-docker run -it --rm -p 8080:8080 -v $PWD/ed/php.yii/examples/testdrive:/app nphp \
+docker run -it --rm --net=xnet -p 8080:8080 -v $PWD/ed/php.yii/examples/testdrive:/app nphp \
     php -S 0.0.0.0:8080 -t /app
 ````

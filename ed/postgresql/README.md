@@ -23,6 +23,9 @@ log_statement = 'all'
 # show databases
 \l
 \d
+# use db
+\c unittests
+
 # show tables
 \dt *.*
 \dt *test*

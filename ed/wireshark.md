@@ -1,6 +1,10 @@
 Wireshark
 -
 
+Capture filter:
+
+`tcp and port  443`
+
 Filter:
 
 `frame contains pluralsight.com`

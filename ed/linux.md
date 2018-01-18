@@ -37,6 +37,15 @@ sysctl -n net.core.somaxconn
 #### less
 
 ````
+# OPTIONS
+-F or --quit-if-one-screen # exit if the entire file can be displayed on the first screen.
+-i or --ignore-case
+-M or --LONG-PROMPT
+-m or --long-prompt        # prompt verbosely (like more).
+-R or --RAW-CONTROL-CHARS  #
+-S or --chop-long-lines    # chop lines longer than the screen width.
+-X or --no-init            #
+-xn,... or --tabs=n,...    # sets tab stops.
 ````
 
 #### about linux
@@ -290,6 +299,9 @@ curl -T firmware.bin http://0.0.0.48/cgi-bin/package_install?hash=017
 
 #### shell
 ````
+# nohup
+# When you execute a job in the background (using &, bg command), and logout from the session - your process will get killed. 
+
 # streams
 /dev/stderr
 /dev/stdin

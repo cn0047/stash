@@ -1,6 +1,8 @@
 Books
 -
 
+[Learning 0MQ](https://www.google.com.ua/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwjJt_n78NrYAhXBPZoKHd99BW0QFggoMAA&url=https%3A%2F%2Freadthedocs.org%2Fprojects%2Flearning-0mq-with-pyzmq%2Fdownloads%2Fpdf%2Flatest%2F&usg=AOvVaw18IP1ItFVCzD0Og3tI6MxY)
+[The ZeroMQ Guide - for PHP Developers](https://www.google.com.ua/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwjPpPfk8NrYAhWqHJoKHSR0CowQFggoMAA&url=http%3A%2F%2Fzguide2.wdfiles.com%2Flocal--files%2Fpage%3Astart%2Fzguide-php.pdf&usg=AOvVaw2kMbRrJMoU9XStNH1ZtF6k)
 [protocol-buffers](https://developers.google.com/protocol-buffers/)
 [PostgreSQL 10.1 Documentation](https://www.postgresql.org/docs/manuals/)
 [JSON Schema](https://spacetelescope.github.io/understanding-json-schema/)

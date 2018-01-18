@@ -70,3 +70,9 @@ phpunit --colors --bootstrap=bootstrap.php unit/
 cd ed/yii/examples/testdrive/protected/tests/
 ../../../../../../vendor/bin/phpunit  --colors --bootstrap=bootstrap.php unit/
 ````
+
+#### Integration test frameworks
+
+`phpspec` - won't work with static methods.
+`codeception` - don't have monkey patches.
+`kahlan` - won't `stub` (with layer) classes loaded not from composer. And won't work with yii.

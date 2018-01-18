@@ -8,7 +8,8 @@ include __DIR__ . '/vendor/autoload.php';
 
 //
 try {
-    $dbh = new PDO('mysql:host=mysql-master;port=3306;dbname=test', 'dbu', 'dbp');
+    // $dbh = new PDO('mysql:host=mysql-master;port=3306;dbname=test', 'dbu', 'dbp');
+    $dbh = new PDO('mysql:host=xmysql;port=3306;dbname=test', 'dbu', 'dbp');
 } catch (PDOException $e) {
     echo 'Connection failed: '.$e->getMessage();
 }

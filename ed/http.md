@@ -89,6 +89,7 @@ Headers:
 * ETag
 * X-Powered-By
 * X-Frame-Options
+* Content-Security-Policy (prevent xss, clickjacking and other code injection attacks)
 
 ````
 Server: nginx/1.10.2

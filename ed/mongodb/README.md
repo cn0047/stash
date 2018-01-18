@@ -38,6 +38,9 @@ db.testData.insert(j)
 db.test.insert({x :MaxKey})
 db.test.insert({x :MinKey})
 
+// insertMany
+db.test.insertMany([{}, {}])
+
 show collections
 db.testData.find().pretty()
 db.getCollection('_foo').find()
@@ -68,7 +71,7 @@ db.users.find({age: 18})
 db.users.find({age:{$gt: 18}}).sort({age; 1})
 db.users.find({age:{$gte: 18}}).sort({age; 1})
 db.users.find({age:{$ne: 18}}) // not equal
-//
+// projections - 2nd param in find (fields in result)
 db.records.find( { "user_id": { $lte: 42} }, { "name": 1, "email": 1} )
 // switch on/off fields
 db.users.find({age: {$gt: 18}}, {name: 1, address: 1, _id: 0}).limit(5)
