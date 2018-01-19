@@ -1,5 +1,7 @@
 <?php
 
+// require __DIR__ . '/../../vendor/autoload.php';
+
 // change the following paths if necessary
 $yiit = __DIR__ . '/../../vendor/yiisoft/yii/framework/yiit.php';
 $config = __DIR__ . '/../config/test.php';

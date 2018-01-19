@@ -19,11 +19,11 @@ docker run -ti --rm -v $PWD:/app xcomposer install
 
 ````
 docker run -it --rm -p 27017:27017 --hostname localhost --name xmongo --net=x_node_mongo \
-    -v /Users/k/Downloads/hw1-3/dump:/tmp/dump \
+    -v /Users/k/Downloads/:/tmp/d \
     -v $PWD/docker/.data/mongodb:/data/db mongo:latest
 
 # dump
-docker exec -it xmongo mongorestore /tmp/dump
+docker exec -it xmongo mongorestore /tmp/d/creating_documents/dump
 
 # test
 docker exec -it xmongo mongo
@@ -66,12 +66,12 @@ docker run -it --rm -p 9201:9200 --name es-data-1 --link es-master-1  \
 ````
 docker run -it --rm --net=xnet -p 3307:3306 --name xmysql --hostname xmysql \
     -v $PWD/docker/.data/mysql:/var/lib/mysql \
-    -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=test -e MYSQL_USER=dbu -e MYSQL_PASSWORD=dbp mysql:latest
+    -e MYSQL_ROOT_PASSWORD=root -e MYSQL_USER=dbu -e MYSQL_PASSWORD=dbp -e MYSQL_DATABASE=test mysql:latest
 
 docker exec -ti xmysql mysql -P3307 -udbu -pdbp -Dtest
 
 # root
-docker run -it --rm -p 3307:3306 --net=xnet --name xmysql --hostname xmysql \
+docker run -it --rm --net=xnet -p 3307:3306 --name xmysql --hostname xmysql \
     -v $PWD/docker/.data/mysql:/var/lib/mysql \
     -e MYSQL_ROOT_PASSWORD=root mysql:latest
 ````
@@ -84,7 +84,7 @@ docker run -it --rm -p 3307:3306 --name mysql-master --hostname mysql-master \
     -v $PWD/docker/mysql/mysql-bin.log:/var/log/mysql/mysql-bin.log \
     -v $PWD/docker/mysql/config-master.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf \
     -v $PWD/docker/.data/mysql:/var/lib/mysql \
-    -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=test -e MYSQL_USER=dbu -e MYSQL_PASSWORD=dbp mysql:latest
+    -e MYSQL_ROOT_PASSWORD=root -e MYSQL_USER=dbu -e MYSQL_PASSWORD=dbp -e MYSQL_DATABASE=test mysql:latest
 
 # replication user on master
 docker exec mysql-master mysql -uroot -proot -e "CREATE USER 'repl'@'%' IDENTIFIED BY 'slavepass'"
@@ -94,7 +94,7 @@ docker exec mysql-master mysql -uroot -proot -e "GRANT REPLICATION SLAVE ON *.* 
 docker run -it --rm -p 3308:3306 --name mysql-slave-1 --link mysql-master \
     -v $PWD/docker/mysql/mysql-bin.log:/var/log/mysql/mysql-bin.log \
     -v $PWD/docker/mysql/config-slave-1.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf \
-    -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=test -e MYSQL_USER=dbu2 -e MYSQL_PASSWORD=dbp2 mysql:latest
+    -e MYSQL_ROOT_PASSWORD=root -e MYSQL_USER=dbu2 -e MYSQL_PASSWORD=dbp2 -e MYSQL_DATABASE=test mysql:latest
 
 # start slave 1
 docker exec mysql-slave-1 mysql -uroot -proot -e "CHANGE MASTER TO MASTER_HOST='mysql-master', MASTER_USER='repl', MASTER_PASSWORD='slavepass'"
@@ -351,10 +351,25 @@ mkdir ed/php.yii/examples/testdrive/assets
 
 docker run -it --rm -v $PWD/ed/php.yii/examples/testdrive:/app -w /app nphp composer install
 
+# main db
+docker exec -ti xmysql mysql -P3307 -uroot -proot -e 'create database testdrive'
+docker exec -ti xmysql mysql -P3307 -uroot -proot -e "create user 'user'@'%' identified by 'pass'"
+docker exec -ti xmysql mysql -P3307 -uroot -proot -e "grant all privileges on testdrive.* to 'user'@'%' with grant option"
+# test db
+docker exec -ti xmysql mysql -P3307 -uroot -proot -e "
+    create database testdrive_unit_test;
+    grant all privileges on testdrive_unit_test.* to 'user'@'%' with grant option;
+"
+# check
+docker exec -ti xmysql mysql -P3307 -uuser -ppass -Dtestdrive
+docker exec -ti xmysql mysql -P3307 -uuser -ppass -Dtestdrive_unit_test
+
+# migration
 docker run -it --rm --net=xnet -v $PWD/ed/php.yii/examples/testdrive:/app -w /app \
     nphp php protected/yiic.php migrate
 
-docker run -it --rm \
+# phpunit
+docker run -it --rm --net=xnet \
     -v $PWD/ed/php.yii/examples/testdrive:/app -w /app/protected/tests \
     nphp php ../../vendor/bin/phpunit ./
 

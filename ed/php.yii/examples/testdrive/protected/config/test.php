@@ -12,7 +12,11 @@ return CMap::mergeArray(
 				'class'=>'system.test.CDbFixtureManager',
 			),
 			'db'=>array(
-				'connectionString' => 'mysql:host=localhost;dbname=testdrive_unit_test',
+				'connectionString' => 'mysql:host=xmysql;dbname=testdrive_unit_test',
+                'emulatePrepare' => true,
+                'username' => 'user',
+                'password' => 'pass',
+                'charset' => 'utf8',
 			),
 		),
 	)

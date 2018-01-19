@@ -64,10 +64,10 @@ return array(
 			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
 		),
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=testdrive',
+			'connectionString' => 'mysql:host=xmysql;dbname=testdrive',
 			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => '',
+			'username' => 'user',
+			'password' => 'pass',
 			'charset' => 'utf8',
 		),
 		'dbUnitTest'=>array(

@@ -28,11 +28,11 @@ db.articles.find( { $text: { $search: "bake coffee -cake" } } )
 // WHERE
 db.myCollection.find( { $where: "this.credits == this.debits" } );
 db.myCollection.find( { $where: function() { return obj.credits == obj.debits; } } );
-// ALL - Equivalent to $and Operation.
+// ALL - Equivalent to $and Operation, array contains all specified elements.
 { tags: { $all: [ "ssl" , "security" ] } }
 // ELEMMATCH
 db.scores.find({ results: { $elemMatch: { $gte: 80, $lt: 85 } } })
-// SIZE
+// SIZE - array has certain size
 db.collection.find( { field: { $size: 2 } } );
 // $ (projection)
 db.students.find( { semester: 1, grades: { $gte: 85 } }, { "grades.$": 1 } )
