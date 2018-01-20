@@ -1,7 +1,8 @@
 Chrome
 -
 
-## [chrome-devtools](https://developers.google.com/web/tools/chrome-devtools)
+[chrome-devtools](https://developers.google.com/web/tools/chrome-devtools)
+[live reload](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei?hl=en-US)
 
 ````
 // write in js this - and it'll be your break point
