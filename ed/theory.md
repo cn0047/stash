@@ -185,7 +185,7 @@ Odd (1, 3, 5...) - `x % 2 = 1`.
 ? Question Mark
 ' Single Quote
 " Double Quote
-` Back quote
+` Back quote (back tick)
 / Slash (forward slash)
 \ Backward Slash
 # Pound
