@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "start": "./node_modules/.bin/webpack-dev-server --host 0.0.0.0 --public 0.0.0.0:8080 --watch-poll"
+  },
+  "devDependencies": {
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.1"
+  }
+}

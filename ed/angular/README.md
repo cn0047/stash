@@ -24,4 +24,10 @@ observable.subscribe(valueFn, errFn, completeFn) # http
 {{product?.productName}} # safe navigation
 ````
 
+Routes Guards:
+* CanActivate
+* CanDeactivate
+* Resolve
+* CanLoad
+
 https://app.pluralsight.com/paths/skills/angular

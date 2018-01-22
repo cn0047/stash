@@ -19,12 +19,14 @@ class HelperTest extends CDbTestCase
     public function testGetAvailableBrands2()
     {
         $sql = <<<"SQL"
+            /*
             CREATE TABLE brand (
                 id INT AUTO_INCREMENT,
                 name VARCHAR(100) NOT NULL DEFAULT '',
                 country VARCHAR(50) NOT NULL DEFAULT '',
                 PRIMARY KEY (id)
             );
+            */
             INSERT INTO brand VALUES
                 (null, 'Lamborghini', 'IT')
             ;

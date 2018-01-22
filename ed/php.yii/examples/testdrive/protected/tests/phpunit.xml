@@ -3,7 +3,13 @@
 		convertErrorsToExceptions="true"
 		convertNoticesToExceptions="true"
 		convertWarningsToExceptions="true"
-		stopOnFailure="false">
+		stopOnFailure="true"
+		backupGlobals="true"
+		backupStaticAttributes="false"
+		processIsolation="false"
+		stopOnError="true"
+		syntaxCheck="true"
+>
 
 	<selenium>
 		<browser name="Internet Explorer" browser="*iexplore" />

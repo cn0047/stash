@@ -65,15 +65,16 @@ docker run -it --rm -p 9201:9200 --name es-data-1 --link es-master-1  \
 
 ````
 docker run -it --rm --net=xnet -p 3307:3306 --name xmysql --hostname xmysql \
-    -v $PWD/docker/.data/mysql:/var/lib/mysql \
+    -v $PWD/docker/.data/mysql:/var/lib/mysql -v /tmp:/tmp \
     -e MYSQL_ROOT_PASSWORD=root -e MYSQL_USER=dbu -e MYSQL_PASSWORD=dbp -e MYSQL_DATABASE=test mysql:latest
 
-docker exec -ti xmysql mysql -P3307 -udbu -pdbp -Dtest
+# general_log
+docker exec -ti xmysql mysql -P3307 -uroot -proot -e "set global general_log_file='/tmp/mysql.log';"
+docker exec -ti xmysql mysql -P3307 -uroot -proot -e "set global general_log = 1;"
+docker exec -ti xmysql tail -f /tmp/mysql.log
 
-# root
-docker run -it --rm --net=xnet -p 3307:3306 --name xmysql --hostname xmysql \
-    -v $PWD/docker/.data/mysql:/var/lib/mysql \
-    -e MYSQL_ROOT_PASSWORD=root mysql:latest
+docker exec -ti xmysql mysql -P3307 -uroot -proot
+docker exec -ti xmysql mysql -P3307 -udbu -pdbp -Dtest
 ````
 
 #### MYSQL cluster
@@ -369,7 +370,7 @@ docker run -it --rm --net=xnet -v $PWD/ed/php.yii/examples/testdrive:/app -w /ap
     nphp php protected/yiic.php migrate
 
 # phpunit
-docker run -it --rm --net=xnet \
+docker run -it --rm --net=xnet -e PHP_IDE_CONFIG='serverName=docker' \
     -v $PWD/ed/php.yii/examples/testdrive:/app -w /app/protected/tests \
     nphp php ../../vendor/bin/phpunit ./
 
