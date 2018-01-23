@@ -1,9 +1,19 @@
 {
-  "scripts": {
-    "start": "./node_modules/.bin/webpack-dev-server --host 0.0.0.0 --public 0.0.0.0:8080 --watch-poll"
-  },
   "devDependencies": {
+    "css-loader": "^0.28.9",
+    "extract-loader": "^1.0.2",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.6",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^2.30.1",
+    "style-loader": "^0.19.1",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.11.1"
+  },
+  "scripts": {
+    "rm-build": "rm -rf ./build",
+    "start": "node_modules/.bin/webpack-dev-server --watch-poll",
+    "b:dev": "npm run rm-build && node_modules/.bin/webpack -d",
+    "b:prod": "npm run rm-build && node_modules/.bin/webpack -p"
   }
 }

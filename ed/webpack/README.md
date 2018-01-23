@@ -19,6 +19,16 @@ npm install
 
 # run from vagrant
 webpack-dev-server --host 0.0.0.0 --public 192.168.56.101:8080 --watch-poll
+
+# source map
+./node_modules/.bin/webpack -d
+````
+
+Build:
+
+````
+# minify
+./node_modules/.bin/webpack -p
 ````
 
 ## Config (webpack.config.js)
