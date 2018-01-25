@@ -9,12 +9,13 @@ States:
 * red - at least 1 primary and all it\'s replicas are offline,
   data posibly broken.  
 
-Node types:
+Node types (in ESv2.2):
 
 * master - brain of the whole operatioln.
 * data
 * client - gateway to your cluster (node.master and node.data eq to false). Need half of data node capacity.
-
+* tribe - special type of client node that can connect to multiple clusters.
+ 
 cluster = 1 client + 3 master + 4 data
 
 `export ES_HEAP_SIZE=32g` - for best performance

@@ -1,6 +1,6 @@
 <?php
 
-$memcache_obj = memcache_connect("localhost", 11211);
+$memcache_obj = memcache_connect('xmemcached', 11211);
 
 /* procedural API */
 memcache_add($memcache_obj, 'var_key_1', 'test variable: '.uniqid(), false, 30);

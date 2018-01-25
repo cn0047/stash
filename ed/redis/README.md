@@ -11,6 +11,7 @@ redis-cli # connect to redis
 ````
 set mykey 'Hello'
 set foo 'bar'
+expire foo 10
 get mykey
 mget mykey foo
 

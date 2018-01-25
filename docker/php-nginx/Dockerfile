@@ -10,6 +10,7 @@ RUN apt-get install -y \
     php7.1-dom php7.1-xml php7.1-json \
     php7.1-mysql php7.1-pdo php-mongodb php7.1-sqlite php7.1-sqlite3 php7.1-pgsql \
     php7.1-redis \
+    php7.1-memcache \
     libzmq5 libzmq5-dev php-zmq \
     php-pear php-soap php-ssh2
 

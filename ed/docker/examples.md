@@ -15,6 +15,21 @@ docker build -t xcomposer ./docker/composer
 docker run -ti --rm -v $PWD:/app xcomposer install
 ````
 
+#### Memcached
+
+````
+docker run -it --rm --net=xnet --name xmemcached memcached
+
+# build
+docker build -t kmemcached ./docker/memcached
+
+# run
+docker run -it --rm --net=xnet -p 11211:11211 --hostname xmemcached --name xmemcached kmemcached
+
+# check
+docker exec -it xmemcached telnet 0.0.0.0 11211
+````
+
 #### MONGO
 
 ````
@@ -113,6 +128,12 @@ docker run -it --rm --name xpostgres --hostname xpostgres --net=xnet \
     -v $PWD/docker/.data/postgresql/xpostgres:/var/lib/postgresql/data \
     -e POSTGRES_DB=test -e POSTGRES_USER=dbu -e POSTGRES_PASSWORD=dbp postgres
 
+# check
+docker exec -ti xpostgres psql -d postgres://dbu:dbp@xpostgres/test -c 'select count(*) from test'
+
+# dump
+docker exec -ti xpostgres pg_dump -d postgres://dbu:dbp@xpostgres/test -t test --schema-only
+
 # import dump
 # docker exec -ti cpqsql /bin/bash -c "psql -d postgres://dbu:dbp@cpqsql/test < /app/dump.sql"
 
@@ -141,7 +162,7 @@ docker exec -ti postgres-master psql -h localhost -p 5432 -U dbu -d test
 docker run -it --rm -p 6379:6379 --hostname xredis --name xredis redis:latest
 
 # check redis
-docker exec -ti redis redis-cli
+docker exec -ti xredis redis-cli
 ````
 
 #### RabbitMQ
@@ -265,6 +286,17 @@ docker run -it --rm -v $PWD:/gh --net=xnet \
 # mongo
 docker run -it --rm -v $PWD:/gh --link xmongo php-cli php /gh/ed/php/examples/whatever/mongo.simplest.php
 
+# memcached
+docker run -it --rm --net=xnet -v $PWD:/gh nphp php /gh/ed/php/examples/whatever/memcache.1.php
+docker run -it --rm --net=xnet -v $PWD:/gh nphp php /gh/ed/php/examples/whatever/memcache.get.php
+docker run -it --rm --net=xnet -v $PWD:/gh nphp php /gh/ed/php/examples/whatever/memcache.add.php
+docker run -it --rm --net=xnet -v $PWD:/gh nphp php /gh/ed/php/examples/whatever/memcache.set.php
+docker run -it --rm --net=xnet -v $PWD:/gh nphp php /gh/ed/php/examples/whatever/memcache.increment.php
+docker run -it --rm --net=xnet -v $PWD:/gh nphp php /gh/ed/php/examples/whatever/memcache.replace.php
+docker run -it --rm --net=xnet -v $PWD:/gh nphp php /gh/ed/php/examples/whatever/memcache.delete.php
+docker run -it --rm --net=xnet -v $PWD:/gh -e PHP_IDE_CONFIG='serverName=docker' \
+    nphp php /gh/ed/php/examples/whatever/memcache.TaskProgress.php
+
 # RabbitMQ with php
 docker run -ti --rm -v $PWD/ed/php/examples/rabbitmq/tutorials:/app xcomposer install
 # direct
@@ -305,7 +337,7 @@ docker run -ti --rm -v $PWD/ed/php.codeception/examples/one:/app -w /app \
 
 # kahlan
 docker run -ti --rm -v $PWD/ed:/gh/ed -w /gh/ed/php.kahlan/examples/one \
-    -e PHP_IDE_CONFIG="serverName=docker" \
+    -e PHP_IDE_CONFIG='serverName=docker' \
     nphp php vendor/bin/kahlan
 ````
 

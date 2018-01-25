@@ -4,6 +4,11 @@ Chrome
 [chrome-devtools](https://developers.google.com/web/tools/chrome-devtools)
 [live reload](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei?hl=en-US)
 
+[accessibility](chrome://accessibility)
+[inspect](chrome://inspect)
+[settings](chrome://settings)
+[notifications](chrome://settings/content/notifications)
+
 ````
 // write in js this - and it'll be your break point
 debugger;

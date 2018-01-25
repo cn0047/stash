@@ -31,6 +31,9 @@ log_statement = 'all'
 \dt *test*
 # more info
 \d+ viewName
+
+# `SHOW CREATE TABLE`
+pg_dump -t tableName --schema-only
 ````
 
 ````
