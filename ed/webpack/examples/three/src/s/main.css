@@ -1,0 +1,10 @@
+body {
+    margin: 25px;
+    background-color: ghostwhite;
+}
+#btn {
+    color: grey;
+    cursor: pointer;
+    font-size: medium;
+    padding: 5px;
+}

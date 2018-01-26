@@ -21,6 +21,10 @@ php -S localhost:8000 index.php
 \Yii::app()->request->getParam('id'); // $_GET['id'] or $_POST['id']
 
 $args = json_decode(\Yii::app()->request->getRawBody(), true);
+
+Yii::app()->getCache();
+
+Yii::app()->getUser()->getId(); // from $_SESSION
 ````
 
 #### Validation

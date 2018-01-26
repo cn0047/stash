@@ -74,6 +74,8 @@ console.log(argv.one + " " + argv.two);
   "scripts": {
     "prestart": "will run before start",
     "start": "",
+    "preinstall": "",
+    "postinstall": "will run after install",
   },
   "eslintConfig": {
     "env": {
