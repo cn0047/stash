@@ -1,0 +1,22 @@
+<html>
+<head>
+<script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+  I've got: <div id="root"></div>
+</body>
+<script>
+  const socket = io.connect('http://localhost:8080');
+  socket.on('connect', () => {
+    console.log('Connected.');
+
+    socket.emit('hello', {target: 'server'});
+
+    socket.on('world', (data) => {
+      const p = document.createElement('p');
+      p.innerText = data;
+      document.getElementById('root').appendChild(p);
+    });
+  });
+</script>
+</html>

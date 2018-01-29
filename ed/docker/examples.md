@@ -33,12 +33,13 @@ docker exec -it xmemcached telnet 0.0.0.0 11211
 #### MONGO
 
 ````
-docker run -it --rm -p 27017:27017 --hostname localhost --name xmongo --net=x_node_mongo \
+docker run -it --rm --net=xnet -p 27017:27017 --hostname xmongo --name xmongo \
     -v /Users/k/Downloads/:/tmp/d \
     -v $PWD/docker/.data/mongodb:/data/db mongo:latest
 
 # dump
 docker exec -it xmongo mongorestore /tmp/d/creating_documents/dump
+docker exec -it xmongo mongoimport --drop -d crunchbase -c companies /tmp/d/mongo/findAndCursorsInNodeJSDriver/companies.json
 
 # test
 docker exec -it xmongo mongo
@@ -203,7 +204,12 @@ docker run -it --rm -v $PWD:/gh -w /gh/ed/nodejs/examples/mongo node:latest npm 
 docker run -it --rm -v $PWD:/gh -w /gh/ed/nodejs/examples/mongo --link xmongo node:latest node index.js
 # simple mongo test with bridge
 docker network create --driver bridge x_node_mongo
-docker run -it --rm -v $PWD:/gh -w /gh/ed/nodejs/examples/mongo --net=x_node_mongo node:latest node index.js
+docker run -it --rm --net=xnet -v $PWD:/gh -w /gh/ed/nodejs/examples/mongo node:latest node index.js
+#
+docker run -it --rm --net=xnet -v $PWD:/gh -w /gh/ed/nodejs/examples/mongo node:latest node mongo.universityhw3-3.js
+docker run -it --rm --net=xnet -v $PWD:/gh -w /gh/ed/nodejs/examples/mongo.university/hw3-4 node npm i
+docker run -it --rm --net=xnet -v $PWD:/gh -w /gh/ed/nodejs/examples/mongo.university/hw3-4 \
+    node:latest node overviewOrTags.js
 ````
 
 #### NGINX

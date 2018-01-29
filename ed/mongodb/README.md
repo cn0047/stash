@@ -48,7 +48,9 @@ db.testData.findOne()
 db.testData.find().limit(3)
 db.testData.find().skip(3).limit(3)
 db.testData.find({ name : "mongo" })
-// iterate over the cursor with a loop
+// iterate over the cursor with a loop:
+// (The driver will send a query to MongoDB
+// when call a cursor method passing a callback function to process query result).
 var c = db.testData.find()
 while (c.hasNext()) printjson(c.next())
 // print 4th item in list

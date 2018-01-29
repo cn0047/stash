@@ -66,6 +66,14 @@ $data = $this->getDbConnection()->createCommand()
     ;
 $count = $this->getDbConnection()->createCommand('SELECT FOUND_ROWS()')->queryScalar();
 
+\Yii::app()->db->createCommand($sql)->execute();
+\Yii::app()->db->createCommand($sql)->queryColumn($params); // queryAll|queryRow
+
+$command = \Yii::app()->db->createCommand($sql);
+$command->bindParam(':uId', \Yii::app()->getUser()->getId(), \PDO::PARAM_INT);
+$command->bindParam(':action', $taskName);
+$data = $command->queryAll();
+
 $table = \Yii::app()->ext->getDbConnection()->schema->getTable('logCallMeBack');
 ````
 
