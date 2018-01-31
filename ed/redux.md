@@ -13,5 +13,15 @@ redux-thunk
 redux-promise-middleware
 ````
 
-To bind react component state to redux state use `react-redux` package
-and especially `connect` method (`connect(mapStateToProps, { loadFeedAction })(SummaryScreenConainer)`).
+To bind react component state to redux state use `connect` method from `react-redux` package:
+
+````
+/**
+ * @param {Object} mapStateToProps Object which describes what map from redux to component.
+ * @param {Object} mapDispatchToProps Object which describes actions to dispatch.
+ */
+connect(mapStateToProps, mapDispatchToProps);
+````
+
+Thunk: functions, clunky to test, easy to learn.
+Saga: generators, easy to test, hard to learn.

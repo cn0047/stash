@@ -214,7 +214,18 @@ db.runCommand( { getLastError: 1, j: "true" } )
 
 In general, use embedded data models when: you have `one-to-one` or `one-to-many` model
 ((link)[http://docs.mongodb.org/manual/core/data-model-design/]).
-<br>For model `many-to-many` use relationships with document references.
+<br>For `one-to-few` loosely use embedded data.
+<br>For `one-to-many` (really many many) it's better to use linking (people.city = 'NYC'; city.id = 'NYC';).
+<br>Linking works perfect by using Multy Key Indexes.
+<br>For model `many-to-many` use linking or ~~relationships with document references~~,
+don't use embedded data - it's gonna kill performance.
+
+To represent tree data structure in mongo use linking.
+
+What information embed in which collection depends on:
+* frequency of access data (books or authors)
+* size of items (especially when document larger 16Mb)
+* atomicity of data
 
 ````js
 // Model Tree Structures with Parent References

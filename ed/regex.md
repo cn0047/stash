@@ -88,6 +88,8 @@ Ip address range: https://regex101.com/r/O4t93o/2/
 \*\w+\*          # *keep* or *secret* https://regex101.com/r/yO6wI6/1
 (?<=\*)\w+(?=\*) # same as prev pattern
 (?<!\*)\w+(?!\*) # https://regex101.com/r/hC8pG6/1
+
+^(?!.*badword).*string.* # contains string but doesn't contain badword
 ````
 
 ````

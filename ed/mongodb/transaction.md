@@ -1,3 +1,10 @@
+Transaction
+-
+
+Mongo doesn't have transactions,
+but have atomic operations,
+or you can use next approach:
+
 #### Using Two-Phase Commits in Production Applications
 
 ````js

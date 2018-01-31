@@ -151,6 +151,8 @@ sed -e '2d;' file.txt > res.file.txt
 AWK was created in the 1970s.
 
 ````
+-F ':' # column separator
+
 echo 'one and two' | awk '{print $1}' # will print one
 awk 'BEGIN {print "Hello, world!"}'
 ps aux|awk 'length($0) > 150' # Print lines longer than 150 characters

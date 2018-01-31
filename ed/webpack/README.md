@@ -37,7 +37,11 @@ Build:
 var path = require('path');
 
 module.exports = {
+  debug: true,
+  devtool: 'source-map',
+  noInfo: false,
   entry: './foo.js',
+  target: 'web',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'foo.bundle.js'
