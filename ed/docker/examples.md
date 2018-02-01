@@ -11,7 +11,7 @@ docker build -t xubuntu ./docker/ubuntu
 docker run -ti --rm xubuntu /bin/bash
 
 # composer
-docker build -t xcomposer ./docker/composer
+docker tag xcomposer cn007b/php:7.1-composer
 docker run -ti --rm -v $PWD:/app xcomposer install
 ````
 
@@ -253,8 +253,32 @@ curl localhost:8080/healthCheck.php
 #### PHP
 
 ````
+# php
+docker build -t kphp:7.1 ./docker/php/7.1
+docker tag kphp:7.1 cn007b/php:7.1
+docker push cn007b/php:7.1
+
+# php-composer
+docker build -t kphp:7.1-composer ./docker/php/7.1-composer
+docker tag kphp:7.1-composer cn007b/php:7.1-composer
+docker push cn007b/php:7.1-composer
+
+# php-fpm
+docker build -t kphp:7.1-fpm ./docker/php/7.1-fpm
+docker tag kphp:7.1-fpm cn007b/php:7.1-fpm
+docker push cn007b/php:7.1-fpm
+
 # php-nginx
-docker build -t nphp ./docker/php-nginx
+docker build -t kphp:7.1-nginx ./docker/php/7.1-nginx
+docker tag kphp:7.1-nginx cn007b/php:7.1-nginx
+docker tag kphp:7.1-nginx cn007b/php:latest
+docker push cn007b/php:7.1-nginx
+docker push cn007b/php:latest
+````
+
+````
+# php-nginx local
+docker tag nphp cn007b/php:7.1-nginx
 docker run -it --rm -p 8080:80 -v $PWD:/gh nphp php -v
 
 # composer
@@ -324,8 +348,8 @@ docker run -it --rm --hostname 0.0.0.0 -p 8181:8181 -v $PWD:/gh --link mysql-mas
     php-cli php /gh/ed/php.laravel/examples/one/artisan serve --host=0.0.0.0 --port=8181
 
 # phalcon
-docker build -t php-cli-phalcon ./docker/php-cli-phalcon
-docker run -it --rm -v $PWD:/gh php-cli-phalcon php -v
+# docker build -t php-cli-phalcon ./docker/php-cli-phalcon
+# docker run -it --rm -v $PWD:/gh php-cli-phalcon php -v
 
 # phpspec
 docker run -ti --rm -v $PWD/ed/php.phpspec/examples/one:/app -w /app \

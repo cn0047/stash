@@ -104,4 +104,7 @@ UML
     1. Decision/Branch (true/false diamond).
     2. Fork and Join (solid line with filled arrow).
 
-https://app.pluralsight.com/library/courses/picturing-architecture-uml/table-of-contents
+### Interaction Diagrams:
+
+* Collaboration diagram.
+* Sequence diagram.

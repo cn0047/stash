@@ -1,3 +1,23 @@
+###############################################################################
+# composer
+
+FROM composer/composer:latest
+
+RUN apt-get update
+
+RUN apt-get install -y libmcrypt-dev libicu-dev mysql-client libpq-dev \
+    && docker-php-ext-install pdo pdo_mysql pgsql pdo_pgsql
+
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y uuid-dev openssl zip unzip \
+    && docker-php-ext-install -j$(nproc) bcmath pdo mbstring mcrypt \
+    && pecl install uuid \
+    && docker-php-ext-enable uuid
+
+CMD ["php"]
+
+###############################################################################
+# php-cli
+
 # FROM php:5.6-cli
 # FROM php:7.1-cli
 FROM php:7.1
@@ -41,3 +61,19 @@ RUN curl -sS https://getcomposer.org/installer | php \
   && mv composer.phar /usr/local/bin/composer
 
 CMD ["php"]
+
+###############################################################################
+# php-fpm
+
+FROM php:7.1-fpm
+
+RUN apt-get update \
+    && apt-get install -y libmcrypt-dev libicu-dev mysql-client libpq-dev \
+    && docker-php-ext-install pdo pdo_mysql pgsql pdo_pgsql sockets
+
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y uuid-dev \
+    && docker-php-ext-install -j$(nproc) bcmath pdo mbstring mcrypt \
+    && pecl install uuid \
+    && docker-php-ext-enable uuid
+
+CMD ["php-fpm"]
