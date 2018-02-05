@@ -17,6 +17,8 @@ Control-Shift-Power # Lock screen
 Command-Option-Power # Put MacBook to sleep
 
 Command-Option-Esc # Force Quit
+
+Command-Shift-. # Show hidden files
 ````
 
 ````

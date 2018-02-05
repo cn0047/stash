@@ -19,6 +19,8 @@ docker pull ubuntu
 # `.` it is current directory 
 docker build -t docker-whale .
 
+docker build -t nphp https://raw.githubusercontent.com/cn007b/my/master/docker/php-nginx/Dockerfile?latest
+
 # THE BEST COMMAND
 docker inspect docker-whale
 

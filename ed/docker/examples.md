@@ -9,10 +9,6 @@ docker network create --driver bridge xnet
 # bash
 docker build -t xubuntu ./docker/ubuntu
 docker run -ti --rm xubuntu /bin/bash
-
-# composer
-docker tag xcomposer cn007b/php:7.1-composer
-docker run -ti --rm -v $PWD:/app xcomposer install
 ````
 
 #### Memcached
@@ -176,6 +172,13 @@ docker run -it --rm --hostname localhost --name rabbit rabbitmq:latest
 docker exec rabbit rabbitmqctl list_queues name messages messages_ready messages_unacknowledged
 ````
 
+#### GO
+
+````
+docker run -it --rm -v $PWD:/gh -w /gh golang:latest go
+docker run -it --rm -v $PWD:/gh -w /gh golang:latest go run /gh/ed/go/examples/hw.go
+````
+
 #### NODEJS
 
 ````
@@ -253,32 +256,9 @@ curl localhost:8080/healthCheck.php
 #### PHP
 
 ````
-# php
-docker build -t kphp:7.1 ./docker/php/7.1
-docker tag kphp:7.1 cn007b/php:7.1
-docker push cn007b/php:7.1
-
-# php-composer
-docker build -t kphp:7.1-composer ./docker/php/7.1-composer
-docker tag kphp:7.1-composer cn007b/php:7.1-composer
-docker push cn007b/php:7.1-composer
-
-# php-fpm
-docker build -t kphp:7.1-fpm ./docker/php/7.1-fpm
-docker tag kphp:7.1-fpm cn007b/php:7.1-fpm
-docker push cn007b/php:7.1-fpm
-
-# php-nginx
-docker build -t kphp:7.1-nginx ./docker/php/7.1-nginx
-docker tag kphp:7.1-nginx cn007b/php:7.1-nginx
-docker tag kphp:7.1-nginx cn007b/php:latest
-docker push cn007b/php:7.1-nginx
-docker push cn007b/php:latest
-````
-
-````
 # php-nginx local
-docker tag nphp cn007b/php:7.1-nginx
+docker pull cn007b/php
+docker tag cn007b/php nphp
 docker run -it --rm -p 8080:80 -v $PWD:/gh nphp php -v
 
 # composer
@@ -400,7 +380,7 @@ docker run -it --rm -v $PWD:/gh \
 # test
 curl localhost:8080/
 
-# ng
+#
 docker run -ti --rm -v $PWD/ed/php.symfony/examples/ng:/app -w /app nphp composer install
 docker run -ti --rm -v $PWD/ed/php.symfony/examples/ng:/app -w /app \
     nphp php vendor/phpspec/phpspec/bin/phpspec run

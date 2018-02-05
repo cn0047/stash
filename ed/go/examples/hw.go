@@ -1,5 +1,8 @@
 package main
+
 import "fmt"
+
 func main() {
-    fmt.Println("hello world")
+    name, ending := "World", "!"
+    fmt.Printf("Hello %s %s \n", name, ending)
 }

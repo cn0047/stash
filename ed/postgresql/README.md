@@ -18,6 +18,8 @@ log_statement = 'all'
 #### REPL:
 
 ````
+\pset pager on
+\pset pager always
 \pset pager off
 
 # show databases

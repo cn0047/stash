@@ -3,12 +3,8 @@
 /*
 RUN in shell:
 
-# docker
-docker run -it --rm -v $PWD:/gh -w /gh/ed/php/examples/protobuf xphp composer install
-docker run -it --rm -v $PWD:/gh -w /gh/ed/php/examples/protobuf xphp php index.php
-
-# vagrant
-php /gh/ed/php/examples/protobuf/index.php
+docker run -it --rm -v $PWD:/gh -w /gh/ed/php/examples/protobuf nphp composer install
+docker run -it --rm -v $PWD:/gh -w /gh/ed/php/examples/protobuf nphp php index.php
 
 */
 
@@ -23,6 +19,8 @@ $foo->setBar('This is BAR.');
 $foo->setTags(['php', 'protobuf']);
 $packed = $foo->serializeToString();
 var_dump($packed);
+
+echo "\n\n-----------------------\n\n";
 
 $parsedFoo = new Foo();
 $parsedFoo->mergeFromString($packed);

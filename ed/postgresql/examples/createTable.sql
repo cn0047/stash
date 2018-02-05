@@ -5,8 +5,9 @@ create table cttest (
   n int,
   m numeric,
   d double precision,
-  s character varying(20),
+  s character varying(20) default '',
   t text,
+  j json not null default '{}',
   ts timestamp default current_timestamp,
   -- PRIMARY KEY (id, n)
   unique (n, m),
@@ -16,10 +17,10 @@ create table cttest (
 );
 
 -- error: Failing row contains
-insert into cttest values (1, -1, 1, 1.1, 'one', 'one', default);
-insert into cttest values (1, 1, 1, 1.1, 'one', 'one', default);
+insert into cttest values (1, -1, 1, 1.1, 'one', 'one', '{}', default);
+insert into cttest values (1, 1, 1, 1.1, 'one', 'one', '{}', default);
 -- ok
-insert into cttest values (1, 1, 2, 1.1, 'one', 'one', default);
-insert into cttest values (2, 2, 3, 1.1, 'one', 'one', now());
+insert into cttest values (1, 1, 2, 1.1, 'one', 'one', '{}', default);
+insert into cttest values (2, 2, 3, 1.1, 'one', 'one', default, now());
 --
 select * from cttest;
