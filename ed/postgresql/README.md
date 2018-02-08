@@ -21,6 +21,7 @@ log_statement = 'all'
 \pset pager on
 \pset pager always
 \pset pager off
+-- \setenv PAGER less
 
 # show databases
 \l

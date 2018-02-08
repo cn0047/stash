@@ -1,0 +1,6 @@
+type: 1
+token: '{994fb963-c582-417b-8cf2-8a5d60535898}'
+addDevice: {
+    token: 'kw2'
+    uuid: '{894fb963-c582-417b-8cf2-8a5d60535898}'
+}

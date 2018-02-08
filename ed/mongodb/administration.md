@@ -6,6 +6,19 @@ Administration
 
 `--oplogSize` - must be 5% of disck space and <= 50GB.
 
+````
+// To enable profiling:
+mongod --profile 1 --slowms 2
+
+// Profiling levels:
+// 1 - nothing,
+// 2 - slow queries,
+// 3 - log all.
+
+// profiling info
+db.system.profile.find().pretty();
+````
+
 ````js
 db.version();
 

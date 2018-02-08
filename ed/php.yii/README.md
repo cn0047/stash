@@ -49,6 +49,9 @@ php protected/yiic.php migrate
 php protected/yiic.php migrate redo 1
 php protected/yiic.php migrate down 1
 
+# toArray()
+$model->attributes
+
 $where = [
     'date1' => $args['date1'],
     'like'  => $args['like'],

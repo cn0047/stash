@@ -22,6 +22,8 @@ Indexes per collection - 64
 
 ````js
 // MongoDB indexes may be ascending, (i.e. 1) or descending (i.e. -1)
+
+// indexes list
 db.collection.getIndexes();
 db.system.indexes.find();
 // Each index requires at least 8KB of data space.
@@ -103,7 +105,19 @@ db.active.ensureIndex({a: 'hashed'});
 // Unique Indexes
 db.members.ensureIndex({'user_id': 1}, {unique: true});
 ````
-(Sparse Indexes)[http://docs.mongodb.org/manual/core/index-sparse/]
+
+````js
+// given:
+db.foo.createIndex({ a:1, b:1 })
+// when
+db.foo.insert({a: [1,2], b: [1,2]})
+// then
+"writeError": "cannot index parallel arrays [b] [a]"
+````
+
+(Sparse Indexes)[http://docs.mongodb.org/manual/core/index-sparse/] - when
+index key missed in some documents.
+
 ````js
 // if indexed field das NULL it don not be at result.
 {"_id" :ObjectId('523b6e32fb408eea0eec2647'), 'userid': 'newbie'}
@@ -113,7 +127,15 @@ db.scores.ensureIndex({score: 1}, {sparse: true})
 db.scores.find({score: {$lt: 90}})
 {'_id' : ObjectId('523b6e61fb408eea0eec2648'), 'userid': 'abby', 'score': 82}
 ````
+
 ````js
+// Create index in foreground:
+// 1) fast;
+// 2) block writes and reads in db (regardless of engine);
+// Create in background:
+// 1) slow;
+// 2) don't block writes and reads;
+
 // NON BLOCK DATA
 db.people.ensureIndex({zipcode: 1}, {background: true})
 // Drop Duplicates
@@ -132,9 +154,11 @@ db.blog.ensureIndex(
     }
 );
 ````
+
 A covered query is a query in which:
 * all the fields in the query are part of an index, and
 * all the fields returned in the results are in the same index.
+
 ````js
 // Use Indexes to Sort Query Results
 /*
@@ -149,6 +173,26 @@ db.collection.find({a: 5}).sort({a: 1, b: 1});
 db.collection.find({a: 5}).sort({b: 1, c: 1})
 db.collection.find({a: 5, c: 4, b: 3}).sort({d: 1})
 
+// given
+db.foo.createIndex({ a: 1, b: 1, c: 1 })
+// then
+db.foo.explain('executionStats').find({ b: 3, c: 4 }) // COLLSCAN
+db.foo.explain('executionStats').find({ a: 3 }) // IXSCAN
+db.foo.explain('executionStats').find({ c: 1 }).sort({ a: 1, b: 1}) // IXSCAN
+db.foo.explain('executionStats').find({ c: 1 }).sort({ a: -1, b: 1}) // COLLSCAN
+
+// given
+db.products.createIndex({price: -1})
+// then
+db.products.find({brand: 'ge'}).sort({price: 1}) // use price index
+db.products.find({$and:[{price: {$gt: 30}}, {price: {$lt: 50}}]}).sort({brand: 1}) // use price index
+
+// given
+db.products.createIndex({category: 1, brand: 1})
+// then
+db.products.find({brand: 'ge'}).sort({category: 1, brand: -1}) // won't use index
+
 db.collection.totalIndexSize()
 ````
+
 [Text Search Languages](http://docs.mongodb.org/manual/reference/text-search-languages/)

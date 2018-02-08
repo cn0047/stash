@@ -1,7 +1,3 @@
-// RUN in shell nex command:
-//
-// docker run -it --rm -v $PWD:/gh -w /gh/ed/php/examples/protobuf php-cli protoc --php_out=proto foo.proto
-
 syntax = 'proto3';
 
 message Foo

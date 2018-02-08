@@ -18,3 +18,15 @@ Scalar Value Types:
 
 Protocol Buffers are not designed to handle large messages.
 If you are dealing in messages larger than a megabyte each, it may be time to consider an alternate strategy.
+
+#### shell
+
+````
+cat foo.msg | protoc --encode=Package.Foo foo.proto
+
+cat cmdmWindows.Query.msq | protoc --encode=cmdmWindows.Query cmdmWindows.proto
+cat cmdmWindows.Query.msq \
+  | protoc --encode=cmdmWindows.Query cmdmWindows.proto \
+  | curl -k -X PUT --data-binary @- https://10.254.254.254:443/command/windows \
+  | protoc --decode cmdmWindows.Response cmdmWindows.proto
+````

@@ -68,8 +68,9 @@ preg_match('/^\d{4}(-\d{2}){2}$/', $args['date']); // 2015-06-10
 (!filter_var($args['email'], FILTER_VALIDATE_EMAIL))
 (!filter_var($args['url'], FILTER_VALIDATE_URL))
 
-if (json_last_error() !== JSON_ERROR_NONE) {
-    throw new RuntimeException(__FILE__.__LINE__);
+$error = json_last_error();
+if ($error !== JSON_ERROR_NONE) {
+    throw new RuntimeException("JSON decode error: $error");
 }
 ````
 

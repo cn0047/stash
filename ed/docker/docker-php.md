@@ -23,6 +23,14 @@ docker run -it --rm cn007b/php:7.1-protobuf php -v
 docker run -it --rm cn007b/php:7.1-protobuf composer
 docker run -it --rm cn007b/php:7.1-protobuf protoc --version
 
+# php-protobuf-3
+docker build -t cn007b/php:7.1-protobuf-3 ./docker/7.1-protobuf-3
+docker push cn007b/php:7.1-protobuf-3
+# test
+docker run -it --rm cn007b/php:7.1-protobuf-3 php -v
+docker run -it --rm cn007b/php:7.1-protobuf-3 composer
+docker run -it --rm cn007b/php:7.1-protobuf-3 protoc --version
+
 # php-fpm
 docker build -t cn007b/php:7.1-fpm ./docker/7.1-fpm
 docker push cn007b/php:7.1-fpm

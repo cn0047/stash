@@ -3,7 +3,8 @@ mongo
 
 [university](https://university.mongodb.com)
 
-*MongoDB shell version: 2.4.6*
+*3.4.9*
+<br>*MongoDB shell version: 2.4.6*
 
 `printjson()`, `.pretty()`
 
@@ -115,11 +116,16 @@ db.collection.copyTo(newCollection)
 
 // EXPLAIN
 db.collection.find().explain()
+// more info in v3
+db.collection.explain(true).find()
 // "stage": "COLLSCAN" - very bad case.
 // "stage": "IXSCAN" - index scan.
 // hint - Forces MongoDB to use a specific index for a query.
 db.inventory.find( { type: 'food' } ).hint( { type: 1 } ).explain()
 db.inventory.find( { type: 'food' } ).hint( { type: 1, name: 1 } ).explain()
+// more info
+db.collection.explain('executionStats').find()
+db.collection.explain('allPlansExecution').find()
 
 // BSON-document size LIMIT = 16MB
 // Put the data in a separate collection when embedded data exceed 16MB.
@@ -329,3 +335,6 @@ Result:
 mongodump --host mongodb1.example.net --port 3017 --username user --password pass --out /opt/backup/mongodump-2013-10-24
 mongorestore --host mongodb1.example.net --port 3017 --username user --password pass /opt/backup/mongodump-2013-10-24/
 ````
+
+https://app.pluralsight.com/library/courses/mongodb-introduction/table-of-contents
+https://app.pluralsight.com/library/courses/mongodb-administration/table-of-contents

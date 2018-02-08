@@ -14,6 +14,8 @@ Bandwidth - count of lines on high-way.
 Latency - speed limit on high-way.
 
 Concurrency - single process use multiple threads.
+But each thread uses the same resource concurrently.
+Parallel - concurrency without using same resource.
 
 Race condition - when events do not happen in the order the programmer intended.
 

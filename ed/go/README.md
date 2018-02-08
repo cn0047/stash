@@ -3,6 +3,8 @@ GO
 
 go1.9
 
+[online editor](https://play.golang.org/)
+
 ````
 $GOPATH
 
@@ -14,6 +16,17 @@ import (
     "fmt"
     "os"
 )
+
+var (
+    msq = "str"
+)
+
+var (
+    message string = "str"
+)
+
+// init module
+func init() {}
 
 var power int
 power = 9000
@@ -34,12 +47,28 @@ fmt.Println("It's over", os.Args[1])
 
 //
 defer file.Close()
+
+// read input from CLI
+var option string
+fmt.ScanIn(&option)
+println(option)
 ````
 
 ````go
 for i := 0; i < 100; i++ {
 }
 ````
+
+#### Basic types
+
+* bool
+* string
+* int (int8, int16, int32, int64)
+* uint (uint8, uint16, uint32, uint64, uintptr)
+* byte // alias for uint8
+* rune // alias for int32
+* float32 float64
+* complex64 complex128
 
 #### Function Declaration
 
@@ -53,6 +82,9 @@ _, exists := power("goku")
 ````
 
 #### Structure
+
+OOP in go represented by structures.
+Inheritance in go represented by composition.
 
 ````go
 type Saiyan struct {
@@ -79,9 +111,12 @@ goku := Saiyan{"Goku", 9000}
 var scores [10]int
 scores[0] = 339
 scores := [4]int{9001, 9333, 212, 33}
+// size from elements in {}
+scores := [...]int{9001, 9333, 212, 33}
 
 scores = append(scores, 5)
 
+// foreach
 powers := make([]int, len(saiyans))
 for index, saiyan := range saiyans {
     powers[index] = saiyan.Power
@@ -91,6 +126,9 @@ for index, saiyan := range saiyans {
 #### Map
 
 ````go
+myMap := make(map[int]string)
+myMap[42] = "Foo"
+
 total := len(lookup)
 delete(lookup, "goku")
 ````
@@ -110,3 +148,8 @@ type Server struct {
 #### Goroutine
 
 #### Channel
+
+https://app.pluralsight.com/library/courses/go/table-of-contents
+https://app.pluralsight.com/library/courses/go-fundamentals/table-of-contents
+https://app.pluralsight.com/library/courses/creating-web-applications-go-update/table-of-contents
+https://gobyexample.com/

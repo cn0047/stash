@@ -42,6 +42,18 @@ For performance (follow this flow):
 
 `$group: {"_id": "all", ...}`
 
+````js
+// Add field1 to field2:
+// given
+db.aggtest.insert({a: 1, b: 1});
+db.aggtest.insert({a: 2, b: 2});
+// when
+db.aggtest.aggregate({ $project: { aPlusB: { $sum: [ "$a", "$b" ] } } });
+// then result will be
+// { "_id" : ObjectId("5a7be85d460df66d8243b967"), "aPlusB" : 2 }
+// { "_id" : ObjectId("5a7be861460df66d8243b968"), "aPlusB" : 4 }
+````
+
 ####[Group Accumulator Operators](http://docs.mongodb.org/manual/reference/operator/aggregation-group/)
 ````js
 $addToSet - put grouped documents into one (only distinct)
