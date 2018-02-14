@@ -54,7 +54,7 @@ db.aggtest.aggregate({ $project: { aPlusB: { $sum: [ "$a", "$b" ] } } });
 // { "_id" : ObjectId("5a7be861460df66d8243b968"), "aPlusB" : 4 }
 ````
 
-####[Group Accumulator Operators](http://docs.mongodb.org/manual/reference/operator/aggregation-group/)
+#### [Group Accumulator Operators](http://docs.mongodb.org/manual/reference/operator/aggregation-group/)
 ````js
 $addToSet - put grouped documents into one (only distinct)
 $avg
@@ -66,7 +66,7 @@ $push - put grouped documents into one
 $sum
 ````
 
-####Aggregation with the Zip Code Data Set
+#### Aggregation with the Zip Code Data Set
 ````js
 // Return States with Populations above 10 Million.
 /*
@@ -133,7 +133,7 @@ db.zipcodes.aggregate(
 );
 ````
 
-####Aggregation with User Preference Data.
+#### Aggregation with User Preference Data.
 ````js
 /*
 {
@@ -196,7 +196,7 @@ db.users.aggregate([
 }
 ````
 
-####Map-Reduce Examples
+#### Map-Reduce Examples
 
 Reduce operations can run in parallel across shards.
 
@@ -272,7 +272,7 @@ Result:
 */
 ````
 
-####Perform Incremental Map-Reduce
+#### Perform Incremental Map-Reduce
 ````js
 var mapFunction = function () {
     var key = this.userid;
@@ -322,6 +322,7 @@ db.sessions.mapReduce(
 );
 ````
 
+[Accumulators](https://docs.mongodb.com/manual/meta/aggregation-quick-reference/#accumulators)
 [Aggregation Commands Comparison](http://docs.mongodb.org/manual/reference/aggregation-commands-comparison/)
 [SQL to Aggregation Mapping Chart](http://docs.mongodb.org/manual/reference/sql-aggregation-comparison/)
 [Aggregation Interfaces](http://docs.mongodb.org/manual/reference/operator/aggregation/interface/)

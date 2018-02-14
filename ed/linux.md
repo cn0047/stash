@@ -342,6 +342,7 @@ find src/ -type f -exec md5sum '{}' \; | md5sum
 
 env # to see all ENV variables
 sudo bash -c 'echo "APP_ENVIRONMENT=prod" > /etc/environment'
+sudo sh -c 'echo "APP_ENVIRONMENT=prod" > /etc/environment'
 sh -c 'echo 200'
 
 cut -d' ' -f2 /tmp/file.txt # print column 2 from file using ' ' as delimer

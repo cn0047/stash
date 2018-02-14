@@ -43,11 +43,18 @@ Yii::app()->getUser()->getId(); // from $_SESSION
 
 #### DB
 
-````php
+Migrations:
+
+````sh
 php protected/yiic.php migrate create LastName_Desc
 php protected/yiic.php migrate
 php protected/yiic.php migrate redo 1
 php protected/yiic.php migrate down 1
+````
+
+````php
+TaskProgress::model()->updateByPk($taskName, ['done' => 'done + 3']);
+TaskProgress::model()->updateAll(['done' => 'done + 3'], "action = '$taskName'");
 
 # toArray()
 $model->attributes
@@ -78,6 +85,29 @@ $command->bindParam(':action', $taskName);
 $data = $command->queryAll();
 
 $table = \Yii::app()->ext->getDbConnection()->schema->getTable('logCallMeBack');
+````
+
+Criteria:
+
+````php
+$sql = "
+  DELETE FROM task_progress
+  WHERE
+      done >= total
+      OR (
+        expire <> 0
+        AND EXTRACT(epoch FROM (created_at + (expire * interval '1 seconds'))) < EXTRACT(epoch FROM NOW())
+      )
+";
+$subCriteria = new \CDbCriteria;
+$subCriteria->addCondition('expire <> 0');
+$subCriteria->addCondition("
+    EXTRACT(epoch FROM (created_at + (expire * interval '1 seconds'))) < EXTRACT(epoch FROM NOW())
+");
+$criteria = new \CDbCriteria;
+$criteria->addCondition('done >= total');
+$criteria->addCondition($subCriteria->condition, 'OR');
+TaskProgress::model()->deleteAll($criteria);
 ````
 
 ````

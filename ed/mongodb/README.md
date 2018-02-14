@@ -335,6 +335,3 @@ Result:
 mongodump --host mongodb1.example.net --port 3017 --username user --password pass --out /opt/backup/mongodump-2013-10-24
 mongorestore --host mongodb1.example.net --port 3017 --username user --password pass /opt/backup/mongodump-2013-10-24/
 ````
-
-https://app.pluralsight.com/library/courses/mongodb-introduction/table-of-contents
-https://app.pluralsight.com/library/courses/mongodb-administration/table-of-contents

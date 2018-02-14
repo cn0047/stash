@@ -44,6 +44,46 @@ docker exec -it xmongo mongo test \
     --eval 'db.createUser({user: "dbu", pwd: "dbp", roles: ["readWrite", "dbAdmin"]})'
 ````
 
+#### MONGO cluster
+
+````
+# primary
+docker run -it --rm --net=xnet -p 27017:27017 \
+    --hostname xmongo-primary-1 --name xmongo-primary-1 \
+    -v $PWD/docker/.data/xmongo-primary-1:/data/db \
+    mongo:latest --port 27017 --replSet xmongo
+
+# secondary
+docker run -it --rm --net=xnet -p 27018:27018 \
+    --hostname xmongo-secondary-1 --name xmongo-secondary-1 \
+    -v $PWD/docker/.data/xmongo-secondary-1:/data/db \
+    mongo:latest --port 27018 --replSet xmongo
+
+# arbiter
+docker run -it --rm --net=xnet -p 27019:27019 \
+    --hostname xmongo-arbiter-1 --name xmongo-arbiter-1 \
+    -v $PWD/docker/.data/xmongo-arbiter-1:/data/db \
+    mongo:latest --port 27019 --replSet xmongo
+
+# configure replica set
+docker exec -it xmongo-primary-1 mongo --port 27017 --eval '
+    rs.initiate({
+        "_id": "xmongo",
+        "members": [
+            {"_id": 0, "host": "xmongo-primary-1:27017", "priority": 10},
+            {"_id": 1, "host": "xmongo-secondary-1:27018"},
+            {"_id": 2, "host": "xmongo-arbiter-1:27019", "arbiterOnly": true}
+        ]
+    })
+'
+
+# test
+docker exec -it xmongo-primary-1 mongo --port 27017 --eval 'db.rs.insert({c:200})'
+# docker exec -it xmongo-secondary-1 mongo --port 27018 --eval 'db.setSlaveOk()'
+# docker exec -it xmongo-secondary-1 mongo --port 27018 --eval 'db.rs.find()'
+docker exec -it xmongo-secondary-1 mongo --port 27018 --eval 'db.setSlaveOk();db.rs.find()'
+````
+
 #### ES cluster
 
 ````

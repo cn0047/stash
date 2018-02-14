@@ -1,0 +1,9 @@
+message My {
+    enum Policy {
+        ALLOW = 1;
+        DENY = 2;
+    }
+
+    optional bool ok = 1;
+    optional Policy controlPolicy  = 2;
+}

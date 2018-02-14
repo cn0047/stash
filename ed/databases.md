@@ -15,6 +15,8 @@ MongoDB:
 
 * Schema-less (perfect for rapid prototyping and for dynamic queries).
 * MongoDB don't need ORM.
+* Capped collections.
+* TTL index.
 
 * *Auto-sharding.*
 * *Can be scaled within and across multiple distributed data centers.*
