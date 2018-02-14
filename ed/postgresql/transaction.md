@@ -2,6 +2,7 @@ Transaction
 -
 
 ````
+-- BEGIN TRANSACTION ISOLATION LEVEL REPEATABLE READ;
 BEGIN;
   -- update valid statement
 SAVEPOINT point_1;
