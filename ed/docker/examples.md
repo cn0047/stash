@@ -44,7 +44,7 @@ docker exec -it xmongo mongo test \
     --eval 'db.createUser({user: "dbu", pwd: "dbp", roles: ["readWrite", "dbAdmin"]})'
 ````
 
-#### MONGO cluster
+#### MONGO cluster (replica set)
 
 ````
 # primary
@@ -82,6 +82,54 @@ docker exec -it xmongo-primary-1 mongo --port 27017 --eval 'db.rs.insert({c:200}
 # docker exec -it xmongo-secondary-1 mongo --port 27018 --eval 'db.setSlaveOk()'
 # docker exec -it xmongo-secondary-1 mongo --port 27018 --eval 'db.rs.find()'
 docker exec -it xmongo-secondary-1 mongo --port 27018 --eval 'db.setSlaveOk();db.rs.find()'
+````
+
+#### MONGO cluster (sharding)
+
+````
+# config server
+docker run -it --rm --net=xnet -p 27016:27016 \
+    --hostname xmongo-config-1 --name xmongo-config-1 \
+    -v $PWD/docker/.data/xmongo-config-1:/data/db \
+    mongo:latest --port 27016 --replSet xmongo-config --configsvr
+
+# mongos (router) server
+docker run -it --rm --net=xnet -p 27015:27015 \
+    --hostname xmongo-mongos --name xmongo-mongos \
+    -v $PWD/docker/.data/xmongo-mongos:/data/db \
+    mongo:latest mongos --port 27015 --configdb configserver/xmongo-config-1:27016
+
+# docker run -it --rm --net=xnet -p 27017:27017 \
+#     --hostname xmongo-mongos --name xmongo-mongos \
+#     -v $PWD/docker/.data/xmongo-mongos:/data/db \
+#     mongo:latest sh -c 'exec mongos --port 27017 --configdb "conf/xmongo-config-1:27016"'
+
+#
+docker run -it --rm --net=xnet -p 27018:27018 \
+    --hostname xmongo-shard-1 --name xmongo-shard-1 \
+    -v $PWD/docker/.data/xmongo-shard-1:/data/db \
+    mongo:latest --port 27018 --replSet xmongo-shard
+
+#
+docker run -it --rm --net=xnet -p 27019:27019 \
+    --hostname xmongo-shard-2 --name xmongo-shard-2 \
+    -v $PWD/docker/.data/xmongo-shard-2:/data/db \
+    mongo:latest --port 27019 --replSet xmongo-shard
+
+#
+docker exec -it xmongo-config-1 mongo --port 27016 --eval 'db.version()'
+docker exec -it xmongo-mongos mongo --port 27015 --eval 'db.version()'
+docker exec -it xmongo-shard-1 mongo --port 27018
+docker exec -it xmongo-shard-2 mongo --port 27019
+
+# # connect into mongos
+# sh.addShard('xmongo-shard-1:27018')
+# sh.addShard('xmongo-shard-2:27019')
+# sh.status()
+# # and
+# sh.enableSharding('dbName')
+# sh.status()
+# sh.shardCollection('dbName.collectionName', {'shardKey1': 1, 'shardKey2': 1})
 ````
 
 #### ES cluster

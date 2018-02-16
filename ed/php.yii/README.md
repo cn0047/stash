@@ -59,6 +59,10 @@ TaskProgress::model()->updateAll(['done' => 'done + 3'], "action = '$taskName'")
 # toArray()
 $model->attributes
 
+$transaction = \Yii::app()->getDb()->beginTransaction();
+$transaction->commit();
+$transaction->rollback();
+
 $where = [
     'date1' => $args['date1'],
     'like'  => $args['like'],
@@ -90,6 +94,15 @@ $table = \Yii::app()->ext->getDbConnection()->schema->getTable('logCallMeBack');
 Criteria:
 
 ````php
+$sql = '
+    UPDATE task_progress SET done = task_progress.done + :done
+    WHERE action = :action
+';
+$criteria = new \CDbCriteria();
+$criteria->addCondition('action = :action');
+$criteria->params = [':action' => $taskName];
+TaskProgress::model()->updateCounters(['done' => $value], $criteria);
+
 $sql = "
   DELETE FROM task_progress
   WHERE
@@ -99,14 +112,16 @@ $sql = "
         AND EXTRACT(epoch FROM (created_at + (expire * interval '1 seconds'))) < EXTRACT(epoch FROM NOW())
       )
 ";
-$subCriteria = new \CDbCriteria;
+$subCriteria = new \CDbCriteria();
 $subCriteria->addCondition('expire <> 0');
 $subCriteria->addCondition("
     EXTRACT(epoch FROM (created_at + (expire * interval '1 seconds'))) < EXTRACT(epoch FROM NOW())
 ");
-$criteria = new \CDbCriteria;
+$criteria = new \CDbCriteria();
 $criteria->addCondition('done >= total');
 $criteria->addCondition($subCriteria->condition, 'OR');
+$criteria->addCondition('action = :action');
+$criteria->params = [':action' => $taskName];
 TaskProgress::model()->deleteAll($criteria);
 ````
 

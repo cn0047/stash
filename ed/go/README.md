@@ -5,7 +5,10 @@ go1.9
 
 [online editor](https://play.golang.org/)
 
+Go is compiled, garbage-collected, concurrent, type-safe.
+
 ````
+$GOROOT
 $GOPATH
 
 go run --work ed/go/examples/hw.go
@@ -19,10 +22,14 @@ import (
 
 var (
     msq = "str"
+    message string = "str"
 )
 
-var (
-    message string = "str"
+const (
+    PI = 3.14
+    A = iota
+    B = iota
+    C = iota
 )
 
 // init module
@@ -38,6 +45,10 @@ power := 9000
 if (name == "Goku" && power > 9000) || (name == "gohan" && power < 4000) {
     print("super Saiyan")
     println("it's over 9000!")
+}
+
+if p := "MR"; isFormal {
+} else {
 }
 
 if len(os.Args) != 2 {
@@ -69,6 +80,17 @@ for i := 0; i < 100; i++ {
 * rune // alias for int32
 * float32 float64
 * complex64 complex128
+
+Other types:
+
+* Array
+* Slice
+* Struct
+* Pointer
+* Function
+* Interface
+* Map
+* Channel
 
 #### Function Declaration
 
@@ -149,7 +171,8 @@ type Server struct {
 
 #### Channel
 
-https://app.pluralsight.com/library/courses/go/table-of-contents
 https://app.pluralsight.com/library/courses/go-fundamentals/table-of-contents
 https://app.pluralsight.com/library/courses/creating-web-applications-go-update/table-of-contents
 https://gobyexample.com/
+
+https://www.youtube.com/channel/UC9ZNrGdT2aAdrNbX78lbNlQ/playlists
