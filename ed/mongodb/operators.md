@@ -21,7 +21,7 @@ db.inventory.find( { qty: { $mod: [ 4, 0 ] } } )
 // REGEX
 db.collection.find( { field: /acme.*corp/i } );
 db.collection.find( { field: { $regex: 'acme.*corp', $options: 'i' } } );
-// TEXT
+// TEXT (text search)
 db.articles.find( { $text: { $search: "coffee" } } )
 // contain the words bake or coffee but do not contain the term cake:
 db.articles.find( { $text: { $search: "bake coffee -cake" } } )

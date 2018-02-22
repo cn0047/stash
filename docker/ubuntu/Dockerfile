@@ -2,7 +2,7 @@
 FROM ubuntu:16.04
 
 RUN apt-get update && apt-get install -y \
-    vim git curl telnet net-tools siege
+    vim git curl telnet net-tools siege colordiff
 
 # # nodejs v 8
 # RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -

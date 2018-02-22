@@ -9,6 +9,7 @@ docker network create --driver bridge xnet
 # bash
 docker build -t xubuntu ./docker/ubuntu
 docker run -ti --rm xubuntu /bin/bash
+docker run -ti --rm -v $PWD:/app -w /app xubuntu colordiff -u d1 d2
 ````
 
 #### Memcached
@@ -93,43 +94,44 @@ docker run -it --rm --net=xnet -p 27016:27016 \
     -v $PWD/docker/.data/xmongo-config-1:/data/db \
     mongo:latest --port 27016 --replSet xmongo-config --configsvr
 
+# init config server
+docker exec -it xmongo-config-1 mongo --port 27016 --eval '
+    rs.initiate({ _id: "xmongo-config", members: [
+        { _id : 0, host : "xmongo-config-1:27016" }
+    ]});
+'
+
 # mongos (router) server
 docker run -it --rm --net=xnet -p 27015:27015 \
     --hostname xmongo-mongos --name xmongo-mongos \
     -v $PWD/docker/.data/xmongo-mongos:/data/db \
-    mongo:latest mongos --port 27015 --configdb configserver/xmongo-config-1:27016
+    mongo:latest mongos --port 27015 --configdb xmongo-config/xmongo-config-1:27016
 
-# docker run -it --rm --net=xnet -p 27017:27017 \
-#     --hostname xmongo-mongos --name xmongo-mongos \
-#     -v $PWD/docker/.data/xmongo-mongos:/data/db \
-#     mongo:latest sh -c 'exec mongos --port 27017 --configdb "conf/xmongo-config-1:27016"'
-
-#
+# shard-1
 docker run -it --rm --net=xnet -p 27018:27018 \
     --hostname xmongo-shard-1 --name xmongo-shard-1 \
     -v $PWD/docker/.data/xmongo-shard-1:/data/db \
-    mongo:latest --port 27018 --replSet xmongo-shard
+    mongo:latest --port 27018 --shardsvr
 
-#
+# shard-2
 docker run -it --rm --net=xnet -p 27019:27019 \
     --hostname xmongo-shard-2 --name xmongo-shard-2 \
     -v $PWD/docker/.data/xmongo-shard-2:/data/db \
-    mongo:latest --port 27019 --replSet xmongo-shard
+    mongo:latest --port 27019 --shardsvr
 
-#
-docker exec -it xmongo-config-1 mongo --port 27016 --eval 'db.version()'
-docker exec -it xmongo-mongos mongo --port 27015 --eval 'db.version()'
-docker exec -it xmongo-shard-1 mongo --port 27018
-docker exec -it xmongo-shard-2 mongo --port 27019
-
-# # connect into mongos
-# sh.addShard('xmongo-shard-1:27018')
-# sh.addShard('xmongo-shard-2:27019')
-# sh.status()
-# # and
-# sh.enableSharding('dbName')
-# sh.status()
-# sh.shardCollection('dbName.collectionName', {'shardKey1': 1, 'shardKey2': 1})
+# init
+docker exec -it xmongo-mongos mongo --port 27015 --eval '
+    sh.addShard("xmongo-shard-1:27018");
+    sh.addShard("xmongo-shard-2:27019");
+    sh.enableSharding("test_db");
+    sh.shardCollection("test_db.test_collection", {"country": 1, "number": 1});
+    sh.status();
+'
+# test
+docker exec -it xmongo-mongos mongo --port 27015 test_db --eval '
+    db.test_collection.save({c: "200", t: "ok", country: "UA", number: "region_number_1"});
+    db.test_collection.find({country: "UA"}).explain();
+'
 ````
 
 #### ES cluster

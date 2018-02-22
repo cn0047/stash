@@ -1,6 +1,18 @@
 Replication
 -
 
+Nodes types:
+
+* regular (primary, secondary) [takes part in election]
+* arbiter [takes part in election]
+* delayed (can't be primary)
+* hidden (can't be primary) [takes part in election]
+
+It's possible to use different engines for different nodes!
+
+When node comes back up as a secondary and oplog has looped- the
+entire db will be copied from primary.
+
 Minimal Replica Set in mongo:
 
 * primary
@@ -28,7 +40,7 @@ rs.reconfig({})
 rs.status()
 ````
 
-Oplog - (capped collection) commands from master for secondaries.
+Oplog - (capped collection!!!) commands from master for secondaries.
 `--oplogSize 1` = 1MB for oplog.
 
 Chaining - chain of replication: master -> slave 1 -> slave 2 -> slave 3.

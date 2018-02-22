@@ -39,6 +39,7 @@ Yii::app()->getUser()->getId(); // from $_SESSION
 ['userId', 'length', 'min' => 32, 'max' => 32],
 ['type',   'in', 'range' => array_keys(\Yii::app()->controller->getTypes())],
 ['userId', 'type', 'type' => 'string', 'except' => 'edit'],
+['useIos', 'boolean', 'trueValue' => true, 'falseValue' => false, 'strict' => true, 'message' => 'useIos must be either true or false.'],
 ````
 
 #### DB
