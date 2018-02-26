@@ -7,9 +7,14 @@ go1.9
 
 Go is compiled, garbage-collected, concurrent, type-safe.
 
+A workspace is a directory hierarchy with three directories at its root:
+* bin (executable commands)
+* pkg (package objects)
+* src
+
 ````
 $GOROOT
-$GOPATH
+$GOPATH // environment variable specifies the location of your workspace.
 
 go run --work ed/go/examples/hw.go
 ````
@@ -171,8 +176,7 @@ type Server struct {
 
 #### Channel
 
+https://golang.org/doc/code.html#Command
 https://app.pluralsight.com/library/courses/go-fundamentals/table-of-contents
 https://app.pluralsight.com/library/courses/creating-web-applications-go-update/table-of-contents
 https://gobyexample.com/
-
-https://www.youtube.com/channel/UC9ZNrGdT2aAdrNbX78lbNlQ/playlists
