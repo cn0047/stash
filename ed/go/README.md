@@ -4,6 +4,8 @@ GO
 go1.9
 
 [online editor](https://play.golang.org/)
+[packages](https://godoc.org/)
+[examples](https://gobyexample.com)
 
 Go is compiled, garbage-collected, concurrent, type-safe.
 
@@ -36,6 +38,11 @@ const (
     B = iota
     C = iota
 )
+const s string = "constant"
+const n = 500000000
+
+fmt.Printf("%+v", myType)
+fmt.Printf("%#v", myType)
 
 // init module
 func init() {}
@@ -172,11 +179,28 @@ type Server struct {
 }
 ````
 
+#### HTTP
+
+````
+url := req.URL
+query := url.Query()
+q := query["q"]
+page := query.Get("page")
+
+err := req.ParseForm()
+f := req.Form
+un := f["username"]
+p := f.Get["username"]
+````
+
 #### Goroutine
 
 #### Channel
 
-https://golang.org/doc/code.html#Command
-https://app.pluralsight.com/library/courses/go-fundamentals/table-of-contents
-https://app.pluralsight.com/library/courses/creating-web-applications-go-update/table-of-contents
-https://gobyexample.com/
+https://gobyexample.com/signals
+panic
+defer
+livereload
+-import type from another dir
+https://github.com/gorilla/mux
+https://github.com/julienschmidt/httprouter

@@ -21,10 +21,10 @@ because when you change your service your counsumer must change client library,
 also you force user to use specific technology platform.
 Solution: use interface.
 
-Avoid shared database because changes in schema in 1 microservice
+⚠️ Avoid shared database because changes in schema in 1 microservice
 leads to redeploy few microservices.
 
-Avoid shared libraries because in case of bug you have to re-deploy all microservices
+⚠️ Avoid shared libraries because in case of bug you have to re-deploy all microservices
 which are using this library. Maybe this library must be separated microservice?
 
 Synchronous communication:
@@ -51,7 +51,7 @@ So again, consider starting monolithic first and break things out when you’re 
 
 Many of the challenges you’re going to face with microservices get worse with scale.
 
-Transactions...
+⁉️ Transactions...
 
 * Model Around Business Concepts
   (use bounded contexts)
@@ -68,5 +68,5 @@ Transactions...
 * Highly Observable
   (aggregate your logs, aggregate your stats)
 
-Anti-pattern - nanoservice,
+⚠️ Anti-pattern - nanoservice,
 is a service whose overhead (communications, maintenance etc.) outweighs its utility.

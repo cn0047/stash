@@ -101,6 +101,8 @@ git log -p                # shows commits & code in commit
 git log --stat            # statiistic about changes
 git log --no-meges        # log without merges
 git log --follow file.txt # Viewing GIT history of deleted files.
+
+git log --date=short --no-merges --shortstat
 ````
 
 #### branch
