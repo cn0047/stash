@@ -1,7 +1,7 @@
 Examples
 -
 
-### RUN
+### Ubuntu
 
 ````
 docker network create --driver bridge xnet
@@ -9,7 +9,11 @@ docker network create --driver bridge xnet
 # bash
 docker build -t xubuntu ./docker/ubuntu
 docker run -ti --rm xubuntu /bin/bash
-docker run -ti --rm -v $PWD:/app -w /app xubuntu colordiff -u d1 d2
+
+docker build -t cn007b/ubuntu:17.10 ./docker/ubuntu/17.10
+docker push cn007b/ubuntu:17.10
+docker build -t cn007b/ubuntu:latest ./docker/ubuntu/17.10
+docker push cn007b/ubuntu:latest
 ````
 
 #### Memcached
@@ -263,9 +267,12 @@ docker run -it --rm --hostname localhost --name rabbit rabbitmq:latest
 docker exec rabbit rabbitmqctl list_queues name messages messages_ready messages_unacknowledged
 ````
 
-#### GO
+#### GO (GOLANG)
 
 ````
+docker build -t xgo ./docker/go
+docker run -it --rm -v $PWD:/gh -w /gh xgo go
+
 docker run -it --rm -v $PWD:/gh -w /gh golang:latest go
 docker run -it --rm -v $PWD:/gh -w /gh golang:latest go run /gh/ed/go/examples/hw.go
 
@@ -299,12 +306,23 @@ docker run -it --rm -p 8000:8000 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/example
     golang:latest sh -c 'cd $GOPATH && go run src/app/main.go'
 # curl http://localhost:8000/home -XPOST -d '{"term": "my term", "page": 1, "pageSize": 10}'
 
-# db
+# web.three.tiny
+docker run -it --rm -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.three.tiny/' \
+    golang:latest sh -c 'cd $GOPATH && go run src/app/main.go'
+
+# db postgresql
 docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \
     golang:latest sh -c 'cd $GOPATH && go get github.com/lib/pq'
-
+# run
 docker run -it --rm --net=xnet -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \
     golang:latest sh -c 'cd $GOPATH && go run src/postgresql/simplest.go'
+
+# db mongo
+docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \
+    golang:latest sh -c 'cd $GOPATH && go get gopkg.in/mgo.v2'
+# run
+docker run -it --rm --net=xnet -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \
+    golang:latest sh -c 'cd $GOPATH && go run src/mongodb/simple.go'
 
 # # web.HTTPS
 # docker run -it --rm -p 8000:8000 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.https/' \
@@ -312,6 +330,25 @@ docker run -it --rm --net=xnet -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/
 # docker run -it --rm -p 8000:8000 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.https/' \
 #     golang:latest sh -c 'cd $GOPATH && ./bin/webapp'
 
+# zeromq
+docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/zeromq/' \
+    xgo sh -c 'cd $GOPATH && go get github.com/pebbe/zmq4'
+docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/zeromq/' \
+    golang:latest sh -c 'cd $GOPATH && go run src/hw/server.go'
+
+ed/go/examples/zeromq/src/hw/server.go:31
+````
+
+#### GO Gin
+
+````
+docker run -it --rm -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go.gin/examples/one' \
+    golang:latest sh -c 'cd $GOPATH && go get github.com/gin-gonic/gin'
+
+docker run -it --rm -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go.gin/examples/one' \
+    golang:latest sh -c 'cd $GOPATH && go run src/one/main.go'
+
+# curl localhost:8080/v1/file-info/id/7
 ````
 
 #### NODEJS
@@ -339,7 +376,7 @@ docker run -it --rm -v $PWD:/gh -w /gh/ed/nodejs/examples/elasticsearch --link e
 
 # simple mongo test
 docker run -it --rm -v $PWD:/gh -w /gh/ed/nodejs/examples/mongo node:latest npm install
-docker run -it --rm -v $PWD:/gh -w /gh/ed/nodejs/examples/mongo --link xmongo node:latest node index.js
+docker run -it --rm -v $PWD:/gh -w /gh/ed/nodejs/examples/mongo --net=xnet node:latest node index.js
 # simple mongo test with bridge
 docker network create --driver bridge x_node_mongo
 docker run -it --rm --net=xnet -v $PWD:/gh -w /gh/ed/nodejs/examples/mongo node:latest node index.js

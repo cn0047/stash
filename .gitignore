@@ -1,8 +1,11 @@
+# ed/index.nginx-debian.html
 .idea/
 .vagrant/
 composer.lock
 docker/.data/
-# ed/index.nginx-debian.html
+ed/go*/examples/*/bin
+ed/go*/examples/*/*/gopkg.in
+ed/go*/examples/*/pkg
 node_modules/
 package-lock.json
 vendor/

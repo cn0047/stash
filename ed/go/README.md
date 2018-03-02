@@ -1,11 +1,12 @@
 GO
 -
 
-go1.9
+go1.9.3
 
 [online editor](https://play.golang.org/)
 [packages](https://godoc.org/)
-[examples](https://gobyexample.com)
+[examples](https://gobyexample.com/)
+[badges](https://goreportcard.com/)
 
 Go is compiled, garbage-collected, concurrent, type-safe.
 
@@ -197,10 +198,8 @@ p := f.Get["username"]
 
 #### Channel
 
-https://gobyexample.com/signals
 panic
 defer
 livereload
--import type from another dir
-https://github.com/gorilla/mux
-https://github.com/julienschmidt/httprouter
+tests
+"net/http/pprof"

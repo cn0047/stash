@@ -1,6 +1,8 @@
 Race Conditions
 _
 
+Don't handle `Unix signals`.
+
 #### MySql
 
 Optimistic Locking.
