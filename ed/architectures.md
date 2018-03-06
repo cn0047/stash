@@ -6,6 +6,7 @@ Architectures
 #### Simple
 
 ````
+mongomart
 └── src
     ├── 🗂 static     # Img, css, etc.
     ├── 🗂 views      # Templates.
@@ -25,13 +26,22 @@ log
 ````
 
 ````
+sandbox-log-1
 └── src
-    └── 🗂 http
-        ├── 🗂 controller
-        ├── 🗂 middleware
-        ├── 🗂 request
-        └── 🗂 response
+    ├── 🗂 http
+    │   ├── 🗂 controller
+    │   ├── 🗂 middleware
+    │   ├── 🗂 request
+    │   └── 🗂 response
+    └── 🗂 dao
 
+sandbox-log-2
+└── src
+    ├── 🗂 config
+    ├── 🗂 middleware
+    └── 🗂 service
+        ├── 🗂 v1
+        └── 🗂 v2
 ````
 
 #### DDD

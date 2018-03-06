@@ -3,11 +3,13 @@ package main
 import (
 	"net/http"
 
-	"app/controller"
-	"app/middleware"
+	"app/http/controller"
+	"app/http/middleware"
 )
 
 func main() {
 	controller.Startup()
-	http.ListenAndServe(":8000", &middleware.My{new(middleware.My)})
+	//http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":8080", new(middleware.RequestInfo))
+	//http.ListenAndServe(":8080", &middleware.RequestInfo{new(middleware.OsInfo)})
 }

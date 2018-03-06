@@ -1,11 +1,13 @@
 Examples
 -
 
+````
+docker network create --driver bridge xnet
+````
+
 ### Ubuntu
 
 ````
-docker network create --driver bridge xnet
-
 # bash
 docker build -t xubuntu ./docker/ubuntu
 docker run -ti --rm xubuntu /bin/bash
@@ -301,10 +303,19 @@ docker run -it --rm -p 8000:8000 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/example
     golang:latest sh -c 'cd $GOPATH && go run src/webapp/main.go'
 # http://localhost:8000/home
 
-# web.three
-docker run -it --rm -p 8000:8000 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.three/' \
+# web.three ⭐️
+docker run -it --rm -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.three/' \
     golang:latest sh -c 'cd $GOPATH && go run src/app/main.go'
-# curl http://localhost:8000/home -XPOST -d '{"term": "my term", "page": 1, "pageSize": 10}'
+# test
+curl -i 'http://localhost:8080'
+curl -i 'http://localhost:8080/home'
+curl -i 'http://localhost:8080/cars'
+curl -i -XGET 'http://localhost:8080/cars'
+curl -i -XPUT 'http://localhost:8080/cars'
+curl -i -XDELETE 'http://localhost:8080/cars'
+curl -i -XPOST 'http://localhost:8080/cars'
+curl -i -XPOST 'http://localhost:8080/cars' -H 'Content-Type: application/json' \
+   -d '{"vendor": "BMW", "name": "X5"}'
 
 # web.three.tiny
 docker run -it --rm -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.three.tiny/' \
@@ -330,13 +341,11 @@ docker run -it --rm --net=xnet -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/
 # docker run -it --rm -p 8000:8000 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.https/' \
 #     golang:latest sh -c 'cd $GOPATH && ./bin/webapp'
 
-# zeromq
-docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/zeromq/' \
-    xgo sh -c 'cd $GOPATH && go get github.com/pebbe/zmq4'
-docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/zeromq/' \
-    golang:latest sh -c 'cd $GOPATH && go run src/hw/server.go'
-
-ed/go/examples/zeromq/src/hw/server.go:31
+# # zeromq
+# docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/zeromq/' \
+#     xgo sh -c 'cd $GOPATH && go get github.com/pebbe/zmq4'
+# docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/zeromq/' \
+#     golang:latest sh -c 'cd $GOPATH && go run src/hw/server.go'
 ````
 
 #### GO Gin
