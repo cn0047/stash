@@ -8,13 +8,6 @@ go1.9.3
 [examples](https://gobyexample.com/)
 [badges](https://goreportcard.com/)
 
-Go is compiled, garbage-collected, concurrent, type-safe.
-
-A workspace is a directory hierarchy with three directories at its root:
-* bin (executable commands)
-* pkg (package objects)
-* src
-
 ````
 $GOROOT
 $GOPATH // environment variable specifies the location of your workspace.
@@ -76,12 +69,24 @@ defer file.Close()
 var option string
 fmt.ScanIn(&option)
 println(option)
-````
 
-````go
 for i := 0; i < 100; i++ {
 }
 ````
+
+Go is compiled, garbage-collected, concurrent, type-safe.
+
+A workspace is a directory hierarchy with three directories at its root:
+* bin (executable commands)
+* pkg (package objects)
+* src
+
+**defer** pushes a function call in list,
+list will be executed after the surrounding function returns.
+
+**panic** is a built-in function that stops the ordinary flow of control and begins *panicking*.
+
+**recover** is a built-in function that regains control of a panicking goroutine.
 
 #### Basic types
 
@@ -173,10 +178,6 @@ delete(lookup, "goku")
 ````go
 type Logger interface {
     Log(message string)
-}
-
-type Server struct {
-    logger Logger
 }
 ````
 

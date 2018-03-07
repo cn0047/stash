@@ -18,17 +18,30 @@ func main() {
 	}
 	defer session.Close()
 	session.SetMode(mgo.Monotonic, true)
-
 	c := session.DB("test").C("test")
-	err = c.Insert(&Test{202}, &Test{204})
-	if err != nil {
-		log.Fatal(err)
-	}
 
-	result := Test{}
-	err = c.Find(bson.M{"code": 204}).One(&result)
+	insert(c)
+	findByCode(c, 204)
+	findByCode(c, 205)
+}
+
+func insert(c *mgo.Collection) {
+	err := c.Insert(&Test{202}, &Test{204})
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Printf("%#v", result)
+}
+
+func find(c *mgo.Collection, code int) {
+	result := Test{}
+	err := c.Find(bson.M{"code": code}).One(&result)
+	if err != nil {
+		log.Fatal("NOT FOUND.")
+		log.Fatal(err)
+	}
+	fmt.Printf("%+v\n", result)
+}
+
+func findByCode(c *mgo.Collection, code int) {
+	find(c, code)
 }

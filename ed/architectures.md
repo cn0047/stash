@@ -8,40 +8,36 @@ Architectures
 ````
 mongomart
 └── src
-    ├── 🗂 static     # Img, css, etc.
-    ├── 🗂 views      # Templates.
-    ├── 🗂 dao        # DAO objects.
-    └── app.js        # Init. BL.
+    ├── 🗂 static   # Img, css, etc.
+    ├── 🗂 views    # Templates.
+    ├── 🗂 dao      # DAO objects.
+    └── app.js      # Init. BL.
 ````
 
 ````
 log
 └── src
-    ├── 🗂 configs     # All app configs.
-    ├── 🗂 middlewares # CORS. X-Powered-By.
-    ├── 🗂 routes      # HTTP controllers. BL.
-    ├── 🗂 sockets     # WS controllers. BL.
-    ├── 🗂 views       # Templates.
-    └── app.js         # Init.
+    ├── 🗂 configs       # All app configs.
+    ├── 🗂 middlewares   # CORS. X-Powered-By.
+    ├── 🗂 routes        # HTTP controllers. BL.
+    ├── 🗂 sockets       # WS controllers. BL.
+    ├── 🗂 views         # Templates.
+    └── app.js           # Init.
 ````
 
 ````
-sandbox-log-1
+sandbox-log
 └── src
     ├── 🗂 http
     │   ├── 🗂 controller
     │   ├── 🗂 middleware
     │   ├── 🗂 request
     │   └── 🗂 response
-    └── 🗂 dao
-
-sandbox-log-2
-└── src
-    ├── 🗂 config
-    ├── 🗂 middleware
-    └── 🗂 service
-        ├── 🗂 v1
-        └── 🗂 v2
+    ├── 🗂 service
+    │   ├── 🗂 v1
+    │   └── 🗂 v2
+    ├── di.go
+    └── main.go
 ````
 
 #### DDD

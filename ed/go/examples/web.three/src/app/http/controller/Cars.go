@@ -2,7 +2,6 @@ package controller
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 
 	"app/http/protocol"
@@ -18,8 +17,20 @@ func (c Cars) registerRoutes() {
 }
 
 func (c Cars) handleRequest(w http.ResponseWriter, r *http.Request) {
-
+	// Default HTTP message (Error 501).
 	var message protocol.HttpMessage
+
+	// Deliver canonical HTTP message to client.
+	defer func() {
+		protocol.HttpResponse(w, message)
+	}()
+
+	// Regardless panic, restore state and reply to client with valid canonical message.
+	defer func() {
+		if err := recover(); err != nil {
+			message = protocol.HttpException(err)
+		}
+	}()
 
 	switch r.Method {
 		case "GET":
@@ -30,7 +41,6 @@ func (c Cars) handleRequest(w http.ResponseWriter, r *http.Request) {
 			if err == nil {
 				message = protocol.HttpSuccess(200, car.CreateNewCar(query))
 			} else {
-				fmt.Printf("Error: %+v", err)
 				message = protocol.HttpError(500, "Internal Server Error. " + err.Error())
 			}
 		case "PUT":
@@ -40,6 +50,4 @@ func (c Cars) handleRequest(w http.ResponseWriter, r *http.Request) {
 		default:
 			message = protocol.HttpError(404, "Not Found.")
 	}
-
-	protocol.HttpResponse(w, message)
 }

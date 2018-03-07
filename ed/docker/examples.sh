@@ -279,47 +279,6 @@ docker run -it --rm -v $PWD:/gh -w /gh golang:latest go
 docker run -it --rm -v $PWD:/gh -w /gh golang:latest go run /gh/ed/go/examples/hw.go
 
 docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh' golang:latest sh -c 'echo $GOPATH'
-````
-
-````
-# Simple Web Server
-
-# web.one
-docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.one/' \
-    golang:latest sh -c 'cd $GOPATH && go install firstapp'
-docker run -it --rm -p 8000:8000 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.one/' \
-    golang:latest sh -c 'cd $GOPATH && ./bin/firstapp'
-# curl http://localhost:8000/
-
-# 2
-docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.one/' \
-    golang:latest sh -c 'cd $GOPATH && go install templateapp'
-docker run -it --rm -p 8000:8000 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.one/' \
-    golang:latest sh -c 'cd $GOPATH && ./bin/templateapp'
-# http://localhost:8000/home
-
-# web.two
-docker run -it --rm -p 8000:8000 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.two/' \
-    golang:latest sh -c 'cd $GOPATH && go run src/webapp/main.go'
-# http://localhost:8000/home
-
-# web.three ⭐️
-docker run -it --rm -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.three/' \
-    golang:latest sh -c 'cd $GOPATH && go run src/app/main.go'
-# test
-curl -i 'http://localhost:8080'
-curl -i 'http://localhost:8080/home'
-curl -i 'http://localhost:8080/cars'
-curl -i -XGET 'http://localhost:8080/cars'
-curl -i -XPUT 'http://localhost:8080/cars'
-curl -i -XDELETE 'http://localhost:8080/cars'
-curl -i -XPOST 'http://localhost:8080/cars'
-curl -i -XPOST 'http://localhost:8080/cars' -H 'Content-Type: application/json' \
-   -d '{"vendor": "BMW", "name": "X5"}'
-
-# web.three.tiny
-docker run -it --rm -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.three.tiny/' \
-    golang:latest sh -c 'cd $GOPATH && go run src/app/main.go'
 
 # db postgresql
 docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \
@@ -334,6 +293,68 @@ docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \
 # run
 docker run -it --rm --net=xnet -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \
     golang:latest sh -c 'cd $GOPATH && go run src/mongodb/simple.go'
+
+````
+
+````
+# Simple Web Server
+
+# web.one
+docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.one/' \
+    golang:latest sh -c 'cd $GOPATH && go install firstapp'
+docker run -it --rm -p 8000:8000 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.one/' \
+    golang:latest sh -c 'cd $GOPATH && ./bin/firstapp'
+# or
+docker run -it --rm -p 8000:8000 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.one/' \
+    golang:latest sh -c 'cd $GOPATH && go run src/firstapp/main.go'
+# test
+# curl http://localhost:8000/
+#
+# Livereload
+#
+docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.one/' \
+    golang:latest sh -c 'cd $GOPATH && go get github.com/codegangsta/gin'
+docker run -it --rm --name go-one -p 8000:8000 -p 8001:8001 \
+    -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.one/' \
+    golang:latest sh -c 'cd $GOPATH && ./bin/gin --port 8001 --appPort 8000 --path src/firstapp/ run main.go'
+
+# 2
+docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.one/' \
+    golang:latest sh -c 'cd $GOPATH && go install templateapp'
+docker run -it --rm -p 8000:8000 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.one/' \
+    golang:latest sh -c 'cd $GOPATH && ./bin/templateapp'
+# http://localhost:8000/home
+
+# web.two
+docker run -it --rm -p 8000:8000 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.two/' \
+    golang:latest sh -c 'cd $GOPATH && go run src/webapp/main.go'
+# http://localhost:8000/home
+
+# web.three ⭐️ ⭐️
+docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.three/' \
+    golang:latest sh -c 'cd $GOPATH && go get gopkg.in/mgo.v2 && go get github.com/codegangsta/gin'
+# run
+docker run -it --rm --net=xnet -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.three/' \
+    golang:latest sh -c 'cd $GOPATH && go run src/app/main.go'
+# livereload
+# docker run -it --rm --net=xnet -p 8000:8000 -p 8001:8001 \
+#     -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.one/' \
+#     golang:latest sh -c 'cd $GOPATH && ./bin/gin --port 8001 --appPort 8000 --path src/app/ run main.go'
+
+# test
+curl -i 'http://localhost:8080'
+curl -i 'http://localhost:8080/home'
+curl -i 'http://localhost:8080/cars'
+curl -i -XGET 'http://localhost:8080/cars'
+curl -i -XPUT 'http://localhost:8080/cars'
+curl -i -XDELETE 'http://localhost:8080/cars'
+curl -i -XPOST 'http://localhost:8080/cars'
+curl -i -XPOST 'http://localhost:8080/cars' -H 'Content-Type: application/json' \
+   -d '{"vendor": "BMW", "name": "X5"}'
+
+# web.three.tiny
+docker run -it --rm -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.three.tiny/' \
+    golang:latest sh -c 'cd $GOPATH && go run src/app/main.go'
 
 # # web.HTTPS
 # docker run -it --rm -p 8000:8000 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.https/' \

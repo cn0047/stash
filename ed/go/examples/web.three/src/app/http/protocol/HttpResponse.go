@@ -2,10 +2,10 @@ package protocol
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 )
 
+// Canonical way to sends HTTP message response to client.
 func HttpResponse(w http.ResponseWriter, response HttpMessage) {
 	w.WriteHeader(getHttpCode(response))
 	w.Header().Add("Content-Type", "application/json");
@@ -13,10 +13,11 @@ func HttpResponse(w http.ResponseWriter, response HttpMessage) {
 	encoder := json.NewEncoder(w)
 	err := encoder.Encode(response)
 	if err != nil {
-		fmt.Printf("Error: %+v", err)
+		panic("RUNTIME-ERROR-JSON-1")
 	}
 }
 
+// Gets HTTP status code from provided HttpMessage.
 func getHttpCode(response HttpMessage) int {
 	var httpCode int
 
@@ -25,6 +26,8 @@ func getHttpCode(response HttpMessage) int {
 	if successCode > 0 {
 		httpCode = successCode
 	}
+	// This block was written in this way intentionally,
+	// because error has higher priority and may overlap success code.
 	if errorCode > 0 {
 		httpCode = errorCode
 	}
