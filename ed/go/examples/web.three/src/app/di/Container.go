@@ -34,7 +34,7 @@ func GetMongoDB() *mgo.Database {
 func InitMongoDB() {
 	session, err := mgo.Dial(MongoDBConnectionString)
 	if err != nil {
-		panic(err)
+		panic("RUNTIME-ERROR-DB-1: " + err.Error())
 	}
 	session.SetMode(mgo.Monotonic, true)
 

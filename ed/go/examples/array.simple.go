@@ -9,5 +9,7 @@ func main() {
     scores3 := make([]int, 0, 10)
     // scores3[7] = 903
     
-    fmt.Println(scores, scores2, scores3)
+    fmt.Printf("%+v \n", scores)
+    fmt.Printf("%+v \n", scores2)
+    fmt.Printf("%+v \n", scores3)
 }

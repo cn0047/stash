@@ -4,13 +4,14 @@ GO
 go1.9.3
 
 [online editor](https://play.golang.org/)
-[packages](https://godoc.org/)
+[packages](https://golang.org/pkg/) [and](https://godoc.org/)
 [examples](https://gobyexample.com/)
 [badges](https://goreportcard.com/)
 
 ````
 $GOROOT
-$GOPATH // environment variable specifies the location of your workspace.
+$GOPATH     // environment variable specifies the location of your workspace.
+$GOMAXPROCS // number of OS threads that can execute user-level Go code simultaneously.
 
 go run --work ed/go/examples/hw.go
 ````
@@ -198,9 +199,3 @@ p := f.Get["username"]
 #### Goroutine
 
 #### Channel
-
-panic
-defer
-livereload
-tests
-"net/http/pprof"

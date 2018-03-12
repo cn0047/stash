@@ -1,13 +1,15 @@
 package car
 
 import (
+	"strconv"
+
 	"app/service/car/dao"
 	"app/service/car/request"
 	"app/service/car/response"
 )
 
 func CreateNewCar(req request.New) response.Created {
-	validateRequest(req)
+	validateRequestCreateNewCar(req)
 
 	car := response.Created{}
 	car.Id = 9
@@ -19,8 +21,27 @@ func CreateNewCar(req request.New) response.Created {
 	return car
 }
 
-func validateRequest(req request.New) {
-	//if req.Vendor != "BMW" {
-	//	panic("")
-	//}
+func validateRequestCreateNewCar(req request.New) {
+	if req.Vendor != "BMW" {
+		panic("Vendor must be BMW.")
+	}
+}
+
+func DeleteCarById(idString string) response.Deleted {
+	validateRequestDeleteCarById(idString)
+	id, err := strconv.Atoi(idString)
+	if err != nil {
+		panic("RUNTIME-ERROR-CAR-1: " + err.Error())
+	}
+
+	car := response.Deleted{}
+	car.Id = id
+
+	go dao.Delete(id)
+
+	return car
+}
+
+func validateRequestDeleteCarById(id string) {
+	// ctype digit
 }

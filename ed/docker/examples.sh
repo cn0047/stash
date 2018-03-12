@@ -330,16 +330,26 @@ docker run -it --rm -p 8000:8000 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/example
     golang:latest sh -c 'cd $GOPATH && go run src/webapp/main.go'
 # http://localhost:8000/home
 
-# web.three ⭐️ ⭐️
-docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.three/' \
-    golang:latest sh -c 'cd $GOPATH && go get gopkg.in/mgo.v2 && go get github.com/codegangsta/gin'
+# web.three.tiny
+docker run -it --rm -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.three.tiny/' \
+    golang:latest sh -c 'cd $GOPATH && go run src/app/main.go'
+
+# web.three ⭐️ ⭐️ ⭐️
+docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.three/' golang:latest sh -c '
+        cd $GOPATH \
+        && go get gopkg.in/mgo.v2 \
+        && go get github.com/codegangsta/gin \
+        && go get -u github.com/derekparker/delve/cmd/dlv
+    '
 # run
 docker run -it --rm --net=xnet -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.three/' \
     golang:latest sh -c 'cd $GOPATH && go run src/app/main.go'
 # livereload
-# docker run -it --rm --net=xnet -p 8000:8000 -p 8001:8001 \
-#     -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.one/' \
-#     golang:latest sh -c 'cd $GOPATH && ./bin/gin --port 8001 --appPort 8000 --path src/app/ run main.go'
+docker run -it --rm --net=xnet -p 8080:8080 -p 8081:8081 \
+    -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.three/' \
+    golang:latest sh -c 'cd $GOPATH && ./bin/gin --port 8081 --appPort 8080 --path src/app/ run main.go'
+# docker run -it --rm --net=xnet -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.three/' \
+#     golang:latest sh -c 'cd $GOPATH && ./bin/dlv debug src/app/main.go'
 
 # test
 curl -i 'http://localhost:8080'
@@ -351,10 +361,12 @@ curl -i -XDELETE 'http://localhost:8080/cars'
 curl -i -XPOST 'http://localhost:8080/cars'
 curl -i -XPOST 'http://localhost:8080/cars' -H 'Content-Type: application/json' \
    -d '{"vendor": "BMW", "name": "X5"}'
-
-# web.three.tiny
-docker run -it --rm -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.three.tiny/' \
-    golang:latest sh -c 'cd $GOPATH && go run src/app/main.go'
+# test lr
+curl -i -XGET 'http://localhost:8081/cars'
+curl -i -XPUT 'http://localhost:8081/cars'
+curl -i -XDELETE 'http://localhost:8081/cars/1'
+curl -i -XPOST 'http://localhost:8081/cars' -H 'Content-Type: application/json' \
+   -d '{"vendor": "BMW", "name": "M6"}'
 
 # # web.HTTPS
 # docker run -it --rm -p 8000:8000 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.https/' \

@@ -3,6 +3,7 @@ package controller
 import (
 	"encoding/json"
 	"net/http"
+	"strings"
 
 	"app/http/protocol"
 	"app/service/car"
@@ -13,12 +14,13 @@ type Cars struct {
 }
 
 func (c Cars) registerRoutes() {
+    http.HandleFunc("/cars/", c.handleRequest)
     http.HandleFunc("/cars", c.handleRequest)
 }
 
 func (c Cars) handleRequest(w http.ResponseWriter, r *http.Request) {
 	// Default HTTP message (Error 501).
-	var message protocol.HttpMessage
+	message := protocol.HttpError(501, "Not Implemented.")
 
 	// Deliver canonical HTTP message to client.
 	defer func() {
@@ -35,9 +37,8 @@ func (c Cars) handleRequest(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 		case "GET":
 		case "POST":
-			dec := json.NewDecoder(r.Body)
 			var query request.New
-			err := dec.Decode(&query)
+			err := json.NewDecoder(r.Body).Decode(&query)
 			if err == nil {
 				message = protocol.HttpSuccess(200, car.CreateNewCar(query))
 			} else {
@@ -46,7 +47,10 @@ func (c Cars) handleRequest(w http.ResponseWriter, r *http.Request) {
 		case "PUT":
 			message = protocol.HttpError(501, "Not Implemented.")
 		case "DELETE":
-			message = protocol.HttpError(405, "Method Not Allowed.")
+			url := r.URL.Path
+			p := strings.LastIndex(url, "/") + 1
+			id := url[p:]
+			message = protocol.HttpSuccess(200, car.DeleteCarById(id))
 		default:
 			message = protocol.HttpError(404, "Not Found.")
 	}

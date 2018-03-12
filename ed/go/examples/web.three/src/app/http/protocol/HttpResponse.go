@@ -13,7 +13,7 @@ func HttpResponse(w http.ResponseWriter, response HttpMessage) {
 	encoder := json.NewEncoder(w)
 	err := encoder.Encode(response)
 	if err != nil {
-		panic("RUNTIME-ERROR-JSON-1")
+		panic("RUNTIME-ERROR-JSON-1: " + err.Error())
 	}
 }
 
