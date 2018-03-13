@@ -34,7 +34,7 @@ http://php.net/manual/en/appendices.php
 * random_bytes() and random_int().
 
 #### PHP 5.6.x
-* Constant scalar expressions.
+* **Constant scalar expressions.**
 * **Variadic functions via ...**
 * **Argument unpacking via ...**
 * Exponentiation via **
@@ -46,7 +46,7 @@ http://php.net/manual/en/appendices.php
 #### PHP 5.5.x
 * **Generators.**
 * **Try-catch blocks now support a finally.**
-* New password hashing API.
+* **New password hashing** API.
 * Foreach now supports list().
 * Empty() supports arbitrary expressions.
 * Array and string literal dereferencing.
@@ -55,7 +55,7 @@ http://php.net/manual/en/appendices.php
 
 #### PHP 5.4.x
 * **Traits.**
-* **Short array syntax**.
+* **Short array syntax.**
 * Function array dereferencing has been added. `foo()[0]`
 * Closures now support `$this`.
 * Class member access on instantiation has been added. `(new Foo)->bar()`

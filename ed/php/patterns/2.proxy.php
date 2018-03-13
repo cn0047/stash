@@ -6,7 +6,7 @@
  *
  * @category Structural
  *
- * @see https://github.com/cn007b/my/blob/master/ed/javascript/patterns/proxy.simple.js
+ * @see https://github.com/cn007b/my/blob/master/ed/nodejs/patterns/2.proxy.simple.js
  */
 
 interface IMath

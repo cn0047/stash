@@ -3,7 +3,7 @@
  * State
  *
  * This pattern is used to encapsulate varying behavior for the same routine based on
- * an object's state object.
+ * an object's state.
  *
  * @category Behaviour
  */

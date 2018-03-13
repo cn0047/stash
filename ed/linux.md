@@ -302,7 +302,8 @@ curl -T firmware.bin http://0.0.0.48/cgi-bin/package_install?hash=017
 #### shell
 ````
 # nohup
-# When you execute a job in the background (using &, bg command), and logout from the session - your process will get killed. 
+# When you execute a job in the background (using &, bg command),
+# and logout from the session - your process will get killed. 
 
 # streams
 /dev/stderr

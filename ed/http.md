@@ -245,9 +245,9 @@ Solves problems with:
 * Phishing
 * DNS hijacking
 
-CA - Certification Authority.
-SSL - Secure Sockets Layer (SSL 3.0 is vulnerable).
-TLS - is modern implementation of SSL.
+<br>CA - Certification Authority.
+<br>SSL - Secure Sockets Layer (SSL 3.0 is vulnerable).
+<br>TLS - is modern implementation of SSL.
 
 HTTP Strict Transport Security:
 `strict-transport-security` header in response with `max-age` as value

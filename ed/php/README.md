@@ -387,5 +387,6 @@ Type declarations (aka type hints):
     * iterable
     * callable
     * self (`instanceof` the given class)
+    * object (php 7.2)
 
 It's ok to write `float[]` in phpDoc.

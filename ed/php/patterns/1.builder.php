@@ -7,6 +7,8 @@
  * It occurs when the increase of object constructor parameter combination leads to an exponential list of constructors.
  *
  * @category Creational
+ *
+ * @see https://github.com/cn007b/my/blob/master/ed/php.symfony/examples/_bulletinBoard/src/AppBundle/Entity/UserRepository.php#L15
  */
 
 abstract class BuilderAbstract

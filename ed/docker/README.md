@@ -96,13 +96,14 @@ docker load -i new_name.dump.tar
 
 * FROM
 * MAINTAINER
-* RUN
-* COPY
-* WORKDIR
-* ENTRYPOINT
-* EXPOSE
-* ENV
+* RUN (`RUN ls -la /app/healthCheck.js`)
+* COPY (`COPY ./healthCheck.js /app/healthCheck.js`)
+* WORKDIR (`WORKDIR /app`)
+* ENTRYPOINT (`ENTRYPOINT service memcached start`)
+* ENV (`ENV NODE_PORT=3000`)
+* EXPOSE (`EXPOSE $NODE_PORT`)
 * VOLUME
+* CMD (`CMD ["php"]`)
 
 Less instructions in Dockerfile - least layers in built image.
 

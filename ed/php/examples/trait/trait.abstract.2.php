@@ -11,5 +11,12 @@ class Boo
 
     public function getName()
     {
+        return 'Boo';
     }
 }
+
+echo (new Boo())->getName();
+
+/*
+Boo
+*/
