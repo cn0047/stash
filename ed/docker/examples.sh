@@ -290,6 +290,9 @@ docker run -it --rm --net=xnet -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/
 # db mongo
 docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \
     golang:latest sh -c 'cd $GOPATH && go get gopkg.in/mgo.v2'
+# or
+docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \
+    golang:latest sh -c 'cd $GOPATH && go get ./...'
 # run
 docker run -it --rm --net=xnet -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \
     golang:latest sh -c 'cd $GOPATH && go run src/mongodb/simple.go'

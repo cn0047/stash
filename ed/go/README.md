@@ -14,6 +14,9 @@ $GOPATH     // environment variable specifies the location of your workspace.
 $GOMAXPROCS // number of OS threads that can execute user-level Go code simultaneously.
 
 go run --work ed/go/examples/hw.go
+
+# Install all project dependencies
+go get ./...
 ````
 
 ````go
@@ -36,6 +39,7 @@ const (
 const s string = "constant"
 const n = 500000000
 
+fmt.Printf("Type: %T\n", myType)
 fmt.Printf("%+v", myType)
 fmt.Printf("%#v", myType)
 
