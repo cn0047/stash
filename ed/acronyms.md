@@ -18,8 +18,6 @@ Acronyms
 [GMT](#GMT)
 [GREP](#GREP)
 [GUI](#GUI)
-[HTML](#HTML)
-[HTTP](#HTTP)
 [IP](#IP)
 [IPC](#IPC)
 [JIT](#JIT)
@@ -37,7 +35,6 @@ Acronyms
 [RBAC](#RBAC)
 [RCS](#RCS)
 [REPL](#REPL)
-[REST](#REST)
 [RFC](#RFC)
 [ROI](#ROI)
 [SaaS](#SaaS)
@@ -47,8 +44,6 @@ Acronyms
 [SMTP](#SMTP)
 [SPL](#SPL)
 [SSH](#SSH)
-[SSL](#SSL)
-[TLS](#TLS)
 [UDP](#UDP)
 [URI](#URI)
 [URL](#URL)
@@ -114,12 +109,6 @@ Acronyms
 <dt><a name="GUI"></a>GUI</dt>
 <dd>Graphical user interface.</dd>
 
-<dt><a name="HTML"></a>HTML</dt>
-<dd>HyperText Markup Language.</dd>
-
-<dt><a name="HTTP"></a>HTTP</dt>
-<dd>Hypertext Transfer Protocol.</dd>
-
 <dt><a name="IP"></a>IP</dt>
 <dd>Internet Protocol.</dd>
 
@@ -171,9 +160,6 @@ Acronyms
 <dt><a name="REPL"></a>REPL</dt>
 <dd>Read–Eval–Print Loop (interactive toplevel or language shell).</dd>
 
-<dt><a name="REST"></a>REST</dt>
-<dd>Representational State Transfer.</dd>
-
 <dt><a name="RFC"></a>RFC</dt>
 <dd>Request for Comments.</dd>
 
@@ -200,12 +186,6 @@ Acronyms
 
 <dt><a name="SSH"></a>SSH</dt>
 <dd>Secure Shell.</dd>
-
-<dt><a name="SSL"></a>SSL</dt>
-<dd>Secure Sockets Layer.</dd>
-
-<dt><a name="TLS"></a>TLS</dt>
-<dd>Transport Layer Security.</dd>
 
 <dt><a name="UDP"></a>UDP</dt>
 <dd>User Datagram Protocol.</dd>

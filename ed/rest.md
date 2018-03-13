@@ -1,4 +1,4 @@
-REST
+REST (Representational State Transfer)
 -
 
 Properties:

@@ -17,7 +17,7 @@ but instead creates a newer version of the data item. Thus there are multiple ve
 ## MySQL:
 
 * Transactions.
-* Joins (no duplicates).
+* Joins (no duplicates - less disc space).
 * Foreign keys, Triggers.
 * JSON data type, doesn't support indexing for JSON.
 * Proper data indexing can solve the issue with performance.
@@ -30,8 +30,8 @@ but instead creates a newer version of the data item. Thus there are multiple ve
 * MongoDB don't need ORM.
 * Capped collections.
 * TTL index.
+* Auto-sharding.
 
-* *Auto-sharding.*
 * *Can be scaled within and across multiple distributed data centers.*
 * *Scales easily with no downtime.*
 
@@ -47,7 +47,8 @@ but instead creates a newer version of the data item. Thus there are multiple ve
 ## MySQL vs MongoDB:
 
 * MySQL insert bit slower than MongoDB in some cases.
-* MySQL selection faster than MongoDB.
+
+* *MySQL selection faster than MongoDB.*
 
 ## MySQL vs PostgreSQL:
 

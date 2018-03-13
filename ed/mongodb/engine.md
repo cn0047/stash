@@ -10,9 +10,10 @@ mongod -storageEngine wiredTiger
 * Collection level lock.
 * In place update
   (move doc in memory to place where present sufficient space for update).
-* Power of two sizes.
+* Uses `Power of 2 Sized Allocations`
+  (document stored as record with document itself and extra space, or padding).
 
-#### Wired Tiger
+#### Wired Tiger (default since v3.2)
 
 * Document level lock.
 * Compression (data, indexes).

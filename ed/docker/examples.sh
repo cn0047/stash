@@ -2,6 +2,8 @@ Examples
 -
 
 ````
+sudo ifconfig lo0 alias 10.254.254.254
+
 docker network create --driver bridge xnet
 ````
 

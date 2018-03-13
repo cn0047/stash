@@ -1,4 +1,4 @@
-http
+HTTP (Hypertext Transfer Protocol)
 -
 2.0
 1.1
@@ -247,7 +247,7 @@ Solves problems with:
 
 <br>CA - Certification Authority.
 <br>SSL - Secure Sockets Layer (SSL 3.0 is vulnerable).
-<br>TLS - is modern implementation of SSL.
+<br>TLS - Transport Layer Security, is modern implementation of SSL.
 
 HTTP Strict Transport Security:
 `strict-transport-security` header in response with `max-age` as value

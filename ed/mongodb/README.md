@@ -1,23 +1,11 @@
-mongo
+Mongo DB
 -
-
-[university](https://university.mongodb.com)
-
 *3.4.9*
 <br>*MongoDB shell version: 2.4.6*
 
+[university](https://university.mongodb.com)
+
 `printjson()`, `.pretty()`
-
-#### Storage Engines
-
-* MMAPv1
-    * Good write performance (database or collection write lock).
-    * Uses `Power of 2 Sized Allocations`
-      (document stored as record with document itself and extra space, or padding).
-
-* WiredTiger (default since v3.2)
-    * Excellent write performance (document-level write lock).
-    * Compression for all collections and indexes.
 
 #### Introduction
 

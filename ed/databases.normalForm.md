@@ -1,4 +1,4 @@
-Relational database
+Normal form in Relational Database
 -
 
 #### 1NF

@@ -1,4 +1,4 @@
-HTML
+HTML (HyperText Markup Language)
 -
 5
 
