@@ -29,6 +29,8 @@ sudo rabbitmqctl list_permissions
 sudo rabbitmqctl change_password cashing-tier compl3xPassword
 ````
 
+## Queue
+
 Declaring a queue is idempotent - it will only be created if it doesn't exist already.
 Keep in mind that messages are sent asynchronously from the server to the clients.
 
@@ -46,6 +48,17 @@ Avoid black hole messages:
 * Have its delivery mode option set to 2 (persistent)
 * Be published into a durable exchange
 * Arrive in a durable queue
+
+Messages from queue can be `dead-lettered` if:
+
+* message is rejected
+* TTL expired
+* queue length limit exceeded
+
+Dead letter exchanges (DLXs) are normal exchanges.
+They can be any of the usual types and are declared as usual.
+
+## Exchange
 
 Exchange - receives messages from producers and pushes them to queues.
 There are a few exchange types available:

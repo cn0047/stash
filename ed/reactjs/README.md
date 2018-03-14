@@ -104,7 +104,7 @@ Unmounting:
 
 `componentWillUnmount`
 
-Methods prefixed with *will* are called right before something happens,
+Methods prefixed with `will` are called right before something happens,
 and methods prefixed with *did* are called right after something happens.
 
 `ReactDOM.findDOMNode(node)`.

@@ -121,15 +121,6 @@ php bin/console generate:bundle --namespace=Acme/TestBundle
 
 ````
 
-#### Deploy
-
-````
-php app/check.php
-composer install --no-dev --optimize-autoloader
-php bin/console cache:clear --env=prod --no-debug
-php bin/console assetic:dump --env=prod --no-debug
-````
-
 #### Configuration
 
 ````php
@@ -227,13 +218,13 @@ php bin/console debug:container my_mailer
 
 #### Kernel events
 
-kernel.request
-kernel.controller
-kernel.view
-kernel.response
-kernel.finish_request - Triggered whenever a request is fully processed.
-kernel.terminate - Allows to execute logic after a response was sent.
-kernel.exception
+<br>kernel.request
+<br>kernel.controller
+<br>kernel.view
+<br>kernel.response
+<br>kernel.finish_request - Triggered whenever a request is fully processed.
+<br>kernel.terminate - Allows to execute logic after a response was sent.
+<br>kernel.exception
 
 #### Performance
 

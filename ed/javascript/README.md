@@ -153,28 +153,15 @@ Called when the DOM tree is completed.
 #### Data Types
 
 * Primitives:
-    * String
-    * Number
-    * Boolean
-    * Symbol (new in ECMAScript 6)
-    * Undefined
-* Object
-    * Null (a = null; typeof a; // "object")
-    * Object
-    * Function (it isn't object because pass by value not by link, @see examples/function.js)
-
-OR
-
-* Primitives:
     * String.
     * Number.
     * Boolean.
     * Symbol (new in ECMAScript 6).
 * Special:
-    * Null.
+    * Null (`a = null; typeof a; // "object"`).
     * Undefined.
 * Object:
     * Object.
     * Array.
-    * Function.
+    * Function (it isn't object because pass by value not by link, @see examples/function.js).
     * etc.

@@ -73,4 +73,6 @@ Pagination:
 ````
 GET /api/collection
 Range: resources=100-199
+
+curl 'http://localhost:8080/v1/api/collection' -XGET -d '{"resources_from":100, "resources_to":199}'
 ````

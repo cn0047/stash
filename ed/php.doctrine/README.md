@@ -1,15 +1,27 @@
-doctrine
+Doctrine
 -
 
 2.0
 
-Object relational mapper (ORM) for PHP that sits on top of a powerful database abstraction layer (DBAL).
+Object relational mapper (ORM) for PHP that sits on top of a powerful `Database Abstraction Layer (DBAL)`.
 One of its key features is the option to write database queries
-in a proprietary object oriented SQL dialect called Doctrine Query Language (DQL).
-DBAL - database abstraction layer
+in a proprietary object oriented SQL dialect called `Doctrine Query Language (DQL)`.
+`DBAL` - database abstraction layer
 with many features for database schema introspection, schema management and PDO abstraction.
 
-Doctrine use ODM (Object Document Mapper) for mongodb.
+Doctrine use `ODM` (Object Document Mapper) for MongoDB.
+
+`EntityManager` - central access point (facade) to ORM functionality (UnitOfWork, Query Language, Repository API).
+
+`UnitOfWork` - responsible for tracking changes to objects
+during "object-level" transaction and for writing out changes to the database.
+
+A new UnitOfWork is implicitly started when an EntityManager is initially created 
+or after `EntityManager#flush()`.
+
+<br>`flush` - write operations into DB,
+<br>`persist`, `remove` - only notify the UnitOfWork to perform these operations during flush.
+<br>not calling `flush` - all changes will lost.
 
 For relationships between entities, you don't have to have physical foreign key in db.
 

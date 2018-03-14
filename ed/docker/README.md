@@ -44,7 +44,7 @@ cd /opt/docker/etc/supervisor.d
 
 docker-machine ip
 
-# information about all the containers
+# information about all the containers (list containers)
 docker ps -a
 
 # top
@@ -64,6 +64,7 @@ docker stop
 # stop all containers
 docker stop $(docker ps -a -q)
 
+# start stopped container
 docker start nostalgic_morse
 
 # remove the web application container
