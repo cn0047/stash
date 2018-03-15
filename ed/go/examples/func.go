@@ -25,3 +25,9 @@ func v(args ...int) (int) {
     fmt.Print(args)
     return len(args)
 }
+
+/*
+RESULT: FOO
+RESULT 2: FOO2
+[1 2 3]3
+*/

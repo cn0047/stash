@@ -1,14 +1,16 @@
 Theory
 -
 
+````
 nanosecond  - 0,000 000 001
 microsecond - 0,000 001
 millisecond - 0,001
+````
 
-AJAX polling - send request in loop.
-Long-polling - ...
-Forewer frame - ...
-HTM5 Server-sent events - ...
+<br>AJAX polling - send request in loop.
+<br>Long-polling - ...
+<br>Forewer frame - ...
+<br>HTM5 Server-sent events - ...
 
 Bandwidth - count of lines on high-way.
 Latency - speed limit on high-way.

@@ -17,3 +17,10 @@ func main() {
     fmt.Println("3:", m2)
     fmt.Printf("4: %#v\n", m2["J"])
 }
+
+/*
+1: map[goku:9001] 0 false
+2: map[Bob:Mr Amy:Dr]
+3: map[Bob:Mr]
+4: ""
+*/

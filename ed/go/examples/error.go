@@ -12,8 +12,13 @@ func main() {
 
 func sqr(n int) (int, error) {
     if n < 0 {
-        return 0, errors.New("n - must be positive integer.")
+        return 0, errors.New("n - must be positive integer")
     }
     
     return n * n, nil
 }
+
+/*
+0 n - must be positive integer
+4 <nil>
+*/

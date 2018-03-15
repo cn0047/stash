@@ -14,6 +14,11 @@ type Payload struct {
 }
 
 func main() {
+	// one()
+	two()
+}
+
+func one() {
 	p := Payload{Vendor: "BMW", Name: "X6"}
 	jsonPayload, err := json.Marshal(p)
 	if err != nil {
@@ -35,4 +40,17 @@ func main() {
 	fmt.Println("response Headers:", res.Header)
 	body, _ := ioutil.ReadAll(res.Body)
 	fmt.Println("response Body:", string(body))
+}
+
+func two() {
+	data := make(map[string]string)
+	data["code"] = "200"
+	data["status"] = "OK"
+	jsonPayload, _ := json.Marshal(data)
+	fmt.Printf("%+#\n", jsonPayload)
+
+	// url := "https://realtimelog.herokuapp.com:443/test"
+	// req, x := http.NewRequest("POST", url, bytes.NewBuffer(jsonPayload))
+	// req.Header.Set("Content-Type", "application/json")
+	// fmt.Printf("%+#\n", x)
 }

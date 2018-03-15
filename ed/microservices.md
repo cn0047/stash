@@ -16,7 +16,7 @@ And respond to changes quickly.
 
 Microservices-based architectures enable continuous delivery and deployment.
 
-Avoid client libraries (consumer of your service requires client library),
+Avoid client libraries (SDK) (consumer of your service requires client library),
 because when you change your service your counsumer must change client library,
 also you force user to use specific technology platform.
 Solution: use interface.

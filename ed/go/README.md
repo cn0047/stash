@@ -49,17 +49,9 @@ func init() {}
 var power int
 power = 9000
 fmt.Printf("It's over %d\n", power)
-
-var power int = 9000
-power := 9000
-
-if (name == "Goku" && power > 9000) || (name == "gohan" && power < 4000) {
-    print("super Saiyan")
-    println("it's over 9000!")
-}
+var power2 int = 9000
 
 if p := "MR"; isFormal {
-} else {
 }
 
 if len(os.Args) != 2 {
@@ -67,7 +59,6 @@ if len(os.Args) != 2 {
 }
 fmt.Println("It's over", os.Args[1])
 
-//
 defer file.Close()
 
 // read input from CLI

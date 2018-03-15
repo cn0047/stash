@@ -154,8 +154,6 @@ Each SOA building block can be:
 
 #### Microservices
 
--
-
 #### Model-View-Controller
 
 1. model — contains the core functionality and data.

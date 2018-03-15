@@ -20,6 +20,7 @@ func f(ch chan int) {
 
 func p(ch chan int) {
     for {
-        println("From channel: ", <-ch)
+        v := <-ch
+        println("From channel: ", v)
     }
 }

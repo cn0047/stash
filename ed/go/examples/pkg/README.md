@@ -4,9 +4,6 @@ Info
 ## program
 
 ````
-docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/pkg' \
-    golang:latest sh -c 'mkdir -p $GOPATH/src/github.com/cn007b/hello'
-
 # install - create hello into `bin` directory:
 docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/pkg' \
     golang:latest sh -c 'cd $GOPATH && go install github.com/cn007b/hello'
@@ -22,9 +19,6 @@ docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/pkg' \
 ## library
 
 ````
-docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/pkg' \
-    golang:latest sh -c 'mkdir -p $GOPATH/src/github.com/cn007b/stringutil'
-
 docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/pkg' \
     golang:latest sh -c 'cd $GOPATH && go build github.com/cn007b/stringutil'
 
