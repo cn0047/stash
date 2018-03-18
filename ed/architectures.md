@@ -47,47 +47,73 @@ sandbox-log
 ````
 wall
 └── src
-    ├── 🗂 app                           #
-    │   ├── 🗂 config                    #
-    │   ├── 🗂 implementation            #
-    │   │   ├── 🗂 laravel               #
-    │   │   ├── 🗂 phalcon               #
-    │   │   ├── 🗂 plainphp              #
-    │   │   └── 🗂 symfony               #
-    │   ├── 🗂 kernel                    #
-    │   │   ├── 🗂 Exception             #
-    │   │   └── Di.php                   #
-    │   ├── 🗂 migrations                #
-    │   └── var                          #
-    ├── 🗂 bin                           #
-    ├── 🗂 ddd                           #
-    │   └── Wall                         #
-    │       ├── 🗂 Application           #
-    │       │   ├── 🗂 Exception         #
-    │       │   ├── 🗂 Service           #
-    │       │   └── 🗂 VO                #
-    │       ├── Domain                   #
-    │       │   ├── 🗂 Model             #
-    │       │   └── 🗂 Service           #
-    │       └── Infrastructure           #
-    │           ├── 🗂 FullTextSearching #
-    │           │   └── 🗂 ElasticSearch #
-    │           ├── 🗂 Logging           #
-    │           ├── 🗂 Messaging         #
-    │           └── 🗂 Persistence       #
-    │               ├── 🗂 CSV           #
-    │               ├── 🗂 Mongo         #
-    │               └── 🗂 MySql         #
-    └── 🗂 web                           #
-        ├── 🗂 css                       #
-        ├── 🗂 html                      #
-        │   └── implementation           #
-        │       ├── 🗂 jquery            #
-        │       └── 🗂 react             #
-        ├── 🗂 js                        #
-        │   └── implementation           #
-        │       ├── 🗂 jquery            #
-        │       └── 🗂 react             #
-        ├── 🗂 phalcon                   #
-        └── 🗂 plainphp                  #
+    ├── 🗂 app ⓵   # PRESENTATION LAYER + Stuff common for all PHP and JavaScript frameworks + PHP frameworks.
+    ├── 🗂 bin ⓶   # All binary files must be hosted here (artisan, console, migration, etc).
+    ├── 🗂 ddd ⓷   # All stuff related to DDD.
+    └── 🗂 web ⓸   # USER INTERFACE LAYER (public stuff).
+````
+
+````
+wall
+└── src
+    └── 🗂 app ⓵
+        ├── 🗂 config           # All project's configs.
+        │                       # Any particular PHP implementation must use these configs.
+        ├── 🗂 implementation   # PRESENTATION LAYER.
+        │   ├── 🗂 laravel
+        │   ├── 🗂 phalcon
+        │   ├── 🗂 plainphp
+        │   └── 🗂 symfony
+        ├── 🗂 kernel
+        │   ├── 🗂 Exception    # Kernel exceptions.
+        │   └── Di.php          # Simple DIC container.
+        │                       # One for any PHP framework implementation (with purpose to support DRY).
+        │                       # This DIC also performs common stuff like init bridges, init facades
+        │                       # with custom logic which is common for all PHP implementations.
+        ├── 🗂 migrations       # Framework agnostic DB migrations.
+        └── var                 # Cache, logs, etc.
+````
+
+````
+wall
+└── src
+    └── 🗂 ddd ⓷
+        └── Wall
+            ├── 🗂 Application             # 🔰 APPLICATION DDD LAYER.
+            │   │                          # Any PHP implementation can work only with this layer.
+            │   ├── 🗂 Exception
+            │   ├── 🗂 Service
+            │   └── 🗂 VO                  # Any request must be represented by VO.
+            ├── Domain                     # 🔰 DOMAIN DDD LAYER.
+            │   ├── 🗂 Model
+            │   └── 🗂 Service
+            └── Infrastructure             # 🔰 INFRASTRUCTURE DDD LAYER.
+                ├── 🗂 FullTextSearching
+                │   └── 🗂 ElasticSearch
+                ├── 🗂 Logging
+                └── 🗂 Persistence         # Implements all domain interfaces and returns canonical DTOs as result.
+                    ├── 🗂 MongoDB
+                    └── 🗂 MySql
+````
+
+````
+wall
+└── src
+    └── 🗂 web ⓸
+        ├── 🗂 css
+        │
+        ├── 🗂 html
+        │   └── implementation
+        │       ├── 🗂 jquery    # Index page for SPA based on jQuery.
+        │       └── 🗂 react     # Index page for SPA based on ReactJS.
+        │
+        ├── 🗂 js                # FRONTEND.
+        │   └── implementation
+        │       ├── 🗂 jquery    # jQuery scripts.
+        │       └── 🗂 react     # ReactJS components, etc.
+        │
+        ├── 🗂 laravel           # Laravel entry point.
+        ├── 🗂 phalcon           # Phalcon entry point.
+        ├── 🗂 plainphp          # PlainPHP entry point.
+        └── 🗂 symfony           # Symfony entry point.
 ````
