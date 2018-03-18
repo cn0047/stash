@@ -190,6 +190,17 @@ Host ec2
 ncftpput -R -v -u {user} {host} remote_path ./local_path/*
 ````
 
+#### watch
+
+execute a program periodically, showing output fullscreen.
+
+````
+-n, --interval <secs> # seconds to wait between updates
+````
+
+watch -n 2 'echo 200'
+watch -n 2 'date'
+
 #### ps
 ````
 ps ax                             # Display all processess

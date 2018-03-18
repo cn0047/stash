@@ -1,13 +1,11 @@
 Security
 -
 
-## Unclassified:
+#### Man-In-The-Middle
 
-* Man-In-The-Middle
+#### Phishing
 
-* Phishing
-
-* DNS hijacking
+#### DNS hijacking
 
 #### DDos (Denial-of-service attack)
 
@@ -15,6 +13,26 @@ A distributed DDoS is a cyber-attack where the perpetrator uses more than one un
 often thousands of them.
 
 Distributed autoscale systems may try to cope with DDoS.
+
+#### Directory (path) traversal attack
+
+AKA: ../ (dot dot slash) attack.
+AIM: gain unauthorized access to the file system.
+
+It is exploiting insufficient security validation / sanitization of user-supplied input file names.
+
+````php
+<?php
+$template = 'red.php';
+if (isset($_COOKIE['TEMPLATE']))
+   $template = $_COOKIE['TEMPLATE'];
+include ("/home/users/phpguru/templates/" . $template);
+````
+````
+Cookie: TEMPLATE=../../../../../../../../../etc/passwd
+````
+
+FIX: Query string is usually URI decoded before use.
 
 ## Web Application Security Risks:
 
@@ -38,7 +56,12 @@ print "Not found: " . urldecode($_SERVER["REQUEST_URI"]);
 ?>
 ````
 
-FIX: Filter input escape output.
+FIX:
+
+Filter input escape output.
+
+Use `.innerText` instead of `.innerHtml`
+The use of `.innerText` will prevent most XSS problems as it will automatically encode the text.
 
 #### Cross-Site Request Forgery (CSRF)
 
@@ -68,22 +91,6 @@ and lined up exactly the "delete all messages" button directly on top of the "fr
 
 FIX: Header `X-Frame-Options: DENY`.
 
-#### Directory (path) traversal attack
+#### JSON hijacking
 
-AKA: ../ (dot dot slash) attack.
-AIM: gain unauthorized access to the file system.
-
-It is exploiting insufficient security validation / sanitization of user-supplied input file names.
-
-````php
-<?php
-$template = 'red.php';
-if (isset($_COOKIE['TEMPLATE']))
-   $template = $_COOKIE['TEMPLATE'];
-include ("/home/users/phpguru/templates/" . $template);
-````
-````
-Cookie: TEMPLATE=../../../../../../../../../etc/passwd
-````
-
-FIX: Query string is usually URI decoded before use.
+In early versions of browsers the JSON file could be loaded as a normal script.

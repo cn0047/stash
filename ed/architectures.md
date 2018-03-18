@@ -28,6 +28,9 @@ log
 ````
 sandbox-log
 └── src
+    ├── 🗂 di
+    │   ├── config.go
+    │   └── container.go
     ├── 🗂 http
     │   ├── 🗂 controller
     │   ├── 🗂 middleware
@@ -36,7 +39,6 @@ sandbox-log
     ├── 🗂 service
     │   ├── 🗂 v1
     │   └── 🗂 v2
-    ├── di.go
     └── main.go
 ````
 

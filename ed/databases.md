@@ -20,7 +20,7 @@ but instead creates a newer version of the data item. Thus there are multiple ve
 * Joins (no duplicates - less disc space).
 * Foreign keys, Triggers.
 * JSON data type, doesn't support indexing for JSON.
-* Proper data indexing can solve the issue with performance.
+* ~~Proper data indexing can solve the issue with performance.~~
 
 * *Easy to recover after crash.*
 

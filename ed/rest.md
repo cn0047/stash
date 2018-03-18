@@ -76,3 +76,7 @@ Range: resources=100-199
 
 curl 'http://localhost:8080/v1/api/collection' -XGET -d '{"resources_from":100, "resources_to":199}'
 ````
+
+For security it's better to return JSON with an Object on the outside:
+<br>not: `[{"object": "inside an array"}]`
+<br>but: `{"result": [{"object": "inside an array"}]}`

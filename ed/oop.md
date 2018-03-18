@@ -3,6 +3,9 @@ OOP
 
 Encapsulation - hide the values or state of a structured data object inside a class.
 
+Abstraction - is the development of classes, objects, types
+in terms of their interfaces and functionality, instead of their implementation details.
+
 Polymorphism - provision of a single interface to entities of different types
 (same name, different behavior).
 

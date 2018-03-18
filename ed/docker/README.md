@@ -24,7 +24,7 @@ docker build -t nphp https://raw.githubusercontent.com/cn007b/my/master/docker/p
 # THE BEST COMMAND
 docker inspect docker-whale
 
-# run an interactive container 
+# run an interactive container (run an image)
 # `-t` terminal
 # `-i` interactive connection
 docker run -t -i ubuntu:latest /bin/bash
@@ -64,7 +64,7 @@ docker stop
 # stop all containers
 docker stop $(docker ps -a -q)
 
-# start stopped container
+# start stopped container (starts a container)
 docker start nostalgic_morse
 
 # remove the web application container

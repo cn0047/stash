@@ -368,9 +368,9 @@ cannot be instantiated.
     * String.
 * Compound types:
     * Array.
-    * Object.
+    * Object (passes by ref).
 * Special types:
-    * Resource.
+    * Resource (passes by ref).
     * NULL.
 * Pseudo-types:
     * Mixed.
@@ -390,3 +390,4 @@ Type declarations (aka type hints):
     * object (php 7.2)
 
 It's ok to write `float[]` in phpDoc.
+    

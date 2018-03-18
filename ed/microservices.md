@@ -51,8 +51,6 @@ So again, consider starting monolithic first and break things out when you’re 
 
 Many of the challenges you’re going to face with microservices get worse with scale.
 
-⁉️ Transactions...
-
 * Model Around Business Concepts
   (use bounded contexts)
 * Adopt a Culture of Automation
@@ -67,6 +65,11 @@ Many of the challenges you’re going to face with microservices get worse with 
   (expect failure will occur anywhere and everywhere)
 * Highly Observable
   (aggregate your logs, aggregate your stats)
+
+Transactions:
+
+* Two-Phase Commit Protocol.
+* Eventual consistency (put job in queue and eventually all will be done).
 
 ⚠️ Anti-pattern - nanoservice,
 is a service whose overhead (communications, maintenance etc.) outweighs its utility.
