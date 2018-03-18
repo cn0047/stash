@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>⃤</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.2.0/umd/react.development.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.2.0/umd/react-dom.development.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+
+    /**
+     * Edge component, represents single triangle edge. Just input field.
+     */
+    class Edge extends React.Component {
+      render() {
+        return (
+          <p>
+            <label>{this.props.label}</label>
+            <input type="text" name={this.props.name} value={this.props.value} onChange={this.props.onChange} />
+          </p>
+        );
+      }
+    }
+
+    /**
+     * Application component (container).
+     */
+    class App extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = props;
+        this.handleChange = this.handleChange.bind(this);
+      }
+
+      handleChange(e) {
+        const v = e.target.value;
+        // Prevent input not digit character.
+        if (/^[0-9]+$/.test(v) === false) {
+          return;
+        }
+
+        this.setState(Object.assign({}, this.state, {[e.target.name]: v}));
+      }
+
+      render() {
+          const e1 = this.state.edge1;
+          const e2 = this.state.edge2;
+          const e3 = this.state.edge3;
+
+          // Compare edges to figure out is it triangle.
+          const isTriangle = (e1 + e2 > e3) && (e1 + e3 > e2) && (e2 + e3 > e1);
+
+          return (
+            <div>
+              <Edge name="edge1" label="Edge 1:" value={this.state.edge1} onChange={this.handleChange} />
+              <Edge name="edge2" label="Edge 2:" value={this.state.edge2} onChange={this.handleChange} />
+              <Edge name="edge3" label="Edge 3:" value={this.state.edge3} onChange={this.handleChange} />
+              <span>It is {isTriangle === true ? '' : 'NOT'} triangle.</span>
+            </div>
+          );
+      }
+    }
+
+    // Render application.
+    ReactDOM.render(
+      <App edge1="5" edge2="5" edge3="5" />,
+      document.getElementById('root')
+    );
+  </script>
+</body>
+</html>
