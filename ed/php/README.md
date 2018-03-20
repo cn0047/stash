@@ -172,6 +172,10 @@ echo "<pre>$output</pre>";
 #### xDebug
 
 ````
+xdebug_debug_zval('a');
+````
+
+````
 [xdebug]
 ;
 zend_extension=/usr/lib/php5/20131226/xdebug.so
