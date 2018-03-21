@@ -10,7 +10,7 @@ Best Practices
 * Use separated `doc.go` for pkg documentation.
 
 * Follow:
-    * on save: `go fmt` or `imports`
+    * on save: `go fmt ./... && golint ./...` or `imports`
     * on build: `go vet` and `golint` and `go test`
     * on deploy: `go test -tags=integration`
 

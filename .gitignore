@@ -4,9 +4,11 @@
 composer.lock
 docker/.data/
 ed/go*/examples/*/*/github.com
+ed/go*/examples/*/*/golang.org
 ed/go*/examples/*/*/gopkg.in
 ed/go*/examples/*/bin
 ed/go*/examples/*/pkg
+ed/go*/examples/*/gin-bin
 node_modules/
 package-lock.json
 vendor/

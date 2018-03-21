@@ -5,6 +5,7 @@ import "fmt"
 func main() {
     lookup := make(map[string]int)
     lookup["goku"] = 9001
+    fmt.Printf("Map size: %d \n", len(lookup))
     power, exists := lookup["vegeta"]
     fmt.Println("1:", lookup, power, exists)
 
@@ -16,11 +17,18 @@ func main() {
     delete(m2, "Amy")
     fmt.Println("3:", m2)
     fmt.Printf("4: %#v\n", m2["J"])
+
+    m5 := map[string]string{}
+    m5["a"] = "x"
+    m5["b"] = "y"
+    fmt.Println("5:", m5)
 }
 
 /*
+Map size: 1
 1: map[goku:9001] 0 false
 2: map[Bob:Mr Amy:Dr]
 3: map[Bob:Mr]
 4: ""
+5: map[a:x b:y]
 */

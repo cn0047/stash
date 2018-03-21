@@ -1,10 +1,21 @@
 package main
 
-import "net/http"
+import (
+    "net/http"
+)
 
 func main() {
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Hello World from Go!"))
-	})
-	http.ListenAndServe(":8000", nil)
+    http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+        w.Write([]byte("Hello World from Go!"))
+    })
+
+    http.HandleFunc("/health-check", HealthCheckHandler)
+
+    http.ListenAndServe(":8000", nil)
+}
+
+func HealthCheckHandler(w http.ResponseWriter, r *http.Request) {
+    w.WriteHeader(http.StatusOK)
+    w.Header().Set("Content-Type", "application/json")
+    w.Write([]byte(`{"alive": true}`))
 }

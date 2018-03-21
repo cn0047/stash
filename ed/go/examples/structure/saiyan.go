@@ -19,6 +19,15 @@ func main() {
     goku3 := &Saiyan{"Goku", 7000}
     Super3(goku3)
     fmt.Println(goku3.Power)
+
+    goku4 := Saiyan {
+      Name: "Goku",
+      Power: 9000,
+    }
+    fmt.Println("4:", goku4)
+
+    goku5 := Saiyan{}
+    fmt.Println("5:", goku5)
 }
 
 func Super(s Saiyan) {

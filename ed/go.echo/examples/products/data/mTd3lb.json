@@ -1,0 +1,225 @@
+{
+    "_version_": 1579986942308647000,
+    "affiliate_link": "http://click.linksynergy.com/link?id=25ZRSXYPVYg&offerid=496393.11028554780&type=15&murl=http%3A%2F%2Fwww.revolve.com%2Fcontent%2Fdeeplink%2Fwomens%2Fproduct%2FFREE-WZ119",
+    "brand_id": 6661,
+    "brand_name": "Free People",
+    "brand_slug": "free-people",
+    "catalog_ids": [
+        "base",
+        "web",
+        "app"
+    ],
+    "category_id": 15,
+    "category_ids": [
+        1,
+        15
+    ],
+    "category_mlt": "15shoes",
+    "category_name": "Shoes",
+    "category_names": [
+        "Fashion",
+        "Shoes"
+    ],
+    "category_slug": "fashion--shoes",
+    "color_1": "36.8144037711,-2.51711249129,-15.982605599,0.175782975958",
+    "color_2": "16.3849807484,3.71559201173,-3.08854512591,0.135107212476",
+    "color_slugs": [
+        "blue",
+        "purple"
+    ],
+    "currency": "USD",
+    "date_created": "2017-08-09T01:23:27.809Z",
+    "date_indexed": "2017-09-30T17:36:07.137Z",
+    "date_inventory_verified": "2017-09-30T17:26:47Z",
+    "date_modified": "2017-09-30T02:13:31.825Z",
+    "description": "Free People Nolita Ankle Boot in Blue. - size 40 (also in 36,38,39,41) Free People Nolita Ankle Boot in Blue. - size 40 (also in 36,38,39,41) Snake embossed leather upper with leather sole. Side zip closure. Metallic detail. Heel measures approx 3.5 H. FREE-WZ119. OB666406. Free People invokes a spirit of femininity and creativity. Throughout their line of sweaters, tees, dresses and more, each piece incorporates a high level of quality and originality that reflects their adventurous it girl. With all that's constricting in the world today, Free People says your clothes don't have to be. Be yourself, be creative, be free.",
+    "display_color": "Blue",
+    "featured": {
+        "collections": {
+            "featured": [
+                "outfit-of-the-day"
+            ],
+            "query": []
+        }
+    },
+    "flags": [
+        {
+            "name": "Free Shipping",
+            "slug": "free-shipping"
+        },
+        {
+            "name": "Two Day Shipping",
+            "slug": "two-day-shipping"
+        }
+    ],
+    "gender": "f",
+    "id": "mTd3lb",
+    "in_stock": true,
+    "is_active": true,
+    "is_featured": true,
+    "is_whitelisted": true,
+    "materials": [],
+    "micro_categories": [
+        "TOP SELLERS"
+    ],
+    "minified_url": "revolve.com/content/deeplink/womens/product/FREE-WZ119",
+    "name": "Nolita Ankle Boot in Blue. - size 40 (also in 36,38,39,41)",
+    "num_featured": 4,
+    "occasions": [],
+    "on_sale": false,
+    "on_sale_bury": false,
+    "price": 228,
+    "primary_image": {
+        "assets": {
+            "l": [
+                505,
+                864
+            ],
+            "m": [
+                505,
+                864
+            ],
+            "s": [
+                480,
+                821
+            ],
+            "xs": [
+                300,
+                513
+            ]
+        },
+        "key": "e9oA61cv",
+        "palette": {
+            "bgcolor": null,
+            "colors": [
+                [
+                    [
+                        65,
+                        89,
+                        112
+                    ],
+                    0.17578297595841455
+                ],
+                [
+                    [
+                        44,
+                        39,
+                        45
+                    ],
+                    0.13510721247563354
+                ]
+            ]
+        },
+        "path": "mined-data-prod/product",
+        "weight": "center"
+    },
+    "prints": [],
+    "product_url": "http://www.revolve.com/content/deeplink/womens/product/FREE-WZ119",
+    "raw_category_mapped_category_id": 15,
+    "raw_category_mapped_category_ids": [
+        1,
+        15
+    ],
+    "raw_category_term": "apparel and accessories > shoes > boots",
+    "retail_price": 228,
+    "secondary_images": [
+        {
+            "assets": {
+                "l": [
+                    960,
+                    1450
+                ],
+                "m": [
+                    720,
+                    1087
+                ],
+                "s": [
+                    480,
+                    724
+                ],
+                "xs": [
+                    300,
+                    452
+                ]
+            },
+            "key": "9P79VkfG",
+            "path": "mined-data-prod/product"
+        },
+        {
+            "assets": {
+                "l": [
+                    960,
+                    1450
+                ],
+                "m": [
+                    720,
+                    1087
+                ],
+                "s": [
+                    480,
+                    724
+                ],
+                "xs": [
+                    300,
+                    452
+                ]
+            },
+            "key": "mY2LyRIn",
+            "path": "mined-data-prod/product"
+        },
+        {
+            "assets": {
+                "l": [
+                    960,
+                    1450
+                ],
+                "m": [
+                    720,
+                    1087
+                ],
+                "s": [
+                    480,
+                    724
+                ],
+                "xs": [
+                    300,
+                    452
+                ]
+            },
+            "key": "wxgBPDfe",
+            "path": "mined-data-prod/product"
+        },
+        {
+            "assets": {
+                "l": [
+                    960,
+                    1450
+                ],
+                "m": [
+                    720,
+                    1087
+                ],
+                "s": [
+                    480,
+                    724
+                ],
+                "xs": [
+                    300,
+                    452
+                ]
+            },
+            "key": "Jn4A7kiW",
+            "path": "mined-data-prod/product"
+        }
+    ],
+    "source": "revolve-clothing",
+    "store_id": 13,
+    "store_name": "REVOLVE",
+    "store_slug": "revolve-clothing",
+    "stripped_name": "Nolita Ankle Boot in Blue. - size 40 (also in 36,38,39,41)",
+    "stripped_raw_category_term": "shoes boots",
+    "styles": [],
+    "vertical_ids": [
+        1
+    ]
+}

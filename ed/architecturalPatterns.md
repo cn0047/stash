@@ -42,6 +42,7 @@ An architectural pattern is a proven structural organization schema for software
 * Operational Data Store
 * Service-oriented architecture
 * Microservices
+* API Gateway
 
 * Model-View-Controller
 * Presentation-Abstraction-Control
@@ -153,6 +154,8 @@ Each SOA building block can be:
 * Service requester/consumer
 
 #### Microservices
+
+#### API Gateway
 
 #### Model-View-Controller
 

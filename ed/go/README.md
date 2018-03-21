@@ -17,6 +17,14 @@ go run --work ed/go/examples/hw.go
 
 # Install all project dependencies
 go get ./...
+
+# Format code
+go fmt ./...
+
+# Check code
+go golint ./...
+
+go vet
 ````
 
 ````go
@@ -59,8 +67,6 @@ if len(os.Args) != 2 {
 }
 fmt.Println("It's over", os.Args[1])
 
-defer file.Close()
-
 // read input from CLI
 var option string
 fmt.ScanIn(&option)
@@ -77,14 +83,32 @@ A workspace is a directory hierarchy with three directories at its root:
 * pkg (package objects)
 * src
 
+**new** keyword - allocates memory, does not initialize the memory
+and returns its address (pointer).
+
+**make** - creates slices, maps, and channels
+and it returns an initialized (not zeroed) value of type T (not `*T`).
+The reason for the distinction with new keyword - is that these three types represent,
+under the covers, references to data structures that must be initialized before use.
+<br>A slice, for example, is a three-item descriptor
+containing a pointer to the data (inside an array), the length, and the capacity,
+and until those items are initialized, the slice is nil.
+
 **defer** pushes a function call in list,
 list will be executed after the surrounding function returns.
+Example: `defer file.Close()`.
 
 **panic** is a built-in function that stops the ordinary flow of control and begins *panicking*.
 
 **recover** is a built-in function that regains control of a panicking goroutine.
 
-#### Basic types
+**copy** - copies elements from a source slice into a destination slice.
+
+OOP in go represented by **structures**. Inheritance in go represented by composition.
+
+#### Data types
+
+Basic types:
 
 * bool
 * string
@@ -105,69 +129,6 @@ Other types:
 * Interface
 * Map
 * Channel
-
-#### Function Declaration
-
-````go
-func log(message string) { }
-func add(a int, b int) int { }
-func power(name string) (int, bool) { }
-
-value, exists := power("goku")
-_, exists := power("goku")
-````
-
-#### Structure
-
-OOP in go represented by structures.
-Inheritance in go represented by composition.
-
-````go
-type Saiyan struct {
-    Name string
-    Power int
-}
-
-goku := Saiyan {
-  Name: "Goku",
-  Power: 9000,
-}
-
-goku := Saiyan{}
-
-goku := Saiyan{Name: "Goku"}
-goku.Power = 9000
-
-goku := Saiyan{"Goku", 9000}
-````
-
-#### Array
-
-````go
-var scores [10]int
-scores[0] = 339
-scores := [4]int{9001, 9333, 212, 33}
-// size from elements in {}
-scores := [...]int{9001, 9333, 212, 33}
-
-scores = append(scores, 5)
-
-// foreach
-powers := make([]int, len(saiyans))
-for index, saiyan := range saiyans {
-    powers[index] = saiyan.Power
-}
-````
-
-#### Map
-
-````go
-myMap := make(map[int]string)
-myMap[42] = "Foo"
-
-total := len(lookup)
-delete(lookup, "goku")
-````
 
 #### Interface
 

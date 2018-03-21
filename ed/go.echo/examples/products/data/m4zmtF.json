@@ -1,0 +1,289 @@
+{
+    "_version_": 1579991599880863700,
+    "affiliate_link": "http://click.linksynergy.com/link?id=25ZRSXYPVYg&offerid=506447.10439154720&type=15&murl=https%3A%2F%2Fwww.barneys.com%2Fproduct%2Floewe-hammock-small-bag-505255826.html",
+    "brand_id": 269,
+    "brand_name": "Loewe",
+    "brand_slug": "loewe",
+    "catalog_ids": [
+        "base",
+        "web",
+        "app"
+    ],
+    "category_id": 12,
+    "category_ids": [
+        1,
+        12
+    ],
+    "category_mlt": "12bags",
+    "category_name": "Bags",
+    "category_names": [
+        "Fashion",
+        "Bags"
+    ],
+    "category_slug": "fashion--bags",
+    "color_1": "62.4117015804,25.82031269,32.2228282807,0.250592105263",
+    "color_2": "18.5345269092,14.9682847647,13.7084518727,0.0339583333333",
+    "color_slugs": [
+        "orange"
+    ],
+    "currency": "USD",
+    "date_created": "2017-06-17T13:04:18.983Z",
+    "date_indexed": "2017-09-30T18:50:08.944Z",
+    "date_inventory_verified": "2017-09-30T18:47:41Z",
+    "date_modified": "2017-09-01T16:05:31.387Z",
+    "description": "Crafted of tan smooth calfskin, LOEWE's Hammock small bag is styled at the front and back with expandable zip gussets. This versatile piece features handles and a detachable, adjustable strap so it can be carried as a tote, crossbody, or shoulder bag. Signature stylized Anagram logo stamped at side. Zip-front pocket. Expandable zip gusset at front and back. Protective metal feet. Black lacquered edging. Polished silvertone hardware. Lined with black herringbone fabric. Two small slip pockets at interior. Flat leather handles. Detachable, adjustable flat leather strap. Dogclip-tab closure across interior topline. 9.5\" height x 11.0\" to 14.0\" width x 5.0\" depth (approximately). 3\" handle drop, 15\" to 21\" strap drop (approximately). Available in Tan. Made in Spain.",
+    "display_color": "TAN",
+    "featured": {
+        "collections": {
+            "featured": [
+                "blogger-trends",
+                "neutral-bags-that-go-with-everything",
+                "camel-bags"
+            ],
+            "query": []
+        }
+    },
+    "flags": [
+        {
+            "name": "Free Shipping",
+            "slug": "free-shipping"
+        },
+        {
+            "name": "Next Day Shipping",
+            "slug": "next-day-shipping"
+        }
+    ],
+    "gender": "f",
+    "id": "m4zmtF",
+    "in_stock": true,
+    "is_active": true,
+    "is_featured": true,
+    "is_whitelisted": true,
+    "materials": [],
+    "minified_url": "barneys.com/505255826.html",
+    "name": "Women's Hammock Small Bag",
+    "num_featured": 3,
+    "occasions": [],
+    "on_sale": false,
+    "on_sale_bury": false,
+    "price": 1990,
+    "primary_image": {
+        "assets": {
+            "l": [
+                700,
+                711
+            ],
+            "m": [
+                700,
+                711
+            ],
+            "s": [
+                480,
+                487
+            ],
+            "xs": [
+                300,
+                304
+            ]
+        },
+        "key": "D0pzl6UWtz",
+        "palette": {
+            "bgcolor": null,
+            "colors": [
+                [
+                    [
+                        209,
+                        132,
+                        95
+                    ],
+                    0.2505921052631579
+                ],
+                [
+                    [
+                        70,
+                        36,
+                        26
+                    ],
+                    0.03395833333333333
+                ]
+            ]
+        },
+        "path": "mined-data-prod/product",
+        "weight": "bottom"
+    },
+    "prints": [],
+    "product_url": "https://www.barneys.com/product/loewe-hammock-small-bag-505255826.html",
+    "raw_category_mapped_category_id": 12,
+    "raw_category_mapped_category_ids": [
+        1,
+        12
+    ],
+    "raw_category_term": "apparel and accessories > handbags wallets cases",
+    "retail_price": 1990,
+    "secondary_images": [
+        {
+            "assets": {
+                "l": [
+                    700,
+                    726
+                ],
+                "m": [
+                    700,
+                    726
+                ],
+                "s": [
+                    480,
+                    497
+                ],
+                "xs": [
+                    300,
+                    310
+                ]
+            },
+            "key": "4Ee1qmTbcq",
+            "path": "mined-data-prod/product"
+        },
+        {
+            "assets": {
+                "l": [
+                    700,
+                    1122
+                ],
+                "m": [
+                    700,
+                    1122
+                ],
+                "s": [
+                    480,
+                    769
+                ],
+                "xs": [
+                    300,
+                    480
+                ]
+            },
+            "key": "5YVPNXFRfL",
+            "path": "mined-data-prod/product"
+        },
+        {
+            "assets": {
+                "l": [
+                    700,
+                    896
+                ],
+                "m": [
+                    700,
+                    896
+                ],
+                "s": [
+                    480,
+                    614
+                ],
+                "xs": [
+                    300,
+                    383
+                ]
+            },
+            "key": "RYWBZyF4sJ",
+            "path": "mined-data-prod/product"
+        },
+        {
+            "assets": {
+                "l": [
+                    700,
+                    907
+                ],
+                "m": [
+                    700,
+                    907
+                ],
+                "s": [
+                    480,
+                    621
+                ],
+                "xs": [
+                    300,
+                    388
+                ]
+            },
+            "key": "AL1ymeUoSj",
+            "path": "mined-data-prod/product"
+        },
+        {
+            "assets": {
+                "l": [
+                    700,
+                    1104
+                ],
+                "m": [
+                    700,
+                    1104
+                ],
+                "s": [
+                    480,
+                    757
+                ],
+                "xs": [
+                    300,
+                    473
+                ]
+            },
+            "key": "jkNOqnhnub",
+            "path": "mined-data-prod/product"
+        },
+        {
+            "assets": {
+                "l": [
+                    700,
+                    924
+                ],
+                "m": [
+                    700,
+                    924
+                ],
+                "s": [
+                    480,
+                    633
+                ],
+                "xs": [
+                    300,
+                    395
+                ]
+            },
+            "key": "LbPq4ysLiB",
+            "path": "mined-data-prod/product"
+        },
+        {
+            "assets": {
+                "l": [
+                    700,
+                    813
+                ],
+                "m": [
+                    700,
+                    813
+                ],
+                "s": [
+                    480,
+                    557
+                ],
+                "xs": [
+                    300,
+                    348
+                ]
+            },
+            "key": "OY6ZqyFXUo",
+            "path": "mined-data-prod/product"
+        }
+    ],
+    "source": "barneys-new-york",
+    "store_id": 19,
+    "store_name": "Barneys New York",
+    "store_slug": "barneys-new-york",
+    "stripped_name": "Women's Hammock Small Bag",
+    "stripped_raw_category_term": "handbags wallets cases",
+    "styles": [],
+    "vertical_ids": [
+        1
+    ]
+}

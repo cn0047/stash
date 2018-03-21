@@ -187,16 +187,15 @@ docker run -it --rm --net=xnet -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/
 # Simple Web Server
 
 # web.one
-docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.one/' \
-    golang:latest sh -c 'cd $GOPATH && go install firstapp'
-docker run -it --rm -p 8000:8000 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.one/' \
-    golang:latest sh -c 'cd $GOPATH && ./bin/firstapp'
-# or
 docker run -it --rm -p 8000:8000 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.one/' \
     golang:latest sh -c 'cd $GOPATH && go run src/firstapp/main.go'
 # test
-# curl http://localhost:8000/
-#
+docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.one/' \
+    golang:latest sh -c 'cd $GOPATH && cd src/firstapp && go test -cover'
+# check
+curl http://localhost:8000/
+curl http://localhost:8000/health-check
+
 # Livereload
 #
 docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.one/' \
@@ -266,6 +265,50 @@ curl -i -XPOST 'http://localhost:8081/cars' -H 'Content-Type: application/json' 
 #     xgo sh -c 'cd $GOPATH && go get github.com/pebbe/zmq4'
 # docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/zeromq/' \
 #     golang:latest sh -c 'cd $GOPATH && go run src/hw/server.go'
+````
+
+````
+# api-gateway
+
+docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' golang:latest sh -c '
+        go get github.com/codegangsta/gin;
+        go get -u golang.org/x/lint/golint;
+    '
+
+docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' golang:latest sh -c '
+        ./bin/golint src/app/...
+    '
+
+docker run -it --rm -p 8080:8080 -p 8081:8081 \
+    -v $PWD:/app -w /app -e GOPATH='/app' \
+    golang:latest sh -c './bin/gin --port 8081 --appPort 8080 --path src/app/ run main.go'
+
+curl -i 'http://localhost:8081/github/users/cn007b'
+````
+
+#### GO Echo
+
+````
+# one
+
+# init
+docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go.echo/examples/one' golang:latest sh -c '
+    cd $GOPATH \
+    && go get -u github.com/labstack/echo/... \
+    && go get -u github.com/codegangsta/gin
+'
+# run
+docker run -it --rm -p 8080:8080 -p 8081:8081 \
+    -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go.echo/examples/one' \
+    golang:latest sh -c 'cd $GOPATH && ./bin/gin --port 8081 --appPort 8080 --path src/app/ run main.go'
+# test
+docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go.echo/examples/one' golang:latest sh -c '
+    cd $GOPATH && cd src/app && go test -cover
+'
+# check
+curl -i -XGET 'http://localhost:8081'
+curl -i -XGET 'http://localhost:8081/products'
+curl -i -XGET 'http://localhost:8081/products/iphone'
 ````
 
 #### GO Gin

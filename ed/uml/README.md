@@ -27,7 +27,7 @@ UML
 
 ### Structural Diagrams:
 
-* [Class diagram](https://github.com/cn007b/my/blob/master/ed/uml/diagram.class.png):
+* **[Class diagram](https://github.com/cn007b/my/blob/master/ed/uml/diagram.class.png)**:
 
   * Basic (solid line).
   * Aggregation (solid line with open diamond)
@@ -67,7 +67,7 @@ UML
   * Use cases (filled oval).
   * Relationships (solid lines).
 
-* [Sequence diagram](https://github.com/cn007b/my/blob/master/ed/uml/diagram.sequence.png):
+* **[Sequence diagram](https://github.com/cn007b/my/blob/master/ed/uml/diagram.sequence.png)**:
 
   * Lifeline (dashed vertical line with filled square in top).
   * Focus of control.
