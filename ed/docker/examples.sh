@@ -528,6 +528,8 @@ docker run -ti --rm -v $PWD/ed/php.symfony/examples/ng:/app -w /app nphp compose
 docker run -ti --rm -v $PWD/ed/php.symfony/examples/ng:/app -w /app \
     nphp php vendor/phpspec/phpspec/bin/phpspec run
 
+# bulletinBoard - won't work
+# docker run -ti --rm -v $PWD/ed/php.symfony/examples/bulletinBoard:/app -w /app xphp composer install
 ````
 
 #### PHP Yii
