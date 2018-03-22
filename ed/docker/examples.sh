@@ -10,14 +10,8 @@ docker network create --driver bridge xnet
 ### Ubuntu
 
 ````
-# bash
-docker build -t xubuntu ./docker/ubuntu
+docker tag cn007b/ubuntu:17.10 xubuntu
 docker run -ti --rm xubuntu /bin/bash
-
-docker build -t cn007b/ubuntu:17.10 ./docker/ubuntu/17.10
-docker push cn007b/ubuntu:17.10
-docker build -t cn007b/ubuntu:latest ./docker/ubuntu/17.10
-docker push cn007b/ubuntu:latest
 ````
 
 #### Memcached
@@ -400,6 +394,11 @@ curl localhost:8080/healthCheck.php
 #### PHP
 
 ````
+docker pull cn007b/php:7.1-protobuf-3
+docker tag cn007b/php:7.1-protobuf-3 xphp
+````
+
+````
 # php-nginx local
 docker pull cn007b/php
 docker tag cn007b/php nphp
@@ -499,9 +498,9 @@ docker run -ti --rm -v $PWD/ed:/gh/ed -w /gh/ed/php.kahlan/examples/one \
 
 ````
 # symfony
-docker run -ti --rm -v $PWD/ed/php.symfony/examples/News/symfony/news:/app xcomposer install
-docker run -it --rm --hostname 0.0.0.0 -p 8181:8181 -v $PWD:/gh --link mysql-master \
-    php-cli php /gh/ed/php.symfony/examples/News/symfony/news/bin/console server:run 0.0.0.0:8181
+docker run -ti --rm -v $PWD/ed/php.symfony/examples/News/symfony/news:/app -w /app xphp composer install
+docker run -it --rm --net=xnet --hostname 0.0.0.0 -p 8181:8181 -v $PWD:/gh \
+    xphp php /gh/ed/php.symfony/examples/News/symfony/news/bin/console server:run 0.0.0.0:8181
 
 # symfony + nginx
 docker run -ti --rm --name nginx-php --link php-fpm \
@@ -524,10 +523,11 @@ docker run -it --rm -v $PWD:/gh \
 # test
 curl localhost:8080/
 
-#
+# ng
 docker run -ti --rm -v $PWD/ed/php.symfony/examples/ng:/app -w /app nphp composer install
 docker run -ti --rm -v $PWD/ed/php.symfony/examples/ng:/app -w /app \
     nphp php vendor/phpspec/phpspec/bin/phpspec run
+
 ````
 
 #### PHP Yii
