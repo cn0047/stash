@@ -2,6 +2,7 @@ Race Conditions
 _
 
 Don't handle `Unix signals`.
+Don't specify timeout in microservice SDK HTTP client.
 
 #### MySql
 

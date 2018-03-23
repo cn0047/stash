@@ -158,6 +158,10 @@ docker run -it --rm -v $PWD:/gh -w /gh golang:latest go run /gh/ed/go/examples/h
 
 docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh' golang:latest sh -c 'echo $GOPATH'
 
+#
+docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/panic/' \
+    golang:latest sh -c 'cd $GOPATH && go run main.go'
+
 # db postgresql
 docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \
     golang:latest sh -c 'cd $GOPATH && go get github.com/lib/pq'
@@ -197,6 +201,8 @@ docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.one/' \
 docker run -it --rm --name go-one -p 8000:8000 -p 8001:8001 \
     -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.one/' \
     golang:latest sh -c 'cd $GOPATH && ./bin/gin --port 8001 --appPort 8000 --path src/firstapp/ run main.go'
+# check
+curl -i http://localhost:8001/health-check
 
 # 2
 docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.one/' \
@@ -268,11 +274,13 @@ docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' golang:latest sh -c '
         go get github.com/codegangsta/gin;
         go get -u golang.org/x/lint/golint;
     '
-
+docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' golang:latest sh -c '
+        go fmt ./...
+    '
 docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' golang:latest sh -c '
         ./bin/golint src/app/...
     '
-
+# run
 docker run -it --rm -p 8080:8080 -p 8081:8081 \
     -v $PWD:/app -w /app -e GOPATH='/app' \
     golang:latest sh -c './bin/gin --port 8081 --appPort 8080 --path src/app/ run main.go'

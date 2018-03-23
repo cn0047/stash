@@ -37,6 +37,12 @@ var (
     msq = "str"
     message string = "str"
 )
+x := 1
+var id = 1
+var power int
+power = 9000
+var power2 int = 9000
+fmt.Printf("It's over %d\n", power)
 
 const (
     PI = 3.14
@@ -53,11 +59,6 @@ fmt.Printf("%#v", myType)
 
 // init module
 func init() {}
-
-var power int
-power = 9000
-fmt.Printf("It's over %d\n", power)
-var power2 int = 9000
 
 if p := "MR"; isFormal {
 }
@@ -127,7 +128,7 @@ Other types:
 * Pointer
 * Function
 * Interface
-* Map
+* Map (passes by ref)
 * Channel
 
 #### Interface
