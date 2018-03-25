@@ -6,7 +6,7 @@ go1.9.3
 [online editor](https://play.golang.org/)
 [packages](https://golang.org/pkg/) [and](https://godoc.org/)
 [examples](https://gobyexample.com/)
-[badges](https://goreportcard.com/)
+[badges](https://goreportcard.com/) [covererage](https://gocover.io/)
 
 ````
 $GOROOT

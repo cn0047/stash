@@ -15,3 +15,7 @@ func main() {
 func f(vo *VO) {
     vo.Value = 200
 }
+
+/*
+{Value:200}
+*/
