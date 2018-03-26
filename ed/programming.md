@@ -1,7 +1,7 @@
 Programming
 -
 
-#### Common stuff
+## Common stuff
 
 **Pure** function:
 
@@ -17,7 +17,7 @@ Pure function can be parallelizable!
 **First class** function - passing function as argument into another function,
 assign function to variable, return function from function.
 
-#### Paradigms
+## Paradigms
 
 **Imperative** programming - is a programming paradigm that uses statements that change a program's state.
 Imperative program consists of commands for the computer to perform.

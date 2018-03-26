@@ -79,9 +79,11 @@ Perform action on the victim's behalf.
 </form>
 ````
 
+FIS: CORS (if browser support CORS) or CSRF token.
+
 #### Using Components with Known Vulnerabilities
 
-#### Clickjacking (UI redress attack)
+#### ~~Clickjacking (UI redress attack)~~
 
 The hacker can only send a single click.
 
@@ -91,6 +93,6 @@ and lined up exactly the "delete all messages" button directly on top of the "fr
 
 FIX: Header `X-Frame-Options: DENY`.
 
-#### JSON hijacking
+#### ~~JSON hijacking~~
 
 In early versions of browsers the JSON file could be loaded as a normal script.

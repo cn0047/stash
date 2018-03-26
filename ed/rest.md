@@ -72,7 +72,7 @@ The GET method is a safe method (or nullipotent), meaning that calling it produc
 Pagination:
 ````
 GET /api/collection
-Range: resources=100-199
+Range: resources=100-199 # in body
 
 curl 'http://localhost:8080/v1/api/collection' -XGET -d '{"resources_from":100, "resources_to":199}'
 ````

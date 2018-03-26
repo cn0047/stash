@@ -1,6 +1,10 @@
 Agile
 -
 
+The ideal task size is not bigger than a day's work...
+
+Two-pizza teams - where no team should be so big that it could not be fed with two pizzas.
+
 #### Waterfall
 
 Originated in the manufacturing and construction industries.

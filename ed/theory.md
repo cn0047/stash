@@ -21,10 +21,6 @@ Parallel - concurrency without using same resource.
 
 Race condition - when events do not happen in the order the programmer intended.
 
-The ideal task size is not bigger than a day's work...
-
-Two-pizza teams - where no team should be so big that it could not be fed with two pizzas.
-
 Resilience - is the ability of a system to adapt or keep working when challenges occur.
 
 Internationalization (i18n) - process of changing your software so that it isn't hardwired to one language.
@@ -49,12 +45,6 @@ It is expensive type of cryptography.
 * presentation layer (html, css, js)
 * business layer (node, php, etc)
 * data access layer (mongo, mysql, etc)
-
-#### Aggregation and Composition
-
-Aggregation - child can exist independently of the parent (Car -> Tires).
-
-Composition - child can NOT exist independent of the parent (House -> Room).
 
 #### Low coupling and high cohesion.
 

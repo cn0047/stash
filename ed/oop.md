@@ -51,3 +51,9 @@ but a department could not be part of more than one university.
 
 Consultation in object-oriented programming occurs when an object's method implementation consists
 of a message send of the same message to another constituent object.
+
+#### Aggregation and Composition
+
+Aggregation - child can exist independently of the parent (Car -> Tires).
+
+Composition - child can NOT exist independent of the parent (House -> Room).

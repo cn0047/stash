@@ -1,32 +1,30 @@
-DDD
+DDD (Domain-driven design)
 -
 
-Domain-driven design.
-
-### Domain.
+#### Domain.
 
 A sphere of knowledge, influence, or activity. The subject area.
 
-### Model.
+#### Model.
 
 A system of abstractions that describes selected aspects of a domain.
 (aggregates, entities, factories)
 
-### Ubiquitous Language.
+#### Ubiquitous Language.
 
 A language structured around the domain model
 and used by all team members.
 
-### Bounded Context.
+#### Bounded Context.
 
 Multiple models are in play on any large project.
 It is often unclear in what context a model should not be applied.
 
-### Continuous integration.
+#### Continuous integration.
 
-### Context map.
+#### Context map.
 
-### Layered Architecture.
+#### Layered Architecture.
 
 * User Interface - Responsible for presenting information to the user and
 interpreting user commands.
@@ -63,17 +61,20 @@ src/Infrastructure/Command/ParticularModel/PersisterDoctrine.php - Doctrine EM W
 src/Infrastructure/DataProvider/
 ````
 
-### Entities.
+#### Entities.
 
 An object that is not defined by its attributes,
 but rather by a thread of continuity and its identity.
 Is a category of objects which seem to have an identity.
 
-### Value Objects.
+#### Value Objects (VO).
 
 An object that contains attributes but has no conceptual identity.
 
-### Modules.
+VOs must be placed in application layer
+because only this layer aware how to interact with domain layer from the outside world.
+
+#### Modules.
 
 For a large and complex application, the model tends to grow
 bigger and bigger. The model reaches a point where it is hard to
@@ -117,7 +118,7 @@ Something like:
 └── tests
 ````
 
-### Aggregates.
+#### Aggregates.
 
 A collection of objects that are bound together by a root entity.
 A model can contain a large number of domain objects.
@@ -131,7 +132,7 @@ that can be treated as a single unit.
 
 Car it is aggregate for: wheels, engine, spark and fuel, etc.
 
-### Domain Event.
+#### Domain Event.
 
 A domain object that defines an event (something that happens).
 
@@ -139,7 +140,7 @@ A domain object that defines an event (something that happens).
 * Publishing a Domain Event is like printing the article in the paper
 * Spreading a Domain Event is like sending the newspaper so everyone can read the article
 
-### DBAL - Database Abstraction Layer.
+#### DBAL - Database Abstraction Layer.
 
 Active Record ORMs not good for DDD, because:
 
@@ -161,16 +162,16 @@ manager and with a different mapping metadata, it would not be possible.
 
 So better use XML mapping files.
 
-### Factory.
+#### Factory.
 
 Methods for creating domain objects
 should delegate to a specialized Factory.
 
-### CQRS.
+#### CQRS.
 
 Command Query Responsibility Segregation.
 
-### Service.
+#### Service.
 
 When an operation does not conceptually belong to any object.
 An object does not have an internal state, and its purpose is to simply provide
@@ -201,7 +202,7 @@ Domain Services are used to describe things into the domain,
 operations that don’t belong to entities nor value objects.
 (Cross-aggregate behavor, repositories, external services).
 
-### DTO - Data transfer object.
+#### DTO - Data transfer object.
 
 Communication between the delivery mechanism
 and the domain is carried by data structures called DTO.
@@ -210,7 +211,11 @@ DTO it is something like request/response VO for domain.
 DTO does not have any behavior except for storage and retrieval of its own data.
 DTOs are simple objects that should not contain any business logic.
 
-### Repositories.
+Interface to DTO must be placed in domain layer.
+<br>Particular DTO implementation (mysql, mongo, etc) must be placed in infrastructure layer
+because it contains specific stuff (related to rows in mysql, how to get data, how to transform, etc).
+
+#### Repositories.
 
 Methods for retrieving domain objects
 should delegate to a specialized Repository object
@@ -218,28 +223,19 @@ such that alternative storage implementations may be easily interchanged.
 
 Repositories are not DAOs.
 
-### DAO - Data access object.
+#### DAO - Data access object.
 
 Typically a DAO would contain CRUD methods for a particular domain object.
 DAOs must be placed in domain layer.
 
 ## Real problems.
 
+* Configs and DI (especially DI) must be placed outside any layer (user-interface, application, domain, infrastructure)
+  because they are not part of any layer.
+
+* Exceptions must be present in each layer,
+  with purpose to describe particular problems of certain layer.
+
 Domain event publisher, and technical stuff (publisher-subscriber or bus patterns internal implementations)?
 Switch from one php framework to another?
-Switch from one front-end framework to another? And server-side rendering?
-
-#### Configs.
-
-Configs and DI (especially DI) must be placed outside any layer (user-interface, application, domain, infrastructure)
-because they are not part of any layer.
-
-#### VO.
-
-VOs must be placed in application layer.
-
-#### DTO.
-
-#### Exception.
-
-Exceptions must be present in each layer, with purpose describe problems of certain layer.
+Switch from one front-end framework to another? ~~And server-side rendering?~~
