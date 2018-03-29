@@ -150,6 +150,7 @@ throw new \UnderflowException(404);
 
 ````
 phpcs -sw --standard=PSR2 file.php
+phpcs -sw --standard=PSR2 --colors dir
 
 curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
 chmod +x phpcs.phar

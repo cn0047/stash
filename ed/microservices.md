@@ -73,3 +73,8 @@ Transactions:
 
 ⚠️ Anti-pattern - nanoservice,
 is a service whose overhead (communications, maintenance etc.) outweighs its utility.
+
+## Problems
+
+* duplicate code / data
+* required reliable CI/CD

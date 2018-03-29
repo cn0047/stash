@@ -1,6 +1,10 @@
 osx
 -
 
+The default shell in Mac OS X is the Bourne-again shell.
+
+`quicksilver` tool for quick app's launch.
+
 ````
 man grep
 

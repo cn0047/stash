@@ -34,6 +34,29 @@ sysctl -n net.core.somaxconn
 # on server must be at least 1024
 ````
 
+````
+cat /etc/passwd
+sar:x:205:105:Stephen Rago:/home/sar:/bin/ksh
+
+colon-separated fields:
+sar          - the login name,
+x            - encrypted password,
+205          - numeric user ID
+105          - numeric group ID
+Stephen Rago - a comment field
+/home/sar    - home directory
+/bin/ksh     - and shell program
+````
+
+Each directory contains subdirectories `.` and `..`.
+<br>`dot` refers to the current directory,
+<br>`dot-dot` refers to the parent directory,
+
+````
+cc  - the C compiler,
+gcc - the GNU C compiler,
+````
+
 #### less
 
 ````

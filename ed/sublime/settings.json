@@ -1,5 +1,5 @@
 {
-    "color_scheme": "Packages/User/SublimeLinter/Solarized V (Light) (SL).tmTheme",
+    "color_scheme": "Packages/User/SublimeLinter/Breakers (SL).tmTheme",
     "draw_white_space": "all",
     "ensure_newline_at_eof_on_save": true,
     "font_size": 11,
@@ -9,11 +9,15 @@
     [
         "Vintage"
     ],
+    "indent_guide_options":
+    [
+        "draw_active"
+    ],
     "match_brackets_angle": true,
     "open_files_in_new_window": false,
     "rulers":
     [
-        1024,
+        1080,
         2048
     ],
     "save_on_focus_lost": true,
@@ -22,11 +26,10 @@
     "show_tab_close_buttons": false,
     "soda_classic_tabs": true,
     "spell_check": false,
-    "tab_size": 2,
+    "tab_size": 4,
     "theme": "Soda Light 3.sublime-theme",
     "translate_tabs_to_spaces": true,
     "trim_trailing_white_space_on_save": false,
-    "indent_guide_options": ["draw_active"],
     "word_wrap": false,
     "wrap_width": 80
 }

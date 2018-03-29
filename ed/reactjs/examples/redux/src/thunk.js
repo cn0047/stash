@@ -44,6 +44,7 @@ class AppComponent extends Component {
   render() {
     const data = this.props.data;
     const message = data.status === 'ok' ? data.message : 'Loading...';
+    console.log('➡️', message);
     return ( <div>{message}</div> )
   }
 }

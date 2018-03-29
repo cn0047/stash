@@ -1,28 +1,42 @@
-~/.config/sublime-text-3/Packages/User/Package\ Control.sublime-settings
 
-A File Icon
-Boxy Theme
-
+"A File Icon",
 "AlignTab",
+"Babel",
+"Boxy Theme",
+"BracketHighlighter",
+"Color Highlighter",
+"Dockerfile Syntax Highlighting",
 "Emmet",
 "FavoriteFiles",
 "FileClose",
 "Filter Lines",
 "Function Name Display",
 "Git",
+"GitHubinator",
+"JavaScript Completions",
+"JsFormat",
 "JSX",
-"nginx",
+"Markdown Extended",
+"Package Control",
 "Pretty JSON",
+"Quick File Open",
 "Sublime Bookmarks",
+"SublimeLinter",
+"SublimeLinter-jshint",
 "Super Calculator",
-"DocBlockr",
-"SFTP",
+"Theme - Soda",
+"Theme - Solarized Space"
 
-"Theme - Soda"
 "ApacheConf.tmLanguage",
+"DocBlockr",
 "MarkdownHighlighting",
+"nginx",
+"Phpcs",
 "PhpDoc",
 "PhpSpec Snippets",
 "PHPUnit Completions",
-"Phpcs",
+"Protobuf Syntax Hightlighting",
+"SFTP",
+"SimpleMovements",
+"Theme - Soda"
 "Xdebug Client",
