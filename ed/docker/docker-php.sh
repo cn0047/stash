@@ -34,6 +34,3 @@ docker push cn007b/php:7.1-nginx
 docker build -t cn007b/php:latest ./docker/7.1-nginx
 # push
 docker push cn007b/php:latest
-
-# php-phalcon
-# docker build -t cn007b/php:7.1-phalcon ./docker/7.1-phalcon

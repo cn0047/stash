@@ -27,7 +27,7 @@
     { "keys": ["alt+shift+t"], "command": "align_tab" },
     { "keys": ["ctrl+shift+v"], "command": "paste_from_history" },
     { "keys": ["ctrl+shift+up"], "command": "select_lines", "args": {"forward": false} },
-    { "keys": ["ctrl+shift+down"], "command": "select_lines", "args": {"forward": true} },
+    { "keys": ["ctrl+shift+down"], "command": "select_lines", "args": {"forward": true} },    
     { "keys": ["f9"], "command": "sort_lines", "args": {"case_sensitive": false} },
     // { "keys": ["ctrl+shift+d"], "command": "toggle_trailing_spaces" },
 

@@ -1,0 +1,41 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/tomorrow.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/atom-one-light.min.css">
+    <style>
+        pre {
+            background: gainsboro;
+        }
+    </style>
+</head>
+<body>
+    <pre style="color:#000">
+        //
+        <span style="color:#a535ae">curl_setopt</span>($ch, CURLOPT_POSTFIELDS, <span style="color:#a535ae">json_encode</span>([<span style="color:#00a33f">'code'</span> <span style="color:#ff5600">=></span> 200, <span style="color:#00a33f">'status'</span> <span style="color:#ff5600">=></span> <span style="color:#00a33f">'OK'</span>]));
+        // ...
+    </pre>
+
+    <pre id="pre2" class="code blink hljs javascript">
+        const r = require('https').request({
+          host: 'realtimelog.herokuapp.com',
+          path: '/test',
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'}
+        });
+        r.write(JSON.stringify({code: 200, status: 'OK'}));
+        r.end();
+    </pre>
+
+    <pre id="pre3" class="code atom-one-light hljs javascript">
+        fetch('http://localhost:3000/iqr9yl7glo', {
+          method: 'post', headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({code: 200, status: 'OK'})
+        });
+    </pre>
+</body>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/highlight.min.js"></script>
+<script>
+    hljs.highlightBlock(document.querySelector('#pre2'));
+    hljs.highlightBlock(document.querySelector('#pre3'));
+</script>
+</html>

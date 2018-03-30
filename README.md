@@ -9,11 +9,12 @@ My own repo 🤐😐🙈🙉🙊.
 
 In directory **[ed](https://github.com/cn007b/my/tree/master/ed)**
 you'll find information related to some **Web Development** technologies, like: <br>
+🚀 [go](https://github.com/cn007b/my/tree/master/ed/go),
 ⭐️ [javascript](https://github.com/cn007b/my/tree/master/ed/javascript),
 🍞 [php](https://github.com/cn007b/my/tree/master/ed/php),
 🌅 [nodejs](https://github.com/cn007b/my/tree/master/ed/nodejs),
 🥖 [mysql](https://github.com/cn007b/my/tree/master/ed/mysql),
 🌌 [mongodb](https://github.com/cn007b/my/tree/master/ed/mongodb),
 🕵️‍♂️ [elasticsearch](https://github.com/cn007b/my/tree/master/ed/elasticsearch),
-🐬 [docker](https://github.com/cn007b/my/tree/master/ed/docker)
+🐳 [docker](https://github.com/cn007b/my/tree/master/ed/docker)
 and many other things 📦.
