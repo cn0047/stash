@@ -9,6 +9,8 @@ import (
 
 func init() {
 	http.HandleFunc("/", indexHandler)
+	http.HandleFunc("/goon", goonHandler)
+
 	appengine.Main() // Starts the server to receive requests
 }
 
@@ -18,5 +20,5 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	fmt.Fprintln(w, "Hello, Gopher Network!")
+	fmt.Fprintln(w, GeTHomeText())
 }

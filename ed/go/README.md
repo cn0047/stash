@@ -9,7 +9,7 @@ go1.9.3
 [badges](https://goreportcard.com/) [covererage](https://gocover.io/)
 
 ````
-$GOROOT
+$GOROOT     // root of the go (`/usr/local/go/`)
 $GOPATH     // environment variable specifies the location of your workspace.
 $GOMAXPROCS // number of OS threads that can execute user-level Go code simultaneously.
 

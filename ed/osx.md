@@ -55,6 +55,7 @@ Command-Control-Shift-4 # screenshot (SELECTED SHAPE) in buffer
 ## Brew
 
 ````
+brew ls
 brew services list
 
 brew search xdebug

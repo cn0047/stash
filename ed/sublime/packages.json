@@ -7,7 +7,6 @@
 "Color Highlighter",
 "Dockerfile Syntax Highlighting",
 "Emmet",
-"FavoriteFiles",
 "FileClose",
 "Filter Lines",
 "Function Name Display",
@@ -25,10 +24,10 @@
 "SublimeLinter-jshint",
 "Super Calculator",
 "Theme - Soda",
-"Theme - Solarized Space"
 
 "ApacheConf.tmLanguage",
 "DocBlockr",
+"FavoriteFiles",
 "MarkdownHighlighting",
 "nginx",
 "Phpcs",
@@ -39,4 +38,5 @@
 "SFTP",
 "SimpleMovements",
 "Theme - Soda"
+"Theme - Solarized Space"
 "Xdebug Client",
