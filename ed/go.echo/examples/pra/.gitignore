@@ -1,0 +1,5 @@
+data
+bin
+pkg
+src/*
+!src/github.com/app/

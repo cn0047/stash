@@ -154,7 +154,7 @@ docker build -t xgo ./docker/go
 docker run -it --rm -v $PWD:/gh -w /gh xgo go
 
 docker run -it --rm -v $PWD:/gh -w /gh golang:latest go
-docker run -it --rm -v $PWD:/gh -w /gh golang:latest go run /gh/ed/go/examples/hw.go
+docker run -it --rm -v $PWD:/gh -w /gh golang:latest go run /gh/x.go
 
 docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh' golang:latest sh -c 'echo $GOPATH'
 

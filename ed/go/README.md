@@ -9,11 +9,23 @@ go1.9.3
 [badges](https://goreportcard.com/) [covererage](https://gocover.io/)
 
 ````
-$GOROOT     // root of the go (`/usr/local/go/`)
-$GOPATH     // environment variable specifies the location of your workspace.
-$GOMAXPROCS // number of OS threads that can execute user-level Go code simultaneously.
+$GOROOT       // root of the go (`/usr/local/go/`)
+$GOROOT_FINAL // if go moved from $GOROOT
+$GOPATH       // environment variable specifies the location of your workspace.
+$GOMAXPROCS   // number of OS threads that can execute user-level Go code simultaneously.
+
+export GOROOT=$HOME/go
+export GOBIN=$GOROOT/bin
+export GOARCH=amd64
+export GOOS=linux
 
 go run --work ed/go/examples/hw.go
+
+# Compiles and installs packages and dependencies
+go build
+
+# Install packages and dependencies
+go install
 
 # Install all project dependencies
 go get ./...
@@ -49,6 +61,7 @@ const (
     A = iota
     B = iota
     C = iota
+    Monday, Tuesday, Wednesday = 1, 2, 3
 )
 const s string = "constant"
 const n = 500000000

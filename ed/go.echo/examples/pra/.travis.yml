@@ -1,0 +1,11 @@
+language: go
+
+go:
+  - "1.10"
+
+before_install:
+  - go get -u github.com/mattn/goveralls
+
+script:
+  - cd src/github.com/app/products
+  - $GOPATH/bin/goveralls -service=travis-pro
