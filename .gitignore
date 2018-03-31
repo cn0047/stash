@@ -1,7 +1,6 @@
 # ed/index.nginx-debian.html
 
 .idea/
-.vagrant/
 docker/.data/
 
 node_modules/
