@@ -6,4 +6,4 @@ my
 My own repo.
 <br>Here I store my stubs, snippets, templates, code samples and many other stuff.
 <br>*(It's all from my own experience).*
-<br>all stuff placed in **[ed](https://github.com/cn007b/my/tree/master/ed)** directory.
+<br>All stuff placed in **[ed](https://github.com/cn007b/my/tree/master/ed)** directory.

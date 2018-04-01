@@ -39,6 +39,14 @@ go golint ./...
 go vet
 ````
 
+````
+# Fix finds Go programs that use old APIs and rewrites them to use newer ones
+go tool fix
+
+# Performs precise type-safe renaming of identifiers
+gorename
+````
+
 ````go
 import (
     "fmt"
@@ -116,9 +124,7 @@ Example: `defer file.Close()`.
 
 **recover** is a built-in function that regains control of a panicking goroutine.
 
-**copy** - copies elements from a source slice into a destination slice.
-
-OOP in go represented by **structures**. Inheritance in go represented by composition.
+**OOP** in go represented by **structures**. Inheritance in go represented by composition.
 
 #### Data types
 
@@ -136,13 +142,43 @@ Basic types:
 Other types:
 
 * Array
-* Slice
+* Slice (passes by ref)
 * Struct
-* Pointer
+* Pointer (passes by ref)
 * Function
 * Interface
 * Map (passes by ref)
-* Channel
+* Channel (passes by ref)
+
+Ref variables stores in the heap, which is garbage collected
+and which is a much larger memory space than the stack.
+
+**array**
+An array's size is fixed.
+An array variable denotes the entire array; it is not a pointer to the first array element, etc.
+
+**slice**
+Slice is a descriptor of an array segment.
+It consists of a pointer to the array, the length of the segment, and its capacity.
+The length is the number of elements referred to by the slice.
+The capacity is the number of elements in the underlying array.
+<br>The zero value of a slice is nil.
+The len and cap functions will both return 0 for a nil slice.
+
+`make` allocates an array and returns a slice that refers to that array.
+
+Slicing does not copy the slice's data.
+It creates a new slice value that points to the original array.
+Therefore, modifying the elements (not the slice itself) of a re-slice
+modifies the elements of the original slice.
+
+To increase the capacity of a slice one must create a new, larger slice
+and copy the contents of the original slice into it.
+
+**copy** - copies elements from a source slice into a destination slice.
+
+The **append** function appends the elements x to the end of the slice s,
+and grows the slice if a greater capacity is needed.
 
 #### Interface
 
