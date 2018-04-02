@@ -45,6 +45,9 @@ go tool fix
 
 # Performs precise type-safe renaming of identifiers
 gorename
+
+# moves go packages, updating import declarations
+gomvpkg
 ````
 
 ````go

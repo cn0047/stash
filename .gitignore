@@ -1,5 +1,7 @@
 # ed/index.nginx-debian.html
 
+.DS_Store
+
 .idea/
 docker/.data/
 
