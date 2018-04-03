@@ -111,7 +111,7 @@ A workspace is a directory hierarchy with three directories at its root:
 **new** keyword - allocates memory, does not initialize the memory
 and returns its address (pointer).
 
-**make** - creates slices, maps, and channels
+**make** - creates only slices, maps, and channels
 and it returns an initialized (not zeroed) value of type T (not `*T`).
 The reason for the distinction with new keyword - is that these three types represent,
 under the covers, references to data structures that must be initialized before use.
