@@ -1,7 +1,7 @@
-Google Cloud
+App Engine
 -
 
-#### App Engine!
+Google Cloud Datastore is a NoSQL document database.
 
 ````
 gcloud app deploy
