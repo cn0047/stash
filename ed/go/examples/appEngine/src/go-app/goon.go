@@ -1,17 +1,21 @@
 package go_app
 
 import (
-	"net/http"
-	"github.com/mjibson/goon"
 	"fmt"
-	"google.golang.org/appengine/datastore"
+	"github.com/mjibson/goon"
 	"google.golang.org/appengine"
+	"google.golang.org/appengine/datastore"
+	"net/http"
 )
 
 type User struct {
-	Id    string `datastore:"-" goon:"id"`
-	Name  string
-	Tag   string
+	Id   string `datastore:"-" goon:"id"`
+	Name string
+	Tag  string
+	I    int
+	B    bool
+	F    float32
+	AB   []byte
 }
 
 func goonHandler(w http.ResponseWriter, r *http.Request) {
@@ -23,7 +27,7 @@ func goonHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func put1(w http.ResponseWriter, r *http.Request) {
-	u := &User{"usr1", "Test User1", "test"}
+	u := &User{Id: "usr1", Name: "Test User1", Tag: "test", I: 7, B: true, F: 3.2, AB: []byte("it works")}
 	key, err := goon.NewGoon(r).Put(u)
 	if err != nil {
 		fmt.Fprintf(w, "<br>Error: %+v", err)
@@ -33,7 +37,7 @@ func put1(w http.ResponseWriter, r *http.Request) {
 }
 
 func put2(w http.ResponseWriter, r *http.Request) {
-	u := &User{"usr2", "Test User2", "test"}
+	u := &User{Id: "usr2", Name: "Test User2", Tag: "test"}
 	key, err := goon.NewGoon(r).Put(u)
 	if err != nil {
 		fmt.Fprintf(w, "<br>Error: %+v", err)
@@ -63,7 +67,7 @@ func select1(w http.ResponseWriter, r *http.Request) {
 		Filter("Tag =", "test").
 		Order("-Name") // order DESC
 	u := make([]User, 0)
-	_, err := q.GetAll(ctx, &u);
+	_, err := q.GetAll(ctx, &u)
 	if err != nil {
 		fmt.Fprintf(w, "<br>Error: %+v", err)
 	}

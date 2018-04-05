@@ -10,6 +10,7 @@ import (
 func init() {
 	http.HandleFunc("/", indexHandler)
 	http.HandleFunc("/goon", goonHandler)
+	http.HandleFunc("/config", configHandler)
 
 	appengine.Main() // Starts the server to receive requests
 }
