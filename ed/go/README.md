@@ -4,7 +4,7 @@ GO
 go1.9.3
 
 [online editor](https://play.golang.org/)
-[packages](https://golang.org/pkg/) [and](https://godoc.org/)
+[packages](https://golang.org/pkg/) [and](https://godoc.org/) [and](https://gopkg.in/)
 [examples](https://gobyexample.com/)
 [badges](https://goreportcard.com/) [covererage](https://gocover.io/)
 
@@ -206,5 +206,8 @@ p := f.Get["username"]
 ````
 
 #### Goroutine
+
+Do not communicate by sharing memory. Instead, share memory by communicating.
+<br>⚠️ Do not use global variables or shared memory, they make your code unsafe for running concurrently.
 
 #### Channel

@@ -21,9 +21,11 @@ type User struct {
 func goonHandler(w http.ResponseWriter, r *http.Request) {
 	put1(w, r)
 	put2(w, r)
+	put3(w, r)
 	get1(w, r)
 	get3(w, r)
 	select1(w, r)
+	select2(w, r)
 }
 
 func put1(w http.ResponseWriter, r *http.Request) {
@@ -44,6 +46,16 @@ func put2(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Fprintf(w, "<br>PUT 2 - OK, key: %+v", key)
+}
+
+func put3(w http.ResponseWriter, r *http.Request) {
+	u := &User{Id: "usr3", Name: "Real User, with id 3", Tag: "ukraine"}
+	key, err := goon.NewGoon(r).Put(u)
+	if err != nil {
+		fmt.Fprintf(w, "<br>Error: %+v", err)
+	}
+
+	fmt.Fprintf(w, "<br>PUT 3 - OK, key: %+v", key)
 }
 
 func get1(w http.ResponseWriter, r *http.Request) {
@@ -71,5 +83,19 @@ func select1(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Fprintf(w, "<br>Error: %+v", err)
 	}
-	fmt.Fprintf(w, "<br>SELECT 1 - OK: %+v", u)
+	fmt.Fprintf(w, "<hr>SELECT 1 - OK: %+v", u)
+}
+
+func select2(w http.ResponseWriter, r *http.Request) {
+	ctx := appengine.NewContext(r)
+	q := datastore.
+		NewQuery("User").
+		Filter("Name >", "Test").
+		Order("-Name") // order DESC
+	u := make([]User, 0)
+	_, err := q.GetAll(ctx, &u)
+	if err != nil {
+		fmt.Fprintf(w, "<br>Error: %+v", err)
+	}
+	fmt.Fprintf(w, "<hr>SELECT 2 - OK: %+v", u)
 }

@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"encoding/gob"
+	"encoding/json"
 	"fmt"
 )
 
@@ -10,6 +11,7 @@ func main() {
 	one()
 	two()
 	three()
+	forth()
 }
 
 func one() {
@@ -51,5 +53,16 @@ func three() {
 	dec := gob.NewDecoder(&buf)
 	res := make([]interface{}, 0)
 	dec.Decode(&res)
+	fmt.Printf("\n %+v", res)
+}
+
+func forth() {
+	origin := map[string]interface{}{"key": "n", "value": 204}
+
+	enc, _ := json.Marshal(origin)
+	fmt.Printf("\n %+v", enc)
+
+	res := make(map[string]interface{})
+	json.Unmarshal(enc, &res)
 	fmt.Printf("\n %+v", res)
 }

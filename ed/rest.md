@@ -65,9 +65,13 @@ The GET method is a safe method (or nullipotent), meaning that calling it produc
 | method | success                | fail                                                                    |
 |--------|------------------------|-------------------------------------------------------------------------|
 | GET    | 200 OK                 | 400 Bad Request, 404 Not Found                                          |
+|        |                        |                                                                         |
 | POST   | 201 Created            | 400 Bad Request, 404 Not Found, 409 Conflict if resource already exists |
+|        |                        |                                                                         |
 | PUT    | 200 OK, 204 No Content | 404 Not Found                                                           |
+|        |                        |                                                                         |
 | DELETE | 200 OK                 | 404 Not Found                                                           |
+|        |                        |                                                                         |
 
 Pagination:
 ````

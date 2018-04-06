@@ -11,6 +11,8 @@ func init() {
 	http.HandleFunc("/", indexHandler)
 	http.HandleFunc("/goon", goonHandler)
 	http.HandleFunc("/config", configHandler)
+	http.HandleFunc("/config/", configHandler)
+	http.HandleFunc("/config/tag/", configTagHandler)
 
 	appengine.Main() // Starts the server to receive requests
 }

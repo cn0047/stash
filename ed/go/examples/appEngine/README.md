@@ -20,30 +20,47 @@ curl http://localhost:8000
 # check
 curl http://localhost:8080
 curl http://localhost:8080/goon
+````
 
-# check config
-curl -XGET http://localhost:8080/config
-
-
-
-curl -XPOST http://localhost:8080/config -H 'Content-Type: application/json' \
-    -d '{"key":"i", "value": 200}'
+````
+# check configs:
 
 curl -XPOST http://localhost:8080/config -H 'Content-Type: application/json' \
-    -d '{"key":"f", "value": 3.14}'
+    -d '{"key":"i", "value": 200, "tag": "simple"}' | jq
 
 curl -XPOST http://localhost:8080/config -H 'Content-Type: application/json' \
-    -d '{"key":"s", "value": "100"}'
+    -d '{"key":"f", "value": 3.14, "tag": "simple"}' | jq
 
 curl -XPOST http://localhost:8080/config -H 'Content-Type: application/json' \
-    -d '{"key":"o", "value": {"id": 9, "name": "x"}}'
+    -d '{"key":"s", "value": "100", "tag": "simple"}' | jq
 
 curl -XPOST http://localhost:8080/config -H 'Content-Type: application/json' \
-    -d '{"key":"a", "value": ["ok", "true"]}'
+    -d '{"key":"o", "value": {"id": 9, "name": "x"}}' | jq
 
 curl -XPOST http://localhost:8080/config -H 'Content-Type: application/json' \
-    -d '{"key":"b", "value": true}'
+    -d '{"key":"o2", "value": {"id": "config", "value": {"n": 1, "b": false, "s": "ok"}}}' | jq
 
 curl -XPOST http://localhost:8080/config -H 'Content-Type: application/json' \
-    -d '{"key":"i", "value": null}'
+    -d '{"key":"a", "value": ["ok", "true"]}' | jq
+
+curl -XPOST http://localhost:8080/config -H 'Content-Type: application/json' \
+    -d '{"key":"b", "value": true, "tag": "simple"}' | jq
+
+curl -XPOST http://localhost:8080/config -H 'Content-Type: application/json' \
+    -d '{"key":"n", "value": null, "tag": "simple"}' | jq
+
+curl -XGET http://localhost:8080/config/i | jq
+curl -XGET http://localhost:8080/config/f | jq
+curl -XGET http://localhost:8080/config/s | jq
+curl -XGET http://localhost:8080/config/o | jq
+curl -XGET http://localhost:8080/config/o2 | jq
+curl -XGET http://localhost:8080/config/a | jq
+curl -XGET http://localhost:8080/config/b | jq
+curl -XGET http://localhost:8080/config/n | jq
+
+curl -XGET http://localhost:8080/config/tag/simple | jq
+
+// TODO:
+// 1) curl -XGET http://localhost:8080/config/?q=tag1:name;tag2:*;tag3:footer,header;tagPrefix*:copyright
+// 2) cache response payload
 ````
