@@ -62,16 +62,33 @@ The GET method is a safe method (or nullipotent), meaning that calling it produc
 | 401 Unauthorized | missing or invalid authentication token                |
 | 403 Forbidden    | user is not authorized                                 |
 
-| method | success                | fail                                                                    |
-|--------|------------------------|-------------------------------------------------------------------------|
-| GET    | 200 OK                 | 400 Bad Request, 404 Not Found                                          |
-|        |                        |                                                                         |
-| POST   | 201 Created            | 400 Bad Request, 404 Not Found, 409 Conflict if resource already exists |
-|        |                        |                                                                         |
-| PUT    | 200 OK, 204 No Content | 404 Not Found                                                           |
-|        |                        |                                                                         |
-| DELETE | 200 OK                 | 404 Not Found                                                           |
-|        |                        |                                                                         |
+| method | success                               |   fail                                                                    |
+|--------|---------------------------------------|---------------------------------------------------------------------------|
+| GET    | 200 OK                                |   400 Bad Request                                                         |
+|        |                                       |   401 Unauthorized                                                        |
+|        |                                       |   403 Forbidden                                                           |
+|        |                                       | - 404 Not Found                                                           |
+|--------|---------------------------------------|---------------------------------------------------------------------------|
+| POST   | 201 Created                           |   400 Bad Request                                                         |
+|        | 202 Accepted (eventual consistency)   |   401 Unauthorized                                                        |
+|        | 204 No Content (eventual consistency) | ● 402 Payment Required                                                    |
+|        |                                       |   403 Forbidden                                                           |
+|        |                                       | ⊙ 405 Method Not Allowed                                                  |
+|        |                                       | ! 409 Conflict                                                            |
+|--------|---------------------------------------|---------------------------------------------------------------------------|
+| PUT    | 200 OK                                |   400 Bad Request                                                         |
+|        | 202 Accepted (eventual consistency)   |   401 Unauthorized                                                        |
+|        | 204 No Content (eventual consistency) | ● 402 Payment Required                                                    |
+|        |                                       |   403 Forbidden                                                           |
+|        |                                       | - 404 Not Found                                                           |
+|        |                                       | ⊙ 405 Method Not Allowed                                                  |
+|        |                                       | ! 409 Conflict                                                            |
+|--------|---------------------------------------|---------------------------------------------------------------------------|
+| DELETE | 200 OK                                |   400 Bad Request                                                         |
+|        | 202 Accepted (eventual consistency)   |   401 Unauthorized                                                        |
+|        | 204 No Content (eventual consistency) |   403 Forbidden                                                           |
+|        |                                       | - 404 Not Found                                                           |
+|        |                                       | ⊙ 405 Method Not Allowed                                                  |
 
 Pagination:
 ````
