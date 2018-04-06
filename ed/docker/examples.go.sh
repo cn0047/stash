@@ -44,7 +44,9 @@ docker run -it --rm -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go.gin/exa
 docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' golang:latest sh -c '
     go get github.com/codegangsta/gin;
     go get -u golang.org/x/lint/golint;
-    go get -u github.com/cnkint/curl;
+'
+docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' golang:latest sh -c '
+    go get -v -t -d ./...
 '
 docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' golang:latest sh -c '
     go fmt ./...
