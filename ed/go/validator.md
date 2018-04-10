@@ -54,7 +54,7 @@ err := validate.Struct(user)
 * tcp_addr
 * udp_addr
 * hostname
-* regexp=^[a-zA-Z0-9_]*$
+* regexp=^[a-zA-Z0-9_]*$ (won't vork in v9)
 
 Cross-Field Validation:
 
@@ -70,3 +70,35 @@ Cross-Field Validation:
 * gtecsfield
 * ltcsfield
 * ltecsfield
+
+````go
+package service
+
+import (
+  "gopkg.in/go-playground/validator.v9"
+  "regexp"
+)
+
+type ConfigPrototype struct {
+  Key         string      `json:"key" validate:"required,key"`
+  Description string      `json:"description" validate:"max=1000"`
+  Type        string      `json:"type" validate:"required,oneof=int float32 string bool object array"`
+  Value       interface{} `json:"value" validate:"required"`
+}
+
+func validateKey(field validator.FieldLevel) bool {
+  keyRegex := regexp.MustCompile("^[a-zA-Z0-9_\\-:]+$")
+
+  return keyRegex.MatchString(field.Field().String())
+}
+
+func (cp ConfigPrototype) Validate() error {
+  v := validator.New()
+  v.RegisterValidation("key", validateKey)
+  if err := v.Struct(cp); err != nil {
+    return err
+  }
+
+  return nil
+}
+````

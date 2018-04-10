@@ -38,7 +38,7 @@ Ip address range: https://regex101.com/r/O4t93o/2/
 |\S                                        | not white space |
 |\d                                        | digit |
 |\D                                        | not digit |
-|\w                                        | word |
+|\w                                        | word (a-z, A-Z, 0-9, _) |
 |\W                                        | not word |
 |\x                                        | hexadecimal digit |
 |\O                                        | octal digit |

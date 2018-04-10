@@ -77,12 +77,15 @@ const (
 const s string = "constant"
 const n = 500000000
 
+# https://golang.org/pkg/fmt/#hdr-Printing
 fmt.Printf("Type: %T\n", myType)
 fmt.Printf("%+v", myType)
 fmt.Printf("%#v", myType)
 
 // init module
 func init() {}
+
+type Func func(fl FieldLevel) bool
 
 if p := "MR"; isFormal {
 }
@@ -155,10 +158,8 @@ Basic types:
 
 * bool
 * string
-* int (int8, int16, int32, int64)
-* uint (uint8, uint16, uint32, uint64, uintptr)
-* byte // alias for uint8
-* rune // alias for int32
+* int (int8 (aka byte), int16, int32 (aka rune), int64)
+* uint (uint8, uint16, uint32, uint64, uintptr (large enough to hold the bit pattern of any pointer))
 * float32 float64
 * complex64 complex128
 
