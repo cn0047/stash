@@ -99,6 +99,26 @@ println(option)
 
 for i := 0; i < 100; i++ {
 }
+
+// test
+t.Run("fail send email", func(t *testing.T) {})
+
+v := varI.(T)
+if v, ok := varI.(T); ok {
+    Process(v) return
+}
+// varI is not of type T
+
+switch t := areaIntf.(type) {
+    case *Square:
+        fmt.Printf(“Type Square %T with value %v\n”, t, t)
+    case *Circle:
+        fmt.Printf(“Type Circle %T with value %v\n”, t, t)
+    case float32:
+        fmt.Printf(“Type float32 with value %v\n”, t)
+    case nil:
+        fmt.Println(“nil value: nothing to check?”) default: fmt.Printf(“Unexpected type %T”, t)
+}
 ````
 
 Go is compiled, garbage-collected, concurrent, type-safe.
@@ -211,3 +231,18 @@ Do not communicate by sharing memory. Instead, share memory by communicating.
 <br>⚠️ Do not use global variables or shared memory, they make your code unsafe for running concurrently.
 
 #### Channel
+
+````
+ch := make(chan type, value)
+# where:
+# value == 0 (blocking) synchronous, unbuffered 
+# value > 0 (non-blocking) asynchronous, buffered, up to value elements 
+````
+
+Blocking channels:
+
+1. A send operation on a channel blocks until a receiver is available.
+   No recipient for the value on ch - no other value can be put in the channel
+
+2. A receive operation for a channel blocks until a sender is available.
+   If there is no value in the channel, the receiver blocks.
