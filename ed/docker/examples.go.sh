@@ -63,6 +63,15 @@ docker run -it --rm -p 8080:8080 -p 8081:8081 \
     golang:latest sh -c './bin/gin --port 8081 --appPort 8080 --path src/app/ run main.go'
 
 curl 'http://localhost:8081/github/users/cn007b'|jq
+
+# install
+docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' golang:latest sh -c '
+    cd src/app/ && go install
+'
+# run
+docker run -it --rm -p 8080:8080  -v $PWD/bin/app:/app/app -w /app cn007b/ubuntu ./app
+# check
+curl 'http://localhost:8081/github/users/cn007b'|jq
 ````
 
 #### CURL
