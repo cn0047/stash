@@ -158,6 +158,12 @@ docker run -it --rm -v $PWD:/gh -w /gh golang:latest go run /gh/x.go
 
 docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh' golang:latest sh -c 'echo $GOPATH'
 
+# bench
+docker run -it --rm -v $PWD:/gh -e GOPATH='/gh/ed/go/examples/bench/' \
+    golang:latest sh -c 'cd $GOPATH && go test'
+docker run -it --rm -v $PWD:/gh -e GOPATH='/gh/ed/go/examples/bench/' \
+    golang:latest sh -c 'cd $GOPATH && go test -bench=. -benchmem'
+
 # db postgresql
 docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \
     golang:latest sh -c 'cd $GOPATH && go get github.com/lib/pq'

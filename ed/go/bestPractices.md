@@ -20,3 +20,5 @@ Best Practices
   This advice does not apply to large structs.
 
 * Variable names in Go should be short rather than long.
+
+* When defining methods: use a pointer to a type (struct) as a receiver.

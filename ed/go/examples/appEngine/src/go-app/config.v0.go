@@ -1,14 +1,9 @@
 package go_app
 
 import (
-	"encoding/json"
 	"fmt"
 	"github.com/mjibson/goon"
-	"google.golang.org/appengine"
-	"google.golang.org/appengine/datastore"
-	"google.golang.org/appengine/log"
 	"net/http"
-	"strings"
 )
 
 type IntConfig struct {
@@ -23,7 +18,7 @@ type StrConfig struct {
 	Value string
 }
 
-func configHandler(w http.ResponseWriter, r *http.Request) {
+func configHandlerV0(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case "GET":
 		getByKey(w, r)
@@ -32,7 +27,7 @@ func configHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func post(w http.ResponseWriter, r *http.Request) {
+func postV0(w http.ResponseWriter, r *http.Request) {
 	conf1(w, r)
 	conf2(w, r)
 }
