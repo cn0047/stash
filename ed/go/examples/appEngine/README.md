@@ -7,8 +7,8 @@ cd $GOPATH
 
 go get -u google.golang.org/appengine/...
 go get -u github.com/mjibson/goon
-go get -u github.com/mjibson/goon
 go get -u golang.org/x/lint/golint
+go get -u golang.org/x/tools/cmd/cover
 
 # test
 cd src/go-app && /Users/k/.google-cloud-sdk/platform/google_appengine/goroot-1.9/bin/goapp test -cover
