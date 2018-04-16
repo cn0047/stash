@@ -36,6 +36,8 @@ Tell, Don’t Ask.
 Law of Demeter - object A can call method of object B,
 but object A should not "reach through" object B to access yet another object C, to request its services.
 
+Consistent Hashing - used in .io
+
 #### Security
 
 Symmetric encryption (symmetric key cryptography) - sender and receiver have same secret key.

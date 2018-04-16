@@ -73,6 +73,7 @@ The GET method is a safe method (or nullipotent), meaning that calling it produc
 |        | 202 Accepted (eventual consistency)   |   401 Unauthorized                                                        |
 |        | 204 No Content (eventual consistency) | ● 402 Payment Required                                                    |
 |        |                                       |   403 Forbidden                                                           |
+|        |                                       | - 404 Forbidden (processing request that references related resource )    |
 |        |                                       | ⊙ 405 Method Not Allowed                                                  |
 |        |                                       | ! 409 Conflict                                                            |
 |        |                                       |                                                                           |

@@ -35,6 +35,7 @@ func goonHandler(w http.ResponseWriter, r *http.Request) {
 	put2(w, r)
 	put3(w, r)
 	put4(w, r)
+	put5(w, r)
 	get1(w, r)
 	get3(w, r)
 	get4(w, r)
@@ -73,6 +74,9 @@ func put4(w http.ResponseWriter, r *http.Request) {
 	j, _ := json.Marshal(b)
 
 	fmt.Fprintf(w, "<br>PUT 4 - OK, key: %+v, JSON: %s, error: %s", key, j, err)
+}
+
+func put5(w http.ResponseWriter, r *http.Request) {
 }
 
 func get1(w http.ResponseWriter, r *http.Request) {

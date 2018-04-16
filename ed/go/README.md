@@ -181,6 +181,8 @@ and which is a much larger memory space than the stack.
 An array's size is fixed.
 An array variable denotes the entire array; it is not a pointer to the first array element, etc.
 
+An array's length is part of its type, so arrays cannot be resized.
+
 **slice**
 Slice is a descriptor of an array segment.
 It consists of a pointer to the array, the length of the segment, and its capacity.
@@ -203,6 +205,8 @@ and copy the contents of the original slice into it.
 
 The **append** function appends the elements x to the end of the slice s,
 and grows the slice if a greater capacity is needed.
+
+**struct** is a collection of fields.
 
 #### Interface
 
