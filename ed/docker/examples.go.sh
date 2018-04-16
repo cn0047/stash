@@ -1,5 +1,158 @@
-GO
+GO (GOLANG)
 -
+
+````
+docker build -t xgo ./docker/go
+docker run -it --rm -v $PWD:/gh -w /gh xgo go
+
+docker run -it --rm -v $PWD:/gh -w /gh golang:latest go
+docker run -it --rm -v $PWD:/gh -w /gh golang:latest go run /gh/x.go
+
+docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh' golang:latest sh -c 'echo $GOPATH'
+
+# bench
+docker run -it --rm -v $PWD:/gh -e GOPATH='/gh/ed/go/examples/bench/' \
+    golang:latest sh -c 'cd $GOPATH && go test'
+docker run -it --rm -v $PWD:/gh -e GOPATH='/gh/ed/go/examples/bench/' \
+    golang:latest sh -c 'cd $GOPATH && go test -bench=. -benchmem'
+
+# db postgresql
+docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \
+    golang:latest sh -c 'cd $GOPATH && go get github.com/lib/pq'
+# run
+docker run -it --rm --net=xnet -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \
+    golang:latest sh -c 'cd $GOPATH && go run src/postgresql/simplest.go'
+
+# db mongo
+docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \
+    golang:latest sh -c 'cd $GOPATH && go get gopkg.in/mgo.v2'
+# or
+docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \
+    golang:latest sh -c 'cd $GOPATH && go get ./...'
+# run
+docker run -it --rm --net=xnet -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \
+    golang:latest sh -c 'cd $GOPATH && go run src/mongodb/simple.go'
+
+````
+
+#### Simple Web Server
+
+````
+# web.one
+docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.one/' \
+    golang:latest sh -c 'cd $GOPATH && go get github.com/codegangsta/gin'
+# test
+docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.one/' \
+    golang:latest sh -c 'cd $GOPATH && cd src/firstapp && go test -cover'
+docker run -it --rm --name go-one -p 8000:8000 -p 8001:8001 \
+    -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.one/' \
+    golang:latest sh -c 'cd $GOPATH && ./bin/gin --port 8001 --appPort 8000 --path src/firstapp/ run main.go'
+# check
+curl -i http://localhost:8001/health-check
+
+# web.three ⭐️ ⭐️ ⭐️
+docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.three/' golang:latest sh -c '
+    cd $GOPATH \
+    && go get gopkg.in/mgo.v2 \
+    && go get github.com/codegangsta/gin \
+    && go get -u github.com/derekparker/delve/cmd/dlv
+'
+# run
+docker run -it --rm --net=xnet -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.three/' \
+    golang:latest sh -c 'cd $GOPATH && go run src/app/main.go'
+# livereload
+docker run -it --rm --net=xnet -p 8080:8080 -p 8081:8081 \
+    -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.three/' \
+    golang:latest sh -c 'cd $GOPATH && ./bin/gin --port 8081 --appPort 8080 --path src/app/ run main.go'
+# docker run -it --rm --net=xnet -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.three/' \
+#     golang:latest sh -c 'cd $GOPATH && ./bin/dlv debug src/app/main.go'
+
+# test
+curl -i 'http://localhost:8080'
+curl -i 'http://localhost:8080/home'
+curl -i 'http://localhost:8080/cars'
+curl -i -XGET 'http://localhost:8080/cars'
+curl -i -XPUT 'http://localhost:8080/cars'
+curl -i -XDELETE 'http://localhost:8080/cars'
+curl -i -XPOST 'http://localhost:8080/cars'
+curl -i -XPOST 'http://localhost:8080/cars' -H 'Content-Type: application/json' \
+   -d '{"vendor": "BMW", "name": "X5"}'
+# test lr
+curl -i -XGET 'http://localhost:8081/cars'
+curl -i -XPUT 'http://localhost:8081/cars'
+curl -i -XDELETE 'http://localhost:8081/cars/1'
+curl -i -XPOST 'http://localhost:8081/cars' -H 'Content-Type: application/json' \
+   -d '{"vendor": "BMW", "name": "M6"}'
+````
+
+#### App Engine
+
+````
+export GOPATH=$PWD/ed/go/examples/appEngine
+cd $GOPATH
+
+go get -u google.golang.org/appengine/...
+go get -u github.com/mjibson/goon
+go get -u golang.org/x/lint/golint
+go get -u golang.org/x/tools/cmd/cover
+
+# test
+cd src/go-app && /Users/k/.google-cloud-sdk/platform/google_appengine/goroot-1.9/bin/goapp test -cover
+
+# dev
+dev_appserver.py --port=8080 --admin_port=8000 --storage_path=$GOPATH/.data --skip_sdk_update_check=true \
+    $GOPATH/src/go-app/app.yaml
+
+# admin
+curl http://localhost:8000
+
+# check
+curl http://localhost:8080
+curl http://localhost:8080/goon
+````
+
+````
+# check configs:
+
+curl -XPOST http://localhost:8080/config -H 'Content-Type: application/json' \
+    -d '{"key":"i", "value": 200, "tag": "simple"}' | jq
+
+curl -XPOST http://localhost:8080/config -H 'Content-Type: application/json' \
+    -d '{"key":"f", "value": 3.14, "tag": "simple"}' | jq
+
+curl -XPOST http://localhost:8080/config -H 'Content-Type: application/json' \
+    -d '{"key":"s", "value": "100", "tag": "simple"}' | jq
+
+curl -XPOST http://localhost:8080/config -H 'Content-Type: application/json' \
+    -d '{"key":"o", "value": {"id": 9, "name": "x"}}' | jq
+
+curl -XPOST http://localhost:8080/config -H 'Content-Type: application/json' \
+    -d '{"key":"o2", "value": {"id": "config", "value": {"n": 1, "b": false, "s": "ok"}}}' | jq
+
+curl -XPOST http://localhost:8080/config -H 'Content-Type: application/json' \
+    -d '{"key":"a", "value": ["ok", "true"]}' | jq
+
+curl -XPOST http://localhost:8080/config -H 'Content-Type: application/json' \
+    -d '{"key":"b", "value": true, "tag": "simple"}' | jq
+
+curl -XPOST http://localhost:8080/config -H 'Content-Type: application/json' \
+    -d '{"key":"n", "value": null, "tag": "simple"}' | jq
+
+curl -XGET http://localhost:8080/config/i | jq
+curl -XGET http://localhost:8080/config/f | jq
+curl -XGET http://localhost:8080/config/s | jq
+curl -XGET http://localhost:8080/config/o | jq
+curl -XGET http://localhost:8080/config/o2 | jq
+curl -XGET http://localhost:8080/config/a | jq
+curl -XGET http://localhost:8080/config/b | jq
+curl -XGET http://localhost:8080/config/n | jq
+
+curl -XGET http://localhost:8080/config/tag/simple | jq
+
+// TODO:
+// 1) curl -XGET http://localhost:8080/config/?q=tag1:name;tag2:*;tag3:footer,header;tagPrefix*:copyright
+// 2) cache response payload
+````
 
 #### GO Echo
 
