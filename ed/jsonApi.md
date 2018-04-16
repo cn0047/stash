@@ -31,10 +31,9 @@ along with the requested primary resources. Such responses are called “compoun
 In a compound document, all included resources MUST be represented as an array of resource objects
 in a top-level `included` member.
 
-
 #### Pagination
 
-Pagination links MUST appear in the links object that corresponds to a collection. 
+Pagination links MUST appear in the `links` object that corresponds to a collection. 
 
 The following keys MUST be used for pagination links:
 
@@ -70,3 +69,40 @@ The response MUST also include a document that contains the primary resource cre
 #### Updating Resources
 
 `PATCH` method.
+
+#### Asynchronous Processing
+
+````
+POST /photos HTTP/1.1
+````
+
+The request SHOULD return a status 202 Accepted with a link in the Content-Location header.
+
+````
+HTTP/1.1 202 Accepted
+Content-Type: application/vnd.api+json
+Content-Location: https://example.com/photos/queue-jobs/5234
+
+{
+  "data": {
+    "type": "queue-jobs",
+    "id": "5234",
+    "attributes": {
+      "status": "Pending request, waiting other process"
+    },
+    "links": {
+      "self": "/photos/queue-jobs/5234"
+    }
+  }
+}
+````
+
+To check the status of the job process:
+
+````
+GET /photos/queue-jobs/5234 HTTP/1.1
+Accept: application/vnd.api+json
+````
+
+Requests for still-pending jobs SHOULD return a status 200 OK,
+optionally, the server can return a `Retry-After` header.
