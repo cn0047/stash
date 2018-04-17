@@ -235,6 +235,8 @@ p := f.Get["username"]
 Do not communicate by sharing memory. Instead, share memory by communicating.
 <br>⚠️ Do not use global variables or shared memory, they make your code unsafe for running concurrently.
 
+`kill -6 {PID}` kill the program and give a stack trace for each goroutine.
+
 #### Channel
 
 ````

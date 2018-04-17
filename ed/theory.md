@@ -134,8 +134,15 @@ Problems:
 * Follow SOLID
 * Haven't memory leaks
 * Haven't vulnerabilities and secure
-* Predictability
 * Cares about backward compatibility
+
+* Predictability
+* Resilience
+
+* Rigidity
+* Fragility
+* Immobility
+* Complexity
 
 #### ACID
 

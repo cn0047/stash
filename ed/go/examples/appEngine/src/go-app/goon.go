@@ -105,6 +105,7 @@ func select1(w http.ResponseWriter, r *http.Request) {
 	q := datastore.
 		NewQuery("User").
 		Filter("Tag =", "test").
+		Filter("Name > ", "").
 		Order("-Name") // order DESC
 	u := make([]User, 0)
 	_, err := q.GetAll(ctx, &u)
