@@ -1,7 +1,12 @@
 package fib
 
+var pn int
+var m = make(map[int]int)
+
 func Fib(n int) int {
 	if n < 2 {
+		pn = n   // for fun!)
+		m[n] = n // for fun!)
 		return n
 	}
 

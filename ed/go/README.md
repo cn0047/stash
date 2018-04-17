@@ -105,6 +105,8 @@ for i := 0; i < 100; i++ {
 
 // test
 t.Run("fail send email", func(t *testing.T) {})
+t.Skip("skipping...")
+b.RunParallel(func(pb *testing.PB) {})
 
 v := varI.(T)
 if v, ok := varI.(T); ok {
@@ -240,6 +242,13 @@ Do not communicate by sharing memory. Instead, share memory by communicating.
 #### Channel
 
 ````
+c <- 42    // write to a channel
+val := <-c // read from a channel
+
+c1 := make(<-chan bool)   // can only read from
+c2 := make(chan<- []bool) // can only write to
+````
+````
 ch := make(chan type, value)
 # where:
 # value == 0 (blocking) synchronous, unbuffered 
@@ -253,3 +262,30 @@ Blocking channels:
 
 2. A receive operation for a channel blocks until a sender is available.
    If there is no value in the channel, the receiver blocks.
+
+All operations on unbuffered channels block the execution
+until both sender and receiver are ready to communicate.
+That’s why unbuffered channels are also called synchronous.
+
+In case a channel has a buffer - all read operations succeed without blocking
+if the buffer is not empty,
+and write operations - if the buffer is not full.
+These channels are called asynchronous.
+
+````
+for i := 1; i <= 9; i++ {
+    select {
+    case msg := <-c1:
+        println(msg)
+    case msg := <-c2:
+        println(msg)
+    case msg := <-c3:
+        println(msg)
+    }
+}
+````
+
+Range chan: range will work until the channel is closed explicitly.
+
+Closing a channel has one more useful feature - reading operations on closed channels
+do not block and always return default value for a channel type.

@@ -1,6 +1,9 @@
 package fib
 
-import "testing"
+import (
+	"strconv"
+	"testing"
+)
 
 var fibTests = []struct {
 	n        int // input
@@ -16,40 +19,12 @@ var fibTests = []struct {
 }
 
 func TestFib(t *testing.T) {
-	for _, tt := range fibTests {
-		actual := Fib(tt.n)
-		if actual != tt.expected {
-			t.Errorf("Fib(%d): expected %d, actual %d", tt.n, tt.expected, actual)
-		}
-	}
-}
-
-func benchmarkFib(i int, b *testing.B) {
-	for n := 0; n < b.N; n++ {
-		Fib(i)
-	}
-}
-
-func BenchmarkFib1(b *testing.B) {
-	benchmarkFib(1, b)
-}
-
-func BenchmarkFib5(b *testing.B) {
-	benchmarkFib(5, b)
-}
-
-func BenchmarkFib10and20(b *testing.B) {
-	b.Run("10", func(b *testing.B) {
-		benchmarkFib(10, b)
-	})
-
-	b.Run("20", func(b *testing.B) {
-		benchmarkFib(20, b)
-	})
-}
-
-func BenchmarkFibComplete(b *testing.B) {
-	for n := 0; n < b.N; n++ {
-		Fib(10)
+	for i, tt := range fibTests {
+		t.Run("Test case "+strconv.Itoa(i), func(t *testing.T) {
+			actual := Fib(tt.n)
+			if actual != tt.expected {
+				t.Errorf("Fib(%d): expected %d, actual %d", tt.n, tt.expected, actual)
+			}
+		})
 	}
 }

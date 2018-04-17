@@ -10,9 +10,14 @@ docker run -it --rm -v $PWD:/gh -w /gh golang:latest go run /gh/x.go
 
 docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh' golang:latest sh -c 'echo $GOPATH'
 
-# bench
+# test (bench)
 docker run -it --rm -v $PWD:/gh -e GOPATH='/gh/ed/go/examples/bench/' \
-    golang:latest sh -c 'cd $GOPATH && go test'
+    golang:latest sh -c 'cd $GOPATH && go test -v'
+docker run -it --rm -v $PWD:/gh -e GOPATH='/gh/ed/go/examples/bench/' \
+    golang:latest sh -c 'cd $GOPATH && go test -race'
+docker run -it --rm -v $PWD:/gh -e GOPATH='/gh/ed/go/examples/bench/' \
+    golang:latest sh -c 'cd $GOPATH && go test -v -cpuprofile cpu.out'
+# bench
 docker run -it --rm -v $PWD:/gh -e GOPATH='/gh/ed/go/examples/bench/' \
     golang:latest sh -c 'cd $GOPATH && go test -bench=. -benchmem'
 
