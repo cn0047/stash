@@ -10,6 +10,7 @@ import (
 func init() {
 	http.HandleFunc("/", indexHandler)
 	http.HandleFunc("/goon", goonHandler)
+	http.HandleFunc("/datastore", datastoreHandler)
 	http.HandleFunc("/config", configHandler)
 	http.HandleFunc("/config/", configHandler)
 	http.HandleFunc("/config/tag/", configTagHandler)

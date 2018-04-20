@@ -30,6 +30,10 @@ type Book struct {
 	Kind  string `datastore:"-" goon:"kind"`
 }
 
+type Exception struct {
+	Code int
+}
+
 func goonHandler(w http.ResponseWriter, r *http.Request) {
 	put1(w, r)
 	put2(w, r)
@@ -39,6 +43,7 @@ func goonHandler(w http.ResponseWriter, r *http.Request) {
 	get1(w, r)
 	get3(w, r)
 	get4(w, r)
+	get5(w, r)
 	select1(w, r)
 	select2(w, r)
 	select3(w, r)
@@ -70,6 +75,7 @@ func put3(w http.ResponseWriter, r *http.Request) {
 
 func put4(w http.ResponseWriter, r *http.Request) {
 	b := Book{Author: Author{Name: "Sheva"}, Id: "Kobzar", Title: "Kobzar", Kind: "BooksCollection"}
+	//b := Book{Name: "Sheva", Id: "Kobzar", Title: "Kobzar", Kind: "BooksCollection"} // won't work
 	key, err := goon.NewGoon(r).Put(&b)
 	j, _ := json.Marshal(b)
 
@@ -98,6 +104,13 @@ func get4(w http.ResponseWriter, r *http.Request) {
 	err := goon.NewGoon(r).Get(&b)
 
 	fmt.Fprintf(w, "<br>Get 4, book 1: %+v, Error: %+v", b, err)
+}
+
+func get5(w http.ResponseWriter, r *http.Request) {
+	e := Exception{Code: 500}
+	err := goon.NewGoon(r).Get(&e)
+
+	fmt.Fprintf(w, "<br>Get 5, exception 1: %+v, Error: %+v", e, err)
 }
 
 func select1(w http.ResponseWriter, r *http.Request) {

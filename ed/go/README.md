@@ -124,6 +124,9 @@ switch t := areaIntf.(type) {
     case nil:
         fmt.Println(“nil value: nothing to check?”) default: fmt.Printf(“Unexpected type %T”, t)
 }
+
+// non-struct type
+type MyFloat float64
 ````
 
 Go is compiled, garbage-collected, concurrent, type-safe.
