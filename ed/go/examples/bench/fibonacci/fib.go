@@ -1,4 +1,4 @@
-package fib
+package fibonacci
 
 var pn int
 var m = make(map[int]int)
