@@ -1,12 +1,10 @@
 package fibonacci
 
-var pn int
-var m = make(map[int]int)
+var s = make([]int, 0)
 
 func Fib(n int) int {
 	if n < 2 {
-		pn = n   // for fun!)
-		m[n] = n // for fun!)
+		s = append(s, n) // for fun!)
 		return n
 	}
 
