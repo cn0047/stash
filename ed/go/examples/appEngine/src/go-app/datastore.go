@@ -1,6 +1,7 @@
 package go_app
 
 import (
+	"errors"
 	"fmt"
 	"golang.org/x/net/context"
 	"google.golang.org/appengine"
@@ -9,7 +10,7 @@ import (
 )
 
 func datastoreHandler(w http.ResponseWriter, r *http.Request) {
-	datastorePut1(w, r)
+	//datastorePut1(w, r)
 	datastorePut2(w, r)
 	datastorePut3(w, r)
 }
@@ -34,17 +35,25 @@ func datastorePut2(w http.ResponseWriter, r *http.Request) {
 	err := datastore.RunInTransaction(ctx, func(ctx context.Context) error {
 		_, err := datastore.Put(ctx, key, &u)
 		// to commit transaction - return nil
-		// to rollback transaction - return not nil
+		// to rollback transaction - return error
 		return err
 	}, nil)
 	if err == nil {
 		fmt.Fprintf(w, "<br>TRANSACTION 1 - OK, key: %+v | %+v", key, u)
-		return
 	} else {
 		fmt.Fprintf(w, "<br>Transaction failed, Error: %+v", err)
-		return
 	}
 }
 
 func datastorePut3(w http.ResponseWriter, r *http.Request) {
+	u := User{Id: "usr6", Name: "User 6 {ROLL BACK CASE}", Tag: "cli"}
+	ctx := appengine.NewContext(r)
+	key := datastore.NewIncompleteKey(ctx, "User", nil)
+
+	err := datastore.RunInTransaction(ctx, func(ctx context.Context) error {
+		datastore.Put(ctx, key, &u)
+		err := errors.New("error: test ROLL BACK case")
+		return err
+	}, nil)
+	fmt.Fprintf(w, "<br>TRANSACTION 2: %+v", err)
 }

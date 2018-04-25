@@ -1,16 +1,19 @@
 <html>
 <head>
     <style>
-        table {
+        .t1 {
             border: solid 1px green;
         }
-        table td:nth-child(1) {
+        .t1 td:nth-child(1) {
             background-color: lightgreen;
+        }
+        .t2 td {
+            border: 1px solid grey;
         }
     </style>
 </head>
 <body>
-    <table>
+    <table class="t1">
         <thead>
             <th>Col 1</th>
             <th>Col 2</th>
@@ -28,6 +31,18 @@
                 <td>r2 c3</td>
             </tr>
         </tbody>
+    </table>
+    <br>
+    <table class="t2">
+        <tr>
+            <td>1</td>
+            <td colspan="2">2</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
     </table>
 </body>
 </html>

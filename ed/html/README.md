@@ -2,6 +2,12 @@ HTML (HyperText Markup Language)
 -
 5
 
+#### Special Characters
+
+````
+&nbsp;     # space
+````
+
 #### Script
 
 ````
