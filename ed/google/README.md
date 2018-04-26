@@ -3,6 +3,7 @@ Google
 
 [Page Speed](https://developers.google.com/speed/pagespeed/insights)
 [Google Trends](https://trends.google.com/trends/explore?date=all&q=php,javascript)
+[Fonts](https://fonts.google.com/)
 
 ````
 # get geo info by latitude & longitude

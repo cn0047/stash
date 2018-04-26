@@ -21,12 +21,15 @@ Data generator:
 <br> http://choosealicense.com/
 <br> https://www.box.com/en-gb/home
 
+<br> http://caniuse.com/
+
 <br> https://code.facebook.com/projects/
 <br> https://platform.sh/
 
 <br> https://github.com/sindresorhus/awesome
 <br> https://github.com/h5bp/Front-end-Developer-Interview-Questions
 <br> https://github.com/ifightcrime/bootstrap-growl/ - PopUp
+<br> https://fontawesome.com/
 
 <br> http://www.xe.com/
 <br> http://free-proxy-list.net/

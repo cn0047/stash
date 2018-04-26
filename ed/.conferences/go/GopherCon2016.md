@@ -20,5 +20,3 @@ if err != nil {
 #### Wisdom Omuya - Go Vendoring Deconstructed
 
 https://monosnap.com/file/v3SM6L4GEFLJxVUyBnNn4dt3oXUGrh
-
-https://www.youtube.com/watch?v=lI17OEJCPVw&index=21&list=PL2ntRZ1ySWBdliXelGAItjzTMxy2WQh0P

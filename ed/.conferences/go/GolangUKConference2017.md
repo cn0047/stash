@@ -1,4 +1,19 @@
 Golang UK Conference 2017
 -
 
-https://www.youtube.com/watch?v=5UG57xQL_RE&list=PLDWZ5uzn69eyM81omhIZLzvRhTOXvpeX9
+#### The Beginner's Guide to Linux Syscalls
+
+`strace go_bin_file`
+`ptrace`
+
+#### Production-ready Go
+
+* `http.Server{IdleTimeout}`
+* OS Signals
+* Cancellation
+
+#### Concurrency Patterns in Go
+
+#### Golang's Realtime GC in Theory and Practice
+
+haskel 👎
