@@ -32,8 +32,8 @@ func datastorePut2(w http.ResponseWriter, r *http.Request) {
 	ctx := appengine.NewContext(r)
 	key := datastore.NewIncompleteKey(ctx, "User", nil)
 
-	err := datastore.RunInTransaction(ctx, func(ctx context.Context) error {
-		_, err := datastore.Put(ctx, key, &u)
+	err := datastore.RunInTransaction(ctx, func(transactionCTX context.Context) error {
+		_, err := datastore.Put(transactionCTX, key, &u)
 		// to commit transaction - return nil
 		// to rollback transaction - return error
 		return err
@@ -50,8 +50,8 @@ func datastorePut3(w http.ResponseWriter, r *http.Request) {
 	ctx := appengine.NewContext(r)
 	key := datastore.NewIncompleteKey(ctx, "User", nil)
 
-	err := datastore.RunInTransaction(ctx, func(ctx context.Context) error {
-		datastore.Put(ctx, key, &u)
+	err := datastore.RunInTransaction(ctx, func(transactionCTX context.Context) error {
+		datastore.Put(transactionCTX, key, &u)
 		err := errors.New("error: test ROLL BACK case")
 		return err
 	}, nil)
