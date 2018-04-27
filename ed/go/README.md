@@ -292,3 +292,6 @@ Range chan: range will work until the channel is closed explicitly.
 
 Closing a channel has one more useful feature - reading operations on closed channels
 do not block and always return default value for a channel type.
+
+Only the sender should close a channel, never the receiver
+(otherwise panic).

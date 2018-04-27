@@ -6,6 +6,8 @@ App Engine
 Google Cloud Datastore is a NoSQL document database.
 
 ````
+# ~/.google-cloud-sdk/bin/gcloud
+
 gcloud app deploy
 
 gcloud app browse
@@ -30,7 +32,7 @@ go get -u golang.org/x/lint/golint
 go get -u golang.org/x/tools/cmd/cover
 
 # test
-cd src/go-app && /Users/k/.google-cloud-sdk/platform/google_appengine/goroot-1.9/bin/goapp test -cover
+cd src/go-app && ~/.google-cloud-sdk/platform/google_appengine/goroot-1.9/bin/goapp test -cover
 
 # start dev server
 dev_appserver.py \
