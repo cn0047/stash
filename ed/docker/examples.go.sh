@@ -3,6 +3,7 @@ GO (GOLANG)
 
 ````
 docker build -t xgo ./docker/go
+
 docker run -it --rm -v $PWD:/gh -w /gh xgo go
 
 docker run -it --rm -v $PWD:/gh -w /gh golang:latest go
