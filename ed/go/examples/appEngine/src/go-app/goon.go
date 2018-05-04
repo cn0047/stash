@@ -13,6 +13,7 @@ type User struct {
 	Id   string `datastore:"-" goon:"id"`
 	Name string
 	Tag  string
+	Tags []string
 	I    int
 	B    bool
 	F    float32
@@ -50,7 +51,8 @@ func goonHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func put1(w http.ResponseWriter, r *http.Request) {
-	u := &User{Id: "usr1", Name: "Test User1", Tag: "test", I: 7, B: true, F: 3.2, AB: []byte("it works")}
+	u := &User{Id: "usr1", Name: "Test User1", Tag: "test", Tags: []string{"first", "test", "go"},
+		I: 7, B: true, F: 3.2, AB: []byte("it works")}
 	key, err := goon.NewGoon(r).Put(u)
 	if err != nil {
 		fmt.Fprintf(w, "<br>Error: %+v", err)
@@ -60,14 +62,14 @@ func put1(w http.ResponseWriter, r *http.Request) {
 }
 
 func put2(w http.ResponseWriter, r *http.Request) {
-	u := &User{Id: "usr2", Name: "Test User2", Tag: "test"}
+	u := &User{Id: "usr2", Name: "Test User2", Tag: "test", Tags: []string{"test", "go"}}
 	key, _ := goon.NewGoon(r).Put(u)
 
 	fmt.Fprintf(w, "<br>PUT 2 - OK, key: %+v", key)
 }
 
 func put3(w http.ResponseWriter, r *http.Request) {
-	u := &User{Id: "usr3", Name: "Real User, with id 3", Tag: "ukraine"}
+	u := &User{Id: "usr3", Name: "Real User, with id 3", Tag: "ukraine", Tags: []string{"test"}}
 	key, _ := goon.NewGoon(r).Put(u)
 
 	fmt.Fprintf(w, "<br>PUT 3 - OK, key: %+v", key)

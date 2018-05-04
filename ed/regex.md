@@ -48,10 +48,10 @@ Ip address range: https://regex101.com/r/O4t93o/2/
 |\E                                        | end quote |
 |\<                                        | start of word |
 |\>                                        | end of word |
-|?=                                        | positive lookahead assertion # /foo(?=bar)/ -> foobar, but bar not included in result |
-|?!                                        | negative lookahead # /Jave(?!Script)/ -> Java, not JavaScript |
-|?<=                                       | positive lookbehind assetion # /(?<=td)ms/ -> tdms, but td not included in result |
-|?<!                                       | negative lookbehind # /(?<!bar)foo/ -> not barfoo, but bazfoo, and baz not included in result |
+|?=                                        | positive lookahead assertion # `/foo(?=bar)/` -> foobar, but bar not included in result |
+|?!                                        | negative lookahead # `/Jave(?!Script)/` -> Java, not JavaScript |
+|?<=                                       | positive lookbehind assetion # `/(?<=td)ms/` -> tdms, but td not included in result |
+|?<!                                       | negative lookbehind # `/(?<!bar)foo/` -> not barfoo, but bazfoo, and baz not included in result |
 |?>                                        | once-only sebexpression |
 |/?(condition)true-pattern\|false-pattern/ | condition |
 |/?(condition)true-pattern/                | condition |

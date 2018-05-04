@@ -57,6 +57,8 @@ cc  - the C compiler,
 gcc - the GNU C compiler,
 ````
 
+`/etc/ttys` - logged in users
+
 #### less
 
 ````
@@ -184,6 +186,7 @@ printf "1\n 2\n 3\n" | awk 'ORS=NR?",":"\n"' # Replace new line with comma
 ````
 
 #### ssh
+
 ````
 ssh-add ~/.ssh/id_rsa
 vim /etc/ssh/sshd_config
@@ -209,6 +212,7 @@ Host ec2
 ````
 
 #### ftp
+
 ````
 ncftpput -R -v -u {user} {host} remote_path ./local_path/*
 ````
@@ -225,6 +229,7 @@ watch -n 2 'echo 200'
 watch -n 2 'date'
 
 #### ps
+
 ````
 ps ax                             # Display all processess
 ps aux                            # Detailed information about processess
@@ -253,6 +258,7 @@ echo 'key from id_rsa.pub from host machine' >> ~/.ssh/authorized_keys
 ````
 
 #### chmod
+
 ````
 -rwxrwxrwx
 drwxr-xr-x
@@ -283,12 +289,14 @@ sudo chown -R `whoami` /var/log/
 ````
 
 #### mail
+
 ````
 mail -s 'subject' mail@com.com < fileName
 uuencode card.jpg card.jpg | mail mail@com.com
 ````
 
 #### grep
+
 ````
 -z, --null-data             строки разделяются байтом с нулевым значением, а не символом конца строки
 -v, --revert-match          #
@@ -304,6 +312,7 @@ uuencode card.jpg card.jpg | mail mail@com.com
 `grep match -wrni --color=always --include=*.php . | grep notMatch -v --color=always`
 
 #### curl
+
 ````
 -b, --cookie STRING/FILE             String or file to read cookies from (H)
 -d, --data DATA                      HTTP POST data (H)
@@ -335,6 +344,7 @@ curl -T firmware.bin http://0.0.0.48/cgi-bin/package_install?hash=017
 ````
 
 #### shell
+
 ````
 # nohup
 # When you execute a job in the background (using &, bg command),
@@ -430,6 +440,7 @@ history
 ````
 
 #### SNIPPETS
+
 ````
 fwrite(STDOUT, __METHOD__ . "\n");
 prompt \u@\h [\d]>

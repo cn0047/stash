@@ -13,6 +13,7 @@ func datastoreHandler(w http.ResponseWriter, r *http.Request) {
 	//datastorePut1(w, r)
 	datastorePut2(w, r)
 	datastorePut3(w, r)
+	datastoreGet1(w, r)
 }
 
 func datastorePut1(w http.ResponseWriter, r *http.Request) {
@@ -56,4 +57,19 @@ func datastorePut3(w http.ResponseWriter, r *http.Request) {
 		return err
 	}, nil)
 	fmt.Fprintf(w, "<br>TRANSACTION 2: %+v", err)
+}
+
+// field tags contains: test & go
+func datastoreGet1(w http.ResponseWriter, r *http.Request) {
+	ctx := appengine.NewContext(r)
+	q := datastore.
+		NewQuery("User").
+		Filter("Tags =", "test").
+		Filter("Tags =", "go")
+	u := make([]User, 0)
+	_, err := q.GetAll(ctx, &u)
+	if err != nil {
+		fmt.Fprintf(w, "<br>Error: %+v", err)
+	}
+	fmt.Fprintf(w, "<hr>SELECT 1 - OK: %+v", u)
 }

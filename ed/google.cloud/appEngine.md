@@ -30,15 +30,12 @@ go get -u google.golang.org/appengine/...
 go get -u github.com/mjibson/goon
 go get -u golang.org/x/lint/golint
 go get -u golang.org/x/tools/cmd/cover
+go get -u github.com/google/gops
 
 # test
 cd src/go-app && ~/.google-cloud-sdk/platform/google_appengine/goroot-1.9/bin/goapp test -cover
 
 # start dev server
-dev_appserver.py \
-    --port=8080 --admin_port=8000 --storage_path=$GOPATH/.data --skip_sdk_update_check=true \
-    $GOPATH/src/go-app/app.yaml
-# or
 ~/.google-cloud-sdk/bin/dev_appserver.py \
     --port=8080 --admin_port=8000 --storage_path=$GOPATH/.data --skip_sdk_update_check=true \
     $GOPATH/src/go-app/app.yaml

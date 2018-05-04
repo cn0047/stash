@@ -8,6 +8,10 @@ export key={key}
 export serviceID={sID}
 export version={vID}
 
+# get versions
+curl -X GET https://api.fastly.com/service/$serviceID/version \
+  -H 'Fastly-Key: '$key | jq
+
 # new dictionary
 curl -X POST https://api.fastly.com/service/$serviceID/version/$version/dictionary \
   -H 'Fastly-Key: '$key
@@ -26,11 +30,15 @@ curl -X POST https://api.fastly.com/service/$serviceID/version/$version/dictiona
 
 export dictionaryID={dID}
 
+# get dictionaries
+curl -X GET https://api.fastly.com/service/$serviceID/version/$version/dictionary \
+  -H 'Fastly-Key: '$key | jq
+
 # get dictionary items
 curl -X GET https://api.fastly.com/service/$serviceID/dictionary/$dictionaryID/items \
   -H 'Fastly-Key: '$key | jq
 
-# create new redirect rule
+# create new dictionary item (redirect rule)
 curl -X POST https://api.fastly.com/service/$serviceID/dictionary/$dictionaryID/item \
   -H 'Fastly-Key: '$key
   -H 'Content-Type: application/json' \
