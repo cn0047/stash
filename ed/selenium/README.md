@@ -2,7 +2,7 @@ Selenium IDE
 -
 2.9.0
 
-````js
+````xml
 <tr>
     <td>type</td>
     <td>id=_name</td>
@@ -27,5 +27,27 @@ Selenium IDE
     <td>type</td>
     <td>id=email</td>
     <td>${email}</td>
+</tr>
+
+<tr>
+    <td>storeEval</td>
+    <td>Math.floor((Math.random() * 1000))</td>
+    <td>id</td>
+</tr>
+<tr>
+    <td>type</td>
+    <td>id=frmEmail</td>
+    <td>javascript{'codenamek2010+'+storedVars['id']+'@gmail.com'}</td>
+</tr>
+
+<tr>
+    <td>storeEval</td>
+    <td>'codenamek2010+'+new Date().getTime()+'@gmail.com'</td>
+    <td>email</td>
+</tr>
+<tr>
+    <td>sendKeys</td>
+    <td>id=UserForm_email</td>
+    <td>javascript{storedVars['email']}</td>
 </tr>
 ````
