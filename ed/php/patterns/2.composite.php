@@ -2,8 +2,6 @@
 /**
  * Composite
  *
- * The intent of a composite is to "compose" objects into tree structures.
- *
  * @category Structural
  */
 

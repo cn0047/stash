@@ -2,10 +2,6 @@
 /**
  * Prototype
  *
- * It is used when the type of objects to create is determined by a prototypical instance.
- * For example: daily meeting in calendar has same members, same time, etc.
- * You don't need to provide such information each time, just instantiate prototype class and use it.
- *
  * @category Creational
  */
 

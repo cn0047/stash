@@ -1,10 +1,6 @@
 <?php
 /**
  * Factory method
- *
- * Defines an interface for creating an object,
- * but leaves the choice of its type to the subclasses,
- * creation being deferred at run-time.
  * 
  * @category Creational
  */

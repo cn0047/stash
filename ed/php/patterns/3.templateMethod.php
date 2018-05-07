@@ -2,10 +2,6 @@
 /**
  * Template method
  *
- * It’s another way of encapsulation piece of algorithms so the sub-classes can hook themselves
- * right into computation any time they want.
- * For example: applying same (template) approach for bunch of stuff.
- *
  * @category Behaviour
  */
 

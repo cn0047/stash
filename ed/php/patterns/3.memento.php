@@ -2,8 +2,6 @@
 /**
  * Memento
  *
- * Is a pattern that provides the ability to restore an object to its previous state (undo via rollback).
- *
  * @category Behaviour
  */
 

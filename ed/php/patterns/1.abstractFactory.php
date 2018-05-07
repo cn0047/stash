@@ -2,10 +2,6 @@
 /**
  * Abstract factory
  *
- * Abstract Factory offers the interface for creating a family of related objects,
- * without explicitly specifying their classes.
- * For example: DbProviderFactory (mysql/mongo/etc) - DbCommand, DbConnection, DbParameter, etc.
- *
  * @category Creational
  */
 

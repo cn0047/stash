@@ -2,8 +2,6 @@
 /**
  * Iterator
  *
- * Is a pattern in which an iterator is used to traverse a container and access the container's elements.
- *
  * @category Behaviour
  */
 

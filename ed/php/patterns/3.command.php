@@ -2,9 +2,6 @@
 /**
  * Command
  *
- * Is a pattern in which an object is used to represent and encapsulate
- * all the information needed to call a method.
- *
  * @category Behaviour
  */
 

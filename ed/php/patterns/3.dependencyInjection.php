@@ -2,14 +2,6 @@
 /**
  * Dependency injection
  *
- * Pattern separates the creation of a client's dependencies from its own behavior,
- * which allows program designs to be loosely coupled and to follow the
- * dependency inversion and single responsibility principles.
- * Types of dependency injection:
- * 1) constructor injection
- * 2) setter injection
- * 3) interface injection
- *
  * @category Behaviour
  */
 

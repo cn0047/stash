@@ -2,8 +2,6 @@
 /**
  * Strategy
  *
- * Is a pattern that enables an algorithm's behavior to be selected at runtime.
- *
  * @category Behaviour
  */
 

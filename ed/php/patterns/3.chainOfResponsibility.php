@@ -2,9 +2,6 @@
 /**
  * Chain of Responsibility
  *
- * Is a design pattern consisting of objects, each object contains logic and link to the next
- * processing object in the chain, that will invoked.
- *
  * @category Behaviour
  */
 
