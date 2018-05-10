@@ -91,6 +91,18 @@ curl -i -XPOST 'http://localhost:8081/cars' -H 'Content-Type: application/json' 
    -d '{"vendor": "BMW", "name": "M6"}'
 ````
 
+# web.three.tiny
+
+docker run -it --rm -v $PWD/ed/go/examples/web.three.tiny:/app -e GOPATH='/app' \
+  cn007b/go sh -c 'cd $GOPATH/src/app && go install'
+
+docker run -it --rm -v $PWD/ed/go/examples/web.three.tiny:/app -e GOPATH='/app' \
+  -p 8080:8080 \
+  cn007b/go sh -c 'cd $GOPATH && ./bin/app'
+
+# check
+curl http://localhost:8080/v1/file-info/id/7
+
 #### GO Echo
 
 ````
@@ -220,4 +232,28 @@ docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' golang:latest sh -c '
 docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' golang:latest sh -c '
     cd src/github.com/app/products/dao && go tool cover -html=coverage.out -o=coverage.html
 '
+````
+
+#### Google AppEngine
+
+````
+export GOPATH=$PWD/ed/go.appengine/examples/one
+cd $GOPATH
+
+go get -u google.golang.org/appengine/...
+go get -u github.com/mjibson/goon
+go get -u golang.org/x/lint/golint
+go get -u golang.org/x/tools/cmd/cover
+go get -u github.com/google/gops
+
+# test
+cd src/go-app && ~/.google-cloud-sdk/platform/google_appengine/goroot-1.9/bin/goapp test -cover
+
+# start dev server
+~/.google-cloud-sdk/bin/dev_appserver.py \
+    --port=8080 --admin_port=8000 --storage_path=$GOPATH/.data --skip_sdk_update_check=true \
+    $GOPATH/src/go-app/app.yaml
+
+# check
+curl http://localhost:8080/goon
 ````

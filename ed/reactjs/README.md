@@ -125,6 +125,17 @@ var Settings = React.createClass({
     },
   }
 });
+
+Config.propTypes = {
+  data: PropTypes.shape({
+    type: PropTypes.string,
+    key: PropTypes.string,
+    applicationID: PropTypes.string,
+    value: PropTypes.string,
+    description: PropTypes.string,
+  }),
+  scenario: PropTypes.oneOf([SCENARIO_CREATE, SCENARIO_UPDATE]).isRequired,
+};
 ````
 
 ## Server side rendering
