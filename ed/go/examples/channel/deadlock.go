@@ -7,3 +7,9 @@ func main() {
 	ch <- 1
 	fmt.Println(<-ch)
 }
+
+/*
+
+fatal error: all goroutines are asleep - deadlock!
+
+*/

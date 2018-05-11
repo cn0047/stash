@@ -2,7 +2,8 @@ GO (GOLANG)
 -
 
 ````
-docker build -t xgo ./docker/go
+# docker build -t xgo ./docker/go
+docker tag cn007b/go xgo
 
 docker run -it --rm -v $PWD:/gh -w /gh xgo go
 
