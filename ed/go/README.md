@@ -103,11 +103,6 @@ println(option)
 for i := 0; i < 100; i++ {
 }
 
-// test
-t.Run("fail send email", func(t *testing.T) {})
-t.Skip("skipping...")
-b.RunParallel(func(pb *testing.PB) {})
-
 v := varI.(T)
 if v, ok := varI.(T); ok {
     Process(v) return
@@ -127,6 +122,8 @@ switch t := areaIntf.(type) {
 
 // non-struct type
 type MyFloat float64
+
+f, _ := os.OpenFile("/tmp/debug.log", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0777); f.WriteString("dbg" + "\n")
 ````
 
 Go is compiled, garbage-collected, concurrent, type-safe.

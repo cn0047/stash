@@ -1,6 +1,21 @@
 Test
 -
 
+## Test
+
+````
+goapp test -v transactional/users/service -run TestGetServiceAccountsForAdmin
+````
+
+````
+t.Run("fail send email", func(t *testing.T) {})
+t.Errorf("Got: %s, want: %s", a, e)
+t.Skip("skipping...")
+b.RunParallel(func(pb *testing.PB) {})
+````
+
+## Bench
+
 Bench output:
 
 ````
