@@ -3,10 +3,9 @@ osx
 
 The default shell in Mac OS X is the Bourne-again shell.
 
-`quicksilver` tool for quick app's launch,
-[default config](https://monosnap.com/file/UH48Ulyzm6IzKxhlWqBuozkAOgciUQ).
-
+`quicksilver` tool for quick app's launch ([default config](https://monosnap.com/file/UH48Ulyzm6IzKxhlWqBuozkAOgciUQ)).
 `monosnap` tool for screenshots.
+`GIPHY` tool to convert video into gif.
 
 ````
 man grep

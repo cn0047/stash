@@ -5,6 +5,8 @@ nvm
 
 ````
 nvm ls
-nvm use 8.9.1
-nvm alias default 8.9.1
+nvm ls-remote
+nvm install 10.1
+nvm use 10.1
+nvm alias default 10.1
 ````

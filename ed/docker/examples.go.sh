@@ -46,11 +46,15 @@ docker run -it --rm --net=xnet -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/
 
 ````
 # web.one
-docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.one/' \
-    golang:latest sh -c 'cd $GOPATH && go get github.com/codegangsta/gin'
+docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.one/' golang:latest sh -c '
+    cd $GOPATH \
+    && go get github.com/codegangsta/gin \
+    && go get github.com/pkg/errors
+'
 # test
 docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.one/' \
     golang:latest sh -c 'cd $GOPATH && cd src/firstapp && go test -cover'
+# run
 docker run -it --rm --name go-one -p 8000:8000 -p 8001:8001 \
     -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.one/' \
     golang:latest sh -c 'cd $GOPATH && ./bin/gin --port 8001 --appPort 8000 --path src/firstapp/ run main.go'

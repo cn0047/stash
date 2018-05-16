@@ -26,14 +26,14 @@ func datastorePut1(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Fprintf(w, "<br>Error to PUT: %+v", err)
 	}
-	fmt.Fprintf(w, "<br>PUT 1 - OK, key: %+v | %+v", k, u)
+	fmt.Fprintf(w, "<br>PUT 1 - OK, key: %+v, 🔑: %+v || %+v", key, k, u)
 
 	u2 := User{}
 	err = datastore.Get(ctx, key, &u2)
 	if err != nil {
 		fmt.Fprintf(w, "<br>Error to GET: %+v", err)
 	}
-	fmt.Fprintf(w, "<br>GET * - OK, key: %+v | %+v", k, u)
+	fmt.Fprintf(w, "<br>GET * - OK: %+v", u2)
 
 	fmt.Fprintf(w, "<hr>")
 }

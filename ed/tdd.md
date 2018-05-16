@@ -68,3 +68,33 @@ Do our objects do the right thing, are they convenient to work with?
 
 The aim of a unit test is to show that a single part of the application does what the programmer intends it to.
 Unit tests MUST be fast.
+
+## Testing Anti-Patterns
+
+* [Having unit tests without integration tests](https://monosnap.com/file/ctZy5mvYR76aq5QTEI71TuBCNtYanK).
+
+* Having integration tests without unit tests (integration tests are: complex, slow, harder to debug).
+
+* Having the wrong kind of tests (`is-it-object` require many unit test and no integration test).
+
+* Testing the wrong functionality (tests that verify the application data model).
+
+* Testing internal implementation (if you continuously fixing existing tests - you're doing something wrong).
+
+* Paying excessive attention to test coverage
+  (100% code coverage sounds good in theory but almost always is a waste of time).
+
+* Having flaky or slow tests (if test fils randomly - developers won't trust test and soon will ignore tests).
+
+* Running tests manually (testing should be something that happens all the time behind the scenes).
+
+* Treating test code as a second class citizen
+  (design your tests with the same detail that you design the main feature code).
+
+* Not converting PRODUCTION bugs to tests.
+
+* Treating TDD as a religion (TDD is a good idea but you don’t have to follow it all the time: startup, etc).
+
+* Writing tests without reading documentation first.
+
+* Giving testing a bad reputation out of ignorance.
