@@ -12,6 +12,21 @@ docker run -it --rm -v $PWD:/gh -w /gh golang:latest go run /gh/x.go
 
 docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh' golang:latest sh -c 'echo $GOPATH'
 
+# debug
+export APP_DIR='/gh/ed/go/examples/debug'
+export GOPATH=$PWD/..$APP_DIR
+docker run -it --rm -v $PWD:/gh -e GOPATH=$APP_DIR golang:latest sh -c '
+    cd $GOPATH \
+    && go get -u github.com/derekparker/delve/cmd/dlv
+'
+# run
+docker run -it --rm -p 8080:8080 -v $PWD:/gh -e GOPATH=$APP_DIR golang:latest sh -c '
+    cd $GOPATH && go run src/app/main.go
+'
+# docker run -it --rm -p 8080:8080 -v $PWD:/gh -e GOPATH=$APP_DIR golang:latest sh -c '
+#     cd $GOPATH && ./bin/dlv debug src/app/main.go
+# '
+
 # whatever - slice
 docker run -it --rm -v $PWD:/gh -e GOPATH='/gh/ed/go/examples/whatever/slice.allocation/' golang:latest sh -c '
     cd $GOPATH \
@@ -100,8 +115,6 @@ docker run -it --rm --net=xnet -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed
 docker run -it --rm --net=xnet -p 8080:8080 -p 8081:8081 \
     -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.three/' \
     golang:latest sh -c 'cd $GOPATH && ./bin/gin --port 8081 --appPort 8080 --path src/app/ run main.go'
-# docker run -it --rm --net=xnet -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.three/' \
-#     golang:latest sh -c 'cd $GOPATH && ./bin/dlv debug src/app/main.go'
 
 # test
 curl -i 'http://localhost:8080'
