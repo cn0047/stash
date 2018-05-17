@@ -12,6 +12,31 @@ docker run -it --rm -v $PWD:/gh -w /gh golang:latest go run /gh/x.go
 
 docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh' golang:latest sh -c 'echo $GOPATH'
 
+# whatever - slice
+docker run -it --rm -v $PWD:/gh -e GOPATH='/gh/ed/go/examples/whatever/slice.allocation/' golang:latest sh -c '
+    cd $GOPATH \
+    && go get -u github.com/google/pprof \
+    && go get -u github.com/pkg/profile
+'
+# bench
+docker run -it --rm -v $PWD:/gh -e GOPATH='/gh/ed/go/examples/whatever/slice.allocation/' \
+    golang:latest sh -c 'cd $GOPATH/src/app/lib && go test  -bench=. -benchmem'
+# install
+docker run -it --rm -v $PWD:/gh -e GOPATH='/gh/ed/go/examples/whatever/slice.allocation/' \
+    golang:latest sh -c 'cd $GOPATH/src/app/ && go install'
+# run
+docker run -it --rm -p 8080:8080 -v $PWD:/gh -v $PWD/ed/go/examples/whatever/slice.allocation/tmp:/tmp \
+    -e GOPATH='/gh/ed/go/examples/whatever/slice.allocation/' \
+    golang:latest sh -c 'cd $GOPATH/bin && ./app'
+# or
+docker run -it --rm -p 8080:8080 -v $PWD:/gh -v $PWD/ed/go/examples/whatever/slice.allocation/tmp:/tmp \
+    -e GOPATH='/gh/ed/go/examples/whatever/slice.allocation/' \
+    golang:latest sh -c 'cd $GOPATH && go run src/app/main.go'
+# check
+# http://localhost:8080/f1
+# http://localhost:8080/f2
+# http://localhost:8080/debug/pprof
+
 # test (bench)
 docker run -it --rm -v $PWD:/gh -e GOPATH='/gh/ed/go/examples/bench/' \
     golang:latest sh -c 'cd $GOPATH && go test -v'
