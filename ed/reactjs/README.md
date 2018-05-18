@@ -14,6 +14,10 @@ cd hello-world
 npm start
 ````
 
+````
+this.setState(prevState => Object.assign({}, prevState, {new: "new"}));
+````
+
 Component may be:
 * function component (`const MyCmpnt = () => { return someJSX }`)
 * class component

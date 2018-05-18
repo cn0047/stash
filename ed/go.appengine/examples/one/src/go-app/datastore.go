@@ -11,8 +11,9 @@ import (
 
 func datastoreHandler(w http.ResponseWriter, r *http.Request) {
 	datastorePut1(w, r)
-	datastorePut2(w, r)
-	datastorePut3(w, r)
+	transactionCommit(w, r)
+	transactionRollBack(w, r)
+	transactionPanic(w, r)
 	datastoreGet1(w, r)
 	datastoreGet2(w, r)
 }
@@ -38,7 +39,7 @@ func datastorePut1(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "<hr>")
 }
 
-func datastorePut2(w http.ResponseWriter, r *http.Request) {
+func transactionCommit(w http.ResponseWriter, r *http.Request) {
 	u := User{Id: "usr5", Name: "User 5", Tag: "cli"}
 	ctx := appengine.NewContext(r)
 	key := datastore.NewIncompleteKey(ctx, "User", nil)
@@ -50,13 +51,13 @@ func datastorePut2(w http.ResponseWriter, r *http.Request) {
 		return err
 	}, nil)
 	if err == nil {
-		fmt.Fprintf(w, "<br>TRANSACTION 1 - OK, key: %+v | %+v", key, u)
+		fmt.Fprintf(w, "<br>TRANSACTION 1 - ✅ OK, key: %+v | %+v", key, u)
 	} else {
-		fmt.Fprintf(w, "<br>Transaction failed, Error: %+v", err)
+		fmt.Fprintf(w, "<br>Transaction 1 🔴 failed, Error: %+v", err)
 	}
 }
 
-func datastorePut3(w http.ResponseWriter, r *http.Request) {
+func transactionRollBack(w http.ResponseWriter, r *http.Request) {
 	u := User{Id: "usr6", Name: "User 6 {ROLL BACK CASE}", Tag: "cli"}
 	ctx := appengine.NewContext(r)
 	key := datastore.NewIncompleteKey(ctx, "User", nil)
@@ -67,6 +68,24 @@ func datastorePut3(w http.ResponseWriter, r *http.Request) {
 		return err
 	}, nil)
 	fmt.Fprintf(w, "<br>TRANSACTION 2: %+v", err)
+}
+
+func transactionPanic(w http.ResponseWriter, r *http.Request) {
+	defer func() {
+		r := recover()
+		fmt.Fprintf(w, "<br>Transaction 3 RECOVERY 🚑: %+v", r)
+	}()
+	ctx := appengine.NewContext(r)
+	err := datastore.RunInTransaction(ctx, func(transactionCTX context.Context) error {
+		u := User{Id: "usr7", Name: "User 7", Tag: "cli"}
+		key := datastore.NewIncompleteKey(ctx, "User", nil)
+		_, err := datastore.Put(transactionCTX, key, &u)
+		panic("panic in transaction")
+		return err
+	}, nil)
+	if err != nil {
+		fmt.Fprintf(w, "<br>Transaction 3 failed, Error: %+v", err)
+	}
 }
 
 // field tags contains: test & go

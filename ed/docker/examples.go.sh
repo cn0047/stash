@@ -23,9 +23,6 @@ docker run -it --rm -v $PWD:/gh -e GOPATH=$APP_DIR golang:latest sh -c '
 docker run -it --rm -p 8080:8080 -v $PWD:/gh -e GOPATH=$APP_DIR golang:latest sh -c '
     cd $GOPATH && go run src/app/main.go
 '
-# docker run -it --rm -p 8080:8080 -v $PWD:/gh -e GOPATH=$APP_DIR golang:latest sh -c '
-#     cd $GOPATH && ./bin/dlv debug src/app/main.go
-# '
 
 # whatever - slice
 docker run -it --rm -v $PWD:/gh -e GOPATH='/gh/ed/go/examples/whatever/slice.allocation/' golang:latest sh -c '
@@ -277,11 +274,29 @@ docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' golang:latest sh -c '
 '
 ````
 
+#######################################################################################################################
+
+
+#### debug
+
+````
+export GOPATH=$PWD'/ed/go/examples/debug'
+
+# install delve
+cd $GOPATH && git clone https://github.com/derekparker/delve.git && cd -
+cd $GOPATH/delve && make install && cd -
+
+go build -gcflags='-N -l' $GOPATH/src/app/main.go \
+    && dlv --listen=:2345 --headless=true --api-version=2 exec ./main
+
+# https://monosnap.com/file/xQWOFnKzTy2ODUu4Kxute5nxSEtTuR
+````
+
 #### Google AppEngine
 
 ````
 export GOPATH=$PWD/ed/go.appengine/examples/one
-cd $GOPATH
+# cd $GOPATH
 
 go get -u google.golang.org/appengine/...
 go get -u github.com/mjibson/goon
