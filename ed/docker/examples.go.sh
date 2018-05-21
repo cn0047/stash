@@ -315,3 +315,13 @@ cd src/go-app && ~/.google-cloud-sdk/platform/google_appengine/goroot-1.9/bin/go
 # check
 curl http://localhost:8080/goon
 ````
+
+#### Monitoring
+
+````
+export GOPATH=/Users/k/web/kovpak/monitoring
+
+~/.google-cloud-sdk/bin/dev_appserver.py \
+    --port=8080 --admin_port=8000 --storage_path=$GOPATH/.data --skip_sdk_update_check=true \
+    $GOPATH/src/go-app/app.yaml
+````

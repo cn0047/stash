@@ -14,8 +14,9 @@ func one() {
 }
 
 func web() {
+	msg := "Hello world!"
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Hello world!"))
+		w.Write([]byte(msg))
 	})
 	http.ListenAndServe(":8080", nil)
 }

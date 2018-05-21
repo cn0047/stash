@@ -9,6 +9,7 @@ import (
 
 func init() {
 	http.HandleFunc("/", indexHandler)
+	http.HandleFunc("/hw", hwHandler)
 	http.HandleFunc("/goon", goonHandler)
 	http.HandleFunc("/datastore", datastoreHandler)
 	http.HandleFunc("/config", configHandler)
@@ -25,4 +26,9 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Fprintln(w, GeTHomeText())
+}
+
+func hwHandler(w http.ResponseWriter, r *http.Request) {
+	msg := "Hello world!!!))"
+	w.Write([]byte(msg))
 }
