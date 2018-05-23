@@ -321,6 +321,8 @@ curl http://localhost:8080/goon
 ````
 export GOPATH=/Users/k/web/kovpak/monitoring
 
+go get ./src/go-app/...
+
 ~/.google-cloud-sdk/bin/dev_appserver.py \
     --port=8080 --admin_port=8000 --storage_path=$GOPATH/.data --skip_sdk_update_check=true \
     $GOPATH/src/go-app/app.yaml
