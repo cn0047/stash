@@ -290,6 +290,16 @@ go build -gcflags='-N -l' $GOPATH/src/app/main.go \
     && dlv --listen=:2345 --headless=true --api-version=2 exec ./main
 
 # https://monosnap.com/file/xQWOFnKzTy2ODUu4Kxute5nxSEtTuR
+
+#
+# ⬇️
+# docker run -it --rm -p 2345:2345 -v $GOPATH:/gh -w /gh -e GOPATH='/gh' xgo sh -c '
+#     go build -gcflags="-N -l" src/app/main.go \
+#     && /app/bin/dlv --listen=:2345 --headless=true --api-version=2 exec ./main
+# '
+#
+# ERROR:
+# could not launch process: fork/exec ./main: operation not permitted
 ````
 
 #### Google AppEngine
