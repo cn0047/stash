@@ -4,11 +4,29 @@ App Engine
 ````
 # ~/.google-cloud-sdk/bin/gcloud
 
-gcloud app deploy && gcloud app browse
+# login
+gcloud auth login
+gcloud auth list
+
+gcloud config list
+gcloud config set project thisismonitoring
+
+gcloud projects list
+
+gcloud components list
+gcloud components update
+
+gcloud source repos list
+
+gcloud app instances list
+gcloud app services list
+
+gcloud app deploy
+gcloud app deploy --verbosity=debug --project=thisismonitoring
+
+gcloud app browse
 
 gcloud app logs tail -s default
-
-gcloud components update
 ````
 
 ````

@@ -277,6 +277,16 @@ docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' golang:latest sh -c '
 #######################################################################################################################
 
 
+#### websocket
+
+````
+export GOPATH=$PWD'/ed/go/examples/websocket'
+
+go get -u github.com/gorilla/websocket
+
+cd $GOPATH/src/app && go run $GOPATH/src/app/websockets.go
+````
+
 #### debug
 
 ````
@@ -336,4 +346,8 @@ go get ./src/go-app/...
 ~/.google-cloud-sdk/bin/dev_appserver.py \
     --port=8080 --admin_port=8000 --storage_path=$GOPATH/.data --skip_sdk_update_check=true \
     $GOPATH/src/go-app/app.yaml
+
+# deploy PROD
+cd src/go-app \
+  && gcloud app deploy --verbosity=debug --project=monitoring-204812
 ````

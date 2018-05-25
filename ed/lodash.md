@@ -17,54 +17,54 @@ _.invokeMap([[5, 1, 7], [3, 2, 1]], 'sort');
 // => [[1, 5, 7], [1, 2, 3]]
 ````
 
-reject - like `filter` but condition must return false.
-sample - random element from collection.
+<br>`reject` - like `filter` but condition must return false.
+<br>`sample` - random element from collection.
 
 #### Function
 
-ary - func for n arguments and ignore else arguments.
-debounce - delays func invoking.
-flip - func invokes func with reversed arguments.
-memoize - fun that memoizes the result of func.
-spread - func apply.
-throttle - invokes func at most once per every wait milliseconds.
-unary - func accepts up to one argument and ignoring else.
+<br>`ary` - func for n arguments and ignore else arguments.
+<br>`debounce` - delays func invoking.
+<br>`flip` - func invokes func with reversed arguments.
+<br>`memoize` - fun that memoizes the result of func.
+<br>`spread` - func apply.
+<br>`throttle` - invokes func at most once per every wait milliseconds.
+<br>`unary` - func accepts up to one argument and ignoring else.
 
 #### Lang
 
-conformsTo - checks if object conforms to source.
-isNative - is native js func.
+<br>`conformsTo` - checks if object conforms to source.
+<br>`isNative` - is native js func.
 
 #### Number
 
-clamp - pick closesv value from range.
+<br>`clamp` - pick closesv value from range.
 
 #### Object
 
-invert - flip keys and values.
-merge - like `assign`.
-result - get value by path.
-toPairs - creates array of own enumerable string keyed-value pairs.
-transform - alternative to `reduce`.
-update - lik `set`.
+<br>`invert` - flip keys and values.
+<br>`merge` - like `assign`.
+<br>`result` - get value by path.
+<br>`toPairs` - creates array of own enumerable string keyed-value pairs.
+<br>`transform` - alternative to `reduce`.
+<br>`update` - lik `set`.
 
 #### Seq
 
-tap - inject funct in chain of functions.
-thru - like `tap`.
+<br>`tap` - inject funct in chain of functions.
+<br>`thru` - like `tap`.
 
 #### String
 
-template - compiled template func.
+<br>`template` - compiled template func.
 
 #### Util
 
-attempt - attempts to invoke func and result or the caught error object.
-cond - func with pairs and invoke func for matched key.
-conforms - func which check if objects match.
-identity - returns the first argument it receives.
-matches - partial deep comparison.
-method - invokes method at path.
-noop - returns undefined.
-property - value by path.
-times - invokes the iteratee n times.
+<br>`attempt` - attempts to invoke func and result or the caught error object.
+<br>`cond` - func with pairs and invoke func for matched key.
+<br>`conforms` - func which check if objects match.
+<br>`identity` - returns the first argument it receives.
+<br>`matches` - partial deep comparison.
+<br>`method` - invokes method at path.
+<br>`noop` - returns undefined.
+<br>`property` - value by path.
+<br>`times` - invokes the iteratee n times.

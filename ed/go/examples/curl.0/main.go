@@ -13,13 +13,13 @@ func main() {
 	//g2, _ := lib.Get2()
 	//fmt.Printf("\n Get2: %+v", g2)
 
-
-	g3, _ := lib.Get3()
-	fmt.Printf("\n Get3: %+v", g3)
+	//g3, _ := lib.Get3()
+	//fmt.Printf("\n Get3: %+v", g3)
 
 	//p1, _ := lib.Post1()
 	//fmt.Printf("\n Post1: %+v", p1)
 
-	//p2, _ := lib.Post2()
-	//fmt.Printf("\n Post2: %+v", p2)
+	p2, _ := lib.Post2()
+	fmt.Printf("\n Post2: %+v", p2)
+	fmt.Printf("\n Post2 Status code: %+v", p2.StatusCode)
 }
