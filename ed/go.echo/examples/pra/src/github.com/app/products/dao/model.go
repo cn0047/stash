@@ -14,3 +14,8 @@ type ProductModel struct {
 	RetailPrice float32 `json:"retail_price"`
 	StoreName   string  `json:"store_name"`
 }
+
+// SetName method to set product's name.
+func (p *ProductModel) SetName(name string) {
+	p.Name = name
+}

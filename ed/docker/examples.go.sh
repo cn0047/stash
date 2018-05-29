@@ -264,13 +264,43 @@ curl -XGET 'http://localhost:8080/products' | jq
 curl -XGET 'http://localhost:8080/products/mTd3lb' | jq
 ````
 
+#### Products (PRA)
+
 ````
-# Coverage one file:
-docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' golang:latest sh -c '
-    cd src/github.com/app/products/dao && go test -cover -coverprofile=coverage.out ./...
+export APP_PATH=$PWD/ed/go.echo/examples/pra
+
+docker run -it --rm -v $APP_PATH:/app -e GOPATH='/app' xgo sh -c '
+    cd $GOPATH/src/github.com/app/products/dao \
+    && go get -u github.com/labstack/echo/...
 '
-docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' golang:latest sh -c '
-    cd src/github.com/app/products/dao && go tool cover -html=coverage.out -o=coverage.html
+
+# Coverage one file:
+docker run -it --rm -v $APP_PATH:/app -e GOPATH='/app' xgo sh -c '
+    cd $GOPATH/src/github.com/app/products/dao \
+    && go test -cover -coverprofile=coverage.out ./... \
+    && go tool cover -html=coverage.out -o=coverage.html
+'
+docker run -it --rm -v $APP_PATH:/app -e GOPATH='/app' xgo sh -c '
+    cd $GOPATH/src/github.com/app/products \
+    && mkdir -p ./.cover \
+    && go test -cover -coverprofile ./.cover/a.part ./config \
+    && go test -cover -coverprofile ./.cover/b.part ./controller \
+    && go test -cover -coverprofile ./.cover/c.part ./dao \
+    && go test -cover -coverprofile ./.cover/d.part ./di \
+    && echo "mode: set" > coverage.out \
+    && grep -h -v "mode: set" .cover/*.part >> coverage.out \
+    && go tool cover -html=coverage.out -o=coverage.html
+'
+docker run -it --rm -v $APP_PATH:/app -e GOPATH='/app' xgo sh -c '
+    cd $GOPATH/src/github.com/app/products \
+    && mkdir -p ./.cover \
+    && go test -cover -coverprofile ./.cover/config.part ./config \
+    && go test -cover -coverprofile ./.cover/controller.part ./controller \
+    && go test -cover -coverprofile ./.cover/dao.part ./dao \
+    && go test -cover -coverprofile ./.cover/di.part ./di \
+    && echo "mode: set" > ./.cover/coverage.out \
+    && grep -h -v "mode: set" .cover/*.part >> ./.cover/coverage.out \
+    && go tool cover -html=./.cover/coverage.out -o=./.cover/coverage.html
 '
 ````
 

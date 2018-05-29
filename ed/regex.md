@@ -16,6 +16,7 @@ Ip address range: https://regex101.com/r/O4t93o/2/
 |0                                         | 0 or more |
 |+                                         | repetitive match, 1 or more |
 |?                                         | optional match, 0 or 1 |
+|*                                         | optional match, 0 or many |
 |*?                                        | optional match, 0 or many |
 |*?, +?, ??                                | the *, +, and ? qualifiers are all greedy, `?` helps avoid it |
 |{3}                                       | exactly 3 |
