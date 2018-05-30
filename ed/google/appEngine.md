@@ -1,6 +1,8 @@
 App Engine
 -
 
+[logs](https://console.cloud.google.com/logs)
+
 ````
 # ~/.google-cloud-sdk/bin/gcloud
 
