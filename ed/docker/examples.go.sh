@@ -353,6 +353,8 @@ go get -u github.com/mjibson/goon
 go get -u golang.org/x/lint/golint
 go get -u golang.org/x/tools/cmd/cover
 go get -u github.com/google/gops
+go get -u github.com/kisielk/godepgraph
+go get -u github.com/thepkg/strings
 
 # test
 cd src/go-app && ~/.google-cloud-sdk/platform/google_appengine/goroot-1.9/bin/goapp test -cover
@@ -364,6 +366,10 @@ cd src/go-app && ~/.google-cloud-sdk/platform/google_appengine/goroot-1.9/bin/go
 
 # check
 curl http://localhost:8080/goon
+
+# godepgraph
+cd $GOPATH && godepgraph google.golang.org/appengine | dot -Tpng -o godepgraph.png
+cd $GOPATH && godepgraph github.com/thepkg/strings | dot -Tpng -o godepgraph.png
 ````
 
 #### Monitoring

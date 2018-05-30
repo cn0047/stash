@@ -102,3 +102,8 @@ curl 'http://localhost:8080/v1/api/collection' -XGET -d '{"resources_from":100, 
 For security it's better to return JSON with an Object on the outside:
 <br>not: `[{"object": "inside an array"}]`
 <br>but: `{"result": [{"object": "inside an array"}]}`
+
+#### Interesting cases
+
+* GET user not by ID (PK) but by email (unique key) -> run GET query to users collection.
+* GET aggregated user (db, facebook, twitter, etc).

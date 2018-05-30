@@ -292,3 +292,26 @@ do not block and always return default value for a channel type.
 
 Only the sender should close a channel, never the receiver
 (otherwise panic).
+
+#### Memory Management
+
+There are 3 places memory can be allocated:
+
+* the stack - functions parameters, local variables allocated on the stack.
+  Each goroutine has its own stack.
+  Goroutine stacks are allocated on the heap.
+  If the stack needs to grow then heap operations (allocate new, copy old to new, free old) will occur.
+
+* the heap - does not have a single partition of allocated and free regions, set of of free regions.
+  Unlike the stack, the heap is not owned by one goroutine
+  (manipulating the set of free regions in the heap requires synchronization).
+
+* the data segment - this is where global variables are stored.
+  Defined at compile time and therefore does not grow and shrink at runtime.
+
+Escape analysis (variable & pointer analysis when function exit)
+is used to determine whether an item can be allocated on the stack.
+
+The Go garbage collector occasionally has to stop the world to complete the collection task.
+The stop the world task will take no more than 10 milliseconds
+out of every 50 milliseconds of execution time.
