@@ -14,6 +14,8 @@ man grep
 open /Applications/Utilities/Terminal.app/Contents/Resources/Fonts/
 
 /usr/bin/open -a "/Applications/Google Chrome.app" 'http://google.com/'
+# or
+open 'http://google.com/'
 ````
 
 ## HotKeys
@@ -66,4 +68,6 @@ brew search xdebug
 
 # colors in terminal
 brew install grc
+
+brew install qcachegrind
 ````

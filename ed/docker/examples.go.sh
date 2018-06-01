@@ -3,79 +3,96 @@ GO (GOLANG)
 
 ````
 # docker build -t xgo ./docker/go
+docker pull cn007b/go
 docker tag cn007b/go xgo
 
 docker run -it --rm -v $PWD:/gh -w /gh xgo go
 
-docker run -it --rm -v $PWD:/gh -w /gh golang:latest go
-docker run -it --rm -v $PWD:/gh -w /gh golang:latest go run /gh/x.go
+docker run -it --rm -v $PWD:/gh -w /gh xgo go
+docker run -it --rm -v $PWD:/gh -w /gh xgo go run /gh/x.go
 
-docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh' golang:latest sh -c 'echo $GOPATH'
+docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh' xgo sh -c 'echo $GOPATH'
 
 # debug
 export APP_DIR='/gh/ed/go/examples/debug'
 export GOPATH=$PWD/..$APP_DIR
-docker run -it --rm -v $PWD:/gh -e GOPATH=$APP_DIR golang:latest sh -c '
+docker run -it --rm -v $PWD:/gh -e GOPATH=$APP_DIR xgo sh -c '
     cd $GOPATH \
     && go get -u github.com/derekparker/delve/cmd/dlv
 '
 # run
-docker run -it --rm -p 8080:8080 -v $PWD:/gh -e GOPATH=$APP_DIR golang:latest sh -c '
+docker run -it --rm -p 8080:8080 -v $PWD:/gh -e GOPATH=$APP_DIR xgo sh -c '
     cd $GOPATH && go run src/app/main.go
 '
 
 # whatever - slice
-docker run -it --rm -v $PWD:/gh -e GOPATH='/gh/ed/go/examples/whatever/slice.allocation/' golang:latest sh -c '
+docker run -it --rm -v $PWD:/gh -e GOPATH='/gh/ed/go/examples/whatever/slice.allocation/' xgo sh -c '
     cd $GOPATH \
     && go get -u github.com/google/pprof \
     && go get -u github.com/pkg/profile
 '
 # bench
 docker run -it --rm -v $PWD:/gh -e GOPATH='/gh/ed/go/examples/whatever/slice.allocation/' \
-    golang:latest sh -c 'cd $GOPATH/src/app/lib && go test  -bench=. -benchmem'
+    xgo sh -c 'cd $GOPATH/src/app/lib && go test  -bench=. -benchmem'
 # install
 docker run -it --rm -v $PWD:/gh -e GOPATH='/gh/ed/go/examples/whatever/slice.allocation/' \
-    golang:latest sh -c 'cd $GOPATH/src/app/ && go install'
+    xgo sh -c 'cd $GOPATH/src/app/ && go install'
 # run
 docker run -it --rm -p 8080:8080 -v $PWD:/gh -v $PWD/ed/go/examples/whatever/slice.allocation/tmp:/tmp \
     -e GOPATH='/gh/ed/go/examples/whatever/slice.allocation/' \
-    golang:latest sh -c 'cd $GOPATH/bin && ./app'
+    xgo sh -c 'cd $GOPATH/bin && ./app'
 # or
 docker run -it --rm -p 8080:8080 -v $PWD:/gh -v $PWD/ed/go/examples/whatever/slice.allocation/tmp:/tmp \
     -e GOPATH='/gh/ed/go/examples/whatever/slice.allocation/' \
-    golang:latest sh -c 'cd $GOPATH && go run src/app/main.go'
+    xgo sh -c 'cd $GOPATH && go run src/app/main.go'
 # check
 # http://localhost:8080/f1
 # http://localhost:8080/f2
 # http://localhost:8080/debug/pprof
 
 # test (bench)
-docker run -it --rm -v $PWD:/gh -e GOPATH='/gh/ed/go/examples/bench/' \
-    golang:latest sh -c 'cd $GOPATH && go test -v'
-docker run -it --rm -v $PWD:/gh -e GOPATH='/gh/ed/go/examples/bench/' \
-    golang:latest sh -c 'cd $GOPATH && go test -race'
-docker run -it --rm -v $PWD:/gh -e GOPATH='/gh/ed/go/examples/bench/' \
-    golang:latest sh -c 'cd $GOPATH && go test -v -cpuprofile cpu.out'
-# bench
-docker run -it --rm -v $PWD:/gh -e GOPATH='/gh/ed/go/examples/bench/' \
-    golang:latest sh -c 'cd $GOPATH && go test -bench=. -benchmem'
+export APP_PATH=ed/go/examples/bench/fibonacci/
+export GOPATH=/gh/$APP_PATH
+docker run -it --rm -v $PWD:/gh -e GOPATH=$GOPATH xgo sh -c 'cd $GOPATH && go test -v'
+docker run -it --rm -v $PWD:/gh -e GOPATH=$GOPATH xgo sh -c 'cd $GOPATH && go test -v -cpu=1'
+docker run -it --rm -v $PWD:/gh -e GOPATH=$GOPATH xgo sh -c 'cd $GOPATH && go test -v -cpu=2'
+docker run -it --rm -v $PWD:/gh -e GOPATH=$GOPATH xgo sh -c 'cd $GOPATH && go test -cover'
+docker run -it --rm -v $PWD:/gh -e GOPATH=$GOPATH xgo sh -c 'cd $GOPATH && go test -bench=. -benchmem -benchtime 1m1s'
+docker run -it --rm -v $PWD:/gh -e GOPATH=$GOPATH xgo sh -c 'cd $GOPATH && go test -bench=. -benchmem -cpu=2'
+docker run -it --rm -v $PWD:/gh -e GOPATH=$GOPATH xgo sh -c 'cd $GOPATH && go test -race'
+docker run -it --rm -v $PWD:/gh -e GOPATH=$GOPATH xgo sh -c '
+    cd $GOPATH \
+    && go test -v -cpuprofile cpu.out \
+    && go tool pprof -png -output report.cpu.png fibonacci.test cpu.out
+'
+# pprof -http=0.0.0.0:8080
+docker run -it --rm -v $PWD:/gh -e GOPATH=$GOPATH xgo sh -c '
+    cd $GOPATH \
+    && go test -v -memprofile mem.out \
+    && go tool pprof -png -output report.mem.png fibonacci.test mem.out
+'
+docker run -it --rm -v $PWD:/gh -e GOPATH=$GOPATH xgo sh -c '
+    cd $GOPATH \
+    && go test -v -mutexprofile mtx.out \
+    && go tool pprof -png -output report.mtx.png fibonacci.test mtx.out
+'
 
 # db postgresql
 docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \
-    golang:latest sh -c 'cd $GOPATH && go get github.com/lib/pq'
+    xgo sh -c 'cd $GOPATH && go get github.com/lib/pq'
 # run
 docker run -it --rm --net=xnet -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \
-    golang:latest sh -c 'cd $GOPATH && go run src/postgresql/simplest.go'
+    xgo sh -c 'cd $GOPATH && go run src/postgresql/simplest.go'
 
 # db mongo
 docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \
-    golang:latest sh -c 'cd $GOPATH && go get gopkg.in/mgo.v2'
+    xgo sh -c 'cd $GOPATH && go get gopkg.in/mgo.v2'
 # or
 docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \
-    golang:latest sh -c 'cd $GOPATH && go get ./...'
+    xgo sh -c 'cd $GOPATH && go get ./...'
 # run
 docker run -it --rm --net=xnet -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \
-    golang:latest sh -c 'cd $GOPATH && go run src/mongodb/simple.go'
+    xgo sh -c 'cd $GOPATH && go run src/mongodb/simple.go'
 
 ````
 
@@ -83,23 +100,23 @@ docker run -it --rm --net=xnet -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/
 
 ````
 # web.one
-docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.one/' golang:latest sh -c '
+docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.one/' xgo sh -c '
     cd $GOPATH \
     && go get github.com/codegangsta/gin \
     && go get github.com/pkg/errors
 '
 # test
 docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.one/' \
-    golang:latest sh -c 'cd $GOPATH && cd src/firstapp && go test -cover'
+    xgo sh -c 'cd $GOPATH && cd src/firstapp && go test -cover'
 # run
 docker run -it --rm --name go-one -p 8000:8000 -p 8001:8001 \
     -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.one/' \
-    golang:latest sh -c 'cd $GOPATH && ./bin/gin --port 8001 --appPort 8000 --path src/firstapp/ run main.go'
+    xgo sh -c 'cd $GOPATH && ./bin/gin --port 8001 --appPort 8000 --path src/firstapp/ run main.go'
 # check
 curl -i http://localhost:8001/health-check
 
 # web.three ⭐️ ⭐️ ⭐️
-docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.three/' golang:latest sh -c '
+docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.three/' xgo sh -c '
     cd $GOPATH \
     && go get gopkg.in/mgo.v2 \
     && go get github.com/codegangsta/gin \
@@ -107,11 +124,11 @@ docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.three/'
 '
 # run
 docker run -it --rm --net=xnet -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.three/' \
-    golang:latest sh -c 'cd $GOPATH && go run src/app/main.go'
+    xgo sh -c 'cd $GOPATH && go run src/app/main.go'
 # livereload
 docker run -it --rm --net=xnet -p 8080:8080 -p 8081:8081 \
     -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.three/' \
-    golang:latest sh -c 'cd $GOPATH && ./bin/gin --port 8081 --appPort 8080 --path src/app/ run main.go'
+    xgo sh -c 'cd $GOPATH && ./bin/gin --port 8081 --appPort 8080 --path src/app/ run main.go'
 
 # test
 curl -i 'http://localhost:8080'
@@ -149,7 +166,7 @@ curl http://localhost:8080/v1/file-info/id/7
 # one
 
 # init
-docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go.echo/examples/one' golang:latest sh -c '
+docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go.echo/examples/one' xgo sh -c '
     cd $GOPATH \
     && go get -u github.com/labstack/echo/... \
     && go get -u github.com/codegangsta/gin
@@ -157,9 +174,9 @@ docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go.echo/examples/one' g
 # run
 docker run -it --rm -p 8080:8080 -p 8081:8081 \
     -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go.echo/examples/one' \
-    golang:latest sh -c 'cd $GOPATH && ./bin/gin --port 8081 --appPort 8080 --path src/app/ run main.go'
+    xgo sh -c 'cd $GOPATH && ./bin/gin --port 8081 --appPort 8080 --path src/app/ run main.go'
 # test
-docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go.echo/examples/one' golang:latest sh -c '
+docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go.echo/examples/one' xgo sh -c '
     cd $GOPATH && cd src/app && go test -cover
 '
 # check
@@ -172,10 +189,10 @@ curl -i -XGET 'http://localhost:8081/products/iphone'
 
 ````
 docker run -it --rm -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go.gin/examples/one' \
-    golang:latest sh -c 'cd $GOPATH && go get github.com/gin-gonic/gin'
+    xgo sh -c 'cd $GOPATH && go get github.com/gin-gonic/gin'
 
 docker run -it --rm -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go.gin/examples/one' \
-    golang:latest sh -c 'cd $GOPATH && go run src/one/main.go'
+    xgo sh -c 'cd $GOPATH && go run src/one/main.go'
 
 # curl localhost:8080/v1/file-info/id/7
 ````
@@ -183,31 +200,31 @@ docker run -it --rm -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go.gin/exa
 #### API-Gateway
 
 ````
-docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' golang:latest sh -c '
+docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' xgo sh -c '
     go get github.com/codegangsta/gin;
     go get -u golang.org/x/lint/golint;
 '
-docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' golang:latest sh -c '
+docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' xgo sh -c '
     go get -v -t -d ./...
 '
-docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' golang:latest sh -c '
+docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' xgo sh -c '
     go fmt ./...
 '
-docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' golang:latest sh -c '
+docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' xgo sh -c '
     cd src/app/ && go vet ./...
 '
-docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' golang:latest sh -c '
+docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' xgo sh -c '
     ./bin/golint src/app/...
 '
 # run
 docker run -it --rm -p 8080:8080 -p 8081:8081 \
     -v $PWD:/app -w /app -e GOPATH='/app' \
-    golang:latest sh -c './bin/gin --port 8081 --appPort 8080 --path src/app/ run main.go'
+    xgo sh -c './bin/gin --port 8081 --appPort 8080 --path src/app/ run main.go'
 
 curl 'http://localhost:8081/github/users/cn007b'|jq
 
 # install
-docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' golang:latest sh -c '
+docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' xgo sh -c '
     cd src/app/ && go install
 '
 # run
@@ -219,7 +236,7 @@ curl 'http://localhost:8081/github/users/cn007b'|jq
 #### CURL
 
 ````
-docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' golang:latest sh -c '
+docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' xgo sh -c '
     go test -v -cover
 '
 ````
@@ -228,34 +245,34 @@ docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' golang:latest sh -c '
 
 ````
 # 1) Install dependencies:
-docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' golang:latest sh -c '
+docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' xgo sh -c '
     go get -u golang.org/x/lint/golint;
     go get -u golang.org/x/tools/cmd/cover;
     go get github.com/mattn/goveralls
 '
 
 # 2) Run tests:
-docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' golang:latest sh -c '
+docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' xgo sh -c '
     cd src/github.com/app/products/ && go test -v ./...
 '
 
 # 3) Run format:
-docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' golang:latest sh -c '
+docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' xgo sh -c '
     cd src/github.com/app/products/ && go fmt ./...
 '
 
 # 4) Run vet:
-docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' golang:latest sh -c '
+docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' xgo sh -c '
     cd src/github.com/app/products/ && go vet ./...
 '
 
 # 5) Run lint:
-docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' golang:latest sh -c '
+docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' xgo sh -c '
     ./bin/golint src/github.com/app/products/...
 '
 
 # 6) Check manually:
-docker run -it --rm -p 8080:8080 -v $PWD:/app -w /app -e GOPATH='/app' golang:latest sh -c '
+docker run -it --rm -p 8080:8080 -v $PWD:/app -w /app -e GOPATH='/app' xgo sh -c '
     go run src/github.com/app/products/main.go
 '
 # Check:
@@ -370,6 +387,9 @@ curl http://localhost:8080/goon
 # godepgraph
 cd $GOPATH && godepgraph google.golang.org/appengine | dot -Tpng -o godepgraph.png
 cd $GOPATH && godepgraph github.com/thepkg/strings | dot -Tpng -o godepgraph.png
+
+# unit test
+cd $GOPATH/src/go-app && goapp test ./...
 ````
 
 #### Monitoring
@@ -384,6 +404,5 @@ go get ./src/go-app/...
     $GOPATH/src/go-app/app.yaml
 
 # deploy PROD
-cd src/go-app \
-  && gcloud app deploy --verbosity=debug --project=monitoring-204812
+cd src/go-app && gcloud app deploy
 ````

@@ -1,0 +1,17 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/golang:1.9
+
+    working_directory: /go/src/github.com/cn007b/api-gateway
+
+    steps:
+      - checkout
+
+      - run: go get -u golang.org/x/lint/golint
+      - run: golint src/app/...
+
+#      - run: go get -v -t -d ./...
+#      - run: go test -v ./...

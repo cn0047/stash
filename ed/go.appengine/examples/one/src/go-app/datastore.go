@@ -11,6 +11,7 @@ import (
 
 func datastoreHandler(w http.ResponseWriter, r *http.Request) {
 	datastorePut1(w, r)
+	datastorePut2(w, r)
 	transactionCommit(w, r)
 	transactionRollBack(w, r)
 	transactionPanic(w, r)
@@ -18,7 +19,14 @@ func datastoreHandler(w http.ResponseWriter, r *http.Request) {
 	datastoreGet2(w, r)
 }
 
-func datastorePut1(w http.ResponseWriter, r *http.Request) {
+func createUser(ctx context.Context, id string, name string, tag string) (datastore.Key, User, error) {
+	user := User{Id: id, Name: name, Tag: tag}
+	key := datastore.NewIncompleteKey(ctx, "User", nil)
+	key, err := datastore.Put(ctx, key, &user)
+	return *key, user, err
+}
+
+func datastorePut1(w http.ResponseWriter, r *http.Request) (User, User) {
 	u := User{Id: "usr4", Name: "User 4", Tag: "cli"}
 	ctx := appengine.NewContext(r)
 
@@ -37,6 +45,18 @@ func datastorePut1(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "<br>GET * - OK: %+v", u2)
 
 	fmt.Fprintf(w, "<hr>")
+
+	return u, u2
+}
+
+func datastorePut2(w http.ResponseWriter, r *http.Request) {
+	ctx := appengine.NewContext(r)
+	key, user, err := createUser(ctx, "x-usr-1", "x1", "x")
+	if err != nil {
+		fmt.Fprintf(w, "<br>Error to PUT x-usr-1: %+v", err)
+	}
+
+	fmt.Fprintf(w, "<br>PUT x-usr-1 - OK: [%+v] %+v", key, user)
 }
 
 func transactionCommit(w http.ResponseWriter, r *http.Request) {

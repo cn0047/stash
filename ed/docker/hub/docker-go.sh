@@ -8,6 +8,7 @@ docker run -it --rm cn007b/go:1.10 go version
 docker run -it --rm cn007b/go:1.10 golint --help
 docker run -it --rm cn007b/go:1.10 dlv version
 docker run -it --rm cn007b/go:1.10 pprof
+docker run -it --rm cn007b/go:1.10 dot -V
 # push
 docker push cn007b/go:1.10
 

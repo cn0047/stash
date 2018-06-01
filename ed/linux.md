@@ -341,6 +341,9 @@ curl http://localhost:8000 -F "file=@/home/kovpak/Downloads/download.jpg"
 curl http://localhost:8000 -H "Content-Type: multipart/form-data" -F "file=@/Users/k/f.txt" -F "msg=MyFile"
 
 curl -T firmware.bin http://0.0.0.48/cgi-bin/package_install?hash=017
+
+# shows spent time (⏱)
+time curl -si https://realtimelog.herokuapp.com/test
 ````
 
 #### shell

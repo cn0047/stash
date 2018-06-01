@@ -98,3 +98,29 @@ insert into tree values (6, 'service 6');
 |                                                    | set session tx_isolation='READ-UNCOMMITTED';                |
 |                                                    | start transaction;                                          |
 |                                                    | update tree set title = 'service 666' where id = 6; -- hang |
+
+
+####
+
+````sql
+drop table if exists tree;
+create table if not exists tree (id int, title varchar(50));
+
+start transaction;
+insert into tree values (1, 'service 1');
+
+start transaction;
+insert into tree values (2, 'service 2');
+
+commit;
+select * from tree;
+````
+result (😮):
+````
++------+-----------+
+| id   | title     |
++------+-----------+
+|    1 | service 1 |
+|    2 | service 2 |
++------+-----------+
+````

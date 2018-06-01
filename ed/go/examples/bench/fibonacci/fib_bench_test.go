@@ -8,26 +8,26 @@ func benchmarkFib(i int, b *testing.B) {
 	}
 }
 
-func BenchmarkFib1(b *testing.B) {
+func BenchmarkAandB(b *testing.B) {
+	b.Run("a", func(b *testing.B) {
+		benchmarkFib(2, b)
+	})
+
+	b.Run("b", func(b *testing.B) {
+		benchmarkFib(2, b)
+	})
+}
+
+func BenchmarkC(b *testing.B) {
 	benchmarkFib(1, b)
 }
 
-func BenchmarkFib5(b *testing.B) {
-	benchmarkFib(5, b)
-}
-
-func BenchmarkFib10and20(b *testing.B) {
-	b.Run("10", func(b *testing.B) {
-		benchmarkFib(10, b)
-	})
-
-	b.Run("20", func(b *testing.B) {
-		benchmarkFib(20, b)
-	})
+func BenchmarkD(b *testing.B) {
+	benchmarkFib(1, b)
 }
 
 func BenchmarkFibComplete(b *testing.B) {
 	for n := 0; n < b.N; n++ {
-		Fib(10)
+		Fib(3)
 	}
 }

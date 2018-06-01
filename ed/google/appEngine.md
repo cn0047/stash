@@ -36,6 +36,8 @@ gcloud app logs tail -s default
 goapp serve app.yaml
 ````
 
+Warmup Requests - you can use to avoid latency while loading application code on a fresh instance.
+
 #### DataStore
 
 Google Cloud DataStore is a NoSQL document database.
@@ -45,5 +47,3 @@ Disadvantages:
 
 * `FIND ALL WHERE id IN (1, 2)`, `FIND ALL WHERE id = 1 OR id = 2`.
 * [How delete element from array](https://monosnap.com/file/YrQHARwcRPAEagaNfoKeMhh1o1bsnZ).
-
-https://cloud.google.com/appengine/docs/standard/go/logs/
