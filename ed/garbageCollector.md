@@ -1,12 +1,12 @@
 Garbage Collector (GC)
 -
 
-#### Mark and sweep
+#### Mark and sweep (tricolor)
 
 In this method, the GC scans the program, starting from a point called root
 and tries to reach other objects from then.
 
-Disadvantages: entire system must be suspended during collection.
+Disadvantages: entire system must be suspended (stop-the-world) during collection.
 
 #### Copying collection
 

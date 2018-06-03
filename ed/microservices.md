@@ -78,3 +78,5 @@ is a service whose overhead (communications, maintenance etc.) outweighs its uti
 
 * duplicate code / data
 * required reliable CI/CD
+* networks are unreliable.
+* networks are slow.

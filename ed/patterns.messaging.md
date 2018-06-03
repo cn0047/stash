@@ -1,6 +1,17 @@
 Messaging patterns
 -
 
+Messaging is a technology that enables
+high-speed, asynchronous, program-to-program communication with reliable delivery.
+
+In essence, a message is transmitted in five steps:
+1. Create — The sender creates the message and populates it with data.
+2. Send — The sender adds the message to a channel.
+3. Deliver — The messaging system moves the message from the sender’s computer
+   to the receiver’s computer, making it available to the receiver.
+4. Receive — The receiver reads the message from the channel.
+5. Process — The receiver extracts the data from the message. 
+
 Messaging pattern - is a network-oriented architectural pattern
 which describes how two different parts of a Message-Passing-System
 communicate with each other.
