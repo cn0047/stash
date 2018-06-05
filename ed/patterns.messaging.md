@@ -16,6 +16,16 @@ Messaging pattern - is a network-oriented architectural pattern
 which describes how two different parts of a Message-Passing-System
 communicate with each other.
 
+Specific benefits of messaging:
+
+* Remote Communication.
+* Platform/Language Integration (independency).
+* Asynchronous Communication.
+* Variable Timing (external API may respond 1 or 3 or 5 seconds).
+* Reliable Communication.
+* Disconnected Operation (When offline -> put in queue, when online -> consume).
+* Mediation (message broker behaves like brain).
+
 #### Message Exchange Patterns:
 
 * In-Only (one-way) - send message receive status

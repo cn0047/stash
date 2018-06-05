@@ -26,34 +26,51 @@ docker run -it --rm -p 8080:8080 -v $PWD:/gh -e GOPATH=$APP_DIR xgo sh -c '
 '
 
 # whatever - slice
+export GOPATH=$PWD/ed/go/examples/whatever/slice.allocation
 docker run -it --rm -v $PWD:/gh -e GOPATH='/gh/ed/go/examples/whatever/slice.allocation/' xgo sh -c '
     cd $GOPATH \
     && go get -u github.com/google/pprof \
     && go get -u github.com/pkg/profile
 '
-# bench
+# run bench
 docker run -it --rm -v $PWD:/gh -e GOPATH='/gh/ed/go/examples/whatever/slice.allocation/' \
-    xgo sh -c 'cd $GOPATH/src/app/lib && go test  -bench=. -benchmem'
-# install
-docker run -it --rm -v $PWD:/gh -e GOPATH='/gh/ed/go/examples/whatever/slice.allocation/' \
-    xgo sh -c 'cd $GOPATH/src/app/ && go install'
-# run
-docker run -it --rm -p 8080:8080 -v $PWD:/gh -v $PWD/ed/go/examples/whatever/slice.allocation/tmp:/tmp \
-    -e GOPATH='/gh/ed/go/examples/whatever/slice.allocation/' \
-    xgo sh -c 'cd $GOPATH/bin && ./app'
+    xgo sh -c 'cd $GOPATH/src/app/lib && go test -bench=. -benchmem'
+# # install
+# docker run -it --rm -v $PWD:/gh -e GOPATH='/gh/ed/go/examples/whatever/slice.allocation/' \
+#     xgo sh -c 'cd $GOPATH/src/app/ && go install'
+# # run
+# docker run -it --rm -p 8000:8000 -v $PWD:/gh -v $PWD/ed/go/examples/whatever/slice.allocation/tmp:/tmp \
+#     -e GOPATH='/gh/ed/go/examples/whatever/slice.allocation/' \
+#     xgo sh -c 'cd $GOPATH/bin && ./app'
 # or
-docker run -it --rm -p 8080:8080 -v $PWD:/gh -v $PWD/ed/go/examples/whatever/slice.allocation/tmp:/tmp \
-    -e GOPATH='/gh/ed/go/examples/whatever/slice.allocation/' \
-    xgo sh -c 'cd $GOPATH && go run src/app/main.go'
+docker run -it --rm -p 8000:8000 -v $PWD:/gh -e GOPATH='/gh/ed/go/examples/whatever/slice.allocation/' \
+    xgo sh -c '
+        cd $GOPATH/src/app/ \
+        && go build \
+        && ./app
+    '
+cd $GOPATH/src/app/
+go tool pprof app http://localhost:8000/debug/pprof/profile
+# run apache bench
+sudo ifconfig lo0 alias 10.254.254.254
+docker run -ti --rm xubuntu ab -k -c 8 -n 100000 "http://10.254.254.254:8000/f1"
+go tool pprof app http://localhost:8000/debug/pprof/heap
+go tool pprof app http://localhost:8000/debug/pprof/goroutine
+go tool pprof app http://localhost:8000/debug/pprof/block
 # check
-# http://localhost:8080/f1
-# http://localhost:8080/f2
-# http://localhost:8080/debug/pprof
+curl http://localhost:8000/f1
+curl http://localhost:8000/f2
+open http://localhost:8000/debug/pprof
+# cli:
+# For cli have to generate cpu.out report from unit test
+# and run pprof command with generated cpu.out report.
 
 # test (bench)
 export APP_PATH=ed/go/examples/bench/fibonacci/
 export GOPATH=/gh/$APP_PATH
+docker run -it --rm -v $PWD:/gh -e GOPATH=$GOPATH xgo sh -c 'cd $GOPATH/.. && go run main.go'
 docker run -it --rm -v $PWD:/gh -e GOPATH=$GOPATH xgo sh -c 'cd $GOPATH && go test -v'
+docker run -it --rm -v $PWD:/gh -e GOPATH=$GOPATH xgo sh -c 'cd $GOPATH && go test -v  -parallel 9'
 docker run -it --rm -v $PWD:/gh -e GOPATH=$GOPATH xgo sh -c 'cd $GOPATH && go test -v -cpu=1'
 docker run -it --rm -v $PWD:/gh -e GOPATH=$GOPATH xgo sh -c 'cd $GOPATH && go test -v -cpu=2'
 docker run -it --rm -v $PWD:/gh -e GOPATH=$GOPATH xgo sh -c 'cd $GOPATH && go test -cover'
@@ -357,52 +374,4 @@ go build -gcflags='-N -l' $GOPATH/src/app/main.go \
 #
 # ERROR:
 # could not launch process: fork/exec ./main: operation not permitted
-````
-
-#### Google AppEngine
-
-````
-export GOPATH=$PWD/ed/go.appengine/examples/one
-# cd $GOPATH
-
-go get -u google.golang.org/appengine/...
-go get -u github.com/mjibson/goon
-go get -u golang.org/x/lint/golint
-go get -u golang.org/x/tools/cmd/cover
-go get -u github.com/google/gops
-go get -u github.com/kisielk/godepgraph
-go get -u github.com/thepkg/strings
-
-# test
-cd src/go-app && ~/.google-cloud-sdk/platform/google_appengine/goroot-1.9/bin/goapp test -cover
-
-# start dev server
-~/.google-cloud-sdk/bin/dev_appserver.py \
-    --port=8080 --admin_port=8000 --storage_path=$GOPATH/.data --skip_sdk_update_check=true \
-    $GOPATH/src/go-app/app.yaml
-
-# check
-curl http://localhost:8080/goon
-
-# godepgraph
-cd $GOPATH && godepgraph google.golang.org/appengine | dot -Tpng -o godepgraph.png
-cd $GOPATH && godepgraph github.com/thepkg/strings | dot -Tpng -o godepgraph.png
-
-# unit test
-cd $GOPATH/src/go-app && goapp test ./...
-````
-
-#### Monitoring
-
-````
-export GOPATH=/Users/k/web/kovpak/monitoring
-
-go get ./src/go-app/...
-
-~/.google-cloud-sdk/bin/dev_appserver.py \
-    --port=8080 --admin_port=8000 --storage_path=$GOPATH/.data --skip_sdk_update_check=true \
-    $GOPATH/src/go-app/app.yaml
-
-# deploy PROD
-cd src/go-app && gcloud app deploy
 ````

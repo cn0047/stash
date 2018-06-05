@@ -18,6 +18,12 @@ var fibTests = []struct {
 	{6, 8},
 	{7, 13},
 	{9, 34},
+	{15, 610},
+	{20, 6765},
+	{27, 196418},
+	{33, 3524578},
+	{37, 24157817},
+	{38, 39088169},
 }
 
 var numberForTests int
@@ -48,6 +54,7 @@ func TestFibSimple(t *testing.T) {
 func TestFib(t *testing.T) {
 	for i, tt := range fibTests {
 		t.Run("Test case "+strconv.Itoa(i), func(t *testing.T) {
+			t.Parallel()
 			actual := Fib(tt.n)
 			if actual != tt.expected {
 				t.Errorf("Fib(%d): expected %d, actual %d", tt.n, tt.expected, actual)

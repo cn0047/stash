@@ -21,11 +21,11 @@ export GOOS=linux
 
 go run --work ed/go/examples/hw.go
 
-# Compiles and installs packages and dependencies
-go build
-
 # Install packages and dependencies
 go install
+
+# Compiles and installs packages and dependencies
+go build
 
 # Install all project dependencies
 go get ./...
@@ -204,6 +204,7 @@ To increase the capacity of a slice one must create a new, larger slice
 and copy the contents of the original slice into it.
 
 **copy** - copies elements from a source slice into a destination slice.
+(error in case when parameter is not slice but array).
 
 The **append** function appends the elements x to the end of the slice s,
 and grows the slice if a greater capacity is needed.

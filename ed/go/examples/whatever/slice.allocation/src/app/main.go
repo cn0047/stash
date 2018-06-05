@@ -5,15 +5,18 @@ import (
 	"fmt"
 	"github.com/pkg/profile"
 	"net/http"
+	"net/http/pprof"
 	_ "net/http/pprof"
 	"runtime"
 )
 
 func main() {
 	n := 1000000
-	defer profile.Start(profile.MemProfile, profile.CPUProfile).Stop()
+	//defer profile.Start(profile.MemProfile, profile.CPUProfile).Stop()
+	defer profile.Start(profile.MemProfile).Stop()
 
-	cli(n)
+	//cli(n)
+	web(n)
 }
 
 func cli(n int) {
@@ -25,15 +28,24 @@ func cli(n int) {
 }
 
 func web(n int) {
-	http.HandleFunc("/f1", func(w http.ResponseWriter, r *http.Request) {
+	r := http.NewServeMux()
+
+	r.HandleFunc("/f1", func(w http.ResponseWriter, r *http.Request) {
 		lib.F1(n)
 		w.Write([]byte("f1"))
 	})
 
-	http.HandleFunc("/f2", func(w http.ResponseWriter, r *http.Request) {
+	r.HandleFunc("/f2", func(w http.ResponseWriter, r *http.Request) {
 		lib.F2(n)
 		w.Write([]byte("f2"))
 	})
 
-	http.ListenAndServe(":8080", nil)
+	// Register pprof handlers
+	r.HandleFunc("/debug/pprof/", pprof.Index)
+	r.HandleFunc("/debug/pprof/cmdline", pprof.Cmdline)
+	r.HandleFunc("/debug/pprof/profile", pprof.Profile)
+	r.HandleFunc("/debug/pprof/symbol", pprof.Symbol)
+	r.HandleFunc("/debug/pprof/trace", pprof.Trace)
+
+	http.ListenAndServe(":8000", r)
 }
