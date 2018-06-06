@@ -41,6 +41,8 @@ goapp serve app.yaml
 
 Warmup Requests - you can use to avoid latency while loading application code on a fresh instance.
 
+Only internal appengine microservices have `X-Appengine-Inbound-Appid` header!
+
 ## Disadvantages
 
 GO:
@@ -60,7 +62,6 @@ DataStore:
 
 Google Cloud DataStore is a NoSQL document database.
 In DataStore nested transactions are not supported.
-
 
 ## Examples
 
