@@ -6,6 +6,8 @@ App Engine
 ````
 # ~/.google-cloud-sdk/bin/gcloud
 
+gcloud auth activate-service-account --key-file=account.json
+
 # login
 gcloud auth login
 gcloud auth list
@@ -39,15 +41,26 @@ goapp serve app.yaml
 
 Warmup Requests - you can use to avoid latency while loading application code on a fresh instance.
 
+## Disadvantages
+
+GO:
+
+* Cannot use `http.Post`.
+
+PHP:
+
+* Cannot use curl.
+
+DataStore:
+
+* `FIND ALL WHERE id IN (1, 2)`, `FIND ALL WHERE id = 1 OR id = 2`.
+* [How delete element from array](https://monosnap.com/file/YrQHARwcRPAEagaNfoKeMhh1o1bsnZ).
+
 ## DataStore
 
 Google Cloud DataStore is a NoSQL document database.
 In DataStore nested transactions are not supported.
 
-Disadvantages:
-
-* `FIND ALL WHERE id IN (1, 2)`, `FIND ALL WHERE id = 1 OR id = 2`.
-* [How delete element from array](https://monosnap.com/file/YrQHARwcRPAEagaNfoKeMhh1o1bsnZ).
 
 ## Examples
 
@@ -99,7 +112,8 @@ go get ./src/go-app/...
 
 # deploy PROD
 gcloud config set project thisismonitoring
-cd src/go-app && gcloud app deploy
+# cd src/go-app && gcloud app deploy
+gcloud app deploy src/go-app/app.yaml
 ````
 
 #### PHP one

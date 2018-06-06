@@ -83,12 +83,6 @@ cat /etc/os-release
 
 Is an event-based replacement for the traditional init daemon.
 
-#### centos
-
-````
-yum --showduplicates list available elasticsearch\*
-````
-
 #### netstat
 
 ````
