@@ -169,12 +169,12 @@ Other types:
 
 * Array
 * Slice (passes by ref)
-* Struct
-* Pointer (passes by ref)
-* Function
-* Interface
 * Map (passes by ref)
 * Channel (passes by ref)
+* Function
+* Interface
+* Struct
+* Pointer (passes by ref)
 
 Ref variables stores in the heap, which is garbage collected
 and which is a much larger memory space than the stack.

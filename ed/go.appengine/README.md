@@ -6,6 +6,11 @@ App Engine for GOlang
 ````
 "google.golang.org/appengine"
 "google.golang.org/appengine/log"
+
+ctx := appengine.NewContext(r)
+module := appengine.ModuleName(ctx)
+instance := appengine.InstanceID()
+
 // r *http.Request
 log.Infof(appengine.NewContext(r), "%#v", v)
 
