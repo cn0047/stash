@@ -12,6 +12,7 @@ docker run -ti --rm cn007b/ubuntu:17.10 telnet --help
 docker run -ti --rm cn007b/ubuntu:17.10 unzip -v
 docker run -ti --rm cn007b/ubuntu:17.10 make -v
 docker run -ti --rm cn007b/ubuntu:17.10 ab -V
+docker run -ti --rm cn007b/ubuntu:17.10 lsb_release -c -s
 # push
 docker push cn007b/ubuntu:17.10
 
