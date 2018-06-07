@@ -17,3 +17,10 @@ elif [ $1 = '4' ]; then
 else
     echo 'no else else'
 fi
+
+# and
+if [ $1 = 'a' -a $2 = 'b' ]; then
+    echo 'ab = ✅'
+else
+    echo 'ab = ⛔️'
+fi

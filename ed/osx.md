@@ -55,7 +55,7 @@ Command-Shift-3 # screenshot ALL SCREEN in file on desktop
 Command-Control-Shift-3 # screenshot ALL SCREEN in buffer
 # !!!
 Command-Shift-4 # screenshot (SELECTED SHAPE) in file on desktop ✅
-Command-Control-Shift-4 # screenshot (SELECTED SHAPE) in buffer
+Command-Control-Shift-4 # screenshot (SELECTED SHAPE) in buffer 💡
 ````
 
 ## Brew

@@ -4,7 +4,11 @@ jobs:
   build:
     docker:
       - image: circleci/golang:1.9
+          auth:
+            username: $DOCKER_USER
+            password: $DOCKER_PASSWORD
 
+    working_directory: /code
     working_directory: /go/src/github.com/cn007b/api-gateway
 
     steps:
@@ -13,5 +17,8 @@ jobs:
       - run: go get -u golang.org/x/lint/golint
       - run: golint src/app/...
 
-#      - run: go get -v -t -d ./...
-#      - run: go test -v ./...
+      # - run: go get -v -t -d ./...
+      # - run: go test -v ./...
+
+      # - run: go test -v -covermode=count -coverprofile=coverage.out
+      # - run: goveralls -coverprofile=coverage.out
