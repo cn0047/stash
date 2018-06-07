@@ -173,3 +173,16 @@ docker run -it --rm --net=xnet -e PHP_IDE_CONFIG='serverName=docker' \
 docker run -it --rm --net=xnet -p 8080:8080 -v $PWD/ed/php.yii/examples/testdrive:/app nphp \
     php -S 0.0.0.0:8080 -t /app
 ````
+
+#### AppEngine
+
+````
+cd /Users/k/web/kovpak/gh/ed/php.appengine/examples/one
+composer install
+
+~/.google-cloud-sdk/bin/dev_appserver.py \
+    --port=8080 --admin_port=8000 --skip_sdk_update_check=true app.yaml
+
+gcloud config set project thisissimplebot
+gcloud app deploy
+````

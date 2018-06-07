@@ -13,7 +13,7 @@ git init
 
 git clone ssh://gitolite@repo.com:1011/repoName.git
 # lightweight clone
-git clone --depth=1 git://github.com/imatix/zguide2.git
+git clone --depth=1 --branch=master git://github.com/cn007b/vo
 
 git remote -v                      # shows remote repository
 git remote show remoteRepoName     # shows all about remote repo (remote show origin)

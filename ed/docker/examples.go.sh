@@ -3,7 +3,7 @@ GO (GOLANG)
 
 ````
 # docker build -t xgo ./docker/go
-docker pull cn007b/go
+docker pull cn007b/go:1.10-gae
 docker tag cn007b/go xgo
 
 docker run -it --rm -v $PWD:/gh -w /gh xgo go
@@ -382,4 +382,68 @@ go build -gcflags='-N -l' $GOPATH/src/app/main.go \
 #
 # ERROR:
 # could not launch process: fork/exec ./main: operation not permitted
+````
+
+#### GO one
+
+````
+export GOPATH=$PWD/ed/go.appengine/examples/one
+# cd $GOPATH
+
+go get -u google.golang.org/appengine/...
+go get -u github.com/mjibson/goon
+go get -u golang.org/x/lint/golint
+go get -u golang.org/x/tools/cmd/cover
+go get -u github.com/google/gops
+go get -u github.com/kisielk/godepgraph
+go get -u github.com/thepkg/strings
+
+# test
+cd $GOPATH/src/go-app && ~/.google-cloud-sdk/platform/google_appengine/goroot-1.9/bin/goapp test -cover
+
+# start dev server
+~/.google-cloud-sdk/bin/dev_appserver.py \
+    --port=8080 --admin_port=8000 --storage_path=$GOPATH/.data --skip_sdk_update_check=true \
+    $GOPATH/src/go-app/app.yaml
+
+# check
+curl http://localhost:8080/goon
+
+# godepgraph
+cd $GOPATH && godepgraph google.golang.org/appengine | dot -Tpng -o godepgraph.png
+cd $GOPATH && godepgraph github.com/thepkg/strings | dot -Tpng -o godepgraph.png
+
+# unit test
+cd $GOPATH/src/go-app && goapp test ./...
+````
+
+````
+export GOPATH=/gh/ed/go.appengine/examples/one
+docker run -it --rm -v $PWD:/gh -e GOPATH=$GOPATH xgo sh -c '
+    cd $GOPATH && go get ./...
+'
+docker run -it --rm -p 8080:8080 -p 8000:8000 -v $PWD:/gh -e GOPATH=$GOPATH xgo sh -c '
+    dev_appserver.py --host=0.0.0.0 --port=8080 --admin_host=0.0.0.0 --admin_port=8000 \
+    --storage_path=$GOPATH/.data --skip_sdk_update_check=true \
+    $GOPATH/src/go-app/app.yaml
+'
+````
+
+#### Monitoring
+
+````
+# export GOROOT=/Users/k/.google-cloud-sdk/platform/google_appengine/goroot-1.9
+export GOPATH=/Users/k/web/kovpak/monitoring
+# export GOPATH=/Users/k/web/kovpak/monitoring:/Users/k/web/kovpak/monitoring/src/go-app
+
+go get ./src/go-app/...
+
+~/.google-cloud-sdk/bin/dev_appserver.py \
+    --port=8080 --admin_port=8000 --storage_path=$GOPATH/.data --skip_sdk_update_check=true \
+    $GOPATH/src/go-app/app.yaml
+
+# deploy PROD
+gcloud config set project thisismonitoring
+# cd src/go-app && gcloud app deploy
+gcloud app deploy src/go-app/app.yaml
 ````

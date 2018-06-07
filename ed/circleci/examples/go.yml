@@ -21,4 +21,4 @@ jobs:
       # - run: go test -v ./...
 
       # - run: go test -v -covermode=count -coverprofile=coverage.out
-      # - run: goveralls -coverprofile=coverage.out
+      # - run: goveralls -coverprofile=coverage.out -service=circle-ci
