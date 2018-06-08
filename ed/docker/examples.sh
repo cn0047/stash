@@ -161,9 +161,9 @@ docker run -it --rm node:latest node -v
 
 # from Dockerfile
 docker build -t xnodejs ./docker/nodejs
-docker run -it --rm -p 8080:3000 xnodejs
+docker run -it --rm -p 8000:3000 xnodejs
 # to test
-curl 0.0.0.0:8080
+curl 0.0.0.0:8000
 
 # based on Alpine Linux
 docker run -it --rm node:alpine node -v

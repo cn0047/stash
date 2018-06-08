@@ -17,6 +17,25 @@ appengine.DefaultVersionHostname
 appengine.IsDevAppServer()
 ````
 
+#### DataStore
+
+````
+key := datastore.NewKey(
+        ctx,        // context.Context
+        "Employee", // Kind
+        "asalieri", // String ID; empty means no string ID
+        0,          // Integer ID; if 0, generate automatically. Ignored if string ID specified.
+        nil,        // Parent Key; nil means no parent
+)
+
+_, err = datastore.PutMulti(ctx, []*datastore.Key{k1, k2, k3}, []interface{}{e1, e2, e3})
+
+var entities = make([]*T, 3)
+err = datastore.GetMulti(ctx, []*datastore.Key{k1, k2, k3}, entities)
+
+err = datastore.DeleteMulti(ctx, []*datastore.Key{k1, k2, k3})
+````
+
 #### Local Unit Testing
 
 ````

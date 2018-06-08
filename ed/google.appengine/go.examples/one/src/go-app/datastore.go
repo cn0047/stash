@@ -7,21 +7,41 @@ import (
 	"google.golang.org/appengine"
 	"google.golang.org/appengine/datastore"
 	"net/http"
+	"time"
 )
 
+type Visit struct {
+	TimeStamp time.Time `datastore:"TimeStamp,noindex"`
+	Path      string    `datastore:"Path,noindex"`
+}
+
 func datastoreHandler(w http.ResponseWriter, r *http.Request) {
+	saveVisit(w, r)
 	datastorePut1(w, r)
 	datastorePut2(w, r)
 	transactionCommit(w, r)
 	transactionRollBack(w, r)
 	transactionPanic(w, r)
+	datastoreGetByKey(w, r)
 	datastoreGet1(w, r)
 	datastoreGet2(w, r)
 }
 
+func saveVisit(w http.ResponseWriter, r *http.Request) {
+	v := Visit{TimeStamp: time.Now(), Path: "/datastore"}
+	ctx := appengine.NewContext(r)
+	key := datastore.NewIncompleteKey(ctx, "Visit", nil)
+	key, err := datastore.Put(ctx, key, &v)
+	if err != nil {
+		fmt.Fprintf(w, "<br>Failed to store visit, error: %+v", err)
+	}
+	fmt.Fprintf(w, "<br>Visit saved with key 🔑: %+v", key)
+}
+
 func createUser(ctx context.Context, id string, name string, tag string) (datastore.Key, User, error) {
 	user := User{Id: id, Name: name, Tag: tag}
-	key := datastore.NewIncompleteKey(ctx, "User", nil)
+	//key := datastore.NewIncompleteKey(ctx, "User", nil)
+	key := datastore.NewKey(ctx, "User", id, 0, nil)
 	key, err := datastore.Put(ctx, key, &user)
 	return *key, user, err
 }
@@ -30,7 +50,8 @@ func datastorePut1(w http.ResponseWriter, r *http.Request) (User, User) {
 	u := User{Id: "usr4", Name: "User 4", Tag: "cli"}
 	ctx := appengine.NewContext(r)
 
-	key := datastore.NewIncompleteKey(ctx, "User", nil)
+	//key := datastore.NewIncompleteKey(ctx, "User", nil)
+	key := datastore.NewKey(ctx, "User", "user4", 0, nil)
 	k, err := datastore.Put(ctx, key, &u)
 	if err != nil {
 		fmt.Fprintf(w, "<br>Error to PUT: %+v", err)
@@ -62,7 +83,8 @@ func datastorePut2(w http.ResponseWriter, r *http.Request) {
 func transactionCommit(w http.ResponseWriter, r *http.Request) {
 	u := User{Id: "usr5", Name: "User 5", Tag: "cli"}
 	ctx := appengine.NewContext(r)
-	key := datastore.NewIncompleteKey(ctx, "User", nil)
+	//key := datastore.NewIncompleteKey(ctx, "User", nil)
+	key := datastore.NewKey(ctx, "User", "user5", 0, nil)
 
 	err := datastore.RunInTransaction(ctx, func(transactionCTX context.Context) error {
 		_, err := datastore.Put(transactionCTX, key, &u)
@@ -106,6 +128,17 @@ func transactionPanic(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Fprintf(w, "<br>Transaction 3 failed, Error: %+v", err)
 	}
+}
+
+func datastoreGetByKey(w http.ResponseWriter, r *http.Request) {
+	ctx := appengine.NewContext(r)
+	k := datastore.NewKey(ctx, "User", "user5", 0, nil)
+	u := User{}
+	err := datastore.Get(ctx, k, &u)
+	if err != nil {
+		fmt.Fprintf(w, "<br>Failed get by Key, error: %+v", err)
+	}
+	fmt.Fprintf(w, "<hr>Get user by key - OK, user: %+v", u)
 }
 
 // field tags contains: test & go

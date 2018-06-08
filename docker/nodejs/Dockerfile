@@ -1,6 +1,6 @@
 FROM node:latest
 
-MAINTAINER cn007b
+MAINTAINER Vladimir Kovpak <cn007b@gmail.com>
 
 ENV NODE_ENV=production
 ENV NODE_PORT=3000

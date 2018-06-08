@@ -387,8 +387,8 @@ go build -gcflags='-N -l' $GOPATH/src/app/main.go \
 #### GO one
 
 ````
-export GOPATH=$PWD/ed/go.appengine/examples/one
-# cd $GOPATH
+export GOPATH=$PWD/ed/google.appengine/go.examples/one
+cd $GOPATH
 
 go get -u google.golang.org/appengine/...
 go get -u github.com/mjibson/goon
@@ -403,7 +403,7 @@ cd $GOPATH/src/go-app && ~/.google-cloud-sdk/platform/google_appengine/goroot-1.
 
 # start dev server
 ~/.google-cloud-sdk/bin/dev_appserver.py \
-    --port=8080 --admin_port=8000 --storage_path=$GOPATH/.data --skip_sdk_update_check=true \
+    --port=8000 --admin_port=8001 --storage_path=$GOPATH/.data --skip_sdk_update_check=true \
     $GOPATH/src/go-app/app.yaml
 
 # check
@@ -418,12 +418,12 @@ cd $GOPATH/src/go-app && goapp test ./...
 ````
 
 ````
-export GOPATH=/gh/ed/go.appengine/examples/one
+export GOPATH=/gh/ed/google.appengine/go.examples/one
 docker run -it --rm -v $PWD:/gh -e GOPATH=$GOPATH xgo sh -c '
     cd $GOPATH && go get ./...
 '
-docker run -it --rm -p 8080:8080 -p 8000:8000 -v $PWD:/gh -e GOPATH=$GOPATH xgo sh -c '
-    dev_appserver.py --host=0.0.0.0 --port=8080 --admin_host=0.0.0.0 --admin_port=8000 \
+docker run -it --rm -p 8000:8000 -p 8001:8001 -v $PWD:/gh -e GOPATH=$GOPATH xgo sh -c '
+    dev_appserver.py --host=0.0.0.0 --port=8000 --admin_host=0.0.0.0 --admin_port=8001 \
     --storage_path=$GOPATH/.data --skip_sdk_update_check=true \
     $GOPATH/src/go-app/app.yaml
 '

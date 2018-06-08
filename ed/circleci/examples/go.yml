@@ -2,6 +2,9 @@ version: 2
 
 jobs:
   build:
+    environment:
+      ENVIRONMENT: MY_ENV
+
     docker:
       - image: circleci/golang:1.9
           auth:
@@ -13,6 +16,10 @@ jobs:
 
     steps:
       - checkout
+
+      - run:
+          name: Docker login
+          command: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
 
       - run: go get -u golang.org/x/lint/golint
       - run: golint src/app/...
