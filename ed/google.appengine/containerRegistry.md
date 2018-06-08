@@ -1,6 +1,8 @@
 Container Registry
 -
 
+[doc](https://cloud.google.com/container-registry/docs/quickstart)
+
 ````
 # init
 gcloud auth configure-docker
