@@ -3,7 +3,7 @@ Operators
 
 `@>` - contains.
 
-````
+````sql
 # true
 SELECT '[1, 2, 3]'::jsonb @> '[3, 1]'::jsonb;
 SELECT '[1, 2, 3]'::jsonb @> '[1, 2, 2]'::jsonb;
@@ -21,7 +21,7 @@ SELECT '{"foo": {"bar": "baz"}}'::jsonb @> '{"bar": "baz"}'::jsonb;
 
 `||` - strings concatenation.
 
-````
+````sql
 SELECT 'foo ' || 'bar';
  ?column?
 ----------

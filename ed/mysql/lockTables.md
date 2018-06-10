@@ -99,7 +99,7 @@ All has been done without transactions!
 
 Solutions:
 
-* UPDATE in transaction and if AffectedRows == 1 COMMIT else ROLLBACK.
+* UPDATE in transaction and if AffectedRows == 1 then COMMIT else ROLLBACK.
 * Add aditonal field version and increment value during each UPDATE.
 
 # Pessimistic locking.

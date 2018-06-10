@@ -1,4 +1,5 @@
-####Isolate Sequence of Operations
+#### Isolate Sequence of Operations
+
 ````js
 // Update the fields of a document
 // only if the fields have not changed in the collection since the query.

@@ -26,7 +26,7 @@ Functions:
 * jsonb_object
 * json_agg(fieldFromDB)
 
-````
+````sql
 CREATE TABLE books (id integer, data json);
 
 INSERT INTO books VALUES
@@ -36,7 +36,7 @@ INSERT INTO books VALUES
 ;
 ````
 
-````
+````sql
 -- SELECT:
 
 SELECT * FROM books;

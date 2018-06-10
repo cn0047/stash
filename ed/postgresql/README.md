@@ -39,7 +39,7 @@ log_statement = 'all'
 pg_dump -t tableName --schema-only
 ````
 
-````
+````sql
 COPY tableName TO 'filePath' CSV (DELIMER ',');
 COPY tableName FROM 'filePath' DELIMER ',';
 

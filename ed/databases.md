@@ -27,7 +27,7 @@ but instead creates a newer version of the data item. Thus there are multiple ve
 ## MongoDB:
 
 * Schema-less (perfect for rapid prototyping and for dynamic queries).
-* MongoDB don't need ORM.
+* MongoDB don't need ODM (ORM).
 * Capped collections.
 * TTL index.
 * Auto-sharding.

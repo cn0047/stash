@@ -6,6 +6,7 @@ import (
 	"golang.org/x/net/context"
 	"google.golang.org/appengine"
 	"google.golang.org/appengine/datastore"
+	"google.golang.org/appengine/search"
 	"net/http"
 	"time"
 )
@@ -13,6 +14,15 @@ import (
 type Visit struct {
 	TimeStamp time.Time `datastore:"TimeStamp,noindex"`
 	Path      string    `datastore:"Path,noindex"`
+}
+
+type SearchUser struct {
+	Id        string
+	Name      string
+	Comment   search.HTML
+	Visits    float64
+	LastVisit time.Time
+	Birthday  time.Time
 }
 
 func datastoreHandler(w http.ResponseWriter, r *http.Request) {
@@ -25,6 +35,51 @@ func datastoreHandler(w http.ResponseWriter, r *http.Request) {
 	datastoreGetByKey(w, r)
 	datastoreGet1(w, r)
 	datastoreGet2(w, r)
+	indexPut1(w, r)
+	indexGet1(w, r)
+}
+
+func indexGet1(w http.ResponseWriter, r *http.Request) {
+	index, err := search.Open("users")
+	if err != nil {
+		fmt.Fprintf(w, "<br>Get index 1 fail 1, error: %+v", err)
+		return
+	}
+
+	ctx := appengine.NewContext(r)
+	for t := index.Search(ctx, "<br>SearchUser: Id = user8", nil); ; {
+		var doc SearchUser
+		id, err := t.Next(&doc)
+		if err == search.Done {
+			break
+		}
+		if err != nil {
+			fmt.Fprintf(w, "<br>Search error: %v\n", err)
+			break
+		}
+		fmt.Fprintf(w, "<br>Get index 1: %s -> %#v\n", id, doc)
+	}
+}
+
+func indexPut1(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "<hr>")
+
+	index, err := search.Open("users")
+	if err != nil {
+		fmt.Fprintf(w, "<br>Put index 1 fail 1, error: %+v", err)
+		return
+	}
+
+	u := SearchUser{Id: "usr8", Name: "User 8", Comment: "1 more this is <em>marked up</em> text"}
+
+	ctx := appengine.NewContext(r)
+	res, err := index.Put(ctx, "usr8", &u)
+	if err != nil {
+		fmt.Fprintf(w, "<br>Put index 1 fail 2, error: %+v", err)
+		return
+	}
+
+	fmt.Fprintf(w, "<br>Put index 1 OK: %+v", res)
 }
 
 func saveVisit(w http.ResponseWriter, r *http.Request) {
@@ -47,7 +102,7 @@ func createUser(ctx context.Context, id string, name string, tag string) (datast
 }
 
 func datastorePut1(w http.ResponseWriter, r *http.Request) (User, User) {
-	u := User{Id: "usr4", Name: "User 4", Tag: "cli"}
+	u := User{Id: "usr4", Name: "User 4", Tag: "cli", Comment: "this is <em>marked up</em> text"}
 	ctx := appengine.NewContext(r)
 
 	//key := datastore.NewIncompleteKey(ctx, "User", nil)
@@ -55,6 +110,7 @@ func datastorePut1(w http.ResponseWriter, r *http.Request) (User, User) {
 	k, err := datastore.Put(ctx, key, &u)
 	if err != nil {
 		fmt.Fprintf(w, "<br>Error to PUT: %+v", err)
+		return User{}, User{}
 	}
 	fmt.Fprintf(w, "<br>PUT 1 - OK, key: %+v, 🔑: %+v || %+v", key, k, u)
 
@@ -62,6 +118,7 @@ func datastorePut1(w http.ResponseWriter, r *http.Request) (User, User) {
 	err = datastore.Get(ctx, key, &u2)
 	if err != nil {
 		fmt.Fprintf(w, "<br>Error to GET: %+v", err)
+		return User{}, User{}
 	}
 	fmt.Fprintf(w, "<br>GET * - OK: %+v", u2)
 
@@ -75,6 +132,7 @@ func datastorePut2(w http.ResponseWriter, r *http.Request) {
 	key, user, err := createUser(ctx, "x-usr-1", "x1", "x")
 	if err != nil {
 		fmt.Fprintf(w, "<br>Error to PUT x-usr-1: %+v", err)
+		return
 	}
 
 	fmt.Fprintf(w, "<br>PUT x-usr-1 - OK: [%+v] %+v", key, user)
@@ -137,6 +195,7 @@ func datastoreGetByKey(w http.ResponseWriter, r *http.Request) {
 	err := datastore.Get(ctx, k, &u)
 	if err != nil {
 		fmt.Fprintf(w, "<br>Failed get by Key, error: %+v", err)
+		return
 	}
 	fmt.Fprintf(w, "<hr>Get user by key - OK, user: %+v", u)
 }
@@ -152,6 +211,7 @@ func datastoreGet1(w http.ResponseWriter, r *http.Request) {
 	_, err := q.GetAll(ctx, &u)
 	if err != nil {
 		fmt.Fprintf(w, "<br>Error: %+v", err)
+		return
 	}
 	fmt.Fprintf(w, "<hr>SELECT 1 - OK: %+v", u)
 }

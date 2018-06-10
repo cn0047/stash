@@ -6,18 +6,20 @@ import (
 	"github.com/mjibson/goon"
 	"google.golang.org/appengine"
 	"google.golang.org/appengine/datastore"
+	"google.golang.org/appengine/search"
 	"net/http"
 )
 
 type User struct {
-	Id   string `datastore:"-" goon:"id"`
-	Name string
-	Tag  string
-	Tags []string
-	I    int
-	B    bool
-	F    float32
-	AB   []byte
+	Id      string `datastore:"-" goon:"id"`
+	Name    string
+	Comment search.HTML
+	Tag     string
+	Tags    []string
+	I       int
+	B       bool
+	F       float32
+	AB      []byte
 }
 
 type Author struct {

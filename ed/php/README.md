@@ -336,15 +336,15 @@ cannot be instantiated.
 
 #### Predefined variables
 
-* $GLOBALS
-* $_SERVER
 * $_GET
 * $_POST
 * $_FILES
+* $_COOKIE
 * $_REQUEST
 * $_SESSION
+* $_SERVER
 * $_ENV
-* $_COOKIE
+* $GLOBALS
 
 #### Magic methods
 
