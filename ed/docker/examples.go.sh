@@ -401,7 +401,7 @@ go get -u github.com/thepkg/strings
 # test
 cd $GOPATH/src/go-app && ~/.google-cloud-sdk/platform/google_appengine/goroot-1.9/bin/goapp test -cover
 
-# start dev server
+# start dev server ◀️
 ~/.google-cloud-sdk/bin/dev_appserver.py \
     --port=8000 --admin_port=8001 --storage_path=$GOPATH/.data --skip_sdk_update_check=true \
     $GOPATH/src/go-app/app.yaml

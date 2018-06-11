@@ -12,6 +12,7 @@ func init() {
 	http.HandleFunc("/hw", hwHandler)
 	http.HandleFunc("/goon", goonHandler)
 	http.HandleFunc("/datastore", datastoreHandler)
+	http.HandleFunc("/search", searchHandler)
 	http.HandleFunc("/config", configHandler)
 	http.HandleFunc("/config/", configHandler)
 	http.HandleFunc("/config/tag/", configTagHandler)
