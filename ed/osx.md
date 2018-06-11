@@ -70,4 +70,7 @@ brew search xdebug
 brew install grc
 
 brew install qcachegrind
+
+brew remove nginx
+brew update && brew cleanup
 ````
