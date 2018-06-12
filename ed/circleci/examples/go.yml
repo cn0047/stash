@@ -6,10 +6,18 @@ jobs:
       ENVIRONMENT: MY_ENV
 
     docker:
+
       - image: circleci/golang:1.9
           auth:
             username: $DOCKER_USER
             password: $DOCKER_PASSWORD
+
+      - image: gcr.io/clique-dev/cws-circleci
+         auth:
+            username: _json_key
+            # password - don't contain password
+            # but contain JSON contet of service_account_key file.
+            password: $GOOGLE_CLOUD_SERVICE_ACCOUNT
 
     working_directory: /code
     working_directory: /go/src/github.com/cn007b/api-gateway
