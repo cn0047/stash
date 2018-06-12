@@ -16,15 +16,6 @@ type Visit struct {
 	Path      string    `datastore:"Path,noindex"`
 }
 
-type SearchUser struct {
-	Id        string
-	Name      string
-	Comment   search.HTML
-	Visits    float64
-	LastVisit time.Time
-	Birthday  time.Time
-}
-
 func datastoreHandler(w http.ResponseWriter, r *http.Request) {
 	saveVisit(w, r)
 	datastorePut1(w, r)

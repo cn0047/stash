@@ -41,7 +41,6 @@ Stemming:
 `~dog` matches `"dog" or "dogs."`
 `~care` will match `"care" and "caring," but not "cares" or "cared."`
 
-
 #### Atom Fields
 
 Queries on atom fields are case insensitive.
@@ -106,7 +105,3 @@ Mixing global and field searches:
 
 "keyboard OR product=piano"
 ````
-
-
-
-https://cloud.google.com/appengine/docs/standard/go/search/reference

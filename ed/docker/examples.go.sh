@@ -384,7 +384,7 @@ go build -gcflags='-N -l' $GOPATH/src/app/main.go \
 # could not launch process: fork/exec ./main: operation not permitted
 ````
 
-#### GO one
+#### GO AppEngine one
 
 ````
 export GOPATH=$PWD/ed/google.appengine/go.examples/one
