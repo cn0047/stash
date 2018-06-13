@@ -19,6 +19,8 @@ appengine.IsDevAppServer()
 
 #### DataStore
 
+comparison operators: `=, <, <=, >, >=`.
+
 ````
 key := datastore.NewKey(
         ctx,        // context.Context
@@ -34,6 +36,8 @@ var entities = make([]*T, 3)
 err = datastore.GetMulti(ctx, []*datastore.Key{k1, k2, k3}, entities)
 
 err = datastore.DeleteMulti(ctx, []*datastore.Key{k1, k2, k3})
+
+q := datastore.NewQuery("Person").KeysOnly()
 ````
 
 #### Local Unit Testing
