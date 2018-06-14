@@ -28,6 +28,9 @@ func datastoreHandler(w http.ResponseWriter, r *http.Request) {
 	datastoreGet2(w, r)
 	indexPut1(w, r)
 	indexGet1(w, r)
+
+	indexPutAncestor1(w, r)
+	indexGetAncestor1(w, r)
 }
 
 func indexGet1(w http.ResponseWriter, r *http.Request) {
