@@ -44,7 +44,7 @@ Stemming:
 #### Atom Fields
 
 Queries on atom fields are case insensitive.
-The only valid relational operator for atom fields is the equality operator. 
+The only valid relational operator for atom fields is the equality operator.
 Stemming is not supported for atom fields.
 
 `"weather=stormy"`, `"weather: stormy"` -  documents with a weather field that equals "stormy".

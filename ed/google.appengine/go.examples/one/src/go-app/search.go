@@ -28,10 +28,10 @@ func searchHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "<hr>")
 	iget1(w, r)
 
-	fmt.Fprintf(w, "<hr>")
+	fmt.Fprintf(w, "<hr><br>🔎 #1: <br>")
 	isearch1(w, r)
 
-	fmt.Fprintf(w, "<hr><br>🔎 \"leo\": <br>")
+	fmt.Fprintf(w, "<hr><br>🔎 #2 \"leo\": <br>")
 	isearch2(w, r)
 }
 
@@ -58,7 +58,7 @@ func iput1(w http.ResponseWriter, r *http.Request) {
 // iput2 - save in datastore & put into index.
 func iput2(w http.ResponseWriter, r *http.Request) {
 	id := "iusr2"
-	u := SearchUser{Id: id, Name: "IUser 2", Comment: "And this is <em>marked up</em> text."}
+	u := SearchUser{Id: id, Name: "IUser 2", Comment: "And this is <em>marked all up</em> text."}
 	ctx := appengine.NewContext(r)
 
 	key := datastore.NewKey(ctx, "User", id, 0, nil)
@@ -156,8 +156,13 @@ func isearch1(w http.ResponseWriter, r *http.Request) {
 
 	ctx := appengine.NewContext(r)
 	var q string
-	q = "Comment = marked"
+	//q = "Comment = marked"
+	//q = "Comment = marked up"
+	//q = "Comment = \"marked up\""
 	//q = "Comment = and"
+	//q = "Comment = mark"
+	//q = "Comment = arked"
+	q = "Comment = ~mark"
 	for t := index.Search(ctx, q, nil); ; {
 		var doc SearchUser
 		id, err := t.Next(&doc)

@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     environment:
-      ENVIRONMENT: MY_ENV
+      ENV_VAR_NAME: ENV_VAR_VALUE
 
     docker:
 

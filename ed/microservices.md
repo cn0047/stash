@@ -76,7 +76,8 @@ is a service whose overhead (communications, maintenance etc.) outweighs its uti
 
 ## Problems
 
-* duplicate code / data
-* required reliable CI/CD
+* github for configs / db migrations / etc.
+* duplicate code / data.
+* required reliable CI/CD.
 * networks are unreliable.
 * networks are slow.
