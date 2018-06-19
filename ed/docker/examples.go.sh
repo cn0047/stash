@@ -458,4 +458,5 @@ gcloud config list
 # cd src/go-app && gcloud app deploy
 gcloud app deploy src/go-app/app.yaml
 gcloud app deploy src/go-app/cron.yaml
+gcloud app deploy src/go-app/queue.yaml
 ````
