@@ -44,9 +44,34 @@ Warmup Requests - you can use to avoid latency while loading application code on
 
 Only internal appengine microservices have `X-Appengine-Inbound-Appid` header!
 
+## GO
 
-## Google Cloud SQL
+````go
+"google.golang.org/appengine"
+"google.golang.org/appengine/log"
 
-MySQL.
+ctx := appengine.NewContext(r)
+module := appengine.ModuleName(ctx)
+instance := appengine.InstanceID()
 
-## Google Cloud Storage (Cloud file storage)
+// r *http.Request
+log.Infof(appengine.NewContext(r), "%#v", v)
+
+appengine.AppID
+appengine.DefaultVersionHostname 
+appengine.IsDevAppServer()
+````
+
+Local Unit Testing:
+
+````go
+# run
+goapp test ./demos/transaction
+
+"google.golang.org/appengine/aetest"
+
+ctx, done, err := aetest.NewContext()
+
+inst, err := aetest.NewInstance(nil)
+defer inst.Close()
+````
