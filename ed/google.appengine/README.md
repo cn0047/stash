@@ -44,6 +44,13 @@ Warmup Requests - you can use to avoid latency while loading application code on
 
 Only internal appengine microservices have `X-Appengine-Inbound-Appid` header!
 
+## +/-
+
+Advantages:
+
+Disadvantages:
+* http.DefaultTransport and http.DefaultClient are not available in App Engine.
+
 ## GO
 
 ````go

@@ -411,7 +411,7 @@ go get -u github.com/thepkg/strings
 cd $GOPATH/src/go-app && ~/.google-cloud-sdk/platform/google_appengine/goroot-1.9/bin/goapp test -cover
 
 # start dev server ◀️
-~/.google-cloud-sdk/bin/dev_appserver.py \
+~/.google-cloud-sdk/bin/dev_appserver.py --log_level=debug \
     --port=8000 --admin_port=8001 --storage_path=$GOPATH/.data --skip_sdk_update_check=true \
     $GOPATH/src/go-app/app.yaml
 
@@ -432,7 +432,7 @@ docker run -it --rm -v $PWD:/gh -e GOPATH=$GOPATH xgo sh -c '
     cd $GOPATH && go get ./...
 '
 docker run -it --rm -p 8000:8000 -p 8001:8001 -v $PWD:/gh -e GOPATH=$GOPATH xgo sh -c '
-    dev_appserver.py --host=0.0.0.0 --port=8000 --admin_host=0.0.0.0 --admin_port=8001 \
+    dev_appserver.py --log_level=debug --host=0.0.0.0 --port=8000 --admin_host=0.0.0.0 --admin_port=8001 \
     --storage_path=$GOPATH/.data --skip_sdk_update_check=true \
     $GOPATH/src/go-app/app.yaml
 '
@@ -448,7 +448,7 @@ export GOPATH=/Users/k/web/kovpak/monitoring
 go get ./src/go-app/...
 go get -u github.com/thepkg/strings
 
-~/.google-cloud-sdk/bin/dev_appserver.py \
+~/.google-cloud-sdk/bin/dev_appserver.py --log_level=debug \
     --port=8080 --admin_port=8000 --storage_path=$GOPATH/.data --skip_sdk_update_check=true \
     $GOPATH/src/go-app/app.yaml
 
@@ -465,7 +465,7 @@ docker run -it --rm -v $PWD:/app -w /app -e GOPATH=/app cn007b/go sh -c '
 gcloud config set project thisismonitoring
 gcloud config list
 # cd src/go-app && gcloud app deploy
-gcloud app deploy src/go-app/app.yaml
-gcloud app deploy src/go-app/cron.yaml
-gcloud app deploy src/go-app/queue.yaml
+gcloud app deploy src/go-app/.gae/app.yaml
+gcloud app deploy src/go-app/.gae/cron.yaml
+gcloud app deploy src/go-app/.gae/queue.yaml
 ````

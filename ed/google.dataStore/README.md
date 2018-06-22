@@ -30,6 +30,7 @@ Advantages:
 Disadvantages:
 * `FIND ALL WHERE id IN (1, 2)`, `FIND ALL WHERE id = 1 OR id = 2`.
 * [How delete element from array](https://monosnap.com/file/YrQHARwcRPAEagaNfoKeMhh1o1bsnZ).
+* Only one inequality filter per query is supported. Encountered both ScheduledDate and Updated.
 
 #### GO
 
