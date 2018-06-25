@@ -133,6 +133,8 @@ A workspace is a directory hierarchy with three directories at its root:
 * pkg (package objects)
 * src
 
+Put code into `internal` dir to make it private.
+
 **new** keyword - allocates memory, does not initialize the memory
 and returns its address (pointer).
 
