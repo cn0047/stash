@@ -27,6 +27,9 @@ gcloud source repos list
 gcloud app instances list
 gcloud app services list
 
+gcloud app versions list
+gcloud app versions delete v1
+
 gcloud app deploy
 gcloud app deploy --verbosity=debug --project=thisismonitoring
 
@@ -67,6 +70,16 @@ log.Infof(appengine.NewContext(r), "%#v", v)
 appengine.AppID
 appengine.DefaultVersionHostname 
 appengine.IsDevAppServer()
+
+err := runtime.RunInBackground(c, func(c appengine.Context) {
+  // do something...
+})
+
+// delayed func
+var expensiveFunc = delay.Func("some-arbitrary-key", func(ctx context.Context, a string, b int) {
+        // do something expensive!
+})
+expensiveFunc.Call(ctx, "Hello, world!", 42)
 ````
 
 Local Unit Testing:
@@ -81,4 +94,8 @@ ctx, done, err := aetest.NewContext()
 
 inst, err := aetest.NewInstance(nil)
 defer inst.Close()
+````
+
+````go
+
 ````

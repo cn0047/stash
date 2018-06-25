@@ -85,7 +85,9 @@ fmt.Printf("%#v", myType)
 // init module
 func init() {}
 
+// func as interface
 type Func func(fl FieldLevel) bool
+type LogFunc func(ctx context.Context, format string, args ...interface{})
 
 if p := "MR"; isFormal {
 }
@@ -124,6 +126,9 @@ switch t := areaIntf.(type) {
 type MyFloat float64
 
 f, _ := os.OpenFile("/tmp/debug.log", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0777); f.WriteString("dbg" + "\n")
+
+// Verify statically that *Transport implements http.RoundTripper.
+var _ http.RoundTripper = (*Transport)(nil)
 ````
 
 Go is compiled, garbage-collected, concurrent, type-safe.
