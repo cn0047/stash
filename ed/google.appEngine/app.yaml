@@ -1,3 +1,0 @@
-service: monitoring
-manual_scaling:
-  instances: 3
