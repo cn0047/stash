@@ -1,0 +1,5 @@
+runtime: php55
+
+handlers:
+- url: .*
+  script: web/index.php
