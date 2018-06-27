@@ -2,6 +2,8 @@ App Engine
 -
 
 [logs](https://console.cloud.google.com/logs)
+[errors](https://console.cloud.google.com/errors)
+[quotas](https://cloud.google.com/appengine/quotas)
 [GoLand config](https://monosnap.com/file/X5w1jrpQ1C4fSmn7rmU9Lbm0l3xNBs)
 
 ````
@@ -53,6 +55,8 @@ Advantages:
 
 Disadvantages:
 * http.DefaultTransport and http.DefaultClient are not available in App Engine.
+* There are too many files in your application for changes in all of them to be monitored.
+  You may have to restart the development server to see some changes to your files.
 
 ## GO
 

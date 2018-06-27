@@ -22,15 +22,39 @@ In a single-group transaction, you cannot perform a non-ancestor query in an XG 
 
 Comparison operators: `=, <, <=, >, >=`.
 
+An entity is limited to 1 megabyte when stored.
+That roughly corresponds to a limit of 1 megabyte for the serialized form of this message.
+
+`Megastore` - the underlying technologies for datastore.
+
+#### Index
+
+A query can't find property values that aren't indexed, nor can it sort on such properties.
+
+Only indexed properties can be projected. The same property cannot be projected more than once.
+
+`Built-in index` - by default,
+datastore automatically predefines an index for each property of each entity kind.
+
+`Composite index` - index stored in `index.yaml`.
+
+````sh
+rm index.yaml
+gcloud vacuum_indexes
+gcloud update_indexes
+````
+
 #### +/-
 
 Advantages:
 * Transactions.
 
 Disadvantages:
-* `FIND ALL WHERE id IN (1, 2)`, `FIND ALL WHERE id = 1 OR id = 2`.
+* Do not support substring matches, case-insensitive matches, full-text search.
+* Do not support `NOT, !=, OR, IN`.
 * [How delete element from array](https://monosnap.com/file/YrQHARwcRPAEagaNfoKeMhh1o1bsnZ).
 * Only one inequality filter per query is supported. Encountered both ScheduledDate and Updated.
+* No way to drop kind (collection).
 
 #### GO
 
@@ -55,4 +79,7 @@ q := datastore.NewQuery("Person").KeysOnly()
 q := datastore.NewQuery("User").Filter("Tags =", "test").Filter("Tags =", "go").Order("-Name")
 u := make([]User, 0)
 _, err := q.GetAll(ctx, &u)
+
+// not equal
+WHERE tags >= 'math' AND tags <= 'math'
 ````

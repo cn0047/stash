@@ -37,6 +37,8 @@ Accept: application/x-collection+yaml
 Content-Type: application/json
 
 Authorization: Basic YWRtaW46cGFzc3dvcmQ=
+Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9
+Authorization: OAuth oauth_consumer_key="", oauth_nonce="", oauth_signature="", oauth_signature_method="HMAC-SHA1", oauth_timestamp="1471672391", oauth_token="", oauth_version="1.0"'
 ````
 
 #### Internet media type
