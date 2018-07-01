@@ -2,6 +2,7 @@ DataStore
 -
 
 [doc](https://cloud.google.com/appengine/docs/standard/go/datastore/)
+[limits](https://cloud.google.com/datastore/docs/concepts/limits)
 
 Google Cloud DataStore is a NoSQL document database.
 In DataStore nested transactions are not supported.

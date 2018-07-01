@@ -29,7 +29,7 @@ func main() {
 
 	for qItr := 0; qItr < int(q); qItr++ {
 		s := readLine(reader)
-		fmt.Fprintf(writer, "<<<IN: %v \n <<<IN", s)
+		// fmt.Fprintf(writer, "<<<IN: %v \n <<<IN", s)
 
 		result := f(s)
 		fmt.Fprintf(writer, "%d\n", result)
