@@ -1,8 +1,8 @@
 App Engine
 -
 
-[logs](https://console.cloud.google.com/logs)
-[errors](https://console.cloud.google.com/errors)
+[doc](https://cloud.google.com/appengine/docs/standard/go/)
+[console](https://console.cloud.google.com/)
 [quotas](https://cloud.google.com/appengine/quotas)
 [GoLand config](https://monosnap.com/file/X5w1jrpQ1C4fSmn7rmU9Lbm0l3xNBs)
 

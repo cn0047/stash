@@ -2,6 +2,7 @@ DataStore
 -
 
 [doc](https://cloud.google.com/appengine/docs/standard/go/datastore/)
+[console](https://console.cloud.google.com/datastore/)
 [limits](https://cloud.google.com/datastore/docs/concepts/limits)
 
 Google Cloud DataStore is a NoSQL document database.
@@ -56,6 +57,7 @@ Disadvantages:
 * [How delete element from array](https://monosnap.com/file/YrQHARwcRPAEagaNfoKeMhh1o1bsnZ).
 * Only one inequality filter per query is supported. Encountered both ScheduledDate and Updated.
 * No way to drop kind (collection).
+* No way to re-use compound index (add 1 extra field to existing index - gae will generate new index).
 
 #### GO
 
