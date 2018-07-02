@@ -463,7 +463,7 @@ docker run -it --rm -v $PWD:/app -w /app -e GOPATH=/app cn007b/go sh -c '
 
 # deploy PROD
 gcloud auth login
-gcloud config set project thisismonitoring
+gcloud config set project itismonitoring
 gcloud config list
 
 gcloud app deploy src/go-app/.gae/app.yaml

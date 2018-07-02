@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"regexp"
 	"strconv"
 	"strings"
 )
@@ -32,7 +33,7 @@ func main() {
 		// fmt.Fprintf(writer, "<<<IN: %v \n <<<IN", s)
 
 		result := f(s)
-		fmt.Fprintf(writer, "%d\n", result)
+		fmt.Fprintf(writer, "%v\n", result)
 	}
 
 	writer.Flush()

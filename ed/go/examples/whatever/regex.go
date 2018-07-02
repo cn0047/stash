@@ -19,20 +19,29 @@ func r(s string) string {
 }
 
 func tagsFromHTML(s string) string {
-  var re = regexp.MustCompile(`(?imsU)<(\w+?).*>`)
-  matches := re.FindAllStringSubmatch(s, -1)
+	var re = regexp.MustCompile(`(?imsU)<(\w+?).*>`)
+	matches := re.FindAllStringSubmatch(s, -1)
 
-  tags := make(map[string]uint)
-  for _, m := range matches {
-    tags[m[1]] = 1
-  }
+	tags := make(map[string]uint)
+	for _, m := range matches {
+		tags[m[1]] = 1
+	}
 
-  // sort
-  a := make([]string, 0)
-  for t := range tags {
-    a = append(a, t)
-  }
-  sort.Strings(a)
+	// sort
+	a := make([]string, 0)
+	for t := range tags {
+		a = append(a, t)
+	}
+	sort.Strings(a)
 
-  return strings.Join(a, ";")
+	return strings.Join(a, ";")
+}
+
+func hrefToLink(s string) {
+	var re = regexp.MustCompile(`(?imsU)<a\b.*href="(.*)".*>(([^<].*[^<])(<.*>)?)?<\/a`)
+	matches := re.FindAllStringSubmatch(s, -1)
+
+	for _, m := range matches {
+		fmt.Printf("\n %s 🔵 %s", m[1], strings.Trim(m[3], " "))
+	}
 }
