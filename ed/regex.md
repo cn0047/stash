@@ -3,7 +3,9 @@ RegEx
 
 https://regex101.com/
 
-Ip address range: https://regex101.com/r/O4t93o/2/
+IPv6: https://regex101.com/r/jpVRLB/1
+IPv4: https://regex101.com/r/d88q1P/1
+IPv4 address range: https://regex101.com/r/O4t93o/2/
 
 | syntax                                     | description |
 |--------------------------------------------|-------------|
@@ -100,6 +102,27 @@ grep -Pz 'r\nw' # match new line pattern
 echo "Nate or nate" | grep -P '(?<!N)a'
 echo '{"token":"123"}' | grep -Po '(?<="token":")[^"]*'
 echo '"total":127,' | grep -P '(?!"total":)[0-9]*'
+````
+
+````
+# Latitude and Longitude
+^\([+-]?([1-8]?\d(\.\d+)?|90(\.0+)?), [+-]?((1[0-7]|[1-9])?\d(\.\d+)?|180(\.0+)?)\)$
+
+# ok
+(75, 180)
+(+90.0, -147.45)
+(77.11112223331, 149.99999999)
+(+90, +180)
+(90, 180)
+(-90.00000, -180.0000)
+
+# error
+(75, 280)
+(+190.0, -147.45)
+(77.11112223331, 249.99999999)
+(+90, +180.2)
+(90., 180.)
+(-090.00000, -180.0000)
 ````
 
 ````php

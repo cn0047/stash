@@ -3,10 +3,8 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"io"
 	"os"
-	//"regexp"
-	"strconv"
+	// "regexp"
 	"strings"
 )
 
@@ -23,27 +21,28 @@ func main() {
 
 	writer := bufio.NewWriterSize(stdout, 1024*1024)
 
-	qTemp, err := strconv.ParseInt(readLine(reader), 10, 64)
-	checkError(err)
-	q := int32(qTemp)
-
-	for qItr := 0; qItr < int(q); qItr++ {
-		s := readLine(reader)
-		// fmt.Fprintf(writer, "<<<IN: %v \n <<<IN", s)
-		result := f(s)
-		fmt.Fprintf(writer, "%v\n", result)
+	ss := ""
+	for {
+		s, e := readLine(reader)
+		if e != nil {
+			break
+		}
+		ss += "\n" + s
 	}
+
+	res := f(ss)
+	fmt.Fprintf(writer, "%v", res)
 
 	writer.Flush()
 }
 
-func readLine(reader *bufio.Reader) string {
+func readLine(reader *bufio.Reader) (string, error) {
 	str, _, err := reader.ReadLine()
-	if err == io.EOF {
-		return ""
+	if err != nil {
+		return "", err
 	}
 
-	return strings.TrimRight(string(str), "\r\n")
+	return strings.TrimRight(string(str), "\r\n"), nil
 }
 
 func checkError(err error) {

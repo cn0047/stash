@@ -45,3 +45,12 @@ func hrefToLink(s string) {
 		fmt.Printf("\n %s 🔵 %s", m[1], strings.Trim(m[3], " "))
 	}
 }
+
+func match(s string) string {
+	var re = regexp.MustCompile(`(?i)^[_.]\d+[a-zA-Z]*[_]?$`)
+	if re.MatchString(s) {
+		return "VALID"
+	} else {
+		return "INVALID"
+	}
+}

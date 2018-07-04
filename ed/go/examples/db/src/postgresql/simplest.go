@@ -1,8 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"database/sql"
+	"fmt"
 
 	_ "github.com/lib/pq"
 	"log"
@@ -31,4 +31,9 @@ func main() {
 		log.Fatal(err)
 	}
 	fmt.Printf("%+v", *result)
+}
+
+func in() {
+	// db.Query(&result, `SELECT id FROM bar WHERE code_id IN (?)`, pg.In(params.Codes))
+	// db.Query(&result, `SELECT id FROM bar WHERE code_id = ANY (?)`, pg.Array(params.Codes))
 }
