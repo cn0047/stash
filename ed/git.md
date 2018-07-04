@@ -153,10 +153,17 @@ vendor/
     st  = status
     sl  = stash list
     ss  = stash save --include-untracked
-    sa = stash apply
-    sp = stash pop
+    sa  = stash apply
+    sp  = stash pop
+    rh  = reset HEAD
+    ca  = commit -am
+    cm  = commit -m
+    l   = log --pretty=format:\"%h %ad | [%an] %s%d\" --graph --date=short --no-merges
+    lg  = log --pretty=format:\"%h %ad | [%an] %s%d\" --graph --date=short
     f   = fetch origin
+    p   = pull
     po  = pull origin
+    ph  = push origin HEAD
     pt  = push origin --tags
     m   = merge --no-ff
     ml  = merge origin/live
@@ -167,12 +174,6 @@ vendor/
     dfl = diff origin/live
     dfm = diff origin/master
     dff = diff origin/live --name-only
-    rh  = reset HEAD
-    ca  = commit -am
-    cm  = commit -m
-    ph  = push origin HEAD
-    l   = log --pretty=format:\"%h %ad | [%an] %s%d\" --graph --date=short --no-merges
-    lg  = log --pretty=format:\"%h %ad | [%an] %s%d\" --graph --date=short
 [user]
     name  = Vladimir Kovpak
     email = cn007b@gmail.com

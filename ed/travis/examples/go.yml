@@ -5,6 +5,7 @@ go:
 
 install:
   - go get ./...
+  # - export GOPATH="${TRAVIS_BUILD_DIR}/${YOUR_PROJECT}:$GOPATH"
 
 before_script:
   - go get -u golang.org/x/lint/golint

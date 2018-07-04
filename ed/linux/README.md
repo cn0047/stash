@@ -373,10 +373,6 @@ ping 8.8.8.8 -c 15
 # watch changes in directory
 fswatch ./src | while read f; do echo $f; done
 
-# prettify json output
-echo '{"foo": "f", "bar": "b", "items": [1, 2, 3] }' | jq
-echo '{"foo": "f", "bar": "b", "items": [1, 2, 3] }' | jq '.items | length'
-
 # copy data into clipboard buffer.
 echo 200 | pbcopy
 
