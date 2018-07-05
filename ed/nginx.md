@@ -154,4 +154,15 @@ docker run -ti --rm --name nginx-html \
     -v $PWD/docker/nginx/https/localhost.key:/ssl/localhost.key \
     -v $PWD:/gh \
     -p 3443:443 nginx:latest
+
+docker run -it --rm -v $PWD:/app -w /app -p 3443:443 \
+  -v $PWD/docker/nginx/https/php-fpm.conf:/etc/nginx/conf.d/default.conf \
+  -v $PWD/docker/nginx/https/localhost.crt:/ssl/localhost.crt \
+  -v $PWD/docker/nginx/https/localhost.key:/ssl/localhost.key \
+  -v $PWD:/gh \
+  cn007b/php /bin/bash -c '
+    service php7.1-fpm start;
+    service nginx start;
+    tail -f /dev/stdout
+  '
 ````

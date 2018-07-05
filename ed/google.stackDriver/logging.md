@@ -3,6 +3,7 @@ Stackdriver Logging
 
 [doc](https://cloud.google.com/logging/docs/quickstart-sdk)
 [console](https://console.cloud.google.com/logs)
+[quotas](https://cloud.google.com/logging/quotas)
 
 ````sh
 gcloud logging logs list
