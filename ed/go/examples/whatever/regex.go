@@ -13,13 +13,13 @@ func main() {
 }
 
 func r(s string) string {
-	var re = regexp.MustCompile(`[^\w\d]+`)
+	re := regexp.MustCompile(`[^\w\d]+`)
 	str := re.ReplaceAllString(s, "-")
 	return strings.ToLower(str)
 }
 
 func tagsFromHTML(s string) string {
-	var re = regexp.MustCompile(`(?imsU)<(\w+?).*>`)
+	re := regexp.MustCompile(`(?imsU)<(\w+?).*>`)
 	matches := re.FindAllStringSubmatch(s, -1)
 
 	tags := make(map[string]uint)
@@ -38,7 +38,7 @@ func tagsFromHTML(s string) string {
 }
 
 func hrefToLink(s string) {
-	var re = regexp.MustCompile(`(?imsU)<a\b.*href="(.*)".*>(([^<].*[^<])(<.*>)?)?<\/a`)
+	re := regexp.MustCompile(`(?imsU)<a\b.*href="(.*)".*>(([^<].*[^<])(<.*>)?)?<\/a`)
 	matches := re.FindAllStringSubmatch(s, -1)
 
 	for _, m := range matches {
@@ -47,7 +47,7 @@ func hrefToLink(s string) {
 }
 
 func match(s string) string {
-	var re = regexp.MustCompile(`(?i)^[_.]\d+[a-zA-Z]*[_]?$`)
+	re := regexp.MustCompile(`(?i)^[_.]\d+[a-zA-Z]*[_]?$`)
 	if re.MatchString(s) {
 		return "VALID"
 	} else {

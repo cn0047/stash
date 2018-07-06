@@ -88,6 +88,10 @@ func init() {}
 // func as interface
 type Func func(fl FieldLevel) bool
 type LogFunc func(ctx context.Context, format string, args ...interface{})
+// ✳️
+type F func (s string) string
+func (f F) Bar(s string) {
+}
 
 if p := "MR"; isFormal {
 }
