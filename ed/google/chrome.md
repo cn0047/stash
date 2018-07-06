@@ -10,6 +10,11 @@ Chrome
 [notifications](chrome://settings/content/notifications)
 
 ````
+# delete URL suggestion:
+start typing in url -> select bad suggestion -> Fn + Shift + Delete
+````
+
+````
 // write in js this - and it'll be your break point
 debugger;
 

@@ -1,9 +1,15 @@
 package main
 
 import (
+	"fmt"
 	"regexp"
 	"strings"
+	"sort"
 )
+
+type SubM map[string]string
+
+type M map[string]SubM
 
 func main() {
 	println(r("1st test"))
@@ -53,4 +59,54 @@ func match(s string) string {
 	} else {
 		return "INVALID"
 	}
+}
+
+func addKeyIntoMap(m M, k string) {
+    _, imMap := m[k]
+    if !imMap {
+        m[k] = make(SubM)
+    }
+}
+
+func addValueIntoMap(m M, k string, v string) {
+    m[k][v] = v
+}
+
+func printMap(m M) {
+    ml := []string{}
+    for v := range m {
+        ml = append(ml, v)
+    }
+    sort.Strings(ml)
+
+    for _, k := range ml {
+        v := m[k]
+        fmt.Printf("%s:", k)
+        s := []string{}
+        for sk, _ := range v {
+            s = append(s, sk)
+        }
+        sort.Strings(s)
+        fmt.Printf("%s\n", strings.Join(s, ","))
+    }
+}
+
+func tagsAndAttributes(m M, s string) {
+    re1 := regexp.MustCompile(`<([a-z0-9]+)\s?[^>]*>`)
+    re2 := regexp.MustCompile(`([a-z]+)=["'].*?["']`)
+
+    matches1 := re1.FindAllStringSubmatch(s, -1)
+    for _, mv := range matches1 {
+        tagName := mv[1]
+        tag := mv[0]
+        addKeyIntoMap(m, tagName)
+
+        matches2 := re2.FindAllStringSubmatch(tag, -1)
+
+        fmt.Printf("\n ❇️ %v ||| %v \n", tag, matches2)
+        for _, mv2 := range matches2 {
+            attr := mv2[1]
+            addValueIntoMap(m, tagName, attr)
+        }
+    }
 }

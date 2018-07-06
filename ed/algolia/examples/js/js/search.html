@@ -1,0 +1,62 @@
+<html>
+<head>
+  <style>
+    .algolia-autocomplete {
+      width: 100%;
+    }
+    .algolia-autocomplete .aa-input, .algolia-autocomplete .aa-hint {
+      width: 100%;
+    }
+    .algolia-autocomplete .aa-hint {
+      color: #999;
+    }
+    .algolia-autocomplete .aa-dropdown-menu {
+      width: 100%;
+      background-color: #fff;
+      border: 1px solid #999;
+      border-top: none;
+    }
+    .algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
+      cursor: pointer;
+      padding: 5px 4px;
+    }
+    .algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
+      background-color: #B2D7FF;
+    }
+    .algolia-autocomplete .aa-dropdown-menu .aa-suggestion em {
+      font-weight: bold;
+      font-style: normal;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.0.0/themes/algolia-min.css">
+</head>
+<body>
+
+<input type="text" id="search-input" placeholder="Search unicorns..." />
+<div id="pages"></div>
+<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+<script>
+  const client = algoliasearch('{appId}', '{apiKey}'); // @IMPORTAN
+  const index = client.initIndex('my_index');
+  autocomplete('#search-input', { hint: false }, [
+    {
+      source: autocomplete.sources.hits(index, { hitsPerPage: 5 }),
+      displayKey: 'text',
+      templates: {
+        suggestion: (suggestion) => {
+          return suggestion._highlightResult.text.value;
+        }
+      }
+    }
+  ]).on('autocomplete:selected', (event, suggestion, dataset) => {
+    console.log('Added into pages dataset# %s', dataset);
+    const p = document.createElement('p');
+    p.className = 'ais-Hits-item';
+    p.innerText = suggestion.text;
+    document.getElementById('pages').appendChild(p);
+  });
+</script>
+
+</body>
+</html>

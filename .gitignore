@@ -1,12 +1,13 @@
 # ed/index.nginx-debian.html
 
 .DS_Store
-
 .idea/
+
 docker/.data/
 
 node_modules/
 package-lock.json
+yarn.lock
 
 vendor/
 composer.lock
