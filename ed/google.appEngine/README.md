@@ -41,6 +41,10 @@ gcloud app logs tail -s default
 ````
 
 ````
+gcloud compute instances list
+````
+
+````
 # in web console
 goapp serve app.yaml
 ````
