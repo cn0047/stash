@@ -344,6 +344,8 @@ docker run -it --rm -v $APP_PATH:/app -e GOPATH='/app' xgo sh -c '
 docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' cn007b/go:2018-06-07 sh -c '
     go test -v -covermode=count -coverprofile=coverage.out
 '
+docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' cn007b/go:1.10 golint ./...
+docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' cn007b/go:1.10 gometalinter ./...
 ````
 
 #######################################################################################################################
