@@ -10,6 +10,7 @@ gcloud logging logs list
 gcloud logging metrics list
 gcloud logging sinks list
 
+gcloud logging write experiment "init."
 gcloud logging write my-test-log "A simple entry"
 gcloud logging write my-test-log-2 --payload-type=json \
   '{ "message": "My second entry", "weather": "partly cloudy"}'

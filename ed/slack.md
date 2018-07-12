@@ -2,6 +2,10 @@ slack
 -
 
 ````
+@here
+````
+
+````sh
 curl https://hooks.slack.com/services/TTT/BBBB/HHH -X POST --data-urlencode 'payload={
 "channel": "#ziipr",
 "username": "bot",

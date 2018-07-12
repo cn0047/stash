@@ -10,7 +10,7 @@ class App extends Component {
         <p className="App-intro">
           Simple algolia search:
         </p>
-        <InstantSearch appId="" apiKey="" indexName="my_index">
+        <InstantSearch appId="JUKDJ3P2MS" apiKey="5ebcc1b9fba82e03464a877f67650d28" indexName="my_index">
           <Search />
         </InstantSearch>
 
