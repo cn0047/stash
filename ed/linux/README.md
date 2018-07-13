@@ -343,6 +343,47 @@ time curl -si https://realtimelog.herokuapp.com/test
 #### shell
 
 ````
+# last argument
+!$
+
+id
+who
+echo $USER
+hostname
+tty
+
+# directory mode
+mkdir -m 777 test
+
+which git
+# /usr/local/bin/git
+
+# for standard output
+echo ok 1> f
+# for errors
+echo no 2>| f
+# for standard output & errors
+echo kk &> f
+
+# overwrite file
+echo OK >| f
+
+set -o
+# to enable
+set -o noclobber
+# to disable
+set +o noclobber
+
+cut -f7 -d: /etc/passwd
+
+# create named pipe
+mkfifo mypipe
+
+# when permission denied
+echo '127.0.0.1 trick' | sudo tee -a /etc/hosts
+````
+
+````
 # nohup
 # When you execute a job in the background (using &, bg command),
 # and logout from the session - your process will get killed. 
@@ -414,8 +455,6 @@ scp -rp access@host:~/dir/ ~/dir/
 ~/.bash_history
 
 ln -s {file} {symbolic-name}
-
-which
 
 DISPLAY=:7
 echo $DISPLAY
