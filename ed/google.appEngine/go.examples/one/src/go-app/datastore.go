@@ -11,15 +11,149 @@ import (
 	"time"
 )
 
+const (
+	htmlExample = `
+<!doctype html>
+<html lang="en" prefix="op: http://media.facebook.com/op#">
+    <head>
+        <meta charset="utf-8">
+
+        <link rel="canonical" href="https://www.wefsdfsdfsdf.co.uk/what-colours-to-wear-together">
+        <meta property="op:markup_version" content="v1.0">
+
+        <meta property="fb:use_automatic_ad_placement" content="false">
+        </head>
+    <body>
+
+<article>
+    <header>
+
+
+        <h1>6 New Colour Pairings That Feel Fresh for 2018</h1>
+
+
+        <h2>The brighter the better.</h2>
+        <h3 class="op-kicker">Trends</h3>
+        <address>
+            {657 Emma Spedding Emma Spedding emma-spedding https://cdn.scrtcdnscr.com/cache/users/657/emma-spedding-657-1509101076-main_image.500x500uc.jpg espedding@cmginc.com}
+        </address>
+
+        <time class="op-published" datetime="2018-03-31T05:00:00&#43;0000">March 31st, 2018, 05:00:00 am</time>
+
+        <time class="op-modified" datetime="2018-01-30T12:03:52&#43;0000">January 30th, 2018, 12:03:52 pm</time>
+    </header>
+
+    <p>Experimenting with bright colours can be a little daunting, making it all to easy to stick to the usual grey-and-navy and camel-and-black combos. If you aim to wear more colour in 2018, there are a number of ways to wear it that you might not have thought of that will look fresh and unexpected, and are bound to brighten your mood too.</p><p>The <a href="http://www.sldfjsldkfjlskdjflskdjfklsd.co.uk/spring-summer-2017-fashion-trends/slide2" target="_blank">S/S 18 collections</a> are brighter than ever, with powerful pinks, Kermit the Frog greens, sunshine yellows and zesty oranges. The only styling rule when it comes to colour for 2018 is wear lots of it. Orange and bright blue? Sure! Pink and purple? Go for it! Sky blue and scarlet? If it&#39;s good enough for Céline <strong>Scroll below to see six of the key colour combinations for 2018.</strong></p>
+    <p><strong>Want to know what else you&#39;ll be wearing this year? Here are the seven key looks for <a href="http://www.sldfjsldkfjlskdjflskdjfklsd.co.uk/spring-summer-2017-fashion-trends" target="_blank">S/S 17</a>…</strong></p>
+    <footer>
+        <aside>
+            Follow Us on <a href="https://www.facebook.com/sldfjsldkfjlskdjflskdjfklsdUK">Facebook</a>
+            and <a href="https://twitter.com/sldfjsldkfjlskdjflskdjfklsd">Twitter</a>, and don't miss out on the
+            latest by signing up for our <a href="http://www.sldfjsldkfjlskdjflskdjfklsd.co.uk/email/subscribe/">newsletter</a>.
+        </aside>
+    </footer>
+
+
+<figure class='op-tracker'>
+    <iframe>
+        <script>
+            var _comscore = _comscore || [];
+
+            if (!window.COMSCORE) {
+                window.COMSCORE = {};
+                window.COMSCORE.beacon = function (obj) {
+                    return false;
+                }
+            }
+
+            _comscore.push({ c1: '2', c2: '10004700', comscorekw: 'fbia' });
+            (function() {
+                var s = document.createElement('script'), el = document.getElementsByTagName('script')[0]; s.async = true;
+                s.src = 'https://sb.scorecardresearch.com/beacon.js';
+                el.parentNode.insertBefore(s, el);
+            })();
+        </script>
+    </iframe>
+</figure>
+
+<figure class="op-tracker">
+    <iframe>
+        <script>
+            window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+
+            ga('create', 'UA-41*****-1', 'auto');
+            ga('require', 'displayfeatures');
+            ga('send', 'pageview', {
+                'dimension1': 'what-colours-to-wear-together',
+                'title': '6 New Colour Pairings That Feel Fresh for 2018'
+
+
+            });
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js"></script>
+    </iframe>
+</figure>
+
+<figure class="op-tracker">
+    <iframe>
+        <script>
+            PARSELY = { autotrack: false, onload: function() { PARSELY.beacon.trackPageView({ urlref: 'http://facebook.com/instantarticles' }); return true; } }
+        </script>
+        <div id="parsely-root" style="display: none">
+            <div id="parsely-cfg" data-parsely-site="sldfjsldkfjlskdjflskdjfklsd.co.uk"></div>
+        </div>
+        <script>
+            (function(s, p, d) {
+                var h=d.location.protocol, i=p+'-'+s,
+                    e=d.getElementById(i), r=d.getElementById(p+'-root'),
+                    u=h==='https:'?'d1z2jf7jlzjs58.cloudfront.net'
+                        :'static.'+p+'.com';
+                if (e) return;
+                e = d.createElement(s); e.id = i; e.async = true;
+                e.src = h+'//'+u+'/p.js'; r.appendChild(e);
+            })('script', 'parsely', document);
+        </script>
+    </iframe>
+</figure>
+
+<figure class="op-tracker">
+    <iframe>
+INFO     2018-07-13 13:26:25,371 module.py:846] cws: "GET /articles/cron/syndicate HTTP/1.1" 500 35
+        <script>(function(l,d) {
+            if (l.search.length){
+                var m, u = {}, s = /([^&=]+)=?([^&]*)/g, q = l.search.substring(1);
+                while (m = s.exec(q)) u[m[1]] = m[2];
+                if (("pefbs" in u) && ("pefba" in u) && ("pefbt" in u)) {
+                    var pe = d.createElement("script"); pe.type = "text/javascript"; pe.async = true;
+                    pe.src = "http://traffic.pubexchange.com/click/" + u.pefbt + "/" + u.pefbs + "/" + u.pefba;
+                    var t = d.getElementsByTagName("script")[0]; t.parentNode.insertBefore(pe, t);
+                }
+            }
+        }(window.location, document));</script>
+    </iframe>
+</figure>
+
+</article>
+</body>
+</html>
+	`
+)
+
 type Visit struct {
 	TimeStamp time.Time `datastore:"TimeStamp,noindex"`
 	Path      string    `datastore:"Path,noindex"`
+}
+
+type HTML struct {
+	//
+	Body string `datastore:"Body,noindex"`
 }
 
 func datastoreHandler(w http.ResponseWriter, r *http.Request) {
 	saveVisit(w, r)
 	datastorePut1(w, r)
 	datastorePut2(w, r)
+	datastorePut3(w, r)
 	transactionCommit(w, r)
 	transactionRollBack(w, r)
 	transactionPanic(w, r)
@@ -130,6 +264,20 @@ func datastorePut2(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Fprintf(w, "<br>PUT x-usr-1 - OK: [%+v] %+v", key, user)
+}
+
+func datastorePut3(w http.ResponseWriter, r *http.Request) {
+	ctx := appengine.NewContext(r)
+	d := HTML{Body: htmlExample}
+	key := datastore.NewKey(ctx, "HTML", "html1", 0, nil)
+
+	k, err := datastore.Put(ctx, key, &d)
+	if err != nil {
+		fmt.Fprintf(w, "<br>Error to perform datastorePut3: %+v", err)
+		return
+	}
+
+	fmt.Fprintf(w, "<br>PUT datastorePut3 - OK: [%+v] %+v", k, key)
 }
 
 func transactionCommit(w http.ResponseWriter, r *http.Request) {

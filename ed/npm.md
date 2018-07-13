@@ -26,6 +26,9 @@ npm ll
 npm ls
 npm ls -g
 
+npm run script
+npm run -s script
+
 npm run-script lint
 
 npm config list

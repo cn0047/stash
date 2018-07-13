@@ -54,10 +54,12 @@ Advantages:
 Disadvantages:
 * Do not support substring matches, case-insensitive matches, full-text search.
 * Do not support `NOT, !=, OR, IN`.
+
 * [How delete element from array](https://monosnap.com/file/YrQHARwcRPAEagaNfoKeMhh1o1bsnZ).
 * Only one inequality filter per query is supported. Encountered both ScheduledDate and Updated.
 * No way to drop kind (collection).
 * No way to re-use compound index (add 1 extra field to existing index - gae will generate new index).
+* Property body is too long. Maximum length is 1500. (`noindex` can fix this issue).
 
 #### GO
 
