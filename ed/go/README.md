@@ -19,23 +19,15 @@ export GOBIN=$GOROOT/bin
 export GOARCH=amd64
 export GOOS=linux
 
+go build                 # Compiles and installs packages and dependencies
+go build -race ./example #
+go env
+go fmt ./...             # Format code
+go get ./...             # Install all project dependencies
+go golint ./...          # Check code
+go install               # Install packages and dependencies
+go list                  # List packages
 go run --work ed/go/examples/hw.go
-
-# Install packages and dependencies
-go install
-
-# Compiles and installs packages and dependencies
-go build
-
-# Install all project dependencies
-go get ./...
-
-# Format code
-go fmt ./...
-
-# Check code
-go golint ./...
-
 go vet
 ````
 
@@ -133,6 +125,10 @@ f, _ := os.OpenFile("/tmp/debug.log", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0777)
 
 // Verify statically that *Transport implements http.RoundTripper.
 var _ http.RoundTripper = (*Transport)(nil)
+
+// to safe update variable from goroutines
+Import "sync/atomic"
+atomic.AddInt64(&counter, 1)
 ````
 
 Go is compiled, garbage-collected, concurrent, type-safe.
@@ -250,6 +246,18 @@ Do not communicate by sharing memory. Instead, share memory by communicating.
 <br>⚠️ Do not use global variables or shared memory, they make your code unsafe for running concurrently.
 
 `kill -6 {PID}` kill the program and give a stack trace for each goroutine.
+
+The operating system schedules threads to run against processors
+regardless of the process they belong to.
+
+The operating system schedules threads to run against physical processors
+and the Go runtime schedules goroutines to run against logical processors.
+
+If you want to run goroutines in parallel, you must use more than one logical processor.
+But to have true parallelism, you still need to run your program
+on a machine with multiple physical processors. 
+
+`runtime.GOMAXPROCS(1)` - tell the scheduler to use a single logical processor for program.
 
 #### Channel
 

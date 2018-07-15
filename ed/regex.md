@@ -81,6 +81,11 @@ IPv4 address range: https://regex101.com/r/O4t93o/2/
 | u | upgready|unicode |
 
 ````
+# conditional replacement
+(?{GROUP_MATCHED?}REPLACEMENT_IF_YES:REPLACEMENT_IF_NO}
+````
+
+````
 /(['"])[^'"]*\1/
 
 (aa){1,2}?                   # exactly 2 aa, not 4 aa (2 aa & 2 aa)
