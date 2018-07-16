@@ -57,7 +57,12 @@ cc  - the C compiler,
 gcc - the GNU C compiler,
 ````
 
-`/etc/ttys` - logged in users
+````
+/etc            # system configuration directory
+/etc/os-release # about linux
+/etc/ttys       # logged in users
+/opt            # optional software directory
+````
 
 #### less
 
@@ -71,12 +76,6 @@ gcc - the GNU C compiler,
 -S or --chop-long-lines    # chop lines longer than the screen width.
 -X or --no-init            #
 -xn,... or --tabs=n,...    # sets tab stops.
-````
-
-#### about linux
-
-````
-cat /etc/os-release
 ````
 
 #### upstart
@@ -345,6 +344,9 @@ time curl -si https://realtimelog.herokuapp.com/test
 ````
 # last argument
 !$
+
+history
+!207 # run from history
 
 id
 who

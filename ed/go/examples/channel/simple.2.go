@@ -10,8 +10,8 @@ func main() {
 	go f(ch)
 	fmt.Print("Start:")
 	for {
-		v := <-ch
-		fmt.Printf("\rFrom channel: %v", v)
+		v, ok := <-ch
+		fmt.Printf("\rFrom channel: [%v] %v", ok, v)
 	}
 }
 
