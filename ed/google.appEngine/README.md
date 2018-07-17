@@ -88,6 +88,9 @@ var expensiveFunc = delay.Func("some-arbitrary-key", func(ctx context.Context, a
         // do something expensive!
 })
 expensiveFunc.Call(ctx, "Hello, world!", 42)
+
+// set something into context
+c := context.WithValue(GAECtx, "key", "val")
 ````
 
 Local Unit Testing:

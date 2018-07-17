@@ -338,13 +338,16 @@ docker run -it --rm -v $APP_PATH:/app -e GOPATH='/app' xgo sh -c '
 '
 ````
 
-#### Strings
+#### Strings & GCD
 
 ````
+docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' cn007b/go:1.10 go get -v -t -d ./...
+docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' cn007b/go:1.10 go vet
+docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' cn007b/go:1.10 go fmt ./...
+docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' cn007b/go:1.10 golint ./...
 docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' cn007b/go:2018-06-07 sh -c '
     go test -v -covermode=count -coverprofile=coverage.out
 '
-docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' cn007b/go:1.10 golint ./...
 docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' cn007b/go:1.10 gometalinter ./...
 ````
 
@@ -408,13 +411,14 @@ go get -u golang.org/x/tools/cmd/cover
 go get -u github.com/google/gops
 go get -u github.com/kisielk/godepgraph
 go get -u github.com/thepkg/strings
+go get -u github.com/thepkg/gcd
 
 # test
 cd $GOPATH/src/go-app && ~/.google-cloud-sdk/platform/google_appengine/goroot-1.9/bin/goapp test -cover
 
 # start dev server ◀️
 ~/.google-cloud-sdk/bin/dev_appserver.py --log_level=debug \
-    --port=8000 --admin_port=8001 --storage_path=$GOPATH/.data --skip_sdk_update_check=true \
+    --port=8000 --admin_port=8001 --storage_path=$GOPATH/.data --skip_sdk_update_check=true --support_datastore_emulator=no \
     $GOPATH/src/go-app/app.yaml
 
 # check
@@ -435,7 +439,7 @@ docker run -it --rm -v $PWD:/gh -e GOPATH=$GOPATH xgo sh -c '
 '
 docker run -it --rm -p 8000:8000 -p 8001:8001 -v $PWD:/gh -e GOPATH=$GOPATH xgo sh -c '
     dev_appserver.py --log_level=debug --host=0.0.0.0 --port=8000 --admin_host=0.0.0.0 --admin_port=8001 \
-    --storage_path=$GOPATH/.data --skip_sdk_update_check=true \
+    --storage_path=$GOPATH/.data --skip_sdk_update_check=true --support_datastore_emulator=no \
     $GOPATH/src/go-app/app.yaml
 '
 ````

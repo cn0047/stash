@@ -3,6 +3,7 @@ package go_app
 import (
 	"errors"
 	"fmt"
+	"github.com/thepkg/gcd"
 	"golang.org/x/net/context"
 	"google.golang.org/appengine"
 	"google.golang.org/appengine/datastore"
@@ -165,6 +166,9 @@ func datastoreHandler(w http.ResponseWriter, r *http.Request) {
 
 	indexPutAncestor1(w, r)
 	indexGetAncestor1(w, r)
+
+	//datastoreDropKind1(w, r)
+	datastoreDropKind2(w, r)
 }
 
 func indexGet1(w http.ResponseWriter, r *http.Request) {
@@ -369,4 +373,52 @@ func datastoreGet2(w http.ResponseWriter, r *http.Request) {
 	//ctx := appengine.NewContext(r)
 	//key := datastore.NewIncompleteKey(ctx, "User", nil)
 	//k, err := datastore.Put(ctx, key, &u)
+}
+
+func datastoreDropKind2(w http.ResponseWriter, r *http.Request) {
+	ctx := appengine.NewContext(r)
+	err := gcd.DropKind(ctx, "HTML")
+	fmt.Fprintf(w, "<hr>datastoreDropKind, error: %+v", err)
+}
+
+func datastoreDropKind1(w http.ResponseWriter, r *http.Request) {
+	ctx := appengine.NewContext(r)
+	err := DropKind(ctx, "HTML")
+	fmt.Fprintf(w, "<hr>datastoreDropKind, error: %+v", err)
+}
+
+func DropKind(ctx context.Context, kind string) error {
+	keys, err := GetKeys(ctx, kind)
+	if err != nil {
+		return fmt.Errorf("failed to get keys for kind, error: %v", err)
+	}
+
+	err = datastore.DeleteMulti(ctx, keys)
+	if err != nil {
+		return fmt.Errorf("failed to delete all from kind, error: %v", err)
+	}
+
+	return nil
+}
+
+func GetKeys(ctx context.Context, kind string) ([]*datastore.Key, error) {
+	q := datastore.NewQuery(kind).KeysOnly()
+	t := q.Run(ctx)
+
+	keys := make([]*datastore.Key, 0)
+	for {
+		var d interface{}
+
+		key, err := t.Next(&d)
+		if err == datastore.Done {
+			break
+		}
+		if err != nil {
+			return nil, fmt.Errorf("failed to fetch next key, error: %v", err)
+		}
+
+		keys = append(keys, key)
+	}
+
+	return keys, nil
 }
