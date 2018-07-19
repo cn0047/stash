@@ -1,4 +1,4 @@
-package main
+package patterns_concurrency
 
 import "fmt"
 
