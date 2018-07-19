@@ -40,6 +40,8 @@ npm config set @qsc:registry "http://npm.qrmmlab.qsc.com/repository/npm/"
 npm publish
 
 npm prune
+
+npm audit fix --force
 ````
 
 ````
