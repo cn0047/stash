@@ -10,7 +10,7 @@ import (
 
 type Payload struct {
 	Vendor string `json:"vendor"`
-	Name string `json:"name"`
+	Name   string `json:"name"`
 }
 
 func main() {

@@ -11,6 +11,7 @@ func main() {
 }
 
 func zero() {
+	fmt.Println("\n zero: -------------------")
 	letters := []string{"a", "b", "c", "d"}
 
 	scores := make([]int, 10)     // slice
@@ -28,10 +29,10 @@ func zero() {
 	fmt.Printf("scores2: %+v \n", scores2)
 	fmt.Printf("scores3: %+v \n", scores3)
 	fmt.Printf("as3: %+v \n", a3)
-	fmt.Println("\n-------------------")
 }
 
 func three() {
+	fmt.Println("\n three: -------------------")
 	a := [...]string{"r", "o", "a", "d"}
 	a2 := a[:]
 	a[3] = "x"
@@ -48,10 +49,10 @@ func three() {
 	c2[0] = "b"
 	fmt.Printf("c = %+v, c2 = %+v \n", c, c2)
 
-	fmt.Println("\n-------------------")
 }
 
 func two() {
+	fmt.Println("\n two: -------------------")
 	// Unlike an array type, a slice type has no specified length.
 	// A slice literal is declared just like an array literal, except you leave out the element count.
 	var s1 []byte // it's slice because length not specified
@@ -64,11 +65,11 @@ func two() {
 	fmt.Printf("s1: %+v \n", s1)
 	fmt.Printf("s1Add: %+v \n", s1Add)
 	fmt.Printf("s2: %+v, len = %d, cap = %d \n", s2, len(s2), cap(s2))
-	fmt.Println("\n-------------------")
 
 }
 
 func one() {
+	fmt.Println("\n one: -------------------")
 	s := make([]int, 0)
 	s = append(s, 27)
 	fmt.Printf("\n %#v", s)
@@ -76,7 +77,6 @@ func one() {
 	s2 := mutateSlice(s)
 	fmt.Printf("\n s  = %#v", s)
 	fmt.Printf("\n s2 = %#v", s2)
-	fmt.Println("\n-------------------")
 }
 
 func mutateSlice(s []int) []int {
@@ -91,28 +91,27 @@ func slice3() {
 }
 
 /*
+ zero: -------------------
 letters: [a b c d]
 scores: [0 0 0 0 0 0 0 0 0 0]
 scores2: []
 scores3: []
 as3: [a b c d e]
 
--------------------
+ three: -------------------
 a = [r o a x], a2 = [r o a x]
 s = [r o a x], s2 = [r o a x]
 c = [a], c2 = [b]
 
--------------------
+ two: -------------------
 s1 ❶: [], len = 0, cap = 0
 s1: [3]
 s1Add: [3]
 s2: [0 0 0 0 0], len = 5, cap = 5
 
--------------------
+ one: -------------------
 
  []int{27}
  s  = []int{27}
- s2 = []int{27, 27}
--------------------
-[2]
+ s2 = []int{27, 27}[2]
 */
