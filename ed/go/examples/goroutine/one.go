@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	r := go f(1) // error
+	r := go f(1) // error - goroutine won't return rezult.
 	println(r)
 }
 
