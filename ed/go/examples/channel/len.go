@@ -6,15 +6,17 @@ import (
 )
 
 func main() {
-	n := 5
-	c := make(chan int, n) // make(chan int, 0) equals to make(chan int)
-	go f1(c, n)
-	go f2(c)
-	go f3(c)
+	// make(chan int) equals to make(chan int, 0) equals to make(chan int, 1)
+	c := make(chan int, 2)
+
+	n := 3
+	go in(c, n)
+	go printLength(c)
+	go out(c)
 	time.Sleep(time.Millisecond * 3000)
 }
 
-func f1(c chan int, n int) {
+func in(c chan int, n int) {
 	for i := 0; i < n; i++ {
 		c <- i
 		fmt.Printf("added into chan value: %+v\n", i)
@@ -22,7 +24,7 @@ func f1(c chan int, n int) {
 	}
 }
 
-func f2(c chan int) {
+func printLength(c chan int) {
 	for {
 		v := len(c) // count of elements in chan
 		fmt.Printf("len = %+v\n", v)
@@ -30,7 +32,7 @@ func f2(c chan int) {
 	}
 }
 
-func f3(c chan int) {
+func out(c chan int) {
 	for {
 		v := <-c
 		fmt.Printf("received value: %+v\n", v)

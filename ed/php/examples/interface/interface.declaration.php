@@ -18,6 +18,7 @@ class Boo implements Foo
     /**
      * The class implementing the interface
      * must use the exact same method signatures as are defined in the interface.
+     * It's important to use same var type, but not important to use same var name.
      */
     public function du(Baz $param)
     {

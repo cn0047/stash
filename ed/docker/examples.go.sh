@@ -454,9 +454,9 @@ export GOPATH=/Users/k/web/kovpak/monitoring
 go get ./src/go-app/...
 go get -u github.com/thepkg/strings
 
-~/.google-cloud-sdk/bin/dev_appserver.py --log_level=debug \
-    --port=8080 --admin_port=8000 --storage_path=$GOPATH/.data --skip_sdk_update_check=true \
-    $GOPATH/src/go-app/.gae/app.yaml
+# ~/.google-cloud-sdk/bin/dev_appserver.py --log_level=debug \
+#     --port=8080 --admin_port=8000 --storage_path=$GOPATH/.data --skip_sdk_update_check=true \
+#     $GOPATH/src/go-app/.gae/app.yaml
 
 # for circleci
 docker run -it --rm -v $PWD:/app -w /app -e GOPATH=/app cn007b/go sh -c '

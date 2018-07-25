@@ -122,7 +122,13 @@ switch t := areaIntf.(type) {
 // non-struct type
 type MyFloat float64
 
+// dbg
 f, _ := os.OpenFile("/tmp/debug.log", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0777); f.WriteString("dbg" + "\n")
+// or
+logfile, _ := os.Create("/tmp/debug.log")
+defer logfile.Close()
+logger := log.New(logfile, "[example] ", log.LstdFlags|log.Lshortfile)
+logger.Println("This is a regular message.")
 
 // Verify statically that *Transport implements http.RoundTripper.
 var _ http.RoundTripper = (*Transport)(nil)
@@ -245,6 +251,14 @@ un := f["username"]
 p := f.Get["username"]
 ````
 
+#### Concurrency
+
+Go uses the concurrency model called Communicating Sequential Processes (CSP).
+
+Two crucial concepts make Go’s concurrency model work:
+* Goroutines
+* Channels
+
 #### Goroutine
 
 Do not communicate by sharing memory. Instead, share memory by communicating.
@@ -263,6 +277,9 @@ But to have true parallelism, you still need to run your program
 on a machine with multiple physical processors. 
 
 `runtime.GOMAXPROCS(1)` - tell the scheduler to use a single logical processor for program.
+
+Goroutine is operating on a separate function stack hence no recover from panic,
+([img](https://monosnap.com/file/FyeRMIaPfHmuQStwoqBkt4PxWRwSfJ)).
 
 #### Channel
 
