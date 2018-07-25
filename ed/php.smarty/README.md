@@ -7,6 +7,7 @@ version 2.6.26
 {$smarty.now|date_format:'%Y-%m-%d %H:%M:%S'}
 
 {assign var='i' value=$k+1}
+{$skill_{$skill_abbreviation}}
 
 <pre>{$var|@var_export}<pre>
 

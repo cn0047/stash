@@ -56,9 +56,12 @@ Disadvantages:
 * Do not support `NOT, !=, OR, IN`.
 
 * [How delete element from array](https://monosnap.com/file/YrQHARwcRPAEagaNfoKeMhh1o1bsnZ).
+* No REPL for dev environment.
+* No delete query in prod REPL, [look](https://monosnap.com/file/0osxGC8ocSQrQxGPx05ByYz3FkNByh).
 * Only one inequality filter per query is supported. Encountered both ScheduledDate and Updated.
 * No way to drop kind (collection).
 * No way to re-use compound index (add 1 extra field to existing index - gae will generate new index).
+* If `index.yaml` not uploaded and field don't have index - no possibility to run query against this index.
 * Property body is too long. Maximum length is 1500. (`noindex` can fix this issue).
 
 #### GO

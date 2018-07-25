@@ -141,8 +141,14 @@ INFO     2018-07-13 13:26:25,371 module.py:846] cws: "GET /articles/cron/syndica
 )
 
 type Visit struct {
-	TimeStamp time.Time `datastore:"TimeStamp,noindex"`
-	Path      string    `datastore:"Path,noindex"`
+	TimeStamp             time.Time               `datastore:"TimeStamp,noindex"`
+	Path                  string                  `datastore:"Path,noindex"`
+	AdditionalInformation []AdditionalInformation `datastore:"AdditionalInformation"`
+}
+
+type AdditionalInformation struct {
+	Code  string `datastore:"Code"`
+	Value string `datastore:"Value"`
 }
 
 type HTML struct {
@@ -152,6 +158,8 @@ type HTML struct {
 
 func datastoreHandler(w http.ResponseWriter, r *http.Request) {
 	saveVisit(w, r)
+	saveVisit2(w, r)
+
 	datastorePut1(w, r)
 	datastorePut2(w, r)
 	datastorePut3(w, r)
@@ -216,6 +224,18 @@ func indexPut1(w http.ResponseWriter, r *http.Request) {
 
 func saveVisit(w http.ResponseWriter, r *http.Request) {
 	v := Visit{TimeStamp: time.Now(), Path: "/datastore"}
+	ctx := appengine.NewContext(r)
+	key := datastore.NewIncompleteKey(ctx, "Visit", nil)
+	key, err := datastore.Put(ctx, key, &v)
+	if err != nil {
+		fmt.Fprintf(w, "<br>Failed to store visit, error: %+v", err)
+	}
+	fmt.Fprintf(w, "<br>Visit saved with key 🔑: %+v", key)
+}
+
+func saveVisit2(w http.ResponseWriter, r *http.Request) {
+	ai := []AdditionalInformation{{Code: "c1", Value: "Just a test."}}
+	v := Visit{TimeStamp: time.Now(), Path: "/datastore/withAdddInfo", AdditionalInformation: ai}
 	ctx := appengine.NewContext(r)
 	key := datastore.NewIncompleteKey(ctx, "Visit", nil)
 	key, err := datastore.Put(ctx, key, &v)

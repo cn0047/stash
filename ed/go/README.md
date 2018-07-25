@@ -27,6 +27,7 @@ go get ./...             # Install all project dependencies
 go golint ./...          # Check code
 go install               # Install packages and dependencies
 go list                  # List packages
+go list ...
 go run --work ed/go/examples/hw.go
 go vet
 ````
@@ -129,6 +130,10 @@ var _ http.RoundTripper = (*Transport)(nil)
 // to safe update variable from goroutines
 Import "sync/atomic"
 atomic.AddInt64(&counter, 1)
+
+log.SetPrefix("TRACE: ")
+log.SetFlags(log.Ldate | log.Lmicroseconds | log.Llongfile)
+log.Println("message")
 ````
 
 Go is compiled, garbage-collected, concurrent, type-safe.
