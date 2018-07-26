@@ -1,0 +1,19 @@
+<html>
+<body>
+    php:
+    <input type="button" id="phpBusy" value="busy">
+    <input type="button" id="phpFree" value="free">
+</body>
+<script>
+document.getElementById('phpBusy').addEventListener('click', () => {
+  fetch('http://localhost:80/index.php?busy').then((r) => {
+    r.text().then((t) => console.log(t));
+  });
+});
+document.getElementById('phpFree').addEventListener('click', () => {
+  fetch('http://localhost:80/index.php').then((r) => {
+    r.text().then((t) => console.log(t));
+  });
+});
+</script>
+</html>
