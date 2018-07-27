@@ -3,6 +3,8 @@ Garbage Collector (GC)
 
 #### Mark and sweep (tricolor)
 
+Using in: go.
+
 In this method, the GC scans the program, starting from a point called root
 and tries to reach other objects from then.
 
@@ -22,6 +24,8 @@ than the size of the half of the heap that is being used,
 no copying will be necessary, thus avoiding stoping the program and changing objects's addresses.
 
 #### Reference counting
+
+Using in: php.
 
 In a Reference Counting collector each block has a counter of heap links to it.
 This counter is incremented when a heap link is copied, decremented when the link is discarded.

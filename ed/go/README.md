@@ -28,7 +28,8 @@ go golint ./...          # Check code
 go install               # Install packages and dependencies
 go list                  # List packages
 go list ...
-go run --work ed/go/examples/hw.go
+go run --work ed/go/examples/whatever/hw.go
+go run -race ed/go/examples/whatever/hw.go
 go vet
 ````
 

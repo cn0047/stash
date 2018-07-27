@@ -1,6 +1,16 @@
 Linux Tools
 -
 
+#### apachebench
+
+````
+ab -k -n 5000 -c 100 -t 2 "http://localhost"
+# Where:
+# -n   Number of requests.
+# -c   Concurrency.
+# -t   Timelimit in seconds.
+````
+
 #### less
 
 ````
