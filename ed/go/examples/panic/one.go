@@ -1,7 +1,7 @@
 package main
 
 import (
-	"./lib"
+	"errors"
 	"fmt"
 )
 
@@ -12,5 +12,16 @@ func main() {
 		}
 	}()
 
-	lib.Go()
+	Go()
+}
+
+func Go() {
+	fmt.Println("Starting goroutine.")
+	go func() {
+		my()
+	}()
+}
+
+func my() {
+	panic(errors.New("some error"))
 }

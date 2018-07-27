@@ -470,16 +470,12 @@ docker run -it --rm -v $PWD:/app -w /app -e GOPATH=/app cn007b/go sh -c '
 # deploy PROD
 gcloud auth login
 gcloud config set project itismonitoring
+gcloud config set disable_usage_reporting false
 gcloud config list
-
-gcloud app deploy src/go-app/.gae/app.yaml
-gcloud app deploy src/go-app/.gae/cron.yaml
-gcloud app deploy src/go-app/.gae/queue.yaml
-# gcloud app versions list
-# export OLD_VERSION=v2
-# export NEW_VERSION=v3
-# gcloud app deploy src/go-app/.gae/app.yaml -v $NEW_VERSION
-# gcloud app deploy src/go-app/.gae/cron.yaml -v $NEW_VERSION
-# gcloud app deploy src/go-app/.gae/queue.yaml -v $NEW_VERSION
-# gcloud app versions delete $OLD_VERSION
+for i in $( gcloud app versions list | grep STOPPED | awk '{print $2}' ); do
+    gcloud app versions delete -q $i
+done
+gcloud app deploy -q src/go-app/.gae/app.yaml
+gcloud app deploy -q src/go-app/.gae/cron.yaml
+gcloud app deploy -q src/go-app/.gae/queue.yaml
 ````

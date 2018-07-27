@@ -91,7 +91,20 @@ The GET method is a safe method (or nullipotent), meaning that calling it produc
 |        |                                       | - 404 Not Found                                                           |
 |        |                                       | ⊙ 405 Method Not Allowed                                                  |
 
-Pagination:
+For security it's better to return JSON with an Object on the outside:
+<br>not: `[{"object": "inside an array"}]`
+<br>but: `{"result": [{"object": "inside an array"}]}`
+
+#### Real problems
+
+<br>P: GET user not by ID (PK) but by email (unique key) - how url should look.
+<br>S: `/users/?email=e`.
+
+<br>P: GET aggregated user (db, facebook, twitter, etc) - how to provide payload.
+<br>S: Use api-gateway.
+
+<br>P: Pagination - how to provide limit, offset.
+<br>S: Provide or header either body payload:
 ````
 GET /api/collection
 Range: resources=100-199 # in body
@@ -99,11 +112,5 @@ Range: resources=100-199 # in body
 curl 'http://localhost:8080/v1/api/collection' -XGET -d '{"resources_from":100, "resources_to":199}'
 ````
 
-For security it's better to return JSON with an Object on the outside:
-<br>not: `[{"object": "inside an array"}]`
-<br>but: `{"result": [{"object": "inside an array"}]}`
-
-#### Real problems
-
-* GET user not by ID (PK) but by email (unique key) -> run GET query to users collection.
-* GET aggregated user (db, facebook, twitter, etc).
+<br>P: Versioning API.
+<br>S: Use API version in url, like: `my-api-host.com/v1/users/12345`.

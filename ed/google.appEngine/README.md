@@ -7,7 +7,7 @@ App Engine
 [config files](https://cloud.google.com/appengine/docs/flexible/go/reference/app-yaml)
 [GoLand config](https://monosnap.com/file/X5w1jrpQ1C4fSmn7rmU9Lbm0l3xNBs)
 
-````
+````bash
 # ~/.google-cloud-sdk/bin/gcloud
 
 # login
@@ -32,6 +32,10 @@ gcloud app services list
 
 gcloud app versions list
 gcloud app versions delete v1
+# delete stopped versions:
+for i in $( gcloud app versions list | grep STOPPED | awk '{print $2}' ); do
+    gcloud app versions delete -q $i
+done
 
 gcloud app deploy
 gcloud app deploy --verbosity=debug --project=thisismonitoring
@@ -60,8 +64,9 @@ Advantages:
 
 Disadvantages:
 * http.DefaultTransport and http.DefaultClient are not available in App Engine.
-* There are too many files in your application for changes in all of them to be monitored.
+* `dev_appserver.py` - There are too many files in your application for changes in all of them to be monitored.
   You may have to restart the development server to see some changes to your files.
+* templates - panic: open ../template/home.html: operation not permitted.
 
 ## GO
 
