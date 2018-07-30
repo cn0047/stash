@@ -66,18 +66,40 @@ Many of the challenges you’re going to face with microservices get worse with 
 * Highly Observable
   (aggregate your logs, aggregate your stats)
 
+⚠️ Anti-pattern - nanoservice,
+is a service whose overhead (communications, maintenance etc.) outweighs its utility.
+
+To bind requests to different microservices -
+have to use Correlation ID for each service call.
+
 Transactions:
 
 * Two-Phase Commit Protocol.
 * Eventual consistency (put job in queue and eventually all will be done).
 
-⚠️ Anti-pattern - nanoservice,
-is a service whose overhead (communications, maintenance etc.) outweighs its utility.
+## Advantages
 
-## Problems
+* Possibility to use different languages.
+* Independent deploy.
+* Isolated problems.
+* Scalability/resilience.
+* Possibility to change system faster.
+* Responsibilities are clearly defined.
+* Easier to oversee and understand.
 
-* github for configs / db migrations / etc.
-* duplicate code / data.
-* required reliable CI/CD.
-* networks are unreliable.
-* networks are slow.
+## Disadvantages
+
+* Github for configs / db migrations / etc.
+* Duplicate code / data.
+* Required reliable CI/CD.
+* Architecture has to be well-thought through from the beginning.
+* Networks are unreliable.
+* Networks are slow.
+* Too many programing languages.
+* Making components work together.
+* Requires more effort in communication.
+* Harder to do integration tests.
+* Difficult to monitor the whole system.
+* Debugging production issues may be hard.
+* Logging to one place is challenging.
+* Having more and more microservices makes the whole system more complex and harder to oversee the whole operation.

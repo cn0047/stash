@@ -416,11 +416,6 @@ go get -u github.com/thepkg/gcd
 # test
 cd $GOPATH/src/go-app && ~/.google-cloud-sdk/platform/google_appengine/goroot-1.9/bin/goapp test -cover
 
-# start dev server ◀️
-~/.google-cloud-sdk/bin/dev_appserver.py --log_level=debug \
-    --port=8000 --admin_port=8001 --storage_path=$GOPATH/.data --skip_sdk_update_check=true --support_datastore_emulator=no \
-    $GOPATH/src/go-app/app.yaml
-
 # check
 curl http://localhost:8080/goon
 
@@ -454,10 +449,6 @@ export GOPATH=/Users/k/web/kovpak/monitoring
 go get ./src/go-app/...
 go get -u github.com/thepkg/strings
 
-# ~/.google-cloud-sdk/bin/dev_appserver.py --log_level=debug \
-#     --port=8080 --admin_port=8000 --storage_path=$GOPATH/.data --skip_sdk_update_check=true \
-#     $GOPATH/src/go-app/.gae/app.yaml
-
 # for circleci
 docker run -it --rm -v $PWD:/app -w /app -e GOPATH=/app cn007b/go sh -c '
     cd $GOPATH/src/go-app && go vet
@@ -472,6 +463,7 @@ gcloud auth login
 gcloud config set project itismonitoring
 gcloud config set disable_usage_reporting false
 gcloud config list
+gcloud app versions list
 for i in $( gcloud app versions list | grep STOPPED | awk '{print $2}' ); do
     gcloud app versions delete -q $i
 done
