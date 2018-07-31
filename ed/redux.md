@@ -5,6 +5,7 @@ redux
 [ToDo](http://redux.js.org/docs/basics/ExampleTodoList.html),
 [RealWorld](https://github.com/reactjs/redux/tree/master/examples/real-world).
 [ReactRouter](http://redux.js.org/docs/advanced/UsageWithReactRouter.html).
+[ChromeExtension](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en)
 
 ````
 npm install --save redux react-redux

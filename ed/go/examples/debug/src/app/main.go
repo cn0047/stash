@@ -10,7 +10,8 @@ func main() {
 }
 
 func one() {
-	web()
+	//web()
+	cli()
 }
 
 func web() {
