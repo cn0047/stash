@@ -1,6 +1,9 @@
 Architectures
 -
 
+coordinator
+dispatcher
+
 ## Back End
 
 `model` layer (directory) is compromised because:

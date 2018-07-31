@@ -33,6 +33,11 @@ Good:
 ````
 /users/12345
 /customers/33245/orders/8769/lineitems/1
+
+# Use nouns and NOT the verbs. And use plurals.
+/products not getAllProducts
+/products?name=’ABC’ not /getProductsByName
+/products?type=’xyz’ not /getProductsByType
 ````
 
 |   | name     | description                               |
@@ -104,12 +109,14 @@ For security it's better to return JSON with an Object on the outside:
 <br>S: Use api-gateway.
 
 <br>P: Pagination - how to provide limit, offset.
-<br>S: Provide or header either body payload:
+<br>S: Provide or header either body payload (or in url):
 ````
 GET /api/collection
 Range: resources=100-199 # in body
 
 curl 'http://localhost:8080/v1/api/collection' -XGET -d '{"resources_from":100, "resources_to":199}'
+
+products?limit=25&offset=50 
 ````
 
 <br>P: Versioning API.

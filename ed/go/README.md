@@ -20,6 +20,7 @@ export GOARCH=amd64
 export GOOS=linux
 
 go build                 # Compiles and installs packages and dependencies
+GOOS=windows GOARCH=386 go build
 go build -race ./example #
 go env
 go fmt ./...             # Format code
