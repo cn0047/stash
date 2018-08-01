@@ -126,3 +126,19 @@ wall
         ├── 🗂 plainphp          # PlainPHP entry point.
         └── 🗂 symfony           # Symfony entry point.
 ````
+
+#### Tests
+
+````
+prj
+├── src
+└── test
+    ├── functional
+    │   └── jmeter
+    ├── integration
+    └── unit
+        ├── fixture
+        ├── mock
+        ├── stub
+        └── prj
+````

@@ -4,10 +4,8 @@ import "fmt"
 
 func main() {
 	zero()
-	three()
 	two()
 	one()
-	slice3()
 }
 
 func zero() {
@@ -29,26 +27,6 @@ func zero() {
 	fmt.Printf("scores2: %+v \n", scores2)
 	fmt.Printf("scores3: %+v \n", scores3)
 	fmt.Printf("as3: %+v \n", a3)
-}
-
-func three() {
-	fmt.Println("\n three: -------------------")
-	a := [...]string{"r", "o", "a", "d"}
-	a2 := a[:]
-	a[3] = "x"
-	fmt.Printf("a = %+v, a2 = %+v \n", a, a2)
-
-	s := []string{"r", "o", "a", "d"}
-	s2 := s[:]
-	s2[3] = "x"
-	fmt.Printf("s = %+v, s2 = %+v \n", s, s2)
-
-	c := []string{"a"}
-	c2 := make([]string, 1)
-	copy(c2, c)
-	c2[0] = "b"
-	fmt.Printf("c = %+v, c2 = %+v \n", c, c2)
-
 }
 
 func two() {
@@ -84,12 +62,6 @@ func mutateSlice(s []int) []int {
 	return s
 }
 
-func slice3() {
-	a := []int{0, 1, 2, 3, 4, 5}
-	s := a[2:3:4] // from:to:capacity
-	fmt.Printf("%+v\n", s)
-}
-
 /*
  zero: -------------------
 letters: [a b c d]
@@ -97,11 +69,6 @@ scores: [0 0 0 0 0 0 0 0 0 0]
 scores2: []
 scores3: []
 as3: [a b c d e]
-
- three: -------------------
-a = [r o a x], a2 = [r o a x]
-s = [r o a x], s2 = [r o a x]
-c = [a], c2 = [b]
 
  two: -------------------
 s1 ❶: [], len = 0, cap = 0
@@ -113,5 +80,5 @@ s2: [0 0 0 0 0], len = 5, cap = 5
 
  []int{27}
  s  = []int{27}
- s2 = []int{27, 27}[2]
+ s2 = []int{27, 27}
 */
