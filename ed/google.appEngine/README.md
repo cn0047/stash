@@ -6,6 +6,7 @@ App Engine
 [quotas](https://cloud.google.com/appengine/quotas)
 [config files](https://cloud.google.com/appengine/docs/flexible/go/reference/app-yaml)
 [GoLand config](https://monosnap.com/file/X5w1jrpQ1C4fSmn7rmU9Lbm0l3xNBs)
+[forum](https://groups.google.com/forum/#!forum/google-appengine-go)
 
 ````bash
 # ~/.google-cloud-sdk/bin/gcloud
@@ -78,6 +79,11 @@ Disadvantages:
   You may have to restart the development server to see some changes to your files.
 * templates - panic: open ../template/home.html: operation not permitted.
 
+Also, although goroutines and channels are present,
+when a Go app runs on App Engine only one thread is run in a given instance.
+That is, all goroutines run in a single operating system thread,
+so there is no CPU parallelism available for a given client request.
+
 ## GO
 
 ````go
@@ -107,6 +113,7 @@ expensiveFunc.Call(ctx, "Hello, world!", 42)
 
 // set something into context
 c := context.WithValue(GAECtx, "key", "val")
+c.Get("key")
 ````
 
 Local Unit Testing:

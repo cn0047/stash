@@ -8,9 +8,11 @@ dispatcher
 
 `model` layer (directory) is compromised because:
 
-* it's unclear what is model in reach app (mysql, mongo, redis, elasticsearch, etc)
-* which model should contain stuff common for 2 models
-* infrastructural stuff (doctrine annotations, etc)
+* it's unclear what is model in reach app (mysql, mongo, redis, elasticsearch, etc)?
+* which model should contain stuff common for 2 models?
+* where to place infrastructural stuff (doctrine annotations, etc)?
+
+`monolith` - not so awful in case of server-side-rendering.
 
 #### Simple
 

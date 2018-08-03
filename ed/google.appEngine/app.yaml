@@ -1,3 +1,7 @@
 service: monitoring
+
 manual_scaling:
   instances: 3
+
+automatic_scaling:
+  max_concurrent_requests: 100  # up to a maximum of 500 concurrent requests.
