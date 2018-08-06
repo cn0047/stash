@@ -21,21 +21,24 @@ var (
 )
 
 func main() {
-	fmt.Printf("\n b: %+v", b)
-	fmt.Printf("\n s: %+v", s)
-	fmt.Printf("\n i: %+v", i)
-	fmt.Printf("\n f: %+v", f)
-	fmt.Printf("\n c: %+v", c)
+	fmt.Printf("\n b: %+v", b) // b == nil # can not convert nil to ...
+	fmt.Printf("\n s: %+v", s) // s == nil # can not convert nil to ...
+	fmt.Printf("\n i: %+v", i) // i == nil # can not convert nil to ...
+	fmt.Printf("\n f: %+v", f) // f == nil # can not convert nil to ...
+	fmt.Printf("\n c: %+v", c) // c == nil # can not convert nil to ...
+	fmt.Println()
 
-	fmt.Printf("\n a: %+v", a)
+	fmt.Printf("\n a: %+v", a) // a == nil # can not convert nil to []int
 	fmt.Printf("\n as: %+v, is nil: %+v", as, as == nil)
-	fmt.Printf("\n st: %+v", st)
-	fmt.Printf("\n st2: %+v", st2)
+	fmt.Printf("\n st: %+v", st) // st == nil # can not convert nil to ...
+	fmt.Printf("\n st2: %+v, is nil: %+v", st2, st2 == nil)
+	fmt.Println()
 
-	fmt.Printf("\n fn: %+v", fn)
-	fmt.Printf("\n i2: %+v", i2)
+	fmt.Printf("\n fn: %+v, is nil: %+v", fn, fn == nil)
+	fmt.Printf("\n i2, is nil: %+v: %+v", i2, i2 == nil)
 	fmt.Printf("\n m: %+v, is nil: %+v", m, m == nil)
-	fmt.Printf("\n ch: %+v", ch)
+	fmt.Printf("\n ch: %+v, is nil: %+v", ch, ch == nil)
+	fmt.Println()
 }
 
 /*
@@ -48,10 +51,10 @@ func main() {
  a: [0 0]
  as: [], is nil: true
  st: {n:0}
- st2: <nil>
+ st2: <nil>, is nil: true
 
- fn: <nil>
- i2: <nil>
+ fn: <nil>, is nil: true
+ i2, is nil: <nil>: true
  m: map[], is nil: true
- ch: <nil>
+ ch: <nil>, is nil: true
 */
