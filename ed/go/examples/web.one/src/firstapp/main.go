@@ -13,6 +13,10 @@ func main() {
 		w.Write([]byte("Hello World from Go!"))
 	})
 
+	http.HandleFunc("/redirect", func(w http.ResponseWriter, r *http.Request) {
+		http.Redirect(w, r, "/", http.StatusFound)
+	})
+
 	http.HandleFunc("/health-check", HealthCheckHandler)
 	http.HandleFunc("/errors-wrap", ErrorsWrapHandler)
 

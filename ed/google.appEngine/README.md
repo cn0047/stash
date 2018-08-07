@@ -4,6 +4,7 @@ App Engine
 [doc](https://cloud.google.com/appengine/docs/standard/go/)
 [console](https://console.cloud.google.com/)
 [quotas](https://cloud.google.com/appengine/quotas)
+[requests limits](https://cloud.google.com/appengine/docs/standard/go/how-requests-are-handled#quotas_and_limits)
 [config files](https://cloud.google.com/appengine/docs/flexible/go/reference/app-yaml)
 [GoLand config](https://monosnap.com/file/X5w1jrpQ1C4fSmn7rmU9Lbm0l3xNBs)
 [forum](https://groups.google.com/forum/#!forum/google-appengine-go)
@@ -73,11 +74,25 @@ Only internal appengine microservices have `X-Appengine-Inbound-Appid` header!
 
 Advantages:
 
+* Pre-configured architecture.
+* Automatically handle and balance all instances and data centers.
+* Automatic scalability.
+* Built-in web interface for task queues & crons.
+* Pay for what you use.
+* No server maintenance.
+* Use CDN replication automatically (image, CSS, js content are replicated all across the globe).
+* 1️⃣ App Engine SDK for locall development.
+* 2️⃣ Free quota.
+
 Disadvantages:
-* http.DefaultTransport and http.DefaultClient are not available in App Engine.
-* `dev_appserver.py` - There are too many files in your application for changes in all of them to be monitored.
-  You may have to restart the development server to see some changes to your files.
+* http.DefaultTransport and http.DefaultClient are not available in App Engine
+  (App Engine can only execute code called from an HTTP request).
+* 60 second per request.
 * templates - panic: open ../template/home.html: operation not permitted.
+* 1️⃣ `dev_appserver.py` - There are too many files in your application for changes in all of them to be monitored.
+  You may have to restart the development server to see some changes to your files.
+* 2️⃣ Free quota is tricky.
+* No multithreading.
 
 Also, although goroutines and channels are present,
 when a Go app runs on App Engine only one thread is run in a given instance.

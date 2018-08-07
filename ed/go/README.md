@@ -359,3 +359,7 @@ is used to determine whether an item can be allocated on the stack.
 The Go garbage collector occasionally has to stop the world to complete the collection task.
 The stop the world task will take no more than 10 milliseconds
 out of every 50 milliseconds of execution time.
+
+`GCPercent` - adjusts how much CPU you want to use and how much memory you want to use.
+The default is 100 which means that half the heap is dedicated to live memory and half the heap
+is dedicated to allocation.
