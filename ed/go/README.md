@@ -145,6 +145,7 @@ log.Println("message")
 ````
 
 Go is compiled, garbage-collected, concurrent, type-safe.
+Go source code is always UTF-8.
 
 A workspace is a directory hierarchy with three directories at its root:
 * bin (executable commands)
@@ -198,6 +199,13 @@ Other types:
 
 Ref variables stores in the heap, which is garbage collected
 and which is a much larger memory space than the stack.
+
+**string**
+String it is slice of bytes.
+When we store a character value in a string, we store its byte-at-a-time representation.
+Go strings aren’t always UTF-8, only string literals are UTF-8.
+String values can contain arbitrary bytes
+(string literals always contain UTF-8 text as long as they have no byte-level escapes).
 
 **array**
 An array's size is fixed.
