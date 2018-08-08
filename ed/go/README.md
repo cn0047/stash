@@ -142,6 +142,10 @@ atomic.AddInt64(&counter, 1)
 log.SetPrefix("TRACE: ")
 log.SetFlags(log.Ldate | log.Lmicroseconds | log.Llongfile)
 log.Println("message")
+
+"html/template"
+template.HTMLEscapeString(input)
+template.JSEscapeString(input)
 ````
 
 Go is compiled, garbage-collected, concurrent, type-safe.
