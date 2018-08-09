@@ -5,10 +5,24 @@ DataStore
 [console](https://console.cloud.google.com/datastore/)
 [limits](https://cloud.google.com/datastore/docs/concepts/limits)
 
+````bash
+gcloud datastore cleanup-indexes
+
+gcloud datastore operations list
+````
+
+````bash
+curl -x GET  'https://datastore.googleapis.com/$discovery/rest?version=v1' | jq
+curl -X POST 'https://datastore.googleapis.com/v1/projects/itismonitoring:export'
+````
+
+## Overview
+
 Google Cloud DataStore is a NoSQL document database.
 In DataStore nested transactions are not supported.
 
-Cloud Datastore uses optimistic concurrency to manage transactions.
+Cloud Datastore us
+es optimistic concurrency to manage transactions.
 
 ````
 Relational DB ⇒ Table ⇒ Row    ⇒ Field    ⇒ Primary key

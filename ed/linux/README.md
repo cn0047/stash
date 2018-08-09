@@ -37,6 +37,7 @@ The default value in this file is 128.
 /etc/os-release # about linux
 /etc/ttys       # logged in users
 /opt            # optional software directory
+/proc/cpuinfo   # info about cpu
 ````
 
 ````

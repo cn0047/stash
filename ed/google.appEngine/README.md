@@ -9,9 +9,12 @@ App Engine
 [GoLand config](https://monosnap.com/file/X5w1jrpQ1C4fSmn7rmU9Lbm0l3xNBs)
 [forum](https://groups.google.com/forum/#!forum/google-appengine-go)
 
-````bash
-# ~/.google-cloud-sdk/bin/gcloud
+````
+# in web console
+goapp serve app.yaml
+````
 
+````bash
 # ~/.google-cloud-sdk/bin/dev_appserver.py \
 #     --skip_sdk_update_check=false \
 #     --log_level=debug \
@@ -19,23 +22,6 @@ App Engine
 #     --storage_path=$(GOPATH)/.data --support_datastore_emulator=false \
 #     --go_debugging=true \
 #     $(GOPATH)/src/go-app/.gae/app.yaml
-
-# login
-gcloud auth login
-gcloud auth list
-# or
-gcloud auth activate-service-account --key-file=account.json
-
-gcloud config list
-gcloud config set project thisismonitoring
-
-gcloud projects list
-
-gcloud components list
-gcloud components update
-gcloud components install app-engine-php
-
-gcloud source repos list
 
 gcloud app instances list
 gcloud app services list
@@ -54,17 +40,11 @@ gcloud app browse
 
 gcloud app logs tail -s default
 
-gcloud container clusters list
+instanceID=00c61b117c2d2d8a7c1c04ec77e3f133cecb6a72ecdf1da0844b8223f622b9d72227fe
+gcloud app instances ssh --service default --version 20180727t232426 $instanceID
 ````
 
-````
-gcloud compute instances list
-````
-
-````
-# in web console
-goapp serve app.yaml
-````
+## Overview
 
 Warmup Requests - you can use to avoid latency while loading application code on a fresh instance.
 
@@ -93,6 +73,7 @@ Disadvantages:
   You may have to restart the development server to see some changes to your files.
 * 2️⃣ Free quota is tricky.
 * No multithreading.
+* `(gcloud.app.instances.ssh)` Standard instances do not support this operation.
 
 Also, although goroutines and channels are present,
 when a Go app runs on App Engine only one thread is run in a given instance.

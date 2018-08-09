@@ -37,16 +37,24 @@ type Exception struct {
 	Code int
 }
 
+type IDExperiment struct {
+	//Id   string `datastore:"-" goon:"id"`
+	Id   int64  `datastore:"-" goon:"id"`
+	Data string `datastore:"data"`
+}
+
 func goonHandler(w http.ResponseWriter, r *http.Request) {
 	put1(w, r)
 	put2(w, r)
 	put3(w, r)
 	put4(w, r)
 	put5(w, r)
+
 	get1(w, r)
 	get3(w, r)
 	get4(w, r)
 	get5(w, r)
+
 	select1(w, r)
 	select2(w, r)
 	select3(w, r)
@@ -87,6 +95,11 @@ func put4(w http.ResponseWriter, r *http.Request) {
 }
 
 func put5(w http.ResponseWriter, r *http.Request) {
+	//e := IDExperiment{Id: "1", Data: "1 as string"}
+	e := IDExperiment{Id: 1, Data: "1 as int"}
+	key, err := goon.NewGoon(r).Put(&e)
+	j, _ := json.Marshal(e)
+	fmt.Fprintf(w, "<br>PUT 5 - OK, key: %+v, JSON: %s, error: %s", key, j, err)
 }
 
 func get1(w http.ResponseWriter, r *http.Request) {

@@ -16,6 +16,9 @@ open /Applications/Utilities/Terminal.app/Contents/Resources/Fonts/
 /usr/bin/open -a "/Applications/Google Chrome.app" 'http://google.com/'
 # or
 open 'http://google.com/'
+
+# cpu cores count
+sysctl -n hw.ncpu
 ````
 
 ## HotKeys
