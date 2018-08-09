@@ -8,6 +8,7 @@ App Engine
 [config files](https://cloud.google.com/appengine/docs/flexible/go/reference/app-yaml)
 [GoLand config](https://monosnap.com/file/X5w1jrpQ1C4fSmn7rmU9Lbm0l3xNBs)
 [forum](https://groups.google.com/forum/#!forum/google-appengine-go)
+[issue tracker](http://code.google.com/p/googleappengine/issues/list)
 
 ````
 # in web console
@@ -72,7 +73,9 @@ Disadvantages:
 * 1️⃣ `dev_appserver.py` - There are too many files in your application for changes in all of them to be monitored.
   You may have to restart the development server to see some changes to your files.
 * 2️⃣ Free quota is tricky.
-* No multithreading.
+* No multithreading?
+  [look here](https://blog.golang.org/go-and-google-app-engine)
+  [and here](https://monosnap.com/file/Y66Cckm0pmQlG6GLEwoMxg684ig4RN)
 * `(gcloud.app.instances.ssh)` Standard instances do not support this operation.
 
 Also, although goroutines and channels are present,

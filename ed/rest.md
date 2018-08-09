@@ -1,4 +1,4 @@
-REST (Representational State Transfer)
+REST (Representational State Transfer) aka RESTful
 -
 
 Properties:

@@ -1,7 +1,12 @@
 service: monitoring
 
+# Only in web console.
+# see: https://monosnap.com/file/VUO96zkX9ba0QHDEQEe3KMiMfWWABb
+# instance_class: F1
+
 manual_scaling:
   instances: 3
 
+# The default is automatic scaling.
 automatic_scaling:
   max_concurrent_requests: 100  # up to a maximum of 500 concurrent requests.

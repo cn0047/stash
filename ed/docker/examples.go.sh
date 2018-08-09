@@ -220,19 +220,20 @@ docker run -it --rm -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go.gin/exa
 docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' xgo sh -c '
     go get github.com/codegangsta/gin;
     go get -u golang.org/x/lint/golint;
+    go get -u github.com/thepkg/rest;
 '
-docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' xgo sh -c '
-    go get -v -t -d ./...
-'
-docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' xgo sh -c '
-    go fmt ./...
-'
-docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' xgo sh -c '
-    cd src/app/ && go vet ./...
-'
-docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' xgo sh -c '
-    ./bin/golint src/app/...
-'
+# docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' xgo sh -c '
+#     go get -v -t -d ./...
+# '
+# docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' xgo sh -c '
+#     go fmt ./...
+# '
+# docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' xgo sh -c '
+#     cd src/app/ && go vet ./...
+# '
+# docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' xgo sh -c '
+#     ./bin/golint src/app/...
+# '
 # run
 docker run -it --rm -p 8080:8080 -p 8081:8081 \
     -v $PWD:/app -w /app -e GOPATH='/app' \
@@ -338,7 +339,7 @@ docker run -it --rm -v $APP_PATH:/app -e GOPATH='/app' xgo sh -c '
 '
 ````
 
-#### Strings & GCD
+#### (thepkg) strings & gcd & rest
 
 ````
 docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' cn007b/go:1.10 go get -v -t -d ./...
@@ -348,7 +349,7 @@ docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' cn007b/go:1.10 golint 
 docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' cn007b/go:2018-06-07 sh -c '
     go test -v -covermode=count -coverprofile=coverage.out
 '
-docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' cn007b/go:1.10 gometalinter ./...
+# docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' cn007b/go:1.10 gometalinter ./...
 ````
 
 #######################################################################################################################
