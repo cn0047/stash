@@ -3,10 +3,14 @@ App Engine
 
 [doc](https://cloud.google.com/appengine/docs/standard/go/)
 [console](https://console.cloud.google.com/)
+[environments comparison](https://cloud.google.com/appengine/docs/the-appengine-environments)
 [quotas](https://cloud.google.com/appengine/quotas)
 [requests limits](https://cloud.google.com/appengine/docs/standard/go/how-requests-are-handled#quotas_and_limits)
+[services versions limits](https://cloud.google.com/appengine/docs/standard/python/an-overview-of-app-engine#limits)
+[instance classes](https://cloud.google.com/appengine/docs/standard/#instance_classes)
+[machine types](https://cloud.google.com/compute/docs/machine-types)
 [config files](https://cloud.google.com/appengine/docs/flexible/go/reference/app-yaml)
-[GoLand config](https://monosnap.com/file/X5w1jrpQ1C4fSmn7rmU9Lbm0l3xNBs)
+[goland config](https://monosnap.com/file/X5w1jrpQ1C4fSmn7rmU9Lbm0l3xNBs)
 [forum](https://groups.google.com/forum/#!forum/google-appengine-go)
 [issue tracker](http://code.google.com/p/googleappengine/issues/list)
 

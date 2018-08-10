@@ -79,6 +79,7 @@ docker rmi -f docker-whale
 # less commands in dockerfile - least layers
 docker history php-cli
 
+# shows used ports
 docker port xmongo
 
 exit
