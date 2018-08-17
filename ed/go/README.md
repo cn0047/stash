@@ -7,6 +7,7 @@ go1.9.3
 [packages](https://golang.org/pkg/) [and](https://godoc.org/) [and](https://gopkg.in/)
 [examples](https://gobyexample.com/)
 [badges](https://goreportcard.com/) [covererage](https://gocover.io/)
+[avatar](https://gopherize.me/)
 
 ````
 $GOROOT       // root of the go (`/usr/local/go/`)
@@ -258,6 +259,7 @@ url := req.URL
 query := url.Query()
 q := query["q"]
 page := query.Get("page")
+req.FormValue("timeout")
 
 err := req.ParseForm()
 f := req.Form

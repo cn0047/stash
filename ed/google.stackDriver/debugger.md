@@ -3,8 +3,11 @@ Stackdriver Debugger
 
 [doc](https://cloud.google.com/debugger/docs)
 [console](https://console.cloud.google.com/debug)
+[supported platforms](https://cloud.google.com/debugger/docs/setup/?hl=en_US&_ga=2.165919926.-949125810.1529488511#supported_platforms)
 
 Debugger don't support App Engine.
+
+#### Debug on local machine in IDE
 
 ````bash
 wget -O go-cloud-debug https://storage.googleapis.com/cloud-debugger/compute-go/go-cloud-debug

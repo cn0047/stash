@@ -1,0 +1,13 @@
+{
+  "name": "anodejs",
+  "description": "",
+  "author": "Vladimir Kovpak <cn007b@gmail.com>",
+  "engines": {
+    "node": "8.x.x"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js"
+  }
+}

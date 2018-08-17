@@ -15,14 +15,14 @@ func baker(n int, cooked chan<- *Cake) {
 		cake := new(Cake)
 		cake.id = i
 		cake.state = "cooked;"
-		cooked <- cake // baker never touches this cake again
+		cooked <- cake
 	}
 }
 
 func icer(iced chan<- *Cake, cooked <-chan *Cake) {
 	for cake := range cooked {
 		cake.state += "iced;"
-		iced <- cake // icer never touches this cake again
+		iced <- cake
 	}
 }
 

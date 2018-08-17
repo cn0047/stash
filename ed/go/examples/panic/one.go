@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"fmt"
+	"time"
 )
 
 func main() {
@@ -13,6 +14,7 @@ func main() {
 	}()
 
 	Go()
+	time.Sleep(time.Second * 2)
 }
 
 func Go() {
@@ -23,5 +25,6 @@ func Go() {
 }
 
 func my() {
+	fmt.Println("Panicking...")
 	panic(errors.New("some error"))
 }

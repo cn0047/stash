@@ -7,7 +7,9 @@ import (
 
 func main() {
 	ch := make(chan time.Time)
+
 	go f(ch)
+
 	fmt.Print("Start:")
 	for {
 		v, ok := <-ch

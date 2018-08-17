@@ -1,4 +1,4 @@
-package patterns_concurrency
+package main
 
 import (
 	"fmt"
@@ -29,9 +29,9 @@ func main() {
 	for j := 1; j <= 7; j++ {
 		jobs <- j
 	}
+	close(jobs)
 
 	for a := 1; a <= 7; a++ {
 		<-results
 	}
-	close(jobs)
 }

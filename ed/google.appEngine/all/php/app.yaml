@@ -1,5 +1,9 @@
+service: aphp
+
 runtime: php55
+api_version: 1
 
 handlers:
-- url: .*
+
+- url: /.*
   script: web/index.php

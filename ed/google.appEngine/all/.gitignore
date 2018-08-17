@@ -1,0 +1,8 @@
+.data/
+
+go/pkg/
+go/src/github.com/
+go/src/golang.org/
+go/src/google.golang.org
+
+php/vendor/

@@ -45,6 +45,7 @@ gcloud app browse
 
 gcloud app logs tail -s default
 
+gcloud app instances list
 instanceID=00c61b117c2d2d8a7c1c04ec77e3f133cecb6a72ecdf1da0844b8223f622b9d72227fe
 gcloud app instances ssh --service default --version 20180727t232426 $instanceID
 ````

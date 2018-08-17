@@ -21,12 +21,13 @@ func gr1(c chan int) {
 }
 
 func gr2(c chan int) {
-	for range c {
-		fmt.Printf("\nGot from channel: %+v", <-c)
+	for v := range c {
+		fmt.Printf("\nGot from channel: %+v", v)
 	}
 }
 
 /*
+Got from channel: 1
 Got from channel: 2
-Got from channel: 0
+Got from channel: 3
 */

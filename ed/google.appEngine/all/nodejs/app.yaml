@@ -1,0 +1,4 @@
+service: anodejs
+
+runtime: nodejs8
+api_version: 1
