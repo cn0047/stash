@@ -125,7 +125,7 @@ switch t := areaIntf.(type) {
 // non-struct type
 type MyFloat float64
 
-// dbg
+// debug
 f, _ := os.OpenFile("/tmp/debug.log", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0777); f.WriteString("dbg" + "\n")
 // or
 logfile, _ := os.Create("/tmp/debug.log")

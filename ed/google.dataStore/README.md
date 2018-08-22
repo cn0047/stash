@@ -78,6 +78,7 @@ Disadvantages:
 * [How delete element from array](https://monosnap.com/file/YrQHARwcRPAEagaNfoKeMhh1o1bsnZ).
 * No REPL for dev environment.
 * No delete query in prod REPL, [look](https://monosnap.com/file/0osxGC8ocSQrQxGPx05ByYz3FkNByh).
+* No count query in prod REPL.
 * Only one inequality filter per query is supported. Encountered both ScheduledDate and Updated.
 * No way to drop kind (collection).
 * No way to re-use compound index (add 1 extra field to existing index - gae will generate new index).

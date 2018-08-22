@@ -56,19 +56,52 @@ config:
 #### [Congif](http://nginx.org/en/docs/ngx_core_module.html)
 
 ````
+worker_processes auto;
+use epoll; # on linux
+multi_accept on;
+sendfile on;
+tcp_nodelay on;
+tcp_nopush on;
+open_file_cache max=200000 inactive=20s;
+open_file_cache_valid 30s;
+open_file_cache_min_uses 2;
+open_file_cache_errors on;
+keepalive_timeout 70;
+keepalive_requests 100;
+gzip on;
+reset_timedout_connection on;
+client_body_timeout 10;
+send_timeout 2;
+client_max_body_size 1m;
+````
+
+````
 server {
     root /var/www/birthplace/app/web;
 }
+
 location / {
     access_log /var/log/nginx/access.log;
 }
+
 # Redirect uri like gXh6UAA727XX
 if ($request_uri ~* "gXh6UAA727XX") {
     return 301 https://another.site.com/sc.js?gXh6UAA727XX;
 }
+
 # Redirect no-www to www
 if ($host = 'ziipr.dev') {
     rewrite  ^/(.*)$  $scheme://www.ziipr.com/$1  permanent;
+}
+
+# redirect
+return 301 $scheme://somesite.com$request_uri;
+
+server {
+    root /var/www/somesite.com;
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
 }
 ````
 
@@ -98,6 +131,14 @@ http {
 }
 ````
 
+http2:
+
+````
+server {
+    listen 443 ssl http2;
+}
+````
+
 For socket.io:
 
 ````
@@ -120,6 +161,84 @@ server {
     proxy_http_version 1.1;
     proxy_pass http://io_nodes;
   }
+}
+````
+
+PHP:
+
+````
+server {
+    server_name localhost;
+    error_log /dev/stdout;
+    access_log /dev/stdout;
+    root /app/;
+
+    # for security
+    limit_conn conn_limit_per_ip 10;
+    limit_req zone=req_limit_per_ip burst=10 nodelay;
+
+    # for: Request Entity Too Large
+    client_max_body_size 32m; # default 1Mb
+
+    location ~ \.php$ {
+        try_files $uri =404;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass unix:/run/php/php7.1-fpm.sock;
+        fastcgi_index index.php;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param PATH_INFO $fastcgi_path_info;
+
+        # for upstream timeout
+        fastcgi_read_timeout 150;
+
+        # for big response headers:
+        fastcgi_buffer_size 32k;
+        fastcgi_buffers 4 32k;
+    }
+}
+
+http {
+  # also for: Request URI Too Large
+  large_client_header_buffers 4 16k;
+}
+
+# also for big response headers:
+http {
+  proxy_buffer_size   64k;
+  proxy_buffers   4 64k;
+  proxy_busy_buffers_size   64k;
+}
+
+server {
+    server_name _;
+    root /var/www/site;
+    location / {
+        try_files $uri $uri/ /index.php;
+    }
+    location ~ \.php$ {
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_pass unix:/tmp/phpcgi.socket;
+    }
+}
+````
+
+PHP Pool:
+
+````
+upstream backend {
+        server 10.10.0.5 fail_timeout=360s max_fails=2;
+        server 10.10.0.6 fail_timeout=360s max_fails=2;
+        server 10.10.0.7 fail_timeout=360s max_fails=2;
+}
+
+server {
+  location ~* \.(php)$ {
+        fastcgi_pass backend;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    }
 }
 ````
 
@@ -165,4 +284,22 @@ docker run -it --rm -v $PWD:/app -w /app -p 3443:443 \
     service nginx start;
     tail -f /dev/stdout
   '
+````
+
+````
+server {
+    listen 443;
+    server_name localhost;
+
+    ssl on;
+    ssl_certificate /ssl/localhost.crt;
+    ssl_certificate_key /ssl/localhost.key;
+    # ssl_session_cache   shared:SSL:100m;
+    # ssl_session_timeout 1h;
+
+    location / {
+        root /gh/ed/html/examples;
+        index table.html;
+    }
+}
 ````

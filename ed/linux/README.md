@@ -82,6 +82,26 @@ echo 'key from id_rsa.pub from host machine' >> ~/.ssh/authorized_keys
 #### shell
 
 ````
+# CPU usage info
+# apt-get install sysstat
+mpstat
+
+# Memory usage info
+free
+cat /proc/meminfo
+
+# Disc usage info
+iotop
+
+# tool for net traffic
+cbm
+
+# general stat
+dstat
+
+# shows OS limits
+ulimit -a
+
 # last argument
 !$
 

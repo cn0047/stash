@@ -82,6 +82,7 @@ Disadvantages:
   [look here](https://blog.golang.org/go-and-google-app-engine)
   [and here](https://monosnap.com/file/Y66Cckm0pmQlG6GLEwoMxg684ig4RN)
 * `(gcloud.app.instances.ssh)` Standard instances do not support this operation.
+* No opportunity to debug gae-go.
 
 Also, although goroutines and channels are present,
 when a Go app runs on App Engine only one thread is run in a given instance.

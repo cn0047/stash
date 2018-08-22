@@ -317,6 +317,35 @@ long_query_time = 1
 log_queries_not_using_indexes = 0
 innodb_log_file_size = 5M
 
+# save from memory to disc:
+# O_DIRECT - 4 direct writes on disc;
+# O_DSYNC - 2 direct writes & 2 async;
+innodb_flush_method
+
+# save to disc after transaction (strategy how to write data on disc):
+innodb_flush_log_at_trx_commit
+
+# redo log (log of actions in case of corruption) size, mysql will do all this actions after recover
+innodb_log_file_size
+
+# memory for reading tables, indexes, etc
+innodb_buffer_pool_size = 7G # 80% from OS memory
+
+query_cache_limit = 1M
+query_cache_size  = 8M
+# mysql> SHOW STATUS LIKE '%Qcache%';
+# mysql> FLUSH QUERY CACHE
+
+# threads for new client's connections
+thread_cache_size = 128
+# mysql> SHOW GLOBAL STATUS LIKE 'Threads_created';
+
+# for connection timeout
+wait_timeout = 600
+
+# lock for concurrent transactions
+innodb_lock_wait_timeout=100
+
 general-log = 1
 general-log-file = /var/log/mysql/general.log
 # And run:

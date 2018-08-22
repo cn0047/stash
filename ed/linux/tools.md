@@ -128,6 +128,8 @@ printf "1\n 2\n 3\n" | awk 'ORS=NR?",":"\n"' # Replace new line with comma
 #### ssh
 
 ````
+locate sshd_config
+
 ssh-add ~/.ssh/id_rsa
 vim /etc/ssh/sshd_config
 
