@@ -71,13 +71,21 @@ JSON.parse(string)                     // JSON string to object
 
 console.group('Application Log', 'font-size: x-large');
 console.time('ttt');
+console.timeEnd(); // shows spent time
 console.log('Application Log');
 console.eror('E');
 console.debug('D');
 console.assert(true);
 console.dir(document);
-console.timeEnd();
 console.groupEnd();
+
+console.log(window.performance.now());
+window.performance.mark('start');
+window.performance.mark('end');
+window.performance.measure('took', 'start', 'end');
+console.log(window.performance.getEntriesByType('mark'));
+console.log(window.performance.getEntriesByType('measure'));
+//available: navigationStart, unloadEventStart, unloadEventEnd, redirectStart, redirectEnd, fetchStart, domainLookupStart, domainLookupEnd, connectStart, connectEnd, secureConnectionStart, requestStart, responseEnd, domLoading, domInteractive, domContentLoadedEventStart, domContentLoadedEventEnd, domComplete, loadEventStart, loadEventEnd
 
 console.log('Code:%s', 200); // Code:200
 // %s - string

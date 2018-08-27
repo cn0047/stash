@@ -85,7 +85,7 @@ Headers:
 * Set-Cookie
 * Content-Type
 * Content-Length
-* Cache-Control (private, public, no-cache)
+* Cache-Control (private (client's browser), public (public proxy servers), no-cache)
 * Last-Modified
 * Expires
 * ETag
@@ -109,6 +109,28 @@ Content-Type: text/plain; charset=utf-8
 # indicate whether or not a browser should be allowed to render a page in a <frame>, <iframe> or <object>.
 X-Frame-Options: DENY
 ````
+
+Cache:
+
+````
+Cache-Control: private, max-age=0, no-cache
+
+Cache-Control: private, max-age=60
+Expires: Thu, 31 Dec 2037 23:55:55 GMT
+````
+
+ETag Cache:
+
+````
+# Request file -> Response:
+ETag: "6d82cbb050ddc7fa9cbb659014546e59"
+
+# Next Request file:
+If-None-Match: "6d82cbb050ddc7fa9cbb659014546e59"
+# if ETag value same -> Response: 304 Not Modified
+````
+
+#### CORS
 
 A CORS preflight request is a CORS request that checks to see if the CORS protocol is understood.
 It is an OPTIONS request using two HTTP request headers: `Access-Control-Request-Method` and `Access-Control-Request-Headers`

@@ -2,6 +2,10 @@ HTML (HyperText Markup Language)
 -
 5
 
+````
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+````
+
 #### Special Characters
 
 ````

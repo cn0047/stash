@@ -110,3 +110,10 @@ func tagsAndAttributes(m M, s string) {
         }
     }
 }
+
+func removeWWW() {
+  url := "https://www.thethirty.byrdie.com/july-horoscopes-2018"
+  regex := regexp.MustCompile(`^(https?://)(www.)(.*)$`)
+  result := regex.ReplaceAllString(url, `$1$3`)
+  fmt.Printf("> %+v", result)
+}

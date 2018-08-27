@@ -83,6 +83,7 @@ Disadvantages:
 * No way to drop kind (collection).
 * No way to re-use compound index (add 1 extra field to existing index - gae will generate new index).
 * If `index.yaml` not uploaded and field don't have index - no possibility to run query against this index.
+* `select template from Article` - won't work because no index.
 * Property body is too long. Maximum length is 1500. (`noindex` can fix this issue).
 
 #### GO

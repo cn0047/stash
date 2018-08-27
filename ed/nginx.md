@@ -55,24 +55,57 @@ config:
 
 #### [Congif](http://nginx.org/en/docs/ngx_core_module.html)
 
+http:
+
 ````
+# for: Request URI Too Large
+large_client_header_buffers 4 16k;
+
+# for big response headers:
+proxy_buffer_size   64k;
+proxy_buffers   4 64k;
+proxy_busy_buffers_size   64k;
+
 worker_processes auto;
-use epoll; # on linux
 multi_accept on;
-sendfile on;
+
 tcp_nodelay on;
 tcp_nopush on;
+
+client_body_timeout 10;
+client_header_timeout 10;
+reset_timedout_connection on;
+
+keepalive_timeout 70;
+keepalive_requests 100;
+send_timeout 2;
+
+use epoll; # on linux
+
+sendfile on;
+
+accept_mutex on;
+
 open_file_cache max=200000 inactive=20s;
 open_file_cache_valid 30s;
 open_file_cache_min_uses 2;
 open_file_cache_errors on;
-keepalive_timeout 70;
-keepalive_requests 100;
+
+client_body_buffer_size 10K;
+client_header_buffer_size 1k;
+client_max_body_size 8m;
+````
+
+server:
+
+````
 gzip on;
-reset_timedout_connection on;
-client_body_timeout 10;
-send_timeout 2;
-client_max_body_size 1m;
+gzip_comp_level 5; # 1 low, 9 high
+
+# cache
+etag on;
+
+expires max;
 ````
 
 ````
@@ -110,7 +143,6 @@ events {
     worker_connections 2048;
 }
 http {
-    gzip on;
     server_tokens off; # Delete X-Powered-By
     add_header X-Frame-Options Deny;
     server {
@@ -196,18 +228,6 @@ server {
         fastcgi_buffer_size 32k;
         fastcgi_buffers 4 32k;
     }
-}
-
-http {
-  # also for: Request URI Too Large
-  large_client_header_buffers 4 16k;
-}
-
-# also for big response headers:
-http {
-  proxy_buffer_size   64k;
-  proxy_buffers   4 64k;
-  proxy_busy_buffers_size   64k;
 }
 
 server {
