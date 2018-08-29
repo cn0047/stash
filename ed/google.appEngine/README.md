@@ -5,6 +5,8 @@ App Engine
 [console](https://console.cloud.google.com/)
 [environments comparison](https://cloud.google.com/appengine/docs/the-appengine-environments)
 [quotas](https://cloud.google.com/appengine/quotas)
+[capabilities](https://cloud.google.com/appengine/docs/standard/go/capabilities/)
+[pricing](https://cloud.google.com/appengine/pricing)
 [requests limits](https://cloud.google.com/appengine/docs/standard/go/how-requests-are-handled#quotas_and_limits)
 [services versions limits](https://cloud.google.com/appengine/docs/standard/python/an-overview-of-app-engine#limits)
 [instance classes](https://cloud.google.com/appengine/docs/standard/#instance_classes)
@@ -27,6 +29,8 @@ goapp serve app.yaml
 #     --storage_path=$(GOPATH)/.data --support_datastore_emulator=false \
 #     --go_debugging=true \
 #     $(GOPATH)/src/go-app/.gae/app.yaml
+
+gcloud app describe
 
 gcloud app instances list
 gcloud app services list
@@ -88,6 +92,17 @@ Also, although goroutines and channels are present,
 when a Go app runs on App Engine only one thread is run in a given instance.
 That is, all goroutines run in a single operating system thread,
 so there is no CPU parallelism available for a given client request.
+
+## Memcache
+
+Avoid Memcache hot keys.
+Hot keys are a common anti-pattern that can cause Memcache capacity to be exceeded.
+
+For Dedicated Memcache, we recommend that the peak access rate on a single key
+should be 1-2 orders of magnitude less than the per-GB rating.
+For example, the rating for 1 KB sized items is 10,000 operations per second per GB of Dedicated Memcache.
+Therefore, the load on a single key should not be higher
+than 100 - 1,000 operations per second for items that are 1 KB in size.
 
 ## GO
 

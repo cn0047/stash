@@ -8,6 +8,9 @@ The user-selected rule by which the division of data is accomplished is known as
 <br>MySQL 5.5 does not support vertical partitioning, in which different columns of a table are assigned to different physical partitions.
 <br>This is known as horizontal partitioning—that is, different rows of a table may be assigned to different physical partitions.
 
+Horizontal sharding - split 1 big table into 2 small by logic rule (leads_0, leads_1, leads_2).
+Vertical sharding - move table into separate database.
+
 ## Partitioning Types:
 
     1 RANGE Partitioning

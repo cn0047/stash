@@ -106,6 +106,25 @@ SET max_parallel_workers_per_gather = 4;
 Also `dynamic_shared_memory_type` must be set to a value other than none,
 And the system must NOT be running in single-user mode.
 
+#### Configuration:
+
+`/etc/postgresql/8.3/main/postgresql.conf`
+
+````
+listen_addresses = '*'
+max_connections
+shared_buffers # cache, must be 15-25% from OS memory
+effective_cache_size # memory for disk cache, must be 50-75% from OS memory
+
+# for intensive writes
+checkpoint_segments
+wal_buffers
+synchronous_commit
+
+work_mem
+maintainance_work_mem
+````
+
 #### Data Types:
 
 boolean

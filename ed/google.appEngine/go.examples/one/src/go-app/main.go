@@ -12,6 +12,8 @@ func init() {
 	http.HandleFunc("/hw", hwHandler)
 	http.HandleFunc("/goon", goonHandler)
 	http.HandleFunc("/datastore", datastoreHandler)
+	http.HandleFunc("/user", userHandler)
+	http.HandleFunc("/user/oauth", userOAuthHandler)
 	http.HandleFunc("/search", searchHandler)
 	http.HandleFunc("/config", configHandler)
 	http.HandleFunc("/config/", configHandler)
@@ -32,6 +34,8 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 		<a href="hw">hw</a>
 		<a href="goon">goon</a>
 		<a href="datastore">datastore</a>
+		<a href="user">user</a>
+		<a href="user/oauth">user OAuth</a>
 		<a href="search">search</a>
 		<a href="config">config</a>
 		<a href="config/">config/</a>

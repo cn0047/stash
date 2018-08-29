@@ -129,6 +129,8 @@ A routine is considered DETERMINISTIC if it always produces the same result for 
 #### Flashback
 
 ````sql
+apt-get install percona-toolkit # tools for performance analyzing
+
 INSERT INTO brand2 (name) SELECT name FROM brand;
 
 LIMIT OFFSET, COUNT
@@ -331,6 +333,11 @@ innodb_log_file_size
 # memory for reading tables, indexes, etc
 innodb_buffer_pool_size = 7G # 80% from OS memory
 
+# buffer for uncommitted transactions
+innodb_log_buffer_size
+
+innodb_file_per_table = ON
+
 query_cache_limit = 1M
 query_cache_size  = 8M
 # mysql> SHOW STATUS LIKE '%Qcache%';
@@ -339,6 +346,8 @@ query_cache_size  = 8M
 # threads for new client's connections
 thread_cache_size = 128
 # mysql> SHOW GLOBAL STATUS LIKE 'Threads_created';
+
+max_connections = 256
 
 # for connection timeout
 wait_timeout = 600

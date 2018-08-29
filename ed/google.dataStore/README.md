@@ -74,8 +74,6 @@ Advantages:
 Disadvantages:
 * Do not support substring matches, case-insensitive matches, full-text search.
 * Do not support `NOT, !=, OR, IN`.
-
-* [How delete element from array](https://monosnap.com/file/YrQHARwcRPAEagaNfoKeMhh1o1bsnZ).
 * No REPL for dev environment.
 * No delete query in prod REPL, [look](https://monosnap.com/file/0osxGC8ocSQrQxGPx05ByYz3FkNByh).
 * No count query in prod REPL.
@@ -85,6 +83,8 @@ Disadvantages:
 * If `index.yaml` not uploaded and field don't have index - no possibility to run query against this index.
 * `select template from Article` - won't work because no index.
 * Property body is too long. Maximum length is 1500. (`noindex` can fix this issue).
+* [How delete element from array](https://monosnap.com/file/YrQHARwcRPAEagaNfoKeMhh1o1bsnZ).
+* How reproduce prod datastore timeout problem?
 
 #### GO
 

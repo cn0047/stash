@@ -14,6 +14,9 @@ dispatcher
 
 `monolith` - not so awful in case of server-side-rendering.
 
+Q: Why do you need `service` for simple MVC CRUD project?
+A: To add cache; To select DB (master, slave);
+
 #### Simple
 
 ````

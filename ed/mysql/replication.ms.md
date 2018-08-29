@@ -1,4 +1,4 @@
-Replication
+Replication (Master-Slave)
 -
 
 *MySQL 5.5*

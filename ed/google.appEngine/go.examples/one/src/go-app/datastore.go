@@ -176,7 +176,9 @@ func datastoreHandler(w http.ResponseWriter, r *http.Request) {
 	indexGetAncestor1(w, r)
 
 	//datastoreDropKind1(w, r)
+	datastoreGetKeys(w, r)
 	datastoreDropKind2(w, r)
+	datastoreCursor(w, r)
 }
 
 func indexGet1(w http.ResponseWriter, r *http.Request) {
@@ -395,6 +397,17 @@ func datastoreGet2(w http.ResponseWriter, r *http.Request) {
 	//k, err := datastore.Put(ctx, key, &u)
 }
 
+func datastoreGetKeys(w http.ResponseWriter, r *http.Request) {
+	ctx := appengine.NewContext(r)
+	keys, err := GetKeys(ctx, "User")
+	if err != nil {
+		fmt.Fprintf(w, "failed to get keys for kind, error: %v", err)
+		return
+	}
+
+	fmt.Fprintf(w, "<br>datastoreGetKeys: %+v", keys)
+}
+
 func datastoreDropKind2(w http.ResponseWriter, r *http.Request) {
 	ctx := appengine.NewContext(r)
 	err := gcd.DropKind(ctx, "HTML")
@@ -441,4 +454,28 @@ func GetKeys(ctx context.Context, kind string) ([]*datastore.Key, error) {
 	}
 
 	return keys, nil
+}
+
+func datastoreCursor(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "<hr>")
+	ctx := appengine.NewContext(r)
+	q := datastore.NewQuery("User")
+
+  fmt.Fprintf(w, "datastoreCursor: 🔴 %+v", q)
+	cursor := q.Run(ctx)
+	for {
+		var d User
+
+		_, err := cursor.Next(&d)
+		if err == datastore.Done {
+			fmt.Fprintf(w, "datastoreCursor: %v", "done")
+			return
+		}
+		if err != nil {
+			fmt.Fprintf(w, "datastoreCursor: failed to fetch next key, error: %v", err)
+			return
+		}
+
+		fmt.Fprintf(w, "<br>datastoreCursor ok: %+v", d)
+	}
 }
