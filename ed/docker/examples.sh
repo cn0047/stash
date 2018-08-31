@@ -12,7 +12,7 @@ docker network create --driver bridge xnet
 ````
 # Ubuntu
 docker tag cn007b/ubuntu xubuntu
-docker run -ti --rm -v $PWD:/gh xubuntu /bin/bash
+docker run -ti --rm -v $PWD:/gh -w /gh xubuntu /bin/bash
 
 # Debian
 docker tag cn007b/debian xdebian

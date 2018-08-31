@@ -2,6 +2,7 @@ DataStore
 -
 
 [doc](https://cloud.google.com/appengine/docs/standard/go/datastore/)
+[backups](https://cloud.google.com/appengine/articles/scheduled_backups)
 [console](https://console.cloud.google.com/datastore/)
 [limits](https://cloud.google.com/datastore/docs/concepts/limits)
 
@@ -43,6 +44,35 @@ That roughly corresponds to a limit of 1 megabyte for the serialized form of thi
 
 `Megastore` - the underlying technologies for datastore.
 
+Datastore contention occurs when a single entity or entity group is updated too rapidly.
+The datastore will queue concurrent requests to wait their turn.
+Requests waiting in the queue past the timeout period will throw a concurrency exception.
+
+#### Transaction
+
+Isolation levels (from strongest to weakest):
+
+* Serializable
+* Repeatable Read
+* Read Committed
+* Read Uncommitted
+
+When a commit returns successfully, the transaction is guaranteed to be applied,
+but that does not mean the result of your write is immediately visible to readers.
+Applying a transaction consists of two milestones:
+
+* Milestone A – the point at which changes to an entity have been applied
+* Milestone B – the point at which changes to indices for that entity have been applied
+
+There are two major reasons that datastore transaction errors occur:
+* Timeouts due to write contention
+  (when you attempt to write to a single entity group too quickly)
+* Timeouts due to datastore issues
+  (due to the distributed nature of Bigtable, which the datastore is built on)
+
+Whenever possible, make your datastore transactions idempotent
+so that if you repeat a transaction, the end result will be the same.
+
 #### Index
 
 A query can't find property values that aren't indexed, nor can it sort on such properties.
@@ -53,6 +83,11 @@ Only indexed properties can be projected. The same property cannot be projected 
 datastore automatically predefines an index for each property of each entity kind.
 
 `Composite index` - index stored in `index.yaml`.
+
+The total number of indexes is 2^(number of filters) * (number of different orders),
+for example: 2 ^ 5 * 4 = 128 indexes
+
+In case index does not exist - the datastore returns a NeedIndexError.
 
 ````sh
 rm index.yaml

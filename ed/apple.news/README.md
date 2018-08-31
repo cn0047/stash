@@ -2,7 +2,7 @@ Apple News
 -
 
 [newspublisher](https://www.icloud.com/#newspublisher)
-[api](https://developer.apple.com/documentation/apple_news/apple_news_api)
+[doc](https://developer.apple.com/documentation/apple_news/apple_news_api)
 
 ````sh
 channelId=""
@@ -23,3 +23,7 @@ curl -v -X GET $url \
   -H  'Authorization: HHMAC; key="'$key'"; signature="'$signatureInBase64'"; date="'$date'"'
 
 ````
+
+#### Apple News Format
+
+[components](https://developer.apple.com/documentation/apple_news/apple_news_format/components)
