@@ -7,10 +7,15 @@ import (
 	"time"
 )
 
-func main() {
-	procs := 10
-	runtime.GOMAXPROCS(procs)
+const (
+	procs = 1
+)
 
+func init() {
+	runtime.GOMAXPROCS(procs)
+}
+
+func main() {
 	startedAt := time.Now().UnixNano()
 	action()
 	endedAt := time.Now().UnixNano()
@@ -26,7 +31,7 @@ func action() {
 		go func(i int) {
 			defer wg.Done()
 			time.Sleep(time.Millisecond * 100)
-			fmt.Printf("Done #%d \n", i)
+			fmt.Printf("Done task #%d \n", i)
 		}(i)
 	}
 

@@ -33,7 +33,9 @@ jobs:
       - run: go get -u golang.org/x/lint/golint
       - run: golint src/app/...
 
+
       # - run: go get -v -t -d ./...
+      # - run: go vet
       # - run: go test -v ./...
 
       # - run: go test -v -covermode=count -coverprofile=coverage.out

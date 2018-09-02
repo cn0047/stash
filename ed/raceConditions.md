@@ -4,6 +4,8 @@ _
 Don't handle `Unix signals`.
 Don't specify timeout in microservice SDK HTTP client.
 
+When memcache expires data for heavy query - few threads may run heavy query simultaneously.
+
 #### MySql
 
 Optimistic Locking.
