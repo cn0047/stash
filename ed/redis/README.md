@@ -6,6 +6,7 @@ Redis
 
 ````
 redis-cli # connect to redis
+redis-benchmark # shell tool for benchmarking
 ````
 
 ````

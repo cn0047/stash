@@ -4,6 +4,7 @@ GO
 go1.9.3
 
 [online editor](https://play.golang.org/)
+[spec](https://golang.org/ref/spec)
 [packages](https://golang.org/pkg/) [and](https://godoc.org/) [and](https://gopkg.in/)
 [examples](https://gobyexample.com/)
 [badges](https://goreportcard.com/) [covererage](https://gocover.io/)
