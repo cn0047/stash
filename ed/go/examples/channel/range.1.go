@@ -9,19 +9,20 @@ func main() {
 	c := make(chan int)
 	go gr1(c)
 	go gr2(c)
-	time.Sleep(3 * time.Second)
+	time.Sleep(5 * time.Second)
 }
 
 func gr1(c chan int) {
 	c <- 1
 	c <- 2
 	c <- 3
-	close(c)
+	// close(c)
 	//c <- 4 // panic: send on closed channel
 }
 
 func gr2(c chan int) {
 	for v := range c {
+		time.Sleep(1 * time.Second)
 		fmt.Printf("\nGot from channel: %+v", v)
 	}
 }

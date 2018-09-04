@@ -242,6 +242,12 @@ and copy the contents of the original slice into it.
 The **append** function appends the elements x to the end of the slice s,
 and grows the slice if a greater capacity is needed.
 
+Grows slice by doubling it’s capacity only up to 1024.
+After that it will use so-called `memory size classes` to guarantee
+that growth will be no more than ~12.5%
+
+Use append only to append new value to given slice, not to create new slice!
+
 **struct** is a collection of fields.
 
 #### Interface
