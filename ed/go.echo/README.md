@@ -3,6 +3,11 @@ echo
 
 [doc](https://echo.labstack.com/guide)
 
+Examples:
+[customContext](https://echo.labstack.com/guide/context)
+[templates](https://echo.labstack.com/guide/templates)
+[dbUserLogin](https://echo.labstack.com/cookbook/twitter)
+
 ````
 var c echo.Context
 

@@ -69,9 +69,6 @@ proxy_busy_buffers_size   64k;
 worker_processes auto;
 multi_accept on;
 
-tcp_nodelay on;
-tcp_nopush on;
-
 client_body_timeout 10;
 client_header_timeout 10;
 reset_timedout_connection on;
@@ -82,7 +79,11 @@ send_timeout 2;
 
 use epoll; # on linux
 
-sendfile on;
+sendfile on; # for big static video files
+tcp_nopush on;
+tcp_nodelay on;
+directio 10m;
+limit_rate 196K;
 
 accept_mutex on;
 
@@ -104,8 +105,23 @@ gzip_comp_level 5; # 1 low, 9 high
 
 # cache
 etag on;
+ssi on;
 
 expires max;
+expires 7d;
+expires modified 3d;
+expires off;
+
+limit_req zone=flood;
+
+error_page   404   /404.html;
+error_page   403   /403.html;
+error_page   405   =200 $uri;
+
+proxy_connect_timeout 600;
+proxy_send_timeout    600;
+proxy_read_timeout    600;
+send_timeout          600;
 ````
 
 ````
@@ -117,6 +133,13 @@ location / {
     access_log /var/log/nginx/access.log;
 }
 
+location /admin.php {
+    deny all;
+}
+location ~ \.(js|css|png|jpg|gif|swf|ico|pdf|mov|fla|zip|rar)$ {
+    try_files $uri =404;
+}
+
 # Redirect uri like gXh6UAA727XX
 if ($request_uri ~* "gXh6UAA727XX") {
     return 301 https://another.site.com/sc.js?gXh6UAA727XX;
@@ -126,6 +149,8 @@ if ($request_uri ~* "gXh6UAA727XX") {
 if ($host = 'ziipr.dev') {
     rewrite  ^/(.*)$  $scheme://www.ziipr.com/$1  permanent;
 }
+# 1 more example:
+rewrite ^(.+)$ /ru/$1 permanent;
 
 # redirect
 return 301 $scheme://somesite.com$request_uri;
@@ -175,11 +200,15 @@ For socket.io:
 
 ````
 upstream io_nodes {
+  # Round-robin               - default;
+  # least_conn                - request sends to node with least count of requests
+  # hash $scheme$request_uri; - 
   ip_hash;
-  server 127.0.0.1:6001;
-  server 127.0.0.1:6002;
-  server 127.0.0.1:6003;
+  server 127.0.0.1:6001 weight=10;
+  server 127.0.0.1:6002 weight=5;
+  server 127.0.0.1:6003 max_fails=3 fail_timeout=30s;
   server 127.0.0.1:6004;
+  server 192.0.0.1 backup;
 }
 
 server {
@@ -201,8 +230,8 @@ PHP:
 ````
 server {
     server_name localhost;
-    error_log /dev/stdout;
-    access_log /dev/stdout;
+    error_log /dev/stdout debug; # warn, error crit, alert, emerg
+    access_log /dev/stdout combined;
     root /app/;
 
     # for security

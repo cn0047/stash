@@ -3,9 +3,10 @@ PostgreSQL
 
 PostgreSQL 10.0
 
-(ORDBMS) Object-Relational Database Management System.
-
 [online config](http://pgtune.leopard.in.ua/).
+
+(ORDBMS) Object-Relational Database Management System.
+`pgfouine` - profiler.
 
 DB can contains schema, and schema contains tables.
 Schema - like directory in file system.
@@ -123,6 +124,16 @@ synchronous_commit
 
 work_mem
 maintainance_work_mem
+
+log_destination = 'syslog'
+redirect_stderr = off
+silent_mode = on
+syslog_facility = 'LOCAL0'
+syslog_ident = 'postgres'
+
+log_min_duration_statement = 0
+log_duration = on
+log_statement = 'none'
 ````
 
 #### Data Types:

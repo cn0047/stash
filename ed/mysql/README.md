@@ -130,6 +130,7 @@ A routine is considered DETERMINISTIC if it always produces the same result for 
 
 ````sql
 apt-get install percona-toolkit # tools for performance analyzing
+check-unused-keys # tool to interact with INDEX_STATISTICS
 
 INSERT INTO brand2 (name) SELECT name FROM brand;
 
@@ -166,6 +167,11 @@ SHOW GRANTS;
 SHOW PRIVILEGES;
 
 SHOW FULL TABLES;
+
+SELECT * INTO OUTFILE '/tmp/users.txt'
+FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+FROM users;
 
 Horizontal scaling means that you scale by adding more machines into your pool of resources (Replication).
 Vertical scaling means that you scale by adding more power (CPU, RAM) to your existing machine.
@@ -354,6 +360,8 @@ wait_timeout = 600
 
 # lock for concurrent transactions
 innodb_lock_wait_timeout=100
+
+innodb_force_recovery = 1 # 1, 2, 3, ...
 
 general-log = 1
 general-log-file = /var/log/mysql/general.log
