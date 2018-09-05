@@ -130,6 +130,9 @@ A routine is considered DETERMINISTIC if it always produces the same result for 
 
 ````sql
 apt-get install percona-toolkit # tools for performance analyzing
+apt-get install percona-xtrabackup
+pt-online-schema-change # ALTER tables without locking them
+apt-get install sysbench # tool to test mysql performance
 check-unused-keys # tool to interact with INDEX_STATISTICS
 
 INSERT INTO brand2 (name) SELECT name FROM brand;
@@ -363,6 +366,20 @@ innodb_lock_wait_timeout=100
 
 innodb_force_recovery = 1 # 1, 2, 3, ...
 
+# ignore tables for replication
+replicate_wild_ignore_table = playgroundDB.%
+replicate_wild_ignore_table = dataDB.temp_%
+
+# don't save binlog to disk for better performance
+sync_binlog = 0
+# slave threads count
+slave-parallel-workers = 2
+slave-parallel-type = LOGICAL_CLOCK
+
+# for fast mysql reload
+innodb_buffer_pool_dump_at_shutdown = ON
+innodb_buffer_pool_load_at_startup = ON
+
 general-log = 1
 general-log-file = /var/log/mysql/general.log
 # And run:
@@ -372,6 +389,12 @@ general-log-file = /var/log/mysql/general.log
 
 SET global general_log_file='/var/log/mysql/general.log';
 SET global general_log = 1;
+
+SET profiling = 1;
+SHOW PROFILES;
+SHOW PROFILE;
+SHOW PROFILE FOR QUERY 1;
+SHOW PROFILE CPU FOR QUERY 2; -- ALL, BLOCK IO, CONTEXT SWITCHES, CPU, IPC, PAGE FAULTS, SOURCE, SWAPS
 ````
 
 #### Storage engines

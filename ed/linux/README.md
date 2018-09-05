@@ -29,15 +29,16 @@ then it is silently truncated to that value.
 The default value in this file is 128.
 
 ````
-/dev/null       # stream
-/dev/stderr     # stream
-/dev/stdin      # stream
-/dev/stdout     # stream
-/etc            # system configuration directory
-/etc/os-release # about linux
-/etc/ttys       # logged in users
-/opt            # optional software directory
-/proc/cpuinfo   # info about cpu
+/dev/null        # stream
+/dev/stderr      # stream
+/dev/stdin       # stream
+/dev/stdout      # stream
+/etc             # system configuration directory
+/etc/sysctl.conf #
+/etc/os-release  # about linux
+/etc/ttys        # logged in users
+/opt             # optional software directory
+/proc/cpuinfo    # info about cpu
 ````
 
 ````
@@ -82,6 +83,9 @@ echo 'key from id_rsa.pub from host machine' >> ~/.ssh/authorized_keys
 #### shell
 
 ````
+# tool to disable redundant background services on machine
+sysv-rc-conf
+
 # CPU usage info
 # apt-get install sysstat
 mpstat
@@ -185,6 +189,7 @@ cut -d' ' -f2 /tmp/file.txt # print column 2 from file using ' ' as delimer
 
 df            # Show information about the file system.
 df -h
+df -T         # Show filesystem type
 du            # Summarize disk usage of each FILE.
 du -sh IraFoto/* # Summarize disk usage of each dir in foto dir.
 

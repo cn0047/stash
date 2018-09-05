@@ -23,6 +23,13 @@ sudo service nginx restart
 brew services start nginx
 ````
 
+SSI (Server Side Includes) - the most frequent use of SSI
+is to include the contents of one or more files into a web page.
+
+````html
+<!--#include virtual="../quote.txt" -->
+````
+
 osx:
 ````
 # config:

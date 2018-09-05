@@ -127,6 +127,8 @@ printf "1\n 2\n 3\n" | awk 'ORS=NR?",":"\n"' # Replace new line with comma
 
 #### ssh
 
+`pssh` tool to run ssh command on few servers simultaneously
+
 ````
 locate sshd_config
 
@@ -220,6 +222,13 @@ chown -R www-data:www-data /var/www/html/
 
 ````
 sudo chown -R `whoami` /var/log/
+````
+
+#### crun (cron)
+
+````
+# dir with cron jobs
+ls /etc/cron.d
 ````
 
 #### mail
