@@ -16,9 +16,13 @@ Best Practices
 
 * `camelCase` for constants.
 
-* Don't pass pointers as function arguments (just to save a few bytes). 
+* `snake_case` for filenames.
+
+* Don't pass pointers as function arguments (just to save a few bytes).
   This advice does not apply to large structs.
 
 * Variable names in Go should be short rather than long.
 
 * When defining methods: use a pointer to a type (struct) as a receiver.
+
+* Function must return error as last value.

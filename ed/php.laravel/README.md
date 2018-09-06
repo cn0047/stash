@@ -75,7 +75,9 @@ Illuminate\Support\Facades\Hash::check('plain-text', $hash);
 ## Migrations
 
 ````
-php artisan migrate # running migrations
+php artisan migrate          # running migrations
+php artisan migrate:rollback # rollback the last migration operation
+php artisan make:migration update_newsletter_ad_campaigns
 ````
 
 DEBT:

@@ -171,6 +171,8 @@ under the covers, references to data structures that must be initialized before 
 containing a pointer to the data (inside an array), the length, and the capacity,
 and until those items are initialized, the slice is nil.
 
+`make([]int, 0, 10) // slice of length 0 and capacity 10.`
+
 **defer** pushes a function call in list,
 list will be executed after the surrounding function returns.
 Example: `defer file.Close()`.
@@ -178,6 +180,9 @@ Example: `defer file.Close()`.
 **panic** is a built-in function that stops the ordinary flow of control and begins *panicking*.
 
 **recover** is a built-in function that regains control of a panicking goroutine.
+
+**range** (`for name, value := range m {}`) over map - there is no guarantee
+regarding the order of hash map.
 
 **OOP** in go represented by **structures**. Inheritance in go represented by composition.
 
