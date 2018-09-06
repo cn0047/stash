@@ -29,16 +29,19 @@ then it is silently truncated to that value.
 The default value in this file is 128.
 
 ````
-/dev/null        # stream
-/dev/stderr      # stream
-/dev/stdin       # stream
-/dev/stdout      # stream
-/etc             # system configuration directory
-/etc/sysctl.conf #
-/etc/os-release  # about linux
-/etc/ttys        # logged in users
-/opt             # optional software directory
-/proc/cpuinfo    # info about cpu
+/dev/null                               # stream
+/dev/stderr                             # stream
+/dev/stdin                              # stream
+/dev/stdout                             # stream
+/etc                                    # system configuration directory
+/etc/os-release                         # about linux
+/etc/security/limits.conf               # ?
+/etc/pam.d/common-session-noniteractive # ?
+/etc/sysctl.conf                        #
+/etc/pam.d/common-session               # ?
+/etc/ttys                               # logged in users
+/opt                                    # optional software directory
+/proc/cpuinfo                           # info about cpu
 ````
 
 ````

@@ -107,7 +107,7 @@ for i := 0; i < 100; i++ {
 }
 
 v := varI.(T)
-if v, ok := varI.(T); ok {
+if v, ok := varI.(T); ok { // "comma ok" idiom.
     Process(v) return
 }
 // varI is not of type T
@@ -252,7 +252,8 @@ Grows slice by doubling it’s capacity only up to 1024.
 After that it will use so-called `memory size classes` to guarantee
 that growth will be no more than ~12.5%
 
-Use append only to append new value to given slice, not to create new slice!
+Use append only to append new value to given slice, not to create new slice
+(never call append without assigning back to the same variable)!
 
 **struct** is a collection of fields.
 
