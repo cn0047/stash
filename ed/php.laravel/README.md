@@ -54,6 +54,17 @@ $r = DB::table('virtual_cards')
 ;
 ````
 
+Relationships:
+
+* One To One (`$this->hasOne` & `$this->belongsTo`)
+* One To Many (`$this->hasMany` & `$this->belongsTo`)
+* Many To Many (`$this->belongsToMany`)
+* Has Many Through (`class Country; $this->hasManyThrough('App\Post', 'App\User');`)
+
+Polymorphic Relations:
+
+* `$this->morphTo`, `$this->morphMany`, `$this->morphToMany`, `$this->morphedByMany`.
+
 ## Blade
 
 ````blade

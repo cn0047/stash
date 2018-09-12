@@ -3,10 +3,11 @@ GO
 
 go1.9.3
 
-[online editor](https://play.golang.org/)
+[github](https://github.com/golang/go/wiki)
 [spec](https://golang.org/ref/spec)
 [packages](https://golang.org/pkg/) [and](https://godoc.org/) [and](https://gopkg.in/)
 [examples](https://gobyexample.com/)
+[online editor](https://play.golang.org/)
 [badges](https://goreportcard.com/) [covererage](https://gocover.io/) [covererage](https://cover.run/)
 [avatar](https://gopherize.me/)
 
@@ -278,6 +279,10 @@ err := req.ParseForm()
 f := req.Form
 un := f["username"]
 p := f.Get["username"]
+
+tr := &http.Transport{DisableKeepAlives: true}
+client := http.Client{Transport: tr}
+client := http.Client{Timeout: time.Millisecond * timeout}
 ````
 
 #### Concurrency
