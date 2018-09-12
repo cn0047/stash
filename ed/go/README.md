@@ -7,7 +7,7 @@ go1.9.3
 [spec](https://golang.org/ref/spec)
 [packages](https://golang.org/pkg/) [and](https://godoc.org/) [and](https://gopkg.in/)
 [examples](https://gobyexample.com/)
-[badges](https://goreportcard.com/) [covererage](https://gocover.io/)
+[badges](https://goreportcard.com/) [covererage](https://gocover.io/) [covererage](https://cover.run/)
 [avatar](https://gopherize.me/)
 
 ````
