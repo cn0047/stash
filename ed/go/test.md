@@ -12,9 +12,9 @@ t.Log("GiventheneedtotesttheSendJSONendpoint.") {
   //code
 }
 
-t.Run("fail send email", func(t *testing.T) {})
+t.Run("Failed to send email", func(t *testing.T) {})
 t.Errorf("Got: %v, want: %v", a, e)
-t.Skip("skipping...")
+t.Skip("Skipping...")
 b.RunParallel(func(pb *testing.PB) {})
 ````
 

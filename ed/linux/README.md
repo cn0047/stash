@@ -35,13 +35,14 @@ The default value in this file is 128.
 /dev/stdout                             # stream
 /etc                                    # system configuration directory
 /etc/os-release                         # about linux
-/etc/security/limits.conf               # ?
-/etc/pam.d/common-session-noniteractive # ?
-/etc/sysctl.conf                        #
 /etc/pam.d/common-session               # ?
+/etc/pam.d/common-session-noniteractive # ?
+/etc/security/limits.conf               # ?
+/etc/sysctl.conf                        #
 /etc/ttys                               # logged in users
 /opt                                    # optional software directory
 /proc/cpuinfo                           # info about cpu
+/sys/devices/system/cpu/cpu[0-7]
 ````
 
 ````
@@ -86,6 +87,9 @@ echo 'key from id_rsa.pub from host machine' >> ~/.ssh/authorized_keys
 #### shell
 
 ````
+# generates uuid
+uuid -n 1
+
 # tool to disable redundant background services on machine
 sysv-rc-conf
 
