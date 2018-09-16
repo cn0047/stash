@@ -161,6 +161,9 @@ A workspace is a directory hierarchy with three directories at its root:
 
 Put code into `internal` dir to make it private.
 
+Sentinel error -  custom error value
+(standard library: sql.ErrNoRows, io.EOF, etc).
+
 **new** keyword - allocates memory, does not initialize the memory
 and returns its address (pointer).
 
@@ -361,7 +364,7 @@ for i := 1; i <= 9; i++ {
 }
 ````
 
-Range chan: range will work until the channel is closed explicitly.
+Range chan: range will work (loop won't stop) until the channel is closed explicitly.
 
 Closing a channel has one more useful feature - reading operations on closed channels
 do not block and always return default value for a channel type.
