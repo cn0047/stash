@@ -5,6 +5,7 @@ go1.9.3
 
 [github](https://github.com/golang/go/wiki)
 [spec](https://golang.org/ref/spec)
+[cmd](https://golang.org/cmd/go/)
 [packages](https://golang.org/pkg/) [and](https://godoc.org/) [and](https://gopkg.in/)
 [examples](https://gobyexample.com/)
 [online editor](https://play.golang.org/)

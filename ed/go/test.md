@@ -4,6 +4,8 @@ Test
 ## Test
 
 ````
+go test -json
+
 goapp test -v transactional/users/service -run TestGetServiceAccountsForAdmin
 ````
 

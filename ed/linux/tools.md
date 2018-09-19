@@ -1,6 +1,14 @@
 Linux Tools
 -
 
+#### printf
+
+````
+printf "one\ntwo\n"
+printf "one\n \ttwo\n \tthree\n"
+printf %s\\n {0..9}
+````
+
 #### apachebench
 
 ````
