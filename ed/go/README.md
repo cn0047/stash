@@ -1,6 +1,7 @@
 GO
 -
 
+go1.10.1
 go1.9.3
 
 [github](https://github.com/golang/go/wiki)
@@ -40,6 +41,7 @@ go vet
 ````
 # Fix finds Go programs that use old APIs and rewrites them to use newer ones
 go tool fix
+go tool pprof -h
 
 # Performs precise type-safe renaming of identifiers
 gorename

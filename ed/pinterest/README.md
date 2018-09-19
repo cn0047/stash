@@ -32,7 +32,7 @@ curl -i -X POST 'https://api.pinterest.com/v1/oauth/token' \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -d 'grant=authorization_code&grant_type=authorization_code&client_id='$appID'&client_secret='$secret'&code='$code
 
-token={token}
+token="{token}"
 ````
 
 ````sh
@@ -47,4 +47,7 @@ curl -X POST 'https://api.pinterest.com/v1/pins/?access_token='$token \
     "link":"https://cn007b.tumblr.com/",
     "image_url":"https://i.kinja-img.com/gawker-media/image/upload/t_original/v66gt9dn0kxsmhpxmcmq.jpg"
   }'
+
+# get pin by id
+curl -L 'https://api.pinterest.com/v1/pins/348817933631869565?access_token='$token | jq
 ````
