@@ -4,6 +4,8 @@ pinterest
 https://developers.pinterest.com/apps/
 https://developers.pinterest.com/docs/
 
+#### Get API Token
+
 ````sh
 # add `https://localhost:3443/` on app web page
 
@@ -34,6 +36,8 @@ curl -i -X POST 'https://api.pinterest.com/v1/oauth/token' \
 
 token="{token}"
 ````
+
+#### API
 
 ````sh
 # boards list
