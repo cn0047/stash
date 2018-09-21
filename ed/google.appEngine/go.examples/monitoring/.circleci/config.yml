@@ -1,0 +1,17 @@
+version: 2
+
+jobs:
+  build:
+
+    docker:
+      - image: cn007b/go:1.10-gae
+
+    working_directory: /go/src/github.com/cn007b/monitoring
+
+    steps:
+      - checkout
+
+      - run: go get ./src/go-app/...
+
+      - run: cd ./src/go-app && go vet ./... && cd -
+      - run: go fmt ./...

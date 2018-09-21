@@ -9,6 +9,7 @@ Google Cloud
 # login
 gcloud auth login
 gcloud auth application-default login
+gcloud auth activate-service-account --key-file=service-account.json
 gcloud auth list
 # or
 gcloud auth activate-service-account --key-file=account.json

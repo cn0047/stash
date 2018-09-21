@@ -98,7 +98,7 @@ gcloud update_indexes
 #### GQL
 
 ````sql
-select * from Tweet where __key__ = Key(Tweet, "161228:2")
+select * from Tweet where __key__ = Key(Tweet, "id-123")
 ````
 
 #### +/-

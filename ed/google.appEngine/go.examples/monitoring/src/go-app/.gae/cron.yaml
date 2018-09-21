@@ -1,0 +1,23 @@
+cron:
+
+- description: "single ping"
+  url: /cronTask/realtimelog/ping
+  target: default
+  schedule: every 10 minutes
+
+- description: "pinging"
+  url: /cronTask/realtimelog/pinging
+  target: default
+  schedule: every 10 minutes
+
+# Tasks related to queue jobs:
+
+- description: "Add ping job"
+  url: /cronTask/realtimelog/addPingJob
+  target: default
+  schedule: every 10 minutes
+
+- description: "Add ping jobs"
+  url: /cronTask/realtimelog/addPingingJob
+  target: default
+  schedule: every 10 minutes

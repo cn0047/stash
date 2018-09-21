@@ -1,0 +1,20 @@
+runtime: go
+api_version: go1
+
+handlers:
+
+- url: /.*
+  script: _go_app
+
+- url: /worker/.*
+  script: _go_app
+  login: admin
+
+- url: /static
+  static_dir: static
+
+error_handlers:
+  - file: static/html/error/default.html
+
+  - error_code: over_quota
+    file: static/html/error/overQuota.html
