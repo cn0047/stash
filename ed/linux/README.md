@@ -133,7 +133,9 @@ echo ok 1> f
 # for errors
 echo no 2>| f
 # for standard output & errors
-echo kk &> f
+echo okay &> f
+#
+echo "test" 2>&1 1>/dev/null &
 
 # overwrite file
 echo OK >| f
