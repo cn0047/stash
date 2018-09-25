@@ -1,4 +1,13 @@
 PHP Frameworks Day 18
 -
 
-https://www.youtube.com/watch?v=q_aUyK0UAWQ&list=PLPcgQFk9n9y-iZ0Ez_r9xYzQtT0iJ_MxA&index=3
+#### Refactoring
+
+* It's team work.
+* Define steps.
+* Define tools and write tests.
+* Add monitoring.
+
+#### Social Network
+
+* Neo4j - graph db

@@ -1,0 +1,65 @@
+version: 2.0
+
+jobs:
+  init:
+    docker:
+      - image: docker-image
+        auth:
+            username: _json_key
+            password: $GOOGLE_CLOUD_SERVICE_ACCOUNT
+    working_directory: /go/src/github.com/vendor/prj
+    steps:
+      - checkout
+      - run: ln -s /usr/lib/google-cloud-sdk/platform/google_appengine/goroot-1.9/src/appengine /go/src/github.com/vendor/prj/_gw/src/appengine
+      - run: ln -s /usr/lib/google-cloud-sdk/platform/google_appengine/goroot-1.9/src/appengine_internal /go/src/github.com/vendor/prj/_gw/src/appengine_internal
+      - run: set -e
+      - run: source ./env.sh && go run src/common/api/apitest/cmd/main.go
+
+  test:
+    docker:
+      - image: docker-image
+        auth:
+            username: _json_key
+            password: $GOOGLE_CLOUD_SERVICE_ACCOUNT
+    working_directory: /go/src/github.com/vendor/prj
+    parallelism: 3
+    steps:
+      - run: source ./env.sh && goapp test -cover transactional/users/models
+      - run: source ./env.sh && goapp test -cover transactional/users/service
+      - run: source ./env.sh && goapp test -cover transactional/favorites/models
+
+  deploy:
+    docker:
+      - image: docker-image
+        auth:
+            username: _json_key
+            password: $GOOGLE_CLOUD_SERVICE_ACCOUNT
+    working_directory: /go/src/github.com/vendor/prj
+    steps:
+      - deploy:
+          name: Deploy To App Engine
+          command: |
+              if [ "${CIRCLE_BRANCH}" = "develop" ]; then
+                  make deploy_dev
+              elif [ "${CIRCLE_BRANCH}" = "master" ]; then
+                  make deploy_prod
+              else
+                  echo "On ${CIRCLE_BRANCH} branch, NOT going to deploy anything."
+              fi
+
+workflows:
+  version: 2
+  init_test_deploy:
+    jobs:
+      - init
+      - test:
+          requires:
+          - init
+      - deploy:
+          requires:
+          - test
+          filters:
+            branches:
+              only:
+              - develop
+              - master

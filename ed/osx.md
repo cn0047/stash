@@ -32,6 +32,8 @@ Command-Option-Power # Put MacBook to sleep
 Command-Option-Esc # Force Quit
 
 Command-Shift-. # Show hidden files
+
+L # Forward 10 seconds forward in youtube
 ````
 
 ````

@@ -2,6 +2,11 @@ CircleCI
 -
 
 [doc](https://circleci.com/docs/)
+[conf](https://circleci.com/docs/2.0/configuration-reference/#section=configuration)
+[env vars](https://circleci.com/docs/2.0/env-vars)
+[fan-out](https://circleci.com/docs/2.0/workflows/#fan-outfan-in-workflow-example)
+[parallelism](https://circleci.com/docs/2.0/parallelism-faster-jobs/#section=projects)
+  looks like [this](https://monosnap.com/file/5nrtmQDEyLbK3eff7Wa8BMpoMRn4kQ)
 
 Parallel Jobs:
 

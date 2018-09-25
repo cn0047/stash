@@ -1,0 +1,105 @@
+# looks like this, @see: https://monosnap.com/file/5nrtmQDEyLbK3eff7Wa8BMpoMRn4kQ
+
+version: 2.0
+
+jobs:
+  init:
+    docker:
+      - image: docker-image
+        auth:
+            username: _json_key
+            password: $GOOGLE_CLOUD_SERVICE_ACCOUNT
+    working_directory: /go/src/github.com/vendor/prj
+    steps:
+      - checkout
+      - run: ln -s /usr/lib/google-cloud-sdk/platform/google_appengine/goroot-1.9/src/appengine /go/src/github.com/vendor/prj/_gw/src/appengine
+      - run: ln -s /usr/lib/google-cloud-sdk/platform/google_appengine/goroot-1.9/src/appengine_internal /go/src/github.com/vendor/prj/_gw/src/appengine_internal
+      - run: set -e
+      - run: source ./env.sh && go run src/common/api/apitest/cmd/main.go
+
+  test_1:
+    docker:
+      - image: docker-image
+        auth:
+            username: _json_key
+            password: $GOOGLE_CLOUD_SERVICE_ACCOUNT
+    working_directory: /go/src/github.com/vendor/prj
+    steps:
+      - run: source ./env.sh && goapp test -cover transactional/users/models
+
+  test_2:
+    docker:
+      - image: docker-image
+        auth:
+            username: _json_key
+            password: $GOOGLE_CLOUD_SERVICE_ACCOUNT
+    working_directory: /go/src/github.com/vendor/prj
+    steps:
+      - run: source ./env.sh && goapp test -cover transactional/users/service
+
+  test_3:
+    docker:
+      - image: docker-image
+        auth:
+            username: _json_key
+            password: $GOOGLE_CLOUD_SERVICE_ACCOUNT
+    working_directory: /go/src/github.com/vendor/prj
+    steps:
+      - run: source ./env.sh && goapp test -cover transactional/favorites/models
+
+  all_tests:
+    docker:
+      - image: docker-image
+        auth:
+            username: _json_key
+            password: $GOOGLE_CLOUD_SERVICE_ACCOUNT
+    working_directory: /go/src/github.com/vendor/prj
+    steps:
+      - run: echo "All tests done."
+
+  deploy:
+    docker:
+      - image: docker-image
+        auth:
+            username: _json_key
+            password: $GOOGLE_CLOUD_SERVICE_ACCOUNT
+    working_directory: /go/src/github.com/vendor/prj
+    steps:
+      - deploy:
+          name: Deploy To App Engine
+          command: |
+              if [ "${CIRCLE_BRANCH}" = "develop" ]; then
+                  make deploy_dev
+              elif [ "${CIRCLE_BRANCH}" = "master" ]; then
+                  make deploy_prod
+              else
+                  echo "On ${CIRCLE_BRANCH} branch, NOT going to deploy anything."
+              fi
+
+workflows:
+  version: 2
+  init_test_deploy:
+    jobs:
+      - init
+      - test_1:
+          requires:
+          - init
+      - test_2:
+          requires:
+          - init
+      - test_3:
+          requires:
+          - init
+      - all_tests:
+          requires:
+          - test_1
+          - test_2
+          - test_3
+      - deploy:
+          requires:
+          - all_tests
+          filters:
+            branches:
+              only:
+              - develop
+              - master

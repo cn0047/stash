@@ -14,8 +14,8 @@ for i in "${ar1[@]}"; do
     pids+=" $!"
 done
 
-for p in $pids; do
-    if ! wait $p; then
+for p in ${pids}; do
+    if ! wait ${p}; then
         echo "PID $p FAILED"
         exit -1
     fi

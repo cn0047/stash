@@ -26,6 +26,8 @@ jobs:
     steps:
       - checkout
 
+      - run: echo "run some tests"
+
       - run:
           name: Docker login
           command: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
