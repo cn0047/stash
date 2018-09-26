@@ -3,6 +3,8 @@ Replication (Master-Slave)
 
 *MySQL 5.5*
 
+Replication needed for high availability.
+
 Depending on the configuration, you can replicate all databases, selected databases, or even selected tables within a database.
 
 * Asynchronous replication - one server acts as the master, while one or more other servers act as slaves.

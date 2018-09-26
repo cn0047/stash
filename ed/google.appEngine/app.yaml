@@ -4,6 +4,9 @@ service: monitoring
 # see: https://monosnap.com/file/VUO96zkX9ba0QHDEQEe3KMiMfWWABb
 # instance_class: F1
 
+env_variables:
+  MY_VAR: 'my value'
+
 manual_scaling:
   instances: 3
 

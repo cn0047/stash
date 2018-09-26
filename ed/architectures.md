@@ -12,10 +12,31 @@ dispatcher
 * which model should contain stuff common for 2 models?
 * where to place infrastructural stuff (doctrine annotations, etc)?
 
-`monolith` - not so awful in case of server-side-rendering.
-
 Q: Why do you need `service` for simple MVC CRUD project?
 A: To add cache; To select DB (master, slave);
+
+#### Monolith
+
+Not so awful in case of server-side-rendering.
+
+But:
+* [10K SLOC](https://en.wikipedia.org/wiki/Source_lines_of_code).
+* Extremely difficult to navigate the code and isolate your code.
+
+#### Functional layout
+
+Group code by it’s functional type: controllers, models, etc.
+
+But:
+* names are atrocious (controller.UserController, service.UserService, ...).
+
+#### Module layout
+
+Group code by it’s module: user, account, etc.
+
+But:
+* terrible names like: (users.User, ...)
+  or `accounts.Controller` needs to interact with our `users.Controller` in `go` (-> critical err).
 
 #### Simple
 
@@ -146,4 +167,18 @@ prj
         ├── mock
         ├── stub
         └── prj
+````
+
+#### Go
+
+1. Root package is for domain types.
+2. Group subpackages by dependency.
+3. Use a shared mock subpackage.
+4. Main package ties together dependencies.
+
+````
+root
+├── domain
+├── infrastructure
+└── myapp.go
 ````
