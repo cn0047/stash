@@ -30,9 +30,10 @@ The default value in this file is 128.
 
 ````
 /dev/null                               # stream
-/dev/stderr                             # stream
-/dev/stdin                              # stream
-/dev/stdout                             # stream
+/dev/stderr                             # stream 2
+/dev/stdin                              # stream 0
+/dev/stdout                             # stream 1
+/dev/null                               # hide output
 /etc                                    # system configuration directory
 /etc/os-release                         # about linux
 /etc/pam.d/common-session               # ?
@@ -128,6 +129,8 @@ mkdir -m 777 test
 which git
 # /usr/local/bin/git
 
+# for standard input
+echo yes 0> f
 # for standard output
 echo ok 1> f
 # for errors
@@ -136,6 +139,9 @@ echo no 2>| f
 echo okay &> f
 #
 echo "test" 2>&1 1>/dev/null &
+>&2 # output to stderr
+1>&2 # output to stderr
+2>&1 # stderr to stdout
 
 # overwrite file
 echo OK >| f
@@ -262,6 +268,8 @@ find -type f -name '*.php' -exec egrep -Hn --color=always 'is_failed' {} \; | gr
 # date, in certain format:
 date +'%d/%b/%Y:%H:%M' # 18/Jul/2018:11:48
 date +%Y-%m-%dT%T%z    # 2018-07-18T11:49:03+0300
+date +%s               # timestamp
+date +%s%N             # seconds and current nanoseconds
 ````
 
 #### H

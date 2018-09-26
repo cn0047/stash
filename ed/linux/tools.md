@@ -1,12 +1,37 @@
 Linux Tools
 -
 
+#### read
+
+Reads user input (prompt).
+
+````
+# reads and prints input
+read; echo $REPLY
+read -r; echo $REPLY
+
+# reads 1 character
+read -r -n 1; echo $REPLY
+````
+
 #### printf
 
 ````
 printf "one\ntwo\n"
 printf "one\n \ttwo\n \tthree\n"
 printf %s\\n {0..9}
+
+printf "Hi %s \n" $USER
+printf "p%s\n" 1 2 3
+printf -v myVar "UserIs%s" $USER
+````
+
+#### echo
+
+````
+echo 'Hello world'
+echo "Hello world $USER"
+echo -n "Hello world $USER" # no new line
 ````
 
 #### apachebench
@@ -179,7 +204,8 @@ execute a program periodically, showing output fullscreen.
 -n, --interval <secs> # seconds to wait between updates
 ````
 
-watch -n 2 'echo 200'
+watch -n 1 'echo $(date +%s%N)'
+watch -n .01 'echo $(date +%s%N)'
 watch -n 2 'date'
 
 #### ps
