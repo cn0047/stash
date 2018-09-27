@@ -4,6 +4,11 @@ vim
 version 7.4
 
 ````
+# open file & goto line 7
+vim file +7
+````
+
+````
 :version
 :redo or CTRL+R
 :e!                 - reload file

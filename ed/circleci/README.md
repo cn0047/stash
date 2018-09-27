@@ -8,6 +8,8 @@ CircleCI
 [parallelism](https://circleci.com/docs/2.0/parallelism-faster-jobs/#section=projects)
   looks like [this](https://monosnap.com/file/5nrtmQDEyLbK3eff7Wa8BMpoMRn4kQ)
 
+To fail build - exit with non zero code.
+
 Parallel Jobs:
 
 ````yaml

@@ -12,7 +12,8 @@ Examples:
 var c echo.Context
 
 // redirect
-c.Redirect(http.StatusMovedPermanently, "<URL>")
+c.Redirect(http.StatusFound, "<URL>")
+c.Response().Header().Set(echo.HeaderLocation, "img")
 
 // http://localhost/path/to/id/1
 c.Param("id")

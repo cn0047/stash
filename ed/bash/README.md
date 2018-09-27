@@ -3,6 +3,7 @@ Bash
 
 ````
 bash --version
+echo $BASH_VERSION
 
 PATH=$PATH:~/bin
 
@@ -11,10 +12,18 @@ type /Users/k/web/kovpak/gh/ed/bash/examples/hw.sh
 ````
 
 ````bash
-$1 # 1st script parameter
-$* # all script parameters
-$# # number of script parameters
-$? # exit status for last command
+$0   # name of called script
+$1   # 1st script parameter
+$2   # 2nd
+"$@" # all script parameters (+ quotes)
+$*   # all script parameters
+$#   # number of script parameters
+$?   # exit status for last command
+
+# shift:
+$2 -> $1
+$3 -> $2
+$4 -> $3
 
 echo $(date)
 echo '$myVar' # not evaluate vars
@@ -41,6 +50,7 @@ exit 1 # fail
 IFS=:
 
 [[ $1 ]] || { echo "missing argument" >&2; exit 1; }
+{ cat x.txt || echo "file x.txt not found"; } 2>/dev/null
 ````
 
 #### Debug:
@@ -67,6 +77,46 @@ ${#var} # string length
 -le
 -gt
 # don't use =,<,> for numbers
+
+declare -i p
+p="4+5"
+echo $p # 9
+p="ok"
+echo $p # 0
+$((++p))
+echo $p # 1
+
+declare -ir const=$(( 1 + 1))
+echo $const
+const=3 # -bash: const: readonly variable
+
+declare -x var="outer" # export var for inluded scripts
+````
+
+#### Array:
+
+````bash
+declare -a ar=("element1" "element2" "element3")
+declare -p ar # declare -a ar='([0]="element1" [1]="element2" [2]="element3")'
+
+arr=(1 2 3 a b)
+echo ${#arr[@]} # array length
+echo ${!arr[@]} # array indices
+````
+
+#### Function:
+
+````bash
+# in case no return in function
+# return value will be return value from last function's line of code
+startsWithA() {
+  [[ $1 == [Aa]* ]];
+}
+
+error() {
+  echo "Error: $1"
+  exit 1
+} >&2
 ````
 
 #### Loop:

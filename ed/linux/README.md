@@ -29,11 +29,11 @@ then it is silently truncated to that value.
 The default value in this file is 128.
 
 ````
+/dev/null                               # hide output
 /dev/null                               # stream
 /dev/stderr                             # stream 2
 /dev/stdin                              # stream 0
 /dev/stdout                             # stream 1
-/dev/null                               # hide output
 /etc                                    # system configuration directory
 /etc/os-release                         # about linux
 /etc/pam.d/common-session               # ?
@@ -43,6 +43,7 @@ The default value in this file is 128.
 /etc/ttys                               # logged in users
 /opt                                    # optional software directory
 /proc/cpuinfo                           # info about cpu
+/proc/sys/net/ipv4/tcp_keepalive_time # current tcp_keepalive_time value
 /sys/devices/system/cpu/cpu[0-7]
 ````
 
@@ -129,6 +130,8 @@ mkdir -m 777 test
 which git
 # /usr/local/bin/git
 
+# Redirects:
+#
 # for standard input
 echo yes 0> f
 # for standard output

@@ -176,6 +176,8 @@ FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 FROM users;
 
+SHOW PROCESSLIST; -- to see connections
+
 Horizontal scaling means that you scale by adding more machines into your pool of resources (Replication).
 Vertical scaling means that you scale by adding more power (CPU, RAM) to your existing machine.
 ````
@@ -319,7 +321,8 @@ SET GLOBAL log_queries_not_using_indexes = 0;
 "
 ````
 
-Conf:
+#### Conf
+
 /etc/mysql/my.cnf
 ````sql
 slow_query_log = 1
@@ -388,6 +391,7 @@ general-log-file = /var/log/mysql/general.log
 # sudo chown mysql:mysql /var/log/mysql/general.log
 
 SET global general_log_file='/var/log/mysql/general.log';
+SET global general_log_file='/tmp/mysql.general.log';
 SET global general_log = 1;
 
 SET profiling = 1;

@@ -1,7 +1,8 @@
 jq
 -
 
-https://jqplay.org/
+[doc](https://stedolan.github.io/jq/manual/)
+[play](https://jqplay.org/)
 
 ````sh
 --compact-output / -c:

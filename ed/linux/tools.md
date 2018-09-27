@@ -179,7 +179,7 @@ ssh user@server.com
 ssh -i key -N -L 9229:127.0.0.1:9229 root@server
 # -L local_socket:remote_socket
 
-scp -rp access@host:~/dir/ ~/dir/
+scp -rp user@host:~/dir/ ~/dir/
 ````
 
 `vim ~/.ssh/config`

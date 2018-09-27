@@ -2,11 +2,17 @@ Cloud SQL
 -
 
 [quotas](https://cloud.google.com/sql/docs/quotas)
+[quotas mysql](https://cloud.google.com/sql/docs/mysql/quotas)
 [pricing](https://cloud.google.com/sql/pricing)
+[pricing mysql](https://cloud.google.com/sql/docs/mysql/pricing)
 [unsupported statements](https://cloud.google.com/sql/docs/features)
 [db flags](https://cloud.google.com/sql/docs/mysql/flags)
 [instance](https://cloud.google.com/sql/docs/mysql/instance-settings)
 [permissions and roles](https://cloud.google.com/sql/docs/mysql/project-access-control)
+[logs](https://console.cloud.google.com/logs/viewer?resource=cloudsql_database)
+
+[connection](https://cloud.google.com/appengine/docs/standard/go/cloud-sql/using-cloud-sql-mysql)
+[connection](https://cloud.google.com/appengine/docs/flexible/go/using-cloud-sql)
 
 ````bash
 # in Cloud Shell
