@@ -36,6 +36,7 @@ if [[ $str ]];           # str isn't empty
 if [[ $str = "txt" ]];   # str equals "txt"
 if [[ $str="txt" ]];     # always true
 if [[ $str = [Yy] ]];    # Y || y
+if [[ $str == *.txt ]];  #
 if [[ ! $1 ]];           # $1 is empty
 if [[ -e $file ]];       # file exists
 if [[ -d $dir ]];        # is directory
@@ -49,8 +50,26 @@ exit 1 # fail
 # set Input Field Separator, by default ` ` (space)
 IFS=:
 
+[[ hello = h*o ]] && echo yes
+[[ heeello =~ (e+) ]] && echo "yes, because: ${BASH_REMATCH[1]}"
 [[ $1 ]] || { echo "missing argument" >&2; exit 1; }
 { cat x.txt || echo "file x.txt not found"; } 2>/dev/null
+
+# default value
+declare y=${myDefVar:-"nil"}
+echo $y # nil
+myDefVar=null
+declare y=${myDefVar:-"nil"}
+echo $y # null
+
+# end of options:
+touch -a # error
+touch -- -a # ok
+
+set -u # error when using uniinitialized var
+set -n # validate but not exec script
+set -v # print each command
+set -e # exit whenever a command fails
 ````
 
 #### Debug:
@@ -61,12 +80,29 @@ IFS=:
 # or
 set -x # to start debug
 set +x # to end debug
+
+# or
+bash -x /Users/k/web/kovpak/gh/ed/bash/examples/hw.sh
 ````
 
 #### Strings:
 
 ````bash
 ${#var} # string length
+
+s="http://host/json_path.json"
+echo ${s#htt?}        # ://host/json_path.json
+echo ${s#*/}          # /host/json_path.json
+echo ${s##*/}         # json_path.json
+echo ${s%.*}          # http://host/json_path
+echo ${s%/*}          # http://host
+echo ${s%%/*}         # http:
+echo ${s/json/yaml}   # http://host/yaml_path.json
+echo ${s/%json/yaml}  # http://host/json_path.yaml
+echo ${s/.json/}      # http://host/json_path
+echo ${s%.json}       # http://host/json_path
+echo ${s//[o]/X}      # http://hXst/jsXn_path.jsXn
+
 ````
 
 #### Numbers:

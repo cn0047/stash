@@ -142,6 +142,9 @@ sed -i "s/admin_user/user/" /var/www/html/config.php
 
 # delete 2nd line from file
 sed -e '2d;' file.txt > res.file.txt
+
+echo A_B_C_D_E_F_20180904_0038849_SUPER03.txt \
+  |sed -e 's/_[0-9]\{8\}_[0-9]\{7\}_[A-Z0-9]*//g'
 ````
 
 #### awk

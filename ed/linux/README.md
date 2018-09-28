@@ -170,7 +170,12 @@ echo $stringInBase64 | base64 -D
 ````
 # nohup
 # When you execute a job in the background (using &, bg command),
-# and logout from the session - your process will get killed. 
+# and logout from the session - your process will get killed,
+# to prevent this run:
+nohup myscript &
+# to run with low priority:
+nice myscript
+nohup nice myscript &
 
 apt-get install -y --force-yes
 # search package
