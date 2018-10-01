@@ -1,28 +1,21 @@
 PHP
 -
-<br>*PHP 7.1.7*
-<br>*PHP 5.6.23*
-<br>*PHP 5.5.9*
-<br>*PHP 5.4.35*
-<br>*PHP 5.3.3*
-<br>*PHP 5.1.6*
+<br>7.1.7
+<br>5.6.23
+<br>5.5.9
+<br>5.4.35
+<br>5.3.3
+<br>5.1.6
 
 PHP - is high-level (not assembler), dynamic (behavior determines in runtime)
 weakly typed, object-oriented
 and interpreted server-side scripting language.
 
-https://dev.twitter.com
-|
-[paypal api](https://developer.paypal.com/docs/api/)
-|
-http://www.phpdeveloper.org
-|
-[conferences](http://php.net/conferences/index.php)
-|
-http://git.php.net
-|
+[doc](http://php.net/)
+[developer](http://www.phpdeveloper.org)
+[git](http://git.php.net)
 [functions](http://php.net/manual/en/funcref.php)
-|
+[conferences](http://php.net/conferences/index.php)
 [php-src](https://github.com/php/php-src)
 
 ````

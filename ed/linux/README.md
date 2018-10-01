@@ -43,6 +43,7 @@ The default value in this file is 128.
 /etc/ttys                               # logged in users
 /opt                                    # optional software directory
 /proc/cpuinfo                           # info about cpu
+/proc/sys/net/core/somaxconn
 /proc/sys/net/ipv4/tcp_keepalive_time # current tcp_keepalive_time value
 /sys/devices/system/cpu/cpu[0-7]
 ````
@@ -77,6 +78,8 @@ gcc - the GNU C compiler,
 ````
 
 ````
+file ed/bash/README.md # prints file type
+
 adduser rob
 visudo
 su rob
@@ -89,6 +92,12 @@ echo 'key from id_rsa.pub from host machine' >> ~/.ssh/authorized_keys
 #### shell
 
 ````
+fg # send command to foreground
+bg # send command to background
+
+# replace 1 to o
+echo b1nd | tr 1 o # bond
+
 # generates uuid
 uuid -n 1
 
@@ -250,10 +259,18 @@ cd -       # go to previous dir
 pushd path # remember path (save it at stack)
 popd       # got to pushed path (and delete it from stack)
 
-history
+# history:
+# ⬆, ⬇ # keys to navigat through history
+# Ctrl-p, Ctrl-n
+# Ctrl-r # search in history
 !207 # run from history
 
 ~/.bash_history
+
+# keys:
+Ctrl-k # delete rest of line
+Ctrl-u # delete to start of line
+Ctrl-w # delete word
 ````
 
 #### SNIPPETS

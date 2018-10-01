@@ -17,3 +17,7 @@ SELECT * FROM (VALUES (1, 'one'), (2, 'two'), (3, 'three')) AS t
    2 | two
    3 | three
 ````
+
+````
+SELECT * FROM information_schema.columns;
+````

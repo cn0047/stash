@@ -1,9 +1,9 @@
 GO
 -
+<br>1.10.1
+<br>1.9.3
 
-go1.10.1
-go1.9.3
-
+[doc](https://golang.org/)
 [github](https://github.com/golang/go/wiki)
 [spec](https://golang.org/ref/spec)
 [cmd](https://golang.org/cmd/go/)
@@ -12,6 +12,7 @@ go1.9.3
 [online editor](https://play.golang.org/)
 [badges](https://goreportcard.com/) [covererage](https://gocover.io/) [covererage](https://cover.run/)
 [avatar](https://gopherize.me/)
+[pprof-ui](https://www.speedscope.app/)
 
 ````
 $GOROOT       // root of the go (`/usr/local/go/`)

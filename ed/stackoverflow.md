@@ -4,8 +4,9 @@ Stackoverflow
 [Top Ukraine SO Users](http://data.stackexchange.com/stackoverflow/query/763779/top-ukrainian-stackoverflow-users)
 [Trends](https://insights.stackoverflow.com/trends?tags=javascript%2Cphp)
 
-[sql](http://sqlfiddle.com)
+[js](http://jsbin.com/)
 [php](http://rextester.com)
+[sql](http://sqlfiddle.com)
 [regex](https://regex101.com/r/zO0kO8/1)
 
 ````

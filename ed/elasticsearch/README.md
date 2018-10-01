@@ -1,8 +1,8 @@
 Elasticsearch
 -
-2.3.3
-2.2
-1.6.0
+<br>2.3.3
+<br>2.2
+<br>1.6.0
 
 In Elasticsearch, a document belongs to a type, and those types live inside an index.
 You can draw some (rough) parallels to a traditional relational database:

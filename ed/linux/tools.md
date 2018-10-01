@@ -1,6 +1,12 @@
 Linux Tools
 -
 
+#### sort
+
+````
+sort -nk2 # sort as numbers by column 2
+````
+
 #### read
 
 Reads user input (prompt).
@@ -32,6 +38,8 @@ printf -v myVar "UserIs%s" $USER
 echo 'Hello world'
 echo "Hello world $USER"
 echo -n "Hello world $USER" # no new line
+echo n-{a,b,c}-b # fn-a-b n-b-b n-c-b
+echo n#{1..3}, # n#1, n#2, n#3,
 ````
 
 #### apachebench

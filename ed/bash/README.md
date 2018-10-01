@@ -153,6 +153,20 @@ error() {
   echo "Error: $1"
   exit 1
 } >&2
+
+foo() { bar; }
+export -f foo
+env | grep -A1 foo
+
+export foo='() { echo "Inside function"; }'
+bash -c 'foo'
+
+export foo='() { echo "Inside function" ; }; echo "Executed echo"'
+bash -c 'foo'
+
+export dummy='() { echo "hi"; }; echo "pwned"'
+$ bash
+pwned
 ````
 
 #### Loop:

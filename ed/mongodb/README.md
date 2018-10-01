@@ -1,7 +1,7 @@
 Mongo DB
 -
-*3.4.9*
-<br>*MongoDB shell version: 2.4.6*
+<br>3.4.9
+<br>2.4.6
 
 [university](https://university.mongodb.com)
 

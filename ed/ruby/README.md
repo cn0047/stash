@@ -2,6 +2,12 @@ ruby
 -
 2.4.0
 
+[doc](https://www.ruby-lang.org/en/)
+
+````
+ruby -v
+````
+
 ````
 rvm use ruby-2.4.0
 rvm default ruby-2.4.0

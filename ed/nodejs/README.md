@@ -4,7 +4,10 @@ Node JS
 *v6.11.1*
 *v0.10.26*
 
-http://node.green/
+[doc](https://nodejs.org/en/)
+[compatibility tables](http://node.green/)
+[caniuse](https://caniuse.com)
+[jsdoc](http://usejsdoc.org/) `node_modules/.bin/jsdoc -r src -d docs`.
 [https](https://github.com/cn007b/my/blob/master/ed/nodejs.express/examples/coursera.passport/bin/www#L42)
 
 ````
