@@ -39,7 +39,7 @@ angular-cli new hello-world
 angular-cli g m products/product --flat -m app.module
 ````
 
-    https://app.pluralsight.com/library/courses/angular-2-getting-started-update/table-of-contents
+https://app.pluralsight.com/library/courses/angular-2-getting-started-update/table-of-contents
 https://app.pluralsight.com/library/courses/angular-cli
 https://app.pluralsight.com/library/courses/angular-2-forms
 https://app.pluralsight.com/library/courses/angular-fundamentals

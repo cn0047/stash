@@ -7,8 +7,6 @@ docker pull cn007b/go:1.10-gae
 docker tag cn007b/go xgo
 
 docker run -it --rm -v $PWD:/gh -w /gh xgo go
-
-docker run -it --rm -v $PWD:/gh -w /gh xgo go
 docker run -it --rm -v $PWD:/gh -w /gh xgo go run /gh/x.go
 
 docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh' xgo sh -c 'echo $GOPATH'
@@ -444,7 +442,6 @@ docker run -it --rm -p 8000:8000 -p 8001:8001 -v $PWD:/gh -e GOPATH=$GOPATH xgo 
 
 ````
 # export GOROOT=/Users/k/.google-cloud-sdk/platform/google_appengine/goroot-1.9
-export GOPATH=/Users/k/web/kovpak/monitoring
 # export GOPATH=/Users/k/web/kovpak/monitoring:/Users/k/web/kovpak/monitoring/src/go-app
 
 go get ./src/go-app/...
@@ -468,6 +465,7 @@ gcloud app versions list
 for i in $( gcloud app versions list | grep STOPPED | awk '{print $2}' ); do
     gcloud app versions delete -q $i
 done
+export GOPATH=/Users/k/web/kovpak/monitoring
 gcloud app deploy -q src/go-app/.gae/app.yaml
 gcloud app deploy -q src/go-app/.gae/cron.yaml
 gcloud app deploy -q src/go-app/.gae/queue.yaml

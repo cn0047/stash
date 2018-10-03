@@ -70,6 +70,11 @@ set -u # error when using uniinitialized var
 set -n # validate but not exec script
 set -v # print each command
 set -e # exit whenever a command fails
+
+declare -i # interger
+declare -r # readonly
+declare -x # export
+
 ````
 
 #### Debug:

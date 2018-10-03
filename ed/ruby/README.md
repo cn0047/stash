@@ -4,6 +4,10 @@ ruby
 
 [doc](https://www.ruby-lang.org/en/)
 
+Ruby - multi-platform open-source, dynamic object-oriented interpreted language,
+with automatic memory management.
+Supports multiple programming paradigms: object-oriented, and imperative.
+
 ````
 ruby -v
 ````

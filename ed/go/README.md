@@ -14,6 +14,9 @@ GO
 [avatar](https://gopherize.me/)
 [pprof-ui](https://www.speedscope.app/)
 
+Go - statically-typed, general-purpose, with type safety
+and automatic memory management programming language.
+
 ````
 $GOROOT       // root of the go (`/usr/local/go/`)
 $GOROOT_FINAL // if go moved from $GOROOT

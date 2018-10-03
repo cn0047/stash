@@ -2,6 +2,9 @@ Scala
 -
 2.12.3
 
+Scala - is static typed programming language,
+fuses both imperative-programming and functional-programming styles.
+
 ````
 scala hw.scala
 
