@@ -221,6 +221,8 @@ SELECT @id;
 |    1 |
 +------+
 
+select @v := (select 100) a, 200 b;
+
 SELECT @myRight := rgt FROM nested_category WHERE name = 'TELEVISIONS';
 SELECT @myRight;
 +----------+

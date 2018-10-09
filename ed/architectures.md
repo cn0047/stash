@@ -6,14 +6,19 @@ dispatcher
 
 ## Back End
 
-`model` layer (directory) is compromised because:
+URL routing should be decoupled from the controllers
+as such it is possible to swap and replace them easily.
 
+`model` layer (directory) is compromised because:
 * it's unclear what is model in reach app (mysql, mongo, redis, elasticsearch, etc)?
 * which model should contain stuff common for 2 models?
 * where to place infrastructural stuff (doctrine annotations, etc)?
 
 Q: Why do you need `service` for simple MVC CRUD project?
 A: To add cache; To select DB (master, slave);
+
+Q: Why do you need SPA for admin?
+A: Avoid data loss for expired session when handling submit POST form.
 
 #### Monolith
 

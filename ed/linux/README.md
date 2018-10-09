@@ -89,6 +89,14 @@ cat ~/.ssh/id_rsa.pub
 echo 'key from id_rsa.pub from host machine' >> ~/.ssh/authorized_keys
 ````
 
+#### keys
+
+````
+Ctrl-k # delete rest of line
+Ctrl-u # delete to start of line
+Ctrl-w # delete word
+````
+
 #### shell
 
 ````
@@ -266,11 +274,6 @@ popd       # got to pushed path (and delete it from stack)
 !207 # run from history
 
 ~/.bash_history
-
-# keys:
-Ctrl-k # delete rest of line
-Ctrl-u # delete to start of line
-Ctrl-w # delete word
 ````
 
 #### SNIPPETS

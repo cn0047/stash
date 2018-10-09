@@ -1,5 +1,8 @@
 g = 500
 
+def f0(*args):
+  print(args)
+
 def f(n = 0, **args):
   print("g+n=", g+n)
   print("args:", args)

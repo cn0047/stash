@@ -12,6 +12,11 @@ type /Users/k/web/kovpak/gh/ed/bash/examples/hw.sh
 ````
 
 ````bash
+# shabang:
+#!/bin/bash
+#!/usr/bin/env php
+#!/usr/bin/env python3
+
 $0   # name of called script
 $1   # 1st script parameter
 $2   # 2nd
@@ -66,10 +71,13 @@ echo $y # null
 touch -a # error
 touch -- -a # ok
 
-set -u # error when using uniinitialized var
-set -n # validate but not exec script
-set -v # print each command
 set -e # exit whenever a command fails
+set -n # validate but not exec script
+set -o #
+set -u # error when using uniinitialized var
+set -v #
+set -v # print each command
+set -x # to start debug
 
 declare -i # interger
 declare -r # readonly

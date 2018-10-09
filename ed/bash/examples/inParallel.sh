@@ -24,8 +24,10 @@ f2() {
   # cat /tmp/bash.inParallel.out
   slowCount=$(grep IT_WAS_SLOW -c /tmp/bash.inParallel.out);
   echo "slowCount = ${slowCount}"
+  if [ ${slowCount} -ne 0 ]; then
+    echo "It was slow."
+  fi
 }
-
 
 echo "Start:"
 f2
