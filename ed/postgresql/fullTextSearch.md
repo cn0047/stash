@@ -195,7 +195,8 @@ ORDER BY rank DESC;
 
 Full text search is good for finding words, not substrings.
 For substrings you have to use module `pg_trgm`.
-misspelled search
+
+Also it's good for misspelled search.
 
 ````sql
 -- enable module:
