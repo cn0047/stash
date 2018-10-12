@@ -9,6 +9,9 @@ def f(n = 0, **args):
 
 f2 = lambda x: x * 2
 
-f(n = 204)
+f0(1)
+f0.myVal = 100
+print(f0.myVal)
+f(n = 204, type = "test")
 n = input("Set n value:")
 print(f2(n))

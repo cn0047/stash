@@ -11,7 +11,7 @@ Use `BEGIN-COMMIT` for batch insert (to disable autocommit).
 ## Stats
 
 ````
-select * from pg_stat_all_tables where relname like 'MOCK_DATA%';
+SELECT * FROM pg_stat_all_tables WHERE relname LIKE 'MOCK_DATA%';
 
 seq_scan            - number of sequential scans initiated
 seq_tup_read        - number of live rows fetched by sequential scans

@@ -81,8 +81,10 @@ myModule.path # gets path to module
 type(myvar) # type of var
 isinstance(3, int)
 myvar.mro() # info about class instance
-getattr(var, attr)
 hasattr(var, attr)
+getattr(var, attr)
+setattr(var, attr, val)
+delattr(var, attr)
 dir(var)
 
 globals()
@@ -96,6 +98,7 @@ __enter__() # enter context (with keyword)
 __end__() # exit context (with keyword)
 
 @staticmethod
+@abstractmethod
 @property # getter
 @p.setter # setter
 ````

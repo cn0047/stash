@@ -82,6 +82,20 @@ sandbox-log
     └── main.go
 ````
 
+````
+monitoring.v1
+└── src
+    └── go-app
+        ├── .gae
+        │   ├── app.yaml
+        │   └── main.go
+        ├── common
+        ├── config
+        ├── controller
+        ├── route
+        └── service
+````
+
 #### DDD
 
 ````

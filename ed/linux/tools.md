@@ -1,6 +1,29 @@
 Linux Tools
 -
 
+#### find
+
+````
+# delete all -name directories
+find . -type d -name node_modules -exec rm -rf {} \;
+find . -type d -name vendor -exec rm -rf {} \;
+
+# md5 for directory
+find src/ -type f -exec md5sum '{}' \; | md5sum
+
+find -type f -mtime -20 | while read file; do modif=`git log -1 --format="%cd" $file`; echo "$modif - $file"; done
+# Shows file types that present in foolder
+find . -type f | perl -ne 'print $1 if m/\.([^.\/]+)$/' | sort -u
+
+time find -name '*.php' -mtime -1 | xargs -l php -l | grep -v 'No syntax errors detected in'
+find ./ | grep '.php' | xargs -l php -l | pv | grep -v 'No syntax errors detected in'
+# skype Vdovin
+cat /tmp/alcuda_tech.log | grep -Eo --color=never '^\[\S+\s+[^\*][^:]+' | sed -r 's/^\S+\s+//g' | sort | uniq -c | sort -nr | head -30
+find -type f -name '*.php' -exec egrep -l 'class\s+ProfileManager' {} \;
+find -name '*.htm' -exec touch {} \;
+find -type f -name '*.php' -exec egrep -Hn --color=always 'is_failed' {} \; | grep profile
+````
+
 #### sort
 
 ````
@@ -204,7 +227,29 @@ Host ec2
 #### ftp
 
 ````
+ftp $hostname
+
+# connect in passive mode
+ftp -p $hostname
+
 ncftpput -R -v -u {user} {host} remote_path ./local_path/*
+````
+
+````
+status
+system          # show remote system type
+ascii           # set ascii transfer type
+binary          # set Binary transfer type
+dir             # list contents of remote directory
+ls              # list contents of remote directory
+
+size filename
+get filename    # receive file
+recv filename   # receive file
+delete filename
+
+bye             # exit
+close
 ````
 
 #### watch
@@ -306,9 +351,11 @@ uuencode card.jpg card.jpg | mail mail@com.com
 -d, --data DATA                      HTTP POST data (H)
 -F, --form CONTENT                   Specify HTTP multipart POST data (H)
 -o, --output FILE                    Write output to <file> instead of stdout
+-O, --remote-name                    Write output to file wiht origin name
 -x, --proxy [PROTOCOL://]HOST[:PORT] Use proxy on given port
 -e, --referer                        Referer URL (H)
 -u, --user USER[:PASSWORD]           Server user and password
+-v, --verbose
 
 # (REST) JSON at POST.
 # More examples available here: https://github.com/cn007b/my/blob/master/ed/php.symfony/generateRESTapi.md

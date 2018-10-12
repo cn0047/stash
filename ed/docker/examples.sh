@@ -11,6 +11,7 @@ docker network create --driver bridge xnet
 
 ````
 # Ubuntu
+docker pull cn007b/ubuntu
 docker tag cn007b/ubuntu xubuntu
 docker run -ti --rm -v $PWD:/gh -w /gh xubuntu /bin/bash
 

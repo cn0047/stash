@@ -217,9 +217,6 @@ fswatch ./src | while read f; do echo $f; done
 # copy data into clipboard buffer.
 echo 200 | pbcopy
 
-# md5 for directory
-find src/ -type f -exec md5sum '{}' \; | md5sum
-
 env # to see all ENV variables
 sudo bash -c 'echo "APP_ENVIRONMENT=prod" > /etc/environment'
 sudo sh -c 'echo "APP_ENVIRONMENT=prod" > /etc/environment'
@@ -281,17 +278,6 @@ popd       # got to pushed path (and delete it from stack)
 ````
 fwrite(STDOUT, __METHOD__ . "\n");
 prompt \u@\h [\d]>
-find -type f -mtime -20 | while read file; do modif=`git log -1 --format="%cd" $file`; echo "$modif - $file"; done
-# Shows file types that present in foolder
-find . -type f | perl -ne 'print $1 if m/\.([^.\/]+)$/' | sort -u
-
-time find -name '*.php' -mtime -1 | xargs -l php -l | grep -v 'No syntax errors detected in'
-find ./ | grep '.php' | xargs -l php -l | pv | grep -v 'No syntax errors detected in'
-# skype Vdovin
-cat /tmp/alcuda_tech.log | grep -Eo --color=never '^\[\S+\s+[^\*][^:]+' | sed -r 's/^\S+\s+//g' | sort | uniq -c | sort -nr | head -30
-find -type f -name '*.php' -exec egrep -l 'class\s+ProfileManager' {} \;
-find -name '*.htm' -exec touch {} \;
-find -type f -name '*.php' -exec egrep -Hn --color=always 'is_failed' {} \; | grep profile
 
 # date, in certain format:
 date +'%d/%b/%Y:%H:%M' # 18/Jul/2018:11:48
@@ -309,6 +295,7 @@ nmap --script=http-headers www.ziipr.com
 # osx proxy
 
 sudo networksetup -setwebproxy "Wi-Fi" 54.174.16.166 80
+# '71.4.186.100:21288', '198.7.96.243:21239', '104.128.17.224:21237', '209.48.175.196:21325', '172.102.207.55:21279', '198.7.97.209:21297', '162.248.134.54:21326', '23.239.219.244:21325', '143.191.19.7:21238', '173.44.12.201:21259', '173.44.5.52:21310', '173.44.12.68:21305', '173.44.26.80:21269', '107.152.144.66:21291', '208.73.73.206:21257', '204.14.87.85:21326', '144.168.128.88:21244', '204.14.87.149:21271', '45.57.195.33:21232', '173.44.5.185:21247', '173.44.12.141:21280', '173.44.26.220:21318', '107.152.144.219:21274', '208.73.73.9:21278', '143.191.19.89:21263', '143.191.31.123:21304', '69.174.99.149:21322', '50.117.15.33:21318', '173.44.12.16:21297', '216.172.144.220:21285',
 sudo networksetup -setwebproxystate "Wi-Fi" off
 
 netstat -an

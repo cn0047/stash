@@ -1,7 +1,6 @@
 PostgreSQL
 -
-
-PostgreSQL 10.0
+<br>10.0
 
 [online config](http://pgtune.leopard.in.ua/).
 
@@ -14,6 +13,8 @@ Schema - like directory in file system.
 ````
 # general log
 log_statement = 'all'
+
+pg_trgm # Trigram (Trigraph) module
 ````
 
 #### REPL:

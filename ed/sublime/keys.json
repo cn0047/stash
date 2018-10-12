@@ -119,7 +119,6 @@
     // SFTP
     ,{ "keys": ["f6"], "command": "sftp_upload_file" }
 
-    
     // OS X
 
     // EDIT
@@ -139,5 +138,6 @@
     ,{ "keys": ["ctrl+p"], "command": "show_overlay", "args": {"overlay": "goto", "show_files": true} }
     ,{ "keys": ["alt+shift+up"], "command": "select_lines", "args": {"forward": false} }
     ,{ "keys": ["alt+shift+down"], "command": "select_lines", "args": {"forward": true} }
-    
+    ,{ "keys": ["alt+c"], "command": "show_overlay", "args": {"overlay": "command_palette", "text": "copy filepath"} }
+    ,{ "keys": ["ctrl+c"], "command": "show_overlay", "args": {"overlay": "command_palette", "text": "copy reference"} }
 ]
