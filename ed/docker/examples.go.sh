@@ -469,4 +469,5 @@ export GOPATH=/Users/k/web/kovpak/monitoring
 gcloud app deploy -q src/go-app/.gae/app.yaml
 gcloud app deploy -q src/go-app/.gae/cron.yaml
 gcloud app deploy -q src/go-app/.gae/queue.yaml
+gcloud app deploy -q src/go-app/.gae/index.yaml
 ````

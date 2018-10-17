@@ -75,7 +75,6 @@ brew search xdebug
 
 # colors in terminal
 brew install grc
-
 brew install qcachegrind
 
 brew remove nginx

@@ -5,7 +5,7 @@ App Engine
 [console](https://console.cloud.google.com/)
 [environments comparison](https://cloud.google.com/appengine/docs/the-appengine-environments)
 [quotas](https://cloud.google.com/appengine/quotas)
-[capabilities](https://cloud.google.com/appengine/docs/standard/go/capabilities/)
+[capabilities]( )
 [pricing](https://cloud.google.com/appengine/pricing)
 [requests limits](https://cloud.google.com/appengine/docs/standard/go/how-requests-are-handled#quotas_and_limits)
 [services versions limits](https://cloud.google.com/appengine/docs/standard/python/an-overview-of-app-engine#limits)

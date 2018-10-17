@@ -1,6 +1,9 @@
 Security
 -
 
+[map](http://map.norsecorp.com/)
+[xss](https://www.openbugbounty.org/)
+[vulnerabilities](http://cve.mitre.org/)
 [twitter](https://twitter.com/MisterRobot245/following/)
 
 #### Shellshock (bashdoor, CVE-2014-6271)

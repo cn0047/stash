@@ -1,0 +1,31 @@
+<html>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <body>
+        <div id="chart_div"></div>
+    </body>
+    <script type="text/javascript">
+
+    google.charts.load('current', {packages: ['line']});
+    google.charts.setOnLoadCallback(drawBasic);
+
+    function drawBasic() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'n1');
+      data.addColumn('number', 'n2');
+      data.addRows([
+        [0, 0],   [1, 10],  [2, 23],  [3, 17],  [4, 18],  [5, 9]
+      ]);
+      var options = {
+        legend: {position: 'none'},
+        title: 'test',
+        hAxis: {title: 't1'},
+        vAxis: {title: 't2'},
+        width: 650,
+        height: 300
+      };
+      var chart = new google.charts.Line(document.getElementById('chart_div'));
+      chart.draw(data, google.charts.Line.convertOptions(options));
+    }
+
+    </script>
+</html>

@@ -11,4 +11,14 @@ GOTO Amsterdam 2017
 * TChannel - protocol for microservices.
 * Use RPC for microservices.
 
-https://www.youtube.com/watch?v=Skm-vc6gOvs&index=16&list=PLEx5khR4g7PLcjLdaugk3GndelpTGbYDS
+#### CSS vs. JavaScript, Trust vs. Control • Chris Heilmann
+
+* CSS - fault tolerant
+* JS - NOT fault tolerant
+
+USE:
+
+* Viewport for sizes.
+* Flexbox.
+* CssGrid.
+* Custom properties.
