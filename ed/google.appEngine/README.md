@@ -79,10 +79,11 @@ Disadvantages:
   (App Engine can only execute code called from an HTTP request).
 * 60 second per request.
 * templates - panic: open ../template/home.html: operation not permitted.
+* impossible to write files, possible to open files only near main.go
 * 1️⃣ `dev_appserver.py` - There are too many files in your application for changes in all of them to be monitored.
   You may have to restart the development server to see some changes to your files.
 * 2️⃣ Free quota is tricky.
-* No multithreading?
+* No multithreading.
   [look here](https://blog.golang.org/go-and-google-app-engine)
   [and here](https://monosnap.com/file/Y66Cckm0pmQlG6GLEwoMxg684ig4RN)
 * `(gcloud.app.instances.ssh)` Standard instances do not support this operation.
@@ -134,6 +135,11 @@ expensiveFunc.Call(ctx, "Hello, world!", 42)
 // set something into context
 c := context.WithValue(GAECtx, "key", "val")
 c.Get("key")
+
+// urlfetch
+ctx := appengine.NewContext(r)
+client := urlfetch.Client(ctx)
+resp, err := client.Get(url)
 ````
 
 Local Unit Testing:

@@ -1,6 +1,7 @@
 export GOPATH=${CURDIR}/go
 export NODEJSPATH=${CURDIR}/nodejs
 export PHPPATH=${CURDIR}/php
+export GOOGLE_APPLICATION_CREDENTIALS=${CURDIR}/serviceAccount.json
 
 env:
 	echo GOPATH=$(GOPATH)
@@ -9,6 +10,7 @@ env:
 
 initgo:
 	go get -u google.golang.org/appengine/...
+	go get -u cloud.google.com/go/storage
 
 devgo:
 	~/.google-cloud-sdk/bin/dev_appserver.py \
@@ -38,7 +40,8 @@ devphp:
 		$(PHPPATH)/app.yaml
 
 deploy:
-	gcloud auth login
+	# gcloud auth login
+	# gcloud auth activate-service-account --key-file=$(GOOGLE_APPLICATION_CREDENTIALS)
 	gcloud config set project itisgnp
 	gcloud config list
 

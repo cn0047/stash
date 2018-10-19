@@ -20,3 +20,23 @@ based on the rate that you specified for the queue.
 Default `total_storage_limit` is 500M.
 
 You can enqueue a task as part of a Cloud Datastore transaction!
+
+````go
+params := map[string][]string{
+  "project": {prj.ID},
+  "url":     {prj.URL},
+  "method":  {prj.Method},
+  "json":    {prj.JSON},
+}
+t := taskqueue.NewPOSTTask(workerPath, params)
+_, err := taskqueue.Add(ctx, t, queueName)
+
+# or
+t := &taskqueue.Task{
+  Path:    workerPath,
+  Payload: jsonData,
+  Header:  http.Header{"Content-Type": []string{"application/json"}},
+  Method:  http.MethodPost,
+}
+taskqueue.Add(cctx.GAECtx, t, queueName)
+````
