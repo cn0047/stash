@@ -120,6 +120,8 @@ Disadvantages:
 * Property body is too long. Maximum length is 1500. (`noindex` can fix this issue).
 * [How delete element from array](https://monosnap.com/file/YrQHARwcRPAEagaNfoKeMhh1o1bsnZ).
 * How reproduce prod datastore timeout problem?
+* DataStore: cannot load field "id" into a "Project.Entity": no such struct field
+  (after rename field in struct when have entities in datastore with property id).
 
 #### GO
 
