@@ -1,11 +1,6 @@
 .data/
 
 go/pkg/
-go/src/cloud.google.com
-go/src/github.com
-go/src/go.opencensus.io
-go/src/golang.org
-go/src/google.golang.org
 
 php/vendor/
 

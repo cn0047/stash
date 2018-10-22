@@ -8,4 +8,12 @@ data.addColumn('string', 'Topping');
 data.addColumn('number', 'Slices');
 data.addColumn('date', 'Dates');
 data.addColumn('datetime', 'Time');
+
+const options = {
+  legend: {position: 'none'},
+  title: '',
+  vAxis: {
+    viewWindow: { max: 320, min: 0},
+  }
+};
 ````

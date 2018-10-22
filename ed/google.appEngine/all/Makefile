@@ -1,12 +1,15 @@
-export GOPATH=${CURDIR}/go
+export PRJROOT=${CURDIR}
+export GOLANGPATH=${CURDIR}/go
+export GOPATH=/Users/k/go:${GOLANGPATH}
 export NODEJSPATH=${CURDIR}/nodejs
 export PHPPATH=${CURDIR}/php
-export GOOGLE_APPLICATION_CREDENTIALS=${CURDIR}/serviceAccount.json
 
 env:
-	echo GOPATH=$(GOPATH)
-	echo NODEJSPATH=$(NODEJSPATH)
-	echo PHPPATH=$(PHPPATH)
+	echo PRJROOT=$(PRJROOT) \
+	&& echo GOLANGPATH=$(GOLANGPATH) \
+	&& echo GOPATH=$(GOPATH) \
+	&& echo NODEJSPATH=$(NODEJSPATH) \
+	&& echo PHPPATH=$(PHPPATH) \
 
 initgo:
 	go get -u google.golang.org/appengine/...
@@ -17,9 +20,9 @@ devgo:
 		--skip_sdk_update_check=false \
 		--log_level=debug \
 		--port=8080 --admin_port=8000 \
-		--storage_path=$(GOPATH)/.data --support_datastore_emulator=false \
-		--go_debugging=true \
-		$(GOPATH)/src/go-app/app.yaml
+		--storage_path=$(PRJROOT)/.data --support_datastore_emulator=false \
+		--go_debugging=false \
+		$(GOLANGPATH)/src/go-app/app.yaml
 
 initnodejs:
 	cd $(NODEJSPATH) && npm i && cd -
@@ -35,18 +38,16 @@ devphp:
 		--skip_sdk_update_check=false \
 		--log_level=debug \
 		--port=8080 --admin_port=8000 \
-		--storage_path=$(GOPATH)/.data --support_datastore_emulator=false \
+		--storage_path=$(PRJROOT)/.data --support_datastore_emulator=false \
 		--go_debugging=true \
 		$(PHPPATH)/app.yaml
 
 deploy:
-	# gcloud auth login
-	# gcloud auth activate-service-account --key-file=$(GOOGLE_APPLICATION_CREDENTIALS)
 	gcloud config set project itisgnp
 	gcloud config list
 
 deploygo:
-	gcloud app deploy -q $(GOPATH)/src/go-app/app.yaml
+	gcloud app deploy -q $(GOLANGPATH)/src/go-app/app.yaml
 
 deploynodejs:
 	gcloud app deploy -q $(NODEJSPATH)/app.yaml

@@ -47,6 +47,13 @@ status:400..499 # HTTP status of 400 through 499
 ````
 protoPayload.resource:"var=3"
 protoPayload.status >= 400 AND protoPayload.status <= 405
+
+resource.type="gae_app"
+logName="projects/itismonitoring/logs/appengine.googleapis.com%2Frequest_log"
+protoPayload.resource!="/health-check"
+protoPayload.resource!="/cron/addPingJobs"
+protoPayload.resource!="/worker/ping"
+protoPayload.resource!="/static/"
 ````
 
 Go:

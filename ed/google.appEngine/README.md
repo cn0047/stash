@@ -27,6 +27,7 @@ goapp serve app.yaml
 #     --log_level=debug \
 #     --port=8080 --admin_port=8000 \
 #     --storage_path=$(GOPATH)/.data --support_datastore_emulator=false \
+#     --default_gcs_bucket_name=itisgnp.appspot.com \
 #     --go_debugging=true \
 #     $(GOPATH)/src/go-app/.gae/app.yaml
 
@@ -88,6 +89,7 @@ Disadvantages:
   [and here](https://monosnap.com/file/Y66Cckm0pmQlG6GLEwoMxg684ig4RN)
 * `(gcloud.app.instances.ssh)` Standard instances do not support this operation.
 * No opportunity to debug gae-go.
+* ERROR: (gcloud.app.deploy) INVALID_ARGUMENT: Your app may not have more than 15 versions. But recently was 20.
 
 Also, although goroutines and channels are present,
 when a Go app runs on App Engine only one thread is run in a given instance.
