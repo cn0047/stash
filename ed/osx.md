@@ -79,4 +79,6 @@ brew install qcachegrind
 
 brew remove nginx
 brew update && brew cleanup
+
+brew services start postgresql
 ````

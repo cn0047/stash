@@ -15,4 +15,9 @@ go mod init example.com/my/module/v2
 
 go build ./...
 go test all
+
+go get google.golang.org/appengine@'>=v1.2.0'
+
+go list -m all
+go list -m
 ````

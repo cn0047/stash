@@ -33,6 +33,7 @@ gcloud auth application-default login
 gcloud auth activate-service-account --key-file=service-account.json
 gcloud auth list
 
+gcloud config configurations list
 gcloud config list
 gcloud config set project thisismonitoring
 gcloud config set disable_prompts false

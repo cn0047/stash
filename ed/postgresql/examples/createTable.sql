@@ -5,6 +5,7 @@ create table cttest (
   n int,
   m numeric,
   d double precision,
+  -- b boolean,
   s character varying(20) default '',
   t text,
   j json not null default '{}',

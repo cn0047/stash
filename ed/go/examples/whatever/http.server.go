@@ -18,8 +18,18 @@ type RequestData2 struct {
 }
 
 func main() {
+	http.HandleFunc("/get", get1)
 	http.HandleFunc("/post", post2)
 	http.ListenAndServe(":8080", nil)
+}
+
+// @see curl 'http://localhost:8080/get?f=foo&b=bar'
+func get1(w http.ResponseWriter, r *http.Request) {
+	query := r.URL.Query()
+	fmt.Printf("Query: %+v", query)
+
+	w.WriteHeader(http.StatusOK)
+	w.Write([]byte(`Look into console.`))
 }
 
 func post1(w http.ResponseWriter, r *http.Request) {
@@ -48,6 +58,7 @@ func post1(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte(`Look into console.`))
 }
 
+// @see curl -X POST 'http://localhost:8080/post' -H 'Content-Type: application/json' -d '{"code":"200", "status": "OK", "message": "200 OK"}'
 func post2(w http.ResponseWriter, r *http.Request) {
 	body, err := ioutil.ReadAll(r.Body)
 	if err != nil {
@@ -70,5 +81,3 @@ func post2(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	w.Write([]byte(`Look into console.`))
 }
-
-//curl -X POST 'http://localhost:8080/post' -H 'Content-Type: application/json' -d '{"code":"200", "status": "OK", "message": "200 OK"}'

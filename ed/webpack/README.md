@@ -1,6 +1,7 @@
 webpack
 -
-2
+<br>4.22.0
+<br>2.2.1
 
 Webpack is replace for grunt and gulp!)
 Core Concepts:

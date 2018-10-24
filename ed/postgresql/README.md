@@ -45,6 +45,13 @@ pg_dump -t tableName --schema-only
 COPY tableName TO 'filePath' CSV (DELIMER ',');
 COPY tableName FROM 'filePath' DELIMER ',';
 
+# init on osx
+brew services start postgresql
+createdb cws
+psql -d cws
+CREATE USER usr WITH PASSWORD 'pass';
+GRANT ALL PRIVILEGES ON database dbName TO usr;
+
 psql -d postgres://dbu:dbp@localhost/test
 psql -h localhost -U dbu -d test -c 'select 204'
 
