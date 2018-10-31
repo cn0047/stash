@@ -3,13 +3,14 @@ package main
 import (
 	"fmt"
 
-	"./NewUserVO"
+	"./CreateUserVO"
 )
 
 // GOPATH=$PWD/ed/go/examples/vo
 func main() {
-	vo, err := NewUserVO.New(map[string]string{})
-	//vo, err := NewUserVO.New(map[string]string{"name": "bond", "email": "bond@mi6.com"})
+	//vo, err := CreateUserVO.New(map[string]string{})
+	//vo, err := CreateUserVO.New(map[string]string{"name": "bond", "emailx": "bond@mi6.com"})
+	vo, err := CreateUserVO.New(map[string]string{"name": "bond", "email": "bond@mi6.com"})
 	if err != nil {
 		fmt.Printf("got error: %s, \nvo errors: %+v\n", err, vo.GetErrors())
 		return
@@ -18,17 +19,17 @@ func main() {
 	createNewUser(vo)
 }
 
-func createNewUser(vo NewUserVO.Instance) {
+func createNewUser(vo CreateUserVO.Instance) {
 	saveNewUserIntoDB(vo)
 	sendEmailToNewUser(vo)
 	addNewUserIntoSearch(vo)
 }
 
-func saveNewUserIntoDB(vo NewUserVO.Instance) {
+func saveNewUserIntoDB(vo CreateUserVO.Instance) {
 }
 
-func sendEmailToNewUser(vo NewUserVO.Instance) {
+func sendEmailToNewUser(vo CreateUserVO.Instance) {
 }
 
-func addNewUserIntoSearch(vo NewUserVO.Instance) {
+func addNewUserIntoSearch(vo CreateUserVO.Instance) {
 }

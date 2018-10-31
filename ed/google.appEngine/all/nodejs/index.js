@@ -1,7 +1,7 @@
 const http = require('http');
 
 const handler = (req, res) => {
-  res.end('anodejs - ok');
+  res.end('nodejs - ok');
 };
 
 const app = http.createServer(handler);

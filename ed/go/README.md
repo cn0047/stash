@@ -42,6 +42,7 @@ go list ...
 go run --work ed/go/examples/whatever/hw.go
 go run -race ed/go/examples/whatever/hw.go
 go vet
+godoc -http=:6060 -goroot=$PWD
 ````
 
 ````

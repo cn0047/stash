@@ -12,7 +12,9 @@ Schema - like directory in file system.
 
 ````
 # general log
-log_statement = 'all'
+log_statement = 'all' -- conf
+SET log_statement='all';
+ALTER DATABASE dbname SET log_statement='all';
 
 pg_trgm # Trigram (Trigraph) module
 ````
@@ -48,7 +50,7 @@ COPY tableName FROM 'filePath' DELIMER ',';
 # init on osx
 brew services start postgresql
 createdb cws
-psql -d cws
+psql -d cws -L /tmp/p.log
 CREATE USER usr WITH PASSWORD 'pass';
 GRANT ALL PRIVILEGES ON database dbName TO usr;
 
