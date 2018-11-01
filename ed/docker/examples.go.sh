@@ -98,6 +98,9 @@ docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \
 # run
 docker run -it --rm --net=xnet -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \
     xgo sh -c 'cd $GOPATH && go run src/postgresql/simplest.go'
+# local
+GOPATH=$PWD/ed/go/examples/db
+go run $GOPATH/src/postgresql/simplest.go
 
 # db mongo
 docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \

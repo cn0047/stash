@@ -5,6 +5,9 @@ UML
 
 * Things ([example 1](https://github.com/cn007b/my/blob/master/ed/uml/things.png), [example 2](https://github.com/cn007b/my/blob/master/ed/uml/messagesAndActions.png)):
 
+![things](https://github.com/cn007b/my/blob/master/ed/uml/things.png)
+![messagesAndActions](https://github.com/cn007b/my/blob/master/ed/uml/messagesAndActions.png)
+
   * Class.
   * Use case (filled oval).
   * Component (rectangle).

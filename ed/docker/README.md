@@ -11,7 +11,7 @@ Containers should be ephemeral (can be stopped and destroyed and a new one built
 
 Ctrl + P + Q # detach from container
 
-````
+````bash
 docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
 
 docker pull ubuntu

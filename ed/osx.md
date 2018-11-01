@@ -67,15 +67,15 @@ Command-Control-Shift-4 # screenshot (SELECTED SHAPE) in buffer 💡
 
 ## Brew
 
-````
+````bash
 brew ls
 brew services list
 
 brew search xdebug
 
-# colors in terminal
-brew install grc
+brew install grc # colors in terminal
 brew install qcachegrind
+brew install telnet
 
 brew remove nginx
 brew update && brew cleanup

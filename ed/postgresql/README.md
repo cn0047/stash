@@ -10,11 +10,26 @@ PostgreSQL
 DB can contains schema, and schema contains tables.
 Schema - like directory in file system.
 
-````
+````bash
+# init on osx
+brew services start postgresql
+createdb cws
+psql -d cws -L /tmp/p.log
+CREATE USER usr WITH PASSWORD 'pass';
+GRANT ALL PRIVILEGES ON database dbName TO usr;
+
+psql -d postgres://dbu:dbp@localhost/test
+psql -h localhost -U dbu -d test -c 'select 204'
+
+pg_dump -h localhost -p 5432 -U dbu -d test > /var/lib/postgresql/data/dump.sql
+psql -h localhost -p 5432 -U dbu -d td < /var/lib/postgresql/data/dump.sql
+
+pg_ctl status
+
 # general log
-log_statement = 'all' -- conf
-SET log_statement='all';
-ALTER DATABASE dbname SET log_statement='all';
+# SELECT current_setting('log_statement');
+# SET log_statement='all';
+# ALTER DATABASE dbname SET log_statement='all';
 
 pg_trgm # Trigram (Trigraph) module
 ````
@@ -46,21 +61,6 @@ pg_dump -t tableName --schema-only
 ````sql
 COPY tableName TO 'filePath' CSV (DELIMER ',');
 COPY tableName FROM 'filePath' DELIMER ',';
-
-# init on osx
-brew services start postgresql
-createdb cws
-psql -d cws -L /tmp/p.log
-CREATE USER usr WITH PASSWORD 'pass';
-GRANT ALL PRIVILEGES ON database dbName TO usr;
-
-psql -d postgres://dbu:dbp@localhost/test
-psql -h localhost -U dbu -d test -c 'select 204'
-
-pg_dump -h localhost -p 5432 -U dbu -d test > /var/lib/postgresql/data/dump.sql
-psql -h localhost -p 5432 -U dbu -d td < /var/lib/postgresql/data/dump.sql
-
-pg_ctl status
 ````
 
 ````
@@ -122,6 +122,7 @@ And the system must NOT be running in single-user mode.
 #### Configuration:
 
 `/etc/postgresql/8.3/main/postgresql.conf`
+`/usr/local/var/postgres/postgresql.conf`
 
 ````
 listen_addresses = '*'
@@ -146,6 +147,29 @@ syslog_ident = 'postgres'
 log_min_duration_statement = 0
 log_duration = on
 log_statement = 'none'
+````
+
+Dev:
+
+````
+# logs
+log_statement = 'all'
+logging_collector = on
+log_min_duration_statement = 0
+log_connections = on
+# target
+log_destination = 'csvlog'
+log_directory = '/tmp'
+log_filename = 'psql.log'
+# verbosity
+client_min_messages = log
+log_min_messages = info
+log_min_error_statement = info
+# output
+debug_pretty_print = on
+debug_print_parse = off
+debug_print_plan = off
+debug_print_rewritten = off
 ````
 
 #### Data Types:

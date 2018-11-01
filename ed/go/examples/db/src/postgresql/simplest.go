@@ -15,6 +15,7 @@ type Row struct {
 
 func main() {
 	connStr := "host=xpostgres port=5432 user=dbu password=dbp dbname=test sslmode=disable"
+	// connStr := "host=localhost port=5432 user=cws password=yalloThere dbname=cws sslmode=disable"
 	db, err1 := sql.Open("postgres", connStr)
 	if err1 != nil {
 		log.Fatal(err1)
