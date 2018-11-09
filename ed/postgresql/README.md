@@ -162,7 +162,7 @@ log_destination = 'csvlog'
 log_directory = '/tmp'
 log_filename = 'psql.log'
 # verbosity
-client_min_messages = log
+client_min_messages = notice
 log_min_messages = info
 log_min_error_statement = info
 # output

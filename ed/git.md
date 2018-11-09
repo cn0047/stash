@@ -51,19 +51,9 @@ git merge --abort
 
 #### rebase
 
-````
-git rebase --abort
-````
-
 Rebasing is changing the base of your branch from one commit to another
 making it appear as if you'd created your branch from a different commit.
 Reason - maintain a linear project history.
-
-`squash` - rebase 2 commits into 1.
-
-````
-git rebase -i HEAD~2
-````
 
 Rebase is bad for bisect (it's destructing - commit is deleted)
 <br>and rebase hide conflicts inside rebased commit
@@ -74,6 +64,14 @@ And you have to:
 `git ph -f`
 
 The Golden Rule of Rebasing - never use it on public branches.
+
+````
+git rebase --abort
+
+# squash - rebase 2 commits into 1:
+git rebase -i HEAD~2
+
+````
 
 #### bisect
 ````

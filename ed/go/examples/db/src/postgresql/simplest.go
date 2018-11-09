@@ -1,16 +1,30 @@
+// create table testj (id character varying(128) not null primary key, data json not null);
+// insert into testj values ('1', '{ "name": "jt",  "brand": "White" }')
+
 package main
 
 import (
 	"database/sql"
+	"encoding/json"
 	"fmt"
+	"log"
 
 	_ "github.com/lib/pq"
-	"log"
 )
 
 type Row struct {
 	n string
 	c int
+}
+
+type RowJ struct {
+	ID   string
+	Data json.RawMessage
+}
+
+type RowJData struct {
+	Name  string
+	Brand string
 }
 
 func main() {
@@ -22,6 +36,11 @@ func main() {
 	}
 	defer db.Close()
 
+	f1(db)
+	//f2(db)
+}
+
+func f1(db *sql.DB) {
 	result := &Row{}
 	row := db.QueryRow("SELECT NOW() AS n, $1 AS c", "200")
 	err := row.Scan(&result.n, &result.c)
@@ -31,7 +50,24 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Printf("%+v", *result)
+	fmt.Printf("%#v", *result)
+}
+
+func f2(db *sql.DB) {
+	result := &RowJ{}
+	row := db.QueryRow("SELECT id, data FROM testj LIMIT 1")
+	err := row.Scan(&result.ID, &result.Data)
+	if err == sql.ErrNoRows {
+		log.Fatal("ErrNoRows", err)
+	}
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("%#v", *result)
+
+	data := RowJData{}
+	json.Unmarshal(result.Data, &data)
+	fmt.Printf("%#v", data)
 }
 
 func in() {

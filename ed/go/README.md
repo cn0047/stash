@@ -9,7 +9,7 @@ GO
 [cmd](https://golang.org/cmd/go/)
 [packages](https://golang.org/pkg/) [and](https://godoc.org/) [and](https://gopkg.in/)
 [examples](https://gobyexample.com/)
-[online editor](https://play.golang.org/)
+[online editor](https://play.golang.org/) [AND](https://goplay.space/)
 [badges](https://goreportcard.com/) [covererage](https://gocover.io/) [covererage](https://cover.run/)
 [avatar](https://gopherize.me/)
 [pprof-ui](https://www.speedscope.app/)
@@ -269,6 +269,11 @@ Use append only to append new value to given slice, not to create new slice
 (never call append without assigning back to the same variable)!
 
 **struct** is a collection of fields.
+
+````
+OOP ⇒ class ⇒ instance ⇒ property
+Go  ⇒ struct ⇒ object ⇒ field
+````
 
 #### Interface
 

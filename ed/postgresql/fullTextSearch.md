@@ -113,7 +113,7 @@ ERROR:  syntax error in tsquery: ":*base"
 ## Index
 
 GIN indexes are the preferred text search index type.
-GiST index is lossy, might produce false matches.
+⚠️ GiST index is lossy, might produce false matches.
 
 ````sql
 CREATE INDEX articles_i ON articles USING GIN (to_tsvector('english', body));

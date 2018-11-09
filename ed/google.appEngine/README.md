@@ -14,7 +14,7 @@ App Engine
 [config files](https://cloud.google.com/appengine/docs/flexible/go/reference/app-yaml)
 [goland config](https://monosnap.com/file/X5w1jrpQ1C4fSmn7rmU9Lbm0l3xNBs)
 [forum](https://groups.google.com/forum/#!forum/google-appengine-go)
-[issue tracker](http://code.google.com/p/googleappengine/issues/list)
+[issue tracker](http://code.google.com/p/googleappengine/issues/list) [and](https://cloud.google.com/support/docs/issue-trackers)
 
 ````
 # in web console
