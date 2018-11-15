@@ -72,6 +72,9 @@ is a service whose overhead (communications, maintenance etc.) outweighs its uti
 To bind requests to different microservices -
 have to use Correlation ID for each service call.
 
+An exponential backoff algorithm retries requests exponentially,
+increasing the waiting time between retries up to a maximum backoff time.
+
 Transactions:
 
 * Two-Phase Commit Protocol.

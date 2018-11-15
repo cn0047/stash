@@ -34,6 +34,14 @@ pg_ctl status
 pg_trgm # Trigram (Trigraph) module
 ````
 
+````sql
+set x '''1''';
+select :x;
+
+set x.y = 204;
+select current_setting('x.y');
+````
+
 #### REPL:
 
 ````

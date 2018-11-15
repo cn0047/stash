@@ -22,6 +22,7 @@ $GOROOT       // root of the go (`/usr/local/go/`)
 $GOROOT_FINAL // if go moved from $GOROOT
 $GOPATH       // environment variable specifies the location of your workspace.
 $GOMAXPROCS   // number of OS threads that can execute user-level Go code simultaneously.
+$GOTRACEBACK  // (none|single|all|system|crash) verbosity level in case of panic
 
 export GOROOT=$HOME/go
 export GOBIN=$GOROOT/bin
@@ -274,6 +275,10 @@ Use append only to append new value to given slice, not to create new slice
 OOP ⇒ class ⇒ instance ⇒ property
 Go  ⇒ struct ⇒ object ⇒ field
 ````
+
+**pointer**
+
+[Pointers make stack allocation mostly infeasible](https://segment.com/blog/allocation-efficiency-in-high-performance-go-services/).
 
 #### Interface
 

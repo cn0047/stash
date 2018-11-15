@@ -1,8 +1,14 @@
 Cloud Storage
 -
 
-[docs appengine](https://cloud.google.com/appengine/docs/standard/go/googlecloudstorageclient/read-write-to-cloud-storage)
+[docs](https://cloud.google.com/storage/docs/)
+[pricing](https://cloud.google.com/storage/pricing)
+[quotas](https://cloud.google.com/storage/quotas)
+[appengine](https://cloud.google.com/appengine/docs/standard/go/googlecloudstorageclient/read-write-to-cloud-storage)
 [permissions](https://cloud.google.com/storage/docs/access-control/iam-permissions)
+[mount](https://cloud.google.com/storage/docs/gcs-fuse)
+[object versioning](https://cloud.google.com/storage/docs/using-object-versioning)
+[wildcards](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames)
 
 ````sh
 # ls /Users/k/.google-cloud-sdk/bin/gsutil
@@ -16,7 +22,20 @@ gsutil iam get gs://itisgnp.appspot.com
 
 gsutil ls gs://itisgnp.appspot.com
 gsutil ls -l gs://itisgnp.appspot.com/test
+gsutil ls gs://example-bucket/** | wc -l
+
 gsutil rm gs://itisgnp.appspot.com/test/none
 
+gsutil du -sh gs://example-bucket
+gsutil hash local-file
+gsutil stat gs://example-bucket/composite-object
+
+gsutil -m cp -R top-level-dir gs://example-bucket
+gsutil -m cp -R top-level-dir/subdir/image* gs://example-bucket
+
+gsutil -m rsync -r local-dir gs://example-bucket
 gsutil rsync -d -r s3://my-aws-bucket gs://example-bucket
+
+gsutil notification list gs://[BUCKET_NAME]
+gsutil notification create -t [TOPIC_NAME] -f json gs://[BUCKET_NAME]
 ````
