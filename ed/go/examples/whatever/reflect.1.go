@@ -21,8 +21,8 @@ func one() {
 func two() {
 	a := 1
 	t := reflect.TypeOf(a)
-	fmt.Printf("\n%+v", t)        // int
-	fmt.Printf("\n%+v", t.Kind()) // int
+	fmt.Printf("\n%+v", t)              // int
+	fmt.Printf("\nKind: %+v", t.Kind()) // int
 	v := reflect.ValueOf(a)
 	fmt.Printf("\n%+v", v)        // 1
 	fmt.Printf("\n%+v", v.Type()) // int

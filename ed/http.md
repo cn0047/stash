@@ -48,6 +48,7 @@ Authorization: OAuth oauth_consumer_key="", oauth_nonce="", oauth_signature="", 
 The currently registered top-level type names are:
 * application
   ("application/javascript", "application/json", "application/pdf", "application/soap+xml", "application/x-www-form-urlencoded")
+  ("application/zip")
 * audio ("audio/mp4", "audio/mpeg")
 * example
 * image ("image/png")

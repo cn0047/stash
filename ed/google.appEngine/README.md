@@ -138,6 +138,8 @@ expensiveFunc.Call(ctx, "Hello, world!", 42)
 c := context.WithValue(GAECtx, "key", "val")
 c.Get("key")
 
+ctx, _ := context.WithDeadline(cctx.GAECtx, time.Now().Add(time.Second*60))
+
 // urlfetch
 ctx := appengine.NewContext(r)
 client := urlfetch.Client(ctx)
