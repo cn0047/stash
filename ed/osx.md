@@ -76,6 +76,7 @@ brew search xdebug
 brew install grc # colors in terminal
 brew install qcachegrind
 brew install telnet
+brew install nmap
 
 brew remove nginx
 brew update && brew cleanup

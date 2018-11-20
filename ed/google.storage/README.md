@@ -39,3 +39,9 @@ gsutil rsync -d -r s3://my-aws-bucket gs://example-bucket
 gsutil notification list gs://[BUCKET_NAME]
 gsutil notification create -t [TOPIC_NAME] -f json gs://[BUCKET_NAME]
 ````
+
+Transcoding of gzip-compressed files:
+````
+Content-Type: text/plain
+Content-Encoding: gzip
+````

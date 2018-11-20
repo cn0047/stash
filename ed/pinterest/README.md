@@ -52,6 +52,13 @@ curl -X POST 'https://api.pinterest.com/v1/pins/?access_token='$token \
     "image_url":"https://i.kinja-img.com/gawker-media/image/upload/t_original/v66gt9dn0kxsmhpxmcmq.jpg"
   }'
 
+# get pins from all boards
+curl 'https://api.pinterest.com/v1/me/pins/?limit=5&fields=id,created_at,link,url,creator,board,note,color,counts,image,metadata&access_token='$token | jq
+
+# get pins from board
+board='335659047167093089'
+curl 'https://api.pinterest.com/v1/boards/'$board'/pins/?limit=10&fields=id,created_at,link,url,creator,board,note&access_token='$token | jq
+
 # get pin by id
 curl -L 'https://api.pinterest.com/v1/pins/348817933631869565?access_token='$token | jq
 ````

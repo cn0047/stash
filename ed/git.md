@@ -47,6 +47,11 @@ git cherry-pick hash-to-commit
 
 # in case of conflicts during merge:
 git merge --abort
+
+# update forked repo from source repo:
+git remote add upstream https://github.com/golang/go.git
+git fetch upstream
+git pull upstream master
 ````
 
 #### rebase

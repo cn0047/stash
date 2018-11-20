@@ -16,6 +16,7 @@ docker run -ti --rm cn007b/ubuntu:$version curl -V
 # docker run -ti --rm cn007b/ubuntu:$version net-tools
 docker run -ti --rm cn007b/ubuntu:$version telnet --help
 docker run -ti --rm cn007b/ubuntu:$version ftp -help
+docker run -ti --rm cn007b/ubuntu:$version nmap -V
 docker run -ti --rm cn007b/ubuntu:$version unzip -v
 docker run -ti --rm cn007b/ubuntu:$version make -v
 docker run -ti --rm cn007b/ubuntu:$version lsb_release -c -s

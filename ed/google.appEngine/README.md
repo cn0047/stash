@@ -80,7 +80,8 @@ Disadvantages:
   (App Engine can only execute code called from an HTTP request).
 * 60 second per request.
 * templates - panic: open ../template/home.html: operation not permitted.
-* impossible to write files, possible to open files only near main.go
+* impossible to write files, possible to open files for read only and only near main.go
+  (open x.txt: no file writes permitted on App Engine).
 * 1️⃣ `dev_appserver.py` - There are too many files in your application for changes in all of them to be monitored.
   You may have to restart the development server to see some changes to your files.
 * 2️⃣ Free quota is tricky.
