@@ -35,11 +35,23 @@ pg_trgm # Trigram (Trigraph) module
 ````
 
 ````sql
-set x '''1''';
+# shows all variables
+\set
+
+\set x 204
 select :x;
 
-set x.y = 204;
-select current_setting('x.y');
+set var.x = 100;
+select current_setting('var.x');
+
+\echo :VERSION_NAME
+
+\set x 1
+select now() \gset
+select :x, :'now';
+
+select now() \gset dt_
+select :'dt_now';
 ````
 
 #### REPL:
@@ -49,6 +61,8 @@ select current_setting('x.y');
 \pset pager always
 \pset pager off
 -- \setenv PAGER less
+
+\set PROMPT2 '    '
 
 # show databases
 \l
@@ -64,6 +78,10 @@ select current_setting('x.y');
 
 # `SHOW CREATE TABLE`
 pg_dump -t tableName --schema-only
+
+# store output into file
+\o /tmp/x.sql
+\q
 ````
 
 ````sql

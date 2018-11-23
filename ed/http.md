@@ -257,8 +257,8 @@ Origin: https://foo.bar.org
 ## HTTPS
 
 https://hstspreload.org/ for add your site to preload.
-http://www.badssl.com/ helps to find problems with https.
-http://www.httpvshttps.com/
+https://www.badssl.com/ helps to find problems with https.
+https://www.httpvshttps.com/
 
 The main point of HTTPS is
 authentication of the visited website and protection of the privacy and integrity of the exchanged data.

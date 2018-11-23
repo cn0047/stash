@@ -77,6 +77,11 @@ brew install grc # colors in terminal
 brew install qcachegrind
 brew install telnet
 brew install nmap
+brew install awscli
+brew install nginx
+brew install mongodb
+brew install postgresql
+brew install mysql
 
 brew remove nginx
 brew update && brew cleanup

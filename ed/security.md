@@ -5,6 +5,27 @@ Security
 [xss](https://www.openbugbounty.org/)
 [vulnerabilities](http://cve.mitre.org/)
 [twitter](https://twitter.com/MisterRobot245/following/)
+[check dns](https://dnsspy.io/)
+[check site](https://observatory.mozilla.org/)
+[check headers](https://securityheaders.com)
+
+Subresource Integrity (SRI):
+````html
+<script src="https://example.com/example-framework.js"
+    integrity="sha384-oqVuAfXRKap7fdgcCY5uykM6+R9GqQ8K/uxy9rx7HNQlGYl1kPzQho1wx4JwY8wC"
+    crossorigin="anonymous"></script>
+````
+
+#### Content-Security-Policy
+
+````html
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src https://*; child-src 'none';">
+````
+
+Header:
+````
+Content-Security-Policy: upgrade-insecure-requests;
+````
 
 #### Shellshock (bashdoor, CVE-2014-6271)
 
