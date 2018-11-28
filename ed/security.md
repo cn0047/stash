@@ -9,6 +9,20 @@ Security
 [check site](https://observatory.mozilla.org/)
 [check headers](https://securityheaders.com)
 
+#### Browser security
+
+````
+Public-Key-Pins: pin-sha256="<pin-value>"; max-age=<expire-time>; includeSubDomains; report-uri="<uri>"
+````
+
+HTTP Strict-Transport-Security (HSTS):
+````
+Strict-Transport-Security: max-age=<expire-time-in-seconds>; includeSubDomains; preload
+````
+* client should interact over https
+* protects against "downgrade attack"
+* relies on "trust on first use" (TOFU)
+
 Subresource Integrity (SRI):
 ````html
 <script src="https://example.com/example-framework.js"
@@ -16,15 +30,19 @@ Subresource Integrity (SRI):
     crossorigin="anonymous"></script>
 ````
 
-#### Content-Security-Policy
-
+Content-Security-Policy (CSP):
 ````html
+*|none|self
+
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src https://*; child-src 'none';">
 ````
-
 Header:
 ````
 Content-Security-Policy: upgrade-insecure-requests;
+````
+
+````
+Content-Security-Policy-Report-Only: default-src https:; report-uri /csp-violation-report-endpoint/
 ````
 
 #### Shellshock (bashdoor, CVE-2014-6271)

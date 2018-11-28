@@ -21,6 +21,13 @@ A: To add cache; To select DB (master, slave);
 Q: Why do you need SPA for admin?
 A: Avoid data loss for expired session when handling submit POST form.
 
+#### Clean Architecture
+
+* Entities
+* Use Cases (Business Logic)
+* Controller
+* Framework & Driver
+
 #### Monolith
 
 Not so awful in case of server-side-rendering.
