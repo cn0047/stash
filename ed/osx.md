@@ -73,6 +73,7 @@ brew services list
 
 brew search xdebug
 
+brew install bash-completion
 brew install grc # colors in terminal
 brew install qcachegrind
 brew install telnet
