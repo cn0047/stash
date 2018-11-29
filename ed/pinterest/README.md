@@ -7,7 +7,8 @@ https://developers.pinterest.com/docs/
 #### Get API Token
 
 ````sh
-# add `https://localhost:3443/` on app web page
+open https://developers.pinterest.com/apps/
+# go to app page and add `https://localhost:3443/` on app web page into "Redirect URIs"
 
 docker run -it --rm -v $PWD:/app -w /app -p 3443:443 \
   -v $PWD/docker/nginx/https/php-fpm.conf:/etc/nginx/conf.d/default.conf \
