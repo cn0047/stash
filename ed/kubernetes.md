@@ -34,6 +34,8 @@ kube-proxy - k8s networking.
 
 Kubernetes - orchestrator for microservice apps.
 
+To store data permanently, Kubernetes uses Persistent Volumes.
+
 #### Master.
 
 #### Node (minion).

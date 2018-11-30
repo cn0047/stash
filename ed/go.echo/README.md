@@ -23,6 +23,10 @@ c.QueryParam("id")
 
 c.FormValue("name")
 
+// JSON in POST
+input := VO{}
+err := ctx.Bind(&input)
+
 c.String(http.StatusOK, "Hello, World!")
 c.HTML(http.StatusOK, "<strong>Hello, World!</strong>")
 c.JSON(http.StatusOK, jsonStruct)
