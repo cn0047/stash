@@ -82,6 +82,10 @@ spec:
 
 #### Deployment
 
+Deployment is the best primitive to manage and deploy our software
+in Kubernetes. It supports gracefully deploying, rolling updating,
+and rolling back pods and ReplicaSets.
+
 ````yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
