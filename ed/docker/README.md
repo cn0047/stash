@@ -26,6 +26,8 @@ docker build -t nphp https://raw.githubusercontent.com/cn007b/my/master/docker/p
 # THE BEST COMMAND
 docker inspect docker-whale
 
+docker stats
+
 # run an interactive container (run an image)
 # `-t` terminal
 # `-i` interactive connection
