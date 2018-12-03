@@ -89,6 +89,20 @@ cat ~/.ssh/id_rsa.pub
 echo 'key from id_rsa.pub from host machine' >> ~/.ssh/authorized_keys
 ````
 
+#### monitoring
+
+````
+dmesg | tail      # last 10 system messages
+vmstat 1          # virtual memory stat
+mpstat -P ALL 1   # CPU time breakdowns per CPU
+pidstat 1         # top’s per-process summary
+iostat -xz 1      # block devices (disks)
+free -m           # block device I/O buffer cache & file systems page cache
+sar -n DEV 1      # check network interface
+sar -n TCP,ETCP 1 # TCP metrics
+top               #
+````
+
 #### keys
 
 ````
