@@ -9,7 +9,7 @@ do you need framework for your tiny microservice.
 Please run next command with purpose to make go web-server available
 from one docker container to another docker container and especially for `apachebench`.
 
-````
+````bash
 # OSX
 sudo ifconfig lo0 alias 10.254.254.254
 
@@ -19,7 +19,7 @@ sudo ifconfig lo 10.254.254.254
 
 #### Prepare Gin
 
-````
+````bash
 mkdir -p /tmp/benchmark/src/gin
 
 curl -o /tmp/benchmark/src/gin/main.go \
@@ -31,7 +31,7 @@ docker run -it --rm -v /tmp/benchmark:/app -w /app -e GOPATH='/app' \
 
 #### Prepare Plain Go
 
-````
+````bash
 mkdir -p /tmp/benchmark/src/plain
 
 curl -o /tmp/benchmark/src/plain/main.go \
@@ -43,7 +43,7 @@ docker run -it --rm -v /tmp/benchmark:/app -w /app -e GOPATH='/app' \
 
 #### Benchmark
 
-````
+````bash
 # run gin
 docker run -it --rm -p 8080:8080 -v /tmp/benchmark:/app -w /app -e GOPATH='/app' \
     golang:latest sh -c 'cd $GOPATH && ./bin/gin'
