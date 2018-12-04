@@ -1,6 +1,8 @@
 Kubernetes (K8s)
 -
 
+[docs](https://kubernetes.io/docs/)
+
 ````bash
 # osx
 
