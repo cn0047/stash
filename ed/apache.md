@@ -10,6 +10,7 @@ Apache provides modules that dictate how client requests are handled:
 ````
 sudo apt-get install tasksel
 sudo tasksel install lamp-server
+sudo tasksel install apache2
 
 sudo service httpd restart
 sudo service apache2 restart
@@ -20,6 +21,7 @@ sudo service apache2 restart
 ````
 sudo a2enmod vhost_alias
 sudo a2enmod rewrite
+sudo a2enmod ssl
 
 sudo a2dissite default
 sudo a2ensite mysite

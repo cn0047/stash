@@ -2,6 +2,7 @@ Google Cloud
 -
 
 [doc](https://cloud.google.com/sdk/gcloud/)
+[products](https://cloud.google.com/products/)
 
 ````bash
 # ~/.google-cloud-sdk/bin/gcloud
@@ -46,3 +47,26 @@ gcloud projects list \
 
 gcloud beta projects get-iam-policy itisgnp
 ````
+
+````
+Organization ⇒ Folder ⇒ Project ⇒ Resource
+````
+
+Computing service:
+* GAE - App Engine ([PaaS](https://twitter.com/cn007b/status/1024010042838851585))
+* GKE - Container Engine (PaaS)
+* GCE - Compute Engine (IaaS)
+* Cloud Functions (Serverless)
+
+#### GCE (Compute Engine)
+
+* High performance virtual machine.
+* Persistent disc storage.
+* Local SSD & RAM.
+* Supports glabal balancing.
+* Supports auto scaling.
+* Supports CDN.
+* Auto restart.
+
+[Machine types](https://cloud.google.com/compute/docs/machine-types):
+Shared core machines: f1-micro, g1-small.
