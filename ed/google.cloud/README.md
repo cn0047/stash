@@ -44,6 +44,7 @@ gcloud projects list --format="json"
 gcloud projects list \
   --format="table(projectNumber,projectId,createTime)" \
   --filter="createTime.date('%Y-%m-%d', Z)='2016-05-11'"
+gcloud projects describe clique-dev
 
 gcloud beta projects get-iam-policy itisgnp
 ````

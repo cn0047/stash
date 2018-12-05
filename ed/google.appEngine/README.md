@@ -109,6 +109,21 @@ For example, the rating for 1 KB sized items is 10,000 operations per second per
 Therefore, the load on a single key should not be higher
 than 100 - 1,000 operations per second for items that are 1 KB in size.
 
+## CRON
+
+````yaml
+cron:
+- description: "daily summary job"
+  url: /tasks/summary
+  target: beta
+  schedule: every 10 mins
+  schedule: every 15 minutes
+  schedule: every 24 hours
+  schedule: every monday 09:00
+  schedule: every 5 minutes from 10:00 to 14:00
+  schedule: every day 08:00
+````
+
 ## GO
 
 ````go

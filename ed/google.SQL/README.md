@@ -25,7 +25,7 @@ gcloud sql connect mysql-prod-hera --user=root
 gcloud sql instances list
 gcloud sql instances describe $INSTANCE_NAME
 
-gcloud sql databases list --instance=mysql-prod-hera
+gcloud sql databases list --instance=products
 
 gcloud sql users list --instance=products
 ````
