@@ -13,20 +13,43 @@ open https://github.com/kubernetes/minikube/blob/master/docs/drivers.md#hyperkit
 ````
 
 ````bash
-kubectl version
-kubectl cluster-info
-kubectl config current-context
-kubectl get nodes
-kubectl get pods
-kubectl explain pods
-kubectl create -f pod.yml
-
 minikube version
 minikube delete; rm -rf ~/.minikube
 minikube status
-minikube dashboard
 minikube start --vm-driver=xhyve
 minikube start --vm-driver=hyperkit
+minikube dashboard
+
+kubectl version
+kubectl cluster-info
+kubectl config current-context
+kubectl config view
+kubectl get events
+kubectl get nodes
+kubectl get pods
+kubectl get pods --show-all
+kubectl get services
+kubectl get deployments
+kubectl explain pods
+kubectl create -f ed/kubernetes/examples/sh/pod.yaml
+````
+
+````bash
+kubectl apply --force=true -f ed/kubernetes/examples/sh/pod.yaml
+kubectl logs myapp-sh-pod
+kubectl delete pod myapp-sh-pod
+````
+
+````bash
+cd ed/kubernetes/examples/pingRealtimeLog/ \
+  && GOOS=linux go build ../../../go/examples/whatever/pingRealtimeLog.go \
+  && docker build -t kube_ping_realtime_log . \
+  && cd -
+
+docker run -ti --rm  kube_ping_realtime_log
+
+kubectl apply --force=true -f ed/kubernetes/examples/pingRealtimeLog/pod.yaml
+kubectl logs myapp-kube-ping-realtime-log-pod
 ````
 
 minikube - tool to use K8s on dev.

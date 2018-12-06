@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-sh-pod
+  labels:
+    app: myapp-sh
+spec:
+  containers:
+  - name: myapp-sh-container
+    image: cn007b/ubuntu
+    command: ['sh', '-c', 'echo "it works, id: `uuid`"']

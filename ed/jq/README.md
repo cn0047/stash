@@ -18,6 +18,7 @@ jq
 , # (comma) Two filters separated by a comma
 
 .items[]|.id
+curl ... | jq '.items[]|.ImageLink' # ✅
 
 # prettify json output
 echo '{"foo": "f", "bar": "b", "items": [1, 2, 3] }' | jq

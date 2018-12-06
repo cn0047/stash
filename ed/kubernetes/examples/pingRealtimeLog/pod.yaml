@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-kube-ping-realtime-log-pod
+  labels:
+    app: myapp-kube-ping-realtime-log
+spec:
+  containers:
+  - name: myapp-kube-ping-realtime-log-container
+    image: kube_ping_realtime_log
+    command: ['sh', '-c', 'echo "it is working now..."']

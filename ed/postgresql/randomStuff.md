@@ -2,6 +2,8 @@ Random Stuff
 -
 
 ````sql
+SELECT NOW() - INTERVAL '3 DAY';
+
 SELECT format('Testing %s, %s, %s, %%', 'one', 'two', 'three');
 SELECT format('|%10s|', 'foo');
 
