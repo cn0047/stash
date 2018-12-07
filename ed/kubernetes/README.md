@@ -48,6 +48,7 @@ cd ed/kubernetes/examples/pingRealtimeLog/ \
 
 docker run -ti --rm  kube_ping_realtime_log
 
+kubectl delete pod myapp-kube-ping-realtime-log-pod
 kubectl apply --force=true -f ed/kubernetes/examples/pingRealtimeLog/pod.yaml
 kubectl logs myapp-kube-ping-realtime-log-pod
 ````
