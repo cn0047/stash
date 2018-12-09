@@ -59,7 +59,7 @@ Computing service:
 * GCE - Compute Engine (IaaS)
 * Cloud Functions (Serverless)
 
-#### GCE (Compute Engine)
+## GCE (Compute Engine)
 
 * High performance virtual machine.
 * Persistent disc storage.
@@ -71,3 +71,31 @@ Computing service:
 
 [Machine types](https://cloud.google.com/compute/docs/machine-types):
 Shared core machines: f1-micro, g1-small.
+
+Predefined Virtual Machines types:
+* standard
+* shared-core
+* high-cpu
+* high-memory
+
+It's possible to attach 10 per CPU persistent disks to GCE VM.
+
+Instance template - define machine type, image, zone
+and other properties.
+
+Instance groups:
+* managed (zonal, regional)
+* unmanaged
+
+#### LB (Load Balancer)
+
+Global external LB: HTTP(S), SSL, TCP Proxy.
+Regional external LB: Network, Internal.
+
+* HTTP(S)
+* TCP
+* UDP
+
+Managed instances groups used for LB.
+
+#### CKE (Container Engine)

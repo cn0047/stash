@@ -45,3 +45,11 @@ Transcoding of gzip-compressed files:
 Content-Type: text/plain
 Content-Encoding: gzip
 ````
+
+Object max size limit - 5 TB.
+
+Storage class:
+* multi-regional
+* regional
+* nearline (infrequently accessed data, backup)
+* coldline (rarely accessed data, disaster recovery)
