@@ -8,4 +8,4 @@ spec:
   containers:
   - name: myapp-kube-ping-realtime-log-container
     image: kube_ping_realtime_log
-    command: ['sh', '-c', 'echo "it is working now..."']
+    command: ['sh', '-c', './pingRealtimeLog && echo "it is working now..."']

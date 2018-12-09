@@ -13,7 +13,7 @@ type User struct {
   Email     string `validate:"required,email"`
 }
 
-validate = validator.New()
+validate := validator.New()
 err := validate.Struct(user)
 ````
 
