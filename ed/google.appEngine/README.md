@@ -2,7 +2,7 @@ App Engine
 -
 
 [doc](https://cloud.google.com/appengine/docs/standard/go/)
-[doc flex](https://cloud.google.com/appengine/docs/flexible/go/)
+[doc flexible](https://cloud.google.com/appengine/docs/flexible/go/)
 [console](https://console.cloud.google.com/)
 [environments comparison](https://cloud.google.com/appengine/docs/the-appengine-environments)
 [quotas](https://cloud.google.com/appengine/quotas)
