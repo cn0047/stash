@@ -3,6 +3,8 @@ Google Cloud
 
 [doc](https://cloud.google.com/sdk/gcloud/)
 [products](https://cloud.google.com/products/)
+[APIs](https://developers.google.com/api-client-library/)
+[locations](https://cloud.google.com/about/locations/)
 
 ````bash
 # ~/.google-cloud-sdk/bin/gcloud
@@ -17,6 +19,8 @@ export GOOGLE_APPLICATION_CREDENTIALS=${CURDIR}/serviceAccount.json
   --default_gcs_bucket_name=itisgnp.appspot.com \
   --go_debugging=true \
   $(GOPATH)/src/go-app/app.yaml
+
+gcloud app describe
 
 gcloud components list
 gcloud components update

@@ -93,6 +93,7 @@ Disadvantages:
 * No opportunity to debug gae-go.
 * ERROR: (gcloud.app.deploy) INVALID_ARGUMENT: Your app may not have more than 15 versions. But recently was 20.
 * ERROR: context deadline exceeded - from everywhere and it's annoying.
+* Like the standard environment, the flexible environment does not support websockets.
 
 Also, although goroutines and channels are present,
 when a Go app runs on App Engine only one thread is run in a given instance.

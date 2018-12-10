@@ -1,7 +1,7 @@
 Task Queue
 -
 
-[task deadline](https://cloud.google.com/appengine/docs/standard/go/taskqueue/push/#the_task_deadline)
+[appengine task deadline](https://cloud.google.com/appengine/docs/standard/go/taskqueue/push/#the_task_deadline)
 
 In push queues tasks are delivered to a worker service based on the queue's configuration.
 In pull queues the worker service must ask the queue for tasks.
