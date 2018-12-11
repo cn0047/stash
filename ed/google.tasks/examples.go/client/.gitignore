@@ -1,0 +1,4 @@
+pkg/
+src/cloud.google.com/
+src/golang.org/
+src/google.golang.org/
