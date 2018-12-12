@@ -1,6 +1,8 @@
 Search
 -
 
+[docs](https://cloud.google.com/appengine/docs/standard/go/search/)
+
 Every document in an index must have a unique document identifier, or `docID` (no longer than 500 characters).
 You cannot include the docID in a search.
 

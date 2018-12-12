@@ -1,4 +1,4 @@
-App Engine
+App Engine - Standard Environment
 -
 
 [doc](https://cloud.google.com/appengine/docs/standard/go/)
@@ -32,10 +32,17 @@ goapp serve app.yaml
 #     --go_debugging=true \
 #     $(GOPATH)/src/go-app/.gae/app.yaml
 
+service=cws-products
+version=20181211t222125
+instanceID=00c61b117c7f1d63b68246dded86378c0b3e12b6b46db84bd861492bc216e5d873e0408717
+
 gcloud app describe
 
-gcloud app instances list
 gcloud app services list
+
+gcloud app instances list
+gcloud app instances describe --service $service --version $version $instanceID
+gcloud app instances ssh --service $service --version $version $instanceID
 
 gcloud app versions list
 gcloud app versions delete v1
@@ -49,11 +56,7 @@ gcloud app deploy --verbosity=debug --project=thisismonitoring
 
 gcloud app browse
 
-gcloud app logs tail -s default
-
-gcloud app instances list
-instanceID=00c61b117c2d2d8a7c1c04ec77e3f133cecb6a72ecdf1da0844b8223f622b9d72227fe
-gcloud app instances ssh --service default --version 20180727t232426 $instanceID
+gcloud app logs tail -s $service
 ````
 
 ## Overview
@@ -101,6 +104,8 @@ That is, all goroutines run in a single operating system thread,
 so there is no CPU parallelism available for a given client request.
 
 ## Memcache
+
+[doc](https://cloud.google.com/appengine/docs/standard/go/memcache/)
 
 Avoid Memcache hot keys.
 Hot keys are a common anti-pattern that can cause Memcache capacity to be exceeded.
