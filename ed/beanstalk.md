@@ -25,7 +25,7 @@ quit
 
 Examples:
 
-````
+````bash
 # connect to bt
 telnet 127.0.0.1 11300
 

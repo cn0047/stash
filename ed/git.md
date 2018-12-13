@@ -151,9 +151,10 @@ vendor/
     b   = branch
     br  = branch
     ch  = checkout
-    cb = !sh -c 'git checkout --track -b $1 origin/$1' -
+    cb  = !sh -c 'git checkout --track -b $1 origin/$1' -
     s   = status -sb
     st  = status
+    ssh = stash show
     sl  = stash list
     ss  = stash save --include-untracked
     sa  = stash apply

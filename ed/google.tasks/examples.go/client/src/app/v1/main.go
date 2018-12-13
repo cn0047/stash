@@ -15,7 +15,7 @@ docker exec -it xct sh -c 'vmstat 1'
 curl 'localhost:8080/x?n=1500'
 
 gcloud app deploy -q $GOPATH/src/app/app.yaml
-curl 'https://x-test-dot-clique-dev.appspot.com/x?n=3'
+curl 'https://x-test-dot-clique-dev.appspot.com/x?n=5'
 
 */
 
@@ -28,6 +28,7 @@ import (
 	"fmt"
 	"net/http"
 	_ "net/http/pprof"
+	"runtime"
 	"strconv"
 	"time"
 
@@ -52,7 +53,7 @@ type Job struct {
 func main() {
 	echoServer := echo.New()
 	echoServer.GET("/", func(ctx echo.Context) error {
-		return ctx.JSON(http.StatusOK, map[string]interface{}{"status": "active", "version": "1.1.5"})
+		return ctx.JSON(http.StatusOK, map[string]interface{}{"status": "active", "version": 2})
 	})
 	echoServer.GET("/x", x)
 	echoServer.POST(PathToWorker, y)
@@ -80,27 +81,39 @@ func x(ctx echo.Context) error {
 }
 
 func y(ctx echo.Context) error {
-	return ctx.JSON(http.StatusOK, "ok")
+	job := Job{}
+	err := ctx.Bind(&job)
+	if err != nil {
+		return ctx.JSON(http.StatusInternalServerError, map[string]interface{}{"err": err.Error()})
+	}
+
+	data, err := handleJob(job)
+	if err != nil {
+		return ctx.JSON(http.StatusInternalServerError, map[string]interface{}{"err": err.Error()})
+	}
+
+	return ctx.JSON(http.StatusOK, data)
 }
 
 func addJobs(n int) error {
-	c := context.Background()
-	client, err := cloudtasks.NewClient(c)
-	if err != nil {
-		return fmt.Errorf("ERR-1: %s", err)
-	}
-
 	for i := 0; i < n; i++ {
-		_, err := addJob(c, client, i)
+		_, err := addJob(i)
 		if err != nil {
 			return fmt.Errorf("ERR-5: %s", err)
 		}
+		runtime.GC()
 	}
 
 	return nil
 }
 
-func addJob(c context.Context, client *cloudtasks.Client, i int) (interface{}, error) {
+func addJob(i int) (interface{}, error) {
+	c := context.Background()
+	client, err := cloudtasks.NewClient(c)
+	if err != nil {
+		return nil, fmt.Errorf("ERR-1: %s", err)
+	}
+
 	id := time.Now().UnixNano()
 	job := Job{ID: "task-" + strconv.Itoa(int(id)), I: i}
 
@@ -129,12 +142,23 @@ func addJob(c context.Context, client *cloudtasks.Client, i int) (interface{}, e
 		return nil, fmt.Errorf("ERR-3: %s", err)
 	}
 
-	er := l("", map[string]interface{}{"i": i, "CreateTime": respTask.CreateTime})
+	er := l("1", map[string]interface{}{"i": i, "CreateTime": respTask.CreateTime})
 	if er != nil {
 		return nil, fmt.Errorf("ERR-7: %s", respTask)
 	}
 
+	//log.Printf("🎾 %+v, %+v", i, respTask.CreateTime)
+
 	return map[string]interface{}{"res": respTask}, nil
+}
+
+func handleJob(job Job) (interface{}, error) {
+	err := l("2", map[string]interface{}{"job": job})
+	if err != nil {
+		return nil, fmt.Errorf("ERR-6: %s", err)
+	}
+
+	return map[string]interface{}{"status": "done", "job": job}, nil
 }
 
 func l(key string, data interface{}) error {

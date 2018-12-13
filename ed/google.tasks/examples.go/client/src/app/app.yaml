@@ -1,0 +1,8 @@
+runtime: go111
+service: x-test
+env: standard
+instance_class: F1
+
+handlers:
+  - url: '.*'
+    script: auto

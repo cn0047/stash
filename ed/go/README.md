@@ -17,7 +17,7 @@ GO
 Go - statically-typed, general-purpose, with type safety
 and automatic memory management programming language.
 
-````
+````bash
 $GOROOT       // root of the go (`/usr/local/go/`)
 $GOROOT_FINAL // if go moved from $GOROOT
 $GOPATH       // environment variable specifies the location of your workspace.
@@ -46,10 +46,9 @@ go vet
 godoc -http=:6060 -goroot=$PWD
 ````
 
-````
+````bash
 # Fix finds Go programs that use old APIs and rewrites them to use newer ones
 go tool fix
-go tool pprof -h
 
 # Performs precise type-safe renaming of identifiers
 gorename
