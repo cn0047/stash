@@ -3,8 +3,10 @@ Google Cloud
 
 [doc](https://cloud.google.com/sdk/gcloud/)
 [products](https://cloud.google.com/products/)
+[console](https://console.cloud.google.com/)
 [APIs](https://developers.google.com/api-client-library/)
 [locations](https://cloud.google.com/about/locations/)
+[machine types](https://cloud.google.com/compute/docs/machine-types)
 
 ````bash
 # ~/.google-cloud-sdk/bin/gcloud

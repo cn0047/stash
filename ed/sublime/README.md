@@ -15,4 +15,7 @@ subl /Users/k/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Packag
 ls /Users/k/Library/Application\ Support/Sublime\ Text\ 3/Packages
 subl /Users/k/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/SublimeLinter/Solarized\ V\ \(Light\)\ \(SL\).tmTheme
 subl /Users/k/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/SublimeLinter/my.tmTheme
+
+# keys
+ALT+CMD+O # Insert key
 ````
