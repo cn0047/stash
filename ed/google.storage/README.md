@@ -53,3 +53,15 @@ Storage class:
 * regional
 * nearline (infrequently accessed data, backup)
 * coldline (rarely accessed data, disaster recovery)
+
+Frequency limit to create/delete bucket is 2 second.
+Frequency limit to update object is 1 second.
+For nearline min storage duration - 30 days.
+
+Cloud spanner offers ACID transactions and can scale to thousands of nodes.
+
+## +/-
+
+Advantages:
+
+* versioning

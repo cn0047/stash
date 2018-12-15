@@ -105,3 +105,26 @@ Regional external LB: Network, Internal.
 Managed instances groups used for LB.
 
 #### CKE (Container Engine)
+
+#### Networking
+
+BGP       - Border Gateway Protocol.
+Cloud DNS - Domain Name System.
+ECMP      - Equal - Cost Multi - Path routing.
+FQDN      - Fully Qualified Domain Name.
+MPLS      - Multiprotocol Label Switching.
+NAT       - Network Address Translation.
+VPC       - Virtual Private Cloud.
+VPS       - Virtual Private Server.
+
+Google Cloud Interconnect extends your on-premises network
+to Google's network through a highly available, low latency connection.
+
+Max 5 network per GCP project.
+Internal Ip address used internal DNS server for FQDN.
+To scale Cloud VPN - add multiple tunnels.
+Subnets can not span across multiple regions.
+Cloud Router doesn't use BGP link to advertise network changes.
+Cloud VPN is not regional Service.
+Google Virtual Network Subnets are regional resource.
+Cloud VPN is regional Service.
