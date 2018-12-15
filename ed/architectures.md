@@ -21,20 +21,11 @@ A: To add cache; To select DB (master, slave);
 Q: Why do you need SPA for admin?
 A: Avoid data loss for expired session when handling submit POST form.
 
-#### Clean Architecture
-
-* Entities
-* Use Cases (Business Logic)
-* Controller
-* Framework & Driver
-
-#### Monolith
-
-Not so awful in case of server-side-rendering.
-
-But:
-* [10K SLOC](https://en.wikipedia.org/wiki/Source_lines_of_code).
-* Extremely difficult to navigate the code and isolate your code.
+Functional organization:
+Create directories: Customers, Products, Vendors
+instead of Controllers, Models, Views.
+Pros: easy to navigate.
+Cons: lose framework convention.
 
 #### Functional layout
 
@@ -50,6 +41,21 @@ Group code by it’s module: user, account, etc.
 But:
 * terrible names like: (users.User, ...)
   or `accounts.Controller` needs to interact with our `users.Controller` in `go` (-> critical err).
+
+#### Clean Architecture
+
+* Entities
+* Use Cases (Business Logic)
+* Controller
+* Framework & Driver
+
+#### Monolith
+
+Not so awful in case of server-side-rendering.
+
+But:
+* [10K SLOC](https://en.wikipedia.org/wiki/Source_lines_of_code).
+* Extremely difficult to navigate the code and isolate your code.
 
 #### Simple
 

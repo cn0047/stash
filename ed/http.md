@@ -131,7 +131,7 @@ If-None-Match: "6d82cbb050ddc7fa9cbb659014546e59"
 # if ETag value same -> Response: 304 Not Modified
 ````
 
-#### CORS
+#### CORS (Cross-Origin Resource Sharing)
 
 A CORS preflight request is a CORS request that checks to see if the CORS protocol is understood.
 It is an OPTIONS request using two HTTP request headers: `Access-Control-Request-Method` and `Access-Control-Request-Headers`

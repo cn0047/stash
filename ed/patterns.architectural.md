@@ -2,16 +2,9 @@ Architectural patterns
 -
 
 Architecture must care about:
-
 * Durability
 * Utility
 * Beauty
-
-Functional organization:
-Create directories: Customers, Products, Vendors
-instead of Controllers, Models, Views.
-Pros: easy to navigate.
-Cons: lose framework convention.
 
 Common questions.
 
@@ -120,8 +113,6 @@ Pros:
 * Roint-in-time reconstruction.
 * Multiple read DBs.
 * Rebuild PROD DB.
-
--
 
 #### Event-driven architecture
 
