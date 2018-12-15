@@ -28,6 +28,9 @@ gcloud components list
 gcloud components update
 gcloud components install app-engine-php
 
+gcloud services list
+gcloud services enable cloudprofiler.googleapis.com
+
 gcloud source repos list
 
 gcloud container clusters list
