@@ -49,11 +49,15 @@ protoPayload.resource:"var=3"
 protoPayload.status >= 400 AND protoPayload.status <= 405
 
 resource.type="gae_app"
+resource.labels.module_id="cws-products"
 logName="projects/itismonitoring/logs/appengine.googleapis.com%2Frequest_log"
 protoPayload.resource!="/health-check"
 protoPayload.resource!="/cron/addPingJobs"
 protoPayload.resource!="/worker/ping"
 protoPayload.resource!="/static/"
+severity>=CRITICAL
+severity>=ERROR
+severity>=WARNING
 ````
 
 Go:

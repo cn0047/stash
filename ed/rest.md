@@ -34,11 +34,14 @@ Good:
 /users/12345
 /customers/33245/orders/8769/lineitems/1
 
-# Use nouns and NOT the verbs. And use plurals.
-/products not getAllProducts
-/products?name=’ABC’ not /getProductsByName
-/products?type=’xyz’ not /getProductsByType
+/products          # not getAllProducts
+/products?name=ABC # not /getProductsByName
+/products?type=xyz # not /getProductsByType
 ````
+Use nouns and NOT the verbs. Also use plurals.
+
+Q: What to do with ugly names like: deploys...
+A: ?
 
 |   | name     | description                               |
 |---|----------|-------------------------------------------|
