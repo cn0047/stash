@@ -179,7 +179,7 @@ Perform action on the victim's behalf.
 </form>
 ````
 
-FIS: CORS (if browser support CORS) or CSRF token.
+FIX: CORS (if browser support CORS) or CSRF token.
 
 #### Using Components with Known Vulnerabilities
 

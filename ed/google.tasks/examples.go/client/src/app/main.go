@@ -52,7 +52,7 @@ type Job struct {
 func main() {
 	echoServer := echo.New()
 	echoServer.GET("/", func(ctx echo.Context) error {
-		return ctx.JSON(http.StatusOK, map[string]interface{}{"status": "active", "version": "1.1.5"})
+		return ctx.JSON(http.StatusOK, map[string]interface{}{"status": "active", "version": "1.1.6"})
 	})
 	echoServer.GET("/x", x)
 	echoServer.POST(PathToWorker, y)
