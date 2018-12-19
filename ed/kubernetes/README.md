@@ -32,6 +32,7 @@ kubectl get services
 kubectl get deployments
 kubectl explain pods
 kubectl create -f ed/kubernetes/examples/sh/pod.yaml
+kubectl edit <resource> <resource_name>
 ````
 
 ````bash
@@ -59,8 +60,34 @@ container engine - docker or rkt.
 kube-proxy - k8s networking.
 
 Kubernetes - orchestrator for microservice apps.
+Kubernetes has three namespaces by default:
+* default
+* kube-system
+* kube-public
 
 To store data permanently, Kubernetes uses Persistent Volumes.
+
+API server (`kube-apiserver`) - provides an HTTP/HTTPS0server,
+which provides a RESTful API for all the components in the Kubernetes master.
+
+Controller Manager (`kube-controller-manager`) - controls lots of different things
+in the cluster. Replication Controller Manager ensures all the Replication
+Controllers run on the desired container amount.
+
+`etcd` is an open source distributed key-value store (https://coreos.com/etcd).
+Kubernetes stores all the RESTful API objects here.
+
+Scheduler (kube-scheduler) - decides which node is suitable for pods to run on,
+according to the resource capacity or the balance of the resource utilization on the node.
+
+`Kubelet` is a major process in the nodes, which reports node activities back
+to kubeapiserver periodically, such as pod health, node health, and liveness probe.
+
+Proxy (`kube-proxy`) - handles the routing between pod load balancer (a.k.a. service)
+and pods, it also provides the routing from outside to service.
+
+ReplicaSet (RS).
+ReplicationController (RC).
 
 #### Master.
 
