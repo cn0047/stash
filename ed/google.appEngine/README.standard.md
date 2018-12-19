@@ -2,6 +2,7 @@ App Engine - Standard Environment
 -
 
 [doc](https://cloud.google.com/appengine/docs/standard/go/)
+[config files](https://cloud.google.com/appengine/docs/standard/go/configuration-files)
 [environments comparison](https://cloud.google.com/appengine/docs/the-appengine-environments)
 [quotas](https://cloud.google.com/appengine/quotas)
 [capabilities](https://cloud.google.com/appengine/docs/standard/go/capabilities/)

@@ -87,8 +87,6 @@ Predefined Virtual Machines types:
 * high-cpu
 * high-memory
 
-It's possible to attach 10 per CPU persistent disks to GCE VM.
-
 Instance template - define machine type, image, zone
 and other properties.
 

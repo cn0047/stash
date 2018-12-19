@@ -27,6 +27,11 @@ Functions:
 * json_agg(fieldFromDB)
 
 ````sql
+-- sum
+select sum((data->>'productsCount')::integer)
+````
+
+````sql
 CREATE TABLE books (id integer, data json);
 
 INSERT INTO books VALUES
