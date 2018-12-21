@@ -3,6 +3,17 @@ Security - Web Application Security Risks
 
 To store password in db add salt to password and hash it.
 
+Registration form:
+when email is taken - don't say it in error, just say "registration in progress"
+and send email with message "hey, you already have account here".
+
+Login form:
+When password is incorrect - don't say it in error, just say "credentials incorrect",
+so you wont leak information that email exsists but password invalid.
+And with each next invalid password login try - increase response delay,
+so after 10 tries it will take so much time to submit new request,
+so it will stop botnet brute force attack.
+
 #### A1 Injection
 
 #### Cross-Site Scripting (XSS)

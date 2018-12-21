@@ -19,6 +19,10 @@ based on the rate that you specified for the queue.
 
 Default `total_storage_limit` is 500M.
 
+Automatic scaling: task processing must finish in 10 minutes.
+Manual and basic scaling: requests can run up to 24 hours.
+For flex environment worker: all types have a 60 minute timeout.
+
 You can enqueue a task as part of a Cloud Datastore transaction!
 
 ````go

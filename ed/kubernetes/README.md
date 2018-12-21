@@ -88,6 +88,8 @@ and pods, it also provides the routing from outside to service.
 
 ReplicaSet (RS).
 ReplicationController (RC).
+A federation is a cluster of clusters.
+KOps stands for Kubernetes operations (for AWS).
 
 #### Master.
 
