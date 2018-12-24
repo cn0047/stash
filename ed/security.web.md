@@ -14,6 +14,16 @@ And with each next invalid password login try - increase response delay,
 so after 10 tries it will take so much time to submit new request,
 so it will stop botnet brute force attack.
 
+Web account settings:
+To change email address - send email to origin email adress with link
+to verify that person who is changing email is owner of previous email.
+
+Reset password:
+Send email with message "please re-log-in first" to verify person.
+
+Log off:
+Use expiring token in url to perform log-off.
+
 #### A1 Injection
 
 #### Cross-Site Scripting (XSS)

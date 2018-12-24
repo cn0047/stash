@@ -18,16 +18,19 @@ minikube delete; rm -rf ~/.minikube
 minikube status
 minikube start --vm-driver=xhyve
 minikube start --vm-driver=hyperkit
+minikube stop
 minikube dashboard
 
 kubectl version
 kubectl cluster-info
+kubectl cluster-info dump
 kubectl config current-context
 kubectl config view
 kubectl get events
 kubectl get nodes
 kubectl get pods
 kubectl get pods --show-all
+kubectl get rc
 kubectl get services
 kubectl get deployments
 kubectl explain pods
@@ -36,22 +39,13 @@ kubectl edit <resource> <resource_name>
 ````
 
 ````bash
+kubectl delete pod ksh-pod
 kubectl apply --force=true -f ed/kubernetes/examples/sh/pod.yaml
-kubectl logs myapp-sh-pod
-kubectl delete pod myapp-sh-pod
-````
+kubectl logs ksh-pod
 
-````bash
-cd ed/kubernetes/examples/pingRealtimeLog/ \
-  && GOOS=linux go build ../../../go/examples/whatever/pingRealtimeLog.go \
-  && docker build -t kube_ping_realtime_log . \
-  && cd -
-
-docker run -ti --rm  kube_ping_realtime_log
-
-kubectl delete pod myapp-kube-ping-realtime-log-pod
-kubectl apply --force=true -f ed/kubernetes/examples/pingRealtimeLog/pod.yaml
-kubectl logs myapp-kube-ping-realtime-log-pod
+kubectl delete rc ksh-rc
+kubectl apply --force=true -f ed/kubernetes/examples/sh/rc.yaml
+kubectl logs ksh-rc
 ````
 
 minikube - tool to use K8s on dev.

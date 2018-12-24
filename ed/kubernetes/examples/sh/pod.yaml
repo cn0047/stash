@@ -1,11 +1,18 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: myapp-sh-pod
+  name: ksh-pod
   labels:
-    app: myapp-sh
+    app: ksh
 spec:
   containers:
-  - name: myapp-sh-container
+  - name: ksh-container
     image: cn007b/ubuntu
-    command: ['sh', '-c', 'echo "it works, id: `uuid`"']
+    ports:
+    - containerPort: 8080
+    command: [
+      'sh',
+      '-c',
+      # 'echo "it works, id: `uuid`";',
+      "curl -i -XPOST 'https://realtimelog.herokuapp.com:443/ping' -H 'Content-Type: application/json' -d '{\"code\":\"200\", \"status\": \"OK\"}'",
+    ]
