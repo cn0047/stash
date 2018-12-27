@@ -3,6 +3,8 @@ Architectures
 
 coordinator
 dispatcher
+processor
+worker
 
 ## Back End
 

@@ -115,6 +115,9 @@ println(option)
 
 for i := 0; i < 100; i++ {
 }
+for c := n.FirstChild; c != nil; c = c.NextSibling {
+  f(c)
+}
 
 v := varI.(T)
 if v, ok := varI.(T); ok { // "comma ok" idiom.

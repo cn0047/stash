@@ -1,9 +1,51 @@
 Linux Tools
 -
 
+#### kill
+
+````sh
+pkill /var/www/x.php # Kill runned script x.php.
+pkill -f php # Kill runned script with name like php.
+pkill -f test.py # full argument lists, default is to match against process names
+
+kill -9 `ps -aux|grep {{PROCESS_NAME}}|grep -v grep|awk '{print $2}'`
+````sh
+
+#### monitoring
+
+````sh
+dmesg | tail      # last 10 system messages
+vmstat 1          # virtual memory stat
+mpstat -P ALL 1   # CPU time breakdowns per CPU
+pidstat 1         # top’s per-process summary
+iostat -xz 1      # block devices (disks)
+free -m           # block device I/O buffer cache & file systems page cache
+sar -n DEV 1      # check network interface
+sar -n TCP,ETCP 1 # TCP metrics
+top               #
+````
+
+#### date
+
+````sh
+# date, in certain format:
+date +'%d/%b/%Y:%H:%M' # 18/Jul/2018:11:48
+date +%Y-%m-%dT%T%z    # 2018-07-18T11:49:03+0300
+date +%s               # timestamp
+date +%s%N             # seconds and current nanoseconds
+````
+
+#### ls
+
+````sh
+ls -A # except for . and ..
+ls -h # sizes
+ls -s # number of file system blocks
+````
+
 #### find
 
-````
+````sh
 # delete all -name directories
 find . -type d -name node_modules -exec rm -rf {} \;
 find . -type d -name vendor -exec rm -rf {} \;
@@ -45,7 +87,7 @@ read -r -n 1; echo $REPLY
 
 #### printf
 
-````
+````sh
 printf "one\ntwo\n"
 printf "one\n \ttwo\n \tthree\n"
 printf %s\\n {0..9}
@@ -57,7 +99,7 @@ printf -v myVar "UserIs%s" $USER
 
 #### echo
 
-````
+````sh
 echo 'Hello world'
 echo "Hello world $USER"
 echo -n "Hello world $USER" # no new line
@@ -77,7 +119,7 @@ ab -k -n 5000 -c 100 -t 2 "http://localhost"
 
 #### less
 
-````
+````sh
 # OPTIONS
 -F or --quit-if-one-screen # exit if the entire file can be displayed on the first screen.
 -i or --ignore-case
@@ -95,7 +137,7 @@ Is an event-based replacement for the traditional init daemon.
 
 #### netstat
 
-````
+````sh
 netstat -anp | grep LISTEN
 
 # osx
@@ -121,7 +163,7 @@ mount -t nfs {remote_machine_ip}:/remote/dir /local/dir
 
 #### screen
 
-````
+````sh
 screen -S sessionName # new named session
 screen -ls            # list of active sessions
 screen -x sessionName # attach to session
@@ -130,7 +172,7 @@ Ctrl+A followed by D = detach screen
 
 #### image optimization
 
-````
+````sh
 jpegoptim --size=12k --dest a/ -o origin.jpg
 jpegoptim --max=30 --dest=res -o  bond.origin.jpg
 
@@ -149,7 +191,7 @@ mogrify -resize 400x400! src.png
 
 #### rsync
 
-````
+````sh
 rsync -az --progress /source /target
 rsync -az --progress --exclude=.git/* --rsh='ssh -p26' kovpak@trunk-web-php.pmmedia.priv:/usr/share/yii/ /home/volodymyr/web/kovpak/yii/framework/
 rsync -az --progress --rsh='ssh -i /home/kovpak/web/storage/ziipr.pem' ./ ec2-user@ec2-52-210-246-232.eu-west-1.compute.amazonaws.com:/var/www/
@@ -159,7 +201,7 @@ rsync -az --progress --rsh='ssh -i /home/kovpak/web/storage/ziipr.pem' ./ ec2-us
 
 Sed was developed from 1973.
 
-````
+````sh
 # Mode of operation
 d - delete
 q - quit
@@ -183,7 +225,7 @@ echo A_B_C_D_E_F_20180904_0038849_SUPER03.txt \
 
 AWK was created in the 1970s.
 
-````
+````sh
 -F ':' # column separator
 
 echo 'one and two' | awk '{print $1}' # will print one
@@ -197,7 +239,7 @@ printf "1\n 2\n 3\n" | awk 'ORS=NR?",":"\n"' # Replace new line with comma
 
 `pssh` tool to run ssh command on few servers simultaneously
 
-````
+````sh
 locate sshd_config
 
 ssh-add ~/.ssh/id_rsa
@@ -227,7 +269,7 @@ Host ec2
 
 #### ftp
 
-````
+````sh
 ftp $hostname
 
 # connect in passive mode
@@ -236,7 +278,7 @@ ftp -p $hostname
 ncftpput -R -v -u {user} {host} remote_path ./local_path/*
 ````
 
-````
+````sh
 status
 system          # show remote system type
 ascii           # set ascii transfer type
@@ -267,7 +309,7 @@ watch -n 2 'date'
 
 #### ps
 
-````
+````sh
 ps ax                             # Display all processess
 ps aux                            # Detailed information about processess
 ps -f -u www-data                 # Display process by user "www-data"
@@ -286,7 +328,7 @@ watch -n 1 'ps -e -o pid,uname,cmd,pmem,pcpu --sort=-pmem,-pcpu | head -15' # Tu
 
 #### chmod
 
-````
+````sh
 -rwxrwxrwx
 drwxr-xr-x
 directory user group other
@@ -331,7 +373,7 @@ uuencode card.jpg card.jpg | mail mail@com.com
 
 #### grep
 
-````
+````sh
 -z, --null-data             строки разделяются байтом с нулевым значением, а не символом конца строки
 -v, --revert-match          #
 -m, --max-count=ЧИСЛО       #
@@ -347,7 +389,7 @@ uuencode card.jpg card.jpg | mail mail@com.com
 
 #### curl
 
-````
+````sh
 -b, --cookie STRING/FILE             String or file to read cookies from (H)
 -d, --data DATA                      HTTP POST data (H)
 -F, --form CONTENT                   Specify HTTP multipart POST data (H)

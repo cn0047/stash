@@ -1,7 +1,7 @@
 Linux
 -
 
-````
+````sh
 # nginx
 telnet localhost 8080
 
@@ -28,7 +28,7 @@ If the backlog argument is greater than the value in /proc/sys/net/core/somaxcon
 then it is silently truncated to that value.
 The default value in this file is 128.
 
-````
+````sh
 /dev/null                               # hide output
 /dev/null                               # stream
 /dev/stderr                             # stream 2
@@ -48,13 +48,13 @@ The default value in this file is 128.
 /sys/devices/system/cpu/cpu[0-7]
 ````
 
-````
+````sh
 cat /proc/sys/net/core/somaxconn
 sysctl -n net.core.somaxconn
 # on server must be at least 1024
 ````
 
-````
+````sh
 cat /etc/passwd
 sar:x:205:105:Stephen Rago:/home/sar:/bin/ksh
 
@@ -77,249 +77,10 @@ cc  - the C compiler,
 gcc - the GNU C compiler,
 ````
 
-````
-file ed/bash/README.md # prints file type
-
-adduser rob
-visudo
-su rob
-# on host machine
-cat ~/.ssh/id_rsa.pub
-# on remote machine
-echo 'key from id_rsa.pub from host machine' >> ~/.ssh/authorized_keys
-````
-
-#### monitoring
-
-````
-dmesg | tail      # last 10 system messages
-vmstat 1          # virtual memory stat
-mpstat -P ALL 1   # CPU time breakdowns per CPU
-pidstat 1         # top’s per-process summary
-iostat -xz 1      # block devices (disks)
-free -m           # block device I/O buffer cache & file systems page cache
-sar -n DEV 1      # check network interface
-sar -n TCP,ETCP 1 # TCP metrics
-top               #
-````
-
 #### keys
 
 ````
 Ctrl-k # delete rest of line
 Ctrl-u # delete to start of line
 Ctrl-w # delete word
-````
-
-#### shell
-
-````
-fg # send command to foreground
-bg # send command to background
-
-# replace 1 to o
-echo b1nd | tr 1 o # bond
-
-# generates uuid
-uuid -n 1
-
-# tool to disable redundant background services on machine
-sysv-rc-conf
-
-# CPU usage info
-# apt-get install sysstat
-mpstat
-
-# Memory usage info
-free
-cat /proc/meminfo
-
-# Disc usage info
-iotop
-
-# tool for net traffic
-cbm
-
-# general stat
-dstat
-
-# shows OS limits
-ulimit -a
-
-# last argument
-!$
-
-id
-who
-echo $USER
-hostname
-tty
-
-# directory mode
-mkdir -m 777 test
-
-which git
-# /usr/local/bin/git
-
-# Redirects:
-#
-# for standard input
-echo yes 0> f
-# for standard output
-echo ok 1> f
-# for errors
-echo no 2>| f
-# for standard output & errors
-echo okay &> f
-#
-echo "test" 2>&1 1>/dev/null &
->&2 # output to stderr
-1>&2 # output to stderr
-2>&1 # stderr to stdout
-
-# overwrite file
-echo OK >| f
-
-set -o
-# to enable
-set -o noclobber
-# to disable
-set +o noclobber
-
-cut -f7 -d: /etc/passwd
-
-# create named pipe
-mkfifo mypipe
-
-# when permission denied
-echo '127.0.0.1 trick' | sudo tee -a /etc/hosts
-
-stringInBase64=`echo "shaken not stirred" | base64`
-echo $stringInBase64 | base64 -D
-````
-
-````
-# nohup
-# When you execute a job in the background (using &, bg command),
-# and logout from the session - your process will get killed,
-# to prevent this run:
-nohup myscript &
-# to run with low priority:
-nice myscript
-nohup nice myscript &
-
-apt-get install -y --force-yes
-# search package
-apt-cache search htop
-
-cat <<TXT
----------
-204
----------
-TXT
-
-cat << EOF >> /tmp/yourfilehere
-These contents will be written to the file.
-        This line is indented.
-EOF
-
-ping 8.8.8.8 -c 15
-
-# watch changes in directory
-fswatch ./src | while read f; do echo $f; done
-
-# copy data into clipboard buffer.
-echo 200 | pbcopy
-
-env # to see all ENV variables
-sudo bash -c 'echo "APP_ENVIRONMENT=prod" > /etc/environment'
-sudo sh -c 'echo "APP_ENVIRONMENT=prod" > /etc/environment'
-sh -c 'echo 200'
-
-cut -d' ' -f2 /tmp/file.txt # print column 2 from file using ' ' as delimer
-
-df            # Show information about the file system.
-df -h
-df -T         # Show filesystem type
-du            # Summarize disk usage of each FILE.
-du -sh IraFoto/* # Summarize disk usage of each dir in foto dir.
-
-uptime # CPU load average
-
-pkill /var/www/x.php # Kill runned script x.php.
-pkill -f php # Kill runned script with name like php.
-
-kill -9 `ps -aux|grep {{PROCESS_NAME}}|grep -v grep|awk '{print $2}'`
-
-uname -a # Shows 32 or 64 bit OS.
-uname -r # Show the kernel version.
-cat /etc/*release # all ablut ubuntu
-
-nslookup git.mdm.comodo.od.ua
-host github.com # Shows ip by host.
-dig domain
-whois ip
-
-colordiff -u file1 file2
-
-ln -s {file} {symbolic-name}
-
-DISPLAY=:7
-echo $DISPLAY
-
-# print screen from url
-cutycapt --url=cn007b.tumblr.com --out=out.png
-wkhtmltoimage cn007b.tumblr.com i.jpg
-webkit-image-gtk http://cn007b.tumblr.com > i.png
-````
-
-````
-cd -       # go to previous dir
-pushd path # remember path (save it at stack)
-popd       # got to pushed path (and delete it from stack)
-
-# history:
-# ⬆, ⬇ # keys to navigat through history
-# Ctrl-p, Ctrl-n
-# Ctrl-r # search in history
-!207 # run from history
-
-~/.bash_history
-````
-
-#### SNIPPETS
-
-````
-fwrite(STDOUT, __METHOD__ . "\n");
-prompt \u@\h [\d]>
-
-# date, in certain format:
-date +'%d/%b/%Y:%H:%M' # 18/Jul/2018:11:48
-date +%Y-%m-%dT%T%z    # 2018-07-18T11:49:03+0300
-date +%s               # timestamp
-date +%s%N             # seconds and current nanoseconds
-````
-
-#### H
-
-````sh
-# scan ports:
-nmap --script=http-headers www.ziipr.com
-
-# osx proxy
-
-sudo networksetup -setwebproxy "Wi-Fi" 54.174.16.166 80
-# '71.4.186.100:21288', '198.7.96.243:21239', '104.128.17.224:21237', '209.48.175.196:21325', '172.102.207.55:21279', '198.7.97.209:21297', '162.248.134.54:21326', '23.239.219.244:21325', '143.191.19.7:21238', '173.44.12.201:21259', '173.44.5.52:21310', '173.44.12.68:21305', '173.44.26.80:21269', '107.152.144.66:21291', '208.73.73.206:21257', '204.14.87.85:21326', '144.168.128.88:21244', '204.14.87.149:21271', '45.57.195.33:21232', '173.44.5.185:21247', '173.44.12.141:21280', '173.44.26.220:21318', '107.152.144.219:21274', '208.73.73.9:21278', '143.191.19.89:21263', '143.191.31.123:21304', '69.174.99.149:21322', '50.117.15.33:21318', '173.44.12.16:21297', '216.172.144.220:21285',
-sudo networksetup -setwebproxystate "Wi-Fi" off
-
-netstat -an
-
-nc -zv 10.0.2.2 22
-
-nc -zv 78.140.186.238 1-65535
-nc -zv 10.0.2.2 22
-
-Public DNS IP addresses:
-8.8.8.8
-8.8.4.4
 ````

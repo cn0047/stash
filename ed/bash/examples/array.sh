@@ -1,7 +1,19 @@
 #!/bin/bash
 
-declare -a arr=("element1" "element2" "element3")
-echo "${arr[1]}"
-for i in "${arr[@]}"; do
+declare -a arr1=("element1" "element2" "element3")
+
+declare -A arr2
+arr2['first']='First element'
+arr2['second']='Second element'
+
+declare -A arr3=(["a"]="x" ["b"]="q" )
+
+echo "${arr1[1]}"
+printf "\n"
+
+for i in "${arr1[@]}"; do
    echo "$i"
 done
+
+printf "\n"
+echo "${arr2[@]}"

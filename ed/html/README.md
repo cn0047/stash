@@ -25,3 +25,9 @@ as soon as it is available (only for external scripts).
 
 If neither `async` or `defer` is present - script is fetched and executed immediately,
 before the browser continues parsing the page.
+
+#### Microdata
+
+````
+<span itemprop="name">Elizabeth</span>
+````
