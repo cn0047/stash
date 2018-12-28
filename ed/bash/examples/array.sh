@@ -17,3 +17,9 @@ done
 
 printf "\n"
 echo "${arr2[@]}"
+
+files=( * )
+printf "\nFiles:\n"
+for file in "${files[@]}"; do
+  echo "$file"
+done

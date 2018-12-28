@@ -49,6 +49,20 @@ if [[ $1 =~ ^[0-9]+$ ]]; # is number
 && # &
 || # or
 
+-e "$file"        # file exists
+-d "$file"        # directory exists
+-f "$file"        # regular file exists
+-h "$file"        # symbolic link exists
+-z "$str"         # length is zero
+-n "$str"         # length is non-zero
+"$str" = "$str2"  # equal strings (NOT for integer)
+"$int1" -eq "$int2"
+"$int1" -ne "$int2"
+"$int1" -gt "$int2"
+"$int1" -ge "$int2"
+"$int1" -lt "$int2"
+"$int1" -le "$int2"
+
 exit 0 # success
 exit 1 # fail
 
@@ -118,13 +132,22 @@ echo ${s//[o]/X}      # http://hXst/jsXn_path.jsXn
 
 str='I am a string'
 echo "${str/a/A}" # I Am a string
+echo "${str//a/A}" # I Am A string
+echo "${str/#I/=}" # = am a string
+echo "${str/%g/N}" # I am a strinN
+echo "${str/g/}" # I am a strin # replace with nothing
 echo "${str%a*}"  # I am
+echo "${str#*a}" # m a string
+echo "${str##*a}" #  string
 
 FILENAME="/tmp/example/myfile.txt"
 echo "${FILENAME%/*}"    # /tmp/example
 echo "${FILENAME##*/}"   # myfile.txt
 BASENAME="${FILENAME##*/}"
 echo "${BASENAME%%.txt}" # myfile
+
+A=(hello world)
+echo "${A[@]/#/R}" # Rhello Rworld
 ````
 
 #### Numbers:
@@ -420,6 +443,16 @@ local val=${1:?Must provide an argument}
 echo "${var:-XX}" # XX
 var=23
 echo "${var:-XX}" # 23
+
+# process with pid
+if [[ ! -e /tmp/test.py.pid ]]; then
+  python test.py &
+  echo $! > /tmp/test.py.pid
+else
+  echo -n "ERROR: The process is already running with pid "
+  cat /tmp/test.py.pid
+  echo
+fi
 ````
 
 ````sh

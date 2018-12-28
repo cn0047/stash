@@ -95,6 +95,52 @@ printf %s\\n {0..9}
 printf "Hi %s \n" $USER
 printf "p%s\n" 1 2 3
 printf -v myVar "UserIs%s" $USER
+
+printf "%s\n" *.{gif,jpg,png} # display only (some) image files
+
+v="hello"
+printf '%s\n' "${v^}" # Hello
+printf '%s\n' "${v^^}" # HELLO
+
+v="hello world"
+declare -u string="$v" # HELLO WORLD
+
+v="BYE"
+printf '%s\n' "${v,}" # bYE
+printf '%s\n' "${v,,}" # bye
+
+v="HELLO WORLD"
+declare -l string="$v" # hello world
+
+v="Hello World"
+echo "${v~~}" # hELLO wORLD
+echo "${v~}" # hello World
+
+var='0123456789abcdef'
+printf '%s\n' "${var:3}" # 3456789abcdef
+printf '%s\n' "${var:3:4}" # 3456
+printf '%s\n' "${var:3:-5}" # 3456789a
+printf '%s\n' "${var: -6}" # abcdef
+printf '%s\n' "${var:(-6)}" # abcdef
+printf '%s\n' "${var: -6:-5}" # a
+
+set -- 0123456789abcdef
+printf '%s\n' "${1:5}" # 56789abcdef
+
+myarr[0]='0123456789abcdef'
+printf '%s\n' "${myarr[0]:7:3}" # 789
+
+set -- 1 2 3 4 5 6 7 8 9 0 a b c d e f
+printf '%s\n' "${@:10}"
+printf '%s\n' "${@:10:3}"
+printf '%s\n' "${@:10:-2}"
+printf '%s\n' "${@: -10:2}"
+printf '%s\n' "${@:0:2}"
+
+myarr=(0 1 2 3 4 5 6 7 8 9 a b c d e f)
+printf '%s\n' "${myarr[@]:12}" c
+printf '%s\n' "${myarr[@]:5:3}"
+printf '%s\n' "${myarr[@]: -1}"
 ````
 
 #### echo
@@ -105,6 +151,23 @@ echo "Hello world $USER"
 echo -n "Hello world $USER" # no new line
 echo n-{a,b,c}-b # fn-a-b n-b-b n-c-b
 echo n#{1..3}, # n#1, n#2, n#3,
+
+var='12345'
+echo "${#var}" # length
+
+myarr=(1 2 3)
+echo "${#myarr[@]}" # number of array elements
+
+v=foo-bar-baz
+echo ${v%%-*} # foo
+echo ${v%-*} # foo-bar
+echo ${v##*-} # baz
+echo ${v#*-} # bar-baz
+
+echo "FOO is ${FOO:?EMPTY}"
+echo "FOO is ${FOO?UNSET}"
+echo "BAR is ${BAR:?EMPTY}"
+echo "BAR is ${BAR?UNSET}"
 ````
 
 #### apachebench
