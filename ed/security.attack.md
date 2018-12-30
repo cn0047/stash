@@ -1,9 +1,6 @@
 Security
 -
 
-attack
-
-
 #### DDos (Denial-of-service attack)
 
 A distributed DDoS is a cyber-attack where the perpetrator uses more than one unique IP address,

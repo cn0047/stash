@@ -9,6 +9,15 @@ Security
 [check site](https://observatory.mozilla.org/)
 [check headers](https://securityheaders.com)
 
+Symmetric encryption (symmetric key cryptography) - sender and receiver have same secret key.
+Same key for encrypting and decrypting.
+
+Public key cryptography - sender have public key, receiver have private key.
+It is expensive type of cryptography.
+
+Don't use MD5, SHA1.
+<br>Use SHA2, SHA3.
+
 #### Browser security
 
 ````
@@ -45,7 +54,7 @@ Content-Security-Policy: upgrade-insecure-requests;
 Content-Security-Policy-Report-Only: default-src https:; report-uri /csp-violation-report-endpoint/
 ````
 
-#### Shellshock (bashdoor, CVE-2014-6271)
+#### ~~Shellshock (bashdoor, CVE-2014-6271)~~
 
 ````
 # CVE-2014-6271

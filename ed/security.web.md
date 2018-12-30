@@ -24,6 +24,9 @@ Send email with message "please re-log-in first" to verify person.
 Log off:
 Use expiring token in url to perform log-off.
 
+Cookie:
+Don't forget about `HttpOnly, secure` flags.
+
 #### A1 Injection
 
 #### Cross-Site Scripting (XSS)
