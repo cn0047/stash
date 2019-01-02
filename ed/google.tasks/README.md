@@ -2,6 +2,8 @@ Tasks
 -
 
 [docs](https://cloud.google.com/tasks/docs/)
+[pricing](https://cloud.google.com/tasks/docs/pricing)
+[quotas](https://cloud.google.com/tasks/docs/quotas)
 
 ````bash
 gcloud beta tasks queues list
