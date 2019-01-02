@@ -1,0 +1,19 @@
+kind: ReplicationController
+apiVersion: v1
+metadata:
+  name: log-rc
+spec:
+  replicas: 2
+  selector:
+    app: log
+  template:
+    metadata:
+      labels:
+        app: log
+    spec:
+      containers:
+      - name: log-container
+        image: cn007b/pi
+        ports:
+          - name: http-server
+            containerPort: 8080

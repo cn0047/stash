@@ -30,22 +30,47 @@ kubectl get events
 kubectl get nodes
 kubectl get pods
 kubectl get pods --show-all
+kubectl get pods -o wide
 kubectl get rc
-kubectl get services
+kubectl get svc # services
 kubectl get deployments
 kubectl explain pods
 kubectl create -f ed/kubernetes/examples/sh/pod.yaml
 kubectl edit <resource> <resource_name>
+
+# sh example
+kubectl delete rc ksh-rc
+kubectl apply --force=true -f ed/kubernetes/examples/sh/rc.yaml
+kubectl describe rc ksh-rc
+kubectl get pods -l app=ksh
 ````
 
 ````bash
-kubectl delete pod ksh-pod
-kubectl apply --force=true -f ed/kubernetes/examples/sh/pod.yaml
-kubectl logs ksh-pod
+# log example
 
-kubectl delete rc ksh-rc
-kubectl apply --force=true -f ed/kubernetes/examples/sh/rc.yaml
-kubectl logs ksh-rc
+cd ed/kubernetes/examples/log/ \
+  && GOOS=linux go build ../../../go/examples/whatever/pingRealtimeLog.go \
+  && docker build -t cn007b/pi . \
+  && docker push cn007b/pi \
+  && rm pingRealtimeLog \
+  && cd -
+
+docker run -ti --rm -p 8080:8080 cn007b/pi
+curl 'http://localhost:8080?x=1&y=2'
+
+kubectl delete rc log-rc
+kubectl apply --force=true -f ed/kubernetes/examples/log/rc.yaml
+kubectl describe rc log-rc
+kubectl get rc -l app=log
+kubectl get pods -l app=log
+
+kubectl delete svc log-service
+kubectl apply --force=true -f ed/kubernetes/examples/log/svc.yaml
+kubectl describe svc log-service
+kubectl get svc log-service
+kubectl get ep log-service
+
+curl 'http://localhost:8080?x=1&y=2'
 ````
 
 minikube - tool to use K8s on dev.
