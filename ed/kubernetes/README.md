@@ -26,17 +26,28 @@ kubectl cluster-info
 kubectl cluster-info dump
 kubectl config current-context
 kubectl config view
-kubectl get events
-kubectl get nodes
-kubectl get pods
-kubectl get pods --show-all
-kubectl get pods -o wide
-kubectl get rc
-kubectl get svc # services
-kubectl get deployments
 kubectl explain pods
 kubectl create -f ed/kubernetes/examples/sh/pod.yaml
 kubectl edit <resource> <resource_name>
+
+kubectl describe rc $rc
+kubectl describe svc $svc
+
+kubectl get events
+kubectl get nodes
+kubectl get rc
+kubectl get rc -l app=log # label
+kubectl get rs
+kubectl get svc # services
+kubectl get deployments
+kubectl get ep # endpoints
+
+kubectl get pods
+kubectl get pods --show-all
+kubectl get pods -o wide
+
+# ssh into pod
+kubectl exec -it $pod /bin/bash
 
 # sh example
 kubectl delete rc ksh-rc
@@ -60,17 +71,16 @@ curl 'http://localhost:8080?x=1&y=2'
 
 kubectl delete rc log-rc
 kubectl apply --force=true -f ed/kubernetes/examples/log/rc.yaml
-kubectl describe rc log-rc
-kubectl get rc -l app=log
 kubectl get pods -l app=log
 
 kubectl delete svc log-service
 kubectl apply --force=true -f ed/kubernetes/examples/log/svc.yaml
-kubectl describe svc log-service
-kubectl get svc log-service
-kubectl get ep log-service
-
-curl 'http://localhost:8080?x=1&y=2'
+minikube service log-service --url
+# or
+kubectl delete svc log-svc
+kubectl expose rc log-rc --port=8080 --target-port=8080 \
+  --name=log-svc --type=LoadBalancer
+minikube service log-svc --url
 ````
 
 minikube - tool to use K8s on dev.
@@ -129,30 +139,22 @@ It can contain one or more containers.
 Most of the time, we just need one container per pod.
 Pod is also designed as mortal.
 
-````yaml
-apiVersion: v1
-kind: Pod
-metadata:
-    name: my-pod
-spec:
-    replicas: 10
-````
-
 #### Service - is LB for pods.
 
-````yaml
-apiVersion: v1
-kind: Service
-metadata:
-    name: my-svc
-    labesl:
-        app: hw
-spec:
-    type: NodePort
-    ports:
-    - port: 8080
-      protocol: TCP
-````
+Types:
+
+* ClusterIP (default)
+  Gives service inside cluster that other apps inside cluster can access.
+  There is no external access.
+
+* NodePort
+  Primitive way to get external traffic directly to service.
+  Opens a specific port on all the nodes.
+
+* LoadBalancer
+
+* Ingress
+  Something like smart router.
 
 #### Deployment
 

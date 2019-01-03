@@ -3,7 +3,7 @@ apiVersion: v1
 metadata:
   name: log-rc
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     app: log
   template:
@@ -15,5 +15,4 @@ spec:
       - name: log-container
         image: cn007b/pi
         ports:
-          - name: http-server
-            containerPort: 8080
+          - containerPort: 8080

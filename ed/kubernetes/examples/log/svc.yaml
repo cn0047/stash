@@ -3,11 +3,11 @@ apiVersion: v1
 metadata:
   name: log-service
   labels:
-    app: log-service
+    app: log
 spec:
   type: LoadBalancer
   selector:
-    app: log-service
+    app: log
   ports:
   - port: 8080
-    targetPort: http-server
+    targetPort: 8080
