@@ -34,6 +34,8 @@ echo $(date)
 echo '$myVar' # not evaluate vars
 echo "$myVar" # evaluate
 echo $USER
+echo $RANDOM
+echo $UID
 
 read -p "Your note: " note
 
@@ -49,6 +51,33 @@ if [[ $1 =~ ^[0-9]+$ ]]; # is number
 && # &
 || # or
 
+if [[ -f $filename ]]; then
+  echo "$filename is a regular file"
+elif [[ -d $filename ]]; then
+  echo "$filename is a directory"
+elif [[ -p $filename ]]; then
+  echo "$filename is a named pipe"
+elif [[ -S $filename ]]; then
+  echo "$filename is a named socket"
+elif [[ -b $filename ]]; then
+  echo "$filename is a block device"
+elif [[ -c $filename ]]; then
+  echo "$filename is a character device"
+fi
+if [[ -L $filename ]]; then
+  echo "$filename is a symbolic link (to any file type)"
+fi
+
+if [[ -r $filename ]]; then
+  echo "$filename is a readable file"
+fi
+if [[ -w $filename ]]; then
+  echo "$filename is a writable file"
+fi
+if [[ -x $filename ]]; then
+  echo "$filename is an executable file"
+fi
+
 -e "$file"        # file exists
 -d "$file"        # directory exists
 -f "$file"        # regular file exists
@@ -62,6 +91,16 @@ if [[ $1 =~ ^[0-9]+$ ]]; # is number
 "$int1" -ge "$int2"
 "$int1" -lt "$int2"
 "$int1" -le "$int2"
+
+if [[ -n "$string" ]]; then
+  echo "$string is non-empty"
+fi
+if [[ -z "${string// }" ]]; then
+  echo "$string is empty or contains only spaces"
+fi
+if [[ -z "$string" ]]; then
+  echo "$string is empty"
+fi
 
 exit 0 # success
 exit 1 # fail

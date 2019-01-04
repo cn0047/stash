@@ -41,6 +41,7 @@ but instead creates a newer version of the data item. Thus there are multiple ve
 * Joins.
 * Foreign keys, Triggers.
 * Supports JSON, XML, HSTORE and Array.
+* Inheritance.
 
 * *Programming Languages support.*
 

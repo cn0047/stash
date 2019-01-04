@@ -45,6 +45,8 @@ npm audit fix --force
 ````
 
 ````
+npm install --only=prod
+
 # npm install -g nodemon
 nodemon ./server.js localhost 8080
 

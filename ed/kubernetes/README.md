@@ -72,11 +72,10 @@ kubectl get ep log-service
 
 curl 'http://localhost:8080?x=1&y=2'
 ````
-
-minikube - tool to use K8s on dev.
-kubelet - main k8s agent.
-container engine - docker or rkt.
-kube-proxy - k8s networking.
+<br>minikube - tool to use K8s on dev.
+<br>kubelet - main k8s agent.
+<br>container engine - docker or rkt.
+<br>kube-proxy - k8s networking.
 
 Kubernetes - orchestrator for microservice apps.
 Kubernetes has three namespaces by default:
@@ -86,7 +85,7 @@ Kubernetes has three namespaces by default:
 
 To store data permanently, Kubernetes uses Persistent Volumes.
 
-API server (`kube-apiserver`) - provides an HTTP/HTTPS0server,
+API server (`kube-apiserver`) - provides an HTTP/HTTPS server,
 which provides a RESTful API for all the components in the Kubernetes master.
 
 Controller Manager (`kube-controller-manager`) - controls lots of different things
@@ -130,8 +129,8 @@ Most of the time, we just need one container per pod.
 Pod is also designed as mortal.
 
 ````yaml
-apiVersion: v1
 kind: Pod
+apiVersion: v1
 metadata:
     name: my-pod
 spec:
@@ -141,8 +140,8 @@ spec:
 #### Service - is LB for pods.
 
 ````yaml
-apiVersion: v1
 kind: Service
+apiVersion: v1
 metadata:
     name: my-svc
     labesl:

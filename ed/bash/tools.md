@@ -168,6 +168,9 @@ echo "FOO is ${FOO:?EMPTY}"
 echo "FOO is ${FOO?UNSET}"
 echo "BAR is ${BAR:?EMPTY}"
 echo "BAR is ${BAR?UNSET}"
+
+echo {a..z}
+echo {a..d}{1..3}
 ````
 
 #### apachebench
