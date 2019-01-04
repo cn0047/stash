@@ -6,11 +6,16 @@ import (
 	"fmt"
 	"math/rand"
 	"net/http"
+	"os"
 	"time"
 )
 
 const (
 	URL = "https://realtimelog.herokuapp.com/ping"
+)
+
+var (
+	HostName = os.Getenv("HOSTNAME")
 )
 
 func random(min int, max int) int {
@@ -25,7 +30,7 @@ func main() {
 
 func web() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		j, _ := json.Marshal(map[string]string{"payload": r.RequestURI})
+		j, _ := json.Marshal(map[string]string{"pod": HostName, "payload": r.RequestURI})
 		http.Post(URL, "application/json", bytes.NewBuffer(j))
 		w.Write([]byte(`ok`))
 	})
@@ -36,9 +41,9 @@ func bg() {
 	id := random(1, 7000)
 	for {
 		at := time.Now().UTC()
-		j, _ := json.Marshal(map[string]interface{}{"id": id, "at": at})
+		j, _ := json.Marshal(map[string]interface{}{"pod": HostName, "id": id, "at": at})
 		http.Post(URL, "application/json", bytes.NewBuffer(j))
 		fmt.Printf("Please open: %s to see new message, at: %s \n", URL, at)
-		time.Sleep(5 * time.Second)
+		time.Sleep(10 * time.Second)
 	}
 }
