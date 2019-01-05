@@ -17,7 +17,8 @@ minikube version
 minikube delete; rm -rf ~/.minikube
 minikube status
 minikube start --vm-driver=xhyve
-minikube start --vm-driver=hyperkit
+minikube start --vm-driver=hyperkit \
+  --mount --mount-string="$HOME/web/kovpak/gh/ed:/ed"
 minikube stop
 minikube dashboard
 
@@ -50,6 +51,9 @@ kubectl get pods -o wide
 kubectl exec -it $pod /bin/bash
 
 # sh example
+kubectl delete pod ksh-pod
+kubectl apply --force=true -f ed/kubernetes/examples/sh/pod.yaml
+# &
 kubectl delete rc ksh-rc
 kubectl apply --force=true -f ed/kubernetes/examples/sh/rc.yaml
 kubectl describe rc ksh-rc
@@ -81,6 +85,10 @@ kubectl delete svc log-svc
 kubectl expose rc log-rc --port=8080 --target-port=8080 \
   --name=log-svc --type=LoadBalancer
 minikube service log-svc --url
+
+# only pod
+kubectl delete pod log-pod
+kubectl apply --force=true -f ed/kubernetes/examples/log/pod.yaml
 ````
 <br>minikube - tool to use K8s on dev.
 <br>kubelet - main k8s agent.

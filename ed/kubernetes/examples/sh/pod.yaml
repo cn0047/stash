@@ -1,0 +1,18 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: ksh-pod
+  labels:
+    app: ksh
+spec:
+  containers:
+  - name: klog-pod
+    image: cn007b/ubuntu
+    volumeMounts:
+    - mountPath: /ed
+      name: xvol
+  volumes:
+  - name: xvol
+    hostPath:
+      path: /ed
+      type: DirectoryOrCreate
