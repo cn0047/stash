@@ -5,7 +5,7 @@ GIT
 
 Git is a free and open source distributed version control system .
 
-````
+````sh
 # from jenkins
 git ls-remote -h https://github.com/W3Ltd/ziipr_core HEAD
 
@@ -107,6 +107,7 @@ git log -p                # shows commits & code in commit
 git log --stat            # statiistic about changes
 git log --no-meges        # log without merges
 git log --follow file.txt # Viewing GIT history of deleted files.
+git log --author=Jack
 
 git log --date=short --no-merges --shortstat
 ````

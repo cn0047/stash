@@ -359,19 +359,22 @@ docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' cn007b/go:2018-06-07 s
 
 ````
 export GOPATH=$PWD'/ed/go/examples/algolia'
-
 go get github.com/algolia/algoliasearch-client-go/algoliasearch
-
 go run ed/go/examples/algolia/src/main.go
+````
+
+#### bench
+
+````
+GOPATH=$PWD/ed/go/examples/bench
+go run $GOPATH/main.go
 ````
 
 #### websocket
 
 ````
 export GOPATH=$PWD'/ed/go/examples/websocket'
-
 go get -u github.com/gorilla/websocket
-
 cd $GOPATH/src/app && go run $GOPATH/src/app/websockets.go
 ````
 
