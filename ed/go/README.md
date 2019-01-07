@@ -42,7 +42,7 @@ go list                  # List packages
 go list ...
 go run --work ed/go/examples/whatever/hw.go
 go run -race ed/go/examples/whatever/hw.go
-go vet
+go vet # examines Go coge, reports suspicious constructs (Printf with wrong arguments).
 godoc -http=:6060 -goroot=$PWD
 ````
 
@@ -353,6 +353,10 @@ ch := make(chan type, value)
 # where:
 # value == 0 (blocking) synchronous, unbuffered 
 # value > 0 (non-blocking) asynchronous, buffered, up to value elements 
+
+# len(c) // count of elements in channel
+
+# make(chan int) equals to make(chan int, 0) equals to make(chan int, 1)
 ````
 
 Blocking channels:
@@ -386,6 +390,7 @@ for i := 1; i <= 9; i++ {
 ````
 
 Range chan: range will work (loop won't stop) until the channel is closed explicitly.
+Once chan is closed range loop exit.
 
 Closing a channel has one more useful feature - reading operations on closed channels
 do not block and always return default value for a channel type.
