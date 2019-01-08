@@ -10,7 +10,7 @@ Use `BEGIN-COMMIT` for batch insert (to disable autocommit).
 
 ## Stats
 
-````
+````sql
 SELECT * FROM pg_stat_all_tables WHERE relname LIKE 'MOCK_DATA%';
 
 seq_scan            - number of sequential scans initiated
@@ -43,7 +43,7 @@ autoanalyze_count   - and the number of times it has been analyzed by the autova
  2401714 | public     | device_file_sandbox_file   |        2 |           16 |          |               |         0 |         0 |         0 |             0 |          0 |          0 |                   0 |             |                 |              |                  |            0 |                0 |             0 |                 0
 ````
 
-````
+````sql
 select * from pg_stat_all_indexes where relname like 'MOCK_DATA%';
 
 idx_scan - number of index scans initiated on that index
@@ -65,7 +65,7 @@ idx_tup_fetch - and number of live table rows fetched by simple index scans usin
   16805 |      19104 | public     | device_file_rating                    | i_device_file_rating__actual_verdict__id_file__id      |        0 |            0 |             0
 ````
 
-````
+````sql
 -- Effectiveness of the buffer cache.
 -- When the number of actual disk reads is much smaller than the number of buffer hits,
 -- then the cache is satisfying most read requests without invoking a kernel call.
@@ -91,7 +91,7 @@ tidx_blks_hit   - and buffer hits for the TOAST table's index.
  2401714 | public     | device_file_sandbox_file   |              2 |             0 |               |              |              18 |              6 |              3 |            11
 ````
 
-````
+````sql
 select * from pg_statio_all_indexes where relname like 'MOCK_DATA%';
 
 idx_blks_read -  numbers of disk blocks read

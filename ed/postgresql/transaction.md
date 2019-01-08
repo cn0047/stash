@@ -1,7 +1,7 @@
 Transaction
 -
 
-````
+````sql
 -- BEGIN TRANSACTION ISOLATION LEVEL REPEATABLE READ;
 BEGIN;
   -- update valid statement

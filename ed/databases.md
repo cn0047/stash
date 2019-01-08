@@ -19,18 +19,17 @@ but instead creates a newer version of the data item. Thus there are multiple ve
 * Transactions.
 * Joins (no duplicates - less disc space).
 * Foreign keys, Triggers.
-* JSON data type, doesn't support indexing for JSON.
-* ~~Proper data indexing can solve the issue with performance.~~
+* JSON data type.
 
 * *Easy to recover after crash.*
 
 ## MongoDB:
 
 * Schema-less (perfect for rapid prototyping and for dynamic queries).
-* MongoDB don't need ODM (ORM).
-* Capped collections.
 * TTL index.
 * Auto-sharding.
+* ↓ MongoDB don't need ODM (ORM).
+* ↓ Capped collections.
 
 * *Can be scaled within and across multiple distributed data centers.*
 * *Scales easily with no downtime.*
@@ -40,8 +39,8 @@ but instead creates a newer version of the data item. Thus there are multiple ve
 * Transactions.
 * Joins.
 * Foreign keys, Triggers.
-* Supports JSON, XML, HSTORE and Array.
-* Inheritance.
+* Supports JSON, XML, **HSTORE** and Array.
+* ↓ Inheritance.
 
 * *Programming Languages support.*
 
@@ -53,7 +52,7 @@ but instead creates a newer version of the data item. Thus there are multiple ve
 
 ## MySQL vs PostgreSQL:
 
-* Rich JSON support in PostgreSQL.
+* Rich JSON support in PostgreSQL (MySQL doesn't support indexing for JSON).
 
 ## PostgreSQL vs MongoDB:
 

@@ -1,7 +1,7 @@
 Array
 -
 
-````
+````sql
 CREATE TABLE arrayExample (
     name text,
     num integer array[4],
@@ -16,7 +16,7 @@ INSERT INTO arrayExample VALUES ('three', array[3, 30], array['pqsql']);
 INSERT INTO arrayExample VALUES ('four', array[4], array['1', '2', '3', '4']);
 ````
 
-````
+````sql
 # SELECT:
 
 select * from arrayExample;
@@ -64,13 +64,13 @@ select * from arrayExample where 'pqsql' = all (tag);
  three | {3,30} | {pqsql}
 ````
 
-````
+````sql
 # UPDATE:
 
 UPDATE arrayExample SET tag[2][2] = 'multidimensional' WHERE name = 'two';
 ````
 
-````
+````sql
 SELECT ARRAY[1, 2, 1+2];
   array
 ---------

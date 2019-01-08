@@ -3,7 +3,7 @@ Foreign key
 
 Foreign key - is a field in 1 table which uniquely identifies row in another table.
 
-````
+````sql
 CREATE TABLE f_products (
   product_no integer PRIMARY KEY,
   name text,
@@ -23,4 +23,6 @@ CREATE TABLE order_items (
   quantity integer,
   PRIMARY KEY (product_no, order_id)
 );
+
+DROP TABLE f_products CASCADE;
 ````

@@ -56,7 +56,7 @@ select :'dt_now';
 
 #### REPL:
 
-````
+````sql
 \pset pager on
 \pset pager always
 \pset pager off
@@ -119,6 +119,11 @@ Triggers better than rules.
 
 We can return multiple values from procedures.
 
+#### With
+
+WITH Queries aka Common Table Expressions (CTE) -
+defining temporary tables that exist just for one query.
+
 #### Window Functions
 
 Like aggregate functions but doesn't cause rows to become grouped into a single output row.
@@ -127,7 +132,7 @@ but not vice versa.
 
 Example:
 
-````
+````sql
 SELECT depname, empno, salary, avg(salary) OVER (PARTITION BY depname)
 FROM empsalary;
 ````
@@ -137,7 +142,7 @@ FROM empsalary;
 Only `Seq Scan` can be parallelized,
 but indexed column disable parallelism.
 
-````
+````sql
 SHOW max_parallel_workers_per_gather;
 SET max_parallel_workers_per_gather = 4;
 ````
@@ -150,7 +155,7 @@ And the system must NOT be running in single-user mode.
 `/etc/postgresql/8.3/main/postgresql.conf`
 `/usr/local/var/postgres/postgresql.conf`
 
-````
+````sh
 listen_addresses = '*'
 max_connections
 shared_buffers # cache, must be 15-25% from OS memory
@@ -177,7 +182,7 @@ log_statement = 'none'
 
 Dev:
 
-````
+````sh
 # logs
 log_statement = 'all'
 logging_collector = on
@@ -196,6 +201,10 @@ debug_pretty_print = on
 debug_print_parse = off
 debug_print_plan = off
 debug_print_rewritten = off
+````
+
+````sql
+SET constraint_exclusion = off;
 ````
 
 #### Data Types:
