@@ -22,6 +22,9 @@ minikube start --vm-driver=hyperkit \
 minikube stop
 minikube dashboard
 
+# grafana
+open https://<your master ip>/api/v1/proxy/namespaces/kubesystem/services/monitoring-grafana
+
 kubectl version
 kubectl cluster-info
 kubectl cluster-info dump
