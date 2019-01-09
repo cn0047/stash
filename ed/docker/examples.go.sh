@@ -91,6 +91,13 @@ docker run -it --rm -v $PWD:/gh -e GOPATH=$GOPATH xgo sh -c '
     && go test -v -mutexprofile mtx.out \
     && go tool pprof -png -output report.mtx.png fibonacci.test mtx.out
 '
+# or
+export GOPATH=$PWD/ed/go/examples/bench/fibonacci
+cd $GOPATH
+go test -v -run TestFibSimple
+go test -bench=. -benchmem -cpu=2
+go test -v -memprofile mem.out -run TestFibSimple
+go tool pprof -png -output report.mem.png fibonacci.test mem.out
 
 # db postgresql
 docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \
