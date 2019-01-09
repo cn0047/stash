@@ -10,19 +10,19 @@ import (
 )
 
 func main() {
-	c, err := ftp.Connect("datatransfer.cj.com:21")
+	c, err := ftp.Connect("{host}.com:21")
 	if err != nil {
 		panic(err)
 	}
 
-	er := c.Login("1994789", "VgYyzUq*")
+	er := c.Login("usr", "pwd")
 	if er != nil {
 		panic(er)
 	}
 
-	c.ChangeDir("/outgoing/productcatalog/215870")
+	c.ChangeDir("/tmp")
 
-	r, err := c.Retr("Forever_21-Forever21_Google_Feed-shopping.txt.zip")
+	r, err := c.Retr("file.txt")
 	if err != nil {
 		panic(err)
 	}

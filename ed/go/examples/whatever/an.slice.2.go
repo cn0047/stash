@@ -8,6 +8,7 @@ func main() {
 	fs1()
 	slice3()
 	three()
+	three2()
 }
 
 func fs1() {
@@ -44,4 +45,14 @@ func three() {
 	c2[0] = "b"
 	fmt.Printf("c = %+v, c2 = %+v \n", c, c2) // c = [a], c2 = [b]
 
+}
+
+func three2() {
+	fmt.Println("\n three2: -------------------")
+
+	s := make([]int, 3, 5)
+  // s[5] = 1 // panic: runtime error: index out of range
+  _ = s
+
+	// s2 := make([]int, 5, 3) // len larger than cap in make([]int)
 }
