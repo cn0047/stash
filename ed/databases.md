@@ -41,6 +41,7 @@ but instead creates a newer version of the data item. Thus there are multiple ve
 * Foreign keys, Triggers.
 * Supports JSON, XML, **HSTORE** and Array.
 * ↓ Inheritance.
+* ↓ Parallel query.
 
 * *Programming Languages support.*
 

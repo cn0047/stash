@@ -93,6 +93,11 @@ COPY tableName FROM 'filePath' DELIMER ',';
 VACUUM VERBOSE tableName; -- helpful info
 ````
 
+Advisory locks can be useful for locking strategies that are an awkward fit
+for the MVCC model. For example, a common use of advisory locks
+is to emulate pessimistic locking strategies typical of so-called “flat file”
+data management systems.
+
 #### System Columns:
 
 * `oid` - Object identifier (table was created using WITH OIDS).

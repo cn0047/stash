@@ -4,6 +4,7 @@ Google
 [Page Speed](https://developers.google.com/speed/pagespeed/insights)
 [Google Trends](https://trends.google.com/trends/explore?date=all&q=php,javascript)
 [Fonts](https://fonts.google.com/)
+[AI & ML](https://cloud.google.com/vision/docs/drag-and-drop)
 
 Cloud Identity - 👨‍👩‍👧‍👦.
 

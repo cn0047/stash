@@ -5,18 +5,6 @@ Validator
 go get gopkg.in/go-playground/validator.v9
 ````
 
-````go
-type User struct {
-  FirstName string `validate:"required"`
-  LastName  string `validate:"-"` # don't validate
-  Age       uint8  `validate:"gte=0,lte=130"`
-  Email     string `validate:"required,email"`
-}
-
-validate := validator.New()
-err := validate.Struct(user)
-````
-
 * len=10
 * max=10
 * min=1
@@ -70,6 +58,18 @@ Cross-Field Validation:
 * gtecsfield
 * ltcsfield
 * ltecsfield
+
+````go
+type User struct {
+  FirstName string `validate:"required"`
+  LastName  string `validate:"-"` # don't validate
+  Age       uint8  `validate:"gte=0,lte=130"`
+  Email     string `validate:"required,email"`
+}
+
+validate := validator.New()
+err := validate.Struct(user)
+````
 
 ````go
 package service

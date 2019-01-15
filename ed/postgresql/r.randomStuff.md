@@ -7,6 +7,10 @@ SELECT random();
 SELECT NOW() - INTERVAL '3 DAY';
 SELECT CURRENT_DATE - INTERVAL '4 weeks';
 
+SELECT *
+FROM generate_series('2008-03-01 00:00'::timestamp, '2008-03-04 12:00', '10 hours')
+;
+
 SELECT format('Testing %s, %s, %s, %%', 'one', 'two', 'three');
 SELECT format('|%10s|', 'foo');
 
@@ -32,6 +36,17 @@ FROM generate_series(1,10) AS s(i)
  unfiltered | filtered
 ------------+----------
          10 |        4
+
+SELECT EXTRACT(hours from '180 minutes'::interval);
+ date_part
+-----------
+         3
+
+SELECT 'abc' SIMILAR TO '%(b|d)%'; -- true
+SELECT 'abc' ~ 'abc'; -- true
+SELECT 'abc' ~ '^a'; -- true
+SELECT 'abc' ~ '(b|d)'; -- true
+SELECT 'abc' ~ '^(b|c)'; -- false
 
 -- select WITH
 WITH
@@ -60,4 +75,7 @@ SELECT sum(n) FROM t
 
 ````sql
 SELECT * FROM information_schema.columns;
+
+SELECT current_setting('datestyle');
+set_config(setting_name, new_value, is_local);
 ````
