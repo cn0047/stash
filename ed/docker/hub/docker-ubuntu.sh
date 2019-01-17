@@ -40,14 +40,14 @@ docker push cn007b/ubuntu:$version
 # # push
 # docker push cn007b/ubuntu:$version-protobuf-2
 
-# # protobuf-3
-# docker build -t cn007b/ubuntu:$version-protobuf-3 docker/$version-protobuf-3
-# # check
-# docker run -ti --rm cn007b/ubuntu:$version-protobuf-3 protoc --version
-# # push
-# docker push cn007b/ubuntu:$version-protobuf-3
+# protobuf-3
+docker build -t cn007b/ubuntu:$version-protobuf-3 docker/$version-protobuf-3
+# check
+docker run -ti --rm cn007b/ubuntu:$version-protobuf-3 protoc --version
+# push
+docker push cn007b/ubuntu:$version-protobuf-3
 
 # latest
-# docker build -t cn007b/ubuntu:latest docker/$version-protobuf-3
 docker build -t cn007b/ubuntu:latest docker/$version
+docker build -t cn007b/ubuntu:latest docker/$version-protobuf-3
 docker push cn007b/ubuntu:latest

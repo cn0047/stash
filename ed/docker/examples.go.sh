@@ -165,7 +165,7 @@ curl -i -XDELETE 'http://localhost:8080/cars'
 curl -i -XPOST 'http://localhost:8080/cars'
 curl -i -XPOST 'http://localhost:8080/cars' -H 'Content-Type: application/json' \
    -d '{"vendor": "BMW", "name": "X5"}'
-# test lr
+# test live-reload
 curl -i -XGET 'http://localhost:8081/cars'
 curl -i -XPUT 'http://localhost:8081/cars'
 curl -i -XDELETE 'http://localhost:8081/cars/1'
