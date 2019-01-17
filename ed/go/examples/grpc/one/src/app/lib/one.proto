@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package lib;
+
+service One {
+  rpc Simple (Request) returns (Response) {}
+}
+
+message Request {
+  string msg = 1;
+}
+
+message Response {
+  string msg = 1;
+}

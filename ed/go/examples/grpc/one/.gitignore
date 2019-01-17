@@ -1,0 +1,5 @@
+bin/*
+pkg/*
+src/*
+!src/app
+src/app/lib/one.pb.go

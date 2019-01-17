@@ -16,13 +16,15 @@ Scalar Value Types:
 * string
 * bytes - any arbitrary sequence of bytes (string in php).
 
+`repeated` keyword for arrays.
+
 Protocol Buffers are not designed to handle large messages.
 If you are dealing in messages larger than a megabyte each,
 it may be time to consider an alternate strategy.
 
 #### shell
 
-````
+````sh
 cat foo.msg | protoc --encode=Package.Foo foo.proto
 
 cat cmdmWindows.Query.msq | protoc --encode=cmdmWindows.Query cmdmWindows.proto
