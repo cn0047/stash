@@ -17,7 +17,8 @@ Scalar Value Types:
 * bytes - any arbitrary sequence of bytes (string in php).
 
 Protocol Buffers are not designed to handle large messages.
-If you are dealing in messages larger than a megabyte each, it may be time to consider an alternate strategy.
+If you are dealing in messages larger than a megabyte each,
+it may be time to consider an alternate strategy.
 
 #### shell
 
