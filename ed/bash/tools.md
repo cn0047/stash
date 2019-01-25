@@ -203,6 +203,8 @@ Is an event-based replacement for the traditional init daemon.
 
 #### netstat
 
+netstat works greedy to OS resources.
+
 ````sh
 netstat -anp | grep LISTEN
 

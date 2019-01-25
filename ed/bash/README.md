@@ -476,6 +476,7 @@ echo There are ${#BASH_ALIASES[*]} aliases defined.
 
 cmd || echo 'cmd failed'
 docker info 2>/dev/null || echo 'fail'
+test-d$HOME/.kube || mkdir$HOME/.kube
 
 local val=${1:?Must provide an argument}
 

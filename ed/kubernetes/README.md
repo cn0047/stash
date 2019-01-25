@@ -45,6 +45,7 @@ kubectl get rs
 kubectl get svc # services
 kubectl get deployments
 kubectl get ep # endpoints
+kubectl get componentstatuses # cluster status
 
 kubectl get pods
 kubectl get pods --show-all
@@ -104,6 +105,12 @@ Kubernetes has three namespaces by default:
 * kube-system
 * kube-public
 
+Kinds:
+* ReplicationController
+* StorageClass
+* StatefulSet
+* Job
+
 To store data permanently, Kubernetes uses Persistent Volumes.
 
 API server (`kube-apiserver`) - provides an HTTP/HTTPS server,
@@ -127,6 +134,7 @@ and pods, it also provides the routing from outside to service.
 
 ReplicaSet (RS).
 ReplicationController (RC).
+DaemonSet where we need an agent to run on every single node in the cluster.
 A federation is a cluster of clusters.
 KOps stands for Kubernetes operations (for AWS).
 
@@ -143,6 +151,10 @@ Manifest file - describe desired state.
 
 #### Pod
 
+````yaml
+kind: Pod
+````
+
 Pod - like container in docker.
 Pod is the smallest deployable unit in Kubernetes.
 It can contain one or more containers.
@@ -150,6 +162,10 @@ Most of the time, we just need one container per pod.
 Pod is also designed as mortal.
 
 #### Service - is LB for pods.
+
+````yaml
+kind: Service
+````
 
 Types:
 
