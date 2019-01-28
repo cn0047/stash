@@ -116,7 +116,7 @@ SELECT name FROM nested_category WHERE rgt = lft + 1;
 
 #### Finding all the leaf nodes of subtree:
 
-````
+````sql
 SELECT *
 FROM nested_category AS node, nested_category AS parent
 WHERE node.lft BETWEEN parent.lft AND parent.rgt AND parent.name = 'PORTABLE ELECTRONICS'

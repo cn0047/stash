@@ -341,14 +341,14 @@ Goroutine is operating on a separate function stack hence no recover from panic,
 
 #### Channel
 
-````
+````sh
 c <- 42    // write to a channel
 val := <-c // read from a channel
 
 c1 := make(<-chan bool)   // can only read from
 c2 := make(chan<- []bool) // can only write to
 ````
-````
+````sh
 ch := make(chan type, value)
 # where:
 # value == 0 (blocking) synchronous, unbuffered 
