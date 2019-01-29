@@ -176,6 +176,31 @@ Put code into `internal` dir to make it private.
 Sentinel error -  custom error value
 (standard library: sql.ErrNoRows, io.EOF, etc).
 
+#### Data types
+
+Basic types:
+
+* bool
+* string
+* int (int8 (aka byte), int16, int32 (aka rune), int64)
+* uint (uint8, uint16, uint32, uint64, uintptr (large enough to hold the bit pattern of any pointer))
+* float32 float64
+* complex64 complex128
+
+Other types:
+
+* Array
+* Slice (passes by ref)
+* Map (passes by ref)
+* Channel (passes by ref)
+* Function
+* Interface
+* Struct
+* Pointer (passes by ref)
+
+Ref variables stores in the heap, which is garbage collected
+and which is a much larger memory space than the stack.
+
 **new** keyword - allocates memory, does not initialize the memory
 and returns its address (pointer).
 
@@ -201,31 +226,6 @@ Example: `defer file.Close()`.
 regarding the order of hash map.
 
 **OOP** in go represented by **structures**. Inheritance in go represented by composition.
-
-#### Data types
-
-Basic types:
-
-* bool
-* string
-* int (int8 (aka byte), int16, int32 (aka rune), int64)
-* uint (uint8, uint16, uint32, uint64, uintptr (large enough to hold the bit pattern of any pointer))
-* float32 float64
-* complex64 complex128
-
-Other types:
-
-* Array
-* Slice (passes by ref)
-* Map (passes by ref)
-* Channel (passes by ref)
-* Function
-* Interface
-* Struct
-* Pointer (passes by ref)
-
-Ref variables stores in the heap, which is garbage collected
-and which is a much larger memory space than the stack.
 
 **string**
 String it is slice of bytes.
@@ -281,6 +281,12 @@ Go  ⇒ struct ⇒ object ⇒ field
 **pointer**
 
 [Pointers make stack allocation mostly infeasible](https://segment.com/blog/allocation-efficiency-in-high-performance-go-services/).
+
+**runtime**
+* memory allocation
+* channel creation
+* goroutines creation (and control goroutines)
+* garbage collection
 
 #### Interface
 
@@ -338,6 +344,13 @@ on a machine with multiple physical processors.
 
 Goroutine is operating on a separate function stack hence no recover from panic,
 ([img](https://monosnap.com/file/FyeRMIaPfHmuQStwoqBkt4PxWRwSfJ)).
+
+Goroutines exists only in the virtual space of go runtime and not in the OS.
+Hence, a Go Runtime scheduler is needed which manages their lifecycle.
+
+Thread is just a sequence of instructions that can be executed independently by a processor.
+Threads are lighter than the process and so you can spawn a lot of them.
+Linux doesn’t distinguish between threads and processes and both are called tasks.
 
 #### Channel
 
