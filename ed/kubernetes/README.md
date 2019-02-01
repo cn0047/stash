@@ -62,6 +62,9 @@ kubectl delete rc ksh-rc
 kubectl apply --force=true -f ed/kubernetes/examples/sh/rc.yaml
 kubectl describe rc ksh-rc
 kubectl get pods -l app=ksh
+
+# copy files to/from containers running in the pod
+kubectl cp --container=kuard /etc/os-release kuard:/tmp/
 ````
 
 ````bash

@@ -3,6 +3,8 @@ docker
 <br>17.09.1
 <br>1.12.5
 
+[compose-file](https://docs.docker.com/compose/compose-file/)
+
 ## Overview
 
 Containers should be ephemeral (can be stopped and destroyed and a new one built and put in place).
@@ -100,6 +102,7 @@ docker load -i new_name.dump.tar
 
 ## Dockerfile
 
+* ARG `ARG CODE_VERSION=latest`
 * FROM
 * MAINTAINER
 * RUN (`RUN ls -la /app/healthCheck.js`)
@@ -137,6 +140,8 @@ docker-machine stop default
 for defining and running multi-container Docker applications.
 
 ````
+docker-compose build serviceName
+
 # build the project and detached
 docker-compose up -d
 
@@ -150,11 +155,24 @@ docker-compose up
 # runs a one-time command against a service
 docker-compose run
 
+docker-compose ps
+
 docker-compose exec php-cli php /gh/x.php
 docker-compose exec mysql /bin/bash
 
 # restart stopped container
 docker-compose start
+````
+
+## docker-compose.yml
+
+````yaml
+version: '3'
+services:
+  webapp:
+    build:
+      context: ./dir
+      dockerfile: Dockerfile-alternate
 ````
 
 ## Swarm

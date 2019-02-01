@@ -99,7 +99,7 @@ insert into tree values (6, 'service 6');
 |                                                    | start transaction;                                          |
 |                                                    | update tree set title = 'service 666' where id = 6; -- hang |
 
-####
+#### Nested transaction
 
 ````sql
 drop table if exists tree;
