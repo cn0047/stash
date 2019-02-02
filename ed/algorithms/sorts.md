@@ -63,3 +63,7 @@ Worst case = **O(n^2)**
 Average case = O(n log n)
 Best case = O(n log n)
 Space required = O(n)
+
+### Heap sort
+
+Worst case = **O(n log n)**
