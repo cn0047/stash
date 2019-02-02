@@ -2,6 +2,7 @@ GraphQL
 -
 
 [docs](http://graphql.org/code/#javascript)
+[graphiql](https://graphql.github.io/swapi-graphql/)
 
 GraphQL is Language and Runtime.
 
