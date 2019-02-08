@@ -8,7 +8,7 @@ Examples:
 [templates](https://echo.labstack.com/guide/templates)
 [dbUserLogin](https://echo.labstack.com/cookbook/twitter)
 
-````
+````golang
 var c echo.Context
 
 // redirect

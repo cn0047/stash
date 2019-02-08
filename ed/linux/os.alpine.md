@@ -5,4 +5,5 @@ Alpine Linux is a security-oriented, lightweight Linux distribution based on mus
 
 ````sh
 apk add --update curl
+apk add --no-cache git
 ````
