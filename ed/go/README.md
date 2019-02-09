@@ -10,6 +10,7 @@ GO
 [packages](https://golang.org/pkg/) [and](https://godoc.org/) [and](https://gopkg.in/)
 [examples](https://gobyexample.com/)
 [online editor](https://play.golang.org/) [AND](https://goplay.space/)
+[sizeof](http://golang-sizeof.tips/)
 [badges](https://goreportcard.com/) [covererage](https://gocover.io/) [covererage](https://cover.run/)
 [avatar](https://gopherize.me/)
 [pprof-ui](https://www.speedscope.app/)

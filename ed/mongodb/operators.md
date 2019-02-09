@@ -30,13 +30,13 @@ db.myCollection.find( { $where: "this.credits == this.debits" } );
 db.myCollection.find( { $where: function() { return obj.credits == obj.debits; } } );
 // ALL - Equivalent to $and Operation, array contains all specified elements.
 { tags: { $all: [ "ssl" , "security" ] } }
-// ELEMMATCH
+// ELEMMATCH - find element in array
 db.scores.find({ results: { $elemMatch: { $gte: 80, $lt: 85 } } })
 // SIZE - array has certain size
 db.collection.find( { field: { $size: 2 } } );
 // $ (projection)
 db.students.find( { semester: 1, grades: { $gte: 85 } }, { "grades.$": 1 } )
-// $elemMatch
+// $elemMatch - match doc: {students: [ {school: 102, age: 15} ]}
 db.schools.find( { zipcode: "63109" }, { students: { $elemMatch: { school: 102, age: { $gt: 10} } } } )
 // $meta
 db.collection.find( {}, { score: { $meta: "textScore" } } )
