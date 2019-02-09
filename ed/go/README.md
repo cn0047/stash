@@ -32,6 +32,7 @@ export GOOS=linux
 go build                 # Compiles and installs packages and dependencies
 GOOS=windows GOARCH=386 go build
 go build -race ./example #
+go build -gcflags -S z.go # assembly output
 go env
 go env GOPATH
 go fmt ./...             # Format code
