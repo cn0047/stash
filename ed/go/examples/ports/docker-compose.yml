@@ -1,0 +1,36 @@
+version: '3'
+
+networks:
+  prvt:
+    internal: true
+  publ:
+    internal: false
+
+services:
+
+  srv:
+    build: ./
+    volumes:
+      - "$PWD:/prj"
+    ports:
+      - "50051:50051"
+    networks:
+      - prvt
+    working_dir: "/prj"
+    environment:
+      - "GOPATH=/prj"
+    command: "run src/ports/app/main.go server"
+
+  clnt:
+    build: ./
+    volumes:
+      - "$PWD:/prj"
+    ports:
+      - "8080:8080"
+    networks:
+      - prvt
+      - publ
+    working_dir: "/prj"
+    environment:
+      - "GOPATH=/prj"
+    command: "sh -c 'sleep 3 && go run src/ports/app/main.go client'"
