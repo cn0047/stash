@@ -131,9 +131,6 @@ git push remoteRepoName :newBranch                # delete branch from remote re
 .gitignore
 ````
 .idea/
-.vagrant/
-node_modules/
-vendor/
 .DS_Store
 ````
 

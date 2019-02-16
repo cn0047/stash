@@ -13,7 +13,7 @@ Containers should be ephemeral (can be stopped and destroyed and a new one built
 
 Ctrl + P + Q # detach from container
 
-````bash
+````sh
 docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
 
 docker pull ubuntu
@@ -89,9 +89,14 @@ docker port xmongo
 exit
 ````
 
+````sh
+# No space left on device
+docker images --no-trunc | grep '<none>' | awk '{ print $3 }' | xargs docker rmi
+````
+
 Copy container manually:
 
-````
+````sh
 # on machine 1
 docker commit {CONTEINER_ID} new_name
 docker save -o new_name.dump.tar new_name

@@ -46,9 +46,17 @@ aws logs put-log-events --log-group-name cli_prod --log-stream-name x --log-even
 
 # (ECS) Elastic Container Service
 
+````sh
+aws ecs list-services
+aws ecs list-clusters
+aws ecs list-tasks
+````
+
 # (ECR) Elastic Container Registry
 
 ````sh
 aws ecr get-login --region us-east-1 --no-include-email
 aws ecr create-repository --region us-east-1 --repository-name rName
+
+aws ecr describe-images --region us-east-1 --repository-name legacy-files-dev
 ````
