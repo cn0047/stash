@@ -1,36 +1,15 @@
 syntax = "proto3";
 
-package proto;
+package lib;
 
-service PortService {
-    rpc Get (GetRequest) returns (GetResponse) {}
-    rpc Put (Port) returns (PutResponse) {}
+service One {
+  rpc Simple (Request) returns (Response) {}
 }
 
-message Port {
-    string ID = 1;
-    string Name = 2;
-    string City = 3;
-    string Country = 4;
-    repeated string Alias = 5;
-    repeated string Regions = 6;
-    repeated float Coordinates = 7;
-    string Province = 8;
-    string Timezone = 9;
-    repeated string Unlocs = 10;
-    string Code = 11;
+message Request {
+  string msg = 1;
 }
 
-message GetRequest {
-    string ID = 1;
-}
-
-message GetResponse {
-    string error = 1;
-    Port data = 2;
-}
-
-message PutResponse {
-   string error = 1;
-   string data = 2;
+message Response {
+  string msg = 1;
 }

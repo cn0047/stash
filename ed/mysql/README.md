@@ -295,7 +295,7 @@ SELECT TABLE_NAME, TABLE_ROWS FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA 
 
 #### mySqlDump
 
-````
+````sh
 mysqldump -h hostname -u user -pPassWord --skip-triggers --single-transaction --complete-insert --extended-insert --quote-names --disable-keys dataBaseName | gzip -с > DUMP_dataBaseName.sql.gz
 # dump only db schema
 mysqldump -h hostname -u user -pPassWord --no-data --single-transaction --complete-insert --extended-insert --quote-names dbname table > dump.sql.gz
@@ -309,7 +309,7 @@ mysql -hHost -uUser -pPass -DBase < dumpFile.sql
 
 #### Slow query log
 
-````
+````sh
 mkdir /var/log/mysql
 touch /var/log/mysql/logSlowQueries.log
 chown mysql.mysql -R /var/log/mysql
