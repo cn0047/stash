@@ -11,7 +11,7 @@ Containers should be ephemeral (can be stopped and destroyed and a new one built
 <br>Hence container must be stateless.
 <br>Each container should have only one concern (1 process per container).
 
-Ctrl + P + Q # detach from container
+Ctrl + P + Q # ‼️ detach from container
 
 ````sh
 docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
@@ -144,7 +144,7 @@ docker-machine stop default
 [Compose](https://docs.docker.com/compose) is a tool
 for defining and running multi-container Docker applications.
 
-````
+````sh
 docker-compose build serviceName
 
 # build the project and detached

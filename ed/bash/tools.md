@@ -418,11 +418,12 @@ directory - drwxrwxr-x (775)
 socket    - srw-rw---- (660)
 file      - -rw-rw-r-- (664)
 ````
-````
-chown -R www-data:www-data /var/www/html/
-````
+````sh
+chown mysql:mysql mysql-files-dir
+chmod 750 mysql-files-dir
 
-````
+chown -R www-data:www-data /var/www/html/
+
 sudo chown -R `whoami` /var/log/
 ````
 

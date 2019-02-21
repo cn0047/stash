@@ -47,9 +47,17 @@ aws logs put-log-events --log-group-name cli_prod --log-stream-name x --log-even
 # (ECS) Elastic Container Service
 
 ````sh
-aws ecs list-services
 aws ecs list-clusters
-aws ecs list-tasks
+
+aws ecs list-task-definitions
+
+aws ecs list-services --cluster=clstr
+
+aws ecs list-tasks --cluster=clstr --service=srvc
+tid=`aws ecs list-tasks --cluster=clstr --service=srvc \
+  | jq -r '.taskArns[0]' | awk -F '/' '{print $2}'`
+aws ecs describe-tasks --cluster=clstr --task=$tid
+aws ecs stop-task --cluster=clstr --task=$tid
 ````
 
 # (ECR) Elastic Container Registry

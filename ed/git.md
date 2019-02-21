@@ -101,7 +101,7 @@ git diff branch:file file
 ````
 
 #### log
-````
+````sh
 git log -2                # last 2 commits
 git log -p                # shows commits & code in commit
 git log --stat            # statiistic about changes
@@ -113,10 +113,11 @@ git log --date=short --no-merges --shortstat
 ````
 
 #### branch
-````
+````sh
 git checkout --track -b master origin/master
 
 git show branchName
+git rev-parse HEAD
 git rev_parse branch
 git brnach --no-merged
 git brnach --merged                               # branches merged with current

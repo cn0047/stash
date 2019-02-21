@@ -19,6 +19,7 @@ jq
 
 .items[]|.id
 curl ... | jq '.items[]|.ImageLink' # ✅
+... | jq -r '.taskArns[0]' # string without quotes
 
 # prettify json output
 echo '{"foo": "f", "bar": "b", "items": [1, 2, 3] }' | jq

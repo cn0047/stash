@@ -1,0 +1,65 @@
+version: '2'
+volumes:
+    pgdata:
+        driver: local
+services:
+    app_base:
+        build:
+            context: ../
+            dockerfile: ./deploy/Dockerfile
+        image: lf:latest
+
+    local:
+        extends:
+            file: ./docker-compose.yml
+            service: app_base
+        links:
+            - "postgres:postgres"
+        ports:
+            - "1333:1323"
+        environment:
+             - AWS_DEFAULT_REGION=us-east-1
+             - AWS_ACCESS_KEY_ID=
+             - AWS_SECRET_ACCESS_KEY=
+        volumes:
+            - "../:/go/src/github.com/cl/lf"
+        working_dir: "/go/src/github.com/cl/lf"
+        command: "go run deploy/main.go"
+
+    test:
+        extends:
+            file: ./docker-compose.yml
+            service: app_base
+        links:
+            - "postgres:postgres"
+        volumes:
+            - "../:/go/src/github.com/cl/lf"
+        command: sh -c '
+                go test ./images/internal -cover;
+                go test ./images/models -cover;
+            '
+
+    pgc:
+        extends:
+            file: ./docker-compose.yml
+            service: app_base
+        entrypoint: go run ./deploy/cmd/pgc/main.go
+        links:
+            - "postgres:postgres"
+        volumes:
+            - "../:/go/src/github.com/cl/lf"
+
+    postgres:
+        image: postgres:9.6
+        expose:
+            - "5432"
+        ports:
+            - "5434:5432"
+        environment:
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=pw
+            - POSTGRES_DB=mono_files
+            - PGDATA=/var/lib/postgresql/data/pgdata
+            - POSTGRES_INITDB_ARGS=--encoding=UTF8 --lc-collate=en_US.UTF-8 --lc-ctype=en_US.UTF-8
+        volumes:
+            - pgdata:/var/lib/postgresql/data/pgdata
