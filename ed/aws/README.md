@@ -13,6 +13,11 @@ aws configure
 ~/.aws/config
 ````
 
+````sh
+# add this flag to get more debug info about command
+--debug
+````
+
 # S3 (Simple Storage Service)
 
 ````sh
@@ -53,11 +58,16 @@ aws ecs list-task-definitions
 
 aws ecs list-services --cluster=clstr
 
+# stop task, so AWS will create new one
 aws ecs list-tasks --cluster=clstr --service=srvc
 tid=`aws ecs list-tasks --cluster=clstr --service=srvc \
   | jq -r '.taskArns[0]' | awk -F '/' '{print $2}'`
 aws ecs describe-tasks --cluster=clstr --task=$tid
 aws ecs stop-task --cluster=clstr --task=$tid
+
+# up service, so AWS will recreate tasks
+aws ecs register-task-definition --cli-input-json file://ecs.taskDefinition.json
+aws ecs update-service --cluster=clstr --service=srvc --task-definition=$tdid
 ````
 
 # (ECR) Elastic Container Registry

@@ -1,0 +1,32 @@
+{
+  "containerDefinitions": [
+    {
+      "name": "legacy-files-dev-master",
+      "image": "249880011121.dkr.ecr.us-east-1.amazonaws.com/legacy-files-dev:master",
+      "portMappings": [
+        {
+          "protocol": "tcp",
+          "hostPort": 1323,
+          "containerPort": 1323
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/legacy-files-dev",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ],
+  "family": "legacy-files-dev",
+  "taskRoleArn": "arn:aws:iam::249880011121:role/container-app",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "cpu": "256",
+  "memory": "512",
+  "executionRoleArn": "arn:aws:iam::249880011121:role/ecsTaskExecutionRole"
+}
