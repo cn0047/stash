@@ -419,7 +419,7 @@ There are 3 places memory can be allocated:
 
 * the stack - functions parameters, local variables allocated on the stack.
   Each goroutine has its own stack.
-  Goroutine stacks are allocated on the heap.
+  Goroutine stacks are allocated on the heap (‼️).
   If the stack needs to grow then heap operations (allocate new, copy old to new, free old) will occur.
 
 * the heap - does not have a single partition of allocated and free regions, set of of free regions.

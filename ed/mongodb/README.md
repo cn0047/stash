@@ -143,7 +143,7 @@ db.inventory.save({_id: 10, type: "misc", item: "placard"} )
 
 // UPDATE
 // update() - modify existing data or modify a group of documents
-// by default mongo update single row. use {multi: true} to update all maches documents
+// by default mongo update single doc. use {multi: true} to update all maches documents
 db.users.update({ age: { $gt: 18 } }, { $set: { status: "A" } }, { multi: true })
 db.inventory.update({ type : "book" }, { $inc : { qty : -1 } }, { multi: true } )
 db.students.update(

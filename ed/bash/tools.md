@@ -9,7 +9,7 @@ pkill -f php # Kill runned script with name like php.
 pkill -f test.py # full argument lists, default is to match against process names
 
 kill -9 `ps -aux|grep {{PROCESS_NAME}}|grep -v grep|awk '{print $2}'`
-````sh
+````
 
 #### monitoring
 
@@ -23,6 +23,31 @@ free -m           # block device I/O buffer cache & file systems page cache
 sar -n DEV 1      # check network interface
 sar -n TCP,ETCP 1 # TCP metrics
 top               #
+````
+
+````sh
+# tool to disable redundant background services on machine
+sysv-rc-conf
+
+# CPU usage info
+# apt-get install sysstat
+mpstat
+
+# Memory usage info
+free
+cat /proc/meminfo
+
+# Disc usage info
+iotop
+
+# tool for net traffic
+cbm
+
+# general stat
+dstat
+
+# shows OS limits
+ulimit -a
 ````
 
 #### date

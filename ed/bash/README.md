@@ -313,29 +313,6 @@ echo b1nd | tr 1 o # bond
 # generates uuid
 uuid -n 1
 
-# tool to disable redundant background services on machine
-sysv-rc-conf
-
-# CPU usage info
-# apt-get install sysstat
-mpstat
-
-# Memory usage info
-free
-cat /proc/meminfo
-
-# Disc usage info
-iotop
-
-# tool for net traffic
-cbm
-
-# general stat
-dstat
-
-# shows OS limits
-ulimit -a
-
 # last argument
 !$
 
