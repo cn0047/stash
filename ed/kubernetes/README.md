@@ -109,10 +109,23 @@ Kubernetes has three namespaces by default:
 * kube-public
 
 Kinds:
-* ReplicationController
-* StorageClass
-* StatefulSet
-* Job
+
+````
+kind: ConfigMap
+kind: DaemonSet
+kind: HorizontalPodAutoscaler
+kind: Ingress
+kind: Job
+kind: LimitRange
+kind: NetworkPolicy
+kind: PersistentVolume
+kind: ReplicationController
+kind: ResourceQuota
+kind: Secret
+kind: ServiceAccount
+kind: StatefulSet
+kind: StorageClass
+````
 
 To store data permanently, Kubernetes uses Persistent Volumes.
 
@@ -141,19 +154,6 @@ DaemonSet where we need an agent to run on every single node in the cluster.
 A federation is a cluster of clusters.
 KOps stands for Kubernetes operations (for AWS).
 
-````
-kind: ConfigMap
-kind: DaemonSet
-kind: HorizontalPodAutoscaler
-kind: Ingress
-kind: LimitRange
-kind: NetworkPolicy
-kind: NetworkPolicy
-kind: PersistentVolume
-kind: ReplicationController
-kind: ResourceQuota
-kind: Secret
-kind: ServiceAccount
 ````
 
 #### Master.

@@ -11,6 +11,6 @@ Kinds of service method:
 * Server streaming
   `rpc LotsOfReplies(HelloRequest) returns (stream HelloResponse){}`
 * Client streaming
-  `rpc LotsOfGreetings(stream HelloRequest) returns (HelloResponse) {}`
+  `rpc LotsOfGreetings(stream HelloRequest) returns (HelloResponse){}`
 * Bidirectional streaming
   `rpc BidiHello(stream HelloRequest) returns (stream HelloResponse){}`

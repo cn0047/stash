@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type ConcatenateStrategy interface {
 	Add(a interface{}, b interface{}) interface{}
