@@ -177,6 +177,7 @@ Put code into `internal` dir to make it private.
 
 Sentinel error -  custom error value
 (standard library: sql.ErrNoRows, io.EOF, etc).
+[wrap error tool](github.com/pkg/errors)
 
 #### Data types
 

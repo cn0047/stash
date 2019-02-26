@@ -3,6 +3,7 @@ Makefile
 
 ````sh
 make -f ed/makefile/example/one/Makefile etrp
+make -f ed/makefile/example/one/Makefile var
 ````
 
 Makefiles contain five kinds of things:
@@ -11,3 +12,5 @@ Makefiles contain five kinds of things:
 * implicit rules,
 * variable definitions,
 * directives, and comments.
+
+The `@` before echo means - don't print this command to stdout before running it.

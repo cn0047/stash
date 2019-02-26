@@ -1,6 +1,8 @@
 Microservices
 -
 
+For service discovery: [consul](https://www.consul.io/), [etcd](https://github.com/etcd-io/etcd)
+
 Microservices is a variant of the SOA
 architectural style that structures an application as a collection of loosely coupled services.
 It is modern interpretation of SOA used to build distributed software systems.

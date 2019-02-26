@@ -14,6 +14,7 @@ aws configure
 ````
 
 ````sh
+--output=table|json|text
 # add this flag to get more debug info about command
 --debug
 ````
@@ -47,6 +48,8 @@ aws logs put-log-events --log-group-name cli_prod --log-stream-name x --log-even
 
 # CodeDeploy
 
+# CloudFront (CDN)
+
 # (RDS) Relational Database Service
 
 # (ECS) Elastic Container Service
@@ -68,6 +71,9 @@ aws ecs stop-task --cluster=clstr --task=$tid
 # up service, so AWS will recreate tasks
 aws ecs register-task-definition --cli-input-json file://ecs.taskDefinition.json
 aws ecs update-service --cluster=clstr --service=srvc --task-definition=$tdid
+
+aws ecs list-task-definitions --sort=DESC
+aws ecs deregister-task-definition --task-definition="td:2"
 ````
 
 # (ECR) Elastic Container Registry

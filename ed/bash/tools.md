@@ -1,6 +1,14 @@
 Linux Tools
 -
 
+#### tail
+
+````sh
+echo -e "1 \n2 \n3 \n4 \n5" | tail -2 # 4, 5
+echo -e "1 \n2 \n3 \n4 \n5" | tail -n 2 # 4, 5
+echo -e "1 \n2 \n3 \n4 \n5" | tail -n +3 # 3, 4 ,5
+````
+
 #### kill
 
 ````sh
