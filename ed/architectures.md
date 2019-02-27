@@ -15,7 +15,7 @@ as such it is possible to swap and replace them easily.
 * it's unclear what is model in reach app (mysql, mongo, redis, elasticsearch, etc)?
 * which model should contain stuff common for 2 models?
 * where to place infrastructural stuff (doctrine annotations, etc)?
-Example: https://monosnap.com/file/xa6jUhfGdo6fCFDeHDLjZ82GU9seJ6
+Example: [one](https://monosnap.com/file/xa6jUhfGdo6fCFDeHDLjZ82GU9seJ6)
 
 Q: Why do you need `service` for simple MVC CRUD project?
 A: To add cache; To select DB (master, slave);
