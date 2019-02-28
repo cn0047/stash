@@ -27,8 +27,8 @@ DIP - refers to a specific form of decoupling software modules.
 * Ownership inversion - both high and lower level layers should depend on abstractions that draw the behavior.
 * Abstraction dependency:
 
-        * All member variables in a class must be interfaces or abstracts.
-        * All concrete class packages must connect only through interface/abstract classes packages.
-        * No class should derive from a concrete class.
-        * No method should override an implemented method.
-        * All variable instantiation requires the implementation of a Creational pattern as the Factory Method or the Factory pattern, or the more complex use of a Dependency Injection framework.
+    * All member variables in a class must be interfaces or abstracts.
+    * All concrete class packages must connect only through interface/abstract classes packages.
+    * No class should derive from a concrete class.
+    * No method should override an implemented method.
+    * All variable instantiation requires the implementation of a Creational pattern as the Factory Method or the Factory pattern, or the more complex use of a Dependency Injection framework.
