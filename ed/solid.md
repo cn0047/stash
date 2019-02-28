@@ -26,6 +26,7 @@ DIP - refers to a specific form of decoupling software modules.
 * Abstractions should not depend on details. Details should depend on abstractions.
 * Ownership inversion - both high and lower level layers should depend on abstractions that draw the behavior.
 * Abstraction dependency:
+
         * All member variables in a class must be interfaces or abstracts.
         * All concrete class packages must connect only through interface/abstract classes packages.
         * No class should derive from a concrete class.
