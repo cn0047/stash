@@ -5,22 +5,17 @@ import (
   "time"
 )
 
-const (
-  timeoutThresholdInSeconds = 1
-  resultThresholdInSeconds = 2
-)
-
 func main() {
   timeout := make(chan bool, 1)
   ch := make(chan int, 1)
 
   go func() {
-      time.Sleep(time.Second * timeoutThresholdInSeconds)
+      time.Sleep(1 * time.Second)
       timeout <- true
   }()
 
   go func() {
-    time.Sleep(time.Second * resultThresholdInSeconds)
+    time.Sleep(2 * time.Second)
     ch <- 204
   }()
 
