@@ -165,6 +165,25 @@ template.HTMLEscapeString(input)
 template.JSEscapeString(input)
 ````
 
+#### HTTP
+
+````
+url := req.URL
+query := url.Query()
+q := query["q"]
+page := query.Get("page")
+req.FormValue("timeout")
+
+err := req.ParseForm()
+f := req.Form
+un := f["username"]
+p := f.Get["username"]
+
+tr := &http.Transport{DisableKeepAlives: true}
+client := http.Client{Transport: tr}
+client := http.Client{Timeout: time.Millisecond * timeout}
+````
+
 Go is compiled, garbage-collected, concurrent, type-safe.
 Go source code is always UTF-8.
 
@@ -297,25 +316,6 @@ Go  ⇒ struct ⇒ object ⇒ field
 type Logger interface {
     Log(message string)
 }
-````
-
-#### HTTP
-
-````
-url := req.URL
-query := url.Query()
-q := query["q"]
-page := query.Get("page")
-req.FormValue("timeout")
-
-err := req.ParseForm()
-f := req.Form
-un := f["username"]
-p := f.Get["username"]
-
-tr := &http.Transport{DisableKeepAlives: true}
-client := http.Client{Transport: tr}
-client := http.Client{Timeout: time.Millisecond * timeout}
 ````
 
 #### Concurrency

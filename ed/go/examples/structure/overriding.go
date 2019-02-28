@@ -23,3 +23,8 @@ func main() {
   f.F()
   f.B()
 }
+
+/*
+foo
+bar
+*/
