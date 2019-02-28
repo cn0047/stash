@@ -59,7 +59,7 @@ gorename
 gomvpkg
 ````
 
-````go
+````golang
 import (
     "fmt"
     "os"
@@ -167,7 +167,7 @@ template.JSEscapeString(input)
 
 #### HTTP
 
-````
+````golang
 url := req.URL
 query := url.Query()
 q := query["q"]
@@ -182,6 +182,9 @@ p := f.Get["username"]
 tr := &http.Transport{DisableKeepAlives: true}
 client := http.Client{Transport: tr}
 client := http.Client{Timeout: time.Millisecond * timeout}
+
+# behaves like curl -L
+http.Client{}.Get(URL)
 ````
 
 Go is compiled, garbage-collected, concurrent, type-safe.
@@ -312,7 +315,7 @@ Go  ⇒ struct ⇒ object ⇒ field
 
 #### Interface
 
-````go
+````golang
 type Logger interface {
     Log(message string)
 }
@@ -392,7 +395,7 @@ if the buffer is not empty,
 and write operations - if the buffer is not full.
 These channels are called asynchronous.
 
-````
+````golang
 for i := 1; i <= 9; i++ {
     select {
     case msg := <-c1:
