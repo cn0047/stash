@@ -3,6 +3,8 @@ gRPC
 
 [grpc](https://grpc.io/docs)
 
+gRPC - open source RPC framework.
+
 RPC based on actons & functions (for example REST based on resources).
 
 Kinds of service method:

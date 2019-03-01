@@ -4,6 +4,7 @@ twitter
 https://apps.twitter.com
 
 ````bash
+# to see tweet on twitter
 open https://twitter.com/statuses/$tweetID
 ````
 
@@ -12,7 +13,7 @@ open https://twitter.com/statuses/$tweetID
 ````bash
 gem install twurl
 
-twurl authorize --consumer-key kkkalH8MXr7iI7koqRgJ2KMWy --consumer-secret sssywtyALcKUvu04xKQmNnPmlu6un8D3SbsHUys2Z9HNfWBOy4
+twurl authorize --consumer-key $ck --consumer-secret $cs
 
 # check
 twurl /1.1/statuses/home_timeline.json | jq
@@ -20,6 +21,11 @@ twurl /1.1/statuses/user_timeline.json | jq
 ````
 
 ````bash
+# tweet text msg
+twurl -X POST -H api.twitter.com "/1.1/statuses/update.json?status=Hello! This Tweet was sent via the Twitter API." | jq
+
 # upload image
-twurl -H upload.twitter.com -X POST "/1.1/media/upload.json" --file "/Users/k/Downloads/i.jpg" --file-field "media"
+twurl -X POST -H upload.twitter.com "/1.1/media/upload.json" --file "/Users/k/Downloads/j.jpg" --file-field "media"
+# get
+# twurl -X GET -H upload.twitter.com "/1.1/media/upload.json?command=STATUS&media_id="$mediaID
 ````

@@ -44,6 +44,10 @@ token="{token}"
 # boards list
 curl 'https://api.pinterest.com/v1/me/boards/?access_token='$token | jq
 
+# create board
+curl -X POST 'https://api.pinterest.com/v1/boards/?access_token='$token \
+  -H 'Content-Type: application/json' -d '{"name": "test"}'
+
 # create new pin
 curl -X POST 'https://api.pinterest.com/v1/pins/?access_token='$token \
   -H 'Content-Type: application/json' -d '{
