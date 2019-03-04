@@ -110,7 +110,7 @@ Kubernetes has three namespaces by default:
 
 Kinds:
 
-````
+````sh
 kind: ConfigMap
 kind: DaemonSet
 kind: HorizontalPodAutoscaler
@@ -154,8 +154,6 @@ DaemonSet where we need an agent to run on every single node in the cluster.
 A federation is a cluster of clusters.
 KOps stands for Kubernetes operations (for AWS).
 
-````
-
 #### Master.
 
 #### Node (minion).
@@ -178,6 +176,7 @@ Pod is the smallest deployable unit in Kubernetes.
 It can contain one or more containers.
 Most of the time, we just need one container per pod.
 Pod is also designed as mortal.
+Containers in pod shares same localhost.
 
 #### Service - is LB for pods.
 

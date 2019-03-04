@@ -215,6 +215,8 @@ Interface to DTO must be placed in domain layer.
 <br>Particular DTO implementation (mysql, mongo, etc) must be placed in infrastructure layer
 because it contains specific stuff (related to rows in mysql, how to get data, how to transform, etc).
 
+DTO it's just data container which used to transport data between layers and tiers.
+
 #### Repositories.
 
 Methods for retrieving domain objects
@@ -239,3 +241,7 @@ DAOs must be placed in domain layer.
 Domain event publisher, and technical stuff (publisher-subscriber or bus patterns internal implementations)?
 Switch from one php framework to another?
 Switch from one front-end framework to another? ~~And server-side rendering?~~
+
+Confusion:
+* VO, DTO - own meaning in Java world.
+* Entity - in symfony world.

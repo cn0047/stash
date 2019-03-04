@@ -51,6 +51,11 @@ They test whole stories at a time against a running version of the application i
 The objective of acceptance tests is to prove that our application does
 what the customer meant it to, not that it works the way its programmers think it should.
 
+## End-to-End (E2E) Testing
+
+End-to-end testing is where you test your whole application from start to finish.
+It involves assuring that all the integrated pieces of an application function and work together as expected.
+
 ## Functional
 
 Functional testing tests a slice of functionality of the whole system.

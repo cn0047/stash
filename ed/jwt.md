@@ -16,3 +16,7 @@ Tokens consist of three parts separated by dots (.), which are:
 * Header (hashing algorithm being used: HMAC, SHA256 or RSA).
 * Payload (claims).
 * Signature (used to verify that the sender of the JWT is who it says it is).
+
+HMAC (symmetric) algorithm - probably the most common algorithm for signed JWTs.
+
+RSA and ECDSA algorithms (asymmetric)

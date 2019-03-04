@@ -249,6 +249,9 @@ Origin: https://foo.bar.org
 
 ## HTTP 2
 
+`HTTP/2` comes with a stateful header compression called HPACK,
+but HTTP 2 (as HTTP) is a stateless protocol.
+
 * Data compression (binary)
 * Server Push
 * Multiplexing

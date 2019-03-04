@@ -42,7 +42,7 @@ go golint ./...          # Check code
 go install               # Install packages and dependencies
 go list                  # List packages
 go list ...
-go run --work ed/go/examples/whatever/hw.go
+go run --work ed/go/examples/whatever/hw.go # see the location of thetemporary exec file
 go run -race ed/go/examples/whatever/hw.go
 go vet # examines Go coge, reports suspicious constructs (Printf with wrong arguments).
 godoc -http=:6060 -goroot=$PWD
@@ -253,7 +253,7 @@ regarding the order of hash map.
 **OOP** in go represented by **structures**. Inheritance in go represented by composition.
 
 **string**
-String it is slice of bytes.
+String it is immutable slice of bytes.
 When we store a character value in a string, we store its byte-at-a-time representation.
 Go strings aren’t always UTF-8, only string literals are UTF-8.
 String values can contain arbitrary bytes
