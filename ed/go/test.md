@@ -35,13 +35,13 @@ b.RunParallel(func(pb *testing.PB) {})
 
 ## Bench
 
-````go
+````golang
 b.ResetTimer()
 ````
 
 Bench output:
 
-````sh  
+````sh
 goos: linux
 goarch: amd64
 BenchmarkFibComplete-4     1000000        2185 ns/op      3911 B/op        0 allocs/op

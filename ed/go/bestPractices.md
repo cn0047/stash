@@ -18,10 +18,13 @@ Best Practices
 
 * `snake_case` for filenames.
 
-* Don't pass pointers as function arguments (just to save a few bytes).
-  This advice does not apply to large structs.
+* `lowercase` for packages, like:
+  `"index/suffixarray", "mime/quotedprintable", "net/http/httptrace"`.
 
 * Variable names in Go should be short rather than long.
+
+* Don't pass pointers as function arguments (just to save a few bytes).
+  This advice does not apply to large structs.
 
 * When defining methods: use a pointer to a type (struct) as a receiver.
 

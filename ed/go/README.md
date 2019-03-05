@@ -329,7 +329,16 @@ Two crucial concepts make Go’s concurrency model work:
 * Goroutines
 * Channels
 
+#### Runtime
+
+Runtime manages: scheduling, garbage collection, and the runtime environment for goroutines.
+
 #### Goroutine
+
+Goroutine - lightweight version of thread, with very low cost of starting up.
+Each goroutine is described by struct called G.
+Runtime keeps track of each G and maps them onto Logical Processors, named P.
+P - abstract resource, which needs to be acquired, so OS thread (called M, or Machine) can execute G.
 
 Do not communicate by sharing memory. Instead, share memory by communicating.
 <br>⚠️ Do not use global variables or shared memory, they make your code unsafe for running concurrently.
@@ -346,6 +355,7 @@ If you want to run goroutines in parallel, you must use more than one logical pr
 But to have true parallelism, you still need to run your program
 on a machine with multiple physical processors. 
 
+`runtime.GOMAXPROCS(numLogicalProcessors)`
 `runtime.GOMAXPROCS(1)` - tell the scheduler to use a single logical processor for program.
 
 Goroutine is operating on a separate function stack hence no recover from panic,
@@ -443,3 +453,44 @@ out of every 50 milliseconds of execution time.
 `GCPercent` - adjusts how much CPU you want to use and how much memory you want to use.
 The default is 100 which means that half the heap is dedicated to live memory and half the heap
 is dedicated to allocation.
+
+Go memory allocator based on TCMalloc memory allocator.
+Likewise, TCMalloc Go also divides Memory Pages into block of 67 different classes Size.
+
+**mspan** - (to manage memory pages) it's double linked list object,
+with start address of the page, span class, number of pages it contains.
+
+**mcache** (aka Local Thread Cache of Memory) provides memory to goroutine without any locks.
+mcache contains a mspan of all class size as a cache.
+Object size <=32K byte are allocated directly to mcache using the corresponding size class mspan.
+mcache has no free slot - new mspan is obtained from the mcentral.
+Size between 16B ~ 32k, calculate the sizeClass to be used and then use the block allocation
+of the corresponding sizeClass in mcache.
+
+**mcentral** - is two lists of mspans: empty, nonempty.
+mcentral structure is maintained inside the mheap structure.
+
+**mheap** - is the Object that manages the heap in Go, only one global.
+mheap has an array of mcentral (this array contains mcentral of each span class).
+
+Object of Size > 32K, is a large object, allocated directly from mheap.
+These large request comes at an expenses of central lock, so only one goroutine request
+can be served at any given point of time.
+
+#### TCMalloc
+
+The core idea of TCMalloc (thread cache malloc)
+is to divide the memory into multiple levels to reduce the granularity of the lock.
+
+Inside TCMalloc memory management is divided into two parts:
+
+  * thread memory:
+    each memory page divided into Free List of multiple fixed allocatable size-classes;
+    each thread will have a cache for small objects without locks,
+    which makes it very efficient to allocate small objects (<=32K) under parallel programs;
+
+  * page heap:
+    when allocated Object is larger than 32K, Pages Heap is used for allocation;
+    if not enough memory to allocate small objects - go to page heap for memory;
+    if not enough - page heap will ask more memory from the Operating System;
+
