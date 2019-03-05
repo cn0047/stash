@@ -2,11 +2,37 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"net/http"
 )
 
 func main() {
-	one()
+	// one()
+
+	go two()
+	go two()
+
+	select {}
+}
+
+// go run /Users/k/web/kovpak/gh/ed/go/examples/whatever/compare.index.go
+// GODEBUG=scheddetail=1,schedtrace=1000 go run /Users/k/web/kovpak/gh/ed/go/examples/http/http.client.get.go
+func two() {
+	req, err := http.NewRequest("GET", "http://localhost:8080/?busy", nil)
+	if err != nil {
+		panic(err.Error())
+	}
+
+	client := &http.Client{}
+	res, err := client.Do(req)
+	if err != nil {
+		panic(err.Error())
+	}
+	defer res.Body.Close()
+
+	body, _ := ioutil.ReadAll(res.Body)
+
+	fmt.Printf("Resp: %s\n", body)
 }
 
 func one() {

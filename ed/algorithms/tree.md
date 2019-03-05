@@ -36,4 +36,7 @@ Worst time complexity for search = h = O(h) = log N
 
 ## Radix tree
 
-Used to store a set of strings...
+Radix tree - each node that is the only child is merged with its parent.
+This makes radix trees much more efficient for small sets
+(especially if the strings are long) and for sets of strings
+that share long prefixes.

@@ -1,4 +1,3 @@
-
 "A File Icon",
 "AlignTab",
 "Babel",
@@ -12,6 +11,9 @@
 "Function Name Display",
 "Git",
 "GitHubinator",
+"GoImports",
+"Golite",
+"GoSublime",
 "JavaScript Completions",
 "JsFormat",
 "JSX",
@@ -19,12 +21,13 @@
 "Package Control",
 "Pretty JSON",
 "Quick File Open",
+"SimpleMovements",
 "Sublime Bookmarks",
 "SublimeLinter",
-"SublimeLinter-jshint",
 "Super Calculator",
 "Theme - Soda",
 
+"SublimeLinter-jshint",
 "ApacheConf.tmLanguage",
 "DocBlockr",
 "FavoriteFiles",
@@ -36,7 +39,5 @@
 "PHPUnit Completions",
 "Protobuf Syntax Hightlighting",
 "SFTP",
-"SimpleMovements",
-"Theme - Soda"
 "Theme - Solarized Space"
 "Xdebug Client",

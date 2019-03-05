@@ -339,6 +339,15 @@ Goroutine - lightweight version of thread, with very low cost of starting up.
 Each goroutine is described by struct called G.
 Runtime keeps track of each G and maps them onto Logical Processors, named P.
 P - abstract resource, which needs to be acquired, so OS thread (called M, or Machine) can execute G.
+Each P maintains a queue of runnable G‘s.
+<br>
+When schedule a new goroutine - it's placed into P‘s queue.
+<br>
+Blocking syscall (opening a file, etc. or network call or channel operations or primitives in the sync package)
+will be intercepted, if there are Gs to run,
+runtime will detach the thread from the P and create a new OS thread
+(if idle thread doesn’t exist) to service that processor.
+When a system calls resumes, the goroutine is placed back.
 
 Do not communicate by sharing memory. Instead, share memory by communicating.
 <br>⚠️ Do not use global variables or shared memory, they make your code unsafe for running concurrently.
@@ -347,13 +356,13 @@ Do not communicate by sharing memory. Instead, share memory by communicating.
 
 The operating system schedules threads to run against processors
 regardless of the process they belong to.
-
+<br>
 The operating system schedules threads to run against physical processors
 and the Go runtime schedules goroutines to run against logical processors.
-
+<br>
 If you want to run goroutines in parallel, you must use more than one logical processor.
 But to have true parallelism, you still need to run your program
-on a machine with multiple physical processors. 
+on a machine with multiple physical processors.
 
 `runtime.GOMAXPROCS(numLogicalProcessors)`
 `runtime.GOMAXPROCS(1)` - tell the scheduler to use a single logical processor for program.
