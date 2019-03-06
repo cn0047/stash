@@ -9,9 +9,20 @@ go test -gcflags
 go build -gcflags '-m'
 go build -gcflags '-m -m' ./main.go
 
+go test -v
+go test -cover
+go test -race
 go test -json
 
 goapp test -v transactional/users/service -run TestGetServiceAccountsForAdmin
+
+# coverage
+GOPATH=$PWD/ed/go/examples/install
+cd $GOPATH/lib ;\
+  go test -v ;\
+  go test -cover -coverprofile=coverage.out ;\
+  go tool cover -html=coverage.out -o=coverage.html ;\
+  open coverage.html
 ````
 
 ````golang

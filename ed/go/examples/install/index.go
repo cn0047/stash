@@ -14,11 +14,19 @@ docker run -it --rm -v $PWD:/gh -w /gh/ed/go/examples/install \
 
 */
 
+/*
+
+GOPATH=$PWD/ed/go/examples/install
+go run $GOPATH/index.go
+cd $GOPATH/lib && go test
+
+*/
+
 package main
 
 import "./lib"
 
 func main() {
-    println(lib.GetMsg())
-    // println(lib.getCode()) // this won't work
+	println(lib.GetMsg())
+	// println(lib.getCode()) // this won't work
 }

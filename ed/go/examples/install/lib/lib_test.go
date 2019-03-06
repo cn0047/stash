@@ -1,13 +1,13 @@
 package lib
 
 import (
-    "testing"
+	"testing"
 )
 
 func TestGetMsg(t *testing.T) {
-    e := "It's install."
-    a := GetMsg()
-    if a != e {
-        t.Errorf("Got: %d, want: %d.", a, e)
-    }
+	e := "It's install."
+	a := GetMsg()
+	if a != e {
+		t.Errorf("Got: %v, want: %v.", a, e)
+	}
 }

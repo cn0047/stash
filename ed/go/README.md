@@ -24,16 +24,23 @@ $GOROOT_FINAL // if go moved from $GOROOT
 $GOPATH       // environment variable specifies the location of your workspace.
 $GOMAXPROCS   // number of OS threads that can execute user-level Go code simultaneously.
 $GOTRACEBACK  // (none|single|all|system|crash) verbosity level in case of panic
+$GOOS
+$GOARCH
+$GODEBUG
 
 export GOROOT=$HOME/go
 export GOBIN=$GOROOT/bin
 export GOARCH=amd64
 export GOOS=linux
 
-go build                 # Compiles and installs packages and dependencies
 GOOS=windows GOARCH=386 go build
+GODEBUG=scheddetail=1,schedtrace=1000
+GODEBUG=gctrace=1
+
+go build                 # Compiles and installs packages and dependencies
 go build -race ./example #
 go build -gcflags -S z.go # assembly output
+go build -o newname
 go env
 go env GOPATH
 go fmt ./...             # Format code
@@ -314,6 +321,17 @@ Go  ⇒ struct ⇒ object ⇒ field
 * garbage collection
 
 #### Interface
+
+Interface — set of methods required to implement such interface.
+
+Interface type (interface{}) — variable of interface type which can hold any value,
+meaning no guarantee of any methods at all: it could contain any type.
+The comma-ok assignment asks whether it is possible
+to convert interface value to some type.
+<br>
+Interface values are represented as a two-word pair
+giving a pointer to information about the type stored in the interface
+and a pointer to the associated data.
 
 ````golang
 type Logger interface {
