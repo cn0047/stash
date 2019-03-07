@@ -31,3 +31,15 @@ before the browser continues parsing the page.
 ````
 <span itemprop="name">Elizabeth</span>
 ````
+
+#### Form
+
+"multipart/form-data"
+
+````
+<form action="file" method="post" enctype="multipart/form-data">
+  <input type="text" id="msg" name="msg">
+  <input type="file" id="file" name="file">
+  <input type="submit" name="submit" value="Upload">
+</form>
+````

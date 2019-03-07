@@ -22,21 +22,25 @@ and automatic memory management programming language.
 $GOROOT       // root of the go (`/usr/local/go/`)
 $GOROOT_FINAL // if go moved from $GOROOT
 $GOPATH       // environment variable specifies the location of your workspace.
+$GOBIN        // GOBIN=$GOROOT/bin
+$GOOS         // (windows|linux)
+$GOARCH       // (386|amd64)
 $GOMAXPROCS   // number of OS threads that can execute user-level Go code simultaneously.
 $GOTRACEBACK  // (none|single|all|system|crash) verbosity level in case of panic
-$GOOS
-$GOARCH
-$GODEBUG
+$GOGC         // Garbage Collector:
+              // GOGC=off - disables the gc entirely
+              // GOGC=100 - default, means the gc will run each time the live heap doubles.
+              // GOGC=200 - will delay start of a gc cycle
+              // until the live heap has grown to 200% of the previous size.
+$GODEBUG      // https://godoc.org/runtime#hdr-Environment_Variables
+              // scheddetail=1 - detailed scheduler info
+              // schedtrace=1000 - single line to standard error every 1000 milliseconds
+              // gctrace=1 - single line to standard error at each collection
+              // GODEBUG=allocfreetrace=1,gcpacertrace=1,gctrace=1,scavenge=1,scheddetail=1,scheddetail=1,schedtrace=1000
 
 export GOROOT=$HOME/go
-export GOBIN=$GOROOT/bin
-export GOARCH=amd64
-export GOOS=linux
 
-GOOS=windows GOARCH=386 go build
-GODEBUG=scheddetail=1,schedtrace=1000
-GODEBUG=gctrace=1
-
+GOARCH=386 go build
 go build                 # Compiles and installs packages and dependencies
 go build -race ./example #
 go build -gcflags -S z.go # assembly output
@@ -190,8 +194,11 @@ tr := &http.Transport{DisableKeepAlives: true}
 client := http.Client{Transport: tr}
 client := http.Client{Timeout: time.Millisecond * timeout}
 
-# behaves like curl -L
+// behaves like curl -L
 http.Client{}.Get(URL)
+
+// w http.ResponseWriter
+w.Write([]byte("html"))
 ````
 
 Go is compiled, garbage-collected, concurrent, type-safe.
@@ -339,6 +346,30 @@ type Logger interface {
 }
 ````
 
+#### Runtime
+
+Runtime manages: scheduling, garbage collection, and the runtime environment for goroutines.
+
+Runtime scheduler creates threads (Logical Processors, named P)
+over Physical CPUs (called M, or Machine).
+`runtime.GOMAXPROCS(numLogicalProcessors)`
+`runtime.GOMAXPROCS(1)` - tell the scheduler to use a single Logical Processor for program.
+`runtime.GOMAXPROCS` limits number of threads that can execute user-level Go code simultaneously.
+For each P (thread) we have goroutines queue.
+
+The OS schedules threads to run against processors regardless of the process they belong to.
+FYI: OS thereads expensive to start, stop, utilize.
+OS thread is just a sequence of instructions that can be executed independently by a processor.
+OS threads are lighter than the process so you can spawn a lot of them.
+Linux doesn’t distinguish between threads and processes and both are called tasks.
+<br>
+The OS schedules threads to run against physical processors
+and the Go runtime schedules goroutines to run against logical processors.
+<br>
+If you want to run goroutines in parallel, you must use more than one logical processor.
+But to have true parallelism, you still need to run your program
+on a machine with multiple physical processors.
+
 #### Concurrency
 
 Go uses the concurrency model called Communicating Sequential Processes (CSP).
@@ -347,53 +378,37 @@ Two crucial concepts make Go’s concurrency model work:
 * Goroutines
 * Channels
 
-#### Runtime
-
-Runtime manages: scheduling, garbage collection, and the runtime environment for goroutines.
-
 #### Goroutine
+
+States:
+* not runnable
+* runnable
+* running
 
 Goroutine - lightweight version of thread, with very low cost of starting up.
 Each goroutine is described by struct called G.
-Runtime keeps track of each G and maps them onto Logical Processors, named P.
+Runtime keeps track of each G and maps them onto Logical Processors (P).
 P - abstract resource, which needs to be acquired, so OS thread (called M, or Machine) can execute G.
 Each P maintains a queue of runnable G‘s.
 <br>
 When schedule a new goroutine - it's placed into P‘s queue.
 <br>
 Blocking syscall (opening a file, etc. or network call or channel operations or primitives in the sync package)
-will be intercepted, if there are Gs to run,
-runtime will detach the thread from the P and create a new OS thread
+G will be intercepted, if there are Gs to run in queue,
+runtime will detach the thread from the P (and from M) and create a new thread
 (if idle thread doesn’t exist) to service that processor.
 When a system calls resumes, the goroutine is placed back.
 
-Do not communicate by sharing memory. Instead, share memory by communicating.
+‼️ Do not communicate by sharing memory. Instead, share memory by communicating.
 <br>⚠️ Do not use global variables or shared memory, they make your code unsafe for running concurrently.
 
 `kill -6 {PID}` kill the program and give a stack trace for each goroutine.
-
-The operating system schedules threads to run against processors
-regardless of the process they belong to.
-<br>
-The operating system schedules threads to run against physical processors
-and the Go runtime schedules goroutines to run against logical processors.
-<br>
-If you want to run goroutines in parallel, you must use more than one logical processor.
-But to have true parallelism, you still need to run your program
-on a machine with multiple physical processors.
-
-`runtime.GOMAXPROCS(numLogicalProcessors)`
-`runtime.GOMAXPROCS(1)` - tell the scheduler to use a single logical processor for program.
 
 Goroutine is operating on a separate function stack hence no recover from panic,
 ([img](https://monosnap.com/file/FyeRMIaPfHmuQStwoqBkt4PxWRwSfJ)).
 
 Goroutines exists only in the virtual space of go runtime and not in the OS.
 Hence, a Go Runtime scheduler is needed which manages their lifecycle.
-
-Thread is just a sequence of instructions that can be executed independently by a processor.
-Threads are lighter than the process and so you can spawn a lot of them.
-Linux doesn’t distinguish between threads and processes and both are called tasks.
 
 #### Channel
 
