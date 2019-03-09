@@ -14,6 +14,31 @@ until the changes have been completed (committed transaction).
 but instead creates a newer version of the data item. Thus there are multiple versions stored.
 <br>The version that each transaction sees depends on the isolation level implemented.
 
+## Two-Phase Commit (2PC)
+
+Update account table with transaction.
+
+0. Add field pendingTransactions into account table.
+1. In table transactions insert record with state initial.
+2. Update record with state initial to pending in transactions table.
+3. Update record in account table (decrement)
+   & add transaction to pendingTransactions field for this record.
+4. Update next record in account table (increment)
+   & add transaction to pendingTransactions field for this record.
+5. Update transaction in transactions table with state pending to committed.
+6. Update account table delete transactions from pendingTransactions.
+7. Update transaction in transactions table set state done.
+
+## Saga Pattern
+
+Saga is a sequence of local transactions where each transaction
+updates data within a single service,
+1st transaction is initiated by an external request
+and each subsequent step is triggered by the completion
+of the previous one.
+
+implementations: Choreography, Orchestration.
+
 ## MySQL:
 
 * Transactions.
