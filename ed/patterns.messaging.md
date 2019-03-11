@@ -15,6 +15,7 @@ In essence, a message is transmitted in five steps:
 Messaging pattern - is a network-oriented architectural pattern
 which describes how two different parts of a Message-Passing-System
 communicate with each other.
+(You don't have to say what to do, you have to send message and system will decide what to do...).
 
 Specific benefits of messaging:
 

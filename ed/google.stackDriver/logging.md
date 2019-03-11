@@ -20,7 +20,7 @@ gcloud logging read --limit=5
 
 Log view filter:
 
-````
+````sh
 text:unicorn
 text:unicorn text:phoenix          # unicorn or phoenix
 text:"unicorn phoenix"             # unicorn and phoenix
@@ -44,7 +44,7 @@ status:400..499 # HTTP status of 400 through 499
 
 [Advanced filter](https://cloud.google.com/logging/docs/view/advanced-filters):
 
-````
+````sh
 protoPayload.resource:"var=3"
 protoPayload.status >= 400 AND protoPayload.status <= 405
 
@@ -62,7 +62,7 @@ severity>=WARNING
 
 Go:
 
-````go
+````golang
 "cloud.google.com/go/logging"
 
 l, err := logging.NewClient(ctx, "thisismonitoring")

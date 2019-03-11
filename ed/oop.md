@@ -1,6 +1,8 @@
 OOP
 -
 
+Since 1950. Released in 1967.
+
 Encapsulation - hide the values or state of a structured data object inside a class.
 
 Abstraction - is the development of classes, objects, types
