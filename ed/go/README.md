@@ -399,6 +399,8 @@ runtime will detach the thread from the P (and from M) and create a new thread
 (if idle thread doesn’t exist) to service that processor.
 When a system calls resumes, the goroutine is placed back.
 
+Execution stack for goroutine = 2Kb.
+
 ‼️ Do not communicate by sharing memory. Instead, share memory by communicating.
 <br>⚠️ Do not use global variables or shared memory, they make your code unsafe for running concurrently.
 
