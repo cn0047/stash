@@ -192,8 +192,15 @@ docker run -it --rm -v $PWD/ed/go/examples/web.three.tiny:/app -e GOPATH='/app' 
   -p 8080:8080 \
   cn007b/go sh -c 'cd $GOPATH && ./bin/app'
 
+# or
+GOPATH=$PWD/ed/go/examples/web.three.tiny
+cd $GOPATH
+go run src/app/main.go
+go install src/app
+go build src/app
+
 # check
-curl http://localhost:8080/v1/file-info/id/7
+curl http://localhost:8080/v1/id/7
 
 #### GO Echo
 
@@ -225,11 +232,17 @@ curl -i -XGET 'http://localhost:8081/products/iphone'
 ````
 docker run -it --rm -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go.gin/examples/one' \
   xgo sh -c 'cd $GOPATH && go get github.com/gin-gonic/gin'
+# or
+docker run -it --rm -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go.gin/examples/one' \
+  xgo sh -c 'cd $GOPATH && go get ./...'
 
 docker run -it --rm -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go.gin/examples/one' \
   xgo sh -c 'cd $GOPATH && go run src/one/main.go'
+# or inside container with /bin/bash
+# go get ./...
+# go install ./...
 
-# curl localhost:8080/v1/file-info/id/7
+# curl localhost:8080/v1/id/7
 ````
 
 #### API-Gateway

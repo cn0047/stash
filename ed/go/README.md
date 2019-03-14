@@ -53,7 +53,7 @@ go golint ./...          # Check code
 go install               # Install packages and dependencies
 go list                  # List packages
 go list ...
-go run --work ed/go/examples/whatever/hw.go # see the location of thetemporary exec file
+go run --work ed/go/examples/whatever/hw.go # see the location of temporary exec file
 go run -race ed/go/examples/whatever/hw.go
 go vet # examines Go coge, reports suspicious constructs (Printf with wrong arguments).
 godoc -http=:6060 -goroot=$PWD
@@ -199,6 +199,9 @@ http.Client{}.Get(URL)
 
 // w http.ResponseWriter
 w.Write([]byte("html"))
+
+// to enable http2
+err := http.ListenAndServeTLS(":443", "server.crt", "server.key", nil)
 ````
 
 Go is compiled, garbage-collected, concurrent, type-safe.

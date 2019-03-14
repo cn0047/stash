@@ -25,6 +25,12 @@ cd $GOPATH/lib ;\
   open coverage.html
 ````
 
+````
+func TestXxx() // test
+func BenchmarkXxx() // benchmark
+func ExampleXxx() // example (godoc)
+````
+
 ````golang
 import (
   "testing"
@@ -34,20 +40,21 @@ func TestX(t *testing.T) {
   })
 }
 
-t.Log("GiventheneedtotesttheSendJSONendpoint.") {
+t.Log("GivenTheNeedToTestTheSendJSONEndpoint.") {
   //code
 }
 
 t.Run("Failed to send email", func(t *testing.T) {})
 t.Errorf("Got: %v, want: %v", a, e)
 t.Skip("Skipping...")
+t.Fail() // mark test as failed
 b.RunParallel(func(pb *testing.PB) {})
 ````
 
 ## Bench
 
 ````golang
-b.ResetTimer()
+b.ResetTimer() // to reset time and start benchmark (to skip preparations steps)
 ````
 
 Bench output:
