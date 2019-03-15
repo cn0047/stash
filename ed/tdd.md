@@ -9,6 +9,8 @@ Mock    - (->createMock()) an object on which you set expectations.
 Fixture - is the fixed state that exists at the start of a test.
 ````
 
+Test must be written in format: Arrange - Act - Assert.
+
 Better to use stubbing widely for large-scale components and subsystems,
 but less for the components at the programming language level,
 at this level, we generally prefer mocking.

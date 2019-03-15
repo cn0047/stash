@@ -13,6 +13,7 @@ go test -v
 go test -cover
 go test -race
 go test -json
+go test -timeout 2s
 
 goapp test -v transactional/users/service -run TestGetServiceAccountsForAdmin
 
@@ -48,7 +49,10 @@ t.Run("Failed to send email", func(t *testing.T) {})
 t.Errorf("Got: %v, want: %v", a, e)
 t.Skip("Skipping...")
 t.Fail() // mark test as failed
+t.FailNow() // mark test as failed and stop execution test further
+t.Fatal() // like t.FailNow()
 b.RunParallel(func(pb *testing.PB) {})
+if testing.Short() { // go test -short }
 ````
 
 ## Bench
