@@ -9,6 +9,8 @@ Security
 [check site](https://observatory.mozilla.org/)
 [check headers](https://securityheaders.com)
 
+Remove `X-Powered-By` header.
+
 #### Browser security
 
 ````

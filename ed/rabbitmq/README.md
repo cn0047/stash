@@ -6,7 +6,7 @@ RabbitMQ
 ````
 erl -sname test
 ````
-````
+````sh
 sudo service rabbitmq-server status
 
 sudo rabbitmqctl status
@@ -106,7 +106,7 @@ to download the current copy of the cluster’s metadata.
 
 ## Rabbitmq management pugin
 
-````
+````sh
 sudo /usr/lib/rabbitmq/bin/rabbitmq-plugins list
 sudo /usr/lib/rabbitmq/bin/rabbitmq-plugins enable rabbitmq_management
 sudo /usr/sbin/rabbitmqctl stop

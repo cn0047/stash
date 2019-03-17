@@ -48,6 +48,8 @@ b.RunParallel(func(pb *testing.PB) {})
 
 ````golang
 b.ResetTimer()
+b.SetParallelism() // sets the number of goroutines used by RunParallel
+b.ReportAllocs() // enables malloc statistics
 ````
 
 Bench output:
