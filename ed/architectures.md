@@ -6,6 +6,19 @@ dispatcher
 processor
 worker
 
+## Load Balancer
+
+* Service Discovery.
+  When new service starts it must inform LB that it's up and running and what it can do.
+
+* Service Termination.
+  Shutdown gracefully - service informs LB that it's gonna stop,
+  so LB aware that service no more available.
+
+* Heartbeat Checks.
+  Needed to check service's health: LB asks service: "are you here",
+  if all ok - service responds: "I'm ok".
+
 ## Back End
 
 URL routing should be decoupled from the controllers

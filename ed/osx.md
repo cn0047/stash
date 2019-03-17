@@ -7,7 +7,7 @@ The default shell in Mac OS X is the Bourne-again shell.
 `monosnap` tool for screenshots.
 `GIPHY` tool to convert video into gif.
 
-````
+````sh
 man grep
 
 # open fonts directory
@@ -23,7 +23,7 @@ sysctl -n hw.ncpu
 
 ## HotKeys
 
-````
+````sh
 Option = Alt
 
 Control-Shift-Power # Lock screen
@@ -38,13 +38,13 @@ Shift–N # Next in youtube
 Shift–P # Prev in youtube
 ````
 
-````
+````sh
 Command-H: Hide
 Command-M: Minimize
 Command-Option-W: Close all windows at once
 ````
 
-````
+````sh
 Option-Del  # Del word
 Control-K   # Del row
 Command-Del # Del to home
