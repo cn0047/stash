@@ -29,7 +29,7 @@ innodb_flush_log_at_trx_commit  = 0
 
 max_connections             = 136
 
-    query_cache_size            = 0
+query_cache_size            = 0
 
 slow_query_log              = /var/log/mysql/mysql-slow.log
 long_query_time             = 1
