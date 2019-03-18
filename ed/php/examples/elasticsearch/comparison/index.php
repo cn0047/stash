@@ -7,6 +7,7 @@
  * This is a simple example which provides different options
  * how to receive data from ElasticSearch into PHP.
  * In this test, we have simple `type` inside ElasticSearch `index` which contains 1K records,
+ * @see https://github.com/cn007b/my/blob/master/ed/php/examples/elasticsearch/comparison
  * @see https://github.com/cn007b/my/blob/master/ed/php/examples/elasticsearch/comparison/import.sh
  * I've used PHP from official docker container - php:7.1-cli;
  * Composer from - composer:php7;
