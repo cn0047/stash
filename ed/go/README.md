@@ -45,17 +45,23 @@ go build                 # Compiles and installs packages and dependencies
 go build -race ./example #
 go build -gcflags -S z.go # assembly output
 go build -o newname
+go clean -r              # clean unneeded files
 go env
+go env GOOS
+go env -json
 go env GOPATH
 go fmt ./...             # Format code
 go get ./...             # Install all project dependencies
 go golint ./...          # Check code
 go install               # Install packages and dependencies
 go list                  # List packages
+go list -json -f {{.Deps}} net/http
+go list -e -json -f {{.Deps}} products/service/scraper
 go list ...
 go run --work ed/go/examples/whatever/hw.go # see the location of temporary exec file
 go run -race ed/go/examples/whatever/hw.go
 go vet # examines Go coge, reports suspicious constructs (Printf with wrong arguments).
+go bug # creates
 godoc -http=:6060 -goroot=$PWD
 ````
 

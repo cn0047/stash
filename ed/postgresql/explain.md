@@ -22,7 +22,7 @@ In output:
 
 Stats about index usage:
 
-````
+````sql
 SELECT relpages AS 'Disk page read', reltuples AS 'Rows scanned'
 FROM pg_class WHERE relname = 'filmTable';
 ````

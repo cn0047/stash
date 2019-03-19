@@ -16,8 +16,8 @@ func main() {
 
   select {
   case v := <-ch:
-      fmt.Println("received result:", v)
+    fmt.Println("received result:", v)
   case <-timeout:
-      fmt.Println("timeout")
+    fmt.Println("timeout")
   }
 }
