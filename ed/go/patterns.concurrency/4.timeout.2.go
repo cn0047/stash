@@ -19,5 +19,8 @@ func main() {
     fmt.Println("received result:", v)
   case <-timeout:
     fmt.Println("timeout")
+    // For non-blocking behaviour use:
+    // default:
+    //   fmt.Println("nothing")
   }
 }

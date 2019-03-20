@@ -7,7 +7,7 @@ type Person struct {
 	Age  int
 }
 
-func (p Person) String() string {
+func (p Person) String() string { // (magic)
 	return fmt.Sprintf("\n%v (%v years)", p.Name, p.Age)
 }
 

@@ -1,8 +1,10 @@
 package main
 
-import "time"
-import "fmt"
-import "runtime"
+import (
+	"fmt"
+	"runtime"
+	"time"
+)
 
 func main() {
 	runtime.GOMAXPROCS(1)

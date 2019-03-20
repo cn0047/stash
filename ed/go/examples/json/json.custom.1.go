@@ -8,6 +8,7 @@ import (
 
 type Person string
 
+// (magic)
 func (p *Person) UnmarshalJSON(b []byte) error {
 	fmt.Printf("<<<MAGIC: p: %+v, b: %+v.\n", string(*p), string(b))
 

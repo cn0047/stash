@@ -16,6 +16,7 @@
     ],
     "match_brackets_angle": true,
     "open_files_in_new_window": false,
+    "show_definitions": true,
     "rulers":
     [
         1024,

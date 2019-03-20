@@ -63,17 +63,9 @@ go run -race ed/go/examples/whatever/hw.go
 go vet # examines Go coge, reports suspicious constructs (Printf with wrong arguments).
 go bug # creates
 godoc -http=:6060 -goroot=$PWD
-````
-
-````bash
-# Fix finds Go programs that use old APIs and rewrites them to use newer ones
-go tool fix
-
-# Performs precise type-safe renaming of identifiers
-gorename
-
-# moves go packages, updating import declarations
-gomvpkg
+go tool fix # finds Go programs that use old APIs and rewrites them to use newer ones
+gorename # Performs precise type-safe renaming of identifiers
+gomvpkg # moves go packages, updating import declarations
 ````
 
 ````golang
@@ -152,7 +144,8 @@ switch t := areaIntf.(type) {
     case float32:
         fmt.Printf(“Type float32 with value %v\n”, t)
     case nil:
-        fmt.Println(“nil value: nothing to check?”) default: fmt.Printf(“Unexpected type %T”, t)
+        fmt.Println(“nil value: nothing to check?”)
+    default: fmt.Printf(“Unexpected type %T”, t)
 }
 
 // non-struct type
@@ -218,7 +211,7 @@ A workspace is a directory hierarchy with three directories at its root:
 * pkg (package objects)
 * src
 
-Put code into `internal` dir to make it private.
+Put code into `internal` dir to make it private (magic).
 
 Sentinel error -  custom error value
 (standard library: sql.ErrNoRows, io.EOF, etc).
@@ -244,7 +237,7 @@ Other types:
 * Function
 * Interface
 * Struct
-* Pointer (passes by ref)
+* Pointer (*passes by ref*)
 
 Ref variables stores in the heap, which is garbage collected
 and which is a much larger memory space than the stack.
@@ -256,10 +249,7 @@ and returns its address (pointer).
 and it returns an initialized (not zeroed) value of type T (not `*T`).
 The reason for the distinction with new keyword - is that these three types represent,
 under the covers, references to data structures that must be initialized before use.
-<br>A slice, for example, is a three-item descriptor
-containing a pointer to the data (inside an array), the length, and the capacity,
-and until those items are initialized, the slice is nil.
-
+<br>
 `make([]int, 0, 10) // slice of length 0 and capacity 10.`
 
 **defer** pushes a function call in list,
@@ -272,8 +262,6 @@ Example: `defer file.Close()`.
 
 **range** (`for name, value := range m {}`) over map - there is no guarantee
 regarding the order of hash map.
-
-**OOP** in go represented by **structures**. Inheritance in go represented by composition.
 
 **string**
 String it is immutable slice of bytes.
@@ -290,12 +278,14 @@ An array's length is part of its type, so arrays cannot be resized.
 
 **slice**
 Slice is a descriptor of an array segment.
-It consists of a pointer to the array, the length of the segment, and its capacity.
+It consists of a pointer to the array (pointer to the data inside an array),
+the length of the segment, and its capacity
+(three-item descriptor, and until those items are initialized, the slice is nil).
 The length is the number of elements referred to by the slice.
 The capacity is the number of elements in the underlying array.
 <br>The zero value of a slice is nil.
 The len and cap functions will both return 0 for a nil slice.
-
+<br>
 `make` allocates an array and returns a slice that refers to that array.
 
 Slicing does not copy the slice's data.
@@ -311,30 +301,24 @@ and copy the contents of the original slice into it.
 
 The **append** function appends the elements x to the end of the slice s,
 and grows the slice if a greater capacity is needed.
-
+<br>
 Grows slice by doubling it’s capacity only up to 1024.
 After that it will use so-called `memory size classes` to guarantee
 that growth will be no more than ~12.5%
-
+<br>
 Use append only to append new value to given slice, not to create new slice
 (never call append without assigning back to the same variable)!
 
-**struct** is a collection of fields.
+**OOP** in go represented by **structures**. Inheritance in go represented by composition.
 
+**struct** is a collection of fields.
 ````
-OOP ⇒ class ⇒ instance ⇒ property
-Go  ⇒ struct ⇒ object ⇒ field
+OOP ⇒ class  ⇒ instance ⇒ property
+Go  ⇒ struct ⇒ object   ⇒ field
 ````
 
 **pointer**
-
 [Pointers make stack allocation mostly infeasible](https://segment.com/blog/allocation-efficiency-in-high-performance-go-services/).
-
-**runtime**
-* memory allocation
-* channel creation
-* goroutines creation (and control goroutines)
-* garbage collection
 
 #### Interface
 
@@ -356,6 +340,12 @@ type Logger interface {
 ````
 
 #### Runtime
+
+runtime:
+* memory allocation
+* channel creation
+* goroutines creation (and control goroutines)
+* garbage collection
 
 Runtime manages: scheduling, garbage collection, and the runtime environment for goroutines.
 
@@ -503,7 +493,7 @@ The Go garbage collector occasionally has to stop the world to complete the coll
 The stop the world task will take no more than 10 milliseconds
 out of every 50 milliseconds of execution time.
 
-`GCPercent` - adjusts how much CPU you want to use and how much memory you want to use.
+`GCPercent (runtime.SetGCPercent)` - adjusts how much CPU you want to use and how much memory you want to use.
 The default is 100 which means that half the heap is dedicated to live memory and half the heap
 is dedicated to allocation.
 
