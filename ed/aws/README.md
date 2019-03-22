@@ -36,15 +36,30 @@ aws s3api list-objects --bucket w3.stage.ziipr.bucket --query "[sum(Contents[].S
 ````
 sudo service awslogs stop
 ````
-````
+````sh
 aws cloudwatch put-metric-data --namespace 'prod.supervisor' --metric-name 'instance1.document' --value 1
 
 aws logs put-log-events --log-group-name cli_prod --log-stream-name x --log-events timestamp=`date +%s`,message=000
+
+ln='/ecs/legacyfiles' # log name
+st=1553270791 # start time
+st=`date +%s`
+p='cn911v2' # filter pattern
+# get logs
+aws logs filter-log-events \
+    --log-group-name $ln \
+    --start-time $st \
+    --filter-pattern $p \
+    --output json | jq '.events'
 ````
 
-#### SNS (Simple Notification Service)
+# SNS (Simple Notification Service)
+
+Use to push message.
 
 # SQS (Simple Queue Service)
+
+Use to pull message.
 
 # CodeDeploy
 
@@ -83,4 +98,10 @@ aws ecr get-login --region us-east-1 --no-include-email
 aws ecr create-repository --region us-east-1 --repository-name rName
 
 aws ecr describe-images --region us-east-1 --repository-name legacy-files-dev
+````
+
+# Elastic Beanstalk
+
+````
+echo "web: application" > Procfile
 ````

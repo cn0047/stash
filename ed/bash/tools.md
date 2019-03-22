@@ -517,6 +517,9 @@ curl -u login:pass http://base-http-auth.com/
 // user == 'admin' && pass == 'password'
 curl http://localhost:3000 -H 'Authorization: Basic YWRtaW46cGFzc3dvcmQ='
 
+# download file
+curl $host -o $out
+
 # upload file
 curl http://localhost:8000 -F "file=@/home/kovpak/Downloads/download.jpg"
 curl http://localhost:8000 -H "Content-Type: multipart/form-data" -F "file=@/Users/k/f.txt" -F "msg=MyFile"
