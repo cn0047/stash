@@ -60,6 +60,9 @@ EBS provides persistent block storage volumes for use with Amazon EC2 instances 
 
 #### VPC (Virtual Private Cloud)
 
-#### ELB (Elastic Load Balancing)
+#### LB (Load Balancing)
+
+* ELB (Elastic Load Balancing)
+* ALB (Application Load Balancing)
 
 #### ASG (Auto Scaling Group)

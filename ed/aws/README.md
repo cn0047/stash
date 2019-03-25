@@ -38,7 +38,11 @@ sudo service awslogs stop
 ````
 ````sh
 aws cloudwatch put-metric-data --namespace 'prod.supervisor' --metric-name 'instance1.document' --value 1
+````
 
+Logs:
+
+````sh
 aws logs put-log-events --log-group-name cli_prod --log-stream-name x --log-events timestamp=`date +%s`,message=000
 
 ln='/ecs/legacyfiles' # log name
@@ -53,6 +57,17 @@ aws logs filter-log-events \
     --output json | jq '.events'
 ````
 
+Logs insights:
+
+````sh
+filter @message like /cn911w2/
+| fields @timestamp, @message
+| sort @timestamp desc
+| limit 20
+
+stats count(*)
+````
+
 # SNS (Simple Notification Service)
 
 Use to push message.
@@ -64,6 +79,12 @@ Use to pull message.
 # CodeDeploy
 
 # CloudFront (CDN)
+
+````sh
+aws cloudfront list-distributions
+
+aws cloudfront get-distribution --id $id
+````
 
 # (RDS) Relational Database Service
 

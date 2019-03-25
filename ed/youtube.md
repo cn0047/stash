@@ -11,4 +11,6 @@ Channels:
 
 * https://www.youtube.com/user/googlecloudplatform/playlists
 
-Img for video: 1920x1080px
+Img for video: 1920x1080px!
+Video file name **MUST** contains keywords!
+Link to video: https://youtu.be/EFqj53mXLKY where EFqj53mXLKY - video ID.

@@ -83,6 +83,7 @@ brew install nginx
 brew install mongodb
 brew install postgresql
 brew install mysql
+brew install jmeter
 
 brew remove nginx
 brew update && brew cleanup
