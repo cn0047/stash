@@ -76,6 +76,9 @@ Do our objects do the right thing, are they convenient to work with?
 The aim of a unit test is to show that a single part of the application does what the programmer intends it to.
 Unit tests MUST be fast.
 
+Unit of software in php - class.
+Unit of software in go - package.
+
 ## Testing Anti-Patterns
 
 * [Having unit tests without integration tests](https://monosnap.com/file/ctZy5mvYR76aq5QTEI71TuBCNtYanK).

@@ -474,7 +474,7 @@ mail -s 'subject' mail@com.com < fileName
 uuencode card.jpg card.jpg | mail mail@com.com
 ````
 
-#### grep
+#### grep (Global Regular Expression Print)
 
 ````sh
 -z, --null-data             строки разделяются байтом с нулевым значением, а не символом конца строки
