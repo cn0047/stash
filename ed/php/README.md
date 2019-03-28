@@ -11,6 +11,9 @@ PHP - is high-level (not assembler), dynamic (behavior determines in runtime)
 weakly typed, object-oriented
 and interpreted server-side scripting language.
 
+PEAR - PHP Extension and Application Repository.
+PECL - Php extension community library.
+
 [doc](http://php.net/)
 [developer](http://www.phpdeveloper.org)
 [git](http://git.php.net)

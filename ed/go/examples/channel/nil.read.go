@@ -2,13 +2,11 @@ package main
 
 import (
 	"fmt"
-	"time"
 )
 
 func main() {
 	go f(nil)
-	time.Sleep(time.Second * 5)
-	fmt.Println("exit")
+	fmt.Scanln()
 }
 
 func f(ch chan int) {
@@ -19,5 +17,4 @@ func f(ch chan int) {
 
 /*
 block
-exit
 */

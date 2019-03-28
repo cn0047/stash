@@ -270,6 +270,17 @@ Go strings aren’t always UTF-8, only string literals are UTF-8.
 String values can contain arbitrary bytes
 (string literals always contain UTF-8 text as long as they have no byte-level escapes).
 
+**map**
+
+`make(map[int]int, 100)`
+the initial capacity does not bound its size, it's only a hint.
+The goal to use this capacity - is to not resize map to often.
+If you know that you will store 100 entries in map,
+it's better to allocate map with such (or greater) capacity.
+
+**delete**
+Func to delete element from map.
+
 **array**
 An array's size is fixed.
 An array variable denotes the entire array; it is not a pointer to the first array element, etc.
