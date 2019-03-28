@@ -33,7 +33,7 @@ go list -deps -f '{{with .Module}}{{.Path}} {{.Version}}{{end}}' ./... | sort -u
 
 go get foo@v1.2.3 # get specific versions of pkg
 
-go mod tidy # prune any no-longer-needed dependencies and add any dependencies needed
+go mod tidy # prune any no-longer-needed dependencies (and add any dependencies needed)
 go mod why -m <module>
 go mod graph
 ````

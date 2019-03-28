@@ -24,3 +24,7 @@ nslookup github.com
 
 Network address translation (NAT) - is a method of remapping one IP address space into another
 by modifying network address information in the IP header.
+
+## Virtual Machine
+
+Virtual Machine may have max 4096 ports.
