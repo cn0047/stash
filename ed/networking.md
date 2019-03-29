@@ -2,8 +2,7 @@ Networking
 -
 
 IP - Internet Protocol.
-
-?DHCP Server
+DHCP - Dynamic Host Configuration Protocol.
 
 ````
 | Client         | Name Server     | Root NS   | .info NS      | srv.info NS      |

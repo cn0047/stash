@@ -1,7 +1,9 @@
 jmeter
 -
 
-````
+jmeter written in java.
+
+````sh
 # random hash wiht length 10 chars
 ${__javaScript(Math.random().toString(36).toUpperCase().substring(16))}
 
@@ -10,7 +12,7 @@ ${__P('host')}
 ${__P('port', 3000)}
 ````
 
-````
+````sh
 jmeter -n -t tests/jmeter/one.jmx \
   -Jjmeter.save.saveservice.output_format=xml \
   -Jjmeter.save.saveservice.samplerData=true \

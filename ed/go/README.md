@@ -162,6 +162,11 @@ logger.Println("This is a regular message.")
 // Verify statically that *Transport implements http.RoundTripper.
 var _ http.RoundTripper = (*Transport)(nil)
 
+// check that obj has method
+if correctobj, ok := obj.(interface{methodName()}); ok { 
+  correctobj.methodName() 
+} 
+
 // to safe update variable from goroutines
 Import "sync/atomic"
 atomic.AddInt64(&counter, 1)
@@ -239,6 +244,23 @@ Other types:
 * Struct
 * Pointer (*passes by ref*)
 
+Comparable types:
+
+* bool
+* string
+* int
+* float
+* complex
+
+* array (if values of the array element type are comparable)
+- slice (NOT COMPARABLE)
+- map (NOT COMPARABLE)
+* channel (if they created by the same call to `make` or nil)
+- func (NOT COMPARABLE)
+* interface (if they have identical dynamic types and equal dynamic values or nil)
+* struct (if all their fields are comparable)
+* pointer (if they point to the same var or nil)
+
 Ref variables stores in the heap, which is garbage collected
 and which is a much larger memory space than the stack.
 
@@ -271,6 +293,8 @@ String values can contain arbitrary bytes
 (string literals always contain UTF-8 text as long as they have no byte-level escapes).
 
 **map**
+
+`Key` may be any type that is comparable and `Value` may be any type at all.
 
 `make(map[int]int, 100)`
 the initial capacity does not bound its size, it's only a hint.

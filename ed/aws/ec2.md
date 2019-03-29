@@ -3,7 +3,8 @@ EC2 (Elastic Compute Cloud)
 
 Default OS is Amazon Linux.
 
-[Types](https://aws.amazon.com/ec2/instance-types/).
+[types](https://aws.amazon.com/ec2/instance-types/)
+[pricing](https://aws.amazon.com/ec2/pricing/)
 
 Launch instance:
 
@@ -51,6 +52,14 @@ One php session storage per several instances:
 ````
 load balancer -> description -> port configuration = Stickiness: LBCookieStickinessPolicy, expirationPeriod='1800'
 ````
+
+Auto Scaling:
+
+Min     - AWS ensures that your group never goes below this size.
+Max     - AWS ensures that your group never goes above this size.
+Desired - AWS ensures that your group has this many instances.
+
+Health check grace period - time to not health-check instance during launching instance.
 
 #### AMI (Amazon Machine Image)
 

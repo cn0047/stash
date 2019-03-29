@@ -4,6 +4,9 @@ v1.0
 
 [jsonapi](http://jsonapi.org/)
 
+JSON API is a format that works with HTTP.
+It delineates how clients should request data from a server, and how the server should respond.
+
 JSON API requires use of the JSON API media type (`application/vnd.api+json`) for exchanging data.
 
 #### Document Structure
@@ -78,7 +81,7 @@ POST /photos HTTP/1.1
 
 The request SHOULD return a status 202 Accepted with a link in the Content-Location header.
 
-````
+````sh
 HTTP/1.1 202 Accepted
 Content-Type: application/vnd.api+json
 Content-Location: https://example.com/photos/queue-jobs/5234
@@ -106,3 +109,33 @@ Accept: application/vnd.api+json
 
 Requests for still-pending jobs SHOULD return a status 200 OK,
 optionally, the server can return a `Retry-After` header.
+
+#### Relationships
+
+Relationships may be to-one or to-many.
+`null` for empty to-one relationships.
+an empty array (`[]`) for empty to-many relationships.
+
+`links, data, meta`
+
+````js
+{
+  "type": "articles",
+  "id": "1",
+  "attributes": {
+    "title": "Rails is Omakase"
+  },
+  "relationships": {
+    "author": {
+      "links": {
+        "self": "http://example.com/articles/1/relationships/author",
+        "related": "http://example.com/articles/1/author"
+      },
+      "data": { "type": "people", "id": "9" }
+    }
+  },
+  "links": {
+    "self": "http://example.com/articles/1"
+  }
+}
+````

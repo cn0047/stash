@@ -33,3 +33,5 @@ Best Practices
 * Use `crypto/rand` to generate keys.
 
 * When you spawn goroutines, make it clear when - or whether - they exit.
+
+* Name function's return variables.

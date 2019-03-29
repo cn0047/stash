@@ -28,7 +28,7 @@ aws s3 cp /home/kovpak/Downloads/images.jpg s3://w3.stage.ziipr.bucket/test/x.jp
 aws s3 ls s3://bucket/img.png
 
 # size of bucket and count of elements in bucket
-aws s3api list-objects --bucket w3.stage.ziipr.bucket --query "[sum(Contents[].Size), length(Contents[])]"
+aws s3api list-objects --bucket $bkt --query "[sum(Contents[].Size), length(Contents[])]"
 ````
 
 # CloudWatch
@@ -89,6 +89,8 @@ aws cloudfront get-distribution --id $id
 # (RDS) Relational Database Service
 
 # (ECS) Elastic Container Service
+
+[fargate pricing](https://aws.amazon.com/fargate/pricing/)
 
 ````sh
 aws ecs list-clusters

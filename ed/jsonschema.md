@@ -4,7 +4,7 @@ JSON-Schema
 https://spacetelescope.github.io/understanding-json-schema/
 https://github.com/epoberezkin/ajv-keywords
 
-````
+````js
 { "type": "string" }
 { "type": "array", "uniqueItems": true }
 { "type": "string", "enum": ["red", "amber", "green"] }
@@ -19,7 +19,7 @@ https://github.com/epoberezkin/ajv-keywords
 { "not": { "type": "string" } }
 ````
 
-````
+````js
 # dependencies
 {
   "type": "object",
