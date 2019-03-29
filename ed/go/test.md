@@ -4,6 +4,8 @@ Test
 ## Test
 
 ````sh
+testdata # directory which is ignored by go
+
 # to get more test info
 go test -gcflags
 go build -gcflags '-m'
@@ -18,6 +20,8 @@ go test -timeout 2s
 goapp test -v transactional/users/service -run TestGetServiceAccountsForAdmin
 
 # coverage
+go test -coverpkg mylib, fmt mylib
+# example
 GOPATH=$PWD/ed/go/examples/install
 cd $GOPATH/lib ;\
   go test -v ;\
