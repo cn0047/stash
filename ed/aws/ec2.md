@@ -6,6 +6,10 @@ Default OS is Amazon Linux.
 [types](https://aws.amazon.com/ec2/instance-types/)
 [pricing](https://aws.amazon.com/ec2/pricing/)
 
+Users (for ssh):
+* ec2-user.
+* ubuntu for AMI with ubuntu.
+
 Launch instance:
 
 On step 3: At `Advanced Details` in `User data` it is possible to write bash, like:

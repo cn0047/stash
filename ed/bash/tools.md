@@ -355,14 +355,20 @@ sudo ssh-add ~/.ssh/id_rsa
 
 ssh user@server.com
 
-ssh -i key -N -L 9229:127.0.0.1:9229 root@server
+ssh -i $key -N -L 9229:127.0.0.1:9229 root@server
 # -L local_socket:remote_socket
 
-scp -rp user@host:~/dir/ ~/dir/
+scp -rp -i $key user@host:~/dir/ ~/dir/
+
+# get key's fingerprint
+ssh-keygen -E md5 -lf keyFile.pem
+
+# for AWS EC2
+chmod 400 key.pem
 ````
 
 `vim ~/.ssh/config`
-````
+````sh
 Host ec2
     Hostname ec2-52-211-26-56.eu-west-1.compute.amazonaws.com
     User ec2-user

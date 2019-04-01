@@ -98,11 +98,11 @@ Copy container manually:
 
 ````sh
 # on machine 1
-docker commit {CONTEINER_ID} new_name
-docker save -o new_name.dump.tar new_name
+docker commit {CONTEINER_ID} $imgName
+docker save -o img.dump.tar $imgName
 
 # on machine 2
-docker load -i new_name.dump.tar
+docker load -i img.dump.tar
 ````
 
 ## Dockerfile

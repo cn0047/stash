@@ -113,15 +113,18 @@ Kinds:
 ````sh
 kind: ConfigMap
 kind: DaemonSet
+kind: Deployment
 kind: HorizontalPodAutoscaler
 kind: Ingress
 kind: Job
 kind: LimitRange
 kind: NetworkPolicy
 kind: PersistentVolume
+kind: Pod
 kind: ReplicationController
 kind: ResourceQuota
 kind: Secret
+kind: Service
 kind: ServiceAccount
 kind: StatefulSet
 kind: StorageClass
@@ -158,6 +161,8 @@ KOps stands for Kubernetes operations (for AWS).
 
 #### Node (minion).
 
+A node is a worker machine in k8s, previously known as a minion.
+
 `/spec /healthz /pods`
 CONTAINS the services necessary to run pods and is managed by the master components.
 
@@ -167,10 +172,6 @@ Manifest file - describe desired state.
 
 #### Pod
 
-````yaml
-kind: Pod
-````
-
 Pod - like container in docker.
 Pod is the smallest deployable unit in Kubernetes.
 It can contain one or more containers.
@@ -179,10 +180,6 @@ Pod is also designed as mortal.
 Containers in pod shares same localhost.
 
 #### Service - is LB for pods.
-
-````yaml
-kind: Service
-````
 
 Types:
 
@@ -204,8 +201,3 @@ Types:
 Deployment is the best primitive to manage and deploy our software
 in Kubernetes. It supports gracefully deploying, rolling updating,
 and rolling back pods and ReplicaSets.
-
-````yaml
-apiVersion: extensions/v1beta1
-kind: Deployment
-````
