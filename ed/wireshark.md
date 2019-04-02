@@ -9,7 +9,7 @@ Filter:
 
 `frame contains pluralsight.com`
 
-````
+````sh
 env SSLKEYLOGFILE='/path/to/sslkey.log'
 # and specify this file in Preferences -> Protocols -> SSL
 ````
