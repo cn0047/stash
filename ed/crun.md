@@ -6,7 +6,7 @@ crun
 cat /etc/cron.d/
 ````
 
-````
+````sh
 SHELL=/bin/bash
 PATH=/bin:/usr/bin:/usr/local/bin
 CRUN_REMOTE_HOST=Host

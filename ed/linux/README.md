@@ -29,8 +29,7 @@ then it is silently truncated to that value.
 The default value in this file is 128.
 
 ````sh
-/dev/null                               # hide output
-/dev/null                               # stream
+/dev/null                               # stream, hide output
 /dev/stderr                             # stream 2
 /dev/stdin                              # stream 0
 /dev/stdout                             # stream 1
