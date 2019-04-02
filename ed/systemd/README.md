@@ -1,6 +1,8 @@
 Systemd
 -
 
+Systemd is a system management daemon.
+
 Place bin file in `/home/k/myapp`
 run `vim /lib/systemd/system/myapp.service`.
 
