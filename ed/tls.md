@@ -1,4 +1,4 @@
-Transport Layer Security (TLS)
+TLS (Transport Layer Security)
 -
 
 Use TLSv1.1 or TLSv1.2 (TLSv1.0 is vulnerable).
