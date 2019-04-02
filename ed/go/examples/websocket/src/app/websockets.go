@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/http"
 
@@ -12,6 +13,10 @@ var upgrader = websocket.Upgrader{
 	WriteBufferSize: 1024,
 }
 
+type MyStruct struct {
+	MyData string `json:"myData"`
+}
+
 func main() {
 	http.HandleFunc("/echo", func(w http.ResponseWriter, r *http.Request) {
 		conn, _ := upgrader.Upgrade(w, r, nil) // error ignored for sake of simplicity
@@ -20,15 +25,22 @@ func main() {
 			// Read message from browser
 			msgType, msg, err := conn.ReadMessage()
 			if err != nil {
-				return
+				panic(err)
 			}
 
 			// Print the message to the console
-			fmt.Printf("%s sent: %s\n", conn.RemoteAddr(), string(msg))
+			fmt.Printf("got from: %v; type: %d; msg: %s\n", conn.RemoteAddr(), msgType, msg)
+
+			ms := MyStruct{MyData: string(msg)}
+			d, err := json.Marshal(ms)
+			if err != nil {
+				panic(err)
+			}
 
 			// Write message back to browser
-			if err = conn.WriteMessage(msgType, msg); err != nil {
-				return
+			err = conn.WriteMessage(websocket.TextMessage, d)
+			if err != nil {
+				panic(err)
 			}
 		}
 	})
