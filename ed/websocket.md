@@ -10,6 +10,11 @@ Server replies with the same `Upgrade: WebSocket` and `Connection: Upgrade` head
 
 WebSocket enables streams of messages on top of TCP.
 
+Message Types:
+* text
+* data
+* control (ping, pong, close)
+
 Events:
 
 * onopen
@@ -26,7 +31,7 @@ API:
 
 Request:
 
-````
+````sh
 GET /wss1 HTTP/1.1
 Sec-WebSocket-Version: 13
 Sec-WebSocket-Key: oGa9MDamyL5gC8sPP1qJzA==
@@ -38,7 +43,7 @@ Host: localhost:5432
 
 Response:
 
-````
+````sh
 HTTP/1.1 101 Switching Protocols
 Upgrade: websocket
 Connection: Upgrade
