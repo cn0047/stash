@@ -27,3 +27,4 @@ curl -i -X GET "https://graph.facebook.com/v3.0/"$pageId"/instant_articles?acces
 # test post
 curl -i -X POST "https://graph.facebook.com/v3.0/"$pageId"/feed?published=false&message=An_unpublished_post&access_token="$token
 ````
+

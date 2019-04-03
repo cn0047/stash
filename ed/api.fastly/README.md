@@ -3,7 +3,7 @@ Fastly
 
 #### API
 
-````
+````sh
 export key={key}
 export serviceID={sID}
 export version={vID}

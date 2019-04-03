@@ -4,7 +4,7 @@ pm2
 PM2 is a production process manager for built-in load balancer.
 Allows keep applications alive forever, reload without downtime etc.
 
-````
+````sh
 cd ed/nodejs/examples/coursera.one && \
 node_modules/.bin/pm2 start server.4.js
 

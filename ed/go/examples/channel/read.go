@@ -11,9 +11,9 @@ func main() {
 
 func zero() {
 	ch := make(chan int, 0)
-	ch <- 7
+	ch <- 7 // all goroutines are asleep - deadlock
 	v, ok := <-ch
-	fmt.Printf("%+v, %+v \n", v, ok) // all goroutines are asleep - deadlock
+	fmt.Printf("%+v, %+v \n", v, ok)
 }
 
 func one() {
@@ -32,6 +32,6 @@ func three() {
 
 func two() {
 	var ch chan int
-	v, ok := <-ch
-	fmt.Printf("%+v, %+v \n", v, ok) // all goroutines are asleep - deadlock
+	v, ok := <-ch // all goroutines are asleep - deadlock
+	fmt.Printf("%+v, %+v \n", v, ok)
 }

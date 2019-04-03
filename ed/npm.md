@@ -16,7 +16,7 @@ npm -g i npm@latest
 ~4.13.3 # equals to 4.13.* which is same minor version
 ````
 
-````
+````sh
 npm help npm
 npm -g install connect
 npm uninstall modulename
@@ -44,7 +44,7 @@ npm prune
 npm audit fix --force
 ````
 
-````
+````sh
 npm install --only=prod
 
 # npm install -g nodemon
