@@ -33,7 +33,8 @@ docker stats
 # run an interactive container (run an image)
 # `-t` terminal
 # `-i` interactive connection
-docker run -t -i ubuntu:latest /bin/bash
+# `-P` publish all exposed ports to random ports
+docker run -P -t -i ubuntu:latest /bin/bash
 
 # run a web application
 # `-d` runs the container as daemon

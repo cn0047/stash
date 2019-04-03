@@ -3,7 +3,7 @@ EC2 (Elastic Compute Cloud)
 
 Default OS is Amazon Linux.
 
-[types](https://aws.amazon.com/ec2/instance-types/)
+[instance types](https://aws.amazon.com/ec2/instance-types/)
 [pricing](https://aws.amazon.com/ec2/pricing/)
 
 Users (for ssh):
