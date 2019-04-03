@@ -3,7 +3,7 @@ nvm
 
 #### OSX
 
-````
+````sh
 nvm ls
 nvm ls-remote
 nvm install 10.1

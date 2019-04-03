@@ -22,7 +22,7 @@ node_modules/.bin/eslint --print-config .eslintrc.json > .eslintrc
 
 package.json:
 
-````
+````js
 {
   "eslintConfig": {
     "env": {

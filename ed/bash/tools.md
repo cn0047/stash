@@ -1,6 +1,15 @@
 Linux Tools
 -
 
+#### balance
+
+balance - simple load balancer.
+
+````sh
+balance -d -f 9000 127.0.0.1:900{1,2,3} &
+curl localhost:9000
+````
+
 #### tail
 
 ````sh
@@ -109,7 +118,7 @@ sort -nk2 # sort as numbers by column 2
 
 Reads user input (prompt).
 
-````
+````sh
 # reads and prints input
 read; echo $REPLY
 read -r; echo $REPLY
@@ -208,13 +217,15 @@ echo {a..d}{1..3}
 
 #### apachebench
 
-````
+````sh
 ab -k -n 5000 -c 100 -t 2 "http://localhost"
 # Where:
 # -n   Number of requests.
 # -c   Concurrency.
 # -t   Timelimit in seconds.
 ````
+
+docker run -ti --rm cn007b/ubuntu ab -k -n 100 -c 100 -t 5 "http://10.254.254.254:8080/9"
 
 #### less
 
@@ -240,6 +251,7 @@ netstat works greedy to OS resources,
 so it makes sense to use `ss` tool.
 
 ````sh
+# ports
 netstat -anp | grep LISTEN
 
 # osx
