@@ -8,6 +8,7 @@ Tools:
 Channels:
 * https://www.youtube.com/channel/UCxX9wt5FWQUAAz4UrysqK9A
 * https://www.youtube.com/user/lcc0612/featured
+* https://www.youtube.com/user/vivekanandkhyade/
 
 * https://www.youtube.com/user/googlecloudplatform/playlists
 

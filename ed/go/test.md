@@ -4,7 +4,7 @@ Test
 ## Test
 
 ````sh
-testdata # directory which is ignored by go
+testdata # directory which is ignored by go (magic)
 
 # to get more test info
 go test -gcflags

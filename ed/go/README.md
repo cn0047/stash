@@ -100,7 +100,7 @@ fmt.Printf("Type: %T\n", myType)
 fmt.Printf("%+v", myType)
 fmt.Printf("%#v", myType)
 
-// init module
+// init pkg
 func init() {}
 
 // func as interface
@@ -163,9 +163,9 @@ logger.Println("This is a regular message.")
 var _ http.RoundTripper = (*Transport)(nil)
 
 // check that obj has method
-if correctobj, ok := obj.(interface{methodName()}); ok { 
-  correctobj.methodName() 
-} 
+if correctobj, ok := obj.(interface{methodName()}); ok {
+  correctobj.methodName()
+}
 
 // to safe update variable from goroutines
 Import "sync/atomic"
@@ -393,9 +393,6 @@ For each P (thread) we have goroutines queue.
 
 The OS schedules threads to run against processors regardless of the process they belong to.
 FYI: OS thereads expensive to start, stop, utilize.
-OS thread is just a sequence of instructions that can be executed independently by a processor.
-OS threads are lighter than the process so you can spawn a lot of them.
-Linux doesn’t distinguish between threads and processes and both are called tasks.
 <br>
 The OS schedules threads to run against physical processors
 and the Go runtime schedules goroutines to run against logical processors.

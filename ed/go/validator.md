@@ -59,7 +59,7 @@ Cross-Field Validation:
 * ltcsfield
 * ltecsfield
 
-````go
+````golang
 type User struct {
   FirstName string `validate:"required"`
   LastName  string `validate:"-"` # don't validate
@@ -71,7 +71,7 @@ validate := validator.New()
 err := validate.Struct(user)
 ````
 
-````go
+````golang
 package service
 
 import (
