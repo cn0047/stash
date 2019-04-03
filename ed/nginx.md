@@ -9,7 +9,7 @@ that continuously checks for and processes events.
 
 Nginx was created to be both a web server and a proxy server.
 
-````
+````sh
 sudo nginx -t        # check config file
 sudo nginx -s reload # reload only configs
 sudo nginx -s stop
@@ -31,7 +31,7 @@ is to include the contents of one or more files into a web page.
 ````
 
 osx:
-````
+````sh
 # config:
 /usr/local/etc/nginx/nginx.conf
 
@@ -64,7 +64,7 @@ config:
 
 http:
 
-````
+````sh
 # for: Request URI Too Large
 large_client_header_buffers 4 16k;
 
@@ -106,7 +106,7 @@ client_max_body_size 8m;
 
 server:
 
-````
+````sh
 gzip on;
 gzip_comp_level 5; # 1 low, 9 high
 
@@ -131,7 +131,7 @@ proxy_read_timeout    600;
 send_timeout          600;
 ````
 
-````
+````sh
 server {
     root /var/www/birthplace/app/web;
 }
@@ -170,7 +170,7 @@ server {
 }
 ````
 
-````
+````sh
 events {
     worker_connections 2048;
 }
@@ -197,7 +197,7 @@ http {
 
 http2:
 
-````
+````sh
 server {
     listen 443 ssl http2;
 }
@@ -205,7 +205,7 @@ server {
 
 For socket.io:
 
-````
+````sh
 upstream io_nodes {
   # Round-robin               - default;
   # least_conn                - request sends to node with least count of requests
@@ -234,7 +234,7 @@ server {
 
 PHP:
 
-````
+````sh
 server {
     server_name localhost;
     error_log /dev/stdout debug; # warn, error crit, alert, emerg
@@ -280,9 +280,9 @@ server {
 }
 ````
 
-PHP Pool:
+PHP Pool (reverse proxy):
 
-````
+````sh
 upstream backend {
         server 10.10.0.5 fail_timeout=360s max_fails=2;
         server 10.10.0.6 fail_timeout=360s max_fails=2;
@@ -300,7 +300,7 @@ server {
 
 #### HTTPS
 
-````
+````sh
 cd docker/nginx/https/
 
 openssl genrsa -des3 -out ca.orig.key 4096
@@ -342,7 +342,7 @@ docker run -it --rm -v $PWD:/app -w /app -p 3443:443 \
   '
 ````
 
-````
+````sh
 server {
     listen 443;
     server_name localhost;
