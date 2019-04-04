@@ -9,7 +9,7 @@ import (
 
 func main() {
 	p := ":8080"
-	if len(os.Args[1]) > 1 {
+	if len(os.Args) > 1 {
 		p = ":" + os.Args[1]
 	}
 
