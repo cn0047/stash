@@ -1,9 +1,6 @@
 Networking
 -
 
-IP - Internet Protocol.
-DHCP - Dynamic Host Configuration Protocol.
-
 ````
 | Client         | Name Server     | Root NS   | .info NS      | srv.info NS      |
 |                | ns1.isp.com     |           |               |                  |
@@ -19,8 +16,14 @@ DHCP - Dynamic Host Configuration Protocol.
 | <-----------------                                                              |
 ````
 
-````
+IP - Internet Protocol.
+DHCP - Dynamic Host Configuration Protocol.
+
+````sh
 nslookup github.com
+
+0.0.0.0/0 # quad-zero route, /0 - subnet mask, which specifies all networks
+::/0      # represents ipv6
 ````
 
 Network address translation (NAT) - is a method of remapping one IP address space into another

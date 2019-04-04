@@ -22,19 +22,29 @@ From cli:
 
 ````sh
 aws ec2 run-instances \
-    --image-id ami-17a3e164 \
-    --instance-type t2.medium \
-    --count 1 \
-    --security-groups ssh Ciklum web default \
-    --key-name ziipr \
-    --user-data 'echo 200' \
-    --client-token KovpakTest4 \
+  --image-id ami-17a3e164 \
+  --instance-type t2.medium \
+  --count 1 \
+  --security-groups ssh Ciklum web default \
+  --key-name ziipr \
+  --user-data 'echo 200' \
+  --client-token KovpakTest4 \
 
-    --instance-type t2.micro \
+  --instance-type t2.micro \
 
-    --iam-instance-profile Name='aws-opsworks-ec2-role' \
+  --iam-instance-profile Name='aws-opsworks-ec2-role' \
 
-    --user-data file://my_script.txt
+  --user-data file://my_script.txt
+
+aws ec2 run-instances \
+  --image-id ami-0dfe4922edac730d6 \
+  --instance-type t2.large \
+  --count 1 \
+  --subnet-id subnet-2eadd305 \
+  --associate-public-ip-address \
+  --user-data 'export XCODE=911' \
+  --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=lfp3}]'
+
 
 ````
 
@@ -42,12 +52,12 @@ Convenient information about instances:
 
 ````sh
 aws ec2 describe-instances \
---output table \
---query 'Reservations[*].Instances[*].[Tags[0].Value,PublicDnsName,ImageId,LaunchTime,State.Name]' \
---filter Name=tag:Name,Values=*prod*web*
+  --output table \
+  --query 'Reservations[*].Instances[*].[Tags[0].Value,PublicDnsName,ImageId,LaunchTime,State.Name]' \
+  --filter Name=tag:Name,Values=*prod*web*
 
---filter Name=image-id,Values=ami-17a3e164
---filter Name=dns-name,Values=ec2-52-51-65-182.eu-west-1.compute.amazonaws.com
+  --filter Name=image-id,Values=ami-17a3e164
+  --filter Name=dns-name,Values=ec2-52-51-65-182.eu-west-1.compute.amazonaws.com
 
 ````
 

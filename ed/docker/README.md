@@ -25,6 +25,9 @@ docker build -t docker-whale .
 
 docker build -t nphp https://raw.githubusercontent.com/cn007b/my/master/docker/php-nginx/Dockerfile?latest
 
+# ARG ENV in Dockerfile
+docker build --build-arg ENV=prod -f Dockerfile .
+
 # THE BEST COMMAND
 docker inspect docker-whale
 
@@ -128,7 +131,7 @@ Use [machine](https://docs.docker.com/machine) to create Docker hosts on your lo
 on your company network, in your data center,
 or on cloud providers like AWS or Digital Ocean.
 
-````
+````sh
 docker-machine version
 
 docker-machine ls
@@ -179,6 +182,7 @@ services:
     build:
       context: ./dir
       dockerfile: Dockerfile-alternate
+    image: myImg:latest
 ````
 
 ## Swarm
@@ -188,7 +192,7 @@ It turns a pool of Docker hosts into a single, virtual Docker host.
 
 Non-finished swarm:
 
-````
+````sh
 # init rabbit
 
 #
@@ -218,7 +222,7 @@ docker node ls
 
 ## Network
 
-````
+````sh
 # list these networks
 docker network ls
 
