@@ -370,6 +370,9 @@ ssh user@server.com
 ssh -i $key -N -L 9229:127.0.0.1:9229 root@server
 # -L local_socket:remote_socket
 
+# exec cmd through
+ssh -i $k ubuntu@$h "echo 200 > /tmp/x"
+
 scp -rp -i $key user@host:~/dir/ ~/dir/
 
 # get key's fingerprint

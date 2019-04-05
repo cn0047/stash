@@ -36,15 +36,34 @@ aws ec2 run-instances \
 
   --user-data file://my_script.txt
 
+# create new instance
 aws ec2 run-instances \
-  --image-id ami-0dfe4922edac730d6 \
+  --image-id ami-0ae8c6f6de834bfca \
   --instance-type t2.large \
   --count 1 \
   --subnet-id subnet-2eadd305 \
+  --iam-instance-profile Name='Kovpak-EC2' \
   --associate-public-ip-address \
-  --user-data 'export XCODE=911' \
-  --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=lfp3}]'
+  --key-name claws \
+  --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=legacy-files-prod-3x}]' \
+  --output json \
+  > ec2.json
+iId=`cat ec2.json | jq '.Instances[0].InstanceId'`
+iId=`cat ec2.json | grep InstanceId --color=none | cut -f4 -d'"'`
+# public dns name
+h=`aws ec2 describe-instances --instance-ids $iId --query 'Reservations[].Instances[].PublicDnsName'`
 
+# and add security groups to new instance
+aws ec2 modify-instance-attribute \
+  --instance-id $iId \
+  --groups sg-bc0d83db sg-af58a3d7 sg-09cebaaf7cd6c61a6
+
+aws ec2 describe-instance-status --instance-ids $iId | jq '.InstanceStatuses[0].InstanceState.Name'
+
+# add new instance to lb
+aws elbv2 register-targets \
+  --target-group-arn $arn \
+  --targets Id=$iId,Port=8080
 
 ````
 

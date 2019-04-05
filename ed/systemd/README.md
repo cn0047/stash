@@ -3,6 +3,12 @@ Systemd
 
 Systemd is a system management daemon.
 
+````sh
+systemctl status
+````
+
+#### Example
+
 Place bin file in `/home/k/myapp`
 run `vim /lib/systemd/system/myapp.service`.
 
