@@ -82,6 +82,8 @@ Transactions:
 * Two-Phase Commit Protocol.
 * Eventual consistency (put job in queue and eventually all will be done).
 
+In real world app you it's ok to have HYBRID-Microservices architecture.
+
 ## Advantages
 
 * Possibility to use different languages.
