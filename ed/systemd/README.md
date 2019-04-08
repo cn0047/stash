@@ -5,6 +5,15 @@ Systemd is a system management daemon.
 
 ````sh
 systemctl status
+systemctl list-units
+
+systemctl enable lf@1323.service
+systemctl daemon-reload
+systemctl restart lf@1323.service
+systemctl status lf@1323.service
+systemctl list-units | grep lf
+
+ls -la /etc/systemd/system/
 ````
 
 #### Example
