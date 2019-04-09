@@ -38,7 +38,7 @@ Design patterns offer a common solution for a common problem in the form of clas
     * templateMethod
     * visitor
 
-#### Creational
+## Creational
 
 **Abstract Factory** offers the interface for creating a family of related objects,
 without explicitly specifying their classes.
@@ -63,7 +63,7 @@ just instantiate prototype class and use it.
 **Singleton** - single instance.
 Singletons are bad, they create dependency between classes.
 
-#### Structural
+## Structural
 
 An **Adapter** (aka Wrapper) allows classes to work together
 that normally could not because of incompatible interfaces
@@ -88,7 +88,7 @@ by sharing as much data as possible with other similar objects.
 A **Proxy**, in its most general form,
 is a class functioning as an interface to something else.
 
-#### Behaviour
+## Behaviour
 
 **Chain of Responsibility** is a design pattern consisting of objects,
 each object contains logic and link to the next processing object in the chain,
