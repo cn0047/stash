@@ -354,6 +354,9 @@ printf "1\n 2\n 3\n" | awk 'ORS=NR?",":"\n"' # Replace new line with comma
 `pssh` tool to run ssh command on few servers simultaneously
 
 ````sh
+# get key's fingerprint
+ssh-keygen -E md5 -lf keyFile.pem
+
 locate sshd_config
 
 ssh-add ~/.ssh/id_rsa
@@ -362,8 +365,6 @@ vim /etc/ssh/sshd_config
 sshfs -o nonempty -p22 root@host:/home/host/www /home/user/web/www
 fusermount -u /home/user/web/www
 ps aux | grep -i sftp | grep -v grep
-
-sudo ssh-add ~/.ssh/id_rsa
 
 ssh user@server.com
 
@@ -375,11 +376,11 @@ ssh -i $k ubuntu@$h "echo 200 > /tmp/x"
 
 scp -rp -i $key user@host:~/dir/ ~/dir/
 
-# get key's fingerprint
-ssh-keygen -E md5 -lf keyFile.pem
-
 # for AWS EC2
 chmod 400 key.pem
+
+# add public key to remote machine
+echo 'ssh-rsa AAAAB3...3gRDw3sQ== name@mail.com' >> ~/.ssh/authorized_keys
 ````
 
 `vim ~/.ssh/config`

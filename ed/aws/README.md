@@ -114,17 +114,57 @@ aws ecs list-task-definitions --sort=DESC
 aws ecs deregister-task-definition --task-definition="td:2"
 ````
 
+Makefile:
+````sh
+build_and_push_dev:
+  docker build -t 107889011321.dkr.ecr.us-east-1.amazonaws.com/lf:dev \
+    --build-arg CLIQUE_ENV=dev -f deploy/Dockerfile .
+  eval $(shell aws ecr get-login --no-include-email --region us-east-1)
+  docker push 107889011321.dkr.ecr.us-east-1.amazonaws.com/lf:dev
+
+deploy_dev:
+  aws ecs update-service --region=us-east-1 --cluster=prod-services --service=lf-dev --task-definition=`\
+    aws ecs register-task-definition --region=us-east-1 --cli-input-json file://deploy/AWSTaskDefinition.dev.json \
+      | grep --color=never -Eo 'lf-dev:[0-9]+' \
+  `
+  aws ecs list-task-definitions --sort=DESC \
+    | grep --color=never -Eo 'lf-dev:[0-9]+' \
+    | tail -n +6 \
+    | while read v; do aws ecs deregister-task-definition --task-definition=$$v; done
+````
+
 # (ECR) Elastic Container Registry
 
 ````sh
 aws ecr get-login --region us-east-1 --no-include-email
 aws ecr create-repository --region us-east-1 --repository-name rName
 
-aws ecr describe-images --region us-east-1 --repository-name legacy-files-dev
+aws ecr describe-images --region us-east-1 --repository-name lf-dev
 ````
 
 # Elastic Beanstalk
 
 ````
 echo "web: application" > Procfile
+````
+
+# Route 53
+
+````sh
+aws route53 list-hosted-zones
+
+aws route53 change-resource-record-sets --hosted-zone-id X1HGFN9JYF0T6U --change-batch '{
+  "Comment": "s1",
+  "Changes": [
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "x.net.com",
+        "Type": "A",
+        "TTL": 300,
+        "ResourceRecords": [{"Value": "127.0.0.1"}]
+      }
+    }
+  ]
+}'
 ````

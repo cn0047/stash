@@ -116,6 +116,8 @@ git log --date=short --no-merges --shortstat
 ````sh
 git checkout --track -b master origin/master
 
+git branch develop --set-upstream-to origin/develop
+
 git show branchName
 git rev-parse HEAD
 git rev_parse branch

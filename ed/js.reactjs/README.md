@@ -52,7 +52,7 @@ Simply ask three questions about each piece of data:
 Treat `this.state` as if it were immutable.
 
 Spread Attributes:
-````
+````js
 function App2() {
   const props = {firstName: 'Ben', lastName: 'Hector'};
   return <Greeting {...props} />;
@@ -71,7 +71,7 @@ Changes in context won't cause re-render not in parent nor child.
 but trigger the normal lifecycle methods for child.
 
 Uncontrolled Component - (use a `ref`) gets values from the DOM.
-````
+````js
 return <input ref="inp" />;
 ...
 componentDidMount: () => {
@@ -88,7 +88,7 @@ Convert false, true, null, undefined to string: `<div>My JavaScript variable is 
 Most of the time, you can use `React.PureComponent` instead of writing your own `shouldComponentUpdate`.
 
 Not Mutating Data:
-````
+````js
 function updateColorMap(colormap) {
   return Object.assign({}, colormap, {right: 'blue'});
   // OR in ECS6
@@ -109,7 +109,7 @@ Unmounting:
 `componentWillUnmount`
 
 Methods prefixed with `will` are called right before something happens,
-and methods prefixed with *did* are called right after something happens.
+and methods prefixed with `did` are called right after something happens.
 
 `ReactDOM.findDOMNode(node)`.
 
@@ -118,7 +118,7 @@ All Supported HTML Attributes available
 
 [SyntheticEvent](https://facebook.github.io/react/docs/events.html#supported-events).
 
-````
+````js
 var Settings = React.createClass({
   statics: {
     willTransitionTo: function (transition, params, query, callback) {
@@ -144,7 +144,7 @@ Config.propTypes = {
 
 ## Server side rendering
 
-````
+````js
 import ReactDOMServer from 'react-dom/server';
 const = ssRender = () => {
   return ReactDOMServer.renderToString(

@@ -14,7 +14,7 @@ CREATE TABLE orders (
   order_id integer PRIMARY KEY,
   product_no integer
   REFERENCES f_products (product_no),
-  quantity integer 
+  quantity integer
 );
 
 CREATE TABLE order_items (
