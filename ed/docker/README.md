@@ -111,17 +111,26 @@ docker load -i img.dump.tar
 
 ## Dockerfile
 
-* ARG `ARG CODE_VERSION=latest`
-* FROM
-* MAINTAINER
-* RUN (`RUN ls -la /app/healthCheck.js`)
-* COPY (`COPY ./healthCheck.js /app/healthCheck.js`)
-* WORKDIR (`WORKDIR /app`)
-* ENTRYPOINT (`ENTRYPOINT service memcached start`)
-* ENV (`ENV NODE_PORT=3000`)
-* EXPOSE (`EXPOSE $NODE_PORT`)
-* VOLUME
-* CMD (`CMD ["php"]`)
+* FROM       -
+* MAINTAINER -
+* ARG        - `ARG CODE_VERSION=latest`
+* ENV        - `ENV NODE_PORT=3000`
+* ADD        - allows `<src>` to be a URL
+* COPY       - `COPY ./healthCheck.js /app/healthCheck.js`, same as `ADD`, but without the tar and remote URL handling
+* VOLUME     -
+* WORKDIR    - `WORKDIR /app`
+* RUN        - `RUN ls - la /app/healthCheck.js`
+* EXPOSE     - `EXPOSE $NODE_PORT`
+* CMD        -  provide default (default arguments) for an executing container (ENTRYPOINT),
+             - `CMD ["php"]`, in Dockerfile can be only 1 CMD instruction,
+             - if list more than one CMD then only last CMD will take effect,
+             - `CMD echo "This is a test." | wc -` # execute in shell `/bin/sh -c`,
+             - `CMD ["/usr/bin/wc","--help"]` # run without shell (preferred),
+* ENTRYPOINT - configure a container that will run as an executable,
+             - `ENTRYPOINT [ "sh", "-c", "echo $HOME" ]`
+             - `ENTRYPOINT service memcached start`
+             - `ENTRYPOINT` will be started as a subcommand of `/bin/sh -c`, which does not pass OS signals
+             - command line arguments to `docker run <image>` will be appended to `ENTRYPOINT`,
 
 Less instructions in Dockerfile - least layers in built image.
 
@@ -151,21 +160,21 @@ for defining and running multi-container Docker applications.
 ````sh
 docker-compose build serviceName
 
-# build the project and detached
-docker-compose up -d
-
 # shutdown/clean up
 docker-compose down
 docker-compose down --volumes
 
 # builds, (re)creates, starts, and attaches to containers for a service.
 docker-compose up
+# build the project and detached
+docker-compose up -d
 
-# runs a one-time command against a service
+# runs a one-time command against a service (will start service if needed)
 docker-compose run
 
 docker-compose ps
 
+# equivalent of `docker exec`
 docker-compose exec php-cli php /gh/x.php
 docker-compose exec mysql /bin/bash
 
