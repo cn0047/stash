@@ -72,7 +72,7 @@ Many of the challenges you’re going to face with microservices get worse with 
 is a service whose overhead (communications, maintenance etc.) outweighs its utility.
 
 To bind requests to different microservices -
-have to use Correlation ID for each service call.
+have to use **Correlation ID** for each service call.
 
 An exponential backoff algorithm retries requests exponentially,
 increasing the waiting time between retries up to a maximum backoff time.
