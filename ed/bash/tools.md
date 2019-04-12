@@ -1,6 +1,36 @@
 Linux Tools
 -
 
+#### syslog
+
+````sh
+ls /var/log/syslog
+
+vim /etc/rsyslog.conf
+logrotate --version
+
+# conf
+vim /etc/logrotate.conf
+# additional config
+vim /etc/logrotate.d/rsyslog
+````
+
+Config:
+````sh
+/var/log/syslog
+{
+  rotate 7      # 7 rotations
+  daily         # rotation every day
+  missingok     # if log file is missing - go on to the next one without issuing an error
+  notifempty    # do not rotate the log if it's empty
+  delaycompress # postpone compression previous log file to the next rotation cycle
+  compress      # gzip
+  postrotate
+    /usr/lib/rsyslog/rsyslog-rotate
+  endscript
+}
+````
+
 #### balance
 
 balance - simple load balancer.
