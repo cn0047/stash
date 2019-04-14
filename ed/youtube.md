@@ -11,6 +11,7 @@ Channels:
 * https://www.youtube.com/user/vivekanandkhyade/
 
 * https://www.youtube.com/user/googlecloudplatform/playlists
+* https://www.youtube.com/user/AmazonWebServices/playlists
 
 Img for video: 1920x1080px!
 Video file name **MUST** contains keywords!
