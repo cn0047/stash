@@ -10,6 +10,7 @@ Channels:
 * https://www.youtube.com/user/lcc0612/featured
 * https://www.youtube.com/user/vivekanandkhyade/
 
+* https://www.youtube.com/user/AmazonWebServices/playlists
 * https://www.youtube.com/user/googlecloudplatform/playlists
 * https://www.youtube.com/user/AmazonWebServices/playlists
 

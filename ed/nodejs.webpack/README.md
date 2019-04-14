@@ -10,8 +10,7 @@ Core Concepts:
 * Loaders
 * Plugins
 
-
-````
+````sh
 # example one
 npm install
 ./node_modules/.bin/webpack
@@ -34,7 +33,7 @@ Build:
 
 ## Config (webpack.config.js)
 
-````
+````js
 var path = require('path');
 
 module.exports = {

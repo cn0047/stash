@@ -2,11 +2,11 @@ Supervisor
 -
 
 #### Configuration file
-````
+````sh
 /etc/supervisor/supervisord.conf
 ````
 
-````
+````sh
 http://localhost:9001/
 
 service supervisor status

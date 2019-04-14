@@ -28,11 +28,16 @@ If the backlog argument is greater than the value in /proc/sys/net/core/somaxcon
 then it is silently truncated to that value.
 The default value in this file is 128.
 
+Linux kernel generates entropy from keyboard timings, mouse movements, and else into
+`/dev/random, /dev/urandom`.
+
 ````sh
 /dev/null                               # stream, hide output
+/dev/random                             # random data for entropy
 /dev/stderr                             # stream 2
 /dev/stdin                              # stream 0
 /dev/stdout                             # stream 1
+/dev/urandom                            # random data for entropy
 /etc                                    # system configuration directory
 /etc/os-release                         # about linux
 /etc/pam.d/common-session               # ?
@@ -42,8 +47,9 @@ The default value in this file is 128.
 /etc/ttys                               # logged in users
 /opt                                    # optional software directory
 /proc/cpuinfo                           # info about cpu
+/proc/sys/kernel/random/entropy_avail   # entropy pool size
 /proc/sys/net/core/somaxconn
-/proc/sys/net/ipv4/tcp_keepalive_time # current tcp_keepalive_time value
+/proc/sys/net/ipv4/tcp_keepalive_time   # current tcp_keepalive_time value
 /sys/devices/system/cpu/cpu[0-7]
 ````
 

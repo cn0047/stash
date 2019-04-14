@@ -1,6 +1,10 @@
 Index
 -
 
+````sql
+CREATE INDEX "IDX_image_created" ON image USING btree (created);
+````
+
 When a row is added, it does not go to the main index directly.
 But instead it is added to a “TODO” list, which is then processed by `VACUUM`.
 When you scan the index, you have to scan the tree AND
@@ -12,7 +16,7 @@ If the pending list is long, this will have some impact on performance.
 * B-tree (default)
 * Hash
 * Generalized Inverted Index (GIN) - for array and full text
-* Generalized Search Tree Index (GIST) - geo and full text
+* Generalized Search Tree Index (GIST) - geo ~and full text~
 * Space-Partitioned GIST (SP-GIST)
 * Block Range Index (BRIN)
 

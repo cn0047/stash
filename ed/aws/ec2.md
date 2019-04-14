@@ -36,6 +36,9 @@ aws ec2 run-instances \
 
   --user-data file://my_script.txt
 
+# terminate
+aws ec2 terminate-instances --instance-ids $(iId)
+
 # create new instance
 aws ec2 run-instances \
   --image-id ami-0ae8c6f6de834bfca \
@@ -52,6 +55,8 @@ iId=`cat ec2.json | jq '.Instances[0].InstanceId'`
 iId=`cat ec2.json | grep InstanceId --color=none | cut -f4 -d'"'`
 # public dns name
 h=`aws ec2 describe-instances --instance-ids $iId --query 'Reservations[].Instances[].PublicDnsName'`
+# public ip
+ip=`aws ec2 describe-instances --instance-ids $iId --query 'Reservations[].Instances[].PublicIpAddress'`
 
 # and add security groups to new instance
 aws ec2 modify-instance-attribute \

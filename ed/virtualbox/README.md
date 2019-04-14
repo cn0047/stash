@@ -6,7 +6,7 @@ VBoxManage list vms
 ````
 
 [macOS High Sierra Installation](https://www.youtube.com/watch?v=UUydJTFurMU)
-````
+````sh
 VBoxManage modifyvm "km2" --cpuidset 00000001 000306a9 04100800 7fbae3ff bfebfbff
 VBoxManage setextradata "km2" "VBoxInternal/Devices/efi/0/Config/DmiSystemProduct" "MacBookPro11,3"
 VBoxManage setextradata "km2" "VBoxInternal/Devices/efi/0/Config/DmiSystemVersion" "1.0"

@@ -1,7 +1,7 @@
 Heroku
 -
 
-````
+````sh
 # start
 heroku apps
 

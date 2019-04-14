@@ -35,7 +35,7 @@ select *, tag[1] from arrayExample;
  three | {3,30} | {pqsql}                               | pqsql
  four  | {4}    | {1,2,3,4}                             | 1
 
-select * from arrayExample where tag[1] <>  tag[2];
+select * from arrayExample where tag[1] <> tag[2];
  name |  num   |        tag
 ------+--------+--------------------
  one  | {1,10} | {pqsql,array,test}
