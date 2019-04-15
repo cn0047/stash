@@ -3,6 +3,9 @@ TLS (Transport Layer Security)
 
 Use TLSv1.1 or TLSv1.2 (TLSv1.0 is vulnerable).
 
+TLS termination - use https for public accessible load-balancer,
+then decrypting the TLS and passing unencrypted request downstream.
+
 #### Data Encryption Protocols Cipher:
 
 * 3DES (168 bits) (don't use is vulnerable)
