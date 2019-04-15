@@ -19,24 +19,20 @@ Go - statically-typed, general-purpose, with type safety
 and automatic memory management programming language.
 
 ````bash
-$GOROOT       // root of the go (`/usr/local/go/`)
-$GOROOT_FINAL // if go moved from $GOROOT
-$GOPATH       // environment variable specifies the location of your workspace.
-$GOBIN        // GOBIN=$GOROOT/bin
-$GOOS         // (windows|linux)
-$GOARCH       // (386|amd64)
-$GOMAXPROCS   // number of OS threads that can execute user-level Go code simultaneously.
-$GOTRACEBACK  // (none|single|all|system|crash) verbosity level in case of panic
-$GOGC         // Garbage Collector:
-              // GOGC=off - disables the gc entirely
-              // GOGC=100 - default, means the gc will run each time the live heap doubles.
-              // GOGC=200 - will delay start of a gc cycle
-              // until the live heap has grown to 200% of the previous size.
-$GODEBUG      // https://godoc.org/runtime#hdr-Environment_Variables
-              // scheddetail=1 - detailed scheduler info
-              // schedtrace=1000 - single line to standard error every 1000 milliseconds
-              // gctrace=1 - single line to standard error at each collection
-              // GODEBUG=allocfreetrace=1,gcpacertrace=1,gctrace=1,scavenge=1,scheddetail=1,scheddetail=1,schedtrace=1000
+$GOROOT       # root of the go (`/usr/local/go/`)
+$GOROOT_FINAL # if go moved from $GOROOT
+$GOPATH       # environment variable specifies the location of your workspace.
+$GOBIN        # GOBIN=$GOROOT/bin
+$GOOS         # (windows|linux)
+$GOARCH       # (386|amd64)
+$GOMAXPROCS   # number of OS threads that can execute user-level Go code simultaneously.
+$GOTRACEBACK  # (none|single|all|system|crash) verbosity level in case of panic
+$GOGC         # Garbage Collector
+$GODEBUG      # https://godoc.org/runtime#hdr-Environment_Variables
+              # scheddetail=1 - detailed scheduler info
+              # schedtrace=1000 - single line to standard error every 1000 milliseconds
+              # gctrace=1 - single line to standard error at each collection
+              # GODEBUG=allocfreetrace=1,gcpacertrace=1,gctrace=1,scavenge=1,scheddetail=1,scheddetail=1,schedtrace=1000
 
 export GOROOT=$HOME/go
 
@@ -45,6 +41,10 @@ go build                 # Compiles and installs packages and dependencies
 go build -race ./example #
 go build -gcflags -S z.go # assembly output
 go build -o newname
+GOOS=linux GOARCH=amd64 go build \
+  -ldflags="-w -s" -o /go/bin/hello # build in docker (get the smallest binaries)
+                                    # -w  - not include info for debug, pprof, etc (DWARF).
+                                    # -s - disable symbol table, `go tool nm`
 go clean -r              # clean unneeded files
 go env
 go env GOOS
@@ -368,9 +368,8 @@ meaning no guarantee of any methods at all: it could contain any type.
 The comma-ok assignment asks whether it is possible
 to convert interface value to some type.
 <br>
-Interface values are represented as a two-word pair
-giving a pointer to information about the type stored in the interface
-and a pointer to the associated data.
+Interface values are represented as a two-word pair:
+the concrete value assigned to the interface variable, and that value's type descriptor.
 
 ````golang
 type Logger interface {
@@ -510,7 +509,7 @@ Only the sender should close a channel, never the receiver
 
 There are 3 places memory can be allocated:
 
-* the stack - functions parameters, local variables allocated on the stack.
+* the stack - functions parameters, local variables allocated on the stack (≈1GB limit).
   Each goroutine has its own stack.
   Goroutine stacks are allocated on the heap (‼️).
   If the stack needs to grow then heap operations (allocate new, copy old to new, free old) will occur.
@@ -524,14 +523,6 @@ There are 3 places memory can be allocated:
 
 Escape analysis (variable & pointer analysis when function exit)
 is used to determine whether an item can be allocated on the stack.
-
-The Go garbage collector occasionally has to stop the world to complete the collection task.
-The stop the world task will take no more than 10 milliseconds
-out of every 50 milliseconds of execution time.
-
-`GCPercent (runtime.SetGCPercent)` - adjusts how much CPU you want to use and how much memory you want to use.
-The default is 100 which means that half the heap is dedicated to live memory and half the heap
-is dedicated to allocation.
 
 Go memory allocator based on TCMalloc memory allocator.
 Likewise, TCMalloc Go also divides Memory Pages into block of 67 different classes Size.
@@ -573,3 +564,29 @@ Inside TCMalloc memory management is divided into two parts:
     if not enough memory to allocate small objects - go to page heap for memory;
     if not enough - page heap will ask more memory from the Operating System;
 
+#### GC
+
+During the mark phase, the runtime will traverse all the objects
+that the application has references to on the heap and mark them as still in use.
+This set of objects is known as live memory.
+After this phase, everything else on the heap that is not marked is considered garbage,
+and during the sweep phase, will be deallocated by the sweeper.
+
+The Go garbage collector occasionally has to stop the world (pause time) to complete the collection task.
+The stop the world task will take no more than 10 milliseconds
+out of every 50 milliseconds of execution time.
+<br>
+The Go GC uses a pacer to determine when to trigger the next GC cycle.
+Go’s default pacer will try to trigger a GC cycle every time the heap size doubles.
+
+````sh
+$GOGC # Garbage Collector:
+      # GOGC=off - disables the gc entirely
+      # GOGC=100 - default, means the gc will run each time the live heap doubles.
+      # GOGC=200 - will delay start of a gc cycle
+      # until the live heap has grown to 200% of the previous size (live set).
+````
+
+`GCPercent (runtime.SetGCPercent)` - adjusts how much CPU you want to use and how much memory you want to use.
+The default is 100 which means that half the heap is dedicated to live memory and half the heap
+is dedicated to allocation.

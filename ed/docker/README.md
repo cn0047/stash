@@ -111,7 +111,7 @@ docker load -i img.dump.tar
 
 ## Dockerfile
 
-* FROM       -
+* FROM       - (`FROM scratch`)
 * MAINTAINER -
 * ARG        - `ARG CODE_VERSION=latest`
 * ENV        - `ENV NODE_PORT=3000`

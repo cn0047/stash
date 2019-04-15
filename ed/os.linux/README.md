@@ -42,15 +42,18 @@ Linux kernel generates entropy from keyboard timings, mouse movements, and else 
 /etc/os-release                         # about linux
 /etc/pam.d/common-session               # ?
 /etc/pam.d/common-session-noniteractive # ?
-/etc/security/limits.conf               # ?
+/etc/passwd                             # ↓
+/etc/security/limits.conf               # limits per user
 /etc/sysctl.conf                        #
 /etc/ttys                               # logged in users
 /opt                                    # optional software directory
 /proc/cpuinfo                           # info about cpu
+/proc/sys/fs/file-max                   # contains open file limit
 /proc/sys/kernel/random/entropy_avail   # entropy pool size
-/proc/sys/net/core/somaxconn
+/proc/sys/net/core/somaxconn            # ↓
 /proc/sys/net/ipv4/tcp_keepalive_time   # current tcp_keepalive_time value
-/sys/devices/system/cpu/cpu[0-7]
+/sys/devices/system/cpu/cpu[0-7]        #
+/usr/share/zoneinfo                     #
 ````
 
 ````sh
@@ -71,6 +74,16 @@ x            - encrypted password,
 Stephen Rago - a comment field
 /home/sar    - home directory
 /bin/ksh     - and shell program
+````
+
+Number of Open Files Limit:
+````sh
+/proc/sys/fs/file-max                       # contains open file limit
+ulimit -Hn                                  # hard limit
+ulimit -Sn                                  # soft limit
+sysctl -w fs.file-max=500000                # set files limit (will lost after reboot)
+echo fs.file-max=500000 >> /etc/sysctl.conf # permanent conf
+/etc/security/limits.conf                   # limits per user
 ````
 
 Each directory contains subdirectories `.` and `..`.

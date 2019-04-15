@@ -1,7 +1,7 @@
 Bash
 -
 
-````
+````sh
 bash --version
 echo $BASH_VERSION
 
@@ -304,6 +304,8 @@ break 2 # Break multiple loop
 #### X
 
 ````sh
+adduser -D -g '' appuser # create new os user
+
 fg # send command to foreground
 bg # send command to background
 

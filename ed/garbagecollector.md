@@ -6,7 +6,8 @@ Garbage Collector (GC)
 Using in: go.
 
 In this method, the GC scans the program, starting from a point called root
-and tries to reach other objects from then.
+and tries to reach other objects and mark them.
+After that performs deletion non-market objects (sweep).
 
 Disadvantages: entire system must be suspended (stop-the-world) during collection.
 
