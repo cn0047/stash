@@ -15,7 +15,7 @@ $q = $em->createQuery();
 $q->setDql('select u from MyProject\Model\User u');
 ````
 
-````
+````php
 $query = $em
     ->getRepository('LetterBundle:BurstSeed')
     ->createQueryBuilder('bs')
