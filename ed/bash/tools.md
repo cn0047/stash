@@ -545,15 +545,18 @@ uuencode card.jpg card.jpg | mail mail@com.com
 #### curl
 
 ````sh
--b, --cookie STRING/FILE             String or file to read cookies from (H)
--d, --data DATA                      HTTP POST data (H)
--F, --form CONTENT                   Specify HTTP multipart POST data (H)
--o, --output FILE                    Write output to <file> instead of stdout
--O, --remote-name                    Write output to file wiht origin name
--x, --proxy [PROTOCOL://]HOST[:PORT] Use proxy on given port
--e, --referer                        Referer URL (H)
--u, --user USER[:PASSWORD]           Server user and password
+-A, --user-agent
+-b, --cookie STRING/FILE             # String or file to read cookies from (H)
+-d, --data DATA                      # HTTP POST data (H)
+-e, --referer                        # Referer URL (H)
+-F, --form CONTENT                   # Specify HTTP multipart POST data (H)
+-i, --include                        # Include the HTTP-header
+-o, --output FILE                    # Write output to <file> instead of stdout
+-O, --remote-name                    # Write output to file wiht origin name
+-s, --silent
+-u, --user USER[:PASSWORD]           # Server user and password
 -v, --verbose
+-x, --proxy [PROTOCOL://]HOST[:PORT] # Use proxy on given port
 
 # (REST) JSON at POST.
 # More examples available here: https://github.com/cn007b/my/blob/master/ed/php.symfony/generateRESTapi.md
