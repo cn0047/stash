@@ -124,13 +124,14 @@ echo $y # null
 touch -a # error
 touch -- -a # ok
 
-set -e # exit whenever a command fails
-set -n # validate but not exec script
-set -o #
-set -u # error when using uniinitialized var
-set -v #
-set -v # print each command
-set -x # to start debug
+set -e           # exit whenever a command fails
+set -n           # validate but not exec script
+set -o           # display options
+set -o allexport #
+set -u           # error when using uniinitialized var
+set -v           #
+set -v           # print each command
+set -x           # to start debug
 
 declare -i # interger
 declare -r # readonly
@@ -304,6 +305,36 @@ break 2 # Break multiple loop
 #### X
 
 ````sh
+# HTTPS keys:
+openssl genrsa 1024 > private.key
+openssl req -new -key private.key -out cert.csr
+openssl x509 -req -in cert.csr -signkey private.key -out certificate.pem
+
+ulimit -a # shows os limits
+
+last # to see recent activity
+
+traceroute http://cn007b.tumblr.com #
+
+ss # tool for sockets
+
+strace pwd # to see what program `pwd` is doing
+
+useradd
+useradd -g $groupId
+useradd -m # create home directory for user
+useradd -m -g xgroup James
+id $userName # info about user
+
+alias # show all aliases
+alias la='ls -A'
+type la # show alias
+
+ldd /bin/ls # shows used *.so libraries by ls command
+
+sleep 6 &
+jobs # will shows scrips in background
+
 adduser -D -g '' appuser # create new os user
 
 fg # send command to foreground
@@ -418,7 +449,8 @@ sh -c 'echo 200'
 cut -d' ' -f2 /tmp/file.txt # print column 2 from file using ' ' as delimer
 
 df            # Show information about the file system.
-df -h
+df -h         # all drives
+lsblk         # all attached drives
 df -T         # Show filesystem type
 du            # Summarize disk usage of each FILE.
 du -sh IraFoto/* # Summarize disk usage of each dir in foto dir.

@@ -587,6 +587,9 @@ $GOGC # Garbage Collector:
       # until the live heap has grown to 200% of the previous size (live set).
 ````
 
-`GCPercent (runtime.SetGCPercent)` - adjusts how much CPU you want to use and how much memory you want to use.
+`GCPercent` (runtime.SetGCPercent) - adjusts how much CPU you want to use and how much memory you want to use.
 The default is 100 which means that half the heap is dedicated to live memory and half the heap
 is dedicated to allocation.
+
+`MaxHeap` is not yet released but is being used and evaluated internally,
+lets the programmer set what the maximum heap size should be.

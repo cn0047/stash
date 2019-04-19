@@ -14,6 +14,22 @@ until the changes have been completed (committed transaction).
 but instead creates a newer version of the data item. Thus there are multiple versions stored.
 <br>The version that each transaction sees depends on the isolation level implemented.
 
+## Two-Phase Locking (2PL)
+
+2 phases:
+* Expanding phase: locks are acquired and no locks are released.
+* Shrinking phase: locks are released and no locks are acquired.
+
+Locks types:
+* Read-lock, Shared
+* Write-lock, Exclusive
+
+Acquired Read-lock blocks new Write-lock.
+Acquired Write-lock blocks new Read-lock.
+Acquired Write-lock blocks new Write-lock.
+
+Mutual blocking between transactions results in a deadlock.
+
 ## Two-Phase Commit (2PC)
 
 Update account table with transaction.

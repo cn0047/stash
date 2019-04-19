@@ -2,21 +2,7 @@ Linux
 -
 
 ````sh
-# nginx
-telnet localhost 8080
-
-# php-fpm
-telnet localhost 9000
-
-# websocket
-telnet 0.0.0.0 12345
-````
-
-````
-# HTTPS keys:
-openssl genrsa 1024 > private.key
-openssl req -new -key private.key -out cert.csr
-openssl x509 -req -in cert.csr -signkey private.key -out certificate.pem
+shutdown -r now
 ````
 
 sudo dpkg -i {name}
@@ -39,21 +25,30 @@ Linux kernel generates entropy from keyboard timings, mouse movements, and else 
 /dev/stdout                             # stream 1
 /dev/urandom                            # random data for entropy
 /etc                                    # system configuration directory
+/etc/group                              # user's groups
+/etc/nologin                            # create this file, so noone can login to machine
 /etc/os-release                         # about linux
 /etc/pam.d/common-session               # ?
 /etc/pam.d/common-session-noniteractive # ?
 /etc/passwd                             # ↓
+/etc/resolv.conf                        # for networking
 /etc/security/limits.conf               # limits per user
+/etc/shadow                             # file with passwords
+/etc/sudoers                            #
 /etc/sysctl.conf                        #
 /etc/ttys                               # logged in users
+/media                                  #
 /opt                                    # optional software directory
 /proc/cpuinfo                           # info about cpu
-/proc/sys/fs/file-max                   # contains open file limit
+/proc/meminfo                           # info about memory
+/proc/net/ip_vs                         #
+/proc/sys/fs/file-max                   # ↓
 /proc/sys/kernel/random/entropy_avail   # entropy pool size
 /proc/sys/net/core/somaxconn            # ↓
 /proc/sys/net/ipv4/tcp_keepalive_time   # current tcp_keepalive_time value
 /sys/devices/system/cpu/cpu[0-7]        #
 /usr/share/zoneinfo                     #
+/var/log/wtmp                           # contains recent logins
 ````
 
 ````sh

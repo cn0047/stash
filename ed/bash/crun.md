@@ -2,8 +2,11 @@ crun
 -
 
 `crontab -e`
-````
+````sh
 cat /etc/cron.d/
+
+# dir with cron jobs
+ls /etc/cron.d
 ````
 
 ````sh

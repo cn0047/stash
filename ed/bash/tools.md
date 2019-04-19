@@ -1,6 +1,19 @@
 Linux Tools
 -
 
+#### telnet
+
+````sh
+# nginx
+telnet localhost 8080
+
+# php-fpm
+telnet localhost 9000
+
+# websocket
+telnet 0.0.0.0 12345
+````
+
 #### syslog
 
 ````sh
@@ -82,6 +95,7 @@ mpstat
 
 # Memory usage info
 free
+free -h
 cat /proc/meminfo
 
 # Disc usage info
@@ -110,9 +124,15 @@ date +%s%N             # seconds and current nanoseconds
 #### ls
 
 ````sh
-ls -A # except for . and ..
-ls -h # sizes
-ls -s # number of file system blocks
+ls -a              # all
+   -A              # except for . and ..
+   -h              # sizes
+   -i, --inode     #
+   -L              # dereference links
+   -l              # long listing format
+   -R, --recursive #
+   -s              # number of file system blocks
+   -v              # natural sort
 ````
 
 #### find
@@ -363,6 +383,10 @@ sed -e '2d;' file.txt > res.file.txt
 
 echo A_B_C_D_E_F_20180904_0038849_SUPER03.txt \
   |sed -e 's/_[0-9]\{8\}_[0-9]\{7\}_[A-Z0-9]*//g'
+
+# execute
+echo "1" > /tmp/x; echo "2" >> /tmp/x
+sed ' s/^/echo -n /e ' /tmp/x
 ````
 
 #### awk
@@ -510,13 +534,12 @@ chmod 750 mysql-files-dir
 chown -R www-data:www-data /var/www/html/
 
 sudo chown -R `whoami` /var/log/
-````
 
-#### crun (cron)
+stat dir # shows permissions
 
-````
-# dir with cron jobs
-ls /etc/cron.d
+# files permissions works regardless dir (in which file situated) permissions.
+# use `sticky bit` for file to follow dir permissions:
+chmod o+t /dir # now files in dir have permissions same as dir's.
 ````
 
 #### mail
@@ -546,7 +569,9 @@ uuencode card.jpg card.jpg | mail mail@com.com
 
 ````sh
 -A, --user-agent
+-b, --cookie                         # Read cookies from STRING/FILE
 -b, --cookie STRING/FILE             # String or file to read cookies from (H)
+-c, --cookie-jar                     # Write cookies to FILE
 -d, --data DATA                      # HTTP POST data (H)
 -e, --referer                        # Referer URL (H)
 -F, --form CONTENT                   # Specify HTTP multipart POST data (H)

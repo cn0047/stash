@@ -24,5 +24,10 @@ Hashing algorithms:
 * SHA3
 * SHA384
 
+* Argon2 (winner of the password hashing competition)
+* bcrypt
+* scrypt
+* PBKDF2
+
 Don't use (it's vulnerable) : MD5, SHA1, 3DES.
 <br>Use SHA2, SHA3.

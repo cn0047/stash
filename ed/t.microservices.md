@@ -18,16 +18,8 @@ And respond to changes quickly.
 
 Microservices-based architectures enable continuous delivery and deployment.
 
-Avoid client libraries (SDK) (consumer of your service requires client library),
-because when you change your service your counsumer must change client library,
-also you force user to use specific technology platform.
-Solution: use interface.
-
-⚠️ Avoid shared database because changes in schema in 1 microservice
-leads to redeploy few microservices.
-
-⚠️ Avoid shared libraries because in case of bug you have to re-deploy all microservices
-which are using this library. Maybe this library must be separated microservice?
+Microservices is known as a "share-nothing" architecture
+or at least "share-as-little-as-possible".
 
 Synchronous communication:
 
@@ -68,21 +60,7 @@ Many of the challenges you’re going to face with microservices get worse with 
 * Highly Observable
   (aggregate your logs, aggregate your stats)
 
-⚠️ Anti-pattern - nanoservice,
-is a service whose overhead (communications, maintenance etc.) outweighs its utility.
-
-To bind requests to different microservices -
-have to use **Correlation ID** for each service call.
-
-An exponential backoff algorithm retries requests exponentially,
-increasing the waiting time between retries up to a maximum backoff time.
-
-Transactions:
-
-* Two-Phase Commit Protocol.
-* Eventual consistency (put job in queue and eventually all will be done).
-
-In real world app you it's ok to have HYBRID-Microservices architecture.
+In real world app it's ok to have **HYBRID-Microservices** architecture.
 
 ## Advantages
 
@@ -90,18 +68,17 @@ In real world app you it's ok to have HYBRID-Microservices architecture.
 * Independent deploy.
 * Isolated problems.
 * Scalability/resilience.
-* Possibility to change system faster.
+* Possibility to build/change system faster.
 * Responsibilities are clearly defined.
 * Easier to oversee and understand.
 
 ## Disadvantages
 
-* Github for configs / db migrations / etc.
-* Duplicate code / data.
-* Required reliable CI/CD.
-* Architecture has to be well-thought through from the beginning.
 * Networks are unreliable.
 * Networks are slow.
+* Required reliable CI/CD.
+* Architecture has to be well-thought through from the beginning.
+* Duplicate code / data.
 * Too many programing languages.
 * Making components work together.
 * Requires more effort in communication.
@@ -110,3 +87,37 @@ In real world app you it's ok to have HYBRID-Microservices architecture.
 * Debugging production issues may be hard.
 * Logging to one place is challenging.
 * Having more and more microservices makes the whole system more complex and harder to oversee the whole operation.
+* Hard to see the whole usage graph.
+* Github for configs / db migrations / etc.
+
+## Info
+
+* Avoid shared database because changes in schema in 1 microservice
+leads to redeploy few microservices.
+
+* Avoid client libraries (SDK) (consumer of your service requires client library),
+because when you change your service your counsumer must change client library,
+also you force user to use specific technology platform.
+Solution: use interface.
+
+* Avoid shared libraries because in case of bug you have to re-deploy all microservices
+which are using this library. Maybe this library must be separated microservice?
+
+* If two microservices have something common
+(code, db, etc) - maybe you have to separate it into another microservice.
+
+* For transactions use BASE transactions
+(basic availability, soft state, and eventual consistency):
+1. Two-Phase Commit Protocol.
+2. Eventual consistency (put job in queue and eventually all will be done).
+
+* Avoid **Nanoservice** - anti-pattern,
+is a service whose overhead (communications, maintenance etc.) outweighs its utility.
+
+* To bind requests to different microservices -
+have to use **Correlation ID** for each service call.
+
+* Use timeouts (or circuit breaker) in communication between microservices.
+
+* Use an **exponential backoff** algorithm retries requests exponentially,
+increasing the waiting time between retries up to a maximum backoff time.
