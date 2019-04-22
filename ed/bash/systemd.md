@@ -14,6 +14,8 @@ systemctl status lf@1323.service
 systemctl list-units | grep lf
 
 ls -la /etc/systemd/system/
+
+systemd-analyze
 ````
 
 #### Example

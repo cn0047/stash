@@ -69,6 +69,20 @@ Difference between ACL & RBAC:
 ACL (often simpler): List of users (IDs) and privileges to resource (what can do or see).
 RBAC: Permissions based on role.
 
+#### TL
+
+Avoid conflicts.
+Let offer new ideas.
+Ask do people need help.
+Help feel okay to admit being wrong.
+Know team: skils, strengths, goals, interests.
+
+Bit of delegating & directing and more supporting & coaching.
+
+TL must be:
+* like a teacher and have authority to teach team
+* like a coach
+
 #### Full stack:
 
 * presentation layer (html, css, js)

@@ -17,6 +17,9 @@ The default value in this file is 128.
 Linux kernel generates entropy from keyboard timings, mouse movements, and else into
 `/dev/random, /dev/urandom`.
 
+The `SysV init` is a standard process used by Red Hat Linux to control
+which software the init command launches or shuts off on a given runlevel.
+
 ````sh
 /dev/null                               # stream, hide output
 /dev/random                             # random data for entropy
