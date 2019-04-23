@@ -25,7 +25,7 @@ For flex environment worker: all types have a 60 minute timeout.
 
 You can enqueue a task as part of a Cloud Datastore transaction!
 
-````go
+````golang
 params := map[string][]string{
   "project": {prj.ID},
   "url":     {prj.URL},

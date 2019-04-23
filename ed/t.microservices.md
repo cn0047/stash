@@ -108,8 +108,8 @@ which are using this library. Maybe this library must be separated microservice?
 
 * For transactions use BASE transactions
 (basic availability, soft state, and eventual consistency):
-1. Two-Phase Commit Protocol.
-2. Eventual consistency (put job in queue and eventually all will be done).
+  1. Two-Phase Commit Protocol.
+  2. Eventual consistency (put job in queue and eventually all will be done).
 
 * Avoid **Nanoservice** - anti-pattern,
 is a service whose overhead (communications, maintenance etc.) outweighs its utility.

@@ -111,6 +111,7 @@ docker load -i img.dump.tar
 
 ## Dockerfile
 
+````
 * FROM       - (`FROM scratch`)
 * MAINTAINER -
 * ARG        - `ARG CODE_VERSION=latest`
@@ -131,26 +132,9 @@ docker load -i img.dump.tar
              - `ENTRYPOINT service memcached start`
              - `ENTRYPOINT` will be started as a subcommand of `/bin/sh -c`, which does not pass OS signals
              - command line arguments to `docker run <image>` will be appended to `ENTRYPOINT`,
+````
 
 Less instructions in Dockerfile - least layers in built image.
-
-## Machine
-
-Use [machine](https://docs.docker.com/machine) to create Docker hosts on your local box,
-on your company network, in your data center,
-or on cloud providers like AWS or Digital Ocean.
-
-````sh
-docker-machine version
-
-docker-machine ls
-
-docker-machine create --driver virtualbox manager1
-
-docker-machine ip default
-docker-machine status default
-docker-machine stop default
-````
 
 ## Compose
 
@@ -192,6 +176,24 @@ services:
       context: ./dir
       dockerfile: Dockerfile-alternate
     image: myImg:latest
+````
+
+## Machine
+
+Use [machine](https://docs.docker.com/machine) to create Docker hosts on your local box,
+on your company network, in your data center,
+or on cloud providers like AWS or Digital Ocean.
+
+````sh
+docker-machine version
+
+docker-machine ls
+
+docker-machine create --driver virtualbox manager1
+
+docker-machine ip default
+docker-machine status default
+docker-machine stop default
 ````
 
 ## Swarm

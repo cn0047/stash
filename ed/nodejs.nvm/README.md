@@ -1,4 +1,4 @@
-nvm
+nvm (Node Version Manager)
 -
 
 #### OSX

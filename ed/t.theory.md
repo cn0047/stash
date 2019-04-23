@@ -41,6 +41,12 @@ IO throughput - data transfer speed in megabytes per second (MB/s or MBPS).
 <br>Forewer frame - ...
 <br>HTM5 Server-sent events - ...
 
+An `expression` evaluates to a value. A `statement` does something.
+````
+y = x + 1   # an expression
+print y     # a statement
+````
+
 To deal with big complicated problems - have to perform breakdown or decomposition.
 
 Bandwidth - count of lines on high-way.

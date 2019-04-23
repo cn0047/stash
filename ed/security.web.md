@@ -1,6 +1,8 @@
 Security - Web Application Security Risks
 -
 
+Remove `X-Powered-By` header.
+
 To store password in db add salt to password and hash it.
 
 Registration form:
@@ -77,8 +79,54 @@ FIX: CORS (if browser support CORS) or CSRF token.
 Never deserialize untrusted data
 (crossed trust doundary, couldn't have been modified).
 
+#### Using Components with Known Vulnerabilities
+
 #### ~~JSON hijacking~~
 
 In early versions of browsers the JSON file could be loaded as a normal script.
 
-#### Using Components with Known Vulnerabilities
+#### Browser security
+
+````
+Public-Key-Pins: pin-sha256="<pin-value>"; max-age=<expire-time>; includeSubDomains; report-uri="<uri>"
+````
+
+HTTP Strict-Transport-Security (HSTS):
+````
+Strict-Transport-Security: max-age=<expire-time-in-seconds>; includeSubDomains; preload
+````
+* client should interact over https
+* protects against "downgrade attack"
+* relies on "trust on first use" (TOFU)
+
+Subresource Integrity (SRI):
+````html
+<script src="https://example.com/example-framework.js"
+    integrity="sha384-oqVuAfXRKap7fdgcCY5uykM6+R9GqQ8K/uxy9rx7HNQlGYl1kPzQho1wx4JwY8wC"
+    crossorigin="anonymous"></script>
+````
+
+Content-Security-Policy (CSP):
+````html
+*|none|self
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src https://*; child-src 'none';">
+````
+Header:
+````
+Content-Security-Policy: upgrade-insecure-requests;
+````
+
+````
+Content-Security-Policy-Report-Only: default-src https:; report-uri /csp-violation-report-endpoint/
+````
+
+#### ~~Clickjacking (UI redress attack)~~
+
+The hacker can only send a single click.
+
+For example, imagine an attacker who builds a web site that has a button on it that says "click here for a free iPod".
+However, on top of that web page, the attacker has loaded an iframe with your mail account,
+and lined up exactly the "delete all messages" button directly on top of the "free iPod" button.
+
+FIX: Header `X-Frame-Options: DENY`.

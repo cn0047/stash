@@ -13,6 +13,7 @@ and interpreted server-side scripting language.
 
 PEAR - PHP Extension and Application Repository.
 PECL - Php extension community library.
+SPL - Standard PHP Library.
 
 [doc](http://php.net/)
 [developer](http://www.phpdeveloper.org)

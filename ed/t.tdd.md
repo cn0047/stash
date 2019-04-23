@@ -85,7 +85,7 @@ Unit of software in go - package.
 
 * Having integration tests without unit tests (integration tests are: complex, slow, harder to debug).
 
-* Having the wrong kind of tests (`is-it-object` require many unit test and no integration test).
+* Having the wrong kind of tests.
 
 * Testing the wrong functionality (tests that verify the application data model).
 

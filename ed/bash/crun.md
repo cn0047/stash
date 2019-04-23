@@ -21,7 +21,8 @@ CRUN_WORK_DIR=/var/www/vhosts/host/htdocs
 # crun lock file. Should be removed when execution fails...
 rm /tmp/crun_user_at_server_or_host_3a30db060f74d9390a2eb6f8a92eab8d
 
-grep cron /var/log/syslog
+grep cron -i /var/log/syslog
+tail -f /var/log/syslog | grep cron -i
 ````
 
 ````

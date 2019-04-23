@@ -24,9 +24,9 @@ Locks types:
 * Read-lock, Shared
 * Write-lock, Exclusive
 
-Acquired Read-lock blocks new Write-lock.
-Acquired Write-lock blocks new Read-lock.
-Acquired Write-lock blocks new Write-lock.
+<br>Acquired Read-lock  blocks new Write-lock.
+<br>Acquired Write-lock blocks new Read-lock.
+<br>Acquired Write-lock blocks new Write-lock.
 
 Mutual blocking between transactions results in a deadlock.
 
