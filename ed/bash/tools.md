@@ -115,10 +115,12 @@ ulimit -a
 
 ````sh
 # date, in certain format:
+date +'%b %d %H:%M:%S' # Apr 24 13:38:17
 date +'%d/%b/%Y:%H:%M' # 18/Jul/2018:11:48
 date +%Y-%m-%dT%T%z    # 2018-07-18T11:49:03+0300
 date +%s               # timestamp
 date +%s%N             # seconds and current nanoseconds
+date --date '-10 min'
 ````
 
 #### ls

@@ -409,6 +409,11 @@ echo 'key from id_rsa.pub from host machine' >> ~/.ssh/authorized_keys
 ````
 
 ````sh
+sudo !! # redo last command but as root
+
+don\'t add command to history (note the leading space)
+ ls -l
+
 # nohup
 # When you execute a job in the background (using &, bg command),
 # and logout from the session - your process will get killed,
