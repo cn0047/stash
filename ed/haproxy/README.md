@@ -2,7 +2,7 @@ haproxy
 -
 1.5.2
 
-````
+````sh
 sudo yum info haproxy
 
 sudo haproxy -v
