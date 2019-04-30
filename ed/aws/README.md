@@ -38,6 +38,7 @@ sudo service awslogs stop
 ````
 ````sh
 aws cloudwatch put-metric-data --namespace 'prod.supervisor' --metric-name 'instance1.document' --value 1
+aws cloudwatch put-metric-data --namespace 'prod.lf' --metric-name 'memoryfree' --unit Megabytes --value 9
 ````
 
 Logs:

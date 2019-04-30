@@ -48,6 +48,8 @@ print y     # a statement
 ````
 
 To deal with big complicated problems - have to perform breakdown or decomposition.
+One of the best ways to deal with complexity is divide and conquer — split the problem
+into smaller problems and solve each one separately.
 
 Bandwidth - count of lines on high-way.
 Latency - speed limit on high-way.

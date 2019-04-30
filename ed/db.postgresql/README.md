@@ -24,6 +24,10 @@ psql -h localhost -U dbu -d test -c 'select 204'
 pg_dump -h localhost -p 5432 -U dbu -d test > /var/lib/postgresql/data/dump.sql
 psql -h localhost -p 5432 -U dbu -d td < /var/lib/postgresql/data/dump.sql
 
+# remote connection
+ssh -i $k -N -L 5431:remoteDBHostName:5432 ubuntu@$h
+psql -p 5431 -d postgres://dbu:dbp@localhost/db
+
 pg_ctl status
 
 # general log

@@ -1,6 +1,109 @@
 Linux Tools
 -
 
+````sh
+hostname
+tty
+who
+
+ping 8.8.8.8 -c 15
+traceroute http://cn007b.tumblr.com
+nslookup git.mdm.comodo.od.ua
+host github.com # Shows ip by host.
+dig domain
+whois ip
+nmap --script=http-headers www.ziipr.com # scan ports
+
+timedatectl status | grep "Time zone"
+colordiff -u file1 file2
+ln -s {file} {symbolic-name}
+
+echo 200  | pbcopy                             # copy data into clipboard buffer
+echo b1nd | tr 1 o                             # bond # replace 1 to o
+file ed/bash/README.md                         # prints file type
+fswatch ./src | while read f; do echo $f; done # watch changes in directory
+mkdir -m 777 test                              # directory mode
+mkfifo mypipe                                  # create named pipe
+ss                                             # tool for sockets
+strace pwd                                     # to see what program `pwd` is doing
+uuid -n 1                                      # generates uuid
+
+cut -f7 -d: /etc/passwd
+cut -d' ' -f2 /tmp/file.txt # print column 2 from file using ' ' as delimer
+
+nc -zv 10.0.2.2 22
+nc -zv 78.140.186.238 1-65535
+nc -zv 10.0.2.2 22
+
+Public DNS IP addresses:
+8.8.8.8
+8.8.4.4
+
+# osx proxy
+sudo networksetup -setwebproxy "Wi-Fi" 54.174.16.166 80
+# '71.4.186.100:21288', '198.7.96.243:21239', '104.128.17.224:21237', '209.48.175.196:21325', '172.102.207.55:21279', '198.7.97.209:21297', '162.248.134.54:21326', '23.239.219.244:21325', '143.191.19.7:21238', '173.44.12.201:21259', '173.44.5.52:21310', '173.44.12.68:21305', '173.44.26.80:21269', '107.152.144.66:21291', '208.73.73.206:21257', '204.14.87.85:21326', '144.168.128.88:21244', '204.14.87.149:21271', '45.57.195.33:21232', '173.44.5.185:21247', '173.44.12.141:21280', '173.44.26.220:21318', '107.152.144.219:21274', '208.73.73.9:21278', '143.191.19.89:21263', '143.191.31.123:21304', '69.174.99.149:21322', '50.117.15.33:21318', '173.44.12.16:21297', '216.172.144.220:21285',
+sudo networksetup -setwebproxystate "Wi-Fi" off
+
+# HTTPS keys:
+openssl genrsa 1024 > private.key
+openssl req -new -key private.key -out cert.csr
+openssl x509 -req -in cert.csr -signkey private.key -out certificate.pem
+
+# base64
+stringInBase64=`echo "shaken not stirred" | base64`
+echo $stringInBase64 | base64 -D
+
+# nohup
+# When you execute a job in the background (using &, bg command),
+# and logout from the session - your process will get killed,
+# to prevent this run:
+nohup myscript &
+# to run with low priority:
+nice myscript
+nohup nice myscript &
+````
+
+#### printf
+
+````sh
+printf "new line \n and \t tab \n"
+printf %s\\n 'msg'
+printf "Hi %s \n" $USER
+printf "line-%s\n" 1 2 3
+printf %d\\n {0..2} # range
+printf "%s\n" *.{gif,jpg,png} # list
+printf -v v "UserIs: %s" $USER; echo $v # save into var
+````
+
+#### echo
+
+````sh
+echo 'Hello world'
+echo '$myVar' # not evaluate vars
+echo "$myVar" # evaluate
+echo "Hello world $USER"
+echo -n "Hello world $USER" # no new line
+echo {a..d} # range
+echo {a..c}{1..2}
+echo -={a,b,c}=- # -=a=- -=b=- -=c=-
+echo n#{1..3}, # n#1, n#2, n#3,echo $(date)
+echo $USER
+echo $RANDOM
+echo $UID
+
+````
+
+#### disk usage
+
+````sh
+df            # Show information about the file system.
+df -h         # all drives
+lsblk         # all attached drives
+df -T         # Show filesystem type
+du            # Summarize disk usage of each FILE.
+du -sh IraFoto/* # Summarize disk usage of each dir in foto dir.
+````
+
 #### telnet
 
 ````sh
@@ -83,6 +186,8 @@ free -m           # block device I/O buffer cache & file systems page cache
 sar -n DEV 1      # check network interface
 sar -n TCP,ETCP 1 # TCP metrics
 top               #
+
+uptime # CPU load average
 ````
 
 ````sh
@@ -179,94 +284,6 @@ read -r; echo $REPLY
 read -r -n 1; echo $REPLY
 ````
 
-#### printf
-
-````sh
-printf "one\ntwo\n"
-printf "one\n \ttwo\n \tthree\n"
-printf %s\\n {0..9}
-
-printf "Hi %s \n" $USER
-printf "p%s\n" 1 2 3
-printf -v myVar "UserIs%s" $USER
-
-printf "%s\n" *.{gif,jpg,png} # display only (some) image files
-
-v="hello"
-printf '%s\n' "${v^}" # Hello
-printf '%s\n' "${v^^}" # HELLO
-
-v="hello world"
-declare -u string="$v" # HELLO WORLD
-
-v="BYE"
-printf '%s\n' "${v,}" # bYE
-printf '%s\n' "${v,,}" # bye
-
-v="HELLO WORLD"
-declare -l string="$v" # hello world
-
-v="Hello World"
-echo "${v~~}" # hELLO wORLD
-echo "${v~}" # hello World
-
-var='0123456789abcdef'
-printf '%s\n' "${var:3}" # 3456789abcdef
-printf '%s\n' "${var:3:4}" # 3456
-printf '%s\n' "${var:3:-5}" # 3456789a
-printf '%s\n' "${var: -6}" # abcdef
-printf '%s\n' "${var:(-6)}" # abcdef
-printf '%s\n' "${var: -6:-5}" # a
-
-set -- 0123456789abcdef
-printf '%s\n' "${1:5}" # 56789abcdef
-
-myarr[0]='0123456789abcdef'
-printf '%s\n' "${myarr[0]:7:3}" # 789
-
-set -- 1 2 3 4 5 6 7 8 9 0 a b c d e f
-printf '%s\n' "${@:10}"
-printf '%s\n' "${@:10:3}"
-printf '%s\n' "${@:10:-2}"
-printf '%s\n' "${@: -10:2}"
-printf '%s\n' "${@:0:2}"
-
-myarr=(0 1 2 3 4 5 6 7 8 9 a b c d e f)
-printf '%s\n' "${myarr[@]:12}" c
-printf '%s\n' "${myarr[@]:5:3}"
-printf '%s\n' "${myarr[@]: -1}"
-````
-
-#### echo
-
-````sh
-echo 'Hello world'
-echo "Hello world $USER"
-echo -n "Hello world $USER" # no new line
-echo n-{a,b,c}-b # fn-a-b n-b-b n-c-b
-echo n#{1..3}, # n#1, n#2, n#3,
-
-var='12345'
-echo "${#var}" # length
-
-myarr=(1 2 3)
-echo "${#myarr[@]}" # number of array elements
-
-v=foo-bar-baz
-echo ${v%%-*} # foo
-echo ${v%-*} # foo-bar
-echo ${v##*-} # baz
-echo ${v#*-} # bar-baz
-
-echo "FOO is ${FOO:?EMPTY}"
-echo "FOO is ${FOO?UNSET}"
-echo "BAR is ${BAR:?EMPTY}"
-echo "BAR is ${BAR?UNSET}"
-
-echo {a..z}
-echo {a..d}{1..3}
-````
-
 #### apachebench
 
 ````sh
@@ -311,6 +328,8 @@ sudo lsof -i -n -P | grep TCP.*80
 
 # Active Internet connections
 netstat -tpne
+
+netstat -an
 ````
 
 #### mount
@@ -335,6 +354,15 @@ screen -ls            # list of active sessions
 screen -x sessionName # attach to session
 ````
 Ctrl+A followed by D = detach screen
+
+#### image
+
+````sh
+# print screen from url
+cutycapt --url=cn007b.tumblr.com --out=out.png
+wkhtmltoimage cn007b.tumblr.com i.jpg
+webkit-image-gtk http://cn007b.tumblr.com > i.png
+````
 
 #### image optimization
 
@@ -400,7 +428,7 @@ AWK was created in the 1970s.
 
 echo 'one and two' | awk '{print $1}' # will print one
 awk 'BEGIN {print "Hello, world!"}'
-ps aux|awk 'length($0) > 150' # Print lines longer than 150 characters
+ps aux | awk 'length($0) > 150' # Print lines longer than 150 characters
 printf "one\n* two\n" | awk '{print ($1=="*" ? $2 : $1)}' # Print one \n two
 printf "1\n 2\n 3\n" | awk 'ORS=NR?",":"\n"' # Replace new line with comma
 ````
@@ -437,6 +465,11 @@ chmod 400 key.pem
 
 # add public key to remote machine
 echo 'ssh-rsa AAAAB3...3gRDw3sQ== name@mail.com' >> ~/.ssh/authorized_keys
+
+# on host machine
+cat ~/.ssh/id_rsa.pub
+# on remote machine
+echo 'key from id_rsa.pub from host machine' >> ~/.ssh/authorized_keys
 ````
 
 `vim ~/.ssh/config`
@@ -506,9 +539,12 @@ ps -e -o pid,comm,etime           # Display elapsed time of processes
 watch -n 1 'ps -e -o pid,uname,cmd,pmem,pcpu --sort=-pmem,-pcpu | head -15' # Turn ps into an realtime process viewer
 ````
 
-#### chmod
+#### chmod & useradd
 
 ````sh
+visudo
+su rob
+
 -rwxrwxrwx
 drwxr-xr-x
 directory user group other
@@ -542,6 +578,19 @@ stat dir # shows permissions
 # files permissions works regardless dir (in which file situated) permissions.
 # use `sticky bit` for file to follow dir permissions:
 chmod o+t /dir # now files in dir have permissions same as dir's.
+
+# when permission denied
+echo '127.0.0.1 trick' | sudo tee -a /etc/hosts
+````
+
+````sh
+useradd
+useradd -g $groupId
+useradd -m # create home directory for user
+useradd -m -g xgroup James
+id $userName # info about user
+
+adduser -D -g '' appuser # create new os user
 ````
 
 #### mail

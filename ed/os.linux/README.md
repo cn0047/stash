@@ -3,6 +3,10 @@ Linux
 
 ````sh
 shutdown -r now
+
+uname -a # Shows 32 or 64 bit OS.
+uname -r # Show the kernel version.
+cat /etc/*release # all ablut ubuntu
 ````
 
 sudo dpkg -i {name}
