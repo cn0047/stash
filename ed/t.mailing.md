@@ -1,6 +1,10 @@
 mailing
 -
 
+MIME - Multipurpose Internet Mail Extensions.
+MTA - Message (or Mail) Transfer Agent.
+SMTP - Simple Mail Transfer Protocol.
+
 * Don't use *.bmp.
 * Use RGB.
 * "THIS CAN GO TO SPAM, DON'T WRITE IN UPPERCASE!".

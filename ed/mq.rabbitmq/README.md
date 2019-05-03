@@ -29,6 +29,8 @@ sudo rabbitmqctl list_permissions
 sudo rabbitmqctl change_password cashing-tier compl3xPassword
 ````
 
+RabbitMQ uses AMQP (Advanced Message Queuing Protocol).
+
 ## Queue
 
 Declaring a queue is idempotent - it will only be created if it doesn't exist already.

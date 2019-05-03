@@ -135,7 +135,7 @@ resizable(options, optionName, value)
 selectable(options, optionName, value)
 ````
 
-####Ajax
+####Ajax (Asynchronous JavaScript and XML)
 ````js
 $('form').ajaxForm({});
 
