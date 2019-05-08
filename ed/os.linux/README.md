@@ -32,6 +32,7 @@ which software the init command launches or shuts off on a given runlevel.
 /dev/stdout                             # stream 1
 /dev/urandom                            # random data for entropy
 /etc                                    # system configuration directory
+/etc/defaults/grub                      #
 /etc/group                              # user's groups
 /etc/nologin                            # create this file, so noone can login to machine
 /etc/os-release                         # about linux

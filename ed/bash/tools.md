@@ -20,6 +20,9 @@ ln -s {file} {symbolic-name}
 
 echo 200  | pbcopy                             # copy data into clipboard buffer
 echo b1nd | tr 1 o                             # bond # replace 1 to o
+echo '(x)' | tr '()' '[]'                      # result: [x]
+echo b1nd | tr -d [0-9]                        # result: bnd
+'hello   world' | tr -s ' '                    # result: hello world
 file ed/bash/README.md                         # prints file type
 fswatch ./src | while read f; do echo $f; done # watch changes in directory
 mkdir -m 777 test                              # directory mode
@@ -28,8 +31,11 @@ ss                                             # tool for sockets
 strace pwd                                     # to see what program `pwd` is doing
 uuid -n 1                                      # generates uuid
 
+
 cut -f7 -d: /etc/passwd
 cut -d' ' -f2 /tmp/file.txt # print column 2 from file using ' ' as delimer
+cut -c1,2                   # column 1,2
+cut -c13-                   # from 13 char to the end of string
 
 nc -zv 10.0.2.2 22
 nc -zv 78.140.186.238 1-65535
@@ -214,6 +220,8 @@ dstat
 
 # shows OS limits
 ulimit -a
+
+sysctl -a
 ````
 
 #### date
@@ -303,6 +311,7 @@ docker run -ti --rm cn007b/ubuntu ab -k -n 100 -c 100 -t 5 "http://10.254.254.25
 ````sh
 # OPTIONS
 -F or --quit-if-one-screen # exit if the entire file can be displayed on the first screen.
++F                         # follow
 -i or --ignore-case
 -M or --LONG-PROMPT
 -m or --long-prompt        # prompt verbosely (like more).
@@ -310,6 +319,7 @@ docker run -ti --rm cn007b/ubuntu ab -k -n 100 -c 100 -t 5 "http://10.254.254.25
 -S or --chop-long-lines    # chop lines longer than the screen width.
 -X or --no-init            #
 -xn,... or --tabs=n,...    # sets tab stops.
+less -SFX +F /var/log/syslog
 ````
 
 #### upstart

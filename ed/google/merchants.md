@@ -3,7 +3,7 @@ Google Merchants
 
 [merchants](https://merchants.google.com)
 
-````
+````sh
 apiKey=${key}
 merchantId=${id}
 

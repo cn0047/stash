@@ -1,6 +1,8 @@
 WebSocket
 -
 
+[tool for ws](https://github.com/zaproxy/zaproxy)
+
 WebSocket is a computer communications protocol,
 providing full-duplex (allows communication in both directions) communication channels over a single TCP connection.
 
@@ -9,6 +11,11 @@ WebSocket connection request uses `Upgrade: WebSocket` and `Connection: Upgrade`
 Server replies with the same `Upgrade: WebSocket` and `Connection: Upgrade` headers and completes the handshake.
 
 WebSocket enables streams of messages on top of TCP.
+
+````
+ws://
+wss:// # TLS
+````
 
 Message Types:
 * text
@@ -26,6 +33,15 @@ API:
 
 * send
 * close
+
+#### Limits
+
+Chrome: 256 total WS Connections & 30 per host.
+FireFox: 200 total WS Connections.
+
+#### Security
+
+Check `origin` because hacker can cheat it.
 
 #### Example
 

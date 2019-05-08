@@ -18,6 +18,7 @@ protocol + host + path + all after question mark
 └─ URI ────────────────────────────────────────┘
 
 nil | null | none | blank | undefined | unknown | void | empty
+anonymous |
 environments: local; dev; stage|staging; prod|production;
 
 # !

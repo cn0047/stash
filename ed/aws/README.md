@@ -17,6 +17,8 @@ aws configure
 --output=table|json|text
 # add this flag to get more debug info about command
 --debug
+
+--region us-east-1
 ````
 
 # S3 (Simple Storage Service)

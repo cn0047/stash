@@ -57,7 +57,7 @@ cmd || echo 'cmd failed'
 docker info 2>/dev/null || echo 'fail'
 test-d$HOME/.kube || mkdir$HOME/.kube
 
-read -p "Your note: " note
+read -p "Your note: " note # prompt
 
 # process with pid
 if [[ ! -e /tmp/test.py.pid ]]; then
@@ -71,6 +71,8 @@ fi
 ````
 
 ````bash
+echo '3^2 * 10 / 23' | bc -l # math
+
 if [[ -f $filename ]]; then
   echo "$filename is a regular file"
 elif [[ -d $filename ]]; then

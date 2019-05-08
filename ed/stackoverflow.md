@@ -22,6 +22,7 @@ Hotkeys:
 CTRL + K # Code
 ````
 
+BigQuery:
 ````sql
 https://console.cloud.google.com/marketplace/details/stack-exchange/stack-overflow
 

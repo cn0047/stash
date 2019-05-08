@@ -125,7 +125,7 @@ Disadvantages:
 
 #### GO
 
-````go
+````golang
 key := datastore.NewKey(
         ctx,        // context.Context
         "Employee", // Kind

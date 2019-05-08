@@ -3,6 +3,10 @@ Race Conditions
 
 Race condition - when events do not happen in the order the programmer intended.
 
+Integer overflow.
+Stack overflow.
+Heap overflow.
+
 Don't handle `Unix signals`.
 Don't specify timeout in microservice SDK HTTP client.
 

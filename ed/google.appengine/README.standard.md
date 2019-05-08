@@ -130,7 +130,7 @@ cron:
 
 ## GO
 
-````go
+````golang
 "google.golang.org/appengine"
 "google.golang.org/appengine/log"
 
@@ -169,7 +169,7 @@ resp, err := client.Get(url)
 
 Local Unit Testing:
 
-````go
+````golang
 # run
 goapp test ./demos/transaction
 

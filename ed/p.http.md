@@ -149,7 +149,7 @@ Origin: https://foo.bar.org
 1xx Informational
 
 * 100 **Continue**
-* 101 Switching Protocols
+* 101 **Switching Protocols**
 * 102 **Processing** (WebDAV; RFC 2518)
 * 103 Checkpoint (draft POST PUT)
 * 105 Name Not Resolved
