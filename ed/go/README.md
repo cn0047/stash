@@ -14,6 +14,9 @@ GO
 [badges](https://goreportcard.com/) [covererage](https://gocover.io/) [covererage](https://cover.run/)
 [avatar](https://gopherize.me/)
 [pprof-ui](https://www.speedscope.app/)
+[city](https://go-city.github.io/#/github.com/cn007b/monitoring)
+[DIC (wire)](https://github.com/google/go-cloud/tree/master/wire)
+[DIC (wire) tutorial](https://github.com/google/go-cloud/tree/master/samples/wire)
 
 Go - statically-typed, general-purpose, with type safety
 and automatic memory management programming language.

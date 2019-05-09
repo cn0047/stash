@@ -325,6 +325,7 @@ echo ${!arr[@]} # array indices
 echo "${arr[@]: -1 }" # last el
 echo "${array[-1]}" # last el
 echo "${array[@]:1:3}"
+echo "${array[@]/*[aA]*/}" # elements which match [aA] pattern
 
 arr=(a b c)
 echo "${arr[@]}"  # outputs: a b c

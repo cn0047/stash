@@ -1,6 +1,8 @@
 Performance
 -
 
+[page speed](www.bytecheck.com) [and](www.webpagetest.org)
+
 #### High Performance Web Sites:
 
 1. Make Fewer HTTP Requests
