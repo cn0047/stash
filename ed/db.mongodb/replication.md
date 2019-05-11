@@ -62,7 +62,7 @@ db.demo.insert({x: 1}, {writeConcern: {w: 2, j: true, wtimeout: 2000}});
 # w: 1          // ack from 1 machine
 # w: 2          // ack from 2 machines
 # w: 'majority' // ack from majority
-# j: trrue      // journaled
+# j: true       // journaled
 ````
 
 [FAQ: Replication and Replica Sets](http://docs.mongodb.org/manual/faq/replica-sets/)

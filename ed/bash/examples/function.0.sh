@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 f() {
     return $(( $1 + $1))

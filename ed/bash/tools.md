@@ -31,7 +31,6 @@ ss                                             # tool for sockets
 strace pwd                                     # to see what program `pwd` is doing
 uuid -n 1                                      # generates uuid
 
-
 cut -f7 -d: /etc/passwd
 cut -d' ' -f2 /tmp/file.txt # print column 2 from file using ' ' as delimer
 cut -c1,2                   # column 1,2
@@ -67,6 +66,24 @@ nohup myscript &
 # to run with low priority:
 nice myscript
 nohup nice myscript &
+````
+
+#### uniq
+
+````sh
+printf "a\n1\n2\n2\n2\n3\n" | uniq
+printf "a\n1\n2\n2\n2\n3\n" | uniq -c # count
+printf "a\n1\n2\n2\n2\n3\n" | uniq -d # only repeated
+printf "a\n1\n2\n2\n2\n3\n" | uniq -u # not repeated
+````
+
+#### paste
+
+````sh
+paste file1 file2                    # use file1 as column1, file2 - as column2
+paste -d';'                          # delimer
+paste -s                             #
+printf "a\nb\nc\n" | paste -d_ - - - # result: a_b_c
 ````
 
 #### printf
@@ -236,6 +253,10 @@ date +%Y-%m-%dT%T%z    # 2018-07-18T11:49:03+0300
 date +%s               # timestamp
 date +%s%N             # seconds and current nanoseconds
 date --date '-10 min'
+
+d='2019-03-14T20:38:04.914292Z'
+t=`date -d $d +%s` # to timestamp
+date -r $t         # to date
 ````
 
 #### ls
@@ -420,6 +441,8 @@ echo '1 one; 2 two' | sed 's/1//g; s/2//g' #  one;  two
 
 sed -i "s/admin_user/user/" /var/www/html/config.php
 
+echo 'car mAn' | sed -e 's/a/{&}/ig'
+
 # delete 2nd line from file
 sed -e '2d;' file.txt > res.file.txt
 
@@ -438,11 +461,18 @@ AWK was created in the 1970s.
 ````sh
 -F ':' # column separator
 
-echo 'one and two' | awk '{print $1}' # will print one
-awk 'BEGIN {print "Hello, world!"}'
-ps aux | awk 'length($0) > 150' # Print lines longer than 150 characters
+echo 'one and two' | awk '{print $1}'                     # will print one
+awk 'BEGIN {print "Hello, world!"}'                       #
+ps aux | awk 'length($0) > 150'                           # Print lines longer than 150 characters
 printf "one\n* two\n" | awk '{print ($1=="*" ? $2 : $1)}' # Print one \n two
-printf "1\n 2\n 3\n" | awk 'ORS=NR?",":"\n"' # Replace new line with comma
+printf "1\n 2\n 3\n" | awk 'ORS=NR?",":"\n"'              # Replace new line with comma
+printf "1\n2\n3\n" | awk '{print}'                        #
+printf "1\n2\n3\n" | awk '/2/{print}'                     # match pattern
+printf "1\n2\n3\n" | awk '{if($1 ~/3/) print}'            # if
+printf "1 a\n2\n" | awk '{if ($2 == "") print $1, "*"}'   #
+
+printf "A 25 27\nB 75 78\nC 97 93" | \
+  awk '{avg=($2+$3)/2; printf "%s -> (avg=%s) %s \n", $0, avg, (avg<50)?"FAIL":(avg<80)?"B":"A"}'
 ````
 
 #### ssh

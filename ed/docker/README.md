@@ -111,7 +111,7 @@ docker load -i img.dump.tar
 
 ## Dockerfile
 
-````
+````sh
 * FROM       - (`FROM scratch`)
 * MAINTAINER -
 * ARG        - `ARG CODE_VERSION=latest`
@@ -144,7 +144,7 @@ for defining and running multi-container Docker applications.
 ````sh
 docker-compose build serviceName
 
-# shutdown/clean up
+# shutdown/cleanup
 docker-compose down
 docker-compose down --volumes
 

@@ -323,9 +323,10 @@ echo ${#arr[@]} # array length
 echo ${!arr[@]} # array indices
 
 echo "${arr[@]: -1 }" # last el
-echo "${array[-1]}" # last el
+echo "${array[-1]}" # last el 
 echo "${array[@]:1:3}"
 echo "${array[@]/*[aA]*/}" # elements which match [aA] pattern
+echo "${array[@]/[A-Z]/=}" # replace [A-Z] to =
 
 arr=(a b c)
 echo "${arr[@]}"  # outputs: a b c
@@ -390,13 +391,8 @@ pwned
 break
 continue
 
-while test; do
-    ;; code
-done
-
-until test; do
-    ;; code
-done
+while true; do echo -n . ; done
+until false; do echo -n . ; done
 
 for el in arr; do
     ;; code

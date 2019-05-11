@@ -7,6 +7,7 @@ jq
 ````sh
 --compact-output / -c:
 --color-output / -C and --monochrome-output / -M
+--raw-output
 --sort-keys / -S
 ````
 
@@ -25,6 +26,7 @@ curl ... | jq '.items[]|.ImageLink' # ✅
 echo '{"foo": "f", "bar": "b", "items": [1, 2, 3] }' | jq
 
 echo '{"foo": "f", "bar": "b", "items": [1, 2, 3] }' | jq '.items | length' # count
+echo '{"foo": "f", "bar": "b", "items": [1, 2, 3] }' | jq '.items | last'   # 3
 
 cat data.json \
 | jq '.gcp_price_list | del(.sustained_use_base,.sustained_use_tiers) | .[] | keys[]' \

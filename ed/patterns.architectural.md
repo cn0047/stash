@@ -18,24 +18,24 @@ MVC, MVP, MVVM etc:
 An architectural pattern is a proven structural organization schema for software systems.
 
 * Layers
-* **Client-server**
-* **Master-slave**
+* Client-server
+* Master-slave
 * Pipe-filter
-* **Broker**
-* **Peer-to-peer**
+* Broker
+* Peer-to-peer
 * Blackboard
-* **Event-bus**
-* **CQRS**
+* Event-bus
+* CQRS
 
 * Event-driven architecture
-* **Active record**
-* **Data mapper**
+* Active record
+* Data mapper
 * Implicit invocation
 * Naked objects
 * Operational Data Store
-* **Service-oriented architecture**
-* **Microservices**
-* **API Gateway**
+* Service-oriented architecture
+* Microservices
+* API Gateway
 
 * Model-View-Controller
 * Presentation-Abstraction-Control
