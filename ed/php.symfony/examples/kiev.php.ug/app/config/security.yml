@@ -1,0 +1,47 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_MODERATOR]
+
+    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    providers:
+        our_db_provider:
+            entity:
+                class: AppBundle:User
+                property: username
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            anonymous: ~
+            # activate different ways to authenticate
+
+            # http_basic: ~
+            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
+
+        default:
+            form_login:
+                login_path: /logIn
+                check_path: /logInCheck
+                provider: our_db_provider
+
+        secured_area:
+            anonymous: ~
+            oauth:
+                resource_owners:
+                    github: "/login/check-github"
+                login_path: /login
+                use_forward: false
+                failure_path: /login
+                oauth_user_provider:
+                    service: oauth_user_provider
+
+    access_control:
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }

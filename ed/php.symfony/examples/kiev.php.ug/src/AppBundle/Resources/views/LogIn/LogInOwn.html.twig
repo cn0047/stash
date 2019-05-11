@@ -1,0 +1,31 @@
+{% extends 'AppBundle::Base.html.twig' %}
+{% block content %}
+  <div class="page" data-id="#logIn">
+    {% if app.session.flashBag.has('success') %}
+      <p class="bg-success">
+        {% for msg in app.session.flashBag.get('success') %}
+          {{ msg }}
+        {% endfor %}
+      </p>
+    {% endif %}
+    {{ form_start(form, {'action': path('logInOwnCheck'), 'method': 'post'}) }}
+      <p class="text-center">
+        {{ form_errors(form) }}
+        <br>
+        {{ form_errors(form.email) }}
+        {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'kpug.label.email'}}) }}
+        <br>
+        {{ form_errors(form.password) }}
+        {{ form_widget(form.password, {'attr': {'class': 'form-control', 'placeholder': 'kpug.label.password'}}) }}
+        <br>
+        {{ form_widget(form.submit, {'label': 'kpug.label.log_in', 'attr': {'class': 'btn btn-primary'}}) }}
+        <a href="{{ path('forgotPassword') }}" role="button" class="btn btn-default">
+          {{ 'kpug.label.forgotPassword'|trans }}
+        </a>
+        <a href="{{ path('registration') }}" role="button" class="btn btn-default">
+          {{ 'kpug.label.registration'|trans }}
+        </a>
+      </p>
+    {{ form_end(form) }}
+  </div>
+{% endblock %}

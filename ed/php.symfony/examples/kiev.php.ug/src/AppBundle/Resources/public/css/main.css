@@ -1,0 +1,31 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin-bottom: 60px;
+}
+.white {
+    color: 0;
+}
+.container {
+  width: auto;
+  max-width: 680px;
+  padding: 0 15px;
+}
+.container .text-muted {
+  margin: 20px 0;
+}
+.thanksBox {
+  display: table-cell;
+  height: 150px;
+  vertical-align: middle;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #f5f5f5;
+  padding: 15px 0;
+  margin-top: 15px;
+}

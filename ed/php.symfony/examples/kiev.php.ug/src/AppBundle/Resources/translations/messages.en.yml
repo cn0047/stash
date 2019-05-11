@@ -1,0 +1,54 @@
+kpug:
+    brand:
+        title: KIEV PHP-ug
+        title_2: KIEV PHP user group
+    contribute:
+        how_to_contribute: How to contribute to KIEV PHP-ug?
+        p_1: Contributing "KIEV PHP-ug" does not have a workflow, just let us know any your idea, desire or feedback.
+        p_2: If you have vision how our user group should be organized - let_us_know.
+        p_3: If you wish take part at user group as speaker - just let us know.
+        p_4: If you wish to suggest some new format of user group - just let us know.
+        p_5: If you search way how become sponsor of our user group - just let us know.
+        p_6: If you have some propositions about collaboration - just let us know.
+        p_7: In other cases - feel free and send feedbacks to us.
+        thanks_for_contribution: Thanks for your contribution!
+    error:
+        error_404: Sorry, but page not found...
+        error_500: Sorry, but some internal error occurred...
+        error_unknown: Sorry, but we have error...
+        name_already_taken: Name already taken.
+        not_found_email: User with this email not found.
+        wrong_password: Wrong password.
+    label:
+        contribute: Contribute
+        email: EMAIL
+        facebook: facebook
+        forgotPassword: Forgot password
+        hi_from: Hi from
+        history: History
+        log_in: Log in
+        log_out: Log out
+        name: NAME
+        next: Next
+        password: PASSWORD
+        place: Place
+        previous: Previous
+        price: Price
+        program: Program
+        program: Program
+        reach_us_at: You can reach us at
+        registration: Registration
+        site: site
+        soon: soon
+        start: Start
+        submit: Submit
+        test_mail: This is test mail sent to
+        thanks: Thanks
+        toggle_navigation: Toggle navigation
+        twitter: twitter
+        upcoming_meetings: Upcoming Meetings
+    success:
+        password_updated: Your password successfully updated, check your mail.
+        password_updated_2: Your password updated.
+        user_registered: User successfully registered, now you can log in.
+        your_new_password: Your new password is

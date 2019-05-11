@@ -1,0 +1,16 @@
+{% extends 'AppBundle::Base.html.twig' %}
+{% block content %}
+  {% block hwi_oauth_content %}
+    {% if error %}
+      <span>{{ error }}</span>
+    {% endif %}
+    {% for owner in hwi_oauth_resource_owners() %}
+      <a class="btn btn-default btn-lg hide" href="{{ hwi_oauth_login_url(owner) }}" role="button">
+        {{ owner | trans({}, 'HWIOAuthBundle') }}
+      </a>
+    {% endfor %}
+    <a class="btn btn-default btn-lg" href="{{ path('logInOwn') }}" role="button">
+      {{ 'kpug.brand.title'|trans }}
+    </a>
+  {% endblock hwi_oauth_content %}
+{% endblock %}

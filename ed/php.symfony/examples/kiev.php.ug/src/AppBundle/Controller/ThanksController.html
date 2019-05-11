@@ -1,0 +1,25 @@
+<?php
+
+namespace AppBundle\Controller;
+
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+
+class ThanksController extends Controller
+{
+    /**
+     * @Route("/thanks", name="thanks")
+     */
+    public function ThanksAction(Request $request)
+    {
+        $response = $this->render(
+            'AppBundle:Thanks:Thanks.html.twig',
+            ['page' => 'thanks']
+        );
+        $response->setETag(md5($response->getContent()));
+        $response->setPublic();
+        $response->isNotModified($request);
+        return $response;
+    }
+}

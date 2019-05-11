@@ -1,0 +1,21 @@
+{% extends 'AppBundle::Base.html.twig' %}
+{% block content %}
+  <div class="page" data-id="#registration">
+    {{ form_start(form) }}
+      <p class="text-center">
+        {{ form_errors(form) }}
+        <br>
+        {{ form_errors(form.name) }}
+        {{ form_widget(form.name, {'attr': {'class': 'form-control', 'placeholder': 'kpug.label.name'}}) }}
+        <br>
+        {{ form_errors(form.email) }}
+        {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'kpug.label.email'}}) }}
+        <br>
+        {{ form_errors(form.plainPassword) }}
+        {{ form_widget(form.plainPassword, {'attr': {'class': 'form-control', 'placeholder': 'kpug.label.password'}}) }}
+        <br>
+        {{ form_widget(form.submit, {'attr': {'class': 'btn btn-primary', 'value': 'kpug.label.submit'}}) }}
+      </p>
+    {{ form_end(form) }}
+  </div>
+{% endblock %}
