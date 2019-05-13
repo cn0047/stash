@@ -29,6 +29,26 @@ nslookup github.com
 Network address translation (NAT) - is a method of remapping one IP address space into another
 by modifying network address information in the IP header.
 
+A record - Returns a 32-bit IPv4 address,
+most commonly used to map hostnames to an IP address of the host.
+
+CNAME - Canonical Name record.
+CNAME records must always point to another domain name,
+never directly to an IP address.
+CNAME record creates an alias for a single:
+````
+foo.example.com.  CNAME  bar.example.com.
+````
+
+DNAME record - Delegation Name record.
+Creates an alias for an entire subtree of the domain name tree.
+DNAME record creates an alias for subdomains.
+
+ANAME record - ALIAS Name record.
+ANAME records are typically configured to point to another domain,
+but when queried by a client, answer with an IP address.
+ANAME fater that CNAME.
+
 ## Virtual Machine
 
 Virtual Machine may have max 4096 ports.

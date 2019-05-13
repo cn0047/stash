@@ -11,9 +11,13 @@ Occur when:
 data enters through an untrusted source;
 dynamic content validation.
 
-Categories: stored (database) and reflected (response includes some malicious input).
+Categories:
+* stored (database)
+* reflected (response includes some malicious input)
+* DOM - malicious data does not touch the web server
+* self - user has own xss on own social page or something like that
 
-````
+````sh
 <b onmouseover=alert('Wufff!')>click me!</b>
 <img src="http://url.to.file.which/not.exist" onerror=alert(document.cookie);>
 
@@ -24,11 +28,26 @@ print "Not found: " . urldecode($_SERVER["REQUEST_URI"]);
 ````
 
 FIX:
-
 Filter input escape output.
-
 Use `.innerText` instead of `.innerHtml`
 The use of `.innerText` will prevent most XSS problems as it will automatically encode the text.
+
+#### Server-Site Request Forgery (SSRF)
+
+````php
+<?php
+$image = fopen($_GET['url'], 'rb');
+````
+and
+````sh
+GET /?url=http://localhost/server-status HTTP/1.1
+GET /?url=file:///etc/passwd HTTP/1.1
+GET /?url=dict://localhost:11211/stat HTTP/1.1
+````
+
+FIX:
+* Use whitelist for internal services.
+* Use only http & https (ports: 80 & 443).
 
 #### Cross-Site Request Forgery (CSRF)
 
@@ -47,6 +66,12 @@ Perform action on the victim's behalf.
 ````
 
 FIX: CORS (if browser support CORS) or CSRF token.
+
+#### ~~XML External Entity (XXE)~~
+
+Is a type of attack against an application that parses XML input,
+occurs when XML input containing a reference to an external entity
+is processed by a weakly configured XML parser.
 
 #### ~~Clickjacking (UI redress attack)~~
 
@@ -77,6 +102,15 @@ Cookie: TEMPLATE=../../../../../../../../../etc/passwd
 ````
 
 FIX: Query string is usually URI decoded before use.
+
+#### Insecure Deserialization
+
+Never deserialize untrusted data
+(crossed trust doundary, couldn't have been modified).
+
+#### ~~JSON hijacking~~
+
+In early versions of browsers the JSON file could be loaded as a normal script.
 
 #### ~~Shellshock (bashdoor, CVE-2014-6271)~~
 

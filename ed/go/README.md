@@ -187,6 +187,8 @@ template.JSEscapeString(input)
 #### HTTP
 
 ````golang
+b, err := httputil.DumpRequest(ctx.Request(), true)
+
 url := req.URL
 query := url.Query()
 q := query["q"]

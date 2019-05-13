@@ -3,7 +3,7 @@ Race Conditions
 
 Race condition - when events do not happen in the order the programmer intended.
 
-Integer overflow.
+Integer overflow (225+1=0; -128-1=127).
 Stack overflow.
 Heap overflow.
 
