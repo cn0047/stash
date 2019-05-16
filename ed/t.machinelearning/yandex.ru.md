@@ -2,9 +2,7 @@ Machine Learning
 -
 
 [source](http://habrahabr.ru/company/yandex/blog/208034/)
-|
 https://www.kaggle.com/
-|
 http://tunedit.org/
 
 1.
