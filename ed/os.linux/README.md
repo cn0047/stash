@@ -30,6 +30,7 @@ which software the init command launches or shuts off on a given runlevel.
 /dev/stderr                             # stream 2
 /dev/stdin                              # stream 0
 /dev/stdout                             # stream 1
+/dev/tty                                # representing the terminal for the current process
 /dev/urandom                            # random data for entropy
 /etc                                    # system configuration directory
 /etc/defaults/grub                      #

@@ -84,6 +84,7 @@ brew install mongodb
 brew install postgresql
 brew install mysql
 brew install jmeter
+brew install md5sha1sum # md5sum
 
 brew remove nginx
 brew update && brew cleanup

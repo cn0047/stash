@@ -204,7 +204,7 @@ tr := &http.Transport{DisableKeepAlives: true}
 client := http.Client{Transport: tr}
 client := http.Client{Timeout: time.Millisecond * timeout}
 
-// behaves like curl -L
+// by default behaves like curl -L
 http.Client{}.Get(URL)
 
 // w http.ResponseWriter

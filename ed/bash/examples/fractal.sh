@@ -3,27 +3,37 @@
 # Simple fractal implementation on bash.
 #
 # @see https://monosnap.com/file/kQ8EMJXEGsRxXIl8UfmsLznoaQAXmc
+#
+# This script was written to solve task on hackerrank
+# but maybe you'll find it interesting.
 
-rows=63
+rows=61
 columns=100
-height=16
-c1='○'
-c2='●'
+height=17           # height of fractal patter.
+c1='○'              # custom character-1 (with purpose to configure it later).
+c2='●'              # custom character-2.
 
-globalLoops=5 # read globalLoops # for hackerrank.
-root=$((columns/2))
+globalLoops=15      # read globalLoops # for hackerrank.
+root=$((columns/2)) # calculate column number for root node.
 
+# Prints 1 line of fractal picture.
+# @param array $1 Array to be printed.
+# In general this function prints array $1 to stdout.
 function prn() {
   local -n arr=$1
   local len=${#arr[@]}
   local i=0
   for ((i=0; i<len; i++)); do
-      echo -n ${arr[i]}
+    echo -n ${arr[i]}
   done
   printf "\n"
 }
 
-getRootLine() {
+# Gets blank line of fractal picture (line which contains only character-1).
+# @param array $1 Array with items to replace.
+# @category Pure function.
+# This function replaces all elements in array $1 to character-1.
+getBlankLine() {
   local -n arr=$1
   local len=${#arr[@]}
   local i=0
@@ -33,6 +43,7 @@ getRootLine() {
   echo ${arr[@]}
 }
 
+# @category Pure function.
 getRepeatedLine() {
   local -n arr=$1
   echo ${arr[@]}
@@ -105,7 +116,7 @@ for ((i=1; i<rows; i++)) do
   fi
 
   if [[ $stage -eq 0 ]]; then
-    line=($(getRootLine line))
+    line=($(getBlankLine line))
   elif [[ $stage -eq 1 ]]; then
     line=($(getRepeatedLine line))
   elif [[ $stage -eq 2 && $curheight -eq 0 ]]; then

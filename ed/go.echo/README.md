@@ -11,9 +11,7 @@ Examples:
 ````golang
 var c echo.Context
 
-// redirect
-c.Redirect(http.StatusFound, "<URL>")
-c.Response().Header().Set(echo.HeaderLocation, "img")
+c.Request().RequestURI
 
 // http://localhost/path/to/id/1
 c.Param("id")
@@ -26,6 +24,10 @@ c.FormValue("name")
 // JSON in POST
 input := VO{}
 err := ctx.Bind(&input)
+
+// redirect
+c.Redirect(http.StatusFound, "<URL>")
+c.Response().Header().Set(echo.HeaderLocation, "img")
 
 c.String(http.StatusOK, "Hello, World!")
 c.HTML(http.StatusOK, "<strong>Hello, World!</strong>")

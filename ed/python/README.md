@@ -15,7 +15,7 @@ Philosophy:
 * complex is better than complicated
 * readability counts
 
-````
+````sh
 python -V
 python3 -V
 
@@ -29,7 +29,7 @@ pip install -r requirements.txt
 pip install requests virtualenv
 ````
 
-````
+````py
 global myvar
 nonlocal myvar
 

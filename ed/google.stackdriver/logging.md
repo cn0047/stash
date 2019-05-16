@@ -16,6 +16,13 @@ gcloud logging write my-test-log-2 --payload-type=json \
   '{ "message": "My second entry", "weather": "partly cloudy"}'
 
 gcloud logging read --limit=5
+gcloud logging read --format=json --limit=50 --freshness=2d '
+  resource.type=gae_app
+  AND resource.labels.module_id="xws"
+  AND logName="projects/xprod750/logs/appengine.googleapis.com%2Frequest_log"
+  AND protoPayload.resource="/my-ep/part"
+  AND timestamp>="2019-05-14T00:00:00.0Z" AND timestamp<="2019-05-15T00:00:00.0Z"
+' | tee g.log | jq 'length'
 ````
 
 Log view filter:

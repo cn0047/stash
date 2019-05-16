@@ -30,7 +30,7 @@ Headers:
 * User-Agent
 * If-Modified-Since
 
-````
+````sh
 GET /api/collection
 Accept: application/x-collection+yaml
 
@@ -39,6 +39,35 @@ Content-Type: application/json
 Authorization: Basic YWRtaW46cGFzc3dvcmQ=
 Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9
 Authorization: OAuth oauth_consumer_key="", oauth_nonce="", oauth_signature="", oauth_signature_method="HMAC-SHA1", oauth_timestamp="1471672391", oauth_token="", oauth_version="1.0"'
+````
+
+JSON request:
+````sh
+````
+
+Request with file:
+````sh
+curl -X POST http://$h/labs/fastly/errors \
+  -H "Content-Type: multipart/form-data" -F "file=@/Users/k/Downloads/x.file" -F "msg=MyFile"
+
+Host: localhost:8207
+Accept: */*
+Content-Length: 325
+Content-Type: multipart/form-data; boundary=------------------------bb5595ef8190b841
+Expect: 100-continue
+User-Agent: curl/7.54.0
+
+--------------------------bb5595ef8190b841
+Content-Disposition: form-data; name="file"; filename="x.file"
+Content-Type: application/octet-stream
+
+>>> This is file content <<<
+
+--------------------------bb5595ef8190b841
+Content-Disposition: form-data; name="msg"
+
+MyFile
+--------------------------bb5595ef8190b841--
 ````
 
 #### Internet media type

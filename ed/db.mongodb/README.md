@@ -10,6 +10,10 @@ Mongo DB
 #### Introduction
 
 ````
+Relational DB ⇒ Table       ⇒ Row      ⇒ Field
+MongoDB       ⇒ Collection  ⇒ Document ⇒ Property
+````
+````
 sudo service mongodb start|stop|restart
 
 sudo rm /var/lib/mongodb/mongod.lock
