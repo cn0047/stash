@@ -25,12 +25,14 @@ Simple path - only use every edge at most once.
 Hamiltonion path - path that visits each node exactly once.
 
 Euler circuit - path has same initial and terminal veritces.
-Also all vertex have even degree.
+Also all veritces have even degree.
 
 Euler path - includes exactly once all the edges and has different first and last veritces.
 Also all vertex have even degree but 2 have odd degree.
 
 ## Held Karp Algorithm.
+
+404
 
 ## Shortest path
 
