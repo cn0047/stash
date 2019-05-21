@@ -20,7 +20,7 @@ O(N^2 + B) = O(N^2 + B) (because we know nothing about B)
 O(log2 N) = O(log N)
 O(N/2) = O(N)
 O(N^2/2) = O(N^2)
-O(N^2) = for fibonacci
+O(2^N) = for fibonacci
 O(N!) = salesman problem
 ````
 
@@ -29,8 +29,25 @@ whre a - 1st array length, b - 2nd.
 
 If algorithm takes half of elements on iteration - `Big O = O(log N)`.
 
-<br>`for (var i = 0; i < n; i++) for (var j = i; j < n; j++) {}` - `O(N^2/2) = O(N^2)`.
-<br>`for (int i = N; i > 0; i /= 2) for (int j = 0; j < i; j++) {}` - `O(N)`
+````sh
+# bubble sort = O(n^2)
+for (i = 0; i < n; i++) {
+  for (j = 0; j < n - i - 1 ; j++) {
+  }
+}
+
+# O(N^2/2) = O(N^2)
+for (var i = 0; i < n; i++) {
+  for (var j = i; j < n; j++) {
+  }
+}
+
+# O(N)
+for (int i = N; i > 0; i /= 2) {
+  for (int j = 0; j < i; j++) {
+  }
+}
+````
 
 Algorithm X is asymptotically more efficient than Y -
 X will always be a better choice for large inputs.

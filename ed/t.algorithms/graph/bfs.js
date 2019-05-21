@@ -1,6 +1,10 @@
 /**
  * BFS - Breadth First Search.
  *
+ * step 1: Put root node into queue.
+ * step 2: Dequeue element, print value and put into queue node's childs.
+ * step 2: Goto step 2.
+ *
  * @param {number} f From node.
  * @param {number} t To node.
  * @param {object} ed Edges in format: key - vertex, value - array of connected vertices.

@@ -93,6 +93,9 @@ The principal benefit - is that the list elements can easily be inserted or remo
 without reallocation or reorganization of the entire structure
 because the data items need not be stored contiguously in memory or on disk.
 
+Disadvantage: slow to get the element; slow append to end;
+Advantage: fast insert/delete into/from head;
+
 * `Doubly linked list` - each node contains two links,
 that are **references to the previous and to the next node** in the sequence of nodes.
 
@@ -176,7 +179,7 @@ and often for locations on the surface of the earth.
 
 * Hilbert R-tree - an extension to B+-tree for multidimensional objects.
 
-* Trie (digital or radix or prefix tree) - is an ordered tree data structure
+* [Trie](https://monosnap.com/file/1sTq5fwBiVEvPWakJiGusGK7foFmji) (digital or radix or prefix tree) - is an ordered tree data structure
 that is used to **store a dynamic set or associative array** where the keys are usually strings.
 
 * Hash tree - is a persistent data structure that can be **used to implement sets and maps**,
