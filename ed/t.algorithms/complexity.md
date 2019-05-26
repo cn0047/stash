@@ -14,9 +14,9 @@ Just looking for how thing scale roughtly (lineral, quadratic, etc).
 ````
 O(N^2 + N^2) = O(N^2)
 O(N^2 + N) = O(N^2)
-O(N + log N) = O(N) (because log N < N)
+O(N + log N) = O(N) # because log N < N
 O(5 * 2^N + 10 * N^100) = O(2^N)
-O(N^2 + B) = O(N^2 + B) (because we know nothing about B)
+O(N^2 + B) = O(N^2 + B) # because we know nothing about B
 O(log2 N) = O(log N)
 O(N/2) = O(N)
 O(N^2/2) = O(N^2)

@@ -1,6 +1,8 @@
 Binary Search Tree (BST)
 -
 
+Level-Order Traversal aka BFS.
+
 #### Find inorder predecessor
 
 If left child is present - got to left child and go to [most right](http://prntscr.com/hdpp78),

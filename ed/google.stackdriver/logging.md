@@ -65,6 +65,7 @@ protoPayload.resource!="/static/"
 severity>=CRITICAL
 severity>=ERROR
 severity>=WARNING
+NOT "GET /sitemap/"
 ````
 
 Go:

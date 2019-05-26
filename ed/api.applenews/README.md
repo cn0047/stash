@@ -42,3 +42,7 @@ curl -X GET $url \
 [components](https://developer.apple.com/documentation/apple_news/apple_news_format/components)
 
 https://apple.news/AqoCs5rTJQq-EI8o1mMxiwg
+
+````
+"minimumHeight": "50vh" # Viewport Height
+````
