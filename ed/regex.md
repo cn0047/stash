@@ -22,7 +22,7 @@ IPv4 address range: https://regex101.com/r/O4t93o/2/
 |??                                          | optional match, 0 or 1, prefer zero |
 |*                                           | optional match, 0 or many |
 |*?                                          | optional match, 0 or many, prefer fewer |
-|*?, +?, ??                                  | the *, +, and ? qualifiers are all greedy, `?` helps avoid it |
+|`*?, +?, ??`                                | the *, +, and ? qualifiers are all greedy, `?` helps avoid it |
 |{3}                                         | exactly 3 |
 |{3,}                                        | 3 or more |
 |{3,5}                                       | 3 or 4 or 5 |

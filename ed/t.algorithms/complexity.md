@@ -8,20 +8,24 @@ Important to find upper bound for algorithm.
 
 Big O - Dependency between count of iterations and input parameters.
 
-Drop constants in big O. Not O(2n), not O(3n)...
+Drop constants in big O. Not O(2n), not O(3n).
+Ignore the base of logs (log2, log10).
 Just looking for how thing scale roughtly (lineral, quadratic, etc).
 
 ````
-O(N^2 + N^2) = O(N^2)
-O(N^2 + N) = O(N^2)
-O(N + log N) = O(N) # because log N < N
+O(N^2 + N^2)            = O(N^2)
+O(N^2 + N)              = O(N^2)
+O(N + log N)            = O(N) # because log N < N
 O(5 * 2^N + 10 * N^100) = O(2^N)
-O(N^2 + B) = O(N^2 + B) # because we know nothing about B
-O(log2 N) = O(log N)
-O(N/2) = O(N)
-O(N^2/2) = O(N^2)
-O(2^N) = for fibonacci
-O(N!) = salesman problem
+O(N^3 + N^2 + N)        = O(N^3)
+O(N^2 + B)              = O(N^2 + B) # because we know nothing about B
+O(log2 N)               = O(log N)
+O(N/2)                  = O(N)
+O(N^2/2)                = O(N^2)
+
+O(2^N)                  = for fibonacci
+O(N!)                   = salesman problem
+O(log N)                = if divide in 1/2 or myltiply by 2
 ````
 
 For array inside another array - `Big O(a * b)`,

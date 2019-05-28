@@ -1,5 +1,3 @@
-// task 2
-
 function solution(A) {
     var b;
     var max;

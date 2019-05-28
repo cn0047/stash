@@ -68,19 +68,6 @@ add node to stack
     -> if no childs to add - pop element from stack
 ````
 
-## Tree
-
-To make Minimum spanning tree use:
-
-* Prim's Algorithm - like BFS but pick chipest node on each iteration.
-
-* Kruskal's Algorithm - connect to endes while them in different separated trees,
-  because cycles not allowed.
-
-* Boruvka's Algorithm
-
-* Reverse-Delete Algorithm
-
 ## Topological Sorting
 
 Topological Sorting not have to be unique.
