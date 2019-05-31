@@ -113,6 +113,11 @@ For example, the rating for 1 KB sized items is 10,000 operations per second per
 Therefore, the load on a single key should not be higher
 than 100 - 1,000 operations per second for items that are 1 KB in size.
 
+````golang
+item := memcache.Item{Key: key, Value: v, Expiration: expiration}
+err := memcache.Set(ctx, &item)
+````
+
 ## CRON
 
 ````yaml

@@ -24,8 +24,11 @@ O(N/2)                  = O(N)
 O(N^2/2)                = O(N^2)
 
 O(2^N)                  = for fibonacci
+O(N!)                   = for recursion
 O(N!)                   = salesman problem
 O(log N)                = if divide in 1/2 or myltiply by 2
+
+N # greater than log N
 ````
 
 For array inside another array - `Big O(a * b)`,

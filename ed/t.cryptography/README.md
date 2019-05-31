@@ -31,3 +31,4 @@ Hashing algorithms:
 
 Don't use (it's vulnerable) : MD5, SHA1, 3DES.
 <br>Use SHA2, SHA3.
+Not secure: CRC32.

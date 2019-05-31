@@ -3,6 +3,11 @@ BigQuery
 
 [doc](https://cloud.google.com/bigquery/docs)
 
+````sql
+select regexp_extract(field, r"^[^\s]+") ua
+from tbl`;
+````
+
 ````sh
 curl -XPOST \
   https://bigquery.googleapis.com/bigquery/v2/projects/thisisrealtimelog/datasets/fastly_bigquery/tables/test/insertAll \

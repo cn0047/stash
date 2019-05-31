@@ -32,7 +32,7 @@ Also all vertex have even degree but 2 have odd degree.
 
 ## Held Karp Algorithm.
 
-404
+...
 
 ## Shortest path
 
