@@ -9,8 +9,6 @@ Pivot element of array - element which changes the order of array.
 
 Majority element - number of occurrences > n/2.
 
-To find next greater element in array - use stack.
-
 ## Arrays
 
 * Bit array (bitmap, bitset, bit string, or bit vector) - is an array data structure that compactly **stores bits**.

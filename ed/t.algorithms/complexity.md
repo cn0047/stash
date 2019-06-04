@@ -27,8 +27,6 @@ O(2^N)                  = for fibonacci
 O(N!)                   = for recursion
 O(N!)                   = salesman problem
 O(log N)                = if divide in 1/2 or myltiply by 2
-
-N # greater than log N
 ````
 
 For array inside another array - `Big O(a * b)`,
@@ -59,6 +57,6 @@ for (int i = N; i > 0; i /= 2) {
 Algorithm X is asymptotically more efficient than Y -
 X will always be a better choice for large inputs.
 
-Big O notation - Upper bound.
-Omega notation - Lower bound.
-Theta notation - Tight bound.
+`O` Big O notation - Upper bound.
+`Ω` Omega notation - Lower bound.
+`Θ` Theta notation - Tight bound.
