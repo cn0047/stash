@@ -6,6 +6,7 @@ Systemd is a system management daemon.
 ````sh
 systemctl status
 systemctl list-units
+systemctl daemon-reload
 
 systemctl enable lf@1323.service
 systemctl daemon-reload

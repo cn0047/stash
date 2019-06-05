@@ -19,9 +19,10 @@ docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
 docker pull ubuntu
 
 # build image from Dokerfile in dir ./examples/mydockerbuild
-# `-t` it is tag
-# `.` it is current directory 
+# -t - it is tag
+# .  - it is current directory
 docker build -t docker-whale .
+docker build -t docker-whale -f Dockerfile .
 
 docker build -t nphp https://raw.githubusercontent.com/cn007b/my/master/docker/php-nginx/Dockerfile?latest
 
@@ -34,16 +35,16 @@ docker inspect docker-whale
 docker stats
 
 # run an interactive container (run an image)
-# `-t` terminal
-# `-i` interactive connection
-# `-P` publish all exposed ports to random ports
+# -t - terminal
+# -i - interactive connection
+# -P - publish all exposed ports to random ports
 docker run -P -t -i ubuntu:latest /bin/bash
 
 # run a web application
-# `-d` runs the container as daemon
-# `-p` maps any required network ports
-docker run -d -p 8081:80 timber/ziipr
-docker run -d -p 192.168.0.32:1111:1111 timber/ziipr
+# -d - runs the container as daemon
+# -p - maps any required network ports
+docker run -d -p 8081:80 cn007b/ubuntu
+docker run -d -p 192.168.0.32:1111:1111 cn007b/ubuntu
 
 docker attach container_name
 
@@ -143,6 +144,9 @@ for defining and running multi-container Docker applications.
 
 ````sh
 docker-compose build serviceName
+# --no-cache - do not use cache
+# --force-rm - remove intermediate containers
+docker-compose build --no-cache --force-rm serviceName
 
 # shutdown/cleanup
 docker-compose down
