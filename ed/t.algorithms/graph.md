@@ -16,6 +16,15 @@ Complete graph - every vertex is connected to every other vertex.
 
 All edges can be stored in adjacent matrix or adjacent list or in icidence matrix.
 
+Binary decision diagram (BDD) -  is a data structure
+that is used to represent a Boolean function.
+On a more abstract level, BDDs can be considered
+as a compressed representation of sets or relations.
+
+Directed acyclic graph - ...
+
+Directed acyclic word graph - ...
+
 ## Path
 
 Path - set of edges that conncect 2 nodes.

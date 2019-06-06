@@ -75,15 +75,4 @@ It is related to the B-tree.
 * XOR linked list - it takes advantage of the bitwise XOR operation
 to decrease storage requirements for doubly linked lists.
 
-## Graphs
-
-* Binary decision diagram (BDD) -  is a data structure
-that is used to represent a Boolean function.
-On a more abstract level, BDDs can be considered
-as a compressed representation of sets or relations.
-
-* Directed acyclic graph - ...
-
-* Directed acyclic word graph - ...
-
 http://en.wikipedia.org/wiki/Template:Data_structures

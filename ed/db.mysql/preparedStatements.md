@@ -55,6 +55,14 @@ SET @t = CONCAT('SELECT 1 AS n', REPEAT(' UNION ALL SELECT @i := @i + 1', @n - 1
 SET @s = CONCAT("SELECT REPEAT('* ', t.n) AS RESULT FROM (", @t, ") t");
 PREPARE stmt FROM @s;
 EXECUTE stmt;
+
+-- stars 2
+SET @n = 20;
+SET @i = 1;
+SET @f = CONCAT('SELECT 1 AS c', REPEAT(' UNION ALL SELECT @i := @i + 1', @n - 1));
+SET @s = CONCAT("SELECT REPEAT('*', c) AS result FROM (", @f, ") t");
+PREPARE stmt FROM @s;
+EXECUTE stmt;
 ````
 
 The following SQL statements can be used in prepared statements:
