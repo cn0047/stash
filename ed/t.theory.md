@@ -2,51 +2,18 @@ Theory
 -
 
 ````
-╔═══╗
-║ + ║
-╚═══╝
 ┌─┬─┐
 ├─┼─┤
-│ │ │
+│ │ │   ╔═══╗
+│ │ │   ║ + ║
+│ │ │   ╚═══╝
 └─┴─┘
-
-[scheme:][//[userinfo@]host][/]path[?query][#fragment]
-
-┌─ URL ──────────────┐
-protocol + host + path + all after question mark
-│          └─ URN ─────────────────────────────┤
-└─ URI ────────────────────────────────────────┘
-
-nil | null | none | blank | undefined | unknown | void | empty
-anonymous |
-environments: local; dev; stage|staging; prod|production;
-
-# !
-| name   | variant 1                    | variant 2                                       |
-|--------|------------------------------|-------------------------------------------------|
-| Sphinx | http://sphinxsearch.com/     | python package https://pypi.org/project/Sphinx/ |
-| BDD    | Behaviour-driven Development | Binary Decision Diagram                         |
-|        | Business-driven Development  |                                                 |
 ````
 
-````
-nanosecond  - 0,000 000 001
-microsecond - 0,000 001
-millisecond - 0,001
-````
+Server-Sent Events - servers can initiate data transmission towards clients
+once an initial client connection has been established.
 
 IO throughput - data transfer speed in megabytes per second (MB/s or MBPS).
-
-<br>AJAX polling - send request in loop.
-<br>Long-polling - ...
-<br>Forewer frame - ...
-<br>HTM5 Server-sent events - ...
-
-An `expression` evaluates to a value. A `statement` does something.
-````
-y = x + 1   # an expression
-print y     # a statement
-````
 
 To deal with big complicated problems - have to perform breakdown or decomposition.
 One of the best ways to deal with complexity is divide and conquer — split the problem
@@ -264,8 +231,25 @@ What should you understand as the distinction? Which one will represent the best
 `kebab-case`
 `snake_case`
 
-Even (2, 4, 6...) - `x % 2 = 0`.
-Odd (1, 3, 5...) - `x % 2 = 1`.
+````
+Even (2, 4, 6...) -> x % 2 = 0.
+Odd  (1, 3, 5...) -> x % 2 = 1.
+
+3/4 # 3 - numerator; 4 - denominator
+x^2 # x - base; 2 - power
+````
+
+````
+nanosecond  - 0,000 000 001
+microsecond - 0,000 001
+millisecond - 0,001
+````
+
+````
+nil | null | none | blank | undefined | unknown | void | empty
+anonymous |
+environments: local; dev; stage|staging; prod|production;
+````
 
 ````
 ( Open Parenthesis

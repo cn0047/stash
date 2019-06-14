@@ -35,6 +35,8 @@ aws s3api list-objects --bucket $bkt --query "[sum(Contents[].Size), length(Cont
 
 # CloudWatch
 
+Metric > EC2 > NetworkIn - The number of bytes received on all network interfaces by the instance.
+
 ````
 sudo service awslogs stop
 ````

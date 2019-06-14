@@ -13,6 +13,16 @@ Ignore the base of logs (log2, log10).
 Just looking for how thing scale roughtly (lineral, quadratic, etc).
 
 ````
+# time complexity
+O(1)      # constant time
+O(log(n)) # logarithmic time
+O(n)      # linear time
+O(n^2)    # n-squared time
+O(2^n)    # exponential time
+O(n!)     # n-factorial time
+
+# space complexity - same like time complexity ↑
+
 O(N^2 + N^2)            = O(N^2)
 O(N^2 + N)              = O(N^2)
 O(N + log N)            = O(N) # because log N < N
@@ -23,8 +33,8 @@ O(log2 N)               = O(log N)
 O(N/2)                  = O(N)
 O(N^2/2)                = O(N^2)
 
-O(2^N)                  = for fibonacci
-O(N!)                   = for recursion
+O(2^N)                  = for fibonacci and for recursion (with creating forks with n levels deep)
+O(N!)                   = for recursion (permutations)
 O(N!)                   = salesman problem
 O(log N)                = if divide in 1/2 or myltiply by 2
 ````
@@ -41,7 +51,7 @@ for (i = 0; i < n; i++) {
   }
 }
 
-# O(N^2/2) = O(N^2)
+# O(N^2/2) = O(N^2) # dropped constant 2
 for (var i = 0; i < n; i++) {
   for (var j = i; j < n; j++) {
   }
@@ -60,3 +70,17 @@ X will always be a better choice for large inputs.
 `O` Big O notation - Upper bound.
 `Ω` Omega notation - Lower bound.
 `Θ` Theta notation - Tight bound.
+
+#### log
+
+````
+a^x = b
+2^3 = 8
+
+x = log a (b)
+3 = log 2 (8)
+
+log 10 (x) = lg (x) = log (x) # by default base = 10 in mathematics
+                              # by default base =  2 in programming
+ln (x) = log e (x) # where `e` = 2.72
+````

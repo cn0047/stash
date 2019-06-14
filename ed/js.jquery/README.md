@@ -136,6 +136,9 @@ selectable(options, optionName, value)
 ````
 
 ####Ajax (Asynchronous JavaScript and XML)
+
+AJAX polling - send request in loop.
+
 ````js
 $('form').ajaxForm({});
 

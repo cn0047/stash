@@ -5,6 +5,12 @@ HTTP (Hypertext Transfer Protocol)
 
 HTTP 1.1 was standardized in 1997.
 
+HTTP Long Polling - the client polls the server requesting new information.
+The server holds the request open until new data is available.
+Once available, the server responds and sends the new information.
+When the client receives the new information, it immediately sends another request,
+and the operation is repeated.
+
 #### Request
 
 ````
@@ -16,6 +22,15 @@ HTTP 1.1 was standardized in 1997.
 URL:
 
 Length up to 2048 chars.
+
+````
+[scheme:][//[userinfo@]host][/]path[?query][#fragment]
+
+┌─ URL ──────────────┐
+protocol + host + path + all after question mark
+│          └─ URN ─────────────────────────────┤
+└─ URI ────────────────────────────────────────┘
+````
 
 Headers:
 

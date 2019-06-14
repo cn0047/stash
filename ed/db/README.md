@@ -1,6 +1,12 @@
 Databases
 -
 
+## Sharding
+
+Problems With Sharding:
+* Imagine that shard outgrows storage capacity and must be splited (rebalancing data).
+* Join data from multiple shards - may turn out to be a problem.
+
 ## MVCC (Multiversion concurrency control):
 
 It's a concurrency control method in DBs

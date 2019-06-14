@@ -99,6 +99,12 @@ cc  - the C compiler,
 gcc - the GNU C compiler,
 ````
 
+#### signals
+
+````
+SEGV # segmentation violation (fault) - the software has attempted to access a restricted area of memory
+````
+
 #### keys
 
 ````

@@ -3,19 +3,11 @@ Programming
 
 ## Common stuff
 
-**Pure** function:
-
-1. always return the same result for same arguments
-2. no mutation or output to I/O etc
-3. rely only on input args
-4. it isn't void function
-
-Pure function can be parallelizable!
-
-**Deterministic** function always produces the same result for the same input parameters.
-
-**First class** function - passing function as argument into another function,
-assign function to variable, return function from function.
+An `expression` evaluates to a value. A `statement` does something.
+````
+y = x + 1   # an expression
+print y     # a statement
+````
 
 ## Paradigms
 
@@ -43,14 +35,6 @@ a style of building the structure and elements of computer programs
 that treats computation as the evaluation of mathematical (pure & deterministic) functions
 and avoids changing-state and mutable data.
 (JavaScript, Scala).
-
-Functional programming - What not How.
-
-Pure function - no side effects!
-
-Important:
-Separate mutation from calculation.
-Separate function from rule.
 
 **Object-oriented** programming - is a programming paradigm based on the concept of objects,
 which may contain data, in the form of fields, often known as attributes,
