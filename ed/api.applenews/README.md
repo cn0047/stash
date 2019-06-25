@@ -11,9 +11,24 @@ key=""
 secret=""
 channelId=""
 
-# common
+# 1️⃣ common
 contentType='application/json'
 date=`date +%Y-%m-%dT%T%z` # MUST be value like: 2019-03-26T13:41:58+02:00
+
+# get channel
+url="https://news-api.apple.com/channels/$channelId"
+canonicalURL="GET$url$date"
+# run curl
+
+# get sections
+url="https://news-api.apple.com/channels/$channelId/sections"
+canonicalURL="GET$url$date"
+# run curl
+
+# get articles
+url="https://news-api.apple.com/channels/$channelId/articles"
+canonicalURL="GET$url$date"
+# run curl
 
 # get article
 appleArticleID=""
@@ -21,18 +36,31 @@ url="https://news-api.apple.com/articles/$appleArticleID"
 canonicalURL="GET$url$date"
 # run curl
 
-# get channel
-url="https://news-api.apple.com/channels/$channelId"
-canonicalURL="GET$url$date"
-# run curl
+# promote articles in section
+sectionId=""
+appleArticleID=""
+url="https://news-api.apple.com/sections/$sectionId/promotedArticles"
+body='{"data":{"promotedArticles":["https://news-api.apple.com/articles/'$appleArticleID'"]}}'
+canonicalURL="POST$url$date$contentType$body"
+# run POST curl
 
-# run curl
+# 2️⃣ before run curl
 secretRaw=`echo -n $secret | base64 -D`
 signatureBin=`echo -n "$canonicalURL" | openssl dgst -sha256 -hmac "${secretRaw}" -binary`
 signature=`echo -n $signatureBin | base64`
+
+# run GET curl
 curl -X GET $url \
   -H 'Accept: '$contentType \
   -H  'Authorization: HHMAC; key="'$key'"; signature="'$signature'"; date="'$date'"' \
+  | jq
+
+# run POST curl
+curl -X POST $url \
+  -H 'Accept: '$contentType \
+  -H 'Content-Type: '$contentType \
+  -H  'Authorization: HHMAC; key="'$key'"; signature="'$signature'"; date="'$date'"' \
+  -d $body \
   | jq
 
 ````
