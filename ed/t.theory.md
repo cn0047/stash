@@ -240,6 +240,14 @@ x^2 # x - base; 2 - power
 ````
 
 ````
+byte          - 8    bits      ~ 
+kilobyte (KB) - 1024 bytes     ~ 1 000
+megabyte (MB) - 1024 kilobytes ~ 1 000 000
+gigabyte (GB) - 1024 megabytes ~ 1 000 000 000
+terabyte (TB) - 1024 gigabytes ~ 1 000 000 000 000
+petabyte (PB) - 1024 terabytes ~ 1 000 000 000 000 000
+exabyte  (EB) - 1024 petabytes ~ 1 000 000 000 000 000 000
+
 nanosecond  - 0,000 000 001
 microsecond - 0,000 001
 millisecond - 0,001

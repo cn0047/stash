@@ -17,11 +17,14 @@ const (
 )
 
 func main() {
-	Get("{id}")
+	-Get("{id}")
 }
 
-func Get(appleArticleID string) {
-	url := fmt.Sprintf("https://news-api.apple.com/articles/%s", appleArticleID)
+func AssignArticleToSection(articleID string, sectionID string) {
+}
+
+func GetArticle(articleID string) {
+	url := fmt.Sprintf("https://news-api.apple.com/articles/%s", articleID)
 	date := time.Now().Format(time.RFC3339)
 	canonicalURL := "GET" + url + date
 

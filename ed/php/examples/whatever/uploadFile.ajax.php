@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @example php -S localhost:8000 ed/php/examples/uploadFile.ajax.php
+ * @example php -S localhost:8000 ed/php/examples/whatever/uploadFile.ajax.php
  * @example curl http://localhost:8000 -H "Content-Type: multipart/form-data" -F "file=@/Users/k/f.txt" -F "msg=MyFile"
  */
 
@@ -20,7 +20,9 @@
         $name = $_FILES['file']['name'];
         $uploadsDir = '/tmp/php-uploads/';
         $destinationFile = "$uploadsDir/$name";
-        mkdir($uploadsDir);
+        if (file_exists($uploadsDir) === false) {
+            mkdir($uploadsDir);
+        }
         move_uploaded_file($tmpName, $destinationFile);
         printf('<br>File tmp name: %s', $tmpName);
         printf('<br>File name: %s', $name);

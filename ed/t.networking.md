@@ -19,6 +19,11 @@ Networking
 IP - Internet Protocol.
 DHCP - Dynamic Host Configuration Protocol.
 
+The 95th percentile is a widely used mathematical calculation
+to evaluate the regular and sustained utilization of a network pipe.
+Basically the 95th percentile says that 95% of the time, the usage is below this amount.
+So a 95th percentile tells you the value which is greater than or equal to 95% of your data.
+
 ````sh
 nslookup github.com
 

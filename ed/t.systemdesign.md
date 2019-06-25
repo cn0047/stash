@@ -1,27 +1,29 @@
 System Design
 -
 
-Replication needed for high availability (in case node die - you'll have all data).
-
 1: Clarify constraints and use cases.
 2: Abstract design.
-3: Understanding bottlenecks.
-4: Scaling your abstract design.
+3: Understand bottlenecks.
+4: Scale your abstract design.
 
 Primary concerns:
-* reliability (fault tolerant)
-* scalability (increasing load)
-* maintainability (code that can easily be understood, refactored and upgraded)
-
-Elements of a System:
-* architecture
-* modules
-* components
-* interfaces
-* data
+* Reliability (fault tolerant)
+* Scalability (increasing load)
+* Maintainability (code that can easily be understood, refactored and upgraded)
 
 CAP Theorem states that in a distributed system,
 it is impossible to simultaneously guarantee all of the following:
 * Consistency
 * Availability
-* Partition Tolerance
+* Partition tolerance
+
+Storage Scalability:
+* What is the amount of data that we need to store?
+* Will the data keep growing over time? If yes, then at what rate?
+
+Elements of a System:
+* Architecture
+* Modules
+* Components
+* Interfaces
+* Data

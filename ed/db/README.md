@@ -1,6 +1,12 @@
 Databases
 -
 
+Writes are 40 times more expensive than reads.
+
+Optimize wide. Make writes as parallel as you can.
+
+Replication needed for high availability (in case node die - you'll have all data).
+
 ## Sharding
 
 Problems With Sharding:
