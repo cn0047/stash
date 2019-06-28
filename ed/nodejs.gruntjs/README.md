@@ -1,7 +1,7 @@
 grunt
 -
 
-````
+````sh
 npm install grunt-init # project scaffolding
 npm install grunt-cli
 

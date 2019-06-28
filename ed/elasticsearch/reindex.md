@@ -3,13 +3,14 @@ Reindex (with ALIAS) wihout downtime
 
 ## Reindex (with ALIAS) wihout downtime [APPROACH 1]
 
+````sh
 export host='localhost'
 export port=9200
 export index=megacorp
 export alias=megacorp2
 export type=employee
-
-````json
+````
+````sh
 curl $host:$port/_cat/indices?v
 
 curl -XPUT $host:$port/$alias/ -d '{
@@ -52,14 +53,15 @@ curl -XGET $host:$port/_cat/aliases?v
 
 ## Reindex (with ALIAS) wihout downtime [APPROACH 2]
 
+````sh
 export host='localhost'
 export port=9200
 export index=megacorp
 export newindex=megacorp2
 export alias=megacorpalias
 export type=employee
-
-````json
+````
+````sh
 curl $host:$port/_cat/indices?v
 
 # Put mapping

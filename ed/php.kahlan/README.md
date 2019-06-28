@@ -4,7 +4,7 @@ kahlan
 4.0
 <br>2.4
 
-````
+````sh
 vendor/bin/kahlan --istanbul="coverage.json"
 istanbul report
 /usr/bin/chromium-browser coverage/lcov-report/index.html

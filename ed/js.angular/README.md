@@ -2,7 +2,7 @@ Angular
 -
 
 Decorator - it's function that adds metadata to a class (prefixed with `@`).
-Example: @Component({ selector: '', template: `<div></div>`, templateUrl: '', styleUrls: ['']});
+Example: `@Component({ selector: '', template: `<div></div>`, templateUrl: '', styleUrls: ['']});`
 
 Binding - coordinates communication between the component's class and its template.
 
@@ -17,7 +17,7 @@ Lifecycle Hooks:
 @Input - pass data to nested component.
 @Output - raising an event.
 
-````
+````js
 observable.subscribe(valueFn, errFn, completeFn) # http
 
 # in template
@@ -30,7 +30,7 @@ Routes Guards:
 * Resolve
 * CanLoad
 
-````
+````sh
 # cli
 # npm i -D @angular/cli
 

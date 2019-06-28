@@ -5,7 +5,8 @@ Replication (Master-Slave)
 
 Replication needed for high availability.
 
-Depending on the configuration, you can replicate all databases, selected databases, or even selected tables within a database.
+Depending on the configuration, you can replicate all databases,
+selected databases, or even selected tables within a database.
 
 * Asynchronous replication - one server acts as the master, while one or more other servers act as slaves.
 The master writes events to its binary log and slaves request them when they are ready.
@@ -25,7 +26,7 @@ There are two core types of replication format:
 and
 * MIXED
 
-````
+````sql
 SET GLOBAL binlog_format = 'STATEMENT';
 ````
 
@@ -50,7 +51,7 @@ innodb_flush_log_at_trx_commit=1
 # and
 sync_binlog=1
 ````
-````
+````sh
 sudo service mysql restart
 ````
 
@@ -59,13 +60,13 @@ CREATE USER 'repl'@'192.168.56.%' IDENTIFIED BY 'slavepass';
 GRANT REPLICATION SLAVE ON *.* TO 'repl'@'192.168.56.%';
 ````
 
-````
+````sql
 USE test;
 CREATE TABLE tt (msg VARCHAR(25) KEY);
 INSERT INTO tt VALUES ('this'), ('is'), ('test');
 ````
 
-````
+````sh
 mysqldump -uroot -proot --all-databases --master-data > dump.db.sql
 scp dump.db.sql vagrant@192.168.56.103:/tmp
 ````
@@ -77,7 +78,7 @@ scp dump.db.sql vagrant@192.168.56.103:/tmp
 [mysqld]
 server-id=2
 ````
-````
+````sh
 sudo service mysql restart
 ````
 ````sql
@@ -87,10 +88,10 @@ CHANGE MASTER TO
     MASTER_PASSWORD='slavepass'
 ;
 ````
-````
+````sh
 mysql -uroot -proot < /tmp/dump.db.sql
 ````
-````
+````sql
 START SLAVE;
 SHOW SLAVE STATUS \G
 ````

@@ -25,8 +25,8 @@ aws ec2 run-instances \
   --image-id ami-17a3e164 \
   --instance-type t2.medium \
   --count 1 \
-  --security-groups ssh Ciklum web default \
-  --key-name ziipr \
+  --security-groups ssh cklm web default \
+  --key-name zkey \
   --user-data 'echo 200' \
   --client-token KovpakTest4 \
 

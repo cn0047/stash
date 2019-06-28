@@ -25,7 +25,7 @@ grep cron -i /var/log/syslog
 tail -f /var/log/syslog | grep cron -i
 ````
 
-````
+````sh
 # restart on centos
 sudo service crond restart
 ````

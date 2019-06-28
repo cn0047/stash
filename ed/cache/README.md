@@ -3,7 +3,7 @@ cache
 
 Q:
 How to build cache system in a way
-that you can run warm-up all cache in one action/
+that you can run warm-up all cache in one action?
 
 Memcached:
 

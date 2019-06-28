@@ -1,7 +1,7 @@
 Beanstalkd
 -
 
-````
+````sh
 sudo service beanstalkd status
 ps aux|grep beanstalkd|grep grep -v
 ````
@@ -9,16 +9,16 @@ ps aux|grep beanstalkd|grep grep -v
 #### Commmands:
 
 ````
-put - create job
-reserve - reserve for the worker
-delete - delete job
-release - back job to ready status
-bury - change job status to buried
-kick - change job status to ready
-touch - allows a worker to request more time to work on a job (useful for jobs that potentially take a long time)
-watch - adds the named tube to the watch list
-ignore - removes the named tube from the watch list
-peek - let the client inspect a job in the system
+put         - create job
+reserve     - reserve for the worker
+delete      - delete job
+release     - back job to ready status
+bury        - change job status to buried
+kick        - change job status to ready
+touch       - allows a worker to request more time to work on a job (useful for jobs that potentially take a long time)
+watch       - adds the named tube to the watch list
+ignore      - removes the named tube from the watch list
+peek        - let the client inspect a job in the system
 peek-buried - return the next job in the list of buried jobs
 quit
 ````

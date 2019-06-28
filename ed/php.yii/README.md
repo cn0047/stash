@@ -4,18 +4,16 @@ yii
 <br>1.1.15
 
 [api](http://www.yiiframework.com/doc/api/1.1)
-|
 [guide](http://www.yiiframework.com/doc/guide/1.1/en/index)
-|
 [cookbook](http://yiiframework.ru/doc/cookbook/ru/index)
 
 Running the Yii Application
-````
+````sh
 cd ed/yii/examples/testdrive
 php -S localhost:8000 index.php
 ````
 
-````
+````php
 \Yii::app()->getRequest()
 \Yii::app()->request->getQuery('id'); // $_GET['id']
 \Yii::app()->request->getPost('id'); // $_POST['id']
@@ -127,7 +125,7 @@ $criteria->params = [':action' => $taskName];
 TaskProgress::model()->deleteAll($criteria);
 ````
 
-````
+````sh
 phpunit --colors --bootstrap=bootstrap.php unit/
 
 cd ed/yii/examples/testdrive/protected/tests/

@@ -34,10 +34,7 @@ services:
             - "postgres:postgres"
         volumes:
             - "../:/go/src/github.com/cl/lf"
-        command: sh -c '
-                go test ./images/internal -cover;
-                go test ./images/models -cover;
-            '
+        command: sh -c 'go test ./images/internal -cover; go test ./images/models -cover;'
 
     pgc:
         extends:

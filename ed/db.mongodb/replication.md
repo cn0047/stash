@@ -10,7 +10,7 @@ Nodes types:
 
 It's possible to use different engines for different nodes!
 
-When node comes back up as a secondary and oplog has looped- the
+When node comes back up as a secondary and oplog has looped - the
 entire db will be copied from primary.
 
 Minimal Replica Set in mongo:
@@ -19,7 +19,7 @@ Minimal Replica Set in mongo:
 * secondary
 * arbiter (for election when primary down)
 
-````
+````js
 rs.initiate({
     "_id": "xmongo",
     "members": [
@@ -57,7 +57,7 @@ Durable Replica Set (write concerns):
 * Journaled - wirte data to journal (default).
 * Multi-member.
 
-````
+````sh
 db.demo.insert({x: 1}, {writeConcern: {w: 2, j: true, wtimeout: 2000}});
 # w: 1          // ack from 1 machine
 # w: 2          // ack from 2 machines

@@ -105,7 +105,7 @@ gcc - the GNU C compiler,
 SEGV # segmentation violation (fault) - the software has attempted to access a restricted area of memory
 ````
 
-#### keys
+#### hotkeys
 
 ````
 Ctrl-k # delete rest of line

@@ -1,6 +1,10 @@
 Search
 -
 
+[Dates math](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html#_date_math_and_rounding).
+[Regexp syntax](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-regexp-query.html#regexp-syntax).
+Pagination of continuously updating data - [scroll](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-scroll.html).
+
 Query context - How well does document match query (score).
 Filter context - does document match query clause (yes/no).
 
@@ -16,12 +20,7 @@ Boolean:
 * must_not
 * filter - must appear in result but result not scored.
 
-[Dates math](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html#_date_math_and_rounding).
-[Regexp syntax](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-regexp-query.html#regexp-syntax).
-
-Pagination of continuously updating data - [scroll](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-scroll.html).
-
-````json
+````sh
 # Get employee 1
 curl -XGET localhost:9200/megacorp/employee/1
 
@@ -44,7 +43,7 @@ curl 'localhost:9200/megacorp/employee/_mget?pretty' -d '{
 }'
 ````
 
-````json
+````sh
 # find all employee
 curl -XGET localhost:9200/megacorp/employee/_search
 
@@ -291,7 +290,7 @@ curl -XGET localhost:9200/megacorp/employee/_search?pretty -d '{
 }'
 ````
 
-````json
+````sh
 # Custom field
 curl -XGET localhost:9200/megacorp/employee/_search -d '{
     "script_fields": {"name": {
@@ -300,15 +299,15 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
 }'
 ````
 
-````json
-curl -XPOST 'localhost:9200/ziipr/users/18330/_update?pretty' -d '{
+````sh
+curl -XPOST 'localhost:9200/zii/users/18330/_update?pretty' -d '{
 "script" : "if (ctx._source.pictures != null) { for (item in ctx._source.pictures) { if (item.picture_id == 3460) { item.type_id = 201201999 } } } "
 }'
 ````
 
 #### Geo queries
 
-````json
+````sh
 # Find Cristiano Ronaldo by geo_distance
 curl -XGET localhost:9200/megacorp/employee/_search -d '{
     "query":{
@@ -360,8 +359,8 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
 
 #### Scroll
 
-````
-curl 'localhost:9200/ziipr/users/_search?scroll=1m' -d '{
+````sh
+curl 'localhost:9200/zii/users/_search?scroll=1m' -d '{
     "query": {"match_all" : {}}
     "sort" : [{ "last_seen_at" : "desc" }],
     "from": 0,
@@ -377,8 +376,8 @@ curl 'localhost:9200/_search/scroll ' -d '{
 
 #### Z examples
 
-````
-curl -XGET localhost:9200/ziipr/users/_search -d '{
+````sh
+curl -XGET localhost:9200/zii/users/_search -d '{
     "query" : {
         "bool": {
             "filter": {
@@ -407,7 +406,7 @@ curl -XGET localhost:9200/ziipr/users/_search -d '{
     "size": 5
 }'
 
-curl -XGET location/ziipr/users/_search?pretty=true -d '{
+curl -XGET location/zii/users/_search?pretty=true -d '{
     "from" : 10,
     "size" : 10,
     "sort" : [{ "last_seen_at" : "desc" }],
@@ -433,7 +432,7 @@ curl -XGET location/ziipr/users/_search?pretty=true -d '{
     }
 }'
 
-curl -XGET localhost:9200/ziipr/users/_search -d '{
+curl -XGET localhost:9200/zii/users/_search -d '{
     "from" : 0,
     "size" : 1,
     "fields": ["verification_status_id", "pictures.type_id", "pictures.file_name", "pictures.*"],

@@ -7,7 +7,7 @@ Almost all processes alternate between two states in a continuing cycle:
 
 CPU bursts vary from process to process, and from program to program.
 
-Whenever the CPU becomes idle, it is the job of the CPU Scheduler ( a.k.a. the short-term scheduler )
+Whenever the CPU becomes idle, it is the job of the CPU Scheduler (a.k.a. the short-term scheduler)
 to select another process from the ready queue (FIFO) to run next.
 
 A scheduling system allows one process to use the CPU while another is waiting for I/O.

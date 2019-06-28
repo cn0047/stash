@@ -7,14 +7,14 @@ v15.4.0
 
 React is a declarative, efficient, and flexible JavaScript library for building user interfaces.
 
-````
+````sh
 npm install -g create-react-app
 create-react-app hello-world
 cd hello-world
 npm start
 ````
 
-````
+````js
 this.setState(prevState => Object.assign({}, prevState, {new: "new"}));
 ````
 

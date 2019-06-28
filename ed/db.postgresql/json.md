@@ -78,7 +78,7 @@ SELECT data->'name'FROM books WHERE (data->'tags')::jsonb ? 'fun';
  "B-Third"
 ````
 
-````
+````sql
 # INDEX:
 # 
 CREATE INDEX ON books ((data->>'author'));

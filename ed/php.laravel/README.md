@@ -2,13 +2,13 @@ Laravel
 -
 5.3
 
-````
+````sh
 composer global require "laravel/installer" 
 laravel new blogProject
 
 composer require barryvdh/laravel-ide-helper
 ````
-````
+````sh
 php artisan serve
 ````
 
@@ -23,14 +23,14 @@ php artisan serve
 
 ## Service Container
 
-````
+````php
 # get service from container
 $h = $this->app->make('App\Services\Helper');
 ````
 
 ## Controller
 
-````
+````sh
 # Create CRUD controller.
 php artisan make:controller PhotoController --resource
 
@@ -78,14 +78,14 @@ Polymorphic Relations:
 
 ## Misc
 
-````
+````php
 Illuminate\Support\Facades\Hash::make('str');
 Illuminate\Support\Facades\Hash::check('plain-text', $hash);
 ````
 
 ## Migrations
 
-````
+````sh
 php artisan migrate          # running migrations
 php artisan migrate:rollback # rollback the last migration operation
 php artisan make:migration update_newsletter_ad_campaigns

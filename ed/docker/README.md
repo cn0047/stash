@@ -34,7 +34,7 @@ docker inspect docker-whale
 
 docker stats
 
-# run an interactive container (run an image)
+# run an interactive container from an image
 # -t - terminal
 # -i - interactive connection
 # -P - publish all exposed ports to random ports
@@ -114,7 +114,7 @@ docker load -i img.dump.tar
 
 ````sh
 * FROM       - (`FROM scratch`)
-* MAINTAINER -
+* MAINTAINER - Vladimir Kovpak
 * ARG        - `ARG CODE_VERSION=latest`
 * ENV        - `ENV NODE_PORT=3000`
 * ADD        - allows `<src>` to be a URL

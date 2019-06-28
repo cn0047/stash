@@ -4,7 +4,7 @@ v4.7.2
 
 JSLint & JSHint - works with predefined rules.
 
-````
+````sh
 # init eslint config
 node_modules/.bin/eslint --init
 

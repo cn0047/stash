@@ -26,7 +26,7 @@ webpack-dev-server --host 0.0.0.0 --public 192.168.56.101:8080 --watch-poll
 
 Build:
 
-````
+````sh
 # minify
 ./node_modules/.bin/webpack -p
 ````

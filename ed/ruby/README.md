@@ -8,11 +8,11 @@ Ruby - multi-platform open-source, dynamic object-oriented interpreted language,
 with automatic memory management.
 Supports multiple programming paradigms: object-oriented, and imperative.
 
-````
+````sh
 ruby -v
 ````
 
-````
+````sh
 rvm use ruby-2.4.0
 rvm default ruby-2.4.0
 ````
@@ -218,7 +218,7 @@ eval "var = 1"
 
 ## Debug
 
-````
+````sh
 ruby -r debug ed/ruby/examples/class.1.rb
 ````
 

@@ -164,10 +164,7 @@ Complexity
 
 #### Comments
 
-Good comment must explain:
-* what?
-* why?
-* how?
+Good comment must explain: `what? why? how?`
 
 #### [Clean Code](https://monosnap.com/file/9UGwycGbfCus8TRIXPjFWGsI2pKOKW)
 
@@ -199,15 +196,6 @@ Would a Name ever be a floating point number? If so, it breaks an earlier rule a
 Imagine finding one class named Customer and another named CustomerObject.
 What should you understand as the distinction? Which one will represent the best path to a customer’s payment history?
 
-#### ACID
-
-<ul>
-    <li><i>Atomicity</i> - all or nothing.</li>
-    <li><i>Consistency</i> ensures that any transaction will bring the database from one valid state to another (constraints, cascades, triggers).</li>
-    <li><i>Isolation</i> ensures that the concurrent execution of transactions will executed serially, i.e., one after the other.</li>
-    <li><i>Durability</i> ensures that once a transaction has been committed, it will remain so, even in the event of power loss, crashes, or errors...</li>
-</ul>
-
 #### 10 Questions Developers Should be Asking Themselves
 
 * Is there a pattern here?
@@ -232,8 +220,8 @@ What should you understand as the distinction? Which one will represent the best
 `snake_case`
 
 ````
-Even (2, 4, 6...) -> x % 2 = 0.
 Odd  (1, 3, 5...) -> x % 2 = 1.
+Even (2, 4, 6...) -> x % 2 = 0.
 
 3/4 # 3 - numerator; 4 - denominator
 x^2 # x - base; 2 - power
@@ -248,9 +236,9 @@ terabyte (TB) - 1024 gigabytes ~ 1 000 000 000 000
 petabyte (PB) - 1024 terabytes ~ 1 000 000 000 000 000
 exabyte  (EB) - 1024 petabytes ~ 1 000 000 000 000 000 000
 
-nanosecond  - 0,000 000 001
-microsecond - 0,000 001
 millisecond - 0,001
+microsecond - 0,000 001
+nanosecond  - 0,000 000 001
 ````
 
 ````

@@ -270,7 +270,7 @@ const baz = !c; // c ? false : true;
 
 #### Undefined
 
-````
+````js
 console.log(typeof v !== 'undefined'); // isset variable v.
 ````
 

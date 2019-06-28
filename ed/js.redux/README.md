@@ -7,7 +7,7 @@ redux
 [ReactRouter](http://redux.js.org/docs/advanced/UsageWithReactRouter.html).
 [ChromeExtension](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en)
 
-````
+````sh
 npm install --save redux react-redux
 redux-devtools
 redux-thunk

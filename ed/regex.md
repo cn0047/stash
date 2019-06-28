@@ -87,7 +87,7 @@ IPv4 address range: https://regex101.com/r/O4t93o/2/
 (?{GROUP_MATCHED?}REPLACEMENT_IF_YES:REPLACEMENT_IF_NO}
 ````
 
-````sh
+````
 /(['"])[^'"]*\1/
 
 (aa){1,2}?                   # exactly 2 aa, not 4 aa (2 aa & 2 aa)
@@ -102,7 +102,7 @@ IPv4 address range: https://regex101.com/r/O4t93o/2/
 ^(?!.*badword).*string.* # contains string but doesn't contain badword
 ````
 
-````
+````sh
 grep '$DC' # environment var
 grep -Pz 'r\nw' # match new line pattern
 

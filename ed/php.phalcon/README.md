@@ -3,7 +3,7 @@ Phalcon
 
 2.0.9
 
-````
+````sh
 php -S localhost:8000 -t ./public
 
 php -r 'var_dump(Phalcon\Version::get());'
@@ -24,7 +24,7 @@ $this->request->getPost('_POST');
 
 sprintf('%s://%s',$this->request->getScheme(), $this->request->getServerName());
 ````
-````
+````sh
 php app/cli.php main
 ````
 
@@ -67,23 +67,22 @@ return $rs->fetchAll($rs);
 
 #### Devtools
 
-````
+````sh
 sudo ln -s /var/www/html/public/phalcon-devtools/phalcon.php /usr/bin/phalcon
 sudo chmod ugo+x /usr/bin/phalcon
 ````
 
-````
+````sh
 # create project
 phalcon project --name dbRelationships --type=cli
 
 # generate model from db table
 phalcon model video --get-set --output=models/v1/ --namespace=W3\\Ziipr\\Models\\v1
-
 ````
 
 #### DB migrations
 
-````
+````sh
 # create db migration
 phalcon migration --action=generate --table=video --no-auto-increment --config=config/config.php
 

@@ -1,7 +1,7 @@
 VirtualBox
 -
 
-````
+````sh
 VBoxManage list vms
 ````
 

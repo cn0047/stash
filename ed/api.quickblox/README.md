@@ -1,9 +1,9 @@
 Quickblox
 -
 
-````
-export apiHost='apiziipr.quickblox.com'
-export chatHost='chatziipr.quickblox.com'
+````sh
+export apiHost='api.quickblox.com'
+export chatHost='chat.quickblox.com'
 export host=$apiHost
 ````
 
@@ -49,7 +49,7 @@ $responseHttpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 printf("Your token is: %s %s", json_decode($response, true)["session"]["token"], PHP_EOL);
 '
 ````
-````
+````sh
 # user 1 admin@ziipr
 $USER_LOGIN = "";
 $USER_PASSWORD = "";
@@ -92,9 +92,11 @@ export tokenForUser3=''
 
 #### User
 
+````sh
 curl -X DELETE \
 -H "QB-Token: "$tokenForUser1 \
 https://$host/users/$qbIdForUser1.json
+````
 
 #### Chat
 
@@ -296,7 +298,7 @@ https://$host/chat/Dialog/$chatId.json?force=1
 
 #### Push
 
-````
+````sh
 php -r '
 $r = base64_encode(json_encode([
     "ios_content_available" => 1,

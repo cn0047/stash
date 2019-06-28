@@ -4,7 +4,6 @@ IoC (Inversion of Control).
 When high-level module depends on low-level module - you cann't reuse high-level module.
 
 Bob Martin's (uncle Bob) CopyProgram:
-
 ````
               +------+
               | Copy |
@@ -15,7 +14,6 @@ Bob Martin's (uncle Bob) CopyProgram:
 | Read keyboard |  | Write to printer |
 +---------------+  +------------------+
 ````
-
 Now we need add ability to: Write to disc...
 
 Inversion of control - is used to increase modularity of the program and make it extensible.

@@ -5,13 +5,13 @@ The Twelve-Factor App
 There is only one codebase per app.
 If there are multiple codebases, it’s not an app – it’s a distributed system.
 Each component in a distributed system is an app.
-Multiple apps sharing the same code is a violation of 12f.
+Multiple apps sharing the same code is a violation of 12F.
 
 2. Dependencies:
 Explicitly declare and isolate dependencies.
 
 3. Config:
-Apps sometimes store config as constants in the code - this is a violation of 12f.
+Apps sometimes store config as constants in the code - this is a violation of 12F.
 Store config in the environment.
 Env vars are easy to change between deploys without changing any code.
 It's language and OS agnostic standard.
@@ -31,7 +31,7 @@ Every release should always have a unique release ID.
 
 6. Processes:
 Execute the app as one (or more) stateless processes.
-12f processes are stateless and share-nothing.
+12F processes are stateless and share-nothing.
 Any data that needs to persist must be stored in a stateful backing service.
 Sticky sessions are a violation of 12F and should never be used.
 
@@ -39,7 +39,7 @@ Sticky sessions are a violation of 12F and should never be used.
 Services should make themselves available to other services by specified ports.
 
 8. Concurrency:
-In 12f processes are a first class citizen.
+In 12F processes are a first class citizen.
 App must be able to span multiple processes running on multiple physical machines.
 The process model truly shines when it comes time to scale out.
 

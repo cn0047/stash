@@ -66,11 +66,11 @@ app.debug
 <script src="{{ asset('js/script.js') }}"></script>
 {% set seriesSendTimeUtc = (series.send_time_utc is defined) ? series.send_time_utc :  null %}
 ````
-````
-// Assets
+````sh
+# Assets
 app/console assets:install web/
 
-// Dumping Asset Files
+# Dumping Asset Files
 php bin/console assetic:dump --env=prod --no-debug
 php bin/console assetic:dump
 php bin/console assetic:watch

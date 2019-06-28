@@ -1,7 +1,7 @@
 GO (GOLANG)
 -
 
-````
+
 # docker build -t xgo ./docker/go
 docker pull cn007b/go:latest
 docker tag cn007b/go xgo
@@ -137,11 +137,11 @@ docker run -it --rm --name=grpcone -v $PWD:/gh -w /gh/ed/go/examples/grpc/one xg
 '
 # &
 docker exec -it grpcone sh -c 'export GOPATH=$PWD; go run src/app/client.go'
-````
+
 
 #### Simple Web Server
 
-````
+
 # web.one
 docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.one/' xgo sh -c '
   cd $GOPATH \
@@ -188,7 +188,7 @@ curl -i -XPUT 'http://localhost:8081/cars'
 curl -i -XDELETE 'http://localhost:8081/cars/1'
 curl -i -XPOST 'http://localhost:8081/cars' -H 'Content-Type: application/json' \
    -d '{"vendor": "BMW", "name": "M6"}'
-````
+
 
 # web.three.tiny
 
@@ -211,7 +211,7 @@ curl http://localhost:8080/v1/id/7
 
 #### GO Echo
 
-````
+
 # one
 
 # init
@@ -232,11 +232,11 @@ docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go.echo/examples/one' x
 curl -i -XGET 'http://localhost:8081'
 curl -i -XGET 'http://localhost:8081/products'
 curl -i -XGET 'http://localhost:8081/products/iphone'
-````
+
 
 #### GO Gin
 
-````
+
 docker run -it --rm -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go.gin/examples/one' \
   xgo sh -c 'cd $GOPATH && go get github.com/gin-gonic/gin'
 # or
@@ -250,11 +250,11 @@ docker run -it --rm -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go.gin/exa
 # go install ./...
 
 # curl localhost:8080/v1/id/7
-````
+
 
 #### API-Gateway
 
-````
+
 docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' xgo sh -c '
   go get github.com/codegangsta/gin;
   go get -u golang.org/x/lint/golint;
@@ -287,19 +287,19 @@ docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' xgo sh -c '
 docker run -it --rm -p 8080:8080  -v $PWD/bin/app:/app/app -w /app cn007b/ubuntu ./app
 # check
 curl 'http://localhost:8081/github/users/cn007b'|jq
-````
+
 
 #### CURL
 
-````
+
 docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' xgo sh -c '
   go test -v -cover
 '
-````
+
 
 #### PRA
 
-````
+
 # 1) Install dependencies:
 docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' xgo sh -c '
   go get -u golang.org/x/lint/golint;
@@ -330,11 +330,11 @@ docker run -it --rm -p 8080:8080 -v $PWD:/app -w /app -e GOPATH='/app' xgo sh -c
 curl -XGET 'http://localhost:8080'
 curl -XGET 'http://localhost:8080/products' | jq
 curl -XGET 'http://localhost:8080/products/mTd3lb' | jq
-````
+
 
 #### Products (PRA)
 
-````
+
 export APP_PATH=$PWD/ed/go.echo/examples/pra
 
 docker run -it --rm -v $APP_PATH:/app -e GOPATH='/app' xgo sh -c '
@@ -370,11 +370,11 @@ docker run -it --rm -v $APP_PATH:/app -e GOPATH='/app' xgo sh -c '
   && grep -h -v "mode: set" .cover/*.part >> ./.cover/coverage.out \
   && go tool cover -html=./.cover/coverage.out -o=./.cover/coverage.html
 '
-````
+
 
 #### (thepkg) strings & gcd & rest
 
-````
+
 docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' cn007b/go:1.10 go get -v -t -d ./...
 docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' cn007b/go:1.10 go vet
 docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' cn007b/go:1.10 go fmt ./...
@@ -383,42 +383,42 @@ docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' cn007b/go:2018-06-07 s
   go test -v -covermode=count -coverprofile=coverage.out
 '
 # docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' cn007b/go:1.10 gometalinter ./...
-````
+
 
 #### algolia
 
-````
+
 export GOPATH=$PWD'/ed/go/examples/algolia'
 go get github.com/algolia/algoliasearch-client-go/algoliasearch
 go run ed/go/examples/algolia/src/main.go
-````
+
 
 #### aws s3
 
-````sh
+sh
 export GOPATH=/Users/k/web/kovpak/gh/ed/go/examples/aws/s3
 go get -u "github.com/aws/aws-sdk-go/aws"
 cd $GOPATH/src/app && go run main.go
-````
+
 
 #### bench
 
-````
+
 GOPATH=$PWD/ed/go/examples/bench
 go run $GOPATH/main.go
-````
+
 
 #### websocket
 
-````
+
 export GOPATH=$PWD'/ed/go/examples/websocket'
 go get -u github.com/gorilla/websocket
 cd $GOPATH/src/app && go run $GOPATH/src/app/websockets.go
-````
+
 
 #### debug
 
-````
+
 export GOPATH=$PWD'/ed/go/examples/debug'
 
 # install delve
@@ -439,11 +439,11 @@ go build -gcflags='-N -l' $GOPATH/src/app/main.go \
 #
 # ERROR:
 # could not launch process: fork/exec ./main: operation not permitted
-````
+
 
 #### GO AppEngine one
 
-````
+
 export GOPATH=$PWD/ed/google.appengine/go.examples/one
 cd $GOPATH
 
@@ -468,9 +468,9 @@ cd $GOPATH && godepgraph github.com/thepkg/strings | dot -Tpng -o godepgraph.png
 
 # unit test
 cd $GOPATH/src/go-app && goapp test ./...
-````
 
-````
+
+
 export GOPATH=/gh/ed/google.appengine/go.examples/one
 docker run -it --rm -v $PWD:/gh -e GOPATH=$GOPATH xgo sh -c '
   cd $GOPATH && go get ./...
@@ -480,11 +480,11 @@ docker run -it --rm -p 8000:8000 -p 8001:8001 -v $PWD:/gh -e GOPATH=$GOPATH xgo 
   --storage_path=$GOPATH/.data --skip_sdk_update_check=true --support_datastore_emulator=no \
   $GOPATH/src/go-app/app.yaml
 '
-````
+
 
 #### Monitoring
 
-````
+
 # export GOROOT=/Users/k/.google-cloud-sdk/platform/google_appengine/goroot-1.9
 # export GOPATH=/Users/k/web/kovpak/monitoring:/Users/k/web/kovpak/monitoring/src/go-app
 
@@ -514,4 +514,4 @@ gcloud app deploy -q src/go-app/.gae/app.yaml
 gcloud app deploy -q src/go-app/.gae/cron.yaml
 gcloud app deploy -q src/go-app/.gae/queue.yaml
 gcloud app deploy -q src/go-app/.gae/index.yaml
-````
+

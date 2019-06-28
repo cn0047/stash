@@ -42,7 +42,7 @@ request_slowlog_timeout = 1
 
 `<![CDATA[]]>` - actual for XHTML.
 
-````
+````sh
 php -S localhost:8000 index.php
 php -S localhost:8000 -t ./public
 # on vagrant
@@ -145,7 +145,7 @@ throw new \UnderflowException(404);
 
 #### phpCs
 
-````
+````sh
 phpcs -sw --standard=PSR2 file.php
 phpcs -sw --standard=PSR2 --colors dir
 
@@ -157,7 +157,7 @@ sudo cp phpcs.phar /usr/bin/phpcs
 
 #### [phpDoc](http://www.phpdoc.org/docs/latest/index.html)
 
-````
+````sh
 phpdoc run -d . -t doc
 ````
 
@@ -209,7 +209,7 @@ php_value xdebug.profiler_output_name xdebug.profiler.%t
 php_value xdebug.profiler_output_dir /home/debug/d
 # Generated file open with KCachegrind or qcachegrind on OSX.
 ````
-````
+````sh
 vim ~/.bashrc
 
 export PHP_IDE_CONFIG="serverName=trunk-007" 
@@ -392,4 +392,3 @@ Type declarations (aka type hints):
     * object (php 7.2)
 
 It's ok to write `float[]` in phpDoc.
-    

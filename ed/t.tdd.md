@@ -9,7 +9,7 @@ Mock    - (->createMock()) an object on which you set expectations.
 Fixture - is the fixed state that exists at the start of a test.
 ````
 
-Test must be written in format: Arrange - Act - Assert.
+Test must be written in format: `Arrange - Act - Assert`.
 
 Better to use stubbing widely for large-scale components and subsystems,
 but less for the components at the programming language level,
@@ -85,30 +85,18 @@ Code is runnig in a debugger, code is tested from the inside, IDE.
 
 ## Testing Anti-Patterns
 
-* [Having unit tests without integration tests](https://monosnap.com/file/ctZy5mvYR76aq5QTEI71TuBCNtYanK).
-
-* Having integration tests without unit tests (integration tests are: complex, slow, harder to debug).
-
-* Having the wrong kind of tests.
-
-* Testing the wrong functionality (tests that verify the application data model).
-
-* Testing internal implementation (if you continuously fixing existing tests - you're doing something wrong).
-
 * Paying excessive attention to test coverage
   (100% code coverage sounds good in theory but almost always is a waste of time).
-
-* Having flaky or slow tests (if test fils randomly - developers won't trust test and soon will ignore tests).
-
+* Treating TDD as a religion (TDD is a good idea but you don’t have to follow it all the time: startup, etc).
 * Running tests manually (testing should be something that happens all the time behind the scenes).
-
+* Having flaky or slow tests (if test fails randomly - developers won't trust test and soon will ignore tests).
 * Treating test code as a second class citizen
   (design your tests with the same detail that you design the main feature code).
-
-* Not converting PRODUCTION bugs to tests.
-
-* Treating TDD as a religion (TDD is a good idea but you don’t have to follow it all the time: startup, etc).
-
-* Writing tests without reading documentation first.
-
 * Giving testing a bad reputation out of ignorance.
+* Writing tests without reading documentation first.
+* Not converting PRODUCTION bugs to tests.
+* Testing internal implementation (if you continuously fixing existing tests - you're doing something wrong).
+* [Having unit tests without integration tests](https://monosnap.com/file/ctZy5mvYR76aq5QTEI71TuBCNtYanK).
+* Having integration tests without unit tests (integration tests are: complex, slow, harder to debug).
+* Having the wrong kind of tests.
+* Testing the wrong functionality (tests that verify the application data model).

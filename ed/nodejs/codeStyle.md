@@ -20,7 +20,7 @@ Code style
 
 * Opening braces go on the same line
 
-````
+````js
 if (true) {
   console.log('winning');
 }
@@ -28,7 +28,7 @@ if (true) {
 
 * Declare one variable per var statement
 
-````
+````js
 var keys   = ['foo', 'bar'];
 var values = [23, 42];
 ````
@@ -45,7 +45,7 @@ var values = [23, 42];
 
 * Object / Array creation
 
-````
+````js
 var a = [
     'hello',
     'world',
@@ -68,7 +68,7 @@ Limit yourself to ~15 lines of code per function...
 
 * Return early from functions
 
-````
+````js
 function isPercentage(val) {
   if (val < 0) {
     return false;
@@ -86,7 +86,7 @@ Will produce better stack traces, heap and cpu profiles...
 You can reuse this name for recursion.
 It is also description for code.
 
-````
+````js
 req.on('end', function onEnd() {
   console.log('winning');
 });
@@ -98,7 +98,7 @@ req.on('end', function onEnd() {
 
 One method per line should be used if you want to chain methods.
 
-````
+````js
 User
   .findOne({ name: 'foo' })
   .populate('bar')

@@ -46,8 +46,8 @@ autoanalyze_count   - and the number of times it has been analyzed by the autova
 ````sql
 select * from pg_stat_all_indexes where relname like 'MOCK_DATA%';
 
-idx_scan - number of index scans initiated on that index
-idx_tup_read - number of index entries returned by index scans
+idx_scan      - number of index scans initiated on that index
+idx_tup_read  - number of index entries returned by index scans
 idx_tup_fetch - and number of live table rows fetched by simple index scans using that index
 
  relid  | indexrelid | schemaname |                relname                |                      indexrelname                      | idx_scan | idx_tup_read | idx_tup_fetch

@@ -1,6 +1,6 @@
 search
 -
 
-* Full-text: word, phrase, wildcard.
+* Full-text: phrase, word, wildcard.
 * Geo.
-* Faceted.
+* Faceted (something like groups or categories).

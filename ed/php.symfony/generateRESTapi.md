@@ -17,7 +17,7 @@ create table model (
 
 #### Generate entities
 
-````
+````sh
 php app/console doctrine:mapping:import --force AppBundle xml
 php app/console doctrine:mapping:convert annotation ./src
 php app/console doctrine:generate:entities AppBundle
@@ -27,13 +27,13 @@ https://github.com/voryx/restgeneratorbundle
 
 composer require voryx/restgeneratorbundle dev-master
 
-````
+````sh
 php app/console voryx:generate:rest --entity=AppBundle:Vendor
 ````
 
 #### Examples
 
-````
+````sh
 curl -i http://127.0.0.1:8000/app_dev.php/api/vendors.json
 curl -i -H "Content-Type: application/json" -X POST -d '{"name" : "BMW", "country" : "Germany"}' http://127.0.0.1:8000/app_dev.php/api/vendors.json
 curl -i -H "Content-Type: application/json" -X POST -d '{"name" : "Aston Martin", "country" : "UK"}' http://127.0.0.1:8000/app_dev.php/api/vendors.json

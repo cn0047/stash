@@ -4,7 +4,7 @@ HSTORE
 HSTORE - data type for storing sets of key/value pairs
 within a single PostgreSQL value. 
 
-````
+````sh
 psql -h localhost -d test -c 'create extension hstore;'
 ````
 

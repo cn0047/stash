@@ -14,7 +14,7 @@ Chrome
 start typing in url -> select bad suggestion -> Fn + Shift + Delete
 ````
 
-````
+````js
 // write in js this - and it'll be your break point
 debugger;
 

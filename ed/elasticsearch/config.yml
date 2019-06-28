@@ -1,14 +1,14 @@
 
 #network.bind_host: ["172.31.21.4"] 
-#network.host: 0.0.0.0 
-#network.host: 0.0.0.0:ipv4_ 
-#http.bind_host: 
-#network.host: _eth0:ipv4_ 
+#network.host: 0.0.0.0
+#network.host: 0.0.0.0:ipv4_
+#http.bind_host:
+#network.host: _eth0:ipv4_
 
 network.bind_host: ["0.0.0.0"]
 http.port: 9201
 
-# I am a Pure Master node
+# This is a Pure Master node
 
 cluster.name: prod-zii
 node.data: true
@@ -42,7 +42,7 @@ http.cors.enabled: true
 
 http.enabled: false # for data node - no query directly
 
-# Needed for Ziipr
+# scripts
 
 script.engine.groovy.inline.search: on
 script.engine.groovy.inline.update: on

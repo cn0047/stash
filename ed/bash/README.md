@@ -36,16 +36,11 @@ $3 -> $2
 $4 -> $3
 
 # Redirects:
-#
-# for standard input
-echo yes 0> f
-# for standard output
-echo ok 1> f
-# for errors
-echo no 2>| f
-# for standard output & errors
-echo okay &> f
-#
+echo yes 0> f   # for standard input
+echo ok 1> f    # for standard output
+echo no 2>| f   # for errors
+echo okay &> f  # for standard output & errors
+# also
 echo "test" 2>&1 1>/dev/null &
 >&2 # output to stderr
 1>&2 # output to stderr
@@ -73,40 +68,20 @@ fi
 ````bash
 echo '3^2 * 10 / 23' | bc -l # math
 
-if [[ -f $filename ]]; then
-  echo "$filename is a regular file"
-elif [[ -d $filename ]]; then
-  echo "$filename is a directory"
-elif [[ -p $filename ]]; then
-  echo "$filename is a named pipe"
-elif [[ -S $filename ]]; then
-  echo "$filename is a named socket"
-elif [[ -b $filename ]]; then
-  echo "$filename is a block device"
-elif [[ -c $filename ]]; then
-  echo "$filename is a character device"
-fi
-if [[ -L $filename ]]; then
-  echo "$filename is a symbolic link (to any file type)"
-fi
-if [[ -r $filename ]]; then
-  echo "$filename is a readable file"
-fi
-if [[ -w $filename ]]; then
-  echo "$filename is a writable file"
-fi
-if [[ -x $filename ]]; then
-  echo "$filename is an executable file"
-fi
-if [[ -n "$string" ]]; then
-  echo "$string is non-empty"
-fi
-if [[ -z "${string// }" ]]; then
-  echo "$string is empty or contains only spaces"
-fi
-if [[ -z "$string" ]]; then
-  echo "$string is empty"
-fi
+  if [[ -f $filename ]]; then echo "$filename is a regular file"
+elif [[ -d $filename ]]; then echo "$filename is a directory"
+elif [[ -p $filename ]]; then echo "$filename is a named pipe"
+elif [[ -S $filename ]]; then echo "$filename is a named socket"
+elif [[ -b $filename ]]; then echo "$filename is a block device"
+elif [[ -c $filename ]]; then echo "$filename is a character device"
+elif [[ -L $filename ]]; then echo "$filename is a symbolic link (to any file type)"
+elif [[ -r $filename ]]; then echo "$filename is a readable file"
+elif [[ -w $filename ]]; then echo "$filename is a writable file"
+elif [[ -x $filename ]]; then echo "$filename is an executable file"
+
+if [[ -n "$string" ]];      then echo "$string is non-empty"
+if [[ -z "${string// }" ]]; then echo "$string is empty or contains only spaces"
+if [[ -z "$string" ]];      then echo "$string is empty"
 
 -e "$file"        # file exists
 -d "$file"        # directory exists
@@ -192,8 +167,8 @@ EOF
 #!/bin/bash -x
 
 # or
-set -x # to start debug
-set +x # to end debug
+set -x # to enable debug
+set +x # to disable debug
 
 # or
 bash -x /Users/k/web/kovpak/gh/ed/bash/examples/hw.sh
@@ -290,7 +265,7 @@ if [[ $1 =~ ^[0-9]+$ ]]; # is number
 -ne
 -le
 -gt
-# don't use =,<,> for numbers
+# ‼️ don't use =,<,> for numbers
 
 declare -i p
 p="4+5"
@@ -323,7 +298,7 @@ echo ${#arr[@]} # array length
 echo ${!arr[@]} # array indices
 
 echo "${arr[@]: -1 }" # last el
-echo "${array[-1]}" # last el 
+echo "${array[-1]}" # last el
 echo "${array[@]:1:3}"
 echo "${array[@]/*[aA]*/}" # elements which match [aA] pattern
 echo "${array[@]/[A-Z]/=}" # replace [A-Z] to =

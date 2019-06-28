@@ -10,7 +10,7 @@ mocha
 }
 ````
 
-````
+````sh
 open coverage/lcov-report/*.html
 ````
 

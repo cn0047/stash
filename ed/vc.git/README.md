@@ -70,7 +70,7 @@ And you have to:
 
 The Golden Rule of Rebasing - never use it on public branches.
 
-````
+````sh
 git rebase --abort
 
 # squash - rebase 2 commits into 1:
@@ -79,12 +79,12 @@ git rebase -i HEAD~2
 ````
 
 #### bisect
-````
+````sh
 git bisect start
 git bisect bad       -- tell that current situation is bad
 git bisect good v1.0 -- bad commit hash
                      -- test, is script working
-git bisect bad       -- because all don't works
+git bisect bad       -- because all don\'t works
                      -- test, is script working
 git bisect good      -- because all works fine
                      -- test script working
@@ -94,7 +94,7 @@ git bisect reset
 ````
 
 #### diff
-````
+````sh
 git diff --cached or diff --staged # after git add shows diff
 git diff branch..subBrach
 git diff branch:file file
@@ -138,7 +138,7 @@ git push remoteRepoName :newBranch                # delete branch from remote re
 .DS_Store
 ````
 
-````
+````sh
 /etc/gitconfig # system
 ~/.gitconfig   # user
 .git/config    # project

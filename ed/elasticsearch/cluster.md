@@ -7,7 +7,7 @@ States:
 * yellow - some replicas shards are missing
   but primaries are all available and serving data.
 * red - at least 1 primary and all it\'s replicas are offline,
-  data posibly broken.  
+  data posibly broken.
 
 Node types (in ESv2.2):
 
@@ -15,7 +15,7 @@ Node types (in ESv2.2):
 * data
 * client - gateway to your cluster (node.master and node.data eq to false). Need half of data node capacity.
 * tribe - special type of client node that can connect to multiple clusters.
- 
+
 cluster = 1 client + 3 master + 4 data
 
 `export ES_HEAP_SIZE=32g` - for best performance
@@ -30,7 +30,7 @@ MMap: unlimited
 
 Temporary disable shards rebalance:
 
-````
+````sh
 curl -XPUT $host:$port/_cluster/settings -d '{
     "transient" : {
         "cluster.routing.allocation.enable" : "none",
@@ -39,7 +39,7 @@ curl -XPUT $host:$port/_cluster/settings -d '{
 }'
 ````
 
-````
+````sh
 export host=localhost
 export port=9200
 export index=megacorp
@@ -47,7 +47,7 @@ export type=employee
 ````
 
 Running Elasticsearch:
-````
+````sh
 ./bin/elasticsearch
 
 sudo /etc/init.d/elasticsearch status
@@ -55,19 +55,20 @@ sudo /etc/init.d/elasticsearch restart
 
 curl 'http://$host:$port/?pretty'
 ````
-````
+````sh
 # enable scripting
 # appent into file /etc/elasticsearch/elasticsearch.yml
+script.groovy.sandbox.enabled: true
 ````
 
 Shut down
-````
+````sh
 curl -XPOST 'http://$host:$port/_shutdown'
 ````
 
 #### [Upgrade](https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-upgrade.html).
 
-````json
+````sh
 curl $host:$port'/_cat/health?v'
 
 # show shards
@@ -120,7 +121,7 @@ curl -XPUT $host:$port/_cluster/settings -d '{
 curl -XGET http://$host:$port/_tasks?pretty
 ````
 
-````json
+````sh
 # create index
 curl -XPUT http://$host:$port/$index/
 
@@ -189,7 +190,7 @@ curl -XGET $host:$port/_alias/
 curl -XGET $host:$port/_cat/aliases?v
 ````
 
-````json
+````sh
 # Reindex whole index
 curl -XPOST localhost:9200/_reindex -d '{
   "source": {"index": "megacorp"},
@@ -202,7 +203,7 @@ curl -XPOST localhost:9200/_reindex -d '{
 }'
 ````
 
-````
+````sh
 # Enabling caching per request
 curl 'localhost:9200/my_index/_search?request_cache=true' -d'
 {

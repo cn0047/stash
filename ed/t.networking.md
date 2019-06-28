@@ -16,8 +16,11 @@ Networking
 | <-----------------                                                              |
 ````
 
-IP - Internet Protocol.
+IP   - Internet Protocol.
 DHCP - Dynamic Host Configuration Protocol.
+CDN  - Content distribution network.
+IMAP - Internet Message Access Protocol.
+UDP  - User Datagram Protocol (good for broadcast).
 
 The 95th percentile is a widely used mathematical calculation
 to evaluate the regular and sustained utilization of a network pipe.
@@ -29,6 +32,10 @@ nslookup github.com
 
 0.0.0.0/0 # quad-zero route, /0 - subnet mask, which specifies all networks
 ::/0      # represents ipv6
+
+0.0.0.0
+0.0.0.0:ipv4_
+_eth0:ipv4_
 ````
 
 Network address translation (NAT) - is a method of remapping one IP address space into another

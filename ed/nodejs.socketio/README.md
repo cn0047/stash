@@ -15,7 +15,7 @@ Supports `multiplexing` - use 1 connection instead of two WebSocket\'s.
 
 Namespace:
 
-````
+````js
 # Custom namespaces
 var nsp = io.of('/my-namespace');
 nsp.on('connection', (socket) => { console.log('someone connected'); });
@@ -25,7 +25,7 @@ var socket = io('/my-namespace');
 
 Room:
 
-````
+````js
 # send message into particular room.
 adminNamespace.to('level1').emit('an event', { some: 'data' });
 
@@ -48,7 +48,7 @@ socket.join('room 237', () => {});
 
 ## Client
 
-````
+````js
 socket.on('connect', () => {
   console.log(socket.id); // 'G5p5...'
 });

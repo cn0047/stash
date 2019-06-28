@@ -16,7 +16,7 @@ Doctrine use `ODM` (Object Document Mapper) for MongoDB.
 `UnitOfWork` - responsible for tracking changes to objects
 during "object-level" transaction and for writing out changes to the database.
 
-A new UnitOfWork is implicitly started when an EntityManager is initially created 
+A new UnitOfWork is implicitly started when an EntityManager is initially created
 or after `EntityManager#flush()`.
 
 <br>`flush` - write operations into DB,
@@ -86,7 +86,7 @@ $connectionOptions = array(
 $em = EntityManager::create($connectionOptions, $config);
 ````
 
-````
+````php
 /** @ChangeTrackingPolicy("DEFERRED_IMPLICIT") */
 /** @ChangeTrackingPolicy("DEFERRED_EXPLICIT") */
 ````

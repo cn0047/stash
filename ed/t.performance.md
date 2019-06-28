@@ -52,5 +52,5 @@ Performance
 
 #### General
 
-* Gzip jSON responses.
+* Gzip JSON responses.
 * Use HTTP2.

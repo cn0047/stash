@@ -129,6 +129,8 @@ A routine is considered DETERMINISTIC if it always produces the same result for 
 #### Flashback
 
 ````sql
+ndb_config # Extract MySQL Cluster Configuration Information.
+
 apt-get install percona-toolkit # tools for performance analyzing
 apt-get install percona-xtrabackup
 pt-online-schema-change # ALTER tables without locking them
@@ -156,9 +158,9 @@ INSERT INTO table VALUES (default);   -- default value
 
 UPDATE tab SET field = DEFAULT(field);
 
-CHECK TABLE tab; -- checks a table for errors, for MyISAM - update key statistics 
-ANALYZE TABLE tab; -- performs a key distribution analysis
-REPAIR TABLE tab; -- repairs a possibly corrupted table (MyISAM, ARCHIVE, and CSV)
+CHECK TABLE tab;    -- checks a table for errors, for MyISAM - update key statistics
+ANALYZE TABLE tab;  -- performs a key distribution analysis
+REPAIR TABLE tab;   -- repairs a possibly corrupted table (MyISAM, ARCHIVE, and CSV)
 OPTIMIZE TABLE tab; -- (defragmentation) reorganizes the physical storage of table data and associated index data,
                     -- to reduce storage space and improve I/O efficiency when accessing the table.
 
@@ -261,12 +263,9 @@ SELECT SQL_NO_CACHE
 
 #### Sizes
 
-
 Every table (regardless of storage engine) has a maximum row size of 65,535 bytes.
 
 Maximum Names Length:
-
-
 | Identifier                                                                                                 | Maximum Length (characters) |
 |------------------------------------------------------------------------------------------------------------|-----------------------------|
 | Database, Table                                                                                            | 64 (NDB engine: 63)         |
@@ -304,7 +303,7 @@ mysqldump -h hostname -u user -pPassWord --no-data --single-transaction --comple
 -- mysqldump -h Host Base table --where="id=11" | mail mail@com.com
 mysql -hHost -uUser -pPass -DBase < dumpFile.sql
 ````
-````
+````sh
 -- mysql -h Host -D Base -e "select * from table where id in (1,2);" | gzip | pv | uuencode result.csv.gz | mail
 ````
 
@@ -425,8 +424,6 @@ SHOW PROFILE CPU FOR QUERY 2; -- ALL, BLOCK IO, CONTEXT SWITCHES, CPU, IPC, PAGE
 * FEDERATED
 * EXAMPLE
 * NDB
-
-ndb_config — Extract MySQL Cluster Configuration Information.
 
 #### [Data Types](http://dev.mysql.com/doc/refman/5.0/en/data-types.html)
 

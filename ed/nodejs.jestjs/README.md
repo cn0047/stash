@@ -1,7 +1,7 @@
 Jest
 -
 
-````
+````sh
 node_modules/.bin/jest --forceExit -i -t name-of-spec
 node_modules/.bin/jest -t test/unit/middlewares/
 node_modules/.bin/jest -t xPoweredBy.test.js
@@ -31,7 +31,7 @@ expect(tpl).toBe('index');
 
 package.json:
 
-````
+````js
   "jest": {
     "collectCoverage": true,
     "coveragePathIgnorePatterns": [

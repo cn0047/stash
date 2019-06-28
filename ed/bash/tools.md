@@ -68,6 +68,50 @@ nice myscript
 nohup nice myscript &
 ````
 
+#### monitoring
+
+````sh
+dmesg | tail      # last 10 system messages
+vmstat 1          # virtual memory stat
+mpstat -P ALL 1   # CPU time breakdowns per CPU
+pidstat 1         # top’s per-process summary
+iostat -xz 1      # block devices (disks)
+free -m           # block device I/O buffer cache & file systems page cache
+sar -n DEV 1      # check network interface
+sar -n TCP,ETCP 1 # TCP metrics
+top               #
+
+uptime # CPU load average
+````
+
+````sh
+# tool to disable redundant background services on machine
+sysv-rc-conf
+
+# CPU usage info
+# apt-get install sysstat
+mpstat
+
+# Memory usage info
+free
+free -h
+cat /proc/meminfo
+
+# Disc usage info
+iotop
+
+# tool for net traffic
+cbm
+
+# general stat
+dstat
+
+# shows OS limits
+ulimit -a
+
+sysctl -a
+````
+
 #### uniq
 
 ````sh
@@ -195,50 +239,6 @@ pkill -f php # Kill runned script with name like php.
 pkill -f test.py # full argument lists, default is to match against process names
 
 kill -9 `ps -aux|grep {{PROCESS_NAME}}|grep -v grep|awk '{print $2}'`
-````
-
-#### monitoring
-
-````sh
-dmesg | tail      # last 10 system messages
-vmstat 1          # virtual memory stat
-mpstat -P ALL 1   # CPU time breakdowns per CPU
-pidstat 1         # top’s per-process summary
-iostat -xz 1      # block devices (disks)
-free -m           # block device I/O buffer cache & file systems page cache
-sar -n DEV 1      # check network interface
-sar -n TCP,ETCP 1 # TCP metrics
-top               #
-
-uptime # CPU load average
-````
-
-````sh
-# tool to disable redundant background services on machine
-sysv-rc-conf
-
-# CPU usage info
-# apt-get install sysstat
-mpstat
-
-# Memory usage info
-free
-free -h
-cat /proc/meminfo
-
-# Disc usage info
-iotop
-
-# tool for net traffic
-cbm
-
-# general stat
-dstat
-
-# shows OS limits
-ulimit -a
-
-sysctl -a
 ````
 
 #### date

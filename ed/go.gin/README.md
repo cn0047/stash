@@ -10,7 +10,7 @@ model - no
 db - no
 ````
 
-````go
+````golang
 type CreateRequest struct {
     Username string `json:"username" form:"username"`
     Phone    string `json:"phone" form:"phone"`

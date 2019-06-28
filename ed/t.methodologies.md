@@ -189,7 +189,7 @@ Scrum works less well in the following circumstances:
 Teams whose members are geographically dispersed or part-time
 Teams whose members have very specialized skills
 Products with many external dependencies
-Products that are mature or legacy or with regulated quality control
+Products that are mature or legacy or with regulated quality control.
 
 User story.
 Epic.

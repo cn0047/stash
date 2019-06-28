@@ -183,7 +183,7 @@ and the `Origin` header.
 
 ````
 OPTIONS /resource/foo 
-Access-Control-Request-Method: DELETE 
+Access-Control-Request-Method: DELETE
 Access-Control-Request-Headers: origin, x-requested-with
 Origin: https://foo.bar.org
 ````
@@ -227,7 +227,7 @@ Origin: https://foo.bar.org
 
 * 400 **Bad Request**
 * 401 **Unauthorized**
-* 402 Payment Required
+* 402 **Payment Required**
 * 403 **Forbidden**
 * 404 **Not Found**
 * 405 **Method Not Allowed**

@@ -1,7 +1,7 @@
 Validator
 -
 
-````
+````sh
 go get gopkg.in/go-playground/validator.v9
 ````
 

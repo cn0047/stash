@@ -1,8 +1,8 @@
 Partitioning
 -
 
-*MySQL 5.7*
-*MySQL 5.5*
+<br>MySQL 5.7
+<br>MySQL 5.5
 
 The user-selected rule by which the division of data is accomplished is known as a partitioning function.
 <br>MySQL 5.5 does not support vertical partitioning, in which different columns of a table are assigned to different physical partitions.

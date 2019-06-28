@@ -44,7 +44,7 @@ db.collection.find( {}, { score: { $meta: "textScore" } } )
 db.posts.find( {}, { comments: { $slice: 5 } } )
 db.posts.find( {}, { comments: { $slice: [ 20, 10 ] } } ) // [ skip , limit ]
 // $inc
-//  first matching document
+// first matching document
 db.products.update( { sku: "abc123" }, { $inc: { quantity: 5 } } );
 // update all matching documents
 db.records.update( { age: 20 }, { $inc: { age: 1 } }, { multi: true } );
@@ -212,7 +212,7 @@ $ifNull
 ````
 
 ####[Query Modifiers](http://docs.mongodb.org/manual/reference/operator/query-modifier/)
-````js
+````sh
 $comment
 $explain
 $hint

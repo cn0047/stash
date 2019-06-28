@@ -7,7 +7,7 @@ npm
 
 [Shorthands](https://docs.npmjs.com/misc/config#shorthands-and-other-cli-niceties)
 
-````
+````sh
 npm -g i npm@latest
 ````
 
@@ -76,7 +76,7 @@ console.log(argv.one + " " + argv.two);
 
 ### File
 
-````
+````js
 {
   "scripts": {
     "prestart": "will run before start",

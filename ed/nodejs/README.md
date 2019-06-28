@@ -10,25 +10,24 @@ Node JS
 [https](https://github.com/cn007b/my/blob/master/ed/nodejs.express/examples/coursera.passport/bin/www#L42)
 [testing tool](github.com/cucumber/cucumber-js)
 
-````
+````sh
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 ````
 
-````
+````sh
 node --inspect --inspect-brk x.js
 # or
 # inject debug in already runned process
 kill -SIGUSR1 2128
 # and open in browser chrome://inspect
-
+````
+````js
 console.log(require('util').inspect('ok', false, null));
 require('fs').appendFile('/tmp/debug.tmp', JSON.stringify({code: 204}) + "\n"); // tail -f /tmp/debug.tmp
 process.exit(); // die;
 console.time('test');
 console.timeEnd('test');
-````
 
-````
 process.on('exit', () => {});
 process.on('uncaughtException', () => {});
 process.stdin.resume();

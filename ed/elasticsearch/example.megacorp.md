@@ -1,7 +1,7 @@
 Megacorp examples
 -
 
-````json
+````sh
 # Create new documents (car)
 curl -XPUT localhost:9200/megacorp/car/15?parent=15 -d '{
     "name" : "RANGE_ROVER_SPORT",
@@ -21,7 +21,7 @@ curl -XPOST 'localhost:9200/megacorp/employee/_bulk?pretty' -d '
 curl -XPOST 'localhost:9200/megacorp/employee/_bulk?pretty' --data-binary "@/vagrant/megacorpEmployee.json"
 ````
 
-````json
+````sh
 curl -XPUT 'http://localhost:9200/twitter/tweet/1?ttl=1m' -d '{
     "user": "kimchy",
     "message": "Trying out elasticsearch, so far so good?"

@@ -13,7 +13,7 @@ Mongo DB
 Relational DB ⇒ Table       ⇒ Row      ⇒ Field
 MongoDB       ⇒ Collection  ⇒ Document ⇒ Property
 ````
-````
+````sh
 sudo service mongodb start|stop|restart
 
 sudo rm /var/lib/mongodb/mongod.lock
@@ -27,6 +27,9 @@ mongo
 
 MongoDB implements locks on a per-database basis for most read and write operations.
 <br>[Which operations lock the database](http://docs.mongodb.org/manual/faq/concurrency/#which-operations-lock-the-database)
+
+In MongoDB, operations are atomic at the document level.
+No single write operation can change more than one document.
 
 ````js
 // current database
@@ -46,7 +49,7 @@ db.test.insert({x :MinKey})
 // insertMany
 db.test.insertMany([{}, {}])
 
-show collections
+// show collections
 db.testData.find().pretty()
 db.getCollection('_foo').find()
 db.testData.findOne()
@@ -134,10 +137,6 @@ db.collection.explain('allPlansExecution').find()
 // BSON-document size LIMIT = 16MB
 // Put the data in a separate collection when embedded data exceed 16MB.
 
-
-// In MongoDB, operations are atomic at the document level.
-// No single write operation can change more than one document.
-
 // INSERT
 // MongoDB always adds the _id field
 db.users.insert({name: "sue", age: 26, status: "A"})
@@ -203,8 +202,8 @@ db.inventory.remove( { type : "food" }, 1 )
 db.users.drop()
 
 // To set errors ignored write concern, specify w values of -1 to your driver.
-// To set unacknowledged write concern, specify w values of 0 to your driver.
-// To set acknowledged write concern, specify w values of 1 to your driver. DEFAULT.
+// To set unacknowledged write concern, specify w values of  0 to your driver.
+// To set acknowledged   write concern, specify w values of  1 to your driver. DEFAULT.
 // To set a journaled write concern,
 // specify w values of 1 and set the journal or j option to true for your driver.
 // To set replica acknowledged write concern, specify w values greater than 1 to your driver.
@@ -335,7 +334,7 @@ Result:
 ````
 
 #### Dump
-````js
+````sh
 mongodump --host mongodb1.example.net --port 3017 --username user --password pass --out /opt/backup/mongodump-2013-10-24
 mongorestore --host mongodb1.example.net --port 3017 --username user --password pass /opt/backup/mongodump-2013-10-24/
 ````

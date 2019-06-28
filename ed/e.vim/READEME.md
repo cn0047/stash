@@ -50,8 +50,8 @@ K  - LOOK TO SCREEN
 :set nowrap
 ````
 ````
-:set nonumber
 :syntax on
+:set nonumber
 :set paste
 :set autoindent
 :set autowrite

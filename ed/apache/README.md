@@ -7,7 +7,7 @@ Apache provides modules that dictate how client requests are handled:
 * `mpm_worker` - multiple threads.
 * `mpm_event` - similar to worker, but optimized to handle keep-alive connections.
 
-````
+````sh
 sudo apt-get install tasksel
 sudo tasksel install lamp-server
 sudo tasksel install apache2
@@ -18,7 +18,7 @@ sudo service apache2 restart
 /usr/sbin/apache2 -v
 ````
 
-````
+````sh
 sudo a2enmod vhost_alias
 sudo a2enmod rewrite
 sudo a2enmod ssl

@@ -2,11 +2,11 @@ jQuery
 -
 1.4.2
 
+[jQuery in Action 2nd Edition](http://www.bibeault.org/jqia2/)
+
 ````js
 jQuery.fn.jquery // version of jQuery
 ````
-
-[jQuery in Action 2nd Edition](http://www.bibeault.org/jqia2/)
 
 ````js
 $('select:last').parent().css('backgroundColor', '#dff0d8'); // bootstrap OK      <p class="bg-success">...</p>

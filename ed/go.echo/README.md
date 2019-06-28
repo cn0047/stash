@@ -12,6 +12,7 @@ Examples:
 var c echo.Context
 
 c.Request().RequestURI
+c.Request().Referer()
 
 // http://localhost/path/to/id/1
 c.Param("id")

@@ -15,8 +15,7 @@ aws configure
 
 ````sh
 --output=table|json|text
-# add this flag to get more debug info about command
---debug
+--debug # add this flag to get more debug info about command
 
 --region us-east-1
 ````
@@ -37,7 +36,7 @@ aws s3api list-objects --bucket $bkt --query "[sum(Contents[].Size), length(Cont
 
 Metric > EC2 > NetworkIn - The number of bytes received on all network interfaces by the instance.
 
-````
+````sh
 sudo service awslogs stop
 ````
 ````sh
@@ -123,7 +122,7 @@ Makefile:
 ````sh
 build_and_push_dev:
   docker build -t 107889011321.dkr.ecr.us-east-1.amazonaws.com/lf:dev \
-    --build-arg CLIQUE_ENV=dev -f deploy/Dockerfile .
+    --build-arg APP_ENV=dev -f deploy/Dockerfile .
   eval $(shell aws ecr get-login --no-include-email --region us-east-1)
   docker push 107889011321.dkr.ecr.us-east-1.amazonaws.com/lf:dev
 

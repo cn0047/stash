@@ -153,8 +153,8 @@ if ($request_uri ~* "gXh6UAA727XX") {
 }
 
 # Redirect no-www to www
-if ($host = 'ziipr.dev') {
-    rewrite  ^/(.*)$  $scheme://www.ziipr.com/$1  permanent;
+if ($host = 'zii.dev') {
+    rewrite  ^/(.*)$  $scheme://www.zii.com/$1  permanent;
 }
 # 1 more example:
 rewrite ^(.+)$ /ru/$1 permanent;
@@ -207,6 +207,7 @@ For socket.io:
 
 ````sh
 upstream io_nodes {
+  # Load Balancing methods:
   # Round-robin               - default;
   # least_conn                - request sends to node with least count of requests
   # hash $scheme$request_uri; - 

@@ -3,7 +3,7 @@ MONGO
 
 #### MONGO cluster (replica set)
 
-````
+
 # primary
 docker run -it --rm --net=xnet -p 27017:27017 \
     --hostname xmongo-primary-1 --name xmongo-primary-1 \
@@ -39,11 +39,11 @@ docker exec -it xmongo-primary-1 mongo --port 27017 --eval 'db.rs.insert({c:200}
 # docker exec -it xmongo-secondary-1 mongo --port 27018 --eval 'db.setSlaveOk()'
 # docker exec -it xmongo-secondary-1 mongo --port 27018 --eval 'db.rs.find()'
 docker exec -it xmongo-secondary-1 mongo --port 27018 --eval 'db.setSlaveOk();db.rs.find()'
-````
+
 
 #### MONGO cluster (sharding)
 
-````
+
 # config server
 docker run -it --rm --net=xnet -p 27016:27016 \
     --hostname xmongo-config-1 --name xmongo-config-1 \
@@ -88,4 +88,4 @@ docker exec -it xmongo-mongos mongo --port 27015 test_db --eval '
     db.test_collection.save({c: "200", t: "ok", country: "UA", number: "region_number_1"});
     db.test_collection.find({country: "UA"}).explain();
 '
-````
+

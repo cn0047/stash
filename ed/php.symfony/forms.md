@@ -93,7 +93,7 @@ Form Events:
 
 setData - `$form->get('firstname')->setData('John');`
 
-````
+````php
 $form = $formFactory->createBuilder()
     // ... add form fields
     ->addEventListener(FormEvents::PRE_SUBMIT, $listener);

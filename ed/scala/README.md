@@ -5,7 +5,7 @@ Scala
 Scala - is static typed programming language,
 fuses both imperative-programming and functional-programming styles.
 
-````
+````sh
 scala hw.scala
 
 sbt scalaVersion

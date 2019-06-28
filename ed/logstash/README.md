@@ -1,7 +1,7 @@
 Logstash
 -
 
-````
+````sh
 sudo service logstash configtest
 ````
 
@@ -20,7 +20,7 @@ output {
 
 Siple test:
 
-````
+````sh
 /opt/logstash/bin/logstash -e 'input { stdin { } } output { stdout {} }'
 
 ````
@@ -30,7 +30,7 @@ Simple elasticsearch config:
 ````
 input { file { path => "/tmp/logstash.txt" } } output { elasticsearch { hosts => ["localhost:9200"] } }
 ````
-````
+````sh
 /opt/logstash/bin/logstash -f /etc/logstash/conf.d/my.conf
 ````
 

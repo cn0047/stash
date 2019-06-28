@@ -2,7 +2,7 @@ Mercurial
 -
 version 3.4
 
-````
+````sh
 hg version
 
 hg init
@@ -26,14 +26,14 @@ hg push --new-branch
 ````
 
 #### stash
-````
+````sh
 hg diff > ~/d.diff
 hg revert -aC
 hg import --no-commit ~/d.diff
 ````
 
 #### log
-````
+````sh
 hg log
 hg log -r 3
 hg log -r 0272e0d5a517
@@ -48,7 +48,7 @@ hg cat -r c6f5e97edfdf PATH_TO_FILE # see file from particular rev
 ````
 
 #### status
-````
+````sh
 hg status
 hg status . # only files in this directory
 
@@ -57,14 +57,14 @@ rm `hg st|awk '{if($1=="?") print $2}'`
 ````
 
 #### diff
-````
+````sh
 hg diff   # all files in the repository
 hg diff . # only files in this directory
 hg diff -r branchName:default
 ````
 
 #### branch
-````
+````sh
 hg branch               # show curr branch
 hg branch newBranchName # new branch
 hg branches             # all branches
@@ -100,7 +100,7 @@ hg merge
 ````
 
 #### config
-````
+````sh
 ~/.hgrc
 ````
 ````

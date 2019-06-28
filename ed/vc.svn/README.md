@@ -1,14 +1,14 @@
 svn
 -
 
-````
+````sh
 svn st      # status
 svn di file # diff
 ````
 
 #### The typical work cycle looks like this:
 
-````
+````sh
 # Check out a working copy from a repository.
 svn checkout your_name https://svn.server.com/repository/trunk
 

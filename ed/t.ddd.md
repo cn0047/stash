@@ -137,7 +137,7 @@ Car it is aggregate for: wheels, engine, spark and fuel, etc.
 A domain object that defines an event (something that happens).
 
 * Modeling a Domain Event is like writing a news article
-* Publishing a Domain Event is like printing the article in the paper
+* Publishing a Domain Event is like printing the article on the paper
 * Spreading a Domain Event is like sending the newspaper so everyone can read the article
 
 #### DBAL - Database Abstraction Layer.
@@ -176,16 +176,14 @@ Command Query Responsibility Segregation.
 When an operation does not conceptually belong to any object.
 An object does not have an internal state, and its purpose is to simply provide
 functionality for the domain.
-We should not create a Service for
-every operation needed. But when such an operation stands out
-as an important concept in the domain, a Service should be
-created for it.
+We should not create a Service for every operation needed.
+But when such an operation stands out as an important concept in the domain,
+a Service should be created for it.
 
 There are three characteristics of a Service:
 
 1. The operation performed by the Service refers to a domain
-concept which does not naturally belong to an Entity or Value
-Object.
+concept which does not naturally belong to an Entity or Value Object.
 
 2. The operation performed refers to other objects in the domain.
 
@@ -215,7 +213,7 @@ Interface to DTO must be placed in domain layer.
 <br>Particular DTO implementation (mysql, mongo, etc) must be placed in infrastructure layer
 because it contains specific stuff (related to rows in mysql, how to get data, how to transform, etc).
 
-DTO it's just data container which used to transport data between layers and tiers.
+DTO it's just data container which used to transport data between different layers.
 
 #### Repositories.
 

@@ -14,7 +14,7 @@ App Engine - Standard Environment Go 1.9
 [forum](https://groups.google.com/forum/#!forum/google-appengine-go)
 [issue tracker](http://code.google.com/p/googleappengine/issues/list) [and](https://cloud.google.com/support/docs/issue-trackers)
 
-````
+````sh
 # in web console
 goapp serve app.yaml
 ````

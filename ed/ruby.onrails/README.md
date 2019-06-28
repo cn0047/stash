@@ -2,7 +2,7 @@ Ruby on Rails
 -
 5.1.2
 
-````
+````sh
 rails -v
 rails new demo
 rails server
@@ -10,11 +10,11 @@ rails server
 
 ## cli
 
-````
+````sh
 rails generate controller Store index
 ````
 
-````
+````sh
 rake db:seed
 rake db:rollback
 rake test
@@ -24,7 +24,7 @@ rake test:functionals
 
 ## db
 
-````
+````rb
 order = Order.find(1)
 order.pay_type = "Purchase order"
 order.save
@@ -33,7 +33,7 @@ Order.where(name: 'dave').each do |order| puts order.amount
 end
 ````
 
-````
+````sh
 rails generate scaffold Product \
     title:string description:text image_url:string price:decimal
 

@@ -4,40 +4,38 @@ Symfony
 <br>2.6.6
 
 [book](http://symfony.com/pdf/Symfony_book_2.6.pdf?v=4)
-|
 [cookbook](http://symfony.com/pdf/Symfony_cookbook_2.6.pdf?v=4)
-|
 [best practices](http://symfony.com/pdf/Symfony_best_practices_2.7.pdf?v=4)
 
 #### Running the Symfony Application
 
-````
+````sh
 cd my_project_name/
 cd ed/symfony/examples/bulletinBoard/
 
 php bin/console server:run
 php bin/console server:stop
 
-then http://localhost:8000
+open http://localhost:8000
 ````
 
 #### Installing the Symfony Installer
 
-````
+````sh
 sudo curl -LsS http://symfony.com/installer -o /usr/local/bin/symfony
 sudo chmod a+x /usr/local/bin/symfony
 ````
 
 #### Creating the Symfony Application
 
-````
+````sh
 symfony new my_project_name
 symfony new my_project_name 2.3.26
 ````
 
 #### Creating a Symfony Application with Composer
 
-````
+````sh
 composer create-project symfony/framework-standard-edition my_project_name
 composer create-project symfony/framework-standard-edition my_project_name "2.3.*"
 ````

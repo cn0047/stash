@@ -7,5 +7,5 @@ ssh-keygen -t rsa
 ````
 
 ````sh
-git ls-remote -h https://github.com/W3Ltd/ziipr_core HEAD
+git ls-remote -h https://github.com/org/repo HEAD
 ````

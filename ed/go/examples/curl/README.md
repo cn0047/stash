@@ -14,7 +14,7 @@ which provides opportunity to get decoded JSON response from external REST-API s
 
 ## Usage
 
-````go
+````golang
 import "github.com/plgo/curl"
 
 type GitHubUser struct {

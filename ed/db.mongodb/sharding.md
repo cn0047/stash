@@ -1,7 +1,7 @@
 Sharding
 -
 
-mongos - router to shards.
+`mongos` - router to shards.
 For PROD must be 3 config servers.
 
 Ways to shard:
@@ -23,7 +23,7 @@ AutoSharding - app doesn't need to specify:
 * where documents go when writing
 * which shard to read from
 
-````
+````js
 // in mongos
 // db.chunks.find().pretty();
 

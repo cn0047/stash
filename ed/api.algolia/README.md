@@ -16,7 +16,7 @@ Algolia       ⇒           ⇒ Index ⇒ Record (object) ⇒
 ````
 
 Stop words are very common words in a given language.
-In English, these would be words like the, and, at, with and as.
+In English, these would be words like: the, and, at, with and as.
 
 Query Rules allows you to target specific search terms
 and alter the way the Algolia engine would normally treat those terms.
@@ -96,7 +96,7 @@ index.search({
 Filters: facet, numeric, tagged.
 
 `Facets` are used to create categories on a select group of attributes.
-For example, on an index of books, useful facets might be author and genre.
+For example, on an index of books, useful facets might be: author and genre.
 
 ````js
 index.search({

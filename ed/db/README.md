@@ -57,6 +57,13 @@ Update account table with transaction.
 6. Update account table delete transactions from pendingTransactions.
 7. Update transaction in transactions table set state done.
 
+#### ACID
+
+Atomicity - all or nothing.
+Consistency - ensures that any transaction will bring the database from one valid state to another (constraints, cascades, triggers).
+Isolation - ensures that the concurrent execution of transactions will executed serially, i.e., one after the other.
+Durability - ensures that once a transaction has been committed, it will remain so, even in the event of power loss, crashes, or errors...
+
 ## Saga Pattern
 
 Saga is a sequence of local transactions where each transaction

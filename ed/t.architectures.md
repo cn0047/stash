@@ -24,7 +24,7 @@ worker
 URL routing should be decoupled from the controllers
 as such it is possible to swap and replace them easily.
 
-`model` layer (directory) is compromised because:
+`model` layer (directory) is ambiguous because:
 * it's unclear what is model in reach app (mysql, mongo, redis, elasticsearch, etc)?
 * which model should contain stuff common for 2 models?
 * where to place infrastructural stuff (doctrine annotations, etc)?
@@ -37,8 +37,7 @@ Q: Why do you need SPA for admin?
 A: Avoid data loss for expired session when handling submit POST form.
 
 Functional organization:
-Create directories: Customers, Products, Vendors
-instead of Controllers, Models, Views.
+Create directories: Customers, Products, Vendors, ... instead of Controllers, Models, Views.
 Pros: easy to navigate.
 Cons: lose framework convention.
 
@@ -123,6 +122,68 @@ monitoring.v1
         ├── controller
         ├── route
         └── service
+````
+
+````
+monitoring.v3
+└── src
+    └── go-app
+        ├── .gae
+        ├── app
+        │   ├── config
+        │   │   └── taxonomy
+        │   ├── errors
+        │   │   ├── AppError
+        │   │   ├── BLError
+        │   │   └── InvalidVOError
+        │   ├── routes
+        │   └── vo
+        ├── controller
+        │   ├── ah
+        │   ├── api
+        │   ├── cron
+        │   ├── home
+        │   └── worker
+        ├── middleware
+        └── service
+            ├── chart
+            ├── internal
+            │   ├── cache
+            │   ├── datastore
+            │   └── vo
+            ├── measurement
+            ├── ping
+            ├── project
+            ├── queue
+            ├── renderer
+            └── validator
+````
+
+````
+monitoring.next
+└── src
+    └── go-app
+        ├── .gae
+        ├── app
+        │   ├── config
+        │   ├── taxonomy
+        │   ├── errors
+        │   ├── routes
+        │   ├── middleware
+        │   ├── controller
+        │   └── vo
+        └── service
+            ├── internal
+            │   ├── cache
+            │   ├── datastore
+            │   └── vo
+            ├── chart
+            ├── measurement
+            ├── ping
+            ├── project
+            ├── queue
+            ├── renderer
+            └── validator
 ````
 
 #### DDD

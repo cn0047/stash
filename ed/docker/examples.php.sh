@@ -1,12 +1,12 @@
 PHP
 -
 
-````
+
 docker pull cn007b/php:7.1-protobuf-3
 docker tag cn007b/php:7.1-protobuf-3 xphp
-````
 
-````
+
+
 # php-nginx local
 docker pull cn007b/php
 docker tag cn007b/php nphp
@@ -100,11 +100,11 @@ docker run -ti --rm -v $PWD/ed/php.codeception/examples/one:/app -w /app \
 docker run -ti --rm -v $PWD/ed:/gh/ed -w /gh/ed/php.kahlan/examples/one \
     -e PHP_IDE_CONFIG='serverName=docker' \
     nphp php vendor/bin/kahlan
-````
+
 
 #### PHP Symfony
 
-````
+
 # symfony
 docker run -ti --rm -v $PWD/ed/php.symfony/examples/News/symfony/news:/app -w /app xphp composer install
 docker run -it --rm --net=xnet --hostname 0.0.0.0 -p 8181:8181 -v $PWD:/gh \
@@ -138,11 +138,11 @@ docker run -ti --rm -v $PWD/ed/php.symfony/examples/ng:/app -w /app \
 
 # bulletinBoard - won't work
 # docker run -ti --rm -v $PWD/ed/php.symfony/examples/bulletinBoard:/app -w /app xphp composer install
-````
+
 
 #### PHP Yii
 
-````
+
 mkdir ed/php.yii/examples/testdrive/protected/runtime
 mkdir ed/php.yii/examples/testdrive/assets
 
@@ -172,11 +172,11 @@ docker run -it --rm --net=xnet -e PHP_IDE_CONFIG='serverName=docker' \
 
 docker run -it --rm --net=xnet -p 8080:8080 -v $PWD/ed/php.yii/examples/testdrive:/app nphp \
     php -S 0.0.0.0:8080 -t /app
-````
+
 
 #### AppEngine
 
-````
+
 cd /Users/k/web/kovpak/gh/ed/php.appengine/examples/one
 composer install
 
@@ -185,4 +185,4 @@ composer install
 
 gcloud config set project thisissimplebot
 gcloud app deploy
-````
+

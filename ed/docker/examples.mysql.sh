@@ -3,7 +3,6 @@ MYSQL
 
 #### MYSQL cluster
 
-````
 # init master node
 docker run -it --rm -p 3307:3306 --name mysql-master --hostname mysql-master \
     -v $PWD/docker/mysql/mysql-bin.log:/var/log/mysql/mysql-bin.log \
@@ -28,4 +27,3 @@ docker exec mysql-slave-1 mysql -uroot -proot -e "SHOW SLAVE STATUS \G"
 
 # test
 docker exec -ti mysql-master mysql -P3307 -udbu -pdbp -Dtest
-````
