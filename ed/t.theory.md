@@ -39,11 +39,10 @@ but object A should not "reach through" object B to access yet another object C,
 
 Consistent Hashing - used in .io
 
-#### ?
-
-Difference between ACL & RBAC:
 ACL (often simpler): List of users (IDs) and privileges to resource (what can do or see).
 RBAC: Permissions based on role.
+
+PC: CPU, Main Memory, Secondary Memory (SSD).
 
 #### TL
 
