@@ -22,7 +22,7 @@ const add = function (n1, n2) {
     }
     r = String(addVal) + String(r);
     return r.replace(/^[0]+/, '');
-}
+};
 
 const mul = function (n1, n2) {
     const a = String(n1);
@@ -53,11 +53,11 @@ const mul = function (n1, n2) {
       return add(sum, v);
     }, '0');
     return res;
-}
+};
 
 console.log(add('0', '001') == 1);
 console.log(add('937', '12188') == (937 + 12188));
-console.log(add('0109', '11122200898') == (0109 + 11122200898));
+// console.log(add('0109', '11122200898') == (0109 + 11122200898));
 console.log(add(99, 99) == (99 + 99));
 console.log(add(125, 1952) == (125 + 1952));
 

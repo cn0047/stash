@@ -12,4 +12,4 @@ by assigning them a position on an abstract circle (HashRing).
   1. Calculate the hash `serverIndex = hashValue % n` and map it to some position on the HashRing.
   2. If server there - ok, otherwise travel clockwise on the ring until find the first server.
 
-When a hash table is resized, only `Keys/n` need to be remapped.
+When a hash table is resized, only `keys/n` need to be remapped.

@@ -7,7 +7,7 @@ let fWrong = function (n) {
   }
 
   return f(n - 1) + f(n - 2);
-}
+};
 
 let f = function (n) {
   if (n === 1 || n === 2) {

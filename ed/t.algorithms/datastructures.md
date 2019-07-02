@@ -12,9 +12,9 @@ that have some shared significance to the problem being solved (Generally, the d
 * `Associative array`, map, symbol table, or dictionary - is an abstract data type
 composed of a collection of **(key, value) pairs**, such that each possible **key appears just once** in the collection.
 
-* Multimap generalizes an associative array by allowing **multiple values to be associated with a single key**.
+* `Multimap` generalizes an associative array by allowing **multiple values to be associated with a single key**.
 
-* Bidirectional map - is a related abstract data type in which the **bindings operate in both directions**:
+* `Bidirectional map` - is a related abstract data type in which the **bindings operate in both directions**:
 each value must be associated with a unique key,
 and a second lookup operation takes a value as argument and looks up the key associated with that value.
 
@@ -40,7 +40,7 @@ but allows for **efficient removal of both the maximum and minimum**.
 * `Set` - is an abstract data type that can **store certain values**,
 **without** any particular **order**, and **no repeated values**.
 
-* Multiset (or bag) - is similar to a set but allows repeated ("equal") values (**duplicates**).
+* `Multiset` (or bag) - is similar to a set but allows repeated ("equal") values (**duplicates**).
 
 * Disjoint-set (union–find or merge–find) - is a data structure
 that keeps track of a set of elements partitioned into a number of disjoint (nonoverlapping) subsets.
@@ -48,15 +48,14 @@ that keeps track of a set of elements partitioned into a number of disjoint (non
 ## Linked
 
 * `Linked list` - is a linear **collection** of data elements,
-called nodes pointing to the next node by means of a pointer.
+called nodes pointing to the next node.
 It is a data structure consisting of a group of nodes which together represent a sequence.
 Under the simplest form, each node is composed of data and a **reference
 to the next node** in the sequence.
 The principal benefit - is that the list elements can easily be inserted or removed
 without reallocation or reorganization of the entire structure
 because the data items need not be stored contiguously in memory or on disk.
-
-Disadvantage: slow to get the element; slow append to end;
+<br>Disadvantage: slow to get the element; slow append to end;
 Advantage: fast insert/delete into/from head;
 
 * `Doubly linked list` - each node contains two links,

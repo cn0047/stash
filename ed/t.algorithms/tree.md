@@ -77,10 +77,7 @@ All normal operations on a binary search tree are combined with one basic operat
 **In a max heap, the keys of parent nodes are always greater than or equal
 to those of the children** and the highest key is in the root node.
 In a min heap, the keys of parent nodes are less than or equal.
-
-O(1) - find max
-O(log n) - insert
-O(log n) - delete
+<br>O(1) - find max; O(log n) - insert; O(log n) - delete;
 
 * Binary heap - is a heap data structure created using a binary tree.
 

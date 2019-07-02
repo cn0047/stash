@@ -26,16 +26,16 @@ O(n!)     # n-factorial time
 O(N^2 + N^2)            = O(N^2)
 O(N^2 + N)              = O(N^2)
 O(N + log N)            = O(N) # because log N < N
+O(N * log N)            = O(N) # ↑
 O(5 * 2^N + 10 * N^100) = O(2^N)
 O(N^3 + N^2 + N)        = O(N^3)
 O(N^2 + B)              = O(N^2 + B) # because we know nothing about B
-O(log2 N)               = O(log N)
+O(log 2 N)              = O(log N)
 O(N/2)                  = O(N)
 O(N^2/2)                = O(N^2)
 
 O(2^N)                  = for fibonacci and for recursion (with creating forks with n levels deep)
-O(N!)                   = for recursion (permutations)
-O(N!)                   = salesman problem
+O(N!)                   = for recursion / permutations / salesman problems
 O(log N)                = if divide in 1/2 or myltiply by 2
 ````
 
@@ -57,7 +57,7 @@ for (var i = 0; i < n; i++) {
   }
 }
 
-# O(N)
+# O(log N * N) = O(N)
 for (int i = N; i > 0; i /= 2) {
   for (int j = 0; j < i; j++) {
   }
@@ -68,8 +68,8 @@ Algorithm X is asymptotically more efficient than Y -
 X will always be a better choice for large inputs.
 
 `O` Big O notation - Upper bound.
-`Ω` Omega notation - Lower bound.
 `Θ` Theta notation - Tight bound.
+`Ω` Omega notation - Lower bound.
 
 #### log
 
@@ -82,5 +82,5 @@ x = log a (b)
 
 log 10 (x) = lg (x) = log (x) # by default base = 10 in mathematics
                               # by default base =  2 in programming
-ln (x) = log e (x) # where `e` = 2.72
+ln (x) = log e (x)            # where `e` = 2.72
 ````

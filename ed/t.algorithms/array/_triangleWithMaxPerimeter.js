@@ -36,7 +36,7 @@ function f1(A) {
  */
 function f3(A) {
   if (A.length < 3) return 0;
-  A.sort(function(a, b) { return a -b; });
+  A.sort(function(a, b) { return a - b; });
   for (var i = 0; i < A.length - 2; i++) {
     var v1 = A[i];
     var v2 = A[i + 1];

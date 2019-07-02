@@ -16,11 +16,6 @@ Complete graph - every vertex is connected to every other vertex.
 
 All edges can be stored in adjacent matrix or adjacent list or in icidence matrix.
 
-Binary decision diagram (BDD) -  is a data structure
-that is used to represent a Boolean function.
-On a more abstract level, BDDs can be considered
-as a compressed representation of sets or relations.
-
 Directed acyclic graph - ...
 
 Directed acyclic word graph - ...
@@ -72,8 +67,8 @@ DFS (Depth First Search).
 Uses recursion or stack:
 ````
 add node to stack
-  -> add non visited CHILD (only one child) to stack
-  -> go deep and add next non visited CHILD to stack
+  -> add Non Visited CHILD (only one child) to stack
+  -> go deep and add next Non Visited CHILD to stack
     -> if no childs to add - pop element from stack
 ````
 

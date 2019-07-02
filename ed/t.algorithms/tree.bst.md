@@ -15,7 +15,7 @@ otherwise - search from where we take the [last left turn](http://prntscr.com/hd
 
 #### Number of Binary Search Trees possible with N nodes
 
-For example, for: [5, 6] Result: [5, 6], [6, 5]
+For example, for: [5, 6] Result: [5, 6], [6, 5] (all permutations).
 
 #### Threaded binary tree (TBT)
 
@@ -42,22 +42,15 @@ To differentiate is it a pointer to child or to predecessor/successor TBT has le
 2. print node
 3. go to right child
 
-### DFS (Depth First Search) in binary tree
+### BFS/DFS (Breadth/Depth First Search) in binary tree
 
-1. print data
-2. visit left
-3. visit right
+@look: graph.md
 
-### BFS (Breadth First Search) in binary tree
+### Delete a node from Binary Search Tree
 
-1. print data
-2. visit left and right chilsd in 1 iteration
-
-### Delete a node from binary search tree
-
-Delete leaf node - just delete it.
-Delete node with 1 child - replace node with it's child.
-Delete node with 2 childs - replace with node wich is minimum in right child.
+    Delete leaf node - just delete it.
+<br>Delete node with 1 child - replace node with it's child.
+<br>Delete node with 2 childs - replace with node wich is minimum in right child.
 
 ### Print Root to Leaf Path with Given sum (K-Sum paths)
 

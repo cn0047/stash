@@ -32,7 +32,6 @@ func partition(a []int, begin int, end int) int {
 func quickSort(a []int, begin int, end int) []int {
 	if begin < end {
 		p := partition(a, begin, end)
-
 		a = quickSort(a, begin, p-1)
 		a = quickSort(a, p+1, end)
 	}
@@ -44,11 +43,8 @@ func swap(a []int, i int, j int) []int {
 	v1 := a[i]
 	v2 := a[j]
 
-	p1 := append([]int{v2}, a[i+1:]...)
-	a = append(a[:i], p1...)
-
-	p2 := append([]int{v1}, a[j+1:]...)
-	a = append(a[:j], p2...)
+	a = append(a[:i], append([]int{v2}, a[i+1:]...)...)
+	a = append(a[:j], append([]int{v1}, a[j+1:]...)...)
 
 	return a
 }

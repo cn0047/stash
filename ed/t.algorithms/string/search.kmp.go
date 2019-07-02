@@ -27,6 +27,33 @@ func kmp(s string, p string) int {
 		if s[i] == p[j] {
 			i++
 			j++
+			if j == m {
+				return i - j
+			}
+		} else {
+			if j == 0 {
+				i++
+			} else {
+				j = t[j-1]
+			}
+		}
+	}
+
+	return -1
+}
+
+func kmp0(s string, p string) int {
+	i := 0
+	n := len(s)
+	j := 0
+	m := len(p)
+
+	t := getPatternTable(p)
+
+	for i < n {
+		if s[i] == p[j] {
+			i++
+			j++
 		}
 		if j == m {
 			return i - j
@@ -42,6 +69,9 @@ func kmp(s string, p string) int {
 	return -1
 }
 
+// getPatternTable generates table with values like this:
+// input string: a b c d a b e a b f
+// array values: 0 0 0 0 1 2 0 1 2 0
 func getPatternTable(p string) []int {
 	n := len(p)
 	t := make([]int, n)
