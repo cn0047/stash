@@ -9,6 +9,8 @@ Operations with sets ([1, 2, 3] [2, 3, 4]):
 
 Factorial: `5! = 5 * 4 * 3 * 2 * 1 = 120`
 
+Palindrome word which reads the same backward as forward: `madam, racecar, 10801`.
+
 Binary decision diagram (BDD) -  is a data structure
 that is used to represent a Boolean function.
 On a more abstract level, BDDs can be considered
