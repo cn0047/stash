@@ -38,7 +38,7 @@ docker run -it --rm -p 9000:9000 --hostname localhost --name php-fpm -v $PWD:/gh
 
 # mysql
 # docker run -it --rm --link mysql-master -v $PWD:/gh php-cli php /gh/ed/php/examples/mysqlAndPdo/pdo.simplestExample.php
-docker run -it --rm --net=xnet -v $PWD:/gh php-cli php /gh/ed/php/examples/mysqlAndPdo/pdo.simplestExample.php
+docker run -it --rm --net=xnet -v $PWD:/gh xphp php /gh/ed/php/examples/mysqlAndPdo/pdo.simplestExample.php
 
 # postgres
 docker run -it --rm -v $PWD:/gh --net=xnet \

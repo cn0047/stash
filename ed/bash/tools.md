@@ -34,6 +34,7 @@ uuid -n 1                                      # generates uuid
 cut -f7 -d: /etc/passwd
 cut -d' ' -f2 /tmp/file.txt # print column 2 from file using ' ' as delimer
 cut -c1,2                   # column 1,2
+cut -c 1-5                  # from 1 to 5 columns
 cut -c13-                   # from 13 char to the end of string
 
 nc -zv 10.0.2.2 22
@@ -66,6 +67,13 @@ nohup myscript &
 # to run with low priority:
 nice myscript
 nohup nice myscript &
+````
+
+#### tr
+
+````sh
+echo 'abc' | tr -d 'b' # ac
+tr -d '[:punct:]'      # punctuations:   !@#$%^&*()_-+={}[];:'"`/>?.,<~|\
 ````
 
 #### monitoring
@@ -462,6 +470,7 @@ AWK was created in the 1970s.
 -F ':' # column separator
 
 echo 'one and two' | awk '{print $1}'                     # will print one
+echo 'one,two,three' | awk -F ',' '{print $1"-"$2}'       # csv: one-two
 awk 'BEGIN {print "Hello, world!"}'                       #
 ps aux | awk 'length($0) > 150'                           # Print lines longer than 150 characters
 printf "one\n* two\n" | awk '{print ($1=="*" ? $2 : $1)}' # Print one \n two

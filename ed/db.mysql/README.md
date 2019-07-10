@@ -55,6 +55,11 @@ RENAME TABLE table TO tableNewName;
 ````
 
 ````sql
+SHOW PROCEDURE STATUS like 'proc';
+SHOW CREATE PROCEDURE proc;
+````
+
+````sql
 SHOW ENGINE INNODB STATUS\G -- show lot of helpful info including last error
 
 SHOW OPEN TABLES from  dataBaseName; -- Show locked tables.
@@ -163,6 +168,9 @@ ANALYZE TABLE tab;  -- performs a key distribution analysis
 REPAIR TABLE tab;   -- repairs a possibly corrupted table (MyISAM, ARCHIVE, and CSV)
 OPTIMIZE TABLE tab; -- (defragmentation) reorganizes the physical storage of table data and associated index data,
                     -- to reduce storage space and improve I/O efficiency when accessing the table.
+
+SHOW ERRORS LIMIT 1;
+SHOW WARNINGS LIMIT 1;
 
 SELECT VERSION();
 SELECT USER();
@@ -319,6 +327,8 @@ SET GLOBAL slow_query_log_file = '/var/log/mysql/logSlowQueries.log';
 SET GLOBAL slow_query_log = 1;
 SET GLOBAL long_query_time = 1;
 SET GLOBAL log_queries_not_using_indexes = 0;
+
+SHOW VARIABLES where Variable_name = 'slow_query_log';
 "
 ````
 

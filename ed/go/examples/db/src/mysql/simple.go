@@ -15,7 +15,7 @@ const (
 )
 
 func main() {
-	f2()
+	f4()
 }
 
 func checkErr(err error) {
@@ -24,8 +24,39 @@ func checkErr(err error) {
 	}
 }
 
+func f4() {
+	db, err := sql.Open("mysql", CONN_STR)
+
+	rows, err := db.Query("CALL getCountry(?)", "ua")
+	checkErr(err)
+
+	for rows.Next() {
+		id := -1
+		name := ""
+		err = rows.Scan(&id, &name)
+		checkErr(err)
+		fmt.Printf("Got country with code: %v and name: %v \n", id, name)
+	}
+}
+
+func f3() {
+	db, err := sql.Open("mysql", CONN_STR)
+	checkErr(err)
+
+	rows, err := db.Query("SELECT ?", 204)
+	checkErr(err)
+
+	for rows.Next() {
+		v := -1
+		err = rows.Scan(&v)
+		checkErr(err)
+		fmt.Printf("Got value: %d \n", v)
+	}
+}
+
 func f2() {
 	db, err := sql.Open("mysql", CONN_STR)
+	checkErr(err)
 
 	rows, err := db.Query("SELECT * FROM test_mysql")
 	checkErr(err)
@@ -41,6 +72,7 @@ func f2() {
 
 func f1() {
 	db, err := sql.Open("mysql", CONN_STR)
+	checkErr(err)
 
 	stmt, err := db.Prepare("INSERT INTO test_mysql VALUES (?, ?)")
 	checkErr(err)
@@ -52,6 +84,4 @@ func f1() {
 	checkErr(err)
 
 	fmt.Println("Inserted id:", id)
-
-	checkErr(err)
 }

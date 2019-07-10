@@ -120,6 +120,9 @@ err := memcache.Set(ctx, &item)
 
 ## CRON
 
+[doc](https://cloud.google.com/appengine/docs/standard/go/config/cron)
+[deadlines](https://cloud.google.com/appengine/docs/standard/go/config/cronref#deadlines)
+
 ````yaml
 cron:
 - description: "daily summary job"

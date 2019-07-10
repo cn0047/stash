@@ -6,6 +6,8 @@ Apple News
 [components](https://developer.apple.com/documentation/apple_news/apple_news_format/components)
 [linking-to-channel](https://www.apple.com/itunes/marketing-on-news/identity-guidelines.html#linking-to-your-channel)
 
+Viewport - the user's visible area of a web page.
+
 ````sh
 key=""
 secret=""
