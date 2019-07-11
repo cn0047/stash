@@ -1,3 +1,9 @@
+// The plan:
+// start from begin of array,
+// check first array element with all elements and find the smallest one
+// swap first array element with smallest one
+// now first element in array is in sorted position,
+// go to next iteration.
 function selectionSort(a) {
   for (let i = 0; i < a.length; i++) {
     for (let j = i + 1; j < a.length; j++) {

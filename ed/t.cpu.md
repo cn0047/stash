@@ -22,6 +22,14 @@ Turnaround time - Time required for a particular process to complete.
 Waiting time - How much time processes spend in the ready queue waiting their turn to get on the CPU.
 Load average - The average number of processes sitting in the ready queue waiting their turn to get into the CPU.
 
+#### CPU specific metrics:
+
+* utilization  - the % how CPU is loaded (sum of work handled by CPU).
+* idle         - the % of time that CPU was idle.
+* i/o wait     - the % of time that CPU was idle during disk I/O request.
+* interrupts   - the % of time that CPU spent to service hardware interrupts.
+* system level - the % of CPU utilization that occurred while executing at the system level.
+
 #### Scheduling Algorithms:
 
 * First-Come First-Serve Scheduling, FCFS

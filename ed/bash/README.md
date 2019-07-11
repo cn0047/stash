@@ -5,6 +5,21 @@ Bash
 bash --version
 echo $BASH_VERSION
 
+bash -c 'echo ok' # cmd
+bash -i           # interactive
+bash -l           # login
+bash --norc       # don't read file ~/.bashrc
+bash --noprofile  # don't read files ~/.bash_profile, ~/.bash_login, or ~/.profile
+bash --init-file  # file instead of ~/.bashrc
+
+zero exit code     - ok
+non zero exit code - error
+
+command1 && command2 # command2 is executed if, and only if,
+                     # command1 returns an exit status of zero.
+command1 || command2 # command2 is executed if and only if
+                     # command1 returns a non-zero exit status.
+
 DISPLAY=:7
 echo $DISPLAY
 

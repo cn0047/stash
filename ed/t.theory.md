@@ -241,6 +241,27 @@ nanosecond  - 0,000 000 001
 ````
 
 ````
+uint8  (tinyint)  - 1byte, 0 to 255
+uint16 (smallint) - 2byte, 0 to 65535
+uint32 (int)      - 4byte, 0 to 4294967295
+uint64 (bigint)   - 8byte, 0 to 18446744073709551615
+
+int8              - 1byte, -128 to 127
+int16             - 2byte, -32768 to 32767
+int32             - 4byte, -2147483648 to 2147483647
+int64             - 8byte, -9223372036854775808 to 9223372036854775807
+
+boolean           - 1byte
+
+float             - 4byte, 1.175494351E-38 to 3.402823466E+38
+decimal           - 8byte, 2.2250738585072014E-308 to 1.7976931348623158E+308
+
+ASCII character   - 1byte
+UTF-8 character   - 1byte (for ASCII equivalents)
+UTF-8 character   - 2byte (for special chars)
+````
+
+````
 nil | null | none | blank | undefined | unknown | void | empty
 anonymous |
 environments: local; dev; stage|staging; prod|production;

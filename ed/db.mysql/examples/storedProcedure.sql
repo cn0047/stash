@@ -16,6 +16,8 @@ CREATE PROCEDURE getCountry (IN countryName VARCHAR(255))
     END //
 DELIMITER ;
 
+SHOW CREATE PROCEDURE getCountry;
+
 CALL getCountry('ua');
 +----+------+
 | id | name |

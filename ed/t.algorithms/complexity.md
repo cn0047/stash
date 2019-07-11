@@ -23,20 +23,21 @@ O(n!)     # n-factorial time
 
 # space complexity - same like time complexity ↑
 
-O(N^2 + N^2)            = O(N^2)
-O(N^2 + N)              = O(N^2)
-O(N + log N)            = O(N) # because log N < N
-O(N * log N)            = O(N) # ↑
-O(5 * 2^N + 10 * N^100) = O(2^N)
-O(N^3 + N^2 + N)        = O(N^3)
-O(N^2 + B)              = O(N^2 + B) # because we know nothing about B
-O(log 2 N)              = O(log N)
-O(N/2)                  = O(N)
-O(N^2/2)                = O(N^2)
+O(n^2 + n^2)            = O(n^2)
+O(n^2 + n)              = O(n^2)
+O(n + log n)            = O(n) # because log N < N
+O(n * log n)            = O(n) # ↑
+O(5 * 2^n + 10 * n^100) = O(2^n)
+O(n^3 + n^2 + n)        = O(n^3)
+O(n^2 + b)              = O(n^2 + b) # because we know nothing about b
+O(log 2 n)              = O(log n)
+O(n/2)                  = O(n)
+O(n^2/2)                = O(n^2)
 
-O(2^N)                  = for fibonacci and for recursion (with creating forks with n levels deep)
-O(N!)                   = for recursion / permutations / salesman problems
-O(log N)                = if divide in 1/2 or myltiply by 2
+O(2^n)                  = for fibonacci and for recursion (with creating forks with n levels deep)
+O(n!)                   = for recursion / permutations / salesman problems
+O(log n)                = if divide in 1/2 or myltiply by 2
+                          because: n/2/2/2/2... is n/2^k = 1 is n = 2^k where k = log 2 n
 ````
 
 For array inside another array - `Big O(a * b)`,

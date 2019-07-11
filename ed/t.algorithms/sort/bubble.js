@@ -1,3 +1,8 @@
+// The plan:
+// start from begin of array,
+// check two adjacent elements and move bigger to right,
+// now last element in array is in sorted position,
+// go to next iteration.
 var a = ['f','s','w','e','l','x','v','d','a'];
 var n = a.length;
 for (i = 0; i < n; i++) {
