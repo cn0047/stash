@@ -12,10 +12,6 @@ func (m *MinHeap) GetRightChildIndex(parentIndex int64) int64 {
   return 2*parentIndex + 2
 }
 
-func (m *MinHeap) GetParentIndex(childIndex int64) int64 {
-  return (childIndex - 1) / 2
-}
-
 func (m *MinHeap) HasLeftChild(index int64) bool {
   return m.GetLeftChildIndex(index) < int64(len(m.items))
 }
@@ -24,16 +20,20 @@ func (m *MinHeap) HasRightChild(index int64) bool {
   return m.GetRightChildIndex(index) < int64(len(m.items))
 }
 
-func (m *MinHeap) HasParent(index int64) bool {
-  return m.GetParentIndex(index) >= 0
-}
-
 func (m *MinHeap) LeftChild(index int64) int64 {
   return m.items[m.GetLeftChildIndex(index)]
 }
 
 func (m *MinHeap) RightChild(index int64) int64 {
   return m.items[m.GetRightChildIndex(index)]
+}
+
+func (m *MinHeap) GetParentIndex(childIndex int64) int64 {
+  return (childIndex - 1) / 2
+}
+
+func (m *MinHeap) HasParent(index int64) bool {
+  return m.GetParentIndex(index) >= 0
 }
 
 func (m *MinHeap) Parent(index int64) int64 {

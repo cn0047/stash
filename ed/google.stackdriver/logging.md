@@ -53,7 +53,8 @@ status:400..499 # HTTP status of 400 through 499
 
 ````sh
 protoPayload.resource:"var=3"
-protoPayload.status >= 400 AND protoPayload.status <= 405
+protoPayload.status>=400 AND protoPayload.status <= 405
+protoPayload.method="GET"
 
 resource.type="gae_app"
 resource.labels.module_id="cws-products"

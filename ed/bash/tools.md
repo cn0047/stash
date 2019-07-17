@@ -349,6 +349,8 @@ docker run -ti --rm cn007b/ubuntu ab -k -n 100 -c 100 -t 5 "http://10.254.254.25
 -X or --no-init            #
 -xn,... or --tabs=n,...    # sets tab stops.
 less -SFX +F /var/log/syslog
+
+:ng # go to line with number n
 ````
 
 #### upstart
