@@ -1,27 +1,29 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type Foo struct {
 }
 
 func (f Foo) F() {
-  fmt.Println("foo")
+	fmt.Println("foo")
 }
 
 type Bar struct {
 }
 
 func (b Bar) F() {
-  fmt.Println("bar")
+	fmt.Println("bar")
 }
 
 type X struct {
-  Foo
-  Bar
+	Foo
+	Bar
 }
 
 func main() {
-  x := X{}
-  x.F() // ambiguous selector x.F
+	x := X{}
+	x.F() // ambiguous selector x.F
 }

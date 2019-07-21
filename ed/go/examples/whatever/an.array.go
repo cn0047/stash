@@ -1,10 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	one()
-	on2()
+	one2()
 	two()
 }
 
@@ -18,7 +20,7 @@ func one2() {
 	i := 2
 	a2 := []int{1, 2, 3, 4, 5}
 	a2 = append(a2[:i], a2[i+1:]...)
-	fmt.Printf("\n a2 = %#v", a2)
+	fmt.Printf("\n a2 = %#v", a2) // a2 = []int{1, 2, 4, 5}
 }
 
 func two() {

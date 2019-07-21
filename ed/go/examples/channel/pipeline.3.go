@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func counter(out chan<- int) {
 	for x := 0; x < 10; x++ {

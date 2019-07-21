@@ -1,6 +1,8 @@
 package main
 
-import "time"
+import (
+	"time"
+)
 
 func main() {
 	done := time.After(500 * time.Millisecond)

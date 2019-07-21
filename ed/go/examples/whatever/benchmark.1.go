@@ -7,7 +7,7 @@ import (
 )
 
 type Response struct {
-    Id string
+    Id  string
     Msg string
 }
 

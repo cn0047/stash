@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	zero()
@@ -13,10 +15,10 @@ func zero() {
 	letters := []string{"a", "b", "c", "d"}
 	fmt.Printf("letters: %+v \n", letters) // letters: [a b c d]
 
-	scores := make([]int, 10)     // slice
+	scores := make([]int, 10)            // slice
 	fmt.Printf("scores: %+v \n", scores) // scores: [0 0 0 0 0 0 0 0 0 0]
 
-	scores2 := make([]int, 0, 10) // slice of length 0 and capacity 10.
+	scores2 := make([]int, 0, 10)          // slice of length 0 and capacity 10.
 	fmt.Printf("scores2: %+v \n", scores2) // scores2: []
 
 	scores3 := make([]int, 0, 10)
@@ -32,8 +34,9 @@ func zero() {
 func two() {
 	fmt.Println("\n two: -------------------")
 	// Unlike an array type, a slice type has no specified length.
-	// A slice literal is declared just like an array literal, except you leave out the element count.
-	var s1 []byte // it's slice because length not specified
+	// A slice literal is declared just like an array literal,
+	// except you leave out the element count.
+	var s1 []byte                                                        // it's slice because length not specified
 	fmt.Printf("s1 ❶: %+v, len = %d, cap = %d \n", s1, len(s1), cap(s1)) // s1 ❶: [], len = 0, cap = 0
 
 	s1 = append(s1, 3)
@@ -54,7 +57,7 @@ func one() {
 	fmt.Printf("\n %#v", s) // []int{27}
 
 	s2 := mutateSlice(s)
-	fmt.Printf("\n s  = %#v", s) // s  = []int{27}
+	fmt.Printf("\n s  = %#v", s)  // s  = []int{27}
 	fmt.Printf("\n s2 = %#v", s2) // s2 = []int{27, 27}
 }
 

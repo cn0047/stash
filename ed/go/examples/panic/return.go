@@ -1,6 +1,8 @@
 package main
 
-var LogPanic = false
+var (
+  LogPanic = false
+)
 
 func main() {
   r := f1()

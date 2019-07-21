@@ -1,15 +1,17 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
-    foo(prn)
+	foo(prn)
 }
 
 func foo(cb func(string)) {
-    cb("This is from foo.")
+	cb("This is from foo.")
 }
 
 func prn(m string) {
-    fmt.Print(m)
+	fmt.Print(m)
 }

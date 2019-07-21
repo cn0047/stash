@@ -1,6 +1,8 @@
 package _interface
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type geometry interface {
 	area() float64

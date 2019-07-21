@@ -1,19 +1,21 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type VO struct {
-    Value int
+	Value int
 }
 
 func main() {
-    var vo VO
-    f(&vo)
-    fmt.Printf("%+v\n", vo)
+	var vo VO
+	f(&vo)
+	fmt.Printf("%+v\n", vo)
 }
 
 func f(vo *VO) {
-    vo.Value = 200
+	vo.Value = 200
 }
 
 /*

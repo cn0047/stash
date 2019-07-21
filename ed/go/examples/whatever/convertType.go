@@ -1,14 +1,16 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type Foo struct {
-	ID int
+	ID   int
 	Name string
 }
 
 type Bar struct {
-	ID int
+	ID   int
 	Name string
 }
 
@@ -17,7 +19,7 @@ func main() {
 }
 
 func two() {
-	f := &Foo{ID: 1, Name:"foo"}
+	f := &Foo{ID: 1, Name: "foo"}
 	b := Bar(*f)
 	fmt.Printf("🔴 %#v", b)
 }

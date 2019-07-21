@@ -1,27 +1,31 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type Foo struct {
-  Bar
+	Bar
 }
+
 func (f Foo) F() {
-  fmt.Println("foo")
+	fmt.Println("foo")
 }
 
 type Bar struct {
 }
+
 func (b Bar) B() {
-  fmt.Println("bar")
+	fmt.Println("bar")
 }
 func (b Bar) F() {
-  fmt.Println("foo from bar")
+	fmt.Println("foo from bar")
 }
 
 func main() {
-  f := Foo{}
-  f.F()
-  f.B()
+	f := Foo{}
+	f.F()
+	f.B()
 }
 
 /*

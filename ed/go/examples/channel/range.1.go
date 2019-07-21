@@ -16,7 +16,7 @@ func gr1(c chan int) {
 	c <- 1
 	c <- 2
 	c <- 3
-	// close(c)
+	close(c)
 	//c <- 4 // panic: send on closed channel
 }
 

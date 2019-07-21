@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+    "fmt"
+)
 
 type Person struct {
     Name string
@@ -17,8 +19,8 @@ type Saiyan struct {
 
 func main() {
     goku := &Saiyan{
-      Person: &Person{"Goku-In"},
-      Power: 9001,
+        Person: &Person{"Goku-In"},
+        Power:  9001,
     }
     fmt.Println(goku.Name)
     fmt.Println(goku.Person.Name)
