@@ -367,6 +367,7 @@ so it makes sense to use `ss` tool.
 netstat -anp | grep LISTEN
 
 # osx
+sudo lsof -i -n -P | grep TCP
 sudo lsof -i -n -P | grep TCP.*80
 
 # Active Internet connections

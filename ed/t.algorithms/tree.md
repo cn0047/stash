@@ -8,11 +8,10 @@ Balancing tree:
 * Right-Left rotation
 * Left-Right rotation
 
-Update segment tree - O(log N).
-Update range tree - O(log N).
-
+Update segment tree            - O(log N).
+Update range tree              - O(log N).
+Update range array (tree)      - O(N).
 Select from range array (tree) - O(1).
-Update range array (tree) - O(N).
 
 Segment tree - better for many updates.
 Range array (tree) - better for many reads.
@@ -23,7 +22,7 @@ Diameter of a Binary Tree - longest path of tree between 2 leafs.
 
 Height of BT = 1 + numbers of edges on the longest path from root to leaf.
 
-Delete a Binary Tree = Postorder + function free()
+Delete from Binary Tree = Postorder + function free()
 
 To make Minimum spanning tree use:
 * Prim's Algorithm - like BFS but pick chipest node on each iteration.
@@ -72,20 +71,6 @@ is a form of binary search tree which supports efficient addition and deletion o
 * Splay tree - is a self-adjusting binary search **tree
 with the additional property that recently accessed elements** are quick to access again.
 All normal operations on a binary search tree are combined with one basic operation, called splaying.
-
-* `Heap` - can be classified further as either a "max heap" or a "min heap".
-**In a max heap, the keys of parent nodes are always greater than or equal
-to those of the children** and the highest key is in the root node.
-In a min heap, the keys of parent nodes are less than or equal.
-<br>O(1) - find max; O(log n) - insert; O(log n) - delete;
-
-* Binary heap - is a heap data structure created using a binary tree.
-
-* Binomial heap - is a heap similar to a binary heap
-but also supports **quick merging of two heaps**.
-
-* Fibonacci heap - is a data structure for **priority queue operations,
-consisting of a collection of heap-ordered trees**.
 
 * `R-tree` - tree data structures **used for spatial access methods**.
 

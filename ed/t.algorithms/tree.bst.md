@@ -3,6 +3,34 @@ Binary Search Tree (BST)
 
 Level-Order Traversal aka BFS.
 
+Full BT - every node other than the leaves has two children,
+no space to add element into tree without affecting tree's height.
+
+Complete BT - if store BST in array, there must not be missing elements in array (`[a,b,-,d]`).
+
+#### Heap
+
+````
+find max               - O(1)
+insert                 - O(log n)
+delete                 - O(log n)
+create heap from array - O(n log n)
+heapify                - O(n)
+````
+
+Heap - complete BST.
+MaxHeap, MinHeap.
+
+**In a max heap, the keys of parent nodes are always greater than or equal to those of the children**
+and the highest key is in the root node.
+In a min heap, the keys of parent nodes are less than or equal.
+
+Binary heap - is a heap data structure created using a binary tree.
+Binomial heap - is a heap similar to a binary heap
+but also supports **quick merging of two heaps**.
+Fibonacci heap - is a data structure for **priority queue operations,
+consisting of a collection of heap-ordered trees**.
+
 #### Find inorder predecessor
 
 If left child is present - got to left child and go to [most right](http://prntscr.com/hdpp78),

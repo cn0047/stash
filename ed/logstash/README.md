@@ -18,7 +18,7 @@ output {
 }
 ````
 
-Siple test:
+Simple test:
 
 ````sh
 /opt/logstash/bin/logstash -e 'input { stdin { } } output { stdout {} }'

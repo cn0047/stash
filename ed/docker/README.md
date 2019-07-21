@@ -182,6 +182,16 @@ services:
     image: myImg:latest
 ````
 
+## Network
+
+````sh
+# list these networks
+docker network ls
+
+docker network create --driver bridge x_node_mongo
+docker network inspect x_node_mongo
+````
+
 ## Machine
 
 Use [machine](https://docs.docker.com/machine) to create Docker hosts on your local box,
@@ -233,14 +243,4 @@ docker swarm join \
     --token SWMTKN-1-3ie1vxyfmvh1756tv37dyp8datyyfcsfrnkhmzofwk3nsle7ud-cblwlb51iv251evjiudwxs6li \
     192.168.99.100:2377
 docker node ls
-````
-
-## Network
-
-````sh
-# list these networks
-docker network ls
-
-docker network create --driver bridge x_node_mongo
-docker network inspect x_node_mongo
 ````

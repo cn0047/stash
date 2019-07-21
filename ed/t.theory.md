@@ -33,7 +33,6 @@ Internationalization (i18n) - process of changing your software so that it isn't
 Localization (l10n) - the process of adding the appropriate resources to your software so that a particular language/locale is supported.
 
 Tell, Don’t Ask.
-
 Law of Demeter - object A can call method of object B,
 but object A should not "reach through" object B to access yet another object C, to request its services.
 
@@ -91,13 +90,13 @@ build, deploy, test, and release process.
 The practice of building and testing your application on every check-in
 is known as continuous integration.
 
-Continuous Integration - is a software development practice
+Continuous Integration - it is a software development practice
 where members of a team use a version control system and integrate their work frequently to the same location,
 such as a master branch.
 Each change is built and verified by tests and other verifications
 in order to detect any integration errors as quickly as possible.
 
-Continuous Delivery - is a software development methodology where the release process is automated.
+Continuous Delivery - it is a software development methodology where the release process is automated.
 Every software change is automatically built, tested, and deployed to production.
 
 Continuous Deployment - is a synonym to Continuous Delivery.
@@ -227,7 +226,7 @@ x^2 # x - base; 2 - power
 ````
 
 ````
-byte          - 8    bits      ~ 
+byte          - 8    bits      ~ 1
 kilobyte (KB) - 1024 bytes     ~ 1 000
 megabyte (MB) - 1024 kilobytes ~ 1 000 000
 gigabyte (GB) - 1024 megabytes ~ 1 000 000 000

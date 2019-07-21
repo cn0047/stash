@@ -1,11 +1,13 @@
 TCP - Transmission Control Protocol
 -
 
+````
 header:                   20 bytes.
 connection:               yes (three-way handshake).
 in order packet delivery: yes.
 retransmission:           yes (for unacknowledged packets).
 flow control:             limits the rate a sender transfers data to guarantee reliable delivery.
+````
 
 TCP is reliable, connection oriented protocol with error recovery
 and with ordered data delivery.
@@ -15,7 +17,7 @@ Connection establishment - TCP handshake (three-way) (requires 3 messages):
 2. Server replies with `SYN-ACK (Synchronize-Acknowledged)`.
 3. Client replies with `ACK (Connection Acknowledged)`.
 
-Connection termination  (four-way handshake:
+Connection termination  (four-way handshake):
 1. Server sends `FIN-ACK`.
 2. Clinet replies with `ACK`.
 3. Clinet replies with `FIN/ACK`.

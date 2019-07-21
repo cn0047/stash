@@ -56,10 +56,6 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9
 Authorization: OAuth oauth_consumer_key="", oauth_nonce="", oauth_signature="", oauth_signature_method="HMAC-SHA1", oauth_timestamp="1471672391", oauth_token="", oauth_version="1.0"'
 ````
 
-JSON request:
-````sh
-````
-
 Request with file:
 ````sh
 curl -X POST http://$h/labs/fastly/errors \
@@ -138,7 +134,7 @@ Headers:
 * X-Frame-Options
 * Content-Security-Policy (prevent xss, clickjacking and other code injection attacks)
 
-````
+````sh
 Server: nginx/1.10.2
 
 Set-Cookie: AWSELB=3B731DCB1E7B5DC042400ABD5CCF735F3FFEB4F54E46E6B7D...
@@ -157,7 +153,7 @@ X-Frame-Options: DENY
 
 Cache:
 
-````
+````sh
 Cache-Control: private, max-age=0, no-cache
 
 Cache-Control: private, max-age=60
@@ -166,7 +162,7 @@ Expires: Thu, 31 Dec 2037 23:55:55 GMT
 
 ETag Cache:
 
-````
+````sh
 # Request file -> Response:
 ETag: "6d82cbb050ddc7fa9cbb659014546e59"
 
@@ -181,7 +177,7 @@ A CORS preflight request is a CORS request that checks to see if the CORS protoc
 It is an OPTIONS request using two HTTP request headers: `Access-Control-Request-Method` and `Access-Control-Request-Headers`
 and the `Origin` header.
 
-````
+````sh
 OPTIONS /resource/foo 
 Access-Control-Request-Method: DELETE
 Access-Control-Request-Headers: origin, x-requested-with

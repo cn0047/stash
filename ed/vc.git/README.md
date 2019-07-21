@@ -127,7 +127,7 @@ git brnach --merged                               # branches merged with current
 git branch -v                                     # all branches Y last branch commit
 git push remoteRepoName pushedBranch
 git push remoteRepoName pushedBranch:newBranchName
-git push remoteRepoName :newBranch                # delete branch from remote repo
+git push remoteRepoName :branch                   # delete branch from remote repo
 ````
 
 #### config
