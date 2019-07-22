@@ -33,16 +33,16 @@ canonicalURL="GET$url$date"
 # run curl
 
 # get article
-appleArticleID=""
-url="https://news-api.apple.com/articles/$appleArticleID"
+articleID=""
+url="https://news-api.apple.com/articles/$articleID"
 canonicalURL="GET$url$date"
 # run curl
 
 # promote articles in section
 sectionId=""
-appleArticleID=""
+articleID=""
 url="https://news-api.apple.com/sections/$sectionId/promotedArticles"
-body='{"data":{"promotedArticles":["https://news-api.apple.com/articles/'$appleArticleID'"]}}'
+body='{"data":{"promotedArticles":["https://news-api.apple.com/articles/'$articleID'"]}}'
 canonicalURL="POST$url$date$contentType$body"
 # run POST curl
 

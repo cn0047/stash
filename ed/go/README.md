@@ -36,6 +36,7 @@ $GODEBUG      # https://godoc.org/runtime#hdr-Environment_Variables
               # schedtrace=1000 - single line to standard error every 1000 milliseconds
               # gctrace=1 - single line to standard error at each collection
               # GODEBUG=allocfreetrace=1,gcpacertrace=1,gctrace=1,scavenge=1,scheddetail=1,scheddetail=1,schedtrace=1000
+              # GODEBUG=gocacheverify=1,gocachehash=1,gocachetest=1
 
 export GOROOT=$HOME/go
 
@@ -79,7 +80,7 @@ import (
 )
 
 var (
-    msq = "str"
+    msg = "str"
     message string = "str"
 )
 x := 1
@@ -455,8 +456,8 @@ Hence, a Go Runtime scheduler is needed which manages their lifecycle.
 #### Channel
 
 ````sh
-c <- 42    // write to a channel
-val := <-c // read from a channel
+c <- 42        // write to a channel
+val, ok := <-c // read from a channel
 
 c1 := make(<-chan bool)   // can only read from
 c2 := make(chan<- []bool) // can only write to
@@ -490,15 +491,15 @@ and write operations - if the buffer is not full.
 These channels are called asynchronous.
 
 ````golang
-for i := 1; i <= 9; i++ {
-    select {
-    case msg := <-c1:
-        println(msg)
-    case msg := <-c2:
-        println(msg)
-    case msg := <-c3:
-        println(msg)
-    }
+select {
+case msg := <-c1:
+    println(msg)
+case msg := <-c2:
+    println(msg)
+case msg := <-c3:
+    println(msg)
+default:
+    println(".")
 }
 ````
 

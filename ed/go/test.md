@@ -31,9 +31,9 @@ cd $GOPATH/lib ;\
 ````
 
 ````
-func TestXxx() // test
+func TestXxx()      // test
 func BenchmarkXxx() // benchmark
-func ExampleXxx() // example (godoc)
+func ExampleXxx()   // example (godoc)
 ````
 
 ````golang
