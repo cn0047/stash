@@ -216,7 +216,7 @@ Origin: https://foo.bar.org
 * 304 **Not Modified**
 * 305 Use Proxy (since HTTP/1.1)
 * 306 Switch Proxy
-* 307 Temporary (Internal) Redirect (since HTTP/1.1)
+* 307 **Temporary Redirect** (Internal) (strict-transport-security) (since HTTP/1.1)
 * 308 Permanent Redirect (approved as experimental RFC)[12]
 
 4xx Client Error

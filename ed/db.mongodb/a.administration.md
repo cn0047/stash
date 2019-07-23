@@ -6,6 +6,18 @@ Administration
 
 `--oplogSize` - must be 5% of disck space and <= 50GB.
 
+````sh
+sudo service mongodb start|stop|restart
+
+sudo rm /var/lib/mongodb/mongod.lock
+sudo service mongodb restart
+
+# osx
+brew services start mongodb
+
+mongo
+````
+
 ````js
 db.version();
 
@@ -64,7 +76,6 @@ DBRef("<name>", "<id>")
 db.inventory.find({price: {$type: 1}});
 db.inventory.find({$where: "Array.isArray(this.tags)"})
 [Available types values](http://docs.mongodb.org/manual/reference/operator/query/type/)
-
 
 // Collection Export
 mongoexport --collection collection --out collection.json
@@ -147,4 +158,10 @@ db.system.profile.find().pretty();
 
 var level = 2; // 0, 1 or 2
 db.setProfilingLevel(level)
+````
+
+#### Dump
+````sh
+mongodump --host mongodb1.example.net --port 3017 --username user --password pass --out /opt/backup/mongodump-2013-10-24
+mongorestore --host mongodb1.example.net --port 3017 --username user --password pass /opt/backup/mongodump-2013-10-24/
 ````

@@ -172,7 +172,7 @@ monitoring.next
         │   ├── middleware
         │   ├── controller
         │   └── vo
-        └── service
+        └── service.v1
             ├── internal
             │   ├── cache
             │   ├── datastore

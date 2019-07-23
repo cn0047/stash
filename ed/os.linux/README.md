@@ -101,7 +101,7 @@ gcc - the GNU C compiler,
 
 #### signals
 
-````
+````sh
 SEGV # segmentation violation (fault) - the software has attempted to access a restricted area of memory
 ````
 

@@ -69,32 +69,6 @@ Computing service:
 * GCE - Compute Engine (IaaS)
 * Cloud Functions (Serverless)
 
-## GCE (Compute Engine)
-
-* High performance virtual machine.
-* Persistent disc storage.
-* Local SSD & RAM.
-* Supports glabal balancing.
-* Supports auto scaling.
-* Supports CDN.
-* Auto restart.
-
-[Machine types](https://cloud.google.com/compute/docs/machine-types):
-Shared core machines: f1-micro, g1-small.
-
-Predefined Virtual Machines types:
-* standard
-* shared-core
-* high-cpu
-* high-memory
-
-Instance template - define machine type, image, zone
-and other properties.
-
-Instance groups:
-* managed (zonal, regional)
-* unmanaged
-
 #### LB (Load Balancer)
 
 Global external LB: HTTP(S), SSL, TCP Proxy.
@@ -106,18 +80,7 @@ Regional external LB: Network, Internal.
 
 Managed instances groups used for LB.
 
-#### CKE (Container Engine)
-
 #### Networking
-
-BGP       - Border Gateway Protocol.
-Cloud DNS - Domain Name System.
-ECMP      - Equal - Cost Multi - Path routing.
-FQDN      - Fully Qualified Domain Name.
-MPLS      - Multiprotocol Label Switching.
-NAT       - Network Address Translation.
-VPC       - Virtual Private Cloud.
-VPS       - Virtual Private Server.
 
 Google Cloud Interconnect extends your on-premises network
 to Google's network through a highly available, low latency connection.
@@ -127,6 +90,4 @@ Internal Ip address used internal DNS server for FQDN.
 To scale Cloud VPN - add multiple tunnels.
 Subnets can not span across multiple regions.
 Cloud Router doesn't use BGP link to advertise network changes.
-Cloud VPN is not regional Service.
 Google Virtual Network Subnets are regional resource.
-Cloud VPN is regional Service.

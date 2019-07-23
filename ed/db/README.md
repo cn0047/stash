@@ -7,10 +7,10 @@ Optimize wide. Make writes as parallel as you can.
 
 Replication needed for high availability (in case node die - you'll have all data).
 
-DDL - Data Definition Language: `CREATE, ALTER, DROP, TRUNCATE...`.
-DML - Data Manipulation Language: `SELECT, INSERT, UPDATE, DELETE...`.
-DCL - Data Control Language: `GRANT, REVOKE`.
-TCL - Transaction Control Language: `COMMIT, ROLLBACK, SAVEPOINT...`.
+<br>DDL - Data Definition Language: `CREATE, ALTER, DROP, TRUNCATE...`.
+<br>DML - Data Manipulation Language: `SELECT, INSERT, UPDATE, DELETE...`.
+<br>DCL - Data Control Language: `GRANT, REVOKE`.
+<br>TCL - Transaction Control Language: `COMMIT, ROLLBACK, SAVEPOINT...`.
 
 ## Sharding
 

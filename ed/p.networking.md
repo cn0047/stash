@@ -1,19 +1,29 @@
 Networking
 -
 
-LAN  - Local Area Network.
-WAN  - Wide Area Network.
-DNS  - Domain Name System.
-IP   - Internet Protocol asdress.
-MAC  - Media Access Control address.
-CIDR - Classless Inter-Domain Routing.
-IANA - Internet Assigned Numbers Authority (assigns addresses to RIR's).
-RIR  - Regional Internet Registry (assigns space to ISP's).
-ISP  - Internet Service Provider.
-DHCP - Dynamic Host Configuration Protocol (DHCP server can assign dynamic IP address).
-CDN  - Content distribution network.
-IMAP - Internet Message Access Protocol.
-UDP  - User Datagram Protocol (good for broadcast).
+````
+BGP       - Border Gateway Protocol.
+CDN       - Content Distribution Network.
+CIDR      - Classless Inter-Domain Routing.
+Cloud DNS - Domain Name System.
+DHCP      - Dynamic Host Configuration Protocol (DHCP server can assign dynamic IP address).
+DNS       - Domain Name System.
+ECMP      - Equal-Cost Multi-Path routing.
+FQDN      - Fully Qualified Domain Name.
+IANA      - Internet Assigned Numbers Authority (assigns addresses to RIR's).
+IMAP      - Internet Message Access Protocol.
+IP        - Internet Protocol asdress.
+ISP       - Internet Service Provider.
+LAN       - Local Area Network.
+MAC       - Media Access Control address.
+MPLS      - Multiprotocol Label Switching.
+NAT       - Network Address Translation.
+RIR       - Regional Internet Registry (assigns space to ISP's).
+UDP       - User Datagram Protocol (good for broadcast).
+VPC       - Virtual Private Cloud.
+VPS       - Virtual Private Server.
+WAN       - Wide Area Network.
+````
 
 802     = LAN technologies.
 802.3   = Ethernet.
@@ -64,15 +74,15 @@ ANAME fater that CNAME.
 
 ## OSI model
 
-7: Application Layer - High-level APIs.
-6: Presentation Layer - Translation of data between a networking service and an application
+7. Application Layer - High-level APIs.
+6. Presentation Layer - Translation of data between a networking service and an application
    (encoding/compression/encryption/decryption).
-5: Session Layer - managing communication sessions.
-4: Transport Layer -  reliable transmission of data segments between points on a network.
-3: Network Layer - structuring and managing a multi-node network,
+5. Session Layer - managing communication sessions.
+4. Transport Layer -  reliable transmission of data segments between points on a network.
+3. Network Layer - structuring and managing a multi-node network,
    including addressing, routing and traffic control.
-2: Data Link Layer - reliable transmission of data frames between two nodes.
-1: Physical Layer - transmission and reception of raw bit streams over a physical medium.
+2. Data Link Layer - reliable transmission of data frames between two nodes.
+1. Physical Layer - transmission and reception of raw bit streams over a physical medium.
 
 ## DNS
 

@@ -13,17 +13,6 @@ Mongo DB
 Relational DB ⇒ Table       ⇒ Row      ⇒ Field
 MongoDB       ⇒ Collection  ⇒ Document ⇒ Property
 ````
-````sh
-sudo service mongodb start|stop|restart
-
-sudo rm /var/lib/mongodb/mongod.lock
-sudo service mongodb restart
-
-# osx
-brew services start mongodb
-
-mongo
-````
 
 MongoDB implements locks on a per-database basis for most read and write operations.
 <br>[Which operations lock the database](http://docs.mongodb.org/manual/faq/concurrency/#which-operations-lock-the-database)
@@ -331,10 +320,4 @@ Result:
     ]
 }
 */
-````
-
-#### Dump
-````sh
-mongodump --host mongodb1.example.net --port 3017 --username user --password pass --out /opt/backup/mongodump-2013-10-24
-mongorestore --host mongodb1.example.net --port 3017 --username user --password pass /opt/backup/mongodump-2013-10-24/
 ````
