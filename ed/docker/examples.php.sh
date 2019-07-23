@@ -24,12 +24,12 @@ docker run -it --rm -p 8080:80 -v $PWD:/gh nphp \
 curl http://localhost:8080/healthCheck.php?XDEBUG_SESSION_START=PHPSTORM
 
 # php-cli
-docker build -t php-cli ./docker/php-cli
+docker build -t php-cli ./.docker/php-cli
 docker run -it --rm -v $PWD:/gh php-cli php -v
 docker run -it --rm -v $PWD:/gh php-cli php /gh/x.php
 
 # php-fpm
-docker build -t php-fpm ./docker/php-fpm
+docker build -t php-fpm ./.docker/php-fpm
 docker run -it --rm -p 9000:9000 --hostname localhost --name php-fpm -v $PWD:/gh php-fpm
 docker run -it --rm -p 9000:9000 --hostname localhost --name php-fpm -v $PWD:/gh --net=xnet php-fpm
 
@@ -76,7 +76,7 @@ docker run -it --rm --hostname 0.0.0.0 -p 8181:8181 -v $PWD:/gh --link mysql-mas
     php-cli php /gh/ed/php.laravel/examples/one/artisan serve --host=0.0.0.0 --port=8181
 
 # phalcon
-# docker build -t php-cli-phalcon ./docker/php-cli-phalcon
+# docker build -t php-cli-phalcon ./.docker/php-cli-phalcon
 # docker run -it --rm -v $PWD:/gh php-cli-phalcon php -v
 
 # phpspec
@@ -107,7 +107,7 @@ docker run -it --rm --net=xnet --hostname 0.0.0.0 -p 8181:8181 -v $PWD:/gh \
 
 # symfony + nginx
 docker run -ti --rm --name nginx-php --link php-fpm \
-    -v $PWD/docker/nginx/symfony.news.conf:/etc/nginx/conf.d/default.conf \
+    -v $PWD/.docker/nginx/symfony.news.conf:/etc/nginx/conf.d/default.conf \
     -v $PWD:/gh -p 8080:80 nginx:latest
 # prepare prod environment
 docker run -it --rm -v $PWD:/gh \

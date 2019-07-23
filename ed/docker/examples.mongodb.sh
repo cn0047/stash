@@ -5,7 +5,7 @@ MongoDB
 
 docker run -it --rm --net=xnet -p 27017:27017 --hostname xmongo --name xmongo \
     -v /Users/k/Downloads/:/tmp/d \
-    -v $PWD/docker/.data/mongodb:/data/db mongo:latest
+    -v $PWD/.docker/.data/mongodb:/data/db mongo:latest
 
 # dump
 docker exec -it xmongo mongorestore /tmp/d/creating_documents/dump
@@ -22,19 +22,19 @@ docker exec -it xmongo mongo test \
 # primary
 docker run -it --rm --net=xnet -p 27017:27017 \
     --hostname xmongo-primary-1 --name xmongo-primary-1 \
-    -v $PWD/docker/.data/xmongo-primary-1:/data/db \
+    -v $PWD/.docker/.data/xmongo-primary-1:/data/db \
     mongo:latest --port 27017 --replSet xmongo
 
 # secondary
 docker run -it --rm --net=xnet -p 27018:27018 \
     --hostname xmongo-secondary-1 --name xmongo-secondary-1 \
-    -v $PWD/docker/.data/xmongo-secondary-1:/data/db \
+    -v $PWD/.docker/.data/xmongo-secondary-1:/data/db \
     mongo:latest --port 27018 --replSet xmongo
 
 # arbiter
 docker run -it --rm --net=xnet -p 27019:27019 \
     --hostname xmongo-arbiter-1 --name xmongo-arbiter-1 \
-    -v $PWD/docker/.data/xmongo-arbiter-1:/data/db \
+    -v $PWD/.docker/.data/xmongo-arbiter-1:/data/db \
     mongo:latest --port 27019 --replSet xmongo
 
 # configure replica set
@@ -60,7 +60,7 @@ docker exec -it xmongo-secondary-1 mongo --port 27018 --eval 'db.setSlaveOk();db
 # config server
 docker run -it --rm --net=xnet -p 27016:27016 \
     --hostname xmongo-config-1 --name xmongo-config-1 \
-    -v $PWD/docker/.data/xmongo-config-1:/data/db \
+    -v $PWD/.docker/.data/xmongo-config-1:/data/db \
     mongo:latest --port 27016 --replSet xmongo-config --configsvr
 
 # init config server
@@ -73,19 +73,19 @@ docker exec -it xmongo-config-1 mongo --port 27016 --eval '
 # mongos (router) server
 docker run -it --rm --net=xnet -p 27015:27015 \
     --hostname xmongo-mongos --name xmongo-mongos \
-    -v $PWD/docker/.data/xmongo-mongos:/data/db \
+    -v $PWD/.docker/.data/xmongo-mongos:/data/db \
     mongo:latest mongos --port 27015 --configdb xmongo-config/xmongo-config-1:27016
 
 # shard-1
 docker run -it --rm --net=xnet -p 27018:27018 \
     --hostname xmongo-shard-1 --name xmongo-shard-1 \
-    -v $PWD/docker/.data/xmongo-shard-1:/data/db \
+    -v $PWD/.docker/.data/xmongo-shard-1:/data/db \
     mongo:latest --port 27018 --shardsvr
 
 # shard-2
 docker run -it --rm --net=xnet -p 27019:27019 \
     --hostname xmongo-shard-2 --name xmongo-shard-2 \
-    -v $PWD/docker/.data/xmongo-shard-2:/data/db \
+    -v $PWD/.docker/.data/xmongo-shard-2:/data/db \
     mongo:latest --port 27019 --shardsvr
 
 # init

@@ -1,0 +1,44 @@
+# USAGE:
+#
+# docker-compose -f ed/go/examples/db/docker-compose.yml up db
+# docker-compose -f ed/go/examples/db/docker-compose.yml up xmysql
+
+version: '3'
+
+networks:
+  prvt:
+    internal: true
+  publ:
+    internal: false
+
+services:
+
+  xmysql:
+    # container_name: xmysql
+    hostname: xmysql
+    image: mysql:5.7.27
+    networks:
+      - prvt
+    ports:
+      - "3307:3306"
+    environment:
+      - "MYSQL_ROOT_PASSWORD=root"
+      - "MYSQL_USER=dbu"
+      - "MYSQL_PASSWORD=dbp"
+      - "MYSQL_DATABASE=test"
+
+  app:
+    image: cn007b/go
+    depends_on:
+      - xmysql
+    networks:
+      - prvt
+      - publ
+    ports:
+      - "8080:8080"
+    volumes:
+      - "$PWD/ed/go/examples/db/src:/opt/cn007b/go/src"
+    command: bash -c "
+        go get github.com/go-sql-driver/mysql;
+        go run /opt/cn007b/go/src/mysql/simple.go
+      "

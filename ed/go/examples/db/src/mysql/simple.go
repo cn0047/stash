@@ -1,11 +1,9 @@
-// create table test_mysql (id int key, code int);
-// insert into test_mysql values (1, 200);
-
 package main
 
 import (
 	"database/sql"
 	"fmt"
+	"net/http"
 
 	_ "github.com/go-sql-driver/mysql"
 )
@@ -15,7 +13,10 @@ const (
 )
 
 func main() {
-	f4()
+	f0()
+	f1()
+	f2()
+	web()
 }
 
 func checkErr(err error) {
@@ -74,7 +75,7 @@ func f1() {
 	db, err := sql.Open("mysql", CONN_STR)
 	checkErr(err)
 
-	stmt, err := db.Prepare("INSERT INTO test_mysql VALUES (?, ?)")
+	stmt, err := db.Prepare("INSERT IGNORE INTO test_mysql VALUES (?, ?)")
 	checkErr(err)
 
 	res, err := stmt.Exec(2, 204)
@@ -84,4 +85,46 @@ func f1() {
 	checkErr(err)
 
 	fmt.Println("Inserted id:", id)
+}
+
+func f0() {
+	db, err := sql.Open("mysql", CONN_STR)
+	checkErr(err)
+
+	stmt, err := db.Prepare("CREATE TABLE IF NOT EXISTS test_mysql (id int key, code int)")
+	checkErr(err)
+
+	_, er2 := stmt.Exec()
+	checkErr(er2)
+
+	stmt2, err := db.Prepare("REPLACE test_mysql VALUES (?, ?)")
+	checkErr(err)
+
+	_, err3 := stmt2.Exec(1, 200)
+	checkErr(err3)
+}
+
+func web() {
+	db, err := sql.Open("mysql", CONN_STR)
+	checkErr(err)
+
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		rows, err := db.Query("SELECT * FROM test_mysql")
+		checkErr(err)
+
+		w.Write([]byte("<table>"))
+		w.Write([]byte("<tr><td>id</td><td>code</td></tr>"))
+		for rows.Next() {
+			id := -1
+			code := -1
+			err = rows.Scan(&id, &code)
+			checkErr(err)
+			w.Write([]byte(fmt.Sprintf("<tr> <td>%d</td> <td>%d</td> </tr>", id, code)))
+		}
+		w.Write([]byte("</table>"))
+	})
+
+	p := ":8080"
+	fmt.Printf("Open: http://localhost%s\n", p)
+	http.ListenAndServe(p, nil)
 }

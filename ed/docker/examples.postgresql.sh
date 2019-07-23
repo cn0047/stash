@@ -4,7 +4,7 @@ PostgreSQL
 #### PostgreSQL
 
 docker run -it --rm --name xpostgres --hostname xpostgres --net=xnet \
-    -v $PWD/docker/.data/postgresql/xpostgres:/var/lib/postgresql/data \
+    -v $PWD/.docker/.data/postgresql/xpostgres:/var/lib/postgresql/data \
     -e POSTGRES_DB=test -e POSTGRES_USER=dbu -e POSTGRES_PASSWORD=dbp postgres
 
 # check
@@ -25,8 +25,8 @@ docker exec -ti xpostgres psql -d postgres://dbu:dbp@localhost/test
 #### PostgreSQL cluster
 
 docker run -it --rm -p 5432:5432 --name postgres-master --hostname postgres-master \
-    -v $PWD/docker/.data/postgresql:/var/lib/postgresql/data \
-    -v $PWD/docker/postgresql/master.conf:/var/lib/postgresql/data/postgresql.conf \
+    -v $PWD/.docker/.data/postgresql:/var/lib/postgresql/data \
+    -v $PWD/.docker/postgresql/master.conf:/var/lib/postgresql/data/postgresql.conf \
     -e POSTGRES_DB=test -e POSTGRES_USER=dbu -e POSTGRES_PASSWORD=dbp postgres
 
 # test

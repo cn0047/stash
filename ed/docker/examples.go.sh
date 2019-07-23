@@ -122,7 +122,7 @@ docker run -it --rm --net=xnet -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/
 docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \
   xgo sh -c 'cd $GOPATH && go get github.com/go-sql-driver/mysql'
 # run
-docker run -it --rm --net=xnet -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \
+docker run -it --rm --net=xnet -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \
   xgo sh -c 'cd $GOPATH && go run src/mysql/simple.go'
 
 # grpc one
@@ -187,7 +187,6 @@ curl -i -XPOST 'http://localhost:8081/cars' -H 'Content-Type: application/json' 
    -d '{"vendor": "BMW", "name": "M6"}'
 
 # web.three.tiny
-
 docker run -it --rm -v $PWD/ed/go/examples/web.three.tiny:/app -e GOPATH='/app' \
   cn007b/go sh -c 'cd $GOPATH/src/app && go install'
 
