@@ -1,14 +1,11 @@
 Examples
 -
 
-
 sudo ifconfig lo0 alias 10.254.254.254
 
 docker network create --driver bridge xnet
 
-
 ### Linux
-
 
 # Ubuntu
 docker pull cn007b/ubuntu
@@ -22,9 +19,7 @@ docker run -ti --rm -v $PWD:/gh xdebian bash
 # Alpine
 docker run -ti --rm -v $PWD:/gh alpine:3.7 sh
 
-
 #### Memcached
-
 
 docker run -it --rm --net=xnet --name xmemcached memcached
 
@@ -37,27 +32,7 @@ docker run -it --rm --net=xnet -p 11211:11211 --hostname xmemcached --name xmemc
 # check
 docker exec -it xmemcached telnet 0.0.0.0 11211
 
-
-#### MONGO
-
-
-docker run -it --rm --net=xnet -p 27017:27017 --hostname xmongo --name xmongo \
-    -v /Users/k/Downloads/:/tmp/d \
-    -v $PWD/docker/.data/mongodb:/data/db mongo:latest
-
-# dump
-docker exec -it xmongo mongorestore /tmp/d/creating_documents/dump
-docker exec -it xmongo mongoimport --drop -d crunchbase -c companies /tmp/d/mongo/findAndCursorsInNodeJSDriver/companies.json
-
-# test
-docker exec -it xmongo mongo
-docker exec -it xmongo mongo test --eval 'db.test.insert({code : 200, status: "ok"})'
-docker exec -it xmongo mongo test \
-    --eval 'db.createUser({user: "dbu", pwd: "dbp", roles: ["readWrite", "dbAdmin"]})'
-
-
 #### ES cluster
-
 
 docker run -it --rm -p 9200:9200 --name es elasticsearch:latest
 
@@ -69,8 +44,6 @@ docker run -it --rm -p 9200:9200 --name es-master-1 elasticsearch:2.2 \
 docker run -it --rm -p 9201:9200 --name es-data-1 --link es-master-1 elasticsearch:2.2 \
     elasticsearch -Des.network.host=_eth0_ -Des.cluster.name=ec -Des.node.master=false -Des.node.data=true \
     -Des.discovery.zen.ping.unicast.hosts=es-master-1
-
-
 
 # init master 1 node
 docker run -it --rm -p 9200:9200 --name es-master-1 \
@@ -84,59 +57,7 @@ docker run -it --rm -p 9201:9200 --name es-data-1 --link es-master-1  \
     -e "http.host=_eth0_" -e "cluster.name=ec" \
     -e "node.master=false" -e "node.data=true" -e "discovery.zen.ping.unicast.hosts=es-master-1" elasticsearch:5.4
 
-
-#### MYSQL
-
-docker run -it --rm --net=xnet -p 3307:3306 --name xmysql --hostname xmysql \
-    -v $PWD/docker/.data/mysql:/var/lib/mysql -v /tmp:/tmp \
-    -e MYSQL_ROOT_PASSWORD=root -e MYSQL_USER=dbu -e MYSQL_PASSWORD=dbp -e MYSQL_DATABASE=test mysql:5.7
-
-# general_log
-docker exec -ti xmysql mysql -P3307 -uroot -proot -e "set global general_log_file='/tmp/mysql.log';"
-docker exec -ti xmysql mysql -P3307 -uroot -proot -e "set global general_log = 1;"
-docker exec -ti xmysql tail -f /tmp/mysql.log
-
-docker exec -ti xmysql mysql -P3307 -uroot -proot
-docker exec -ti xmysql mysql -P3307 -udbu -pdbp -Dtest
-
-
-#### POSTGRESQL
-
-
-docker run -it --rm --name xpostgres --hostname xpostgres --net=xnet \
-    -v $PWD/docker/.data/postgresql/xpostgres:/var/lib/postgresql/data \
-    -e POSTGRES_DB=test -e POSTGRES_USER=dbu -e POSTGRES_PASSWORD=dbp postgres
-
-# check
-docker exec -ti xpostgres psql -d postgres://dbu:dbp@xpostgres/test
-docker exec -ti xpostgres psql -d postgres://dbu:dbp@xpostgres/test -c 'select count(*) from test'
-
-# dump
-docker exec -ti xpostgres pg_dump -d postgres://dbu:dbp@xpostgres/test -t test --schema-only
-
-# import dump
-# docker exec -ti cpqsql /bin/bash -c "psql -d postgres://dbu:dbp@cpqsql/test < /app/dump.sql"
-
-# test
-docker exec -ti xpostgres psql -h localhost -p 5432 -U dbu -d test
-docker exec -ti -e PGPASSWORD=dbp xpostgres psql -h localhost -p 5432 -U dbu -d test
-docker exec -ti xpostgres psql -d postgres://dbu:dbp@localhost/test
-
-
-#### POSTGRESQL cluster
-
-
-docker run -it --rm -p 5432:5432 --name postgres-master --hostname postgres-master \
-    -v $PWD/docker/.data/postgresql:/var/lib/postgresql/data \
-    -v $PWD/docker/postgresql/master.conf:/var/lib/postgresql/data/postgresql.conf \
-    -e POSTGRES_DB=test -e POSTGRES_USER=dbu -e POSTGRES_PASSWORD=dbp postgres
-
-# test
-docker exec -ti postgres-master psql -h localhost -p 5432 -U dbu -d test
-
-
 #### REDIS
-
 
 # init redis
 docker run -it --rm -p 6379:6379 --hostname xredis --name xredis redis:latest
@@ -144,9 +65,7 @@ docker run -it --rm -p 6379:6379 --hostname xredis --name xredis redis:latest
 # check redis
 docker exec -ti xredis redis-cli
 
-
 #### RabbitMQ
-
 
 # init rabbit
 docker run -it --rm --hostname localhost --name rabbit rabbitmq:latest
@@ -154,9 +73,7 @@ docker run -it --rm --hostname localhost --name rabbit rabbitmq:latest
 # check rabbitmq queues
 docker exec rabbit rabbitmqctl list_queues name messages messages_ready messages_unacknowledged
 
-
 #### NODEJS
-
 
 docker run -it --rm node:latest node -v
 
@@ -190,9 +107,7 @@ docker run -it --rm --net=xnet -v $PWD:/gh -w /gh/ed/nodejs/examples/mongo.unive
 docker run -it --rm --net=xnet -v $PWD:/gh -w /gh/ed/nodejs/examples/mongo.university/hw3-4 \
     node:latest node overviewOrTags.js
 
-
 #### NGINX
-
 
 # html
 docker run -ti --rm --name nginx-html \
@@ -227,4 +142,3 @@ docker run -ti --rm --name nginx-and-php --link php-fpm \
 
 # test
 curl localhost:8080/healthCheck.php
-

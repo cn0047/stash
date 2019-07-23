@@ -154,6 +154,7 @@ docker-compose down --volumes
 
 # builds, (re)creates, starts, and attaches to containers for a service.
 docker-compose up
+docker-compose -f dkr/docker-compose.yml up
 # build the project and detached
 docker-compose up -d
 

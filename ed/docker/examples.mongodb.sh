@@ -1,8 +1,23 @@
-MONGO
+MongoDB
 -
 
-#### MONGO cluster (replica set)
+#### MongoDB
 
+docker run -it --rm --net=xnet -p 27017:27017 --hostname xmongo --name xmongo \
+    -v /Users/k/Downloads/:/tmp/d \
+    -v $PWD/docker/.data/mongodb:/data/db mongo:latest
+
+# dump
+docker exec -it xmongo mongorestore /tmp/d/creating_documents/dump
+docker exec -it xmongo mongoimport --drop -d crunchbase -c companies /tmp/d/mongo/findAndCursorsInNodeJSDriver/companies.json
+
+# test
+docker exec -it xmongo mongo
+docker exec -it xmongo mongo test --eval 'db.test.insert({code : 200, status: "ok"})'
+docker exec -it xmongo mongo test \
+    --eval 'db.createUser({user: "dbu", pwd: "dbp", roles: ["readWrite", "dbAdmin"]})'
+
+#### MongoDB cluster (replica set)
 
 # primary
 docker run -it --rm --net=xnet -p 27017:27017 \
@@ -40,9 +55,7 @@ docker exec -it xmongo-primary-1 mongo --port 27017 --eval 'db.rs.insert({c:200}
 # docker exec -it xmongo-secondary-1 mongo --port 27018 --eval 'db.rs.find()'
 docker exec -it xmongo-secondary-1 mongo --port 27018 --eval 'db.setSlaveOk();db.rs.find()'
 
-
-#### MONGO cluster (sharding)
-
+#### MongoDB cluster (sharding)
 
 # config server
 docker run -it --rm --net=xnet -p 27016:27016 \
@@ -88,4 +101,3 @@ docker exec -it xmongo-mongos mongo --port 27015 test_db --eval '
     db.test_collection.save({c: "200", t: "ok", country: "UA", number: "region_number_1"});
     db.test_collection.find({country: "UA"}).explain();
 '
-

@@ -12,7 +12,7 @@ brew install docker-machine-driver-xhyve
 open https://github.com/kubernetes/minikube/blob/master/docs/drivers.md#hyperkit-driver
 ````
 <br>minikube         - tool to use K8s on dev.
-<br>kubelet          - main k8s agent.
+<br>kubelet          - main k8s agent inside nodes.
 <br>container engine - docker or rkt.
 <br>kube-proxy       - k8s networking.
 
