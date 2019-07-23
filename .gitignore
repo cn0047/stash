@@ -1,9 +1,8 @@
-# ed/index.nginx-debian.html
-
 .DS_Store
 .idea/
 
-docker/.data/
+.docker/
+.docker/.data/
 
 node_modules/
 package-lock.json

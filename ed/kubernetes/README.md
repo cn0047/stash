@@ -16,7 +16,7 @@ open https://github.com/kubernetes/minikube/blob/master/docs/drivers.md#hyperkit
 <br>container engine - docker or rkt.
 <br>kube-proxy       - k8s networking.
 
-Kubernetes - orchestrator for microservice apps.
+Kubernetes - orchestrator for microservice apps (desired state management tool).
 Kubernetes has three namespaces by default: default, kube-system, kube-public.
 
 Kinds:
