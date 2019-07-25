@@ -27,5 +27,5 @@ and add into page like this:
 # where:
 # 8dbfd59749ab7a75189584ff8ef837ad         - gist id.
 # db97ba8d4b326447560562e54737ad7c70b24170 - commit hash id.
-![code](https://gist.github.com/cn007b/8dbfd59749ab7a75189584ff8ef837ad/raw/db97ba8d4b326447560562e54737ad7c70b24170/1.png)
+![caption](https://gist.github.com/cn007b/8dbfd59749ab7a75189584ff8ef837ad/raw/db97ba8d4b326447560562e54737ad7c70b24170/1.png)
 ````

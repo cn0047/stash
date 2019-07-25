@@ -28,4 +28,12 @@ gcloud sql instances describe $INSTANCE_NAME
 gcloud sql databases list --instance=products
 
 gcloud sql users list --instance=products
+
+# connection string
+cloudsql(prj:us-central1:dbname)
+usr:pwd@cloudsql(prj:us-central1:dbname)
+
+# go111 connection string
+unix(/cloudsql/prj:us-central1:dbname)
+usr:pwd@unix(/cloudsql/prj:us-central1:dbname)/dbname
 ````

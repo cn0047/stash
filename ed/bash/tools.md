@@ -7,7 +7,7 @@ tty
 who
 
 ping 8.8.8.8 -c 15
-traceroute http://cn007b.tumblr.com
+traceroute http://cn007b.tumblr.com # print the route packets take to network host
 nslookup git.mdm.comodo.od.ua
 host github.com # Shows ip by host.
 dig domain
@@ -19,10 +19,6 @@ colordiff -u file1 file2
 ln -s {file} {symbolic-name}
 
 echo 200  | pbcopy                             # copy data into clipboard buffer
-echo b1nd | tr 1 o                             # bond # replace 1 to o
-echo '(x)' | tr '()' '[]'                      # result: [x]
-echo b1nd | tr -d [0-9]                        # result: bnd
-'hello   world' | tr -s ' '                    # result: hello world
 file ed/bash/README.md                         # prints file type
 fswatch ./src | while read f; do echo $f; done # watch changes in directory
 mkdir -m 777 test                              # directory mode
@@ -30,12 +26,6 @@ mkfifo mypipe                                  # create named pipe
 ss                                             # tool for sockets
 strace pwd                                     # to see what program `pwd` is doing
 uuid -n 1                                      # generates uuid
-
-cut -f7 -d: /etc/passwd
-cut -d' ' -f2 /tmp/file.txt # print column 2 from file using ' ' as delimer
-cut -c1,2                   # column 1,2
-cut -c 1-5                  # from 1 to 5 columns
-cut -c13-                   # from 13 char to the end of string
 
 nc -zv 10.0.2.2 22
 nc -zv 78.140.186.238 1-65535
@@ -69,11 +59,25 @@ nice myscript
 nohup nice myscript &
 ````
 
+#### cut
+
+````sh
+cut -f7 -d: /etc/passwd
+cut -d' ' -f2 /tmp/file.txt # print column 2 from file using ' ' as delimer
+cut -c1,2                   # column 1,2
+cut -c 1-5                  # from 1 to 5 columns
+cut -c13-                   # from 13 char to the end of string
+````
+
 #### tr
 
 ````sh
-echo 'abc' | tr -d 'b' # ac
-tr -d '[:punct:]'      # punctuations:   !@#$%^&*()_-+={}[];:'"`/>?.,<~|\
+echo b1nd | tr 1 o               # bond # replace 1 to o
+echo b1nd | tr -d [0-9]          # result: bnd
+echo 'abc' | tr -d 'b'           # ac
+echo '(x)' | tr '()' '[]'        # result: [x]
+echo 'hello   world' | tr -s ' ' # result: hello world
+tr -d '[:punct:]'                # punctuations: !@#$%^&*()_-+={}[];:'"`/>?.,<~|\
 ````
 
 #### monitoring
@@ -171,11 +175,11 @@ echo $UID
 #### disk usage
 
 ````sh
-df            # Show information about the file system.
-df -h         # all drives
-lsblk         # all attached drives
-df -T         # Show filesystem type
-du            # Summarize disk usage of each FILE.
+df               # Show information about the file system.
+df -h            # all drives
+lsblk            # all attached drives
+df -T            # Show filesystem type
+du               # Summarize disk usage of each FILE.
 du -sh IraFoto/* # Summarize disk usage of each dir in foto dir.
 ````
 
@@ -243,8 +247,8 @@ echo -e "1 \n2 \n3 \n4 \n5" | tail -n +3 # 3, 4 ,5
 
 ````sh
 pkill /var/www/x.php # Kill runned script x.php.
-pkill -f php # Kill runned script with name like php.
-pkill -f test.py # full argument lists, default is to match against process names
+pkill -f php         # Kill runned script with name like php.
+pkill -f test.py     # Full argument lists, default is to match against process names.
 
 kill -9 `ps -aux|grep {{PROCESS_NAME}}|grep -v grep|awk '{print $2}'`
 ````
@@ -657,16 +661,13 @@ uuencode card.jpg card.jpg | mail mail@com.com
 #### grep (Global Regular Expression Print)
 
 ````sh
--z, --null-data             строки разделяются байтом с нулевым значением, а не символом конца строки
+-z, --null-data             # \0
 -v, --revert-match          #
 -m, --max-count=ЧИСЛО       #
 -h, --no-filename           #
 -L, --files-without-match   # print only file names
+-Pz                         # multi rows
 ````
-
-`grep pattern -Pz` # несколько строк
-
-`grep "$DC"`
 
 `grep match -wrni --color=always --include=*.php . | grep notMatch -v --color=always`
 
