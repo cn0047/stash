@@ -2,7 +2,7 @@ JSON Web Token
 -
 
 Compact (small size of token) self-contained (payload contains all the required information,
-no need to query the database)
+no need to query the database).
 
 Useful for:
 

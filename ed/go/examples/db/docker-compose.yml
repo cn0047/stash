@@ -21,13 +21,16 @@ services:
       - prvt
     ports:
       - "3307:3306"
+    volumes:
+      - "$PWD/.docker/.data/mysql:/var/lib/mysql"
+      - "/tmp:/tmp"
     environment:
       - "MYSQL_ROOT_PASSWORD=root"
       - "MYSQL_USER=dbu"
       - "MYSQL_PASSWORD=dbp"
       - "MYSQL_DATABASE=test"
 
-  app:
+  db:
     image: cn007b/go
     depends_on:
       - xmysql

@@ -14,14 +14,15 @@ bash --init-file  # file instead of ~/.bashrc
 
 zero exit code     - ok
 non zero exit code - error
+exit 0 # success
+exit 1 # fail
 
 command1 && command2 # command2 is executed if, and only if,
                      # command1 returns an exit status of zero.
 command1 || command2 # command2 is executed if and only if
                      # command1 returns a non-zero exit status.
-
-DISPLAY=:7
-echo $DISPLAY
+&& # &
+|| # or
 
 PATH=$PATH:~/bin
 
@@ -29,9 +30,6 @@ PATH=$PATH:~/bin
 #!/bin/bash
 #!/usr/bin/env php
 #!/usr/bin/env python3
-
-exit 0 # success
-exit 1 # fail
 
 # set Input Field Separator, by default ` ` (space)
 IFS=:
@@ -84,6 +82,7 @@ fi
 echo '3^2 * 10 / 23' | bc -l # math
 
   if [[ -f $filename ]]; then echo "$filename is a regular file"
+elif [[ -e $filename ]]; then echo "$filename is exists"
 elif [[ -d $filename ]]; then echo "$filename is a directory"
 elif [[ -p $filename ]]; then echo "$filename is a named pipe"
 elif [[ -S $filename ]]; then echo "$filename is a named socket"
@@ -245,9 +244,9 @@ echo "${v~~}" # hELLO wORLD
 
 v=foo-bar-baz
 echo ${v%%-*} # foo
-echo ${v%-*} # foo-bar
+echo ${v%-*}  # foo-bar
 echo ${v##*-} # baz
-echo ${v#*-} # bar-baz
+echo ${v#*-}  # bar-baz
 
 var='0123456789abcdef'
 printf '%s\n' "${var:3}"      # 3456789abcdef
@@ -266,11 +265,7 @@ if [[ $str="txt" ]];     # always true
 if [[ $str = [Yy] ]];    # Y || y
 if [[ $str == *.txt ]];  #
 if [[ ! $1 ]];           # $1 is empty
-if [[ -e $file ]];       # file exists
-if [[ -d $dir ]];        # is directory
 if [[ $1 =~ ^[0-9]+$ ]]; # is number
-&& # &
-|| # or
 ````
 
 #### Numbers:

@@ -4,10 +4,10 @@ GIN
 [docs](https://github.com/gin-gonic/gin)
 
 ````
-view - ok
+view       - ok
 controller - cool
-model - no
-db - no
+model      - no
+db         - no
 ````
 
 ````golang

@@ -49,14 +49,14 @@ The following keys MUST be used for pagination links:
 
 Multiple related resources can be requested in a comma-separated list:
 
-````
+````sh
 GET /articles/1?include=author,comments.author HTTP/1.1
 Accept: application/vnd.api+json
 ````
 
 A client MAY request that an endpoint return only specific fields:
 
-````
+````sh
 GET /articles?include=author&fields[articles]=title,body&fields[people]=name HTTP/1.1
 Accept: application/vnd.api+json
 ````
@@ -75,7 +75,7 @@ The response MUST also include a document that contains the primary resource cre
 
 #### Asynchronous Processing
 
-````
+````sh
 POST /photos HTTP/1.1
 ````
 
@@ -102,7 +102,7 @@ Content-Location: https://example.com/photos/queue-jobs/5234
 
 To check the status of the job process:
 
-````
+````sh
 GET /photos/queue-jobs/5234 HTTP/1.1
 Accept: application/vnd.api+json
 ````

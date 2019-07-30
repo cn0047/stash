@@ -1,6 +1,6 @@
 create temporary table testBinOperation
-select conv(2, 10, 2) as mask
-union select conv(5, 10, 2) as mask
+      select conv( 2, 10, 2) as mask
+union select conv( 5, 10, 2) as mask
 union select conv(16, 10, 2) as mask
 ;
 select lpad(mask, 10, 0) from testBinOperation

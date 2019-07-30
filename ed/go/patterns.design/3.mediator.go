@@ -17,15 +17,15 @@ func (vm VerboseMediator) Tick(data interface{}) {
 	println("[VerboseMediator] emit into email:", v)
 }
 
-type EventEmitter struct {
-}
-
 type MediatorCLI struct {
 }
 
 func (vm MediatorCLI) Tick(data interface{}) {
 	v := data.(int)
 	println("[MediatorCLI] emit into stdout: ", v)
+}
+
+type EventEmitter struct {
 }
 
 func (ee EventEmitter) Emit(m Mediator) {

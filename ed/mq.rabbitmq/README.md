@@ -54,7 +54,7 @@ a copy of the message is delivered to all N queues.
 Topic (producer `anonymous.info`; recipient `*.critical`, `#`, `kernel.*` ...) exchanges
 route messages to one or many queues
 based on matching between a message routing key
-and the pattern that was used to bind a queue to an exchange. 
+and the pattern that was used to bind a queue to an exchange.
 Keep in mind that, usually, bindings on topic exchanges use more memory than in direct or fanout exchanges.
 
 Headers exchanges ignore the routing key attribute.

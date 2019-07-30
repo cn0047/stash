@@ -241,8 +241,8 @@ Basic types:
 * string
 * int (int8 (aka byte), int16, int32 (aka rune), int64)
 * uint (uint8, uint16, uint32, uint64, uintptr (large enough to hold the bit pattern of any pointer))
-* float32 float64
-* complex64 complex128
+* float32, float64
+* complex64, complex128
 
 Other types:
 

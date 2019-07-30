@@ -16,26 +16,26 @@ For performance (follow this flow):
 #### Pipeline Aggregation Stages
 
 * $collStats - statistics regarding a collection.
+* $indexStats - returns statistics regarding the use of each index for the collection.
+* $count - returns a count of the number of documents at this stage of the aggregation pipeline.
 * $project - like select in SQL
 * $match - filters the document stream.
-* $redact - can be used to implement field level redaction.
+* $unwind - from document with array to documents with only one element
+* $sort
+* $sortByCount - groups incoming documents based on the value of a specified expression.
+* $group
 * $limit
 * $skip
-* $unwind - from document with array to documents with only one element
-* $group
+* $out - must be the last stage in the pipeline.
+* $redact - can be used to implement field level redaction.
 * $sample
-* $sort
 * $geoNear
 * $lookup
-* $out - must be the last stage in the pipeline.
-* $indexStats - returns statistics regarding the use of each index for the collection.
 * $facet - processes multiple aggregation pipelines.
 * $bucket - categorizes incoming documents into groups.
 * $bucketAuto
-* $sortByCount - groups incoming documents based on the value of a specified expression.
 * $addFields - adds new fields to documents.
 * $replaceRoot - replaces a document with the specified embedded document.
-* $count - returns a count of the number of documents at this stage of the aggregation pipeline.
 * $graphLookup - Performs a recursive search on a collection.
 
 `$group: {"_id": "all", ...}`

@@ -47,12 +47,12 @@ Don't forget about `HttpOnly, secure` flags.
 
 #### Browser security
 
-````
+````sh
 Public-Key-Pins: pin-sha256="<pin-value>"; max-age=<expire-time>; includeSubDomains; report-uri="<uri>"
 ````
 
 HTTP Strict-Transport-Security (HSTS):
-````
+````sh
 Strict-Transport-Security: max-age=<expire-time-in-seconds>; includeSubDomains; preload
 ````
 * client should interact over https
@@ -73,10 +73,10 @@ Content-Security-Policy (CSP):
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src https://*; child-src 'none';">
 ````
 Header:
-````
+````sh
 Content-Security-Policy: upgrade-insecure-requests;
 ````
 
-````
+````sh
 Content-Security-Policy-Report-Only: default-src https:; report-uri /csp-violation-report-endpoint/
 ````

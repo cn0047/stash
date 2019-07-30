@@ -116,7 +116,7 @@ For security it's better to return JSON with an Object on the outside:
 
 <br>P: Pagination - how to provide limit, offset.
 <br>S: Provide or header either body payload (or in url):
-````
+````sh
 GET /api/collection
 Range: resources=100-199 # in body
 

@@ -144,17 +144,9 @@ for managing product development.
 
 Roles:
 
-* Product Owner:
-  * final authority
-  * prioritize backlog
-  * provide
-
-* Scrum Master
-  * facilitator, negotiator
-  * responsible for guiding team
-  * removes impediments
-
-* Development Team
+* Product Owner: final authority, prioritize backlog.
+* Scrum Master: facilitator, negotiator, responsible for guiding team, removes impediments.
+* Development Team.
 
 Events:
 

@@ -1,7 +1,7 @@
-CONTRIBUTING to "my"
+CONTRIBUTING
 -
 
-Please pay attention that rearranges in pages don't break next links:
+Please don't break next links:
 
 * https://goo.gl/J8ZYic
 * https://goo.gl/69NWEG

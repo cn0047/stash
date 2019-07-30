@@ -2,8 +2,8 @@ BeeGo
 -
 
 ````
-view - cool
+view       - cool
 controller - cool
-model - no
-db - cool
+model      - no
+db         - cool
 ````
