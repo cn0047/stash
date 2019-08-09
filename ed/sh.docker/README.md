@@ -7,11 +7,35 @@ docker
 
 ## Overview
 
-Containers should be ephemeral (can be stopped and destroyed and a new one built and put in place).
+Docker - an open platform for developing, shipping, and running applications.
+It helps to separate apps from infrastructure so you can deliver software quickly
+(reproducibility, isolation, security, scaling, docker hub, simple CI).
+<br>
+Docker used LinuX Containers (LXC), but later switched to runC (aka libcontainer),
+which runs in the same operating system as its host,
+this allows to share a lot of the host operating system resources.
+Also, it uses a layered filesystem (AuFS) and manages networking.
+
+Image - (template) OS configuration (FS, tools, etc.) which is used to create containers.
+
+Container - (an instance of an image) OS Process namespace, also it's loosely isolated environment.
+Containers are lightweight because they don’t need the extra load of a hypervisor,
+but run directly within the host machine’s kernel.
+<br>Container is not VM (VM uses hypervisor(hyperkit or virtualbox) but docker not).
+VMs - houses, docker containers - apartments.
+<br>Containers should be ephemeral (can be stopped and destroyed and a new one built and put in place).
 <br>Hence container must be stateless.
 <br>Each container should have only one concern (1 process per container).
+<br>`Ctrl + P + Q # ‼️ detach from container`
 
-Ctrl + P + Q # ‼️ detach from container
+Docker Engine - client-server app with:
+* Daemon (dockerd) - it's a server.
+* REST API - interfaces to daemon.
+* Client - CLI `docker` command.
+
+Docker registry - stores Docker images.
+
+Docker objects: images, containers, networks, volumes, etc.
 
 ````sh
 docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
