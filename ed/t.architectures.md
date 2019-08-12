@@ -171,12 +171,12 @@ monitoring.next
         │   ├── routes
         │   ├── middleware
         │   ├── controller
-        │   └── vo
+        │   └── vo             # optional here
         └── service.v1
             ├── internal
             │   ├── cache
             │   ├── datastore
-            │   └── vo
+            │   └── vo         # ‼️ private VOs
             ├── chart
             ├── measurement
             ├── ping

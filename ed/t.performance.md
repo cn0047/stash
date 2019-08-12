@@ -54,3 +54,10 @@ Performance
 
 * Gzip JSON responses.
 * Use HTTP2.
+
+#### Scaling
+
+![horizontal vs vertical 1](https://gist.github.com/cn007b/2c63c4b626be598166d5bce28b82552e/raw/633cd2dd905093aa584c2dc2fe44678804e96d14/1.2.jpeg)
+![horizontal vs vertical 2](https://gist.github.com/cn007b/2c63c4b626be598166d5bce28b82552e/raw/633cd2dd905093aa584c2dc2fe44678804e96d14/1.jpeg)
+![horizontal vs vertical 3](https://gist.github.com/cn007b/2c63c4b626be598166d5bce28b82552e/raw/633cd2dd905093aa584c2dc2fe44678804e96d14/2.jpeg)
+![horizontal](https://gist.github.com/cn007b/2c63c4b626be598166d5bce28b82552e/raw/633cd2dd905093aa584c2dc2fe44678804e96d14/3.jpeg)

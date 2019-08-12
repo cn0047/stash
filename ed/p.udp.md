@@ -9,6 +9,8 @@ retransmission:           no.
 flow control:             no.
 ````
 
+![example](https://gist.github.com/cn007b/1859adf8ee58818fb19bd4ec2e9ca78f/raw/23279fd5ca4dc9dec2e3e0320dd51101ff835072/udp.jpeg)
+
 UDP is lightweight, connectionless, unreliable protocol,
 which doesn't care about errors.
 UDP is RTP (Real-time Transport Protocol).

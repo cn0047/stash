@@ -1,6 +1,8 @@
 Networking
 -
 
+![tcp vs udp](https://gist.github.com/cn007b/1859adf8ee58818fb19bd4ec2e9ca78f/raw/23279fd5ca4dc9dec2e3e0320dd51101ff835072/tcpAndUdp.jpeg)
+
 ````
 BGP       - Border Gateway Protocol.
 CDN       - Content Distribution Network.
@@ -96,6 +98,7 @@ Resolver checks own cache and asks Root NS,
 with Root NS reply asks TLD,
 with TLD reply asks Authoritative NS,
 and store Authoritative NS reply in cache.
+DNS Lookup uses DNS protocol.
 
 ````
 | Client         | Name Server     | Root NS   | Top-Level D   | Authoritative NS |

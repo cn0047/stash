@@ -4,7 +4,6 @@ Vagrant
 1.8.1
 1.7.4
 
-[download virtualbox](https://www.virtualbox.org/wiki/Linux_Downloads),
 [download vagrant](https://www.vagrantup.com/downloads.html).
 
 ````sh

@@ -1,7 +1,8 @@
 RegEx
 -
 
-https://regex101.com/
+[tool](https://regex101.com/)
+[email example](https://github.com/go-playground/validator/blob/0a9b75fbfdb5730dfff911981b428046167f33e6/regexes.go#L18)
 
 IPv6: https://regex101.com/r/jpVRLB/1
 IPv4: https://regex101.com/r/d88q1P/1

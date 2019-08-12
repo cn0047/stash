@@ -3,6 +3,7 @@ Apple News
 
 [newspublisher](https://www.icloud.com/#newspublisher)
 [doc](https://developer.apple.com/documentation/apple_news/apple_news_api)
+[ads](https://developer.apple.com/documentation/apple_news/apple_news_format/managing_advertisements_in_your_article)
 [components](https://developer.apple.com/documentation/apple_news/apple_news_format/components)
 [linking-to-channel](https://www.apple.com/itunes/marketing-on-news/identity-guidelines.html#linking-to-your-channel)
 

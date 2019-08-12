@@ -21,7 +21,7 @@ OPTIMIZE TABLE tab; -- (defragmentation) reorganizes the physical storage of tab
 SHOW ERRORS LIMIT 1;
 SHOW WARNINGS LIMIT 1;
 
-CONNECTION_ID()
+SELECT CONNECTION_ID();
 
 SELECT VERSION();
 SELECT USER();

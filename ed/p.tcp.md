@@ -9,6 +9,8 @@ retransmission:           yes (for unacknowledged packets).
 flow control:             limits the rate a sender transfers data to guarantee reliable delivery.
 ````
 
+![example](https://gist.githubusercontent.com/cn007b/1859adf8ee58818fb19bd4ec2e9ca78f/raw/23279fd5ca4dc9dec2e3e0320dd51101ff835072/tcp.jpeg)
+
 TCP is reliable, connection oriented protocol with error recovery
 and with ordered data delivery.
 

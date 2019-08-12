@@ -9,6 +9,7 @@ sudo apt-get install awscli
 brew install awscli
 
 aws configure
+aws configure list
 
 ~/.aws/config
 ````
@@ -18,18 +19,6 @@ aws configure
 --debug # add this flag to get more debug info about command
 
 --region us-east-1
-````
-
-# S3 (Simple Storage Service)
-
-````sh
-# upload picture to s3
-aws s3 cp /home/kovpak/Downloads/images.jpg s3://w3.stage.ziipr.bucket/test/x.jpg
-
-aws s3 ls s3://bucket/img.png
-
-# size of bucket and count of elements in bucket
-aws s3api list-objects --bucket $bkt --query "[sum(Contents[].Size), length(Contents[])]"
 ````
 
 # CloudWatch
