@@ -3,6 +3,8 @@ Performance
 
 [page speed](www.bytecheck.com) [and](www.webpagetest.org)
 
+Resilience - is the ability of a system to adapt or keep working when challenges occur.
+
 #### High Performance Web Sites:
 
 1. Make Fewer HTTP Requests

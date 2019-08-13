@@ -17,7 +17,7 @@ Cloud SQL
 [connection](https://cloud.google.com/appengine/docs/flexible/go/using-cloud-sql)
 
 ````bash
-# in Cloud Shell
+# connect to REPL
 gcloud sql connect mysql-prod-hera --user=root
 ````
 

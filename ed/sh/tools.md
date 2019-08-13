@@ -310,7 +310,7 @@ find -type f -name '*.php' -exec egrep -Hn --color=always 'is_failed' {} \; | gr
 
 #### sort
 
-````
+````sh
 sort -nk2 # sort as numbers by column 2
 ````
 
@@ -325,6 +325,8 @@ read -r; echo $REPLY
 
 # reads 1 character
 read -r -n 1; echo $REPLY
+
+printf "1\n2\n3\n" | while read line; do echo "got line: ${line}"; done
 ````
 
 #### apachebench

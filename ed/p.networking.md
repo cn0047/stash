@@ -31,6 +31,9 @@ WAN       - Wide Area Network.
 802.3   = Ethernet.
 802.3an = 10Gbps.
 
+Bandwidth - count of lines on high-way.
+Latency - speed limit on high-way.
+
 The 95th percentile is a widely used mathematical calculation
 to evaluate the regular and sustained utilization of a network pipe.
 Basically the 95th percentile says that 95% of the time, the usage is below this amount.

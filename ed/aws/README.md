@@ -79,8 +79,6 @@ aws cloudfront list-distributions
 aws cloudfront get-distribution --id $id
 ````
 
-# (RDS) Relational Database Service
-
 # (ECS) Elastic Container Service
 
 [fargate pricing](https://aws.amazon.com/fargate/pricing/)

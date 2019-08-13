@@ -1,9 +1,23 @@
-Agile
+Software Development Methodologies
 -
 
 The ideal task size is not bigger than a day's work...
 
 Two-pizza teams - where no team should be so big that it could not be fed with two pizzas.
+
+#### TL
+
+Avoid conflicts.
+Let offer new ideas.
+Ask do people need help.
+Help feel okay to admit being wrong.
+Know team: skils, strengths, goals, interests.
+
+Bit of delegating & directing and more supporting & coaching.
+
+TL must be:
+* like a teacher and have authority to teach team
+* like a coach
 
 #### Waterfall
 
@@ -73,19 +87,6 @@ Agile practices:
 * Story-driven modeling
 * Retrospective
 * **Velocity tracking**
-
-Teams that track "velocity" and "story points" treat development as if it’s linear labor.
-Software development is not like moving a pile of stones,
-[img](https://cdn-images-1.medium.com/max/2000/1*aTJOF6uQ-jlNuCbCj4BQCg.png).
-
-Work that requires problem solving is more like a **hill**.
-There’s an uphill phase where you figure out what you’re doing.
-Then when you get to the top you can see down the other side and what it’ll take to finish,
-[img](https://cdn-images-1.medium.com/max/2000/1*xV-g3zRDo6Zuu0QfTBGtNQ.png).
-
-The most important question for a team isn’t "what is left?"
-but "what is unknown?" Can you see the edges?
-Correct question - is **"where is that on the hill?"**
 
 #### Extreme Programming:
 
@@ -168,24 +169,37 @@ Artifacts:
   * Definition of done (DoD)
   * Velocity
 
-Velocity is a measure of the amount of work a Team can tackle
+**Velocity** is a measure of the amount of work a Team can tackle
 during a single Sprint and is the key metric in Scrum.
 <br>Velocity is equivalent to a specification of an object's
 speed and direction of motion (e.g. 60 km/h to the north).
 
-A story point is an abstract measure of effort required to implement a user story.
+A **story point** is an abstract measure of effort required to implement a user story.
 
 Limitations:
 Scrum works less well in the following circumstances:
-
-Teams whose members are geographically dispersed or part-time
-Teams whose members have very specialized skills
-Products with many external dependencies
-Products that are mature or legacy or with regulated quality control.
+* Teams whose members are geographically dispersed or part-time.
+* Teams whose members have very specialized skills.
+* Products with many external dependencies.
+* Products that are mature or legacy or with regulated quality control.
 
 User story.
 Epic.
 Burndown chart.
+...
+
+Teams that track "velocity" and "story points" treat development as if it’s linear labor.
+Software development is not like moving a pile of stones:
+![img](https://cdn-images-1.medium.com/max/2000/1*aTJOF6uQ-jlNuCbCj4BQCg.png)
+
+Work that requires problem solving is more like a **hill**.
+There’s an uphill phase where you figure out what you’re doing.
+Then when you get to the top you can see down the other side and what it’ll take to finish:
+![img](https://cdn-images-1.medium.com/max/2000/1*xV-g3zRDo6Zuu0QfTBGtNQ.png)
+
+The most important question for a team isn’t "what is left?"
+but "what is unknown?" Can you see the edges?
+Correct question - is **"where is that on the hill?"**
 
 #### Adaptive software development
 

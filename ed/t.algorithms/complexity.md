@@ -13,7 +13,7 @@ Ignore the base of logs (log2, log10).
 Just looking for how thing scale roughtly (lineral, quadratic, etc).
 
 ````
-# time complexity
+# time complexity:
 O(1)      # constant time
 O(log(n)) # logarithmic time
 O(n)      # linear time
@@ -52,13 +52,13 @@ for (i = 0; i < n; i++) {
   }
 }
 
-# O(N^2/2) = O(N^2) # dropped constant 2
+# O(n^2/2) = O(n^2) # dropped constant 2
 for (var i = 0; i < n; i++) {
   for (var j = i; j < n; j++) {
   }
 }
 
-# O(log N * N) = O(N)
+# O(log n * n) = O(n)
 for (int i = N; i > 0; i /= 2) {
   for (int j = 0; j < i; j++) {
   }
