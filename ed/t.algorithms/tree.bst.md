@@ -6,9 +6,11 @@ Level-Order Traversal aka BFS.
 Full BT - every node other than the leaves has two children,
 no space to add element into tree without affecting tree's height.
 
-Complete BT - if store BST in array, there must not be missing elements in array (`[a,b,-,d]`).
+Complete BT - if store BST in array, there must NOT be missing elements in array (`[a,b,-,d]`).
 
 #### Heap
+
+Heap - complete BST.
 
 ````
 find max               - O(1)
@@ -17,9 +19,6 @@ delete                 - O(log n)
 create heap from array - O(n log n)
 heapify                - O(n)
 ````
-
-Heap - complete BST.
-MaxHeap, MinHeap.
 
 **In a max heap, the keys of parent nodes are always greater than or equal to those of the children**
 and the highest key is in the root node.
@@ -99,6 +98,8 @@ To differentiate is it a pointer to child or to predecessor/successor TBT has le
 
 ### Diagonal distance
 
-root = 0
+````
+root       = 0
 left child = parent d - 1
 left child = parent d
+````

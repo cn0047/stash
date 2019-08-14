@@ -1,3 +1,4 @@
+// kmp - Knuth-Morris-Pratt string matching algorithm.
 package main
 
 import (
@@ -14,7 +15,6 @@ func main() {
 
 }
 
-// kmp - Knuth-Morris-Pratt string matching algorithm.
 func kmp(s string, p string) int {
 	i := 0
 	n := len(s)

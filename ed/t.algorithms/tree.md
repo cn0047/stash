@@ -8,26 +8,22 @@ Balancing tree:
 * Right-Left rotation
 * Left-Right rotation
 
-Update segment tree            - O(log N).
-Update range tree              - O(log N).
-Update range array (tree)      - O(N).
+````
+Update segment tree            - O(log n).
+Update range tree              - O(log n).
+Update range array (tree)      - O(n).
 Select from range array (tree) - O(1).
-
-Segment tree - better for many updates.
-Range array (tree) - better for many reads.
-
-Diameter of a Binary Tree - longest path of tree between 2 leafs.
-
-2 trees are isomorphic - if subtrees are isomorphic to each other.
-
-Height of BT = 1 + numbers of edges on the longest path from root to leaf.
-
-Delete from Binary Tree = Postorder + function free()
+````
+<br>Segment tree - better for many updates.
+<br>Range array (tree) - better for many reads.
+<br>Diameter of a Binary Tree - longest path of tree between 2 leafs.
+<br>2 trees are isomorphic - if subtrees are isomorphic to each other.
+<br>Height of BT = 1 + numbers of edges on the longest path from root to leaf.
+<br>Delete from Binary Tree = Postorder + function free()
 
 To make Minimum spanning tree use:
 * Prim's Algorithm - like BFS but pick chipest node on each iteration.
-* Kruskal's Algorithm - connect to endes while them in different separated trees,
-  because cycles not allowed.
+* Kruskal's Algorithm - connect to endes while them in different separated trees, because cycles not allowed.
 * Boruvka's Algorithm
 * Reverse-Delete Algorithm
 
@@ -41,10 +37,6 @@ They allow fast lookup, addition and removal of items,
 and can be used to implement either dynamic sets of items,
 or lookup tables that allow finding an item by its keys.
 Keep their keys in sorted order, so that lookup and other operations can **use the principle of binary search**.
-
-    * Pre-order traversal - process inself -> visit left node -> visit right node; repeat recursive for each node.
-    * In-order traversal (sort order) -.visit left node -> process inself -> visit right node; repeat recursive for each node.
-    * Post-order traversal - visit left node -> visit right node -> process inself; repeat recursive for each node.
 
 * `Self-balancing binary search tree` (height-balanced) - is any node-based binary search tree
 that automatically **keeps its height small** in the face of arbitrary item insertions and deletions.
@@ -101,7 +93,7 @@ Worst time complexity for search = h = O(h) = log N
 
 ## Radix tree
 
-* [Trie](https://monosnap.com/file/1sTq5fwBiVEvPWakJiGusGK7foFmji) (digital or radix or prefix tree) - is an ordered tree data structure
+[Trie](https://monosnap.com/file/1sTq5fwBiVEvPWakJiGusGK7foFmji) (digital or radix or prefix tree) - is an ordered tree data structure
 that is used to **store a dynamic set or associative array** where the keys are usually strings.
 
 Radix tree - each node that is the only child is merged with its parent.

@@ -1,37 +1,29 @@
 Graph
 -
 
-Graph - it's mathematical structure used to model pairwise relations between objects.
-Graph - it's just dots and lines connecting them.
-
-Vertices - points.
-Edges - lines.
-Cardinality - count of vertices.
-Degree (or valency) of vertex - number of edges that connect to it.
-
-Multigraph - point connected with itself (has loopback).
-Directed graph - all edges are directed (have direction) from one vertex to another.
-Weighted graph - each edge have numerical weight. 
-Complete graph - every vertex is connected to every other vertex.
+<br>Graph - it's mathematical structure used to model pairwise relations between objects.
+<br>Graph - it's just dots and lines connecting them.
+<br>Vertices - points.
+<br>Cardinality of graph - count of vertices.
+<br>Edges - lines.
+<br>Degree (or valency) of vertex - number of edges that connect to it.
+<br>Multigraph - point connected with itself (has loopback).
+<br>Directed graph - all edges are directed (have direction) from one vertex to another.
+<br>Weighted graph - each edge have numerical weight.
+<br>Complete graph - every vertex is connected to every other vertex.
+<br>Directed acyclic graph - ...
+<br>Directed acyclic word graph - ...
 
 All edges can be stored in adjacent matrix or adjacent list or in icidence matrix.
 
-Directed acyclic graph - ...
-
-Directed acyclic word graph - ...
-
 ## Path
 
-Path - set of edges that conncect 2 nodes.
-Cycle -
-Simple path - only use every edge at most once.
-
-Hamiltonion path - path that visits each node exactly once.
-
-Euler circuit - path has same initial and terminal veritces.
-Also all veritces have even degree.
-
-Euler path - includes exactly once all the edges and has different first and last veritces.
+<br>Path - set of edges that conncect 2 nodes.
+<br>Cycle - ...
+<br>Simple path - only use every edge at most once.
+<br>Hamiltonion path - path that visits each node exactly once.
+<br>Euler circuit - path has same initial and terminal veritces. Also all veritces have even degree.
+<br>Euler path - includes exactly once all the edges and has different first and last veritces.
 Also all vertex have even degree but 2 have odd degree.
 
 ## Held Karp Algorithm.
