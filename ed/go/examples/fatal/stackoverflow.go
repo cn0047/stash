@@ -7,12 +7,6 @@ func main() {
 
 func f(n int64) {
 	x := n + n
-	f(x)
+	f(x) // runtime: goroutine stack exceeds 1000000000-byte limit
+	// fatal error: stack overflow
 }
-
-/*
-
-runtime: goroutine stack exceeds 1000000000-byte limit
-fatal error: stack overflow
-
-*/

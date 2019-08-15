@@ -62,7 +62,7 @@ Many of the challenges you’re going to face with microservices get worse with 
 
 In real world app it's ok to have **HYBRID-Microservices** architecture.
 
-## Advantages
+#### Advantages
 
 * Possibility to use different languages.
 * Independent deploy.
@@ -72,7 +72,7 @@ In real world app it's ok to have **HYBRID-Microservices** architecture.
 * Responsibilities are clearly defined.
 * Easier to oversee and understand.
 
-## Disadvantages
+#### Disadvantages
 
 * Networks are unreliable.
 * Networks are slow.
@@ -90,7 +90,7 @@ In real world app it's ok to have **HYBRID-Microservices** architecture.
 * Hard to see the whole usage graph.
 * Github for configs / db migrations / etc.
 
-## Info
+#### Info
 
 * Avoid shared database because changes in schema in 1 microservice
 leads to redeploy few microservices.

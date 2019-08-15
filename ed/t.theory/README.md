@@ -24,7 +24,6 @@ But each thread uses the same resource concurrently.
 Parallel - concurrency without using same resource.
 
 Internationalization (i18n) - process of changing your software so that it isn't hardwired to one language.
-
 Localization (l10n) - the process of adding the appropriate resources to your software so that a particular language/locale is supported.
 
 Tell, Don’t Ask.
@@ -35,6 +34,8 @@ ACL (often simpler): List of users (IDs) and privileges to resource (what can do
 RBAC: Permissions based on role.
 
 PC: CPU, Main Memory, Secondary Memory (SSD).
+
+Weight Gross - with pack; Weight Net - without pack;
 
 #### Full stack:
 

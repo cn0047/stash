@@ -1,7 +1,7 @@
 // 1, 1, 2, 3, 5, 8, 13, 21...
 
-// won't produce correct result.
-let fWrong = function (n) {
+// General implementation.
+let fibonacci = function (n) {
   if (n < 2) {
     return 1;
   }

@@ -56,6 +56,8 @@ protoPayload.resource:"var=3"
 protoPayload.status>=400 AND protoPayload.status <= 405
 protoPayload.method="GET"
 
+protoPayload.status=500
+
 resource.type="gae_app"
 resource.labels.module_id="cws-products"
 logName="projects/itismonitoring/logs/appengine.googleapis.com%2Frequest_log"

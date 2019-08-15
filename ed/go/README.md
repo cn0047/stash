@@ -90,6 +90,8 @@ power = 9000
 var power2 int = 9000
 fmt.Printf("It's over %d\n", power)
 
+str := strconv.FormatInt(int64, 10)
+
 const (
     PI = 3.14
     A = iota

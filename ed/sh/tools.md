@@ -238,9 +238,13 @@ curl localhost:9000
 #### tail
 
 ````sh
-echo -e "1 \n2 \n3 \n4 \n5" | tail -2 # 4, 5
+echo -e "1 \n2 \n3 \n4 \n5" | tail -2 # 4, 5 # last 2 lines
 echo -e "1 \n2 \n3 \n4 \n5" | tail -n 2 # 4, 5
-echo -e "1 \n2 \n3 \n4 \n5" | tail -n +3 # 3, 4 ,5
+echo -e "1 \n2 \n3 \n4 \n5" | tail -n +3 # 3, 4 ,5 # start from top from line 3
+
+# slice file into 2 pieces:
+head -3 file > slice1
+tail -n +4 file > tmp; cat tmp > file; rm tmp
 ````
 
 #### kill
@@ -370,7 +374,8 @@ so it makes sense to use `ss` tool.
 
 ````sh
 # ports
-netstat -anp | grep LISTEN
+netstat -anp | grep LISTEN # ⚠️
+ss -an | grep 80 # ✅
 
 # osx
 sudo lsof -i -n -P | grep TCP

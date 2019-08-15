@@ -137,7 +137,10 @@ docker run -it --rm --name=grpcone -v $PWD:/gh -w /gh/ed/go/examples/grpc/one xg
 # &
 docker exec -it grpcone sh -c 'export GOPATH=$PWD; go run src/app/client.go'
 
-#### Simple Web Server
+# redis
+docker run -it --rm --net=xnet -p 6379:6379 --name xredis --hostname xredis redis:latest
+
+
 
 # web.one
 docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.one/' xgo sh -c '

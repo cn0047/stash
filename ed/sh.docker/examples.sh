@@ -60,7 +60,7 @@ docker run -it --rm -p 9201:9200 --name es-data-1 --link es-master-1  \
 #### REDIS
 
 # init redis
-docker run -it --rm -p 6379:6379 --hostname xredis --name xredis redis:latest
+docker run -it --rm --net=xnet -p 6379:6379 --name xredis --hostname xredis redis:latest
 
 # check redis
 docker exec -ti xredis redis-cli

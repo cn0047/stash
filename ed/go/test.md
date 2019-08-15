@@ -49,14 +49,79 @@ t.Log("GivenTheNeedToTestTheSendJSONEndpoint.") {
   //code
 }
 
-t.Run("Failed to send email", func(t *testing.T) {})
-t.Errorf("Got: %v, want: %v", a, e)
-t.Skip("Skipping...")
-t.Fail() // mark test as failed
-t.FailNow() // mark test as failed and stop execution test further
-t.Fatal() // like t.FailNow()
+t.Run("TestCase", func(t *testing.T) {})
+t.Errorf("Got: %v, want: %v", a, e) //
+t.Error("Msg")                      // mark test as failed  & continue further test execution
+t.Skip("Msg")                       // mark test as skipped & stop further test execution
+t.Skipped()                         // is test skipped
+t.SkipNow()                         // mark test as skipped & stop further test execution
+t.Fail()                            // mark test as failed  & continue further test execution
+t.Failed()                          // is test failed
+t.FailNow()                         // mark test as failed  & stop further test execution
+t.Fatal()                           // mark test as failed  & stop further test execution
+t.Fataf("Msg")                      // mark test as failed  & stop further test execution
+
 b.RunParallel(func(pb *testing.PB) {})
 if testing.Short() { // go test -short }
+````
+
+Helpers:
+
+````golang
+{
+  httpReq, httpBody, err1 := NewUploadRequest(url, field, filePath)
+  err2 := httpBody.WriteField("video_name", "v.mov")
+  err4 := httpBody.Close()
+}
+
+func NewUploadRequest(
+  url string, fieldName string, pathToFile string,
+) (httpReq *http.Request, httpBodyWriter *multipart.Writer, err error) {
+  f, err1 := os.Open(pathToFile)
+  if err1 != nil {
+    return nil, nil, fmt.Errorf(
+      "failed to open file: %v, error: %v", pathToFile, err1,
+    )
+  }
+
+  fStat, err3 := f.Stat()
+  if err3 != nil {
+    return nil, nil, fmt.Errorf("failed to get file stat, error: %v", err3)
+  }
+
+  httpBody := &bytes.Buffer{}
+
+  httpBodyWriter = multipart.NewWriter(httpBody)
+  part, err4 := httpBodyWriter.CreateFormFile(fieldName, filepath.Base(f.Name()))
+  if err4 != nil {
+    return nil, nil, fmt.Errorf("failed to create FormFile, error: %v", err4)
+  }
+
+  _, err5 := io.Copy(part, f)
+  if err5 != nil {
+    return nil, nil, fmt.Errorf(
+      "failed to copy file into FormFile, error: %v", err5,
+    )
+  }
+
+  err2 := f.Close()
+  if err2 != nil {
+    return nil, nil, fmt.Errorf("failed to close file, error: %v", err2)
+  }
+
+  httpReq, err6 := http.NewRequest(http.MethodPost, url, httpBody)
+  if err6 != nil {
+    return nil, nil, fmt.Errorf(
+      "failed to create http request, error: %v", err6,
+    )
+  }
+
+  contentLength := strconv.FormatInt(fStat.Size(), 10)
+  httpReq.Header.Set(echo.HeaderContentLength, contentLength)
+  httpReq.Header.Set(echo.HeaderContentType, httpBodyWriter.FormDataContentType())
+
+  return httpReq, httpBodyWriter, nil
+}
 ````
 
 ## Bench
@@ -78,3 +143,33 @@ ok    _/gh/ed/go/examples/bench 2.446s
 ````
 
 Means that the loop ran 100000000 times at a speed of 2185 ns (nanosecond) per loop.
+
+## Asserts
+
+````golang
+func assert(t *testing.T, actual interface{}, expected interface{}) {
+  if actual != expected {
+    t.Errorf("Got: %#v, want: %#v", actual, expected)
+  }
+}
+
+func assertNil(t *testing.T, v interface{}) {
+  if v != nil {
+    t.Errorf("Got: %#v, want: nil", v)
+  }
+}
+
+func assertEqual(t *testing.T, actual interface{}, expected interface{}) {
+  if actual != expected {
+    t.Errorf("Got: %#v, want: %#v", actual, expected)
+  }
+}
+
+func assertContains(t *testing.T, haystack []byte, needle string) {
+  s := string(haystack)
+  if !strings.Contains(s, needle) {
+    t.Errorf("Got: %v which doesn't contain: %v", s, needle)
+  }
+}
+
+````
