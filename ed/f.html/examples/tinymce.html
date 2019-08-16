@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<hmtl>
+  <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+  <script>
+    tinymce.init({
+      selector: '#mytextarea'
+    });
+  </script>
+<body>
+  <form method="post" action="http://localhost:8080">
+    <textarea id="mytextarea" name="mytextarea">Hello, World!</textarea>
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</hmtl>

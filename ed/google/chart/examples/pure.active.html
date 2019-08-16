@@ -1,0 +1,74 @@
+<html>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <body>
+        <div id="chart_div"></div>
+    </body>
+    <script type="text/javascript">
+      google.charts.load('current', {packages: ['line']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        drawfromObject();
+      }
+
+      function drawfromObject() {
+        const data = {
+          "2019-08-02": 4,
+          "2019-08-03": 30,
+          "2019-08-04": 25,
+          "2019-08-05": 26,
+          "2019-08-06": 33,
+          "2019-08-07": 46,
+          "2019-08-08": 33,
+          "2019-08-09": 41,
+          "2019-08-10": 36,
+          "2019-08-11": 28,
+          "2019-08-12": 36,
+          "2019-08-13": 39,
+          "2019-08-14": 58,
+          "2019-08-15": 7,
+          "2019-08-16": 93
+        };
+        const rows = [];
+        for (key in data) {
+          const d = new Date(key);
+          const v = data[key];
+          rows.push([d, v]);
+        }
+        render(rows);
+      }
+
+      function drawfromArray() {
+        const rows = [
+          ["2019-08-10T08:12:01.302659Z",428],
+          ["2019-08-11T06:41:01.016303Z",416],
+          ["2019-08-12T05:10:01.334021Z",435],
+          ["2019-08-13T03:39:01.660153Z",765],
+          ["2019-08-14T02:08:01.215096Z",745],
+          ["2019-08-15T00:38:00.791839Z",449],
+          ["2019-08-16T23:07:01.354567Z",721],
+          ["2019-08-17T21:36:01.119229Z",743],
+          ["2019-08-18T20:05:01.728973Z",715],
+          ["2019-08-19T18:35:01.422666Z",432],
+          ["2019-08-20T17:05:00.800768Z",743],
+          ["2019-08-21T15:34:01.042883Z",442],
+          ["2019-08-22T14:03:01.340386Z",772],
+        ];
+        rows.map((el) => {el[0] = new Date(el[0])});
+        render(rows);
+      }
+
+      function render(rows) {
+        const dt = new google.visualization.DataTable();
+        dt.addColumn('date', 'test');
+        dt.addColumn('number', '');
+        dt.addRows(rows);
+        const options = {
+          legend: {position: 'none'},
+          title: '',
+        };
+        const chart = new google.charts.Line(document.getElementById('chart_div'));
+        chart.draw(dt, google.charts.Line.convertOptions(options));
+      }
+    </script>
+</html>

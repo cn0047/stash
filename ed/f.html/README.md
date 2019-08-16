@@ -10,6 +10,8 @@ HTML (HyperText Markup Language)
 
 ````
 &nbsp;     # space
+&#34;      # double quotes
+&quot;     # double quotes
 ````
 
 #### Script

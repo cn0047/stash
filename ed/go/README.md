@@ -92,6 +92,8 @@ fmt.Printf("It's over %d\n", power)
 
 str := strconv.FormatInt(int64, 10)
 
+if !regexp.MustCompile(`^[\d]+$`).MatchString(ds) {}
+
 const (
     PI = 3.14
     A = iota
