@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	fmt.Println(MergeSort([]int{9, 11, -1, 3, 7}))
+	fmt.Println(MergeSort([]int{9, 3, 11, -1, 3, 7}))
 }
 
 func MergeSort(slice []int) []int {
@@ -25,16 +25,16 @@ func merge(left, right []int) []int {
 	i := 0
 	j := 0
 	for k := 0; k < size; k++ {
-		if i > len(left)-1 && j <= len(right)-1 {
+		if i > len(left)-1 && j <= len(right)-1 { // Case 3
 			slice[k] = right[j]
 			j++
-		} else if j > len(right)-1 && i <= len(left)-1 {
+		} else if j > len(right)-1 && i <= len(left)-1 { // Case 4
 			slice[k] = left[i]
 			i++
-		} else if left[i] < right[j] {
+		} else if left[i] < right[j] { // Case 1
 			slice[k] = left[i]
 			i++
-		} else {
+		} else { // Case 2
 			slice[k] = right[j]
 			j++
 		}

@@ -59,6 +59,7 @@ History of MySQL
 * IPv6 support.
 * XML (LOAD XML INFILE).
 * Build configuration.
+* **Added `utf8mb4` character set** (utf8 - 3 bytes per character, utf8mb4 - 4).
 
 #### MySQL 5.1
 

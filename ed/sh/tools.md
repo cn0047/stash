@@ -461,6 +461,8 @@ echo 'cat and dog' | sed -r "s/(cat|dog)s?/\1s/g" # cats and dogs
 echo 'xxx and zzz' | sed 's/x/y/g' # yyy and zzz
 echo '1 one; 2 two' | sed 's/1//g; s/2//g' #  one;  two
 
+echo "Version: 4.4.0.157.165" | sed -E 's/.*Version: ([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)\.[0-9]+/\1/'
+
 sed -i "s/admin_user/user/" /var/www/html/config.php
 
 echo 'car mAn' | sed -e 's/a/{&}/ig'

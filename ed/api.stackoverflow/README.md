@@ -9,6 +9,7 @@ Stackoverflow
 [php](http://rextester.com)
 [sql](http://sqlfiddle.com)
 [regex](https://regex101.com/r/zO0kO8/1)
+[bash](https://ideone.com/A8momR)
 
 ````
 <kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>P</kbd>

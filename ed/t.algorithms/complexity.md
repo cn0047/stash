@@ -25,7 +25,7 @@ O(n!)     # n-factorial time
 
 O(n^2 + n^2)            = O(n^2)
 O(n^2 + n)              = O(n^2)
-O(n + log n)            = O(n) # because log N < N
+O(n + log n)            = O(n) # because log n < n
 O(n * log n)            = O(n) # ↑
 O(5 * 2^n + 10 * n^100) = O(2^n)
 O(n^3 + n^2 + n)        = O(n^3)
@@ -59,7 +59,7 @@ for (var i = 0; i < n; i++) {
 }
 
 # O(log n * n) = O(n)
-for (int i = N; i > 0; i /= 2) {
+for (int i = n; i > 0; i /= 2) {
   for (int j = 0; j < i; j++) {
   }
 }

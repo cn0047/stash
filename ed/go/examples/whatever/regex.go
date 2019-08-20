@@ -1,10 +1,10 @@
 package main
 
 import (
-	"fmt"
-	"regexp"
-	"strings"
-	"sort"
+    "fmt"
+    "regexp"
+    "sort"
+    "strings"
 )
 
 type SubM map[string]string
@@ -12,23 +12,23 @@ type SubM map[string]string
 type M map[string]SubM
 
 func main() {
-	println(r("1st test"))
-	println(r("1st.test"))
-	println(r("this is test # 3"))
-	println(r("Last config, last but not least (conf 4)."))
-	noCapture()
+    println(r("1st test"))
+    println(r("1st.test"))
+    println(r("this is test # 3"))
+    println(r("Last config, last but not least (conf 4)."))
+    noCapture()
 }
 
 func noCapture() {
-	s := "http-host-url"
-	re := regexp.MustCompile(`(?:http-)(.*)`)
-	fmt.Printf("🎾 %+v \n", re.FindAllStringSubmatch(s, -1))
+    s := "http-host-url"
+    re := regexp.MustCompile(`(?:http-)(.*)`)
+    fmt.Printf("🎾 %+v \n", re.FindAllStringSubmatch(s, -1))
 }
 
 func r(s string) string {
-	re := regexp.MustCompile(`[^\w\d]+`)
-	str := re.ReplaceAllString(s, "-")
-	return strings.ToLower(str)
+    re := regexp.MustCompile(`[^\w\d]+`)
+    str := re.ReplaceAllString(s, "-")
+    return strings.ToLower(str)
 }
 
 func instagram(ss string) string {
@@ -40,40 +40,40 @@ func instagram(ss string) string {
 }
 
 func tagsFromHTML(s string) string {
-	re := regexp.MustCompile(`(?imsU)<(\w+?).*>`)
-	matches := re.FindAllStringSubmatch(s, -1)
+    re := regexp.MustCompile(`(?imsU)<(\w+?).*>`)
+    matches := re.FindAllStringSubmatch(s, -1)
 
-	tags := make(map[string]uint)
-	for _, m := range matches {
-		tags[m[1]] = 1
-	}
+    tags := make(map[string]uint)
+    for _, m := range matches {
+        tags[m[1]] = 1
+    }
 
-	// sort
-	a := make([]string, 0)
-	for t := range tags {
-		a = append(a, t)
-	}
-	sort.Strings(a)
+    // sort
+    a := make([]string, 0)
+    for t := range tags {
+        a = append(a, t)
+    }
+    sort.Strings(a)
 
-	return strings.Join(a, ";")
+    return strings.Join(a, ";")
 }
 
 func hrefToLink(s string) {
-	re := regexp.MustCompile(`(?imsU)<a\b.*href="(.*)".*>(([^<].*[^<])(<.*>)?)?<\/a`)
-	matches := re.FindAllStringSubmatch(s, -1)
+    re := regexp.MustCompile(`(?imsU)<a\b.*href="(.*)".*>(([^<].*[^<])(<.*>)?)?<\/a`)
+    matches := re.FindAllStringSubmatch(s, -1)
 
-	for _, m := range matches {
-		fmt.Printf("\n %s 🔵 %s", m[1], strings.Trim(m[3], " "))
-	}
+    for _, m := range matches {
+        fmt.Printf("\n %s 🔵 %s", m[1], strings.Trim(m[3], " "))
+    }
 }
 
 func match(s string) string {
-	re := regexp.MustCompile(`(?i)^[_.]\d+[a-zA-Z]*[_]?$`)
-	if re.MatchString(s) {
-		return "VALID"
-	} else {
-		return "INVALID"
-	}
+    re := regexp.MustCompile(`(?i)^[_.]\d+[a-zA-Z]*[_]?$`)
+    if re.MatchString(s) {
+        return "VALID"
+    } else {
+        return "INVALID"
+    }
 }
 
 func addKeyIntoMap(m M, k string) {
@@ -127,8 +127,15 @@ func tagsAndAttributes(m M, s string) {
 }
 
 func removeWWW() {
-  url := "https://www.thethirty.byrdie.com/july-horoscopes-2018"
-  regex := regexp.MustCompile(`^(https?://)(www.)(.*)$`)
-  result := regex.ReplaceAllString(url, `$1$3`)
-  fmt.Printf("> %+v", result)
+    url := "https://www.thethirty.byrdie.com/july-horoscopes-2018"
+    regex := regexp.MustCompile(`^(https?://)(www.)(.*)$`)
+    result := regex.ReplaceAllString(url, `$1$3`)
+    fmt.Printf("> %+v", result)
+}
+
+// DeleteAttrsFromTag deletes html tag's attrs.
+// @see: https://regex101.com/r/cjBrK8/1
+func DeleteAttrsFromTag(s string) (res string) {
+    res = regexp.MustCompile(`<(\w+)(\s*[\w-]+=["][^"]*["])*(\s*[/])?>`).ReplaceAllString(s, "<$1$3>")
+    return res
 }

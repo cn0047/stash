@@ -90,10 +90,6 @@ power = 9000
 var power2 int = 9000
 fmt.Printf("It's over %d\n", power)
 
-str := strconv.FormatInt(int64, 10)
-
-if !regexp.MustCompile(`^[\d]+$`).MatchString(ds) {}
-
 const (
     PI = 3.14
     A = iota
@@ -103,6 +99,8 @@ const (
 )
 const s string = "constant"
 const n = 500000000
+
+sort.Slice(arrInt32, func(i, j int) bool { return arrInt32[i] < arrInt32[j] })
 
 # https://golang.org/pkg/fmt/#hdr-Printing
 fmt.Printf("Type: %T\n", myType)
@@ -194,16 +192,15 @@ template.JSEscapeString(input)
 ````golang
 b, err := httputil.DumpRequest(ctx.Request(), true)
 
-url := req.URL
-query := url.Query()
+query := req.URL.Query()
 q := query["q"]
 page := query.Get("page")
 req.FormValue("timeout")
 
 err := req.ParseForm()
 f := req.Form
-un := f["username"]
-p := f.Get["username"]
+un := f["username"] // array of values
+p := f.Get["username"] // value
 
 tr := &http.Transport{DisableKeepAlives: true}
 client := http.Client{Transport: tr}
