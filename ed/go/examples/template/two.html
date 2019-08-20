@@ -1,0 +1,8 @@
+{{define "tplTwo"}}
+    <br> Title: {{.title}}
+    <hr>
+    {{plg .msg . -}}
+    <br>
+    {{(print "\n---\n") -}}
+    {{template "tplTwoAdd" .}}
+{{end}}
