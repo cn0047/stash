@@ -1,6 +1,8 @@
 nginx
 -
 
+[throttle](http://nginx.org/en/docs/http/ngx_http_limit_req_module.html)
+
 Nginx relying on an asynchronous, events-driven architecture.
 
 Nginx spawns worker processes, each of which can handle thousands of connections.

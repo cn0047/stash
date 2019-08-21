@@ -145,4 +145,6 @@ _ Underscore
 | Pipe
 ~ Tilde
 ≈ Almost Equal
+: Colon
+; Semicolon
 ````

@@ -210,6 +210,11 @@ str.split();
 'James Bond'.match(/(J).*(B)/); // ["James B", "J", "B"]
 'James Bond'.replace('Bond', '007'); // James 007
 'James Bond James Bond James Bond James Bond'.replace(/Bond/g, '007'); // miltiple replace
+
+e = escape(s);
+s = unescape(e);
+e = encodeURI(s);
+decodeURI(e);
 ````
 
 #### Number

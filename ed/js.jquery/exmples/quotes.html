@@ -12,6 +12,9 @@
     $(document).ready(function () {
       s = $('textarea').val();
       $('div').html(s); // error: now div is broken
+      e = encodeURI(s);
+      e = encodeURI(`<span data-x="{&#34;1&#34;:2,&#34;2&#34;:&#34;Active&#34;}">Boom</span>`);
+      $('div').html(decodeURI(e));
     });
   </script>
 </body>

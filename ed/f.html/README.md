@@ -4,18 +4,24 @@ HTML (HyperText Markup Language)
 
 ````
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+# refresh doc every 30 seconds
+<meta http-equiv="refresh" content="30">
 ````
 
 #### Special Characters
 
 ````
-&nbsp;     # space
-&#34;      # double quotes
-&quot;     # double quotes
+&nbsp;       # space
+&#34; &quot; # double quotes
+&#38; &amp;  # &
+&#60; &lt;   # <
+&#62; &gt;   # >
 
 # trik:
 <table dir="ltr" border="1" cellspacing="0" cellpadding="0"><colgroup><col width="76"/><col width="90"/></colgroup><tbody><tr><td data-sheets-value="{&#34;1&#34;:2,&#34;2&#34;:&#34;Active&#34;}">Active</td><td data-sheets-value="{&#34;1&#34;:2,&#34;2&#34;:&#34;Betsy&#34;}">Betsyx</td></tr></tbody></table></textarea>
 
+# 1 more trik:
 <p>
 <span data-sheets-value="{&#34;1&#34;:2,&#34;2&#34;:&#34;I would describe my style as a mix of classic elements with current items on trend. I let what i&#39;m reading at the moment influence how I see the world and that is often perceived through my style of the moment. &#34;}" 
 data-sheets-userformat="{&#34;2&#34;:513,&#34;3&#34;:{&#34;1&#34;:0},&#34;12&#34;:0}">
