@@ -1,0 +1,18 @@
+<html>
+<body>
+  <form>
+    <textarea>
+      <span data-x="{&#34;1&#34;:2,&#34;2&#34;:&#34;Active&#34;}">Boom</span>
+    </textarea>
+    <hr>
+    <div>2</div>
+  </form>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      s = $('textarea').val();
+      $('div').html(s); // error: now div is broken
+    });
+  </script>
+</body>
+</html>

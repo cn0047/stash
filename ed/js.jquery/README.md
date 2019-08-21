@@ -16,7 +16,8 @@ $('select:last').parent().css('backgroundColor', '#      '); // bootstrap Notice
 $('select:last').parent().parent().css({backgroundColor: '#fcf8e3'}).delay(200).css({backgroundColor: '#fff'});
 ````
 
-####Flashback
+#### Flashback
+
 ````js
 // Selectors:
 E>F         // element F that child of E
@@ -32,6 +33,9 @@ E~F         // all F below E
 :parent
 :selected
 :visible
+
+$(selector)
+$(selector, context)
 
 $('#el:hidden')
 $('#el:not(.el)')
@@ -118,7 +122,8 @@ $('*').attr('title', function (index, previousValue) {
 var settings = $.extend({x: 0}, options || {});
 ````
 
-####UI
+#### UI
+
 ````js
 // Speeds
 slow|normal|fast
@@ -135,7 +140,7 @@ resizable(options, optionName, value)
 selectable(options, optionName, value)
 ````
 
-####Ajax (Asynchronous JavaScript and XML)
+#### Ajax (Asynchronous JavaScript and XML)
 
 AJAX polling - send request in loop.
 
