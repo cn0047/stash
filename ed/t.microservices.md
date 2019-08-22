@@ -115,7 +115,8 @@ which are using this library. Maybe this library must be separated microservice?
 is a service whose overhead (communications, maintenance etc.) outweighs its utility.
 
 * To bind requests to different microservices -
-have to use **Correlation ID** for each service call.
+have to use **Correlation ID** (or **Trace ID**) for each service call
+(and provide parent id to recreate whole picture).
 
 * Use timeouts (or circuit breaker) in communication between microservices.
 
