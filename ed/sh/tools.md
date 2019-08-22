@@ -57,6 +57,9 @@ nohup myscript &
 # to run with low priority:
 nice myscript
 nohup nice myscript &
+
+# http stress tester
+siege -c 10 -t 1m -b http://mysite.dev
 ````
 
 #### cut

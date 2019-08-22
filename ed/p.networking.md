@@ -77,6 +77,8 @@ ANAME records are typically configured to point to another domain,
 but when queried by a client, answer with an IP address.
 ANAME fater that CNAME.
 
+IoT Protocols: MQTT, CoAP (lightweight HTTP).
+
 ## OSI model
 
 7. Application Layer - High-level APIs.

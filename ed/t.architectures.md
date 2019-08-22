@@ -6,6 +6,9 @@ dispatcher
 processor
 worker
 
+The actor model adopts the philosophy that everything is an actor.
+Like everything is an object philosophy in object-oriented programming.
+
 ## Load Balancer
 
 * Service Discovery.

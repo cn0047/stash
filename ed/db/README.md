@@ -7,6 +7,13 @@ Optimize wide. Make writes as parallel as you can.
 
 Replication needed for high availability (in case node die - you'll have all data).
 
+When write to two tables (create relation records) wrap it by transaction.
+
+Normalisation not needed when we have:
+a very big count of join tables; when data is not updating;
+
+Create table with `uuid()`.
+
 <br>DDL - Data Definition Language: `CREATE, ALTER, DROP, TRUNCATE...`.
 <br>DML - Data Manipulation Language: `SELECT, INSERT, UPDATE, DELETE...`.
 <br>DCL - Data Control Language: `GRANT, REVOKE`.
@@ -62,12 +69,11 @@ Update account table with transaction.
 6. Update account table delete transactions from pendingTransactions.
 7. Update transaction in transactions table set state done.
 
-#### ACID
+## Distributed transaction
 
-<br>Atomicity - all or nothing.
-<br>Consistency - ensures that any transaction will bring the database from one valid state to another (constraints, cascades, triggers).
-<br>Isolation - ensures that the concurrent execution of transactions will executed serially, i.e., one after the other.
-<br>Durability - ensures that once a transaction has been committed, it will remain so, even in the event of power loss, crashes, or errors...
+* Don't use distributed transactions, it won't scale - have to use eventual consistency.
+* Rely on idempotency.
+* SAGA.
 
 ## Saga Pattern
 
@@ -78,6 +84,13 @@ and each subsequent step is triggered by the completion
 of the previous one.
 
 implementations: Choreography, Orchestration.
+
+## ACID
+
+<br>Atomicity - all or nothing.
+<br>Consistency - ensures that any transaction will bring the database from one valid state to another (constraints, cascades, triggers).
+<br>Isolation - ensures that the concurrent execution of transactions will executed serially, i.e., one after the other.
+<br>Durability - ensures that once a transaction has been committed, it will remain so, even in the event of power loss, crashes, or errors...
 
 ## MySQL:
 
@@ -110,17 +123,15 @@ implementations: Choreography, Orchestration.
 
 * *Programming Languages support.*
 
-## MySQL vs MongoDB:
+## Comparison:
 
+MySQL vs MongoDB:
 * MySQL insert bit slower than MongoDB in some cases.
-
 * *MySQL selection faster than MongoDB.*
 
-## MySQL vs PostgreSQL:
-
+MySQL vs PostgreSQL:
 * Rich JSON support in PostgreSQL (MySQL doesn't support indexing for JSON).
 
-## PostgreSQL vs MongoDB:
-
+PostgreSQL vs MongoDB:
 * Selecting, loading, inserting complex document data over 50M records - PostgreSQL faster than MongoDB.
 * MongoDB updates JSON data faster than PostgreSQL.

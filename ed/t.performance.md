@@ -56,6 +56,7 @@ Resilience - is the ability of a system to adapt or keep working when challenges
 
 * Gzip JSON responses.
 * Use HTTP2.
+* If site doesn't have favicon - 2 overhead request per every request.
 
 #### Scaling
 

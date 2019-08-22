@@ -1,6 +1,11 @@
 Programming
 -
 
+CSS - fault tolerant.
+JS - NOT fault tolerant.
+
+Mixin better than OOP.
+
 ## Common stuff
 
 An `expression` evaluates to a value. A `statement` does something.

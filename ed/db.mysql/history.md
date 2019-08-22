@@ -39,6 +39,8 @@ History of MySQL
 * Data types (Permits fractional seconds for TIME, DATETIME, and TIMESTAMP).
 * Host cache.
 * OpenGIS.
+* **Deleting index don't block read and write**.
+* **Index usage statistics**.
 
 #### MySQL 5.5
 

@@ -16,6 +16,12 @@ Graph
 
 All edges can be stored in adjacent matrix or adjacent list or in icidence matrix.
 
+Graph in DB:
+* Adjacency list.
+* Path enumeration.
+* Nested sets.
+* Closure table.
+
 ## Path
 
 <br>Path - set of edges that conncect 2 nodes.

@@ -30,6 +30,10 @@ select now() \gset dt_
 select :'dt_now';
 ````
 
+postgress don't like > 100 connections.
+don't store json > 2KB in json field.
+use timeouts in postgress.
+
 Advisory locks can be useful for locking strategies that are an awkward fit
 for the MVCC model. For example, a common use of advisory locks
 is to emulate pessimistic locking strategies typical of so-called “flat file”

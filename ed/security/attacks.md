@@ -81,7 +81,7 @@ For example, imagine an attacker who builds a web site that has a button on it t
 However, on top of that web page, the attacker has loaded an iframe with your mail account,
 and lined up exactly the "delete all messages" button directly on top of the "free iPod" button.
 
-FIX: Header `X-Frame-Options: DENY`.
+FIX: Headers `X-Frame-Options: DENY, X-Frame Options: DENY, X-Frame Options: SAMEORIGIN`.
 
 #### Directory (path) traversal attack
 

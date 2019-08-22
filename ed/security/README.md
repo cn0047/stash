@@ -19,6 +19,8 @@ Security
 
 ## WEB
 
+FIEO - filter input escape output.
+
 Remove `X-Powered-By` header.
 
 To store password in db add salt to password and hash it.

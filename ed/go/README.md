@@ -17,6 +17,10 @@ GO
 [city](https://go-city.github.io/#/github.com/cn007b/monitoring)
 [DIC (wire)](https://github.com/google/go-cloud/tree/master/wire)
 [DIC (wire) tutorial](https://github.com/google/go-cloud/tree/master/samples/wire)
+[load test](https://github.com/tsenart/vegeta)
+[fultext search](https://github.com/blevesearch/bleve)
+[distributed tracing](https://zipkin.io/)
+[protocol for microservices](https://github.com/uber/tchannel)
 
 Go - statically-typed, general-purpose, with type safety
 and automatic memory management programming language.
@@ -71,6 +75,9 @@ godoc -http=:6060 -goroot=$PWD
 go tool fix # finds Go programs that use old APIs and rewrites them to use newer ones
 gorename # Performs precise type-safe renaming of identifiers
 gomvpkg # moves go packages, updating import declarations
+
+strace go_bin_file
+ptrace
 ````
 
 ````golang
@@ -190,6 +197,8 @@ template.JSEscapeString(input)
 #### HTTP
 
 ````golang
+http.Server{IdleTimeout}
+
 b, err := httputil.DumpRequest(ctx.Request(), true)
 
 query := req.URL.Query()

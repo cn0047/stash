@@ -9,6 +9,10 @@ HTML (HyperText Markup Language)
 <meta http-equiv="refresh" content="30">
 ````
 
+````
+link rel="preload" rel="preconnect"
+````
+
 #### Special Characters
 
 ````
