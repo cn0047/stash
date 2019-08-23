@@ -60,6 +60,9 @@ nohup nice myscript &
 
 # http stress tester
 siege -c 10 -t 1m -b http://mysite.dev
+
+# xml
+echo '<?xml version="1.0" encoding="UTF-8"?><note><f>foo</f><b>bar</b></note>' | xmllint --format -
 ````
 
 #### cut

@@ -1,6 +1,11 @@
 History of MySQL
 -
 
+#### MySQL 8
+
+* Invisible index
+* Algorithm=instant
+
 #### MySQL 5.7
 
 * **JSON functions.**

@@ -75,6 +75,12 @@ x^2 # x - base; 2 - power
 ````
 
 ````
+1e6  # 1 000 000
+0x80 # int 128
+
+````
+
+````
 byte          - 8    bits      ~ 1
 kilobyte (KB) - 1024 bytes     ~ 1 000
 megabyte (MB) - 1024 kilobytes ~ 1 000 000

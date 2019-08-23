@@ -121,6 +121,8 @@ DNS Lookup uses DNS protocol.
 | <-----------------                                                              |
 ````
 
+DNS_PROBE_FINISHED_NXDOMAIN
+
 ## IP
 
 [IP packets](https://monosnap.com/file/o9SgeRZA2bfEuszfKiiSICSeyRtEcH).
