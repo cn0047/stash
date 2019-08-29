@@ -40,8 +40,8 @@ func ExampleXxx()   // example (godoc)
 import (
   "testing"
 )
-func TestX(t *testing.T) {
-  t.Run("testCase", func(t *testing.T) {
+func TestX(ts *testing.T) { // test suite
+  ts.Run("testCase", func(t *testing.T) {
   })
 }
 

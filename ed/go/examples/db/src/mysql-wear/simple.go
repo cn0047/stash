@@ -30,6 +30,12 @@ type UserProfile struct {
 }
 
 func main() {
+	f1()
+	f5()
+	f7()
+	f8()
+	f9()
+	f10()
 	f11()
 }
 
@@ -50,21 +56,21 @@ func f1() {
 	db := getDB()
 	v, err := db.Count(&TestMysql{})
 	checkErr(err)
-	fmt.Printf("got count: %d\n", v)
+	fmt.Printf("\nf1. got count: %d\n", v)
 }
 
 func f2() {
-	fmt.Println(mw.GenerateModel(&UserProfile{}, "up")) // panic: Missing primary key for table (user_profile)
+	fmt.Println("\nf2.", mw.GenerateModel(&UserProfile{}, "up")) // panic: Missing primary key for table (user_profile)
 }
 
 func f3() {
-	fmt.Println(mw.GenerateModelTest(&UserProfile{}, "upt")) // panic: Missing primary key for table (user_profile)
+	fmt.Println("\nf3.", mw.GenerateModelTest(&UserProfile{}, "upt")) // panic: Missing primary key for table (user_profile)
 }
 
 func f4() {
 	u1 := &UserProfile{ID: 1, FirstName: "James", LastName: "Bond"}
 	db := getDB()
-	db.MustInsert(u1)
+	db.MustInsert(u1) // panic: Error 1146: Table 'test.user_profile' doesn't exist
 }
 
 func f5() {
@@ -73,21 +79,21 @@ func f5() {
 	db.MustSelect(&data, sqlq.Columns("id", "code"),
 		sqlq.Limit(10), sqlq.GreaterThan("code", 100),
 	)
-	fmt.Printf("Got data:\n%#v\n", data)
+	fmt.Printf("\nf5. Got data:\n%#v\n", data)
 }
 
 func f6() {
 	var data []TestMysql
 	db := getDB()
 	db.MustSelect(&data, sqlq.Columns("id", "code + 1000")) // panic: unrecognized column (code + 1000)
-	fmt.Printf("Got data:\n%#v\n", data)
+	fmt.Printf("\nf6. Got data:\n%#v\n", data)
 }
 
 func f7() {
 	t := &TestMysql{}
 	db := getDB()
 	found := db.MustGet(t, sqlq.Equal("code", 200))
-	fmt.Printf("Found: %v, Got data: %#v\n", found, t)
+	fmt.Printf("\nf7. Found: %v, Got data: %#v\n", found, t)
 }
 
 func f8() {
@@ -101,12 +107,12 @@ func f8() {
 
 	t.Code = 201
 	if err := db.Update(t); err != nil {
-		fmt.Printf("Got update error 1: %#v\n", err)
+		fmt.Printf("\nf8. Got update error 1: %#v\n", err)
 	}
 
 	t.Code = 200
 	if err := db.Update(t); err != nil {
-		fmt.Printf("Got update error 2: %#v\n", err)
+		fmt.Printf("\nf8. Got update error 2: %#v\n", err)
 	}
 }
 
@@ -116,18 +122,18 @@ func f9() {
 	db.MustInsert(t) // panic: Please pass a struct pointer to parseModel
 
 	if err := db.Delete(t); err != nil {
-		fmt.Printf("Got delete error: %#v\n", err)
+		fmt.Printf("\nf9. Got delete error: %#v\n", err)
 	}
 }
 
 func f10() {
 	db := getDB()
 	count := db.MustCount(&TestMysql{}, sqlq.LessThan("code", 1000))
-	fmt.Printf("Got count: %d\n", count)
+	fmt.Printf("\nf10. Got count: %d\n", count)
 }
 
 func f11() {
-	fmt.Println(mw.GenerateSchema(&UserProfile{}))
+	fmt.Println("\nf11.", mw.GenerateSchema(&UserProfile{}))
 }
 
 // -------------------------------------------- //

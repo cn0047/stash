@@ -66,6 +66,10 @@ echo '<?xml version="1.0" encoding="UTF-8"?><note><f>foo</f><b>bar</b></note>' |
 
 # send message to user k
 write k
+
+for f in x*; do
+  echo -e "\t [f]: $f"
+done
 ````
 
 #### cut

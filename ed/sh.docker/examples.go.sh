@@ -125,6 +125,10 @@ docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \
 docker run -it --rm --net=xnet -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \
   xgo sh -c 'cd $GOPATH && go run src/mysql/simple.go'
 
+# mysql-wear
+docker run -it --rm --net=xnet -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \
+  xgo sh -c 'cd $GOPATH && go run src/mysql-wear/simple.go'
+
 # grpc one
 docker run -it --rm --name=grpcone -v $PWD:/gh -w /gh/ed/go/examples/grpc/one xgo sh -c '
   export GOPATH=$PWD;

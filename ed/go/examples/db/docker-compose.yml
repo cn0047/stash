@@ -1,6 +1,6 @@
 # USAGE:
 #
-# docker-compose -f ed/go/examples/db/docker-compose.yml up db
+# docker-compose -f ed/go/examples/db/docker-compose.yml up mysqlapp
 # docker-compose -f ed/go/examples/db/docker-compose.yml up xmysql
 
 version: '3'
@@ -30,7 +30,7 @@ services:
       - "MYSQL_PASSWORD=dbp"
       - "MYSQL_DATABASE=test"
 
-  db:
+  mysqlapp:
     image: cn007b/go
     depends_on:
       - xmysql

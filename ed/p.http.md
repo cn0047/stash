@@ -86,9 +86,16 @@ MyFile
 [source](http://en.wikipedia.org/wiki/Internet_media_type#List_of_common_media_types5)
 
 The currently registered top-level type names are:
-* application
-  ("application/javascript", "application/json", "application/pdf", "application/soap+xml", "application/x-www-form-urlencoded")
-  ("application/zip")
+* application:
+  ````
+  application/javascript
+  application/json
+  application/octet-stream
+  application/pdf
+  application/soap+xml
+  application/x-www-form-urlencoded
+  application/zip
+  ````
 * audio ("audio/mp4", "audio/mpeg")
 * example
 * image ("image/png")

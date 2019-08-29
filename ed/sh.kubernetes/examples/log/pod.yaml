@@ -9,8 +9,8 @@ spec:
   - name: log-container
     image: cn007b/go
     command: [
-      'go',
-      'run',
+      "go",
+      "run",
       "/ed/go/examples/whatever/pingRealtimeLog.go",
     ]
     volumeMounts:

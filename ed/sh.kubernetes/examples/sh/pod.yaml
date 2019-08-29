@@ -11,6 +11,11 @@ spec:
     volumeMounts:
     - mountPath: /ed
       name: xvol
+    command: [
+      'sh',
+      '-c',
+      "curl -i -XPOST 'https://realtimelog.herokuapp.com:443/ping' -H 'Content-Type: application/json' -d '{\"code\":\"100\", \"status\": \"ok from kube pod\"}'",
+    ]
   volumes:
   - name: xvol
     hostPath:

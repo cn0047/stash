@@ -22,14 +22,14 @@ Kubernetes has three namespaces by default: default, kube-system, kube-public.
 Kinds:
 
 ````sh
-kind: ConfigMap
+kind: ConfigMap # separate configuration information from application definition
 kind: DaemonSet
 kind: Deployment
 kind: HorizontalPodAutoscaler
-kind: Ingress
+kind: Ingress # specify how incoming network traffic should be routed to services and pods
 kind: Job
 kind: LimitRange
-kind: NetworkPolicy
+kind: NetworkPolicy # defines the network access rules between pods inside the cluster
 kind: PersistentVolume
 kind: Pod
 kind: ReplicationController
@@ -50,10 +50,10 @@ Controller Manager (`kube-controller-manager`) - controls lots of different thin
 in the cluster. Replication Controller Manager ensures all the Replication
 Controllers run on the desired container amount.
 
-`etcd` is an open source distributed key-value store (https://coreos.com/etcd).
+`etcd` (cluster data store) is an open source distributed key-value store (https://coreos.com/etcd).
 Kubernetes stores all the RESTful API objects here.
 
-Scheduler (kube-scheduler) - decides which node is suitable for pods to run on,
+Scheduler (`kube-scheduler`) - decides which node is suitable for pods to run on,
 according to the resource capacity or the balance of the resource utilization on the node.
 
 `Kubelet` is a major process in the nodes, which reports node activities back
@@ -83,14 +83,17 @@ Manifest file - describe desired state.
 
 #### Pod
 
-Pod - like container in docker.
+Pod - (like container in docker)
+description of a set of container(s) that need to run together.
 Pod is the smallest deployable unit in Kubernetes.
 It can contain one or more containers.
 Most of the time, we just need one container per pod.
 Pod is also designed as mortal.
-Containers in pod shares same localhost.
+Containers in pod shares same IP address and mounted volumes.
 
 #### Service - is LB for pods.
+
+Service - object that describes a set of pods that provide a useful service.
 
 Types:
 
@@ -119,9 +122,8 @@ and rolling back pods and ReplicaSets.
 minikube version
 minikube delete; rm -rf ~/.minikube
 minikube status
-minikube start --vm-driver=xhyve
-minikube start --vm-driver=hyperkit \
-  --mount --mount-string="$HOME/web/kovpak/gh/ed:/ed"
+# xhyve|hyperkit
+minikube start --vm-driver=hyperkit --mount --mount-string="$HOME/web/kovpak/gh/ed:/ed"
 minikube stop
 minikube dashboard
 
@@ -134,7 +136,7 @@ kubectl cluster-info dump
 kubectl config current-context
 kubectl config view
 kubectl explain pods
-kubectl create -f ed/kubernetes/examples/sh/pod.yaml
+kubectl create -f ed/sh.kubernetes/examples/sh/pod.yaml
 kubectl edit <resource> <resource_name>
 
 kubectl describe rc $rc # replication controller
@@ -159,10 +161,10 @@ kubectl exec -it $pod /bin/bash
 
 # sh example
 kubectl delete pod ksh-pod
-kubectl apply --force=true -f ed/kubernetes/examples/sh/pod.yaml
+kubectl apply --force=true -f ed/sh.kubernetes/examples/sh/pod.yaml
 # &
 kubectl delete rc ksh-rc
-kubectl apply --force=true -f ed/kubernetes/examples/sh/rc.yaml
+kubectl apply --force=true -f ed/sh.kubernetes/examples/sh/rc.yaml
 kubectl describe rc ksh-rc
 kubectl get pods -l app=ksh
 
@@ -173,7 +175,7 @@ kubectl cp --container=kuard /etc/os-release kuard:/tmp/
 ````bash
 # log example
 
-cd ed/kubernetes/examples/log/ \
+cd ed/sh.kubernetes/examples/log/ \
   && GOOS=linux go build ../../../go/examples/whatever/pingRealtimeLog.go \
   && docker build -t cn007b/pi . \
   && docker push cn007b/pi \
@@ -183,20 +185,19 @@ cd ed/kubernetes/examples/log/ \
 docker run -ti --rm -p 8080:8080 cn007b/pi
 curl 'http://localhost:8080?x=1&y=2'
 
+# only pod
+kubectl delete pod log-pod
+kubectl apply --force=true -f ed/sh.kubernetes/examples/log/pod.yaml
+kubectl logs -f pod/log-pod
+
 kubectl delete rc log-rc
-kubectl apply --force=true -f ed/kubernetes/examples/log/rc.yaml
-kubectl get pods -l app=log
+kubectl apply --force=true -f ed/sh.kubernetes/examples/log/rc.yaml
 
 kubectl delete svc log-service
-kubectl apply --force=true -f ed/kubernetes/examples/log/svc.yaml
+kubectl apply --force=true -f ed/sh.kubernetes/examples/log/svc.yaml
 minikube service log-service --url
 # or
 kubectl delete svc log-svc
-kubectl expose rc log-rc --port=8080 --target-port=8080 \
-  --name=log-svc --type=LoadBalancer
+kubectl expose rc log-rc --port=8080 --target-port=8080 --name=log-svc --type=LoadBalancer
 minikube service log-svc --url
-
-# only pod
-kubectl delete pod log-pod
-kubectl apply --force=true -f ed/kubernetes/examples/log/pod.yaml
 ````
