@@ -1,7 +1,7 @@
 # USAGE:
 #
-# docker-compose -f ed/go/examples/db/docker-compose.yml up mysqlapp
-# docker-compose -f ed/go/examples/db/docker-compose.yml up xmysql
+# docker-compose -f ed/sh.docker/examples/go.db.docker-compose.yml up mysqlapp
+# docker-compose -f ed/sh.docker/examples/go.db.docker-compose.yml up xmysql
 
 version: '3'
 
