@@ -31,6 +31,7 @@ type UserProfile struct {
 
 func main() {
 	f1()
+	f4b()
 	f5()
 	f7()
 	f8()
@@ -71,6 +72,19 @@ func f4() {
 	u1 := &UserProfile{ID: 1, FirstName: "James", LastName: "Bond"}
 	db := getDB()
 	db.MustInsert(u1) // panic: Error 1146: Table 'test.user_profile' doesn't exist
+}
+
+func f4b() {
+	defer func() {
+		r := recover()
+		if r != nil {
+			fmt.Println("\nf4b. ok")
+		}
+	}()
+
+	t := &TestMysql{ID: 1, Code: 200}
+	db := getDB()
+	db.MustInsert(t)
 }
 
 func f5() {
