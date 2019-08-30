@@ -175,17 +175,16 @@ kubectl cp --container=kuard /etc/os-release kuard:/tmp/
 ````bash
 # log example
 
-cd ed/sh.kubernetes/examples/log/ \
-  && GOOS=linux go build ../../../go/examples/whatever/pingRealtimeLog.go \
-  && docker build -t cn007b/pi . \
-  && docker push cn007b/pi \
-  && rm pingRealtimeLog \
-  && cd -
+ctx=ed/sh.docker/examples.Dockerfile
+GOOS=linux go build -o $ctx/xgoapp ed/go/examples/whatever/pingRealtimeLog.go
+docker build -t cn007b/pi -f $ctx/go.x.Dockerfile $ctx
+docker push cn007b/pi
+rm $ctx/xgoapp
 
 docker run -ti --rm -p 8080:8080 cn007b/pi
 curl 'http://localhost:8080?x=1&y=2'
 
-# only pod
+# pod
 kubectl delete pod log-pod
 kubectl apply --force=true -f ed/sh.kubernetes/examples/log/pod.yaml
 kubectl logs -f pod/log-pod
@@ -200,4 +199,39 @@ minikube service log-service --url
 kubectl delete svc log-svc
 kubectl expose rc log-rc --port=8080 --target-port=8080 --name=log-svc --type=LoadBalancer
 minikube service log-svc --url
+````
+
+````sh
+# go.db example
+
+kubectl apply -f ed/sh.kubernetes/examples/go.db/mysql.cm.yaml
+kubectl apply -f ed/sh.kubernetes/examples/go.db/mysql.pod.yaml
+kubectl exec -it mysql /bin/bash
+kubectl exec -it mysql mysql -- -P3307 -uroot -proot
+kubectl exec -it mysql mysql -- -P3307 -udbu -pdbp -Dtest
+mysqlHost=`kubectl get pod/mysql --template={{.status.podIP}}`
+kubectl run mysql-client --image=mysql:5.7.27 -it --rm --restart=Never -- \
+  mysql -h$mysqlHost -P3306 -uroot -proot -Dtest -e 'select * from test_mysql'
+
+ctx=ed/sh.docker/examples.Dockerfile
+docker run -it --rm -v $PWD:/gh -w /gh -e ctx=$ctx -e GOPATH='/gh/ed/go/examples/db/' \
+  xgo sh -c 'cd $GOPATH && GOOS=linux go build -o /gh/$ctx/xgoapp src/mysql/simple.go'
+docker build -t cn007b/pi -f $ctx/go.x.Dockerfile $ctx
+docker push cn007b/pi
+rm $ctx/xgoapp
+
+# run xmysql container before next command
+docker run -ti --rm -p 8080:8080 --net=xnet -v $PWD:/gh -w /gh -e ctx=$ctx \
+  xubuntu sh -c '/gh/$ctx/xgoapp'
+open http://localhost:8080
+
+# pod
+kubectl delete pod/go-db-pod
+kubectl apply --force=true -f ed/sh.kubernetes/examples/go.db/go.pod.yaml
+kubectl logs -f pod/go-db-pod
+
+# svc
+kubectl delete service/go-db-service
+kubectl apply --force=true -f ed/sh.kubernetes/examples/go.db/go.svc.yaml
+minikube service go-db-service --url
 ````

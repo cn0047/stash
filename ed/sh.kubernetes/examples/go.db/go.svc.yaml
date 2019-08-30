@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: go-db-service
+  labels:
+    app: go-db
+spec:
+  type: LoadBalancer
+  selector:
+    app: go-db
+  ports:
+  - port: 8080
+    targetPort: 8080

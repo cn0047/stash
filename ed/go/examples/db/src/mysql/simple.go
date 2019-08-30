@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	CONN_STR = "dbu:dbp@tcp(xmysql:3306)/test?charset=utf8"
+	CONN_STR = "dbu:dbp@tcp(172.17.0.5:3306)/test?charset=utf8" // xmysql
 )
 
 func main() {

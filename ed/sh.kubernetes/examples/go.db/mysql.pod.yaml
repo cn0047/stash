@@ -1,0 +1,31 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: mysql
+  labels:
+    app: mysql
+spec:
+  containers:
+    - name: mysql
+      image: mysql:5.7.27
+      imagePullPolicy: Always
+      ports:
+        - containerPort: 3306
+          name: mysql
+      env:
+      - name: MYSQL_ROOT_PASSWORD
+        value: "root"
+      - name: MYSQL_DATABASE
+        value: "test"
+      - name: MYSQL_USER
+        value: "dbu"
+      - name: MYSQL_PASSWORD
+        value: "dbp"
+      volumeMounts:
+      - name: mysql-config-volume
+        mountPath: /etc/mysql/conf.d/default_auth.cnf
+        subPath: default_auth
+  volumes:
+    - name: mysql-config-volume
+      configMap:
+        name: mysql-config

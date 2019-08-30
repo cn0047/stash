@@ -1,0 +1,10 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: go-db-pod
+  labels:
+    app: go-db
+spec:
+  containers:
+  - name: go-db-container
+    image: cn007b/pi
