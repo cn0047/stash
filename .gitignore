@@ -1,8 +1,7 @@
 .DS_Store
 .idea/
 
-.docker/
-.docker/.data/
+.data/
 
 node_modules/
 package-lock.json

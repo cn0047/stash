@@ -4,7 +4,7 @@ MySQL
 #### MySQL
 
 docker run -it --rm --net=xnet -p 3307:3306 --name xmysql --hostname xmysql \
-    -v $PWD/.docker/.data/mysql:/var/lib/mysql -v /tmp:/tmp \
+    -v $PWD/.data/.docker/mysql:/var/lib/mysql -v /tmp:/tmp \
     -e MYSQL_ROOT_PASSWORD=root -e MYSQL_USER=dbu -e MYSQL_PASSWORD=dbp -e MYSQL_DATABASE=test mysql:5.7.27
 
 # general_log
@@ -21,7 +21,7 @@ docker exec -ti xmysql mysql -P3307 -udbu -pdbp -Dtest
 docker run -it --rm -p 3307:3306 --name mysql-master --hostname mysql-master \
     -v $PWD/ed/db.mysql/examples.replication/mysql-bin.log:/var/log/mysql/mysql-bin.log \
     -v $PWD/ed/db.mysql/examples.replication/config-master.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf \
-    -v $PWD/.docker/.data/mysql:/var/lib/mysql \
+    -v $PWD/.data/.docker/mysql:/var/lib/mysql \
     -e MYSQL_ROOT_PASSWORD=root -e MYSQL_USER=dbu -e MYSQL_PASSWORD=dbp -e MYSQL_DATABASE=test mysql:5.7.27
 
 # replication user on master
