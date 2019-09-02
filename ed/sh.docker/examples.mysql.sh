@@ -8,9 +8,9 @@ docker run -it --rm --net=xnet -p 3307:3306 --name xmysql --hostname xmysql \
     -e MYSQL_ROOT_PASSWORD=root -e MYSQL_USER=dbu -e MYSQL_PASSWORD=dbp -e MYSQL_DATABASE=test mysql:5.7.27
 
 # general_log
-docker exec -ti xmysql mysql -P3307 -uroot -proot -e "set global general_log_file='/tmp/mysql.log';"
+docker exec -ti xmysql mysql -P3307 -uroot -proot -e "set global general_log_file='/tmp/mysql.general.log';"
 docker exec -ti xmysql mysql -P3307 -uroot -proot -e "set global general_log = 1;"
-docker exec -ti xmysql tail -f /tmp/mysql.log
+docker exec -ti xmysql tail -f /tmp/mysql.general.log
 
 docker exec -ti xmysql mysql -P3307 -uroot -proot
 docker exec -ti xmysql mysql -P3307 -udbu -pdbp -Dtest

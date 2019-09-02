@@ -1,5 +1,9 @@
-// create table test_mysql (id int key, code int);
-// insert into test_mysql values (1, 200);
+/*
+
+create table test_mysql (id int key, code int);
+insert into test_mysql values (1, 200);
+
+*/
 
 package main
 
@@ -32,12 +36,14 @@ type UserProfile struct {
 func main() {
 	f1()
 	f4b()
+	f4c()
 	f5()
 	f7()
 	f8()
 	f9()
 	f10()
 	f11()
+	j1()
 }
 
 func checkErr(err error) {
@@ -87,6 +93,18 @@ func f4b() {
 	db.MustInsert(t)
 }
 
+func f4c() {
+	t := &TestMysql{ID: 1, Code: 200}
+	db := getDB()
+	r, err := db.Insert(t)
+	fmt.Printf("\nf4c. Got err: %#v\n", err)
+
+	if r != nil {
+		id, err := r.LastInsertId()
+		fmt.Printf("\n\t Got id: %#v, error: %#v\n", id, err)
+	}
+}
+
 func f5() {
 	var data []TestMysql
 	db := getDB()
@@ -101,6 +119,13 @@ func f6() {
 	db := getDB()
 	db.MustSelect(&data, sqlq.Columns("id", "code + 1000")) // panic: unrecognized column (code + 1000)
 	fmt.Printf("\nf6. Got data:\n%#v\n", data)
+}
+
+func f6a() {
+	var data []TestMysql
+	db := getDB()
+	db.MustSelect(&data, sqlq.Columns("id", "avg(code)")) // panic: unrecognized column (avg(code))
+	fmt.Printf("\nf6a. Got data:\n%#v\n", data)
 }
 
 func f7() {
@@ -148,6 +173,43 @@ func f10() {
 
 func f11() {
 	fmt.Println("\nf11.", mw.GenerateSchema(&UserProfile{}))
+}
+
+func j1() {
+	question, answers, err := QuestionByIdAndAnswers("2")
+	fmt.Printf("\nj1. err: %#v \n", err)
+	fmt.Printf("\t answers: %v \n", answers)
+	fmt.Printf("\t question: %v \n", question)
+	fmt.Printf("\t question.Answers: %v \n", question.Answers[0])
+	fmt.Printf("\t question.Answers: %v \n", question.Answers[1])
+}
+
+type Question struct {
+	ID      int
+	Body    string
+	Answers []Answer `mw:"-"`
+}
+
+type Answer struct {
+	ID         int
+	QuestionID int
+	Body       string
+}
+
+func QuestionByIdAndAnswers(id string) (*Question, []Answer, error) {
+	db := getDB()
+
+	question := &Question{ID: 2}
+	found := db.MustGet(question)
+	if !found {
+		return question, nil, fmt.Errorf("question not found")
+	}
+
+	answers := make([]Answer, 0)
+	db.MustSelect(&answers, sqlq.Equal("question_id", question.ID))
+	question.Answers = answers
+
+	return question, answers, nil
 }
 
 // -------------------------------------------- //

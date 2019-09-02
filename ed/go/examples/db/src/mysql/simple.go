@@ -1,3 +1,20 @@
+/*
+
+create table question (
+id int auto_increment key,
+body varchar(100)
+);
+insert into question values (1, "question 1"), (2, "question 2");
+
+create table answer (
+id int auto_increment key,
+question_id int,
+body varchar(100)
+);
+insert into answer values (1, 1, "answer 1 to q 1"), (2, 2, "answer 1 to q 2"), (3, 2, "answer 2 to q 2");
+
+*/
+
 package main
 
 import (
@@ -9,14 +26,19 @@ import (
 )
 
 const (
-	CONN_STR = "dbu:dbp@tcp(172.17.0.5:3306)/test?charset=utf8" // xmysql
+	CONN_STR = //
+	//"root:root@tcp(xmysql:3306)/?charset=utf8"
+	"dbu:dbp@tcp(xmysql:3306)/test?charset=utf8"
+	//"dbu:dbp@tcp(172.17.0.5:3306)/test?charset=utf8"
 )
 
 func main() {
-	f0()
-	f1()
-	f2()
-	web()
+	//f0a()
+	//f0()
+	//f1()
+	//f2()
+	//web()
+	j1()
 }
 
 func checkErr(err error) {
@@ -87,6 +109,14 @@ func f1() {
 	fmt.Println("Inserted id:", id)
 }
 
+func f0a() {
+	db, err := sql.Open("mysql", CONN_STR)
+	checkErr(err)
+
+	_, err = db.Exec("CREATE DATABASE test3")
+	checkErr(err)
+}
+
 func f0() {
 	db, err := sql.Open("mysql", CONN_STR)
 	checkErr(err)
@@ -127,4 +157,55 @@ func web() {
 	p := ":8080"
 	fmt.Printf("Open: http://localhost%s\n", p)
 	http.ListenAndServe(p, nil)
+}
+
+func j1() {
+	question, answers, err := QuestionByIdAndAnswers("2")
+	fmt.Printf("\nj1. err: %#v \n", err)
+	fmt.Printf("\t answers: %v \n", answers)
+	fmt.Printf("\t question: %v \n", question)
+	fmt.Printf("\t question.Answers: %v \n", *question.Answers[0])
+	fmt.Printf("\t question.Answers: %v \n", *question.Answers[1])
+}
+
+type Question struct {
+	ID      int
+	Body    string
+	Answers []*Answer
+}
+
+type Answer struct {
+	ID         int
+	QuestionID int
+	Body       string
+}
+
+func QuestionByIdAndAnswers(id string) (*Question, []*Answer, error) {
+	db, err := sql.Open("mysql", CONN_STR)
+	checkErr(err)
+
+	query := `
+		SELECT q.id, q.body, a.id, a.question_id, a.body
+		FROM question AS q
+		JOIN answer AS a ON q.id = a.question_id
+		WHERE q.id = ?
+	`
+	rows, err := db.Query(query, id)
+	checkErr(err)
+
+	question := &Question{}
+	for rows.Next() {
+		answer := &Answer{}
+		err = rows.Scan(
+			&question.ID,
+			&question.Body,
+			&answer.ID,
+			&answer.QuestionID,
+			&answer.Body,
+		)
+		checkErr(err)
+		question.Answers = append(question.Answers, answer)
+	}
+
+	return question, question.Answers, nil
 }

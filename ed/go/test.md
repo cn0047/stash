@@ -177,4 +177,9 @@ func assertContains(t *testing.T, haystack []byte, needle string) {
   }
 }
 
+func assertContains(t *testing.T, str string, substr string) {
+  if !strings.Contains(str, substr) {
+    t.Errorf("Got: %v which doesn't contain: %v", str, substr)
+  }
+}
 ````
