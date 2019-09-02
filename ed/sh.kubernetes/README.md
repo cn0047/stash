@@ -22,14 +22,14 @@ Kubernetes has three namespaces by default: default, kube-system, kube-public.
 Kinds:
 
 ````sh
-kind: ConfigMap # separate configuration information from application definition
+kind: ConfigMap               # separate configuration information from application definition
 kind: DaemonSet
-kind: Deployment
-kind: HorizontalPodAutoscaler
-kind: Ingress # specify how incoming network traffic should be routed to services and pods
+kind: Deployment              # controls the creation and destruction of pods
+kind: HorizontalPodAutoscaler #
+kind: Ingress                 # specify how incoming network traffic should be routed to services and pods
 kind: Job
 kind: LimitRange
-kind: NetworkPolicy # defines the network access rules between pods inside the cluster
+kind: NetworkPolicy           # defines the network access rules between pods inside the cluster
 kind: PersistentVolume
 kind: Pod
 kind: ReplicationController
@@ -131,6 +131,7 @@ minikube dashboard
 open https://<your master ip>/api/v1/proxy/namespaces/kubesystem/services/monitoring-grafana
 
 kubectl version
+kubectl api-resources # all objects (kinds)
 kubectl cluster-info
 kubectl cluster-info dump
 kubectl config current-context
@@ -204,12 +205,14 @@ minikube service log-svc --url
 ````sh
 # go.db example
 
-kubectl apply -f ed/sh.kubernetes/examples/go.db/mysql.cm.yaml
-kubectl apply -f ed/sh.kubernetes/examples/go.db/mysql.pod.yaml
+kubectl delete cm/mysql-config
+kubectl apply -f ed/sh.kubernetes/examples/go.db/mysql.v1.cm.yaml
+kubectl delete pod/mysql
+kubectl apply -f ed/sh.kubernetes/examples/go.db/mysql.v1.pod.yaml
 kubectl exec -it mysql /bin/bash
 kubectl exec -it mysql mysql -- -P3307 -uroot -proot
 kubectl exec -it mysql mysql -- -P3307 -udbu -pdbp -Dtest
-mysqlHost=`kubectl get pod/mysql --template={{.status.podIP}}`
+mysqlHost=`kubectl get pod/mysql --template={{.status.podIP}}`; echo $mysqlHost
 kubectl run mysql-client --image=mysql:5.7.27 -it --rm --restart=Never -- \
   mysql -h$mysqlHost -P3306 -uroot -proot -Dtest -e 'select * from test_mysql'
 

@@ -1,17 +1,11 @@
-/*
-
-create table test_mysql (id int key, code int);
-insert into test_mysql values (1, 200);
-
-*/
-
 package main
 
 import (
 	"database/sql"
 	"fmt"
-	"github.com/cliqueinc/mysql-wear/sqlq"
 	"time"
+
+	"github.com/cliqueinc/mysql-wear/sqlq"
 
 	mw "github.com/cliqueinc/mysql-wear"
 )
