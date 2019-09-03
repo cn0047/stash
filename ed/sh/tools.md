@@ -513,7 +513,7 @@ printf "A 25 27\nB 75 78\nC 97 93" | \
   awk '{avg=($2+$3)/2; printf "%s -> (avg=%s) %s \n", $0, avg, (avg<50)?"FAIL":(avg<80)?"B":"A"}'
 ````
 
-#### ssh
+#### ssh (Secure Shell)
 
 `pssh` tool to run ssh command on few servers simultaneously
 

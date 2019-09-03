@@ -10,6 +10,45 @@ Theory
 └─┴─┘
 ````
 
+<br>ACL     - Access Control Lists.
+<br>API     - Application programming interface.
+<br>B2B     - Business to business.
+<br>BAAS    - Back-end as a service.
+<br>BLOB    - Binary Large Object.
+<br>CRM     - Customer relationship management.
+<br>DDL     - Data description language.
+<br>DRAM    - Dynamic Random-access Memory
+<br>DRY     - Don't repeat yourself.
+<br>GMT     - Greenwich Mean Time.
+<br>GTIN    - Global Trade Item Number.
+<br>GUI     - Graphical user interface.
+<br>IDL     - Interface Definition Language.
+<br>IPC     - Inter-process communication (processes manage shared data).
+<br>JIT     - Just-in-time compilation.
+<br>KISS    - Keep it simple, stupid (noted in 1960).
+<br>MPN     - Manufacturer Part Number.
+<br>NDA     - Non-disclosure agreement.
+<br>ODM     - Object-document mapping.
+<br>RAID    - Redundant Array of Inexpensive Disks.
+<br>RBAC    - Role-based access control.
+<br>REPL    - Read–Eval–Print Loop (interactive toplevel or language shell).
+<br>RFC     - Request for Comments.
+<br>RnD     - Research and development.
+<br>ROI     - Return on investment.
+<br>RSS     - Rich Site Summary or Really Simple Syndication.
+<br>RTB     - Real-time bidding.
+<br>SaaS    - [Software as a service](https://raw.githubusercontent.com/cn007b/my/master/ed/t.theory/i/cloudComputingTypes.jpeg).
+<br>SDK     - Software development kit.
+<br>SDLC    - Software development life-cycle.
+<br>SLA     - Service Level Agreement.
+<br>UPI     - Unique Product Identifier.
+<br>UTC     - Coordinated Universal Time.
+<br>VOIP    - Voice over Internet Protocol.
+<br>WSDL    - Web Service Definition Language.
+<br>WYSIWYG - What you see is what you get.
+<br>XML     - Extensible Markup Language.
+<br>YAGNI   - You ain't gonna need it.
+
 Server-Sent Events - servers can initiate data transmission towards clients
 once an initial client connection has been established.
 

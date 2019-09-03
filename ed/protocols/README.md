@@ -23,6 +23,7 @@ NAT       - Network Address Translation.
 RIR       - Regional Internet Registry (assigns space to ISP's).
 UDP       - User Datagram Protocol (good for broadcast).
 VPC       - Virtual Private Cloud.
+VPN       - Virtual Private Network.
 VPS       - Virtual Private Server.
 WAN       - Wide Area Network.
 ````

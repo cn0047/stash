@@ -30,6 +30,10 @@ Length up to 2048 chars.
 protocol + host + path + all after question mark
 │          └─ URN ─────────────────────────────┤
 └─ URI ────────────────────────────────────────┘
+
+URI - Uniform Resource Identifier (protocol + URN).
+URL - Uniform Resource Locator (protocol + host + path).
+URN - Uniform Resource Name (host + path + all after question mark).
 ````
 
 Headers:
