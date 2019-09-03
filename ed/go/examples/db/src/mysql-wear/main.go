@@ -6,6 +6,7 @@ import (
 	"time"
 
 	mw "github.com/cliqueinc/mysql-wear"
+	"github.com/cliqueinc/mysql-wear/sqlq"
 )
 
 const (
@@ -13,7 +14,7 @@ const (
 )
 
 func main() {
-	step3()
+	step4()
 }
 func check(err error) {
 	if err != nil {
@@ -42,6 +43,8 @@ type User2020 struct {
 
 	Created time.Time `mw:"-" json:"created"`
 	Updated time.Time `mw:"-" json:"updated"`
+
+	Emails []UserEmail2020 `mw:"join"`
 }
 
 type UserEmail2020 struct {
@@ -110,6 +113,20 @@ func step3() {
 		fmt.Printf("\n Got user: %v", u)
 		fmt.Printf("\n Got user email: %v", ue)
 	}
+}
+
+func step4() {
+	db := DB()
+
+	u := make([]User2020, 0)
+	err := db.Select(
+		&u,
+		sqlq.Join(&UserEmail2020{}, "user2020.id = user_email2020.user_id", "email"),
+		sqlq.Equal("id", "u2"),
+	)
+	check(err)
+
+	fmt.Printf("\n Got user's emails: %v", u[0].Emails)
 }
 
 // -------------------------------------------- //
