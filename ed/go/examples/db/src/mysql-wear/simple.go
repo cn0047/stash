@@ -207,7 +207,7 @@ func QuestionByIdAndAnswers(id string) (*Question, []Answer, error) {
 }
 
 // -------------------------------------------- //
-// AUTO GENERATED - Place in a new models file
+// AUTO GENERATED
 // -------------------------------------------- //
 
 func NewUserProfile() *UserProfile {
@@ -257,5 +257,5 @@ func (up *UserProfile) Delete(db *mw.DB) error {
 }
 
 // -------------------------------------------- //
-// AUTO GENERATED - Place in a new models file
+// END AUTO GENERATED
 // -------------------------------------------- //
