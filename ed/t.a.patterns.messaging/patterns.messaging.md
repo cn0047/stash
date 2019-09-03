@@ -59,4 +59,3 @@ Specific benefits of messaging:
   - parallel task distribution and don't wait for any response.
 
 * **Exclusive pair** - connects two sockets in an exclusive pair.
-ƒ

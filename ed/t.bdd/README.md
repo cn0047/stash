@@ -1,7 +1,5 @@
-BDD
+BDD (Behavior-driven development)
 -
-
-Behavior-driven development.
 
 * Spec BDD.
 * Story BDD.
