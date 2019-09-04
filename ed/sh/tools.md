@@ -358,24 +358,6 @@ ab -k -n 5000 -c 100 -t 2 "http://localhost"
 
 docker run -ti --rm cn007b/ubuntu ab -k -n 100 -c 100 -t 5 "http://10.254.254.254:8080/9"
 
-#### less
-
-````sh
-# OPTIONS
--F or --quit-if-one-screen # exit if the entire file can be displayed on the first screen.
-+F                         # follow
--i or --ignore-case
--M or --LONG-PROMPT
--m or --long-prompt        # prompt verbosely (like more).
--R or --RAW-CONTROL-CHARS  #
--S or --chop-long-lines    # chop lines longer than the screen width.
--X or --no-init            #
--xn,... or --tabs=n,...    # sets tab stops.
-less -SFX +F /var/log/syslog
-
-:ng # go to line with number n
-````
-
 #### upstart
 
 Is an event-based replacement for the traditional init daemon.

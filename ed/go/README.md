@@ -20,7 +20,7 @@ GO
 [DIC (wire) tutorial](https://github.com/google/go-cloud/tree/master/samples/wire)
 [load test](https://github.com/tsenart/vegeta)
 [fultext search](https://github.com/blevesearch/bleve)
-[distributed tracing](https://zipkin.io/)
+[distributed tracing (zipkin-go)](https://zipkin.io/)
 [protocol for microservices](https://github.com/uber/tchannel)
 
 Go - statically-typed, general-purpose, with type safety

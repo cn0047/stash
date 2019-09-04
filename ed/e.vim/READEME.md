@@ -44,7 +44,7 @@ d'a - delete to bookmark a
 K  - LOOK TO SCREEN
 ````
 
-####.vimrc
+#### ~/.vimrc
 
 ````
 :set nowrap
