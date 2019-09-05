@@ -21,12 +21,12 @@ Best Practices
 * Use `crypto/rand` to generate keys.
 * When you spawn goroutines, make it clear when - or whether - they exit.
 * Name function's return variables.
+* Use `-race` option.
 
 #### Anti-Patterns
 
 * [Tiny package syndrome](https://www.youtube.com/watch?v=ltqV6pDKZD8&feature=youtu.be&t=7m30s).
 * Premature Exportation - over export small struct, func, etc.
-* Package `util`.
 * Config structs (it's fat like GOD obj).
 * Pointer all - bad for GC.
 * Async APIs - how to shut down goroutine?
