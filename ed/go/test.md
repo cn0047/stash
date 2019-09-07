@@ -4,6 +4,18 @@ Test
 ## Test
 
 ````sh
+# Local directory mode, caching is disabled
+test -v
+
+# List mode, caches successful package test
+go test math
+gotest ./...
+go test .
+
+# If run tests with non-test flags - the result is not cached.
+# The idiomatic way to disable test caching explicitly is to use -count=1.
+go test . -count=1
+
 testdata # directory which is ignored by go (magic)
 
 # to get more test info
@@ -11,11 +23,15 @@ go test -gcflags
 go build -gcflags '-m'
 go build -gcflags '-m -m' ./main.go
 
+go test -short
 go test -v
 go test -cover
 go test -race
+go test -cpu
 go test -json
 go test -timeout 2s
+go test -list
+go test -parallel
 
 goapp test -v transactional/users/service -run TestGetServiceAccountsForAdmin
 

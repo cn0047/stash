@@ -18,6 +18,9 @@ Modules won't work with relative imports like `import "./subdir"`.
 # for go.mod inside GOPATH
 export GO111MODULE=on
 
+# specifies private modules
+export GOPRIVATE=*.corp.example.com,rsc.io/private
+
 go mod init
 go mod init example.com/my/module/v2
 
