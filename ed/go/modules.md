@@ -32,6 +32,7 @@ go get google.golang.org/appengine@'>=v1.2.0'
 go list -m
 go list -m all # view final versions that will be used in a build 
 go list -u -m all # view available minor and patch upgrades 
+go list -m -versions rsc.io/sampler
 go list -deps -f '{{with .Module}}{{.Path}} {{.Version}}{{end}}' ./... | sort -u
 
 go get foo@v1.2.3 # get specific versions of pkg
@@ -42,6 +43,8 @@ go mod graph
 
 # download modules to local cache, for docker
 go mod download
+
+go doc rsc.io/quote/v3
 ````
 
 Typical day-to-day workflow can be:

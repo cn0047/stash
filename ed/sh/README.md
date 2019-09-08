@@ -42,6 +42,8 @@ $2   # 2nd
 $*   # all script parameters
 $#   # number of script parameters
 $?   # exit status for last command
+$!   # PID of last background task
+$$   # PID of shell
 
 # shift:
 $2 -> $1
