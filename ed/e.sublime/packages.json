@@ -1,10 +1,10 @@
 "Gofmt",
 "Gomod",
 
+"Boxy Theme",
+
 "A File Icon",
 "AlignTab",
-"Babel",
-"Boxy Theme",
 "BracketHighlighter",
 "Color Highlighter",
 "Copy Filepath With Line Numbers",
@@ -17,7 +17,6 @@
 "GitHubinator",
 "GoImports",
 "Golite",
-"GoSublime",
 "Markdown Extended",
 "Package Control",
 "Pretty JSON",

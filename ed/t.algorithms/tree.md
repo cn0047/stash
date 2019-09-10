@@ -78,6 +78,8 @@ and often for locations on the surface of the earth.
 * Hash tree - is a persistent data structure that can be **used to implement sets and maps**,
 intended to replace hash tables in purely functional programming.
 
+* Log-structured merge-tree (LSM) - ...
+
 ## AVL
 
 AVL tree - (since 1962) the **heights of the two child subtrees of any node differ by at most one**.

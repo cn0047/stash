@@ -6,6 +6,7 @@ Networking
 ````
 BGP       - Border Gateway Protocol.
 CDN       - Content Distribution Network.
+CIP       - Common Industrial Protocol (control, safety, synchronization, motion, configuration & information).
 CIDR      - Classless Inter-Domain Routing.
 Cloud DNS - Domain Name System.
 DHCP      - Dynamic Host Configuration Protocol (DHCP server can assign dynamic IP address).
