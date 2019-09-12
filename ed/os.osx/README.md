@@ -75,18 +75,19 @@ brew services list
 
 brew search xdebug
 
+brew install awscli
 brew install bash-completion
 brew install grc # colors in terminal
+brew install jmeter
+brew install jq
+brew install md5sha1sum # md5sum
+brew install mongodb
+brew install mysql
+brew install nginx
+brew install nmap
+brew install postgresql
 brew install qcachegrind
 brew install telnet
-brew install nmap
-brew install awscli
-brew install nginx
-brew install mongodb
-brew install postgresql
-brew install mysql
-brew install jmeter
-brew install md5sha1sum # md5sum
 
 brew remove nginx
 brew update && brew cleanup

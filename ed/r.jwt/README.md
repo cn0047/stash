@@ -19,4 +19,6 @@ Tokens consist of three parts separated by dots (.), which are:
 
 HMAC (symmetric) algorithm - probably the most common algorithm for signed JWTs.
 
-RSA and ECDSA algorithms (asymmetric)
+RSA and ECDSA algorithms (asymmetric).
+
+HS256 - HMAC with SHA-256.

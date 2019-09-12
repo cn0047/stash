@@ -19,6 +19,12 @@ and the operation is repeated.
 [body]
 ````
 
+Methods:
+* CONNECT - client asks an HTTP Proxy server to tunnel the TCP connection.
+* HEAD
+* GET
+* ...
+
 URL:
 
 Length up to 2048 chars.

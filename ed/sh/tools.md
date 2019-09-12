@@ -685,7 +685,8 @@ uuencode card.jpg card.jpg | mail mail@com.com
 -d, --data DATA                      # HTTP POST data (H)
 -e, --referer                        # Referer URL (H)
 -F, --form CONTENT                   # Specify HTTP multipart POST data (H)
--i, --include                        # Include the HTTP-header
+-I                                   # Only the HTTP-headers
+-i                                   # Include the HTTP-headers
 -o, --output FILE                    # Write output to <file> instead of stdout
 -O, --remote-name                    # Write output to file wiht origin name
 -s, --silent

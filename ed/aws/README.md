@@ -67,6 +67,10 @@ Use to push message.
 
 # SQS (Simple Queue Service)
 
+[docs](https://docs.aws.amazon.com/sqs/index.html)
+
+Queue types: standard, fifo.
+
 Use to pull message.
 
 # CodeDeploy
