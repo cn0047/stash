@@ -379,10 +379,10 @@ export GOPATH=$PWD'/ed/go/examples/algolia'
 go get github.com/algolia/algoliasearch-client-go/algoliasearch
 go run ed/go/examples/algolia/src/main.go
 
-#### aws s3
+#### aws
 
-sh
-export GOPATH=/Users/k/web/kovpak/gh/ed/go/examples/aws/s3
+# sh
+export GOPATH=/Users/k/web/kovpak/gh/ed/go/examples/aws
 go get -u "github.com/aws/aws-sdk-go/aws"
 cd $GOPATH/src/app && go run main.go
 

@@ -11,8 +11,8 @@ synonyms, query expansion, advanced language processing,
 geo-awareness, distinct, personalization.
 
 ````
-Relational DB ⇒ Databases ⇒ Table ⇒ Rows            ⇒ Columns
-Algolia       ⇒           ⇒ Index ⇒ Record (object) ⇒
+Relational DB ⇒ Database ⇒ Table ⇒ Row             ⇒ Column
+Algolia       ⇒          ⇒ Index ⇒ Record (object) ⇒
 ````
 
 Stop words are very common words in a given language.

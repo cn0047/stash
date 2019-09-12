@@ -1,37 +1,22 @@
-package main
+package s3
 
 import (
 	"bytes"
 	"fmt"
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/aws/awsutil"
-	"github.com/aws/aws-sdk-go/aws/credentials"
-	"github.com/aws/aws-sdk-go/aws/session"
-	"github.com/aws/aws-sdk-go/service/s3"
 	"net/http"
 	"os"
+
+	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/awsutil"
+	"github.com/aws/aws-sdk-go/aws/session"
+	"github.com/aws/aws-sdk-go/service/s3"
 )
 
-var (
-	aws_access_key_id     = ""
-	aws_secret_access_key = ""
-	region                = "us-east-1"
-	bucket                = ""
-)
-
-func main() {
-	v1()
+func Run(cfg *aws.Config, bucket string) {
+	f1(cfg, bucket)
 }
 
-func v1() {
-	token := ""
-
-	creds := credentials.NewStaticCredentials(aws_access_key_id, aws_secret_access_key, token)
-	_, err := creds.Get()
-	if err != nil {
-		panic(err)
-	}
-	cfg := aws.NewConfig().WithRegion(region).WithCredentials(creds)
+func f1(cfg *aws.Config, bucket string) {
 	svc := s3.New(session.New(), cfg)
 
 	file, err := os.Open("s.png")
@@ -55,9 +40,11 @@ func v1() {
 		ContentLength: aws.Int64(size),
 		ContentType:   aws.String(fileType),
 	}
+
 	resp, err := svc.PutObject(params)
 	if err != nil {
 		panic(err)
 	}
+
 	fmt.Printf("response %s", awsutil.StringValue(resp))
 }
