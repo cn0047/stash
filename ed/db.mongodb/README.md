@@ -10,7 +10,7 @@ Mongo DB
 #### Introduction
 
 ````
-Relational DB ⇒ Table       ⇒ Row      ⇒ Field
+Relational DB ⇒ Table       ⇒ Row      ⇒ Column
 MongoDB       ⇒ Collection  ⇒ Document ⇒ Property
 ````
 

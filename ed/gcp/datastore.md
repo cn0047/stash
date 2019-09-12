@@ -25,7 +25,7 @@ In DataStore nested transactions are not supported.
 Cloud Datastore uses optimistic concurrency to manage transactions.
 
 ````
-Relational DB ⇒ Table ⇒ Row    ⇒ Field    ⇒ Primary key
+Relational DB ⇒ Table ⇒ Row    ⇒ Column   ⇒ Primary key
 Datastore     ⇒ Kind  ⇒ Entity ⇒ Property ⇒ Key
 ````
 

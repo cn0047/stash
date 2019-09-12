@@ -1,47 +1,45 @@
-"Gofmt",
-"Gomod",
+Gofmt
+Gomod
+//Boxy Theme
+A File Icon
+AlignTab
+BracketHighlighter
+Color Highlighter
+Copy Filepath With Line Numbers
+Dockerfile Syntax Highlighting
+Emmet
+FileClose
+Filter Lines
+Function Name Display
+Git
+GitHubinator
+GoImports
+Golite
+Markdown Extended
+Package Control
+Pretty JSON
+Quick File Open
+SimpleMovements
+Sublime Bookmarks
+SublimeLinter
+Super Calculator
+Theme - Soda
 
-"Boxy Theme",
-
-"A File Icon",
-"AlignTab",
-"BracketHighlighter",
-"Color Highlighter",
-"Copy Filepath With Line Numbers",
-"Dockerfile Syntax Highlighting",
-"Emmet",
-"FileClose",
-"Filter Lines",
-"Function Name Display",
-"Git",
-"GitHubinator",
-"GoImports",
-"Golite",
-"Markdown Extended",
-"Package Control",
-"Pretty JSON",
-"Quick File Open",
-"SimpleMovements",
-"Sublime Bookmarks",
-"SublimeLinter",
-"Super Calculator",
-"Theme - Soda",
-
-"ApacheConf.tmLanguage",
-"Babel"
-"DocBlockr",
-"FavoriteFiles",
-"JavaScript Completions",
-"JsFormat",
-"JSX",
-"MarkdownHighlighting",
-"nginx",
-"Phpcs",
-"PhpDoc",
-"PhpSpec Snippets",
-"PHPUnit Completions",
-"Protobuf Syntax Hightlighting",
-"SFTP",
-"SublimeLinter-jshint",
-"Theme - Solarized Space"
-"Xdebug Client",
+ApacheConf.tmLanguage
+Babel
+DocBlockr
+//FavoriteFiles
+JavaScript Completions
+JsFormat
+JSX
+//MarkdownHighlighting
+nginx
+Phpcs
+PhpDoc
+PhpSpec Snippets
+PHPUnit Completions
+Protobuf Syntax Hightlighting
+SFTP
+SublimeLinter-jshint
+//Theme - Solarized Space
+Xdebug Client
