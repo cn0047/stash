@@ -29,7 +29,7 @@ To make Minimum spanning tree use:
 
 ## Trees
 
-AST - Abstract Syntax Tree (used by webpack, babel, etc). https://astexplorer.net/
+* AST - Abstract Syntax Tree (used by webpack, babel, etc). https://astexplorer.net/
 
 * `Binary search trees` (ordered, sorted binary trees) - particular type of containers,
 data structures that store "items" in memory.
@@ -78,27 +78,5 @@ and often for locations on the surface of the earth.
 * Hash tree - is a persistent data structure that can be **used to implement sets and maps**,
 intended to replace hash tables in purely functional programming.
 
-* Log-structured merge-tree (LSM) - ...
-
-## AVL
-
-AVL tree - (since 1962) the **heights of the two child subtrees of any node differ by at most one**.
-Are faster than red–black trees because they are more rigidly balanced.
-Similar to red–black trees, AVL trees are height-balanced.
-
-Balance factor: +1, 0, -1
-
-LL | RR rotations.
-
-Height h = log N
-Worst time complexity for search = h = O(h) = log N
-
-## Radix tree
-
-[Trie](https://monosnap.com/file/1sTq5fwBiVEvPWakJiGusGK7foFmji) (digital or radix or prefix tree) - is an ordered tree data structure
-that is used to **store a dynamic set or associative array** where the keys are usually strings.
-
-Radix tree - each node that is the only child is merged with its parent.
-This makes radix trees much more efficient for small sets
-(especially if the strings are long) and for sets of strings
-that share long prefixes.
+* Log-structured merge-tree (LSM) - tree with performance characteristics that make it attractive
+for providing indexed access to files with high insert volume, such as transactional log data.
