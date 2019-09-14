@@ -125,7 +125,7 @@ git checkout --track -b develop origin/develop
 git branch develop --set-upstream-to origin/develop
 
 git show branchName
-git rev-parse HEAD
+git rev-parse HEAD # current commit hash
 git rev_parse branch
 git brnach --no-merged
 git brnach --merged                               # branches merged with current
