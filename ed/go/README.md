@@ -22,6 +22,7 @@ GO
 [fultext search](https://github.com/blevesearch/bleve)
 [distributed tracing (zipkin-go)](https://zipkin.io/)
 [protocol for microservices](https://github.com/uber/tchannel)
+[golangci](https://golangci.com/)
 
 Go - statically-typed, general-purpose, with type safety
 and automatic memory management programming language.
