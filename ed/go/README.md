@@ -53,7 +53,7 @@ go build -gcflags='-m -m' # provides info about optimization decisions
 go build -o newname
 GOOS=linux GOARCH=amd64 go build \
   -ldflags="-w -s" -o /go/bin/hello # build in docker (get the smallest binaries)
-                                    # -w  - not include info for debug, pprof, etc (DWARF).
+                                    # -w - not include info for debug, pprof, etc (DWARF).
                                     # -s - disable symbol table, `go tool nm`
 go clean -r              # clean unneeded files
 go env

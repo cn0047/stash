@@ -43,6 +43,8 @@ go mod graph
 
 # download modules to local cache, for docker
 go mod download
+# create a vendor dir and copy all dependencies into it
+go mod vendor
 
 go doc rsc.io/quote/v3
 ````
