@@ -16,3 +16,16 @@ Handler – method that runtime executes when your function is invoked.
 You can use a Lambda function to process requests from an Application Load Balancer.
 
 Lambda automatically scales to handle 1,000 concurrent executions per Region.
+
+Trigger DynamoDB:
+* Batch size
+The largest number of records that will be read from your table’s update stream at once.
+* Batch window
+The maximum amount of time to gather records before invoking the function, in seconds.
+
+````sh
+export GOPATH=/Users/k/web/kovpak/gh/ed/go/examples/aws
+GOOS=linux go build $GOPATH/src/app/lambda/main.go
+
+aws update-function-code ...
+````
