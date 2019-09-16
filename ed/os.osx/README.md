@@ -88,6 +88,7 @@ brew install nmap
 brew install postgresql
 brew install qcachegrind
 brew install telnet
+brew install terraform
 
 brew remove nginx
 brew update && brew cleanup
