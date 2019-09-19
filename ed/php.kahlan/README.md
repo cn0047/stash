@@ -17,8 +17,8 @@ vendor/bin/kahlan --coverage='One'
 ````bash
 vendor/bin/kahlan --coverage="One"
 
-vendor/bin/kahlan --pattern=spec/suite/services/v1/CaptionsSpec.php  --coverage="W3\Ziipr\Services\v1\Captions"
-vendor/bin/kahlan --coverage="W3\Ziipr\Services\v1" --istanbul="coverage.json"
+vendor/bin/kahlan --pattern=spec/suite/services/v1/CaptionsSpec.php  --coverage="W3\Zii\Services\v1\Captions"
+vendor/bin/kahlan --coverage="W3\Zii\Services\v1" --istanbul="coverage.json"
 
 vendor/bin/kahlan --coverage=4 --istanbul="coverage.json"
 istanbul report
@@ -51,7 +51,7 @@ use Phalcon\Db\Adapter\Pdo\Mysql;
 use Phalcon\Db\AdapterInterface;
 use Phalcon\Db\Result\Pdo as PdoResult;
 use Phalcon\Di;
-use W3\Ziipr\Services\v1\AdminReport\KPI\Daily;
+use W3\Zii\Services\v1\AdminReport\KPI\Daily;
 
 describe('KPI report daily v1', function () {
 

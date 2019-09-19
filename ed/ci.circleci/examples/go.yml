@@ -13,7 +13,7 @@ jobs:
             username: $DOCKER_USER
             password: $DOCKER_PASSWORD
 
-      - image: gcr.io/clique-dev/cws-circleci
+      - image: gcr.io/cl-dev/cws-circleci
          auth:
             username: _json_key
             # password - don't contain password

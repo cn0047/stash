@@ -120,7 +120,7 @@ class Command
      *
      * @throws \RuntimeException In case when picture download failed.
      *
-     * @example php index.php download 'https://s3-eu-west-1.amazonaws.com/w3.stage.ziipr.bucket/000010215/big.mp4' '/tmp/ziipr.v.mp4'
+     * @example php index.php download 'https://s3-eu-west-1.amazonaws.com/w3.stage.zii.bucket/000010215/big.mp4' '/tmp/zii.v.mp4'
      */
     public function download($url, $file)
     {
@@ -154,7 +154,7 @@ class Command
      *
      * @throws \RuntimeException In case when picture download failed.
      *
-     * @example php index.php download2 'https://s3-eu-west-1.amazonaws.com/bucket/000010215/big.mp4' '/tmp/ziipr.v.mp4'
+     * @example php index.php download2 'https://s3-eu-west-1.amazonaws.com/bucket/000010215/big.mp4' '/tmp/zii.v.mp4'
      */
     public function download2($url, $file)
     {
@@ -456,7 +456,7 @@ $action = array_shift($argv);
 // Prints list of objects in bucket.
 // Next code works, uncomment when you need it.
 // $result = $s3->listObjects(array(
-//     'Bucket' => 'w3.ziipr.bucket',
+//     'Bucket' => 'w3.zii.bucket',
 //     'MaxKeys' => 5
 // ));
 // var_export(($result));
@@ -471,13 +471,13 @@ $action = array_shift($argv);
 // $s3 = $aws->createS3();
 // $objects = $s3->getIterator(
 //     'ListObjects',
-//     ['Bucket' => 'w3.ziipr.bucket', 'Prefix' => '000046059']
+//     ['Bucket' => 'w3.zii.bucket', 'Prefix' => '000046059']
 // );
 // foreach ($objects as $object) {
 //     echo $object['Key'] . "\n";
 // }
 // $s3->putObject([
-//    'Bucket' => 'w3.ziipr.bucket',
+//    'Bucket' => 'w3.zii.bucket',
 //    'Key' => '000046059/public/1.jpg',
 //    'SourceFile' => '/home/kovpak/Downloads/images.jpg',
 //    'ACL' => 'public-read',

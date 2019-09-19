@@ -39,7 +39,7 @@
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">api.ziipr.com</stringProp>
+          <stringProp name="HTTPSampler.domain">api.zii.com</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.connect_timeout"></stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -84,7 +84,7 @@
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
             <stringProp name="delimiter">,</stringProp>
             <stringProp name="fileEncoding"></stringProp>
-            <stringProp name="filename">/Users/kvol/web/kovpak/ziipr/jmeterTests/users.prod.csv</stringProp>
+            <stringProp name="filename">/Users/kvol/web/kovpak/zii/jmeterTests/users.prod.csv</stringProp>
             <boolProp name="quotedData">false</boolProp>
             <boolProp name="recycle">true</boolProp>
             <stringProp name="shareMode">shareMode.all</stringProp>
@@ -186,7 +186,7 @@
               </elementProp>
               <elementProp name="" elementType="Argument">
                 <stringProp name="Argument.name"></stringProp>
-                <stringProp name="Argument.value">s3://w3.ziipr.bucket/${bucketFolder}/public/</stringProp>
+                <stringProp name="Argument.value">s3://w3.zii.bucket/${bucketFolder}/public/</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
@@ -200,7 +200,7 @@
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
             <stringProp name="delimiter">,</stringProp>
             <stringProp name="fileEncoding"></stringProp>
-            <stringProp name="filename">/Users/kvol/web/kovpak/ziipr/jmeterTests/videos.csv</stringProp>
+            <stringProp name="filename">/Users/kvol/web/kovpak/zii/jmeterTests/videos.csv</stringProp>
             <boolProp name="quotedData">false</boolProp>
             <boolProp name="recycle">true</boolProp>
             <stringProp name="shareMode">shareMode.all</stringProp>
@@ -263,7 +263,7 @@
           </collectionProp>
         </HeaderManager>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Upload video to ziipr - HTTP Request" enabled="false">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Upload video to zii - HTTP Request" enabled="false">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">

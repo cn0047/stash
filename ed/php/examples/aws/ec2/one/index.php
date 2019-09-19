@@ -13,7 +13,7 @@ $config = [
 $ec2 = Ec2Client::factory($config);
 $args = [
     'Filters' => [
-        ['Name' => 'tag:Name', 'Values' => ['prod-ziipr-web']],
+        ['Name' => 'tag:Name', 'Values' => ['prod-zii-web']],
     ]
 ];
 $data = $ec2->describeInstances($args)->toArray();

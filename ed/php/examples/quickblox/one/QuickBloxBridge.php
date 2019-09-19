@@ -123,7 +123,7 @@ class QuickBloxBridge
 
     public function getChatBetweenAdminAndTargetUser($targetUserId)
     {
-        $chatName = "chat between ziipr admin and $targetUserId";
+        $chatName = "chat between zii admin and $targetUserId";
         $chats = $this->getChats($chatName)['items'];
         if (!isset($chats[0])) {
             throw new ChatBetweenAdminAndTargetUserNotFound($chatName);
@@ -215,8 +215,8 @@ class QuickBloxBridge
         $body = [
             'type' => 3, // private chat
             'type' => 2, // group chat
-            'name' => 'chat with ziipr admin',
-            'name' => "chat between ziipr admin and $targetUserId",
+            'name' => 'chat with zii admin',
+            'name' => "chat between zii admin and $targetUserId",
             'occupants_ids' => $targetUserId,
         ];
         $post_body = http_build_query($body);

@@ -14,7 +14,7 @@ $put = [
     ],
 ];
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'http://api.ziipr.dev/v1/users/69074/settings');
+curl_setopt($ch, CURLOPT_URL, 'http://api.zii.dev/v1/users/69074/settings');
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($put));

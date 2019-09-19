@@ -37,15 +37,15 @@ if [ -z "$2" ]; then
 fi
 commandStr=$2
 
-keyFile='/home/kovpak/web/storage/ziipr.pem'
+keyFile='/home/kovpak/web/storage/zii.pem'
 if [ ! -f $keyFile ]; then
-    keyFile='/vagrant/ziipr.pem'
+    keyFile='/vagrant/zii.pem'
 fi
 if [ ! -f $keyFile ]; then
-    keyFile='/Users/kvol/web/storage/ziipr.pem'
+    keyFile='/Users/kvol/web/storage/zii.pem'
 fi
-keyFileStage="${keyFile/ziipr.pem/ziipr-stage.pem}"
-keyFileProd="${keyFile/ziipr.pem/ziipr-prod.pem}"
+keyFileStage="${keyFile/zii.pem/zii-stage.pem}"
+keyFileProd="${keyFile/zii.pem/zii-prod.pem}"
 declare -a keys=($keyFileProd $keyFileStage $keyFile)
 
 hosts=$(\
