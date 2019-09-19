@@ -1,11 +1,24 @@
-.DS_Store
+.DS_Store/
 .idea/
 
 .data/
 
-node_modules/
+.terraform
+terraform.*
+
+# nodejs
+**/node_modules/
 package-lock.json
 yarn.lock
 
-vendor/ # php, golang
+# php
+**/vendor/
 composer.lock
+config.php
+
+# golang
+**/vendor/
+ed/go/**/pkg/
+ed/go/**/bin/
+ed/go/**/src/
+!ed/go/**/src/app/
