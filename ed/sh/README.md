@@ -24,6 +24,8 @@ command1 || command2 # command2 is executed if and only if
 && # &
 || # or
 
+: # do nothing
+
 PATH=$PATH:~/bin
 
 # shabang:
