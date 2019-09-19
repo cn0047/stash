@@ -1,7 +1,0 @@
-.data
-pkg
-src/cloud.google.com
-src/github.com
-src/go.opencensus.io
-src/golang.org
-src/google.golang.org
