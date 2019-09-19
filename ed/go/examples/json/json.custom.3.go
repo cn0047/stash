@@ -56,7 +56,7 @@ func (s ShortLink) MarshalJSON() ([]byte, error) {
 	})
 }
 
-func PutShortLink(cctx *api.CliqueContext, input ShortLinkInput) (ShortLink, error) {
+func PutShortLink(cctx *api.ClContext, input ShortLinkInput) (ShortLink, error) {
 	m, err := json.Marshal(input.Metadata)
 	if err != nil {
 		return ShortLink{}, fmt.Errorf("failed to marshal metadata, error: %s", err)

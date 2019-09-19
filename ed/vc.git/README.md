@@ -9,7 +9,7 @@ Git is a free and open source distributed version control system.
 
 ````sh
 # from jenkins
-git ls-remote -h https://github.com/W3Ltd/ziipr_core HEAD
+git ls-remote -h https://github.com/W3Ltd/zii_core HEAD
 
 git init
 

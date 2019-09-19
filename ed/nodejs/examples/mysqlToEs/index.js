@@ -82,7 +82,7 @@ function getFromDb(userId) {
 function getFromES(userId) {
   console.log('ES', userId);
   es.search({
-    index: 'ziipr',
+    index: 'zii',
     type: 'users',
     body: {
       query: {ids: {values: [userId]}}

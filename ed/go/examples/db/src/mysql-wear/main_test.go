@@ -1,7 +1,7 @@
 package main
 
 import (
-	mw "github.com/cliqueinc/mysql-wear"
+	mw "github.com/clinc/mysql-wear"
 	"testing"
 )
 

@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/cliqueinc/mysql-wear/sqlq"
+	"github.com/clinc/mysql-wear/sqlq"
 
-	mw "github.com/cliqueinc/mysql-wear"
+	mw "github.com/clinc/mysql-wear"
 )
 
 const (

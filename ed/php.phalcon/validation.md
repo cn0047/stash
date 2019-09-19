@@ -6,10 +6,10 @@ Validation
 ````php
 <?php
 
-namespace W3\Ziipr\Phalcon\Validation;
+namespace W3\Zii\Phalcon\Validation;
 
 use Phalcon\Validation;
-use W3\Ziipr\Exceptions\ValidationException;
+use W3\Zii\Exceptions\ValidationException;
 
 class BaseValidation extends Validation
 {
@@ -33,11 +33,11 @@ class BaseValidation extends Validation
 ````php
 <?php
 
-namespace W3\Ziipr\Services\v1\SummaryScreen\VO;
+namespace W3\Zii\Services\v1\SummaryScreen\VO;
 
 use Phalcon\Validation\Message;
 use Phalcon\Validation\Message\Group;
-use W3\Ziipr\Phalcon\Validation\BaseValidation;
+use W3\Zii\Phalcon\Validation\BaseValidation;
 
 class UsersUnziipedValidation extends BaseValidation
 {

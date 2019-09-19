@@ -12,7 +12,7 @@ return new \Phalcon\Config(array(
         'dbname'     => 'dbRelationships',
         'charset'    => 'utf8',
 
-        'username'   => 'ziipr',
+        'username'   => 'zii',
         'password'   => 'NGtveIF6EEprvY',
     ),
 

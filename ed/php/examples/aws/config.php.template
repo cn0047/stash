@@ -11,8 +11,8 @@ $config_aws = (object)[
             'identity_name'    => 'w3_z_identity',
             'token_duration'   => 7200,
             'roles' => [
-                'unauth' => 'arn:aws:iam::********:role/cognito_w3_ziipr_identity_auth_role',
-                'auth'   => 'arn:aws:iam::********:role/cognito_w3_ziipr_identity_auth_role'
+                'unauth' => 'arn:aws:iam::********:role/cognito_w3_zii_identity_auth_role',
+                'auth'   => 'arn:aws:iam::********:role/cognito_w3_zii_identity_auth_role'
             ]
         ],
         's3' => (object)[

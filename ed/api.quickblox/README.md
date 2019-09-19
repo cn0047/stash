@@ -38,7 +38,7 @@ $signature = hash_hmac("sha1", $built_query , $QB_APP_SECRET);
 $body["signature"] = $signature;
 $post_body = http_build_query($body);
 $curl = curl_init();
-curl_setopt($curl, CURLOPT_URL, "https://apiziipr.quickblox.com/session.json");
+curl_setopt($curl, CURLOPT_URL, "https://apizii.quickblox.com/session.json");
 curl_setopt($curl, CURLOPT_POST, true);
 curl_setopt($curl, CURLOPT_POSTFIELDS, $post_body);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -50,7 +50,7 @@ printf("Your token is: %s %s", json_decode($response, true)["session"]["token"],
 '
 ````
 ````sh
-# user 1 admin@ziipr
+# user 1 admin@zii
 $USER_LOGIN = "";
 $USER_PASSWORD = "";
 export qbIdForUser1=
@@ -107,7 +107,7 @@ Chat types: `type=3` - PRIVATE chat, `type=2` - GROUP chat, `type=1` - PUBLIC_GR
 curl -X GET -H "QB-Token: "$tokenForUser1 https://$host/chat/Dialog.json
 curl -X GET -H "QB-Token: "$tokenForUser1 https://$host/chat/Dialog.json | grep name --color=always
 curl -X GET -H "QB-Token: "$tokenForUser2 https://$host/chat/Dialog.json?type=2
-curl -X GET -H "QB-Token: "$tokenForUser3 https://$host/chat/Dialog.json?name=chat+between+ziipr+admin+and+367773
+curl -X GET -H "QB-Token: "$tokenForUser3 https://$host/chat/Dialog.json?name=chat+between+zii+admin+and+367773
 
 #######################################################################################################################
 
@@ -207,7 +207,7 @@ https://$host/chat/Dialog.json
 curl -X POST \
 -H "Content-Type: application/json" \
 -H "QB-Token: "$tokenForUser1 \
--d '{"type": 2, "name": "chat between ziipr admin and '$qbIdForUser2'", "occupants_ids": "'$qbIdForUser2'"}' \
+-d '{"type": 2, "name": "chat between zii admin and '$qbIdForUser2'", "occupants_ids": "'$qbIdForUser2'"}' \
 https://$host/chat/Dialog.json
 
 # !!! IMPORTANT

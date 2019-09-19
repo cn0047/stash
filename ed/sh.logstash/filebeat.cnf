@@ -7,12 +7,12 @@ input {
 filter {
     if [host] == "ip-172-31-30-171" {
         mutate {
-            replace => [ "host", "stage-ziipr-web" ]
+            replace => [ "host", "stage-zii-web" ]
         }
     }
     if [host] == "ip-172-31-1-239" {
                 mutate {
-                        replace => [ "host", "stage-ziipr-admin" ]
+                        replace => [ "host", "stage-zii-admin" ]
                 }
     }
     if [host] == "ip-172-31-15-204" {
@@ -22,20 +22,20 @@ filter {
         }
 }
 output {
-    if [source] == "/var/log/nginx/access.log" and [host] == "stage-ziipr-web" {
+    if [source] == "/var/log/nginx/access.log" and [host] == "stage-zii-web" {
         elasticsearch { hosts => ["localhost:9201"] index => "stage_admin_nginx_access" }
     }
-    if [source] == "/var/log/nginx/admin-error.log" and [host] == "stage-ziipr-web" {
+    if [source] == "/var/log/nginx/admin-error.log" and [host] == "stage-zii-web" {
                 elasticsearch { hosts => ["localhost:9201"] index => "stage_admin_nginx_error" }
         }
 
-        if [source] == "/var/log/nginx/access.log" and [host] == "stage-ziipr-admin" {
+        if [source] == "/var/log/nginx/access.log" and [host] == "stage-zii-admin" {
                 elasticsearch { hosts => ["localhost:9201"] index => "stage_api_nginx_access" }
         }
-        if [source] == "/var/log/nginx/admin-error.log" and [host] == "stage-ziipr-admin" {
+        if [source] == "/var/log/nginx/admin-error.log" and [host] == "stage-zii-admin" {
                 elasticsearch { hosts => ["localhost:9201"] index => "stage_admin_nginx_error" }
         }
-    if [source] == "/var/log/nginx/api-error.log" and [host] == "stage-ziipr-admin" {
+    if [source] == "/var/log/nginx/api-error.log" and [host] == "stage-zii-admin" {
                 elasticsearch { hosts => ["localhost:9201"] index => "stage_api_nginx_error" }
         }
     if [source] == "/var/log/email-worker.log" and [host] == "stage-cli" {

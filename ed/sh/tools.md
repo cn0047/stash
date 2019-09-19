@@ -12,7 +12,7 @@ nslookup git.mdm.comodo.od.ua
 host github.com # Shows ip by host.
 dig domain
 whois ip
-nmap --script=http-headers www.ziipr.com # scan ports
+nmap --script=http-headers www.zii.com # scan ports
 
 timedatectl status | grep "Time zone"
 colordiff -u file1 file2
@@ -438,7 +438,7 @@ mogrify -resize 400x400! src.png
 ````sh
 rsync -az --progress /source /target
 rsync -az --progress --exclude=.git/* --rsh='ssh -p26' kovpak@trunk-web-php.pmmedia.priv:/usr/share/yii/ /home/volodymyr/web/kovpak/yii/framework/
-rsync -az --progress --rsh='ssh -i /home/kovpak/web/storage/ziipr.pem' ./ ec2-user@ec2-52-210-246-232.eu-west-1.compute.amazonaws.com:/var/www/
+rsync -az --progress --rsh='ssh -i /home/kovpak/web/storage/zii.pem' ./ ec2-user@ec2-52-210-246-232.eu-west-1.compute.amazonaws.com:/var/www/
 ````
 
 #### sed

@@ -102,7 +102,7 @@ class Command
     private static function markAdminMessageAsRead($login, $password, $qbUserId)
     {
         $msg1 = 'La semaine est presque finie, bientôt les fêtes🎉 🎉 ! Bon courage 😀';
-        $msg2 = "Noël est presque là 🎄Meilleurs voeux de la part de toute l'équipe de Ziipr !";
+        $msg2 = "Noël est presque là 🎄Meilleurs voeux de la part de toute l'équipe de zii !";
         $qbb = new QuickBloxBridge($login, $password);
         $chatId = $qbb->getChatBetweenAdminAndTargetUser($qbUserId)['_id'];
         $messages = $qbb->getChatMessages($chatId)['items'];
@@ -208,7 +208,7 @@ class Command
         $channel->queue_declare('durable_task_queue', false, $durable, false, false);
 
         $callback = function ($msg) use ($qbb) {
-            $message = "Noël est presque là 🎄Meilleurs voeux de la part de toute l'équipe de Ziipr !";
+            $message = "Noël est presque là 🎄Meilleurs voeux de la part de toute l'équipe de zii !";
             $targetQBUserId = $msg->body;
             try {
                 $result = $qbb->sendChatMessageFromAdmin($targetQBUserId, $message);
@@ -295,12 +295,12 @@ class Command
             $qbUserId = 0;
             if (count($chat['occupants_ids']) > 1) {
                 $qbUserId = ($chat['occupants_ids'][1] !== 203379) ? $chat['occupants_ids'][1] : $chat['occupants_ids'][0];
-                list(, , $ziiprUserId, ,$qbUserPassword) = array_map(
+                list(, , $ziiUserId, ,$qbUserPassword) = array_map(
                     'trim',
                     str_getcsv(trim(`grep $qbUserId -wri /vagrant/qb.csv`), '|')
                 );
                 try {
-                    $qbb2 = new QuickBloxBridge("user_$ziiprUserId", $qbUserPassword);
+                    $qbb2 = new QuickBloxBridge("user_$ziiUserId", $qbUserPassword);
                     // Delete admin chat from user's chats.
                     $qbb2->deleteChat($chat['_id']);
                 } catch (\TokenException1 $e) {
@@ -343,7 +343,7 @@ class Command
             $body = $msg->body;
             $data = json_decode($body, true);
             $qbb = new QuickBloxBridge('user_' . $data['userId'], $data['password']);
-            $chatName = 'chat between ziipr admin and ' . $data['qbUserId'];
+            $chatName = 'chat between zii admin and ' . $data['qbUserId'];
             $isKeepGoing = true;
             start:
             try {

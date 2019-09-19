@@ -15,7 +15,7 @@ docker exec -it xct sh -c 'vmstat 1'
 curl 'localhost:8080/x?n=1500'
 
 gcloud app deploy -q $GOPATH/src/app/app.yaml
-curl 'https://x-test-dot-clique-dev.appspot.com/x?n=5'
+curl 'https://x-test-dot-cl-dev.appspot.com/x?n=5'
 
 */
 
@@ -41,7 +41,7 @@ import (
 const (
 	ServiceName  = "x-test"
 	PathToWorker = "/y"
-	Parent       = "projects/clique-dev/locations/us-central1/queues/default"
+	Parent       = "projects/cl-dev/locations/us-central1/queues/default"
 	LogURL       = "https://realtimelog.herokuapp.com/t"
 )
 

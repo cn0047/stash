@@ -77,7 +77,7 @@ sudo chmod ugo+x /usr/bin/phalcon
 phalcon project --name dbRelationships --type=cli
 
 # generate model from db table
-phalcon model video --get-set --output=models/v1/ --namespace=W3\\Ziipr\\Models\\v1
+phalcon model video --get-set --output=models/v1/ --namespace=W3\\Zii\\Models\\v1
 ````
 
 #### DB migrations
@@ -108,7 +108,7 @@ public function up()
             'size' => 1,
         ]
     );
-    self::$_connection->addColumn('captions_new', 'ziipr', $column);
+    self::$_connection->addColumn('captions_new', 'Zii', $column);
 }
 public function up()
 {
@@ -122,7 +122,7 @@ public function down()
         'TaxonomyID IN (201600, 201601, 201602, 201603, 201604, 201605)'
     );
     self::$_connection->dropTable('user_auth');
-    self::$_connection->dropColumn('captions_new', 'ziipr', 'UpdatedAt');
+    self::$_connection->dropColumn('captions_new', 'Zii', 'UpdatedAt');
 }
 ````
 
