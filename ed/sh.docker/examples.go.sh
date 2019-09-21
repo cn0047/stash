@@ -384,7 +384,10 @@ go run ed/go/examples/algolia/src/main.go
 # sh
 export GOPATH=/Users/k/web/kovpak/gh/ed/go/examples/aws
 go get -u "github.com/aws/aws-sdk-go/aws"
+#
 cd $GOPATH/src/app && go run main.go
+# aws lambda
+GOOS=linux go build $GOPATH/src/app/lambda/main.go
 
 #### bench
 
