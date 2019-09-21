@@ -22,3 +22,6 @@ Scan always returns a result set.
 
 You can define a maximum of 5 local secondary indexes
 and 20 global secondary indexes per table.
+
+PROVISIONED - Sets the read/write capacity mode to PROVISIONED.
+PAY_PER_REQUEST - for unpredictable workloads.

@@ -24,8 +24,5 @@ The largest number of records that will be read from your table’s update strea
 The maximum amount of time to gather records before invoking the function, in seconds.
 
 ````sh
-export GOPATH=/Users/k/web/kovpak/gh/ed/go/examples/aws
-GOOS=linux go build $GOPATH/src/app/lambda/main.go
-
 aws update-function-code ...
 ````
