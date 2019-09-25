@@ -32,45 +32,38 @@ An architectural pattern is a proven structural organization schema for software
 * Implicit invocation
 * Naked objects
 
-#### Client-server
-
+**Client-server**
 Usage: online app like email, document sharing and banking.
 
-#### Pipe-filter
-
+**Pipe-filter**
 For data streams. Data to be processed is passed through pipes.
-
+<br>
 Usage: compilers, lexical analysis, parsing, semantic analysis, and code generation.
 
-#### Broker
-
+**Broker**
 For distributed systems with decoupled components.
 Components can interact with each other by remote service invocations.
 A `broker` component is responsible for the coordination of communication among components.
-
+<br>
 Usage: message broker (Kafka, RabbitMQ).
 
-#### Peer-to-peer
-
+**Peer-to-peer**
 Individual components are known as `peers`.
 Peers may function both as a `client`, requesting services from other peers,
 and as a `server` providing services to other peers.
-
+<br>
 Usage: file-sharing networks, multimedia protocols, something like spotify.
 
-#### Blackboard
-
+**Blackboard**
 Useful for problems for which no deterministic solution strategies are known.
-
+<br>
 Usage: speech recognition, vehicle identification and tracking,
 protein structure identification, sonar signals interpretation.
 
-#### Event-bus
-
+**Event-bus**
 `event source`, `event listener`, `channel` and `event bus`.
-
+<br>
 Usage: android development, notification services.
 
-#### Entity-Control-Boundary
-
+**Entity-Control-Boundary**
 Action -> Boundary -> Control (mediator) -> Entity.
