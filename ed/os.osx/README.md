@@ -28,43 +28,37 @@ sysctl -n hw.ncpu
 ````sh
 Option = Alt
 
-Control-Shift-Power # Lock screen
+Control-Shift-Power  # Lock screen
 Command-Option-Power # Put MacBook to sleep
+Command-Option-Esc   # Force Quit
 
-Command-Option-Esc # Force Quit
+Command-Shift-.   # Show hidden files
+Command-h:        # Hide
+Command-m:        # Minimize
+Command-Option-w: # Close all windows at once
 
-Command-Shift-. # Show hidden files
-
-L # Forward 10 seconds forward in youtube
-Shift–N # Next in youtube
-Shift–P # Prev in youtube
-````
-
-````sh
-Command-H: Hide
-Command-M: Minimize
-Command-Option-W: Close all windows at once
-````
-
-````sh
 Option-Del  # Del word
 Control-K   # Del row
 Command-Del # Del to home
-Control-O   # Insert a new line after.
+Control-O   # Insert a new line after
 
-Fn–U|D      # Move page U/D
-Fn–L|R      # Scroll B/E document.
-Command–U|D # Move B/en document.
-Command–L|R # Move B/E current line.
-Option–L|R  # Move B/E previous word.
+Fn–u|d      # Move page U/D
+Fn–l|r      # Scroll B/E document.
+Command–u|d # Move B/en document.
+Command–l|r # Move B/E current line.
+Option–l|r  # Move B/E previous word.
 
 Shift–Option–U|D|L|R # Extended text selection
 
-Command-Shift-3 # screenshot ALL SCREEN in file on desktop
-Command-Control-Shift-3 # screenshot ALL SCREEN in buffer
-# !!!
-Command-Shift-4 # screenshot (SELECTED SHAPE) in file on desktop ✅
-Command-Control-Shift-4 # screenshot (SELECTED SHAPE) in buffer 💡
+Command-Shift-3         # Screenshot ALL SCREEN in file on desktop
+Command-Control-Shift-3 # Screenshot ALL SCREEN in buffer
+Command-Shift-4         # Screenshot (SELECTED SHAPE) in file on desktop ✅
+Command-Control-Shift-4 # Screenshot (SELECTED SHAPE) in buffer 💡
+
+F1 # Bright down
+F2 # Bright up
+F11 # Sound down
+F12 # Sound up
 ````
 
 ## Brew
@@ -87,6 +81,7 @@ brew install nginx
 brew install nmap
 brew install postgresql
 brew install qcachegrind
+brew install sshuttle
 brew install telnet
 brew install terraform
 

@@ -195,7 +195,7 @@ It is an OPTIONS request using two HTTP request headers: `Access-Control-Request
 and the `Origin` header.
 
 ````sh
-OPTIONS /resource/foo 
+OPTIONS /resource/foo
 Access-Control-Request-Method: DELETE
 Access-Control-Request-Headers: origin, x-requested-with
 Origin: https://foo.bar.org
