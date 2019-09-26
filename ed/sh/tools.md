@@ -6,6 +6,9 @@ hostname
 tty
 who
 
+# ssh tunnel
+sshuttle -v -r usr@ec2-us-east-1.smth.com 10.3.0.0/16
+
 ping 8.8.8.8 -c 15
 traceroute http://cn007b.tumblr.com # print the route packets take to network host
 nslookup git.mdm.comodo.od.ua
@@ -719,4 +722,7 @@ curl -T firmware.bin http://0.0.0.48/cgi-bin/package_install?hash=017
 
 # shows spent time (⏱)
 time curl -si https://realtimelog.herokuapp.com/test
+
+curl -A 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36' \
+  http://localhost:8000
 ````

@@ -74,8 +74,7 @@ func post2(w http.ResponseWriter, r *http.Request) {
 	}
 
 	rd1 := RequestData1{}
-	err = json.Unmarshal(body, &rd1)
-	if err != nil {
+	if err = json.Unmarshal(body, &rd1); err != nil {
 		panic(err)
 	}
 
