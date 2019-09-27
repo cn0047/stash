@@ -8,6 +8,12 @@ v15.4.0
 React is a declarative, efficient, and flexible JavaScript library for building user interfaces.
 
 ````sh
+<script src="https://unpkg.com/react@latest/dist/react.js"></script>
+<script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+# 2019
+<script src="https://unpkg.com/react@16.7.0/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.production.min.js"></script>
+
 npm install -g create-react-app
 create-react-app hello-world
 cd hello-world
