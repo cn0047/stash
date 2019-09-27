@@ -226,6 +226,10 @@ w.Write([]byte("html"))
 
 // to enable http2
 err := http.ListenAndServeTLS(":443", "server.crt", "server.key", nil)
+
+// Handle vs HandleFunc
+http.Handle("/img/", http.FileServer(http.Dir("public")))
+mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {})
 ````
 
 Go is compiled, garbage-collected, concurrent, type-safe.

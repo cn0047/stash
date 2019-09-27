@@ -6,7 +6,10 @@ hostname
 tty
 who
 
-# ssh tunnel
+# SSH tunnel.
+# Remote server just needs to have python available.
+# usr@ec2-us-east-1.smth.com - remote host.
+# 10.3.0.0/16 - network interface to connect to.
 sshuttle -v -r usr@ec2-us-east-1.smth.com 10.3.0.0/16
 
 ping 8.8.8.8 -c 15
