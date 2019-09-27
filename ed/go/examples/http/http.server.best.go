@@ -14,8 +14,8 @@ func main() {
 		p = ":" + os.Args[1]
 	}
 
-	router := http.NewServeMux()
-	router.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+	mux := http.NewServeMux()
+	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Printf("req [%s]\n", time.Now())
 		w.Write([]byte("Hello world!\n"))
 	})
@@ -24,7 +24,7 @@ func main() {
 		Addr:         p,
 		ReadTimeout:  2 * time.Second,
 		WriteTimeout: 2 * time.Second,
-		Handler:      router,
+		Handler:      mux,
 	}
 	log.Fatal(s.ListenAndServe())
 }
