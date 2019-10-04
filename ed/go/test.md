@@ -71,7 +71,7 @@ t.Log("GivenTheNeedToTestTheSendJSONEndpoint.") {
 }
 
 t.Run("TestCase", func(t *testing.T) {})
-t.Errorf("Got: %v, want: %v", a, e) //
+t.Errorf("Got: %v, want: %v", a, e) // ✅
 t.Error("Msg")                      // mark test as failed  & continue further test execution
 t.Skip("Msg")                       // mark test as skipped & stop further test execution
 t.Skipped()                         // is test skipped
