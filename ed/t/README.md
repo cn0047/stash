@@ -37,6 +37,7 @@ Theory
 <br>ROI     - Return on investment.
 <br>RSS     - Rich Site Summary or Really Simple Syndication.
 <br>RTB     - Real-time bidding.
+<br>RTC     - Real-time communication.
 <br>SaaS    - [Software as a service](https://raw.githubusercontent.com/cn007b/my/master/ed/t.theory/i/cloudComputingTypes.jpeg).
 <br>SDK     - Software development kit.
 <br>SDLC    - Software development life-cycle.

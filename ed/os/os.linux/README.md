@@ -103,6 +103,7 @@ gcc - the GNU C compiler,
 
 ````sh
 SEGV # segmentation violation (fault) - the software has attempted to access a restricted area of memory
+HUP  # hangup - sent to process running in console once you log out (nohup somescript)
 ````
 
 #### hotkeys

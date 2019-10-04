@@ -21,6 +21,8 @@ open 'http://google.com/'
 
 # cpu cores count
 sysctl -n hw.ncpu
+
+export PATH=/Users/k/go/bin:$PATH
 ````
 
 ## HotKeys

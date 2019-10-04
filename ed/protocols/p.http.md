@@ -297,6 +297,7 @@ Origin: https://foo.bar.org
 * 509 Bandwidth Limit Exceeded (Apache bw/limited extension)
 * 510 Not Extended (RFC 2774)
 * 511 Network Authentication Required (RFC 6585)
+* 520 Unknown Error
 * 520 Origin Error (Cloudflare)
 * 522 Connection timed out
 * 523 Proxy Declined Request (Cloudflare)

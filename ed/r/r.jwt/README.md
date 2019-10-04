@@ -1,6 +1,8 @@
 JSON Web Token
 -
 
+[online](https://jwt.io/)
+
 Compact (small size of token) self-contained (payload contains all the required information,
 no need to query the database).
 

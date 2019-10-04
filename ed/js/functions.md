@@ -63,6 +63,10 @@ window.history.forward
 ````js
 'use strict';
 
+localStorage.setItem('myCat', 'Tom');
+localStorage.getItem('myCat');
+localStorage.removeItem('myCat');
+
 document.getElementById('wrapper').getElementsByClassName('block').getElementsByTagName('img').length
 document.querySelectorAll('#wrapper img').length
 
