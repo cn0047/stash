@@ -7,6 +7,8 @@ mobx
 import { observable, computed, configure, action } from 'mobx';
 
 @observable name = 'bond';
+// IMPORTANT: use null instead of {}
+@observable devices = null;
 
 @observer class SecretAgent extends Agent {}
 
@@ -14,4 +16,5 @@ import { observable, computed, configure, action } from 'mobx';
 
 // observable object
 const myObj = observable({observableProperty: ... }, {increment: action});
+
 ````

@@ -3,7 +3,12 @@ Search
 
 [Dates math](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html#_date_math_and_rounding).
 [Regexp syntax](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-regexp-query.html#regexp-syntax).
-Pagination of continuously updating data - [scroll](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-scroll.html).
+[scroll - Pagination of continuously updating data](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-scroll.html).
+
+General search types:
+* Full-text: phrase, word, wildcard.
+* Geo.
+* Faceted (something like groups or categories).
 
 Query context - How well does document match query (score).
 Filter context - does document match query clause (yes/no).
