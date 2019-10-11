@@ -4,14 +4,16 @@ Chrome
 [chrome-devtools](https://developers.google.com/web/tools/chrome-devtools)
 [live reload](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei?hl=en-US)
 
-[accessibility](chrome://accessibility)
-[inspect](chrome://inspect)
-[settings](chrome://settings)
-[notifications](chrome://settings/content/notifications)
-
 ````
 # delete URL suggestion:
 start typing in url -> select bad suggestion -> Fn + Shift + Delete
+
+chrome://version
+chrome://accessibility                  # accessibility
+chrome://inspect                        # inspect
+chrome://settings                       # settings
+chrome://settings/content/notifications # notifications
+chrome://net-internals/#sockets
 ````
 
 ````js
