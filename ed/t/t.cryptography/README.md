@@ -10,7 +10,7 @@ It is expensive type of cryptography.
 Hashing algorithms:
 
 * 3DES (168 bits)
-* AES (128 or 256 bits)
+* AES (128 or 256 bits) - Advanced Encryption Standard
 * Chacha20
 * DH (Diffie-Hellman)
 * ECDH (Elliptical Curve Diffie-Hellman)

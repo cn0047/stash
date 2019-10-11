@@ -3,7 +3,12 @@ Wireshark
 
 Capture filter:
 
-`tcp and port  443`
+````sh
+tcp and port  443
+
+# it's impossible directly capture WebSocket protocols, but
+tcp port 8080 # where 8080 - is WS port
+````
 
 Filter:
 
