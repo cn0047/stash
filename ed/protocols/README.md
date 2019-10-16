@@ -41,6 +41,13 @@ The 95th percentile is a widely used mathematical calculation
 to evaluate the regular and sustained utilization of a network pipe.
 Basically the 95th percentile says that 95% of the time, the usage is below this amount.
 So a 95th percentile tells you the value which is greater than or equal to 95% of your data.
+High percentiles (95, 99) of response times, also known as tail latencies.
+
+If you take your list of response times and sort it from fastest to slowest,
+then the median is the halfway point, for example:
+if your median response time is 200 ms, that means half your requests return in less than 200 ms,
+and half your requests take longer than that.
+The median is also known as the 50th percentile, and sometimes abbreviated as p50.
 
 ````sh
 nslookup github.com

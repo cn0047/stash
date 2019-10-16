@@ -1,6 +1,12 @@
 SDP (Session Description Protocol)
 -
 
+SDP is (for describing streaming media)
+for describing multimedia communication sessions
+for the purposes of session announcement, session invitation, and parameter negotiation.
+
+Session profile - set of properties and parameters.
+
 ````
 v=0
 o=- 1263822683589489777 2 IN IP4 127.0.0.1

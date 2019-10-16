@@ -25,6 +25,19 @@ Problems With Sharding:
 * Imagine that shard outgrows storage capacity and must be splited (rebalancing data).
 * Join data from multiple shards - may turn out to be a problem.
 
+## Replication
+
+* Statement Based Replication.
+* Row Based Replication.
+* Based on Write-Ahead Log - changes are first recorded in the log,
+  and nodes (master and slave) processes this log and builds exact same data.
+* Trigger Based Replication - triggers write changes to replication table
+  and separate process handle that changes. Big overhead and prone to bugs.
+
+Read-after-write Consistency:
+Always read the user’s own profile from the master and any other users’ profiles from a slave,
+because due to replication lag user may not see recent updates on slave.
+
 ## MVCC (Multiversion concurrency control):
 
 It's a concurrency control method in DBs
