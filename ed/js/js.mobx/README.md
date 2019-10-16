@@ -17,4 +17,6 @@ import { observable, computed, configure, action } from 'mobx';
 // observable object
 const myObj = observable({observableProperty: ... }, {increment: action});
 
+@inject('myStore', 'addStore')
+class Main extends React.Component {}
 ````

@@ -5,6 +5,7 @@ darwin
 
 The default shell in Mac OS X is the Bourne-again shell.
 
+`jamf` [tool to manage apple device](https://www.jamf.com/).
 `quicksilver` tool for quick app's launch ([default config](https://monosnap.com/file/UH48Ulyzm6IzKxhlWqBuozkAOgciUQ)).
 `monosnap` tool for screenshots.
 `GIPHY` tool to convert video into gif.

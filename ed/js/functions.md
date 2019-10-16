@@ -52,6 +52,8 @@ clearInterval(i);
 
 ````js
 navigator.cookieEnabled; // Show is cookie allowed.
+navigator.serviceWorker
+'serviceWorker' in navigator
 
 location.reload();  // Reload document
 location.replace(); // Reload document, and don't save action in history
