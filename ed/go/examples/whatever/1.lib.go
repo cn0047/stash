@@ -63,3 +63,35 @@ func LeftPadding(s string, x string, n int) string {
 
 	return res
 }
+
+func transmitRequest(w http.ResponseWriter, r *http.Request, targetURI string) {
+	req, err := http.NewRequest(r.Method, targetURI, r.Body)
+	if err != nil {
+		err(w, err, "failed to create new request")
+		return
+	}
+	req.Header.Set("content-type", "application/json")
+	req.Header.Set("authorization", r.Header.Get("authorization"))
+
+	client := &http.Client{}
+	res, err := client.Do(req)
+	if err != nil {
+		err(w, err, "failed to create new client")
+		return
+	}
+
+	resBody, err := ioutil.ReadAll(res.Body)
+	if err != nil {
+		err(w, err, "failed to read response body")
+		return
+	}
+	fmt.Printf("proxy response: %s", resBody)
+
+	if _, err := io.Copy(w, bytes.NewReader(resBody)); err != nil {
+		err(w, err, "failed to copy response")
+		return
+	}
+	w.WriteHeader(res.StatusCode)
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("content-type", "application/json")
+}
