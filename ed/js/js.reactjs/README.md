@@ -93,6 +93,13 @@ Convert false, true, null, undefined to string: `<div>My JavaScript variable is 
 
 Most of the time, you can use `React.PureComponent` instead of writing your own `shouldComponentUpdate`.
 
+Difference between `React.PureComponent` and `React.Component`
+is `PureComponent` does a shallow comparison on state change.
+It means that when comparing scalar values it compares their values,
+but when comparing objects it compares only references (helps to improve performance).
+<br>Use `React.PureComponent` when: state/props immutable, state/props should not have a hierarchy.
+<br>All child components to `React.PureComponent` must also be `React.PureComponent`.
+
 Not Mutating Data:
 ````js
 function updateColorMap(colormap) {

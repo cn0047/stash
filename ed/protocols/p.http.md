@@ -260,7 +260,7 @@ Origin: https://foo.bar.org
 * 419 Authentication Timeout (not in RFC 2616)
 * 420 Enhance Your Calm (Twitter)
 * 420 Method Failure (Spring Framework)
-* 422 Unprocessable Entity (WebDAV; RFC 4918)
+* 422 **Unprocessable Entity** (WebDAV; RFC 4918)
 * 423 Locked (WebDAV; RFC 4918)
 * 424 Failed Dependency (WebDAV; RFC 4918)
 * 424 Method Failure (WebDAV)[14]
