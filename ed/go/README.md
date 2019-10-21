@@ -246,6 +246,10 @@ Sentinel error -  custom error value
 (standard library: sql.ErrNoRows, io.EOF, etc).
 [wrap error tool](github.com/pkg/errors)
 
+`errors.Is` like a comparison to a sentinel error,
+`errors.As` like type assertion (`if e, ok := err.(*QueryError); ok { … }`).
+`fmt.Errorf("decompress %v: %w", name, err)`
+
 Context carries deadlines, cancelation signals, and other request-scoped values
 across API boundaries and between processes.
 Ctx may be: WithCancel, WithDeadline, WithTimeout, or WithValue.

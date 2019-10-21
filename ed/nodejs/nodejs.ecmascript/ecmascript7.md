@@ -1,4 +1,4 @@
-ECMAScript 7
+ECMAScript 7 (2016)
 -
 
 ````js

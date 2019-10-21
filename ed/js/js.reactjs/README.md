@@ -1,4 +1,4 @@
-React
+React JS
 -
 
 v15.4.0
@@ -112,14 +112,28 @@ function updateColorMap(colormap) {
 [The Component Lifecycle](https://facebook.github.io/react/docs/react-component.html#the-component-lifecycle):
 
 Mounting:
-`constructor -> componentWillMount -> render -> componentDidMount`
+````
+constructor
+componentWillMount
+render
+componentDidMount
+````
 
 Updating:
-`componentWillReceiveProps -> shouldComponentUpdate -> componentWillUpdate -> render -> componentDidUpdate`
+````
+componentWillReceiveProps
+shouldComponentUpdate
+componentWillUpdate
+render
+componentDidUpdate
+````
 
 Unmounting:
+````
+componentWillUnmount
+````
 
-`componentWillUnmount`
+`componentDidCatch(error, info)`
 
 Methods prefixed with `will` are called right before something happens,
 and methods prefixed with `did` are called right after something happens.
