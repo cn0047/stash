@@ -25,7 +25,15 @@ Like everything is an object philosophy in object-oriented programming.
 ## Back End
 
 URL routing should be decoupled from the controllers
-as such it is possible to swap and replace them easily.
+as such it is possible to swap and replace them easily or update them all at once.
+Moreover separated routes easier to configure in terms of middlewares and controllers,
+so easier to keep track of middlewares usage and update them all at once.
+
+Controllers must be separated from routing
+because you can use controllers not only for HTTP but also for WebSockets etc.
+
+Middlewares must be separated form routing and controllers
+with purpose to use them not only for HTTP but also for WebSockets etc.
 
 `model` layer (directory) is ambiguous because:
 * it's unclear what is model in reach app (mysql, mongo, redis, elasticsearch, etc)?

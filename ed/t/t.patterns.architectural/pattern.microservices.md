@@ -90,6 +90,16 @@ In real world app it's ok to have **HYBRID-Microservices** architecture.
 * Hard to see the whole usage graph.
 * Github for configs / db migrations / etc.
 
+#### Have to have
+
+* CI/CD.
+* Logging/Monitoring/Telemetry.
+* Auth (tokens, headers, etc).
+* Config (env, other services, etc).
+* Routing (healthcheck, discovery).
+* Retry/Timeout/Circuit Breaker implementations.
+* LB (to scale).
+
 #### Info
 
 * Avoid shared database because changes in schema in 1 microservice

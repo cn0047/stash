@@ -69,10 +69,6 @@ filter @message like /cn911w2/
 stats count(*)
 ````
 
-# SNS (Simple Notification Service)
-
-Use to push message.
-
 # SQS (Simple Queue Service)
 
 [docs](https://docs.aws.amazon.com/sqs/index.html)
