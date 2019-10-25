@@ -22,3 +22,4 @@ ed/go/**/pkg/
 ed/go/**/bin/
 ed/go/**/src/
 !ed/go/**/src/app/
+go.sum

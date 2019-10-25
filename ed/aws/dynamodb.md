@@ -7,7 +7,7 @@ DynamoDB
 
 ````
 Relational DB ⇒ Table ⇒ Row  ⇒ Column    ⇒ Primary key ⇒ View
-Datastore     ⇒ Kind  ⇒ Item ⇒ Attribute ⇒ Primary key ⇒ Global Secondary Index
+DDB           ⇒ Table ⇒ Item ⇒ Attribute ⇒ Primary key ⇒ Global Secondary Index
 ````
 
 Table - reqular table.

@@ -7,3 +7,5 @@ require (
 	google.golang.org/appengine v1.2.0
 	google.golang.org/genproto v0.0.0-20181016170114-94acd270e44e // indirect
 )
+
+go 1.13

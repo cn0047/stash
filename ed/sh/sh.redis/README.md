@@ -9,10 +9,10 @@ redis-cli # connect to redis
 redis-benchmark # shell tool for benchmarking
 ````
 
-````
+````sh
 set mykey 'Hello'
 set foo 'bar'
-expire foo 10
+expire foo 10 # ttl 10 seconds
 get mykey
 mget mykey foo
 
@@ -48,7 +48,7 @@ that is used in order to take the sorted set ordered.
 
 #### List (Linked List):
 
-````
+````sh
 rpush mylist A
 rpush mylist B
 rpush mylist End
@@ -57,7 +57,7 @@ lrange mylist 0 -1 # print all values in a list
 
 #### Hash:
 
-````
+````sh
 hmset user:1 username antirez birthyear 1977 verified 1
 
 hget user:1 username
@@ -84,7 +84,7 @@ hexists user:1 birthyear
 
 #### Set:
 
-````
+````sh
 sadd myset 1 2 3
 
 # get all members
@@ -102,7 +102,7 @@ sismember myset 3
 
 #### Associative Array ():
 
-````
+````sh
 sadd users:name Bob Sam Joe
 sadd users:lastName Wilson Smith Unknown
 
@@ -124,7 +124,7 @@ Transaction is atomic.
 
 No roll back(
 
-````
+````sh
 set a 100
 set b 200
 
