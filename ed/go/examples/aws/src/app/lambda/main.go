@@ -3,22 +3,28 @@ package main
 import (
 	"bytes"
 	"encoding/json"
-	"github.com/aws/aws-lambda-go/events"
-	"github.com/aws/aws-lambda-go/lambda"
+	"fmt"
 	"log"
 	"net/http"
+
+	"github.com/aws/aws-lambda-go/events"
+	"github.com/aws/aws-lambda-go/lambda"
 )
 
 const insert = "INSERT"
 
-//Handler process lambda event
+func main() {
+	lambda.Start(Handler)
+}
+
+//Handler process lambda event.
 func Handler(event events.DynamoDBEvent) {
 	log.Printf("\n Got: %#v", event)
 	/*
 	   Got: events.DynamoDBEvent{
 	   Records:[]events.DynamoDBEventRecord{
 	       events.DynamoDBEventRecord{
-	           EventName:"INSERT",
+	           EventName:"INSERT|MODIFY|REMOVE",
 	           EventID:"fdf85492723daa58508d6b9a8731f45d",
 	           Change:events.DynamoDBStreamRecord{
 	               ApproximateCreationDateTime:events.SecondsEpochTime{Time:time.Time{wall:0x0, ext:63704222878, loc:(*time.Location)(0xb05020)}},
@@ -33,11 +39,40 @@ func Handler(event events.DynamoDBEvent) {
 	   }
 	*/
 
-	// Post event to realtimelog.
-	j, _ := json.Marshal(event)
-	http.Post("https://realtimelog.herokuapp.com:443/64kfym341kp", "application/json", bytes.NewBuffer(j))
+	// Just to test config.
+	if !config.UseRealTimeLog {
+		rtl("epic fail")
+		return
+	}
+
+	// Post event to RealTimeLog.
+	rtl(event)
+
+	for _, record := range event.Records {
+		key := record.Change.NewImage["key"].String()
+		val := record.Change.NewImage["val"].String()
+		valInt64, err := record.Change.NewImage["val_int"].Integer()
+		if err != nil {
+			panic(fmt.Errorf("ERR-3: %w", err))
+		}
+		data := map[string]interface{}{
+			"eID": record.EventID,
+			"e": record.EventName,
+			"k": key,
+			"v": val,
+			"vi": valInt64,
+		}
+		rtl(data)
+	}
 }
 
-func main() {
-	lambda.Start(Handler)
+func rtl(data interface{}) {
+	j, err := json.Marshal(data)
+	if err != nil {
+		panic(fmt.Errorf("ERR-RTL-1: %w", err))
+	}
+	_, err2 := http.Post("https://realtimelog.herokuapp.com:443/64kfym341kp2", "application/json", bytes.NewBuffer(j))
+	if err2 != nil {
+		panic(fmt.Errorf("ERR-RTL-2: %w", err2))
+	}
 }

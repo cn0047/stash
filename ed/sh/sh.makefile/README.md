@@ -14,3 +14,12 @@ Makefiles contain five kinds of things:
 * directives, and comments.
 
 The `@` before echo means - don't print this command to stdout before running it.
+
+````sh
+ifndef GOPATH
+$(error ERROR!! GOPATH must be declared.)
+endif
+
+ifeq ($(CC),gcc)
+endif
+````

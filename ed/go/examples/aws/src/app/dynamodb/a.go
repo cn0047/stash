@@ -2,62 +2,86 @@ package dynamodb
 
 import (
 	"fmt"
+	"os"
+	"strconv"
+
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbattribute"
-	"os"
 )
 
-type Item struct {
+type MovieItem struct {
 	Year   int
 	Title  string
 	Plot   string
 	Rating float64
 }
 
-func Run(cfg *aws.Config) {
-	svc := dynamodb.New(session.New(), cfg)
-
-	{
-		tablesList, err := svc.ListTables(&dynamodb.ListTablesInput{})
-		if err != nil {
-			fmt.Println("Got error %w:", err.Error())
-		}
-		if tablesList == nil || tablesList.TableNames == nil {
-			fmt.Println("Got nil output")
-			return
-		}
-
-		moviesExsists := false
-		for _, tableName := range tablesList.TableNames {
-			if *tableName == "Movies" {
-				moviesExsists = true
-				break
-			}
-		}
-
-		if !moviesExsists {
-			f0(svc)
-		}
-	}
-
-	{
-		info, err := svc.DescribeTable(&dynamodb.DescribeTableInput{TableName: aws.String("Movies")})
-		if err != nil {
-			fmt.Println("Got error %w:", err.Error())
-		}
-		if info != nil && info.Table != nil {
-			v := info.Table.ItemCount
-			fmt.Printf("Found count in table: %v \n", *v)
-		}
-	}
-
-	f1(svc)
-	f2(svc)
+type HotDataItem struct {
+	Key string `json:"key"`
+	Val string `json:"val"`
+	ValInt int `json:"val_int"`
 }
 
-func f0(svc *dynamodb.DynamoDB) {
+func Run(cfg *aws.Config) {
+	svc := dynamodb.New(session.New(), cfg)
+	//movies(svc)
+	hotData(svc)
+}
+
+func movies(svc *dynamodb.DynamoDB) {
+	createTableIfNotExists(svc)
+	itemsCount(svc)
+	putMovieItem(svc)
+	getItem(svc)
+}
+
+func hotData(svc *dynamodb.DynamoDB) {
+	fmt.Printf("hotdata table exsists: %v\n", isTableExists(svc, "hotdata"))
+	putHotDataItem(svc)
+}
+
+func putHotDataItem(svc *dynamodb.DynamoDB) {
+	valInt, err := strconv.Atoi(os.Args[3])
+	if err != nil {
+		fmt.Println("Got error %w:", err)
+	}
+
+	item := HotDataItem{
+		Key: os.Args[1],
+		Val: os.Args[2],
+		ValInt: valInt,
+	}
+	putItem(svc, item, "hotdata")
+}
+
+func isTableExists(svc *dynamodb.DynamoDB, tableNameToFind string) bool {
+	tablesList, err := svc.ListTables(&dynamodb.ListTablesInput{})
+	if err != nil {
+		fmt.Println("Got error %w:", err.Error())
+	}
+	if tablesList == nil || tablesList.TableNames == nil {
+		fmt.Println("Got nil output")
+		return false
+	}
+
+	for _, tableName := range tablesList.TableNames {
+		if *tableName == tableNameToFind {
+			return true
+		}
+	}
+
+	return false
+}
+
+func createTableIfNotExists(svc *dynamodb.DynamoDB) {
+	if !isTableExists(svc, "Movies") {
+		createTable(svc)
+	}
+}
+
+func createTable(svc *dynamodb.DynamoDB) {
 	input := &dynamodb.CreateTableInput{
 		// see: https://docs.aws.amazon.com/sdkforruby/api/Aws/DynamoDB/Types/AttributeValue.html
 		AttributeDefinitions: []*dynamodb.AttributeDefinition{
@@ -88,14 +112,29 @@ func f0(svc *dynamodb.DynamoDB) {
 	}
 }
 
-func f1(svc *dynamodb.DynamoDB) {
-	item := Item{
+func itemsCount(svc *dynamodb.DynamoDB) {
+	info, err := svc.DescribeTable(&dynamodb.DescribeTableInput{TableName: aws.String("Movies")})
+	if err != nil {
+		fmt.Println("Got error %w:", err.Error())
+	}
+
+	if info != nil && info.Table != nil {
+		v := info.Table.ItemCount
+		fmt.Printf("Found count in table: %v \n", *v)
+	}
+}
+
+func putMovieItem(svc *dynamodb.DynamoDB) {
+	item := MovieItem{
 		Year:   2015,
 		Title:  "The Big New Movie",
 		Plot:   "Nothing happens at all.",
 		Rating: 0.0,
 	}
+	putItem(svc, item, "Movies")
+}
 
+func putItem(svc *dynamodb.DynamoDB, item interface{}, tableName string) {
 	av, err := dynamodbattribute.MarshalMap(item)
 	if err != nil {
 		fmt.Println("Got error marshalling new movie item:", err.Error())
@@ -104,7 +143,7 @@ func f1(svc *dynamodb.DynamoDB) {
 
 	input := &dynamodb.PutItemInput{
 		Item:      av,
-		TableName: aws.String("Movies"),
+		TableName: aws.String(tableName),
 	}
 
 	_, err = svc.PutItem(input)
@@ -114,7 +153,7 @@ func f1(svc *dynamodb.DynamoDB) {
 	}
 }
 
-func f2(svc *dynamodb.DynamoDB) {
+func getItem(svc *dynamodb.DynamoDB) {
 	result, err := svc.GetItem(&dynamodb.GetItemInput{
 		TableName: aws.String("Movies"),
 		Key: map[string]*dynamodb.AttributeValue{

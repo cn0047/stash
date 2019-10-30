@@ -19,7 +19,7 @@ func Run(cfg *aws.Config, bucket string) {
 func f1(cfg *aws.Config, bucket string) {
 	svc := s3.New(session.New(), cfg)
 
-	file, err := os.Open("s.png")
+	file, err := os.Open(os.Getenv("GOPATH")+"/src/app/s3/s.png")
 	if err != nil {
 		panic(err)
 	}
@@ -32,7 +32,7 @@ func f1(cfg *aws.Config, bucket string) {
 	file.Read(buffer)
 	fileBytes := bytes.NewReader(buffer)
 	fileType := http.DetectContentType(buffer)
-	path := "/legacy-files/" + file.Name()
+	path := "/test-files/s.png"
 	params := &s3.PutObjectInput{
 		Bucket:        aws.String(bucket),
 		Key:           aws.String(path),

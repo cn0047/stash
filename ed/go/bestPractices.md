@@ -34,3 +34,10 @@ Best Practices
 * Interface all things.
 * Naked `return`.
 * `interface{}` (no clue what the data inside).
+
+#### Tricky
+
+* It's better no name return values.
+* `pkg.New()` - ok in case you have 1 struct per package,
+otherwise have to have: `pkg.NewUser() & pkg.NewLocation()`.
+* Inline error check (`if err := x.f(); err != nil {}`) - debugger won't stop before error check.

@@ -1,6 +1,12 @@
 Bash
 -
 
+Variables in bash are untyped, but bash has:
+* number
+* string
+* array
+* function
+
 ````sh
 bash --version
 echo $BASH_VERSION

@@ -4,28 +4,27 @@
 package main
 
 import (
+	"app/dynamodb"
 	"app/s3"
+
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/credentials"
-
-	"app/dynamodb"
 )
 
 var (
 	aws_access_key_id     = ""
 	aws_secret_access_key = ""
-	region                = "us-east-1"
-	bucket                = ""
+	region                = "eu-central-1"
+	bucket                = "basicbkt"
 
 	host = "http://127.0.0.1:8000"
 )
 
 func main() {
-	c1 := GetAWSConfig2()
-	c2 := GetAWSConfig2()
-	s3.Run(c1, bucket)
+	c := GetAWSConfig()
+	s3.Run(c, bucket)
 	return
-	dynamodb.Run(c2)
+	dynamodb.Run(c)
 }
 
 func GetAWSConfig2() *aws.Config {

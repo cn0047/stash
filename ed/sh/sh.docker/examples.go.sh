@@ -381,12 +381,16 @@ go run ed/go/examples/algolia/src/main.go
 #### aws
 
 # sh
-export GOPATH=/Users/k/web/kovpak/gh/ed/go/examples/aws
+# Init AWS with terraform first,
+# @see: ed/sh/sh.terraform/README.md
+export GOPATH=$PWD/ed/go/examples/aws
 go get -u "github.com/aws/aws-sdk-go/aws"
-#
+# aws s3
 cd $GOPATH/src/app && go run main.go
 # aws lambda
-GOOS=linux go build $GOPATH/src/app/lambda/main.go
+# @see: ed/sh/sh.terraform/README.md
+# dynamodb
+cd $GOPATH/src/app && go run main.go
 
 #### bench
 

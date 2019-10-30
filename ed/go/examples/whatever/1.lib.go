@@ -4,12 +4,12 @@ import (
 	"strconv"
 )
 
-str := strconv.FormatInt(int64, 10)                     // int64 -> str
-str := strconv.FormatInt(int64(int32), 10)              // int32 -> str
-int64, _ := strconv.ParseInt(str, 10, 32); int32(int64) // str   -> int32
+str := strconv.FormatInt(int64, 10)                       // int64 -> str
+str := strconv.FormatInt(int64(int32), 10)                // int32 -> str
+int, err := strconv.Atoi("-42")                           // str   -> int
+int64, err := strconv.ParseInt(str, 10, 32); int32(int64) // str   -> int32
 
 if !regexp.MustCompile(`^[\d]+$`).MatchString(ds) {}
-
 
 // ReverseInt32 returns 321 for 123 etc.
 func ReverseInt32(n int32) int32 {

@@ -8,7 +8,7 @@ Terraform
 Module - container for multiple resources that are used together.
 Data sources - allows configuration to use information defined outside of tf.
 
-````
+````sh
 # list
 aws_instance.example[*].id
 # one
@@ -41,13 +41,15 @@ terraform graph
 ````
 
 ````sh
-export GOPATH=/Users/k/web/kovpak/gh/ed/go/examples/aws
+# aws lambda
+export GOPATH=$PWD/ed/go/examples/aws
 go get -u "github.com/aws/aws-sdk-go/aws"
-GOOS=linux go build -o /tmp/awsLambdaOne $GOPATH/src/app/lambda/main.go
+GOOS=linux go build -o /tmp/awsLambdaOne $GOPATH/src/app/lambda
 cd /tmp && zip awsLambdaOne.zip awsLambdaOne && cd -
 
-cd ed/sh.terraform/examples/aws.st
+cd ed/sh/sh.terraform/examples/aws.st
 terraform init
 terraform plan
-terraform apply plan
+terraform apply -auto-approve
+terraform refresh
 ````
