@@ -4,7 +4,7 @@ Chrome
 [chrome-devtools](https://developers.google.com/web/tools/chrome-devtools)
 [live reload](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei?hl=en-US)
 
-````
+````sh
 # delete URL suggestion:
 start typing in url -> select bad suggestion -> Fn + Shift + Delete
 

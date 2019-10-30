@@ -10,6 +10,8 @@ Relational DB ⇒ Table ⇒ Row  ⇒ Column    ⇒ Primary key ⇒ View
 DDB           ⇒ Table ⇒ Item ⇒ Attribute ⇒ Primary key ⇒ Global Secondary Index
 ````
 
+EventName: `INSERT|MODIFY|REMOVE`
+
 Table - reqular table.
 <br>Global Table - multi-region, and multi-master.
 

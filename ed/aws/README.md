@@ -2,6 +2,7 @@ AWS
 -
 
 [console](https://console.aws.amazon.com)
+[go examples](https://github.com/awsdocs/aws-doc-sdk-examples/tree/master/go/example_code)
 
 ````sh
 # ubuntu
@@ -14,6 +15,7 @@ aws configure
 aws configure list
 
 ~/.aws/config
+~/.aws/credentials
 
 export AWS_REGION="eu-central-1"
 export AWS_ACCESS_KEY_ID or AWS_ACCESS_KEY=""
@@ -27,6 +29,9 @@ export AWS_SECRET_KEY=""
 --debug # add this flag to get more debug info about command
 
 --region us-east-1
+# @see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html
+us-east-1    # US East (N. Virginia)
+eu-central-1 # EU (Frankfurt)
 ````
 
 # CloudWatch
@@ -68,14 +73,6 @@ filter @message like /cn911w2/
 
 stats count(*)
 ````
-
-# SQS (Simple Queue Service)
-
-[docs](https://docs.aws.amazon.com/sqs/index.html)
-
-Queue types: standard, fifo.
-
-Use to pull message.
 
 # CodeDeploy
 
