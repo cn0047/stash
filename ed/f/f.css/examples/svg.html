@@ -1,0 +1,35 @@
+<html>
+<head>
+<style>
+  .color {
+    color: red;
+    fill: red !important;
+    background-color: lightgrey;
+    }
+  .svg {
+    border: 1px solid gold;
+    margin: 25px;
+    padding: 25px;
+    background-color: lightgrey;
+    color: red;
+    fill: red !important;
+  }
+  .bi {
+    border: 1px solid lightgrey;
+    height: 25px;
+    width: 25px;
+    background-color: lightgrey;
+    background-image: url(svg.svg), none;
+    background-repeat: no-repeat;
+    color: red;
+    fill: red !important;
+  }
+</style>
+</head>
+<body>
+  <img class="color svg" src="svg.svg" alt="">
+  <object class="color svg" data="svg.svg" type="image/svg+xml" style="color:green !important"></object>
+  <div class="color svg bi"></div>
+  <object class="color svg" data="svg.svg" type="image/svg+xml"></object>
+</body>
+</html>
