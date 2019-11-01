@@ -27,3 +27,5 @@ and 20 global secondary indexes per table.
 
 PROVISIONED - Sets the read/write capacity mode to PROVISIONED.
 PAY_PER_REQUEST - for unpredictable workloads.
+
+DynamoDB trigger - is lambda function.
