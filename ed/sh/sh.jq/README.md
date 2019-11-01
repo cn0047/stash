@@ -5,8 +5,10 @@ jq
 [play](https://jqplay.org/)
 
 ````sh
---compact-output / -c:
---color-output / -C and --monochrome-output / -M
+jq -c # compact json
+jq -C # colorize
+jq -M # don't colorize
+
 --raw-output
 --sort-keys / -S
 ````

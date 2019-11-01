@@ -391,6 +391,7 @@ cd $GOPATH/src/app && go run main.go
 # @see: ed/sh/sh.terraform/README.md
 # dynamodb
 cd $GOPATH/src/app && go run main.go
+cd $GOPATH/src/app && go run main.go k21 v21 21
 
 #### bench
 

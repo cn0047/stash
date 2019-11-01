@@ -55,12 +55,20 @@ func Handler(event events.DynamoDBEvent) {
 		if err != nil {
 			panic(fmt.Errorf("ERR-3: %w", err))
 		}
+		nonExistingValue := int64(-1)
+		nonExistingValueErr := fmt.Errorf("ERR: non_existing_value_err")
+		v, ok := record.Change.NewImage["non_existing_value"]
+		if ok {
+			nonExistingValue, nonExistingValueErr = v.Integer()
+		}
 		data := map[string]interface{}{
 			"eID": record.EventID,
 			"e": record.EventName,
 			"k": key,
 			"v": val,
 			"vi": valInt64,
+			"non_existing_value": nonExistingValue,
+			"non_existing_value_err": nonExistingValueErr,
 		}
 		rtl(data)
 	}
