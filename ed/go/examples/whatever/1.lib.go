@@ -95,3 +95,24 @@ func transmitRequest(w http.ResponseWriter, r *http.Request, targetURI string) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("content-type", "application/json")
 }
+
+func (h *Handler) proxy(w http.ResponseWriter, r *http.Request) {
+	target, err := url.Parse(h.config.ExternalService.BaseURL)
+	if err != nil {
+		h.SendInternalError(w, err, "failed to parse url")
+		return
+	}
+
+	proxy := httputil.NewSingleHostReverseProxy(target)
+	proxy.ModifyResponse = func(r *http.Response) error {
+		r.Header.Add("Access-Control-Allow-Origin", h.config.CORS.AllowOrigin)
+		return nil
+	}
+
+	r.URL.Scheme = target.Scheme
+	r.URL.Host = target.Host
+	r.URL.Path = "/x"
+	r.Host = target.Host
+
+	proxy.ServeHTTP(w, r)
+}

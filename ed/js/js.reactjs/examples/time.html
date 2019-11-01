@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script src="https://unpkg.com/react@16.7.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        class Timer extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {startedAt: new Date(props.date), now: new Date()};
+            }
+
+            componentDidMount() {
+                this.timerID = setInterval(
+                    () => this.tick(),
+                    1000
+                );
+            }
+
+            componentWillUnmount() {
+                clearInterval(this.timerID);
+            }
+
+            tick() {
+                this.setState({now: new Date()});
+            }
+
+            x() {
+                const diffInSeconds = Math.floor((this.state.now-this.state.startedAt)/1000);
+                const minutes = Math.floor(diffInSeconds / 60);
+                const seconds = diffInSeconds % 60;
+
+                let minutesStr =  minutes.toString();
+                let secondsStr = seconds.toString();
+                minutesStr = minutesStr.length > 1 ? minutesStr : '0'+minutesStr;
+                secondsStr = secondsStr.length > 1 ? secondsStr : '0'+secondsStr;
+
+                const s = diffInSeconds <= 30 ? 'green' :
+                    diffInSeconds > 30 && diffInSeconds <= 60 ? 'yellow' : 'red'
+                ;
+
+                return `${minutesStr}:${secondsStr} ${s}`;
+            }
+
+            render() {
+                return <div>
+                    {this.x()}
+                </div>
+            }
+        }
+
+        ReactDOM.render(<Timer date="2019-10-31T18:01:09.6058921760Z"/>, document.getElementById('root'));
+    </script>
+</body>
+</html>
