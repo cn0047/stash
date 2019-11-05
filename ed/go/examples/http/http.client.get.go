@@ -30,7 +30,10 @@ func two() {
 	}
 	defer res.Body.Close()
 
-	body, _ := ioutil.ReadAll(res.Body)
+	body, err := ioutil.ReadAll(res.Body)
+	if err != nil {
+		panic(err.Error())
+	}
 
 	fmt.Printf("Resp: %s\n", body)
 }
