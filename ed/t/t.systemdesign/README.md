@@ -12,7 +12,7 @@ Primary concerns:
 * Maintainability (code that can easily be understood, refactored and upgraded)
 
 CAP Theorem states that in a distributed system,
-it is impossible to simultaneously guarantee all of the following:
+it is impossible to simultaneously guarantee all of the following (pick 2out of 3):
 * Consistency
 * Availability
 * Partition tolerance

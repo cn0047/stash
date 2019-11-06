@@ -77,13 +77,17 @@ JSON.parse(string)                     // JSON string to object
 
 console.group('Application Log', 'font-size: x-large');
 console.time('ttt');
-console.timeEnd(); // shows spent time
+console.timeEnd(ttt'); // shows spent time
 console.log('Application Log');
-console.eror('E');
+console.error('E');
+console.warn('W');
 console.debug('D');
+console.trace();
 console.assert(true);
+console.count(label);
 console.dir(document);
 console.groupEnd();
+console.table([{"k":1,"v":1}]);
 
 console.log(window.performance.now());
 window.performance.mark('start');
