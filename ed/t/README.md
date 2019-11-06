@@ -50,6 +50,14 @@ Theory
 <br>XML     - Extensible Markup Language.
 <br>YAGNI   - You ain't gonna need it.
 
+Consensus - getting all of the nodes to agree on something.
+
+Systems of record - aka source of truth.
+
+Batch processing systems - offline systems.
+Stream processing systems (near-real-time systems) -
+a stream processor consumes inputs and produces outputs (rather than responding to requests).
+
 Server-Sent Events - servers can initiate data transmission towards clients
 once an initial client connection has been established.
 
