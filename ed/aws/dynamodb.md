@@ -29,3 +29,16 @@ PROVISIONED - Sets the read/write capacity mode to PROVISIONED.
 PAY_PER_REQUEST - for unpredictable workloads.
 
 DynamoDB trigger - is lambda function.
+
+````sh
+t=tbl
+aws dynamodb scan --table-name $t \
+  --filter-expression "owner_id=:oId AND d_id=:dId" \
+  --expression-attribute-values '{":oId":{"N":"1"},":dId":{"N":"2"}}'
+# result: {"Items": [...], "Count": 45, "ScannedCount": 1291}
+
+# search by primary key
+aws dynamodb query --table-name $t \
+  --key-condition-expression "key_id=:kId" \
+  --expression-attribute-values  '{":kId":{"S":"3237415"}}'
+````
