@@ -334,6 +334,8 @@ find -type f -name '*.php' -exec egrep -Hn --color=always 'is_failed' {} \; | gr
 #### sort
 
 ````sh
+sort -u   # unique
+sort -r   # reverse
 sort -nk2 # sort as numbers by column 2
 ````
 

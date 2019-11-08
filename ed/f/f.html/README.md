@@ -15,6 +15,24 @@ HTML (HyperText Markup Language)
 link rel="preload" rel="preconnect"
 ````
 
+````
+HTML5:
+<address>  - contact information
+<article>  - article
+<aside>    - side block
+<caption>  - table caption
+<cite>     - title of a work
+<details>  - additional details
+<footer>   - footer
+<header>   - header
+<ins>      - inserted text
+<main>     - main content
+<nav>      - navigation
+<section>  - section
+<template> - holds its content hidden from the client
+<time>     - time block
+````
+
 #### Special Characters
 
 ````

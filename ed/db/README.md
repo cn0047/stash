@@ -125,3 +125,16 @@ all clients reading from the database must be able to see the value just written
 
 The basic idea behind linearizability is simple:
 to make a system appear as if there is only a single copy of the data.
+
+Implementing Linearizable Systems:
+* Single-leader replication (potentially linearizable).
+* Consensus algorithms (linearizable).
+* Multi-leader replication (not linearizable).
+* Leaderless replication (probably not linearizable).
+
+For linearizability important ordering guarantees so it may be confused with serializability,
+but they are different,
+serializability related to db transaction isolation level,
+but linearizability is a recency guarantee on reads and writes of a register (an individual object),
+moreover linearizability guarantees order, like: `a -> b -> c`
+but for serializability it's ok when: `b -> a -> c` only important separately execute actions.
