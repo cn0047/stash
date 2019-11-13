@@ -1,5 +1,0 @@
-bin/*
-pkg/*
-src/*
-!src/ports/
-
