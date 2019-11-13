@@ -56,7 +56,7 @@ Kubernetes stores all the RESTful API objects here.
 Scheduler (`kube-scheduler`) - decides which node is suitable for pods to run on,
 according to the resource capacity or the balance of the resource utilization on the node.
 
-`Kubelet` is a major process in the nodes, which reports node activities back
+`kubelet` is a major process in the nodes, which reports node activities back
 to kubeapiserver periodically, such as pod health, node health, and liveness probe.
 
 Proxy (`kube-proxy`) - handles the routing between pod load balancer (a.k.a. service)

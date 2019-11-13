@@ -6,6 +6,7 @@ package main
 import (
 	"app/dynamodb"
 	"app/s3"
+	"app/sqs"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/credentials"
@@ -22,8 +23,9 @@ var (
 
 func main() {
 	c := GetAWSConfig()
-	s3.Run(c, bucket)
+	sqs.Run(c)
 	return
+	s3.Run(c, bucket)
 	dynamodb.Run(c)
 }
 
