@@ -18,8 +18,10 @@ config.php
 
 # golang
 **/vendor/
-ed/go/**/pkg/
-ed/go/**/bin/
-ed/go/**/src/
-!ed/go/**/src/app/
 go.sum
+ed/go/**/bin/
+ed/go/**/pkg/
+# ed/go/**/src/
+!ed/go/**/src/app/
+ed/go/**/src/golang.org
+ed/go/**/src/gopkg.in
