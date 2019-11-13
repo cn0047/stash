@@ -85,7 +85,7 @@ Agile practices:
 * Use case
 * User story
 * Story-driven modeling
-* Retrospective
+* Retrospective (good/bad/continue to do)
 * **Velocity tracking**
 
 #### Extreme Programming:
