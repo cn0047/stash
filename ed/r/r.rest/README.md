@@ -42,9 +42,6 @@ Good:
 ````
 Use nouns and NOT the verbs. Also use plurals.
 
-Q: What to do with ugly names like: deploys...
-A: ?
-
 |   | name     | description                                                             |
 |---|----------|-------------------------------------------------------------------------|
 | ● | GET      |                                                                         |
@@ -108,6 +105,15 @@ For security it's better to return JSON with an Object on the outside:
 
 #### Real problems
 
+<br>P: URL Path to endpoint which answers yes/no to send push notification.
+<br>S:
+````sh
+curl -X GET api.svc.com/v1/notifications/push/devices/{dID}/enabled
+````
+
+<br>P: What to do with ugly names like: deploys...
+<br>S: ?
+
 <br>P: GET user not by ID (PK) but by email (unique key) - how url should look.
 <br>S: `/users/?email=e`.
 
@@ -126,4 +132,5 @@ products?limit=25&offset=50
 ````
 
 <br>P: Versioning API.
-<br>S: Use API version in url, like: `my-api-host.com/v1/users/12345`.
+<br>S: Use API version in url, like: `my-api-host.com/v1/users/12345`,
+it's super simple to invalidate, version in header harder to invalidate.
