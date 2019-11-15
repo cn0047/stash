@@ -22,7 +22,15 @@ nmap --script=http-headers www.zii.com # scan ports
 
 timedatectl status | grep "Time zone"
 colordiff -u file1 file2
-ln -s {file} {symbolic-name}
+
+# Soft link - is an actual link to the original file.
+# Hard link - is a mirror copy of the original file.
+# If delete original file:
+# soft link has no value, because it points to non-existent file,
+# but the hard link will still has the data of the original file.
+# If create hard link and change the content of either of the files - the change will be seen on both!
+ln -s {file} {symbolic-name} # symbolic (or soft) link
+ln {file} {hard-name}        # hard link
 
 echo 200  | pbcopy                             # copy data into clipboard buffer
 file ed/bash/README.md                         # prints file type
@@ -616,8 +624,8 @@ visudo
 su rob
 
 -rwxrwxrwx
-drwxr-xr-x
-directory user group other
+drwxr-xr-x # directory user group other
+lrwxrwxrwx # link user group other
 
 r (4) - read;
 w (2) - write;

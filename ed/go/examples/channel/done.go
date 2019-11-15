@@ -8,7 +8,7 @@ import (
 func main() {
 	done := make(chan bool, 1)
 	go worker(done)
-	// Important to optain value from channel (to stop script).
+	// Important to obtain value from channel (to stop script).
 	v := <-done
 	fmt.Printf("%+v\n", v)
 }

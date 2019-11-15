@@ -13,7 +13,9 @@ func main() {
 	go in(c, n)
 	go printLength(c)
 	go out(c)
-	time.Sleep(time.Millisecond * 3000)
+	_, err := fmt.Scanln()
+	if err != nil {
+	}
 }
 
 func in(c chan int, n int) {

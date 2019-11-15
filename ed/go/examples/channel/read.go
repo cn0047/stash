@@ -8,7 +8,7 @@ func main() {
 	// zero()
 	one()
 	// two()
-	three()
+	//three()
 }
 
 func zero() {
@@ -21,8 +21,12 @@ func zero() {
 func one() {
 	ch := make(chan int, 1)
 	ch <- 7
+
 	v, ok := <-ch
 	fmt.Printf("%+v, %+v \n", v, ok) // 7, true
+
+	v2, ok := <-ch // fatal error: all goroutines are asleep - deadlock!
+	fmt.Printf("%+v, %+v \n", v2, ok)
 }
 
 func three() {
