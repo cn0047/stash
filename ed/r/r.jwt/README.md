@@ -3,6 +3,8 @@ JSON Web Token
 
 [online](https://jwt.io/)
 
+JWK (JSON Web Key) - key containing the public key that should be used to verify any JWT.
+
 Compact (small size of token) self-contained (payload contains all the required information,
 no need to query the database).
 

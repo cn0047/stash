@@ -31,6 +31,8 @@ export PATH=/Users/k/go/bin:$PATH
 ````sh
 Option = Alt
 
+Command-Control-o # insert mode
+
 Control-Shift-Power  # Lock screen
 Command-Option-Power # Put MacBook to sleep
 Command-Option-Esc   # Force Quit

@@ -38,6 +38,8 @@ Ruby has only explicit conversion.
 ````rb
 i1, i2 = 1, 1 # parallel assignment (i1 = 1 and i2 = 1)
 
+i.to_s # into to string
+
 File.dirname(__FILE__)
 
 # call function
@@ -166,6 +168,10 @@ Exception
 
 Protected method, may be called by any instance of the defining class or its subclasses.
 If a method is private, it may be called only within the context of the calling object.
+
+`self` may refer to the parent class or may refer to a particular instance of a class.
+Inside class `self` refers to class name.
+From outside `self.class` refers to class name.
 
 ## Hash
 

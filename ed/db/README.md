@@ -31,7 +31,7 @@ A classic example is a cache.
 
 ## ACID
 
-<br>Atomicity - all or nothing.
+<br>Atomicity - all or nothing (an indivisible and irreducible series of database operations).
 <br>Consistency - ensures that any transaction will bring the database from one valid state to another (constraints, cascades, triggers).
 <br>Isolation - ensures that the concurrent execution of transactions will executed serially, i.e., one after the other.
 <br>Durability - ensures that once a transaction has been committed, it will remain so, even in the event of power loss, crashes, or errors...
