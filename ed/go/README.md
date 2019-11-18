@@ -64,11 +64,13 @@ go env
 go env GOOS
 go env -json
 go env GOPATH
-go fmt ./...             # Format code
-go get ./...             # Install all project dependencies
-go golint ./...          # Check code
-go install               # Install packages and dependencies
-go list                  # List packages
+go fmt ./...                          # Format code
+go get ./...                          # Install all project dependencies
+go golint ./...                       # Check code
+go install                            # Install packages and dependencies
+go list                               # List packages
+go list -f '{{ join .Imports "\n" }}' # directly imported packages
+go list -f '{{ join .Deps "\n" }}'    # all subdependencies
 go list -json -f {{.Deps}} net/http
 go list -e -json -f {{.Deps}} products/service/scraper
 go list ...
@@ -80,6 +82,14 @@ godoc -http=:6060 -goroot=$PWD
 go tool fix # finds Go programs that use old APIs and rewrites them to use newer ones
 gorename # Performs precise type-safe renaming of identifiers
 gomvpkg # moves go packages, updating import declarations
+
+dep init
+dep status
+dep ensure         # ensure a dependency is safely vendored in the project
+dep ensure -update # update the locked versions of all dependencies
+
+gosec -tests ed/go/examples/bench/...
+gosec -fmt=json -out=/tmp/gosec_output.json -tests ed/go/examples/bench/...
 
 strace go_bin_file
 ptrace

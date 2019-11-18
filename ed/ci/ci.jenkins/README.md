@@ -9,3 +9,5 @@ ssh-keygen -t rsa
 ````sh
 git ls-remote -h https://github.com/org/repo HEAD
 ````
+
+Jenkins file syntax - groovy.

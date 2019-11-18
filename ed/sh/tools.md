@@ -6,6 +6,8 @@ hostname
 tty
 who
 
+echo 1 || : # echo 1 or do nothing
+
 # SSH tunnel.
 # Remote server just needs to have python available.
 # usr@ec2-us-east-1.smth.com - remote host.
