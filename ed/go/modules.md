@@ -30,8 +30,8 @@ go test all
 go get google.golang.org/appengine@'>=v1.2.0'
 
 go list -m
-go list -m all # view final versions that will be used in a build 
-go list -u -m all # view available minor and patch upgrades 
+go list -m all # view final versions that will be used in a build
+go list -u -m all # view available minor and patch upgrades
 go list -m -versions rsc.io/sampler
 go list -deps -f '{{with .Module}}{{.Path}} {{.Version}}{{end}}' ./... | sort -u
 
@@ -47,13 +47,15 @@ go mod download
 go mod vendor
 
 go doc rsc.io/quote/v3
+
+go get -u ./... or go get -u=patch ./... # update all direct and indirect dependencies
 ````
 
 Typical day-to-day workflow can be:
 add import statements to your .go code as needed,
 standard commands like go build or go test will automatically add new dependencies.
 
-go.mod:
+`go.mod`:
 
 ````sh
 module github.com/my/thing
@@ -63,7 +65,9 @@ require (
 )
 ````
 
-go.sum:
+`go.sum`:
 
 Contains the expected cryptographic checksums of the content of specific module versions.
 This file must be commited into git.
+
+`vendor/modules.txt` describes how each entry in go.mod file corresponds to which subdirectory within `vendor/`.
