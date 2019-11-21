@@ -284,6 +284,20 @@ pkill -f php         # Kill runned script with name like php.
 pkill -f test.py     # Full argument lists, default is to match against process names.
 
 kill -9 `ps -aux|grep {{PROCESS_NAME}}|grep -v grep|awk '{print $2}'`
+
+kill -s HUP $pId # HUP signal
+````
+
+Signals:
+
+````sh
+SIGSEGV # segmentation violation (fault) - the software has attempted to access a restricted area of memory
+SIGHUP  # hangup - sent to process running in console once you log out (nohup somescript)
+SIGINT  # interrupt from keyboard
+SIGTERM # default kill signal
+SIGKILL # kill
+SIGSTOP # stop process
+SIGCONT # continue stopped process
 ````
 
 #### date

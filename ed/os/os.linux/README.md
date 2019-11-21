@@ -98,18 +98,3 @@ Each directory contains subdirectories `.` and `..`.
 cc  - the C compiler,
 gcc - the GNU C compiler,
 ````
-
-#### signals
-
-````sh
-SEGV # segmentation violation (fault) - the software has attempted to access a restricted area of memory
-HUP  # hangup - sent to process running in console once you log out (nohup somescript)
-````
-
-#### hotkeys
-
-````
-Ctrl-k # delete rest of line
-Ctrl-u # delete to start of line
-Ctrl-w # delete word
-````

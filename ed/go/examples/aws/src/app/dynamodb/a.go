@@ -2,13 +2,13 @@ package dynamodb
 
 import (
 	"fmt"
-	"os"
-	"strconv"
-
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbattribute"
+	"os"
+	"strconv"
+	"time"
 )
 
 type MovieItem struct {
@@ -19,15 +19,17 @@ type MovieItem struct {
 }
 
 type HotDataItem struct {
-	Key string `json:"key"`
-	Val string `json:"val"`
-	ValInt int `json:"val_int"`
+	Key    string `json:"key"`
+	Val    string `json:"val"`
+	ValInt int    `json:"val_int"`
 }
 
 func Run(cfg *aws.Config) {
 	svc := dynamodb.New(session.New(), cfg)
 	//movies(svc)
-	hotData(svc)
+	//hotData(svc)
+	//putHotDataItem(svc)
+	putHotDataItems(svc)
 }
 
 func movies(svc *dynamodb.DynamoDB) {
@@ -42,6 +44,22 @@ func hotData(svc *dynamodb.DynamoDB) {
 	putHotDataItem(svc)
 }
 
+func putHotDataItems(svc *dynamodb.DynamoDB) {
+	valInt, err := strconv.Atoi(os.Args[3])
+	if err != nil {
+		fmt.Println("Got error %w:", err)
+	}
+
+	for i := int64(0); i < 100; i++ {
+		item := HotDataItem{
+			Key:    os.Args[1] + strconv.FormatInt(time.Now().UnixNano()+i, 10),
+			Val:    os.Args[2] + strconv.FormatInt(i, 10),
+			ValInt: valInt,
+		}
+		putItem(svc, item, "hotdata")
+	}
+}
+
 func putHotDataItem(svc *dynamodb.DynamoDB) {
 	valInt, err := strconv.Atoi(os.Args[3])
 	if err != nil {
@@ -49,8 +67,8 @@ func putHotDataItem(svc *dynamodb.DynamoDB) {
 	}
 
 	item := HotDataItem{
-		Key: os.Args[1],
-		Val: os.Args[2],
+		Key:    os.Args[1],
+		Val:    os.Args[2],
 		ValInt: valInt,
 	}
 	putItem(svc, item, "hotdata")
@@ -146,11 +164,13 @@ func putItem(svc *dynamodb.DynamoDB, item interface{}, tableName string) {
 		TableName: aws.String(tableName),
 	}
 
-	_, err = svc.PutItem(input)
+	res, err := svc.PutItem(input)
 	if err != nil {
 		fmt.Println("Got error calling PutItem:", err.Error())
 		os.Exit(1)
 	}
+
+	fmt.Printf("Result: %+v\n", res.String())
 }
 
 func getItem(svc *dynamodb.DynamoDB) {

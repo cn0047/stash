@@ -88,6 +88,7 @@ brew install postgresql
 brew install qcachegrind
 brew install sshuttle
 brew install telnet
+brew install telnet
 brew install terraform
 
 brew remove nginx

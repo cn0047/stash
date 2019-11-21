@@ -31,14 +31,29 @@ PAY_PER_REQUEST - for unpredictable workloads.
 DynamoDB trigger - is lambda function.
 
 ````sh
-t=tbl
-aws dynamodb scan --table-name $t \
+tbl=hotdata
+
+aws dynamodb list-global-tables
+
+# count
+aws dynamodb scan --table-name $tbl | jq -c '.Count'
+
+aws dynamodb scan --table-name $tbl \
   --filter-expression "owner_id=:oId AND d_id=:dId" \
   --expression-attribute-values '{":oId":{"N":"1"},":dId":{"N":"2"}}'
 # result: {"Items": [...], "Count": 45, "ScannedCount": 1291}
 
 # search by primary key
-aws dynamodb query --table-name $t \
+aws dynamodb query --table-name $tbl \
   --key-condition-expression "key_id=:kId" \
-  --expression-attribute-values  '{":kId":{"S":"3237415"}}'
+  --expression-attribute-values  '{":kId":{"S":"3237415"}}' \
+  | jq -c '.Count,.ScannedCount'
+
+# add new item
+aws dynamodb put-item --table-name $tbl --item '{
+  "email"      : {"S": "x@y.com"},
+  "err"        : {"BOOL": false},
+  "created_at" : {"S": "2019-10-31T16:32:39.243443+02:00"},
+  "type"       : {"S": "test"}
+}'
 ````

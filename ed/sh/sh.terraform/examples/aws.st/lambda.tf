@@ -15,7 +15,8 @@ resource "aws_lambda_function" "st_ddb_lambda" {
 resource "aws_lambda_event_source_mapping" "st_ddb_lambda_trigger" {
   event_source_arn  = "${aws_dynamodb_table.st_ddb.stream_arn}"
   function_name     = "${aws_lambda_function.st_ddb_lambda.arn}"
-  batch_size        = 2
   starting_position = "LATEST"
   enabled           = true
+  batch_size        = 2
+  # maximum_batching_window_in_seconds = 10
 }

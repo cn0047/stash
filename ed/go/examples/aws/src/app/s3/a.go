@@ -3,6 +3,7 @@ package s3
 import (
 	"bytes"
 	"fmt"
+	"io"
 	"net/http"
 	"os"
 
@@ -16,10 +17,26 @@ func Run(cfg *aws.Config, bucket string) {
 	f1(cfg, bucket)
 }
 
+func PutToS3(cfg *aws.Config, bucket string, key string, body io.ReadSeeker) interface{} {
+	svc := s3.New(session.New(), cfg)
+
+	params := &s3.PutObjectInput{
+		Bucket: aws.String(bucket),
+		Key:    aws.String(key),
+		Body:   body,
+	}
+	res, err := svc.PutObject(params)
+	if err != nil {
+		panic(err)
+	}
+
+	return res
+}
+
 func f1(cfg *aws.Config, bucket string) {
 	svc := s3.New(session.New(), cfg)
 
-	file, err := os.Open(os.Getenv("GOPATH")+"/src/app/s3/s.png")
+	file, err := os.Open(os.Getenv("GOPATH") + "/src/app/s3/s.png")
 	if err != nil {
 		panic(err)
 	}
