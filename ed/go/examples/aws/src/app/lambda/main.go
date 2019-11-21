@@ -6,19 +6,56 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"strings"
+	"time"
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
+
+	"app/internal"
+	"app/s3"
 )
 
 const insert = "INSERT"
 
 func main() {
-	lambda.Start(Handler)
+	lambda.Start(Handler2)
 }
 
 //Handler process lambda event.
-func Handler(event events.DynamoDBEvent) {
+func Handler2(event events.DynamoDBEvent) {
+	data := make([]byte, 0, 0)
+	rtl(event.Records)
+	for _, record := range event.Records {
+		r := toMap(record.Change.NewImage)
+		r["updated_at"] = r["created_at"]
+		r["event_name"] = record.EventName
+
+		payload, err := json.Marshal(r)
+		if err != nil {
+			panic(err)
+		}
+		data = append(data, payload...)
+	}
+	rtl(map[string]string{"data": strings.Replace(fmt.Sprintf("%s", data), `"`, "", -1)})
+
+	cfg := internal.GetAWSConfig()
+	res := s3.PutToS3(cfg, internal.GetBucket(), getS3Key(), bytes.NewReader(data))
+	rtl(res)
+}
+
+func getS3Key() string {
+	t := time.Now()
+	s := fmt.Sprintf(
+		"/x-%d-%d-%d_%d-%d-%d_%d.json",
+		t.Year(), t.Month(), t.Day(), t.Hour(), t.Minute(), t.Second(), t.Nanosecond(),
+	)
+
+	return s
+}
+
+//Handler process lambda event.
+func Handler1(event events.DynamoDBEvent) {
 	log.Printf("\n Got: %#v", event)
 	/*
 	   Got: events.DynamoDBEvent{
@@ -62,12 +99,12 @@ func Handler(event events.DynamoDBEvent) {
 			nonExistingValue, nonExistingValueErr = v.Integer()
 		}
 		data := map[string]interface{}{
-			"eID": record.EventID,
-			"e": record.EventName,
-			"k": key,
-			"v": val,
-			"vi": valInt64,
-			"non_existing_value": nonExistingValue,
+			"eID":                    record.EventID,
+			"e":                      record.EventName,
+			"k":                      key,
+			"v":                      val,
+			"vi":                     valInt64,
+			"non_existing_value":     nonExistingValue,
 			"non_existing_value_err": nonExistingValueErr,
 		}
 		rtl(data)

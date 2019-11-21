@@ -6,6 +6,22 @@ import (
 )
 
 func main() {
+	//one()
+	two()
+}
+
+func two() {
+	ErrorCustom1 := fmt.Errorf("err1")
+	ErrorCustom2 := fmt.Errorf("err2")
+	//ErrorCustom3 := fmt.Errorf("err3")
+	err := ErrorCustom1
+	if verr, ok := err.(*okjwt.ValidationError); ok {
+	if err.Er & (ErrorCustom1 | ErrorCustom2) {
+
+	}
+}
+
+func one() {
 	fmt.Println(sqr(-1))
 	fmt.Println(sqr(2))
 	fmt.Println(service(-2))

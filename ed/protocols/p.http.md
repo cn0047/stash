@@ -44,27 +44,30 @@ URN - Uniform Resource Name (host + path + all after question mark).
 
 Headers:
 
-* Authorization
 * Accept
 * Accept-Charset
 * Accept-Encoding
 * Accept-Language
-* Cookie
+* Authorization
 * Content-Type
-* Referer
-* User-Agent
+* Cookie
 * If-Modified-Since
+* Referer
+* Transfer-Encoding - form of encoding used to safely transfer the body payload.
+* User-Agent
+* X-Forwarded-Proto - identifying the protocol.
 
 ````sh
 GET /api/collection
+
 Accept: application/x-collection+yaml
-
-Content-Type: application/json
-
 Authorization: Basic YWRtaW46cGFzc3dvcmQ=
 Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9
 Authorization: SHARED-SECRET eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9
-Authorization: OAuth oauth_consumer_key="", oauth_nonce="", oauth_signature="", oauth_signature_method="HMAC-SHA1", oauth_timestamp="1471672391", oauth_token="", oauth_version="1.0"'
+Authorization: OAuth oauth_consumer_key="", oauth_nonce="", oauth_signature="", oauth_signature_method="HMAC-SHA1", oauth_timestamp="1471672391", oauth_token="", oauth_version="1.0"
+Content-Type: application/json
+Transfer-Encoding: chunked|compress|deflate|gzip|identity
+X-Forwarded-Proto: https
 ````
 
 Request with file:

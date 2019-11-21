@@ -153,6 +153,12 @@ nanosecond  - 0,000 000 001
 ````
 
 ````
+UTF-8  - from 1 to 4 bytes
+UTF-16 - from 2 to 4 bytes
+UTF-32 - exactly 32 bits (4 bytes)
+````
+
+````
 uint8  (tinyint)  - 1byte, 0 to 255
 uint16 (smallint) - 2byte, 0 to 65535
 uint32 (int)      - 4byte, 0 to 4294967295

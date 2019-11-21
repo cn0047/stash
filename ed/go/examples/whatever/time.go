@@ -8,8 +8,18 @@ import (
 func main() {
 	// f1()
 	// f2()
-	f2b()
+	//f2b()
 	// f3()
+	f4()
+}
+
+func f4() {
+	t := time.Now()
+	//stark-staging-events-1-2019-11-21-09-02-19-197cd971-83ef-4cee-af52-22f9c42ca30b
+	// 2019/11/21/09/stark-staging-me-stream-1-2019-11-21-09-02-19-197cd971-83ef-4cee-af52-22f9c42ca30b
+
+	s := fmt.Sprintf("%d-%02d-%02d_%d-%d-%d_%d", t.Year(), t.Month(), t.Day(), t.Hour(), t.Minute(), t.Second(), t.Nanosecond())
+	fmt.Printf("res: %d/%d/%d/%d/pref-%s-events-%s \n", t.Year(), t.Month(), t.Day(), t.Hour(), "dev", s)
 }
 
 func f1() {

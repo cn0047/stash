@@ -1,6 +1,11 @@
 Concurrency
 -
 
+Mutex - mutual exclusion.
+
+Starvation - situation where a concurrent process cannot get all the resources
+it needs to perform work.
+
 #### Locks
 
 Deadlock - concurrent processes are waiting on one another.

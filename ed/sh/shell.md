@@ -53,3 +53,11 @@ cd -       # go to previous dir
 pushd path # remember path (save it at stack)
 popd       # got to pushed path (and delete it from stack)
 ````
+
+#### hotkeys
+
+````
+Ctrl-k # delete rest of line
+Ctrl-u # delete to start of line
+Ctrl-w # delete word
+````
