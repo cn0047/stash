@@ -212,17 +212,35 @@ du               # Summarize disk usage of each FILE.
 du -sh IraFoto/* # Summarize disk usage of each dir in foto dir.
 ````
 
+#### nc
+
+````sh
+# listen
+nc -l 64738
+curl localhost:64738
+
+# request
+r="GET / HTTP/1.1
+Host: localhost:8080
+"
+echo $r | nc localhost 8080
+````
+
 #### telnet
 
 ````sh
-# nginx
 telnet localhost 8080
+telnet -e ! localhost 8080
 
 # php-fpm
 telnet localhost 9000
 
 # websocket
 telnet 0.0.0.0 12345
+````
+
+````sh
+open localhost 8080
 ````
 
 #### syslog
@@ -754,4 +772,7 @@ time curl -si https://realtimelog.herokuapp.com/test
 
 curl -A 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36' \
   http://localhost:8000
+
+# ignore invalid SSL Certificate
+curl --insecure https://localhost:4433
 ````

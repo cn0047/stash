@@ -55,6 +55,7 @@ DynamoDB trigger - is lambda function.
 tbl=hotdata
 
 aws dynamodb list-global-tables
+aws dynamodb list-tables
 
 # count
 aws dynamodb scan --table-name $tbl | jq -c '.Count'
