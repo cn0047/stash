@@ -25,15 +25,17 @@ func getValue(record events.DynamoDBAttributeValue) interface{} {
 	case events.DataTypeBoolean:
 		val = record.Boolean()
 	case events.DataTypeList:
-		s := make([]interface{}, 0)
-		for _, el := range record.List() {
+		list := record.List()
+		s := make([]interface{}, 0, len(record.List()))
+		for _, el := range list {
 			s = append(s, getValue(el))
 		}
 		val = s
 	case events.DataTypeMap:
+		mapData := record.Map()
 		// IMPORTANT: For DynamoDB only string can be a key in map.
-		m := make(map[string]interface{})
-		for k, el := range record.Map() {
+		m := make(map[string]interface{}, len(mapData))
+		for k, el := range mapData {
 			m[k] = getValue(el)
 		}
 		val = m

@@ -14,8 +14,10 @@ func main() {
 			http.Error(w, fmt.Sprint(err), http.StatusInternalServerError)
 			return
 		}
-		fmt.Fprintf(w, "%s", dump)
-		log.Printf("✳️ \n %s", dump)
+		if _, err := fmt.Fprintf(w, "%s", dump); err != nil {
+			log.Printf("🟥 error: %#v\n", err)
+		}
+		log.Printf("✳️\n%s", dump)
 	})
 
 	http.ListenAndServe(":8080", nil)
