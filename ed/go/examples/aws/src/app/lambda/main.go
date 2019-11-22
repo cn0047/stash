@@ -19,15 +19,24 @@ import (
 const insert = "INSERT"
 
 func main() {
-	lambda.Start(Handler2)
+	lambda.Start(Handler3)
 }
 
 //Handler process lambda event.
+func Handler3(event events.DynamoDBEvent) {
+	rtl(event.Records)
+	for _, record := range event.Records {
+		rtl(record)
+		r := FromDynamoDBMap(record.Change.NewImage)
+		rtl(r)
+	}
+}
+
 func Handler2(event events.DynamoDBEvent) {
 	data := make([]byte, 0, 0)
 	rtl(event.Records)
 	for _, record := range event.Records {
-		r := toMap(record.Change.NewImage)
+		r := FromDynamoDBMap(record.Change.NewImage)
 		r["updated_at"] = r["created_at"]
 		r["event_name"] = record.EventName
 

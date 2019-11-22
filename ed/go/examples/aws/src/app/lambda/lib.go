@@ -4,52 +4,52 @@ import (
 	"github.com/aws/aws-lambda-go/events"
 )
 
-func toMap(record map[string]events.DynamoDBAttributeValue) map[string]interface{} {
+func FromDynamoDBMap(record map[string]events.DynamoDBAttributeValue) map[string]interface{} {
 	resultMap := make(map[string]interface{})
 
 	for key, rec := range record {
-		switch rec.DataType() {
-		case events.DataTypeBinary:
-		case events.DataTypeBinarySet:
-		case events.DataTypeBoolean:
-			resultMap[key] = rec.Boolean()
-		case events.DataTypeList:
-		case events.DataTypeMap:
-		case events.DataTypeNull:
-		case events.DataTypeNumber:
-			resultMap[key] = rec.Number()
-		case events.DataTypeNumberSet:
-		case events.DataTypeString:
-			resultMap[key] = rec.String()
-		case events.DataTypeStringSet:
-		}
+		resultMap[key] = getValue(rec)
 	}
 
 	return resultMap
 }
 
-func ToMapFromDynamoDB(record map[string]events.DynamoDBAttributeValue) map[string]interface{} {
-	resultMap := make(map[string]interface{})
+func getValue(record events.DynamoDBAttributeValue) interface{} {
+	var val interface{}
 
-	for key, rec := range record {
-		switch rec.DataType() {
-		case events.DataTypeBinary:
-		case events.DataTypeBinarySet:
-		case events.DataTypeBoolean:
-			resultMap[key] = rec.Boolean()
-		case events.DataTypeList:
-		case events.DataTypeMap:
-		case events.DataTypeNull:
-		case events.DataTypeNumber:
-			resultMap[key] = rec.Number()
-		case events.DataTypeNumberSet:
-		case events.DataTypeString:
-			resultMap[key] = rec.String()
-		case events.DataTypeStringSet:
+	switch record.DataType() {
+	case events.DataTypeBinary:
+		val = record.Binary()
+	case events.DataTypeBinarySet:
+		val = record.BinarySet()
+	case events.DataTypeBoolean:
+		val = record.Boolean()
+	case events.DataTypeList:
+		s := make([]interface{}, 0)
+		for _, el := range record.List() {
+			s = append(s, getValue(el))
 		}
+		val = s
+	case events.DataTypeMap:
+		// IMPORTANT: For DynamoDB only string can be a key in map.
+		m := make(map[string]interface{})
+		for k, el := range record.Map() {
+			m[k] = getValue(el)
+		}
+		val = m
+	case events.DataTypeNull:
+		val = nil
+	case events.DataTypeNumber:
+		val = record.Number()
+	case events.DataTypeNumberSet:
+		val = record.NumberSet()
+	case events.DataTypeString:
+		val = record.String()
+	case events.DataTypeStringSet:
+		val = record.StringSet()
 	}
 
-	return resultMap
+	return val
 }
 
 func GetStringByKey(key string, record map[string]events.DynamoDBAttributeValue) string {

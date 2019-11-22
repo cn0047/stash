@@ -385,10 +385,13 @@ go run ed/go/examples/algolia/src/main.go
 # @see: ed/sh/sh.terraform/README.md
 export GOPATH=$PWD/ed/go/examples/aws
 go get -u "github.com/aws/aws-sdk-go/aws"
+go get -u "github.com/stretchr/testify/assert"
 # aws lambda
 # @see: ed/sh/sh.terraform/README.md
+go test -v ./lambda
 # dynamodb
 cd $GOPATH/src/app && go run main.go k21 v21 21
+cd $GOPATH/src/app && go run main.go k5
 # aws s3
 # aws sqs
 cd $GOPATH/src/app && go run main.go

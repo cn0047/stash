@@ -29,14 +29,15 @@ func Run(cfg *aws.Config) {
 	//movies(svc)
 	//hotData(svc)
 	//putHotDataItem(svc)
-	putHotDataItems(svc)
+	//putHotDataItems(svc)
+	getHotDataItem(svc, os.Args[1])
 }
 
 func movies(svc *dynamodb.DynamoDB) {
 	createTableIfNotExists(svc)
 	itemsCount(svc)
 	putMovieItem(svc)
-	getItem(svc)
+	getMovieItem(svc)
 }
 
 func hotData(svc *dynamodb.DynamoDB) {
@@ -173,7 +174,7 @@ func putItem(svc *dynamodb.DynamoDB, item interface{}, tableName string) {
 	fmt.Printf("Result: %+v\n", res.String())
 }
 
-func getItem(svc *dynamodb.DynamoDB) {
+func getMovieItem(svc *dynamodb.DynamoDB) {
 	result, err := svc.GetItem(&dynamodb.GetItemInput{
 		TableName: aws.String("Movies"),
 		Key: map[string]*dynamodb.AttributeValue{
@@ -190,4 +191,20 @@ func getItem(svc *dynamodb.DynamoDB) {
 		return
 	}
 	fmt.Println("Found movie: ", result)
+}
+
+func getHotDataItem(svc *dynamodb.DynamoDB, key string) {
+	result, err := svc.GetItem(&dynamodb.GetItemInput{
+		TableName: aws.String("hotdata"),
+		Key: map[string]*dynamodb.AttributeValue{
+			"key": {
+				S: aws.String(key),
+			},
+		},
+	})
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+	fmt.Println("Found item: ", result)
 }
