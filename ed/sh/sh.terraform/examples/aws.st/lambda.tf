@@ -17,6 +17,6 @@ resource "aws_lambda_event_source_mapping" "st_ddb_lambda_trigger" {
   function_name     = "${aws_lambda_function.st_ddb_lambda.arn}"
   starting_position = "LATEST"
   enabled           = true
-  batch_size        = 2
+  batch_size        = 1
   # maximum_batching_window_in_seconds = 10
 }

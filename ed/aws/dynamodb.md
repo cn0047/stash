@@ -30,6 +30,27 @@ PAY_PER_REQUEST - for unpredictable workloads.
 
 DynamoDB trigger - is lambda function.
 
+````js
+// item to add in AWS DDB console:
+{
+  "bin": {"B": "AAEqQQ=="},
+  "binset": {"BS": ["AAEqQQ==", "AAEqQQ=="] },
+  "bool": {"BOOL": false },
+  "float": {"N": "0.9998"},
+  "int": {"N": "-256"},
+  "key": "k5",
+  "list": {"L": [{"S": "1"}, {"BOOL": true }, {"NULL": true } ] },
+  "map": {"M": {"map": {"S": "str"}, "map2": {"M": {"100": {"N": "STR MUST NOT BE BLANK"} } } } },
+  "null": {"NULL": true },
+  "numset": {"NS": ["-99", "99"] },
+  "numset2map": {"M": {"test": {"BOOL": true } } },
+  "str": {"S": "str"},
+  "strset": {"SS": ["foo", "bar"] },
+  "strset2map": {"M": {"foo": {"S": "bar"} } },
+  "strset3list": {"L": [{"S": "foo"}, {"S": "bar"} ] }
+}
+````
+
 ````sh
 tbl=hotdata
 
