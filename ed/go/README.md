@@ -23,7 +23,7 @@ GO
 [protocol for microservices](https://github.com/uber/tchannel)
 [golangci](https://golangci.com/)
 [security](https://github.com/securego/gosec)
-[covererage](https://gocover.io/) [covererage](https://cover.run/) [![coverage](https://gocover.io/_badge/github.com/thepkg/strings)](https://gocover.io/github.com/thepkg/strings)
+[covererage](https://gocover.io/) [![coverage](https://gocover.io/_badge/github.com/thepkg/strings)](https://gocover.io/github.com/thepkg/strings)
 
 Go - statically-typed, general-purpose, with type safety
 and automatic memory management programming language.

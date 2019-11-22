@@ -386,6 +386,7 @@ go run ed/go/examples/algolia/src/main.go
 export GOPATH=$PWD/ed/go/examples/aws
 go get -u "github.com/aws/aws-sdk-go/aws"
 go get -u "github.com/stretchr/testify/assert"
+go get -u "github.com/thepkg/awsl"
 # aws lambda
 # @see: ed/sh/sh.terraform/README.md
 go test -v ./lambda
