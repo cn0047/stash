@@ -56,11 +56,6 @@ sudo networksetup -setwebproxy "Wi-Fi" 54.174.16.166 80
 # '71.4.186.100:21288', '198.7.96.243:21239', '104.128.17.224:21237', '209.48.175.196:21325', '172.102.207.55:21279', '198.7.97.209:21297', '162.248.134.54:21326', '23.239.219.244:21325', '143.191.19.7:21238', '173.44.12.201:21259', '173.44.5.52:21310', '173.44.12.68:21305', '173.44.26.80:21269', '107.152.144.66:21291', '208.73.73.206:21257', '204.14.87.85:21326', '144.168.128.88:21244', '204.14.87.149:21271', '45.57.195.33:21232', '173.44.5.185:21247', '173.44.12.141:21280', '173.44.26.220:21318', '107.152.144.219:21274', '208.73.73.9:21278', '143.191.19.89:21263', '143.191.31.123:21304', '69.174.99.149:21322', '50.117.15.33:21318', '173.44.12.16:21297', '216.172.144.220:21285',
 sudo networksetup -setwebproxystate "Wi-Fi" off
 
-# HTTPS keys:
-openssl genrsa 1024 > private.key
-openssl req -new -key private.key -out cert.csr
-openssl x509 -req -in cert.csr -signkey private.key -out certificate.pem
-
 # base64
 stringInBase64=`echo "shaken not stirred" | base64`
 echo $stringInBase64 | base64 -D
@@ -212,6 +207,23 @@ du               # Summarize disk usage of each FILE.
 du -sh IraFoto/* # Summarize disk usage of each dir in foto dir.
 ````
 
+#### openssl
+
+````sh
+# HTTPS keys:
+openssl genrsa 1024 > private.key
+openssl req -new -key private.key -out cert.csr
+openssl x509 -req -in cert.csr -signkey private.key -out certificate.pem
+````
+
+````sh
+# https request
+r="GET / HTTP/1.1
+Host: localhost:4433
+"
+echo $r | openssl s_client -ign_eof -connect localhost:4433
+````
+
 #### nc
 
 ````sh
@@ -230,6 +242,9 @@ echo $r | nc localhost 8080
 
 ````sh
 telnet localhost 8080
+GET / HTTP/1.1
+Host: localhost:8080
+
 telnet -e ! localhost 8080
 
 # php-fpm
@@ -774,5 +789,5 @@ curl -A 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit
   http://localhost:8000
 
 # ignore invalid SSL Certificate
-curl --insecure https://localhost:4433
+curl -k https://localhost:4433
 ````

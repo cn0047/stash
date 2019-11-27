@@ -1,10 +1,13 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"log"
 	"net/http"
 	"os"
+	"os/signal"
+	"syscall"
 	"time"
 )
 
@@ -26,5 +29,15 @@ func main() {
 		WriteTimeout: 2 * time.Second,
 		Handler:      mux,
 	}
+
+	signals := make(chan os.Signal, 1)
+	signal.Notify(signals, syscall.SIGINT, syscall.SIGTERM)
+	go func() {
+		<-signals
+		if err := s.Shutdown(context.Background()); err != nil {
+			log.Fatal(err)
+		}
+	}()
+
 	log.Fatal(s.ListenAndServe())
 }

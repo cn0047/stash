@@ -2,6 +2,7 @@ AWS
 -
 
 [console](https://console.aws.amazon.com)
+[quotas](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html)
 [go examples](https://github.com/awsdocs/aws-doc-sdk-examples/tree/master/go/example_code)
 
 ````sh

@@ -14,6 +14,7 @@ Hashing algorithms:
 * Chacha20
 * DH (Diffie-Hellman)
 * ECDH (Elliptical Curve Diffie-Hellman)
+* ECDHE
 * ECDSA (asymmetric)
 * HMAC (symmetric)
 * MD5
