@@ -8,7 +8,7 @@ import (
 var (
 	aws_access_key_id     = ""
 	aws_secret_access_key = ""
-	region                = "eu-central-1"
+	region                = "us-east-1" // us-east-1|eu-central-1
 	bucket                = "basicbkt"
 
 	host = "http://127.0.0.1:8000"

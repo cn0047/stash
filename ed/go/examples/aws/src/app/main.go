@@ -8,12 +8,14 @@ import (
 	"app/internal"
 	"app/s3"
 	"app/sqs"
+	"app/ssm"
 )
 
 func main() {
 	c := internal.GetAWSConfig()
-	dynamodb.Run(c)
+	ssm.Run(c)
 	return
+	dynamodb.Run(c)
 	sqs.Run(c)
 	s3.Run(c, internal.GetBucket())
 }
