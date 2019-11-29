@@ -9,3 +9,4 @@ func main() {
     fmt.Printf("Hello, world. It's GO package.\n")
     fmt.Printf(stringutil.Reverse("!oG ,olleH"))
 }
+ƒ

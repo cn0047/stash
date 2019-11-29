@@ -11,6 +11,7 @@ DDB           ⇒ Table ⇒ Item ⇒ Attribute ⇒ Primary key ⇒ Global Second
 ````
 
 EventName: `INSERT|MODIFY|REMOVE`
+StreamViewType: `KEYS_ONLY|NEW_IMAGE|OLD_IMAGE|NEW_AND_OLD_IMAGES`
 
 Table - reqular table.
 <br>Global Table - multi-region, and multi-master.

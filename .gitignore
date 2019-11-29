@@ -23,5 +23,6 @@ ed/go/**/bin/
 ed/go/**/pkg/
 # ed/go/**/src/
 !ed/go/**/src/app/
+ed/go/**/src/github.com
 ed/go/**/src/golang.org
 ed/go/**/src/gopkg.in
