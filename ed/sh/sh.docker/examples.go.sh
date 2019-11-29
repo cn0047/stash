@@ -195,20 +195,76 @@ curl -i -XPOST 'http://localhost:8081/cars' -H 'Content-Type: application/json' 
 # web.three.tiny
 docker run -it --rm -v $PWD/ed/go/examples/web.three.tiny:/app -e GOPATH='/app' \
   cn007b/go sh -c 'cd $GOPATH/src/app && go install'
-
 docker run -it --rm -v $PWD/ed/go/examples/web.three.tiny:/app -e GOPATH='/app' \
   -p 8080:8080 \
   cn007b/go sh -c 'cd $GOPATH && ./bin/app'
-
 # or
 GOPATH=$PWD/ed/go/examples/web.three.tiny
 cd $GOPATH
 go run src/app/main.go
 go install src/app
 go build src/app
-
 # check
 curl http://localhost:8080/v1/id/7
+
+# algolia
+export GOPATH=$PWD'/ed/go/examples/algolia'
+go get github.com/algolia/algoliasearch-client-go/algoliasearch
+go run ed/go/examples/algolia/src/main.go
+
+# aws
+# Init AWS with terraform first,
+# @see: ed/sh/sh.terraform/README.md
+export GOPATH=$PWD/ed/go/examples/aws
+go get -u "github.com/aws/aws-sdk-go/aws"
+go get -u "github.com/stretchr/testify/assert"
+go get -u "github.com/thepkg/awsl"
+# aws lambda
+# @see: ed/sh/sh.terraform/README.md
+go test -v ./lambda
+# dynamodb
+cd $GOPATH/src/app && go run main.go k21 v21 21
+cd $GOPATH/src/app && go run main.go k5
+# aws s3
+# aws sqs
+cd $GOPATH/src/app && go run main.go
+
+# jwt
+export GOPATH=$PWD/ed/go/examples/jwt
+cd $GOPATH
+go get -u "github.com/dgrijalva/jwt-go"
+go run src/app/main.go
+
+# bench
+GOPATH=$PWD/ed/go/examples/bench
+go run $GOPATH/main.go
+
+# websocket
+export GOPATH=$PWD'/ed/go/examples/websocket'
+go get -u github.com/gorilla/websocket
+cd $GOPATH/src/app && go run $GOPATH/src/app/websockets.go
+
+# debug
+export GOPATH=$PWD'/ed/go/examples/debug'
+# install delve
+cd $GOPATH && git clone https://github.com/derekparker/delve.git && cd -
+cd $GOPATH/delve && make install && cd -
+#
+go build -gcflags='-N -l' $GOPATH/src/app/main.go \
+  && dlv --listen=:2345 --headless=true --api-version=2 exec ./main
+#
+# https://monosnap.com/file/xQWOFnKzTy2ODUu4Kxute5nxSEtTuR
+#
+# ⬇️
+# docker run -it --rm -p 2345:2345 -v $GOPATH:/gh -w /gh -e GOPATH='/gh' xgo sh -c '
+#   go build -gcflags="-N -l" src/app/main.go \
+#   && /app/bin/dlv --listen=:2345 --headless=true --api-version=2 exec ./main
+# '
+#
+# ERROR:
+# could not launch process: fork/exec ./main: operation not permitted
+
+
 
 #### GO Echo
 
@@ -283,12 +339,6 @@ docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' xgo sh -c '
 docker run -it --rm -p 8080:8080  -v $PWD/bin/app:/app/app -w /app cn007b/ubuntu ./app
 # check
 curl 'http://localhost:8081/github/users/cn007b'|jq
-
-#### CURL
-
-docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' xgo sh -c '
-  go test -v -cover
-'
 
 #### PRA
 
@@ -371,65 +421,6 @@ docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' cn007b/go:2018-06-07 s
   go test -v -covermode=count -coverprofile=coverage.out
 '
 # docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' cn007b/go:1.10 gometalinter ./...
-
-#### algolia
-
-export GOPATH=$PWD'/ed/go/examples/algolia'
-go get github.com/algolia/algoliasearch-client-go/algoliasearch
-go run ed/go/examples/algolia/src/main.go
-
-#### aws
-
-# sh
-# Init AWS with terraform first,
-# @see: ed/sh/sh.terraform/README.md
-export GOPATH=$PWD/ed/go/examples/aws
-go get -u "github.com/aws/aws-sdk-go/aws"
-go get -u "github.com/stretchr/testify/assert"
-go get -u "github.com/thepkg/awsl"
-# aws lambda
-# @see: ed/sh/sh.terraform/README.md
-go test -v ./lambda
-# dynamodb
-cd $GOPATH/src/app && go run main.go k21 v21 21
-cd $GOPATH/src/app && go run main.go k5
-# aws s3
-# aws sqs
-cd $GOPATH/src/app && go run main.go
-
-#### bench
-
-GOPATH=$PWD/ed/go/examples/bench
-go run $GOPATH/main.go
-
-#### websocket
-
-export GOPATH=$PWD'/ed/go/examples/websocket'
-go get -u github.com/gorilla/websocket
-cd $GOPATH/src/app && go run $GOPATH/src/app/websockets.go
-
-#### debug
-
-export GOPATH=$PWD'/ed/go/examples/debug'
-
-# install delve
-cd $GOPATH && git clone https://github.com/derekparker/delve.git && cd -
-cd $GOPATH/delve && make install && cd -
-
-go build -gcflags='-N -l' $GOPATH/src/app/main.go \
-  && dlv --listen=:2345 --headless=true --api-version=2 exec ./main
-
-# https://monosnap.com/file/xQWOFnKzTy2ODUu4Kxute5nxSEtTuR
-
-#
-# ⬇️
-# docker run -it --rm -p 2345:2345 -v $GOPATH:/gh -w /gh -e GOPATH='/gh' xgo sh -c '
-#   go build -gcflags="-N -l" src/app/main.go \
-#   && /app/bin/dlv --listen=:2345 --headless=true --api-version=2 exec ./main
-# '
-#
-# ERROR:
-# could not launch process: fork/exec ./main: operation not permitted
 
 #### GO AppEngine one
 
