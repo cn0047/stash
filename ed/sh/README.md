@@ -395,7 +395,7 @@ done
 for f in *"$1"; do
     echo "$f $1"
 done
-for i in $(seq 1 $END); do echo $i; done
+for i in $(seq 1 $end); do echo $i; done
 for (( init; test; update )); do
     ;; code
 done
