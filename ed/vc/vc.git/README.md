@@ -17,6 +17,12 @@ git clone ssh://gitolite@repo.com:1011/repoName.git
 # lightweight clone
 git clone --depth=1 --branch=master git://github.com/cn007b/vo
 
+export GIT_SSL_NO_VERIFY=1;
+git config http.sslVerify 0
+
+git config user.name "Volodymyr Kovpak"
+git config user.email "cn007b@gmail.com"
+
 git remote -v                      # shows remote repository
 git remote show remoteRepoName     # shows all about remote repo (remote show origin)
 git remote add origin ssh://gitolite@repo.com:1011/repoName.git
@@ -37,9 +43,6 @@ git tag 1.1.1
 git push origin --tags
 
 git blame -L 11,12 file
-
-export GIT_SSL_NO_VERIFY=1;
-git config http.sslVerify 0
 
 # avoid git push prompt
 git remote set-url origin git+ssh://git@github.com/cn007b/my.git

@@ -233,7 +233,7 @@ Origin: https://foo.bar.org
 * 300 Multiple Choices
 * 301 **Moved Permanently** (http -> https)
 * 302 **Found / Moved Temporary** (location header)
-* 303 See Other (since HTTP/1.1)
+* 303 See Other (since HTTP/1.1) (reidrect in golang)
 * 304 **Not Modified**
 * 305 Use Proxy (since HTTP/1.1)
 * 306 Switch Proxy
