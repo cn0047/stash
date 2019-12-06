@@ -46,9 +46,9 @@ cd $GOPATH/lib ;\
   open coverage.html
 
 # ✅
-go test -cover -coverprofile=coverage.out ./...
-go tool cover -html=coverage.out -o=coverage.html
-open coverage.html; rm coverage.out
+go test -count=1 -cover -coverprofile=coverage.out ./...
+go tool cover -html=coverage.out -o=coverage.html && rm coverage.out
+open coverage.html
 ````
 
 ````

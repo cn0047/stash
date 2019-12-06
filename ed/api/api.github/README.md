@@ -15,11 +15,6 @@ curl https://api.github.com/users/cn007b/repos
 curl https://api.github.com/users/cn007b/orgs
 ````
 
-````bash
-# for JIRA:
-git commit -m "PROJ-123 my comment..."
-````
-
 To add image into gist:
 
 Clone gist by using gist URL.
