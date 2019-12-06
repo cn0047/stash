@@ -226,6 +226,7 @@ go test -v ./lambda
 cd $GOPATH/src/app && go run main.go k21 v21 21
 cd $GOPATH/src/app && go run main.go k5
 # aws s3
+# aws sns
 # aws sqs
 cd $GOPATH/src/app && go run main.go
 

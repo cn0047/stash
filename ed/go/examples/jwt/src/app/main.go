@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 
 	"github.com/dgrijalva/jwt-go"
 )
@@ -11,13 +12,17 @@ type Token struct {
 }
 
 func (t *Token) Valid() error {
-	return nil
+	log.Printf("🔴 %+v", t)
+	return fmt.Errorf("911")
 }
 
 func main() {
-	secret := []byte("204")
-	t := newToken(secret)
-	parseToken(t, secret)
+	t := ``
+	two(t)
+	return
+	//secret := []byte("204")
+	//t := newToken(secret)
+	//parseToken(t, secret)
 }
 
 func newToken(secret interface{}) string {
@@ -36,6 +41,9 @@ func newToken(secret interface{}) string {
 func parseToken(t string, secret interface{}) {
 	var claims Token
 	_, err := jwt.ParseWithClaims(t, &claims, func(token *jwt.Token) (interface{}, error) {
+		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
+			return nil, fmt.Errorf("unexpected signing method: %#v", token.Method)
+		}
 		return secret, nil
 	})
 	if err != nil {
@@ -62,18 +70,25 @@ func three(t string) {
 }
 
 func two(t string) {
+	var ErrorJWTValidationErrorOK = fmt.Errorf("ErrorJWTValidationErrorOK")
 	var claims Token
 	tk, err := jwt.ParseWithClaims(t, &claims, func(token *jwt.Token) (interface{}, error) {
 		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
-			return nil, fmt.Errorf("unexpected signing method: %v", token.Header["alg"])
+			return nil, fmt.Errorf("unexpected signing method: %#v", token.Method)
 		}
 		// return nil, nil // -> key is of invalid type
-		return []byte(""), nil // -> signature is invalid
+		// return []byte(""), nil // -> signature is invalid
+		//return []byte(""), jwt.ValidationError{}
+		return []byte(""), ErrorJWTValidationErrorOK
 	})
+	if err != nil {
+		if err.Error() != ErrorJWTValidationErrorOK.Error() {
+			panic(fmt.Errorf("failed to parse token, error: %w", err))
+		}
+	}
 
-	fmt.Printf("Error: %v\n", err)
 	fmt.Printf("Token: %#v\n", tk)
-	fmt.Printf("Claims: %#v\n", claims)
+	fmt.Printf("Claims UserID: %#v\n", claims.UserID)
 }
 
 func one(t string) {
