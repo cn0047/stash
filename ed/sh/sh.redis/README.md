@@ -12,7 +12,12 @@ redis-benchmark # shell tool for benchmarking
 ````sh
 set mykey 'Hello'
 set foo 'bar'
+
+# set if key does not exist
+setnx mykey2 "World"
+
 expire foo 10 # ttl 10 seconds
+
 get mykey
 mget mykey foo
 

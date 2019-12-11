@@ -212,6 +212,11 @@ export GOPATH=$PWD'/ed/go/examples/algolia'
 go get github.com/algolia/algoliasearch-client-go/algoliasearch
 go run ed/go/examples/algolia/src/main.go
 
+# algolia
+export GOPATH=$PWD'/ed/go/examples/airbrake'
+go get github.com/airbrake/gobrake
+go run ed/go/examples/airbrake/src/app/main.go
+
 # aws
 # Init AWS with terraform first,
 # @see: ed/sh/sh.terraform/README.md

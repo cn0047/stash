@@ -13,7 +13,7 @@ JSON API requires use of the JSON API media type (`application/vnd.api+json`) fo
 
 A JSON `object` MUST be at the root of every JSON API request and response containing data:
 
-* `data`: the document’s “primary data”
+* `data`: the document’s "primary data"
 * `errors`: an array of error objects
 * `meta`: a meta object that contains non-standard meta-information.
 

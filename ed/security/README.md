@@ -17,6 +17,11 @@ Security
 * Phishing
 * DNS hijacking
 
+````
+GET / HTTP/1.1
+Host: cow"onerror='alert(1)'rel='stylesheet'
+````
+
 ## WEB
 
 FIEO - filter input escape output.
