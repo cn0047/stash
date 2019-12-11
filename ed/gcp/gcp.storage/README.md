@@ -10,6 +10,8 @@ Cloud Storage
 [object versioning](https://cloud.google.com/storage/docs/using-object-versioning)
 [wildcards](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames)
 
+Cloud Storage - like AWS S3.
+
 ````sh
 # ls /Users/k/.google-cloud-sdk/bin/gsutil
 
