@@ -1,0 +1,202 @@
+{
+  "id": "10aa56da-6fd7-11e8-a69a-0242ac180002",
+  "story_id": 71881,
+  "story_site_id": 2,
+  "apple_id": "",
+  "version": "1.4",
+  "identifier": "10aa56da-6fd7-11e8-a69a-0242ac180002",
+  "language": "en",
+  "title": "How to Nail the No-Makeup Makeup Look Once and for All",
+  "subtitle": "According to an expert.",
+  "layout": {
+    "columns": 7,
+    "width": 1024,
+    "gutter": 40,
+    "margin": 70
+  },
+  "metadata": {
+    "datePublished": "2016-09-28T07:10:00Z",
+    "dateCreated": "2014-06-05T23:00:00Z",
+    "dateModified": "2017-12-14T16:41:58Z",
+    "generatorName": "c MFG",
+    "canonicalURL": "https://www.url.com",
+    "thumbnailURL": "https://cimg.com/imgresize/cache/posts/71881/no-makeup-makeup-look-71881-1475013183-promo.800x0uc.jpg"
+  },
+  "components": [
+    {
+      "layout": "authorLayout",
+      "role": "author",
+      "text": "Faith Xue",
+      "textStyle": "authorStyle"
+    },
+    {
+      "layout": "titleLayout",
+      "role": "title",
+      "text": "How to Nail the No-Makeup Makeup Look Once and for All",
+      "textStyle": "titleStyle"
+    },
+    {
+      "layout": "introLayout",
+      "role": "intro",
+      "text": "According to an expert.",
+      "textStyle": "introStyle"
+    },
+    {
+      "layout": "headerImageLayout",
+      "role": "header",
+      "style": {
+        "fill": {
+          "URL": "https://cimg.com/imgresize/cache/posts/71881/no-makeup-makeup-look-71881-1475013183-promo.800x0uc.jpg",
+          "fillMode": "cover",
+          "type": "image",
+          "verticalAlignment": "center"
+        }
+      }
+    },
+    {
+      "format": "html",
+      "layout": "bodyLayout",
+      "role": "body",
+      "text": "<p>We’ve already established that<a href=\"http://www.b.com/celebrities-without-makeup-selfies-2014\" target=\"_blank\"> celebrities seem to possess a gene</a> that allows them to be maddeningly perfect without an ounce of makeup on. But what about those of us who don’t wake up with naturally dewy skin, wide-awake eyes, and flushed cheeks akin to a newborn cherub? We, too, want to look like we #wokeuplike this, even when the reality happens to be eye bags the size of small countries and skin that looks as hungover as we feel. The answer, in this case, is simple (and, no, it's not <a href=\"http://www.b.com/makeup-vs-facetune\" target=\"_blank\">Facetune</a>): your makeup bag.</p><p>A world without makeup would probably be less interesting, and it would definitely be less fun. Though we might be biased, we love the ability makeup has to transform a face, but also the more low-key ability it has to make us appear chipper and wide-awake, even when we're anything but. No-makeup makeup isn't going away anytime soon (see: the runways for the past, oh, six seasons or so), but it can be trickier to pull off than you'd imagine.</p><p>To help guide us, we tapped celebrity makeup artist <a title=\"Erin Ayanian Monroe\" href=\"http://www.cloutierremix.com/erinayanianmonroe/\" target=\"_blank\">Erin Ayanian Monroe</a> (she’s worked with everyone from the Fanning sisters to Lucy Liu) and asked her exactly how we could channel our inner Queen Bey for a #flawless mug IRL.  </p><p><strong>Click through the slideshow above for a step-by-step guide on mastering the no-makeup makeup look, once and for all.</strong></p>",
+      "textStyle": "bodyStyle"
+    },
+    {
+      "items": [
+        {
+          "URL": "https://cimg.com/imgresize/cache/posts/71881/-668832-1475023718.800x0uc.jpg",
+          "caption": "#1: Forget Foundation"
+        },
+        {
+          "URL": "https://cimg.com/imgresize/cache/posts/71881/-668833-1475023976.800x0uc.jpg",
+          "caption": "#2: Conceal (Smartly)"
+        },
+        {
+          "URL": "https://cimg.com/imgresize/cache/posts/71881/-668834-1475024071.800x0uc.jpg",
+          "caption": "#3: Choose Cream Eye Shadow"
+        },
+        {
+          "URL": "https://cimg.com/imgresize/cache/posts/71881/-668835-1475024181.800x0uc.jpg",
+          "caption": "#4: Brighten Up"
+        },
+        {
+          "URL": "https://cimg.com/imgresize/cache/posts/71881/-668836-1475024319.800x0uc.jpg",
+          "caption": "#5: Groom Your Lashes and Brows"
+        },
+        {
+          "URL": "https://cimg.com/imgresize/cache/posts/71881/-668837-1475024552.800x0uc.jpg",
+          "caption": "#6: Brush Up on Your Blush Technique"
+        },
+        {
+          "URL": "https://cimg.com/imgresize/cache/posts/71881/-668838-1475024755.800x0uc.jpg",
+          "caption": "#7: Don't Skip Highlighter"
+        },
+        {
+          "URL": "https://cimg.com/imgresize/cache/posts/71881/-668839-1475024893.800x0uc.jpg",
+          "caption": "#8: Swipe on a Lip Tint"
+        },
+        {
+          "URL": "https://cimg.com/imgresize/posts/71881/how-to-nail-the-no-makeup-makeup-look-once-and-for-all-1919461-1475087781.800x0uc.gif",
+          "caption": ""
+        }
+      ],
+      "role": "gallery"
+    }
+  ],
+  "componentTextStyles": {
+    "authorStyle": {
+      "fontName": "HelveticaNeue-Bold",
+      "fontSize": 16,
+      "textColor": "#000",
+      "textAlignment": "left"
+    },
+    "bodyStyle": {
+      "fontName": "Georgia",
+      "fontSize": 18,
+      "textColor": "#000",
+      "textAlignment": "left",
+      "lineHeight": 26
+    },
+    "default-subtitle": {
+      "fontName": "HelveticaNeue-Thin",
+      "fontSize": 20,
+      "textColor": "#2F2F2F",
+      "textAlignment": "center",
+      "lineHeight": 24
+    },
+    "default-title": {
+      "fontName": "HelveticaNeue-Thin",
+      "fontSize": 36,
+      "textColor": "#2F2F2F",
+      "textAlignment": "center",
+      "lineHeight": 44
+    },
+    "introStyle": {
+      "fontName": "HelveticaNeue-Medium",
+      "fontSize": 24,
+      "textColor": "#000",
+      "textAlignment": "left"
+    },
+    "titleStyle": {
+      "fontName": "HelveticaNeue-Bold",
+      "fontSize": 64,
+      "textColor": "#000",
+      "textAlignment": "left",
+      "lineHeight": 74
+    }
+  },
+  "componentLayouts": {
+    "authorLayout": {
+      "columnSpan": 7,
+      "margin": {
+        "top": 15,
+        "bottom": 15
+      }
+    },
+    "bodyLayout": {
+      "columnSpan": 5,
+      "margin": {
+        "top": 15,
+        "bottom": 15
+      }
+    },
+    "headerImageLayout": {
+      "columnSpan": 7,
+      "ignoreDocumentMargin": true,
+      "minimumHeight": "40vh",
+      "margin": {
+        "top": 15,
+        "bottom": 15
+      }
+    },
+    "introLayout": {
+      "columnSpan": 7,
+      "margin": {
+        "top": 15,
+        "bottom": 15
+      }
+    },
+    "titleLayout": {
+      "columnSpan": 7,
+      "margin": {
+        "top": 50,
+        "bottom": 10
+      }
+    }
+  },
+  "state_events": [
+    {
+      "message": "Created.",
+      "state": "queued",
+      "created": "2018-07-25T10:07:07.244762Z"
+    },
+    {
+      "message": "Sending.",
+      "state": "sending",
+      "created": "2018-07-25T10:11:35.063088Z"
+    }
+  ],
+  "state": "sending",
+  "state_date": "2018-07-25T10:11:35.063087Z",
+  "created": "2018-07-25T10:07:07.244763Z",
+  "updated": "2018-07-25T10:07:07.244764Z"
+}

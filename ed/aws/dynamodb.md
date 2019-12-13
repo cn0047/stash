@@ -55,6 +55,15 @@ DynamoDB trigger - is lambda function.
 ````sh
 tbl=hotdata
 
+# ONLY PRIMARY KEY required all other fields may be omitted
+aws dynamodb create-table \
+  --table-name $tbl \
+  --billing-mode=PAY_PER_REQUEST \
+  --attribute-definitions \
+      AttributeName=user_id,AttributeType=N \
+  --key-schema
+      AttributeName=user_id,KeyType=HASH \
+
 aws dynamodb list-global-tables
 aws dynamodb list-tables
 

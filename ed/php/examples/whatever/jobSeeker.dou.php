@@ -12,6 +12,8 @@ $arr = [
     // 'remote&category=Front+End',
     'city=Kyiv&category=Node.js',
     'remote&category=Node.js',
+    'city=Kyiv&category=Blockchain',
+    'remote&category=Blockchain',
     'city=Kyiv&category=Other',
     'remote&category=Other',
 ];
@@ -37,7 +39,7 @@ function find(object $items): array
         $title = $el->getElementsByTagName('title')->item(0)->childNodes->item(0)->nodeValue;
         $link = $el->getElementsByTagName('link')->item(0)->childNodes->item(0)->nodeValue;
         $sign = notInteresting($title, $desc);
-        $out = sprintf("\t%s \t%s \t %s\n", $sign, $link, $title);
+        $out = sprintf("\t%s \t%s \t %s\n", $link, $sign, $title);
         if (strlen($sign) === 0) {
             file_put_contents(LOG_FILE, deleteNoiseWords($out), FILE_APPEND);
             file_put_contents(LOG_FILE.'.desc', $desc, FILE_APPEND);
@@ -79,6 +81,7 @@ function notInteresting(string $title, string $desc): string
     $inBlackList = isInBlackList($title) === true || isInBlackList($desc) === true;
     $notArchitect = isArchitect($title) === false && isArchitect($desc) === false;
     $notLead = isLead($title) === false && isLead($desc) === false;
+    $notBackEnd = isBackEnd($title) === false;
     $noNumbers = withAnyNumber($title) === false && withAnyNumber($desc) === false;
     $noMoney = withMoney($title) === false && withMoney($desc) === false;
 
@@ -86,6 +89,7 @@ function notInteresting(string $title, string $desc): string
     // $res .= $inBlackList === true ? '' : '';
     $res .= $notArchitect === true ? '' : '👔';
     $res .= $notLead === true ? '' : '🙎‍♂️';
+    $res .= $notBackEnd === true ? '' : '📺';
     $res .= $noMoney === true ? '' : '💵';
     $res .= $noNumbers === true ? '' : '🔢';
 
@@ -129,6 +133,14 @@ function isArchitect(string $str): bool
 function isLead(string $str): bool
 {
     $ok = preg_match('/lead\b/msi', $str);
+    $res = $ok === 1;
+
+    return $res;
+}
+
+function isBackEnd(string $str): bool
+{
+    $ok = preg_match('/back.?end\b/msi', $str);
     $res = $ok === 1;
 
     return $res;

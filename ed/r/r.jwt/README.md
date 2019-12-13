@@ -9,7 +9,6 @@ Compact (small size of token) self-contained (payload contains all the required 
 no need to query the database).
 
 Useful for:
-
 * Authentication.
 * Information Exchange
   (JWTs can be signed using public/private key pairs - ensures
@@ -27,5 +26,5 @@ iat - issued at
 ````
 
 HMAC (symmetric) algorithm - probably the most common algorithm for signed JWTs.
-RSA and ECDSA algorithms (asymmetric).
 HS256 - HMAC with SHA-256.
+RSA and ECDSA algorithms (asymmetric).
