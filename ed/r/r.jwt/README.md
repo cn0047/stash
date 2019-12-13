@@ -21,8 +21,11 @@ Tokens consist of three parts separated by dots (.), which are:
 * Payload (claims).
 * Signature (used to verify that the sender of the JWT is who it says it is).
 
+````
+exp - expiration, unix time stamp
+iat - issued at
+````
+
 HMAC (symmetric) algorithm - probably the most common algorithm for signed JWTs.
-
 RSA and ECDSA algorithms (asymmetric).
-
 HS256 - HMAC with SHA-256.
