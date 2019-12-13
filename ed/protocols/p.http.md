@@ -56,6 +56,7 @@ Headers:
 * Transfer-Encoding - form of encoding used to safely transfer the body payload.
 * User-Agent
 * X-Forwarded-Proto - identifying the protocol.
+* X-Forwarded-Port
 
 ````sh
 GET /api/collection
