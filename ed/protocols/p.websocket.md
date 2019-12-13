@@ -8,7 +8,8 @@ providing full-duplex (allows communication in both directions) communication ch
 
 WebSocket handshake uses the `HTTP Upgrade header` to change from the HTTP protocol to the WebSocket protocol.
 WebSocket connection request uses `Upgrade: WebSocket` and `Connection: Upgrade`.
-Server replies with the same `Upgrade: WebSocket` and `Connection: Upgrade` headers and completes the handshake.
+Server replies with the same `Upgrade: WebSocket` and `Connection: Upgrade` headers
+and 101 status code and completes the handshake.
 
 WebSocket enables streams of messages on top of TCP.
 
