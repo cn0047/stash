@@ -36,7 +36,7 @@ git show HEAD~2      # first parent of first commit
 HEAD^^ == HEAD~2
 
 git commit -m 'Message'
-
+git commit -m "PROJ-123 my comment..." # for JIRA:
 git commit --amend # update commit message
 
 git tag 1.1.1
@@ -80,6 +80,8 @@ git rebase --abort
 
 # squash - rebase 2 commits into 1:
 git rebase -i HEAD~2
+# for commit to squash write `s` as most left char
+# :wq
 ````
 
 If some feature has > 1 commit,

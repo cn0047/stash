@@ -26,7 +26,10 @@ func one() {
 	}
 
 	url := "http://localhost:8080/cars"
-	req, err := http.NewRequest("POST", url, bytes.NewBuffer(jsonPayload))
+	req, err := http.NewRequest(http.MethodPost, url, bytes.NewBuffer(jsonPayload))
+	if err != nil {
+		panic("RUNTIME-ERROR: " + err.Error())
+	}
 	req.Header.Set("Content-Type", "application/json")
 
 	client := &http.Client{}
@@ -34,12 +37,16 @@ func one() {
 	if err != nil {
 		panic("RUNTIME-ERROR: " + err.Error())
 	}
-	defer res.Body.Close()
 
 	fmt.Println("response Status:", res.Status)
 	fmt.Println("response Headers:", res.Header)
 	body, _ := ioutil.ReadAll(res.Body)
 	fmt.Println("response Body:", string(body))
+
+	err = res.Body.Close()
+	if err != nil {
+		return panic(fmt.Errorf("failed to close response body, error: %w", err))
+	}
 }
 
 func two() {

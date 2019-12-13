@@ -19,7 +19,7 @@ Cloud SQL
 
 ````bash
 # connect to REPL
-gcloud sql connect mysql-prod-hera --user=root
+gcloud sql connect mysql-prod-dbname --user=root
 ````
 
 ````bash

@@ -20,6 +20,7 @@ export GO111MODULE=on
 
 # specifies private modules
 export GOPRIVATE=*.corp.example.com,rsc.io/private
+export GOPRIVATE=github.com/prvtOrg
 
 go mod init
 go mod init example.com/my/module/v2
@@ -30,6 +31,7 @@ go test all
 go get google.golang.org/appengine@'>=v1.2.0'
 
 go list -m
+go list -m -json all
 go list -m all # view final versions that will be used in a build
 go list -u -m all # view available minor and patch upgrades
 go list -m -versions rsc.io/sampler
@@ -40,6 +42,8 @@ go get foo@v1.2.3 # get specific versions of pkg
 go mod tidy # prune any no-longer-needed dependencies (and add any dependencies needed)
 go mod why -m <module>
 go mod graph
+
+go clean --modcache
 
 # download modules to local cache, for docker
 go mod download
