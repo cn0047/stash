@@ -19,7 +19,18 @@ func middlewareB(next http.Handler) http.Handler {
 			fmt.Printf("🔴 error 4: %+v \n", err)
 		}
 		r.Body = ioutil.NopCloser(bytes.NewReader(b))
-		fmt.Printf("✳️ request body: %s\n", b)
+		fmt.Printf("✳️ request body: %q\n", b)
+		next.ServeHTTP(w, r)
+	})
+}
+
+func middlewareH(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		headers := ""
+		for h, v := range r.Header {
+			headers += fmt.Sprintf("%q: %q; ", h, v)
+		}
+		fmt.Printf("✳️ request headers: %s\n", headers)
 		next.ServeHTTP(w, r)
 	})
 }
@@ -30,6 +41,7 @@ func middlewareT(next http.Handler) http.Handler {
 		next.ServeHTTP(w, r)
 	})
 }
+
 func middlewareR(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		fmt.Printf("✳️ request method: %s, request URI: %s \n", r.Method, r.RequestURI)
@@ -53,7 +65,7 @@ func main() {
 		fmt.Printf("️request body: %s\n", b)
 	})
 
-	http.Handle("/", middlewareT(middlewareR(rootHandler)))
-	http.Handle("/post", middlewareT(middlewareR(middlewareB(postHandler))))
+	http.Handle("/", middlewareT(middlewareR(middlewareH(rootHandler))))
+	http.Handle("/post", middlewareT(middlewareR(middlewareH(middlewareB(postHandler)))))
 	http.ListenAndServe(":8080", nil)
 }
