@@ -69,8 +69,7 @@ checkKey() {
 }
 
 for host in $hosts; do
-    if [ $host = 'None' ];
-    then
+    if [ $host = 'None' ]; then
         continue
     fi
     tagName=$(

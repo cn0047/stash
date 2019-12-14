@@ -9,7 +9,7 @@ sudo service logstash configtest
 
 Filters are applied in the order in which they appear in config.
 
-````
+````sh
 # {"ua":{"os":"windows"}} in config it will be
 [ua][os]
 # for example
@@ -21,13 +21,13 @@ output {
 Simple test:
 
 ````sh
-/opt/logstash/bin/logstash -e 'input { stdin { } } output { stdout {} }'
+/opt/logstash/bin/logstash -e 'input { stdin {} } output { stdout {} }'
 
 ````
 
 Simple elasticsearch config:
 
-````
+````sh
 input { file { path => "/tmp/logstash.txt" } } output { elasticsearch { hosts => ["localhost:9200"] } }
 ````
 ````sh
@@ -36,6 +36,6 @@ input { file { path => "/tmp/logstash.txt" } } output { elasticsearch { hosts =>
 
 Nginx conf:
 
-````
+````sh
 input { file { path => "/var/log/nginx/access.log" } } output { elasticsearch { hosts => ["localhost:9200"] index => "nginx" } }
 ````

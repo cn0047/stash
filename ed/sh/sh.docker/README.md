@@ -143,9 +143,9 @@ docker load -i img.dump.tar
 * MAINTAINER - Vladimir Kovpak
 * ARG        - `ARG CODE_VERSION=latest`
 * ENV        - `ENV NODE_PORT=3000`
-* ADD        - allows `<src>` to be a URL
+* ADD        - `ADD ./healthCheck.js /app/healthCheck.js`, allows `<src>` to be a URL
 * COPY       - `COPY ./healthCheck.js /app/healthCheck.js`, same as `ADD`, but without the tar and remote URL handling
-* VOLUME     -
+* VOLUME     - mount point with the specified name
 * WORKDIR    - `WORKDIR /app`
 * RUN        - `RUN ls - la /app/healthCheck.js`
 * EXPOSE     - `EXPOSE $NODE_PORT`
