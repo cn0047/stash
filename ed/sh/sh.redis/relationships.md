@@ -2,7 +2,7 @@ Hash vs Set in Relationships.
 -
 
 Relationships like on twitter:
-````
+````sh
 +--------+----------+---------+
 | type   | fromUser | toTuser |
 |--------+----------+---------+
@@ -20,7 +20,7 @@ Relationships like on twitter:
 
 #### Set:
 
-````
+````sh
 sadd srelationships:user10:following user1 user2 user3
 sadd srelationships:user10:followers user20 user30
 
@@ -39,7 +39,7 @@ sismember srelationships:user10:followers user40
 
 #### Hash:
 
-````
+````sh
 hmset hrelationships:user10:following user1 1 user2 1 user3 1
 hmset hrelationships:user10:followers user20 1 user30 1
 

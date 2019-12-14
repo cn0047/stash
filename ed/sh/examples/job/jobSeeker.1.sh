@@ -14,8 +14,7 @@ if [ -z "$idFrom" ]; then
         curl -is -o /tmp/jobSeeker.tmp "http://jobs.site.com/vacancies/$id/"
         is404=$((`grep 'HTTP/1.1 404 NOT FOUND' -ric /tmp/jobSeeker.tmp`))
         printf "\ri = $i, id = $id, is 404 = $is404"
-        if [ $is404 -eq 0 ];
-        then
+        if [ $is404 -eq 0 ]; then
             printf "\nFound id - $id\n"
             break
         fi
@@ -34,8 +33,7 @@ else
         isPhp=$((`grep 'php|пхп' -Eric /tmp/jobSeeker.tmp`))
         isRemote=$((`grep 'remote|удален|відд?ален' -Eric /tmp/jobSeeker.tmp`))
         printf "404 = $is404, php = $isPhp, remote = $isRemote, url = $url \n"
-        if [ $is404 -eq 1 ];
-        then
+        if [ $is404 -eq 1 ]; then
             printf "Found 404.\n"
             break
         fi

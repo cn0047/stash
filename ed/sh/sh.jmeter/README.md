@@ -1,6 +1,8 @@
 jmeter
 -
 
+[docs](http://jmeter.apache.org/usermanual/get-started.html)
+
 jmeter written in java.
 
 ````sh
@@ -21,5 +23,3 @@ jmeter -n -t tests/jmeter/one.jmx \
   -l /tmp/jmeter.result -j /tmp/jmeter.log \
   -Jhost=api.h.dev \
 ````
-
-http://jmeter.apache.org/usermanual/get-started.html

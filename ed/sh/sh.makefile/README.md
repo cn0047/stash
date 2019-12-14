@@ -2,8 +2,8 @@ Makefile
 -
 
 ````sh
-make -f ed/makefile/example/one/Makefile etrp
-make -f ed/makefile/example/one/Makefile var
+make -f ed/sh/sh.makefile/example/one/Makefile etrp
+make -f ed/sh/sh.makefile/example/one/Makefile var
 ````
 
 Makefiles contain five kinds of things:
