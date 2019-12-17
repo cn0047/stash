@@ -10,11 +10,9 @@ Microservices easier to scale than SOA (because you have scale only 1 service no
 
 Philosophy: Do one thing and do it well.
 Microservice must be stateless.
-Microservice must have:
-  high cohesion; loose coupling;
-  lightweight communication mechanism; independent data storage;
-Microservice must be resilient.
-And respond to changes quickly.
+Microservice must have: high cohesion; loose coupling;
+lightweight communication mechanism; independent data storage;
+Microservice must be resilient. And respond to changes quickly.
 
 Microservices-based architectures enable continuous delivery and deployment.
 
@@ -22,14 +20,12 @@ Microservices is known as a "share-nothing" architecture
 or at least "share-as-little-as-possible".
 
 Synchronous communication:
-
 * Request/Response
 * RPC
 * HTTP
 * REST
 
 Asynchronous communication:
-
 * Event based
 * Message queue protocol
 
@@ -65,8 +61,8 @@ In real world app it's ok to have **HYBRID-Microservices** architecture.
 #### Advantages
 
 * Possibility to use different languages.
-* Independent deploy.
 * Isolated problems.
+* Independent deploy.
 * Scalability/resilience.
 * Possibility to build/change system faster.
 * Responsibilities are clearly defined.

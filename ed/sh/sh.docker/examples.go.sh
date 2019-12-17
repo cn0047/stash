@@ -221,19 +221,21 @@ go run ed/go/examples/airbrake/src/app/main.go
 # Init AWS with terraform first,
 # @see: ed/sh/sh.terraform/README.md
 export GOPATH=$PWD/ed/go/examples/aws
+cd $GOPATH/src/app
 go get -u "github.com/aws/aws-sdk-go/aws"
+go get -u "github.com/aws/aws-sdk-go/aws/arn"
 go get -u "github.com/stretchr/testify/assert"
 go get -u "github.com/thepkg/awsl"
 # aws lambda
 # @see: ed/sh/sh.terraform/README.md
 go test -v ./lambda
 # dynamodb
-cd $GOPATH/src/app && go run main.go k21 v21 21
-cd $GOPATH/src/app && go run main.go k5
+go run main.go k21 v21 21
+go run main.go k5
 # aws s3
 # aws sns
 # aws sqs
-cd $GOPATH/src/app && go run main.go
+go run main.go
 
 # jwt
 export GOPATH=$PWD/ed/go/examples/jwt

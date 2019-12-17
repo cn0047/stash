@@ -44,7 +44,7 @@ Does the whole system work?
 
 Acceptance criteria come in many different varieties; for one thing, they can be functional or nonfunctional.
 Nonfunctional acceptance criteria include things like:
-capacity, **performance**, modifiability, **availability**, **security**, usability, and so forth.
+**capacity**, **performance**, modifiability, **availability**, **security**, usability, and so forth.
 The key point here is that when the acceptance tests associated with a particular story or requirement pass.
 
 Acceptance tests are business-facing, not developer-facing.

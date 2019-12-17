@@ -560,53 +560,6 @@ printf "A 25 27\nB 75 78\nC 97 93" | \
   awk '{avg=($2+$3)/2; printf "%s -> (avg=%s) %s \n", $0, avg, (avg<50)?"FAIL":(avg<80)?"B":"A"}'
 ````
 
-#### ssh (Secure Shell)
-
-`pssh` tool to run ssh command on few servers simultaneously
-
-````sh
-# get key's fingerprint
-ssh-keygen -E md5 -lf keyFile.pem
-
-locate sshd_config
-
-ssh-add ~/.ssh/id_rsa
-vim /etc/ssh/sshd_config
-
-sshfs -o nonempty -p22 root@host:/home/host/www /home/user/web/www
-fusermount -u /home/user/web/www
-ps aux | grep -i sftp | grep -v grep
-
-ssh user@server.com
-
-ssh -i $key -N -L 9229:127.0.0.1:9229 root@server
-# -L local_socket:remote_socket
-
-# exec cmd through
-ssh -i $k ubuntu@$h "echo 200 > /tmp/x"
-
-scp -rp -i $key user@host:~/dir/ ~/dir/
-
-# for AWS EC2
-chmod 400 key.pem
-
-# add public key to remote machine
-echo 'ssh-rsa AAAAB3...3gRDw3sQ== name@mail.com' >> ~/.ssh/authorized_keys
-
-# on host machine
-cat ~/.ssh/id_rsa.pub
-# on remote machine
-echo 'key from id_rsa.pub from host machine' >> ~/.ssh/authorized_keys
-````
-
-`vim ~/.ssh/config`
-````sh
-Host ec2
-    Hostname ec2-52-211-26-56.eu-west-1.compute.amazonaws.com
-    User ec2-user
-    IdentifyFile ~/path_to_ssh_key
-````
-
 #### ftp
 
 ````sh
@@ -739,55 +692,3 @@ uuencode card.jpg card.jpg | mail mail@com.com
 ````
 
 `grep match -wrni --color=always --include=*.php . | grep notMatch -v --color=always`
-
-#### curl
-
-````sh
--A, --user-agent
--b, --cookie                         # Read cookies from STRING/FILE
--b, --cookie STRING/FILE             # String or file to read cookies from (H)
--c, --cookie-jar                     # Write cookies to FILE
--d, --data DATA                      # HTTP POST data (H)
--e, --referer                        # Referer URL (H)
--F, --form CONTENT                   # Specify HTTP multipart POST data (H)
--I                                   # Only the HTTP-headers
--i                                   # Include the HTTP-headers
--o, --output FILE                    # Write output to <file> instead of stdout
--O, --remote-name                    # Write output to file wiht origin name
--s, --silent
--u, --user USER[:PASSWORD]           # Server user and password
--v, --verbose
--x, --proxy [PROTOCOL://]HOST[:PORT] # Use proxy on given port
-
-# (REST) JSON at POST.
-# More examples available here: https://github.com/cn007b/my/blob/master/ed/php.symfony/generateRESTapi.md
-curl -XPOST http://localhost:3000/dishes \
-    -H 'Content-Type: application/json' -d '{"name": "newDish", "description": "newDesc"}'
-curl -X POST -H 'application/json' -d '{"key":"val"}' http://url.com
-curl -X POST -H 'Content-Type: text/plain' -d @/tmp/foo.txt http://url.com
-curl http://url.com -d x=1 -d y=2
-
-curl http://login:pass@base-http-auth.com/
-curl -u login:pass http://base-http-auth.com/
-
-// user == 'admin' && pass == 'password'
-curl http://localhost:3000 -H 'Authorization: Basic YWRtaW46cGFzc3dvcmQ='
-
-# download file
-curl $host -o $out
-
-# upload file
-curl http://localhost:8000 -F "file=@/home/kovpak/Downloads/download.jpg"
-curl http://localhost:8000 -H "Content-Type: multipart/form-data" -F "file=@/Users/k/f.txt" -F "msg=MyFile"
-
-curl -T firmware.bin http://0.0.0.48/cgi-bin/package_install?hash=017
-
-# shows spent time (⏱)
-time curl -si https://realtimelog.herokuapp.com/test
-
-curl -A 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36' \
-  http://localhost:8000
-
-# ignore invalid SSL Certificate
-curl -k https://localhost:4433
-````

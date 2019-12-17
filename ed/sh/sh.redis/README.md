@@ -2,6 +2,9 @@ Redis
 -
 3.0.6
 
+[php client](https://github.com/phpredis/phpredis)
+[docs](https://redis.io/documentation)
+
 #### redis-cli
 
 ````sh
@@ -105,7 +108,7 @@ srem myset 6
 sismember myset 3
 ````
 
-#### Associative Array ():
+#### Associative array:
 
 ````sh
 sadd users:name Bob Sam Joe
@@ -118,16 +121,12 @@ sismember users:name Bob
 smembers users:name
 ````
 
-[Php client](https://github.com/phpredis/phpredis).
-
-https://redis.io/documentation
-
 #### Transaction
 
 `MULTI`, `EXEC`, `DISCARD` and `WATCH` are the foundation of transactions in Redis.
 Transaction is atomic.
 
-No roll back(
+No roll back.
 
 ````sh
 set a 100
@@ -141,7 +140,6 @@ exec
 
 #### Pipelining
 
+For best performance - use pipelining.
 Pipelining - to send multiple commands to the server without waiting for the replies at all,
 and finally read the replies in a single step.
-
-For best performance - use pipelining.

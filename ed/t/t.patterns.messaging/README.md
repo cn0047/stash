@@ -10,12 +10,12 @@ In essence, a message is transmitted in five steps:
 3. Deliver — The messaging system moves the message from the sender’s computer
    to the receiver’s computer, making it available to the receiver.
 4. Receive — The receiver reads the message from the channel.
-5. Process — The receiver extracts the data from the message. 
+5. Process — The receiver extracts the data from the message.
 
 Messaging pattern - is a network-oriented architectural pattern
 which describes how two different parts of a Message-Passing-System
 communicate with each other.
-(You don't have to say what to do, you have to send message and system will decide what to do...).
+(You don't have to say what to do, you have to send message and system will decide what to do).
 
 Specific benefits of messaging:
 
@@ -29,13 +29,12 @@ Specific benefits of messaging:
 
 #### Message Exchange Patterns:
 
-* **In-Only** (one-way) - send message receive status
+* **In-Only** (one-way) - send message receive status.
 
-* **Robust In-Only** (reliable one-way)
-  - send message receive status, if status `false` - return status.
+* **Robust In-Only** (reliable one-way) - send message receive status,
+  if status `false` - return status.
 
-* **In-Out** (request–response or standard two-way)
-  - send message receive message
+* **In-Out** (request–response or standard two-way) - send message receive message.
 
 * **In-Optional-Out** - response is optional.
 
@@ -45,17 +44,16 @@ Specific benefits of messaging:
 
 * **Out-In** (reverse In-Out) - consumer initiates the exchange.
 
-* **Out-Optional-In** (reverse In-Optional-Out)
-  - incoming message is optional (Optional-in).
+* **Out-Optional-In** (reverse In-Optional-Out) - incoming message is optional (Optional-in).
 
 #### In ØMQ:
 
 * **Request–reply** - RPC
 
-* **Publish–subscribe** (data distribution pattern)
-  - connects a set of publishers to a set of subscribers.
+* **Publish–subscribe** (data distribution pattern) - connects
+  a set of publishers to a set of subscribers.
 
-* Push–pull (**fan-out/fan-in**)
-  - parallel task distribution and don't wait for any response.
+* Push–pull (**fan-out/fan-in**) - parallel task distribution
+  and don't wait for any response.
 
 * **Exclusive pair** - connects two sockets in an exclusive pair.

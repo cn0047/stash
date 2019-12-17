@@ -14,10 +14,10 @@ import (
 
 func main() {
 	c := internal.GetAWSConfig()
-	sns.Run(c)
+	s3.Run(c, internal.GetBucket())
 	return
+	sns.Run(c)
 	ssm.Run(c)
 	dynamodb.Run(c)
 	sqs.Run(c)
-	s3.Run(c, internal.GetBucket())
 }
