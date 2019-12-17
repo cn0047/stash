@@ -11,6 +11,11 @@ var:
 	x=$(shell echo 200)
 	$(info VAR is $(x))
 
+.PHONY: var1
+var1:
+	x=$(shell echo 200)
+	$(info VAR is $(x))
+
 var2:
 	@echo 501 > /tmp/make.test
 	$(eval c := $(shell cat /tmp/make.test))
