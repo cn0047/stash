@@ -25,6 +25,7 @@ The `SysV init` is a standard process used by Red Hat Linux to control
 which software the init command launches or shuts off on a given runlevel.
 
 ````sh
+/bin/true                               # returns 0 code
 /dev/null                               # stream, hide output
 /dev/random                             # random data for entropy
 /dev/stderr                             # stream 2

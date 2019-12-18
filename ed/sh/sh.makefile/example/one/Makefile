@@ -24,3 +24,11 @@ var2:
 
 loop:
 	@echo -e "1 \n2 \n3 \n4 \n5" | while read t; do echo $$t; done
+
+.PHONY: cmd1
+cmd1: x=204
+cmd1: cmd
+
+.PHONY: cmd
+cmd:
+	@echo $(x)

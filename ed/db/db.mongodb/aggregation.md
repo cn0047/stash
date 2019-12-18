@@ -20,7 +20,7 @@ For performance (follow this flow):
 * $count - returns a count of the number of documents at this stage of the aggregation pipeline.
 * $project - like select in SQL
 * $match - filters the document stream.
-* $unwind - from document with array to documents with only one element
+* $unwind - from document with array to documents with only one element.
 * $sort
 * $sortByCount - groups incoming documents based on the value of a specified expression.
 * $group
@@ -36,7 +36,7 @@ For performance (follow this flow):
 * $bucketAuto
 * $addFields - adds new fields to documents.
 * $replaceRoot - replaces a document with the specified embedded document.
-* $graphLookup - Performs a recursive search on a collection.
+* $graphLookup - performs a recursive search on a collection.
 
 `$group: {"_id": "all", ...}`
 

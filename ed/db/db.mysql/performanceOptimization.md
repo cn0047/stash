@@ -63,7 +63,7 @@ WHERE index1=1 AND index2=2 OR index1=3 AND index3=3;
 
 do not use indexes:
 
-````
+````sql
 /* index_part1 is not used */
 WHERE index_part2=1 AND index_part3=2
 

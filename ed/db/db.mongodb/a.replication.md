@@ -1,6 +1,8 @@
 Replication
 -
 
+[FAQ: Replication and Replica Sets](http://docs.mongodb.org/manual/faq/replica-sets/)
+
 Nodes types:
 
 * regular (primary, secondary) [takes part in election]
@@ -64,5 +66,3 @@ db.demo.insert({x: 1}, {writeConcern: {w: 2, j: true, wtimeout: 2000}});
 # w: 'majority' // ack from majority
 # j: true       // journaled
 ````
-
-[FAQ: Replication and Replica Sets](http://docs.mongodb.org/manual/faq/replica-sets/)

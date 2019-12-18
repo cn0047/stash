@@ -48,8 +48,7 @@ db.volumes.ensureIndex({topics: 1});
 db.volumes.findOne({topics: "voyage"}, {title: 1});
 // Create a text Index
 db.collection.ensureIndex({subject: "text", content: "text"});
-db.collection.ensureIndex({"$**": "text"}, {name: "TextIndex"}
-);
+db.collection.ensureIndex({"$**": "text"}, {name: "TextIndex"});
 // Specify a Language for Text Index
 db.quotes.ensureIndex({content: "text"}, {default_language "spanish"});
 db.quotes.ensureIndex({quote : "text"}, {language_override: "idioma"} );

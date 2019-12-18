@@ -8,9 +8,11 @@ it needs to perform work.
 
 #### Locks
 
+Distributed Lock.
+
 Deadlock - concurrent processes are waiting on one another.
 
-livelock - when two people meet in a narrow corridor,
+Livelock - when two people meet in a narrow corridor,
 and each tries to be polite by moving aside to let the other pass,
 but they end up swaying from side to side without making any progress
 because they both repeatedly move the same way at the same time.
