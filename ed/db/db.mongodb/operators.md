@@ -83,7 +83,7 @@ db.students.update( { _id: 4, "grades.grade": 85 }, { $set: { "grades.$.std" : 6
 // $addToSet
 db.inventory.update({ _id: 1 }, { $addToSet: { tags: "accessories"  } })
 // $pop
-db.students.update( { _id: 1 }, { $pop: { scores: -1 } } // -1 first, 1 last
+db.students.update( { _id: 1 }, { $pop: { scores: -1 } } ) // -1 first, 1 last
 // $pullAll
 db.survey.update( { _id: 1 }, { $pullAll: { scores: [ 0, 5 ] } } )
 // $pull

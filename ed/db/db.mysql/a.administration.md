@@ -210,27 +210,104 @@ mysql -hHost -uUser -pPass -DBase < dumpFile.sql
 
 #### Conf
 
+````sql
+SET global general_log_file='/var/log/mysql/general.log';
+SET global general_log_file='/tmp/mysql.general.log';
+SET global general_log = 1;
+
+SET profiling = 1;
+SHOW PROFILES;
+SHOW PROFILE;
+SHOW PROFILE FOR QUERY 1;
+SHOW PROFILE CPU FOR QUERY 2; -- ALL, BLOCK IO, CONTEXT SWITCHES, CPU, IPC, PAGE FAULTS, SOURCE, SWAPS
+````
+
 /etc/mysql/my.cnf
 ````sql
+[client]
+port                        = 3306
+socket                      = /var/run/mysqld/mysqld.sock
+
+[mysqld_safe]
+socket                      = /var/run/mysqld/mysqld.sock
+nice                        = 0
+
+[mysqldump]
+quick
+quote-names
+max_allowed_packet          = 16M
+
+[mysqld]
+user                        = mysql
+pid-file                    = /var/run/mysqld/mysqld.pid
+socket                      = /var/run/mysqld/mysqld.sock
+port                        = 3306
+basedir                     = /usr
+datadir                     = /var/lib/mysql
+tmpdir                      = /tmp
+language                    = /usr/share/mysql/english
+old_passwords               = 0
+bind-address                = 127.0.0.1
+
+skip-external-locking
+
+max_allowed_packet          = 16M
+key_buffer_size             = 16M
+
+query_cache_size            = 0
+
+slow_query_log              = /var/log/mysql/mysql-slow.log
+long_query_time             = 1
+
+expire_logs_days            = 10
+max_binlog_size             = 100M
+
 slow_query_log = 1
 slow_query_log_file = /var/log/mysql/logSlowQueries.log
 long_query_time = 1
 log_queries_not_using_indexes = 0
 innodb_log_file_size = 5M
 
+innodb_file_per_table       = 1
+
 # save from memory to disc:
 # O_DIRECT - 4 direct writes on disc;
 # O_DSYNC - 2 direct writes & 2 async;
-innodb_flush_method
+innodb_flush_method         = O_DIRECT
 
 # save to disc after transaction (strategy how to write data on disc):
-innodb_flush_log_at_trx_commit
+innodb_flush_log_at_trx_commit  = 0
 
 # redo log (log of actions in case of corruption) size, mysql will do all this actions after recover
 innodb_log_file_size
 
 # memory for reading tables, indexes, etc
 innodb_buffer_pool_size = 7G # 80% from OS memory
+
+# 1 gb
+innodb_buffer_pool_size     = 512M
+max_connections             = 132
+# 2 gb
+innodb_buffer_pool_size     = 1024M
+max_connections             = 136
+# 4 gb
+innodb_buffer_pool_size     = 2048M
+max_connections             = 144
+# 8 gb
+innodb_buffer_pool_size     = 4096M
+max_connections             = 160
+# 16 gb
+innodb_buffer_pool_size     = 8192M
+max_connections             = 192
+# 32 gb
+innodb_buffer_pool_size     = 16384M
+max_connections             = 256
+# 64 gb
+innodb_buffer_pool_size     = 32768M
+max_connections             = 384
+# 128 gb
+innodb_buffer_pool_size     = 65536M
+max_connections             = 640
 
 # buffer for uncommitted transactions
 innodb_log_buffer_size
@@ -276,14 +353,4 @@ general-log-file = /var/log/mysql/general.log
 # sudo mkdir -p /var/log/mysql
 # sudo touch /var/log/mysql/general.log
 # sudo chown mysql:mysql /var/log/mysql/general.log
-
-SET global general_log_file='/var/log/mysql/general.log';
-SET global general_log_file='/tmp/mysql.general.log';
-SET global general_log = 1;
-
-SET profiling = 1;
-SHOW PROFILES;
-SHOW PROFILE;
-SHOW PROFILE FOR QUERY 1;
-SHOW PROFILE CPU FOR QUERY 2; -- ALL, BLOCK IO, CONTEXT SWITCHES, CPU, IPC, PAGE FAULTS, SOURCE, SWAPS
 ````

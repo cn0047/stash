@@ -1,5 +1,6 @@
 GIT
 -
+
 <br>git version 2.5.0
 <br>git version 2.15.0
 
@@ -172,6 +173,7 @@ git push remoteRepoName :branch                   # delete branch from remote re
     sa  = stash apply
     sp  = stash pop
     rh  = reset HEAD
+    rb  = rebase -i HEAD~2
     ca  = commit -am
     cm  = commit -m
     l   = log --pretty=format:\"%h %ad | [%an] %s%d\" --graph --date=short --no-merges

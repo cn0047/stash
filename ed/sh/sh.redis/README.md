@@ -1,9 +1,11 @@
 Redis
 -
-3.0.6
+<br>5.0.6
+<br>3.0.6
 
 [php client](https://github.com/phpredis/phpredis)
 [docs](https://redis.io/documentation)
+[commands](https://redis.io/commands)
 
 #### redis-cli
 
@@ -15,6 +17,12 @@ redis-benchmark # shell tool for benchmarking
 ````sh
 set mykey 'Hello'
 set foo 'bar'
+
+# EX seconds      - expire time
+# PX milliseconds - expire time in milliseconds
+# NX              - set if does not exist
+# XX              - set only if it exists
+set mk 'hello' nx px 30000
 
 # set if key does not exist
 setnx mykey2 "World"
