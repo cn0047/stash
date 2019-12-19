@@ -86,6 +86,7 @@ brew install md5sha1sum # md5sum
 brew install nmap
 brew install postgresql
 brew install qcachegrind
+brew install redis
 brew install sshuttle
 brew install telnet
 brew install telnet

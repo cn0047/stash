@@ -21,7 +21,8 @@ Every software change is automatically built, tested, and deployed to production
 
 Continuous Deployment - is a synonym to Continuous Delivery.
 
-Pre-alpha ⇒ Alpha ⇒ Beta ⇒ Release candidate ⇒ Gold
+<br>Pre-alpha ⇒ Alpha ⇒ Beta ⇒ Release candidate ⇒ Gold
+<br> Beta ⇒ Dev; Gamma ⇒ QA;
 
 Problems:
 

@@ -9,6 +9,13 @@ Module - container for multiple resources that are used together.
 Data sources - allows configuration to use information defined outside of tf.
 
 ````sh
+src
+└─ terraform
+   ├─ environments
+   └─ modules
+````
+
+````sh
 # list
 aws_instance.example[*].id
 # one
