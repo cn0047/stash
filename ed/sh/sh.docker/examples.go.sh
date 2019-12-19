@@ -144,6 +144,10 @@ docker exec -it grpcone sh -c 'export GOPATH=$PWD; go run src/app/client.go'
 # redis
 docker run -it --rm --net=xnet -p 8080:8080 -v $PWD:/gh -e GOPATH=/gh/ed/go/examples/redis/app xgo sh -c '
   cd $GOPATH && go run main.go'
+# or
+GOPATH=$PWD/ed/go/examples/redis
+cd $GOPATH
+go run app/main.go
 
 # web.one
 docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.one/' xgo sh -c '

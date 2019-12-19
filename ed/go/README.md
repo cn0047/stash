@@ -39,7 +39,7 @@ $GOOS         # (windows|linux)
 $GOARCH       # (386|amd64)
 $GOMAXPROCS   # number of OS threads that can execute user-level Go code simultaneously.
 $GOTRACEBACK  # (none|single|all|system|crash) verbosity level in case of panic
-$GOGC         # Garbage Collector
+$GOGC         # Garbage Collector ↓
 $GODEBUG      # https://godoc.org/runtime#hdr-Environment_Variables
               # scheddetail=1 - detailed scheduler info
               # schedtrace=1000 - single line to standard error every 1000 milliseconds
@@ -258,9 +258,9 @@ Sentinel error -  custom error value
 (standard library: sql.ErrNoRows, io.EOF, etc).
 [wrap error tool](github.com/pkg/errors)
 
-`errors.Is` like a comparison to a sentinel error,
-`errors.As` like type assertion (`if e, ok := err.(*QueryError); ok { … }`).
-`fmt.Errorf("decompress %v: %w", name, err)`
+<br>`errors.Is` like a comparison to a sentinel error,
+<br>`errors.As` like type assertion (`if e, ok := err.(*QueryError); ok { … }`).
+<br>`fmt.Errorf("decompress %v: %w", name, err)`
 
 Context carries deadlines, cancelation signals, and other request-scoped values
 across API boundaries and between processes.
