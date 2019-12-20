@@ -58,6 +58,9 @@ git merge --abort
 git remote add upstream https://github.com/golang/go.git
 git fetch upstream
 git pull upstream master
+
+# cleanup unnecessary files and optimize the local repository
+git gc --aggressive
 ````
 
 #### rebase
