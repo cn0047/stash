@@ -9,16 +9,20 @@ import (
 	"github.com/airbrake/gobrake"
 )
 
+const (
+	AirBrakeProjectId  = 0
+	AirBrakeProjectKey = ""
+)
+
 var (
 	airbrake = gobrake.NewNotifierWithOptions(&gobrake.NotifierOptions{
-		ProjectId:   0,
-		ProjectKey:  "",
+		ProjectId:   AirBrakeProjectId,
+		ProjectKey:  AirBrakeProjectKey,
 		Environment: "production",
 	})
 )
 
 func init() {
-	return
 	airbrake.AddFilter(func(notice *gobrake.Notice) *gobrake.Notice {
 		notice.Params["user"] = map[string]string{
 			"id":       "1",
@@ -27,9 +31,19 @@ func init() {
 		}
 		return notice
 	})
+	airbrake.AddFilter(func(notice *gobrake.Notice) *gobrake.Notice {
+		if notice.Context["environment"] == "development" {
+			// Ignore notices in development environment.
+			return nil
+		}
+		return notice
+	})
 }
 
 func main() {
+	defer airbrake.Close()
+	defer airbrake.NotifyOnPanic()
+
 	two()
 }
 
@@ -41,12 +55,12 @@ func two() {
 		}
 	})
 
-	http.ListenAndServe(":8080", nil)
+	err := http.ListenAndServe(":8080", nil)
+	if err != nil {
+		panic(fmt.Errorf("error1: %w", err))
+	}
 }
 
 func one() {
-	defer airbrake.Close()
-	defer airbrake.NotifyOnPanic()
-
 	airbrake.Notify(errors.New("operation failed"), nil)
 }
