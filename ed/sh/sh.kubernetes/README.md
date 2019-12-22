@@ -11,77 +11,47 @@ brew cask install minikube
 brew install docker-machine-driver-xhyve
 open https://github.com/kubernetes/minikube/blob/master/docs/drivers.md#hyperkit-driver
 ````
-<br>minikube         - tool to use K8s on dev.
-<br>kubelet          - main k8s agent inside nodes.
-<br>container engine - docker or rkt.
-<br>kube-proxy       - k8s networking.
 
 Kubernetes - orchestrator for microservice apps (desired state management tool).
-Kubernetes has three namespaces by default: default, kube-system, kube-public.
+<br>Kubernetes has three namespaces by default: default, kube-system, kube-public.
+<br>Minikube - tool to use K8s on dev.
 
-Kinds:
-
-````sh
-kind: ConfigMap               # separate configuration information from application definition
-kind: DaemonSet
-kind: Deployment              # controls the creation and destruction of pods
-kind: HorizontalPodAutoscaler #
-kind: Ingress                 # specify how incoming network traffic should be routed to services and pods
-kind: Job
-kind: LimitRange
-kind: NetworkPolicy           # defines the network access rules between pods inside the cluster
-kind: PersistentVolume
-kind: Pod
-kind: ReplicationController
-kind: ResourceQuota
-kind: Secret
-kind: Service
-kind: ServiceAccount
-kind: StatefulSet
-kind: StorageClass
-````
-
-To store data permanently, Kubernetes uses Persistent Volumes.
-
-API server (`kube-apiserver`) - provides an HTTP/HTTPS server,
-which provides a RESTful API for all the components in the Kubernetes master.
-
-Controller Manager (`kube-controller-manager`) - controls lots of different things
-in the cluster. Replication Controller Manager ensures all the Replication
-Controllers run on the desired container amount.
+#### Master.
 
 `etcd` (cluster data store) is an open source distributed key-value store (https://coreos.com/etcd).
 Kubernetes stores all the RESTful API objects here.
 
-Scheduler (`kube-scheduler`) - decides which node is suitable for pods to run on,
+`kube-controller-manager` - controls lots of different things
+in the cluster. Replication Controller Manager ensures all the Replication
+Controllers run on the desired container amount.
+
+`kube-scheduler` - decides which node is suitable for pods to run on,
 according to the resource capacity or the balance of the resource utilization on the node.
 
-`kubelet` is a major process in the nodes, which reports node activities back
-to kubeapiserver periodically, such as pod health, node health, and liveness probe.
-
-Proxy (`kube-proxy`) - handles the routing between pod load balancer (a.k.a. service)
-and pods, it also provides the routing from outside to service.
-
-ReplicaSet (RS).
-ReplicationController (RC).
-DaemonSet where we need an agent to run on every single node in the cluster.
-A federation is a cluster of clusters.
-KOps stands for Kubernetes operations (for AWS).
-
-#### Master.
+`kube-apiserver` (API server) - provides an HTTP/HTTPS server,
+which provides a RESTful API for all the components in the Kubernetes master.
+All k8s commands come here.
 
 #### Node (minion).
 
 A node is a worker machine in k8s, previously known as a minion.
 
-`/spec /healthz /pods`
-CONTAINS the services necessary to run pods and is managed by the master components.
+`kubelet` is a major process (agent) in the nodes, which reports node activities back
+to kubeapiserver periodically, such as pod health, node health, and liveness probe.
+
+`/spec /healthz /pods` - contains the services
+necessary to run pods and is managed by the master components.
+
+`container engine` - docker or rkt.
+
+`kube-proxy` - k8s networking, handles the routing between pod load balancer (a.k.a. service)
+and pods, it also provides the routing from outside to service.
 
 #### Manifest file.
 
 Manifest file - describe desired state.
 
-#### Pod
+#### Pod.
 
 Pod - (like container in docker)
 description of a set of container(s) that need to run together.
@@ -110,13 +80,41 @@ Types:
 * Ingress
   Something like smart router.
 
-#### Deployment
+#### Deployment.
 
-Deployment is the best primitive to manage and deploy our software
-in Kubernetes. It supports gracefully deploying, rolling updating,
+Deployment is the best primitive to manage and deploy our software in k8s.
+It supports gracefully deploying, rolling updating,
 and rolling back pods and ReplicaSets.
 
-## SH
+## Kinds.
+
+To store data permanently, Kubernetes uses Persistent Volumes.
+
+DaemonSet where we need an agent to run on every single node in the cluster.
+A federation is a cluster of clusters.
+KOps stands for Kubernetes operations (for AWS).
+
+````sh
+kind: ConfigMap                  # separate configuration information from application definition
+kind: Deployment                 # controls the creation and destruction of pods
+kind: HorizontalPodAutoscaler    #
+kind: Ingress                    # specify how incoming network traffic should be routed to services and pods
+kind: Job
+kind: LimitRange
+kind: NetworkPolicy              # defines the network access rules between pods inside the cluster
+kind: PersistentVolume
+kind: Pod
+kind: ReplicationController (RC)
+kind: ReplicaSet (RS)            # ReplicationController v2.
+kind: ResourceQuota
+kind: Secret
+kind: Service
+kind: ServiceAccount
+kind: StatefulSet
+kind: StorageClass
+````
+
+## SH.
 
 ````bash
 minikube version

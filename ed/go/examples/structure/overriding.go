@@ -18,6 +18,7 @@ type Bar struct {
 func (b Bar) B() {
 	fmt.Println("bar")
 }
+
 func (b Bar) F() {
 	fmt.Println("foo from bar")
 }

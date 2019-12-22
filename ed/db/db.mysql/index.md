@@ -38,6 +38,8 @@ which is organized as a B-tree structure.
 MySQL builds a hash index using a prefix of the index key. The prefix of the key can be any length...
 You should benchmark with `innodb_adaptive_hash_index` configuration feature both enabled and disabled.
 
+Spatial (R-tree) - for geo data.
+
 #### Kinds
 
 `Covering` index - a covering index refers to the case
