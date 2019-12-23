@@ -39,6 +39,9 @@ keys *
 del mykey
 ````
 
+Redis - in-memory data structure store (persistent), used as database,
+with server-side scripts (lua).
+
 #### Data types:
 
 * Strings - A String value can be at max 512 Megabytes in length.

@@ -39,13 +39,13 @@ A node is a worker machine in k8s, previously known as a minion.
 `kubelet` is a major process (agent) in the nodes, which reports node activities back
 to kubeapiserver periodically, such as pod health, node health, and liveness probe.
 
-`/spec /healthz /pods` - contains the services
-necessary to run pods and is managed by the master components.
-
 `container engine` - docker or rkt.
 
 `kube-proxy` - k8s networking, handles the routing between pod load balancer (a.k.a. service)
 and pods, it also provides the routing from outside to service.
+
+`/spec /healthz /pods` - contains the services
+necessary to run pods and is managed by the master components.
 
 #### Manifest file.
 
@@ -88,8 +88,7 @@ and rolling back pods and ReplicaSets.
 
 ## Kinds.
 
-To store data permanently, Kubernetes uses Persistent Volumes.
-
+Persistent Volume - to store data permanently.
 DaemonSet where we need an agent to run on every single node in the cluster.
 A federation is a cluster of clusters.
 KOps stands for Kubernetes operations (for AWS).
