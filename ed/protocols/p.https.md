@@ -1,4 +1,4 @@
-HTTPS
+HTTPS - HyperText Transfer Protocol Secure 
 -
 
 https://hstspreload.org/ for add your site to preload.

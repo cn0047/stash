@@ -9,7 +9,6 @@ CIP       - Common Industrial Protocol (control, safety, synchronization, motion
 DHCP      - Dynamic Host Configuration Protocol (DHCP server can assign dynamic IP address).
 IMAP      - Internet Message Access Protocol.
 STUN      - Session Traversal Utilities for NAT, protocol to discover your public address.
-UDP       - User Datagram Protocol (good for broadcast).
 CDN       - Content Distribution Network.
 CIDR      - Classless Inter-Domain Routing.
 Cloud DNS - Domain Name System.

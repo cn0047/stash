@@ -9,6 +9,19 @@ RCS - Revision control system.
 Git is a free and open source distributed version control system.
 
 ````sh
+export GIT_TRACE_PACKET=1
+export GIT_TRACE_PACK_ACCESS=1
+export GIT_TRACE_PERFORMANCE=1
+export GIT_TRACE_SETUP=1
+export GIT_TRACE=1
+export GIT_CURL_VERBOSE=1
+
+export GIT_SSL_NO_VERIFY=1;
+git config http.sslVerify 0
+
+git config user.name "Volodymyr Kovpak"
+git config user.email "cn007b@gmail.com"
+
 # from jenkins
 git ls-remote -h https://github.com/W3Ltd/zii_core HEAD
 
@@ -17,12 +30,6 @@ git init
 git clone ssh://gitolite@repo.com:1011/repoName.git
 # lightweight clone
 git clone --depth=1 --branch=master git://github.com/cn007b/vo
-
-export GIT_SSL_NO_VERIFY=1;
-git config http.sslVerify 0
-
-git config user.name "Volodymyr Kovpak"
-git config user.email "cn007b@gmail.com"
 
 git remote -v                      # shows remote repository
 git remote show remoteRepoName     # shows all about remote repo (remote show origin)

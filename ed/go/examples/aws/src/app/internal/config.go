@@ -6,9 +6,9 @@ import (
 )
 
 var (
-	aws_access_key_id     = ""
-	aws_secret_access_key = ""
-	region                = "us-east-1" // us-east-1|eu-central-1
+	aws_access_key_id     = "AKIAI5DTA3Y7MX2FMZ2Q"
+	aws_secret_access_key = "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"
+	region                = "eu-central-1" // us-east-1|eu-central-1
 	bucket                = "basicbkt"
 
 	host = "http://127.0.0.1:8000"
@@ -19,7 +19,7 @@ func GetBucket() string {
 }
 
 func GetAWSConfig() *aws.Config {
-	return getStaticConfig()
+	return getStaticConfig2()
 }
 
 func getStaticConfig() *aws.Config {
