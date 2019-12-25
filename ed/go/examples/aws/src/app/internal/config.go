@@ -6,8 +6,8 @@ import (
 )
 
 var (
-	aws_access_key_id     = "AKIAI5DTA3Y7MX2FMZ2Q"
-	aws_secret_access_key = "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"
+	aws_access_key_id     = ""
+	aws_secret_access_key = ""
 	region                = "eu-central-1" // us-east-1|eu-central-1
 	bucket                = "basicbkt"
 
