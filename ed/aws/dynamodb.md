@@ -88,4 +88,6 @@ aws dynamodb put-item --table-name $tbl --item '{
   "created_at" : {"S": "2019-10-31T16:32:39.243443+02:00"},
   "type"       : {"S": "test"}
 }'
+
+aws dynamodb get-item --table-name=$tbl --key='{"user_id": {"S": "'$uId'"}}'
 ````
