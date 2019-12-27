@@ -9,8 +9,8 @@ spec:
     - name: mysql
       image: mysql:5.7.27
       imagePullPolicy: Always
-      # args:
-      #   - "--datadir=/gh/.data/.k8s/mysql" # this config will crush pod
+
+
       ports:
         - containerPort: 3306
           name: mysql
@@ -27,20 +27,20 @@ spec:
         - name: mysql-config-volume
           mountPath: /etc/mysql/conf.d/default_auth.cnf
           subPath: default_auth
-        - name: mysql-config-volume-2
-          # mountPath: /etc/mysql/mysql.conf.d/mysqld.cnf # this line will crush pod
-          mountPath: /etc/mysql/conf.d/custom_mysqld.cnf
-          subPath: custom_mysqld
-        - mountPath: /gh
+
+
+
+
+        - mountPath: /var/lib/mysql
           name: xvol
   volumes:
     - name: mysql-config-volume
       configMap:
         name: mysql-config
-    - name: mysql-config-volume-2
-      configMap:
-        name: mysql-config
+
+
+
     - name: xvol
       hostPath:
-        path: /gh
+        path: /var/lib/mysql
         type: DirectoryOrCreate

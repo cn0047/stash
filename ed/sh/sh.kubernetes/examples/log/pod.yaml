@@ -11,13 +11,13 @@ spec:
     command: [
       "go",
       "run",
-      "/ed/go/examples/whatever/pingRealtimeLog.go",
+      "/gh/ed/go/examples/whatever/pingRealtimeLog.go",
     ]
     volumeMounts:
-    - mountPath: /ed
+    - mountPath: /gh
       name: xvol
   volumes:
   - name: xvol
     hostPath:
-      path: /ed
+      path: /gh
       type: DirectoryOrCreate

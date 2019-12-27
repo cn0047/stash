@@ -68,7 +68,7 @@ docker run -P -t -i ubuntu:latest /bin/bash
 
 # run a web application
 # -d - runs the container as daemon
-# -p - maps any required network ports
+# -p - maps any required network ports, $portInContainer:$portOnHostMachine
 docker run -d -p 8081:80 cn007b/ubuntu
 docker run -d -p 192.168.0.32:1111:1111 cn007b/ubuntu
 

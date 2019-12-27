@@ -17,5 +17,5 @@ spec:
         command: [
           'sh',
           '-c',
-          "curl -i -XPOST 'https://realtimelog.herokuapp.com:443/ping' -H 'Content-Type: application/json' -d '{\"code\":\"100\", \"status\": \"ok from kube rc\"}'",
+          "while true; do curl -i -XPOST 'https://realtimelog.herokuapp.com:443/ping' -H 'Content-Type: application/json' -d '{\"code\":\"100\", \"status\": \"ok from rc\"}'; sleep 5; done",
         ]

@@ -8,3 +8,11 @@ data:
   default_auth: |
     [mysqld]
     default_authentication_plugin=mysql_native_password
+    # default-authentication-plugin=mysql_native_password
+    datadir=/gh/.data/.k8s/mysql
+  custom_mysqld: |
+    [mysqld]
+    pid-file=/var/run/mysqld/mysqld.pid
+    socket=/var/run/mysqld/mysqld.sock
+    datadir=/gh/.data/.k8s/mysql
+    symbolic-links=0

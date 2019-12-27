@@ -1,20 +1,28 @@
 /*
 
-create table test_mysql (id int key, code int);
-insert into test_mysql values (1, 200);
+create table test_mysql (
+	id int key, code int
+);
+insert into test_mysql values
+	(1, 200);
 
 create table question (
-id int auto_increment key,
-body varchar(100)
+	id int auto_increment key,
+	body varchar(100)
 );
-insert into question values (1, "question 1"), (2, "question 2");
+insert into question values
+	(1, "question 1"),
+	(2, "question 2");
 
 create table answer (
-id int auto_increment key,
-question_id int,
-body varchar(100)
+	id int auto_increment key,
+	question_id int,
+	body varchar(100)
 );
-insert into answer values (1, 1, "answer 1 to q 1"), (2, 2, "answer 1 to q 2"), (3, 2, "answer 2 to q 2");
+insert into answer values
+	(1, 1, "answer 1 to q 1"),
+	(2, 2, "answer 1 to q 2"),
+	(3, 2, "answer 2 to q 2");
 
 */
 
@@ -30,18 +38,19 @@ import (
 
 const (
 	CONN_STR = //
-	//"root:root@tcp(xmysql:3306)/?charset=utf8"
-	"dbu:dbp@tcp(xmysql:3306)/test?charset=utf8"
-	//"dbu:dbp@tcp(172.17.0.5:3306)/test?charset=utf8"
+	// "root:root@tcp(xmysql:3306)/?charset=utf8" // docker
+	// "dbu:dbp@tcp(xmysql:3306)/test?charset=utf8" // docker
+	"dbu:dbp@tcp(172.17.0.6:3306)/test?charset=utf8" // k8sg
 )
 
 func main() {
 	//f0a()
 	//f0()
 	//f1()
-	//f2()
+	// f2()
+	f2b()
 	//web()
-	j1()
+	// j1()
 }
 
 func checkErr(err error) {
@@ -93,6 +102,21 @@ func f2() {
 		err = rows.Scan(&id, &code)
 		checkErr(err)
 		fmt.Printf("Got row with id: %d, and code: %d \n", id, code)
+	}
+}
+func f2b() {
+	db, err := sql.Open("mysql", CONN_STR)
+	checkErr(err)
+
+	rows, err := db.Query("SELECT * FROM tmp")
+	checkErr(err)
+
+	for rows.Next() {
+		n := -1
+		m := ""
+		err = rows.Scan(&n, &m)
+		checkErr(err)
+		fmt.Printf("Got row with n: %d, and m: %v \n", n, m)
 	}
 }
 
