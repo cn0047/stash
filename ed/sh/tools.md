@@ -34,7 +34,7 @@ colordiff -u file1 file2
 ln -s {file} {symbolic-name} # symbolic (or soft) link
 ln {file} {hard-name}        # hard link
 
-echo 200  | pbcopy                             # copy data into clipboard buffer
+echo 200 | pbcopy                              # copy data into clipboard buffer
 file ed/bash/README.md                         # prints file type
 fswatch ./src | while read f; do echo $f; done # watch changes in directory
 mkdir -m 777 test                              # directory mode

@@ -11,6 +11,10 @@ apt-get install sysbench           # tool to test mysql performance
 check-unused-keys                  # tool to interact with INDEX_STATISTICS
 ````
 
+````sh
+service mysql status|reload|restart
+````
+
 ````sql
 CHECK TABLE tab;    -- checks a table for errors, for MyISAM - update key statistics
 ANALYZE TABLE tab;  -- performs a key distribution analysis
@@ -157,6 +161,7 @@ SET GLOBAL long_query_time = 1;
 SET GLOBAL log_queries_not_using_indexes = 0;
 
 SHOW VARIABLES where Variable_name = 'slow_query_log';
+SHOW VARIABLES where Variable_name = 'datadir';
 "
 ````
 

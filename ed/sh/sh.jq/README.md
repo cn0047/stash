@@ -8,8 +8,8 @@ jq
 jq -c # compact json
 jq -C # colorize
 jq -M # don't colorize
+jq -r # raw output
 
---raw-output
 --sort-keys / -S
 ````
 

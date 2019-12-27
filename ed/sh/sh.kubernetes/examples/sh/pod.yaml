@@ -9,15 +9,25 @@ spec:
   - name: klog-pod
     image: cn007b/ubuntu
     volumeMounts:
-    - mountPath: /ed
+    - mountPath: /gh
       name: xvol
     command: [
       'sh',
       '-c',
-      "curl -i -XPOST 'https://realtimelog.herokuapp.com:443/ping' -H 'Content-Type: application/json' -d '{\"code\":\"100\", \"status\": \"ok from kube pod\"}'",
+      "while true; do curl -i -XPOST 'https://realtimelog.herokuapp.com:443/ping' -H 'Content-Type: application/json' -d '{\"code\":\"100\", \"status\": \"ok from pod\"}'; sleep 5; done",
+    ]
+  - name: klog-pod-2
+    image: cn007b/go
+    volumeMounts:
+    - mountPath: /gh
+      name: xvol
+    command: [
+      'sh',
+      '-c',
+      "while true; do curl -i -XPOST 'https://realtimelog.herokuapp.com:443/ping' -H 'Content-Type: application/json' -d '{\"code\":\"100\", \"status\": \"ok from pod-2\"}'; sleep 5; done",
     ]
   volumes:
   - name: xvol
     hostPath:
-      path: /ed
+      path: /gh
       type: DirectoryOrCreate
