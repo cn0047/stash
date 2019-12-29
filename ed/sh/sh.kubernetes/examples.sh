@@ -42,32 +42,7 @@ kubectl expose rc log-rc --port=8080 --target-port=8080 --name=log-svc --type=Lo
 minikube service log-svc --url
 kubectl delete svc log-svc
 
-# go.db example NOT FINISHED
-# cm mysql
-kubectl apply -f ed/sh/sh.kubernetes/examples/go.db/mysql.v1.cm.yaml
-kubectl delete cm/mysql-config
-# pod mysql
-kubectl delete pod/mysql
-kubectl apply -f ed/sh/sh.kubernetes/examples/go.db/mysql.v1.pod.yaml
-kubectl exec -it mysql /bin/bash \
-  # mkdir -p /gh/.data/.k8s/mysql
-  # ln -d /gh/.data/.k8s/mysql /var/lib/mysql
-  # ln -d /var/lib/mysql /gh/.data/.k8s/mysql
-  # chown mysql.mysql -R /gh/.data/.k8s/mysql
-  # cp /etc/mysql/conf.d/custom_mysqld.cnf /etc/mysql/mysql.conf.d/mysqld.cnf
-  # service mysql reload
-kubectl exec -it mysql mysql -- -P3307 -uroot -proot
-# kubectl exec -it mysql mysql -- -P3307 -uroot -proot -Dtest -e "SET GLOBAL datadir='/gh/.data/.k8s/mysql'"
-kubectl exec -it mysql mysql -- -P3307 -uroot -proot -Dtest -e 'create table tmp(n int, m varchar(100))'
-kubectl exec -it mysql mysql -- -P3307 -udbu -pdbp -Dtest
-kubectl exec -it mysql mysql -- -P3307 -udbu -pdbp -Dtest -e "SHOW VARIABLES where Variable_name = 'datadir'"
-kubectl exec -it mysql mysql -- -P3307 -udbu -pdbp -Dtest -e 'show tables'
-kubectl exec -it mysql mysql -- -P3307 -udbu -pdbp -Dtest -e "insert into tmp values (1, 'one')"
-kubectl exec -it mysql mysql -- -P3307 -udbu -pdbp -Dtest -e 'select * from tmp'
-mysqlHost=`kubectl get pod/mysql --template={{.status.podIP}}`; echo $mysqlHost
-kubectl run mysql-client --image=mysql:5.7.27 -it --rm --restart=Never -- \
-  mysql -h$mysqlHost -P3306 -udbu -pdbp -Dtest -e 'select * from tmp'
-kubectl delete pod/mysql
+# go.db example
 # build docker image
 ctx=ed/sh/sh.docker/examples.Dockerfile
 docker run -it --rm -v $PWD:/gh -w /gh -e ctx=$ctx -e GOPATH='/gh/ed/go/examples/db/' \
@@ -75,13 +50,39 @@ docker run -it --rm -v $PWD:/gh -w /gh -e ctx=$ctx -e GOPATH='/gh/ed/go/examples
 docker build -t cn007b/pi -f $ctx/go.x.Dockerfile $ctx
 docker push cn007b/pi
 rm $ctx/xgoapp
-# pod
+# test docker image
+docker run -ti --rm -p 8080:8080 cn007b/pi
+# pv
+kubectl apply -f ed/sh/sh.kubernetes/examples/go.db/mysql.pv.yaml
+kubectl get pv mysql-pv
+kubectl describe pv mysql-pv
+kubectl delete pv mysql-pv
+# pvc
+kubectl apply -f ed/sh/sh.kubernetes/examples/go.db/mysql.pvc.yaml
+kubectl get pvc mysql-pvc
+kubectl describe pvc mysql-pvc
+kubectl delete pvc mysql-pvc
+# cm mysql
+kubectl apply -f ed/sh/sh.kubernetes/examples/go.db/mysql.cm.yaml
+kubectl get cm/mysql-config
+kubectl delete cm/mysql-config
+# pod mysql
+kubectl apply -f ed/sh/sh.kubernetes/examples/go.db/mysql.v3.pod.yaml
+kubectl exec -it mysql mysql -- -P3307 -uroot -proot -Dtest -e 'create table tmp(n int, m varchar(100))'
+kubectl exec -it mysql mysql -- -P3307 -udbu -pdbp -Dtest -e 'show tables'
+kubectl exec -it mysql mysql -- -P3307 -udbu -pdbp -Dtest -e "insert into tmp values (1, 'one')"
+kubectl exec -it mysql mysql -- -P3307 -udbu -pdbp -Dtest -e "insert into tmp values (2, 'two')"
+kubectl exec -it mysql mysql -- -P3307 -udbu -pdbp -Dtest -e 'select * from tmp'
+mysqlHost=`kubectl get pod/mysql --template={{.status.podIP}}`; echo $mysqlHost
+kubectl run mysql-client --image=mysql:5.7.27 -it --rm --restart=Never -- \
+  mysql -h$mysqlHost -P3306 -udbu -pdbp -Dtest -e 'select * from tmp'
+kubectl delete pod/mysql
+# pod go
 kubectl apply --force=true -f ed/sh/sh.kubernetes/examples/go.db/go.pod.yaml
+kubectl describe pod/go-db-pod
 kubectl logs -f pod/go-db-pod
 kubectl delete pod/go-db-pod
-# svc
+# svc go
 kubectl apply --force=true -f ed/sh/sh.kubernetes/examples/go.db/go.svc.yaml
 minikube service go-db-service --url
 kubectl delete service/go-db-service
-
-
