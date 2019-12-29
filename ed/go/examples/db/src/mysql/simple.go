@@ -40,7 +40,7 @@ const (
 	CONN_STR = //
 	// "root:root@tcp(xmysql:3306)/?charset=utf8" // docker
 	// "dbu:dbp@tcp(xmysql:3306)/test?charset=utf8" // docker
-	"dbu:dbp@tcp(172.17.0.6:3306)/test?charset=utf8" // k8sg
+	"dbu:dbp@tcp(172.17.0.4:3306)/test?charset=utf8" // k8sg
 )
 
 func main() {
@@ -49,7 +49,7 @@ func main() {
 	//f1()
 	// f2()
 	f2b()
-	//web()
+	web()
 	// j1()
 }
 

@@ -69,9 +69,8 @@ Types:
 * NodePort
   Primitive way to get external traffic directly to service.
   Opens a specific port on all the nodes.
-* LoadBalancer
-* Ingress
-  Something like smart router.
+* LoadBalancer.
+* Ingress - Something like smart router.
 
 **ReplicaSet** controls that pods count matches desired count.
 
@@ -79,10 +78,19 @@ Types:
 It supports gracefully deploying, rolling updating,
 and rolling back pods and ReplicaSets.
 Main feature - zero downtime deployment.
+Default deployment strategy is rolling + blue-green.
 
+**Volume**:
+`emptyDir` - lifecycle tied to pod,
+`hostPath` - path on worker node,
+`persistentVolume` declares volume and `persistentVolumeClaim` uses that volume,
+`nfs, configMap/secret, cloud`.
 Persistent Volume - to store data permanently.
+
 DaemonSet where we need an agent to run on every single node in the cluster.
+
 A federation is a cluster of clusters.
+
 KOps stands for Kubernetes operations (for AWS).
 
 ````sh
@@ -132,7 +140,7 @@ minikube delete; rm -rf ~/.minikube
 minikube status
 # xhyve|hyperkit
 minikube start --vm-driver=hyperkit --mount --mount-string="$HOME/web/kovpak/gh:/gh"
-minikube start --vm-driver=hyperkit --mount --mount-string="$HOME/web/kovpak/gh/.data/.k8s/mysql:/var/lib/mysql"
+# minikube start --vm-driver=hyperkit --mount --mount-string="$HOME/web/kovpak/gh/.data/.k8s/mysql:/var/lib/mysql"
 minikube stop
 minikube dashboard
 
@@ -172,7 +180,7 @@ kubectl get pods -o jsonpath='{.items[*].metadata.name}'
 
 # run pod
 kubectl run log-pod --image=cn007b/pi
-kubectl port-forward log-pod-99cc8c885-5vwhh 8181:8080
+kubectl port-forward log-pod-99cc8c885-5vwhh 8181:8080 # portOnHost:portInPod
 curl 'localhost:8181?yes'
 
 kubectl delete pod $pod

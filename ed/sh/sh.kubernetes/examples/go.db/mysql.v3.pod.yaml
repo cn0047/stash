@@ -24,28 +24,28 @@ spec:
         - name: MYSQL_PASSWORD
           value: "dbp"
       volumeMounts:
-        - name: mysql-config-volume
-          mountPath: /etc/mysql/conf.d/default_auth.cnf
-          subPath: default_auth
 
 
 
 
-        - mountPath: /var/lib/mysql
-          name: xvol
 
 
+
+
+
+        - mountPath: "/var/lib/mysql"
+          name: mysql-pvs
   volumes:
-    - name: mysql-config-volume
-      configMap:
-        name: mysql-config
 
 
 
-    - name: xvol
-      hostPath:
-        path: /var/lib/mysql
-        type: DirectoryOrCreate
 
 
 
+
+
+
+
+    - name: mysql-pvs
+      persistentVolumeClaim:
+        claimName: mysql-pvc
