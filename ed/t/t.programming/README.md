@@ -127,3 +127,14 @@ The word `table` should never appear in a table name. How is NameString better t
 Would a Name ever be a floating point number? If so, it breaks an earlier rule about disinformation.
 Imagine finding one class named Customer and another named CustomerObject.
 What should you understand as the distinction? Which one will represent the best path to a customer’s payment history?
+
+#### Process and Thread
+
+Process - any program. It's isolated from other processes.
+Process has a virtual address space, executable code, open handles to system objects,
+a security context, a unique process identifier, environment variables,
+minimum and maximum working set sizes, and at least one thread (primary thread) of execution.
+
+Thread is the segment of a process, run in a shared memory space.
+A thread is an entity within a process that can be scheduled for execution.
+All threads of a process share its virtual address space and system resources.

@@ -87,7 +87,12 @@ Default deployment strategy is rolling + blue-green.
 `nfs, configMap/secret, cloud`.
 Persistent Volume - to store data permanently.
 
-DaemonSet where we need an agent to run on every single node in the cluster.
+**ConfigMap**, `ls /etc/config`.
+
+**DaemonSet** ensures that all (or some) Nodes run a copy of a Pod.
+
+**Job** creates one or more Pods and ensures that a specified number of them successfully complete.
+`restartPolicy: Never|OnFailure`
 
 A federation is a cluster of clusters.
 
@@ -114,6 +119,17 @@ kind: StorageClass
 ````
 
 ## yaml
+
+````bash
+livenessProbe:
+  httpGet:
+    path: /health
+    port: 80
+readinessProbe:
+  httpGet:
+    path: /health
+    port: 80
+````
 
 ````bash
 spec:
@@ -149,6 +165,7 @@ open https://<your master ip>/api/v1/proxy/namespaces/kubesystem/services/monito
 
 kubectl version
 kubectl api-resources # all objects (kinds)
+kubectl --kubeconfig=$cfg
 kubectl cluster-info
 kubectl cluster-info dump
 kubectl config current-context
@@ -178,12 +195,24 @@ kubectl get pods -o wide
 kubectl get pods -o json
 kubectl get pods -o jsonpath='{.items[*].metadata.name}'
 
+kubectl logs $p
+kubectl logs $p -c $containerName
+kubectl logs -f $p # follow
+kubectl logs -p $p # previous
+
 # run pod
 kubectl run log-pod --image=cn007b/pi
 kubectl port-forward log-pod-99cc8c885-5vwhh 8181:8080 # portOnHost:portInPod
 curl 'localhost:8181?yes'
 
 kubectl delete pod $pod
+kubectl delete pod $pod --grace-period=60
+
+kubectl rollout
+kubectl rollout status deployment
+kubectl rollout pause deployment
+kubectl rollout resume deployment
+kubectl rollout undo deployment
 
 # ssh into pod
 kubectl exec -it $pod /bin/bash
