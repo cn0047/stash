@@ -5,6 +5,7 @@ metadata:
   labels:
     app: log
 spec:
+  terminationGracePeriodSeconds: 10
   containers:
   - name: log-container
     image: cn007b/go

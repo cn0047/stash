@@ -7,6 +7,8 @@ import (
 	"math/rand"
 	"net/http"
 	"os"
+	"os/signal"
+	"syscall"
 	"time"
 )
 
@@ -30,10 +32,20 @@ func main() {
 
 func web() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		j, _ := json.Marshal(map[string]string{"pod": HostName, "payload": r.RequestURI})
-		http.Post(URL, "application/json", bytes.NewBuffer(j))
-		w.Write([]byte(`ok`))
+		rtl(map[string]string{"pod": HostName, "payload": r.RequestURI})
+		_, err := w.Write([]byte(`ok`))
+		if err != nil {
+		}
 	})
+
+	signals := make(chan os.Signal, 1)
+	signal.Notify(signals, syscall.SIGINT, syscall.SIGTERM, syscall.SIGKILL)
+	go func() {
+		sig := <-signals
+		rtl(map[string]string{"got OS signal": fmt.Sprintf("%#v", sig)})
+		panic(fmt.Errorf("have to exit"))
+	}()
+
 	http.ListenAndServe(":8080", nil)
 }
 
@@ -41,9 +53,17 @@ func bg() {
 	id := random(1, 7000)
 	for {
 		at := time.Now().UTC()
-		j, _ := json.Marshal(map[string]interface{}{"pod": HostName, "id": id, "at": at})
-		http.Post(URL, "application/json", bytes.NewBuffer(j))
+		rtl(map[string]interface{}{"pod": HostName, "id": id, "at": at})
 		fmt.Printf("Please open: %s to see new message, at: %s \n", URL, at)
 		time.Sleep(10 * time.Second)
+	}
+}
+
+func rtl(data interface{}) {
+	j, err := json.Marshal(data)
+	if err != nil {
+	}
+	_, err = http.Post(URL, "application/json", bytes.NewBuffer(j))
+	if err != nil {
 	}
 }
