@@ -8,5 +8,5 @@ class Foo {
     }
 }
 
-val f = new Foo() 
+val f = new Foo()
 f.bar()
