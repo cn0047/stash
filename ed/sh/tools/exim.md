@@ -1,3 +1,10 @@
+Exim
+-
+
+Exim is a message transfer agent (MTA).
+
+exim4.conf:
+````sh
 disable_ipv6 = true
 deliver_drop_privilege = yes
 message_logs = no
@@ -174,3 +181,4 @@ login_server:
   server_prompts = "Username:: : Password::"
   server_condition = "${if crypteq{$auth2}{${extract{1}{:}{${lookup{$auth1}lsearch{CONFDIR/passwd}{$value}{*:*}}}}}{1}{0}}"
   server_set_id = $auth1
+````
