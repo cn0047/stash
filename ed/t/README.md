@@ -134,8 +134,9 @@ x^2 # x - base; 2 - power
 
 ````
 1e6  # 1 000 000
-0x80 # int 128
-
+0b11 # (Binary)
+0o77 # (Octal)
+0x80 # (HEX) int 128
 ````
 
 ````
