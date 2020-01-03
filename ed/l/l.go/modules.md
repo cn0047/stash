@@ -43,6 +43,7 @@ go mod tidy # prune any no-longer-needed dependencies (and add any dependencies 
 go mod why -m <module>
 go mod graph
 
+go clean -modcache
 go clean --modcache
 
 # download modules to local cache, for docker
