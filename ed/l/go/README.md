@@ -54,6 +54,7 @@ go build                  # Compiles and installs packages and dependencies
 go build -race ./example  #
 go build -gcflags -S z.go # assembly output
 go build -gcflags='-m -m' # provides info about optimization decisions
+go build -mod=vendor
 go build -o newname
 GOOS=linux GOARCH=amd64 go build \
   -ldflags="-w -s" -o /go/bin/hello # build in docker (get the smallest binaries)

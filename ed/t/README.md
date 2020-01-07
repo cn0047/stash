@@ -133,6 +133,8 @@ x^2 # x - base; 2 - power
 ````
 
 ````
+11f  # (Float)
+
 1e6  # 1 000 000
 0b11 # (Binary)
 0o77 # (Octal)
