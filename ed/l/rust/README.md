@@ -7,7 +7,7 @@ rust
 [playground](https://play.rust-lang.org/)
 
 ````sh
-rustc -o x ed/rust/examples/whatever/hw.rs && ./x
+rustc -o x ed/l/rust/examples/whatever/hw.rs && ./x
 ````
 
 cargo - Rust's package manager

@@ -117,3 +117,12 @@ func (h *Handler) proxy(w http.ResponseWriter, r *http.Request) {
 
 	proxy.ServeHTTP(w, r)
 }
+
+func rtl(data interface{}) {
+	j, err := json.Marshal(data)
+	if err != nil {
+	}
+	_, err2 := http.Post("https://realtimelog.herokuapp.com:443/x1", "application/json", bytes.NewBuffer(j))
+	if err2 != nil {
+	}
+}

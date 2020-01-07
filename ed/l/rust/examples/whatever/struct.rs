@@ -1,9 +1,14 @@
 use std::mem;
 
-struct Point
-{
+struct Point {
     x: f64,
     y: f64
+}
+
+impl Point {
+  fn len(&self) -> f64 {
+    self.y - self.x
+  }
 }
 
 fn get_point() -> Point {
@@ -16,4 +21,5 @@ fn main() {
 
     let p2 = Box::new(get_point());
     println!("p2: x = {}; y = {}; takes {} bytes", p2.x, p2.y, mem::size_of_val(&p2));
+    println!("p2: len = {}", p2.len());
 }
