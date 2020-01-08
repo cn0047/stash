@@ -62,6 +62,15 @@ resource "aws_iam_policy" "st_iam_policy_for_lambda" {
                   "dynamodb:ListStreams"
               ],
               "Resource": "*"
+          },
+          {
+            "Sid": "",
+            "Effect": "Allow",
+            "Action": "s3:PutObject",
+            "Resource": [
+                "arn:aws:s3:::basicbkt/*",
+                "arn:aws:s3:::basicbkt"
+            ]
           }
       ]
   }

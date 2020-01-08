@@ -47,9 +47,12 @@ terraform destroy -target=resource
 terraform graph
 ````
 
+#### Examples:
+
 ````sh
+# aws.st
 # aws lambda
-export GOPATH=$PWD/ed/go/examples/aws
+export GOPATH=$PWD/ed/l/go/examples/aws
 go get -u "github.com/aws/aws-sdk-go/aws"
 # build
 GOOS=linux go build -o /tmp/awsLambdaOne $GOPATH/src/app/lambda
@@ -59,7 +62,7 @@ open https://realtimelog.herokuapp.com:443/64kfym341kp2
 go run $GOPATH/src/app/main.go k31 val200 200
 for i in $(seq 2000 2999); do go run $GOPATH/src/app/main.go "k$i" val200 $i; done
 
-cd ed/sh/sh.terraform/examples/aws.st
+cd ed/sh/terraform/examples/aws.st
 terraform init
 terraform plan
 terraform apply -auto-approve

@@ -55,6 +55,9 @@ DynamoDB trigger - is lambda function.
 ````sh
 tbl=hotdata
 
+aws --profile=$p dynamodb list-global-tables
+aws --profile=$p dynamodb list-tables
+
 # ONLY PRIMARY KEY required all other fields may be omitted
 aws dynamodb create-table \
   --table-name $tbl \
@@ -63,9 +66,6 @@ aws dynamodb create-table \
       AttributeName=user_id,AttributeType=N \
   --key-schema
       AttributeName=user_id,KeyType=HASH \
-
-aws dynamodb list-global-tables
-aws dynamodb list-tables
 
 # count
 aws dynamodb scan --table-name $tbl | jq -c '.Count'
@@ -82,6 +82,8 @@ aws dynamodb query --table-name $tbl \
   | jq -c '.Count,.ScannedCount'
 
 # add new item
+aws --profile=$p  dynamodb put-item --table-name $tbl --item '{"key":{"S": "k1"},"v":{"S": "v1"}}'
+
 aws dynamodb put-item --table-name $tbl --item '{
   "email"      : {"S": "x@y.com"},
   "err"        : {"BOOL": false},

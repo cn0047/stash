@@ -19,10 +19,10 @@ config.php
 # golang
 **/vendor/
 go.sum
-ed/l/l.go/**/bin/
-ed/l/l.go/**/pkg/
-# ed/l/l.go/**/src/
-!ed/l/l.go/**/src/app/
-ed/l/l.go/**/src/github.com
-ed/l/l.go/**/src/golang.org
-ed/l/l.go/**/src/gopkg.in
+ed/l/go/**/bin/
+ed/l/go/**/pkg/
+# ed/l/go/**/src/
+!ed/l/go/**/src/app/
+ed/l/go/**/src/github.com
+ed/l/go/**/src/golang.org
+ed/l/go/**/src/gopkg.in
