@@ -24,5 +24,6 @@ The largest number of records that will be read from your table’s update strea
 The maximum amount of time to gather records before invoking the function, in seconds.
 
 ````sh
-aws lambda update-function-code --function-name st-ddb-lambda --zip-file fileb:///tmp/awsLambdaOne.zip
+aws --profile=$p lambda list-functions
+aws --profile=$p lambda update-function-code --function-name st-ddb-lambda --zip-file fileb:///tmp/awsLambdaOne.zip
 ````

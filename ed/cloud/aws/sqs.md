@@ -15,3 +15,7 @@ Queue Attributes:
 * Delivery Delay - time to delay first delivery.
 * Receive Message Wait Time - max amount of time
   that a long polling receive call will wait for a message to become available.
+
+````sh
+aws --profile=$p sqs list-queues
+````
