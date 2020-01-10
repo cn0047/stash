@@ -13,7 +13,8 @@ import (
 )
 
 const (
-	URL = "https://realtimelog.herokuapp.com/ping"
+	AppVersion = "1.1.3"
+	URL        = "https://realtimelog.herokuapp.com/ping"
 )
 
 var (
@@ -30,11 +31,18 @@ func main() {
 	web()
 }
 
+func getData() map[string]interface{} {
+	return map[string]interface{}{"v": AppVersion, "host": HostName}
+}
+
 func web() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		rtl(map[string]string{"pod": HostName, "payload": r.RequestURI})
-		_, err := w.Write([]byte(`ok`))
+		m := getData()
+		m["payload"] = r.RequestURI
+		j := rtl(m)
+		_, err := w.Write(j)
 		if err != nil {
+			// @TODO: Add error handling.
 		}
 	})
 
@@ -42,7 +50,8 @@ func web() {
 	signal.Notify(signals, syscall.SIGINT, syscall.SIGTERM, syscall.SIGKILL)
 	go func() {
 		sig := <-signals
-		rtl(map[string]string{"got OS signal": fmt.Sprintf("%#v", sig)})
+		s := "@see: https://github.com/golang/go/blob/master/src/syscall/zerrors_darwin_amd64.go#L1391"
+		rtl(map[string]string{"got OS signal": fmt.Sprintf("%#v %s", sig, s)})
 		panic(fmt.Errorf("have to exit"))
 	}()
 
@@ -53,17 +62,24 @@ func bg() {
 	id := random(1, 7000)
 	for {
 		at := time.Now().UTC()
-		rtl(map[string]interface{}{"pod": HostName, "id": id, "at": at})
+		m := getData()
+		m["id"] = id
+		m["at"] = at
+		rtl(m)
 		fmt.Printf("Please open: %s to see new message, at: %s \n", URL, at)
 		time.Sleep(10 * time.Second)
 	}
 }
 
-func rtl(data interface{}) {
+func rtl(data interface{}) []byte {
 	j, err := json.Marshal(data)
 	if err != nil {
+		// @TODO: Add error handling.
 	}
 	_, err = http.Post(URL, "application/json", bytes.NewBuffer(j))
 	if err != nil {
+		// @TODO: Add error handling.
 	}
+
+	return j
 }

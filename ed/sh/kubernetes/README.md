@@ -74,11 +74,17 @@ Types:
 
 **ReplicaSet** controls that pods count matches desired count.
 
-**Deployment** is the best primitive to manage and deploy our software in k8s.
+**Deployment** controls the creation and destruction of pods,
+is the best primitive to manage and deploy our software in k8s.
 It supports gracefully deploying, rolling updating,
 and rolling back pods and ReplicaSets.
 Main feature - zero downtime deployment.
-Default deployment strategy is rolling + blue-green.
+Deployment strategies `StrategyType`:
+* RollingUpdate (default).
+* Recreate - just drop everything and create new (with down time).
+Deployment creates ReplicaSet under the hood.
+Deployment status: complete, progressing, failed.
+To slow down deployment set `max unavailable 10 or less` and `max surge 2 or smth`.
 
 **Volume**:
 `emptyDir` - lifecycle tied to pod,
@@ -100,7 +106,6 @@ KOps stands for Kubernetes operations (for AWS).
 
 ````sh
 kind: ConfigMap                  # separate configuration information from application definition
-kind: Deployment                 # controls the creation and destruction of pods
 kind: HorizontalPodAutoscaler    #
 kind: Ingress                    # specify how incoming network traffic should be routed to services and pods
 kind: Job
@@ -177,6 +182,7 @@ kubectl edit <resource> <resource_name>
 
 kubectl describe rc $rc # replication controller
 kubectl describe svc $svc
+kubectl describe pods
 
 kubectl get all
 kubectl get events
@@ -185,7 +191,6 @@ kubectl get rc
 kubectl get rc -l app=log # label
 kubectl get rs
 kubectl get svc # services
-kubectl get deployments
 kubectl get ep # endpoints
 kubectl get componentstatuses # cluster status
 
@@ -194,6 +199,10 @@ kubectl get pods --show-all
 kubectl get pods -o wide
 kubectl get pods -o json
 kubectl get pods -o jsonpath='{.items[*].metadata.name}'
+
+lbl='app='
+p=`kubectl get pods -l $lbl -o jsonpath='{.items[*].metadata.name}'`
+kubectl logs -f $p
 
 kubectl logs $p
 kubectl logs $p -c $containerName
@@ -208,11 +217,20 @@ curl 'localhost:8181?yes'
 kubectl delete pod $pod
 kubectl delete pod $pod --grace-period=60
 
-kubectl rollout
-kubectl rollout status deployment
+kubectl get deployments
+# update image to initiate deploy
+kubectl set image deployment $depl mycontainer=myimage:latest
+kubectl set image deployment $depl mycontainer=myimage:latest --record
+# simple deploy after update to new docker image version in yaml file
+kubectl apply -f deployment.yaml --record
+#
+kubectl rollout status deployment $depl
 kubectl rollout pause deployment
 kubectl rollout resume deployment
 kubectl rollout undo deployment
+kubectl rollout history deployment log-depl # history
+#
+kubectl scale deployment $depl --replicas=11
 
 # ssh into pod
 kubectl exec -it $pod /bin/bash
