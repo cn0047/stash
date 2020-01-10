@@ -10,6 +10,7 @@ Variables in bash are untyped, but bash has:
 ````sh
 bash --version
 echo $BASH_VERSION
+echo There are ${#BASH_ALIASES[*]} aliases defined.
 
 bash -c 'echo ok' # cmd
 bash -i           # interactive
@@ -63,6 +64,8 @@ echo yes 0> f   # for standard input
 echo ok 1> f    # for standard output
 echo no 2>| f   # for errors
 echo okay &> f  # for standard output & errors
+echo OK >| f # overwrite file
+
 # also
 echo "test" 2>&1 1>/dev/null &
 >&2 # output to stderr

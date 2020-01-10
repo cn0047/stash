@@ -1,0 +1,22 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: ksh-depl
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ksh
+  template:
+    metadata:
+      labels:
+        app: ksh
+    spec:
+      containers:
+      - name: klog
+        image: cn007b/ubuntu
+        command: [
+          'sh',
+          '-c',
+          "while true; do curl -i -XPOST 'https://realtimelog.herokuapp.com:443/ping' -H 'Content-Type: application/json' -d '{\"code\":\"100\", \"status\": \"ok from depl\",\"host\":\"'$HOSTNAME'\"}'; sleep 5; done",
+        ]

@@ -1,0 +1,22 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: log-depl
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    # type: Recreate
+  selector:
+    matchLabels:
+      app: klog
+  template:
+    metadata:
+      labels:
+        app: klog
+    spec:
+      containers:
+      - name: log-container
+        image: cn007b/pi:latest
+        ports:
+          - containerPort: 8080

@@ -12,11 +12,17 @@ spec:
     command: [
       "go",
       "run",
-      "/gh/ed/go/examples/whatever/pingRealtimeLog.go",
+      "/gh/ed/l/go/examples/whatever/pingRealtimeLog.go",
     ]
     volumeMounts:
     - mountPath: /gh
       name: xvol
+    readinessProbe:
+      httpGet:
+        path: /readiness
+        port: 8080
+      initialDelaySeconds: 300
+      periodSeconds: 30
   volumes:
   - name: xvol
     hostPath:

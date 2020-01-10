@@ -3,7 +3,7 @@ apiVersion: v1
 metadata:
   name: ksh-rc
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     app: ksh
   template:
@@ -14,6 +14,21 @@ spec:
       containers:
       - name: klog-cnt
         image: cn007b/ubuntu
+        lifecycle:
+          postStart:
+            exec:
+              command: [
+                "/bin/sh",
+                "-c",
+                "curl -i -XPOST 'https://realtimelog.herokuapp.com:443/ping' -H 'Content-Type: application/json' -d '{\"status\": \"rc pod postStart\"}'",
+              ]
+          preStop:
+            exec:
+              command: [
+                "/bin/sh",
+                "-c",
+                "curl -i -XPOST 'https://realtimelog.herokuapp.com:443/ping' -H 'Content-Type: application/json' -d '{\"status\": \"rc pod preStop\"}'",
+              ]
         command: [
           'sh',
           '-c',
