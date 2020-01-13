@@ -12,13 +12,28 @@ import (
 )
 
 func main() {
-	test()
-	return
+	//test()
+	real()
+}
+
+func real() {
 	url := "https://api.github.com/users/cn007b"
 	err := one(url, nil)
 	if err != nil {
 		panic(err)
 	}
+}
+
+func test() {
+	server := httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+		_, err := res.Write([]byte(`{"login":"test"}`))
+		if err != nil {
+		}
+	}))
+	defer server.Close()
+
+	err := one(server.URL, server.Client())
+	fmt.Printf("🔴 %+v \n", err)
 }
 
 func one(url string, client *http.Client) error {
@@ -39,6 +54,8 @@ func one(url string, client *http.Client) error {
 			Transport: &http.Transport{
 				DialContext:         (&net.Dialer{Timeout: 2 * time.Second}).DialContext,
 				TLSHandshakeTimeout: 2 * time.Second,
+				MaxIdleConns:        100, // @IMPORTANT: This important for client reusing.
+				MaxIdleConnsPerHost: 100, // @IMPORTANT: This important for client reusing.
 			},
 			Timeout: 5 * time.Second,
 		}
@@ -75,16 +92,4 @@ func one(url string, client *http.Client) error {
 	fmt.Println("login:", responseData["login"])
 
 	return nil
-}
-
-func test() {
-	server := httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-		_, err := res.Write([]byte(`{"login":"test"}`))
-		if err != nil {
-		}
-	}))
-	defer server.Close()
-
-	err := one(server.URL, server.Client())
-	fmt.Printf("🔴 %+v \n", err)
 }

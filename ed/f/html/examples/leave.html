@@ -1,7 +1,20 @@
 <html>
 <script>
-window.onbeforeunload = function popup() {
-  return 'I see you are leaving the site';
-}
+
+window.addEventListener('beforeunload', (event) => {
+  let m = 'You have unfinished changes!';
+
+  fetch('https://realtimelog.herokuapp.com:443/x3', {
+    method: 'post', headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({m: m})
+  });
+
+  event.returnValue = m;
+  return m;
+});
+
 </script>
+<body>
+  Please <button onclick="window.close();">close</button>this tab.
+</body>
 </html>
