@@ -1,6 +1,8 @@
 Bash
 -
 
+[source code](http://git.savannah.gnu.org/cgit/coreutils.git/tree/src/comm.c)
+
 Variables in bash are untyped, but bash has:
 * number
 * string

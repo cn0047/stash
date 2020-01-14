@@ -16,12 +16,14 @@ node_modules/.bin/eslint --print-config .eslintrc.json > .eslintrc
 ````
 
 `.eslintignore`
-
-`/* eslint-disable */` - in top of file for ignor this file by eslint.
-`// eslint-disable-line`
+````
+/* eslint-disable */ # in top of file for ignor this file by eslint.
+// eslint-disable-line
+/* eslint-disable-line camelcase, max-len */
+// eslint-disable-next-line
+````
 
 package.json:
-
 ````js
 {
   "eslintConfig": {

@@ -23,9 +23,7 @@ export AWS_ACCESS_KEY_ID or AWS_ACCESS_KEY=""
 export AWS_SECRET_ACCESS_KEY=""
 # or
 export AWS_SECRET_KEY=""
-````
 
-````sh
 --profile=x
 --color=on
 --output=table|json|text
@@ -35,6 +33,10 @@ export AWS_SECRET_KEY=""
 # @see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html
 us-east-1    # US East (N. Virginia)
 eu-central-1 # EU (Frankfurt)
+````
+
+````sh
+aws sts get-caller-identity
 ````
 
 # CloudFront (CDN)
