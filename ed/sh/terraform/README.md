@@ -56,7 +56,7 @@ export GOPATH=$PWD/ed/l/go/examples/aws
 go get -u "github.com/aws/aws-sdk-go/aws"
 # build
 GOOS=linux go build -o /tmp/awsLambdaOne $GOPATH/src/app/lambda
-cd /tmp && zip awsLambdaOne.zip awsLambdaOne && cd -
+cd /tmp && zip awsLambdaOne.zip awsLambdaOne && mv awsLambdaOne.zip /Users/kovpakvolodymyr/Downloads && cd -
 # test
 open https://realtimelog.herokuapp.com:443/64kfym341kp2
 go run $GOPATH/src/app/main.go k31 val200 200

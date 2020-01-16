@@ -168,6 +168,7 @@ Means that the loop ran 100000000 times at a speed of 2185 ns (nanosecond) per l
 ## Asserts
 
 ````golang
+func assert(t *testing.T, actual interface{}, expected interface{}) {
 func assert(t *testing.T, expected interface{}, actual interface{}) {
   if actual != expected {
     t.Errorf("Got: %#v, want: %#v", actual, expected)
