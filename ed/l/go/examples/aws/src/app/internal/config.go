@@ -1,15 +1,17 @@
 package internal
 
 import (
+	"fmt"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/credentials"
+	"log"
 )
 
 var (
 	aws_access_key_id     = ""
 	aws_secret_access_key = ""
-	region                = "eu-central-1" // us-east-1|eu-central-1
-	bucket                = "basicbkt"
+	region                = "" // us-east-1|eu-central-1
+	bucket                = "" // "basicbkt"
 
 	host = "http://127.0.0.1:8000"
 )
@@ -19,7 +21,7 @@ func GetBucket() string {
 }
 
 func GetAWSConfig() *aws.Config {
-	return getStaticConfig2()
+	return getStaticConfig()
 }
 
 func getStaticConfig() *aws.Config {
@@ -42,12 +44,20 @@ func getStaticConfig1() *aws.Config {
 }
 
 func getStaticConfig2() *aws.Config {
-	creds := credentials.NewStaticCredentials(aws_access_key_id, aws_secret_access_key, "")
-	_, err := creds.Get()
+	c, err := GetConfigByCredentials(region, aws_access_key_id, aws_secret_access_key, "")
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
-	cfg := aws.NewConfig().WithRegion(region).WithCredentials(creds)
+	return c
+}
 
-	return cfg
+func GetConfigByCredentials(region string, key string, secret string, token string) (*aws.Config, error) {
+	c := credentials.NewStaticCredentials(key, secret, token)
+	_, err := c.Get()
+	if err != nil {
+		return nil, fmt.Errorf("failed to create credentials, error: %v", err)
+	}
+	cfg := aws.NewConfig().WithRegion(region).WithCredentials(c)
+
+	return cfg, nil
 }

@@ -15,15 +15,38 @@ import (
 
 	"app/internal"
 	"app/s3"
+	"app/sts"
 )
 
 const insert = "INSERT"
 
 func main() {
-	lambda.Start(Handler3)
+	lambda.Start(Handler4)
 }
 
-//Handler process lambda event.
+func Handler4(event events.DynamoDBEvent) {
+	cfg := internal.GetAWSConfig()
+	bucket := ""
+	roleToAssume := ""
+
+	r, err := sts.AssumeRole(cfg, roleToAssume)
+	if err != nil {
+		log.Fatalf("err1: %#v \n", err)
+	}
+
+	c, err := internal.GetConfigByCredentials(
+		"us-east-1",
+		*r.Credentials.AccessKeyId,
+		*r.Credentials.SecretAccessKey,
+		*r.Credentials.SessionToken,
+	)
+	if err != nil {
+		log.Fatalf("err2: %#v \n", err)
+	}
+
+	s3.PutToS3(c, bucket, "/m.txt", strings.NewReader("it works!!"))
+}
+
 func Handler3(event events.DynamoDBEvent) {
 	rtl(event.Records)
 	for _, record := range event.Records {
@@ -64,7 +87,6 @@ func getS3Key() string {
 	return s
 }
 
-//Handler process lambda event.
 func Handler1(event events.DynamoDBEvent) {
 	log.Printf("\n Got: %#v", event)
 	/*
