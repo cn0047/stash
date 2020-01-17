@@ -51,4 +51,7 @@ curl -A 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit
 
 # ignore invalid SSL Certificate
 curl -k https://localhost:4433
+
+curl -s 'https://github.com/cn007b' -o /dev/null -w '%{http_code}'
+curl -s 'https://github.com/cn007b' -o /dev/null -w '%{time_total}'
 ````
