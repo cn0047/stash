@@ -4,6 +4,9 @@ ssh (Secure Shell)
 `pssh` tool to run ssh command on few servers simultaneously
 
 ````sh
+# generate new ssh key
+ssh-keygen -t rsa
+
 # get key's fingerprint
 ssh-keygen -E md5 -lf keyFile.pem
 

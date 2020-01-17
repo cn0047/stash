@@ -21,6 +21,25 @@ yum -y install vim htop
 From cli:
 
 ````sh
+# convenient information about instances:
+aws --profile=$p ec2 describe-instances \
+  --output table \
+  --query 'Reservations[*].Instances[*].[Tags[0].Value,PublicDnsName,ImageId,LaunchTime,State.Name]' \
+
+  --filter Name=tag:Name,Values=*prod*web*
+  --filter Name=image-id,Values=ami-17a3e164
+  --filter Name=dns-name,Values=ec2-52-51-65-182.eu-west-1.compute.amazonaws.com
+
+# security groups
+aws --profile=$p ec2 describe-security-groups
+
+# list ssh keys
+aws --profile=$p ec2 describe-key-pairs
+
+# list vpcs
+aws --profile=$p ec2 describe-vpcs
+
+# create new ec2
 aws ec2 run-instances \
   --image-id ami-17a3e164 \
   --instance-type t2.medium \
@@ -69,20 +88,6 @@ aws ec2 describe-instance-status --instance-ids $iId | jq '.InstanceStatuses[0].
 aws elbv2 register-targets \
   --target-group-arn $arn \
   --targets Id=$iId,Port=8080
-
-````
-
-Convenient information about instances:
-
-````sh
-aws ec2 describe-instances \
-  --output table \
-  --query 'Reservations[*].Instances[*].[Tags[0].Value,PublicDnsName,ImageId,LaunchTime,State.Name]' \
-  --filter Name=tag:Name,Values=*prod*web*
-
-  --filter Name=image-id,Values=ami-17a3e164
-  --filter Name=dns-name,Values=ec2-52-51-65-182.eu-west-1.compute.amazonaws.com
-
 ````
 
 One php session storage per several instances:

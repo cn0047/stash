@@ -15,6 +15,16 @@ func main() {
 	fmt.Println(quickSort(a, 0, n))
 }
 
+func quickSort(a []int, begin int, end int) []int {
+	if begin < end {
+		p := partition(a, begin, end)
+		a = quickSort(a, begin, p-1)
+		a = quickSort(a, p+1, end)
+	}
+
+	return a
+}
+
 func partition(a []int, begin int, end int) int {
 	pivot := a[end]
 	i := begin - 1
@@ -27,16 +37,6 @@ func partition(a []int, begin int, end int) int {
 	swap(a, i+1, end)
 
 	return i + 1
-}
-
-func quickSort(a []int, begin int, end int) []int {
-	if begin < end {
-		p := partition(a, begin, end)
-		a = quickSort(a, begin, p-1)
-		a = quickSort(a, p+1, end)
-	}
-
-	return a
 }
 
 func swap(a []int, i int, j int) []int {
