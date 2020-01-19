@@ -4,10 +4,18 @@ provider "aws" {
   profile                 = "x"
 }
 
+locals {
+  env_name = lower(terraform.workspace)
+}
+
+variable "instance_size" {
+  type = map(string)
+}
+
 resource "aws_instance" "myec1st2" {
   count         = 1
   ami           = "ami-00aa4671cbf840d82" // default Amazon Linux 2 AMI
-  instance_type = "t2.micro"
+  instance_type = var.instance_size[terraform.workspace]
   tags = {
     Name = "myec1st2"
   }
