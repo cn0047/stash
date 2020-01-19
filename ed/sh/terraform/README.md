@@ -15,6 +15,7 @@ Terraform
 <br>Input variables - serve as parameters for a tf module (`variable "x" {type = string}`).
 <br>Output values - return values of a Terraform module (`val = aws_instance.server.private_ip`).
 <br>Expressions - refer to or compute values within a configuration.
+<br>Provisioners.
 
 ````sh
 src
@@ -50,6 +51,7 @@ terraform init
 terraform plan
 terraform plan -target=resource -out=plan
 terraform plan -var "my_tag=${MY_TAG_FROM_ENV}"
+terraform plan -state="./dev.state" -var-file="common.tfvars" -var-file="dev.tfvars"
 
 # apply plan
 terraform apply
@@ -65,11 +67,23 @@ terraform destroy
 terraform destroy -target=resource
 
 terraform graph
+terraform fmt # format tf files
+
+# workspace
+terraform workspace list
+terraform workspace select $ws
+terraform workspace new dev
+terraform workspace show
 ````
 
 #### Examples:
 
 ````sh
+c=plan
+c=apply
+c=refresh
+c=destroy
+
 # aws.st
 # aws lambda
 export GOPATH=$PWD/ed/l/go/examples/aws
@@ -86,14 +100,10 @@ cd ed/sh/terraform/examples/aws.st
 
 # aws.ec2
 cd ed/sh/terraform/examples/aws.ec2
-# ⬆
+terraform $c -var-file=ec2.tfvars -lock=false
 
 # aws.ec2 v2
 cd ed/sh/terraform/examples/aws.ec2.v2
-c=plan
-c=apply
-c=refresh
-c=destroy
 terraform $c -var-file=ec2.tfvars -lock=false
 ````
 
@@ -113,4 +123,18 @@ resource "aws_security_group" "gtest" {
     cidr_block = ["0.0.0.0/0"]
   }
 }
+
+resource "random_int" "rand" {
+  min = 100
+  max = 999
+}
+
+variable "images" {
+  type = "map"
+  default = {
+    us-east-1 = "image-1234"
+    us-west-2 = "image-4567"
+  }
+}
+ami = lookup(var.amis, "us-east-1", "error")
 ````
