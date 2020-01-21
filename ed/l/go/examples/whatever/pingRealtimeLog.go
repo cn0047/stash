@@ -14,7 +14,7 @@ import (
 
 const (
 	AppVersion = "1.1.3"
-	URL        = "https://realtimelog.herokuapp.com/ping"
+	URL        = "https://realtimelog.herokuapp.com/rkc8q6llprn"
 )
 
 var (
