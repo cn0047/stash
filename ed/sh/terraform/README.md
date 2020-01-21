@@ -15,6 +15,7 @@ Terraform
 <br>Input variables - serve as parameters for a tf module (`variable "x" {type = string}`).
 <br>Output values - return values of a Terraform module (`val = aws_instance.server.private_ip`).
 <br>Expressions - refer to or compute values within a configuration.
+<br>Backends - determines how state is loaded (s3, artifactory, consul, etc.).
 <br>Provisioners.
 
 ````sh
@@ -60,7 +61,7 @@ terraform apply -auto-approve
 
 terraform refresh
 
-terraform show
+terraform show -json
 
 # destroy all from tf file
 terraform destroy
@@ -68,6 +69,7 @@ terraform destroy -target=resource
 
 terraform graph
 terraform fmt # format tf files
+terraform output
 
 # workspace
 terraform workspace list
@@ -79,12 +81,8 @@ terraform workspace show
 #### Examples:
 
 ````sh
-c=plan
-c=apply
-c=refresh
-c=destroy
-
 # aws.st
+cd ed/sh/terraform/examples/aws.st
 # aws lambda
 export GOPATH=$PWD/ed/l/go/examples/aws
 go get -u "github.com/aws/aws-sdk-go/aws"
@@ -95,35 +93,30 @@ cd /tmp && zip awsLambdaOne.zip awsLambdaOne && mv awsLambdaOne.zip /Users/kovpa
 open https://realtimelog.herokuapp.com:443/64kfym341kp2
 go run $GOPATH/src/app/main.go k31 val200 200
 for i in $(seq 2000 2999); do go run $GOPATH/src/app/main.go "k$i" val200 $i; done
-#
-cd ed/sh/terraform/examples/aws.st
 
 # aws.ec2
 cd ed/sh/terraform/examples/aws.ec2
+c=plan
+c=apply
+c=refresh
+c=destroy
 terraform $c -var-file=ec2.tfvars -lock=false
 
-# aws.ec2 v2
-cd ed/sh/terraform/examples/aws.ec2.v2
-terraform $c -var-file=ec2.tfvars -lock=false
+# aws.x
+# @see: docket image build in k8s
+cd ed/sh/terraform/examples/aws.x
+export AWS_PROFILE=x
+terraform init
+terraform plan
+# run
+h=''
+key=/Users/kovpakvolodymyr/web/kovpak/gh/ed/sh/ssh/examples/nopwd/id_rsa
+scp -i $key /tmp/xgoapp ec2-user@$h:/tmp
+# ssh and run bin file
+ssh -i $key ec2-user@$h
 ````
 
 ````sh
-resource "aws_security_group" "gtest" {
-  ingress {
-    from_port    = 80
-    to_port      = 80
-    protoclol    = "tcp"
-    cidr_block   = ["0.0.0.0/0"]
-    cidr_block_2 = var.base_cidr_block
-  }
-  egress {
-    from_port  = 0
-    to_port    = 0
-    protoclol  = "-1"
-    cidr_block = ["0.0.0.0/0"]
-  }
-}
-
 resource "random_int" "rand" {
   min = 100
   max = 999
@@ -137,4 +130,26 @@ variable "images" {
   }
 }
 ami = lookup(var.amis, "us-east-1", "error")
+
+# place to store state
+terraform {
+  backend "s3" {
+    key = "k"
+    region = "us-east-1"
+  }
+}
+
+resource "aws_instance" "myec2" {
+  count         = 1
+  ami           = "ami-00aa4671cbf840d82" // default Amazon Linux 2 AMI
+  instance_type = "t2.micro"
+  tags = {
+    Name = "myec2-1"
+  }
+  provisioner "remote-exec" {
+    inline = [
+      "curl -i -XPOST 'https://realtimelog.herokuapp.com:443/sdf83k' -H 'Content-Type: application/json' -d '{\"msg\": \"ec2\"}'"
+    ]
+  }
+}
 ````

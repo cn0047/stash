@@ -10,7 +10,7 @@ docker run -it --rm -v $PWD:/gh -w /gh -e ctx=$ctx -e GOPATH='/gh/ed/go/examples
 # push to dockerhub
 docker build -t cn007b/pi -f $ctx/go.x.Dockerfile $ctx
 docker push cn007b/pi
-rm $ctx/xgoapp
+mv $ctx/xgoapp /tmp
 # test docker image
 docker run -ti --rm -p 8080:8080 cn007b/pi
 curl 'http://localhost:8080?x=1&y=2'
