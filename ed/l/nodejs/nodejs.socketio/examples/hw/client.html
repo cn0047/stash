@@ -7,6 +7,7 @@
 </body>
 <script>
   const socket = io.connect('http://localhost:8080');
+
   socket.on('connect', () => {
     console.log('Connected.');
 
@@ -18,5 +19,10 @@
       document.getElementById('root').appendChild(p);
     });
   });
+
+  socket.on('connect_error', () => console.log('connect_error'));
+  socket.on('error', () => console.log('error'));
+  socket.on('ping', () => console.log('ping'));
+  socket.on('pong', () => console.log('pong'));
 </script>
 </html>

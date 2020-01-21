@@ -14,6 +14,10 @@ app.listen(8080);
 console.log('Open in browser http://localhost:8080/client.html');
 
 io.sockets.on('connection', function (socket) {
+    socket.on('disconnect', function() {
+      console.log('got disconnect.');
+    });
+
     socket.on('hello', function (data) {
       console.log('Got data:', data);
       socket.emit('world', 'Hello world!');

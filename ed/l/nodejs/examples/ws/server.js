@@ -9,4 +9,8 @@ wss.on('connection', function connection(ws) {
     console.log('Received: %s', message);
     ws.send('Something from server.');
   });
+
+  ws.on('close', function() {
+    console.log('connection closed.');
+  })
 });

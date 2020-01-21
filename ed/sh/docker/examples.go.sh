@@ -11,7 +11,7 @@ docker run -it --rm --net=xnet -v $PWD:/gh -w /gh xgo go run /gh/x.go
 docker run -it --rm --net=xnet -v $PWD:/gh -w /gh -e GOPATH='/gh' xgo sh -c 'echo $GOPATH'
 
 # debug
-export APP_DIR='/gh/ed/go/examples/debug'
+export APP_DIR='/gh/ed/l/go/examples/debug'
 export GOPATH=$PWD/..$APP_DIR
 docker run -it --rm -v $PWD:/gh -e GOPATH=$APP_DIR xgo sh -c '
   cd $GOPATH \
@@ -23,24 +23,24 @@ docker run -it --rm -p 8080:8080 -v $PWD:/gh -e GOPATH=$APP_DIR xgo sh -c '
 '
 
 # whatever - slice
-export GOPATH=$PWD/ed/go/examples/whatever/slice.allocation
-docker run -it --rm -v $PWD:/gh -e GOPATH='/gh/ed/go/examples/whatever/slice.allocation/' xgo sh -c '
+export GOPATH=$PWD/ed/l/go/examples/whatever/slice.allocation
+docker run -it --rm -v $PWD:/gh -e GOPATH='/gh/ed/l/go/examples/whatever/slice.allocation/' xgo sh -c '
   cd $GOPATH \
   && go get -u github.com/google/pprof \
   && go get -u github.com/pkg/profile
 '
 # run bench
-docker run -it --rm -v $PWD:/gh -e GOPATH='/gh/ed/go/examples/whatever/slice.allocation/' \
+docker run -it --rm -v $PWD:/gh -e GOPATH='/gh/ed/l/go/examples/whatever/slice.allocation/' \
   xgo sh -c 'cd $GOPATH/src/app/lib && go test -bench=. -benchmem'
 # # install
-# docker run -it --rm -v $PWD:/gh -e GOPATH='/gh/ed/go/examples/whatever/slice.allocation/' \
+# docker run -it --rm -v $PWD:/gh -e GOPATH='/gh/ed/l/go/examples/whatever/slice.allocation/' \
 #   xgo sh -c 'cd $GOPATH/src/app/ && go install'
 # # run
-# docker run -it --rm -p 8000:8000 -v $PWD:/gh -v $PWD/ed/go/examples/whatever/slice.allocation/tmp:/tmp \
-#   -e GOPATH='/gh/ed/go/examples/whatever/slice.allocation/' \
+# docker run -it --rm -p 8000:8000 -v $PWD:/gh -v $PWD/ed/l/go/examples/whatever/slice.allocation/tmp:/tmp \
+#   -e GOPATH='/gh/ed/l/go/examples/whatever/slice.allocation/' \
 #   xgo sh -c 'cd $GOPATH/bin && ./app'
 # or
-docker run -it --rm -p 8000:8000 -v $PWD:/gh -e GOPATH='/gh/ed/go/examples/whatever/slice.allocation/' \
+docker run -it --rm -p 8000:8000 -v $PWD:/gh -e GOPATH='/gh/ed/l/go/examples/whatever/slice.allocation/' \
   xgo sh -c '
     cd $GOPATH/src/app/ \
     && go build \
@@ -91,7 +91,7 @@ docker run -it --rm -v $PWD:/gh -e GOPATH=$GOPATH xgo sh -c '
   && go tool pprof -png -output report.mtx.png fibonacci.test mtx.out
 '
 # or
-export GOPATH=$PWD/ed/go/examples/bench/fibonacci
+export GOPATH=$PWD/ed/l/go/examples/bench/fibonacci
 cd $GOPATH
 go test -v -run TestFibSimple
 go test -bench=. -benchmem -cpu=2
@@ -99,38 +99,38 @@ go test -v -memprofile mem.out -run TestFibSimple
 go tool pprof -png -output report.mem.png fibonacci.test mem.out
 
 # db postgresql
-docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \
+docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/l/go/examples/db/' \
   xgo sh -c 'cd $GOPATH && go get github.com/lib/pq'
 # run
-docker run -it --rm --net=xnet -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \
+docker run -it --rm --net=xnet -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/l/go/examples/db/' \
   xgo sh -c 'cd $GOPATH && go run src/postgresql/simplest.go'
 # local
-GOPATH=$PWD/ed/go/examples/db
+GOPATH=$PWD/ed/l/go/examples/db
 go run $GOPATH/src/postgresql/simplest.go
 
 # db mongo
-docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \
+docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/l/go/examples/db/' \
   xgo sh -c 'cd $GOPATH && go get gopkg.in/mgo.v2'
 # or
-docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \
+docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/l/go/examples/db/' \
   xgo sh -c 'cd $GOPATH && go get ./...'
 # run
-docker run -it --rm --net=xnet -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \
+docker run -it --rm --net=xnet -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/l/go/examples/db/' \
   xgo sh -c 'cd $GOPATH && go run src/mongodb/simple.go'
 
 # db mysql
-docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \
+docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/l/go/examples/db/' \
   xgo sh -c 'cd $GOPATH && go get github.com/go-sql-driver/mysql'
 # run
-docker run -it --rm --net=xnet -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \
+docker run -it --rm --net=xnet -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/l/go/examples/db/' \
   xgo sh -c 'cd $GOPATH && go run src/mysql/simple.go'
 
 # mysql-wear
-docker run -it --rm --net=xnet -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/db/' \
+docker run -it --rm --net=xnet -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/l/go/examples/db/' \
   xgo sh -c 'cd $GOPATH && go run src/mysql-wear/simple.go'
 
 # grpc one
-docker run -it --rm --name=grpcone -v $PWD:/gh -w /gh/ed/go/examples/grpc/one xgo sh -c '
+docker run -it --rm --name=grpcone -v $PWD:/gh -w /gh/ed/l/go/examples/grpc/one xgo sh -c '
   export GOPATH=$PWD;
   go get -u google.golang.org/grpc;
   go get -u github.com/golang/protobuf/protoc-gen-go;
@@ -142,42 +142,42 @@ docker run -it --rm --name=grpcone -v $PWD:/gh -w /gh/ed/go/examples/grpc/one xg
 docker exec -it grpcone sh -c 'export GOPATH=$PWD; go run src/app/client.go'
 
 # redis
-docker run -it --rm --net=xnet -p 8080:8080 -v $PWD:/gh -e GOPATH=/gh/ed/go/examples/redis/app xgo sh -c '
+docker run -it --rm --net=xnet -p 8080:8080 -v $PWD:/gh -e GOPATH=/gh/ed/l/go/examples/redis/app xgo sh -c '
   cd $GOPATH && go run main.go'
 # or
-GOPATH=$PWD/ed/go/examples/redis
+GOPATH=$PWD/ed/l/go/examples/redis
 cd $GOPATH
 go run app/main.go
 
 # web.one
-docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.one/' xgo sh -c '
+docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/l/go/examples/web.one/' xgo sh -c '
   cd $GOPATH \
   && go get github.com/codegangsta/gin \
   && go get github.com/pkg/errors
 '
 # test
-docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.one/' \
+docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/l/go/examples/web.one/' \
   xgo sh -c 'cd $GOPATH && cd src/firstapp && go test -cover'
 # run
 docker run -it --rm --name go-one -p 8000:8000 -p 8001:8001 \
-  -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.one/' \
+  -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/l/go/examples/web.one/' \
   xgo sh -c 'cd $GOPATH && ./bin/gin --port 8001 --appPort 8000 --path src/firstapp/ run main.go'
 # check
 curl -i http://localhost:8001/health-check
 
 # web.three ⭐️⭐️⭐️
-docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.three/' xgo sh -c '
+docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/l/go/examples/web.three/' xgo sh -c '
   cd $GOPATH \
   && go get gopkg.in/mgo.v2 \
   && go get github.com/codegangsta/gin \
   && go get -u github.com/derekparker/delve/cmd/dlv
 '
 # run
-docker run -it --rm --net=xnet -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.three/' \
+docker run -it --rm --net=xnet -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/l/go/examples/web.three/' \
   xgo sh -c 'cd $GOPATH && go run src/app/main.go'
 # livereload
 docker run -it --rm --net=xnet -p 8080:8080 -p 8081:8081 \
-  -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/go/examples/web.three/' \
+  -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/l/go/examples/web.three/' \
   xgo sh -c 'cd $GOPATH && ./bin/gin --port 8081 --appPort 8080 --path src/app/ run main.go'
 # test
 curl -i 'http://localhost:8080'
@@ -197,13 +197,13 @@ curl -i -XPOST 'http://localhost:8081/cars' -H 'Content-Type: application/json' 
    -d '{"vendor": "BMW", "name": "M6"}'
 
 # web.three.tiny
-docker run -it --rm -v $PWD/ed/go/examples/web.three.tiny:/app -e GOPATH='/app' \
+docker run -it --rm -v $PWD/ed/l/go/examples/web.three.tiny:/app -e GOPATH='/app' \
   cn007b/go sh -c 'cd $GOPATH/src/app && go install'
-docker run -it --rm -v $PWD/ed/go/examples/web.three.tiny:/app -e GOPATH='/app' \
+docker run -it --rm -v $PWD/ed/l/go/examples/web.three.tiny:/app -e GOPATH='/app' \
   -p 8080:8080 \
   cn007b/go sh -c 'cd $GOPATH && ./bin/app'
 # or
-GOPATH=$PWD/ed/go/examples/web.three.tiny
+GOPATH=$PWD/ed/l/go/examples/web.three.tiny
 cd $GOPATH
 go run src/app/main.go
 go install src/app
@@ -212,12 +212,12 @@ go build src/app
 curl http://localhost:8080/v1/id/7
 
 # algolia
-export GOPATH=$PWD'/ed/go/examples/algolia'
+export GOPATH=$PWD'/ed/l/go/examples/algolia'
 go get github.com/algolia/algoliasearch-client-go/algoliasearch
 go run ed/go/examples/algolia/src/main.go
 
 # algolia
-export GOPATH=$PWD'/ed/go/examples/airbrake'
+export GOPATH=$PWD'/ed/l/go/examples/airbrake'
 go get github.com/airbrake/gobrake
 go run ed/go/examples/airbrake/src/app/main.go
 
@@ -242,22 +242,22 @@ go run main.go k5
 go run main.go
 
 # jwt
-export GOPATH=$PWD/ed/go/examples/jwt
+export GOPATH=$PWD/ed/l/go/examples/jwt
 cd $GOPATH
 go get -u "github.com/dgrijalva/jwt-go"
 go run src/app/main.go
 
 # bench
-GOPATH=$PWD/ed/go/examples/bench
+GOPATH=$PWD/ed/l/go/examples/bench
 go run $GOPATH/main.go
 
 # websocket
-export GOPATH=$PWD'/ed/go/examples/websocket'
+export GOPATH=$PWD'/ed/l/go/examples/websocket'
 go get -u github.com/gorilla/websocket
 cd $GOPATH/src/app && go run $GOPATH/src/app/websockets.go
 
 # debug
-export GOPATH=$PWD'/ed/go/examples/debug'
+export GOPATH=$PWD'/ed/l/go/examples/debug'
 # install delve
 cd $GOPATH && git clone https://github.com/derekparker/delve.git && cd -
 cd $GOPATH/delve && make install && cd -
