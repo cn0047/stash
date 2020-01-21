@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 
 	"github.com/gorilla/websocket"
@@ -25,7 +26,11 @@ func main() {
 			// Read message from browser
 			msgType, msg, err := conn.ReadMessage()
 			if err != nil {
-				panic(err)
+				log.Fatalf(
+					"got error (IsCloseError = %v), error %#v \n",
+					websocket.IsCloseError(err, websocket.CloseGoingAway),
+					err,
+				)
 			}
 
 			// Print the message to the console
@@ -34,13 +39,13 @@ func main() {
 			ms := MyStruct{MyData: string(msg)}
 			d, err := json.Marshal(ms)
 			if err != nil {
-				panic(err)
+				log.Fatal(err)
 			}
 
 			// Write message back to browser
 			err = conn.WriteMessage(websocket.TextMessage, d)
 			if err != nil {
-				panic(err)
+				log.Fatal(err)
 			}
 		}
 	})
