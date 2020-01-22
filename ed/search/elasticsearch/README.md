@@ -7,13 +7,13 @@ Elasticsearch
 [Meta-Fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-fields.html).
 [Groovy](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-scripting.html#_document_fields).
 [Glossary](https://www.elastic.co/guide/en/elasticsearch/reference/current/glossary.html).
-https://www.elastic.co/guide/en/elasticsearch/reference/2.2/release-notes-2.2.0.html
+
 
 In Elasticsearch, a document belongs to a type, and those types live inside an index.
 You can draw some (rough) parallels to a traditional relational database:
 ````
-Relational DB ⇒ Databases ⇒ Tables ⇒ Rows      ⇒ Columns
-Elasticsearch ⇒ Indices   ⇒ Types  ⇒ Documents ⇒ Fields
+Relational DB    ⇒ Databases ⇒ Tables ⇒ Rows      ⇒ Columns
+Elasticsearch v2 ⇒ Indices   ⇒ Types  ⇒ Documents ⇒ Fields
 ````
 We could use the DELETE verb to delete the document.
 And the HEAD verb to check whether the document exists.
@@ -30,7 +30,6 @@ A shard is a single Lucene instance.
 An index is a logical namespace which points to primary and replica shards.
 
 Pay attention:
-
 * Messure marvel & JVM.
 * Not use open JDK but latest Oracle JDK.
 
