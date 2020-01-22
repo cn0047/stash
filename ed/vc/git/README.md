@@ -148,6 +148,8 @@ git branch develop --set-upstream-to origin/develop
 git show branchName
 git rev-parse HEAD # current commit hash
 git rev_parse branch
+git brnach
+git rev-parse --abbrev-ref HEAD # branch name only
 git brnach --no-merged
 git brnach --merged                               # branches merged with current
 git branch -v                                     # all branches Y last branch commit

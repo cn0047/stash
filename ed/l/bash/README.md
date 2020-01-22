@@ -394,6 +394,8 @@ continue
 while true; do echo -n . ; done
 until false; do echo -n . ; done
 
+ls | grep $ptrn | while read f; do echo $f; done
+
 for el in arr; do
     ;; code
 done
