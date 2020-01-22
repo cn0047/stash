@@ -1,4 +1,4 @@
-Standards
+Best Practices
 -
 
 * Always Use Asynchronous Methods.
