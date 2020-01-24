@@ -4,10 +4,11 @@ Elasticsearch
 <br>2.2
 <br>1.6.0
 
+[docs](https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html)
+[Mapping-Params](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-params.html)
 [Meta-Fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-fields.html).
 [Groovy](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-scripting.html#_document_fields).
 [Glossary](https://www.elastic.co/guide/en/elasticsearch/reference/current/glossary.html).
-
 
 In Elasticsearch, a document belongs to a type, and those types live inside an index.
 You can draw some (rough) parallels to a traditional relational database:
@@ -32,9 +33,6 @@ An index is a logical namespace which points to primary and replica shards.
 Pay attention:
 * Messure marvel & JVM.
 * Not use open JDK but latest Oracle JDK.
-
-In mapping `_source: {"enabled": "false"}` - don't save _source only indexed data.
-It can save space on prod.
 
 #### Versioning
 

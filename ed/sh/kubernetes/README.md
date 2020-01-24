@@ -85,6 +85,8 @@ Deployment strategies `StrategyType`:
 Deployment creates ReplicaSet under the hood.
 Deployment status: complete, progressing, failed.
 To slow down deployment set `max unavailable 10 or less` and `max surge 2 or smth`.
+For Blue/Green deployments - create blue deployment and blue service
+then green deployment and green service and change docker image selector in green service.
 
 **Volume**:
 `emptyDir` - lifecycle tied to pod,
