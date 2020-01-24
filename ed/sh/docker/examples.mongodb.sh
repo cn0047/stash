@@ -4,8 +4,8 @@ MongoDB
 #### MongoDB
 
 docker run -it --rm --net=xnet -p 27017:27017 --hostname xmongo --name xmongo \
-    -v /Users/k/Downloads/:/tmp/d \
     -v $PWD/.docker/.data/mongodb:/data/db mongo:latest
+    # -v /Users/k/Downloads/:/tmp/d \
 
 # dump
 docker exec -it xmongo mongorestore /tmp/d/creating_documents/dump
@@ -13,7 +13,7 @@ docker exec -it xmongo mongoimport --drop -d crunchbase -c companies /tmp/d/mong
 
 # test
 docker exec -it xmongo mongo
-docker exec -it xmongo mongo test --eval 'db.test.insert({code : 200, status: "ok"})'
+docker exec -it xmongo mongo test --eval 'db.test.insert({code : "200", status: "ok"})'
 docker exec -it xmongo mongo test \
     --eval 'db.createUser({user: "dbu", pwd: "dbp", roles: ["readWrite", "dbAdmin"]})'
 
