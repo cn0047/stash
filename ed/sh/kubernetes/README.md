@@ -112,11 +112,12 @@ kind: HorizontalPodAutoscaler    #
 kind: Ingress                    # specify how incoming network traffic should be routed to services and pods
 kind: Job
 kind: LimitRange
+kind: Namespace
 kind: NetworkPolicy              # defines the network access rules between pods inside the cluster
 kind: PersistentVolume
 kind: Pod
-kind: ReplicationController (RC)
 kind: ReplicaSet (RS)            # ReplicationController v2.
+kind: ReplicationController (RC)
 kind: ResourceQuota
 kind: Secret
 kind: Service
@@ -172,11 +173,14 @@ open https://<your master ip>/api/v1/proxy/namespaces/kubesystem/services/monito
 
 kubectl version
 kubectl api-resources # all objects (kinds)
+kubectl api-versions | sort
 kubectl --kubeconfig=$cfg
 kubectl cluster-info
 kubectl cluster-info dump
 kubectl config current-context
 kubectl config view
+kubectl get namespaces
+kubectl proxy # proxy to k8s api
 kubectl explain pods
 
 kubectl create -f ed/sh.kubernetes/examples/sh/pod.yaml
@@ -197,6 +201,7 @@ kubectl get ep # endpoints
 kubectl get componentstatuses # cluster status
 
 kubectl get pods
+kubectl get pods --watch
 kubectl get pods --show-all
 kubectl get pods -o wide
 kubectl get pods -o json
