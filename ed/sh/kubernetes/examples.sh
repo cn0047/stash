@@ -52,6 +52,13 @@ kubectl delete svc log-svc
 # or svc.2
 kubectl apply --force=true -f ed/sh/kubernetes/examples/log/svc.2.yaml
 kubectl delete svc log-service-2
+# or svc.3
+kubectl apply --force=true -f ed/sh/kubernetes/examples/log/svc.3.yaml
+kubectl get ingress
+minikube addons enable ingress # ‼️
+kubectl delete svc log-service
+kubectl delete ingress log-ingress
+
 # depl
 kubectl apply --force=true -f ed/sh/kubernetes/examples/log/depl.yaml
 kubectl rollout status deployment log-depl

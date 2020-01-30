@@ -25,10 +25,10 @@ If table have unique id values 1, 2 - we can use `... WHERE id = 1`.
 It is possible to split query into 2 and use join wiht purpose to reduce result set in each query
 hence mysql can use index).
 
-`INNER JOIN table1 INNER JOIN table2 INNER JOIN table3` - order of tables in INNER join section won't affect performance.
+`INNER JOIN table1 INNER JOIN table2 INNER JOIN table3` - order of tables in INNER join section WON'T affect performance.
 Different orders will produce same result and same query cost.
 
-`LEFT JOIN table1 LEFT JOIN table2 LEFT JOIN table3` - order of tables in LEFT join section may affect performance.
+`LEFT JOIN table1 LEFT JOIN table2 LEFT JOIN table3` - order of tables in LEFT join section MAY affect performance.
 
 `EXISTS` may be faster than `IN` or `JOIN` but it depends...
 

@@ -1,0 +1,43 @@
+{
+  "info": {
+    "_postman_id": "af38fa0b-90d5-4561-a019-146f5ada5fbc",
+    "name": "test",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "log",
+      "request": {
+        "method": "POST",
+        "url": {
+          "raw": "{{baseUrl}}/es9y2pz2gzc",
+          "host": [
+            "http://realtimelog.herokuapp.com"
+          ],
+          "path": [
+            "es9y2pz2gzc"
+          ],
+          "query": [
+            {
+              "key": "foo",
+              "value": "bar"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"code\": \"200\", \"status\": \"OK\"}"
+        }
+      },
+      "response": []
+    }
+  ],
+  "protocolProfileBehavior": {}
+}

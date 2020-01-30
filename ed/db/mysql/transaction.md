@@ -27,7 +27,7 @@ your query waits until that transaction ends and then uses the latest values.
 
 ````
 [mysqld]
-transaction-isolation = REPEATABLE-READ
+transaction-isolation=REPEATABLE-READ
 ````
 ````
 set session tx_isolation='READ-COMMITTED';

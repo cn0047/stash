@@ -261,9 +261,6 @@ key_buffer_size             = 16M
 
 query_cache_size            = 0
 
-slow_query_log              = /var/log/mysql/mysql-slow.log
-long_query_time             = 1
-
 expire_logs_days            = 10
 max_binlog_size             = 100M
 

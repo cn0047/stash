@@ -15,6 +15,7 @@ You can draw some (rough) parallels to a traditional relational database:
 ````
 Relational DB    ⇒ Databases ⇒ Tables ⇒ Rows      ⇒ Columns
 Elasticsearch v2 ⇒ Indices   ⇒ Types  ⇒ Documents ⇒ Fields
+Elasticsearch v7 ⇒ Indices   ⇒        ⇒ Documents ⇒ Fields
 ````
 We could use the DELETE verb to delete the document.
 And the HEAD verb to check whether the document exists.
@@ -33,6 +34,12 @@ An index is a logical namespace which points to primary and replica shards.
 Pay attention:
 * Messure marvel & JVM.
 * Not use open JDK but latest Oracle JDK.
+
+Elasticsearch optimizes numeric fields, such as `integer or long`, for `range` queries.
+`keyword` fields are better for term queries.
+Instead, `text` fields use a query-time in-memory data structure called `fielddata`.
+This data structure is built on demand the first time that a field is used for aggregations,
+sorting, or in a script.
 
 #### Versioning
 

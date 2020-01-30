@@ -298,7 +298,7 @@ EXPLAIN PARTITIONS SELECT * FROM clients;
 
 ## Partition Pruning
 
-The core concept behind partition pruning is 
+The core concept behind partition pruning is
 “Do not scan partitions where there can be no matching values”.
 
 MySQL can apply partition pruning to SELECT, DELETE, and UPDATE statements.

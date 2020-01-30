@@ -3,7 +3,9 @@ ElasticSearch
 
 #### ES cluster v7
 
-docker run -it --rm -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" --name es elasticsearch:7.1.1
+docker run -it --rm -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" --name es \
+  -v $PWD/.data/.docker/elasticsearch:/usr/share/elasticsearch/data \
+  elasticsearch:7.1.1
 
 #### ES cluster v5
 
