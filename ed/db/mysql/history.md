@@ -3,8 +3,8 @@ History of MySQL
 
 #### MySQL 8
 
-* Invisible index
-* Algorithm=instant
+* Invisible index.
+* Algorithm=instant.
 
 #### MySQL 5.7
 

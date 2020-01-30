@@ -8,6 +8,7 @@ Index
 | InnoDB         | BTREE                   |
 | MEMORY/HEAP    | HASH, BTREE             |
 | NDB            | BTREE, HASH             |
+|                | RTREE                   |
 ````
 
 If Cardinality to low - index will not used!

@@ -88,6 +88,9 @@ To slow down deployment set `max unavailable 10 or less` and `max surge 2 or smt
 For Blue/Green deployments - create blue deployment and blue service
 then green deployment and green service and change docker image selector in green service.
 
+**Ingress** manages external access to the services in a cluster, typically HTTP,
+can provide load balancing, SSL termination and name-based virtual hosting.
+
 **Volume**:
 `emptyDir` - lifecycle tied to pod,
 `hostPath` - path on worker node,
@@ -162,6 +165,7 @@ spec:
 minikube version
 minikube delete; rm -rf ~/.minikube
 minikube status
+minikube addons enable ingress
 # xhyve|hyperkit
 minikube start --vm-driver=hyperkit --mount --mount-string="$HOME/web/kovpak/gh:/gh"
 # minikube start --vm-driver=hyperkit --mount --mount-string="$HOME/web/kovpak/gh/.data/.k8s/mysql:/var/lib/mysql"
@@ -218,7 +222,7 @@ kubectl logs -p $p # previous
 
 # run pod
 kubectl run log-pod --image=cn007b/pi
-kubectl port-forward log-pod-99cc8c885-5vwhh 8181:8080 # portOnHost:portInPod
+kubectl port-forward $p 8181:8080 # portOnHost:portInPod
 curl 'localhost:8181?yes'
 
 kubectl delete pod $pod
@@ -247,4 +251,7 @@ kubectl cp --container=kuard /etc/os-release kuard:/tmp/
 
 kubectl run mysql-client --image=mysql:5.7.27 -it --rm --restart=Never -- \
   mysql -h$mysqlHost -P3306 -udbu -pdbp -Dtest -e 'select * from tmp'
+
+kubectl get secrets
+kubectl create secret generic dev-db-secret --from-literal=username=devuser --from-literal=password='S!B\*d$zDsb'
 ````
