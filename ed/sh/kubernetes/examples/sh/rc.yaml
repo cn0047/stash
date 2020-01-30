@@ -20,17 +20,17 @@ spec:
               command: [
                 "/bin/sh",
                 "-c",
-                "curl -i -XPOST 'https://realtimelog.herokuapp.com:443/ping' -H 'Content-Type: application/json' -d '{\"status\": \"rc pod postStart\"}'",
+                "curl -i -XPOST 'https://realtimelog.herokuapp.com:443/sddjklskj' -H 'Content-Type: application/json' -d '{\"status\": \"rc pod postStart\"}'",
               ]
           preStop:
             exec:
               command: [
                 "/bin/sh",
                 "-c",
-                "curl -i -XPOST 'https://realtimelog.herokuapp.com:443/ping' -H 'Content-Type: application/json' -d '{\"status\": \"rc pod preStop\"}'",
+                "curl -i -XPOST 'https://realtimelog.herokuapp.com:443/sddjklskj' -H 'Content-Type: application/json' -d '{\"status\": \"rc pod preStop\"}'",
               ]
         command: [
           'sh',
           '-c',
-          "while true; do curl -i -XPOST 'https://realtimelog.herokuapp.com:443/ping' -H 'Content-Type: application/json' -d '{\"code\":\"100\", \"status\": \"ok from rc\"}'; sleep 5; done",
+          "while true; do curl -i -XPOST 'https://realtimelog.herokuapp.com:443/sddjklskj' -H 'Content-Type: application/json' -d '{\"code\":\"100\", \"status\": \"ok from rc\"}'; sleep 5; done",
         ]

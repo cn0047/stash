@@ -5,8 +5,9 @@ Elasticsearch
 <br>1.6.0
 
 [docs](https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html)
-[Mapping-Params](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-params.html)
-[Meta-Fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-fields.html).
+[Mapping Field datatypes](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html)
+[Mapping Params](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-params.html)
+[Mapping Meta fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-fields.html).
 [Groovy](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-scripting.html#_document_fields).
 [Glossary](https://www.elastic.co/guide/en/elasticsearch/reference/current/glossary.html).
 

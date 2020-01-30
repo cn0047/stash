@@ -9,7 +9,7 @@ import (
 
 const (
 	url1 = "https://api.github.com/users/cn007b"
-	url2 = "https://realtimelog.herokuapp.com/test"
+	url2 = "https://realtimelog.herokuapp.com/sddjklskj"
 )
 
 type User struct {
