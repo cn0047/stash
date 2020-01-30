@@ -18,5 +18,5 @@ spec:
         command: [
           'sh',
           '-c',
-          "while true; do curl -i -XPOST 'https://realtimelog.herokuapp.com:443/ping' -H 'Content-Type: application/json' -d '{\"code\":\"100\", \"status\": \"ok from depl\",\"host\":\"'$HOSTNAME'\"}'; sleep 5; done",
+          "while true; do curl -i -XPOST 'https://realtimelog.herokuapp.com:443/sddjklskj' -H 'Content-Type: application/json' -d '{\"code\":\"100\", \"status\": \"ok from depl\",\"host\":\"'$HOSTNAME'\"}'; sleep 5; done",
         ]

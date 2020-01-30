@@ -15,9 +15,10 @@ mv $ctx/xgoapp /tmp
 docker run -ti --rm -p 8080:8080 cn007b/pi
 curl 'http://localhost:8080?x=1&y=2'
 
+open https://realtimelog.herokuapp.com/rkc8q6llprn
+
 # sh example
 # pod
-open https://realtimelog.herokuapp.com:443/ping
 kubectl apply --force=true -f ed/sh/kubernetes/examples/sh/pod.yaml
 kubectl logs -f ksh-pod klog-pod
 kubectl logs -f ksh-pod klog-pod-2
@@ -58,7 +59,6 @@ kubectl get ingress
 minikube addons enable ingress # ‼️
 kubectl delete svc log-service
 kubectl delete ingress log-ingress
-
 # depl
 kubectl apply --force=true -f ed/sh/kubernetes/examples/log/depl.yaml
 kubectl rollout status deployment log-depl

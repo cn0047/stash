@@ -167,6 +167,7 @@ minikube delete; rm -rf ~/.minikube
 minikube status
 minikube addons enable ingress
 # xhyve|hyperkit
+minikube start --vm-driver=hyperkit
 minikube start --vm-driver=hyperkit --mount --mount-string="$HOME/web/kovpak/gh:/gh"
 # minikube start --vm-driver=hyperkit --mount --mount-string="$HOME/web/kovpak/gh/.data/.k8s/mysql:/var/lib/mysql"
 minikube stop

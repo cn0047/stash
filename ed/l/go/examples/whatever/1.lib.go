@@ -122,7 +122,7 @@ func rtl(data interface{}) {
 	j, err := json.Marshal(data)
 	if err != nil {
 	}
-	_, err2 := http.Post("https://realtimelog.herokuapp.com:443/x1", "application/json", bytes.NewBuffer(j))
+	_, err2 := http.Post("https://realtimelog.herokuapp.com:443/sddjklskj", "application/json", bytes.NewBuffer(j))
 	if err2 != nil {
 	}
 }

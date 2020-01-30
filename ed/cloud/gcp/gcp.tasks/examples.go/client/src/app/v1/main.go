@@ -42,7 +42,7 @@ const (
 	ServiceName  = "x-test"
 	PathToWorker = "/y"
 	Parent       = "projects/cl-dev/locations/us-central1/queues/default"
-	LogURL       = "https://realtimelog.herokuapp.com/t"
+	LogURL       = "https://realtimelog.herokuapp.com/sddjklskj"
 )
 
 type Job struct {
