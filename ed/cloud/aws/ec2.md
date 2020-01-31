@@ -40,9 +40,10 @@ aws --profile=$p ec2 describe-key-pairs
 aws --profile=$p ec2 describe-vpcs
 
 # create new ec2
+ami=ami-00aa4671cbf840d82 # default Amazon Linux 2 AMI
 aws ec2 run-instances \
-  --image-id ami-17a3e164 \
-  --instance-type t2.medium \
+  --image-id $ami \
+  --instance-type t2.micro \
   --count 1 \
   --security-groups ssh cklm web default \
   --key-name zkey \

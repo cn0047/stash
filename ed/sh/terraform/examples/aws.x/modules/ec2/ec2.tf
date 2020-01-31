@@ -21,6 +21,7 @@ data "template_file" "init" {
 resource "aws_instance" "ec2_x1" {
   count         = 1
   ami           = "ami-00aa4671cbf840d82" // default Amazon Linux 2 AMI
+  # ami           = "ami-0cc0a36f626a4fdf5" // ubuntu
   instance_type = "t2.micro"
   user_data     = "${data.template_file.init.rendered}"
   key_name      = aws_key_pair.mysshkey.key_name

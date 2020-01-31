@@ -104,10 +104,11 @@ terraform $c -var-file=ec2.tfvars -lock=false
 
 # aws.x
 # @see: docket image build in k8s
-cd ed/sh/terraform/examples/aws.x
+cd ed/sh/terraform/examples/aws.x/environments/dev
 export AWS_PROFILE=x
 terraform init
 terraform plan
+terraform apply
 # run
 h=''
 key=/Users/kovpakvolodymyr/web/kovpak/gh/ed/sh/ssh/examples/nopwd/id_rsa
