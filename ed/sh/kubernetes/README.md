@@ -198,6 +198,7 @@ kubectl describe pods
 kubectl get all
 kubectl get events
 kubectl get nodes
+kubectl describe node $n
 kubectl get rc
 kubectl get rc -l app=log # label
 kubectl get rs

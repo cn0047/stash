@@ -24,6 +24,7 @@ func real() {
 	}
 }
 
+// ✅
 func test() {
 	server := httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
 		_, err := res.Write([]byte(`{"login":"test"}`))
