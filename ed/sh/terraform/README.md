@@ -115,6 +115,20 @@ key=/Users/kovpakvolodymyr/web/kovpak/gh/ed/sh/ssh/examples/nopwd/id_rsa
 scp -i $key /tmp/xgoapp ec2-user@$h:/tmp
 # ssh and run bin file
 ssh -i $key ec2-user@$h
+
+#
+cd ed/sh/terraform/examples/aws.k8s
+terraform init
+terraform plan
+terraform apply
+terraform destroy
+cfg=kubeconfig_my-cluster
+d=~/web/kovpak/gh/
+kubectl --kubeconfig=$cfg get pods
+kubectl --kubeconfig=$cfg apply --force=true -f $d/ed/sh/kubernetes/examples/log/pod.yaml
+kubectl --kubeconfig=$cfg apply --force=true -f $d/ed/sh/kubernetes/examples/sh/pod.yaml
+kubectl --kubeconfig=$cfg delete pod log-pod
+kubectl --kubeconfig=$cfg delete pod ksh-pod
 ````
 
 ````sh

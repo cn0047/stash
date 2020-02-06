@@ -30,11 +30,18 @@ aws --profile=$p ec2 describe-instances \
   --filter Name=image-id,Values=ami-17a3e164
   --filter Name=dns-name,Values=ec2-52-51-65-182.eu-west-1.compute.amazonaws.com
 
+# subnets
+aws --profile=$p ec2 describe-subnets
+
 # security groups
 aws --profile=$p ec2 describe-security-groups
 
 # list ssh keys
 aws --profile=$p ec2 describe-key-pairs
+
+# import ssh key
+aws --profile=$p ec2 import-key-pair --key-name "defaultsshkey" \
+  --public-key-material file://~/web/kovpak/gh/ed/sh/ssh/examples/nopwd/id_rsa.pub
 
 # list vpcs
 aws --profile=$p ec2 describe-vpcs
