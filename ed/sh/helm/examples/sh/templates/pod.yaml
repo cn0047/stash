@@ -1,0 +1,15 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    app: "{{ .Values.project }}-{{ .Chart.Name }}-{{ .Chart.Version }}"
+spec:
+  containers:
+  - name: klog-pod
+    image: cn007b/ubuntu
+    command: [
+      'sh',
+      '-c',
+      "while true; do curl -i -XPOST 'https://realtimelog.herokuapp.com:443/rkc8q6llprn' -H 'Content-Type: application/json' -d '{\"code\":\"100\", \"status\": \"[helm] ok from pod\"}'; sleep 3; done",
+    ]

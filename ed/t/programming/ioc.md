@@ -55,3 +55,6 @@ and to solve it we inverse interfaces and create 1 interfaces for all any implem
 **Flow inversion** (Hollywood Principle - Don't call us, we'll call you).
 
 **Creation inversion** - use factory pattern or service locator or dependency injection.
+
+**Ownership inversion** - both high and lower level layers should depend on abstractions
+that draw the behavior.

@@ -30,11 +30,19 @@ func main() {
 	//f2b()
 	// f3()
 	// f4()
-	f5()
+	//f5()
+	f6()
+}
+
+func f6() {
+	t1 := time.Unix(1581092731, 0).Unix()
+	t2 := time.Now().Unix()
+	d := t2 - t1
+	fmt.Printf("diff in seconds between 2 unix timestamps = %#v \n", d)
 }
 
 func f5() {
-	fmt.Printf("%s", time.Now().Format(time.Kitchen))
+	fmt.Printf("%s", time.Now().Format(time.Kitchen)) // 6:23PM
 }
 
 func f4() {
