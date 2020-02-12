@@ -11,7 +11,7 @@ spec:
     command: [
       'sh',
       '-c',
-      "while true; do curl -i -XPOST 'https://realtimelog.herokuapp.com:443/sddjklskj' -H 'Content-Type: application/json' -d '{\"code\":\"100\", \"status\": \"ok from pod\", \"env\":\"'$APP_ENV'\"}'; sleep 5; done",
+      "while true; do curl -i -XPOST 'https://realtimelog.herokuapp.com:443/rkc8q6llprn' -H 'Content-Type: application/json' -d '{\"code\":\"100\", \"status\": \"ok from pod\", \"env\":\"'$APP_ENV'\"}'; sleep 5; done",
     ]
     env:
     - name: APP_ENV
@@ -22,14 +22,14 @@ spec:
           command: [
             "/bin/sh",
             "-c",
-            "curl -i -XPOST 'https://realtimelog.herokuapp.com:443/sddjklskj' -H 'Content-Type: application/json' -d '{\"status\": \"pod postStart\", \"env\":\"'$APP_ENV'\"}'",
+            "curl -i -XPOST 'https://realtimelog.herokuapp.com:443/rkc8q6llprn' -H 'Content-Type: application/json' -d '{\"status\": \"pod postStart\", \"env\":\"'$APP_ENV'\"}'",
           ]
       preStop:
         exec:
           command: [
             "/bin/sh",
             "-c",
-            "curl -i -XPOST 'https://realtimelog.herokuapp.com:443/sddjklskj' -H 'Content-Type: application/json' -d '{\"status\": \"pod preStop\", \"env\":\"'$APP_ENV'\"}'",
+            "curl -i -XPOST 'https://realtimelog.herokuapp.com:443/rkc8q6llprn' -H 'Content-Type: application/json' -d '{\"status\": \"pod preStop\", \"env\":\"'$APP_ENV'\"}'",
           ]
     volumeMounts:
     - mountPath: /gh
@@ -42,7 +42,7 @@ spec:
     command: [
       'sh',
       '-c',
-      "while true; do curl -i -XPOST 'https://realtimelog.herokuapp.com:443/sddjklskj' -H 'Content-Type: application/json' -d '{\"code\":\"100\", \"status\": \"ok from pod-2\"}'; sleep 5; done",
+      "while true; do curl -i -XPOST 'https://realtimelog.herokuapp.com:443/rkc8q6llprn' -H 'Content-Type: application/json' -d '{\"code\":\"100\", \"status\": \"ok from pod-2\"}'; sleep 5; done",
     ]
   volumes:
   - name: xvol
