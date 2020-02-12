@@ -54,6 +54,7 @@ GOARCH=386 go build
 go build                  # Compiles and installs packages and dependencies
 go build -race ./example  #
 go build -gcflags -S z.go # assembly output
+go tool compile -S x.go # assembly output
 go build -gcflags='-m -m' # provides info about optimization decisions
 go build -mod=vendor
 go build -o newname

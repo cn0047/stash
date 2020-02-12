@@ -166,6 +166,7 @@ minikube version
 minikube delete; rm -rf ~/.minikube
 minikube status
 minikube addons enable ingress
+minikube ip
 # xhyve|hyperkit
 minikube start --vm-driver=hyperkit
 minikube start --vm-driver=hyperkit --mount --mount-string="$HOME/web/kovpak/gh:/gh"
@@ -198,12 +199,14 @@ kubectl describe pods
 kubectl get all
 kubectl get events
 kubectl get nodes
+kubectl describe node $n
 kubectl get rc
 kubectl get rc -l app=log # label
 kubectl get rs
 kubectl get svc # services
 kubectl get ep # endpoints
 kubectl get componentstatuses # cluster status
+kubectl get configmaps
 
 kubectl get pods
 kubectl get pods --watch

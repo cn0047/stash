@@ -46,3 +46,4 @@ Best Practices
 * `pkg.New()` - ok in case you have 1 struct per package,
 otherwise have to have: `pkg.NewUser() & pkg.NewLocation()`.
 * Inline error check (`if err := x.f(); err != nil {}`) - debugger won't stop before error check.
+* Table tests - impossible to run 1 test from IDE.
