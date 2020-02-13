@@ -23,6 +23,10 @@ docker run -ti --rm cn007b/ubuntu:$version lsb_release -c -s
 docker run -ti --rm cn007b/ubuntu:$version uuid
 # docker run -ti --rm cn007b/ubuntu:$version libpcre3-dev
 #
+docker run -ti --rm cn007b/ubuntu:$version docker version
+#
+docker run -ti --rm cn007b/ubuntu:$version aws --version
+#
 docker run -ti --rm cn007b/ubuntu:$version ab -V
 #
 docker run -ti --rm cn007b/ubuntu:$version dstat -h
