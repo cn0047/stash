@@ -109,6 +109,8 @@ A federation is a cluster of clusters.
 
 KOps stands for Kubernetes operations (for AWS).
 
+CRD - Custom Resource Definition.
+
 ````sh
 kind: ConfigMap                  # separate configuration information from application definition
 kind: HorizontalPodAutoscaler    #
@@ -244,6 +246,7 @@ kubectl rollout pause deployment
 kubectl rollout resume deployment
 kubectl rollout undo deployment
 kubectl rollout history deployment log-depl # history
+kubectl expose deployment $depl --port=8080 --target-port=80
 #
 kubectl scale deployment $depl --replicas=11
 

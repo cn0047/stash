@@ -8,8 +8,8 @@ class Student1:
 
 class Student:
   classProperty = "foo"
-  def __init__(self): # initializer
-    print("construct")
+  def __init__(self): # initializer not constructor
+    print("initialize")
   def f(self, v):
     print("Got:",v)
     Student1.f3()

@@ -2,6 +2,7 @@ helm
 -
 
 [docs](https://helm.sh/docs/)
+[hub](https://hub.helm.sh/)
 
 Helm - package manager for k8s.
 Chart - package.

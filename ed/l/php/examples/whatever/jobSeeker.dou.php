@@ -28,7 +28,14 @@ function run(string $baseURL, string $qs)
     $xmlDoc->load($url);
     $items = $xmlDoc->getElementsByTagName('item');
     $res = find($items);
-    printf("\n%s items: \n\n %s", $qs, implode('', $res));
+    printf("\n%s items: \n\n %s", colorize($qs), implode('', $res));
+}
+
+function colorize(string $str): string
+{
+    $res = "\033[36m$str\033[0m";
+
+    return $res;
 }
 
 function find(object $items): array
@@ -79,17 +86,21 @@ function deleteNoiseWords(string $str): string
 function notInteresting(string $title, string $desc): string
 {
     $inBlackList = isInBlackList($title) === true || isInBlackList($desc) === true;
+    $notCTO = isCTO($title) === false && isCTO($desc) === false;
     $notArchitect = isArchitect($title) === false && isArchitect($desc) === false;
     $notLead = isLead($title) === false && isLead($desc) === false;
     $notBackEnd = isBackEnd($title) === false;
+    $notRust = isRust($title) === false && isRust($desc) === false;
     $noNumbers = withAnyNumber($title) === false && withAnyNumber($desc) === false;
     $noMoney = withMoney($title) === false && withMoney($desc) === false;
 
     $res = '';
     // $res .= $inBlackList === true ? '' : '';
+    $res .= $notCTO === true ? '' : '✳️';
     $res .= $notArchitect === true ? '' : '👔';
     $res .= $notLead === true ? '' : '🙎‍♂️';
     $res .= $notBackEnd === true ? '' : '📺';
+    $res .= $notRust === true ? '' : '🅡';
     $res .= $noMoney === true ? '' : '💵';
     $res .= $noNumbers === true ? '' : '🔢';
 
@@ -117,6 +128,14 @@ function isInBlackList(string $str): bool
 {
     $no = preg_match('/wordpress|magento/msi', $str);
     $res = $no === 0;
+
+    return $res;
+}
+
+function isCTO(string $str): bool
+{
+    $ok = preg_match('/cto|chief technology|chief tech/msi', $str);
+    $res = $ok === 1;
 
     return $res;
 }
@@ -154,6 +173,14 @@ function isRemote(string $str): bool
         $str
     );
     $res = $ok === 1 && $no === 0;
+
+    return $res;
+}
+
+function isRust(string $str): bool
+{
+    $ok = preg_match('/rust/msi', $str);
+    $res = $ok === 1;
 
     return $res;
 }
