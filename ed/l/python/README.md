@@ -5,15 +5,8 @@ Python
 [doc](https://www.python.org/)
 [packages](https://pypi.org/)
 
-Python - dynamic, strongly typed, general-purpose, high-level,
+Python - dynamic, ~~strongly typed~~, general-purpose, high-level,
 object-oriented, multipurpose programming language.
-
-Philosophy:
-* beautiful is better than ugly
-* explicit is better than implicit
-* simple is better than complex
-* complex is better than complicated
-* readability counts
 
 ````sh
 python -V
@@ -29,25 +22,73 @@ pip install -r requirements.txt
 pip install requests virtualenv
 ````
 
+````sh
+python3 # REPL
+help("math")
+````
+
+#### Data types
+
+* int
+* float (64-bit)
+* bool
+* none
+
+* str
+* bytes
+* list
+* dict
+* tuple
+* range
+* set
+
+Everything is an object.
+
+**str** strings immutable.
+
+**tuple** immutable sequence of arbitrary objects.
+
+**set** unordered collection on unique elements.
+
+#### Features
+
+**comprehensions**.
+
+**generators**.
+
+**generator expression** like comprehensions but generator.
+
+````py
+5/2  # 2.5
+5//2 # 2
+
+r'ok' # raw string
+
+b'data' # bytes
+
+d = {'foo': 1} # dict - dictionary
+md = {"name": "Mark", "active": true}
+
+t = ("f", 2) # tuple
+
+s = {1, 2} # set
+
+arr = ['a', 'b'] # list
+len(arr)
+del arr[1]
+el in arr == true
+````
+
 ````py
 global myvar
 nonlocal myvar
 
-name = "Bond"
-"hi {0}".format(name)
-f"hi {name}"
+any([false, true]) # true
+all([false, true]) # false
 
-"""
-multiline string.
-"""
-"also multi-" \
-"line string"
-
-# list
-arr = ['a', 'b']
-len(arr)
-del arr[1]
-el in arr == true
+# partition
+o, _, t = "v1:v2".partition(':')
+print(o, t) # v1 v2
 
 while c != 0:
   print(c)
@@ -58,11 +99,6 @@ for el in arr:
 
 range(5, 10, 2) == [5, 7, 9]
 
-myDictionary = {
-  "name": "Mark",
-  "active": true
-}
-
 try:
   f()
 except (MyError, NotMyError) as err:
@@ -70,6 +106,14 @@ except (MyError, NotMyError) as err:
   raise # raise error again
 except KeyError as err:
   print(err)
+except KeyError2 as err:
+  pass
+except KeyError3 as err:
+  raise
+except KeyError4 as err:
+  raise IndexError()
+finally:
+  # ...
 
 yield val # works like in php
 
@@ -90,7 +134,8 @@ dir(var)
 globals()
 locals()
 
-__init__()
+if __name__ == '__main__'
+
 __call__()
 __str__()
 __next__()
@@ -108,20 +153,3 @@ __end__() # exit context (with keyword)
 my_package
 └── __init__.py # package init file
 ````
-
-#### Data types
-
-* int
-* float (64-bit)
-* bool
-* none
-
-* str
-* bytes
-* list
-* dict
-* tuple
-* range
-* set
-
-Everything is an object.

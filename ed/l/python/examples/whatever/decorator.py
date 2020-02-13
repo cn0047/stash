@@ -6,9 +6,11 @@ def dec(f):
 
   return wrap
 
+
 @dec
 @dec
 def f(s):
   return 'foo' + s
+
 
 print(f('bar'))
