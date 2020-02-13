@@ -18,7 +18,7 @@ Best Practices
 * When defining methods: use a pointer to a type (struct) as a receiver.
 * Function must return error as last value.
 * Name function's return variables.
-* When you spawn goroutines, make it clear when - or whether - they exit.
+* When you spawn goroutines, make it clear when they exit.
 
 * Use `crypto/rand` to generate keys.
 * Don't pass pointers as function arguments (just to save a few bytes).

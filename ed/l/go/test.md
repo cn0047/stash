@@ -51,7 +51,7 @@ go tool cover -html=coverage.out -o=coverage.html && rm coverage.out
 open coverage.html
 ````
 
-````
+````golang
 func TestXxx()      // test
 func BenchmarkXxx() // benchmark
 func ExampleXxx()   // example (godoc)
