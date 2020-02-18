@@ -1,6 +1,8 @@
 Security Attacks
 -
 
+#### Regular expression Denial of Service (ReDoS)
+
 #### HTTP Desync Attack (Request Smuggling)
 
 #### ~~Shellshock (bashdoor, CVE-2014-6271)~~

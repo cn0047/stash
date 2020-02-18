@@ -55,7 +55,7 @@ IPv4 address range: https://regex101.com/r/O4t93o/2/
 |\<               | start of word |
 |\>               | end of word |
 |?=               | positive lookahead assertion # `/foo(?=bar)/` -> foobar, but `bar` not included in result |
-|?!               | negative lookahead # `/Jave(?!Script)/` -> Java, not JavaScript |
+|?!               | negative lookahead # `/Java(?!Script)/` -> Java, not JavaScript |
 |?<=              | positive lookbehind assetion # `/(?<=td)ms/` -> `tdms`, but `td` not included in result |
 |?<!              | negative lookbehind # `/(?<!bar)foo/` -> not `barfoo`, but `bazfoo`, and `baz` not included in result |
 |?>               | once-only sebexpression |

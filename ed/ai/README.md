@@ -1,10 +1,13 @@
 Artificial Intelligence
 -
 
-NLP - Neuro-linguistic programming.
-OBD - Optimal Brain Damage.
-Machine learning - perform task without using explicit instructions (relying on patterns).
+Machine learning (ML) - perform task without using explicit instructions (relying on patterns).
+Deep Learning - subfield of ML.
+Artificial Neural Networks (ANN) - systems "learn" to perform tasks
+by considering examples, generally without being programmed with task-specific rules.
 Computer vision - deals with understanding from digital images or videos.
+Neuro-linguistic programming (NLP) - .
+Optimal Brain Damage (OBD) - .
 
 Supervised learning - when we have info, like cat is on picture.
 (email spam/not spam, cancer tumor).
