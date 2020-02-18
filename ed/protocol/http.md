@@ -196,14 +196,18 @@ If-None-Match: "6d82cbb050ddc7fa9cbb659014546e59"
 #### CORS (Cross-Origin Resource Sharing)
 
 A CORS preflight request is a CORS request that checks to see if the CORS protocol is understood.
-It is an OPTIONS request using two HTTP request headers: `Access-Control-Request-Method` and `Access-Control-Request-Headers`
-and the `Origin` header.
-
+It is an OPTIONS request:
 ````sh
 OPTIONS /resource/foo
 Access-Control-Request-Method: DELETE
 Access-Control-Request-Headers: origin, x-requested-with
 Origin: https://foo.bar.org
+````
+Response:
+````sh
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: OPTIONS, GET, POST, PUT, DELETE
+Access-Control-Allow-Headers: *
 ````
 
 #### Codes

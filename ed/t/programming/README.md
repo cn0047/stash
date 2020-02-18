@@ -94,6 +94,12 @@ Fragility
 Immobility
 Complexity
 
+Self-optimization
+Self-protection
+Self-adaptation
+Self-configuration
+Self-healing
+
 #### Comments
 
 Good comment must explain: `what? why? how?`

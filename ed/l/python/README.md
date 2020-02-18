@@ -8,6 +8,10 @@ Python
 Python - dynamic, ~~strongly typed~~, general-purpose, high-level,
 object-oriented, multipurpose programming language.
 
+Easier to ask for forgiveness than permission (EAFP) - `try` and `except` statements.
+Look before you leap (LBYL) - tests for pre-conditions before making calls,
+characterized by the presence of many `if` statements.
+
 ````sh
 python -V
 python3 -V

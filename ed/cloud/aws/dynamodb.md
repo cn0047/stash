@@ -31,6 +31,8 @@ PAY_PER_REQUEST - for unpredictable workloads.
 
 DynamoDB trigger - is lambda function.
 
+Read Capacity Units (RCUs) = Round up(Item size/4KB)/2.
+
 ````js
 // item to add in AWS DDB console:
 {

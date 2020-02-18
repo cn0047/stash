@@ -85,9 +85,7 @@ Rebase is bad for bisect (it's destructing - commit is deleted)
 <br>and rebase hide conflicts inside rebased commit
 <br>and rebase corrupts history of comments in github and bitbucket.
 
-And you have to:
-
-`git ph -f`
+And you have to: `git ph -f`
 
 The Golden Rule of Rebasing - never use it on public branches.
 
@@ -98,6 +96,11 @@ git rebase --abort
 git rebase -i HEAD~2
 # for commit to squash write `s` as most left char
 # :wq
+git ph -f
+
+# don't merge master but rebase to master
+git rebase master
+git ph -f
 ````
 
 If some feature has > 1 commit,

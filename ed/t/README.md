@@ -95,11 +95,15 @@ PC: CPU, Main Memory, Secondary Memory (SSD).
 
 Weight Gross - with pack; Weight Net - without pack;
 
+#### !
+
+* Read limits before use something.
+
 #### Full stack:
 
-* presentation layer (html, css, js)
-* business layer (node, php, etc)
-* data access layer (mongo, mysql, etc)
+* Presentation layer (html, css, js).
+* Business layer (node, php, etc).
+* Data access layer (mongo, mysql, etc).
 
 #### 10 Questions Developers Should be Asking Themselves
 
