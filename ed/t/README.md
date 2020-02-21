@@ -136,13 +136,17 @@ Even (2, 4, 6...) -> x % 2 = 0.
 x^2 # x - base; 2 - power
 ````
 
-````
+````sh
 11f  # (Float)
 
 1e6  # 1 000 000
 0b11 # (Binary)
 0o77 # (Octal)
 0x80 # (HEX) int 128
+````
+
+````sh
+\0, \000, \x00, \z, \u0000, %00 # null character/terminator/byte
 ````
 
 ````

@@ -15,6 +15,7 @@ func main() {
 	go out(c)
 	_, err := fmt.Scanln()
 	if err != nil {
+		panic(err)
 	}
 }
 

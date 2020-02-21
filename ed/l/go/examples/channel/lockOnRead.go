@@ -5,8 +5,8 @@ import (
 )
 
 func main() {
-	//one()
-	//two()
+	// one()
+	// two()
 	three()
 }
 
@@ -40,7 +40,7 @@ func two() {
 	go func() {
 		for i := 0; i < 4; i++ {
 			fmt.Printf("reading\n")
-			v, ok := <-c
+			v, ok := <-c // hanging for 4th iteration
 			fmt.Printf("got %v, ok %v \n", v, ok)
 		}
 	}()
@@ -57,7 +57,7 @@ func one() {
 	go func() {
 		for i := 0; i < 4; i++ {
 			fmt.Printf("reading\n")
-			v := <-c
+			v := <-c // hanging for 4th iteration
 			fmt.Printf("got %v \n", v)
 		}
 	}()

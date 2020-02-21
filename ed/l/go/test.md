@@ -72,15 +72,15 @@ t.Log("GivenTheNeedToTestTheSendJSONEndpoint.") {
 
 t.Run("TestCase", func(t *testing.T) {})
 t.Errorf("Got: %v, want: %v", a, e) // ✅
-t.Error("Msg")                      // mark test as failed  & continue further test execution
-t.Skip("Msg")                       // mark test as skipped & stop further test execution
+t.Error("Msg")                      // mark test as failed  & CONTINUE further test execution
+t.Skip("Msg")                       // mark test as skipped & STOP further test execution
+t.SkipNow()                         // mark test as skipped & STOP further test execution
 t.Skipped()                         // is test skipped
-t.SkipNow()                         // mark test as skipped & stop further test execution
-t.Fail()                            // mark test as failed  & continue further test execution
+t.Fail()                            // mark test as failed  & CONTINUE further test execution
 t.Failed()                          // is test failed
-t.FailNow()                         // mark test as failed  & stop further test execution
-t.Fatal()                           // mark test as failed  & stop further test execution
-t.Fataf("Msg")                      // mark test as failed  & stop further test execution
+t.FailNow()                         // mark test as failed  & STOP further test execution
+t.Fatal()                           // mark test as failed  & STOP further test execution
+t.Fataf("Msg")                      // mark test as failed  & STOP further test execution
 
 b.RunParallel(func(pb *testing.PB) {})
 if testing.Short() { // go test -short }

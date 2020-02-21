@@ -14,3 +14,7 @@ func f() {
 	}()
 	time.Sleep(time.Second * 2)
 }
+
+/*
+panic: 500
+*/

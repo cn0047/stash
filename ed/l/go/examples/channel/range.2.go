@@ -10,7 +10,8 @@ func main() {
 	}()
 
 	ch <- "cmd.1"
-	ch <- "cmd.2" //won't be processed
+	ch <- "cmd.2"
+	ch <- "cmd.3"
 }
 
-// @link: https://play.golang.org/p/De7XyxEKHt6
+// @link: https://play.golang.org/p/Ut_zSB6zvPi

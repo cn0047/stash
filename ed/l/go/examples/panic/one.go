@@ -28,3 +28,9 @@ func my() {
 	fmt.Println("Panicking...")
 	panic(errors.New("some error"))
 }
+
+/*
+Starting goroutine.
+Panicking...
+panic: some error
+*/

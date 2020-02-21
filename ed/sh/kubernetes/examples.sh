@@ -9,6 +9,7 @@ docker run -it --rm -v $PWD:/gh -w /gh -e ctx=$ctx -e GOPATH='/gh/ed/go/examples
   xgo sh -c 'cd $GOPATH && GOOS=linux go build -o /gh/$ctx/xgoapp src/mysql/simple.go'
 # push to dockerhub
 docker build -t cn007b/pi -f $ctx/go.x.Dockerfile $ctx
+docker build -t cn007b/pi -f $ctx/go.alpine.Dockerfile $ctx
 docker push cn007b/pi
 mv $ctx/xgoapp /tmp
 # test docker image

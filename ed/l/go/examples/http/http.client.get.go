@@ -15,8 +15,8 @@ func main() {
 	select {}
 }
 
-// go run /Users/k/web/kovpak/gh/ed/go/examples/whatever/compare.index.go
-// GODEBUG=scheddetail=1,schedtrace=1000 go run /Users/k/web/kovpak/gh/ed/go/examples/http/http.client.get.go
+// go run ~/web/kovpak/gh/ed/go/examples/whatever/compare.index.go
+// GODEBUG=scheddetail=1,schedtrace=1000 go run ~/web/kovpak/gh/ed/go/examples/http/http.client.get.go
 func two() {
 	req, err := http.NewRequest("GET", "http://localhost:8080/?busy", nil)
 	if err != nil {

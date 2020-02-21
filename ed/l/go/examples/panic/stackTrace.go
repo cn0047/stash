@@ -23,3 +23,8 @@ func f1() {
 func f2() {
   panic("panic")
 }
+
+/*
+[RECOVER] panic | goroutine 1 [running]:
+runtime/debug.Stack(0xc00007ae48, 0x10ace20, 0x10eb820)
+*/

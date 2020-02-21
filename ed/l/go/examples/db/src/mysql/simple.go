@@ -104,6 +104,7 @@ func f2() {
 		fmt.Printf("Got row with id: %d, and code: %d \n", id, code)
 	}
 }
+
 func f2b() {
 	db, err := sql.Open("mysql", CONN_STR)
 	checkErr(err)
