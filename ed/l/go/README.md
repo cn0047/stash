@@ -62,6 +62,8 @@ GOOS=linux GOARCH=amd64 go build \
   -ldflags="-w -s" -o /go/bin/hello # build in docker (get the smallest binaries)
                                     # -w - not include info for debug, pprof, etc (DWARF).
                                     # -s - disable symbol table, `go tool nm`
+  -ldflags="-X github.com/org/repo/pkgName.BuildCommit=$GO_BUILD_COMMIT"
+
 go clean -r              # clean unneeded files
 go env
 go env GOOS
@@ -253,7 +255,7 @@ Go source code is always UTF-8.
 A workspace is a directory hierarchy with three directories at its root:
 * bin (executable commands)
 * pkg (package objects)
-* src
+* src (source code)
 
 Put code into `internal` dir to make it private (magic).
 
@@ -282,14 +284,14 @@ Basic types:
 
 Other types:
 
-* Array
-* Slice (passes by ref)
-* Map (passes by ref)
-* Channel (passes by ref)
-* Function
-* Interface
-* Struct
-* Pointer (*passes by ref*)
+* array
+* slice (passes by ref)
+* map (passes by ref)
+* channel (passes by ref)
+* function
+* interface
+* struct
+* pointer (*passes by ref*)
 
 Comparable types:
 
@@ -420,33 +422,6 @@ type Logger interface {
 }
 ````
 
-#### Runtime
-
-runtime:
-* memory allocation
-* channel creation
-* goroutines creation (and control goroutines)
-* garbage collection
-
-Runtime manages: scheduling, garbage collection, and the runtime environment for goroutines.
-
-Runtime scheduler creates threads (Logical Processors, named P)
-over Physical CPUs (called M, or Machine).
-`runtime.GOMAXPROCS(numLogicalProcessors)`
-`runtime.GOMAXPROCS(1)` - tell the scheduler to use a single Logical Processor for program.
-`runtime.GOMAXPROCS` limits number of threads that can execute user-level Go code simultaneously.
-For each P (thread) we have goroutines queue.
-
-The OS schedules threads to run against processors regardless of the process they belong to.
-FYI: OS thereads expensive to start, stop, utilize.
-<br>
-The OS schedules threads to run against physical processors
-and the Go runtime schedules goroutines to run against logical processors.
-<br>
-If you want to run goroutines in parallel, you must use more than one logical processor.
-But to have true parallelism, you still need to run your program
-on a machine with multiple physical processors.
-
 #### Concurrency
 
 Go uses the concurrency model called Communicating Sequential Processes (CSP).
@@ -501,8 +476,8 @@ c2 := make(chan<- []bool) // can only write to
 ````sh
 ch := make(chan type, value)
 # where:
-# value == 0 (blocking) synchronous, unbuffered 
-# value > 0 (non-blocking) asynchronous, buffered, up to value elements 
+# value == 0 (blocking) synchronous, unbuffered
+# value > 0 (non-blocking) asynchronous, buffered, up to value elements
 
 # len(c) // count of elements in channel
 
@@ -547,6 +522,63 @@ do not block and always return default value for a channel type.
 
 Only the sender should close a channel, never the receiver
 (otherwise panic).
+
+#### Runtime
+
+runtime:
+* memory allocation
+* channel creation
+* goroutines creation (and control goroutines)
+* garbage collection
+
+Runtime manages: scheduling, garbage collection, and the runtime environment for goroutines.
+
+Runtime scheduler creates threads (Logical Processors, named P)
+over Physical CPUs (called M, or Machine).
+`runtime.GOMAXPROCS(numLogicalProcessors)`
+`runtime.GOMAXPROCS(1)` - tell the scheduler to use a single Logical Processor for program.
+`runtime.GOMAXPROCS` limits number of threads that can execute user-level Go code simultaneously.
+For each P (thread) we have goroutines queue.
+
+The OS schedules threads to run against processors regardless of the process they belong to.
+FYI: OS thereads expensive to start, stop, utilize.
+<br>
+The OS schedules threads to run against physical processors
+and the Go runtime schedules goroutines to run against logical processors.
+<br>
+If you want to run goroutines in parallel, you must use more than one logical processor.
+But to have true parallelism, you still need to run your program
+on a machine with multiple physical processors.
+
+#### GC
+
+During the mark phase, the runtime will traverse all the objects
+that the application has references to on the heap and mark them as still in use.
+This set of objects is known as live memory.
+After this phase, everything else on the heap that is not marked is considered garbage,
+and during the sweep phase, will be deallocated by the sweeper.
+
+The Go garbage collector occasionally has to stop the world (pause time) to complete the collection task.
+The stop the world task will take no more than 10 milliseconds
+out of every 50 milliseconds of execution time.
+<br>
+The Go GC uses a pacer to determine when to trigger the next GC cycle.
+Go’s default pacer will try to trigger a GC cycle every time the heap size doubles.
+
+````sh
+$GOGC # Garbage Collector:
+      # GOGC=off - disables the gc entirely
+      # GOGC=100 - default, means the gc will run each time the live heap doubles.
+      # GOGC=200 - will delay start of a gc cycle
+      # until the live heap has grown to 200% of the previous size (live set).
+````
+
+`GCPercent` (runtime.SetGCPercent) - adjusts how much CPU you want to use and how much memory you want to use.
+The default is 100 which means that half the heap is dedicated to live memory and half the heap
+is dedicated to allocation.
+
+`MaxHeap` is not yet released but is being used and evaluated internally,
+lets the programmer set what the maximum heap size should be.
 
 #### Memory Management
 
@@ -606,33 +638,3 @@ Inside TCMalloc memory management is divided into two parts:
     when allocated Object is larger than 32K, Pages Heap is used for allocation;
     if not enough memory to allocate small objects - go to page heap for memory;
     if not enough - page heap will ask more memory from the Operating System;
-
-#### GC
-
-During the mark phase, the runtime will traverse all the objects
-that the application has references to on the heap and mark them as still in use.
-This set of objects is known as live memory.
-After this phase, everything else on the heap that is not marked is considered garbage,
-and during the sweep phase, will be deallocated by the sweeper.
-
-The Go garbage collector occasionally has to stop the world (pause time) to complete the collection task.
-The stop the world task will take no more than 10 milliseconds
-out of every 50 milliseconds of execution time.
-<br>
-The Go GC uses a pacer to determine when to trigger the next GC cycle.
-Go’s default pacer will try to trigger a GC cycle every time the heap size doubles.
-
-````sh
-$GOGC # Garbage Collector:
-      # GOGC=off - disables the gc entirely
-      # GOGC=100 - default, means the gc will run each time the live heap doubles.
-      # GOGC=200 - will delay start of a gc cycle
-      # until the live heap has grown to 200% of the previous size (live set).
-````
-
-`GCPercent` (runtime.SetGCPercent) - adjusts how much CPU you want to use and how much memory you want to use.
-The default is 100 which means that half the heap is dedicated to live memory and half the heap
-is dedicated to allocation.
-
-`MaxHeap` is not yet released but is being used and evaluated internally,
-lets the programmer set what the maximum heap size should be.

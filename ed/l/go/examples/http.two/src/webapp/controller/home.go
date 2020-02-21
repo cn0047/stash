@@ -15,15 +15,15 @@ func (h home) registerRoutes() {
 }
 
 func (h home) handleHome(w http.ResponseWriter, r *http.Request) {
-    w.Write([]byte("Home page."))
-    w.Write([]byte("\n\nProducts: \n"))
+	w.Write([]byte("Home page."))
+	w.Write([]byte("\n\nProducts: \n"))
 
-    products := model.GetProducts()
+	products := model.GetProducts()
 	for _, p := range products {
 		w.Write([]byte(p.Name))
 	}
 
-    w.Write([]byte("\n\nCategories: \n"))
+	w.Write([]byte("\n\nCategories: \n"))
 	categories := model.GetCategories()
 	for _, c := range categories {
 		w.Write([]byte(c.Title))

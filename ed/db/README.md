@@ -56,16 +56,16 @@ Mutual blocking between transactions results in a deadlock.
 
 Update account table with transaction.
 
-0. Add field pendingTransactions into account table.
-1. In table transactions insert record with state initial.
-2. Update record with state initial to pending in transactions table.
-3. Update record in account table (decrement)
+0. [account table] Add field pendingTransactions.
+1. [transactions table] Insert record with state initial.
+2. [transactions table] Update record with state initial to pending.
+3. [account table] Update record (decrement)
    & add transaction to pendingTransactions field for this record.
-4. Update next record in account table (increment)
+4. [account table] Update next record (increment)
    & add transaction to pendingTransactions field for this record.
-5. Update transaction in transactions table with state pending to committed.
-6. Update account table delete transactions from pendingTransactions.
-7. Update transaction in transactions table set state done.
+5. [transactions table] Update transaction with state pending to committed.
+6. [account table] Delete transactions from pendingTransactions.
+7. [transactions table] Update transaction set state done.
 
 ## MVCC (Multiversion concurrency control):
 

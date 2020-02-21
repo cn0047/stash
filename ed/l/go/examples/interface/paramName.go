@@ -18,5 +18,5 @@ func main() {
 }
 
 func f(element I) {
-	element.Do("test")
+	element.Do("test") // ok
 }

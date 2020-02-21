@@ -4,9 +4,10 @@
 package main
 
 import (
-	"github.com/jlaffaye/ftp"
 	"io"
 	"os"
+
+	"github.com/jlaffaye/ftp"
 )
 
 func main() {

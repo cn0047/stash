@@ -14,6 +14,12 @@ y = x + 1   # an expression
 print y     # a statement
 ````
 
+## Language
+
+* lexer
+* parser
+* compiler
+
 ## Paradigms
 
 **Imperative** programming - is a programming paradigm that uses statements that change a program's state.

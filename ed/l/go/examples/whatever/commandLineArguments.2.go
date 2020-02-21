@@ -10,8 +10,8 @@ func main() {
 	version := flag.String("v", "v1", "version: v1 or v2")
 	flag.Parse()
 
-	fmt.Printf("Limit value: %d \n", limit)
-	fmt.Printf("Version value: %s \n", version)
+	fmt.Printf("Limit value: %v \n", *limit)
+	fmt.Printf("Version value: %v \n", *version)
 }
 
-// go run ed/go/examples/whatever/commandLineArguments.2.go -limit=9 -v=v1
+// go run ed/l/go/examples/whatever/commandLineArguments.2.go -limit=9 -v=v1

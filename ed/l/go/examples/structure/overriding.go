@@ -24,12 +24,22 @@ func (b Bar) F() {
 }
 
 func main() {
+	fmt.Println("1")
 	f := Foo{}
-	f.F()
 	f.B()
+	f.F()
+
+	fmt.Println("2")
+	b := Bar{}
+	b.B()
+	b.F()
 }
 
 /*
-foo
+1
 bar
+foo
+2
+bar
+foo from bar
 */
