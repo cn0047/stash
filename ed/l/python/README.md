@@ -24,11 +24,78 @@ pip install requests
 pip install -r requirements.txt
 
 pip install requests virtualenv
-````
 
-````sh
 python3 # REPL
 help("math")
+
+PYTHONPATH # env var
+# PATH=$PATH:~/ed/l/python/examples/pkg python3 pkg
+````
+
+````py
+global myvar
+nonlocal myvar
+
+# partition
+o, _, t = "v1:v2".partition(':')
+print(o, t) # v1 v2
+
+print('{a}->{b}'.format(a='foo', b='bar')) # foo->bar
+
+# conditional statement
+if cond:
+  res = value1
+else:
+  res = value2
+
+# conditional expression
+res = value1 if cond else value2
+
+while c != 0:
+  print(c)
+  c -= 1
+
+for el in arr:
+  print(el)
+
+range(5, 10, 2) == [5, 7, 9]
+
+t = (1,2,3)
+print(t) # (1, 2, 3)
+print(*t) # 1 2 3
+
+def trace(f, *args, **kwargs):
+  return f(*args, **kwargs)
+
+yield val # works like in php
+
+globals()
+locals()
+any([false, true]) # true
+all([false, true]) # false
+type(myvar) # type of var
+isinstance(3, int)
+myvar.mro() # info about class instance
+hasattr(var, attr)
+getattr(var, attr)
+setattr(var, attr, val)
+delattr(var, attr)
+dir(var)
+
+if __name__ == '__main__'
+__path__
+__closure__
+
+__call__()
+__str__()
+__next__()
+__enter__() # enter context (with keyword)
+__end__() # exit context (with keyword)
+
+@staticmethod
+@abstractmethod
+@property # getter
+@p.setter # setter
 ````
 
 #### Data types
@@ -54,14 +121,6 @@ Everything is an object.
 
 **set** unordered collection on unique elements.
 
-#### Features
-
-**comprehensions**.
-
-**generators**.
-
-**generator expression** like comprehensions but generator.
-
 ````py
 5/2  # 2.5
 5//2 # 2
@@ -70,8 +129,7 @@ r'ok' # raw string
 
 b'data' # bytes
 
-d = {'foo': 1} # dict - dictionary
-md = {"name": "Mark", "active": true}
+md = {'foo': 1, "name": "Mark", "active": true} # dict - dictionary
 
 t = ("f", 2) # tuple
 
@@ -82,27 +140,42 @@ len(arr)
 del arr[1]
 el in arr == true
 ````
+#### Features
+
+**comprehensions**.
+
+**generators**.
+
+**generator expression** like comprehensions but generator.
+
+**module** - usually just a single file with code.
 
 ````py
-global myvar
-nonlocal myvar
+import myModule             # module
+from myModule import myFunc
+from myModule import *
+from .dir import *          # relative import
+from . import common        # from common dir in same dir
+from ..dir import *         # from parent dir
+myModule.path               # gets path to module
+````
 
-any([false, true]) # true
-all([false, true]) # false
+**package** - module which contains other modules.
 
-# partition
-o, _, t = "v1:v2".partition(':')
-print(o, t) # v1 v2
+````py
+# pkg
+sys.path.append('pkg_dir')
+import pkg
+# package dir:
+my_package
+└── __init__.py # package init file
 
-while c != 0:
-  print(c)
-  c -= 1
+__main__.py # must be in executable dir
+````
 
-for el in arr:
-  print(el)
+**exceptions**
 
-range(5, 10, 2) == [5, 7, 9]
-
+````py
 try:
   f()
 except (MyError, NotMyError) as err:
@@ -118,42 +191,13 @@ except KeyError4 as err:
   raise IndexError()
 finally:
   # ...
-
-yield val # works like in php
-
-import myModule
-from myModule import myFunc
-from myModule import *
-myModule.path # gets path to module
-
-type(myvar) # type of var
-isinstance(3, int)
-myvar.mro() # info about class instance
-hasattr(var, attr)
-getattr(var, attr)
-setattr(var, attr, val)
-delattr(var, attr)
-dir(var)
-
-globals()
-locals()
-
-if __name__ == '__main__'
-
-__call__()
-__str__()
-__next__()
-__enter__() # enter context (with keyword)
-__end__() # exit context (with keyword)
-
-@staticmethod
-@abstractmethod
-@property # getter
-@p.setter # setter
 ````
 
-````
-# package:
-my_package
-└── __init__.py # package init file
+**lambda**
+
+````py
+def first_name(name):
+  return name.split()[0]
+
+lambda name: name.split()[-1]
 ````
