@@ -10,6 +10,7 @@ vim file +7
 
 ````
 :version
+u - undo last change
 :redo or CTRL+R
 :e!                 - reload file
 :%s/text/newText/   - replace

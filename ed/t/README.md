@@ -95,6 +95,17 @@ PC: CPU, Main Memory, Secondary Memory (SSD).
 
 Weight Gross - with pack; Weight Net - without pack;
 
+#### SL[AOI]
+
+Service-level agreement (SLA) - commitment between a service provider and a client:
+quality, availability, responsibility, performance, costs, etc.
+
+Service-level objective (SLO) - (key element of SLA) specific measurable characteristics
+of the SLA such as availability, throughput, frequency, response time, or quality.
+
+Service-level indicator (SLI) - measure of the service level provided by a service provider to a customer.
+Common SLIs include latency, throughput, availability, error rate, durability, correctness, etc.
+
 #### !
 
 * Read limits before use something.
@@ -150,13 +161,15 @@ x^2 # x - base; 2 - power
 ````
 
 ````
-byte          - 8    bits      ~ 1
-kilobyte (KB) - 1024 bytes     ~ 1 000
-megabyte (MB) - 1024 kilobytes ~ 1 000 000
-gigabyte (GB) - 1024 megabytes ~ 1 000 000 000
-terabyte (TB) - 1024 gigabytes ~ 1 000 000 000 000
-petabyte (PB) - 1024 terabytes ~ 1 000 000 000 000 000
-exabyte  (EB) - 1024 petabytes ~ 1 000 000 000 000 000 000
+byte           -    8 bits  ~ 1      ~ 1
+kilobyte  (KB) - 1024 bytes ~ 1000   ~ 1 000
+megabyte  (MB) - 1024 KB    ~ 1000^2 ~ 1 000 000
+gigabyte  (GB) - 1024 MB    ~ 1000^3 ~ 1 000 000 000
+terabyte  (TB) - 1024 GB    ~ 1000^4 ~ 1 000 000 000 000
+petabyte  (PB) -            ~ 1000^5 ~
+exabyte   (EB) -            ~ 1000^6 ~
+zettabyte (ZB) -            ~ 1000^7 ~
+yottabyte (YB) -            ~ 1000^8 ~
 
 millisecond - 0,001
 microsecond - 0,000 001

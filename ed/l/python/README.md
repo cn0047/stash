@@ -34,7 +34,7 @@ PYTHONPATH # env var
 
 ````py
 global myvar
-nonlocal myvar
+nonlocal myvar # don't use var from enclosing scope
 
 # partition
 o, _, t = "v1:v2".partition(':')
@@ -47,7 +47,6 @@ if cond:
   res = value1
 else:
   res = value2
-
 # conditional expression
 res = value1 if cond else value2
 
@@ -81,21 +80,27 @@ getattr(var, attr)
 setattr(var, attr, val)
 delattr(var, attr)
 dir(var)
+repr(var) # representation, for DBG
+str(var)
 
 if __name__ == '__main__'
+__doc__
 __path__
 __closure__
 
 __call__()
-__str__()
+__str__(self)
+__repr__(self)
+__format__(self)
 __next__()
 __enter__() # enter context (with keyword)
 __end__() # exit context (with keyword)
 
 @staticmethod
 @abstractmethod
+@classmethod
 @property # getter
-@p.setter # setter
+@propertyName.setter # setter
 ````
 
 #### Data types
@@ -124,6 +129,7 @@ Everything is an object.
 ````py
 5/2  # 2.5
 5//2 # 2
+Decimal('0.8') - Decimal('0.7')
 
 r'ok' # raw string
 
@@ -176,6 +182,8 @@ __main__.py # must be in executable dir
 **exceptions**
 
 ````py
+ValueError
+
 try:
   f()
 except (MyError, NotMyError) as err:
