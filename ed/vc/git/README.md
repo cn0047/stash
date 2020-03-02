@@ -24,7 +24,7 @@ git config  http.postBuffer 1048576000
 git config https.postBuffer 1048576000
 git config --global core.compression 0
 
-git config user.name "Volodymyr Kovpak"
+git config user.name "V.Kovpak"
 git config user.email "cn007b@gmail.com"
 
 # from jenkins
