@@ -500,6 +500,8 @@ d - delete
 q - quit
 N - add the next line
 
+-n # quiet
+
 echo 'Some text or regexp' | sed 's/regexp/replacement/g' # Some text or replacement
 echo 'cat and dog' | sed -r "s/(cat|dog)s?/\1s/g" # cats and dogs
 echo 'xxx and zzz' | sed 's/x/y/g' # yyy and zzz
@@ -520,6 +522,9 @@ echo A_B_C_D_E_F_20180904_0038849_SUPER03.txt \
 # execute
 echo "1" > /tmp/x; echo "2" >> /tmp/x
 sed ' s/^/echo -n /e ' /tmp/x
+
+# print
+echo 'this is foo' | sed -n 's/.*\(is\).*/\1/p'
 ````
 
 #### awk

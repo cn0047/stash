@@ -95,6 +95,8 @@ docker logs -f
 # show containers & images
 docker images
 
+docker volume ls
+
 # stop the running container
 docker stop
 

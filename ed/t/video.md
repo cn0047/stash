@@ -2,7 +2,7 @@ Video
 -
 
 Video file is container for: video stream, audio & metadata.
-Bit rate - amount of data encoded per second in a vide.
+Bit rate - amount of data encoded per second in a video.
 Resolution - pixel size of video (1920x1080 - HD).
 DVD    - Bit rate = 4-8Mbps
 Bluray - Bit rate = 24-40Mbps
