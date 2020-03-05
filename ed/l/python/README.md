@@ -20,16 +20,23 @@ pip -V
 pip list
 pip show requests
 pip search requests
-pip install requests
-pip install -r requirements.txt
-
 pip install requests virtualenv
+python3 -m pip install requests # install for python3
+python3 -m pip freeze > requirements.txt
+pip uninstall requests
+pip install pylint # pylint: disable=invalid-name
+pip install -r requirements.txt
+WORK_HOME=/path
+PROJECT_HOME=/path
 
 python3 # REPL
 help("math")
 
 PYTHONPATH # env var
 # PATH=$PATH:~/ed/l/python/examples/pkg python3 pkg
+
+cd ed/l/python/examples/whatever
+python3 -m unittest
 ````
 
 ````py
@@ -53,6 +60,10 @@ res = value1 if cond else value2
 while c != 0:
   print(c)
   c -= 1
+while cond:
+  # smth
+else:
+  # smth
 
 for el in arr:
   print(el)
@@ -68,17 +79,18 @@ def trace(f, *args, **kwargs):
 
 yield val # works like in php
 
-globals()
+globals()["foo"] = "bar"
+locals()["foo"] = "bar"
 locals()
 any([false, true]) # true
 all([false, true]) # false
 type(myvar) # type of var
 isinstance(3, int)
-myvar.mro() # info about class instance
 hasattr(var, attr)
-getattr(var, attr)
-setattr(var, attr, val)
-delattr(var, attr)
+getattr(obj, attr)
+setattr(obj, attr, val)
+vars(self)['color'] = 'red'
+delattr(obj, attr)
 dir(var)
 repr(var) # representation, for DBG
 str(var)
@@ -87,18 +99,41 @@ if __name__ == '__main__'
 __doc__
 __path__
 __closure__
+__bases__ # base classes
+exception.__cause__
+exception.__traceback__
 
+obj.mro() # Method Resolution Order, info about class instance
+obj.__mro__
+
+obj.__dict__ # dictionary with obj's properties
+vars(obj)
+
+__new__(cls, *args, **kwargs)
+__prepare__
+__init__
 __call__()
+__get__()
+__set__()
+__delete__()
 __str__(self)
 __repr__(self)
 __format__(self)
+__iter__(self)
 __next__()
+__getitem__(self, index)
+__getattr__(self, name)
+__setattr__(self, name, val)
+__eq__(self, rhs)
+__ne__(self, rhs)
+__len__(self)
 __enter__() # enter context (with keyword)
 __end__() # exit context (with keyword)
+__exit__()
 
 @staticmethod
 @abstractmethod
-@classmethod
+@classmethod # bound to a class not to instance, like staticmethod.
 @property # getter
 @propertyName.setter # setter
 ````
@@ -179,7 +214,7 @@ my_package
 __main__.py # must be in executable dir
 ````
 
-**exceptions**
+**exceptions** ([hierarchy](https://docs.python.org/3/library/exceptions.html#exception-hierarchy)).
 
 ````py
 ValueError
@@ -199,9 +234,16 @@ except KeyError4 as err:
   raise IndexError()
 finally:
   # ...
+
+try:
+  # ...
+except OSError:
+  # ...
+else:
+  # ...
 ````
 
-**lambda**
+**lambda**.
 
 ````py
 def first_name(name):
@@ -209,3 +251,22 @@ def first_name(name):
 
 lambda name: name.split()[-1]
 ````
+
+**metaclass**.
+
+Default metaclass for all classes is `type`.
+
+**abstract class**.
+
+**unittest**.
+
+stub - provides predefined answers.
+
+fake - behaves like something real (has realistic implementation inside)
+but with predefined results (file, db (real db but in memmory one), webserver, etc.).
+
+dummy - usually none.
+
+mock - build object with predefined behavior.
+
+spy - checks whether method was called.
