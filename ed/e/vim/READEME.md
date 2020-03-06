@@ -9,6 +9,9 @@ vim file +7
 ````
 
 ````
+:%!xxd    # transform to hex editor
+:%!xxd -r # reverse transform
+
 :version
 u - undo last change
 :redo or CTRL+R
