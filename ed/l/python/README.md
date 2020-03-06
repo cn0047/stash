@@ -263,7 +263,7 @@ Default metaclass for all classes is `type`.
 stub - provides predefined answers.
 
 fake - behaves like something real (has realistic implementation inside)
-but with predefined results (file, db (real db but in memmory one), webserver, etc.).
+but with predefined results (file, db (real db but in memory one), webserver, etc.).
 
 dummy - usually none.
 

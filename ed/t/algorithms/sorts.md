@@ -13,7 +13,7 @@ Performance also depends on size and data structure presented in array.
 Worst case = **O(n^2)**; Average case = O(n^2); Best case = O(n)
 
 Good for small arrays. Bad for big arrays.
-No extra memmory allocations needed for bubble sort!
+No extra memory allocations needed for bubble sort!
 
 ### Selection sort
 
@@ -29,7 +29,7 @@ Don\'t do many swaps but do lot of comparisons.
 Worst case = **O(n^2)**; Average case = O(n^2); Best case = O(n)
 
 Good for small arrays. Bad for big arrays.
-No extra memmory allocations needed for insertion sort!
+No extra memory allocations needed for insertion sort!
 
 ### Quick sort
 
