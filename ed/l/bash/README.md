@@ -91,6 +91,12 @@ else
   cat /tmp/test.py.pid
   echo
 fi
+
+check_cmd_exists() {
+  if ! which $1 &>/dev/null; then
+    error "$1 command not found, you must install it."
+  fi
+}
 ````
 
 ````bash

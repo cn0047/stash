@@ -6,6 +6,9 @@ c
 # -Wall - warnings all
 gcc -o x -Wall ed/l/c/examples/whatever/hw.c && ./x
 
+# osx
+cc -v
+
 *.c          # source code
 *.obj or *.o # object code
 ````
@@ -20,6 +23,8 @@ Data types:
 * float
 * double
 * char
+
+**string** `char str[] = "my string";`
 
 ````c
 unsigned int x = 1u;
