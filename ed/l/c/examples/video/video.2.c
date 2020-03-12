@@ -164,7 +164,7 @@ int main(int argc, const char *argv[])
     }
 
     int response = 0;
-    int how_many_packets_to_process = 8;
+    int how_many_packets_to_process = 17; // will be 15 frames files
 
     // fill the Packet with data from the Stream
     // https://ffmpeg.org/doxygen/trunk/group__lavf__decoding.html#ga4fdb3084415a82e3810de6ee60e46a61
