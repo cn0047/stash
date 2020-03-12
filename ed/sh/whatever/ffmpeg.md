@@ -1,7 +1,5 @@
-Tools for video
+FFmpeg
 -
-
-#### ffmpeg
 
 [docs](https://www.ffmpeg.org/ffmpeg.html)
 [source code](https://www.ffmpeg.org/download.html#repositories)
@@ -14,13 +12,18 @@ ffmpeg \
 -encoders # show available encoders
 
 ffmpeg \
+-crf 23                                    # Constant Rate Factor,
+                                           # For x264 and x265 - values between 0 and 51 (0 - best quality)
+-crf 23                                    # Default for x264
+-crf 28                                    # Default for x265
+-crf 31                                    # Default for libvpx (range between 0 and 63)
 -c:v libx264                               # codec name
--f segment                                 # force format
+-f segment|image2                          # force format
 -g 30                                      # GOP
 -i video                                   # input
 -loglevel 16                               # fatal logging level
 -map                                       # for manual control of stream selection
--preset                                    # set the encoding preset
+-preset ultrafast                          # set the encoding preset
 -q:v 3                                     # use fixed quality scale
 -qscale:v 3                                # use fixed quality scale
 -r $fps                                    # set frame rate
@@ -31,12 +34,8 @@ ffmpeg \
 -ss 0                                      # set the start time offset
 -threads 0                                 # use all threads
 -update                                    # continuously overwrite one file (default false)
+-vcodec codec                              # force video codec
 -y                                         # overwrite output
--crf 23                                    # Constant Rate Factor,
-                                           # For x264 and x265 - values between 0 and 51 (0 - best quality)
--crf 23                                    # Default for x264
--crf 28                                    # Default for x265
--crf 31                                    # Default for libvpx (range between 0 and 63)
 
 # change audio volume (256=normal)
 ffmpeg -vol volume
@@ -61,21 +60,3 @@ drawtext="text='Test Text':x=100:y=50: fontsize=24:fontcolor=yellow:box=1:boxcol
 <output>
 ````
 
-#### ffprobe
-
-[docs](https://ffmpeg.org/ffprobe.html)
-
-````sh
-ffprobe \
--i                                # read specified file
--of csv=p=0                       # alias for -print_format
--select_streams V:0               # select the specified streams
--show_entries stream=width,height # show a set of specified entries
--show_format                      # show format/container info
--show_frames                      # show frames info
--v quiet                          # logging level
-
-ffprobe -show_streams -print_format json v1.mp4 2>/tmp/ffprobe.tmp
-
-ffprobe v1.mp4
-````

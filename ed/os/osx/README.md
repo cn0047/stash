@@ -83,6 +83,7 @@ brew install grc # colors in terminal
 brew install jmeter
 brew install jq
 brew install md5sha1sum # md5sum
+brew install mercurial
 brew install nmap
 brew install postgresql
 brew install qcachegrind

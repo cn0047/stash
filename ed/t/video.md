@@ -83,6 +83,7 @@ Used by 91% of video industry developers as of September 2019.
 h.264 splits frames into blocks of 256 pixels each
 and tries to predict what each subsequent block will look like
 based on the rest of frames or previous ones.
+(Uses decoded picture buffer to make predictions about next image in video).
 
 **x264** is a free and open-source software library and CLI utility for encoding
 video streams into the H.264/MPEG-4 AVC format.
