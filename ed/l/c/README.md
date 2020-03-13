@@ -27,6 +27,12 @@ Data types:
 **string** `char str[] = "my string";`
 
 ````c
+const int x = 1;
+
+printf("%s\n", str);
+printf("%f\n", float);
+printf("%p\n", &pointer);
+
 unsigned int x = 1u;
 short int y = 2;
 long int z = 3;

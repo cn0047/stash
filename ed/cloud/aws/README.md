@@ -51,6 +51,8 @@ aws cloudfront get-distribution --id $id
 
 # Elastic Beanstalk
 
+EB - service for deploying and scaling web applications and services.
+
 ````
 echo "web: application" > Procfile
 ````
