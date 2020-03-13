@@ -1,8 +1,10 @@
 FFmpeg
 -
 
-[docs](https://www.ffmpeg.org/ffmpeg.html)
+[docs ffmpeg](https://www.ffmpeg.org/ffmpeg.html)
+[docs ffprobe](https://ffmpeg.org/ffprobe.html)
 [source code](https://www.ffmpeg.org/download.html#repositories)
+[examples ffmpeg](https://github.com/leandromoreira/digital_video_introduction/blob/master/encoding_pratical_examples.md#split-and-merge-smoothly)
 
 ````sh
 ffmpeg \
@@ -11,7 +13,6 @@ ffmpeg \
 -decoders # show available decoders
 -encoders # show available encoders
 
-ffmpeg \
 -crf 23                                    # Constant Rate Factor,
                                            # For x264 and x265 - values between 0 and 51 (0 - best quality)
 -crf 23                                    # Default for x264
@@ -35,14 +36,13 @@ ffmpeg \
 -threads 0                                 # use all threads
 -update                                    # continuously overwrite one file (default false)
 -vcodec codec                              # force video codec
+-vf select='between(n\,14\,14)'            # set video filters
 -y                                         # overwrite output
+
+
 
 # change audio volume (256=normal)
 ffmpeg -vol volume
-
-ffmpeg -i f.avi f.mp4
-
-ffmpeg -i v1.mov -q:v 0 v1.mp4 # mov -> mp4
 
 ffmpeg \
 -y \                              # global options
@@ -58,5 +58,45 @@ ffmpeg -ss 00:01:50 -i <input> -t 10.5 -c copy <output>
 ffmpeg -i <input> -vf \
 drawtext="text='Test Text':x=100:y=50: fontsize=24:fontcolor=yellow:box=1:boxcolor=red" \
 <output>
+
+
+
+docker run -ti --rm -v $HOME/Downloads:/d -w /d xubuntu /bin/bash
+
+fmov=v.mov
+fmp4=v.mp4
+f2mp4=v2.mp4
+
+# mov -> mp4
+ffmpeg -i $fmov $fmp4
+ffmpeg -i $fmov -q:v 0 $fmp4
+
+# video duration
+duration=`ffprobe -show_streams -print_format json $fmp4 2>/tmp/ffprobe.tmp | jq -r '.streams[0].duration'`
+
+# create dir with png frames
+mkdir png
+ffmpeg -i $fmp4 png/frame_%5d.png
+
+# create video from png files (not perfect)
+ffmpeg -loop 1 -i png/frame_%5d.png -c:v libx264 -pix_fmt yuv420p -t $duration $f2mp4
+
+# get 15nth frame from video
+ffmpeg -i $f2mp4 -vf select='between(n\,14\,14)' -vsync 0 found_frame_%d.png
 ````
 
+````sh
+
+ffprobe \
+-i                                # read specified file
+-of csv=p=0                       # alias for -print_format
+-select_streams V:0               # select the specified streams
+-show_entries stream=width,height # show a set of specified entries
+-show_format                      # show format/container info
+-show_frames                      # show frames info
+-v quiet                          # logging level
+
+ffprobe v1.mp4
+
+ffprobe -show_streams -print_format json $fmp4 2>/tmp/ffprobe.tmp | jq
+````

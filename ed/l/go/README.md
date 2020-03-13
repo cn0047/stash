@@ -49,6 +49,7 @@ $GODEBUG      # https://godoc.org/runtime#hdr-Environment_Variables
               # GODEBUG=gocacheverify=1,gocachehash=1,gocachetest=1
 
 export GOROOT=$HOME/go
+export GOFLAGS=-mod=vendor
 
 GOARCH=386 go build
 go build                  # Compiles and installs packages and dependencies
