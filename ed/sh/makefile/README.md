@@ -21,9 +21,9 @@ The `@` before echo means - don't print this command to stdout before running it
 .PHONY: clean
 clean:
   rm -rf *.o
-````
 
-````sh
+VAR_F ?= "foo" # set VAR_F if it not set.
+
 ifndef GOPATH
 $(error ERROR!! GOPATH must be declared.)
 endif
