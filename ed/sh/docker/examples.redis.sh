@@ -8,6 +8,7 @@ docker run -it --rm --net=xnet -p 6379:6379 --name xredis --hostname xredis redi
 
 # check redis
 docker exec -ti xredis redis-cli
+docker exec -ti xredis redis-cli -h localhost -p 6379
 
 #### Redis cluster (replication)
 

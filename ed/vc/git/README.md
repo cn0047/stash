@@ -52,6 +52,9 @@ git commit -m 'Message'
 git commit -m "PROJ-123 my comment..." # for JIRA:
 git commit --amend # update commit message
 
+# remove untracked files
+git clean -fd
+
 git tag 1.1.1
 git push origin --tags
 
@@ -212,11 +215,14 @@ git push remoteRepoName :branch                   # delete branch from remote re
     dfl = diff origin/live
     dfm = diff origin/master
     dff = diff origin/live --name-only
-[user]
-    name  = Vladimir Kovpak
-    email = cn007b@gmail.com
 [core]
     excludesfile = ~/.gitignore
     editor       = vim
     ignoreCase   = false
+[user]
+    name = V.Kovpak
+[url "git@github.com:"]
+    insteadOf = https://github.com/
+[url "git@bitbucket.org:"]
+    insteadOf = https://bitbucket.org/
 ````

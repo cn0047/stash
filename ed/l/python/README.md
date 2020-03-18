@@ -26,13 +26,16 @@ python3 -m pip freeze > requirements.txt
 pip uninstall requests
 pip install pylint # pylint: disable=invalid-name
 pip install -r requirements.txt
+pip install /app/my_prj
 WORK_HOME=/path
 PROJECT_HOME=/path
+
+pylint x.py # lint file
 
 python3 # REPL
 help("math")
 
-PYTHONPATH # env var
+export PYTHONPATH=$HOME/dirWithScripts/:$PYTHONPATH
 # PATH=$PATH:~/ed/l/python/examples/pkg python3 pkg
 
 cd ed/l/python/examples/whatever
@@ -204,15 +207,21 @@ myModule.path               # gets path to module
 **package** - module which contains other modules.
 
 ````py
-# pkg
+# add pkg
 sys.path.append('pkg_dir')
 import pkg
+import ..pkg # relative import
 # package dir:
 my_package
 └── __init__.py # package init file
 
 __main__.py # must be in executable dir
 ````
+
+**eggs** - is logical structure embodying the release of a specific version
+of project, comprising its code, resources, and metadata.
+
+**wheel** - new standard of distribution (intended to replace eggs).
 
 **exceptions** ([hierarchy](https://docs.python.org/3/library/exceptions.html#exception-hierarchy)).
 

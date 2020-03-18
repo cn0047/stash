@@ -21,6 +21,10 @@ export GO111MODULE=on
 # specifies private modules
 export GOPRIVATE=*.corp.example.com,rsc.io/private
 export GOPRIVATE=github.com/prvtOrg
+export GOFLAGS=-mod=vendor
+
+git config --global url."git@github.com:".insteadOf "https://github.com/"
+git config --global url."git@bitbucket.org:".insteadOf "https://bitbucket.org/"
 
 go mod init
 go mod init example.com/my/module/v2
@@ -53,7 +57,13 @@ go mod vendor
 
 go doc rsc.io/quote/v3
 
+# update all
 go get -u ./... or go get -u=patch ./... # update all direct and indirect dependencies
+go get -u ./...
+go get -u all
+go mod tidy
+go mod download
+go mod vendor
 ````
 
 Typical day-to-day workflow can be:
