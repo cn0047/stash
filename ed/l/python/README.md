@@ -170,8 +170,8 @@ Everything is an object.
 Decimal('0.8') - Decimal('0.7')
 
 r'ok' # raw string
-
 b'data' # bytes
+f'hello, {name}\n' # format with vars
 
 md = {'foo': 1, "name": "Mark", "active": true} # dict - dictionary
 
