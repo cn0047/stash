@@ -6,6 +6,10 @@ Mutex - mutual exclusion.
 Starvation - situation where a concurrent process cannot get all the resources
 it needs to perform work.
 
+Types:
+* Parallel.
+* Asynchronous.
+
 #### Locks
 
 Distributed Lock.
