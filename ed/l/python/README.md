@@ -279,3 +279,27 @@ dummy - usually none.
 mock - build object with predefined behavior.
 
 spy - checks whether method was called.
+
+##### Concurrency
+
+**threading** - run threads in the same memory space.
+`threading.Lock, threading.Semaphore`.
+
+**multiprocessing** - run processes in separate memory space.
+`multiprocessing.Pool`.
+
+**queue** - `from queue import Queue, Pipe, JoinableQueue`.
+
+**ThreadPoolExecutor** - `from concurrent.futures import ThreadPoolExecutor`.
+
+**asyncio** `asyncio.get_event_loop().run_until_complete(mid.run_worker())`.
+
+**coroutine** - special type of function that deliberately yield control to caller,
+but does not end its context in the process, instead maintaining it in an idle state.
+difference with generator - coroutine can accept arguments after it's been initially called,
+whereas a generator can't.
+
+**coroutine function** function with `async` prefix.
+
+**coroutine object** - what function declared with an async keyword returned,
+`CoroutineObject = CoroutineFunction()`.

@@ -9,6 +9,7 @@ FFmpeg
 ````sh
 ffmpeg \
 -formats  # show available formats
+-filters  #
 -codecs   # show available codecs
 -decoders # show available decoders
 -encoders # show available encoders
@@ -36,8 +37,8 @@ ffmpeg \
 -threads 0                                 # use all threads
 -update                                    # continuously overwrite one file (default false)
 -vcodec codec                              # force video codec
--vf select='between(n\,14\,14)'            # set video filters
 -y                                         # overwrite output
+-vf select='between(n\,14\,14)'            # set video filter, @see: http://ffmpeg.org/ffmpeg-filters.html#select_002c-aselect
 
 
 
