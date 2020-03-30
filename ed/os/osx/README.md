@@ -31,7 +31,9 @@ export PATH=/Users/k/go/bin:$PATH
 ````sh
 Option = Alt
 
-Command-Control-o # insert mode
+
+Command-Control-o     # insert mode
+Command-Control-Space # emoji 🤓
 
 Control-Shift-Power  # Lock screen
 Command-Option-Power # Put MacBook to sleep

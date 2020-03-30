@@ -129,8 +129,10 @@ error_page   405   =200 $uri;
 
 proxy_connect_timeout 600;
 proxy_send_timeout    600;
-proxy_read_timeout    600;
+proxy_read_timeout    600; # timeout for reading a response from the proxied server
 send_timeout          600;
+
+fastcgi_read_timeout  300; # timeout for reading a response from the FastCGI server
 ````
 
 ````sh

@@ -27,6 +27,8 @@ pip uninstall requests
 pip install pylint # pylint: disable=invalid-name
 pip install -r requirements.txt
 pip install /app/my_prj
+pip list -v # show dir for packages
+PIP_CONFIG_FILE=/tmp/pip.conf
 WORK_HOME=/path
 PROJECT_HOME=/path
 

@@ -3,49 +3,50 @@ vim
 
 version 7.4
 
-````
+````sh
 # open file & goto line 7
 vim file +7
 ````
 
-````
+````sh
 :%!xxd    # transform to hex editor
 :%!xxd -r # reverse transform
 
 :version
-u - undo last change
+u                   # undo last change
 :redo or CTRL+R
-:e!                 - reload file
-:%s/text/newText/   - replace
+:e!                 # reload file
+:%s/text/newText/   # replace
 
 ctrl+p - show competition
 
-:split         - 2 windows
-ctrl+shift+w   - switch window
-:split file    - split with new file
-:11 split file - split & show 11 lines of file
+:split         # 2 windows
+ctrl+shift+w   # switch window
+:split file    # split with new file
+:11 split file # split & show 11 lines of file
+:11            # goto line 11
 
-%   - bracket
-~   - change case
-J   - join lines
-.   - do last edit action again
-{   - paragraph begin
-}   - paragraph end
-]]  - next function
-[[  - prev function
-2<< - move twice to left
->>  - to right
+%   # bracket
+~   # change case
+J   # join lines
+.   # do last edit action again
+{   # paragraph begin
+}   # paragraph end
+]]  # next function
+[[  # prev function
+2<< # move twice to left
+>>  # to right
 
-v  - visual mode
-d  - delete selected
-y  - copy
-j  - join
-gJ - join without spaces
+v   # visual mode
+d   # delete selected
+y   # copy
+j   # join
+gJ  # join without spaces
 
-ma  - bookmark a
-d'a - delete to bookmark a
+K   # LOOK TO SCREEN
 
-K  - LOOK TO SCREEN
+ma  # bookmark a
+d'a # delete to bookmark a
 ````
 
 #### ~/.vimrc
