@@ -8,12 +8,12 @@ version=18.04-video
 docker build -t cn007b/ubuntu:$version docker/$version
 
 # check
-docker run -ti --rm cn007b/ubuntu:$version vim --version
-docker run -ti --rm cn007b/ubuntu:$version tree --version
-docker run -ti --rm cn007b/ubuntu:$version mc --version
-docker run -ti --rm cn007b/ubuntu:$version git --version
-docker run -ti --rm cn007b/ubuntu:$version colordiff -v
-docker run -ti --rm cn007b/ubuntu:$version curl -V
+docker run -ti --rm cn007b/ubuntu:$version sh -c 'hash vim'
+docker run -ti --rm cn007b/ubuntu:$version sh -c 'hash tree'
+docker run -ti --rm cn007b/ubuntu:$version sh -c 'hash mc'
+docker run -ti --rm cn007b/ubuntu:$version sh -c 'hash git'
+docker run -ti --rm cn007b/ubuntu:$version sh -c 'hash colordiff'
+docker run -ti --rm cn007b/ubuntu:$version sh -c 'hash curl'
 # docker run -ti --rm cn007b/ubuntu:$version net-tools
 docker run -ti --rm cn007b/ubuntu:$version telnet --help
 docker run -ti --rm cn007b/ubuntu:$version ftp -help
@@ -37,7 +37,7 @@ docker run -ti --rm cn007b/ubuntu:$version mpstat # sysstat
 
 # video
 docker run -ti --rm cn007b/ubuntu:$version ffmpeg -version \
-  > /dev/null && if [[ $? -eq 0 ]]; then echo -e "\033[32mok\033[0m"; else echo -e "\033[31merr\033[0m"; fi
+  2>&1 1>/dev/null && if [[ $? -eq 0 ]]; then echo -e "\033[32mok\033[0m"; else echo -e "\033[31merr\033[0m"; fi
 
 # protobuf-3
 docker build -t cn007b/ubuntu:$version-protobuf-3 docker/$version-protobuf-3
