@@ -15,6 +15,8 @@ Queue Attributes:
 * Delivery Delay - time to delay first delivery.
 * Receive Message Wait Time - max amount of time
   that a long polling receive call will wait for a message to become available.
+* Visibility Timeout - period of time during which SQS prevents other consumers
+  from receiving the message which sent to other consumer but not acknowledged yet.
 
 ````sh
 aws --profile=$p sqs list-queues
