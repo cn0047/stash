@@ -1,4 +1,4 @@
-FROM cn007b/ubuntu:17.10
+FROM cn007b/ubuntu:18.04
 
 MAINTAINER Vladimir Kovpak <cn007b@gmail.com>
 

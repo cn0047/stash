@@ -185,7 +185,11 @@ arr = ['a', 'b'] # list
 len(arr)
 del arr[1]
 el in arr == true
+
+# helpful stuff:
+from collections import Counter, defaultdict, namedtuple, deque
 ````
+
 #### Features
 
 **comprehensions**.

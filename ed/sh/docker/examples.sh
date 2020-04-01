@@ -24,7 +24,7 @@ docker run -ti --rm -v $PWD:/gh alpine:3.7 sh
 docker run -it --rm --net=xnet --name xmemcached memcached
 
 # build
-docker build -t kmemcached ./.docker/memcached
+docker build -t kmemcached -f ed/sh/docker/examples.Dockerfile/cache.memcached.Dockerfile .
 
 # run
 docker run -it --rm --net=xnet -p 11211:11211 --hostname xmemcached --name xmemcached kmemcached

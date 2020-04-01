@@ -10,7 +10,6 @@ and use `‘cuisine_known:yes’`.
 * Turn disjunctions into conjunctions:
 `‘cuisine:Japanese OR cuisine:Korean’ -> ‘cuisine:Asian’`.
 
-
 * Avoid large documents.
 
 * Don’t return large result sets.
