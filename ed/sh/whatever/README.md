@@ -676,7 +676,7 @@ uuencode card.jpg card.jpg | mail mail@com.com
 ````sh
 -z, --null-data             # \0
 -v, --revert-match          #
--m, --max-count=ЧИСЛО       #
+-m, --max-count=5           #
 -h, --no-filename           #
 -L, --files-without-match   # print only file names
 -Pz                         # multi rows

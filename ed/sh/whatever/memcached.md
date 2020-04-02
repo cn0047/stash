@@ -16,8 +16,20 @@ memcached -n 16 -f 1.05 -L
 telnet 0.0.0.0 11211
 
 stats items
+stats cachedump 2 100 # where 2 - items:${ID} from prev command and 100 - count of items to dump
+
+set key <flags> <ttl> <size>
+# set key 0 60 5\r\nvalue
+# set key 0 60 5\r\ndata\r\n
+incr key 2
+decr key 5
+get key
+delete key
 
 flush_all
+version
+verbosity
+quit
 ````
 
 Memcache - in-memory key-value store, which can store string up to 1MB.

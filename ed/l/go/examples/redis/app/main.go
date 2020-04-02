@@ -37,7 +37,7 @@ func lock2() {
 	fmt.Println("locked")
 
 	// do some action
-	time.Sleep(5*time.Second)
+	time.Sleep(5 * time.Second)
 	// unlock
 	m.Unlock()
 	fmt.Println("unlocked")
@@ -49,7 +49,7 @@ func lock1() {
 	// lock
 	c.SetNX("user1", "1", 10*time.Second)
 	// do some action
-	time.Sleep(10*time.Second)
+	time.Sleep(10 * time.Second)
 	// unlock
 	c.Del("user1")
 }
@@ -150,4 +150,26 @@ func get2() {
 	r := c.Get("foo")
 	log.Printf("[get] exists: (%#v|%#v|%#v), %#v; %#v", v.Val(), ex, eerr, r.Val(), r.Err())
 	// [get] exists: (0|0|<nil>), ""; "redis: nil"
+}
+
+func Exists(key string) (bool, error) {
+	res, err := c.Exists(key).Result()
+	if err != nil {
+		return false, err
+	}
+
+	return res == int64(1), nil
+}
+
+var ErrorKeyAlreadyExists = errors.New("key already exists")
+
+func SetNX(key, val string, ttl time.Duration) error {
+	success, err := c.SetNX(key, val, ttl).Result()
+	if err != nil {
+		return err
+	}
+	if !success {
+		return ErrorKeyAlreadyExists
+	}
+	return nil
 }
