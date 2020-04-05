@@ -155,39 +155,66 @@ __exit__()
 * list
 * dict
 * tuple
-* range
 * set
+* range
 
 Everything is an object.
-
-**str** strings immutable.
-
-**tuple** immutable sequence of arbitrary objects.
-
-**set** unordered collection on unique elements.
 
 ````py
 5/2  # 2.5
 5//2 # 2
 Decimal('0.8') - Decimal('0.7')
 
-r'ok' # raw string
-b'data' # bytes
-f'hello, {name}\n' # format with vars
-
-md = {'foo': 1, "name": "Mark", "active": true} # dict - dictionary
-
-t = ("f", 2) # tuple
-
-s = {1, 2} # set
-
-arr = ['a', 'b'] # list
-len(arr)
-del arr[1]
-el in arr == true
 
 # helpful stuff:
 from collections import Counter, defaultdict, namedtuple, deque
+````
+
+**str** strings immutable.
+
+````py
+r'ok' # raw string
+f'hello, {name}\n' # format with vars
+````
+
+**bytes**.
+
+````py
+b'data' # bytes
+````
+
+**list**.
+
+````py
+arr = ['a', 'b', True] # list
+len(arr)
+del arr[1]
+'b' in arr # True
+````
+
+**dict**.
+
+````py
+md = {'foo': 1, "name": "Mark", "active": true} # dict - dictionary
+````
+
+**tuple** immutable sequence of arbitrary objects.
+
+````py
+t = ("f", 2, False) # tuple
+t[0] # "f"
+````
+
+**set** unordered collection on unique elements.
+
+````py
+s = {1, 2, True} # set
+s.pop()
+s.add("orange")
+2 in s # True
+"banana" in s # False
+s.remove("banana")
+len(s)
 ````
 
 #### Features

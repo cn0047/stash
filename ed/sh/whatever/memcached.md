@@ -34,6 +34,8 @@ quit
 
 Memcache - in-memory key-value store, which can store string up to 1MB.
 
+Key must be string up to 250 bytes and without spaces, new lines, etc.
+
 Avoid Memcache hot keys.
 Hot keys are a common anti-pattern that can cause Memcache capacity to be exceeded.
 
