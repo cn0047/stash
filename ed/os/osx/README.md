@@ -81,6 +81,7 @@ brew search xdebug
 # brew install nginx
 brew install awscli
 brew install bash-completion
+brew install ffmpeg
 brew install grc # colors in terminal
 brew install jmeter
 brew install jq
@@ -91,7 +92,6 @@ brew install postgresql
 brew install qcachegrind
 brew install redis
 brew install sshuttle
-brew install telnet
 brew install telnet
 brew install terraform
 
