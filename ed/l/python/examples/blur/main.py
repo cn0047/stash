@@ -1,20 +1,73 @@
 import cv2
 import numpy
 
-f= './z.png'
 
-frame = cv2.imread(f)
-height, width, *_ = frame.shape
-top    = int(0.14 * height)
-bottom = int(0.25 * height)
-left   = int(0.60 * width)
-right  = int(0.71 * width)
-blur_bbox = frame[top:bottom, left:right]
-sigmaX = 50
-sigmaX = 20
-sigmaX = 10
-ksize = (11, 11)
-ksize = (99, 99)
-blur_bbox = cv2.GaussianBlur(blur_bbox, ksize, sigmaX, sigmaY=40)
-frame[top:bottom, left:right] = blur_bbox
-cv2.imwrite(f+'.r.png', frame)
+def tblr(f, height, width):
+  if f == './z.png':
+    top    = int(0.14 * height)
+    bottom = int(0.25 * height)
+    left   = int(0.60 * width)
+    right  = int(0.71 * width)
+  if f == './y.png':
+    top    = int(0.16 * height)
+    bottom = int(0.45 * height)
+    left   = int(0.43 * width)
+    right  = int(0.67 * width)
+  if f == './t.png':
+    top    = int(0.18 * height)
+    bottom = int(0.37 * height)
+    left   = int(0.35 * width)
+    right  = int(0.63 * width)
+  return top, bottom, left, right
+
+
+def p1():
+  ksize = (11, 11)
+  sigmaX = 10
+  sigmaY = 10
+  return ksize, sigmaX, sigmaY
+
+
+def p2():
+  ksize = (99, 99)
+  sigmaX = 50
+  sigmaY = 50
+  return ksize, sigmaX, sigmaY
+
+
+def p3():
+  ksize = (99, 99)
+  sigmaX = 99
+  sigmaY = 99
+  return ksize, sigmaX, sigmaY
+
+
+def p4():
+  ksize = (99, 99)
+  sigmaX = 10
+  sigmaY = 10
+  return ksize, sigmaX, sigmaY
+
+
+def p5():
+  ksize = (99, 99)
+  sigmaX = 10
+  sigmaY= 10
+  return ksize, sigmaX, sigmaY
+
+
+def b1(f):
+  frame = cv2.imread(f)
+  height, width, *_ = frame.shape
+  top, bottom, left, right = tblr(f, height, width)
+  blur_bbox = frame[top:bottom, left:right]
+  ksize, sigmax, sigmay = p5()
+  blur_bbox = cv2.GaussianBlur(blur_bbox, ksize, sigmax, sigmaY=sigmay)
+  # blur_bbox = cv2.blur(blur_bbox, (99, 99))
+  frame[top:bottom, left:right] = blur_bbox
+  cv2.imwrite(f+'.r.png', frame)
+
+
+# b1('./t.png')
+b1('./y.png')
+# b1('./z.png')

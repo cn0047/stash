@@ -1,4 +1,4 @@
-# @example: python3 ed/l/python/examples/whatever/hw.py
+# @example: python3 ed/l/python/examples/http/server.simple.py
 # @example: curl localhost:8080
 
 from http.server import HTTPServer, BaseHTTPRequestHandler
@@ -9,11 +9,7 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
         self.end_headers()
-        self.wfile.write(b'Hello, world!\n<br>')
-
-
-def cli():
-    print('Hello, world!\n')
+        self.wfile.write(b'Hello world!')
 
 
 def web():
@@ -22,4 +18,4 @@ def web():
 
 
 if __name__ == '__main__':
-    cli()
+    web()

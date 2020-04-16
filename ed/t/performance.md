@@ -57,6 +57,8 @@ Resilience - is the ability of a system to adapt or keep working when challenges
 * Gzip JSON responses.
 * Use HTTP2.
 * If site doesn't have favicon - 2 overhead request per every request.
+* `site.com & api.site.com` better than `site.com & site.com/api`
+  because of separation between web & api traffic (easier to scale and deal with LBs).
 
 #### Scaling
 

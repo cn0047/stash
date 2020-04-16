@@ -148,7 +148,7 @@ Headers:
 * Set-Cookie
 * Content-Type
 * Content-Length
-* Cache-Control (private (client's browser), public (public proxy servers), no-cache)
+* Cache-Control (private (client's browser), public|max-age|s-maxage (public proxy servers), no-cache)
 * Last-Modified
 * Expires
 * ETag
