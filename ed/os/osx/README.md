@@ -26,6 +26,16 @@ sysctl -n hw.ncpu
 export PATH=/Users/k/go/bin:$PATH
 ````
 
+Colorize CLI:
+
+````sh
+brew install grc
+
+# .bash_profile
+export CLICOLOR=1
+alias grep='grep --color=always'
+````
+
 ## HotKeys
 
 ````sh
@@ -89,7 +99,7 @@ brew install md5sha1sum # md5sum
 brew install mercurial
 brew install nmap
 brew install postgresql
-brew install qcachegrind
+brew install qcachegrind # KCacheGrind
 brew install redis
 brew install sshuttle
 brew install telnet

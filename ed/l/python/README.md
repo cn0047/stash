@@ -52,8 +52,6 @@ nonlocal myvar # don't use var from enclosing scope
 o, _, t = "v1:v2".partition(':')
 print(o, t) # v1 v2
 
-print('{a}->{b}'.format(a='foo', b='bar')) # foo->bar
-
 # conditional statement
 if cond:
   res = value1
@@ -173,8 +171,16 @@ from collections import Counter, defaultdict, namedtuple, deque
 **str** strings immutable.
 
 ````py
+str = "multiline" \
+      " string!"
+
 r'ok' # raw string
 f'hello, {name}\n' # format with vars
+'{a}->{b}'.format(a='foo', b='bar') # foo->bar
+
+name = "Bond"
+print("hi {0}".format(name)) # hi Bond
+print(f"hi {name}") # hi Bond
 ````
 
 **bytes**.
@@ -336,3 +342,20 @@ whereas a generator can't.
 
 **coroutine object** - what function declared with an async keyword returned,
 `CoroutineObject = CoroutineFunction()`.
+
+#### DBG
+
+Profiling:
+
+````sh
+pip3 install pyprof2calltree
+
+f=ed/l/python/examples/whatever/hw.py
+python3 -m cProfile -s cumtime $f
+
+python3 -m cProfile -o callgrind.cprof $f
+pyprof2calltree -k -i callgrind.cprof
+
+python3 ed/l/python/examples/http/server.prof.py
+pyprof2calltree -k -i callgrind.cprof
+````
