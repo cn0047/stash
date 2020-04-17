@@ -1,13 +1,16 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"log"
+	"strconv"
 	"time"
 
-	"github.com/go-redis/redis"
+	goredis "github.com/go-redis/redis"
 	"github.com/go-redsync/redsync"
 	redigo "github.com/gomodule/redigo/redis"
+	radix "github.com/mediocregopher/radix/v3"
 )
 
 const (
@@ -15,36 +18,107 @@ const (
 )
 
 func main() {
-	lock1()
-	return
-	ping()
-	set()
-	get1()
-	get2()
+	//goRedisPing()
+	//goRedisLock()
+	//goRedisSet()
+	//goRedisGet1()
+	//goRedisGet2()
+
+	//radixSet()
+	//radixScript1()
+	radixCircularBuffer()
 }
 
-func lock2() {
-	p := newRedigoPool(RedisAddr)
+func getRadixPool() *radix.Pool {
+	f := radix.PoolConnFunc(func(network, addr string) (radix.Conn, error) {
+		client, err := radix.Dial(network, addr)
+		if err != nil {
+			return nil, err
+		}
+		if err = client.Do(radix.Cmd(nil, "SELECT", "1")); err != nil {
+			if e := client.Close(); e != nil {
+				return nil, e
+			}
+			return nil, err
+		}
+		return client, nil
+	})
+	i := radix.PoolPingInterval(1 * time.Second)
+
+	p, err := radix.NewPool("tcp", RedisAddr, 3, f, i)
+	if err != nil {
+		panic(fmt.Errorf("failed to create radix pool , error: %w", err))
+	}
+
+	return p
+}
+
+func radixSet() {
+	p := getRadixPool()
+	err := p.Do(radix.Cmd(nil, "SET", "rkey", "rval", "EX", "3600"))
+	if err != nil {
+		log.Printf("[radix set] error: %#v", err)
+	}
+}
+
+func radixScript1() {
+	s := `
+		local k = redis.call('GET', KEYS[1])
+		if k then
+		  redis.call('EXPIRE', KEYS[1], ARGV[1])
+		else
+			return 'not found'
+		end
+		return k
+	`
+	res := ""
+	scrpt := radix.NewEvalScript(1, s).Cmd(&res, "rkey", "30")
+	p := getRadixPool()
+	err := p.Do(scrpt)
+	if err != nil {
+		log.Printf("[radixScript set] error: %#v", err)
+	}
+	log.Printf("[radixScript set] res: %#v", res)
+}
+
+func radixCircularBuffer() {
+	p := getRadixPool()
+	v := strconv.FormatInt(time.Now().Unix(), 10)
+	s := `
+		redis.call('RPUSH', KEYS[1], ARGV[1])
+		if (redis.call("LLEN", KEYS[1]) > 5) then redis.call("LPOP", KEYS[1]) end
+	`
+	res := ""
+	scrpt := radix.NewEvalScript(1, s).Cmd(&res, "cb", v)
+	err := p.Do(scrpt)
+	if err != nil {
+		log.Printf("[radix circular buffer] error: %#v", err)
+	}
+	log.Printf("[radix circular buffer] res: %#v", res)
+}
+
+func rediGoLock() {
+	p := getRediGoPool(RedisAddr)
 	rsc := redsync.New([]redsync.Pool{p})
 
 	// lock
 	m := rsc.NewMutex("user1", redsync.SetTries(3), redsync.SetExpiry(10*time.Second))
 	err := m.Lock()
 	if err != nil {
-		fmt.Printf("failed to acquire lock, error: %v \n", err)
+		fmt.Printf("[redigo] failed to acquire lock, error: %v \n", err)
 		return
 	}
-	fmt.Println("locked")
+	fmt.Println("[redigo] locked")
 
 	// do some action
 	time.Sleep(5 * time.Second)
 	// unlock
 	m.Unlock()
-	fmt.Println("unlocked")
+	fmt.Println("[redigo] unlocked")
 }
 
-func lock1() {
-	c := getClient()
+func goRedisLock() {
+	c := getGoRedisClient()
 
 	// lock
 	c.SetNX("user1", "1", 10*time.Second)
@@ -54,7 +128,7 @@ func lock1() {
 	c.Del("user1")
 }
 
-func newRedigoPool(server string) *redigo.Pool {
+func getRediGoPool(server string) *redigo.Pool {
 	p := redigo.Pool{
 		MaxIdle:     3,
 		IdleTimeout: 30 * time.Second,
@@ -73,45 +147,45 @@ func newRedigoPool(server string) *redigo.Pool {
 	return &p
 }
 
-func getRedigoClient() redigo.Conn {
+func getRediGoClient() redigo.Conn {
 	c, err := redigo.Dial("tcp", RedisAddr)
 	if err != nil {
-		panic(fmt.Errorf("failed to get redigo connection , error: %w", err))
+		panic(fmt.Errorf("[redigo] failed to get redigo connection , error: %w", err))
 	}
 	return c
 }
 
-func redigoF() {
-	c := getRedigoClient()
+func rediGoF() {
+	c := getRediGoClient()
 	_, err := c.Do("SET", "hello", "world")
 	if err != nil {
 		panic(fmt.Errorf("error3: %w", err))
 	}
 }
 
-func getClient3() *redis.Client {
-	opt := &redis.ClusterOptions{
+func getGoRedisClient3() *goredis.Client {
+	opt := &goredis.ClusterOptions{
 		Addrs:        []string{RedisAddr},
 		MinIdleConns: 0,
 		MaxConnAge:   0,
 	}
-	c := redis.NewClusterClient(opt)
+	c := goredis.NewClusterClient(opt)
 	_ = c
 	return nil
 }
 
-func getClient2() *redis.Client {
-	opt := &redis.Options{
+func getGoRedisClient2() *goredis.Client {
+	opt := &goredis.Options{
 		Addr:         RedisAddr,
 		MinIdleConns: 0,
 		MaxConnAge:   0,
 	}
-	c := redis.NewClient(opt)
+	c := goredis.NewClient(opt)
 	return c
 }
 
-func getClient() *redis.Client {
-	c := redis.NewClient(&redis.Options{
+func getGoRedisClient() *goredis.Client {
+	c := goredis.NewClient(&goredis.Options{
 		Network:  "tcp",
 		Addr:     RedisAddr,
 		Password: "",
@@ -120,39 +194,40 @@ func getClient() *redis.Client {
 	return c
 }
 
-func ping() {
-	c := getClient()
+func goRedisPing() {
+	c := getGoRedisClient()
 	pong, err := c.Ping().Result()
 	fmt.Println(pong, err)
 }
 
-func set() {
-	c := getClient()
+func goRedisSet() {
+	c := getGoRedisClient()
 	r := c.Set("foo", "bar", 2*time.Second)
-	log.Printf("[set] %+v", r)
+	log.Printf("[go-redis set] %+v", r)
 }
 
-func get1() {
-	c := getClient()
+func goRedisGet1() {
+	c := getGoRedisClient()
 	v := c.Exists("foo")
 	e := v.Val() == int64(1)
 	ex, eerr := v.Result()
 	r := c.Get("foo")
-	log.Printf("[get] exists: (%#v|%#v|%#v), %#v", e, ex, eerr, r.Val())
+	log.Printf("[go-redis get] exists: (%#v|%#v|%#v), %#v", e, ex, eerr, r.Val())
 	// [get] exists: (true|1|<nil>), "bar"
 }
 
-func get2() {
+func goRedisGet2() {
 	time.Sleep(3 * time.Second)
-	c := getClient()
+	c := getGoRedisClient()
 	v := c.Exists("foo")
 	ex, eerr := v.Result()
 	r := c.Get("foo")
-	log.Printf("[get] exists: (%#v|%#v|%#v), %#v; %#v", v.Val(), ex, eerr, r.Val(), r.Err())
+	log.Printf("[go-redis get] exists: (%#v|%#v|%#v), %#v; %#v", v.Val(), ex, eerr, r.Val(), r.Err())
 	// [get] exists: (0|0|<nil>), ""; "redis: nil"
 }
 
-func Exists(key string) (bool, error) {
+func goRedisExists(key string) (bool, error) {
+	c := getGoRedisClient()
 	res, err := c.Exists(key).Result()
 	if err != nil {
 		return false, err
@@ -163,7 +238,8 @@ func Exists(key string) (bool, error) {
 
 var ErrorKeyAlreadyExists = errors.New("key already exists")
 
-func SetNX(key, val string, ttl time.Duration) error {
+func goRedisSetNX(key, val string, ttl time.Duration) error {
+	c := getGoRedisClient()
 	success, err := c.SetNX(key, val, ttl).Result()
 	if err != nil {
 		return err

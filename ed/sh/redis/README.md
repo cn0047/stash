@@ -6,6 +6,7 @@ Redis
 [php client](https://github.com/phpredis/phpredis)
 [docs](https://redis.io/documentation)
 [commands](https://redis.io/commands)
+[lua](https://redis.io/commands/eval)
 
 #### redis-cli
 
@@ -15,6 +16,10 @@ redis-benchmark # shell tool for benchmarking
 ````
 
 ````sh
+select 1 # select DB with index 1
+config get databases
+info keyspace
+
 set mykey 'Hello'
 set foo 'bar'
 
@@ -25,12 +30,13 @@ set foo 'bar'
 set mk 'hello' nx px 30000
 
 # set if key does not exist
-setnx mykey2 "World"
+setnx mk "World"
 
-expire foo 10 # ttl 10 seconds
+expire mk 10 # ttl 10 seconds
+ttl mk
 
-get mykey
-mget mykey foo
+get mk
+mget mk mykey foo
 
 flushdb # delete data from current database
 
@@ -67,11 +73,18 @@ that is used in order to take the sorted set ordered.
 
 #### List (Linked List):
 
+Can be at max 512 Megabytes in length.
+
 ````sh
-rpush mylist A
+lpush mylist 0     # insert at the head of the list
+lpop mylist        # delete from head
+rpush mylist A     # insert at the tail of the list
 rpush mylist B
+rpush mylist C
 rpush mylist End
+rpop mylist        # delete from tail
 lrange mylist 0 -1 # print all values in a list
+llen mylist
 ````
 
 #### Hash:
