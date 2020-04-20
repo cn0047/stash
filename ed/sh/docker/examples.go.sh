@@ -141,6 +141,10 @@ docker run -it --rm --name=grpcone -v $PWD:/gh -w /gh/ed/l/go/examples/grpc/one 
 # &
 docker exec -it grpcone sh -c 'export GOPATH=$PWD; go run src/app/client.go'
 
+# youtube
+GOPATH=$PWD/ed/l/go/examples/youtube
+
+
 # redis
 docker run -it --rm --net=xnet -p 8080:8080 -v $PWD:/gh -e GOPATH=/gh/ed/l/go/examples/redis/app xgo sh -c '
   cd $GOPATH && go run main.go'

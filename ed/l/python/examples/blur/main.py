@@ -1,3 +1,4 @@
+import imagesize
 import cv2
 import numpy
 
@@ -18,6 +19,11 @@ def tblr(f, height, width):
     bottom = int(0.37 * height)
     left   = int(0.35 * width)
     right  = int(0.63 * width)
+  if f == './n.png':
+    top    = int(0.065 * height)
+    bottom = int(0.16 * height)
+    left   = int(0.49 * width)
+    right  = int(0.528 * width)
   return top, bottom, left, right
 
 
@@ -68,6 +74,22 @@ def b1(f):
   cv2.imwrite(f+'.r.png', frame)
 
 
-# b1('./t.png')
-b1('./y.png')
-# b1('./z.png')
+def b3(f):
+  width, height = imagesize.get(f)
+  top, bottom, left, right = tblr(f, height, width)
+  blur_bbox = numpy.ones(shape = (top, bottom, left, right))
+  frame[top:bottom, left:right] = blur_bbox
+  cv2.imwrite(f+'.r.png', frame)
+
+
+def b4(f):
+  width, height = imagesize.get(f)
+  frame = numpy.zeros((height, width, 3), numpy.uint8)
+  cv2.imwrite(f+'.r.png', frame)
+
+
+f=b4
+# f('./t.png')
+# f('./y.png')
+# f('./z.png')
+f('./n.png')

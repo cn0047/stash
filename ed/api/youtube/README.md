@@ -1,7 +1,8 @@
 YouTube
 -
 
-Extension: [Video Speed Controller](https://chrome.google.com/webstore/detail/video-speed-controller/nffaoalbilbmmfgbnbgppjihopabppdk/RK%3D2/RS%3DsdeaBShiWo3AFJdky6bPF3xKL6Y-).
+[API docs](https://developers.google.com/youtube/v3/docs/videos/insert)
+[Video Speed Controller Extension](https://chrome.google.com/webstore/detail/video-speed-controller/nffaoalbilbmmfgbnbgppjihopabppdk/RK%3D2/RS%3DsdeaBShiWo3AFJdky6bPF3xKL6Y-).
 
 Img for video: 1920x1080px!
 Video file name **MUST** contains keywords!
