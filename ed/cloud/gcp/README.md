@@ -7,6 +7,7 @@ Google Cloud
 [APIs](https://developers.google.com/api-client-library/)
 [locations](https://cloud.google.com/about/locations/)
 [machine types](https://cloud.google.com/compute/docs/machine-types)
+[tags by image](https://cloud.google.com/vision/docs/drag-and-drop)
 
 ````bash
 # ~/.google-cloud-sdk/bin/gcloud
