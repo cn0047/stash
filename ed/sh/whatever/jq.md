@@ -24,6 +24,7 @@ jq -r # raw output
 ... | jq '.items[]|.ImageLink' # ✅
 ... | jq '.items[]|.id,.name'
 ... | jq '.items[]|{id, name}'
+... | jq '.items|join(",")'
 ... | jq '.[]|= keys'          # 1st level keys
 ... | jq -r '.taskArns[0]'     # string without quotes
 
