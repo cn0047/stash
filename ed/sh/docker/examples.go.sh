@@ -438,6 +438,12 @@ docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' cn007b/go:2018-06-07 s
 '
 # docker run -it --rm -v $PWD:/app -w /app -e GOPATH='/app' cn007b/go:1.10 gometalinter ./...
 
+#### GO AppEngine all
+
+export GOPATH=$HOME/web/kovpak/gh/ed/cloud/gcp/gcp.appengine/examples.all/go
+cd $GOPATH
+$HOME/.gcloud/bin/gcloud app deploy -q src/go-app/app.yaml
+
 #### GO AppEngine one
 
 export GOPATH=$PWD/ed/google.appengine/go.examples/one
