@@ -15,6 +15,7 @@ memcached -n 16 -f 1.05 -L
 ````sh
 telnet 0.0.0.0 11211
 
+stats slabs
 stats items
 stats cachedump 2 100 # where 2 - items:${ID} from prev command and 100 - count of items to dump
 
