@@ -4,6 +4,7 @@ GitHub
 [Most Followed](https://github.com/search?utf8=%E2%9C%93&q=followers%3A%3E%3D10000&type=Users)
 [Top Repositories](https://github.com/search?q=stars:%3E1&s=stars&type=Repositories)
 [Sponsors](https://help.github.com/en/github/supporting-the-open-source-community-with-github-sponsors/about-github-sponsors)
+[status](https://www.githubstatus.com/)
 
 Don't forget to hit "Squash and merge" instead of "Merge pull request" for pr with > 1 commits.
 
