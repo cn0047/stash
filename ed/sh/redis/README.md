@@ -83,8 +83,17 @@ rpush mylist B
 rpush mylist C
 rpush mylist End
 rpop mylist        # delete from tail
+ltrim mylist 0 2   # trim from 0 element to 2nd element including (length will be 3)
 lrange mylist 0 -1 # print all values in a list
-llen mylist
+llen mylist        # list length
+
+# circular buffer, with length 3
+lpush mylist 1
+lpush mylist 2
+lpush mylist 3
+lpush mylist 4
+lrange mylist 0 -1
+ltrim mylist 0 2
 ````
 
 #### Hash:

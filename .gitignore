@@ -26,6 +26,7 @@ ed/l/go/**/pkg/
 ed/l/go/**/src/github.com
 ed/l/go/**/src/golang.org
 ed/l/go/**/src/gopkg.in
+ed/l/go/**/src/gocv.io
 
 # python
 **/__pycache__/
