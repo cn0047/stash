@@ -126,6 +126,9 @@ print "Not found: " . urldecode($_SERVER["REQUEST_URI"]);
 // http://testsite.test/<script>alert("TEST");</script>
 ?>
 ````
+````
+<noscript><p title="</noscript><img src=x onerror=alert(1)>">
+````
 
 FIX:
 Filter input escape output.
