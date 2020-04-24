@@ -26,7 +26,8 @@ func main() {
 
 	//radixSet()
 	//radixScript1()
-	radixCircularBuffer()
+	//radixCircularBuffer()
+	radixCircularBuffer2()
 }
 
 func getRadixPool() *radix.Pool {
@@ -79,6 +80,22 @@ func radixScript1() {
 		log.Printf("[radixScript set] error: %#v", err)
 	}
 	log.Printf("[radixScript set] res: %#v", res)
+}
+
+func radixCircularBuffer2() {
+	p := getRadixPool()
+	v := strconv.FormatInt(time.Now().Unix(), 10)
+	s := `
+		redis.call('LPUSH', KEYS[1], ARGV[1])
+		redis.call('LTRIM', KEYS[1], 0, 5)
+	`
+	res := ""
+	scrpt := radix.NewEvalScript(1, s).Cmd(&res, "cb", v)
+	err := p.Do(scrpt)
+	if err != nil {
+		log.Printf("[radix circular buffer 2] error: %#v", err)
+	}
+	log.Printf("[radix circular buffer 2] res: %#v", res)
 }
 
 func radixCircularBuffer() {
