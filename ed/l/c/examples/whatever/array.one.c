@@ -15,5 +15,6 @@ void one() {
 
 int main() {
     one();
+
     return 0;
 }
