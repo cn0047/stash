@@ -2,12 +2,17 @@ c
 -
 
 ````sh
-# osx
+f=ed/l/c/examples/whatever/hw.c
+
 # -Wall - warnings all
-gcc -o x -Wall ed/l/c/examples/whatever/hw.c && ./x
+gcc -o x -Wall $f && ./x
+
+clang -v
+clang -o x $f && ./x
 
 # osx
 cc -v
+cc -o x $f && ./x
 
 *.c          # source code
 *.obj or *.o # object code
@@ -19,12 +24,10 @@ cc -v
 <br>linker - link all `*.obj` files.
 
 Data types:
-* int (short, long)
+* int (unsigned, short, long)
 * float
 * double
 * char
-
-**string** `char str[] = "my string";`
 
 ````c
 const int x = 1;
@@ -38,9 +41,7 @@ short int y = 2;
 long int z = 3;
 byte b = 0x12;
 
-if (exp)
-if (exp) st else st
-if (exp) st else if (exp) st
+if (exp) st else if (exp) st else st
 switch (exp) {
   case cond: st break;
   default: st
@@ -48,6 +49,7 @@ switch (exp) {
 
 while (exp) {}
 do {} while(exp)
-for (ifexp; condexp; loopexp) {}
-for (;;) {}
+for (int i=0; i<10; i++) {}
 ````
+
+**string** `char str[] = "my string";`
