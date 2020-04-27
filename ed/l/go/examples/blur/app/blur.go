@@ -1,3 +1,5 @@
+// @example:
+// go run ed/l/go/examples/blur/app/blur.go ed/l/python/examples/blur/z.png
 package main
 
 import (
@@ -42,7 +44,6 @@ func b(f string) {
 }
 
 func main() {
-	p := os.Getenv("HOME") + "/web/kovpak"
-	f := p + "/gh/ed/l/python/examples/blur/z.png"
+	f := os.Args[1]
 	b(f)
 }
