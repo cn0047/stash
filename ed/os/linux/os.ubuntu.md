@@ -3,6 +3,7 @@ ubuntu
 
 ````sh
 apt-get install -y --force-yes
+apt-get update --fix-missing
 
 # search package
 apt-cache search htop
