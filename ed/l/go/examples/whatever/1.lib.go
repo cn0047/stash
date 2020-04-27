@@ -1,6 +1,14 @@
 package lib
 
 import (
+	"bytes"
+	"encoding/json"
+	"fmt"
+	"io"
+	"io/ioutil"
+	"net/http"
+	"net/http/httputil"
+	"net/url"
 	"strconv"
 )
 
@@ -125,4 +133,8 @@ func rtl(data interface{}) {
 	_, err2 := http.Post("https://realtimelog.herokuapp.com:443/sddjklskj", "application/json", bytes.NewBuffer(j))
 	if err2 != nil {
 	}
+}
+
+func GetPi() float32 {
+	return 3.14
 }

@@ -65,7 +65,6 @@ fswatch ./src | while read f; do echo $f; done # watch changes in directory
 mkdir -m 777 test                              # directory mode
 mkfifo mypipe                                  # create named pipe
 ss                                             # tool for sockets
-strace pwd                                     # to see what program `pwd` is doing
 uuid -n 1                                      # generates uuid
 
 nc -zv 10.0.2.2 22
@@ -106,6 +105,14 @@ write k
 for f in x*; do
   echo -e "\t [f]: $f"
 done
+````
+
+#### strace
+
+````sh
+strace pwd             # to see what program `pwd` is doing
+strace -c pwd          # benchmark `pwd`
+strace -o b.txt -c pwd # benchmark `pwd` into file
 ````
 
 #### cut
