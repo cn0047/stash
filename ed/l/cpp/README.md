@@ -6,7 +6,10 @@ c++
 ````sh
 f=ed/l/cpp/examples/whatever/hw.cpp
 
-g++ -o x $f && ./x
+g++ -w -o x $f && ./x
+
+ldconfig -p | grep opencv
+pkg-config --cflags --libs opencv
 ````
 
 ````cpp

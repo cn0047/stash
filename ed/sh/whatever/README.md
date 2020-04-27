@@ -6,6 +6,8 @@ shutdown -h now
 
 env # prints all ENV vars
 
+nproc # available processing units
+
 alias # show all aliases
 alias la='ls -A'
 
