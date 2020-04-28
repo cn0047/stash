@@ -68,7 +68,7 @@ def b1(f):
   top, bottom, left, right = tblr(f, height, width)
   print("h:{} w:{} \t t:{} b:{} l:{} r:{}".format(height, width, top, bottom, left, right))
   blur_bbox = frame[top:bottom, left:right]
-  ksize, sigmax, sigmay = p5()
+  ksize, sigmax, sigmay = p4()
   blur_bbox = cv2.GaussianBlur(blur_bbox, ksize, sigmax, sigmaY=sigmay)
   # blur_bbox = cv2.blur(blur_bbox, (99, 99))
   frame[top:bottom, left:right] = blur_bbox
@@ -92,5 +92,5 @@ def b4(f):
 f=b1
 # f('./t.png')
 # f('./y.png')
-f('./z.png')
-# f('./n.png')
+# f('./z.png')
+f('./n.png')
