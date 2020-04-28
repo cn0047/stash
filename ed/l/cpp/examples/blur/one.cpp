@@ -16,7 +16,7 @@ docker run -it --rm -v $PWD:/gh -w /gh spmallick/opencv-docker:opencv sh -c '
 using namespace cv;
 using namespace std;
 
-cv::Rect gr(int h, int w)
+cv::Rect gr_z(int h, int w)
 {
     int top    = int(0.14 * h);
     int bottom = int(0.25 * h);
@@ -24,6 +24,21 @@ cv::Rect gr(int h, int w)
     int right  = int(0.71 * w);
 
     return cv::Rect(left, top, right - left, bottom - top);
+}
+
+cv::Rect gr_n(int h, int w)
+{
+    int top    = int(0.065 * h);
+    int bottom = int(0.16 * h);
+    int left   = int(0.49 * w);
+    int right  = int(0.528 * w);
+
+    return cv::Rect(left, top, right - left, bottom - top);
+}
+
+cv::Rect gr(int h, int w)
+{
+    return gr_n(h, w);
 }
 
 int b(string f)

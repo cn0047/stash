@@ -1,6 +1,8 @@
 docker-go
 -
 
+ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
+
 # go
 version=1.13
 docker build -t cn007b/go:$version ./docker/$version
