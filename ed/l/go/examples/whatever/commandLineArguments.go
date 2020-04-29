@@ -12,4 +12,5 @@ func main() {
 	fmt.Printf("Limit value: %d \n", limit)
 }
 
-// go run ed/go/examples/whatever/commandLineArguments.go --limit 9
+// go run ed/l/go/examples/whatever/commandLineArguments.go --limit 9
+// go run ed/l/go/examples/whatever/commandLineArguments.go --limit=9
