@@ -4,6 +4,11 @@ import numpy
 
 
 def tblr(f, height, width):
+  if f == './a.png':
+    top    = int(0.835 * height)
+    bottom = int(0.898 * height)
+    left   = int(0.405 * width)
+    right  = int(0.527 * width)
   if f == './z.png':
     top    = int(0.14 * height)
     bottom = int(0.25 * height)
@@ -41,7 +46,7 @@ def p2():
   return ksize, sigmaX, sigmaY
 
 
-def p3():
+def p9():
   ksize = (99, 99)
   sigmaX = 99
   sigmaY = 99
@@ -68,7 +73,7 @@ def b1(f):
   top, bottom, left, right = tblr(f, height, width)
   print("h:{} w:{} \t t:{} b:{} l:{} r:{}".format(height, width, top, bottom, left, right))
   blur_bbox = frame[top:bottom, left:right]
-  ksize, sigmax, sigmay = p4()
+  ksize, sigmax, sigmay = p1()
   blur_bbox = cv2.GaussianBlur(blur_bbox, ksize, sigmax, sigmaY=sigmay)
   # blur_bbox = cv2.blur(blur_bbox, (99, 99))
   frame[top:bottom, left:right] = blur_bbox
@@ -93,4 +98,5 @@ f=b1
 # f('./t.png')
 # f('./y.png')
 # f('./z.png')
-f('./n.png')
+# f('./n.png')
+f('./a.png')
