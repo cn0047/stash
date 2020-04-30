@@ -26,12 +26,12 @@ const (
 
 func main() {
 	// f1()
-	// f2()
+	f2()
 	//f2b()
 	// f3()
 	// f4()
 	//f5()
-	f6()
+	// f6()
 }
 
 func f6() {
@@ -69,13 +69,11 @@ func f2() {
 	dateFormat := "2006-01-02"
 	d1, _ := time.Parse(dateFormat, "2018-08-01")
 	d2, _ := time.Parse(dateFormat, "2028-08-01")
-	fmt.Printf(
-		"[f2] 2️⃣ d1: %+v | d2: %+v | %+v, %+v \n",
-		d1,
-		d2,
-		d1.After(time.Now()),
-		d2.After(time.Now()),
-	) // [f2] 2️⃣ d1: 2018-08-01 00:00:00 +0000 UTC | d2: 2028-08-01 00:00:00 +0000 UTC | false, true
+
+	fmt.Printf("[f2] 2️⃣ d1: %+v | d2: %+v \n", d1, d2) // 2018-08-01 00:00:00 +0000 UTC | d2: 2028-08-01 00:00:00 +0000 UTC
+
+	fmt.Printf("[f2] 2️⃣ %+v, %+v \n", d1.After(time.Now()), d2.After(time.Now()))   // false, true
+	fmt.Printf("[f2] 2️⃣ %+v, %+v \n", d1.Before(time.Now()), d2.Before(time.Now())) // true, false
 }
 
 func f3() {

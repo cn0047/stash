@@ -30,7 +30,7 @@ func main() {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
-	jobsCount := 20
+	jobsCount := 50
 	workersCount := runtime.NumCPU()
 
 	jobs := jobsDispatcher(ctx, jobsCount, workersCount)
@@ -42,7 +42,6 @@ func main() {
 		<-signals
 		cancel()
 		fmt.Print("\n Exit.")
-		return
 	}()
 
 	wg.Wait()
