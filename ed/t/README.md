@@ -143,9 +143,11 @@ Common SLIs include latency, throughput, availability, error rate, durability, c
 Odd  (1, 3, 5...) -> x % 2 = 1.
 Even (2, 4, 6...) -> x % 2 = 0.
 
-3*4 # 3 - multiplicand; 4 - multiplicator (factor)
-3/4 # 3 - numerator; 4 - denominator
-x^2 # x - base; 2 - power
+3+4 = 7    # 3 - addend 1;     4 - addend 2;               7    - sum;
+3-4 = -1   # 3 - minuend;      4 - subtrahend;             -1   - difference;
+3*4 = 12   # 3 - multiplicand; 4 - multiplicator (factor); 12   - product;
+3/4 = 0.75 # 3 - numerator;    4 - denominator;            0.75 - ;
+3^4 = 81   # 3 - base;         4 - power/exponent;
 ````
 
 ````sh

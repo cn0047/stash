@@ -1,11 +1,3 @@
-/*
-@example:
-docker run -it --rm -v $PWD:/gh -w /gh spmallick/opencv-docker:opencv sh -c '
-  f=ed/l/cpp/examples/blur/one.cpp
-  g++ -w $f -o x `pkg-config --cflags --libs opencv`
-  ./x /gh/ed/l/python/examples/blur/z.png
-'
-*/
 
 #include <opencv2/core/core.hpp> 
 #include <opencv2/highgui/highgui.hpp>

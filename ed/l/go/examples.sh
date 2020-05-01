@@ -1,5 +1,4 @@
-GO (GOLANG)
--
+# go
 
 # docker build -t xgo ./docker/go
 docker pull cn007b/go:latest
