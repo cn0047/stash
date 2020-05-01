@@ -2,10 +2,8 @@ c
 -
 
 ````sh
-f=ed/l/c/examples/whatever/hw.c
-
 # -Wall - warnings all
-gcc -o x -Wall $f && ./x
+gcc -o x -Wall $f
 
 clang -v
 clang -o x $f && ./x
@@ -23,11 +21,20 @@ cc -o x $f && ./x
 <br>gcc - GNU Compiler Collection.
 <br>linker - link all `*.obj` files.
 
-Data types:
+#### Data types
+
 * int (unsigned, short, long)
 * float
 * double
 * char
+
+* enum
+* typedef
+
+* array
+* struct
+* pointer
+* union
 
 ````c
 const int x = 1;
@@ -53,3 +60,5 @@ for (int i=0; i<10; i++) {}
 ````
 
 **string** `char str[] = "my string";`
+
+**union** special data type that allows store different data types in the same memory location.

@@ -1,4 +1,4 @@
-GO
+Go (Golang)
 -
 <br>1.13
 <br>1.10.1

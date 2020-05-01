@@ -73,9 +73,9 @@ func radixScript1() {
 		return k
 	`
 	res := ""
-	scrpt := radix.NewEvalScript(1, s).Cmd(&res, "rkey", "30")
+	script := radix.NewEvalScript(1, s).Cmd(&res, "rkey", "30")
 	p := getRadixPool()
-	err := p.Do(scrpt)
+	err := p.Do(script)
 	if err != nil {
 		log.Printf("[radixScript set] error: %#v", err)
 	}
@@ -90,8 +90,8 @@ func radixCircularBuffer2() {
 		redis.call('LTRIM', KEYS[1], 0, 5)
 	`
 	res := ""
-	scrpt := radix.NewEvalScript(1, s).Cmd(&res, "cb", v)
-	err := p.Do(scrpt)
+	script := radix.NewEvalScript(1, s).Cmd(&res, "cb", v)
+	err := p.Do(script)
 	if err != nil {
 		log.Printf("[radix circular buffer 2] error: %#v", err)
 	}
@@ -106,8 +106,8 @@ func radixCircularBuffer() {
 		if (redis.call("LLEN", KEYS[1]) > 5) then redis.call("LPOP", KEYS[1]) end
 	`
 	res := ""
-	scrpt := radix.NewEvalScript(1, s).Cmd(&res, "cb", v)
-	err := p.Do(scrpt)
+	script := radix.NewEvalScript(1, s).Cmd(&res, "cb", v)
+	err := p.Do(script)
 	if err != nil {
 		log.Printf("[radix circular buffer] error: %#v", err)
 	}

@@ -4,10 +4,6 @@ c++
 [docs](https://isocpp.org/)
 
 ````sh
-f=ed/l/cpp/examples/whatever/hw.cpp
-
-g++ -w -o x $f && ./x
-
 ldconfig -p | grep opencv
 pkg-config --cflags --libs opencv
 ````
@@ -16,3 +12,28 @@ pkg-config --cflags --libs opencv
 while (exp) {}
 for (int i=0; i<10; i++) {}
 ````
+#### Data types
+
+Primitive Data Types:
+* int
+* float
+* Character
+* Boolean
+* Double Floating Point
+* Valueless or Void
+* Wide Character
+
+Derived Data Types:
+* Array
+* Pointer
+* Reference
+* Function
+
+Abstract or User-Defined Data Types:
+* class
+* Structure
+* Union
+* Enumeration
+* Typedef defined DataType
+
+**vector**.

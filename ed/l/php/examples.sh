@@ -1,5 +1,4 @@
-PHP
--
+# php
 
 docker pull cn007b/php:7.1-protobuf-3
 docker tag cn007b/php:7.1-protobuf-3 xphp

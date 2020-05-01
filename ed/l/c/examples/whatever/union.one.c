@@ -5,11 +5,13 @@ union otoa {
   float RealNum;
 };
 
-void one() {
-  printf("[z] size = %d\n", (int)sizeof(union otoa));
+void one()
+{
+  printf("[1] size = %d\n", (int)sizeof(union otoa)); // [1] size = 4
 };
 
-int main() {
+int main()
+{
     one();
 
     return 0;

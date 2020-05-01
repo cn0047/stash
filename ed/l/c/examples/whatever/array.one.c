@@ -2,7 +2,8 @@
 
 static int vals[] = {4, 5, 6};
 
-void one() {
+void one()
+{
     size_t nib = sizeof(vals); // unsigned long - in bytes
     size_t length = sizeof(vals) / sizeof(vals[0]);
     printf("vals array size in bytes = %lu and length = %lu \n", nib, length);
@@ -13,7 +14,8 @@ void one() {
     }
 }
 
-int main() {
+int main()
+{
     one();
 
     return 0;

@@ -1,18 +1,20 @@
 #include <stdio.h>
 
 struct hello {
-    int index;
-    float code;
+  int index;
+  float code;
 };
 
-void one() {
-    struct hello h = {5, 200};
-    printf("[1] index = %d; code = %0.1f \n", h.index, h.code);
+void one()
+{
+  struct hello h = {5, 200};
+  printf("[1] index = %d; code = %0.1f \n", h.index, h.code);
 };
 
 typedef unsigned char byte;
 
-struct Color {
+struct Color
+{
   byte Red;
   byte Green;
   byte Blue;
@@ -23,7 +25,8 @@ struct Color {
 //   short Second;
 // } Layout;
 
-void two() {
+void two()
+{
   struct Color c = {225, 128};
   printf("[2] %d \n", c.Green);
 
@@ -31,7 +34,8 @@ void two() {
   // printf("[2] %d \n", l.First);
 };
 
-int main() {
+int main()
+{
     one();
     two();
 
