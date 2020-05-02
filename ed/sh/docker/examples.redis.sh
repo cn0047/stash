@@ -1,7 +1,5 @@
-Redis
--
+# Redis
 
-#### Redis
 
 # init redis
 docker run -it --rm --net=xnet -p 6379:6379 --name xredis --hostname xredis redis:latest

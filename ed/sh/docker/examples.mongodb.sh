@@ -1,7 +1,5 @@
-MongoDB
--
+# MongoDB
 
-#### MongoDB
 
 docker run -it --rm --net=xnet -p 27017:27017 --hostname xmongo --name xmongo \
     -v $PWD/.docker/.data/mongodb:/data/db mongo:latest
