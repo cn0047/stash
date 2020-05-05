@@ -71,12 +71,6 @@ else:
 for el in arr:
   print(el)
 
-range(5, 10, 2) == [5, 7, 9]
-
-t = (1,2,3)
-print(t) # (1, 2, 3)
-print(*t) # 1 2 3
-
 def trace(f, *args, **kwargs):
   return f(*args, **kwargs)
 
@@ -196,6 +190,12 @@ arr = ['a', 'b', True] # list
 len(arr)
 del arr[1]
 'b' in arr # True
+
+data[1:]   # remove 1st el
+data[:-1]  # remove last el
+data[-1:]  # get last el
+data[::-1] # reverse list
+data[:]    # copy
 ````
 
 **dict**.
@@ -209,6 +209,10 @@ md = {'foo': 1, "name": "Mark", "active": true} # dict - dictionary
 ````py
 t = ("f", 2, False) # tuple
 t[0] # "f"
+
+t = (1,2,3)
+print(t) # (1, 2, 3)
+print(*t) # 1 2 3
 ````
 
 **set** unordered collection on unique elements.
@@ -221,6 +225,12 @@ s.add("orange")
 "banana" in s # False
 s.remove("banana")
 len(s)
+````
+
+**range**.
+
+````py
+range(5, 10, 2) == [5, 7, 9]
 ````
 
 #### Features
