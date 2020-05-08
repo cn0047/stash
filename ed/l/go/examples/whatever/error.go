@@ -7,18 +7,23 @@ import (
 
 func main() {
 	//one()
-	two()
+	// two()
+	f3()
+}
+
+func f3() {
+	e := fmt.Errorf("err1")
+	println("[f3]", e.Error()) // [f3] err1å
 }
 
 func two() {
-	ErrorCustom1 := fmt.Errorf("err1")
-	ErrorCustom2 := fmt.Errorf("err2")
-	//ErrorCustom3 := fmt.Errorf("err3")
-	err := ErrorCustom1
-	if verr, ok := err.(*okjwt.ValidationError); ok {
-	if err.Er & (ErrorCustom1 | ErrorCustom2) {
-
-	}
+	//ErrorCustom1 := fmt.Errorf("err1")
+	//ErrorCustom2 := fmt.Errorf("err2")
+	////ErrorCustom3 := fmt.Errorf("err3")
+	//err := ErrorCustom1
+	//if verr, ok := err.(*okjwt.ValidationError); ok {
+	//if err.Er & (ErrorCustom1 | ErrorCustom2) {
+	//}
 }
 
 func one() {

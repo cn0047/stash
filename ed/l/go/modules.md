@@ -57,7 +57,7 @@ go mod vendor
 
 go doc rsc.io/quote/v3
 
-# update all
+# update all ✅
 go get -u ./... or go get -u=patch ./... # update all direct and indirect dependencies
 go get -u ./...
 go get -u all

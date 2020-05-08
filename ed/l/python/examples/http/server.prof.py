@@ -1,6 +1,7 @@
 # @example: python3 ed/l/python/examples/http/server.prof.py
 # @example: curl localhost:8080
 
+import time
 import cProfile
 from http.server import HTTPServer, BaseHTTPRequestHandler
 
@@ -18,7 +19,7 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
         self.wfile.write(msg.encode())
 
         pr.disable()
-        pr.dump_stats('callgrind.cprof')
+        pr.dump_stats('callgrind.cprof.{}'.format(time.time()))
 
 
 def fib(n: int) -> int:
