@@ -30,7 +30,7 @@ func main() {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
-	jobsCount := 50
+	jobsCount := 20
 	workersCount := runtime.NumCPU()
 
 	jobs := jobsDispatcher(ctx, jobsCount, workersCount)
@@ -110,7 +110,9 @@ func worker(ctx context.Context, wg *sync.WaitGroup, jobs <-chan Job) {
 		select {
 		case j, ok := <-jobs:
 			if ok {
-				execJob(ctx, id, j)
+				err := execJob(ctx, id, j)
+				if err != nil {
+				}
 				wg.Done()
 			} else {
 				fmt.Printf("\n %s %s, jobs chan is empty.", WorkerStopMsg, id)
@@ -126,7 +128,7 @@ func worker(ctx context.Context, wg *sync.WaitGroup, jobs <-chan Job) {
 	}
 }
 
-func execJob(ctx context.Context, workerId string, j Job) {
+func execJob(ctx context.Context, workerId string, j Job) error {
 	fmt.Printf("\n\t rcvd job %v worker %s.", j.Val, workerId)
 
 	select {
@@ -143,7 +145,7 @@ func execJob(ctx context.Context, workerId string, j Job) {
 		select {
 		case <-done:
 			fmt.Printf("\n\t FNSH job %v worker %s.", j.Val, workerId)
-			return
+			return fmt.Errorf("exec error")
 		default:
 			time.Sleep(Tick)
 			print(".")
