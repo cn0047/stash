@@ -54,6 +54,7 @@ HEAD^^ == HEAD~2
 git commit -m 'Message'
 git commit -m "PROJ-123 my comment..." # for JIRA:
 git commit --amend # update commit message
+git commit --amend --author="V.Kovpak <cn007b@gmail.com>"
 
 # remove untracked files
 git clean -fd
