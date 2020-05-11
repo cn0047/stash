@@ -7,7 +7,21 @@ import (
 )
 
 func main() {
-	f1()
+	//f1()
+	f2()
+}
+
+func f2() {
+	data := map[string]interface{}{"code": 204, "msg": "no content"}
+	j, err := json.Marshal(data)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("Result: \n%s\n", j)
+	err2 := ioutil.WriteFile("/tmp/x2.json", j, 0644)
+	if err2 != nil {
+		panic(err2)
+	}
 }
 
 func f1() {
