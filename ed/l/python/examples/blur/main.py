@@ -5,10 +5,21 @@ import numpy
 
 def tblr(f, height, width):
   if f == './a.png':
+    # everlast
     top    = int(0.835 * height)
     bottom = int(0.898 * height)
     left   = int(0.405 * width)
     right  = int(0.527 * width)
+    # face
+    top    = int(0.14 * height)
+    bottom = int(0.36 * height)
+    left   = int(0.32 * width)
+    right  = int(0.56 * width)
+    # human
+    top    = int(0.02 * height)
+    bottom = int(0.99 * height)
+    left   = int(0.02 * width)
+    right  = int(0.99 * width)
   if f == './z.png':
     top    = int(0.14 * height)
     bottom = int(0.25 * height)
