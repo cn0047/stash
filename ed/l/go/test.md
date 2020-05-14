@@ -80,7 +80,7 @@ t.Fail()                            // mark test as failed  & CONTINUE further t
 t.Failed()                          // is test failed
 t.FailNow()                         // mark test as failed  & STOP further test execution
 t.Fatal()                           // mark test as failed  & STOP further test execution
-t.Fataf("Msg")                      // mark test as failed  & STOP further test execution
+t.Fatalf("Msg")                     // mark test as failed  & STOP further test execution
 
 b.RunParallel(func(pb *testing.PB) {})
 if testing.Short() { // go test -short }

@@ -515,9 +515,10 @@ N - add the next line
 -n # quiet
 
 echo 'Some text or regexp' | sed 's/regexp/replacement/g' # Some text or replacement
-echo 'cat and dog' | sed -r "s/(cat|dog)s?/\1s/g" # cats and dogs
-echo 'xxx and zzz' | sed 's/x/y/g' # yyy and zzz
-echo '1 one; 2 two' | sed 's/1//g; s/2//g' #  one;  two
+echo 'cat and dog'         | sed -r "s/(cat|dog)s?/\1s/g" # cats and dogs
+echo 'xxx and zzz'         | sed 's/x/y/g'                # yyy and zzz
+echo '1 one; 2 two'        | sed 's/1//g; s/2//g'         #  one;  two
+echo "{'foo':'bar'}"       | sed "s/'/\"/g"               # replace ' to "
 
 echo "Version: 4.4.0.157.165" | sed -E 's/.*Version: ([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)\.[0-9]+/\1/'
 

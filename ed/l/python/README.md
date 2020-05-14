@@ -48,6 +48,8 @@ python3 -m unittest
 global myvar
 nonlocal myvar # don't use var from enclosing scope
 
+print(s, end='', flush=True)
+
 # partition
 o, _, t = "v1:v2".partition(':')
 print(o, t) # v1 v2
