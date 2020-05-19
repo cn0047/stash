@@ -23,6 +23,8 @@ info keyspace
 set mykey 'Hello'
 set foo 'bar'
 
+incr x # increment by 1, if key not exists will create new one
+
 # EX seconds      - expire time
 # PX milliseconds - expire time in milliseconds
 # NX              - set if does not exist

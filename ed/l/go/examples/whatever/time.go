@@ -26,12 +26,19 @@ const (
 
 func main() {
 	// f1()
-	f2()
-	//f2b()
+	// f2()
+	// f2b()
 	// f3()
 	// f4()
-	//f5()
+	// f5()
 	// f6()
+	f7()
+}
+
+func f7() {
+	var t time.Time
+	fmt.Printf("[f7|1] IsZero=%+v t=%v \n", t.IsZero(), t)
+	fmt.Printf("[f7|2] now before t=%v \n", time.Now().Before(t))
 }
 
 func f6() {
@@ -70,10 +77,11 @@ func f2() {
 	d1, _ := time.Parse(dateFormat, "2018-08-01")
 	d2, _ := time.Parse(dateFormat, "2028-08-01")
 
-	fmt.Printf("[f2] 2️⃣ d1: %+v | d2: %+v \n", d1, d2) // 2018-08-01 00:00:00 +0000 UTC | d2: 2028-08-01 00:00:00 +0000 UTC
+	fmt.Printf("[f2|1] d1: %+v | d2: %+v \n", d1, d2) // 2018-08-01 00:00:00 +0000 UTC | d2: 2028-08-01 00:00:00 +0000 UTC
 
-	fmt.Printf("[f2] 2️⃣ %+v, %+v \n", d1.After(time.Now()), d2.After(time.Now()))   // false, true
-	fmt.Printf("[f2] 2️⃣ %+v, %+v \n", d1.Before(time.Now()), d2.Before(time.Now())) // true, false
+	fmt.Printf("[f2|2] %+v, %+v \n", d1.After(time.Now()), d2.After(time.Now()))   // false, true
+	fmt.Printf("[f2|3] %+v, %+v \n", d1.Before(time.Now()), d2.Before(time.Now())) // true, false
+	fmt.Printf("[f2|4] %+v, %+v \n", d1.Before(d2), d1.After(d2))                  // true, false
 }
 
 func f3() {

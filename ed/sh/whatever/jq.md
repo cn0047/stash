@@ -5,7 +5,7 @@ jq
 [play](https://jqplay.org/)
 
 ````sh
-jq -c # compact json
+jq -c # compact json (inline)
 jq -C # colorize
 jq -M # don't colorize
 jq -r # raw output

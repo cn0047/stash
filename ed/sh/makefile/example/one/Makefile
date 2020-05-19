@@ -1,3 +1,9 @@
+# @example:
+# make -f ed/sh/makefile/example/one/Makefile etrp
+# make -f ed/sh/makefile/example/one/Makefile etrp2
+# make -f ed/sh/makefile/example/one/Makefile etrp_all
+# make -f ed/sh/makefile/example/one/Makefile var
+
 TOP := "TOP"
 ROOT = "ROOT"
 TOP_ROOT_PATH=$(TOP):$(ROOT)/path
@@ -5,7 +11,12 @@ TOP_ROOT_PATH=$(TOP):$(ROOT)/path
 export GOPATH=${CURDIR}
 
 etrp:
-	echo $(TOP_ROOT_PATH)
+	echo 'TOP_ROOT_PATH='$(TOP_ROOT_PATH)
+
+etrp2:
+	@echo "\nTOP_ROOT_PATH=$(TOP_ROOT_PATH)\n"
+
+etrp_all: etrp etrp2
 
 var:
 	x=$(shell echo 200)

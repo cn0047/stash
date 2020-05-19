@@ -1,11 +1,6 @@
 Makefile
 -
 
-````sh
-make -f ed/sh/sh.makefile/example/one/Makefile etrp
-make -f ed/sh/sh.makefile/example/one/Makefile var
-````
-
 Makefiles contain five kinds of things:
 * explicit rules,
 * implicit rules,
