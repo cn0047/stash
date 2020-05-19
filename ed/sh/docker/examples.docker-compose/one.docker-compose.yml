@@ -1,0 +1,21 @@
+# docker-compose -f ed/sh/docker/examples.docker-compose/one.docker-compose.yml up
+version: '2'
+services:
+    xsh1:
+        image: cn007b/debian
+        volumes:
+            - $HOME/web/kovpak/gh:/gh
+        command: bash -c "sllep 10; . /gh/ed/l/bash/examples/log.sh xsh1"
+    xsh2:
+        image: cn007b/debian
+        volumes:
+            - $HOME/web/kovpak/gh:/gh
+        command: bash -c ". /gh/ed/l/bash/examples/log.sh xsh2"
+    xall:
+        image: cn007b/debian
+        volumes:
+            - $HOME/web/kovpak/gh:/gh
+        depends_on:
+            - xsh1
+            - xsh2
+        command: bash -c ". /gh/ed/l/bash/examples/log.sh xall"
