@@ -108,6 +108,18 @@ for f in x*; do
 done
 ````
 
+#### test
+
+````sh
+test -d $d    # is dir
+test -f $f    # is file
+test -p $pipe # pipe
+test -x $x    # executable
+test -L $f    # symbolic link
+test -S $s    # socket
+test -z $str  # true if length of $str is zero
+````
+
 #### strace
 
 ````sh

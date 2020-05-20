@@ -12,11 +12,12 @@ import (
 	"strconv"
 )
 
-str := strconv.FormatInt(int64, 10)                       // int64 -> str
-str := strconv.FormatInt(int64(int32), 10)                // int32 -> str
-int, err := strconv.Atoi("-42")                           // str   -> int
-int64, err := strconv.ParseInt(str, 10, 32); int32(int64) // str   -> int32
-int64, err := strconv.ParseInt(str, 10, 64);              // str   -> int64
+str := strconv.FormatInt(int64, 10)                           // int64   -> str
+str := strconv.FormatInt(int64(int32), 10)                    // int32   -> str
+int, err := strconv.Atoi("-42")                               // str     -> int
+int64, err := strconv.ParseInt(str, 10, 32); int32(int64)     // str     -> int32
+int64, err := strconv.ParseInt(str, 10, 64);                  // str     -> int64
+s := fmt.Sprintf("%.0f", fl64); int32, err := strconv.Atoi(s) // float64 -> int32
 
 if !regexp.MustCompile(`^[\d]+$`).MatchString(ds) {}
 
