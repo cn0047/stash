@@ -41,14 +41,6 @@ eu-central-1 # EU (Frankfurt)
 aws sts get-caller-identity
 ````
 
-# CloudFront (CDN)
-
-````sh
-aws cloudfront list-distributions
-
-aws cloudfront get-distribution --id $id
-````
-
 # Elastic Beanstalk
 
 EB - service for deploying and scaling web applications and services.
