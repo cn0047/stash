@@ -130,8 +130,6 @@ __enter__() # enter context (with keyword)
 __end__() # exit context (with keyword)
 __exit__()
 
-@staticmethod
-@abstractmethod
 @classmethod # bound to a class not to instance, like staticmethod.
 @property # getter
 @propertyName.setter # setter
@@ -227,6 +225,11 @@ s.add("orange")
 "banana" in s # False
 s.remove("banana")
 len(s)
+
+s = set()
+s |= {1} # add into set
+s |= {2}
+s -= {1} # delete from set
 ````
 
 **range**.

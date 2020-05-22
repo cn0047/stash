@@ -3,14 +3,14 @@ Design Patterns
 
 Design patterns offer a common solution for a common problem in the form of classes working together.
 
-1. Creational:
+1. Creational (interface to create object):
     * abstractFactory
     * builder (constructor)
     * factoryMethod
     * prototype
     * singleton
 
-2. Structural:
+2. Structural (way to put objects together):
     * adapter
     * bridge - decouple an abstraction from its implementation
     * composite - "compose" objects into tree structures
@@ -19,7 +19,7 @@ Design patterns offer a common solution for a common problem in the form of clas
     * flyweight - lazy load
     * proxy
 
-3. Behaviour:
+3. Behaviour (how classes interface each other and how program operates):
     * chainOfResponsibility - each object contains logic and link to the next
     * command - object encapsulate all information needed to call a method
     * dependencyInjection - IoC
@@ -127,7 +127,8 @@ to be selected at runtime*.
 **Template method** - it’s another way of encapsulation piece of algorithms
 so the sub-classes can hook themselves right into computation
 any time they want.
-For example: applying same (template) approach for bunch of stuff.
+For example: applying same (template) approach for bunch of stuff:
+bus, plain, boat: start engine, leave terminal, entertainment, arrive, etc.
 
 **Visitor** - is a way of separating an algorithm from an object structure
 on which it operates. A practical result of this separation

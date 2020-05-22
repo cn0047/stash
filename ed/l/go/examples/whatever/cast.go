@@ -48,7 +48,8 @@ func main() {
 	//f2()
 	//f3()
 	//f4()
-	f5()
+	//f5()
+	f6()
 }
 
 func f1() {
@@ -92,9 +93,7 @@ func f4() {
 	if err != nil {
 	}
 
-	v := getValue(&f2)
-
-	fmt.Printf("[f4] %#v \n", v) // [f4] "f4"
+	fmt.Printf("[f4] %#v \n", getValue(&f2)) // [f4] "f4"
 }
 
 func f5() {
@@ -111,7 +110,22 @@ func f5() {
 	if err != nil {
 	}
 
-	v := getValue(&f2)
+	fmt.Printf("[f5] %#v \n", getValue(&f2)) // [f5] "f5"
+}
 
-	fmt.Printf("[f5] %#v \n", v) // [f5] "f5"
+func f6() {
+	f1 := Foo{Foo: "f6"}
+	var v1 Valuable
+	v1 = &f1
+
+	j, err := json.Marshal(v1)
+	if err != nil {
+	}
+
+	var f2 Foo
+	err = json.Unmarshal(j, &f2)
+	if err != nil {
+	}
+
+	fmt.Printf("[f6] %#v \n", getValue(&f2)) // [f6] "f6"
 }
