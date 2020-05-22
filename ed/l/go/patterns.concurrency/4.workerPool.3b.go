@@ -47,59 +47,33 @@ func main() {
 func run(ctx context.Context) []error {
 	jobsCount := 13
 	workersCount := runtime.NumCPU()
+	jobsCount = 50
+	workersCount = 3
 
 	jobs := jobsDispatcher(ctx, jobsCount, workersCount)
 	wg, errs := workerPool(ctx, jobs, jobsCount, workersCount)
-	er := readErrors(errs, jobsCount)
-
 	wg.Wait()
-	close(errs)
 
-	return er.getErrors()
+	return errs.Errors
 }
 
-type ErrorsReader struct {
-	captured []error
-	sync.WaitGroup
+type ErrorGroup struct {
+	wg     sync.WaitGroup
+	mu     sync.Mutex
+	Errors []error
 }
 
-func (e *ErrorsReader) getErrors() []error {
-	e.Wait()
-	return e.captured
-}
-
-func readErrors(errs <-chan error, size int) *ErrorsReader {
-	er := &ErrorsReader{captured: make([]error, 0, size)}
-	er.Add(1)
-
-	go func() {
-		defer func() {
-			er.Done()
-		}()
-
-		for {
-			select {
-			case err, ok := <-errs:
-				if !ok {
-					return
-				}
-				er.captured = append(er.captured, err)
-			default:
-				time.Sleep(Tick)
-			}
-		}
-	}()
-
-	return er
+func (e *ErrorGroup) appendErr(err error) {
+	e.mu.Lock()
+	defer e.mu.Unlock()
+	e.Errors = append(e.Errors, err)
 }
 
 func jobsDispatcher(ctx context.Context, jobsCount int, consumersCount int) <-chan Job {
 	jobs := make(chan Job, consumersCount)
 
 	go func() {
-		defer func() {
-			close(jobs)
-		}()
+		defer close(jobs)
 
 		for v := 0; v < jobsCount; v++ {
 			err := produceJob(ctx, jobs, v)
@@ -131,8 +105,8 @@ func produceJob(ctx context.Context, jobs chan<- Job, v int) error {
 
 func workerPool(
 	ctx context.Context, jobs <-chan Job, jobsCount int, workersCount int,
-) (*sync.WaitGroup, chan error) {
-	errs := make(chan error, workersCount)
+) (*sync.WaitGroup, *ErrorGroup) {
+	errs := &ErrorGroup{}
 	wg := &sync.WaitGroup{}
 	wg.Add(jobsCount)
 
@@ -153,7 +127,7 @@ func RandId() string {
 	return string(b)
 }
 
-func worker(ctx context.Context, wg *sync.WaitGroup, jobs <-chan Job, errs chan<- error) {
+func worker(ctx context.Context, wg *sync.WaitGroup, jobs <-chan Job, errs *ErrorGroup) {
 	id := RandId()
 	fmt.Printf("\n %s %s.", WorkerStartMsg, id)
 
@@ -166,10 +140,7 @@ func worker(ctx context.Context, wg *sync.WaitGroup, jobs <-chan Job, errs chan<
 			}
 			err := execJob(ctx, id, j)
 			if err != nil {
-				er := sendError(ctx, errs, err)
-				if errors.Is(er, context.Canceled) {
-					return
-				}
+				errs.appendErr(err)
 			}
 			wg.Done()
 		case <-ctx.Done():
@@ -178,19 +149,6 @@ func worker(ctx context.Context, wg *sync.WaitGroup, jobs <-chan Job, errs chan<
 		default:
 			time.Sleep(Tick)
 			fmt.Print("r")
-		}
-	}
-}
-
-func sendError(ctx context.Context, errs chan<- error, err error) error {
-	for {
-		select {
-		case errs <- err:
-			return nil
-		case <-ctx.Done():
-			return ctx.Err()
-		default:
-			time.Sleep(Tick)
 		}
 	}
 }

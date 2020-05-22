@@ -28,7 +28,7 @@ SHOW WARNINGS LIMIT 1;
 SELECT CONNECTION_ID();
 
 SELECT VERSION();
-SELECT USER();
+SELECT USER();            -- Select current user.
 SELECT * FROM mysql.user; -- Select all mysql users.
 
 SHOW GRANTS FOR 'usr';
