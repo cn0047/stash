@@ -37,9 +37,7 @@ us-east-1    # US East (N. Virginia)
 eu-central-1 # EU (Frankfurt)
 ````
 
-````sh
-aws sts get-caller-identity
-````
+Bastion host - special-purpose computer on a network specifically designed and configured to withstand attacks.
 
 # Elastic Beanstalk
 
