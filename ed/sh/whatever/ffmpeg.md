@@ -43,7 +43,9 @@ ffmpeg \
 
 
 # change audio volume (256=normal)
-ffmpeg -vol volume
+ffmpeg -i $fmov -vol 256 'res-'$fmov
+ffmpeg -i $fmov -vcodec copy -af "volume=1dB" 'res-'$fmov
+ffmpeg -i $fmov -vcodec copy -af "volume=-1dB" 'res-'$fmov
 
 ffmpeg \
 -y \                              # global options

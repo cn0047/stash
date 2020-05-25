@@ -153,10 +153,18 @@ __exit__()
 Everything is an object.
 
 ````py
+from decimal import Decimal
 5/2  # 2.5
 5//2 # 2
-Decimal('0.8') - Decimal('0.7')
+5%2  # 1
+Decimal('0.8') - Decimal('0.7') # Decimal('0.1')
 
+-7 % 3                       # 2
+Decimal('-7') % Decimal('3') # Decimal('-1')
+
+# round func for Decimal
+round(2.675, 2)            # 2.67
+round(Decimal('2.675'), 2) # Decimal('2.68')
 
 # helpful stuff:
 from collections import Counter, defaultdict, namedtuple, deque

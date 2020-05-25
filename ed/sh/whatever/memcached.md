@@ -15,16 +15,32 @@ memcached -n 16 -f 1.05 -L
 ````sh
 telnet 0.0.0.0 11211
 
+stats                 # all stats
+stats detail
+stats sizes
+stats malloc
 stats slabs
 stats items
 stats cachedump 2 100 # where 2 - items:${ID} from prev command and 100 - count of items to dump
 
-set key <flags> <ttl> <size>
-# set key 0 60 5\r\nvalue
-# set key 0 60 5\r\ndata\r\n
-incr key 2
-decr key 5
-get key
+# set KEY FLAGS TTL LENGTH_IN_BYTES {PRESS_ENTER}
+# actual data
+
+add     # like set
+append  # like set
+prepend # like set
+replace # like set
+cas
+
+set mykey1 0 0 3
+foo
+get mykey1
+
+set mykey2 0 0 1
+7
+incr mykey2 2
+decr mykey2 5
+
 delete key
 
 flush_all

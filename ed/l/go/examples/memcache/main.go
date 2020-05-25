@@ -7,13 +7,54 @@ import (
 	"github.com/bradfitz/gomemcache/memcache"
 )
 
+const (
+	Purple = "\033[35m"
+	Cyan   = "\033[36m"
+	Black  = "\033[0m"
+	Tick   = 500 * time.Millisecond
+)
+
 var (
 	mc *memcache.Client
 )
 
 func main() {
 	initMC()
+	//f1()
+	f4()
+	fmt.Scanln()
+}
 
+func f4() {
+	k := "k1"
+	f2(k)
+	for i := 0; i < 100; i++ {
+		f3(k)
+	}
+}
+
+func f3(k string) {
+	go func() {
+		for {
+			v, _ := get(k)
+			fmt.Printf("%s%s%s ", Black, v, Black)
+			time.Sleep(Tick)
+		}
+	}()
+}
+
+func f2(k string) {
+	set(k, "1", 0)
+	go func() {
+		for {
+			v, _ := incr(k, 1)
+			fmt.Printf("%s%v%s ", Purple, v, Black)
+			time.Sleep(Tick)
+		}
+	}()
+}
+
+func f1() {
 	k := "foo15"
 	var ttl int32
 	ttl = 30                                              // perfect
@@ -48,13 +89,20 @@ func exists(key string) (bool, error) {
 	return true, nil
 }
 
-func set(key string, val string, ttl int32) {
-	err := mc.Set(&memcache.Item{Key: key, Value: []byte(val), Expiration: ttl})
-	fmt.Printf("[SET] ✅ %#v \n", err)
+func incr(key string, delta uint64) (uint64, error) {
+	val, err := mc.Increment(key, delta)
+	return val, err
 }
 
-func get(key string) {
+func set(key string, val string, ttl int32) error {
+	err := mc.Set(&memcache.Item{Key: key, Value: []byte(val), Expiration: ttl})
+	return err
+}
+
+func get(key string) ([]byte, error) {
 	item, err := mc.Get(key)
-	fmt.Printf("[get] 🔴 %#v \n", err)
-	fmt.Printf("[get] 🎾 %#v \n \t val: %s \n", item, item.Value)
+	if err != nil {
+		return nil, err
+	}
+	return item.Value, nil
 }
