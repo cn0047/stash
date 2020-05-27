@@ -89,6 +89,7 @@ go tool fix # finds Go programs that use old APIs and rewrites them to use newer
 gorename # Performs precise type-safe renaming of identifiers
 gomvpkg # moves go packages, updating import declarations
 
+# Gopkg.toml, Gopkg.lock
 dep init
 dep status
 dep ensure         # ensure a dependency is safely vendored in the project
