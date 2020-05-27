@@ -27,6 +27,12 @@ type Job struct {
 }
 
 func main() {
+	startedAt := time.Now().UnixNano()
+	defer func() {
+		finishedAt := time.Now().UnixNano()
+		fmt.Printf("Took: %d ms \n\n", (finishedAt-startedAt)/1e6)
+	}()
+
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 	go func() {
@@ -63,6 +69,7 @@ type ErrorGroup struct {
 	Errors []error
 }
 
+// This approach bit slower.
 func (e *ErrorGroup) appendErr(err error) {
 	e.mu.Lock()
 	defer e.mu.Unlock()

@@ -78,7 +78,7 @@ def trace(f, *args, **kwargs):
 
 yield val # works like in php
 
-globals()["foo"] = "bar"
+globals()["foo"] = "bar" # global namespace
 locals()["foo"] = "bar"
 locals()
 any([false, true]) # true
@@ -90,7 +90,7 @@ getattr(obj, attr)
 setattr(obj, attr, val)
 vars(self)['color'] = 'red'
 delattr(obj, attr)
-dir(var)
+dir(var) # introspecting objects
 repr(var) # representation, for DBG
 str(var)
 
