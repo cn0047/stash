@@ -12,6 +12,13 @@ Don't specify timeout in microservice SDK HTTP client.
 
 When memcache expires data for heavy query - few threads may run heavy query simultaneously.
 
+#### Dates
+
+* Leap second.
+* Ambiguous time.
+* Daylight saving time.
+* Nepal Time UTC/GMT+05:45.
+
 #### MySql
 
 Optimistic Locking.

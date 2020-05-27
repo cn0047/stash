@@ -250,7 +250,9 @@ range(5, 10, 2) == [5, 7, 9]
 
 **comprehensions**.
 
-**generators**.
+**generator**.
+
+**trampoline** using generators to substitute recursion.
 
 **generator expression** like comprehensions but generator.
 
@@ -285,7 +287,7 @@ of project, comprising its code, resources, and metadata.
 
 **wheel** - new standard of distribution (intended to replace eggs).
 
-**exceptions** ([hierarchy](https://docs.python.org/3/library/exceptions.html#exception-hierarchy)).
+**exception** ([hierarchy](https://docs.python.org/3/library/exceptions.html#exception-hierarchy)).
 
 ````py
 ValueError

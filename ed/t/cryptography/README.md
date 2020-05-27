@@ -19,17 +19,21 @@ Hashing algorithms:
 * HMAC (symmetric)
 * MD5
 * RSA (asymmetric)
+* ECC
+* RC4
 * SHA1
 * SHA2
 * SHA256
 * SHA3
 * SHA384
+* Blowfish
+* Twofish
 
 * Argon2 (winner of the password hashing competition)
 * bcrypt
 * scrypt
 * PBKDF2
 
-Don't use (it's vulnerable) : MD5, SHA1, 3DES.
-<br>Use SHA2, SHA3.
+Don't use (it's vulnerable) : MD5, SHA1, 3DES, RC4.
+<br>Use SHA2, SHA3 (most secure).
 Not secure: CRC32.

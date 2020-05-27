@@ -8,6 +8,10 @@ then decrypting the TLS and passing unencrypted request downstream.
 
 TLS works on top of TCP.
 
+Certificate types:
+* self-signed
+* wildcard (*.kint.com)
+
 #### Data Encryption Protocols Cipher:
 
 * 3DES (168 bits) (don't use is vulnerable)
