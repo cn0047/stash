@@ -89,6 +89,7 @@ docker top CONTAINER_ID
 
 # shows the standard output of a container
 docker logs
+docker logs --details # ENV variables
 # follow
 docker logs -f
 

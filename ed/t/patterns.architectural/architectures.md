@@ -1,10 +1,21 @@
 Architectures
 -
 
+````
 coordinator
 dispatcher
 processor
 worker
+
+app    #
+ddd    # DDD
+test   # all tests
+bin    # binary files, reserved in golang
+src    # source code; reserved in golang
+pkg    # reserved in golang
+static # images, icons, etc.
+dist   # reserved in js
+````
 
 The actor model adopts the philosophy that everything is an actor.
 Like everything is an object philosophy in object-oriented programming.
@@ -301,4 +312,11 @@ root
 ├── domain
 ├── infrastructure
 └── myapp.go
+
+root
+├── app
+│   ├── domain
+│   └── infrastructure
+├── cmd
+└── ops # devops
 ````

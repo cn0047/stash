@@ -5,10 +5,11 @@ jq
 [play](https://jqplay.org/)
 
 ````sh
-jq -c # compact json (inline)
-jq -C # colorize
-jq -M # don't colorize
-jq -r # raw output
+jq -c   # compact json (inline)
+jq -C   # colorize
+jq -M   # don't colorize
+jq -r   # raw output
+jq type # simple way to check JSON validity
 
 --sort-keys / -S
 ````

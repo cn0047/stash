@@ -86,9 +86,9 @@ brew services list
 
 brew search xdebug
 
-# brew install mongodb
-# brew install mysql
-# brew install nginx
+brew install mongodb
+brew install mysql
+brew install nginx
 brew install awscli
 brew install bash-completion
 brew install ffmpeg

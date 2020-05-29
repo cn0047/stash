@@ -11,7 +11,7 @@ Graph
 <br>Directed graph - all edges are directed (have direction) from one vertex to another.
 <br>Weighted graph - each edge have numerical weight.
 <br>Complete graph - every vertex is connected to every other vertex.
-<br>Directed acyclic graph - ...
+<br>Directed Acyclic Graph - finite directed graph with no directed cycles.
 <br>Directed acyclic word graph - ...
 
 All edges can be stored in adjacent matrix or adjacent list or in icidence matrix.
