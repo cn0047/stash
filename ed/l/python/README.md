@@ -42,6 +42,7 @@ export PYTHONPATH=$HOME/dirWithScripts/:$PYTHONPATH
 
 cd ed/l/python/examples/whatever
 python3 -m unittest
+python -c 'print(200)'
 ````
 
 ````py
