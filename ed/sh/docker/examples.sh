@@ -5,6 +5,8 @@ sudo ifconfig lo0 alias 10.254.254.254
 
 docker network create --driver bridge xnet
 
+docker run -ti --rm --net=xnet -v $PWD:/gh -w /gh cn007b/python /bin/bash
+
 ### Linux
 
 # Ubuntu

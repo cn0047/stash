@@ -18,6 +18,9 @@ etrp2:
 
 etrp_all: etrp etrp2
 
+print_f:
+	@echo $(@F) # will print: print_f
+
 var:
 	x=$(shell echo 200)
 	$(info VAR is $(x))

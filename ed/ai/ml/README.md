@@ -3,7 +3,7 @@ Machine Learning
 
 ML - perform task without using explicit instructions (relying on patterns).
 
-Deep Learning - an area of ML whose goal is to learn complex functions
+Deep Learning - area of ML whose goal is to learn complex functions
 using special neural network architectures that are "deep" (consist of many layers).
 
 Classic Problems:
@@ -13,6 +13,7 @@ Classic Problems:
 * Density.
 * Sampling.
 * Reinforcement Learning.
+* Rule extraction.
 
 Model - after training the system (detecting patterns in the data)
 a model is created to make predictions.
@@ -37,7 +38,7 @@ UML Algorithml -> Classify -> Model
 
 **reinforcement learning**.
 
-##
+## Neural network
 
 Neural network - class of machine learning algorithm used to model complex patterns in datasets
 using multiple hidden layers and non-linear activation functions.
@@ -68,3 +69,13 @@ Loss (cost) function - wrapper around model’s predict function that tells us
 
 Gradient accumulation - mechanism to split the batch of samples for training a neural network
 into several mini-batches of samples that will be run sequentially.
+
+## Tensor
+
+Tensor - N-dimensional array of primitive values (data sent between nodes in data graph (edges)).
+Scalar - 0-D Tensor.
+Vector - 1-D tensor.
+Matrix - 2-D tensor.
+N-D Matrix - N-D tensor.
+Rank - number of dimensions in tensor.
+Shape - number of elements in each dimension.
