@@ -15,6 +15,9 @@ CREATE (n:Organization {name:'test'});
 CREATE (n:Country {name:'UK'});
 CREATE (n:Country {name:'USA'});
 
+// get all
+MATCH (n:Person) RETURN n;
+
 // get
 MATCH (n:Person {code:'007'}) RETURN n;
 MATCH (n:Organization {name:'test'}) RETURN n;
@@ -24,6 +27,7 @@ MATCH (n:Organization {name:'test'}) SET n.name = 'TEST_ORG' RETURN n.name;
 MATCH (n:Organization {name:'TEST_ORG'}) RETURN n;
 
 // delete
+MATCH (n:Person {name:'James Bond'}) DELETE n;
 MATCH (n:Organization {name:'test'}) DELETE n;
 MATCH (n:Organization {name:'TEST_ORG'}) DELETE n;
 

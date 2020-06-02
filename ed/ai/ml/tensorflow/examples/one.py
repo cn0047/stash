@@ -1,9 +1,3 @@
-"""
-docker run -ti --rm -v $PWD:/gh -w /gh tensorflow/tensorflow sh -c '
-  python3 ed/ai/ml/tensorflow/examples/one.py
-'
-"""
-
 import tensorflow as tf
 
 
@@ -14,11 +8,12 @@ def p(v):
 def f1():
   c = tf.constant('100')
   p(c)
+  tf.print(c)
 
 
 def f2():
-  c = tf.constant('100')
-  tf.print(c)
+  a = tf.Variable(2.0, name='a')
+  p(a)
 
 
 def f3():
