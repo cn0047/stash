@@ -11,6 +11,9 @@ virtualenv --system-site-packages -p python3 ./venv
 source ./venv/bin/activate
 python -c 'import tensorflow as tf; print(tf.reduce_sum(tf.random.normal([1000, 1000])))'
 deactivate
+
+# Create model using the TensorFlow Keras library
+model = tf.keras.Sequential()
 ````
 
 computation graph - static
