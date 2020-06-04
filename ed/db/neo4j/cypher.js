@@ -17,10 +17,17 @@ CREATE (n:Country {name:'USA'});
 
 // get all
 MATCH (n:Person) RETURN n;
+MATCH (n:Organization) RETURN n;
 
 // get
 MATCH (n:Person {code:'007'}) RETURN n;
 MATCH (n:Organization {name:'test'}) RETURN n;
+MATCH (n:Person) WHERE n.active = true RETURN n;
+
+// get 2
+MATCH (p:Person {code:'007'})
+MATCH (o:Organization {name:'MI6'})
+RETURN p, o;
 
 // update
 MATCH (n:Organization {name:'test'}) SET n.name = 'TEST_ORG' RETURN n.name;
@@ -34,8 +41,6 @@ MATCH (n:Organization {name:'TEST_ORG'}) DELETE n;
 // select all
 MATCH (n) RETURN n LIMIT 100;
 MATCH (n:Organization) RETURN n;
-
-MATCH (n:Person) WHERE n.active = true RETURN n;
 
 
 
@@ -80,3 +85,15 @@ MATCH (p:Person)-[]->()-[]->(c:Country) RETURN p, c;
 
 //
 MATCH (a:Person)-[*2]->(b:Country) RETURN a, b;
+
+
+
+// AGGREGATION
+MATCH (n:Person) RETURN COUNT(n) as count;
+MATCH (n:Person) RETURN DISTINCT LABELS(n), COUNT(*);
+MATCH (n:Person) RETURN DISTINCT n.code;
+
+
+
+// ADMIN
+call db.schema();

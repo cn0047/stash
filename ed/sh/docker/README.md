@@ -47,8 +47,9 @@ docker pull ubuntu
 # build image from Dokerfile in dir ./examples/mydockerbuild
 # -t - it is tag
 # .  - it is current directory
-docker build -t docker-whale .
-docker build -t docker-whale -f Dockerfile .
+docker build -t cn007b/pi -f Dockerfile .
+# push to docker hub
+docker push cn007b/pi
 
 docker build -t nphp https://raw.githubusercontent.com/cn007b/my/master/docker/php-nginx/Dockerfile?latest
 

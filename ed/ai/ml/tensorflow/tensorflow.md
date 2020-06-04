@@ -12,6 +12,13 @@ source ./venv/bin/activate
 python -c 'import tensorflow as tf; print(tf.reduce_sum(tf.random.normal([1000, 1000])))'
 deactivate
 
+print([
+    tf.__version__,
+    tf.test.is_gpu_available(),
+    # tf.config.list_physical_devices('GPU'),
+    tf.config.experimental.list_physical_devices('GPU'),
+])
+
 # Create model using the TensorFlow Keras library
 model = tf.keras.Sequential()
 ````
