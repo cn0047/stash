@@ -20,13 +20,14 @@ pip3 -V
 pip3 list
 pip3 show requests
 pip3 search requests
+pip3 install pylint # pylint: disable=invalid-name
+pip3 install --user pylint # install to user dir (not into system dir)
 pip3 install requests virtualenv
+pip3 install -r requirements.txt
+pip3 install /app/my_prj
 python3 -m pip install requests # install for python3
 python3 -m pip freeze > requirements.txt
 pip3 uninstall requests
-pip3 install pylint # pylint: disable=invalid-name
-pip3 install -r requirements.txt
-pip3 install /app/my_prj
 pip3 list -v # show dir for packages
 PIP_CONFIG_FILE=/tmp/pip.conf
 WORK_HOME=/path
@@ -35,7 +36,6 @@ PROJECT_HOME=/path
 pylint x.py # lint file
 
 python3 # REPL
-help("math")
 
 export PYTHONPATH=$HOME/dirWithScripts/:$PYTHONPATH
 # PATH=$PATH:~/ed/l/python/examples/pkg python3 pkg
@@ -46,6 +46,10 @@ python -c 'print(200)'
 ````
 
 ````py
+import platform; print(platform.python_version())
+
+help("math")
+
 global myvar
 nonlocal myvar # don't use var from enclosing scope
 
