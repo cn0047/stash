@@ -3,6 +3,11 @@ neo4j
 
 [docs](https://neo4j.com/docs/)
 
+````sh
+cypher-shell -u neo4j -p test
+cypher-shell -a neo4j:test@localhost:7687
+````
+
 Cypher - declarative graph query language.
 Bloom - graph exploration app.
 

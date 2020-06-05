@@ -129,13 +129,9 @@ docker run -it --rm --net=xnet -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed
   xgo sh -c 'cd $GOPATH && go run src/mysql-wear/simple.go'
 
 # neo4j
-docker run -it --rm --net=xnet -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/l/go/examples/db/' xgo sh -c '
-  apt-get install -y wget pkg-config libssl1.0.0 ; \
-  wget https://github.com/neo4j-drivers/seabolt/releases/download/v1.7.4/seabolt-1.7.4-Linux-ubuntu-$(lsb_release -rs).deb ; \
-  dpkg -i seabolt-1.7.4-Linux-ubuntu-$(lsb_release -rs).deb ; \
-  rm seabolt-1.7.4-Linux-ubuntu-$(lsb_release -rs).deb ; \
-  cd $GOPATH ; \
-  go get go get github.com/neo4j/neo4j-go-driver/neo4j ; \
+docker run -it --rm --net=xnet -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/l/go/examples/db/' cn007b/go:1.13-neo4j sh -c '
+  cd $GOPATH; \
+  go get github.com/neo4j/neo4j-go-driver/neo4j; \
   go run src/neo4j/simple.go
 '
 

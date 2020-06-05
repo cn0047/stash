@@ -38,6 +38,9 @@ Ctrl-w # delete word
 ````
 
 ````sh
+whoami
+shell uname -s
+
 shutdown -h now
 
 env # prints all ENV vars
@@ -142,6 +145,15 @@ write k
 for f in x*; do
   echo -e "\t [f]: $f"
 done
+````
+
+#### pkgconfig
+
+````sh
+/usr/lib/pkgconfig
+/usr/share/pkgconfig
+
+pkg-config --list-all
 ````
 
 #### test

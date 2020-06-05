@@ -143,26 +143,27 @@ docker load -i img.dump.tar
 ## Dockerfile
 
 ````sh
-* FROM       - (`FROM scratch`)
-* MAINTAINER - Vladimir Kovpak
-* ARG        - `ARG CODE_VERSION=latest`
-* ENV        - `ENV NODE_PORT=3000`
-* ADD        - `ADD ./healthCheck.js /app/healthCheck.js`, allows `<src>` to be a URL
-* COPY       - `COPY ./healthCheck.js /app/healthCheck.js`, same as `ADD`, but without the tar and remote URL handling
-* VOLUME     - mount point with the specified name
-* WORKDIR    - `WORKDIR /app`
-* RUN        - `RUN ls - la /app/healthCheck.js`
-* EXPOSE     - `EXPOSE $NODE_PORT`
-* CMD        -  provide default (default arguments) for an executing container (ENTRYPOINT),
-             - `CMD ["php"]`, in Dockerfile can be only 1 CMD instruction,
-             - if list more than one CMD then only last CMD will take effect,
-             - `CMD echo "This is a test." | wc -` # execute in shell `/bin/sh -c`,
-             - `CMD ["/usr/bin/wc","--help"]` # run without shell (preferred),
-* ENTRYPOINT - configure a container that will run as an executable,
-             - `ENTRYPOINT [ "sh", "-c", "echo $HOME" ]`
-             - `ENTRYPOINT service memcached start`
-             - `ENTRYPOINT` will be started as a subcommand of `/bin/sh -c`, which does not pass OS signals
-             - command line arguments to `docker run <image>` will be appended to `ENTRYPOINT`,
+FROM        (`FROM scratch`)
+MAINTAINER  Vladimir Kovpak
+ARG         `ARG CODE_VERSION=latest`
+ENV         `ENV NODE_PORT=3000`
+ADD         `ADD ./healthCheck.js /app/healthCheck.js`, allows `<src>` to be a URL
+COPY        `COPY ./healthCheck.js /app/healthCheck.js`, same as `ADD`, but without the tar and remote URL handling
+VOLUME      mount point with the specified name
+WORKDIR     `WORKDIR /app`
+RUN         `RUN ls - la /app/healthCheck.js`
+EXPOSE      `EXPOSE $NODE_PORT`
+CMD         provide default (default arguments) for an executing container (ENTRYPOINT),
+            `CMD ["php"]`, in Dockerfile can be only 1 CMD instruction,
+            if list more than one CMD then only last CMD will take effect,
+            `CMD echo "This is a test." | wc -` # execute in shell `/bin/sh -c`,
+            `CMD ["/usr/bin/wc","--help"]` # run without shell (preferred),
+ENTRYPOINT  configure a container that will run as an executable,
+            `ENTRYPOINT [ "sh", "-c", "echo $HOME" ]`
+            `ENTRYPOINT service memcached start`
+            `ENTRYPOINT` will be started as a subcommand of `/bin/sh -c`, which does not pass OS signals
+            command line arguments to `docker run <image>` will be appended to `ENTRYPOINT`
+            `ENTRYPOINT ["/bin/sh", "-c", "curl -i -XPOST 'https://realtimelog.herokuapp.com:443/rkc8q6llprn' -H 'Content-Type: application/json' -d '{\"code\": 200, \"status\": \"ok\"}'"]`
 ````
 
 Less instructions in Dockerfile - least layers in built image.

@@ -20,6 +20,8 @@ a model is created to make predictions.
 
 Dataset must be divided into: train, validation, test.
 
+Serving ML Model - make trained model available to serve prediction requests.
+
 **SUPERVISED learning** - when we have info, like cat is on picture.
 (email spam/not spam, cancer tumor).
 Needs training data.
