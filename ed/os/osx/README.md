@@ -104,9 +104,13 @@ brew install redis
 brew install sshuttle
 brew install telnet
 brew install terraform
+brew install openssl@1.1 # install specific version
+
+brew list --versions openssl # shows installed versions
 
 brew remove nginx
 brew update && brew cleanup
+brew upgrade
 
 brew services start postgresql
 ````

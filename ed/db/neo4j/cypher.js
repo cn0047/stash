@@ -39,7 +39,7 @@ MATCH (n:Organization {name:'test'}) DELETE n;
 MATCH (n:Organization {name:'TEST_ORG'}) DELETE n;
 
 // select all
-MATCH (n) RETURN n LIMIT 100;
+MATCH (n) RETURN n LIMIT 100 SKIP 0;
 MATCH (n:Organization) RETURN n;
 
 

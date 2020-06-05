@@ -102,6 +102,7 @@ str(var)
 if __name__ == '__main__'
 __doc__
 __path__
+__file__
 __closure__
 __bases__ # base classes
 exception.__cause__

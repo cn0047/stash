@@ -27,7 +27,7 @@ git config --global core.compression 0
 # get config value
 git config user.name
 # set config value
-git config user.name "V.Kovpak"
+git config user.name "V. Kovpak"
 git config user.email "cn007b@gmail.com"
 
 # from jenkins
