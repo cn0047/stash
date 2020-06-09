@@ -2,7 +2,7 @@ virtualenv
 -
 
 ````sh
-virtualenv
+virtualenv ./venv
 source ./venv/bin/activate
 
 deactivate

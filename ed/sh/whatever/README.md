@@ -652,15 +652,15 @@ close
 
 #### watch
 
-execute a program periodically, showing output fullscreen.
+Execute a program periodically, showing output fullscreen.
 
-````
+````sh
 -n, --interval <secs> # seconds to wait between updates
-````
 
 watch -n 1 'echo $(date +%s%N)'
 watch -n .01 'echo $(date +%s%N)'
 watch -n 2 'date'
+````
 
 #### ps
 
