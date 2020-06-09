@@ -4,6 +4,7 @@ docker-python
 # python
 version=3.6
 version=3.7
+version=3.7-ml
 docker build -t cn007b/python:$version ./docker/$version
 # check
 docker run -it --rm cn007b/python:$version python3 --version
