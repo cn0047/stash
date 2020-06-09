@@ -125,8 +125,14 @@ exit
 ````
 
 ````sh
-# No space left on device
+# no space left on device
 docker images --no-trunc | grep '<none>' | awk '{ print $3 }' | xargs docker rmi
+
+# remove unused data
+docker system prune
+
+# remove unused local volumes
+docker volume prune
 ````
 
 Copy container manually:

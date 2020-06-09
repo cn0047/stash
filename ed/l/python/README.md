@@ -21,6 +21,7 @@ pip3 list
 pip3 show requests
 pip3 search requests
 pip3 install pylint # pylint: disable=invalid-name
+pip3 install --upgrade pylint
 pip3 install --user pylint # install to user dir (not into system dir)
 pip3 install requests virtualenv
 pip3 install -r requirements.txt

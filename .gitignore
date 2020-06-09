@@ -30,3 +30,5 @@ ed/l/go/**/src/gocv.io
 
 # python
 **/__pycache__/
+**/.ipynb_checkpoints/
+**/venv/

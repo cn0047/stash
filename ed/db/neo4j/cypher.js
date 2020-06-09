@@ -92,8 +92,3 @@ MATCH (a:Person)-[*2]->(b:Country) RETURN a, b;
 MATCH (n:Person) RETURN COUNT(n) as count;
 MATCH (n:Person) RETURN DISTINCT LABELS(n), COUNT(*);
 MATCH (n:Person) RETURN DISTINCT n.code;
-
-
-
-// ADMIN
-call db.schema();
