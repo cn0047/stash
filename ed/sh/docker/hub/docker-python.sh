@@ -13,6 +13,13 @@ docker run -it --rm cn007b/python:$version pip3 --version
 # push
 docker push cn007b/python:$version
 
+# ml
+declare -a arr=('numpy' 'matplotlib' 'torch' 'torchvision' 'tensorflow' 'tensorboard' 'kubernetes' 'kfp')
+for k in "${arr[@]}"; do
+  echo -e "\n=======\n $k \n=======\n"
+  docker run -it --rm cn007b/python:$version sh -c "python3 -c 'import "$k"; print("$k".__version__)'"
+done
+
 # latest
 docker tag cn007b/python:$version cn007b/python:latest
 docker push cn007b/python:latest

@@ -11,7 +11,8 @@ var (
 )
 
 func main() {
-	three()
+	f1()
+	// three()
 }
 
 func three() {
@@ -71,6 +72,15 @@ func one() {
 	tmpl := template.Must(template.ParseFiles(dir + "/one.html"))
 	data := map[string]string{
 		"title": "test",
+	}
+	tmpl.Execute(os.Stdout, data)
+}
+
+func f1() {
+	t := `<br> Title: {{index .titles 0}}<hr>`
+	tmpl := template.Must(template.New("tmpl").Parse(t))
+	data := map[string]interface{}{
+		"titles": []string{"test1", "test2"},
 	}
 	tmpl.Execute(os.Stdout, data)
 }

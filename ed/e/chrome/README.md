@@ -12,7 +12,9 @@ chrome://version
 chrome://accessibility                  # accessibility
 chrome://inspect                        # inspect
 chrome://settings                       # settings
+chrome://settings/siteData
 chrome://settings/content/notifications # notifications
+chrome://settings/content/cookies
 chrome://net-internals/#sockets
 ````
 
