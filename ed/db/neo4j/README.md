@@ -8,7 +8,6 @@ cypher-shell -u neo4j -p test
 cypher-shell -a neo4j:test@localhost:7687
 ````
 
-Cypher - declarative graph query language.
 Bloom - graph exploration app.
 
 Node - represents entity.
@@ -23,3 +22,9 @@ curl http://localhost:7474/db/data
 curl http://localhost:7474/db/data/batch
 curl http://localhost:7474/db/data/node/1
 ````
+
+## Cypher
+
+Cypher - declarative graph query language.
+
+WITH -  makes query parts chained, piping the results 1 part to 2nd.
