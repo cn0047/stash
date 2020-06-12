@@ -1,6 +1,6 @@
 FROM cn007b/ubuntu:18.04
 
-MAINTAINER Vladimir Kovpak <cn007b@gmail.com>
+MAINTAINER V. Kovpak <cn007b@gmail.com>
 
 RUN apt-get update \
     && apt-get install -y memcached \

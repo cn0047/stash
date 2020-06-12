@@ -5,7 +5,20 @@ sudo ifconfig lo0 alias 10.254.254.254
 
 docker network create --driver bridge xnet
 
-docker run -ti --rm --net=xnet -v $PWD:/gh -w /gh cn007b/python /bin/bash
+docker pull cn007b/php:7.1-protobuf-3
+docker tag cn007b/php:7.1-protobuf-3 xphp
+docker pull cn007b/php
+docker tag cn007b/php nphp
+docker run -it --rm--net=xnet -v $PWD:/gh -w /gh -p 8080:80 nphp /bin/bash
+
+docker pull cn007b/go:latest
+docker tag cn007b/go xgo
+docker run -it --rm --net=xnet -v $PWD:/gh -w /gh xgo /bin/bash
+docker run -it --rm --net=xnet -v $PWD:/gh -w /gh -e GOPATH='/gh' xgo /bin/bash
+
+docker pull cn007b/python:latest
+docker tag cn007b/python xpy
+docker run -ti --rm --net=xnet -v $PWD:/gh -w /gh xpy /bin/bash
 
 ### Linux
 

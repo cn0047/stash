@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-MAINTAINER Vladimir Kovpak <cn007b@gmail.com>
+MAINTAINER V. Kovpak <cn007b@gmail.com>
 
 COPY xgoapp .
 CMD [ "./xgoapp" ]

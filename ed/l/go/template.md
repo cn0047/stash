@@ -12,6 +12,8 @@ template
 
 {{if .public -}}
   public
+{{else if .x -}}
+  unknown
 {{else -}}
   private
 {{end -}}

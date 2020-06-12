@@ -44,6 +44,9 @@ MATCH (c:Country) MATCH (o:Organization) MATCH (p:Person) RETURN c, o, p;
 
 // get
 MATCH (n:Person {code:'007'}) RETURN n;
+MATCH (p:Person) WHERE p.code = '007'  RETURN p;
+MATCH (p:Person) WHERE p.code STARTS WITH '00'  RETURN p;
+MATCH (p:Person) WHERE NOT p.code STARTS WITH '00'  RETURN p;
 MATCH (n:Organization {name:'test'}) RETURN n;
 MATCH (n:Person) WHERE n.active = true RETURN n;
 
