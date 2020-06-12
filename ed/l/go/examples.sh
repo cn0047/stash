@@ -1,13 +1,6 @@
 # go
 
-# docker build -t xgo ./docker/go
-docker pull cn007b/go:latest
-docker tag cn007b/go xgo
-
-docker run -it --rm --net=xnet -v $PWD:/gh -w /gh xgo go
-docker run -it --rm --net=xnet -v $PWD:/gh -w /gh xgo go run /gh/x.go
-
-docker run -it --rm --net=xnet -v $PWD:/gh -w /gh -e GOPATH='/gh' xgo sh -c 'echo $GOPATH'
+docker run -it --rm --net=xnet -v $PWD:/gh -w /gh -e GOPATH='/gh' xgo /bin/bash
 
 # debug
 export APP_DIR='/gh/ed/l/go/examples/debug'

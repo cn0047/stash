@@ -1,11 +1,5 @@
 # php
 
-docker pull cn007b/php:7.1-protobuf-3
-docker tag cn007b/php:7.1-protobuf-3 xphp
-
-# php-nginx local
-docker pull cn007b/php
-docker tag cn007b/php nphp
 docker run -it --rm -p 8080:80 -v $PWD:/gh nphp php -v
 
 # composer

@@ -1,6 +1,6 @@
 FROM debian:stretch
 
-MAINTAINER Vladimir Kovpak <cn007b@gmail.com>
+MAINTAINER V. Kovpak <cn007b@gmail.com>
 
 RUN apt-get update --fix-missing
 RUN apt-get install -y curl make lsb-release git
