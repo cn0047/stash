@@ -398,6 +398,7 @@ break
 continue
 
 while true; do echo -n . ; done
+while true; do echo -n . ; sleep 999; done
 until false; do echo -n . ; done
 
 ls | grep $ptrn | while read f; do echo $f; done

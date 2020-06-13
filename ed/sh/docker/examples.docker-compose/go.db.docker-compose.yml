@@ -1,7 +1,10 @@
 # USAGE:
 #
-# docker-compose -f ed/sh.docker/examples/go.db.docker-compose.yml up mysqlapp
-# docker-compose -f ed/sh.docker/examples/go.db.docker-compose.yml up xmysql
+# docker-compose -f ed/sh/docker/examples.docker-compose/go.db.docker-compose.yml up xmysql
+# docker-compose -f ed/sh/docker/examples.docker-compose/go.db.docker-compose.yml up mysqlapp
+#
+# docker exec -ti xmysql mysql -P3306 -udbu -pdbp -Dtest
+# docker exec -it xmysqlapp /bin/bash
 
 version: '3'
 
@@ -14,16 +17,15 @@ networks:
 services:
 
   xmysql:
-    # container_name: xmysql
+    container_name: xmysql
     hostname: xmysql
     image: mysql:5.7.27
     networks:
       - prvt
     ports:
-      - "3307:3306"
-    volumes:
-      - "$PWD/.docker/.data/mysql:/var/lib/mysql"
-      - "/tmp:/tmp"
+      - "3306:3306"
+    # volumes:
+      # - "$PWD/.docker/.data/mysql:/var/lib/mysql"
     environment:
       - "MYSQL_ROOT_PASSWORD=root"
       - "MYSQL_USER=dbu"
@@ -31,6 +33,8 @@ services:
       - "MYSQL_DATABASE=test"
 
   mysqlapp:
+    container_name: xmysqlapp
+    hostname: xmysqlapp
     image: cn007b/go
     depends_on:
       - xmysql
@@ -40,8 +44,11 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - "$PWD/ed/go/examples/db/src:/opt/cn007b/go/src"
+      - "$PWD/ed/l/go/examples/db/src/mysql:/gh/ed/l/go/examples/db/src/mysql"
+    environment:
+      - "GOPATH=/gh/ed/l/go/examples/db/"
+    working_dir: /gh/ed/l/go/examples/db/
     command: bash -c "
         go get github.com/go-sql-driver/mysql;
-        go run /opt/cn007b/go/src/mysql/simple.go
+        go run src/mysql/simple.go
       "

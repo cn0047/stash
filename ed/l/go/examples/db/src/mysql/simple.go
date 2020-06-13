@@ -37,19 +37,21 @@ import (
 )
 
 const (
-	CONN_STR = //
+	CONN_STR =                                   //
+	"dbu:dbp@tcp(xmysql:3306)/test?charset=utf8" // docker-compose
 	// "root:root@tcp(xmysql:3306)/?charset=utf8" // docker
 	// "dbu:dbp@tcp(xmysql:3306)/test?charset=utf8" // docker
-	"dbu:dbp@tcp(172.17.0.4:3306)/test?charset=utf8" // k8sg
+	// "dbu:dbp@tcp(172.17.0.4:3306)/test?charset=utf8" // k8sg
 )
 
 func main() {
-	//f0a()
-	//f0()
-	//f1()
+	hw()
+	// f0()
+	// f0a()
+	// f1()
 	// f2()
-	f2b()
-	web()
+	// f2b()
+	// web()
 	// j1()
 }
 
@@ -74,7 +76,7 @@ func f4() {
 	}
 }
 
-func f3() {
+func hw() {
 	db, err := sql.Open("mysql", CONN_STR)
 	checkErr(err)
 
