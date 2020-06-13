@@ -1,14 +1,14 @@
 # @example:
-# make -f ed/sh/makefile/example/one/Makefile etrp
-# make -f ed/sh/makefile/example/one/Makefile etrp2
-# make -f ed/sh/makefile/example/one/Makefile etrp_all
-# make -f ed/sh/makefile/example/one/Makefile var
+# make -f ed/sh/makefile/example/one/Makefile hw
 
 TOP := "TOP"
 ROOT = "ROOT"
 TOP_ROOT_PATH=$(TOP):$(ROOT)/path
 
 export GOPATH=${CURDIR}
+
+hw:
+	@echo "It works!"
 
 etrp:
 	echo 'TOP_ROOT_PATH='$(TOP_ROOT_PATH)
@@ -17,9 +17,6 @@ etrp2:
 	@echo "\nTOP_ROOT_PATH=$(TOP_ROOT_PATH)\n"
 
 etrp_all: etrp etrp2
-
-print_f:
-	@echo $(@F) # will print: print_f
 
 var:
 	x=$(shell echo 200)
@@ -46,3 +43,11 @@ cmd1: cmd
 .PHONY: cmd
 cmd:
 	@echo $(x)
+
+print_f:
+	@echo $(@F) # will print: print_f
+
+print_f2: prnt/204
+
+prnt/%:
+	@echo $(@F) # will print: 204

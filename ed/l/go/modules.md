@@ -21,7 +21,9 @@ export GO111MODULE=on
 # specifies private modules
 export GOPRIVATE=*.corp.example.com,rsc.io/private
 export GOPRIVATE=github.com/prvtOrg
+export GOFLAGS=-mod=readonly
 export GOFLAGS=-mod=vendor
+export GOFLAGS=-mod=
 
 git config --global url."git@github.com:".insteadOf "https://github.com/"
 git config --global url."git@bitbucket.org:".insteadOf "https://bitbucket.org/"
