@@ -3,12 +3,12 @@
 
 
 // NODES
-CREATE (n:Person {name:'James Bond', code:'007', active:true}) RETURN n;
-CREATE (n:Person {name:'Moneypenny', code:'mp', active:true}) RETURN n;
-CREATE (n:Person {name:'Felix Leiter', code:'felix'});
-CREATE (n:Person {name:'008', code:'008'}) RETURN n;
-CREATE (n:Person {name:'Q', code: 'q'});
-CREATE (n:Person {name:'M', code: 'm'});
+CREATE (n:Person {name: 'James Bond', code: '007', active: true}) RETURN n;
+CREATE (n:Person {name: 'Moneypenny', code: 'mp', active: true}) RETURN n;
+CREATE (n:Person {name: 'Felix Leiter', code: 'felix'});
+CREATE (n:Person {name: '008', code: '008'}) RETURN n;
+CREATE (n:Person {name: 'Q', code: 'q'});
+CREATE (n:Person {name: 'M', code: 'm'});
 
 CREATE (n:Organization {name:'MI6'});
 CREATE (n:Organization {name:'CIA'});
@@ -16,6 +16,8 @@ CREATE (n:Organization {name:'test'});
 
 CREATE (n:Country {name:'UK'});
 CREATE (n:Country {name:'USA'});
+
+
 
 // RELATIONSHIPS
 // works at
@@ -34,6 +36,8 @@ MATCH (a:Person), (b:Person) WHERE a.code = '007' AND b.code = 'm'     CREATE (a
 // country of organization
 MATCH (o:Organization {name: 'MI6'}),(c:Country {name:'UK'}) CREATE (o)-[r:COUNTRY]->(c) RETURN o, c;
 MATCH (o:Organization {name: 'CIA'}),(c:Country {name:'USA'}) CREATE (o)-[r:COUNTRY]->(c) RETURN o, c;
+// visited
+MATCH (p:Person {code: '007'}),(c:Country {name:'USA'}) CREATE (p)-[r:visited]->(c) RETURN p, c;
 
 
 
@@ -70,21 +74,7 @@ MATCH (p:Person {code: 'felix'})-[r:WORKS_AT]->(o:Organization) DELETE r;
 MATCH (n) RETURN n SKIP 0 LIMIT 100;
 MATCH (n:Organization) RETURN n;
 
-// with
-MATCH (p:Person {code:'007'})--(relatedTo)-->()
-WITH relatedTo
-RETURN relatedTo.name;
 
-// with 2
-MATCH (bond:Person {code:'007'})
-WITH bond
-MATCH (bond)-[:WORKS_AT]->(o:Organization)-[:COUNTRY]->(c:Country {name:'UK'})
-RETURN bond, o, c;
-
-
-
-// wisited
-MATCH (p:Person {code: '007'}),(c:Country {name:'USA'}) CREATE (p)-[r:WISITED]->(c) RETURN p, c;
 
 // node's relationships
 MATCH (:Person {code: '007'})-[r]-() RETURN r;
@@ -113,6 +103,45 @@ MATCH (a:Person)-[*2]->(b:Country) RETURN a, b;
 
 
 
+// with
+MATCH (p:Person {code:'007'})--(relatedTo)-->()
+WITH relatedTo
+RETURN relatedTo.name;
+
+// with 2
+MATCH (bond:Person {code:'007'})
+WITH bond
+MATCH (bond)-[:WORKS_AT]->(o:Organization)-[:COUNTRY]->(c:Country {name:'UK'})
+RETURN bond, o, c;
+
+// match-match without with
+MATCH (p:Person)
+WHERE p.code STARTS WITH '00'
+MATCH (p)-[:WORKS_AT]->(o:Organization)-[:COUNTRY]->(c:Country {name:'UK'})
+RETURN p, o, c;
+
+
+
+// from MI6 and knows Felix
+MATCH (p1:Person)-[:WORKS_AT]->(o:Organization {name: 'MI6'})
+MATCH (p1)-[:FAMILIAR]->(p2:Person {code: 'felix'})
+RETURN p1, o, p2;
+// optional match
+MATCH (p1:Person)-[:WORKS_AT]->(o:Organization {name: 'MI6'})
+OPTIONAL MATCH (p1)-[:FAMILIAR]->(p2:Person {code: 'felix'})
+RETURN p1, o, p2;
+
+// optional match relationship
+MATCH (p1:Person)
+OPTIONAL MATCH (p1:Person)-->(p2:Person {code: 'felix'})
+RETURN p1, p2;
+
+
+
+// unwind
+UNWIND [1, 1, 1, 2, 3, NULL] AS x RETURN x;
+UNWIND [1, 1, 1, 2, 3, NULL] AS x WITH DISTINCT x RETURN x;
+UNWIND [1, 1, 1, 2, 3, NULL] AS x WITH DISTINCT x RETURN COLLECT(x);
 
 
 // AGGREGATION

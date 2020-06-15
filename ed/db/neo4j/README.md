@@ -21,10 +21,19 @@ Schema - indexes and constraints.
 curl http://localhost:7474/db/data
 curl http://localhost:7474/db/data/batch
 curl http://localhost:7474/db/data/node/1
+
+system # the system database
+neo4j  # the default database
 ````
 
 ## Cypher
 
 Cypher - declarative graph query language.
 
+````
+=~ 'regexp'
+````
+
 WITH -  makes query parts chained, piping the results 1 part to 2nd.
+OPTIONAL MATCH - return nulls for missing parts of the pattern.
+UNWIND - expands list into sequence of rows.
