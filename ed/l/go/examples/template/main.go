@@ -11,7 +11,8 @@ var (
 )
 
 func main() {
-	f1()
+	// f1()
+	f2()
 	// three()
 }
 
@@ -81,6 +82,16 @@ func f1() {
 	tmpl := template.Must(template.New("tmpl").Parse(t))
 	data := map[string]interface{}{
 		"titles": []string{"test1", "test2"},
+	}
+	tmpl.Execute(os.Stdout, data)
+}
+
+func f2() {
+	t := `<br> {{if or .a .b}}[f2] TRUE{{end}}<hr>`
+	tmpl := template.Must(template.New("tmpl").Parse(t))
+	data := map[string]interface{}{
+		"a": false,
+		"b": true,
 	}
 	tmpl.Execute(os.Stdout, data)
 }
