@@ -8,6 +8,7 @@ Chrome
 # delete URL suggestion:
 start typing in url -> select bad suggestion -> Fn + Shift + Delete
 
+chrome://downloads
 chrome://version
 chrome://accessibility                  # accessibility
 chrome://inspect                        # inspect

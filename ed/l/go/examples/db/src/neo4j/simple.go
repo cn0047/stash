@@ -12,7 +12,7 @@ func main() {
 	defer d.Close()
 	s := getSession(d)
 
-	//f1(s)
+	f1(s)
 	f2(s)
 }
 

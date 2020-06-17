@@ -86,23 +86,25 @@ brew services list
 
 brew search xdebug
 
+brew install grc # colors in terminal
+brew install colordiff
+brew install jq
+brew install md5sha1sum # md5sum
+brew install qcachegrind # KCacheGrind
+brew install telnet
+
 brew install mongodb
 brew install mysql
 brew install nginx
 brew install awscli
 brew install bash-completion
 brew install ffmpeg
-brew install grc # colors in terminal
 brew install jmeter
-brew install jq
-brew install md5sha1sum # md5sum
 brew install mercurial
 brew install nmap
 brew install postgresql
-brew install qcachegrind # KCacheGrind
 brew install redis
 brew install sshuttle
-brew install telnet
 brew install terraform
 brew install openssl@1.1 # install specific version
 
