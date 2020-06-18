@@ -8,9 +8,11 @@ ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
 version=1.13
 version=1.13-neo4j
 version=1.14
+version=1.14-alpine
 docker build -t cn007b/go:$version ./docker/$version
 # check
 docker run -it --rm cn007b/go:$version sh -c 'hash go'
+docker run -it --rm cn007b/go:$version sh -c 'go version'
 docker run -it --rm cn007b/go:$version sh -c 'hash dep'
 docker run -it --rm cn007b/go:$version sh -c 'hash golint'
 docker run -it --rm cn007b/go:$version sh -c 'hash golangci-lint'

@@ -2,6 +2,7 @@ neo4j
 -
 
 [docs](https://neo4j.com/docs/)
+[data types](https://neo4j.com/docs/cypher-manual/current/syntax/values/)
 
 ````sh
 cypher-shell -u neo4j -p test

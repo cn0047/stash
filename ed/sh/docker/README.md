@@ -129,10 +129,12 @@ exit
 docker images --no-trunc | grep '<none>' | awk '{ print $3 }' | xargs docker rmi
 
 # remove unused data
-docker system prune
-
-# remove unused local volumes
+docker system prune -a
 docker volume prune
+docker builder prune
+docker images purge
+# check
+du -sh $HOME/Library/Containers/com.docker.docker/Data
 ````
 
 Copy container manually:

@@ -2,20 +2,24 @@
 
 
 
+WITH 204 as c RETURN c;
+
+
+
 // NODES
-CREATE (n:Person {name: 'James Bond', code: '007', active: true}) RETURN n;
-CREATE (n:Person {name: 'Moneypenny', code: 'mp', active: true}) RETURN n;
-CREATE (n:Person {name: 'Felix Leiter', code: 'felix'});
-CREATE (n:Person {name: '008', code: '008'}) RETURN n;
-CREATE (n:Person {name: 'Q', code: 'q'});
-CREATE (n:Person {name: 'M', code: 'm'});
+CREATE (p:Person {name: 'James Bond', code: '007', active: true}) RETURN p;
+CREATE (p:Person {name: 'Moneypenny', code: 'mp', active: true}) RETURN p;
+CREATE (p:Person {name: 'Felix Leiter', code: 'felix'});
+CREATE (p:Person {name: '008', code: '008'}) RETURN p;
+CREATE (p:Person {name: 'Q', code: 'q'});
+CREATE (p:Person {name: 'M', code: 'm'});
 
-CREATE (n:Organization {name:'MI6'});
-CREATE (n:Organization {name:'CIA'});
-CREATE (n:Organization {name:'test'});
+CREATE (o:Organization {name:'MI6'});
+CREATE (o:Organization {name:'CIA'});
+CREATE (o:Organization {name:'test'});
 
-CREATE (n:Country {name:'UK'});
-CREATE (n:Country {name:'USA'});
+CREATE (c:Country {name:'UK'});
+CREATE (c:Country {name:'USA'});
 
 
 
