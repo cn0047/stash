@@ -297,7 +297,7 @@ df -h            # all drives
 lsblk            # all attached drives
 df -T            # Show filesystem type
 du               # Summarize disk usage of each FILE.
-du -sh IraFoto/* # Summarize disk usage of each dir in foto dir.
+du -sh web/*     # Summarize disk usage of each dir in foto dir.
 ````
 
 #### openssl

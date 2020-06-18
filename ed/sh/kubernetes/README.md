@@ -198,7 +198,7 @@ kubectl describe rc $rc # replication controller
 kubectl describe svc $svc
 kubectl describe pods
 
-kubectl --kubeconfig=$f --namespace=kubeflow get all
+kubectl --kubeconfig=$f -n my_namespace get all
 kubectl get all
 kubectl get events
 kubectl get nodes

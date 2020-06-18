@@ -24,6 +24,8 @@ open 'http://google.com/'
 sysctl -n hw.ncpu
 
 export PATH=/Users/k/go/bin:$PATH
+
+$HOME/Library/Caches # cache dir
 ````
 
 Colorize CLI:
