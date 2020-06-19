@@ -1,7 +1,6 @@
 my stash
 ==
 
-![GitHub language count](https://img.shields.io/github/languages/count/cn007b/my)
 ![Since](https://img.shields.io/badge/since-29%20Nov%202013-brightgreen)
 ![GitHub last commit](https://img.shields.io/github/last-commit/cn007b/my)
 
