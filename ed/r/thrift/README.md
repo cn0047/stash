@@ -14,6 +14,8 @@ Types:
 * list<t1> - Ordered list of one type
 * set<t1> - Set of unique elements of one type
 
+enum
+
 ````sh
 cd ed/r/thrift/examples.go/one
 thrift -r --gen go mythrift.thrift

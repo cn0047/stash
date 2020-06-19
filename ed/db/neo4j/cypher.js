@@ -78,6 +78,17 @@ MATCH (p:Person {code: 'felix'})-[r:WORKS_AT]->(o:Organization) DELETE r;
 MATCH (n) RETURN n SKIP 0 LIMIT 100;
 MATCH (n:Organization) RETURN n;
 
+// case
+MATCH (p:Person {name: 'James Bond'})
+RETURN
+  p.name,
+  CASE p.active
+  WHEN true THEN 'yes'
+  WHEN false THEN 'no'
+  ELSE 3 END
+  AS s
+;
+
 
 
 // node's relationships
