@@ -145,6 +145,8 @@ write k
 for f in x*; do
   echo -e "\t [f]: $f"
 done
+
+exiftool ed/.links.md # metainfo about file
 ````
 
 #### pkgconfig
@@ -300,6 +302,20 @@ du               # Summarize disk usage of each FILE.
 du -sh web/*     # Summarize disk usage of each dir in foto dir.
 ````
 
+#### nc
+
+````sh
+# listen
+nc -l 64738
+curl localhost:64738
+
+# request
+r="GET / HTTP/1.1
+Host: localhost:8080
+"
+echo $r | nc localhost 8080
+````
+
 #### openssl
 
 ````sh
@@ -315,20 +331,13 @@ r="GET / HTTP/1.1
 Host: localhost:4433
 "
 echo $r | openssl s_client -ign_eof -connect localhost:4433
-````
 
-#### nc
+# or
+openssl s_client -quiet -connect localhost:4433 <<EOF
+GET / HTTP/1.1
+Host: localhost:4433
 
-````sh
-# listen
-nc -l 64738
-curl localhost:64738
-
-# request
-r="GET / HTTP/1.1
-Host: localhost:8080
-"
-echo $r | nc localhost 8080
+EOF
 ````
 
 #### telnet
@@ -349,6 +358,22 @@ telnet 0.0.0.0 12345
 
 ````sh
 open localhost 8080
+````
+
+````sh
+# curl
+curl -XPOST localhost:8080/xid \
+-H 'Content-Type: application/json' -d '{"code":"200", "status": "OK"}'
+
+# telnet
+POST /xid HTTP/1.1
+Host: localhost:8080
+Accept: */*
+Content-Length: 30
+Content-Type: application/json
+User-Agent: curl/7.64.1
+
+{"code":"200", "status": "OK"}
 ````
 
 #### syslog

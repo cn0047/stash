@@ -6,7 +6,7 @@ class Client():
   """REAL-TIME log client."""
 
 
-  def __init__(self, id):
+  def __init__(self, id=''):
     h = 'https://realtimelog.herokuapp.com:443/'
     if id:
       self.url = h + id
@@ -27,6 +27,6 @@ class Client():
     )
 
 
-c = Client('x')
+c = Client()
 print('Open: ', c.get_url())
 c.msg({'code': 200, 'status': 'OK'})
