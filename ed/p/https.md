@@ -1,9 +1,10 @@
 HTTPS - HyperText Transfer Protocol Secure 
 -
 
-https://hstspreload.org/ for add your site to preload.
-https://www.badssl.com/ helps to find problems with https.
-https://www.httpvshttps.com/
+[to add your site to preload](https://hstspreload.org/)
+[helps to find problems with https](https://www.badssl.com/)
+[http vs https](https://www.httpvshttps.com/)
+[test ssl](https://www.ssllabs.com/ssltest/)
 
 The main point of HTTPS is
 authentication of the visited website and protection of the privacy and integrity of the exchanged data.

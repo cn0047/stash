@@ -19,7 +19,7 @@ func main() {
 		}
 		log.Printf("✳️\n%s", dump)
 	})
-	c := "/Users/kovpakvolodymyr/web/kovpak/gh/ed/nodejs/nodejs.express/examples/coursera.passport/bin/httpsKeys/certificate.pem"
-	k := "/Users/kovpakvolodymyr/web/kovpak/gh/ed/nodejs/nodejs.express/examples/coursera.passport/bin/httpsKeys/private.key"
+	c := "/Users/kovpakvolodymyr/web/kovpak/gh/ed/l/nodejs/nodejs.express/examples/coursera.passport/bin/httpsKeys/certificate.pem"
+	k := "/Users/kovpakvolodymyr/web/kovpak/gh/ed/l/nodejs/nodejs.express/examples/coursera.passport/bin/httpsKeys/private.key"
 	http.ListenAndServeTLS(":4433", c, k, nil)
 }

@@ -9,18 +9,28 @@ Security
 [check site](https://observatory.mozilla.org/)
 [check headers](https://securityheaders.com)
 [security platform](https://www.hackerone.com/)
+[exploits](https://www.exploit-db.com/)
 
 [php virus](https://www.youtube.com/watch?v=2Ra1CCG8Guo)
-
-* Using Components with Known Vulnerabilities
-* Man-In-The-Middle
-* Phishing
-* DNS hijacking
 
 ````
 GET / HTTP/1.1
 Host: cow"onerror='alert(1)'rel='stylesheet'
 ````
+
+* Using Components with Known Vulnerabilities.
+* Man-In-The-Middle.
+* Phishing.
+* DNS hijacking.
+
+Sensitive Data Exposure:
+* Insecure Error Handling (error message contains dbg info, etc.).
+* Disclosure of Sensitive Files (read robots.txt, directory traversal attack, etc.).
+* Information Disclosure via Metadata (`exiftool`).
+* Disclosure of Software Version (`X-Powered-By`).
+* Insecure Communication Channel (http not https).
+* Leakage of Cookie with Sensitive Data (session ID, `document.cookie='x='+v+';'+exp+': secure';`).
+* Leakage of Sensitive Data via Referer Header.
 
 ## WEB
 
@@ -45,8 +55,13 @@ Web account settings:
 To change email address - send email to origin email adress with link
 to verify that person who is changing email is owner of previous email.
 
-Reset password:
+Reset password (not forgot password):
 Send email with message "please re-log-in first" to verify person.
+
+Forgot password:
+* Generating new password (password will be stored in plain text for some time).
+* Secret question (social media reveals: surname, favorite movie, etc.).
+* Password reset link.
 
 Log off:
 Use expiring token in url to perform log-off.
