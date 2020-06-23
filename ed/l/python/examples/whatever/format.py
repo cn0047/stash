@@ -1,4 +1,3 @@
-
 v = 204
 f = fr'smtng: {v} \n' # smtng: 204 \n
 print(f)
