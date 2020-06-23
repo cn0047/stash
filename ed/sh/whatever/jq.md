@@ -32,7 +32,8 @@ jq type # simple way to check JSON validity
 echo '{"foo": "f", "bar": "b", "items": [1, 2, 3] }' | jq # prettify json output
 echo '{"foo": "f", "bar": "b", "items": [1, 2, 3] }' | jq '.items | length' # count
 echo '{"foo": "f", "bar": "b", "items": [1, 2, 3] }' | jq '.items | last'   # 3
-echo '[{"n":"foo"},{"n":"bar"}]' | jq '.[].n' # foo \n bar
+echo '[{"n":"foo"},{"n":"bar"}]' | jq '.[].n'     # foo \n bar
+echo '{"arr": [0, 1, "a", "b"]}' | jq '.arr[2:]'  # ["a","b"]
 
 cat data.json \
 | jq '.gcp_price_list | del(.sustained_use_base,.sustained_use_tiers) | .[] | keys[]' \
