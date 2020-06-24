@@ -59,7 +59,7 @@ docker build --build-arg ENV=prod -f Dockerfile .
 # THE BEST COMMAND
 docker inspect docker-whale
 
-docker stats
+docker stats $cId
 
 # run an interactive container from an image
 # -t - terminal
