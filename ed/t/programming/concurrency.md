@@ -1,7 +1,11 @@
 Concurrency
 -
 
-Mutex - mutual exclusion.
+Mutex - (locking mechanism) mutual exclusion object that synchronizes access to a resource.
+
+Semaphore - (signalling mechanism):
+* counting semaphore - count is the number of available resources.
+* binary semaphore - like counting semaphore but value restricted to 0 and 1.
 
 Starvation - situation where a concurrent process cannot get all the resources
 it needs to perform work.

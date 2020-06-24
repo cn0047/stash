@@ -6,7 +6,7 @@ WITH 204 as c RETURN c;
 // var
 :param code => 200
 WITH $code as c RETURN c;
-RETURN $id;
+RETURN $code;
 // to see all vars
 :params
 
