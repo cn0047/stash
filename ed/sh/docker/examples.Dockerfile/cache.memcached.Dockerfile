@@ -1,4 +1,4 @@
-FROM cn007b/ubuntu:18.04
+FROM cn007b/ubuntu:20.04
 
 MAINTAINER V. Kovpak <cn007b@gmail.com>
 

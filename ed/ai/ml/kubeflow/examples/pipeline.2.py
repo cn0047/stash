@@ -29,7 +29,8 @@ def run_component():
   op = dsl.ContainerOp(
     name='run',
     image='cn007b/alpine',
-    command=['touch', '/tmp/x'],
+    command=["sh", "-c"],
+    arguments=["echo ok > /tmp/x"],
     pvolumes=pvolumes
   )
   op.container.set_image_pull_policy('Always')
@@ -45,8 +46,8 @@ def inspect_component():
   )
 
 
-@kfp.dsl.pipeline(name='pipeline 1',description='')
-def pipeline_1():
+@kfp.dsl.pipeline(name='k pipeline 2',description='')
+def k_pipeline_2():
   env_var = V1EnvVar(name='CUDA_VISIBLE_DEVICES', value='0,1')
   step_1 = init_component()
   step_2 = run_component().add_env_variable(env_var).after(step_1)
@@ -55,5 +56,5 @@ def pipeline_1():
 
 pipeline_conf = dsl.PipelineConf().set_image_pull_secrets([client.V1LocalObjectReference(name="regcred")])
 pipeline_conf=kfp.dsl.PipelineConf().set_image_pull_secrets([client.V1LocalObjectReference(name="regcred")])
-pipeline = kfp.Client().create_run_from_pipeline_func(pipeline_1, arguments={}, pipeline_conf=pipeline_conf)
-kfp.compiler.Compiler().compile(pipeline_1, 'pipeline.zip', pipeline_conf=pipeline_conf)
+kfp.compiler.Compiler().compile(k_pipeline_2, 'pipeline.zip', pipeline_conf=pipeline_conf)
+pipeline = kfp.Client().create_run_from_pipeline_func(k_pipeline_2, arguments={}, pipeline_conf=pipeline_conf)

@@ -33,4 +33,6 @@ docker tag cn007b/debian xdebian
 docker run -ti --rm --net=xnet -v $PWD:/gh -w /gh xdebian /bin/bash
 
 # Alpine
-docker run -ti --rm -v $PWD:/gh alpine:3.7 sh
+docker pull cn007b/alpine
+docker tag cn007b/alpine xalpine
+docker run -ti --rm --net=xnet -v $PWD:/gh -w /gh xalpine sh

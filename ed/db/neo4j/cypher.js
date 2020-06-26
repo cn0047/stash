@@ -39,6 +39,7 @@ MATCH (p:Person), (o:Organization) WHERE p.code = 'm'     AND o.name = 'MI6' CRE
 MATCH (p:Person), (o:Organization) WHERE p.code = 'felix' AND o.name = 'CIA' CREATE (p)-[r:WORKS_AT]->(o);
 // bond familiar with
 MATCH (a:Person), (b:Person) WHERE a.code = '007' AND b.code = 'mp'    CREATE (a)-[r:FAMILIAR]->(b) RETURN type(r);
+MATCH (a:Person), (b:Person) WHERE a.code = '007' AND b.code = 'mp'    CREATE (a)-[r:FRIENDS{close: true}]->(b) RETURN type(r);
 MATCH (a:Person), (b:Person) WHERE a.code = '007' AND b.code = 'felix' CREATE (a)-[r:FAMILIAR]->(b);
 MATCH (a:Person), (b:Person) WHERE a.code = '007' AND b.code = '008'   CREATE (a)-[r:FAMILIAR]->(b);
 MATCH (a:Person), (b:Person) WHERE a.code = '007' AND b.code = 'q'     CREATE (a)-[r:FAMILIAR]->(b);
@@ -59,7 +60,9 @@ MATCH (c:Country) MATCH (o:Organization) MATCH (p:Person) RETURN c, o, p;
 // get
 MATCH (n:Person {code:'007'}) RETURN n, id(n);
 MATCH (p:Person) WHERE p.code = '007'  RETURN p;
-MATCH (p:Person) WHERE p.code STARTS WITH '00'  RETURN p;
+MATCH (p:Person) WHERE p.code STARTS WITH '00' RETURN p;
+MATCH (p:Person) WHERE p.code ENDS WITH '7' RETURN p;
+MATCH (p:Person) WHERE p.code CONTAINS '7' RETURN p;
 MATCH (p:Person) WHERE NOT p.code STARTS WITH '00'  RETURN p;
 MATCH (n:Organization {name:'test'}) RETURN n;
 MATCH (n:Person) WHERE n.active = true RETURN n;
@@ -102,6 +105,9 @@ MATCH (:Person {code: '007'})-[r]-() RETURN r;
 MATCH (:Organization {name: 'MI6'})-[r]-() RETURN r;
 
 // bond familiar with
+MATCH (b:Person {code: '007'})-[:FAMILIAR]->(p) RETURN b, p;
+MATCH (b:Person {code: '007'})-[:FAMILIAR|FRIENDS]->(p) RETURN b, p;
+MATCH (b:Person {code: '007'})-[:FRIENDS{close: true}]->(p) RETURN b, p;
 MATCH (b:Person {code: '007'})-[:FAMILIAR]->(n) RETURN b, n.name ORDER BY n.name;
 
 // bond works at
@@ -119,8 +125,9 @@ MATCH (c1:Country)<-[:COUNTRY]-(o1:Organization)<-[:WORKS_AT]-(p1:Person {active
 MATCH (c2:Country)<-[:COUNTRY]-(o2:Organization {name: 'CIA'})<-[:WORKS_AT]-(p2:Person)
 RETURN c1, o1, p1, c2, o2, p2;
 
-//
+// a path of length 2
 MATCH (a:Person)-[*2]->(b:Country) RETURN a, b;
+MATCH (a:Person)-[*3..5]->(b:Country) RETURN a, b;
 
 
 
