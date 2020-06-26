@@ -63,6 +63,7 @@ go doc rsc.io/quote/v3
 go get -u ./... or go get -u=patch ./... # update all direct and indirect dependencies
 go get -u ./...
 go get -u all
+go get -u github.com/thepkg/strings@master
 go mod tidy
 go mod download
 go mod vendor

@@ -97,6 +97,10 @@ can provide load balancing, SSL termination and name-based virtual hosting.
 `persistentVolume` declares volume and `persistentVolumeClaim` uses that volume,
 `nfs, configMap/secret, cloud`.
 Persistent Volume - to store data permanently.
+accessModes:
+* ReadWriteOnce — volume mounted as read-write by a single node
+* ReadOnlyMany — read-only by many nodes
+* ReadWriteMany — read-write by many nodes
 
 **ConfigMap**, `ls /etc/config`.
 
@@ -210,6 +214,10 @@ kubectl get svc # services
 kubectl get ep # endpoints
 kubectl get componentstatuses # cluster status
 kubectl get configmaps
+
+kubectl get pv           # persistent volumes
+kubectl get pvc          # persistent volumes claims
+kubectl get storageclass
 
 kubectl get pods
 kubectl get pods --watch

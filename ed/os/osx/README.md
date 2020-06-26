@@ -44,38 +44,40 @@ alias grep='grep --color=always'
 Option = Alt
 
 
-Command-Control-o     # insert mode
-Command-Control-Space # emoji 🤓
+Command-Shift-G         # goto in finder
 
-Control-Shift-Power  # Lock screen
-Command-Option-Power # Put MacBook to sleep
-Command-Option-Esc   # Force Quit
+Command-Control-o       # insert mode
+Command-Control-Space   # emoji 🤓
 
-Command-Shift-.   # Show hidden files
-Command-h:        # Hide
-Command-m:        # Minimize
-Command-Option-w: # Close all windows at once
+Control-Shift-Power     # Lock screen
+Command-Option-Power    # Put MacBook to sleep
+Command-Option-Esc      # Force Quit
 
-Option-Del  # Del word
-Control-K   # Del row
-Command-Del # Del to home
-Control-O   # Insert a new line after
+Command-Shift-.         # Show hidden files
+Command-h:              # Hide
+Command-m:              # Minimize
+Command-Option-w:       # Close all windows at once
 
-Fn–u|d      # Move page U/D
-Fn–l|r      # Scroll B/E document.
-Command–u|d # Move B/en document.
-Command–l|r # Move B/E current line.
-Option–l|r  # Move B/E previous word.
+Option-Del              # Del word
+Control-K               # Del row
+Command-Del             # Del to home
+Control-O               # Insert a new line after
 
-Shift–Option–U|D|L|R # Extended text selection
+Fn–u|d                  # Move page U/D
+Fn–l|r                  # Scroll B/E document.
+Command–u|d             # Move B/en document.
+Command–l|r             # Move B/E current line.
+Option–l|r              # Move B/E previous word.
+
+Shift–Option–U|D|L|R    # Extended text selection
 
 Command-Shift-3         # Screenshot ALL SCREEN in file on desktop
 Command-Control-Shift-3 # Screenshot ALL SCREEN in buffer
 Command-Shift-4         # Screenshot (SELECTED SHAPE) in file on desktop ✅
 Command-Control-Shift-4 # Screenshot (SELECTED SHAPE) in buffer 💡
 
-F1 # Bright down
-F2 # Bright up
+F1  # Bright down
+F2  # Bright up
 F11 # Sound down
 F12 # Sound up
 ````

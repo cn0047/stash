@@ -18,6 +18,7 @@ cc -o x $f && ./x
 
 <br>preprocessor - optimize source code and pass it to compiler.
 <br>compiler - .
+<br>cc - C Compiler.
 <br>gcc - GNU Compiler Collection.
 <br>linker - link all `*.obj` files.
 

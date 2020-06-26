@@ -8,13 +8,14 @@ Chrome
 # delete URL suggestion:
 start typing in url -> select bad suggestion -> Fn + Shift + Delete
 
+chrome://restart
 chrome://downloads
 chrome://version
-chrome://accessibility                  # accessibility
-chrome://inspect                        # inspect
-chrome://settings                       # settings
+chrome://accessibility
+chrome://inspect
+chrome://settings
 chrome://settings/siteData
-chrome://settings/content/notifications # notifications
+chrome://settings/content/notifications
 chrome://settings/content/cookies
 chrome://net-internals/#sockets
 ````

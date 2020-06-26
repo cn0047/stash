@@ -50,7 +50,7 @@ v            # paste
 shift+v      # paste above
 dd           # delete
 a            # insert above
-a            # insert belove
+b            # insert belove
 
 shift+m      # merge
 ctrl+shift+- # split

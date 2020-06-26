@@ -783,11 +783,12 @@ uuencode card.jpg card.jpg | mail mail@com.com
 #### screen
 
 ````sh
-screen -S sessionName # new named session
-screen -ls            # list of active sessions
-screen -x sessionName # attach to session
+screen -S screenSession1 # new named session
+screen -ls               # list of active sessions
+screen -x screenSession1 # attach to session
+
+Ctrl+A followed by D     # detach screen
 ````
-Ctrl+A followed by D = detach screen
 
 #### image
 

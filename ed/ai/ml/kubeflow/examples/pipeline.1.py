@@ -12,7 +12,7 @@ from kubernetes import client
 
 @dsl.component
 def component_1():
-  return dsl.ContainerOp(name='c3', image='cn007b/pi:ping')
+  return dsl.ContainerOp(name='c1', image='cn007b/pi:ping')
 
 
 @dsl.pipeline(name='k_pipeline_1', description='k_pipeline_1')
