@@ -19,6 +19,7 @@ CREATE (p:Person {name: 'Felix Leiter', code: 'felix'});
 CREATE (p:Person {name: '008', code: '008'}) RETURN p;
 CREATE (p:Person {name: 'Q', code: 'q'});
 CREATE (p:Person {name: 'M', code: 'm'});
+CREATE (p:Person {name: 'Vesper Lynd', code: 'vesper'});
 
 CREATE (o:Organization {name:'MI6'});
 CREATE (o:Organization {name:'CIA'});
@@ -38,12 +39,17 @@ MATCH (p:Person), (o:Organization) WHERE p.code = 'q'     AND o.name = 'MI6' CRE
 MATCH (p:Person), (o:Organization) WHERE p.code = 'm'     AND o.name = 'MI6' CREATE (p)-[r:WORKS_AT]->(o);
 MATCH (p:Person), (o:Organization) WHERE p.code = 'felix' AND o.name = 'CIA' CREATE (p)-[r:WORKS_AT]->(o);
 // bond familiar with
-MATCH (a:Person), (b:Person) WHERE a.code = '007' AND b.code = 'mp'    CREATE (a)-[r:FAMILIAR]->(b) RETURN type(r);
-MATCH (a:Person), (b:Person) WHERE a.code = '007' AND b.code = 'mp'    CREATE (a)-[r:FRIENDS{close: true}]->(b) RETURN type(r);
-MATCH (a:Person), (b:Person) WHERE a.code = '007' AND b.code = 'felix' CREATE (a)-[r:FAMILIAR]->(b);
-MATCH (a:Person), (b:Person) WHERE a.code = '007' AND b.code = '008'   CREATE (a)-[r:FAMILIAR]->(b);
-MATCH (a:Person), (b:Person) WHERE a.code = '007' AND b.code = 'q'     CREATE (a)-[r:FAMILIAR]->(b);
-MATCH (a:Person), (b:Person) WHERE a.code = '007' AND b.code = 'm'     CREATE (a)-[r:FAMILIAR]->(b);
+MATCH (a:Person), (b:Person) WHERE a.code = '007' AND b.code = 'mp'     CREATE (a)-[r:FAMILIAR]->(b) RETURN type(r);
+MATCH (a:Person), (b:Person) WHERE a.code = '007' AND b.code = 'mp'     CREATE (a)-[r:FRIENDS{close: true}]->(b) RETURN type(r);
+MATCH (a:Person), (b:Person) WHERE a.code = '007' AND b.code = 'felix'  CREATE (a)-[r:FAMILIAR]->(b);
+MATCH (a:Person), (b:Person) WHERE a.code = '007' AND b.code = '008'    CREATE (a)-[r:FAMILIAR]->(b);
+MATCH (a:Person), (b:Person) WHERE a.code = '007' AND b.code = 'q'      CREATE (a)-[r:FAMILIAR]->(b);
+MATCH (a:Person), (b:Person) WHERE a.code = '007' AND b.code = 'm'      CREATE (a)-[r:FAMILIAR]->(b);
+MATCH (a:Person), (b:Person) WHERE a.code = '007' AND b.code = 'vesper' CREATE (a)-[r:FAMILIAR]->(b);
+MATCH (a:Person), (b:Person) WHERE a.code = '007' AND b.code = 'vesper' CREATE (a)-[r:FRIENDS{close: true}]->(b);
+MATCH (a:Person), (b:Person) WHERE a.code = '007' AND b.code = 'vesper' CREATE (a)-[r:FRIENDS{very_close: true}]->(b);
+//
+MATCH (a:Person), (b:Person) WHERE a.code = 'felix' AND b.code = 'vesper' CREATE (a)-[r:FAMILIAR]->(b);
 // country of organization
 MATCH (o:Organization {name: 'MI6'}),(c:Country {name:'UK'}) CREATE (o)-[r:COUNTRY]->(c) RETURN o, c;
 MATCH (o:Organization {name: 'CIA'}),(c:Country {name:'USA'}) CREATE (o)-[r:COUNTRY]->(c) RETURN o, c;
@@ -53,12 +59,13 @@ MATCH (p:Person {code: '007'}),(c:Country {name:'USA'}) CREATE (p)-[r:visited]->
 
 
 // get all
-MATCH (n:Person) RETURN n;
-MATCH (n:Organization) RETURN n;
-MATCH (c:Country) MATCH (o:Organization) MATCH (p:Person) RETURN c, o, p;
+MATCH (p:Person) RETURN p;
+MATCH (o:Organization) RETURN o;
+OPTIONAL MATCH (c:Country) OPTIONAL MATCH (o:Organization) OPTIONAL MATCH (p:Person) RETURN c, o, p;
 
 // get
 MATCH (n:Person {code:'007'}) RETURN n, id(n);
+MATCH (n:Person {code:'007'}) RETURN n {.name, .status}; // projections
 MATCH (p:Person) WHERE p.code = '007'  RETURN p;
 MATCH (p:Person) WHERE p.code STARTS WITH '00' RETURN p;
 MATCH (p:Person) WHERE p.code ENDS WITH '7' RETURN p;
@@ -66,6 +73,7 @@ MATCH (p:Person) WHERE p.code CONTAINS '7' RETURN p;
 MATCH (p:Person) WHERE NOT p.code STARTS WITH '00'  RETURN p;
 MATCH (n:Organization {name:'test'}) RETURN n;
 MATCH (n:Person) WHERE n.active = true RETURN n;
+MATCH (n1:Person {code:'007'}), (n2:Person {code:'008'}) RETURN n1, n2;
 
 // get 2
 MATCH (p:Person {code:'007'})
@@ -103,6 +111,7 @@ RETURN
 // node's relationships
 MATCH (:Person {code: '007'})-[r]-() RETURN r;
 MATCH (:Organization {name: 'MI6'})-[r]-() RETURN r;
+MATCH (p:Person {code: '007'})--(n) RETURN p, n; // related to any
 
 // bond familiar with
 MATCH (b:Person {code: '007'})-[:FAMILIAR]->(p) RETURN b, p;
@@ -128,6 +137,10 @@ RETURN c1, o1, p1, c2, o2, p2;
 // a path of length 2
 MATCH (a:Person)-[*2]->(b:Country) RETURN a, b;
 MATCH (a:Person)-[*3..5]->(b:Country) RETURN a, b;
+
+// shortest path
+MATCH (a:Person {code: 'vesper'}), (b:Person {code: 'm'}), p = shortestPath((a)-[*]-(b))
+RETURN a, b, p;
 
 
 

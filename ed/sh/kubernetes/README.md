@@ -99,8 +99,8 @@ can provide load balancing, SSL termination and name-based virtual hosting.
 Persistent Volume - to store data permanently.
 accessModes:
 * ReadWriteOnce — volume mounted as read-write by a single node
-* ReadOnlyMany — read-only by many nodes
 * ReadWriteMany — read-write by many nodes
+* ReadOnlyMany  — read-only by many nodes
 
 **ConfigMap**, `ls /etc/config`.
 
@@ -239,6 +239,8 @@ kubectl logs -p $p # previous
 kubectl run log-pod --image=cn007b/pi
 kubectl port-forward $p 8181:8080 # portOnHost:portInPod
 curl 'localhost:8181?yes'
+
+kubectl patch --type=merge pod $p -p '{"metadata":{"labels":{"main":"cli"}}}'
 
 kubectl delete pod $pod
 kubectl delete pod $pod --grace-period=60

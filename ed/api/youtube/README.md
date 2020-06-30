@@ -5,6 +5,8 @@ YouTube
 [Video Speed Controller Extension](https://chrome.google.com/webstore/detail/video-speed-controller/nffaoalbilbmmfgbnbgppjihopabppdk/RK%3D2/RS%3DsdeaBShiWo3AFJdky6bPF3xKL6Y-)
 [thumbnails](https://snappa.com/)
 
+https://www.youtube.com/features
+
 Img for video: 1920x1080px!
 Video file name **MUST** contains keywords!
 Link to video: https://youtu.be/EFqj53mXLKY where EFqj53mXLKY - video ID.
