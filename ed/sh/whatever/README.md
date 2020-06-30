@@ -338,6 +338,14 @@ GET / HTTP/1.1
 Host: localhost:4433
 
 EOF
+
+# github
+openssl s_client -quiet -connect api.github.com:443 <<EOF
+GET /users/cn007b HTTP/1.1
+Host: api.github.com
+User-Agent: curl/7.64.1
+
+EOF
 ````
 
 #### telnet
