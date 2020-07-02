@@ -22,6 +22,7 @@ sudo !! # redo last command but as root
  ls -l
 
 prompt \u@\h [\d]>
+PROMPT='go %~ %# '
 ````
 
 ````sh

@@ -14,3 +14,5 @@ deactivate
 # or
 docker run -ti --rm --net=xnet -p 6006:6006 -v $PWD:/gh -w /gh cn007b/python /bin/bash
 # ⬆
+docker run -ti --rm --net=xnet -p 6006:6006 -v $PWD:/gh -w /gh cn007b/pi:aitf \
+  sh -c 'python3 /app/regression.py'

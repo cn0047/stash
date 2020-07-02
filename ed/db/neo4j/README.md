@@ -27,6 +27,12 @@ system # the system database
 neo4j  # the default database
 ````
 
+## Transaction
+
+* Auto-commit transaction - is invoked using the `session.Run` method.
+* Transaction function - transactional units of work (`session.WriteTransaction`).
+* Explicit transactions - `BEGIN, COMMIT and ROLLBACK` operations.
+
 ## Cypher
 
 Cypher - declarative graph query language.

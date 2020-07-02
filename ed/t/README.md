@@ -41,7 +41,6 @@ Theory
 <br>SaaS    - [Software as a service](https://raw.githubusercontent.com/cn007b/my/master/ed/t.theory/i/cloudComputingTypes.jpeg).
 <br>SDK     - Software development kit.
 <br>SDLC    - Software development life-cycle.
-<br>SLA     - Service Level Agreement.
 <br>UPI     - Unique Product Identifier.
 <br>UTC     - Coordinated Universal Time.
 <br>VOIP    - Voice over Internet Protocol.

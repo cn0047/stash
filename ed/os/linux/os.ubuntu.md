@@ -5,6 +5,8 @@ ubuntu
 apt-get install -y --force-yes
 apt-get update --fix-missing
 
+apt list vim
+apt list --installed
 # search package
 apt-cache search htop
 
