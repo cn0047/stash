@@ -11,9 +11,11 @@ func main() {
 	d := getDriver()
 	defer d.Close()
 	s := getSession(d)
+	defer s.Close()
 
-	f1(s)
-	f2(s)
+	//f1(s)
+	f1b(s)
+	//f2(s)
 }
 
 func getDriver() neo4j.Driver {
@@ -57,6 +59,26 @@ func f2(session neo4j.Session) {
 		r := result.Record().GetByIndex(0)
 		fmt.Printf("🎾 %#v \n", r) // &neo4j.nodeValue{id:21, labels:[]string{"Person"}, props:map[string]interface {}{"active":true, "code":"007", "name":"James Bond"}}
 	}
+}
+
+func f1b(session neo4j.Session) {
+	c := time.Now().Unix()
+	result, err := session.Run(
+		`CREATE (p:Person) SET p.code = $c, p.name = $n RETURN p.code + ', from node ' + id(p)`,
+		map[string]interface{}{"c": c, "n": fmt.Sprintf("agent-%d", c)},
+	)
+	if err != nil {
+		fmt.Printf("[f1b] ERR-1: %v", err)
+		return
+	}
+
+	r, err := result.Consume()
+	if err != nil {
+		fmt.Printf("[f1b] ERR-2: %v", err)
+		return
+	}
+
+	fmt.Printf("🎾 %#v \n", r)
 }
 
 func f1(session neo4j.Session) {

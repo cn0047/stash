@@ -59,6 +59,7 @@ docker build --build-arg ENV=prod -f Dockerfile .
 # THE BEST COMMAND
 docker inspect docker-whale
 
+# shows CPU/MEM usage
 docker stats $cId
 
 # run an interactive container from an image

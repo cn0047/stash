@@ -2,6 +2,8 @@ kubeflow
 -
 
 [docs](https://www.kubeflow.org/docs/)
+[pipelines](https://www.kubeflow.org/docs/pipelines/sdk/sdk-overview/)
+[examples](https://github.com/kubeflow/pipelines/)
 
 Kubeflow - ML toolkit for k8s.
 Fairing - python package that makes it easy to train and deploy ML models on Kubeflow.

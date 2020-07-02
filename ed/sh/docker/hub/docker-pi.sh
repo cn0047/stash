@@ -6,6 +6,8 @@ d=ed/sh/docker/examples.Dockerfile
 tag=ping
 tag=pinger
 f=$d/sh.$tag.Dockerfile
+tag=aitf
+f=$d/ai.tf.Dockerfile
 
 docker build -t cn007b/pi:$tag -f $f $d
 # check
