@@ -222,7 +222,7 @@ kubectl get storageclass
 kubectl get pods
 kubectl get pods --watch
 kubectl get pods --show-all
-kubectl get pods -o wide
+kubectl get pods -o wide # shows pods and nodes
 kubectl get pods -o json
 kubectl get pods -o jsonpath='{.items[*].metadata.name}'
 

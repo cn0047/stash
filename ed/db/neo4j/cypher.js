@@ -4,7 +4,7 @@
 
 WITH 204 as c RETURN c;
 // var
-:param code => 200
+:param code => 200;
 WITH $code as c RETURN c;
 RETURN $code;
 // to see all vars
@@ -105,6 +105,12 @@ RETURN
   ELSE 3 END
   AS s
 ;
+// case 2
+:param from => '007';
+:param from => '008';
+MATCH (n:Person {code: '007'})
+WHERE n.code = '007' AND CASE WHEN n.code <> $from THEN n.active = true ELSE true END
+RETURN n;
 
 
 
