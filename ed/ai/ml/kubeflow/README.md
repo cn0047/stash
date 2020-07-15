@@ -33,4 +33,6 @@ tensorflow==2.1.0
 
 ````sh
 !watch -n 1 nvidia-smi
+
+docker run --rm -it nvidia/cuda nvidia-smi
 ````

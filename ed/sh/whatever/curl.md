@@ -31,10 +31,21 @@ echo '{"fromFile":"yes"}' > /tmp/x.json \
   -H 'Content-Type: application/json' -d @/tmp/x.json
 curl http://url.com -d x=1 -d y=2
 
+curl -XPOST 'https://realtimelog.herokuapp.com:443/ka01kxtxsh' \
+  -H 'Content-Type: application/json' -d '{"code":"200", "status": "OK"}'
+# and
+curl -XPOST 'https://realtimelog.herokuapp.com:443/ka01kxtxsh' \
+  -H 'Content-Type: application/json' -d @- << EOF
+{
+  "code":"200",
+  "status": "OK"
+}
+EOF
+
 curl http://login:pass@base-http-auth.com/
 curl -u login:pass http://base-http-auth.com/
 
-// user == 'admin' && pass == 'password'
+# user == 'admin' && pass == 'password'
 curl http://localhost:3000 -H 'Authorization: Basic YWRtaW46cGFzc3dvcmQ='
 
 # download file
