@@ -13,9 +13,14 @@ func main() {
 	s := getSession(d)
 	defer s.Close()
 
-	//f1(s)
-	f1b(s)
-	//f2(s)
+	//createPersonTX(s)
+	//createPerson(s)
+	//matchPersonByCode(s, "007")
+
+	bookmark, code := createPersonTX(s)
+	s2 := getSession(d, bookmark)
+	defer s2.Close()
+	matchPersonByCodeTX(s, code)
 }
 
 func getDriver() neo4j.Driver {
@@ -40,8 +45,8 @@ func getDriver() neo4j.Driver {
 	return driver
 }
 
-func getSession(driver neo4j.Driver) neo4j.Session {
-	s, err := driver.Session(neo4j.AccessModeWrite)
+func getSession(driver neo4j.Driver, bookmarks ...string) neo4j.Session {
+	s, err := driver.Session(neo4j.AccessModeWrite, bookmarks...)
 	if err != nil {
 		panic(fmt.Errorf("[getSession] ERR: %v", err))
 	}
@@ -49,8 +54,29 @@ func getSession(driver neo4j.Driver) neo4j.Session {
 	return s
 }
 
-func f2(session neo4j.Session) {
-	params := map[string]interface{}{"code": "007"}
+func matchPersonByCodeTX(session neo4j.Session, code interface{}) {
+	r, err := session.ReadTransaction(func(tx neo4j.Transaction) (interface{}, error) {
+		params := map[string]interface{}{"code": code}
+		result, err := tx.Run(`MATCH (n:Person {code: $code}) RETURN n;`, params)
+		if err != nil {
+			panic(fmt.Errorf("ERR-5 : %v", err))
+		}
+		if !result.Next() {
+			return nil, result.Err()
+		}
+
+		r := result.Record().GetByIndex(0)
+		return r, nil
+	})
+	if err != nil {
+		panic(fmt.Errorf("ERR-4 : %v", err))
+	}
+
+	fmt.Printf("🆃🎾 %#v \n", r)
+}
+
+func matchPersonByCode(session neo4j.Session, code interface{}) {
+	params := map[string]interface{}{"code": code}
 	result, err := session.Run(`MATCH (n:Person {code: $code}) RETURN n;`, params)
 	if err != nil {
 		panic(fmt.Errorf("ERR-3 : %v", err))
@@ -61,7 +87,7 @@ func f2(session neo4j.Session) {
 	}
 }
 
-func f1b(session neo4j.Session) {
+func createPerson(session neo4j.Session) {
 	c := time.Now().Unix()
 	result, err := session.Run(
 		`CREATE (p:Person) SET p.code = $c, p.name = $n RETURN p.code + ', from node ' + id(p)`,
@@ -81,27 +107,41 @@ func f1b(session neo4j.Session) {
 	fmt.Printf("🎾 %#v \n", r)
 }
 
-func f1(session neo4j.Session) {
-	r, err := session.WriteTransaction(func(transaction neo4j.Transaction) (interface{}, error) {
-		c := time.Now().Unix()
-		result, err := transaction.Run(
-			`CREATE (p:Person) SET p.code = $c, p.name = $n RETURN p.code + ', from node ' + id(p)`,
-			map[string]interface{}{"c": c, "n": fmt.Sprintf("agent-%d", c)},
+func createPersonTX(session neo4j.Session) (bookmark string, code interface{}) {
+	r, err := session.WriteTransaction(func(tx neo4j.Transaction) (interface{}, error) {
+		code := time.Now().Unix()
+		result, err := tx.Run(
+			`CREATE (p:Person) SET p.code = $c, p.name = $n RETURN 'code:' + p.code + ', id:' + id(p)`,
+			map[string]interface{}{"c": code, "n": fmt.Sprintf("agent-%d", code)},
 		)
 		if err != nil {
 			return nil, err
 		}
 
-		if result.Next() {
-			return result.Record().GetByIndex(0), nil
+		summary, err := result.Summary()
+		if err != nil {
+			return nil, err
 		}
+		fmt.Printf("summary: %+v \n", summary)
 
-		return nil, result.Err()
+		if !result.Next() {
+			return nil, result.Err()
+		}
+		fmt.Printf("result: %#v \n", result.Record().GetByIndex(0))
+
+		return code, nil
 	})
 	if err != nil {
 		fmt.Printf("[f1] ERR: %v", err)
 	}
-	fmt.Printf("🎾 %#v \n", r)
+
+	code = r
+	fmt.Printf("🆃🎾 code: %#v \n", code)
+
+	bookmark = session.LastBookmark()
+	fmt.Printf("🆃🎾 bookmark: %#v \n", bookmark)
+
+	return bookmark, code
 }
 
 type Person struct {

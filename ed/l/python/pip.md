@@ -11,6 +11,7 @@ pip3 list -v # show dir for packages
 pip3 show requests
 pip3 search requests
 pip3 install realtimelog # pylint: disable=invalid-name
+pip3 install -U realtimelog # upgrade
 pip3 install --upgrade realtimelog
 pip3 install --user realtimelog # install to user dir (not into system dir)
 pip3 install pylint requests virtualenv

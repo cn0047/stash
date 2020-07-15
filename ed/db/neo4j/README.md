@@ -33,6 +33,9 @@ neo4j  # the default database
 * Transaction function - transactional units of work (`session.WriteTransaction`).
 * Explicit transactions - `BEGIN, COMMIT and ROLLBACK` operations.
 
+Transactions can be executed in: read or write mode.
+Access modes can be supplied: per transaction or per session.
+
 ## Cypher
 
 Cypher - declarative graph query language.
