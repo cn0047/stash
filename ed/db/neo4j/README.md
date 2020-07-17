@@ -42,6 +42,8 @@ Cypher - declarative graph query language.
 
 ````
 =~ 'regexp'
+(?i) case-insensitive
+(?m) multiline
 ````
 
 WITH -  makes query parts chained, piping the results 1 part to 2nd.

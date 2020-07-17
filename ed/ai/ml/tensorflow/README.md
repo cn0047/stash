@@ -12,11 +12,12 @@ source ./venv/bin/activate
 python -c 'import tensorflow as tf; print(tf.reduce_sum(tf.random.normal([1000, 1000])))'
 deactivate
 
-from tensorflow.python.client import device_lib; device_lib.list_local_devices()
+import tensorflow as tf; tf.__version__
 import tensorflow as tf; tf.test.is_gpu_available()
+import tensorflow as tf; tf.config.experimental.list_physical_devices()
+from tensorflow.python.client import device_lib; device_lib.list_local_devices()
+
 print([
-    tf.__version__,
-    tf.test.is_gpu_available(),
     # tf.config.list_physical_devices('GPU'),
     tf.config.experimental.list_physical_devices('GPU'),
 ])

@@ -25,16 +25,17 @@ stats cachedump 2 100 # where 2 - items:${ID} from prev command and 100 - count 
 
 # set KEY FLAGS TTL LENGTH_IN_BYTES {PRESS_ENTER}
 # actual data
+# where: FLAGS - single character codes (q, k, I...) to adjust command behavior.
+
+set mykey1 0 0 3
+foo
+get mykey1
 
 add     # like set
 append  # like set
 prepend # like set
 replace # like set
 cas
-
-set mykey1 0 0 3
-foo
-get mykey1
 
 set mykey2 0 0 1
 7

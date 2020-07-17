@@ -2,6 +2,8 @@ Linux Tools
 -
 
 ````sh
+lsof /tmp/debug.log # find who is writing file
+
 sudo bash -c 'echo "APP_ENVIRONMENT=prod" > /etc/environment'
 sudo sh -c 'echo "APP_ENVIRONMENT=prod" > /etc/environment'
 sh -c 'echo 200'
@@ -44,7 +46,8 @@ shell uname -s
 
 shutdown -h now
 
-env # prints all ENV vars
+env        # prints all ENV vars
+declare -p # vars (including local)
 
 nproc # available processing units
 nproc --all
@@ -150,6 +153,17 @@ done
 exiftool ed/.links.md # metainfo about file
 ````
 
+#### uname
+
+````sh
+uname -s # OS name
+uname -r # OS release
+uname -v # OS version
+uname -n # nodename
+uname -m # machine hardware name
+uname -p # processor architecture
+````
+
 #### pkgconfig
 
 ````sh
@@ -171,10 +185,22 @@ test -S $s    # socket
 test -z $str  # true if length of $str is zero
 ````
 
+#### ltrace
+
+(library calls)
+
+````sh
+ltrace -e getenv php /dev/null # -e filter only stuff related to getenv
+````
+
 #### strace
+
+(sys calls)
+dtrace - strace for OSX
 
 ````sh
 strace pwd             # to see what program `pwd` is doing
+                       # (will show in which files program is writing)
 strace -c pwd          # benchmark `pwd`
 strace -o b.txt -c pwd # benchmark `pwd` into file
 ````
@@ -607,6 +633,8 @@ q - quit
 N - add the next line
 
 -n # quiet
+-e # command
+-i # edit file in-place
 
 echo 'Some text or regexp' | sed 's/regexp/replacement/g' # Some text or replacement
 echo 'cat and dog'         | sed -r "s/(cat|dog)s?/\1s/g" # cats and dogs
@@ -689,7 +717,7 @@ close
 Execute a program periodically, showing output fullscreen.
 
 ````sh
--n, --interval <secs> # seconds to wait between updates
+-n # interval in seconds
 
 watch -n 1 'echo $(date +%s%N)'
 watch -n .01 'echo $(date +%s%N)'

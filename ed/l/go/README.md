@@ -203,10 +203,6 @@ if correctobj, ok := obj.(interface{methodName()}); ok {
   correctobj.methodName()
 }
 
-// to safe update variable from goroutines
-Import "sync/atomic"
-atomic.AddInt64(&counter, 1)
-
 log.SetPrefix("TRACE: ")
 log.SetFlags(log.Ldate | log.Lmicroseconds | log.Llongfile)
 log.Println("message")

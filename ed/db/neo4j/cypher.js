@@ -67,6 +67,7 @@ OPTIONAL MATCH (c:Country) OPTIONAL MATCH (o:Organization) OPTIONAL MATCH (p:Per
 MATCH (n:Person {code:'007'}) RETURN n, id(n);
 MATCH (n:Person {code:'007'}) RETURN n {.name, .status}; // projections
 MATCH (p:Person) WHERE p.code = '007'  RETURN p;
+// @see: https://neo4j.com/docs/cypher-manual/current/clauses/where/#match-string-start
 MATCH (p:Person) WHERE p.code STARTS WITH '00' RETURN p;
 MATCH (p:Person) WHERE p.code ENDS WITH '7' RETURN p;
 MATCH (p:Person) WHERE p.code CONTAINS '7' RETURN p;
@@ -116,14 +117,19 @@ RETURN n;
 
 // node's relationships
 MATCH (:Person {code: '007'})-[r]-() RETURN r;
+MATCH (:Person {code: '007'})-[r]-() RETURN type(r);
 MATCH (:Organization {name: 'MI6'})-[r]-() RETURN r;
 MATCH (p:Person {code: '007'})--(n) RETURN p, n; // related to any
 
 // bond familiar with
 MATCH (b:Person {code: '007'})-[:FAMILIAR]->(p) RETURN b, p;
 MATCH (b:Person {code: '007'})-[:FAMILIAR|FRIENDS]->(p) RETURN b, p;
-MATCH (b:Person {code: '007'})-[:FRIENDS{close: true}]->(p) RETURN b, p;
 MATCH (b:Person {code: '007'})-[:FAMILIAR]->(n) RETURN b, n.name ORDER BY n.name;
+MATCH (b:Person {code: '007'})-[:FRIENDS{close: true}]->(p) RETURN b, p;
+// or
+MATCH (b:Person {code: '007'})-[r:FRIENDS]->(p)
+WHERE r.close = true
+RETURN b, p;
 
 // bond works at
 MATCH (b:Person {code: '007'})-[:WORKS_AT]->(n) RETURN b, n.name ORDER BY n.name;
@@ -167,6 +173,12 @@ WHERE p.code STARTS WITH '00'
 MATCH (p)-[:WORKS_AT]->(o:Organization)-[:COUNTRY]->(c:Country {name:'UK'})
 RETURN p, o, c;
 
+// dynamically-computed property
+WITH 'ACTIVE' AS f
+MATCH (p:Person)
+WHERE p[toLower(f)] = true
+RETURN p;
+
 
 
 // from MI6 and knows Felix
@@ -183,6 +195,14 @@ MATCH (p1:Person)
 OPTIONAL MATCH (p1:Person)-->(p2:Person {code: 'felix'})
 RETURN p1, p2;
 
+
+
+// existential subquery
+// MATCH (p:Person)
+// WHERE EXISTS {
+//   MATCH (p)-[:WORKS_AT]->(:Organization)
+// }
+// RETURN p;
 
 
 // unwind
