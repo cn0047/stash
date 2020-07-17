@@ -49,6 +49,9 @@ Theory
 <br>XML     - Extensible Markup Language.
 <br>YAGNI   - You ain't gonna need it.
 
+Crawling - programmatically get web page, extract hyperlinks and follow them.
+Scraping - programmatically get web page, extract very specific data.
+
 Consensus - getting all of the nodes to agree on something.
 
 Systems of record - aka source of truth.
