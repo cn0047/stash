@@ -41,8 +41,13 @@ Ctrl-w # delete word
 ````
 
 ````sh
-whoami
-shell uname -s
+# display traffic
+iftop -i eth0
+
+# when apt-get install won't work
+chown root:root /tmp
+chmod ugo+rwXt /tmp
+apt update && apt-get install vim
 
 shutdown -h now
 
@@ -72,8 +77,11 @@ fg # send command to foreground
 bg # send command to background
 
 hostname
+hostname --ip-address
 tty
 who
+whoami
+shell uname -s
 
 echo 1 || : # echo 1 or do nothing
 
@@ -136,6 +144,7 @@ nohup myscript &
 # to run with low priority:
 nice myscript
 nohup nice myscript &
+nice -n 19 myscript
 
 # http stress tester
 siege -c 10 -t 1m -b http://mysite.dev
@@ -323,6 +332,7 @@ echo $UID
 ````sh
 df               # Show information about the file system.
 df -h            # all drives
+df -ih           # inodes
 lsblk            # all attached drives
 df -T            # Show filesystem type
 du               # Summarize disk usage of each FILE.

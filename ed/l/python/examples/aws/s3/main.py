@@ -17,8 +17,15 @@ def get_client_2():
 def ls(s3, b, p):
   resp = s3.list_objects_v2(Bucket=b, Prefix=p)
   for obj in resp['Contents']:
-    files = obj['Key']
-    print(files)
+    file = obj['Key']
+    print(file)
+
+
+def ls_cb(s3, b, p, cb):
+  resp = s3.list_objects_v2(Bucket=b, Prefix=p)
+  for obj in resp['Contents']:
+    file = obj['Key']
+    cb(file)
 
 
 def cp(s3, b, p, t):
