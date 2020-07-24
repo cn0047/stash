@@ -13,6 +13,7 @@ RETURN $code;
 
 
 // NODES
+CREATE (n:Person:Agent); // with multiple labels
 CREATE (p:Person {name: 'James Bond', code: '007', active: true}) RETURN p;
 CREATE (p:Person {name: 'Moneypenny', code: 'mp', active: true}) RETURN p;
 CREATE (p:Person {name: 'Felix Leiter', code: 'felix'});
@@ -204,6 +205,19 @@ RETURN p1, p2;
 // }
 // RETURN p;
 
+
+// foreach
+MATCH p=(a)-[*]->(b)
+WHERE a.code = '007' AND b.name = 'CIA'
+// RETURN *;
+FOREACH (n IN nodes(p)| SET n.path1 = true);
+
+// call
+// MATCH (p:Person {code:'007'})
+// CALL {
+//   WITH p OPTIONAL MATCH (p)-[:FAMILIAR]->(other:Person) RETURN other
+// }
+// RETURN p, other;
 
 // unwind
 UNWIND [1, 1, 1, 2, 3, NULL] AS x RETURN x;

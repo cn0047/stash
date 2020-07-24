@@ -69,10 +69,10 @@ echo okay &> f  # for standard output & errors
 echo OK >| f # overwrite file
 
 # also
-echo "test" 2>&1 1>/dev/null &
->&2 # output to stderr
+echo "test" 1>/dev/null 2>&1 &
 1>&2 # output to stderr
 2>&1 # stderr to stdout
+>&2 # output to stderr
 
 cd "$(dirname "$(readlink -f "$0")")"
 

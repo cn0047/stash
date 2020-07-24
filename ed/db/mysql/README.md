@@ -128,7 +128,7 @@ But `text` datatype is exception((( It's impossible to specify default value for
 It also depends on data stored in table,
 if we grab some data from somewhere and we cannot guarantee consistency on app level - have to use NULL.
 For example: we have spy bot, and bot can grab only email, or email and phone, or only name...
-So it is no way to figure out did bot found empty info or didn't find info,
+So it is no way to figure out did bot found empty info or didn't find info at all,
 unless we use NULL.
 
 #### Storage engines
