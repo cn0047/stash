@@ -5,9 +5,17 @@ import (
 )
 
 func main() {
-	zero()
-	two()
-	one()
+	// zero()
+	// two()
+	// one()
+	f3()
+}
+
+func f3() {
+	bookmarks := make([]string, 0, 1)
+	// bookmarks[0] = "b1" // index out of range [0] with length 0
+	bookmarks = append(bookmarks, "b2")
+	fmt.Printf("bookmarks: %+v \n", bookmarks) // bookmarks: [b2]
 }
 
 func zero() {

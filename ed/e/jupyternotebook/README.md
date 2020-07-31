@@ -32,6 +32,12 @@ return 'color: red'
 Image(url='...')
 ````
 
+````sh
+%%writefile test.txt
+
+Test file.
+````
+
 #### Keys
 
 ````sh

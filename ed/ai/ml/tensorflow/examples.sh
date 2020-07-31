@@ -8,7 +8,7 @@ virtualenv ./venv
 source ./venv/bin/activate
 pip3 install numpy matplotlib tensorflow tensorboard
 python3 regression.py
-tensorboard --logdir=/tmp/tf_logs --bind_all
+tensorboard --bind_all --logdir=/tmp/tf_logs
 open http://localhost:6006/
 deactivate
 # or
