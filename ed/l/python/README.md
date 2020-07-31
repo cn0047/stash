@@ -18,13 +18,14 @@ python3 -V
 
 WORK_HOME=/path
 PROJECT_HOME=/path
+PYTHONUNBUFFERED=1
+
+PYTHONPATH=$HOME/dirWithScripts/:$PYTHONPATH
+# PATH=$PATH:~/ed/l/python/examples/pkg python3 pkg
 
 pylint x.py # lint file
 
 python3 # REPL
-
-export PYTHONPATH=$HOME/dirWithScripts/:$PYTHONPATH
-# PATH=$PATH:~/ed/l/python/examples/pkg python3 pkg
 
 cd ed/l/python/examples/whatever
 python3 -m unittest
@@ -125,6 +126,17 @@ __exit__()
 @classmethod # bound to a class not to instance, like staticmethod.
 @property # getter
 @propertyName.setter # setter
+
+"""
+Parameters
+----------
+conf: MyConfigType
+    Main config object.
+"""
+
+"""
+:param conf: Main config object.
+"""
 ````
 
 #### Data types

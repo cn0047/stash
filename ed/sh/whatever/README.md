@@ -260,9 +260,10 @@ sysv-rc-conf
 mpstat
 
 # Memory usage info
-free
-free -h
 cat /proc/meminfo
+# and
+free
+free -h # where buff/cache - disk caching
 
 # Disc usage info
 iotop
