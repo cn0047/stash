@@ -39,6 +39,8 @@ Docker registry - stores Docker images.
 
 Docker objects: images, containers, networks, volumes, etc.
 
+`http://host.docker.internal` - connect to host machine from container.
+
 ````sh
 docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
 

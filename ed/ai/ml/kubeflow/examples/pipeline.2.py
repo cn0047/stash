@@ -48,7 +48,7 @@ def k_pipeline_2():
   step_3 = inspect_component().add_env_variable(env_var).after(step_2)
 
 
-pipeline_conf = dsl.PipelineConf().set_image_pull_secrets([client.V1LocalObjectReference(name="regcred")])
-pipeline_conf=kfp.dsl.PipelineConf().set_image_pull_secrets([client.V1LocalObjectReference(name="regcred")])
+pipeline_conf = dsl.PipelineConf().set_image_pull_secrets([client.V1LocalObjectReference(name="x")])
+pipeline_conf=kfp.dsl.PipelineConf().set_image_pull_secrets([client.V1LocalObjectReference(name="x")])
 kfp.compiler.Compiler().compile(k_pipeline_2, 'pipeline.zip', pipeline_conf=pipeline_conf)
 pipeline = kfp.Client().create_run_from_pipeline_func(k_pipeline_2, arguments={}, pipeline_conf=pipeline_conf)

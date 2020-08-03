@@ -104,6 +104,6 @@ def pipeline_sanity():
 p = pipeline_sanity
 pod_node_selector = 'kubeflow'
 pipeline_conf = dsl.PipelineConf()
-pipeline_conf.set_image_pull_secrets([client.V1LocalObjectReference(name="xx")])
+pipeline_conf.set_image_pull_secrets([client.V1LocalObjectReference(name="x")])
 pipeline_conf.set_default_pod_node_selector(label_name="kubernetes.io/instancegroup", value=pod_node_selector)
 pipeline = kfp.Client().create_run_from_pipeline_func(p, arguments={}, pipeline_conf=pipeline_conf)

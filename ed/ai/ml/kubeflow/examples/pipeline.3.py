@@ -56,6 +56,6 @@ def k_pipeline_3():
         v.delete().after(step_2)
 
 
-pipeline_conf = dsl.PipelineConf().set_image_pull_secrets([client.V1LocalObjectReference(name="regcred")])
-pipeline_conf=kfp.dsl.PipelineConf().set_image_pull_secrets([client.V1LocalObjectReference(name="regcred")])
+pipeline_conf = dsl.PipelineConf().set_image_pull_secrets([client.V1LocalObjectReference(name="x")])
+pipeline_conf=kfp.dsl.PipelineConf().set_image_pull_secrets([client.V1LocalObjectReference(name="x")])
 kfp.compiler.Compiler().compile(k_pipeline_3, 'pipeline.zip', pipeline_conf=pipeline_conf)
