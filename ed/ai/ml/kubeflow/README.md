@@ -21,6 +21,7 @@ Fairing - python package that makes it easy to train and deploy ML models on Kub
 
 # !tensorboard --logdir=/home/jovyan/logs/ --bind_all
 %load_ext tensorboard
+%reload_ext
 %load_ext tensorboard.notebook
 import os; os.makedirs('./tb_logs', exist_ok=True)
 %tensorboard --logdir './tb_logs'
