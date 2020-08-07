@@ -79,9 +79,11 @@ is the best primitive to manage and deploy our software in k8s.
 It supports gracefully deploying, rolling updating,
 and rolling back pods and ReplicaSets.
 Main feature - zero downtime deployment.
+
 Deployment strategies `StrategyType`:
 * RollingUpdate (default).
 * Recreate - just drop everything and create new (with down time).
+
 Deployment creates ReplicaSet under the hood.
 Deployment status: complete, progressing, failed.
 To slow down deployment set `max unavailable 10 or less` and `max surge 2 or smth`.
@@ -96,11 +98,15 @@ can provide load balancing, SSL termination and name-based virtual hosting.
 `hostPath` - path on worker node,
 `persistentVolume` declares volume and `persistentVolumeClaim` uses that volume,
 `nfs, configMap/secret, cloud`.
+
 Persistent Volume - to store data permanently.
+
 accessModes:
 * ReadWriteOnce — volume mounted as read-write by a single node
 * ReadWriteMany — read-write by many nodes
 * ReadOnlyMany  — read-only by many nodes
+
+storageClassName: manual, gp2, aws-efs.
 
 **ConfigMap**, `ls /etc/config`.
 
@@ -196,7 +202,7 @@ kubectl proxy # proxy to k8s api
 kubectl explain pods
 
 kubectl create -f ed/sh.kubernetes/examples/sh/pod.yaml
-kubectl edit <resource> <resource_name>
+kubectl edit $resource $resource_name
 
 kubectl describe rc $rc # replication controller
 kubectl describe svc $svc
@@ -265,7 +271,7 @@ kubectl scale deployment $depl --replicas=11
 kubectl exec -it $pod /bin/bash
 
 # copy files to/from containers running in the pod
-kubectl cp --container=kuard /etc/os-release kuard:/tmp/
+# kubectl cp --container=kuard /etc/os-release kuard:/tmp/
 
 kubectl run mysql-client --image=mysql:5.7.27 -it --rm --restart=Never -- \
   mysql -h$mysqlHost -P3306 -udbu -pdbp -Dtest -e 'select * from tmp'

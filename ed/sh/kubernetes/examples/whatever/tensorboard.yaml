@@ -1,0 +1,69 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: x-tensorboard-pv
+  labels:
+    app: x-tensorboard
+spec:
+  storageClassName: aws-efs
+  capacity:
+    storage: 1G
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: "/tbl"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: x-tensorboard-pvc
+  labels:
+    app: x-tensorboard
+spec:
+  storageClassName: aws-efs
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: x-tensorboard-pod
+  labels:
+    app: x-tensorboard
+spec:
+  containers:
+  - name: x-tensorboard-container
+    image: cn007b/pi:ai.tf13
+    imagePullPolicy: Always
+    command: [
+      "sh",
+      "-c",
+      "mkdir -p /tbl && tensorboard --host 0.0.0.0 --port 6009 --reload_interval=20 --logdir=/tbl",
+    ]
+    ports:
+      - containerPort: 6009
+        name: tbp
+    volumeMounts:
+    - mountPath: /tbl
+      name: xvol
+  volumes:
+  - name: xvol
+    persistentVolumeClaim:
+      claimName: x-tensorboard-pvc
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: x-tensorboard-svc
+  labels:
+    app: x-tensorboard
+spec:
+  type: LoadBalancer
+  selector:
+    app: x-tensorboard
+  ports:
+  - port: 6009
+    targetPort: 6009

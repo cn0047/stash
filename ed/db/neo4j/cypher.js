@@ -1,5 +1,10 @@
 // Cypher
 
+keys()
+labels()
+nodes()
+relationships()
+
 
 
 WITH 204 as c RETURN c;
