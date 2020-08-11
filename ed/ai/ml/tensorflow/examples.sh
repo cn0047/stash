@@ -1,3 +1,10 @@
+
+virtualenv --system-site-packages -p python3 ./venv
+source ./venv/bin/activate
+python -c 'import tensorflow as tf; print(tf.reduce_sum(tf.random.normal([1000, 1000])))'
+deactivate
+
+#
 docker run -ti --rm -v $PWD:/gh -w /gh tensorflow/tensorflow sh -c '
   python3 ed/ai/ml/tensorflow/examples/one.py
 '

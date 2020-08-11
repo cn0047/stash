@@ -3,15 +3,17 @@ TensorFlow
 
 [docs](https://www.tensorflow.org/tutorials)
 
+computation graph - static
+define before run
+
 ````sh
 pip3 install tensorflow
 
+tensorboard --logdir './tb_logs' --bind_all
+tensorboard --logdir './tb_logs' --host 0.0.0.0 --port 6008 --reload_interval=60
+````
 
-virtualenv --system-site-packages -p python3 ./venv
-source ./venv/bin/activate
-python -c 'import tensorflow as tf; print(tf.reduce_sum(tf.random.normal([1000, 1000])))'
-deactivate
-
+````sh
 import tensorflow as tf; tf.__version__
 import tensorflow as tf; tf.test.is_gpu_available()
 import tensorflow as tf; tf.config.experimental.list_physical_devices()
@@ -25,9 +27,6 @@ print([
 # Create model using the TensorFlow Keras library
 model = tf.keras.Sequential()
 ````
-
-computation graph - static
-define before run
 
 Constant - immutable value.
 Placeholder - holds place for tensor that will be available at runtime.

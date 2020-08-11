@@ -1,3 +1,9 @@
+# %%capture
+# !pip3 install https://storage.googleapis.com/ml-pipeline/release/latest/kfp.tar.gz --upgrade --user
+# !pip3 install https://storage.googleapis.com/ml-pipeline/release/0.1.10/kfp.tar.gz --upgrade --user
+
+# !pip3 install kfp kubernetes > /dev/null
+
 import kfp
 import kfp.dsl as dsl
 from kubernetes import client

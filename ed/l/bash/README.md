@@ -114,7 +114,7 @@ elif [[ -r $filename ]]; then echo "$filename is a readable file"
 elif [[ -w $filename ]]; then echo "$filename is a writable file"
 elif [[ -x $filename ]]; then echo "$filename is an executable file"
 
-if [[ -n "$string" ]];      then echo "$string is non-empty"
+if [[ -n "$string" ]];      then echo "$string is not empty"
 if [[ -z "${string// }" ]]; then echo "$string is empty or contains only spaces"
 if [[ -z "$string" ]];      then echo "$string is empty"
 
@@ -400,6 +400,11 @@ continue
 while true; do echo -n . ; done
 while true; do echo -n . ; sleep 999; done
 until false; do echo -n . ; done
+
+# wait dir
+while true ; do [[ -d '/tmp/x' ]] && break ; echo -n '.' ; sleep 1 ; done
+# wait file by pattern
+while true; do f=`find /tmp/ -name '*.txt.*' -type f`; [[ -n '$f' ]] && break ; echo -n '.' ; sleep 1 ; done
 
 ls | grep $ptrn | while read f; do echo $f; done
 

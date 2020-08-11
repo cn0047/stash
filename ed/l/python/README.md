@@ -1,5 +1,6 @@
 Python
 -
+<br>3.6
 <br>2.7.10
 
 [doc](https://www.python.org/)

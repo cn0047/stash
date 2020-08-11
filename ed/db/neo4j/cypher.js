@@ -204,11 +204,9 @@ RETURN p1, p2;
 
 
 // existential subquery
-// MATCH (p:Person)
-// WHERE EXISTS {
-//   MATCH (p)-[:WORKS_AT]->(:Organization)
-// }
-// RETURN p;
+MATCH (p:Person)
+WHERE EXISTS { MATCH (p)-[:WORKS_AT]->(:Organization) }
+RETURN p;
 
 
 // foreach
@@ -218,11 +216,9 @@ WHERE a.code = '007' AND b.name = 'CIA'
 FOREACH (n IN nodes(p)| SET n.path1 = true);
 
 // call
-// MATCH (p:Person {code:'007'})
-// CALL {
-//   WITH p OPTIONAL MATCH (p)-[:FAMILIAR]->(other:Person) RETURN other
-// }
-// RETURN p, other;
+MATCH (p:Person {code:'007'})
+CALL { WITH p OPTIONAL MATCH (p)-[:FAMILIAR]->(other:Person) RETURN other }
+RETURN p, other;
 
 // unwind
 UNWIND [1, 1, 1, 2, 3, NULL] AS x RETURN x;
