@@ -2,20 +2,19 @@
 
 Node types: leader, follower.
 
+SHOW DATABASES;
+SHOW DATABASE system;
+CREATE DATABASE mydb if not exists; // Enterprise Edition
+STOP DATABASE mydb;
+START DATABASE mydb;
+SHOW DATABASE mydb;
+DROP DATABASE mydb;
 
 
-CALL db.schema();
-CALL db.indexes();
+
+CALL db.schema.visualization();
 CALL db.labels();
-
-CALL dbms.procedures() YIELD name, signature
-RETURN *;
-
-CREATE INDEX ON :Person(code);
-DROP INDEX ON :Person(code);
-CREATE INDEX ON :Person(name, active);
-
-CREATE CONSTRAINT ON (p:Person) ASSERT p.code IS UNIQUE;
+CALL dbms.procedures() YIELD name, signature RETURN * ;
 
 
 

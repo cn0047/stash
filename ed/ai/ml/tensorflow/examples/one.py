@@ -1,4 +1,5 @@
 import tensorflow as tf
+import tensorflow.compat.v1 as tf1
 
 
 def p(v):
@@ -21,6 +22,12 @@ def f3():
   x2 = tf.constant([5,6,7,8])
   r = tf.multiply(x1, x2)
   p(r)
+
+
+def f4():
+  tf1.disable_v2_behavior()
+  b = tf1.placeholder(tf1.float32, [None, 1], name='b')
+  print("\n==========\n", b, "\n==========\n")
 
 
 # f1()

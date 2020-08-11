@@ -9,6 +9,8 @@ Kubeflow - ML toolkit for k8s.
 Fairing - python package that makes it easy to train and deploy ML models on Kubeflow.
 Component - self-contained set of code that performs one step in the ML workflow (pipeline).
 
+Artifacts in UI tab will be available once ContainerOp finished.
+
 ````sh
 %%capture
 
@@ -26,8 +28,7 @@ pipeline.run_info
 %reload_ext
 %load_ext tensorboard.notebook
 import os; os.makedirs('./tb_logs', exist_ok=True)
-%tensorboard --logdir './tb_logs' --bind_all
-%tensorboard --logdir './tb_logs' --host 0.0.0.0 --port 6008 --reload_interval=60
+%tensorboard --logdir './tb_logs'
 ````
 
 ````sh
