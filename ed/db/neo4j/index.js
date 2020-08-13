@@ -1,22 +1,16 @@
 // Indexes
 
-
 CALL db.indexes();
-
-
 
 CREATE INDEX ON :Person(code);
 DROP INDEX ON :Person(code);
 CREATE INDEX ON :Person(name, active);
-
-
 
 // constraint
 // @see: https://neo4j.com/docs/cypher-manual/current/administration/constraints/#administration-constraints-syntax
 CALL db.constraints();
 CREATE CONSTRAINT ON (p:Person) ASSERT p.code IS UNIQUE;
 // CREATE CONSTRAINT ON (p:Person) ASSERT EXISTS (p.name); // Enterprise Edition
-
 
 // fulltext index
 // @see: https://neo4j.com/docs/cypher-manual/current/administration/indexes-for-full-text-search

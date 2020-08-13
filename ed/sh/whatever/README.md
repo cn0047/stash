@@ -2,6 +2,8 @@ Linux Tools
 -
 
 ````sh
+timeout 15s ./cmd.sh # run cmd with timeout
+
 lsof /tmp/debug.log # find who is writing file
 
 sudo bash -c 'echo "APP_ENVIRONMENT=prod" > /etc/environment'

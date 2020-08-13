@@ -202,7 +202,7 @@ kubectl proxy # proxy to k8s api
 kubectl explain pods
 
 kubectl create -f ed/sh.kubernetes/examples/sh/pod.yaml
-kubectl edit $resource $resource_name
+kubectl edit $resource $resource_name # edit yaml in vim
 
 kubectl describe rc $rc # replication controller
 kubectl describe svc $svc
