@@ -10,7 +10,10 @@ define before run
 pip3 install tensorflow
 
 tensorboard --logdir './tb_logs' --bind_all
+tensorboard --logdir './tf_logs' --bind_all
 tensorboard --logdir './tb_logs' --host 0.0.0.0 --port 6008 --reload_interval=60
+--bind_all                       # in v2
+--logdir_spec b1:tf_logs,b2:tfl2 # in v2
 ````
 
 ````sh

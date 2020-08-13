@@ -163,6 +163,8 @@ Even (2, 4, 6...) -> x % 2 = 0.
 
 ````sh
 \0, \000, \x00, \z, \u0000, %00 # null character/terminator/byte
+\r                              # carriage return
+\b                              # backspace
 ````
 
 ````
