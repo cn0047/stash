@@ -16,7 +16,12 @@ Types:
 
 enum
 
+Thrift JSON:
 ````sh
-cd ed/r/thrift/examples.go/one
-thrift -r --gen go mythrift.thrift
+{"tf":"0"}                      # bool false
+{"tf":"1"}                      # bool true
+
+{"str":"this is string"}
+
+{"lst":["str",2,"tag1","tag2"]} # list of strings with length 2
 ````

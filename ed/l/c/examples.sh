@@ -3,8 +3,10 @@
 gh=$HOME/web/kovpak/gh
 d=$gh/ed/l/c/examples
 
-f=$d/whatever/hw.c
-gcc -o x -Wall $f && ./x
+f=ed/l/c/examples/whatever/hw.c
+f=ed/l/c/examples/whatever/array.one.c
+f=ed/l/c/examples/whatever/func.one.c
+gcc -o /tmp/x -Wall $f && /tmp/x
 
 
 

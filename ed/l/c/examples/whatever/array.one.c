@@ -2,7 +2,7 @@
 
 static int vals[] = {4, 5, 6};
 
-void one()
+void f1()
 {
     size_t nib = sizeof(vals); // unsigned long - in bytes
     size_t length = sizeof(vals) / sizeof(vals[0]);
@@ -14,9 +14,19 @@ void one()
     }
 }
 
+void f2()
+{
+  int arr<::> = <% 1, 2, 3 %>; // digraphs
+  printf("[f2] el 2 = %d\n", arr<:1:>);
+
+  int arr2[] = { 1, 2, 3 };
+  printf("[f2] el 2 = %d\n", arr2[1]);
+}
+
 int main()
 {
-    one();
+    // f1();
+    f2();
 
     return 0;
 }
