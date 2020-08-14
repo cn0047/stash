@@ -13,3 +13,7 @@ Neuro-linguistic programming (NLP) - .
 Optimal Brain Damage (OBD) - .
 
 CUDA - Nvidia's parallel computing platform and programming model for GPUs.
+````
+CUDA_VISIBLE_DEVICES='0,1' # use devices 0,1
+CUDA_VISIBLE_DEVICES=''    # don't use any device
+````

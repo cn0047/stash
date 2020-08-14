@@ -25,3 +25,22 @@ CALL db.index.fulltext.queryNodes("name", "bond") YIELD node, score RETURN node,
 CALL db.index.fulltext.queryNodes("name", "*ond") YIELD node, score RETURN node, score;
 CALL db.index.fulltext.queryNodes("name", "bon*") YIELD node, score RETURN node, score;
 CALL db.index.fulltext.queryNodes("name", "b*nd") YIELD node, score RETURN node, score;
+
+
+
+// Examples:
+//
+// S_IDX - Single-property index.
+// S_IDX, STARTS WITH clause - index works.
+// S_IDX, ENDS WITH clause   - index works, (search not optimized but it faster than not using index).
+// S_IDX, CONTAINS clause    - ↑
+//
+// C_IDX - Composite index:
+// C_IDX, Equality check     - index works if ALL fields from composite index used in query.
+// C_IDX, Range comparisons  - ↑
+// C_IDX, IN clause          - ↑
+// C_IDX, STARTS WITH clause - ↑, like: idx_p1 STARTS WITH 'foo' AND EXISTS (idx_p2)
+// C_IDX, ENDS WITH clause   - ↑, like: idx_p1 ENDS WITH 'foo' AND EXISTS (idx_p2)
+//                             (search not optimized but it faster than not using index).
+// C_IDX, CONTAINS clause    - ↑
+// C_IDX, EXISTS clause      - index works for: EXISTS idx_p1 AND EXISTS idx_p2
