@@ -52,3 +52,25 @@ Cypher - declarative graph query language.
 WITH -  makes query parts chained, piping the results 1 part to 2nd.
 OPTIONAL MATCH - return nulls for missing parts of the pattern.
 UNWIND - expands list into sequence of rows.
+
+## Performance
+
+In query plan:
+* NodeIndexSeek - Single-property index, Equality check.
+* NodeIndexSeekByRange
+* NodeIndexContainsScan
+* NodeIndexEndsWithScan
+* NodeIndexScan
+* NodeByLabelScan
+* AllNodesScan
+
+Execution Plans:
+* Evaluation model.
+* Eager and lazy evaluation.
+
+Rows - rows number that operator produced.
+EstimatedRows - estimated rows number that is expected to be produced.
+DbHits - abstract unit of storage engine work.
+Page Cache Hits, Page Cache Misses, Page Cache Hit Ratio - page cache
+used to cache data and avoid accessing disk,
+so having high number of hits and low number of misses make query faster.
