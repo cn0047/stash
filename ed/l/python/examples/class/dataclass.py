@@ -1,7 +1,8 @@
-class Foo:
+from dataclasses import dataclass
 
-    def __init__(self):
-        print('init')
+
+@dataclass
+class Foo:
 
     def __post_init__(self):
         print('postinit')

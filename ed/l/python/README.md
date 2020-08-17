@@ -78,6 +78,7 @@ any([false, true]) # true
 all([false, true]) # false
 type(myvar) # type of var
 isinstance(3, int)
+issubclass()
 hasattr(var, attr)
 getattr(obj, attr)
 setattr(obj, attr, val)
@@ -118,6 +119,7 @@ __getitem__(self, index)
 __getattr__(self, name)
 __setattr__(self, name, val)
 __eq__(self, rhs)
+__hash__
 __ne__(self, rhs)
 __len__(self)
 __enter__() # enter context (with keyword)

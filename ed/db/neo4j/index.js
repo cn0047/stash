@@ -6,11 +6,27 @@ CREATE INDEX ON :Person(code);
 DROP INDEX ON :Person(code);
 CREATE INDEX ON :Person(name, active);
 
+// hint
+MATCH (p:Person {code: '007'})
+USING INDEX p:Person(code)
+RETURN p;
+
+MATCH (p:Person {code: '007'})
+USING SCAN p:Person // label scan
+RETURN p;
+
+// USING INDEX      - index scan.
+// USING INDEX SEEK - index seek.
+// USING JOIN       - @see: https://neo4j.com/docs/cypher-manual/current/query-tuning/using/#_hinting_a_join_on_a_single_node
+
+
 // constraint
 // @see: https://neo4j.com/docs/cypher-manual/current/administration/constraints/#administration-constraints-syntax
 CALL db.constraints();
 CREATE CONSTRAINT ON (p:Person) ASSERT p.code IS UNIQUE;
 // CREATE CONSTRAINT ON (p:Person) ASSERT EXISTS (p.name); // Enterprise Edition
+
+
 
 // fulltext index
 // @see: https://neo4j.com/docs/cypher-manual/current/administration/indexes-for-full-text-search
