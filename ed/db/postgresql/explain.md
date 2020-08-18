@@ -10,8 +10,8 @@ In output:
 
 * `cost` - time expended before output phase begin,
    after .. number - is estimated total cost.
-* `rows` - estimated rows
-* `width` - what we got as result dividet to number of rows
+* `rows` - estimated rows.
+* `width` - what we got as result divided to number of rows.
 
 <br>`Seq Scan` - not very good;
 <br>`Gather ... Parallel Seq Scan` - parallel query (must be not bad);

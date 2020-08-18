@@ -196,6 +196,8 @@ test -S $s    # socket
 test -z $str  # true if length of $str is zero
 ````
 
+#### ptrace
+
 #### ltrace
 
 (library calls)

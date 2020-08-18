@@ -12,8 +12,9 @@ var (
 
 func main() {
 	// f1()
-	f2()
+	// f2()
 	// three()
+	loop()
 }
 
 func three() {
@@ -92,6 +93,15 @@ func f2() {
 	data := map[string]interface{}{
 		"a": false,
 		"b": true,
+	}
+	tmpl.Execute(os.Stdout, data)
+}
+
+func loop() {
+	t := `List: {{range $k, $v := .list}} {{$k}}={{$v}}; {{end}}`
+	tmpl := template.Must(template.New("tmpl").Parse(t))
+	data := map[string]interface{}{
+		"list": []string{"a", "b", "c"},
 	}
 	tmpl.Execute(os.Stdout, data)
 }
