@@ -15,7 +15,7 @@ SELECT 'fat cat ate a fat rat'::tsvector @@ 'cat & rat'::tsquery;
 SELECT to_tsvector('fat cats ate fat rats') @@ to_tsquery('fat & rat');
 
 -- debug:
-SELECT * FROM ts_debug('english','fat cat ate fat rats');
+SELECT * FROM ts_debug('english', 'fat cat ate fat rats');
 SELECT * FROM ts_parse('default', '123 - a number');
 ````
 

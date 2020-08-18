@@ -10,6 +10,10 @@ template
   <option value="{{ $prj.ID }}">{{ $prj.ID }}</option>
 {{end}}
 
+{{range $k, $v := .list}}
+  {{$k}}={{$v}}
+{{end}}
+
 {{if .public -}}
   public
 {{else if .x -}}
@@ -17,4 +21,8 @@ template
 {{else -}}
   private
 {{end -}}
+
+{{if or .a .b}}
+  ok
+{{end}}
 ````
