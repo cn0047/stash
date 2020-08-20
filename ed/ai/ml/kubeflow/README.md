@@ -11,6 +11,8 @@ Component - self-contained set of code that performs one step in the ML workflow
 
 Artifacts in UI tab will be available once ContainerOp finished.
 
+## Jupyter notebooks:
+
 ````sh
 %%capture
 

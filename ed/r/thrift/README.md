@@ -10,18 +10,30 @@ Types:
 * double - 64-bit floating point value
 * string - String
 * binary - Blob (byte array)
-* map<t1,t2> - Map from one type to another
 * list<t1> - Ordered list of one type
 * set<t1> - Set of unique elements of one type
+* map<t1,t2> - Map from one type to another
 
 enum
 
 Thrift JSON:
 ````sh
-{"tf":"0"}                      # bool false
-{"tf":"1"}                      # bool true
+[1,"methondName",1,0,{"1":{"str":"foo"},"2":{"str":"bar"}}]
+
+{"tf":"0"} # bool false
+{"tf":"1"} # bool true
+{"i32":9}  # int32
+{"i64":9}  # int64
 
 {"str":"this is string"}
 
-{"lst":["str",2,"tag1","tag2"]} # list of strings with length 2
+{"lst":["str",2,"tag1","tag2"]}                     # list of strings with length 2
+{"set":["rec",1,{"1":{"str":"foo"},"2":{"i32":9}}]} # set with 2 items
+{"map":["str","rec",1,{"en":{"1":{"str":"msg"}}}]}  # map
+
+# obj
+{"rec":{
+  "1":{"str":"foo"},
+  "2":{"str":"bar"}
+}}
 ````

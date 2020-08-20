@@ -9,6 +9,7 @@ relationships()
 
 WITH 204 as c RETURN c;
 // var
+// IMPORTANT: don't use _ in var name
 :param code => 200;
 WITH $code as c RETURN c;
 RETURN $code;

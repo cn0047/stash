@@ -22,6 +22,10 @@ Dataset must be divided into: train, validation, test.
 
 Serving ML Model - make trained model available to serve prediction requests.
 
+Precision and recall - example: given 8 dogs and 4 cats,
+ML found 8 dogs (real: 5 dogs (true positives) & 3 cats (false positives)),
+so precision = 5/8 while its recall is 5/12.
+
 **SUPERVISED learning** - when we have info, like cat is on picture.
 (email spam/not spam, cancer tumor).
 Needs training data.

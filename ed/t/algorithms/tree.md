@@ -42,10 +42,16 @@ Keep their keys in sorted order, so that lookup and other operations can **use t
 that automatically **keeps its height small** in the face of arbitrary item insertions and deletions.
 Search performance = O(log n)
 
-* `B-tree` - is a self-balancing tree data structure
+* `B-tree` - self-balancing, self managed, multi-level binary search tree.
+
+B-tree is a self-balancing tree data structure
 that keeps data sorted and allows searches,
 sequential access, insertions, and deletions in logarithmic time.
 The B-tree is a generalization of a binary search tree in that a node **can have more than two children**.
+
+B-tree is also self managed multi-level index,
+it means when data in index grows, B-tree creates index in front of index, and so on,
+and when data deletes, B-tree deletes index.
 
 * Red–black tree - is a kind of self-balancing binary search tree.
 **Each node** of the binary tree **has an extra bit**,

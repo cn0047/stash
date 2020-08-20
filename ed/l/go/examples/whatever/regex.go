@@ -12,11 +12,25 @@ type SubM map[string]string
 type M map[string]SubM
 
 func main() {
-    println(r("1st test"))
-    println(r("1st.test"))
-    println(r("this is test # 3"))
-    println(r("Last config, last but not least (conf 4)."))
-    noCapture()
+    // println(r("1st test"))
+    // println(r("1st.test"))
+    // println(r("this is test # 3"))
+    // println(r("Last config, last but not least (conf 4)."))
+    // noCapture()
+    checkIsValidGeneralID()
+}
+
+func checkIsValidGeneralID() {
+    fmt.Printf("[GeneralID] 1=%v \n", isValidGeneralID("-1"))
+    fmt.Printf("[GeneralID] 2=%v \n", isValidGeneralID(""))
+    fmt.Printf("[GeneralID] 2=%v \n", isValidGeneralID("_"))
+    fmt.Printf("[GeneralID] 2=%v \n", isValidGeneralID("_x"))
+    fmt.Printf("[GeneralID] 2=%v \n", isValidGeneralID("x37dc"))
+}
+
+func isValidGeneralID(s string) bool {
+    re := regexp.MustCompile(`(?i)^[\w]+[\w\d-]+$`)
+    return re.MatchString(s)
 }
 
 func noCapture() {
