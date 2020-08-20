@@ -1,6 +1,10 @@
 History of Go
 -
 
+#### go1.15
+
+#### go1.14
+
 #### [go1.13](https://golang.org/doc/go1.13)
 
 * Error wrapping.

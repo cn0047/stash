@@ -6,6 +6,7 @@ neo4j
 [docs](https://neo4j.com/docs/)
 [data types](https://neo4j.com/docs/cypher-manual/current/syntax/values/)
 [funcs](https://neo4j.com/docs/cypher-manual/current/functions/)
+[keywords](https://neo4j.com/docs/cypher-manual/current/keyword-glossary/)
 
 ````sh
 cypher-shell -u neo4j -p test
@@ -55,14 +56,14 @@ UNWIND - expands list into sequence of rows.
 
 ## Performance
 
-In query plan:
+[In query plan](https://neo4j.com/docs/cypher-manual/current/execution-plans/operator-summary/):
+* AllNodesScan
+* NodeByLabelScan
+* NodeIndexScan
 * NodeIndexSeek - Single-property index, Equality check.
 * NodeIndexSeekByRange
 * NodeIndexContainsScan
 * NodeIndexEndsWithScan
-* NodeIndexScan
-* NodeByLabelScan
-* AllNodesScan
 
 Execution Plans:
 * Evaluation model.

@@ -53,7 +53,7 @@ which software the init command launches or shuts off on a given runlevel.
 /media                                  #
 /opt                                    # optional software directory
 /proc/cpuinfo                           # info about cpu
-/proc/meminfo                           # info about memory
+/proc/meminfo                           # info about memory (+ memory usage)
 /proc/net/ip_vs                         #
 /proc/sys/fs/file-max                   # ↓
 /proc/sys/kernel/random/entropy_avail   # entropy pool size

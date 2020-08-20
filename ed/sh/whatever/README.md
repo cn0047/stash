@@ -253,6 +253,8 @@ sar -n TCP,ETCP 1 # TCP metrics
 top               #
 
 uptime # CPU load average
+
+lscpu  # CPU info
 ````
 
 ````sh
@@ -264,8 +266,6 @@ sysv-rc-conf
 mpstat
 
 # Memory usage info
-cat /proc/meminfo
-# and
 free
 free -h # where buff/cache - disk caching
 
@@ -827,12 +827,14 @@ uuencode card.jpg card.jpg | mail mail@com.com
 #### grep (Global Regular Expression Print)
 
 ````sh
--z, --null-data             # \0
--v, --revert-match          #
--m, --max-count=5           #
--h, --no-filename           #
--L, --files-without-match   # print only file names
--Pz                         # multi rows
+-z, --null-data # \0
+-v              # revert match
+-m              # max count
+-h              # no filename
+-L              # print only file names
+-Pz             # multi rows
+-A              # num lines after each match
+-B              # num lines before each match
 ````
 
 `grep match -wrni --color=always --include=*.php . | grep notMatch -v --color=always`

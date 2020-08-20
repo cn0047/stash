@@ -1,8 +1,8 @@
 # @example:
 # make -f ed/sh/makefile/example/one/Makefile hw
 
-TOP := "TOP"
-ROOT = "ROOT"
+TOP := "TOP △ "
+ROOT = "ROOT ▼ "
 TOP_ROOT_PATH=$(TOP):$(ROOT)/path
 
 export GOPATH=${CURDIR}
