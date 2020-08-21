@@ -70,6 +70,7 @@ Command–l|r             # Move B/E current line.
 Option–l|r              # Move B/E previous word.
 
 Shift–Option–U|D|L|R    # Extended text selection
+Command-Option          # Select text column in terminal
 
 Command-Shift-3         # Screenshot ALL SCREEN in file on desktop
 Command-Control-Shift-3 # Screenshot ALL SCREEN in buffer

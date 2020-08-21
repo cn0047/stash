@@ -12,11 +12,17 @@ vim file +7
 :%!xxd    # transform to hex editor
 :%!xxd -r # reverse transform
 
+:q  # quit
+:q! #
+:w  #
+:x  #
+:e! # reload file
+
 :version
-u                   # undo last change
+u               # undo last change
 :redo or CTRL+R
-:e!                 # reload file
-:%s/text/newText/   # replace
+
+:%s/text/newText/ # replace
 
 ctrl+p - show competition
 
