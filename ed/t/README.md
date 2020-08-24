@@ -16,8 +16,6 @@ Theory
 <br>BAAS    - Back-end as a service.
 <br>BLOB    - Binary Large Object.
 <br>CRM     - Customer relationship management.
-<br>DDL     - Data description language.
-<br>DRAM    - Dynamic Random-access Memory
 <br>DRY     - Don't repeat yourself.
 <br>GMT     - Greenwich Mean Time.
 <br>GTIN    - Global Trade Item Number.
@@ -44,6 +42,7 @@ Theory
 <br>UPI     - Unique Product Identifier.
 <br>UTC     - Coordinated Universal Time.
 <br>VOIP    - Voice over Internet Protocol.
+<br>WORA    - Write once, run anywhere.
 <br>WSDL    - Web Service Definition Language.
 <br>WYSIWYG - What you see is what you get.
 <br>XML     - Extensible Markup Language.
