@@ -7,6 +7,7 @@ neo4j
 [data types](https://neo4j.com/docs/cypher-manual/current/syntax/values/)
 [funcs](https://neo4j.com/docs/cypher-manual/current/functions/)
 [keywords](https://neo4j.com/docs/cypher-manual/current/keyword-glossary/)
+[cypher styleguide](https://neo4j.com/docs/cypher-manual/current/styleguide/)
 
 ````sh
 cypher-shell -u neo4j -p test
