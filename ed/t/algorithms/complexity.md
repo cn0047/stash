@@ -75,11 +75,8 @@ X will always be a better choice for large inputs.
 #### log
 
 ````
-a^x = b
-2^3 = 8
-
-x = log a (b)
-3 = log 2 (8)
+a^x = b           # 2^3 = 8
+x = log a (b)     # 3 = log 2 (8)
 
 log 10 (x) = lg (x) = log (x) # by default base = 10 in mathematics
                               # by default base =  2 in programming

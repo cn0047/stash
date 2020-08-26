@@ -3,15 +3,13 @@ Java
 
 ````sh
 java -version
+
+JVM_ARGS="-XX:+UseG1GC"
+MIN_MEM_SIZE="512"
+MAX_MEM_SIZE="1024"
+java $JVM_ARGS -Xms${MIN_MEM_SIZE}m -Xmx${MAX_MEM_SIZE}m -Djava.security.egd=file:/dev/./urandom -jar /tmp/x.jar
+
 ````
-
-POM - Project Object Model.
-JEE - Java Enterprise Edition
-JDK - Java Development Kit.
-JRE - Java Runtime Environmen.
-POJO - Plain Old Java Object.
-
-IDE -> JDK -> App -> JRE -> Host Env.
 
 ````java
 /** This is JavaDoc comment... */
@@ -22,6 +20,17 @@ final x int = 3;
 
 for (float v: arr) sum += v;
 ````
+
+POM  - Project Object Model.
+JSE  - Java Standard Edition
+JEE  - Java Enterprise Edition (Wildfly, WebSphere, WebLogic, Tomcat).
+JVM  - Java Virtual Machine (in JRE).
+JRE  - Java Runtime Environmen (in JDK).
+JDK  - Java Development Kit.
+POJO - Plain Old Java Object.
+JDBC - Java DB Connectivity.
+
+IDE -> JDK -> App -> JRE (-> JVM) -> Host Env.
 
 #### Data types
 

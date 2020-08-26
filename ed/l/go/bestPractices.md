@@ -1,6 +1,8 @@
 Best Practices
 -
 
+[code style](https://github.com/golang/go/wiki/CodeReviewComments)
+
 * Avoid nesting by handling errors first.
 * Make your packages "go get"-able.
 * Use goroutines to manage state.

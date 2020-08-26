@@ -57,6 +57,20 @@ UNWIND - expands list into sequence of rows.
 
 ## Performance
 
+EXPLAIN ... - see the execution plan but not run.
+PROFILE ... - run and see which operators are doing most of the work.
+
+`WHERE p.name STARTS WITH ''` - may improve performance.
+`WITH p` - berore RETURN, may improve performance.
+
+````js
+// replan=default
+// replan=force   - force a replan.
+// replan=skip    - f a valid plan already exists, it will be used.
+CYPHER replan=force MATCH ...
+CYPHER replan=force EXPLAIN MATCH ...
+````
+
 [In query plan](https://neo4j.com/docs/cypher-manual/current/execution-plans/operator-summary/):
 * AllNodesScan
 * NodeByLabelScan
@@ -76,3 +90,11 @@ DbHits - abstract unit of storage engine work.
 Page Cache Hits, Page Cache Misses, Page Cache Hit Ratio - page cache
 used to cache data and avoid accessing disk,
 so having high number of hits and low number of misses make query faster.
+
+## Ops
+
+Hardware requirements (cloud):
+CPU - 2vCPU min.
+Memory - 2GB min.
+Storage - 10GB min.
+JVM.

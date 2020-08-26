@@ -14,6 +14,10 @@ Polymorphism - provision of a single interface to entities of different types
 Inheritance - when an object or class is based on another object (prototypal inheritance)
 or class (class-based inheritance).
 
+Class - program-code-template for creating objects.
+
+Object - runtime concrete occurrence of class instance.
+
 #### Problems
 
 Inheritance:
