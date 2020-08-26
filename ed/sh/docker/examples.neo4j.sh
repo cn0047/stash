@@ -1,14 +1,23 @@
 # Neo4j
 
+# 4.1
 docker run -it --rm --net=xnet -p 7474:7474 -p 7687:7687 --name xneo4j --hostname xneo4j \
   -v $PWD/.data/.docker/neo4j_41:/data \
   neo4j:4.1
 
+# 4.1 enterprise
+docker run -it --rm --net=xnet -p 7474:7474 -p 7687:7687 --name xneo4j --hostname xneo4j \
+  -v $PWD/.data/.docker/neo4j_41:/data \
+  -e NEO4J_ACCEPT_LICENSE_AGREEMENT=yes \
+  -e NEO4J_AUTH=neo4j/test \
+  neo4j:4.1.1-enterprise
+
+# 3.5
 docker run -it --rm --net=xnet -p 7474:7474 -p 7687:7687 --name xneo4j --hostname xneo4j \
   -v $PWD/.data/.docker/neo4j:/data \
   neo4j:3.5
 
-# with apoc
+# 3.5 with apoc
 docker run -it --rm --net=xnet -p 7474:7474 -p 7687:7687 --name xneo4j --hostname xneo4j \
   -v $PWD/.data/.docker/neo4j:/data \
   -v $PWD/.data/.docker/neo4j_plugins:/plugins \

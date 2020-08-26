@@ -16,6 +16,9 @@ aws configure
 aws configure list
 aws configure get aws_access_key_id
 aws configure get aws_secret_access_key
+# set configuration without prompts
+aws configure set aws_access_key_id $k
+aws configure set aws_secret_access_key $s
 
 ~/.aws/config
 ~/.aws/credentials

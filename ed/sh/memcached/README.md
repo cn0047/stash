@@ -20,6 +20,8 @@ stats detail
 stats sizes
 stats malloc
 stats slabs
+
+# get all keys
 stats items
 stats cachedump 2 100 # where 2 - items:${ID} from prev command and 100 - count of items to dump
 
