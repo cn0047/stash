@@ -19,5 +19,6 @@ tensorboard --bind_all --logdir=/tmp/tf_logs
 open http://localhost:6006/
 deactivate
 # or
-docker run -ti --rm -p 6006:6006 -v $PWD:/gh -w /gh cn007b/pi:aitf \
-  sh -c 'python3 /app/regression.py && ls -lah /tmp/tf_logs/'
+docker run -it --rm -p 6006:6006 cn007b/pi:aitf sh -c '
+  python3 /app/regression.tb.py && tensorboard --bind_all --logdir /tmp/tf_logs/
+'

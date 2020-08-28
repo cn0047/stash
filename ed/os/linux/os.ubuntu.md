@@ -15,6 +15,11 @@ dpkg -L vim # list
 dpkg -s vim # status
 
 apt-get update
-apt-get install -y software-properties-common
+apt-get install -y software-properties-common build-essential
 add-apt-repository "deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/ /"
+
+apt-get autoremove
+apt-get autoclean
+apt-get clean
+apt-get clean packages
 ````

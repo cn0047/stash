@@ -19,6 +19,11 @@ x = 5;
 final x int = 3;
 
 for (float v: arr) sum += v;
+
+class Foo extends Bar {}
+class Foo implements Comparable<Bar> {}
+@Override
+super.parentMethod();
 ````
 
 POM  - Project Object Model.
@@ -31,6 +36,8 @@ POJO - Plain Old Java Object.
 JDBC - Java DB Connectivity.
 
 IDE -> JDK -> App -> JRE (-> JVM) -> Host Env.
+
+Java supports method overloading.
 
 #### Data types
 

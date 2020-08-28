@@ -1,4 +1,4 @@
-FROM cn007b/python
+FROM cn007b/python:3.7
 
 MAINTAINER V. Kovpak <cn007b@gmail.com>
 
