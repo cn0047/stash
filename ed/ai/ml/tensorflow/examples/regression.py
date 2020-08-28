@@ -1,24 +1,15 @@
 import numpy as np
-import matplotlib.pyplot as plt
-import tensorflow.compat.v1 as tf
-tf.disable_v2_behavior()
+import tensorflow as tf
+
 
 np.random.seed(101)
 tf.set_random_seed(101)
 
-# There will be 50 data points ranging from 0 to 50
 x = np.linspace(0, 50, 50)
 y = np.linspace(0, 50, 50)
-# Adding noise to the random linear data
 x += np.random.uniform(-4, 4, 50)
 y += np.random.uniform(-4, 4, 50)
 n = len(x)
-
-plt.scatter(x, y)
-plt.xlabel('x')
-plt.xlabel('y')
-plt.title('Training Data')
-plt.show()
 
 X = tf.placeholder('float')
 Y = tf.placeholder('float')
@@ -28,7 +19,6 @@ learning_rate = 0.01
 training_epochs = 1000
 
 y_pred = tf.add(tf.multiply(X, W), b)
-# Mean Squared Error Cost Function
 cost = tf.reduce_sum(tf.pow(y_pred-Y, 2)) / (2 * n)
 optimizer = tf.train.GradientDescentOptimizer(learning_rate).minimize(cost)
 init = tf.global_variables_initializer()
@@ -48,9 +38,3 @@ with tf.Session() as sess:
 
 predictions = weight * x + bias
 print('Training cost =', training_cost, 'Weight =', weight, 'bias =', bias, '\n')
-
-plt.plot(x, y, 'ro', label ='Original data')
-plt.plot(x, predictions, label ='Fitted line')
-plt.title('Linear Regression Result')
-plt.legend()
-plt.show()
