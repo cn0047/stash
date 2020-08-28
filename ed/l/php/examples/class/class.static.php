@@ -30,5 +30,8 @@ $f1->increment();
 $f2 = new Foo();
 $f2->increment();
 
-print($f1->getCount()."\n");
-print($f1->getTotalCount()."\n");
+print($f1->getCount()."\n");        // 2
+print($f1->getTotalCount()."\n");   // 3
+print($f2->getCount()."\n");        // 1
+print($f2->getTotalCount()."\n");   // 3
+print(Foo::getTotalCount()."\n");   // 3

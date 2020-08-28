@@ -22,21 +22,32 @@ docker run -it --rm --net=xnet -v $PWD:/gh -w /gh -e GOPATH='/gh' xgo /bin/bash
 # python
 docker pull cn007b/python:latest
 docker tag cn007b/python xpy
-docker run -ti --rm --net=xnet -v $PWD:/gh -w /gh xpy /bin/bash
+docker run -it --rm --net=xnet -v $PWD:/gh -w /gh xpy /bin/bash
 
-### Linux
+
+## AI
+
+docker run -it --rm -p 6006:6006 cn007b/pi:ai.tf      /bin/bash
+docker run -it --rm -p 6006:6006 cn007b/pi:ai.tf.1.13 /bin/bash
+docker run -it --rm -p 6006:6006 cn007b/pi:ai.tf.2.2  /bin/bash
+
+
+## Linux
+
+docker run -it --rm cn007b/pi:ping
+docker run -it --rm cn007b/pi:pinger
 
 # ubuntu
 docker pull cn007b/ubuntu
 docker tag cn007b/ubuntu xubuntu
-docker run -ti --rm --net=xnet -v $PWD:/gh -w /gh xubuntu /bin/bash
+docker run -it --rm --net=xnet -v $PWD:/gh -w /gh xubuntu /bin/bash
 
 # debian
 docker pull cn007b/debian
 docker tag cn007b/debian xdebian
-docker run -ti --rm --net=xnet -v $PWD:/gh -w /gh xdebian /bin/bash
+docker run -it --rm --net=xnet -v $PWD:/gh -w /gh xdebian /bin/bash
 
 # alpine
 docker pull cn007b/alpine
 docker tag cn007b/alpine xalpine
-docker run -ti --rm --net=xnet -v $PWD:/gh -w /gh xalpine sh
+docker run -it --rm --net=xnet -v $PWD:/gh -w /gh xalpine sh

@@ -252,7 +252,7 @@ sar -n DEV 1      # check network interface
 sar -n TCP,ETCP 1 # TCP metrics
 top               #
 
-uptime # CPU load average
+uptime # CPU load average (1, 5 and 15 minutes)
 
 lscpu  # CPU info
 ````
