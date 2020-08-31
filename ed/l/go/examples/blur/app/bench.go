@@ -1,5 +1,3 @@
-// @example:
-// go run ed/l/go/examples/blur/app/bench.go
 package main
 
 import (

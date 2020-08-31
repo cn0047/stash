@@ -27,6 +27,7 @@ docker run -it --rm --net=xnet -v $PWD:/gh -w /gh xpy /bin/bash
 
 ## AI
 
+docker run -it --rm -p 6006:6006 cn007b/pi:ai         /bin/bash
 docker run -it --rm -p 6006:6006 cn007b/pi:ai.tf      /bin/bash
 docker run -it --rm -p 6006:6006 cn007b/pi:ai.tf.1.13 /bin/bash
 docker run -it --rm -p 6006:6006 cn007b/pi:ai.tf.2.2  /bin/bash

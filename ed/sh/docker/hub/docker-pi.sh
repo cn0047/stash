@@ -7,6 +7,7 @@ tag=ping
 tag=pinger
 f=$d/sh.$tag.Dockerfile
 #
+tag=ai
 tag=ai.tf
 tag=ai.tf.1.13
 tag=ai.tf.2.2
