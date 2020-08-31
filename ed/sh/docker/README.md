@@ -211,6 +211,8 @@ docker-compose exec mysql /bin/bash
 
 # restart stopped container
 docker-compose start
+
+docker-compose stop
 ````
 
 ## docker-compose.yml

@@ -90,6 +90,13 @@ go test -bench=. -benchmem -cpu=2
 go test -v -memprofile mem.out -run TestFibSimple
 go tool pprof -png -output report.mem.png fibonacci.test mem.out
 
+# blur
+go run ed/l/go/examples/blur/app/bench.go
+# or
+# docker run -it --rm -v $PWD:/gh -w /gh/ed/l/go/examples/blur -e GOPATH=$GOPATH xgo sh -c '
+#   go run app/bench.go
+# '
+
 # db postgresql
 docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/l/go/examples/db/' \
   xgo sh -c 'cd $GOPATH && go get github.com/lib/pq'

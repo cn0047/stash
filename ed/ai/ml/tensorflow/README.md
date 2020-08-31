@@ -39,4 +39,6 @@ tensorboard --host 0.0.0.0 --port 6008 --logdir './tf_logs'
   --logdir_spec b1:tf_logs,b2:tfl2 # in v2
 
 AWS_REGION=us-west-1 tensorboard --logdir s3://bkt/path
+
+find / -name "*.tfevents.*" -type f
 ````
