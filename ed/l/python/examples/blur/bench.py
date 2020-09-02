@@ -9,8 +9,8 @@ def b(f):
   rec = cv2.GaussianBlur(rec, (3, 9), 5)
   img[top:bottom, left:right] = rec
 
-  cv2.imwrite(f+'.r.png', img)
+  cv2.imwrite('img.after.py.png', img)
 
 
 if __name__ == '__main__':
-  b('./a.png')
+  b('./img.before.png')

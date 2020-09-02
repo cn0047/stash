@@ -14,11 +14,11 @@ int b(std::string f)
     cv::blur(rec, rec, cv::Size(3, 9));
     img(r) = rec;
 
-    cv::imwrite(f+".r.png", img);
+    cv::imwrite("img.after.cpp.png", img);
 }
 
 int main(int argc, char *argv[])
 {
-    b("/gh/ed/l/python/examples/blur/a.png");
+    b("/gh/ed/l/python/examples/blur/img.before.png");
     return 0;
 }

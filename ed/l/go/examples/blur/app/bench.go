@@ -16,9 +16,9 @@ func b(f string) {
 	gocv.GaussianBlur(rec, &rec, image.Pt(3, 9), 5, 5, gocv.BorderDefault)
 	rec.Close()
 
-	gocv.IMWrite(f+".r.png", img)
+	gocv.IMWrite("img.after.go.png", img)
 }
 
 func main() {
-	b("/Users/kovpakvolodymyr/web/kovpak/gh/ed/l/python/examples/blur/a.png")
+	b("/Users/kovpakvolodymyr/web/kovpak/gh/ed/l/python/examples/blur/img.before.png")
 }

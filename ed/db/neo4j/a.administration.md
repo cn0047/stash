@@ -11,18 +11,28 @@ export NEO4J_dbms_memory_heap_max__size=4G
 export EXTENSION_SCRIPT=/extra_conf.sh
 ````
 
+DBMS - Database Management System.
+Instance -  Java process that is running the Neo4j.
+Transaction domain - collection of graphs that can be updated within one transaction.
+Execution context - query|transaction|internal function|procedure.
+Graph - data model within database.
+
 ## Cypher
 
 Node types: leader, follower.
 
 ````js
 SHOW DATABASES;
+SHOW DEFAULT DATABASE;
 SHOW DATABASE system;
-CREATE DATABASE mydb if not exists; // Enterprise Edition
+CREATE DATABASE mydb IF not exists; // Enterprise Edition
 STOP DATABASE mydb;
 START DATABASE mydb;
 SHOW DATABASE mydb;
 DROP DATABASE mydb;
+// @see: https://neo4j.com/docs/operations-manual/current/manage-databases/queries/
+
+CALL dbms.cluster.overview();
 
 CALL db.schema.visualization();
 CALL db.labels();
@@ -47,4 +57,41 @@ RETURN
 :USE system;
 CALL dbms.security.createUser('dbu', 'dbp', false);
 SHOW USERS;
+
+// dynamic settings
+CALL dbms.setConfigValue('dbms.logs.query.enabled', '')
+// @see: https://neo4j.com/docs/operations-manual/current/configuration/dynamic-settings/
+````
+
+## Configuration
+
+````sh
+<neo4j-home>/conf/neo4j.conf
+<neo4j-home>/data             # data dir
+<neo4j-home>/import           # `LOAD CSV`
+<neo4j-home>/plugins
+<neo4j-home>/logs
+
+echo $NEO4J_HOME
+echo $NEO4J_CONF
+
+dbms.directories.data=data
+dbms.directories.plugins=plugins
+dbms.directories.logs=logs
+dbms.directories.lib=lib
+dbms.directories.run=run
+dbms.directories.metrics=metrics
+
+dbms.memory.heap.initial_size=
+dbms.memory.heap.max_size=
+dbms.jvm.additional=
+
+dbms.default_advertised_address=localhost
+dbms.default_database=neo4j
+dbms.default_listen_address=localhost
+# @see: https://neo4j.com/docs/operations-manual/current/configuration/connectors/
+
+# ports
+# @see: https://neo4j.com/docs/operations-manual/current/configuration/ports/
+
 ````
