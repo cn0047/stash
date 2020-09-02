@@ -2,8 +2,8 @@ ubuntu
 -
 
 ````sh
-apt-get install -y --force-yes
 apt-get update --fix-missing
+apt-get install -y --force-yes
 
 apt list vim
 apt list --installed

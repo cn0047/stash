@@ -518,10 +518,20 @@ d='2019-03-14T20:38:04.914292Z'
 t=`date -d $d +%s` # to timestamp
 date -r $t         # to date
 
-start=`date +%s%6N`
-echo 'benchmark'
-end=`date +%s%6N`
-echo took: $((end-start))
+# benchmark based on date
+benchmark() {
+  startedAt=`date +%s%6N`
+  `$*`
+  finishedAt=`date +%s%6N`
+  echo Took: $((finishedAt-startedAt))
+}
+
+# benchmark based on php
+benchmark() {
+  startedAt=`php -r 'print(microtime(true));'`
+  `$*`
+  php -r "printf(\"\nTook: %f\n\", microtime(true)-$startedAt);"
+}
 ````
 
 #### ls

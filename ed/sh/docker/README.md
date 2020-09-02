@@ -100,6 +100,8 @@ docker logs -f
 # show containers & images
 docker images
 
+docker image rm $img
+
 docker volume ls
 
 # stop the running container

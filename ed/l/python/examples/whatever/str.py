@@ -5,4 +5,11 @@ def f1():
   print(s) # one line; line 2 with foo
 
 
-f1()
+def f2():
+  s = ('line 1 '
+    'line 2 ')
+  print(s)
+
+
+# f1()
+f2()
