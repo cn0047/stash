@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM cn007b/debian:stretch
 
 MAINTAINER V. Kovpak <cn007b@gmail.com>
 

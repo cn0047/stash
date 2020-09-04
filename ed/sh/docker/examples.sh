@@ -25,13 +25,6 @@ docker tag cn007b/python xpy
 docker run -it --rm --net=xnet -v $PWD:/gh -w /gh xpy /bin/bash
 
 
-## AI
-
-docker run -it --rm -p 6006:6006 cn007b/pi:ai         /bin/bash
-docker run -it --rm -p 6006:6006 cn007b/pi:ai.tf      /bin/bash
-docker run -it --rm -p 6006:6006 cn007b/pi:ai.tf.1.13 /bin/bash
-docker run -it --rm -p 6006:6006 cn007b/pi:ai.tf.2.2  /bin/bash
-
 
 ## Linux
 
@@ -52,3 +45,16 @@ docker run -it --rm --net=xnet -v $PWD:/gh -w /gh xdebian /bin/bash
 docker pull cn007b/alpine
 docker tag cn007b/alpine xalpine
 docker run -it --rm --net=xnet -v $PWD:/gh -w /gh xalpine sh
+
+
+
+## PI
+
+# ai
+docker run -it --rm -p 6006:6006 cn007b/pi:ai         /bin/bash
+docker run -it --rm -p 6006:6006 cn007b/pi:ai.tf      /bin/bash
+docker run -it --rm -p 6006:6006 cn007b/pi:ai.tf.1.13 /bin/bash
+docker run -it --rm -p 6006:6006 cn007b/pi:ai.tf.2.2  /bin/bash
+
+# sh
+docker run -it --rm -v $PWD:/gh -w /gh -v /tmp:/tmp cn007b/pi:ffmpeg  /bin/bash

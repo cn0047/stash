@@ -64,12 +64,6 @@ drawtext="text='Test Text':x=100:y=50: fontsize=24:fontcolor=yellow:box=1:boxcol
 
 
 
-docker run -ti --rm -v $HOME/Downloads:/d -w /d xubuntu /bin/bash
-
-fmov=v.mov
-fmp4=v.mp4
-f2mp4=v2.mp4
-
 # mov -> mp4
 ffmpeg -i $fmov $fmp4
 ffmpeg -i $fmov -q:v 0 $fmp4

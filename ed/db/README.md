@@ -36,6 +36,15 @@ A classic example is a cache.
 <br>Isolation - ensures that the concurrent execution of transactions will executed serially, i.e., one after the other.
 <br>Durability - ensures that once a transaction has been committed, it will remain so, even in the event of power loss, crashes, or errors...
 
+## BASE
+
+BASE is opposite to ACID.
+
+<br>Basically
+<br>Available - basic reading and writing operations available as much as possible, but without any kind of consistency guarantees.
+<br>Soft state - without consistency guarantees, after some amount of time, we only have some probability of knowing the state.
+<br>Eventually consistent - after some time we will eventually be able to know what the state of the database is.
+
 ## Two-Phase Locking (2PL)
 
 2 phases:
@@ -113,7 +122,7 @@ updates data within a single service,
 and each subsequent step is triggered by the completion
 of the previous one.
 
-implementations: Choreography, Orchestration.
+Implementations: Choreography, Orchestration.
 
 ## Linearizability
 
