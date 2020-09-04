@@ -106,8 +106,8 @@ def b4(f):
 
 
 f=b1
+f('./a.png')
+# f('./n.png')
 # f('./t.png')
 # f('./y.png')
 # f('./z.png')
-# f('./n.png')
-f('./a.png')

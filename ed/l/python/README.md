@@ -43,6 +43,8 @@ nonlocal myvar # don't use var from enclosing scope
 
 print(s, end='', flush=True)
 
+print(5 // 2) # floor division
+
 # partition
 o, _, t = "v1:v2".partition(':')
 print(o, t) # v1 v2
