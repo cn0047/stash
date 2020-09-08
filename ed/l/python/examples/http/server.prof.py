@@ -1,6 +1,3 @@
-# @example: python3 ed/l/python/examples/http/server.prof.py
-# @example: curl localhost:8080
-
 import time
 import cProfile
 from http.server import HTTPServer, BaseHTTPRequestHandler

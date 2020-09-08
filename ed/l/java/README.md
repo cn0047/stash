@@ -12,6 +12,8 @@ java $JVM_ARGS -Xms${MIN_MEM_SIZE}m -Xmx${MAX_MEM_SIZE}m -Djava.security.egd=fil
 ````
 
 ````java
+System.out.println("dbg");
+
 /** This is JavaDoc comment... */
 
 int x;

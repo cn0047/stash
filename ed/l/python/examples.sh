@@ -1,3 +1,16 @@
+# python
+
+# profiling
+pip3 install pyprof2calltree
+python3 ed/l/python/examples/http/server.prof.py
+curl localhost:8080
+#
+f=ed/l/python/examples/whatever/hw.py
+python3 -m cProfile -s cumtime $f
+#
+python3 -m cProfile -o callgrind.cprof $f
+pyprof2calltree -k -i callgrind.cprof
+
 # blur
 docker run -it --rm -v $PWD:/gh -w /gh/ed/l/python/examples/blur xpy sh -c '
   pip3 install opencv-python
