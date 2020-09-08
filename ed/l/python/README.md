@@ -208,11 +208,12 @@ len(arr)
 del arr[1]
 'b' in arr # True
 
-data[1:]   # remove 1st el
-data[:-1]  # remove last el
-data[-1:]  # get last el
-data[::-1] # reverse list
-data[:]    # copy
+data.append(7) # add element to list
+data[1:]       # remove 1st el
+data[:-1]      # remove last el
+data[-1:]      # get last el
+data[::-1]     # reverse list
+data[:]        # copy
 ````
 
 **dict**.
@@ -376,20 +377,3 @@ whereas a generator can't.
 
 **coroutine object** - what function declared with an async keyword returned,
 `CoroutineObject = CoroutineFunction()`.
-
-#### DBG
-
-Profiling:
-
-````sh
-pip3 install pyprof2calltree
-
-f=ed/l/python/examples/whatever/hw.py
-python3 -m cProfile -s cumtime $f
-
-python3 -m cProfile -o callgrind.cprof $f
-pyprof2calltree -k -i callgrind.cprof
-
-python3 ed/l/python/examples/http/server.prof.py
-pyprof2calltree -k -i callgrind.cprof
-````

@@ -49,7 +49,9 @@ curl -u login:pass http://base-http-auth.com/
 curl http://localhost:3000 -H 'Authorization: Basic YWRtaW46cGFzc3dvcmQ='
 
 # download file
-curl $host -o $out
+curl $url -o $out
+# download file and use remote name
+curl -O $url
 
 # upload file
 curl http://localhost:8000 -F "file=@/home/kovpak/Downloads/download.jpg"
@@ -68,4 +70,9 @@ curl -k https://localhost:4433
 
 curl -s 'https://github.com/cn007b' -o /dev/null -w '%{http_code}'
 curl -s 'https://github.com/cn007b' -o /dev/null -w '%{time_total}'
+````
+
+````sh
+# simple file upload to: https://gofile.io
+curl -F email=cnfxlr@gmail.com -F file=@x.txt https://srv-file6.gofile.io/uploadFile
 ````
