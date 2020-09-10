@@ -23,3 +23,7 @@ docker build -t cn007b/pi:$tag -f $f $d
 docker run -it --rm -v $PWD:/gh -w /gh cn007b/pi:$tag /bin/bash
 # push
 docker push cn007b/pi:$tag
+
+# latest
+docker tag cn007b/alpine cn007b/pi:latest
+docker push cn007b/pi:latest
