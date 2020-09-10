@@ -28,9 +28,6 @@ docker run -it --rm --net=xnet -v $PWD:/gh -w /gh xpy /bin/bash
 
 ## Linux
 
-docker run -it --rm cn007b/pi:ping
-docker run -it --rm cn007b/pi:pinger
-
 # ubuntu
 docker pull cn007b/ubuntu
 docker tag cn007b/ubuntu xubuntu
@@ -57,4 +54,6 @@ docker run -it --rm -p 6006:6006 cn007b/pi:ai.tf.1.13 /bin/bash
 docker run -it --rm -p 6006:6006 cn007b/pi:ai.tf.2.2  /bin/bash
 
 # sh
+docker run -it --rm cn007b/pi:ping
+docker run -it --rm cn007b/pi:pinger
 docker run -it --rm -v $PWD:/gh -w /gh -v /tmp:/tmp cn007b/pi:ffmpeg  /bin/bash

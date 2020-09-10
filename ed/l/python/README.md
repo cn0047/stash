@@ -9,6 +9,9 @@ Python
 Python - dynamic, ~~strongly typed~~, general-purpose, high-level,
 object-oriented, multipurpose programming language.
 
+Cython - superset of the Python, gives C-like performance
+with code that is written mostly in Python.
+
 Easier to ask for forgiveness than permission (EAFP) - `try` and `except` statements.
 Look before you leap (LBYL) - tests for pre-conditions before making calls,
 characterized by the presence of many `if` statements.
@@ -192,6 +195,7 @@ f'hello, {name}\n' # format with vars
 name = "Bond"
 print("hi {0}".format(name)) # hi Bond
 print(f"hi {name}") # hi Bond
+index = 7; print('frame_%05d.jpg' % index)
 ````
 
 **bytes**.

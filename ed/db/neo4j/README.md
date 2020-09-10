@@ -23,6 +23,10 @@ Properties - key/value pairs used to add qualities to nodes and relationships.
 Traversing - means visiting nodes by following relationships according to some rules.
 Schema - indexes and constraints.
 
+Connections:
+`neo4j://` - will have server-side routing enabled,
+`bolt://` - will not.
+
 ````sh
 curl http://localhost:7474/db/data
 curl http://localhost:7474/db/data/batch
