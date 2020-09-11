@@ -61,6 +61,7 @@ curl -T firmware.bin http://0.0.0.48/cgi-bin/package_install?hash=017
 
 # shows spent time (⏱)
 time curl -si https://realtimelog.herokuapp.com/sddjklskj
+curl -si -w "@$HOME/web/kovpak/gh/ed/sh/curl/writeout.fmt.txt" https://realtimelog.herokuapp.com/sddjklskj
 
 curl -A 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36' \
   http://localhost:8000
