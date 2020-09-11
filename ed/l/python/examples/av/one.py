@@ -106,7 +106,7 @@ def from_numpy_array_to_buf_with_video_file(v):
     output.name = 'processed_video.mp4'
 
     container = av.open(output, mode='w')
-    stream = container.add_stream('mpeg4')
+    stream = container.add_stream('mpeg4') # h264|mpeg4
     stream.width = w
     stream.height = h
     stream.pix_fmt = 'yuv420p'

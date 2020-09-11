@@ -11,6 +11,8 @@ f=ed/l/c/examples/whatever/rand.c
 f=ed/l/c/examples/whatever/rand.1.c
 gcc -o /tmp/x -Wall $f && /tmp/x
 
+objdump -d /tmp/x
+
 
 
 # video

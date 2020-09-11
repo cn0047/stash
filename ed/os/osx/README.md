@@ -34,6 +34,7 @@ Colorize CLI:
 brew install grc
 
 # .bash_profile
+export CLICOLOR=xterm-color
 export CLICOLOR=1
 alias grep='grep --color=always'
 ````
