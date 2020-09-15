@@ -4,6 +4,7 @@ Java
 ````sh
 java -version
 
+HEAP_SIZE
 JVM_ARGS="-XX:+UseG1GC"
 MIN_MEM_SIZE="512"
 MAX_MEM_SIZE="1024"

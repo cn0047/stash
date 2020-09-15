@@ -31,7 +31,24 @@ docker run -it --rm --net=xnet -p 7474:7474 -p 7687:7687 --name xneo4j --hostnam
   -e NEO4J_apoc_import_file_enabled=true \
   -e NEO4J_apoc_import_file_use__neo4j__config=true \
   -e NEO4JLABS_PLUGINS=\[\"apoc\"\] \
+  \
+  -e NEO4J_dbms_logs_debug_level=DEBUG \
+  -e NEO4J_dbms_logs_http_enabled=true \
+  -e NEO4J_dbms_logs_query_allocation__logging__enabled=true \
+  -e NEO4J_dbms_logs_query_enabled=true \
+  -e NEO4J_dbms_logs_query_page__logging__enabled=true \
+  -e NEO4J_dbms_logs_query_parameter_logging_enabled=true \
+  -e NEO4J_dbms_logs_query_runtime__logging__enabled=true \
+  -e NEO4J_dbms_logs_query_threshold=0 \
+  -e NEO4J_dbms_logs_query_time__logging__enabled=true \
+  -e NEO4J_dbms_logs_user_stdout_enabled=true \
+  -e NEO4J_dbms_track_query_allocation=true \
+  -e NEO4J_dbms_track_query_cpu_time=true \
+  \
   neo4j:3.5.17
+
+# logs
+docker exec -it xneo4j sh -c 'tail -f /logs/debug.log'
 
 
 
