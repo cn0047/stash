@@ -218,27 +218,6 @@ strace -c pwd          # benchmark `pwd`
 strace -o b.txt -c pwd # benchmark `pwd` into file
 ````
 
-#### cut
-
-````sh
-cut -f7 -d: /etc/passwd
-cut -d' ' -f2 /tmp/file.txt # print column 2 from file using ' ' as delimer
-cut -c1,2                   # column 1,2
-cut -c 1-5                  # from 1 to 5 columns
-cut -c13-                   # from 13 char to the end of string
-````
-
-#### tr
-
-````sh
-echo b1nd | tr 1 o               # bond # replace 1 to o
-echo b1nd | tr -d [0-9]          # result: bnd
-echo 'abc' | tr -d 'b'           # ac
-echo '(x)' | tr '()' '[]'        # result: [x]
-echo 'hello   world' | tr -s ' ' # result: hello world
-tr -d '[:punct:]'                # punctuations: !@#$%^&*()_-+={}[];:'"`/>?.,<~|\
-````
-
 #### monitoring
 
 ````sh
@@ -282,6 +261,44 @@ dstat
 ulimit -a
 
 sysctl -a
+````
+
+````sh
+# process context switches
+watch -n.5 grep ctxt /proc/$pid/status
+````
+
+#### disk usage
+
+````sh
+df               # Show information about the file system.
+df -h            # all drives
+df -ih           # inodes
+lsblk            # all attached drives
+df -T            # Show filesystem type
+du               # Summarize disk usage of each FILE.
+du -sh web/*     # Summarize disk usage of each dir in foto dir.
+````
+
+#### cut
+
+````sh
+cut -f7 -d: /etc/passwd
+cut -d' ' -f2 /tmp/file.txt # print column 2 from file using ' ' as delimer
+cut -c1,2                   # column 1,2
+cut -c 1-5                  # from 1 to 5 columns
+cut -c13-                   # from 13 char to the end of string
+````
+
+#### tr
+
+````sh
+echo b1nd | tr 1 o               # bond # replace 1 to o
+echo b1nd | tr -d [0-9]          # result: bnd
+echo 'abc' | tr -d 'b'           # ac
+echo '(x)' | tr '()' '[]'        # result: [x]
+echo 'hello   world' | tr -s ' ' # result: hello world
+tr -d '[:punct:]'                # punctuations: !@#$%^&*()_-+={}[];:'"`/>?.,<~|\
 ````
 
 #### uniq
@@ -330,18 +347,6 @@ echo $USER
 echo $RANDOM
 echo $UID
 
-````
-
-#### disk usage
-
-````sh
-df               # Show information about the file system.
-df -h            # all drives
-df -ih           # inodes
-lsblk            # all attached drives
-df -T            # Show filesystem type
-du               # Summarize disk usage of each FILE.
-du -sh web/*     # Summarize disk usage of each dir in foto dir.
 ````
 
 #### nc
