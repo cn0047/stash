@@ -6,35 +6,36 @@ import (
 )
 
 type Req1 struct {
-	Val string `json:"val"`
+	Val    string `json:"val"`
 	Hidden string `json:"-"`
 }
 
 type Req2 struct {
-	Val string
+	Val    string
 	Hidden string
 }
 
-func f1() {
+func withTags() {
 	p := []byte(`{"val": "yes", "hidden": "no"}`)
 	r := Req1{}
 	err := json.Unmarshal(p, &r)
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("%#v \n", r)
+	fmt.Printf("%#v \n", r) // main.Req1{Val:"yes", Hidden:""}
 }
 
-func f2() {
+func withoutTags() {
 	p := []byte(`{"val": "yes", "hidden": "no"}`)
 	r := Req2{}
 	err := json.Unmarshal(p, &r)
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("%#v \n", r)
+	fmt.Printf("%#v \n", r) // main.Req2{Val:"yes", Hidden:"no"}
 }
 
 func main() {
-	f2()
+	// withTags()
+	withoutTags()
 }

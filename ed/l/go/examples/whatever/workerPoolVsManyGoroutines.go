@@ -14,11 +14,11 @@ func main() {
 	}()
 
 	const numJobs = 1500
-	//f1(numJobs)
-	f2(numJobs)
+	// workerPerCPU(numJobs) // Took: 5688 microseconds
+	goroutinePerJob(numJobs) // Took: 8175 microseconds
 }
 
-func f2(numJobs int) {
+func goroutinePerJob(numJobs int) {
 	jobs := make(chan int, numJobs) // ! fat chan
 	results := make(chan int, numJobs)
 
@@ -41,7 +41,7 @@ func f2(numJobs int) {
 	}
 }
 
-func f1(numJobs int) {
+func workerPerCPU(numJobs int) {
 	workersCount := runtime.NumCPU()
 
 	jobs := make(chan int, numJobs) // ! fat chan

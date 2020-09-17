@@ -11,5 +11,5 @@ func main() {
 func f1() {
 	m1 := make(map[string]string, 1)
 	m1["foo"] = "bar"
-	fmt.Println(m1)
+	fmt.Println(m1) // map[foo:bar]
 }

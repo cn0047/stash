@@ -30,7 +30,7 @@ func two() {
 	scores1 := [4]int{9001, 9333, 212, 33}
 
 	// size from elements in {}
-	scores2 := [...]int{9001, 9333, 212, 33}
+	scores2 := [...]int{9001, 9333, 212, 33} // this is array
 	//scores2 = append(scores2, 5) // ERROR: first argument to append must be slice; have [4]int
 
 	fmt.Printf("\n scores0 = %#v", scores0) // scores0 = [10]int{339, 0, 0, 0, 0, 0, 0, 0, 0, 0}

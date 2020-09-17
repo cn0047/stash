@@ -5,12 +5,28 @@ import (
 )
 
 func main() {
-	s := make([]int, 1)
-	f(s)
-	fmt.Println("end:", s) // end: [0]
+	// appendToSlice()
+	updateSlice()
 }
 
-func f(s []int) {
+func updateSlice() {
+	s := make([]int, 1)
+	sUpdate(s)
+	fmt.Println("end:", s) // [5]
+}
+
+func sUpdate(s []int) {
+	s[0] = 5
+	fmt.Println("in sUpdate:", s) // [5]
+}
+
+func appendToSlice() {
+	s := make([]int, 1)
+	sAppend(s)
+	fmt.Println("appendToSlice end:", s) // [0]
+}
+
+func sAppend(s []int) {
 	s = append(s, 1)
-	fmt.Println("in f:", s) // in f: [0 1]
+	fmt.Println("in sAppend:", s) // [0 1]
 }

@@ -39,6 +39,9 @@ CREATE (c:Country {name:'USA'});
 
 // RELATIONSHIPS
 // works at
+MERGE (p:Person {code: '007'})-[r:WORKS_AT]->(o:Organization {name: 'MI6'})
+ON CREATE SET r.status = 'new' ON MATCH SET r.status = 'old';
+// or
 MATCH (p:Person), (o:Organization) WHERE p.code = '007'   AND o.name = 'MI6' CREATE (p)-[r:WORKS_AT]->(o);
 MATCH (p:Person), (o:Organization) WHERE p.code = '008'   AND o.name = 'MI6' CREATE (p)-[r:WORKS_AT]->(o);
 MATCH (p:Person), (o:Organization) WHERE p.code = 'mp'    AND o.name = 'MI6' CREATE (p)-[r:WORKS_AT]->(o);

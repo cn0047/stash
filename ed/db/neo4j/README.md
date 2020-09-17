@@ -102,3 +102,19 @@ CPU - 2vCPU min.
 Memory - 2GB min.
 Storage - 10GB min.
 JVM.
+
+## Causal Cluster
+
+Node types: Leader, Follower.
+
+Discovery protocol takes information from `causal_clustering.initial_discovery_members` conf.
+Core Servers (can have multiple roles, one for each database).
+Raft protocol.
+Read Replica (not involved in the Raft protocol).
+Whiteboard (routing & monitoring) - provides a view of all live Read Replicas.
+Raft Leader - maintain own logs with respect to the current Leader's log.
+Raft Follower.
+Raft Candidate.
+Catchup protocol.
+Read Replica shutdown - read replica invoke discovery protocol to remove itself from whiteboard.
+Core shutdown - handled via Raft protocol.

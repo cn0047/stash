@@ -20,12 +20,12 @@ func f1() (r int) {
     }
   }()
 
-  res := f2()
+  res := panicFunc()
   r = res
 
   return r
 }
 
-func f2() (r int) {
+func panicFunc() (r int) {
   panic("panic")
 }

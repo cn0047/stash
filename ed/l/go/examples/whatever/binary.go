@@ -1,7 +1,7 @@
 /*
 
 Number starts with 0       - base 8
-Number never starts with 0 - base 10
+Number not starts with 0   - base 10
 Number starts with 0x      - base 16
 
 &  - and

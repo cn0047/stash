@@ -8,7 +8,7 @@ func main() {
 	for i := 0; i < 5; i++ {
 		go func(i int) {
 			println(i)
-			n++
+			n++ // here
 		}(i)
 	}
 	for {

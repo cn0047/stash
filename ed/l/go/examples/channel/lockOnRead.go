@@ -5,12 +5,12 @@ import (
 )
 
 func main() {
-	// one()
-	// two()
-	three()
+	// hangToRead()
+	// hangToReadWithCommaOk()
+	avoidHangWithSelect()
 }
 
-func three() {
+func avoidHangWithSelect() {
 	c := make(chan int, 3)
 	for i := 0; i < 3; i++ {
 		c <- i
@@ -22,7 +22,7 @@ func three() {
 			case v := <-c:
 				fmt.Printf("got %v \n", v)
 			default:
-				fmt.Printf("did not read \n")
+				fmt.Printf("got nothing \n")
 			}
 		}
 		fmt.Printf("exit \n")
@@ -32,7 +32,7 @@ func three() {
 	fmt.Scanln()
 }
 
-func two() {
+func hangToReadWithCommaOk() {
 	c := make(chan int, 3)
 	for i := 0; i < 3; i++ {
 		c <- i
@@ -49,7 +49,7 @@ func two() {
 	fmt.Scanln()
 }
 
-func one() {
+func hangToRead() {
 	c := make(chan int, 3)
 	for i := 0; i < 3; i++ {
 		c <- i

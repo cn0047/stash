@@ -4,10 +4,10 @@ Test
 ## Test
 
 ````sh
-# Local directory mode, caching is disabled
+# Local directory mode (caching is disabled)
 test -v
 
-# List mode, caches successful package test
+# List mode (caches successful package test)
 go test math
 gotest ./...
 go test .
@@ -148,9 +148,9 @@ func NewUploadRequest(
 ## Bench
 
 ````golang
-b.ResetTimer() // to reset time and start benchmark (to skip preparations steps)
+b.ResetTimer()     // to reset time and start benchmark (to skip preparations steps)
 b.SetParallelism() // sets the number of goroutines used by RunParallel
-b.ReportAllocs() // enables malloc statistics
+b.ReportAllocs()   // enables malloc statistics
 ````
 
 Bench output:

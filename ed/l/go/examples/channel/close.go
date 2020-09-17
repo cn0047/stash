@@ -26,7 +26,7 @@ func two() {
 		fmt.Println("ok")
 	}()
 	time.Sleep(1 * time.Second)
-	close(c)
+	close(c) // after this will print ok
 	fmt.Scanln()
 }
 
