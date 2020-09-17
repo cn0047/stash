@@ -6,9 +6,9 @@ import (
 )
 
 func main() {
-	// two1()
-	// two2()
-	two3()
+	// straightDefer()
+	// valInDefer()
+	poindterInDefer()
 	// three()
 }
 
@@ -34,7 +34,7 @@ func one() {
 	*/
 }
 
-func two3() {
+func poindterInDefer() {
 	x := "foo3"
 	defer func(s *string) {
 		println(*s)
@@ -45,7 +45,7 @@ func two3() {
 	// bar3
 }
 
-func two2() {
+func valInDefer() {
 	x := "foo2"
 	defer func(s string) {
 		println(s)
@@ -56,7 +56,7 @@ func two2() {
 	// foo2
 }
 
-func two1() {
+func straightDefer() {
 	x := "foo"
 	defer println(x)
 	x = "bar"

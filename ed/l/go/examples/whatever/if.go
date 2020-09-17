@@ -18,9 +18,14 @@ func main() {
 	if f1() || f2() {
 		fmt.Println("case 1")
 	}
+	fmt.Println("---")
 	if f2() || f1() {
 		fmt.Println("case 2")
 	}
+	fmt.Println("---")
+	// if f1() | f2() { // invalid operation: f1() | f2() (operator | not defined on bool)
+	// 	fmt.Println("case 3")
+	// }
 }
 
 /*

@@ -124,7 +124,7 @@ __getitem__(self, index)
 __getattr__(self, name)
 __setattr__(self, name, val)
 __eq__(self, rhs)
-__hash__
+__hash__(self)
 __ne__(self, rhs)
 __len__(self)
 __enter__() # enter context (with keyword)

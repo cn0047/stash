@@ -5,11 +5,11 @@ import (
 )
 
 func main() {
-	two()
-	// one()
+	avoidHangWithSelect()
+	// hang()
 }
 
-func two() {
+func avoidHangWithSelect() {
 	c := make(chan int, 2)
 	go func() {
 		for i := 0; i < 5; i++ {
@@ -40,7 +40,7 @@ adding 4
 did not add 4
 */
 
-func one() {
+func hang() {
 	c := make(chan int, 2)
 	go func() {
 		for i := 0; i < 3; i++ {

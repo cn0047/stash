@@ -14,8 +14,7 @@ Best Practices
     * on deploy: `go test -tags=integration`
 * `camelCase` for constants.
 * `snake_case` for filenames.
-* `lowercase` for packages (directories), like:
-  `"index/suffixarray", "mime/quotedprintable", "net/http/httptrace"`.
+* `lowercase` for packages (directories), like: `"net/http/httptrace"`.
 * Variable names in Go should be short rather than long.
 * When defining methods: use a pointer to a type (struct) as a receiver.
 * Function must return error as last value.
@@ -25,8 +24,8 @@ Best Practices
 * Use `crypto/rand` to generate keys.
 * Don't pass pointers as function arguments (just to save a few bytes).
   This advice does not apply to large structs.
-* Close the response body `defer resp.Body.Close()`.
-* Read response body even the data is not important
+* Always close the response body `defer resp.Body.Close()`.
+* Always read response body even the data is not important
   `_, err = io.Copy(ioutil.Discard, resp.Body)`
   to avoid memory leak when reusing http connection.
 

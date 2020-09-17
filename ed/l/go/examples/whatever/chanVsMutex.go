@@ -14,11 +14,11 @@ func main() {
 	}()
 
 	n := 100
-	// f1(n)
-	f2(n)
+	// withChan(n) // Took: 258 microseconds
+	mithMutex(n) // Took: 395 microseconds
 }
 
-func f1(n int) {
+func withChan(n int) {
 	errs := make(chan error, n)
 
 	wg := &sync.WaitGroup{}
@@ -39,7 +39,7 @@ func f1(n int) {
 	fmt.Println("len:", len(es))
 }
 
-func f2(n int) {
+func mithMutex(n int) {
 	es := make([]error, 0, n)
 
 	wg := &sync.WaitGroup{}

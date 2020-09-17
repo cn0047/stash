@@ -52,7 +52,7 @@ go mod graph
 go clean -modcache # ✅
 go clean --modcache
 
-# download modules to local cache, for docker
+# download modules to local cache
 go mod download
 # create a vendor dir and copy all dependencies into it
 go mod vendor

@@ -43,7 +43,7 @@ func f3() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("[f3] Result: %s \n", j) //
+	fmt.Printf("[f3] Result: %s \n", j) // [f3] Result: {"bar":{}}
 }
 
 func main() {

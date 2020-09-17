@@ -55,7 +55,7 @@ GOARCH=386 go build
 go build                  # Compiles and installs packages and dependencies
 go build -race ./example  #
 go build -gcflags -S z.go # assembly output
-go tool compile -S x.go # assembly output
+go tool compile -S x.go   # assembly output
 go build -gcflags='-m -m' # provides info about optimization decisions
 go build -mod=vendor
 go build -o newname
@@ -65,7 +65,7 @@ GOOS=linux GOARCH=amd64 go build \
                                     # -s - disable symbol table, `go tool nm`
   -ldflags="-X github.com/org/repo/pkgName.BuildCommit=$GO_BUILD_COMMIT"
 
-go clean -r              # clean unneeded files
+go clean -r                           # clean unneeded files
 go env
 go env GOOS
 go env -json
@@ -83,7 +83,7 @@ go list ...
 go run --work ed/go/examples/whatever/hw.go # see the location of temporary exec file
 go run -race ed/go/examples/whatever/hw.go
 go vet # examines Go coge, reports suspicious constructs (Printf with wrong arguments).
-go bug # creates
+go bug # creates issue on github
 godoc -http=:6060 -goroot=$PWD
 go tool fix # finds Go programs that use old APIs and rewrites them to use newer ones
 gorename # Performs precise type-safe renaming of identifiers
@@ -132,9 +132,9 @@ const n = 500000000
 sort.Slice(arrInt32, func(i, j int) bool { return arrInt32[i] < arrInt32[j] })
 
 # https://golang.org/pkg/fmt/#hdr-Printing
-fmt.Printf("Type: %T\n", myType)
-fmt.Printf("%+v", myType)
-fmt.Printf("%#v", myType)
+fmt.Printf("%T", myType)
+fmt.Printf("%+v", myVal)
+fmt.Printf("%p", myPointer)
 
 // init pkg
 func init() {}
@@ -260,7 +260,6 @@ Put code into `internal` dir to make it private (magic).
 Sentinel error -  custom error value
 (standard library: sql.ErrNoRows, io.EOF, etc).
 [wrap error tool](github.com/pkg/errors)
-
 <br>`errors.Is` like a comparison to a sentinel error,
 <br>`errors.As` like type assertion (`if e, ok := err.(*QueryError); ok { … }`).
 <br>`fmt.Errorf("decompress %v: %w", name, err)`
@@ -423,10 +422,7 @@ type Logger interface {
 #### Concurrency
 
 Go uses the concurrency model called Communicating Sequential Processes (CSP).
-
-Two crucial concepts make Go’s concurrency model work:
-* Goroutines
-* Channels
+Two crucial concepts make Go’s concurrency model work: Goroutines & Channels.
 
 #### Goroutine
 

@@ -6,10 +6,10 @@ import (
 )
 
 func main() {
-	f1()
+	breakNotStopSelect()
 }
 
-func f1() {
+func breakNotStopSelect() {
 	c := make(chan int, 1)
 	c <- 1
 
@@ -17,7 +17,7 @@ func f1() {
 		for {
 			select {
 			case c <- 2:
-				print("v")
+				print("w")
 				break // won't work
 			default:
 				time.Sleep(100 * time.Millisecond)
@@ -30,7 +30,7 @@ func f1() {
 	go func() {
 		time.Sleep(1 * time.Second)
 		<-c
-		print("w")
+		print("r")
 	}()
 
 	fmt.Scanln()

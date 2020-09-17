@@ -10,8 +10,8 @@ import (
 )
 
 func main() {
-	//one()
-	//two()
+	//withTimeout()
+	//withCancel()
 	three()
 }
 
@@ -38,7 +38,7 @@ func three() {
 	}
 }
 
-func two() {
+func withCancel() {
 	ctx, cancel := context.WithTimeout(context.Background(), 1*time.Millisecond)
 	ctx2, _ := context.WithCancel(ctx) // derived context
 	defer cancel()
@@ -59,7 +59,7 @@ func two() {
 	}
 }
 
-func one() {
+func withTimeout() {
 	ctx, cancel := context.WithTimeout(context.Background(), 1*time.Millisecond)
 	defer cancel()
 

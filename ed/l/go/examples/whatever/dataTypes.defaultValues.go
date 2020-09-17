@@ -28,10 +28,10 @@ func main() {
 	fmt.Printf("\n c: %+v", c) // c == nil # can not convert nil to ...
 	fmt.Println()
 
-	fmt.Printf("\n a: %+v", a) // a == nil # can not convert nil to []int
-	fmt.Printf("\n as: %+v, is nil: %+v", as, as == nil)
-	fmt.Printf("\n st: %+v", st) // st == nil # can not convert nil to ...
-	fmt.Printf("\n st2: %+v, is nil: %+v", st2, st2 == nil)
+	fmt.Printf("\n a: %+v", a)                              // a == nil # can not convert nil to []int
+	fmt.Printf("\n as: %+v, is nil: %+v", as, as == nil)    // is nil
+	fmt.Printf("\n st: %+v", st)                            // st == nil # can not convert nil to ...
+	fmt.Printf("\n st2: %+v, is nil: %+v", st2, st2 == nil) // is nil
 	fmt.Println()
 
 	fmt.Printf("\n fn: %+v, is nil: %+v", fn, fn == nil)

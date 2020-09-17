@@ -9,6 +9,9 @@ f=ed/l/c/examples/whatever/func.one.c
 f=ed/l/c/examples/whatever/enum.c
 f=ed/l/c/examples/whatever/rand.c
 f=ed/l/c/examples/whatever/rand.1.c
+f=ed/l/c/examples/whatever/stdin.c
+f=ed/l/c/examples/whatever/for.c
+f=ed/l/c/examples/whatever/recursion.c
 gcc -o /tmp/x -Wall $f && /tmp/x
 
 objdump -d /tmp/x

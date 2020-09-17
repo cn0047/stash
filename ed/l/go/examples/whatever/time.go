@@ -22,6 +22,7 @@ const (
 	StampMilli = "Jan _2 15:04:05.000"
 	StampMicro = "Jan _2 15:04:05.000000"
 	StampNano  = "Jan _2 15:04:05.000000000"
+	Usual      = "2006-01-02 15:04:05"
 )
 
 func main() {
@@ -32,7 +33,16 @@ func main() {
 	// f4()
 	// f5()
 	// f6()
-	f7()
+	// f7()
+	AddDate()
+}
+
+func AddDate() {
+	d, _ := time.Parse(Usual, "2020-11-27 10:58:59")
+	years := 0
+	months := 0
+	days := 10
+	fmt.Printf("[f8] \n\tberfor: %v \n\tafter:  %v \n", d, d.AddDate(years, months, -days))
 }
 
 func f7() {

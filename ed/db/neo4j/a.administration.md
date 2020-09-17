@@ -1,6 +1,12 @@
 Administration
 -
 
+[funcs](https://neo4j.com/docs/operations-manual/current/reference/procedures/)
+[conf](https://neo4j.com/docs/operations-manual/current/reference/configuration-settings/)
+[import data](https://neo4j.com/docs/operations-manual/current/tools/import/)
+[dump](https://neo4j.com/docs/operations-manual/current/tools/dump-load/)
+[copy db](https://neo4j.com/docs/operations-manual/current/tools/copy/)
+
 ````sh
 systemctl status neo4j
 
@@ -19,8 +25,6 @@ Graph - data model within database.
 
 ## Cypher
 
-Node types: leader, follower.
-
 ````js
 SHOW DATABASES;
 SHOW DEFAULT DATABASE;
@@ -31,6 +35,18 @@ START DATABASE mydb;
 SHOW DATABASE mydb;
 DROP DATABASE mydb;
 // @see: https://neo4j.com/docs/operations-manual/current/manage-databases/queries/
+
+CALL dbms.listQueries();
+CALL dbms.listActiveLocks(queryId);
+CALL dbms.killQuery(queryId);
+CALL dbms.killQueries(queryId1, queryId1);
+
+// get running transactions
+CALL dbms.listTransactions();
+
+CALL dbms.listConnections();
+CALL dbms.killConnections(connectionIds);
+CALL dbms.killConnection(connectionId);
 
 CALL dbms.cluster.overview();
 

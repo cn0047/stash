@@ -13,7 +13,7 @@ func main() {
 
 func f3() {
 	e := fmt.Errorf("err1")
-	println("[f3]", e.Error()) // [f3] err1å
+	println("[f3]", e.Error()) // [f3] err1
 }
 
 func two() {

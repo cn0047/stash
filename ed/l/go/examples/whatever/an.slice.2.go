@@ -5,13 +5,13 @@ import (
 )
 
 func main() {
-	fs1()
+	concatenation()
 	slice3()
 	three()
 	three2()
 }
 
-func fs1() {
+func concatenation() {
 	a := make([]int, 0)
 	a = append(a, 1, 2, 3)
 	fmt.Printf("%+v \n", a) // [1 2 3]
@@ -29,12 +29,12 @@ func slice3() {
 
 func three() {
 	fmt.Println("\n three: -------------------")
-	a := [...]string{"r", "o", "a", "d"}
+	a := [...]string{"r", "o", "a", "d"} // array
 	a2 := a[:]
 	a[3] = "x"
 	fmt.Printf("a = %+v, a2 = %+v \n", a, a2) // a = [r o a x], a2 = [r o a x]
 
-	s := []string{"r", "o", "a", "d"}
+	s := []string{"r", "o", "a", "d"} // slice
 	s2 := s[:]
 	s2[3] = "x"
 	fmt.Printf("s = %+v, s2 = %+v \n", s, s2) // s = [r o a x], s2 = [r o a x]
