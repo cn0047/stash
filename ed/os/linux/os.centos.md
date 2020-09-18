@@ -1,8 +1,11 @@
 centos
 -
 
+[packages](http://mirror.centos.org/centos/7/extras/x86_64/Packages/)
+
 ````sh
 cat /etc/system-release
+rpm -E %{rhel}          # get version
 
 yum --showduplicates list available elasticsearch\*
 
