@@ -780,6 +780,9 @@ ps -e -o pid,uname,pcpu,pmem,comm # Change the columns to display
 ps -e -o pid,comm,etime           # Display elapsed time of processes
 ps -e -o pid,uname=USERNAME,pcpu=CPU_USAGE,pmem,comm
 
+ps axjf # process tree
+ps axms # threads info
+
 watch -n 1 'ps -e -o pid,uname,cmd,pmem,pcpu --sort=-pmem,-pcpu | head -15' # Turn ps into an realtime process viewer
 ````
 

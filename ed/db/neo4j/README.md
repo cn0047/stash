@@ -8,6 +8,7 @@ neo4j
 [funcs](https://neo4j.com/docs/cypher-manual/current/functions/)
 [keywords](https://neo4j.com/docs/cypher-manual/current/keyword-glossary/)
 [cypher styleguide](https://neo4j.com/docs/cypher-manual/current/styleguide/)
+[algorithms](https://neo4j.com/developer/graph-data-science/graph-algorithms/)
 
 ````sh
 cypher-shell -u neo4j -p test

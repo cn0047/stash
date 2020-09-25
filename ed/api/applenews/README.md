@@ -6,6 +6,7 @@ Apple News
 [ads](https://developer.apple.com/documentation/apple_news/apple_news_format/managing_advertisements_in_your_article)
 [components](https://developer.apple.com/documentation/apple_news/apple_news_format/components)
 [linking-to-channel](https://www.apple.com/itunes/marketing-on-news/identity-guidelines.html#linking-to-your-channel)
+[emulator](https://developer.apple.com/news-preview/)
 
 Viewport - the user's visible area of a web page.
 

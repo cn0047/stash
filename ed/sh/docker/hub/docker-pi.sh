@@ -8,6 +8,7 @@ tag=ai
 tag=ai.tf
 tag=ai.tf.1.13
 tag=ai.tf.2.2
+tag=ai.tfg.1.14
 tag=ai.cuda.0
 tag=ai.cuda.0b
 tag=ai.cuda.1

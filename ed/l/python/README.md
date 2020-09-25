@@ -22,7 +22,7 @@ python3 -V
 
 WORK_HOME=/path
 PROJECT_HOME=/path
-PYTHONUNBUFFERED=1
+PYTHONUNBUFFERED=1 # output sends straight to terminal without buffering
 
 PYTHONPATH=$HOME/dirWithScripts/:$PYTHONPATH
 # PATH=$PATH:~/ed/l/python/examples/pkg python3 pkg

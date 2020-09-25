@@ -18,11 +18,14 @@ pip3 install pylint requests virtualenv
 pip3 install -r requirements.txt
 pip3 install /app/my_prj
 
+pip install tensorflow==1.14 --force-reinstall
+
 pip3 uninstall requests
+
+pip3 config -v list
 
 python3 -m pip install requests # install for python3
 python3 -m pip freeze > requirements.txt
-
 
 
 python3 -m pip install --user --upgrade setuptools wheel twine

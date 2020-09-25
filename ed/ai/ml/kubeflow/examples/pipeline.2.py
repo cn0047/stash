@@ -34,6 +34,7 @@ def run_component():
     pvolumes=pvolumes
   )
   op.container.set_image_pull_policy('Always')
+  op.add_pod_label('tensorboard', 'true')
   return op
 
 

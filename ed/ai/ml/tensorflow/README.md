@@ -8,6 +8,7 @@ define before run
 
 ````sh
 pip3 install tensorflow
+pip3 install https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.14.0-py3-none-any.whl
 ````
 ````py
 import tensorflow as tf; tf.__version__
