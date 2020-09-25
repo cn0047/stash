@@ -15,6 +15,7 @@ def render_ui():
   op.container.set_image_pull_policy('Always')
   r = {'cpu': '1', 'memory': '10M', 'nvidia.com/gpu': '0', 'ephemeral-storage': '1G'}
   op.container.resources = {'requests': r, 'limits': r}
+  op.add_pod_label('tensorboard', 'true')
   return op
 
 

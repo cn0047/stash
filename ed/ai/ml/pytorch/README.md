@@ -8,6 +8,4 @@ define as you go
 
 ````sh
 pip3 install torch torchvision
-
-CUDA_LAUNCH_BLOCKING=1
 ````

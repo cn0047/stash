@@ -42,7 +42,7 @@ Identify clusters of like data.
 UML Algorithml -> Classify -> Model
 ````
 
-**reinforcement learning**.
+**REINFORCEMENT learning**.
 
 ## Neural network
 
@@ -68,7 +68,7 @@ Affine transformation - linear function.
 
 Activation function - live inside neural network layers
 and modify the data they receive before passing it to the next layer.
-Common activation functions: ReLU, logit, tanh, step.
+Common activation functions: `ReLU, logit, tanh, step`.
 
 Loss (cost) function - wrapper around model’s predict function that tells us
 "how good" the model is at making predictions for a given set of parameters.
@@ -78,7 +78,7 @@ into several mini-batches of samples that will be run sequentially.
 
 ## Tensor
 
-Tensor - N-dimensional array of primitive values (data sent between nodes in data graph (edges)).
+Tensor - N-dimensional array of primitive values (data sent between nodes in data graph).
 Scalar - 0-D Tensor.
 Vector - 1-D tensor.
 Matrix - 2-D tensor.

@@ -54,6 +54,7 @@ docker exec -it xneo4j sh -c 'tail -f /logs/debug.log'
 
 # usr=neo4j
 # pwd=test
+# pwd=1
 # prev_pwd=neo4j
 open http://0.0.0.0:7474/
 
