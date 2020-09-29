@@ -36,7 +36,7 @@ git ls-remote -h https://github.com/W3Ltd/zii_core HEAD
 git init
 
 git clone ssh://gitolite@repo.com:1011/repoName.git
-# lightweight clone
+# lightweight clone certain branch
 git clone --depth=1 --branch=master git://github.com/cn007b/vo
 
 git remote -v                      # shows remote repository

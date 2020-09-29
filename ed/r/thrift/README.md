@@ -18,6 +18,8 @@ enum
 
 Thrift JSON:
 ````sh
+Content-Type: application/x-thrift
+
 [1,"methondName",1,0,{"1":{"str":"foo"},"2":{"str":"bar"}}]
 
 {"tf":"0"} # bool false

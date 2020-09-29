@@ -4,6 +4,8 @@ Java
 ````sh
 java -version
 
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+
 HEAP_SIZE
 JVM_ARGS="-XX:+UseG1GC"
 MIN_MEM_SIZE="512"

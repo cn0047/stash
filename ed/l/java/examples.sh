@@ -7,6 +7,7 @@ java  ed/l/java/examples/whatever/str.java
 java  ed/l/java/examples/whatever/collections.java
 java  ed/l/java/examples/whatever/class1.java
 java  ed/l/java/examples/whatever/class2.java
+java  ed/l/java/examples/whatever/map1.java
 
 # pkg
 # cd ed/l/java/examples/pkg

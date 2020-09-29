@@ -70,6 +70,8 @@ docker stats $cId
 # -P - publish all exposed ports to random ports
 docker run -P -t -i ubuntu:latest /bin/bash
 
+docker run --gpus all ...
+
 # run a web application
 # -d - runs the container as daemon
 # -p - maps any required network ports, $portInContainer:$portOnHostMachine

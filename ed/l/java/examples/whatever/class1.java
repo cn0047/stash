@@ -7,6 +7,7 @@ public class class1
 
   private static void f1()
   {
+    System.out.println("It works!");
   }
 
   private static void f1(String str)
