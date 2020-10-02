@@ -7,7 +7,7 @@ TOP_ROOT_PATH=$(TOP):$(ROOT)/path
 
 export GOPATH=${CURDIR}
 
-hw:
+hw hello:
 	@echo "It works!"
 
 etrp:

@@ -31,6 +31,7 @@ Theory
 <br>RBAC    - Role-based access control.
 <br>REPL    - Read–Eval–Print Loop (interactive toplevel or language shell).
 <br>RFC     - Request for Comments.
+<br>RMI     - Remote Method Invocation.
 <br>RnD     - Research and development.
 <br>ROI     - Return on investment.
 <br>RSS     - Rich Site Summary or Really Simple Syndication.

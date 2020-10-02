@@ -65,6 +65,11 @@
   <action id="Arrangement.Rule.Match.Condition.Move.Down">
     <keyboard-shortcut first-keystroke="alt down" />
   </action>
+  <action id="EditorJoinLines">
+    <keyboard-shortcut first-keystroke="shift ctrl j" />
+    <keyboard-shortcut first-keystroke="ctrl j" />
+  </action>
+
   <action id="EditorToggleCase">
     <keyboard-shortcut first-keystroke="alt up" />
     <keyboard-shortcut first-keystroke="alt down" />
@@ -73,10 +78,6 @@
     <keyboard-shortcut first-keystroke="ctrl b" />
   </action>
 
-  <action id="EditorJoinLines">
-    <keyboard-shortcut first-keystroke="shift ctrl j" />
-    <keyboard-shortcut first-keystroke="ctrl j" />
-  </action>
   <action id="EditorDeleteToLineEnd">
     <keyboard-shortcut first-keystroke="shift ctrl delete" />
     <keyboard-shortcut first-keystroke="meta delete" />
@@ -251,14 +252,14 @@
     <keyboard-shortcut first-keystroke="shift f11" />
     <keyboard-shortcut first-keystroke="shift ctrl m" />
   </action>
+  <action id="ToggleBookmarkWithMnemonic">
+    <keyboard-shortcut first-keystroke="ctrl m" />
+  </action>
   <action id="GotoNextBookmark">
     <keyboard-shortcut first-keystroke="ctrl period" />
   </action>
   <action id="GotoPreviousBookmark">
     <keyboard-shortcut first-keystroke="ctrl comma" />
-  </action>
-  <action id="ToggleBookmarkWithMnemonic">
-    <keyboard-shortcut first-keystroke="ctrl m" />
   </action>
 
 </keymap>

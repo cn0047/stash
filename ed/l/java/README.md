@@ -1,8 +1,13 @@
 Java
 -
 
+[jdk](http://jdk.java.net/)
+
 ````sh
 java -version
+
+java $f
+javac $f # compile
 
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 
@@ -29,16 +34,20 @@ class Foo extends Bar {}
 class Foo implements Comparable<Bar> {}
 @Override
 super.parentMethod();
+
+Objects.isNull(v);
 ````
 
 POM  - Project Object Model.
 JSE  - Java Standard Edition
 JEE  - Java Enterprise Edition (Wildfly, WebSphere, WebLogic, Tomcat).
+EJA  - Enterprise Java Application.
 JVM  - Java Virtual Machine (in JRE).
 JRE  - Java Runtime Environmen (in JDK).
 JDK  - Java Development Kit.
 POJO - Plain Old Java Object.
 JDBC - Java DB Connectivity.
+JAR  - Java ARchive.
 
 IDE -> JDK -> App -> JRE (-> JVM) -> Host Env.
 
@@ -57,3 +66,6 @@ Non-Primitive Data Types:
 * Array
 * Class
 * Interface
+
+Special types:
+* Null

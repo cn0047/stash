@@ -28,3 +28,7 @@ trim_trailing_whitespace = true
 [package.json]
 indent_size = 2
 ````
+
+#### IntelliJ IDEA
+
+Plugins: Lombok.
