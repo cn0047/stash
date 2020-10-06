@@ -1,6 +1,7 @@
 slack
 -
 
+[status](https://status.slack.com/)
 [emoji](https://slackmojis.com/)
 
 ````

@@ -212,7 +212,6 @@ MATCH (p:Person)
 WHERE EXISTS { MATCH (p)-[:WORKS_AT]->(:Organization) }
 RETURN p;
 
-
 // foreach
 MATCH p=(a)-[*]->(b)
 WHERE a.code = '007' AND b.name = 'CIA'
@@ -230,7 +229,12 @@ UNWIND [1, 1, 1, 2, 3, NULL] AS x WITH DISTINCT x RETURN x;
 UNWIND [1, 1, 1, 2, 3, NULL] AS x WITH DISTINCT x RETURN COLLECT(x);
 
 
+
 // AGGREGATION
 MATCH (n:Person) RETURN COUNT(n) as count;
 MATCH (n:Person) RETURN DISTINCT LABELS(n), COUNT(*);
 MATCH (n:Person) RETURN DISTINCT n.code;
+
+
+
+// APOC

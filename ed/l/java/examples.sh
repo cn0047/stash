@@ -8,6 +8,17 @@ java  ed/l/java/examples/whatever/collections.java
 java  ed/l/java/examples/whatever/class1.java
 java  ed/l/java/examples/whatever/class2.java
 java  ed/l/java/examples/whatever/map1.java
+java  ed/l/java/examples/whatever/cryptoAES.java
+java  ed/l/java/examples/whatever/json.java
+
+# javac whatever
+cd ed/l/java/examples/whatever
+javac hw.java
+java  hw
+# json
+jar=$HOME/.m2/repository/com/googlecode/json-simple/json-simple/1.1.1/json-simple-1.1.1.jar
+# javac -Xlint:unchecked -cp $jar json.java
+# java  json
 
 # pkg
 cd ed/l/java/examples/pkg
@@ -25,7 +36,7 @@ cd ed/l/java/examples/maven
 mvn clean
 mvn compile
 mvn package
-java -jar target/xmaven.jar
+# java -jar target/xmaven.jar
 
 #### Java Spring
 

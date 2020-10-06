@@ -31,6 +31,11 @@ pipeline.run_info
 %load_ext tensorboard.notebook
 import os; os.makedirs('./tb_logs', exist_ok=True)
 %tensorboard --logdir './tb_logs'
+
+!watch -n 1 nvidia-smi
+docker run --rm -it nvidia/cuda sh -c 'watch -n 1 nvidia-smi'
+
+!kubectl describe pod
 ````
 
 ````sh
@@ -39,20 +44,13 @@ import os; os.makedirs('./tb_logs', exist_ok=True)
 tensorflow==2.1.0
 ````
 
-````sh
-!watch -n 1 nvidia-smi
-
-docker run --rm -it nvidia/cuda sh -c 'watch -n 1 nvidia-smi'
-````
-
 ````py
-!kubectl describe pod
-
 from kubernetes import client, config
-
 pod_name = "gpu-main-0"
 instance = client.CoreV1Api()
 response = instance.read_namespaced_pod(name=pod_name, namespace='ns')
 print(response)
 print(response.status.pod_ip)
+
+
 ````

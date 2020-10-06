@@ -31,4 +31,8 @@ indent_size = 2
 
 #### IntelliJ IDEA
 
-Plugins: Lombok.
+Plugins: Lombok, Checkstyle.
+
+````
+Settings > Code Style > Java > Imports > General > Class count to use import with '*'
+````
