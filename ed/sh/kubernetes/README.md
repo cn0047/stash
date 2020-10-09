@@ -269,6 +269,7 @@ kubectl scale deployment $depl --replicas=11
 
 # ssh into pod
 kubectl exec -it $pod /bin/bash
+kubectl exec -it $pod -c $container -- /bin/bash
 
 # copy files to/from containers running in the pod
 # kubectl cp --container=kuard /etc/os-release kuard:/tmp/

@@ -9,7 +9,7 @@ java  ed/l/java/examples/whatever/class1.java
 java  ed/l/java/examples/whatever/class2.java
 java  ed/l/java/examples/whatever/map1.java
 java  ed/l/java/examples/whatever/cryptoAES.java
-java  ed/l/java/examples/whatever/json.java
+java  ed/l/java/examples/whatever/date.java
 
 # javac whatever
 cd ed/l/java/examples/whatever

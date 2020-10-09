@@ -4,6 +4,7 @@ keys()
 labels()
 nodes()
 relationships()
+length(path)
 
 
 
@@ -236,5 +237,3 @@ MATCH (n:Person) RETURN DISTINCT LABELS(n), COUNT(*);
 MATCH (n:Person) RETURN DISTINCT n.code;
 
 
-
-// APOC

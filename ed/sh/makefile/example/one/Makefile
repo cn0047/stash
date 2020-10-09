@@ -1,5 +1,9 @@
 # @example:
 # make -f ed/sh/makefile/example/one/Makefile hw
+# make -f ed/sh/makefile/example/one/Makefile       cmd
+# make -f ed/sh/makefile/example/one/Makefile x=200 cmd
+# make -f ed/sh/makefile/example/one/Makefile       cmd2
+# make -f ed/sh/makefile/example/one/Makefile x=200 cmd2
 
 TOP := "TOP △ "
 ROOT = "ROOT ▼ "
@@ -42,6 +46,11 @@ cmd1: cmd
 
 .PHONY: cmd
 cmd:
+	@echo $(x)
+
+.PHONY: cmd2
+cmd2: x?=none
+cmd2:
 	@echo $(x)
 
 print_f:

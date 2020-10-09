@@ -29,6 +29,30 @@ trim_trailing_whitespace = true
 indent_size = 2
 ````
 
+#### PhpStorm
+
+Plugins:
+* PhpInspectionsEA
+* Symfony2 Plugin
+* PHP Annotation
+* Lines Sorter
+
+Keys:
+* `Shift+Enter` Show intention actions (quick fixes).
+* `Ctrl+Alt+T` Surround with.
+* `Ctrl+Alt+M` Extract method refactoring.
+* `Ctrl+Alt+O` Optimize imports (delete non-used imported classes).
+
+#### GoLand
+
+[File Watchers](https://monosnap.com/file/HHVwIfCi5rwezBvUx3tEftZdU5icCh):
+
+````sh
+# go fmt
+$GoExecPath$
+fmt $FilePath$
+````
+
 #### IntelliJ IDEA
 
 Plugins: Lombok, Checkstyle.

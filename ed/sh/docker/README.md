@@ -101,6 +101,8 @@ docker logs -f
 
 # show containers & images
 docker images
+# only IDs
+docker images -q
 
 docker image rm $img
 
