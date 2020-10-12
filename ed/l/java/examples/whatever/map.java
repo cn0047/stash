@@ -1,11 +1,22 @@
 import java.util.Map;
 import java.util.HashMap;
 
-public class map1
+public class map
 {
     public static void main(String[] args)
     {
+       map1();
        simple();
+    }
+
+    public static void map1()
+    {
+        Map<String, String> map = new HashMap<>();
+        map.put("f", "foo");
+        map.put("b", "bar");
+        map.put("x", "x");
+        map.remove("x");
+        map.forEach((k, v) -> System.out.printf("%s %s%n", k, v));
     }
 
     private static void simple()

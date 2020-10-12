@@ -15,6 +15,7 @@ echo $BASH_VERSION
 echo There are ${#BASH_ALIASES[*]} aliases defined.
 
 bash -c 'echo ok' # cmd
+bash -ce 'ok'     # cmd and fail if any error
 bash -i           # interactive
 bash -l           # login
 bash --norc       # don't read file ~/.bashrc

@@ -1,6 +1,6 @@
 import java.util.Date;
 
-public class hw
+public class date
 {
     public static void main(String[] args)
     {
