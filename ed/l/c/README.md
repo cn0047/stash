@@ -1,6 +1,8 @@
 c
 -
 
+[c debugger](https://web.eecs.umich.edu/~sugih/pointers/summary.html)
+
 ````sh
 # -Wall - warnings all
 gcc -o x -Wall $f
@@ -58,6 +60,11 @@ switch (exp) {
 while (exp) {}
 do {} while(exp)
 for (int i=0; i<10; i++) {}
+
+malloc()  // Allocate a block of memory
+calloc()  // Allocate a memory block and fill it with null bytes
+realloc() // Resize an allocated memory block
+free()    // Release a memory block
 ````
 
 **string** `char str[] = "my string";`

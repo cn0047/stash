@@ -32,6 +32,7 @@ CREATE (p:Person {name: 'Vesper Lynd', code: 'vesper'});
 CREATE (o:Organization {name:'MI6'});
 CREATE (o:Organization {name:'CIA'});
 CREATE (o:Organization {name:'test'});
+CREATE (o:Organization {name:'00*'});
 
 CREATE (c:Country {name:'UK'});
 CREATE (c:Country {name:'USA'});

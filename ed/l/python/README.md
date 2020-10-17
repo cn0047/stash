@@ -5,6 +5,7 @@ Python
 
 [doc](https://www.python.org/)
 [packages](https://pypi.org/)
+[flake8](https://flake8.pycqa.org/)
 
 Python - dynamic, ~~strongly typed~~, general-purpose, high-level,
 object-oriented, multipurpose programming language.
