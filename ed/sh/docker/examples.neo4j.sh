@@ -59,3 +59,4 @@ docker exec -it xneo4j sh -c 'tail -f /logs/debug.log'
 open http://0.0.0.0:7474/
 
 docker exec -it xneo4j sh -c 'cypher-shell -u neo4j -p test'
+docker exec -it xneo4j sh -c 'cypher-shell -u neo4j -p 1'

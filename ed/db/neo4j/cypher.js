@@ -8,6 +8,11 @@ length(path)
 
 
 
+// lock
+node._lock = true
+
+
+
 WITH 204 as c RETURN c;
 // var
 // IMPORTANT: don't use _ in var name

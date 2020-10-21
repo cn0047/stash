@@ -769,6 +769,7 @@ watch -n 2 'date'
 ps -ef                            # Display parents of processes
 ps ax                             # Display all processess
 ps aux                            # Detailed information
+ps auxww                          # ↑
 ps -f -u www-data                 # Display process by user "www-data"
 ps -f -p 1400                     # Show process by id
 ps -C apache2 u                   # Show process by name

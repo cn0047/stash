@@ -6,8 +6,24 @@ public class list
 {
   public static void main(String[] args)
   {
-    print();
-    inList();
+    // print();
+    // inList();
+    // loop();
+    get();
+  }
+
+  public static void get()
+  {
+    List<String> l = getList();
+    System.out.printf("get 0 = %s \n", l.get(0));
+  }
+
+  public static void loop()
+  {
+    List<String> l = getList();
+    for (String el : l) {
+      System.out.printf("%s \n", el);
+    }
   }
 
   public static void inList()

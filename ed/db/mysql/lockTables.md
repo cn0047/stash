@@ -121,7 +121,7 @@ neither will ever release the locks it holds.
 Deadlocks occur because of write operations.
 
 To reduce the possibility of deadlocks, use transactions rather than LOCK TABLES statements;
-To see the last deadlock in an InnoDB user transaction, use the `SHOW ENGINE INNODB STATUS` command.
+To see the last deadlock use `SHOW ENGINE INNODB STATUS` command.
 
 | Session 1 | Session 2 |
 |-----------|-----------|
