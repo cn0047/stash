@@ -16,11 +16,8 @@ func main() {
 	//createPersonTX(s)
 	//createPerson(s)
 	//matchPersonByCode(s, "007")
-
-	bookmark, code := createPersonTX(s)
-	s2 := getSession(d, bookmark)
-	defer s2.Close()
-	matchPersonByCodeTX(s, code)
+	//bookmarkCreatePerson(d, s)
+	incrementAccountBalance(s)
 }
 
 func getDriver() neo4j.Driver {
@@ -28,7 +25,7 @@ func getDriver() neo4j.Driver {
 	dsn = "bolt://xneo4j:7687"
 	//dsn = "bolt+routing://xneo4j:7687"
 	user := "neo4j"
-	pwd := "test"
+	pwd := "1" // test|1
 	realm := ""
 
 	useConsoleLogger := func(level neo4j.LogLevel) func(config *neo4j.Config) {
@@ -52,6 +49,15 @@ func getSession(driver neo4j.Driver, bookmarks ...string) neo4j.Session {
 	}
 
 	return s
+}
+func incrementAccountBalance(session neo4j.Session) {
+}
+
+func bookmarkCreatePerson(d neo4j.Driver, s neo4j.Session) {
+	bookmark, code := createPersonTX(s)
+	s2 := getSession(d, bookmark)
+	defer s2.Close()
+	matchPersonByCodeTX(s2, code)
 }
 
 func matchPersonByCodeTX(session neo4j.Session, code interface{}) {
