@@ -5,8 +5,19 @@ public class map
 {
     public static void main(String[] args)
     {
-       map1();
-       simple();
+       // map1();
+       // simple();
+       empty();
+    }
+
+    public static void empty()
+    {
+        Map<String, String> map1 = new HashMap<>();
+        System.out.print(map1.isEmpty());
+
+        Map<String, String> map2 = new HashMap<>();
+        map2.put("f", "foo");
+        System.out.print(map2.isEmpty());
     }
 
     public static void map1()

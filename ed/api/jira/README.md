@@ -13,4 +13,8 @@ hg push
 {panel:title=Tech details about branches}
 Some content...
 {panel}
+
+{expand: Click to see more}
+    Some info...
+{expand}
 ````

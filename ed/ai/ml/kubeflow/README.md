@@ -4,6 +4,7 @@ kubeflow
 [docs](https://www.kubeflow.org/docs/)
 [pipelines](https://www.kubeflow.org/docs/pipelines/sdk/sdk-overview/)
 [examples](https://github.com/kubeflow/pipelines/)
+[examples](https://github.com/kubeflow/examples)
 
 Kubeflow - ML toolkit for k8s.
 Fairing - python package that makes it easy to train and deploy ML models on Kubeflow.
@@ -45,6 +46,7 @@ tensorflow==2.1.0
 ````
 
 ````py
+# Pod info
 from kubernetes import client, config
 pod_name = "gpu-main-0"
 instance = client.CoreV1Api()
@@ -52,5 +54,16 @@ response = instance.read_namespaced_pod(name=pod_name, namespace='ns')
 print(response)
 print(response.status.pod_ip)
 
+````
+
+````py
+# Run pipeline
+client = kfp.Client()
+experiment = client.create_experiment('j_run')
+run = client.run_pipeline(
+    experiment_id=experiment.id,
+    job_name='j_run_job',
+    pipeline_id=PIPELINE_ID,
+)
 
 ````

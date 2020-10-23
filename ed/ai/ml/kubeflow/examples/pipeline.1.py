@@ -17,5 +17,4 @@ def k_pipeline_1():
 
 
 pipeline_conf = dsl.PipelineConf().set_image_pull_secrets([client.V1LocalObjectReference(name="x")])
-pipeline_conf=kfp.dsl.PipelineConf().set_image_pull_secrets([client.V1LocalObjectReference(name="x")])
 kfp.compiler.Compiler().compile(k_pipeline_1, 'pipeline.zip', pipeline_conf=pipeline_conf)
