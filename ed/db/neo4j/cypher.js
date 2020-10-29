@@ -73,6 +73,9 @@ MATCH (o:Organization {name: 'CIA'}),(c:Country {name:'USA'}) CREATE (o)-[r:COUN
 // visited
 MATCH (p:Person {code: '007'}),(c:Country {name:'USA'}) CREATE (p)-[r:visited]->(c) RETURN p, c;
 
+// get relationship by id
+MATCH (a)-[r]-(b) WHERE id(r)=9 return a, r, b;
+
 
 
 // get all

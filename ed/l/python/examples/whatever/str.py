@@ -4,6 +4,11 @@ def f1():
       f' line 2 with {x}'
   print(s) # one line; line 2 with foo
 
+  s = f"""
+  1) x = {x}
+  """
+  print(s)
+
 
 def f2():
   s = ('line 1 '
@@ -11,5 +16,5 @@ def f2():
   print(s)
 
 
-# f1()
-f2()
+f1()
+# f2()

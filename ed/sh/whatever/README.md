@@ -9,6 +9,7 @@ lsof /tmp/debug.log # find who is writing file
 sudo bash -c 'echo "APP_ENVIRONMENT=prod" > /etc/environment'
 sudo sh -c 'echo "APP_ENVIRONMENT=prod" > /etc/environment'
 sh -c 'echo 200'
+sh -c 'echo $0 and $1' ok yes
 
 last # to see recent activity
 
@@ -514,6 +515,7 @@ date +'%b %d %H:%M:%S' # Apr 24 13:38:17
                        # May 02 11:25:32
 date +'%b %e %H:%M:%S' # May  2 11:41:07
 date +'%d/%b/%Y:%H:%M' # 18/Jul/2018:11:48
+date +'%Y%m%d%H%M%S'   # 20201024234538
 date +%Y-%m-%dT%T%z    # 2018-07-18T11:49:03+0300
 date +%s               # timestamp
 date +%s%N             # seconds and current nanoseconds

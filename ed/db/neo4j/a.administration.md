@@ -36,6 +36,9 @@ SHOW DATABASE mydb;
 DROP DATABASE mydb;
 // @see: https://neo4j.com/docs/operations-manual/current/manage-databases/queries/
 
+// thread pool memory usage
+CALL dbms.listPools();
+
 CALL dbms.listQueries();
 CALL dbms.listActiveLocks(queryId);
 CALL dbms.killQuery(queryId);

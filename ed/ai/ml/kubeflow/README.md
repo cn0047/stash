@@ -46,6 +46,13 @@ tensorflow==2.1.0
 ````
 
 ````py
+op = dsl.ContainerOp(
+    name='run',
+    image='cn007b/alpine'
+)
+op.add_pod_label('lbl', 'foo')
+op.add_pod_annotation('anno', 'bar')
+
 # Pod info
 from kubernetes import client, config
 pod_name = "gpu-main-0"
@@ -54,9 +61,6 @@ response = instance.read_namespaced_pod(name=pod_name, namespace='ns')
 print(response)
 print(response.status.pod_ip)
 
-````
-
-````py
 # Run pipeline
 client = kfp.Client()
 experiment = client.create_experiment('j_run')

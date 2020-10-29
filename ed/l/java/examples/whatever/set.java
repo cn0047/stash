@@ -8,8 +8,15 @@ public class set
     {
         // print();
         // inSet();
-        inHashSet();
+        // inHashSet();
         // loop();
+        len();
+    }
+
+    public static void len()
+    {
+        Set<String> s = getStrSet();
+        System.out.println(s.size());
     }
 
     public static Set<String> getStrSet()

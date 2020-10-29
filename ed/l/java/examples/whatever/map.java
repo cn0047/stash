@@ -7,7 +7,20 @@ public class map
     {
        // map1();
        // simple();
-       empty();
+       // empty();
+       emptyVal();
+    }
+
+
+    public static void emptyVal()
+    {
+        Map<String, String> map = new HashMap<>();
+        map.put("", "empty");
+        map.forEach((k, v) -> {
+            if (k.equals("") || v.equals("")) {
+                System.out.printf("key:%s & val:%s must not be blank \n", k, v);
+            }
+        });
     }
 
     public static void empty()
