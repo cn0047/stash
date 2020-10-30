@@ -9,6 +9,7 @@ neo4j
 [keywords](https://neo4j.com/docs/cypher-manual/current/keyword-glossary/)
 [cypher styleguide](https://neo4j.com/docs/cypher-manual/current/styleguide/)
 [algorithms](https://neo4j.com/developer/graph-data-science/graph-algorithms/)
+[links](https://neo4j.com/developer/resources/)
 
 ````sh
 cypher-shell -u neo4j -p test
@@ -119,3 +120,14 @@ Raft Candidate.
 Catchup protocol.
 Read Replica shutdown - read replica invoke discovery protocol to remove itself from whiteboard.
 Core shutdown - handled via Raft protocol.
+
+````sh
+causal_clustering.minimum_core_cluster_size_at_formation=F
+# min number of core machines initially required to start a cluster
+
+causal_clustering.minimum_core_cluster_size_at_runtime=R
+
+````
+Good practice when F = R (↑).
+
+Quorum (majority) - NumCoresRunning/2 + 1.

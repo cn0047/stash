@@ -6,6 +6,7 @@ Administration
 [import data](https://neo4j.com/docs/operations-manual/current/tools/import/)
 [dump](https://neo4j.com/docs/operations-manual/current/tools/dump-load/)
 [copy db](https://neo4j.com/docs/operations-manual/current/tools/copy/)
+[performance](https://neo4j.com/developer/guide-performance-tuning/)
 
 ````sh
 systemctl status neo4j
