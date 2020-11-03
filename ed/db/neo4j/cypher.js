@@ -42,6 +42,8 @@ CREATE (o:Organization {name:'00*'});
 CREATE (c:Country {name:'UK'});
 CREATE (c:Country {name:'USA'});
 
+// CREATE (c:Car {name:'DB11 V8', vendor:(name: 'Aston Martin ')});
+
 
 
 // RELATIONSHIPS
@@ -107,6 +109,7 @@ MATCH (n:Organization {name:'TEST_ORG'}) RETURN n;
 
 // delete
 MATCH (n:Person {name:'James Bond'}) DELETE n;
+MATCH (n:Person {name:'James Bond'}) DETACH DELETE n; // delete relationships & node
 MATCH (n:Organization {name:'test'}) DELETE n;
 MATCH (n:Organization {name:'TEST_ORG'}) DELETE n;
 // delete relationship

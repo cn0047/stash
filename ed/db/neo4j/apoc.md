@@ -17,6 +17,13 @@ APOC
 [schema info](https://neo4j.com/labs/apoc/4.1/indexes/schema-index-operations/)
 
 ````js
+// monitoring
+CALL apoc.monitor.kernel();
+CALL apoc.monitor.store();
+CALL apoc.monitor.tx();
+
+
+
 CALL apoc.static.set('x.user', 'Mike');
 RETURN apoc.static.get('x.user') AS value;
 
@@ -30,6 +37,14 @@ apoc.rel.type(relationship);
 
 apoc.diff.nodes(node1, node2);
 
+// run 2nd statement for each item returned by 1st statement.
+apoc.periodic.iterate('return items', 'handle item', {batchSize: 10})
+CALL apoc.periodic.iterate(
+  'MATCH (o:Organization) RETURN o',
+  'MATCH (o) DELETE o',
+  {batchSize: 2}
+)
+
 // cypher
 CALL apoc.cypher.run("MATCH (n:Person {code:'007'}) RETURN n;", null) yield value
 RETURN value;
@@ -38,6 +53,7 @@ RETURN value;
 CALL apoc.search.nodeAll('{Person: ["name", "code"], Organization: "name"}', 'contains', '00')
 YIELD node AS n RETURN n;
 
+// when
 :param x => 1;
 :param y => 2;
 CALL apoc.when(
@@ -48,9 +64,4 @@ CALL apoc.when(
 )
 YIELD value;
 // Result: {"value2":2}
-
-// monitoring
-CALL apoc.monitor.kernel();
-CALL apoc.monitor.store();
-CALL apoc.monitor.tx();
 ````
