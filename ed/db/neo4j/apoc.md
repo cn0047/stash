@@ -41,7 +41,7 @@ apoc.diff.nodes(node1, node2);
 apoc.periodic.iterate('return items', 'handle item', {batchSize: 10})
 CALL apoc.periodic.iterate(
   'MATCH (o:Organization) RETURN o',
-  'MATCH (o) DELETE o',
+  'DETACH DELETE o',
   {batchSize: 2}
 )
 

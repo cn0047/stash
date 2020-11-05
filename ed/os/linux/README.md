@@ -60,7 +60,9 @@ which software the init command launches or shuts off on a given runlevel.
 /proc/sys/net/core/somaxconn            # ↓
 /proc/sys/net/ipv4/tcp_keepalive_time   # current tcp_keepalive_time value
 /sys/devices/system/cpu/cpu[0-7]        #
+/usr/bin                                #
 /usr/lib/pkgconfig                      # dir for pkgconfig files
+/usr/local/bin                          #
 /usr/share/pkgconfig                    # dir for pkgconfig files
 /usr/share/zoneinfo                     #
 /var/log/wtmp                           # contains recent logins

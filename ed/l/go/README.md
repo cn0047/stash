@@ -25,6 +25,7 @@ Go (Golang)
 [golangci](https://golangci.com/)
 [security](https://github.com/securego/gosec)
 [covererage](https://gocover.io/) [![coverage](https://gocover.io/_badge/github.com/thepkg/strings)](https://gocover.io/github.com/thepkg/strings)
+[json to struct](https://mholt.github.io/json-to-go/)
 
 Go - statically-typed, general-purpose, with type safety
 and automatic memory management programming language.

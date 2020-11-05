@@ -19,6 +19,7 @@ cypher-shell -a neo4j:test@localhost:7687
 Bloom - graph exploration app.
 
 Node - represents entity.
+Dense node - node with huge number of relationships.
 Label - describes the domain `:user :suspended`.
 Relationship - connects two nodes, it always have a direction.
 Properties - key/value pairs used to add qualities to nodes and relationships.
