@@ -1,23 +1,23 @@
 #include <stdio.h>
 
 struct hello {
-  int index;
-  float code;
+    int index;
+    float code;
 };
 
 void one()
 {
-  struct hello h = {5, 200};
-  printf("[1] index = %d; code = %0.1f \n", h.index, h.code);
+    struct hello h = {5, 200};
+    printf("[1] index = %d; code = %0.1f \n", h.index, h.code);
 };
 
 typedef unsigned char byte;
 
 struct Color
 {
-  byte Red;
-  byte Green;
-  byte Blue;
+    byte Red;
+    byte Green;
+    byte Blue;
 };
 
 // typedef struct {
@@ -27,11 +27,11 @@ struct Color
 
 void two()
 {
-  struct Color c = {225, 128};
-  printf("[2] %d \n", c.Green);
+    struct Color c = {225, 128};
+    printf("[2] %d \n", c.Green);
 
-  // struct Layout l = {1, 2};
-  // printf("[2] %d \n", l.First);
+    // struct Layout l = {1, 2};
+    // printf("[2] %d \n", l.First);
 };
 
 int main()

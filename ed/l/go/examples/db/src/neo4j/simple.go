@@ -17,7 +17,20 @@ func main() {
 	//createPerson(s)
 	//matchPersonByCode(s, "007")
 	//bookmarkCreatePerson(d, s)
-	incrementAccountBalance(s)
+
+	exists, err := IsAccountExists(s, "main1")
+	if err != nil {
+		panic(err)
+	}
+	if !exists {
+		err := createAccountTX(s, "main1")
+		if err != nil {
+			panic(err)
+		}
+	}
+	for {
+		incrementAccountBalance(s, "main1")
+	}
 }
 
 func getDriver() neo4j.Driver {
@@ -50,7 +63,102 @@ func getSession(driver neo4j.Driver, bookmarks ...string) neo4j.Session {
 
 	return s
 }
-func incrementAccountBalance(session neo4j.Session) {
+
+func createAccountTX(session neo4j.Session, id interface{}) error {
+	r, err := session.WriteTransaction(func(tx neo4j.Transaction) (interface{}, error) {
+		code := time.Now().Unix()
+		result, err := tx.Run(
+			`CREATE (a:Account) SET a.id = $id, a.balance = 0`,
+			map[string]interface{}{"id": id},
+		)
+		if err != nil {
+			return nil, err
+		}
+
+		summary, err := result.Summary()
+		if err != nil {
+			return nil, err
+		}
+		fmt.Printf("summary: %+v \n", summary)
+
+		if !result.Next() {
+			return nil, result.Err()
+		}
+		fmt.Printf("result: %#v \n", result.Record().GetByIndex(0))
+
+		return code, nil
+	})
+	if err != nil {
+		return fmt.Errorf("failed to create account, error: %w", err)
+	}
+
+	fmt.Printf("Account created, reslut: %+v \n", r)
+
+	return nil
+}
+
+func IsAccountExists(session neo4j.Session, ID interface{}) (bool, error) {
+	params := map[string]interface{}{"id": ID}
+	result, err := session.Run(`MATCH (a:Account {id: $id}) RETURN a;`, params)
+	if err != nil {
+		return false, fmt.Errorf("failed to find account, error: %w", err)
+	}
+
+	if result.Next() {
+		r := result.Record().GetByIndex(0)
+		v, ok := r.(neo4j.Node)
+		if !ok {
+			return false, fmt.Errorf("got non neo4j.Node result")
+		}
+
+		if v.Props()["id"] != ID {
+			return false, fmt.Errorf("got non expected ID")
+		}
+
+		return true, nil
+	}
+
+	return false, nil
+}
+
+func incrementAccountBalance(session neo4j.Session, ID interface{}) error {
+	r, err := session.WriteTransaction(func(tx neo4j.Transaction) (interface{}, error) {
+		q := `
+			MATCH (a:Account {id: $id})
+			SET a.balance = a.balance + 1
+			WITH a CALL apoc.util.sleep(1000)
+			MATCH (ac:Account {balance: a.balance})
+			RETURN ac
+		`
+		result, err := tx.Run(q, map[string]interface{}{"id": ID})
+		if err != nil {
+			return nil, fmt.Errorf("failed to incremented account balance, error: %w", err)
+		}
+
+		_, err = result.Summary()
+		if err != nil {
+			return nil, fmt.Errorf("failed to get summary, error: %w", err)
+		}
+
+		if result.Next() {
+			r := result.Record().GetByIndex(0)
+			v, ok := r.(neo4j.Node)
+			if !ok {
+				return false, fmt.Errorf("got non neo4j.Node result")
+			}
+
+			return v.Props()["balance"], nil
+		}
+
+		return nil, fmt.Errorf("failed to get result, error: %w", result.Err())
+	})
+	if err != nil {
+		return fmt.Errorf("failed to perform TX. to incremented account balance, error: %w", err)
+	}
+
+	fmt.Printf("Account balance incremented, reslut: %+v \n", r)
+
+	return nil
 }
 
 func bookmarkCreatePerson(d neo4j.Driver, s neo4j.Session) {

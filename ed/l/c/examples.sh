@@ -3,20 +3,26 @@
 gh=$HOME/web/kovpak/gh
 d=$gh/ed/l/c/examples
 
-f=ed/l/c/examples/whatever/hw.c
-f=ed/l/c/examples/whatever/func.one.c
-f=ed/l/c/examples/whatever/enum.c
-f=ed/l/c/examples/whatever/rand.c
-f=ed/l/c/examples/whatever/rand.1.c
-f=ed/l/c/examples/whatever/stdin.c
-f=ed/l/c/examples/whatever/for.c
-f=ed/l/c/examples/whatever/recursion.c
-f=ed/l/c/examples/whatever/digitsSum.c
-f=ed/l/c/examples/whatever/char.c
-f=ed/l/c/examples/whatever/array.one.c
-gcc -o /tmp/x -Wall $f && /tmp/x
-
 objdump -d /tmp/x
+
+cr() {
+    gcc -o /tmp/x -Wall $1 && /tmp/x
+}
+
+cr ed/l/c/examples/whatever/hw.c
+cr ed/l/c/examples/whatever/func.one.c
+cr ed/l/c/examples/whatever/enum.c
+cr ed/l/c/examples/whatever/rand.c
+cr ed/l/c/examples/whatever/rand.1.c
+cr ed/l/c/examples/whatever/stdin.c
+cr ed/l/c/examples/whatever/for.c
+cr ed/l/c/examples/whatever/recursion.c
+cr ed/l/c/examples/whatever/digitsSum.c
+cr ed/l/c/examples/whatever/char.c
+cr ed/l/c/examples/whatever/array.one.c
+cr ed/l/c/examples/whatever/array.permute.c
+cr ed/l/c/examples/whatever/str.sort.c
+cr ed/l/c/examples/whatever/print.pattern.c
 
 
 
