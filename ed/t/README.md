@@ -240,6 +240,7 @@ $ Dollar
 — Dash (long dash)
 - Hyphen
 . Dot (period)
+⋯ Ellipsis
 @ At Sign
 ^ Caret
 _ Underscore

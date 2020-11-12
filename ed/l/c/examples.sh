@@ -9,8 +9,10 @@ cr() {
     gcc -o /tmp/x -Wall $1 && /tmp/x
 }
 
+cr ed/l/c/examples/whatever/assert.c
 cr ed/l/c/examples/whatever/hw.c
 cr ed/l/c/examples/whatever/func.one.c
+cr ed/l/c/examples/whatever/func.variadic.c
 cr ed/l/c/examples/whatever/enum.c
 cr ed/l/c/examples/whatever/rand.c
 cr ed/l/c/examples/whatever/rand.1.c
@@ -21,10 +23,15 @@ cr ed/l/c/examples/whatever/digitsSum.c
 cr ed/l/c/examples/whatever/char.c
 cr ed/l/c/examples/whatever/array.one.c
 cr ed/l/c/examples/whatever/array.permute.c
+cr ed/l/c/examples/whatever/str.c
 cr ed/l/c/examples/whatever/str.sort.c
 cr ed/l/c/examples/whatever/print.pattern.c
+cr ed/l/c/examples/whatever/struct.one.c
+cr ed/l/c/examples/whatever/struct.two.c
 
-
+# in docker
+docker run -it --rm --net=xnet -v $PWD:/gh -w /gh xubuntu /bin/bash
+# ⬆
 
 # video
 docker build -t ubuntuvideo -f $gh/ed/sh/docker/examples.Dockerfile/c.video.Dockerfile .

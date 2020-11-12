@@ -2,6 +2,7 @@ modules
 -
 
 [doc](https://github.com/golang/go/wiki/Modules)
+[dependency analysis](https://github.com/loov/goda)
 
 A module is a collection of related Go packages
 that are versioned together as a single unit.

@@ -137,6 +137,13 @@ void str_1d_array()
     print_1d_str_array(arr, n);
 }
 
+void str_1d_array_v2()
+{
+    int n = 3;
+    char **arr = {"Learning", "C", "is", "fun"}; // won't work
+    print_1d_str_array(arr, n);
+}
+
 const int STR_2D_ARRAY_LEN = 100;
 
 void print_2d_str_array(char *arr[][STR_2D_ARRAY_LEN], int n, int m)
@@ -178,7 +185,8 @@ int main()
     // str_2d_array();
     // int_1d_array();
     // int_2d_array();
-    str_2d_array();
+    // str_2d_array();
+    // str_1d_array_v2(); // error
 
     return 0;
 }
