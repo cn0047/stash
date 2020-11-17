@@ -33,15 +33,18 @@ CREATE (p:Person {name: '008', code: '008'}) RETURN p;
 CREATE (p:Person {name: 'Q', code: 'q'});
 CREATE (p:Person {name: 'M', code: 'm'});
 CREATE (p:Person {name: 'Vesper Lynd', code: 'vesper'});
+CREATE (p:Person {name: 'Blofeld'});
 
 CREATE (o:Organization {name:'MI6'});
 CREATE (o:Organization {name:'CIA'});
 CREATE (o:Organization {name:'test'});
 CREATE (o:Organization {name:'00*'});
+CREATE (o:Organization {name:'spectre'});
 
 CREATE (c:Country {name:'UK'});
 CREATE (c:Country {name:'USA'});
 
+CREATE (c:Car {name: 'DB11 V8', vendor: 'Aston Martin '});
 // CREATE (c:Car {name:'DB11 V8', vendor:(name: 'Aston Martin ')});
 
 
@@ -50,13 +53,15 @@ CREATE (c:Country {name:'USA'});
 // works at
 MERGE (p:Person {code: '007'})-[r:WORKS_AT]->(o:Organization {name: 'MI6'})
 ON CREATE SET r.status = 'new' ON MATCH SET r.status = 'old';
-// or
+// or (works at)
 MATCH (p:Person), (o:Organization) WHERE p.code = '007'   AND o.name = 'MI6' CREATE (p)-[r:WORKS_AT]->(o);
 MATCH (p:Person), (o:Organization) WHERE p.code = '008'   AND o.name = 'MI6' CREATE (p)-[r:WORKS_AT]->(o);
 MATCH (p:Person), (o:Organization) WHERE p.code = 'mp'    AND o.name = 'MI6' CREATE (p)-[r:WORKS_AT]->(o);
 MATCH (p:Person), (o:Organization) WHERE p.code = 'q'     AND o.name = 'MI6' CREATE (p)-[r:WORKS_AT]->(o);
 MATCH (p:Person), (o:Organization) WHERE p.code = 'm'     AND o.name = 'MI6' CREATE (p)-[r:WORKS_AT]->(o);
 MATCH (p:Person), (o:Organization) WHERE p.code = 'felix' AND o.name = 'CIA' CREATE (p)-[r:WORKS_AT]->(o);
+// or (works at)
+MERGE (p:Person {name: 'Blofeld'})-[r:WORKS_AT]->(o:Organization {name: 'spectre'});
 // bond familiar with
 MATCH (a:Person), (b:Person) WHERE a.code = '007' AND b.code = 'mp'     CREATE (a)-[r:FAMILIAR]->(b) RETURN type(r);
 MATCH (a:Person), (b:Person) WHERE a.code = '007' AND b.code = 'mp'     CREATE (a)-[r:FRIENDS{close: true}]->(b) RETURN type(r);

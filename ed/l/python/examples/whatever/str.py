@@ -16,5 +16,25 @@ def f2():
   print(s)
 
 
-f1()
+def multi_line_format():
+  s = 'works'
+  msg = f"""
+  well, it {s}
+  """
+  print(msg) # well, it works
+
+
+def multi_line_concat():
+  msg = """
+    foo
+  """ \
+  """
+  bar
+  """
+  print(msg)
+
+
+# f1()
 # f2()
+# multi_line_format()
+multi_line_concat()

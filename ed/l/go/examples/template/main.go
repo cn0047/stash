@@ -14,7 +14,8 @@ func main() {
 	// f1()
 	// f2()
 	// three()
-	loop()
+	// loop()
+	ifWithNotDefinedVar()
 }
 
 func three() {
@@ -103,5 +104,12 @@ func loop() {
 	data := map[string]interface{}{
 		"list": []string{"a", "b", "c"},
 	}
+	tmpl.Execute(os.Stdout, data)
+}
+
+func ifWithNotDefinedVar() {
+	t := `ok: {{if .ok -}} v {{end}}`
+	tmpl := template.Must(template.New("tmpl").Parse(t))
+	data := map[string]interface{}{"no": "no"}
 	tmpl.Execute(os.Stdout, data)
 }

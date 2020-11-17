@@ -33,6 +33,7 @@ SHOW DATABASE system;
 CREATE DATABASE mydb IF not exists; // Enterprise Edition
 STOP DATABASE mydb;
 START DATABASE mydb;
+:USE mydb;
 SHOW DATABASE mydb;
 DROP DATABASE mydb;
 // @see: https://neo4j.com/docs/operations-manual/current/manage-databases/queries/
@@ -54,6 +55,7 @@ CALL dbms.killConnection(connectionId);
 
 CALL dbms.cluster.overview();
 
+CALL db.schema(); // v3
 CALL db.schema.visualization();
 CALL db.labels();
 CALL dbms.procedures() YIELD name, signature RETURN * ;
