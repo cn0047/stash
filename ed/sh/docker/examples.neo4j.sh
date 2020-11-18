@@ -14,8 +14,15 @@ docker run -it --rm --net=xnet -p 7474:7474 -p 7687:7687 --name xneo4j --hostnam
 # 4.1 enterprise
 docker run -it --rm --net=xnet -p 7474:7474 -p 7687:7687 --name xneo4j --hostname xneo4j \
   -v $PWD/.data/.docker/neo4j_41:/data \
-  -e NEO4J_ACCEPT_LICENSE_AGREEMENT=yes \
   -e NEO4J_AUTH=neo4j/test \
+  \
+  -e NEO4J_ACCEPT_LICENSE_AGREEMENT=yes \
+  \
+  -e NEO4J_apoc_export_file_enabled=true \
+  -e NEO4J_apoc_import_file_enabled=true \
+  -e NEO4J_apoc_import_file_use__neo4j__config=true \
+  -e NEO4JLABS_PLUGINS=\[\"apoc\"\] \
+  \
   neo4j:4.1.1-enterprise
 
 # 3.5
@@ -27,6 +34,7 @@ docker run -it --rm --net=xnet -p 7474:7474 -p 7687:7687 --name xneo4j --hostnam
 docker run -it --rm --net=xnet -p 7474:7474 -p 7687:7687 --name xneo4j --hostname xneo4j \
   -v $PWD/.data/.docker/neo4j:/data \
   -v $PWD/.data/.docker/neo4j_plugins:/plugins \
+  \
   -e NEO4J_apoc_export_file_enabled=true \
   -e NEO4J_apoc_import_file_enabled=true \
   -e NEO4J_apoc_import_file_use__neo4j__config=true \
@@ -58,5 +66,10 @@ docker exec -it xneo4j sh -c 'tail -f /logs/debug.log'
 # prev_pwd=neo4j
 open http://0.0.0.0:7474/
 
+# REPL
 docker exec -it xneo4j sh -c 'cypher-shell -u neo4j -p test'
 docker exec -it xneo4j sh -c 'cypher-shell -u neo4j -p 1'
+docker exec -it xneo4j sh -c 'cypher-shell -u neo4j -p test -d mydb'
+
+#
+docker exec -it xneo4j /bin/bash

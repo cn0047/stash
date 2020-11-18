@@ -45,6 +45,7 @@ CREATE (c:Country {name:'UK'});
 CREATE (c:Country {name:'USA'});
 
 CREATE (c:Car {name: 'DB11 V8', vendor: 'Aston Martin '});
+CREATE (c:Car {name: 'Silver Wraith', vendor: 'Rolls-Royce'});
 // CREATE (c:Car {name:'DB11 V8', vendor:(name: 'Aston Martin ')});
 
 
@@ -79,6 +80,8 @@ MATCH (o:Organization {name: 'MI6'}),(c:Country {name:'UK'}) CREATE (o)-[r:COUNT
 MATCH (o:Organization {name: 'CIA'}),(c:Country {name:'USA'}) CREATE (o)-[r:COUNTRY]->(c) RETURN o, c;
 // visited
 MATCH (p:Person {code: '007'}),(c:Country {name:'USA'}) CREATE (p)-[r:visited]->(c) RETURN p, c;
+// car
+MERGE (p:Person {name: 'Blofeld'})-[r:LIKES]->(c:Car {name: 'Silver Wraith'});
 
 // get relationship by id
 MATCH (a)-[r]-(b) WHERE id(r)=9 return a, r, b;

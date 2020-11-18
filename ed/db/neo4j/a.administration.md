@@ -90,6 +90,99 @@ WHERE name STARTS WITH 'dbms.logs'
 RETURN name, value;
 ````
 
+## Export/Import
+
+[import](https://neo4j.com/labs/apoc/4.1/import/)
+[export](https://neo4j.com/labs/apoc/4.1/export/)
+
+````js
+// check import config
+CALL dbms.listConfig() YIELD name, value
+WHERE name = 'apoc.import.file.use_neo4j_config' RETURN name, value;
+
+````
+
+````js
+// export db
+CALL apoc.export.csv.all('db.csv', {});
+docker exec -it xneo4j sh -c 'ls /var/lib/neo4j/import/db.csv'
+
+// exports csv person
+MATCH (p:Person)
+WITH collect(p) AS ps
+CALL apoc.export.csv.data(ps, [], 'db.persons.csv', {})
+YIELD  file, source, format, nodes, relationships, properties, time, rows, batchSize, batches, done, data
+RETURN file, source, format, nodes, relationships, properties, time, rows, batchSize, batches, done, data
+;
+
+
+
+
+// read from csv
+CALL apoc.load.csv('db.csv')
+YIELD lineNo, map, list
+RETURN *;
+
+// read from csv
+CALL apoc.load.csv('db.csv', {skip: 0, limit: 50, header:true, ignore:['status'],
+    mapping:{
+        name: {type: 'str'},
+        vendor: {type: 'str'}
+    }
+})
+YIELD lineNo, map, list
+RETURN *;
+
+
+
+// import person (⚠️ not working in v4.1.1)
+CALL apoc.import.csv([{fileName: 'db.persons.csv', labels: ['Person']}], [], {});
+CALL apoc.import.csv([{fileName: 'file://db.persons.csv', labels: ['Person']}], [], {});
+CALL apoc.import.csv(
+  [{fileName: 'db.persons.csv', labels: ['Person']}],
+  [],
+  {delimiter: ',', arrayDelimiter: ';', stringIds: false}
+);
+
+// import  (✅ works)
+CALL apoc.periodic.iterate(
+    'CALL apoc.load.csv("db.persons.csv") yield map as row return row ',
+    'CREATE (p:Person) SET p = row',
+    {batchSize: 50, iterateList: true, parallel: true}
+);
+````
+
+````js
+// export db
+CALL apoc.export.json.all('db.json', {});
+docker exec -it xneo4j sh -c 'ls /var/lib/neo4j/import/db.json'
+
+// exports json person
+MATCH (p:Person)
+WITH collect(p) AS ps
+CALL apoc.export.json.data(ps, [], 'db.persons.json', {})
+YIELD  file, source, format, nodes, relationships, properties, time, rows, batchSize, batches, done, data
+RETURN file, source, format, nodes, relationships, properties, time, rows, batchSize, batches, done, data
+;
+
+// read json db
+CALL apoc.load.json('db.json')
+YIELD value
+RETURN value;
+
+// read json persons
+CALL apoc.load.json('db.persons.json')
+YIELD value
+RETURN value.properties.name;
+
+// import  (✅ works)
+CALL apoc.load.json('db.persons.json')
+YIELD value
+MERGE (p:Person {name: value.properties.name})
+SET p.imported = true;
+
+````
+
 ## Configuration
 
 ````sh

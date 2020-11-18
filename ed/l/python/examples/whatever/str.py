@@ -34,7 +34,12 @@ def multi_line_concat():
   print(msg)
 
 
+def concat():
+  print('foo '+'bar') # foo bar
+
+
 # f1()
 # f2()
 # multi_line_format()
-multi_line_concat()
+# multi_line_concat()
+concat()

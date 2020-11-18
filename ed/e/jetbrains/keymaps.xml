@@ -132,13 +132,14 @@
   </action>
 
   <!-- GIT -->
+  rollback "alt r"
   <action id="Annotate">
     <keyboard-shortcut first-keystroke="alt b" />
   </action>
   <action id="Compare.SameVersion">
     <keyboard-shortcut first-keystroke="alt d" />
   </action>
-  <action id="Vcs.ChangesView">
+  <action id="Vcs.ChangesView" x="show local changes">
     <keyboard-shortcut first-keystroke="shift alt s" />
   </action>
   <action id="Vcs.ShowMessageHistory">
