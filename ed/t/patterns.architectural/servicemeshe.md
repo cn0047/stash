@@ -3,6 +3,7 @@ Service Meshe
 
 istio
 envoy
+traefik
 consul
 k8s
 

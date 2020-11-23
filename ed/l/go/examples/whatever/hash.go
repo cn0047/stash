@@ -10,7 +10,8 @@ import (
 func main() {
 	s := "my string"
 
-	fmt.Printf("md5 = %x \n", md5.Sum([]byte(s)))
+	h := fmt.Sprintf("%x", md5.Sum([]byte(s)))
+	fmt.Printf("md5 = %s \n", h)
 
 	sh1 := sha1.New()
 	sh1.Write([]byte(s))

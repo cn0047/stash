@@ -134,7 +134,7 @@ const n = 500000000
 
 sort.Slice(arrInt32, func(i, j int) bool { return arrInt32[i] < arrInt32[j] })
 
-# https://golang.org/pkg/fmt/#hdr-Printing
+// https://golang.org/pkg/fmt/#hdr-Printing
 fmt.Printf("%T", myType)
 fmt.Printf("%+v", myVal)
 fmt.Printf("%p", myPointer)
@@ -267,7 +267,7 @@ Sentinel error -  custom error value
 <br>`errors.As` like type assertion (`if e, ok := err.(*QueryError); ok { … }`).
 <br>`fmt.Errorf("decompress %v: %w", name, err)`
 
-Context carries deadlines, cancelation signals, and other request-scoped values
+**Context** carries deadlines, cancelation signals, and other request-scoped values
 across API boundaries and between processes.
 Ctx may be: WithCancel, WithDeadline, WithTimeout, or WithValue.
 
@@ -463,22 +463,22 @@ Hence, a Go Runtime scheduler is needed which manages their lifecycle.
 
 #### Channel
 
-````sh
+````golang
 c <- 42        // write to a channel
 val, ok := <-c // read from a channel
 
 c1 := make(<-chan bool)   // can only read from
 c2 := make(chan<- []bool) // can only write to
 ````
-````sh
+````golang
 ch := make(chan type, value)
-# where:
-# value == 0 (blocking) synchronous, unbuffered
-# value > 0 (non-blocking) asynchronous, buffered, up to value elements
+// where:
+// value == 0 (blocking) synchronous, unbuffered
+// value > 0 (non-blocking) asynchronous, buffered, up to value elements
 
-# len(c) // count of elements in channel
+// len(c) // count of elements in channel
 
-# make(chan int) equals to make(chan int, 0) equals to make(chan int, 1)
+// make(chan int) equals to make(chan int, 0) equals to make(chan int, 1)
 ````
 
 Blocking channels:

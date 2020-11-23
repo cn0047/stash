@@ -65,3 +65,22 @@ CALL apoc.when(
 YIELD value;
 // Result: {"value2":2}
 ````
+
+Redirect relationships:
+
+````js
+CREATE (p:Person {name:'x'})-[r:FOOBAR {a:1}]->(f:Foo)
+CREATE (b:Bar)
+RETURN *;
+
+// replace target node
+MATCH (p:Person {name:'x'})-[r:FOOBAR {a:1}]->(f:Foo) with id(r) as id
+MATCH (b:Bar) with b
+MATCH ()-[r]->(), (b:Bar) CALL apoc.refactor.to(r, b) YIELD input, output RETURN *;
+
+// check
+MATCH (n) RETURN n;
+
+// clear
+MATCH (n) DETACH DELETE n;
+````

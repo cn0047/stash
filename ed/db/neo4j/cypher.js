@@ -123,7 +123,7 @@ MATCH (n:Organization {name:'TEST_ORG'}) DELETE n;
 // delete relationship
 MATCH (p:Person {code: 'felix'})-[r:WORKS_AT]->(o:Organization) DELETE r;
 
-// select all
+// ⭐️ select all nodes
 MATCH (n) RETURN n SKIP 0 LIMIT 100;
 MATCH (n:Organization) RETURN n;
 

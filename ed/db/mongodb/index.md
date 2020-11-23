@@ -6,9 +6,9 @@ INDEX
 Types:
 
 * B-tree
+* Hash
 * GEO
 * Text
-* Hash
 * TTL
 
 Limitations:

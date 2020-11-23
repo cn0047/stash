@@ -11,6 +11,7 @@ redis-cli -h localhost -p 6379
 
 ````sh
 # info about cluster
+# + info abou hits/misses
 info
 
 config get databases
