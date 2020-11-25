@@ -117,7 +117,6 @@ RETURN file, source, format, nodes, relationships, properties, time, rows, batch
 
 
 
-
 // read from csv
 CALL apoc.load.csv('db.csv')
 YIELD lineNo, map, list
@@ -144,7 +143,7 @@ CALL apoc.import.csv(
   {delimiter: ',', arrayDelimiter: ';', stringIds: false}
 );
 
-// import  (✅ works)
+// import (✅ works)
 CALL apoc.periodic.iterate(
     'CALL apoc.load.csv("db.persons.csv") yield map as row return row ',
     'CREATE (p:Person) SET p = row',
@@ -175,12 +174,42 @@ CALL apoc.load.json('db.persons.json')
 YIELD value
 RETURN value.properties.name;
 
-// import  (✅ works)
+// import (✅ works)
 CALL apoc.load.json('db.persons.json')
 YIELD value
 MERGE (p:Person {name: value.properties.name})
 SET p.imported = true;
 
+````
+
+Import separate CSV files:
+
+````sh
+# 1) ⚠️ delete db dir, import won't work if dir is not empty
+rm -rf .data/.docker/neo4j_41
+
+# 2) run docker and don't start db (with /bin/bash)
+
+# 3)
+docker exec -it xneo4j sh -c '
+  echo "pID:ID,name,:LABEL" > import/person.h.csv ;
+  echo "blofeld,Blofeld,:Person" > import/person.csv ;
+  echo "bond,Bond,:Person" >> import/person.csv ;
+
+  echo "cID:ID,name,vendor,:LABEL" > import/car.h.csv ;
+  echo "silverwraith,Silver Wraith,Rolls-Royce,:Car" > import/car.csv ;
+  echo "db11v8,DB11 V8,Aston Martin,:Car" >> import/car.csv ;
+
+  echo ":START_ID,val,:END_ID,:TYPE" > import/rel.h.csv ;
+  echo "blofeld,1,silverwraith,:LIKES" > import/rel.csv ;
+  echo "bond,2,db11v8,:LIKES" >> import/rel.csv ;
+
+  neo4j-admin import \
+    --database mydb \
+    --nodes import/person.h.csv,import/person.csv \
+    --nodes import/car.h.csv,import/car.csv \
+    --relationships import/rel.h.csv,import/rel.csv \
+'
 ````
 
 ## Configuration

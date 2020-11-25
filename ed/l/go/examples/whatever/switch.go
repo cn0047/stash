@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	simple()
+	// simple()
 	fallthroughFunc()
 }
 
@@ -40,4 +40,9 @@ func fallthroughFunc() {
 	default:
 		fmt.Println("default")
 	}
+	/*
+		42
+		1
+		default
+	*/
 }

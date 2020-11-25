@@ -23,7 +23,8 @@ docker run -it --rm --net=xnet -p 7474:7474 -p 7687:7687 --name xneo4j --hostnam
   -e NEO4J_apoc_import_file_use__neo4j__config=true \
   -e NEO4JLABS_PLUGINS=\[\"apoc\"\] \
   \
-  neo4j:4.1.1-enterprise
+  neo4j:4.1.1-enterprise \
+  /bin/bash # in case of import
 
 # 3.5
 docker run -it --rm --net=xnet -p 7474:7474 -p 7687:7687 --name xneo4j --hostname xneo4j \
@@ -70,6 +71,9 @@ open http://0.0.0.0:7474/
 docker exec -it xneo4j sh -c 'cypher-shell -u neo4j -p test'
 docker exec -it xneo4j sh -c 'cypher-shell -u neo4j -p 1'
 docker exec -it xneo4j sh -c 'cypher-shell -u neo4j -p test -d mydb'
+docker exec -it xneo4j sh -c 'cypher-shell -u neo4j -p test "SHOW DATABASES"'
 
 #
 docker exec -it xneo4j /bin/bash
+docker exec -it xneo4j sh -c 'neo4j status'
+docker exec -it xneo4j sh -c 'neo4j-admin memrec'
