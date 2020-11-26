@@ -7,7 +7,7 @@ from kubernetes.client.models import V1EnvVar
 def render_ui():
   op = dsl.ContainerOp(
     name='render ui',
-    image='python:alpine3.7',
+    image='cn007b/alpine',
     command=['sh', '-c'],
     arguments=['echo \'{"outputs":[{"type": "markdown", "storage": "inline", "source": "\u2705 all ok."}]}\' > /m.json'],
     output_artifact_paths={'mlpipeline-ui-metadata': '/m.json'},

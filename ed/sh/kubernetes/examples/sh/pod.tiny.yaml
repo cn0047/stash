@@ -1,0 +1,15 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: ksh-pod
+  labels:
+    app: ksh
+spec:
+  containers:
+  - name: klog-pod
+    image: cn007b/alpine
+    command: [
+      'sh',
+      '-c',
+      "while true; do curl -i -XPOST 'https://realtimelog.herokuapp.com:443/rkc8q6llprn' -H 'Content-Type: application/json' -d '{\"code\":\"100\", \"status\": \"ok from pod\", \"env\":\"'$APP_ENV'\"}'; sleep 5; done",
+    ]
