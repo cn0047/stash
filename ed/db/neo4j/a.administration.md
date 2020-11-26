@@ -212,6 +212,21 @@ docker exec -it xneo4j sh -c '
 '
 ````
 
+Dump:
+
+````sh
+# ) run docker and don't start db (with /bin/bash)
+
+# )
+docker exec -it xneo4j sh -c '
+  neo4j-admin dump --database=mydb --to=1.dump
+'
+
+docker exec -it xneo4j sh -c '
+  neo4j-admin load --from=1.dump --database=mydb2
+'
+````
+
 ## Configuration
 
 ````sh
