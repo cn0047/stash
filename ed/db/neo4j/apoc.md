@@ -31,7 +31,6 @@ RETURN apoc.create.uuid() AS uuid;
 
 apoc.node.id(node);
 apoc.node.labels(node);
-
 apoc.rel.id(relationship);
 apoc.rel.type(relationship);
 
@@ -83,4 +82,17 @@ MATCH (n) RETURN n;
 
 // clear
 MATCH (n) DETACH DELETE n;
+````
+
+Atomic:
+
+````js
+CREATE (c:Counter {name: 'basic', value: 0});
+MATCH (c:Counter {name: 'basic'}) SET c._lock = true, c.value = c.value + 1 RETURN c;
+
+//
+MATCH (c:Counter {name: 'basic'})
+CALL apoc.atomic.add(c,'value', 1, 5)
+YIELD oldValue, newValue
+RETURN c;
 ````

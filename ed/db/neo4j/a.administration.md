@@ -11,6 +11,8 @@ Administration
 ````sh
 systemctl status neo4j
 
+neo4j-admin
+
 dump-config
 
 export NEO4J_dbms_memory_pagecache_size=4G
@@ -50,8 +52,8 @@ CALL dbms.killQueries(queryId1, queryId1);
 CALL dbms.listTransactions();
 
 CALL dbms.listConnections();
-CALL dbms.killConnections(connectionIds);
 CALL dbms.killConnection(connectionId);
+CALL dbms.killConnections(connectionIds);
 
 CALL dbms.cluster.overview();
 
@@ -230,11 +232,11 @@ docker exec -it xneo4j sh -c '
 ## Configuration
 
 ````sh
-<neo4j-home>/conf/neo4j.conf
-<neo4j-home>/data             # data dir
-<neo4j-home>/import           # `LOAD CSV`
-<neo4j-home>/plugins
-<neo4j-home>/logs
+$NEO4J_HOME/conf/neo4j.conf
+$NEO4J_HOME/data             # data dir
+$NEO4J_HOME/import           # `LOAD CSV`
+$NEO4J_HOME/plugins
+$NEO4J_HOME/logs
 
 echo $NEO4J_HOME
 echo $NEO4J_CONF

@@ -163,7 +163,8 @@ WHERE r.close = true
 RETURN b, p;
 
 // bond works at
-MATCH (b:Person {code: '007'})-[:WORKS_AT]->(n) RETURN b, n.name ORDER BY n.name;
+MATCH (b:Person {code: '007'})-[:WORKS_AT]->(n)
+RETURN b, n.name ORDER BY n.name;
 
 // country of MI6
 MATCH (:Organization {name: 'MI6'})-[:COUNTRY]->(c) RETURN c;
@@ -244,7 +245,7 @@ MATCH (p:Person {code:'007'})
 CALL { WITH p OPTIONAL MATCH (p)-[:FAMILIAR]->(other:Person) RETURN other }
 RETURN p, other;
 
-// unwind
+// unwind - expands list into sequence of rows.
 UNWIND [1, 1, 1, 2, 3, NULL] AS x RETURN x;
 UNWIND [1, 1, 1, 2, 3, NULL] AS x WITH DISTINCT x RETURN x;
 UNWIND [1, 1, 1, 2, 3, NULL] AS x WITH DISTINCT x RETURN COLLECT(x);

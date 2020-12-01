@@ -17,11 +17,19 @@ func TestMain(m *testing.M) {
 func TestX(t *testing.T) {
 	t.Run("testCase1", func(t *testing.T) {
 		t.Fatal()
-		t.Logf("🎾")
 	})
 
 	t.Run("testCase2", func(t *testing.T) {
 		t.FailNow()
+	})
+}
+
+func TestY(t *testing.T) {
+	t.Run("testCase1", func(t *testing.T) {
+		t.Logf("🎾")
+	})
+
+	t.Run("testCase2", func(t *testing.T) {
 		t.Logf("🔴")
 	})
 }

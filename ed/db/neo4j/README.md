@@ -60,7 +60,6 @@ Cypher - declarative graph query language.
 
 WITH -  makes query parts chained, piping the results 1 part to 2nd.
 OPTIONAL MATCH - return nulls for missing parts of the pattern.
-UNWIND - expands list into sequence of rows.
 
 ## Performance
 
