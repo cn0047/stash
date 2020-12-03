@@ -133,6 +133,7 @@ const s string = "constant"
 const n = 500000000
 
 sort.Slice(arrInt32, func(i, j int) bool { return arrInt32[i] < arrInt32[j] })
+sort.Strings(strSlice)
 
 // https://golang.org/pkg/fmt/#hdr-Printing
 fmt.Printf("%T", myType)

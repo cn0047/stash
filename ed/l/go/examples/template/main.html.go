@@ -12,10 +12,12 @@ var (
 
 func main() {
 	// f1()
-	// f2()
+	// orSimple()
 	// three()
 	// loop()
-	ifWithNotDefinedVar()
+	// ifWithNotDefinedVar()
+	// eqSimple()
+	orWithEq()
 }
 
 func three() {
@@ -76,7 +78,9 @@ func one() {
 	data := map[string]string{
 		"title": "test",
 	}
-	tmpl.Execute(os.Stdout, data)
+	if err := tmpl.Execute(os.Stdout, data); err != nil {
+		panic(err)
+	}
 }
 
 func f1() {
@@ -85,17 +89,44 @@ func f1() {
 	data := map[string]interface{}{
 		"titles": []string{"test1", "test2"},
 	}
-	tmpl.Execute(os.Stdout, data)
+	if err := tmpl.Execute(os.Stdout, data); err != nil {
+		panic(err)
+	}
 }
 
-func f2() {
-	t := `<br> {{if or .a .b}}[f2] TRUE{{end}}<hr>`
+func eqSimple() {
+	t := `<br>[eqSimple] {{if eq .a 1}} ok {{end}} <hr>`
+	tmpl := template.Must(template.New("tmpl").Parse(t))
+	data := map[string]interface{}{
+		"a": 1,
+	}
+	if err := tmpl.Execute(os.Stdout, data); err != nil {
+		panic(err)
+	}
+}
+
+func orWithEq() {
+	t := `<br>[orWithEq] {{if or (eq .a 1) (eq .b 2)}} TRUE {{end}} <hr>`
+	tmpl := template.Must(template.New("tmpl").Parse(t))
+	data := map[string]interface{}{
+		"a": 1,
+		"b": 2,
+	}
+	if err := tmpl.Execute(os.Stdout, data); err != nil {
+		panic(err)
+	}
+}
+
+func orSimple() {
+	t := `<br>[orSimple] {{if or .a .b}} TRUE {{end}} <hr>`
 	tmpl := template.Must(template.New("tmpl").Parse(t))
 	data := map[string]interface{}{
 		"a": false,
 		"b": true,
 	}
-	tmpl.Execute(os.Stdout, data)
+	if err := tmpl.Execute(os.Stdout, data); err != nil {
+		panic(err)
+	}
 }
 
 func loop() {
@@ -104,12 +135,16 @@ func loop() {
 	data := map[string]interface{}{
 		"list": []string{"a", "b", "c"},
 	}
-	tmpl.Execute(os.Stdout, data)
+	if err := tmpl.Execute(os.Stdout, data); err != nil {
+		panic(err)
+	}
 }
 
 func ifWithNotDefinedVar() {
 	t := `ok: {{if .ok -}} v {{end}}`
 	tmpl := template.Must(template.New("tmpl").Parse(t))
 	data := map[string]interface{}{"no": "no"}
-	tmpl.Execute(os.Stdout, data)
+	if err := tmpl.Execute(os.Stdout, data); err != nil {
+		panic(err)
+	}
 }

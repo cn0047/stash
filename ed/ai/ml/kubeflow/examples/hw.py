@@ -25,3 +25,4 @@ p = j_pipeline
 pipeline_conf = dsl.PipelineConf()
 pipeline_conf.set_image_pull_secrets([client.V1LocalObjectReference(name="x")])
 pipeline = kfp.Client().create_run_from_pipeline_func(p, arguments={}, pipeline_conf=pipeline_conf)
+kfp.compiler.Compiler().compile(p, 'pipeline.zip', pipeline_conf=pipeline_conf)
