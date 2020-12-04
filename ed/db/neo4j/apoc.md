@@ -87,10 +87,11 @@ MATCH (n) DETACH DELETE n;
 Atomic:
 
 ````js
+// option 1
 CREATE (c:Counter {name: 'basic', value: 0});
 MATCH (c:Counter {name: 'basic'}) SET c._lock = true, c.value = c.value + 1 RETURN c;
 
-//
+// option 2
 MATCH (c:Counter {name: 'basic'})
 CALL apoc.atomic.add(c,'value', 1, 5)
 YIELD oldValue, newValue
