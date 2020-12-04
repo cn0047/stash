@@ -98,6 +98,12 @@ RETURN name, value;
 [export](https://neo4j.com/labs/apoc/4.1/export/)
 
 ````js
+LOAD CSV WITH HEADERS from 'file:///actors.csv' as row
+FIELDTERMINATOR ';'
+RETURN row.name;
+````
+
+````js
 // check import config
 CALL dbms.listConfig() YIELD name, value
 WHERE name = 'apoc.import.file.use_neo4j_config' RETURN name, value;

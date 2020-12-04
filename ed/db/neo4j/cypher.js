@@ -26,6 +26,7 @@ RETURN $code;
 
 // NODES
 CREATE (n:Person:Agent); // with multiple labels
+CREATE (p:Person:Agent {name: 'James Bond', code: '007', active: true}) RETURN p;
 CREATE (p:Person {name: 'James Bond', code: '007', active: true}) RETURN p;
 CREATE (p:Person {name: 'Moneypenny', code: 'mp', active: true}) RETURN p;
 CREATE (p:Person {name: 'Felix Leiter', code: 'felix'});
@@ -54,6 +55,11 @@ CREATE (c:Car {name: 'Silver Wraith', vendor: 'Rolls-Royce'});
 // works at
 MERGE (p:Person {code: '007'})-[r:WORKS_AT]->(o:Organization {name: 'MI6'})
 ON CREATE SET r.status = 'new' ON MATCH SET r.status = 'old';
+// or (works at)
+MATCH (p:Person), (o:Organization) WHERE p.code = '007'   AND o.name = 'MI6' CREATE (p)-[r:WORKS_AT {since: "while ago"}]->(o);
+// or 2 relationship between same nodes
+MATCH (p:Person), (o:Organization) WHERE p.code = '007'   AND o.name = 'MI6'
+CREATE (p)-[r1:WORKING_FOR]->(o), (p)<-[r2:PAYING_TO]-(o);
 // or (works at)
 MATCH (p:Person), (o:Organization) WHERE p.code = '007'   AND o.name = 'MI6' CREATE (p)-[r:WORKS_AT]->(o);
 MATCH (p:Person), (o:Organization) WHERE p.code = '008'   AND o.name = 'MI6' CREATE (p)-[r:WORKS_AT]->(o);
@@ -114,6 +120,13 @@ RETURN p, o;
 // update
 MATCH (n:Organization {name:'test'}) SET n.name = 'TEST_ORG' RETURN n.name;
 MATCH (n:Organization {name:'TEST_ORG'}) RETURN n;
+
+// replace node
+MATCH (p:Person {code: '007'}) SET p = {age: 30} RETURN p;
+
+
+// remove (delete) label
+MATCH (n:Person:Agent) REMOVE n:Agent return n;
 
 // delete
 MATCH (n:Person {name:'James Bond'}) DELETE n;

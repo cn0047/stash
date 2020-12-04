@@ -24,6 +24,7 @@ docker run -it --rm --net=xnet -p 7474:7474 -p 7687:7687 --name xneo4j --hostnam
   -e NEO4JLABS_PLUGINS=\[\"apoc\"\] \
   \
   neo4j:4.1.1-enterprise \
+  \
   /bin/bash # in case of import/dump
 
 # 3.5

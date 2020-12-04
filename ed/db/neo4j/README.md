@@ -1,4 +1,4 @@
-neo4j
+Neo4j
 -
 <br>4.1
 <br>3.5
@@ -16,7 +16,11 @@ cypher-shell -u neo4j -p test
 cypher-shell -a neo4j:test@localhost:7687
 ````
 
+Neo4j - is ACID graph DB.
+Neo4j sandbox - temporary neo4j instance in cloud, expire in 3 days.
 Bloom - graph exploration app.
+ETL - extracts schema from relational db and turn it into graph schema.
+Bolt - efficient, lightweight client-server protocol for db apps, (default port 7687).
 
 Node - represents entity.
 Dense node - node with huge number of relationships.
