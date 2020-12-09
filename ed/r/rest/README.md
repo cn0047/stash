@@ -130,7 +130,7 @@ Range: resources=100-199 # in body
 
 curl 'http://localhost:8080/v1/api/collection' -XGET -d '{"resources_from":100, "resources_to":199}'
 
-products?limit=25&offset=50 
+products?limit=25&offset=50
 ````
 
 <br>P: Versioning API.

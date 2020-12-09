@@ -7,6 +7,7 @@ Redis
 [docs](https://redis.io/documentation)
 [commands](https://redis.io/commands)
 [lua](https://redis.io/commands/eval)
+[pipelining](https://redis.io/topics/pipelining)
 
 #### redis-cli
 
@@ -18,7 +19,11 @@ redis-benchmark # shell tool for benchmarking
 ````sh
 select 1 # select DB with index 1
 config get databases
-info keyspace
+
+info keyspace  #
+memory stats   # memory usage details
+monitor        # listen all requests received by server in real time
+latency doctor #
 
 set mykey 'Hello'
 set foo 'bar'
@@ -45,6 +50,9 @@ flushdb # delete data from current database
 keys *
 
 del mykey
+
+debug object key
+memory usage key
 ````
 
 Redis - in-memory data structure store (persistent), used as database,

@@ -4,6 +4,7 @@ from kubernetes import client
 from kubernetes.client.models import V1EnvVar
 
 
+@dsl.component
 def render_tb():
   op = dsl.ContainerOp(
     name='Run TensorBoard',

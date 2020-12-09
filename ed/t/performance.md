@@ -8,7 +8,6 @@ Resilience - is the ability of a system to adapt or keep working when challenges
 #### High Performance Web Sites:
 
 1. Make Fewer HTTP Requests
-
   * Image Maps
   * ~~CSS Sprites~~
   * Inline Images
@@ -17,7 +16,6 @@ Resilience - is the ability of a system to adapt or keep working when challenges
 2. Use a Content Delivery Network
 
 3. Add an Expires Header
-
   * Expires Header
   * Max-Age and mod_expires
 
@@ -26,7 +24,6 @@ Resilience - is the ability of a system to adapt or keep working when challenges
 5. Put Stylesheets at the Top (in the document HEAD using the LINK tag)
 
 6. Put Scripts at the Bottom (before </body>)
-
   * Don't forget about parallel(async)|subsequent|defer(page parsed) downloads
   * Scripts Block Downloads
 
@@ -37,12 +34,10 @@ Resilience - is the ability of a system to adapt or keep working when challenges
 9. Reduce DNS Lookups (using Keep-Alive and fewer domains)
 
 10. Minify JavaScript
-
   * Minification
   * Obfuscation
 
 11. Avoid Redirects
-
   * Alternatives to Redirects (Missing Trailing Slash, and else)
   * 301 HTTP Coode for any resource request
 
