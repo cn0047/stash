@@ -1,4 +1,4 @@
-Algorithms
+Algorithms & Data structures
 -
 
 Operations with sets ([1, 2, 3] [2, 3, 4]):
