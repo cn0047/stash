@@ -10,6 +10,8 @@ brew install kubernetes-cli
 brew install minikube
 brew install docker-machine-driver-xhyve
 open https://github.com/kubernetes/minikube/blob/master/docs/drivers.md#hyperkit-driver
+
+# ${HOME}/.kube
 ````
 
 Kubernetes - orchestrator for microservice apps (desired state management tool).

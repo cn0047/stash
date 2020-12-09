@@ -16,8 +16,8 @@ Know team: skils, strengths, goals, interests.
 Bit of delegating & directing and more supporting & coaching.
 
 TL must be:
-* like a teacher and have authority to teach team
-* like a coach
+* Like a teacher and have authority to teach team.
+* Like a coach.
 
 #### Waterfall
 
