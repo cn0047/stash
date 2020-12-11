@@ -1,4 +1,4 @@
-my stash
+Stash
 ==
 
 ![Since](https://img.shields.io/badge/since-29%20Nov%202013-brightgreen)
