@@ -23,7 +23,9 @@ c.QueryParam("id")
 c.FormValue("name")
 
 // JSON in POST
-input := VO{}
+input := VO{
+    Email string `json:"email" param:"email" query:"email" form:"email"`
+}
 err := ctx.Bind(&input)
 
 // redirect

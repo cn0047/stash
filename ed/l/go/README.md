@@ -449,8 +449,6 @@ runtime will detach the thread from the P (and from M) and create a new thread
 (if idle thread doesn’t exist) to service that processor.
 When a system calls resumes, the goroutine is placed back.
 
-Execution stack for goroutine = 2Kb.
-
 ‼️ Do not communicate by sharing memory. Instead, share memory by communicating.
 <br>⚠️ Do not use global variables or shared memory, they make your code unsafe for running concurrently.
 
@@ -580,9 +578,11 @@ lets the programmer set what the maximum heap size should be.
 
 #### Memory Management
 
+Execution stack for goroutine = 2Kb.
+
 There are 3 places memory can be allocated:
 
-* the stack - functions parameters, local variables allocated on the stack (≈1GB limit).
+* the stack - function's parameters and local variables allocated on the stack (≈1GB limit).
   Each goroutine has its own stack.
   Goroutine stacks are allocated on the heap (‼️).
   If the stack needs to grow then heap operations (allocate new, copy old to new, free old) will occur.

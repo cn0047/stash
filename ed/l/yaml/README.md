@@ -1,11 +1,19 @@
 YAML
 -
 
+detection: ~
+
 ````yaml
-haiku: >
-  Consider me
-  As one who loved poetry
-  And persimmons.
+include_newlines: |
+            exactly as
+            you see
+fold_newlines: >
+            this is
+            single line
+# null value
+nullparam: null
+nullparam: ~
+nullparam:
 ````
 
 Anchor:

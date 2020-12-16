@@ -70,6 +70,7 @@ type /Users/k/web/kovpak/gh/ed/bash/examples/hw.sh
 hash git # checks whether program exists
 
 which git # /usr/local/bin/git
+where git # /usr/bin/git
 
 ldd /bin/ls # shows used *.so libraries by ls command
 

@@ -34,9 +34,16 @@ Content-Type: application/x-thrift
 {"map":["str","str",1,{"en":"title"}]}              # map
 {"map":["str","rec",1,{"en":{"1":{"str":"msg"}}}]}  # map
 
-# obj
+# obj 1
+{"rec":{"1":{"str":"foo"}}}
+
+# obj 2
 {"rec":{
   "1":{"str":"foo"},
   "2":{"str":"bar"}
 }}
+
+# array of objects (1 object)
+"1":{"set":["rec",1, {"1":{"str":"ok"},"2":{"i32":200}} ]}
+"2":{"lst":["rec",1, {"1":{"str":"ok"}} ]}
 ````

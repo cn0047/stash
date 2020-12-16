@@ -6,6 +6,17 @@ JS - NOT fault tolerant.
 
 Mixin better than OOP.
 
+#### Process and Thread
+
+Process - any program. It's isolated from other processes.
+Process has a virtual address space, executable code, open handles to system objects,
+a security context, a unique process identifier, environment variables,
+minimum and maximum working set sizes, and at least one thread (primary thread) of execution.
+
+Thread is the segment of a process, run in a shared memory space.
+A thread is an entity within a process that can be scheduled for execution.
+All threads of a process share its virtual address space and system resources.
+
 ## Common stuff
 
 An `expression` evaluates to a value. A `statement` does something.
@@ -13,6 +24,16 @@ An `expression` evaluates to a value. A `statement` does something.
 y = x + 1   # an expression
 print y     # a statement
 ````
+
+#### Stack and Heap
+
+Stack - function's parameters and local variables allocated on the stack.
+If the stack needs to grow then heap operations (allocate new, copy old to new, free old) will occur.
+
+Heap - does not have a single partition of allocated and free regions, set of of free regions.
+Unlike the stack, the heap is not owned by one function.
+(manipulating the set of free regions in the heap requires synchronization).
+OS specifies min heap size (`ulimit` in linux).
 
 ## Language
 
@@ -139,14 +160,3 @@ The word `table` should never appear in a table name. How is NameString better t
 Would a Name ever be a floating point number? If so, it breaks an earlier rule about disinformation.
 Imagine finding one class named Customer and another named CustomerObject.
 What should you understand as the distinction? Which one will represent the best path to a customer’s payment history?
-
-#### Process and Thread
-
-Process - any program. It's isolated from other processes.
-Process has a virtual address space, executable code, open handles to system objects,
-a security context, a unique process identifier, environment variables,
-minimum and maximum working set sizes, and at least one thread (primary thread) of execution.
-
-Thread is the segment of a process, run in a shared memory space.
-A thread is an entity within a process that can be scheduled for execution.
-All threads of a process share its virtual address space and system resources.
