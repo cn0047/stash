@@ -128,7 +128,7 @@ kind: ConfigMap                  # separate configuration information from appli
 kind: HorizontalPodAutoscaler    #
 kind: Ingress                    # specify how incoming network traffic should be routed to services and pods
 kind: Job
-kind: LimitRange
+kind: LimitRange                 # default CPU/Memory requests/limits for namespace
 kind: Namespace
 kind: NetworkPolicy              # defines the network access rules between pods inside the cluster
 kind: PersistentVolume

@@ -30,7 +30,8 @@ exit 1 # fail
 command1 && command2 # command2 is executed if, and only if,
                      # command1 returns an exit status of zero.
 command1 || command2 # command2 is executed if and only if
-                     # command1 returns a non-zero exit status.
+                     # command1 returns a non-zero exit status (error).
+$try || true         # preventing immediate exit
 && # &
 || # or
 
@@ -155,17 +156,6 @@ declare -x # export
 touch -a # error
 touch -- -a # ok
 
-set -e           # exit whenever a command fails
-set -n           # validate but not exec script
-set -o           # display options
-set -o noclobber # to enable option
-set +o noclobber # to disable option
-set -o allexport #
-set -u           # error when using uniinitialized var
-set -v           #
-set -v           # print each command
-set -x           # to start debug
-
 echo "${v1:-7}" # 7
 v2=22
 echo "${v2:-7}" # 22
@@ -195,6 +185,20 @@ cat << EOF >> /tmp/yourfilehere
 These contents will be written to the file.
         This line is indented.
 EOF
+
+set -e           # exit whenever a command fails
+set -n           # validate but not exec script
+set -o           # display options
+set -o noclobber # to enable option
+set +o noclobber # to disable option
+set -o allexport #
+set -o pipefail  # sets exit code of pipeline to rightmost command to exit with non-zero status
+set -u           # error when using uniinitialized var
+set -v           #
+set -v           # print each command
+set -x           # to start debug
+
+set -euo pipefail
 ````
 
 #### Debug:

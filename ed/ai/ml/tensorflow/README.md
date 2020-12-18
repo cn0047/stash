@@ -34,6 +34,7 @@ Variable - mutable tensor values.
 ````sh
 tensorboard --logdir './tb_logs' --bind_all
 tensorboard --logdir './tf_logs' --bind_all
+tensorboard --logdir 's3://path/to/logs/'
 tensorboard --host 0.0.0.0 --port 6008 --logdir './tf_logs'
   --reload_interval=60             # refresh UI
   --bind_all                       # in v2
