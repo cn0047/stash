@@ -186,7 +186,8 @@ These contents will be written to the file.
         This line is indented.
 EOF
 
-set -e           # exit whenever a command fails
+# @see: https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html
+set -e           # exit immediately whenever a command fails
 set -n           # validate but not exec script
 set -o           # display options
 set -o noclobber # to enable option
@@ -196,7 +197,9 @@ set -o pipefail  # sets exit code of pipeline to rightmost command to exit with 
 set -u           # error when using uniinitialized var
 set -v           #
 set -v           # print each command
-set -x           # to start debug
+set -x           # (xtrace) to start debug
+--               # no arguments follow
+-                #  end of options
 
 set -euo pipefail
 ````

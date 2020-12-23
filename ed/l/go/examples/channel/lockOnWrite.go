@@ -5,8 +5,8 @@ import (
 )
 
 func main() {
-	avoidHangWithSelect()
-	// hang()
+	// avoidHangWithSelect()
+	hang()
 }
 
 func avoidHangWithSelect() {
@@ -44,9 +44,9 @@ func hang() {
 	c := make(chan int, 2)
 	go func() {
 		for i := 0; i < 3; i++ {
-			fmt.Printf("adding %v \n", i)
+			fmt.Printf("adding \t %v \n", i)
 			c <- i // hanging for 3th iteration
-			fmt.Printf("added %v \n", i)
+			fmt.Printf("added \t %v \n", i)
 		}
 	}()
 	go func() {

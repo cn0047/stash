@@ -163,6 +163,7 @@ git rev-parse --abbrev-ref HEAD # branch name only
 git brnach --no-merged
 git brnach --merged                               # branches merged with current
 git branch -v                                     # all branches Y last branch commit
+git branch -vv                                    # + tracking remote branch
 git push remoteRepoName pushedBranch
 git push remoteRepoName pushedBranch:newBranchName
 git push remoteRepoName :branch                   # delete branch from remote repo
