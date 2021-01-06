@@ -29,6 +29,8 @@ Graph - data model within database.
 ## Cypher
 
 ````js
+:SYSINFO
+
 SHOW DATABASES;
 SHOW DEFAULT DATABASE;
 SHOW DATABASE system;

@@ -520,6 +520,8 @@ do not block and always return default value for a channel type.
 Only the sender should close a channel, never the receiver
 (otherwise panic).
 
+For standard Go compiler, size of channel element types must be smaller than 65536.
+
 #### Runtime
 
 runtime:

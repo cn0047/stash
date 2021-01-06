@@ -10,6 +10,10 @@ LFU - Least Frequently Used
 LRU - Least Recently Used
 MRU - Most Recently Used
 
+## Cache invalidation
+
+* Check `cloudfront` in HTTP response headers.
+
 ## OS Cache
 
 OS Cache may be hardware or software.
