@@ -1,6 +1,10 @@
 Assembly (Assembler)
 -
 
+````sh
+*.s # source code files written in assembly
+````
+
 General purpose registers:
 
 * 16 bits:
