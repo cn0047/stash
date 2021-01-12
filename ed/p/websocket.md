@@ -13,7 +13,7 @@ and 101 status code and completes the handshake.
 
 WebSocket enables streams of messages on top of TCP.
 
-````
+````sh
 ws://
 wss:// # TLS
 ````
@@ -24,14 +24,12 @@ Message Types:
 * control (ping, pong, close)
 
 Events:
-
 * onopen
 * onmessage
 * onerror
 * onclose
 
 API:
-
 * send
 * close
 
@@ -47,7 +45,6 @@ Check `origin` because hacker can cheat it.
 #### Example
 
 Request:
-
 ````sh
 GET /wss1 HTTP/1.1
 Sec-WebSocket-Version: 13
@@ -59,7 +56,6 @@ Host: localhost:5432
 ````
 
 Response:
-
 ````sh
 HTTP/1.1 101 Switching Protocols
 Upgrade: websocket

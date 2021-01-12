@@ -52,7 +52,7 @@ git show HEAD~2      # first parent of first commit
 HEAD^^ == HEAD~2
 
 git commit -m 'Message'
-git commit -m "PROJ-123 my comment..." # for JIRA:
+git commit -m "PROJ-123 my comment..." # for JIRA
 git commit --amend # update commit message
 git commit --amend --author="V.Kovpak <cn007b@gmail.com>"
 
@@ -117,15 +117,15 @@ so it make sense to squash all commits related to feature into 1 commit.
 #### bisect
 ````sh
 git bisect start
-git bisect bad       -- tell that current situation is bad
-git bisect good v1.0 -- bad commit hash
-                     -- test, is script working
-git bisect bad       -- because all don\'t works
-                     -- test, is script working
-git bisect good      -- because all works fine
-                     -- test script working
+git bisect bad       # tell that current situation is bad
+git bisect good v1.0 # good commit tag
+                     # check whether script working
+git bisect bad       # if scripn not working
+                     # check whether script working again
+git bisect good      # if scripn is working
+                     # ...
 git bisect good
-                     -- ...
+                     # ...
 git bisect reset
 ````
 
@@ -133,7 +133,7 @@ git bisect reset
 ````sh
 git diff --cached or diff --staged # after git add shows diff
 git diff branch..subBrach
-git diff branch:file file
+git diff branch:file file # !!!
 ````
 
 #### log
@@ -142,7 +142,7 @@ git log -2                # last 2 commits
 git log -p                # shows commits & code in commit
 git log --stat            # statiistic about changes
 git log --no-meges        # log without merges
-git log --follow file.txt # Viewing GIT history of deleted files.
+git log --follow file.txt # viewing history of deleted files !!!
 git log --author=Jack
 
 git log --date=short --no-merges --shortstat
@@ -160,8 +160,8 @@ git rev-parse HEAD # current commit hash
 git rev_parse branch
 git brnach
 git rev-parse --abbrev-ref HEAD # branch name only
-git brnach --no-merged
-git brnach --merged                               # branches merged with current
+git branch --no-merged
+git branch --merged                               # branches merged with current
 git branch -v                                     # all branches Y last branch commit
 git branch -vv                                    # + tracking remote branch
 git push remoteRepoName pushedBranch
@@ -172,7 +172,7 @@ git push remoteRepoName :branch                   # delete branch from remote re
 #### config
 
 .gitignore
-````
+````sh
 .idea/
 .DS_Store
 ````
@@ -182,7 +182,7 @@ git push remoteRepoName :branch                   # delete branch from remote re
 ~/.gitconfig   # user
 .git/config    # project
 ````
-````
+````sh
 [color]
     ui     = auto
     diff   = true

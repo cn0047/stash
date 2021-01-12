@@ -22,4 +22,3 @@ Tests:
  * @covers BankAccount::getBalance
  */
 ````
-

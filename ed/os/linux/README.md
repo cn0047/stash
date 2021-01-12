@@ -52,6 +52,10 @@ which software the init command launches or shuts off on a given runlevel.
 /etc/ttys                               # logged in users
 /media                                  #
 /opt                                    # optional software directory
+/proc/$pid/                             # $pid process related stuff
+/proc/$pid/fd/0                         # $pid process stdin
+/proc/$pid/fd/1                         # $pid process stdout
+/proc/$pid/fd/2                         # $pid process stderr
 /proc/cpuinfo                           # info about cpu
 /proc/meminfo                           # info about memory (+ memory usage)
 /proc/net/ip_vs                         #

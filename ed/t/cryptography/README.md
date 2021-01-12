@@ -9,7 +9,7 @@ It is expensive type of cryptography.
 
 Hashing algorithms:
 
-* 3DES (168 bits)
+* ~~3DES~~ (168 bits)
 * AES (128 or 256 bits) - Advanced Encryption Standard
 * Chacha20
 * DH (Diffie-Hellman)
@@ -17,14 +17,14 @@ Hashing algorithms:
 * ECDHE
 * ECDSA (asymmetric)
 * HMAC (symmetric)
-* MD5
+* ~~MD5~~
 * RSA (asymmetric)
 * ECC
-* RC4
-* SHA1
-* SHA2
+* ~~RC4~~
+* ~~SHA1~~
+* **SHA2**
 * SHA256
-* SHA3
+* **SHA3**
 * SHA384
 * Blowfish
 * Twofish

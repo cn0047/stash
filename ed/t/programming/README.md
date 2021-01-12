@@ -20,7 +20,7 @@ All threads of a process share its virtual address space and system resources.
 ## Common stuff
 
 An `expression` evaluates to a value. A `statement` does something.
-````
+````sh
 y = x + 1   # an expression
 print y     # a statement
 ````
@@ -56,8 +56,7 @@ based upon the concept of the procedure call.
 (Fortran, Pascal).
 
 **Declarative** programming - focuses on what the program should accomplish
-without specifying how the program should achieve the result.
-(SQL, CSS, regex).
+without specifying how the program should achieve the result (SQL, CSS, regex).
 <br>The declarative layer describes what the code will do,
 while the implementation layer describes how the code does it.
 (The declarative layer is, in effect, a small domain-specific language).
@@ -82,13 +81,13 @@ other programs, and even modify itself while running.
 
 #### Low coupling and high cohesion.
 
-COUPLING refers to the interdependencies between modules.
+**Coupling** refers to the interdependencies between modules.
 <br>Tightly coupled code - bad code.
 
-LOW COUPLING is often a sign of a well-structured computer system and a **good** design.
+**Low Coupling** is often a sign of a well-structured computer system and a **good** design.
 synonym: lose coupling, antonym: coupling.
 
-COHESION describes how related the functions within a single module are.
+**Cohesion** describes how related the functions within a single module are.
 <br>
 Classes should have a small number of instance variables.
 In general the more variables a method manipulates the more cohesive that method is to its class.
@@ -98,17 +97,17 @@ Basically, classes are the tightest form of coupling in object-oriented programm
 
 #### Code quality
 
+Readable
+Understandable
 Maintainable
 Extendable
 Reusable
-Readable
-Understandable
 Testable
 Documentable
 Well designed (patterns)
 Follow SOLID
-Haven't memory leaks
-Haven't vulnerabilities and secure
+Don't have memory leaks
+Don't have vulnerabilities and security issues
 Cares about backward compatibility
 
 Predictability

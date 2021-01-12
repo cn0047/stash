@@ -137,6 +137,7 @@ kind: ReplicaSet (RS)            # ReplicationController v2.
 kind: ReplicationController (RC)
 kind: ResourceQuota
 kind: Secret
+kind: Deployment
 kind: Service
 kind: ServiceAccount
 kind: StatefulSet

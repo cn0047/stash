@@ -8,7 +8,7 @@ Semaphore - (signalling mechanism):
 * binary semaphore - like counting semaphore but value restricted to 0 and 1.
 
 Starvation - situation where a concurrent process cannot get all the resources
-it needs to perform work.
+they needs to perform work.
 
 Types:
 * Parallel.

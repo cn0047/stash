@@ -3,16 +3,16 @@ OOP
 
 Since 1950. Released in 1967.
 
-Encapsulation - hide the values or state of a structured data object inside a class.
+**Encapsulation** - hide the values or state of a structured data object inside a class.
 
-Abstraction - is the development of classes, objects, types
-in terms of their interfaces and functionality, instead of their implementation details.
-
-Polymorphism - provision of a single interface to entities of different types
+**Polymorphism** - provision of a single interface to entities of different types
 (same name, different behavior).
 
-Inheritance - when an object or class is based on another object (prototypal inheritance)
+**Inheritance** - when an object or class is based on another object (prototypal inheritance)
 or class (class-based inheritance).
+
+**Abstraction** - is the development of classes, objects, types
+in terms of their interfaces and functionality, instead of their implementation details.
 
 Class - program-code-template for creating objects.
 
@@ -34,7 +34,7 @@ Encapsulation:
 
 Polymorphism:
 
-No need OOP just need interface-based polymorphism.
+No need in OOP, just need interface-based polymorphism.
 
 #### OOD
 
@@ -56,7 +56,7 @@ but a department could not be part of more than one university.
 </i>
 
 Consultation in object-oriented programming occurs when an object's method implementation consists
-of a message send of the same message to another constituent object.
+of a message send to another object.
 
 #### Aggregation and Composition
 

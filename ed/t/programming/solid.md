@@ -29,4 +29,10 @@ DIP - refers to a specific form of decoupling software modules.
     * All concrete class packages must connect only through interface/abstract classes packages.
     * No class should derive from a concrete class.
     * No method should override an implemented method.
-    * All variable instantiation requires the implementation of a Creational pattern as the Factory Method or the Factory pattern, or the more complex use of a Dependency Injection framework.
+    * All variable instantiation requires the implementation of a Creational pattern
+      as the Factory Method or the Factory pattern,
+    or the more complex use of a Dependency Injection framework.
+
+Problems:
+
+OCP - code base may contain leftover classes.
