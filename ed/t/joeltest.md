@@ -1,8 +1,7 @@
 The Joel Test
 -
 
-1. Do you use source control?
-   (git, svn, etc).
+1. Do you use source control (git, svn, etc)?
 
 2. Can you make a build in one step?
    (If the process takes any more than one step, it is prone to errors).
@@ -11,7 +10,6 @@ The Joel Test
 
 4. Do you have a bug database?
    A minimal useful bug database must include the following data for every bug:
-
    * complete steps to reproduce the bug
    * expected behavior
    * observed (buggy) behavior

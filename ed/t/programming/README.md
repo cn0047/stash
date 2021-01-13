@@ -105,15 +105,15 @@ Reusable
 Testable
 Documentable
 Well designed (patterns)
-Follow SOLID
+Follows SOLID
 Don't have memory leaks
 Don't have vulnerabilities and security issues
 Cares about backward compatibility
 
-Predictability
-Resilience
-Elasticity
 Fault tolerance
+Predictability
+Resilience - is the ability of a system to adapt or keep working when challenges occur.
+Elasticity
 
 Rigidity
 Fragility

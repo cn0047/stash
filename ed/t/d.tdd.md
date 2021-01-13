@@ -38,6 +38,36 @@ What not to automate with tests:
 
 Regression testing - is designed to avoid regressing your application to a previous buggy state.
 
+## White-box testing
+
+Code is runnig in a debugger, code is tested from the inside, IDE.
+
+## Unit
+
+Do our objects do the right thing, are they convenient to work with?
+
+The aim of a unit test is to show that a single part of the application does what the programmer intends it to.
+Unit tests MUST be fast.
+
+Unit of software in php - class.
+Unit of software in go - package.
+
+## Integration
+
+Test multiple units.
+Does our code work against code we can't change (db, external service etc)?
+
+## Functional
+
+Functional testing tests a slice of functionality of the whole system.
+Functional testing bases on the specifications of the software.
+Functions are tested by feeding them input and examining the output (type of black-box testing).
+
+## End-to-End (E2E) Testing
+
+End-to-end testing is where you test your whole application from start to finish.
+It involves assuring that all the integrated pieces of an application function and work together as expected.
+
 ## Acceptance
 
 Does the whole system work?
@@ -52,36 +82,6 @@ They test whole stories at a time against a running version of the application i
 
 The objective of acceptance tests is to prove that our application does
 what the customer meant it to, not that it works the way its programmers think it should.
-
-## End-to-End (E2E) Testing
-
-End-to-end testing is where you test your whole application from start to finish.
-It involves assuring that all the integrated pieces of an application function and work together as expected.
-
-## Functional
-
-Functional testing tests a slice of functionality of the whole system.
-Functional testing bases on the specifications of the software.
-Functions are tested by feeding them input and examining the output (type of black-box testing).
-
-## Integration
-
-Test multiple units.
-Does our code work against code we can't change (db, external service etc)?
-
-## Unit
-
-Do our objects do the right thing, are they convenient to work with?
-
-The aim of a unit test is to show that a single part of the application does what the programmer intends it to.
-Unit tests MUST be fast.
-
-Unit of software in php - class.
-Unit of software in go - package.
-
-## White-box testing
-
-Code is runnig in a debugger, code is tested from the inside, IDE.
 
 ## Testing Anti-Patterns
 

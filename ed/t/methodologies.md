@@ -1,7 +1,7 @@
 Software Development Methodologies
 -
 
-The ideal task size is not bigger than a day's work...
+The ideal task size is not bigger than 1 day work.
 
 Two-pizza teams - where no team should be so big that it could not be fed with two pizzas.
 
@@ -25,8 +25,9 @@ Originated in the manufacturing and construction industries.
 If the fact changes - it's impossible or at least prohibitively expensive to adapt to changes.
 
 Phases:
-
+````
 conception -> initiation -> analysis -> design -> construction -> testing -> deployment -> maintenance
+````
 
 conception, initiation = 20–40% of the time invested
 coding = 30–40%
@@ -91,22 +92,18 @@ Agile practices:
 #### Extreme Programming:
 
 Core Practices:
-* Whole Team
-* Planning Game
-<br>*Release Planning*
-<br>*Iteration Planning*
-* Customer Tests
-* Small Releases
 * Simple Design
-* Pair Programming
 * Test-Driven Development
-* Design Improvement
-<br>*Refactoring*
+* Small Releases
 * Continuous Integration
+* Pair Programming
 * Collective Code Ownership
+* Metaphor (common vision of how the program works)
+* Whole Team
 * Coding Standard
-* Metaphor
-<br>*(common vision of how the program works)*
+* Design Improvement (Refactoring)
+* Planning Game (Release Planning, Iteration Planning)
+* Customer Tests
 * Sustainable Pace
 
 #### Kanban
@@ -144,13 +141,11 @@ Scrum is an iterative and incremental agile software development framework
 for managing product development.
 
 Roles:
-
 * Product Owner: final authority, prioritize backlog.
 * Scrum Master: facilitator, negotiator, responsible for guiding team, removes impediments.
 * Development Team.
 
 Events:
-
 * sprint planning (planning poker)
 * grooming (backlog refinement)
 * daily scrum
@@ -158,7 +153,6 @@ Events:
 * sprint review and retrospective (what to start/stop/continue to do)
 
 Artifacts:
-
 * Product backlog
 * Management (prioritize product backlog items)
 * Sprint backlog

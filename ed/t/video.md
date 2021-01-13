@@ -52,7 +52,7 @@ relative to previously decoded pictures.
 
 **Chrominance** is the signal used in video systems to convey the color information of the picture.
 Chrominance is usually represented as two color-difference components:
-U = B′ − Y′ (blue − luma) and V = R′ − Y′ (red − luma).
+U = B − Y (blue − luma) and V = R − Y (red − luma).
 
 **Luma** represents the brightness in an image
 (the "black-and-white" or achromatic portion of the image).

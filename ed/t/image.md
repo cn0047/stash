@@ -19,7 +19,7 @@ organized as thin overlaid layers to reproduce a broad array of colors.
 used in color printing, and is also used to describe the printing process itself.
 
 **YUV** is a color encoding system typically used as part of a color image pipeline.
-The Y′UV model defines a color space in terms of one luma component (Y′)
+The YUV model defines a color space in terms of one luma component (Y)
 and two chrominance components, called U (blue projection) and V (red projection) respectively.
 
 **Image/video pipeline** is the set of components commonly used between an image source

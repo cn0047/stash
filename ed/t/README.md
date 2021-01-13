@@ -37,7 +37,7 @@ Theory
 <br>RSS     - Rich Site Summary or Really Simple Syndication.
 <br>RTB     - Real-time bidding.
 <br>RTC     - Real-time communication.
-<br>SaaS    - [Software as a service](https://raw.githubusercontent.com/cn007b/my/master/ed/t.theory/i/cloudComputingTypes.jpeg).
+<br>SaaS    - [Software as a service](https://raw.githubusercontent.com/cn007b/my/master/ed/t/i/cloudComputingTypes.jpeg).
 <br>SDK     - Software development kit.
 <br>SDLC    - Software development life-cycle.
 <br>UPI     - Unique Product Identifier.
@@ -57,8 +57,8 @@ Consensus - getting all of the nodes to agree on something.
 Systems of record - aka source of truth.
 
 Batch processing systems - offline systems.
-Stream processing systems (near-real-time systems) -
-a stream processor consumes inputs and produces outputs (rather than responding to requests).
+Stream processing systems (near-real-time systems) - a stream processor consumes inputs and produces outputs
+(rather than responding to requests).
 
 Server-Sent Events - servers can initiate data transmission towards clients
 once an initial client connection has been established.
@@ -97,7 +97,7 @@ PC: CPU, Main Memory, Secondary Memory (SSD).
 
 Weight Gross - with pack; Weight Net - without pack;
 
-#### SL[AOI]
+#### SLA/SLO/SLI
 
 Service-level agreement (SLA) - commitment between a service provider and a client:
 quality, availability, responsibility, performance, costs, etc.
@@ -141,14 +141,14 @@ Common SLIs include latency, throughput, availability, error rate, durability, c
 `kebab-case`
 `snake_case`
 
-````
+````sh
 Odd  (1, 3, 5...) -> x % 2 = 1.
 Even (2, 4, 6...) -> x % 2 = 0.
 
-3+4 = 7    # 3 - addend 1;     4 - addend 2;               7    - sum;
-3-4 = -1   # 3 - minuend;      4 - subtrahend;             -1   - difference;
-3*4 = 12   # 3 - multiplicand; 4 - multiplicator (factor); 12   - product;
-3/4 = 0.75 # 3 - numerator;    4 - denominator;            0.75 - ;
+3+4 = 7    # 3 - addend 1;     4 - addend 2;                7    - sum;
+3-4 = -1   # 3 - minuend;      4 - subtrahend;             -1    - difference;
+3*4 = 12   # 3 - multiplicand; 4 - multiplicator (factor);  12   - product;
+3/4 = 0.75 # 3 - numerator;    4 - denominator;             0.75 - ;
 3^4 = 81   # 3 - base;         4 - power/exponent;
 ````
 
