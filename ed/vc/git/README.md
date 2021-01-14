@@ -115,6 +115,7 @@ it hard to revert whole feature, have to revert each commit,
 so it make sense to squash all commits related to feature into 1 commit.
 
 #### bisect
+
 ````sh
 git bisect start
 git bisect bad       # tell that current situation is bad
@@ -130,6 +131,7 @@ git bisect reset
 ````
 
 #### diff
+
 ````sh
 git diff --cached or diff --staged # after git add shows diff
 git diff branch..subBrach
@@ -137,6 +139,7 @@ git diff branch:file file # !!!
 ````
 
 #### log
+
 ````sh
 git log -2                # last 2 commits
 git log -p                # shows commits & code in commit
@@ -149,6 +152,7 @@ git log --date=short --no-merges --shortstat
 ````
 
 #### branch
+
 ````sh
 git checkout --track -b master origin/master
 git checkout --track -b develop origin/develop

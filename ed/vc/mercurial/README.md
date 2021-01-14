@@ -26,6 +26,7 @@ hg push --new-branch
 ````
 
 #### stash
+
 ````sh
 hg diff > ~/d.diff
 hg revert -aC
@@ -33,6 +34,7 @@ hg import --no-commit ~/d.diff
 ````
 
 #### log
+
 ````sh
 hg log
 hg log -r 3
@@ -48,6 +50,7 @@ hg cat -r c6f5e97edfdf PATH_TO_FILE # see file from particular rev
 ````
 
 #### status
+
 ````sh
 hg status
 hg status . # only files in this directory
@@ -57,6 +60,7 @@ rm `hg st|awk '{if($1=="?") print $2}'`
 ````
 
 #### diff
+
 ````sh
 hg diff   # all files in the repository
 hg diff . # only files in this directory
@@ -64,6 +68,7 @@ hg diff -r branchName:default
 ````
 
 #### branch
+
 ````sh
 hg branch               # show curr branch
 hg branch newBranchName # new branch
@@ -73,6 +78,7 @@ hg identify --id --rev BRANCH_NAME # get revision by branch name
 ````
 
 #### conflict example
+
 ````sh
 hg clone https://cn007b@bitbucket.org/cn007b/hg-hello hello
 
@@ -100,6 +106,7 @@ hg merge
 ````
 
 #### config
+
 ````sh
 ~/.hgrc
 ````
