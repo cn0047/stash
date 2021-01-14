@@ -6,12 +6,12 @@ Since 1991.
 ````sh
 shutdown -r now
 
+sudo dpkg -i {name}
+
 uname -a # Shows 32 or 64 bit OS.
 uname -r # Show the kernel version.
 cat /etc/*release # all ablut ubuntu
 ````
-
-sudo dpkg -i {name}
 
 On Linux systems, a kernel configuration parameter called `net.core.somaxconn`
 provides an upper limit on the value of the backlog parameter passed to the listen function
@@ -41,8 +41,8 @@ which software the init command launches or shuts off on a given runlevel.
 /etc/hostname                           #
 /etc/nologin                            # create this file, so noone can login to machine
 /etc/os-release                         # about linux
-/etc/pam.d/common-session               # ?
-/etc/pam.d/common-session-noniteractive # ?
+/etc/pam.d/common-session               #
+/etc/pam.d/common-session-noniteractive #
 /etc/passwd                             # ↓
 /etc/resolv.conf                        # for networking
 /etc/security/limits.conf               # limits per user
