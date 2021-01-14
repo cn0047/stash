@@ -36,7 +36,7 @@ in a top-level `included` member.
 
 #### Pagination
 
-Pagination links MUST appear in the `links` object that corresponds to a collection. 
+Pagination links MUST appear in the `links` object that corresponds to a collection.
 
 The following keys MUST be used for pagination links:
 

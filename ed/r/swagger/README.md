@@ -12,7 +12,6 @@ OpenAPI Specification (formerly Swagger Specification) is an API description for
 Use `components` for next re-use with `$ref`.
 
 Parameter Types:
-
 * path - `/users/{id}`
 * query - `/users?role=admin`
 * header - `X-MyHeader: Value`
@@ -22,7 +21,6 @@ Parameter Serialization - translating data structures or object state into a for
 that can be transmitted and reconstructed later.
 
 Data Types:
-
 * string (this includes dates and files)
 * number (float, double)
 * integer (int32, int64)
@@ -34,7 +32,6 @@ No null type, the nullable attribute is used.
 Not data type: Enum, Dictionaries, HashMaps and Associative Arrays. Use object instead.
 
 Mixed Types:
-
 ````
 oneOf:
   - type: string

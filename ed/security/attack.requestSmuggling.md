@@ -1,4 +1,4 @@
-Request Smuggling
+Request Smuggling (HTTP Desync Attack)
 -
 
 ````sh

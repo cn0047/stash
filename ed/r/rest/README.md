@@ -18,11 +18,7 @@ It is similar to an object instance in an object-oriented programming language.
 Resources can be grouped into collections.
 Each collection is homogeneous so that it contains only one type of resource.
 
-The following representations are common for resources:
-* json
-* yaml
-* xml
-* html
+The following representations are common for resources: json, yaml, xml, html.
 
 | Type | Content-Type                  |
 |------|-------------------------------|
@@ -71,35 +67,20 @@ The GET method is a safe method (or nullipotent), meaning that calling it produc
 | 401 Unauthorized | missing or invalid authentication token                |
 | 403 Forbidden    | user is not authorized                                 |
 
-| method | success                               |   fail                                                                    |
-|--------|---------------------------------------|---------------------------------------------------------------------------|
-| GET    | 200 OK                                |   400 Bad Request                                                         |
-|        |                                       |   401 Unauthorized                                                        |
-|        |                                       | ● 402 Payment Required                                                    |
-|        |                                       |   403 Forbidden                                                           |
-|        |                                       | - 404 Not Found                                                           |
-|        |                                       |                                                                           |
-| POST   | 201 Created                           |   400 Bad Request                                                         |
-|        | 202 Accepted (eventual consistency)   |   401 Unauthorized                                                        |
-|        | 204 No Content (eventual consistency) | ● 402 Payment Required                                                    |
-|        |                                       |   403 Forbidden                                                           |
-|        |                                       | - 404 Not Found (processing request that references related resource )    |
-|        |                                       | ⊙ 405 Method Not Allowed                                                  |
-|        |                                       | ! 409 Conflict                                                            |
-|        |                                       |                                                                           |
-| PUT    | 200 OK                                |   400 Bad Request                                                         |
-|        | 202 Accepted (eventual consistency)   |   401 Unauthorized                                                        |
-|        | 204 No Content (eventual consistency) | ● 402 Payment Required                                                    |
-|        |                                       |   403 Forbidden                                                           |
-|        |                                       | - 404 Not Found                                                           |
-|        |                                       | ⊙ 405 Method Not Allowed                                                  |
-|        |                                       | ! 409 Conflict                                                            |
-|        |                                       |                                                                           |
-| DELETE | 200 OK                                |   400 Bad Request                                                         |
-|        | 202 Accepted (eventual consistency)   |   401 Unauthorized                                                        |
-|        | 204 No Content (eventual consistency) |   403 Forbidden                                                           |
-|        |                                       | - 404 Not Found                                                           |
-|        |                                       | ⊙ 405 Method Not Allowed                                                  |
+| method              | success                               |   fail                                                               |
+|---------------------|---------------------------------------|----------------------------------------------------------------------|
+| GET      PUT DELETE | 200 OK                                |                                                                      |
+|     POST PUT        | 201 Created                           |                                                                      |
+|     POST PUT DELETE | 202 Accepted (eventual consistency)   |                                                                      |
+|     POST PUT DELETE | 204 No Content (eventual consistency) |                                                                      |
+| GET POST PUT DELETE |                                       | 400 Bad Request                                                      |
+| GET POST PUT DELETE |                                       | 401 Unauthorized                                                     |
+| GET POST PUT        |                                       | 402 Payment Required                                                 |
+| GET POST PUT DELETE |                                       | 403 Forbidden                                                        |
+| GET POST PUT DELETE |                                       | 404 Not Found                                                        |
+|     POST PUT        |                                       | 404 Not Found (processing request that references related resource ) |
+|     POST PUT DELETE |                                       | 405 Method Not Allowed                                               |
+|     POST PUT        |                                       | 409 Conflict                                                         |
 
 For security it's better to return JSON with an Object on the outside:
 <br>not: `[{"object": "inside an array"}]`
@@ -135,4 +116,4 @@ products?limit=25&offset=50
 
 <br>P: Versioning API.
 <br>S: Use API version in url, like: `my-api-host.com/v1/users/12345`,
-it's super simple to invalidate, version in header harder to invalidate.
+version in url super simple to invalidate, version in header harder to invalidate.

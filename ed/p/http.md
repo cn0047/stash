@@ -11,7 +11,7 @@ Once available, the server responds and sends the new information.
 When the client receives the new information, it immediately sends another request,
 and the operation is repeated.
 
-#### Request
+## Request
 
 ````
 [method] [URL] [version]
@@ -25,7 +25,7 @@ Methods:
 * GET
 * ...
 
-URL:
+#### URL
 
 Length up to 2048 chars.
 
@@ -42,7 +42,7 @@ URL - Uniform Resource Locator (protocol + host + path).
 URN - Uniform Resource Name (host + path + all after question mark).
 ````
 
-Headers:
+#### Headers
 
 * Accept
 * Accept-Charset
@@ -126,13 +126,13 @@ Currently the following trees are created:
 * personal or vanity
 * unregistered "x."
 
-#### Connections
+## Connections
 
 * parallel (in the past, browsers have used multiple TCP connections to issue parallel requests)
 * persistent (HTTP 2 connections are persistent, only one connection per origin is required)
 * pipeline (multiple HTTP requests are sent on a single TCP connection)
 
-#### Response
+## Response
 
 ````
 [version] [status] [reason]
@@ -141,7 +141,6 @@ Currently the following trees are created:
 ````
 
 Headers:
-
 * Access-Control-Allow-Origin
 * Connection (close)
 * Location (path for 302 HTTP code)
@@ -174,7 +173,6 @@ X-Frame-Options: DENY
 ````
 
 Cache:
-
 ````sh
 Cache-Control: private, max-age=0, no-cache
 
@@ -183,17 +181,16 @@ Expires: Thu, 31 Dec 2037 23:55:55 GMT
 ````
 
 ETag Cache:
-
 ````sh
 # Request file -> Response:
 ETag: "6d82cbb050ddc7fa9cbb659014546e59"
 
-# Next Request file:
+# Next Request:
 If-None-Match: "6d82cbb050ddc7fa9cbb659014546e59"
 # if ETag value same -> Response: 304 Not Modified
 ````
 
-#### CORS (Cross-Origin Resource Sharing)
+## CORS (Cross-Origin Resource Sharing)
 
 A CORS preflight request is a CORS request that checks to see if the CORS protocol is understood.
 It is an OPTIONS request:
@@ -210,18 +207,16 @@ Access-Control-Allow-Methods: OPTIONS, GET, POST, PUT, DELETE
 Access-Control-Allow-Headers: *
 ````
 
-#### Codes
+## Codes
 
-1xx Informational
-
+1xx Informational:
 * 100 **Continue**
 * 101 **Switching Protocols**
 * 102 **Processing** (WebDAV; RFC 2518)
 * 103 Checkpoint (draft POST PUT)
 * 105 Name Not Resolved
 
-2xx Success
-
+2xx Success:
 * 200 **OK**
 * 201 **Created**
 * 202 **Accepted**
@@ -233,8 +228,7 @@ Access-Control-Allow-Headers: *
 * 208 Already Reported (WebDAV; RFC 5842)
 * 226 IM Used (RFC 3229)
 
-3xx Redirection
-
+3xx Redirection:
 * 300 Multiple Choices
 * 301 **Moved Permanently** (http -> https)
 * 302 **Found / Moved Temporary** (location header)
@@ -245,8 +239,7 @@ Access-Control-Allow-Headers: *
 * 307 **Temporary Redirect** (Internal) (strict-transport-security) (since HTTP/1.1)
 * 308 Permanent Redirect (approved as experimental RFC)[12]
 
-4xx Client Error
-
+4xx Client Error:
 * 400 **Bad Request**
 * 401 **Unauthorized**
 * 402 **Payment Required**
@@ -292,8 +285,7 @@ Access-Control-Allow-Headers: *
 * 497 HTTP to HTTPS (Nginx)
 * 499 Client Closed Request (Nginx)
 
-5xx Server Error
-
+5xx Server Error:
 * 500 **Internal Server Error**
 * 501 **Not Implemented**
 * 502 **Bad Gateway**

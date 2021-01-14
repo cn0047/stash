@@ -4,9 +4,11 @@ WebSocket
 [tool for ws](https://github.com/zaproxy/zaproxy)
 
 WebSocket is a computer communications protocol,
-providing full-duplex (allows communication in both directions) communication channels over a single TCP connection.
+providing full-duplex (allows communication in both directions) communication channels
+over a single TCP connection.
 
-WebSocket handshake uses the `HTTP Upgrade header` to change from the HTTP protocol to the WebSocket protocol.
+WebSocket handshake uses the `HTTP Upgrade header`
+to change from the HTTP protocol to the WebSocket protocol.
 WebSocket connection request uses `Upgrade: WebSocket` and `Connection: Upgrade`.
 Server replies with the same `Upgrade: WebSocket` and `Connection: Upgrade` headers
 and 101 status code and completes the handshake.

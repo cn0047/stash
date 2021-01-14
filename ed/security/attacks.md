@@ -41,13 +41,6 @@ Perform action on the victim's behalf.
 
 FIX: CORS (if browser support CORS) or CSRF token.
 
-#### DDos (Denial-of-service)
-
-A distributed DDoS is a cyber-attack where the perpetrator uses more than one unique IP address,
-often thousands of them.
-
-Distributed autoscale systems may try to cope with DDoS.
-
 #### Cross-Site Scripting (XSS)
 
 Occur when:
@@ -84,22 +77,6 @@ The use of `.innerText` will prevent most XSS problems as it will automatically 
 
 SQL Injection and whatnot.
 
-#### ~~XML External Entity (XXE)~~
-
-Is a type of attack against an application that parses XML input,
-occurs when XML input containing a reference to an external entity
-is processed by a weakly configured XML parser.
-
-#### ~~Clickjacking (UI redress attack)~~
-
-The hacker can only send a single click.
-
-For example, imagine an attacker who builds a web site that has a button on it that says "click here for a free iPod".
-However, on top of that web page, the attacker has loaded an iframe with your mail account,
-and lined up exactly the "delete all messages" button directly on top of the "free iPod" button.
-
-FIX: Headers `X-Frame-Options: DENY, X-Frame Options: DENY, X-Frame Options: SAMEORIGIN`.
-
 #### Directory (path) traversal attack
 
 AKA: ../ (dot dot slash) attack.
@@ -120,6 +97,16 @@ Cookie: TEMPLATE=../../../../../../../../../etc/passwd
 
 FIX: Query string is usually URI decoded before use.
 
+#### ~~Clickjacking (UI redress attack)~~
+
+The hacker can only send a single click.
+
+For example, imagine an attacker who builds a web site that has a button on it that says "click here for a free iPod".
+However, on top of that web page, the attacker has loaded an iframe with your mail account,
+and lined up exactly the "delete all messages" button directly on top of the "free iPod" button.
+
+FIX: Headers `X-Frame-Options: DENY, X-Frame Options: DENY, X-Frame Options: SAMEORIGIN`.
+
 #### Insecure Deserialization
 
 Never deserialize untrusted data
@@ -128,3 +115,16 @@ Never deserialize untrusted data
 #### ~~JSON hijacking~~
 
 In early versions of browsers the JSON file could be loaded as a normal script.
+
+#### ~~XML External Entity (XXE)~~
+
+Is a type of attack against an application that parses XML input,
+occurs when XML input containing a reference to an external entity
+is processed by a weakly configured XML parser.
+
+#### DDos (Denial-of-service)
+
+A distributed DDoS is a cyber-attack where the perpetrator uses more than one unique IP address,
+often thousands of them.
+
+Distributed autoscale systems may try to cope with DDoS.

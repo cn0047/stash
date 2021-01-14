@@ -84,10 +84,11 @@ RETURN
 CALL dbms.security.createUser('dbu', 'dbp', false);
 SHOW USERS;
 
-// dynamic settings
+// set setting, dynamic settings
 CALL dbms.setConfigValue('dbms.logs.query.enabled', '')
 // @see: https://neo4j.com/docs/operations-manual/current/configuration/dynamic-settings/
 
+// get settings
 CALL dbms.listConfig()
 YIELD name, value
 WHERE name STARTS WITH 'dbms.logs'

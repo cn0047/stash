@@ -1,4 +1,4 @@
-RTP Control Protocol
+RTCP - Real-Time Transport Control Protocol
 -
 
 RTCP provides feedback on the quality of service (QoS) in media distribution such as:

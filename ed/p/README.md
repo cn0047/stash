@@ -7,8 +7,14 @@ Networking
 BGP       - Border Gateway Protocol.
 CIP       - Common Industrial Protocol (control, safety, synchronization, motion, configuration & information).
 DHCP      - Dynamic Host Configuration Protocol (DHCP server can assign dynamic IP address).
-IMAP      - Internet Message Access Protocol.
 STUN      - Session Traversal Utilities for NAT, protocol to discover your public address.
+IMAP      - Internet Message Access Protocol.
+SFTP      - SSH (also Secure) File Transfer Protocol.
+LDAP      - Lightweight Directory Access Protocol.
+
+ISP       - Internet Service Provider.
+IP        - Internet Protocol asdress.
+MAC       - Media Access Control address.
 CDN       - Content Distribution Network.
 CIDR      - Classless Inter-Domain Routing.
 Cloud DNS - Domain Name System.
@@ -16,10 +22,7 @@ DNS       - Domain Name System.
 ECMP      - Equal-Cost Multi-Path routing.
 FQDN      - Fully Qualified Domain Name.
 IANA      - Internet Assigned Numbers Authority (assigns addresses to RIR's).
-IP        - Internet Protocol asdress.
-ISP       - Internet Service Provider.
 LAN       - Local Area Network.
-MAC       - Media Access Control address.
 MPLS      - Multiprotocol Label Switching.
 NAT       - Network Address Translation.
 RIR       - Regional Internet Registry (assigns space to ISP's).

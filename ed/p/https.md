@@ -11,7 +11,6 @@ authentication of the visited website and protection of the privacy and integrit
 HTTPS creates a secure channel over an insecure network.
 
 Solves problems with:
-
 * Man-In-The-Middle.
 * Phishing
 * DNS hijacking
