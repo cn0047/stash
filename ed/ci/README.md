@@ -11,8 +11,8 @@ The practice of building and testing your application on every check-in
 is known as continuous integration.
 
 Continuous Integration - it is a software development practice
-where members of a team use a version control system and integrate their work frequently to the same location,
-such as a master branch.
+where members of a team use a version control system
+and integrate their work frequently to the same location, such as a master branch.
 Each change is built and verified by tests and other verifications
 in order to detect any integration errors as quickly as possible.
 
@@ -25,7 +25,6 @@ Continuous Deployment - is a synonym to Continuous Delivery.
 <br> Beta ⇒ Dev; Gamma ⇒ QA;
 
 Problems:
-
 * db migrations (slow migrations, few steps migrations)
 * `cron`
 

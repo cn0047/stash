@@ -65,5 +65,4 @@ Cloud spanner offers ACID transactions and can scale to thousands of nodes.
 ## +/-
 
 Advantages:
-
 * versioning

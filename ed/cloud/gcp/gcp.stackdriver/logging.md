@@ -26,7 +26,6 @@ gcloud logging read --format=json --limit=50 --freshness=2d '
 ````
 
 Log view filter:
-
 ````sh
 text:unicorn
 text:unicorn text:phoenix          # unicorn or phoenix
@@ -50,7 +49,6 @@ status:400..499 # HTTP status of 400 through 499
 ````
 
 [Advanced filter](https://cloud.google.com/logging/docs/view/advanced-filters):
-
 ````sh
 protoPayload.resource:"var=3"
 protoPayload.status>=400 AND protoPayload.status <= 405
@@ -72,7 +70,6 @@ NOT "GET /sitemap/"
 ````
 
 Go:
-
 ````golang
 "cloud.google.com/go/logging"
 

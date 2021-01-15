@@ -65,7 +65,6 @@ Only internal appengine microservices have `X-Appengine-Inbound-Appid` header!
 ## +/-
 
 Advantages:
-
 * Pre-configured architecture.
 * Automatically handle and balance all instances and data centers.
 * Automatic scalability.
@@ -167,7 +166,6 @@ resp, err := client.Get(url)
 ````
 
 Local Unit Testing:
-
 ````golang
 # run
 goapp test ./demos/transaction
