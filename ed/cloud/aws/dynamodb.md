@@ -64,10 +64,8 @@ aws --profile=$p dynamodb list-tables
 aws dynamodb create-table \
   --table-name $tbl \
   --billing-mode=PAY_PER_REQUEST \
-  --attribute-definitions \
-      AttributeName=user_id,AttributeType=N \
-  --key-schema
-      AttributeName=user_id,KeyType=HASH \
+  --attribute-definitions AttributeName=user_id,AttributeType=N \
+  --key-schema AttributeName=user_id,KeyType=HASH \
 
 # count
 aws dynamodb scan --table-name $tbl | jq -c '.Count'
@@ -84,7 +82,8 @@ aws dynamodb query --table-name $tbl \
   | jq -c '.Count,.ScannedCount'
 
 # add new item
-aws --profile=$p  dynamodb put-item --table-name $tbl --item '{"key":{"S": "k1"},"v":{"S": "v1"}}'
+aws --profile=$p  dynamodb put-item --table-name $tbl \
+  --item '{"key":{"S": "k1"},"v":{"S": "v1"}}'
 
 aws dynamodb put-item --table-name $tbl --item '{
   "email"      : {"S": "x@y.com"},

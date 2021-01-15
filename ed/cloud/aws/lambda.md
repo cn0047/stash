@@ -15,7 +15,7 @@ Handler – method that runtime executes when your function is invoked.
 
 You can use a Lambda function to process requests from an Application Load Balancer.
 
-Lambda automatically scales to handle 1,000 concurrent executions per Region.
+Lambda automatically scales to handle 1000 concurrent executions per Region.
 
 Trigger DynamoDB:
 * Batch size

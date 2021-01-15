@@ -1,17 +1,16 @@
 EC2 (Elastic Compute Cloud)
 -
 
-Default OS is Amazon Linux.
-
 [instance types](https://aws.amazon.com/ec2/instance-types/)
 [pricing](https://aws.amazon.com/ec2/pricing/)
+
+Default OS is Amazon Linux.
 
 Users (for ssh):
 * ec2-user.
 * ubuntu for AMI with ubuntu.
 
 Launch instance:
-
 On step 3: At `Advanced Details` in `User data` it is possible to write bash, like:
 ````sh
 #!/bin/sh
@@ -19,7 +18,6 @@ yum -y install vim htop
 ````
 
 From cli:
-
 ````sh
 # convenient information about instances:
 aws --profile=$p ec2 describe-instances \
@@ -99,13 +97,11 @@ aws elbv2 register-targets \
 ````
 
 One php session storage per several instances:
-
 ````
 load balancer -> description -> port configuration = Stickiness: LBCookieStickinessPolicy, expirationPeriod='1800'
 ````
 
 Auto Scaling:
-
 Min     - AWS ensures that your group never goes below this size.
 Max     - AWS ensures that your group never goes above this size.
 Desired - AWS ensures that your group has this many instances.

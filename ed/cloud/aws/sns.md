@@ -41,7 +41,6 @@ Subscription settings:
 * Delivery retry policy.
   * 3 - default number of retries.
   * 20 seconds - default minimum delay.
-  * 20 seconds - default max delay.
   * Linear - default retry-backoff function.
 
 ````sh
