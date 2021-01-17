@@ -1,6 +1,8 @@
 Data structures
 -
 
+[info](http://en.wikipedia.org/wiki/Template:Data_structures)
+
 ## Abstract
 
 * `Container` - is a class, a data structure, or an abstract data type (ADT)
@@ -24,8 +26,8 @@ Lists are a basic example of containers.
 * `Stack` - is an abstract data type that serves as a **collection** of elements,
 with two principal operations: push and pop. (**LIFO**).
 
-* `Queue` - is a particular kind of abstract data type or **collection** in which the entities in the collection are kept in order.
-(**FIFO**).
+* `Queue` - is a particular kind of abstract data type or **collection**
+in which the entities in the collection are kept in order. (**FIFO**).
 
 * `Double-ended queue` - (often abbreviated to deque) is an abstract data type that generalizes a queue,
 for which **elements can be added to or removed from either the front (head) or back (tail)**.
@@ -40,7 +42,7 @@ but allows for **efficient removal of both the maximum and minimum**.
 * `Set` - is an abstract data type that can **store certain values**,
 **without** any particular **order**, and **no repeated values**.
 
-* `Multiset` (or bag) - is similar to a set but allows repeated ("equal") values (**duplicates**).
+* `Multiset` (or bag) - is similar to a set but allows repeated values (**duplicates**).
 
 * Disjoint-set (union–find or merge–find) - is a data structure
 that keeps track of a set of elements partitioned into a number of disjoint (nonoverlapping) subsets.
@@ -73,5 +75,3 @@ It is related to the B-tree.
 
 * XOR linked list - it takes advantage of the bitwise XOR operation
 to decrease storage requirements for doubly linked lists.
-
-http://en.wikipedia.org/wiki/Template:Data_structures

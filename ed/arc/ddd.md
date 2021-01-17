@@ -51,7 +51,6 @@ supporting libraries for the user interface layer, etc.
 (Here we put all the implementations of the interfaces defined in the domain layer.)
 
 Example:
-
 ````
 src/Domain/Model/ParticularModel/ParticularModel.php - Doctrine entity.
 src/Domain/Model/ParticularModel/DTO/ParticularModel.php.
@@ -89,7 +88,6 @@ This folder contains all the code necessary for this bounded context to work:
 domain code and infrastructure code.
 
 Something like:
-
 ````
 ├──composer.json
 ├──composer.lock
@@ -143,13 +141,10 @@ A domain object that defines an event (something that happens).
 #### DBAL - Database Abstraction Layer.
 
 Active Record ORMs not good for DDD, because:
-
 * Active Record pattern assumes a one-to-one relation between an entity and a database table.
 And in a rich domain model sometimes entities are constructed with information
 that may come from different data sources.
-
 * Advanced things like collections or inheritance are tricky to implement.
-
 * Possible persistence leakage into the domain model
 by coupling the domain model with the ORM.
 
@@ -181,12 +176,9 @@ But when such an operation stands out as an important concept in the domain,
 a Service should be created for it.
 
 There are three characteristics of a Service:
-
 1. The operation performed by the Service refers to a domain
 concept which does not naturally belong to an Entity or Value Object.
-
 2. The operation performed refers to other objects in the domain.
-
 3. The operation is stateless.
 
 There are typically three different types of service:
@@ -210,7 +202,7 @@ DTO does not have any behavior except for storage and retrieval of its own data.
 DTOs are simple objects that should not contain any business logic.
 
 Interface to DTO must be placed in domain layer.
-<br>Particular DTO implementation (mysql, mongo, etc) must be placed in infrastructure layer
+Particular DTO implementation (mysql, mongo, etc) must be placed in infrastructure layer
 because it contains specific stuff (related to rows in mysql, how to get data, how to transform, etc).
 
 DTO it's just data container which used to transport data between different layers.

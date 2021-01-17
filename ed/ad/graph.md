@@ -39,13 +39,9 @@ Also all vertex have even degree but 2 have odd degree.
 ## Shortest path
 
 * Dijkstra's Algorithm (only for positive weights).
-
 * Bellman-Ford Algorithm.
-
 * BFS.
-
 * Topological sort.
-
 * Floyd-Warshall Algorithm.
 
 ## Search
@@ -76,5 +72,4 @@ Topological Sorting not have to be unique.
 Won't work for Directed Acyclic Graph (DAG).
 
 * Kahn's Algorithm
-
 * Tarjan's Algorithm

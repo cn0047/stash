@@ -42,7 +42,7 @@ otherwise - search from where we take the [last left turn](http://prntscr.com/hd
 
 #### Number of Binary Search Trees possible with N nodes
 
-For example, for: [5, 6] Result: [5, 6], [6, 5] (all permutations).
+For example, `for: [5, 6] result: [5, 6], [6, 5] (all permutations)`.
 
 #### Threaded binary tree (TBT)
 
@@ -51,17 +51,17 @@ In case we have left or right pointer empty - we can fill it with link to inorde
 so it become a TBT.
 To differentiate is it a pointer to child or to predecessor/successor TBT has left and right flags.
 
-#### Postorder Traversal (Shortcut Trick)
-
-1. go to left child
-2. go to right child
-3. print node
-
 #### Preorder Traversal (Shortcut Trick)
 
 1. print node
 2. go to left child
 3. go to right child
+
+#### Postorder Traversal (Shortcut Trick)
+
+1. go to left child
+2. go to right child
+3. print node
 
 #### Inorder Traversal (Shortcut Trick)
 
@@ -75,7 +75,7 @@ To differentiate is it a pointer to child or to predecessor/successor TBT has le
 
 ### Delete a node from Binary Search Tree
 
-    Delete leaf node - just delete it.
+Delete leaf node - just delete it.
 <br>Delete node with 1 child - replace node with it's child.
 <br>Delete node with 2 childs - replace with node wich is minimum in right child.
 

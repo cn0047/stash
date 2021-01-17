@@ -17,7 +17,7 @@ Is effective at exploiting bit-level parallelism in hardware to perform operatio
 * `Circular buffer` (circular queue, cyclic buffer or ring buffer) -  is a data structure
 that uses a single, fixed-size buffer as if it were **end-to-end connected**.
 
-* Dynamic array (growable array, resizable array, dynamic table, mutable array, or array list) -
+* `Dynamic array` (growable array, resizable array, dynamic table, mutable array, or array list) -
 is a **random access, variable-size** list data structure that allows elements to be added or removed.
 
 * `Hash table` (hash map) - is a data structure

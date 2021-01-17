@@ -2,7 +2,6 @@ Tree
 -
 
 Balancing tree:
-
 * Right rotation (when tree is left heavy)
 * Left rotation (when tree is right heavy)
 * Right-Left rotation
@@ -32,7 +31,7 @@ To make Minimum spanning tree use:
 * AST - Abstract Syntax Tree (used by webpack, babel, etc). https://astexplorer.net/
 
 * `Binary search trees` (ordered, sorted binary trees) - particular type of containers,
-data structures that store "items" in memory.
+data structures that store items in memory.
 They allow fast lookup, addition and removal of items,
 and can be used to implement either dynamic sets of items,
 or lookup tables that allow finding an item by its keys.
@@ -72,7 +71,7 @@ All normal operations on a binary search tree are combined with one basic operat
 
 * `R-tree` - tree data structures **used for spatial access methods**.
 
-* R*-trees - have slightly higher construction cost than standard R-trees,
+* `R*-trees` - have slightly higher construction cost than standard R-trees,
 as the data may need to be reinserted;
 but the resulting tree will usually have a better query performance.
 

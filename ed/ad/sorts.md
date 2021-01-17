@@ -2,7 +2,6 @@ Sorts
 -
 
 Performance:
-
 * number of comparisons
 * number of swaps
 

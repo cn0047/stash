@@ -1,7 +1,7 @@
 IoC (Inversion of Control).
 -
 
-When high-level module depends on low-level module - you cann't reuse high-level module.
+When high-level module depends on low-level module - you can't reuse high-level module.
 
 Bob Martin's (uncle Bob) CopyProgram:
 ````
@@ -21,7 +21,6 @@ Inversion of control - is used to increase modularity of the program and make it
 are examples of design patterns that follow the inversion of control principle.
 
 IoC serves the following design purposes:
-
 * To decouple the execution of a task from implementation.
 * To focus a module on the task it is designed for.
 * To free modules from assumptions about how other systems do
@@ -29,16 +28,13 @@ IoC serves the following design purposes:
 * To prevent side effects when replacing a low-level module.
 
 There are several basic techniques to implement inversion of control:
-
 * Using a factory pattern
 * Using a service locator pattern
 * Using a dependency injection, for example
-
   * constructor injection
   * setter injection
   * interface injection - define injector method in interface
   * [parameter injection]
-
 * Using a contextualized lookup
 * Using template method design pattern
 * Using strategy design pattern

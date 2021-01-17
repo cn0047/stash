@@ -18,7 +18,6 @@ communicate with each other.
 (You don't have to say what to do, you have to send message and system will decide what to do).
 
 Specific benefits of messaging:
-
 * Remote Communication.
 * Platform/Language Integration (independency).
 * Asynchronous Communication.

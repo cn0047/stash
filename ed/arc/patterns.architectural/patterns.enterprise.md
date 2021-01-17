@@ -88,7 +88,7 @@ Given many orders, a Domain Model will have one order object per order
 while a Table Module will have one object to handle all orders.
 
 **Service Layer**
-Layer of services with set of available operations. 
+Layer of services with set of available operations.
 
 ## Data Source Architectural Patterns:
 
@@ -97,7 +97,7 @@ Holds all SQL for accessing a single table.
 The simplest DB interface pattern to use (maps easy to table).
 
 **Row Data Gateway**
-Object that exactly mimics a single record (DB row). 
+Object that exactly mimics a single record (DB row).
 should contain only DB access logic and no domain logic (Active Record).
 
 **Active Record**
@@ -116,8 +116,10 @@ for converting data between incompatible type systems in object-oriented program
 ## Object-Relational Behavioral Patterns:
 
 **Unit of Work**
-Maintains a list of objects affected by business transaction and coordinates writing changes and the resolve concurrency problems.
-If every transaction uses the same sequence of tables to edit, you greatly reduce the risk of dead-locks.
+Maintains a list of objects affected by business transaction
+and coordinates writing changes and the resolve concurrency problems.
+If every transaction uses the same sequence of tables to edit,
+you greatly reduce the risk of dead-locks.
 
 **Identity Map**
 Ensures that each object gets loaded only once by keeping every loaded object in a map.
@@ -152,7 +154,7 @@ Represents an inheritance hierarchy of classes as single table that has columns 
 Represents an inheritance hierarchy of classes with one table for each class.
 
 **Concrete Table Inheritance**
-Represents an inheritance hierarchy of classes with one table per concrete class in the hierarchy. 
+Represents an inheritance hierarchy of classes with one table per concrete class in the hierarchy.
 
 **Inheritance Mappers**
 A structure to organize DB mappers that handle inheritance hierarchies.
@@ -171,7 +173,8 @@ A Metadata Mapping allows developers to define the mappings in a simple tabular 
 An object that represents a DB query.
 
 **Repository**
-Mediates between the domain and data mapping layers using a collection-like interface for accessing domain objects.
+Mediates between the domain and data mapping layers
+using a collection-like interface for accessing domain objects.
 
 ## Web Presentation Patterns:
 
@@ -211,7 +214,7 @@ Provides a coarse-grained facade on fine-grained objects to improve efficiency o
 **Data Transfer Object**
 An object that carries data between processes in order to reduce the number of method calls.
 Use a Data Transfer Object whenever you need to transfer multiple items of data
-between two processes in a single method call. 
+between two processes in a single method call.
 
 ## Offline Concurrency Patterns:
 
@@ -221,8 +224,10 @@ When a record is loaded that number is maintained by the session along with all 
 and compare the version stored in your session data to the current version in the record data.
 
 **Pessimistic Offline Lock**
-Prevents conflicts between concurrent business transactions by allowing only one business transaction at a time to access data.
-Forces a business transaction to acquire a lock on a piece of data before it starts to use it,
+Prevents conflicts between concurrent business transactions
+by allowing only one business transaction at a time to access data.
+Forces a business transaction to acquire a lock
+on a piece of data before it starts to use it,
 
 **Coarse-Grained Lock**
 ACoarse-Grained Lock is a single lock that covers many objects.

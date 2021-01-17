@@ -13,7 +13,7 @@ Design patterns offer a common solution for a common problem in the form of clas
 2. Structural (way to put objects together):
     * adapter
     * bridge - decouple an abstraction from its implementation
-    * composite - "compose" objects into tree structures
+    * composite - compose objects into tree structures
     * decorator - dynamically allows behavior to be added to object
     * facade - object that provides a simplified interface to a larger body of code
     * flyweight - lazy load
@@ -68,7 +68,7 @@ by providing its interface to clients while using the original interface.
 so that the two can vary independently".
 It *belong to one domain but implement interfaces from another*.
 
-The intent of a **Composite** is to "compose" objects into *tree structures*.
+The intent of a **Composite** is to compose objects into *tree structures*.
 
 **Decorator** (aka Wrapper) - design pattern that *allows behavior to be added*
 to an individual object, either statically or dynamically,

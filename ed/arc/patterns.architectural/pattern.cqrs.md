@@ -13,7 +13,6 @@ Type 3 - **Event Sourcing**:
 Store events -> Replay events -> Modify entity -> Store new event -> Update read DB.
 
 Pros:
-
 * Roint-in-time reconstruction.
 * Multiple read DBs.
 * Rebuild PROD DB.
