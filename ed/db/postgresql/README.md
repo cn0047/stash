@@ -36,7 +36,7 @@ use timeouts in postgress.
 
 Advisory locks can be useful for locking strategies that are an awkward fit
 for the MVCC model. For example, a common use of advisory locks
-is to emulate pessimistic locking strategies typical of so-called “flat file”
+is to emulate pessimistic locking strategies typical of so-called "flat file"
 data management systems.
 
 #### System Columns:
@@ -77,7 +77,6 @@ it is valid to include an aggregate function call in the arguments of a window f
 but not vice versa.
 
 Example:
-
 ````sql
 SELECT depname, empno, salary, avg(salary) OVER (PARTITION BY depname)
 FROM empsalary;

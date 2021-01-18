@@ -1,13 +1,18 @@
 Aggregation
 -
 
+[Accumulators](https://docs.mongodb.com/manual/meta/aggregation-quick-reference/#accumulators)
+[Aggregation Commands Comparison](http://docs.mongodb.org/manual/reference/aggregation-commands-comparison/)
+[SQL to Aggregation Mapping Chart](http://docs.mongodb.org/manual/reference/sql-aggregation-comparison/)
+[Aggregation Interfaces](http://docs.mongodb.org/manual/reference/operator/aggregation/interface/)
+[Variables in Aggregation](http://docs.mongodb.org/manual/reference/aggregation-variables/)
+
 The aggregation pipeline can use indexes to improve its performance during some of its stages.
 In addition, the aggregation pipeline has an internal optimization phase.
 
 Result is limited by size = 16MB.
 
 For performance (follow this flow):
-
 1. $match as early as possible
 2. $project as early as possible
 3. $sort as early as possible
@@ -179,7 +184,8 @@ db.users.aggregate([
     {$sort: {number: -1}}, // sort in reverse order.
     {$limit: 5}
 ]);
-// The $unwind operator separates each value in the likes array, and creates a new version of the source document for every element in the array.
+// The $unwind operator separates each value in the likes array,
+// and creates a new version of the source document for every element in the array.
 // Example:
 {
     _id: "jane",
@@ -201,7 +207,8 @@ db.users.aggregate([
 
 #### Map-Reduce Examples
 
-Map-reduce operations can have output sets that exceed the 16 megabyte output limitation of the aggregation pipeline.
+Map-reduce operations can have output sets that exceed the 16 megabyte output limitation
+of the aggregation pipeline.
 Map-reduce operations can also output to a sharded collection.
 
 Reduce operations can run in parallel across shards.
@@ -327,9 +334,3 @@ db.sessions.mapReduce(
     }
 );
 ````
-
-[Accumulators](https://docs.mongodb.com/manual/meta/aggregation-quick-reference/#accumulators)
-[Aggregation Commands Comparison](http://docs.mongodb.org/manual/reference/aggregation-commands-comparison/)
-[SQL to Aggregation Mapping Chart](http://docs.mongodb.org/manual/reference/sql-aggregation-comparison/)
-[Aggregation Interfaces](http://docs.mongodb.org/manual/reference/operator/aggregation/interface/)
-[Variables in Aggregation](http://docs.mongodb.org/manual/reference/aggregation-variables/)

@@ -2,9 +2,9 @@ INDEX
 -
 
 [reference](http://docs.mongodb.org/manual/reference/indexes/)
+[Text Search Languages](http://docs.mongodb.org/manual/reference/text-search-languages/)
 
 Types:
-
 * B-tree
 * Hash
 * GEO
@@ -12,7 +12,6 @@ Types:
 * TTL
 
 Limitations:
-
 ````
 Key value size - 1024 bytes
 Key name size - 128 chars
@@ -193,5 +192,3 @@ db.products.find({brand: 'ge'}).sort({category: 1, brand: -1}) // won't use inde
 
 db.collection.totalIndexSize()
 ````
-
-[Text Search Languages](http://docs.mongodb.org/manual/reference/text-search-languages/)

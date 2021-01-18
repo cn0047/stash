@@ -4,7 +4,6 @@ Replication
 [FAQ: Replication and Replica Sets](http://docs.mongodb.org/manual/faq/replica-sets/)
 
 Nodes types:
-
 * regular (primary, secondary) [takes part in election]
 * arbiter [takes part in election]
 * delayed (can't be primary)
@@ -15,8 +14,7 @@ It's possible to use different engines for different nodes!
 When node comes back up as a secondary and oplog has looped - the
 entire db will be copied from primary.
 
-Minimal Replica Set in mongo:
-
+Minimal Replica Set in mongo:œ
 * primary
 * secondary
 * arbiter (for election when primary down)
@@ -53,7 +51,6 @@ Eventual consistency - whether a document was written to all servers
 (primaries and secondaries) before control was return to your application.
 
 Durable Replica Set (write concerns):
-
 * Unacknowledged.
 * Acknowledged.
 * Journaled - wirte data to journal (default).

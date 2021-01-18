@@ -45,7 +45,8 @@ Presentation component (aka view):
 * functional component
 
 All React components must act like pure functions with respect to their props.
-Functions are called "pure" because they do not attempt to change their inputs, and they always deterministic.
+Functions are called "pure" because they do not attempt to change their inputs,
+and they always deterministic.
 
 Elements inside the `map()` call need keys.
 Keys used within arrays should be unique among their siblings.
@@ -68,10 +69,12 @@ function App2() {
 <div> {props.cards.map(card => <Card {...card} />)} </div>
 ````
 
-To pass data through the component tree without having to pass props down into each component - use `context`.
+To pass data through the component tree without having to pass props
+down into each component - use `context`.
 
 By adding `childContextTypes` and `getChildContext` to component
-React passes the information down automatically and any component in the subtree can access it by defining `contextTypes`.
+React passes the information down automatically
+and any component in the subtree can access it by defining `contextTypes`.
 
 Changes in context won't cause re-render not in parent nor child.
 `component.forceUpdate()` - call `render` skipping `shouldComponentUpdate`,

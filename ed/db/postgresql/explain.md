@@ -7,7 +7,6 @@ ANALYZE
 BUFFERS
 
 In output:
-
 * `cost` - time expended before output phase begin,
    after .. number - is estimated total cost.
 * `rows` - estimated rows.
@@ -21,7 +20,6 @@ In output:
 <br>`Heap Fetches` - very good;
 
 Stats about index usage:
-
 ````sql
 SELECT relpages AS 'Disk page read', reltuples AS 'Rows scanned'
 FROM pg_class WHERE relname = 'filmTable';

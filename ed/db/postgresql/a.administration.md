@@ -97,7 +97,6 @@ log_statement = 'none'
 ````
 
 Dev:
-
 ````sh
 # logs
 log_statement = 'all'

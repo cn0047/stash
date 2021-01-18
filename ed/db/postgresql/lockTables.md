@@ -2,7 +2,6 @@ Lock tables
 -
 
 Table-level Lock Modes:
-
 * ACCESS SHARE
 * ROW SHARE
 * ROW EXCLUSIVE
@@ -13,7 +12,6 @@ Table-level Lock Modes:
 * ACCESS EXCLUSIVE
 
 Row-level Locks:
-
 * FOR UPDATE
 * FOR NO KEY UPDATE
 * FOR SHARE

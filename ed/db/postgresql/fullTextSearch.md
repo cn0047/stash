@@ -75,7 +75,6 @@ WHERE to_tsvector(body) @@ to_tsquery('postgres <-> tutorial');
 `'sphinx <3> quartz'` will match: `Sphinx of black quartz.`
 
 Wildcards:
-
 ````sql
 SELECT * FROM articles
 WHERE to_tsvector(body) @@ to_tsquery('database');
