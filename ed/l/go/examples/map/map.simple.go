@@ -5,6 +5,17 @@ import (
 )
 
 func main() {
+	// f1()
+	f2()
+}
+
+func f1() {
+	m1 := make(map[string]string, 1)
+	m1["foo"] = "bar"
+	fmt.Println(m1) // map[foo:bar]
+}
+
+func f2() {
 	lookup := make(map[string]int)
 	lookup["goku"] = 9001
 	fmt.Printf("Map size: %d \n", len(lookup))

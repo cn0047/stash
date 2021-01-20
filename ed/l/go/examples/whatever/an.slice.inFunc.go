@@ -6,7 +6,8 @@ import (
 
 func main() {
 	// appendToSlice()
-	updateSlice()
+	appendToSlicePointer()
+	// updateSlice()
 }
 
 func updateSlice() {
@@ -29,4 +30,15 @@ func appendToSlice() {
 func sAppend(s []int) {
 	s = append(s, 1)
 	fmt.Println("in sAppend:", s) // [0 1]
+}
+
+func appendToSlicePointer() {
+	s := make([]int, 1)
+	sAppendToPointer(&s)
+	fmt.Println("appendToSlicePointer end:", s) // [0 1]
+}
+
+func sAppendToPointer(s *[]int) {
+	*s = append(*s, 1)
+	fmt.Println("in sAppend:", s) // &[0 1]
 }

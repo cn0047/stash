@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 func main() {
 	ch := make(chan string)
 
@@ -12,6 +16,12 @@ func main() {
 	ch <- "cmd.1"
 	ch <- "cmd.2"
 	ch <- "cmd.3"
+
+	fmt.Scanln()
 }
 
-// @link: https://play.golang.org/p/Ut_zSB6zvPi
+/*
+processed: cmd.1
+processed: cmd.2
+processed: cmd.3
+*/

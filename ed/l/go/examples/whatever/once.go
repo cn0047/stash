@@ -2,25 +2,30 @@ package main
 
 import (
 	"sync"
-	"time"
 )
 
 var (
 	once sync.Once
-	t    time.Time
+	v    int
 )
 
 func main() {
-	f3()
-	f3()
-	f3()
+	printVValue()
+	printVValue()
+	printVValue()
 }
 
-func i0() {
-	t = time.Now()
+func incVValue() {
+	v++
 }
 
-func f3() {
-	once.Do(i0)
-	println(t.UnixNano())
+func printVValue() {
+	once.Do(incVValue)
+	println(v)
 }
+
+/*
+1
+1
+1
+*/

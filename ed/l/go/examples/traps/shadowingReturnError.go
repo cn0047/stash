@@ -21,3 +21,7 @@ func f4(n int) (v int, e error) {
 	}
 	return
 }
+
+/*
+ed/l/go/examples/traps/shadowingReturnError.go:20:3: e is shadowed during return
+*/
