@@ -100,7 +100,7 @@ SHOW ENGINE INNODB STATUS\G -- show lot of helpful info including last error
 
 SHOW OPEN TABLES from  dataBaseName; -- Show locked tables.
 
-SHOW TABLE STATUS WHERE name = 'table'; -- Info about table, with creation date.
+SHOW TABLE STATUS WHERE name = 'table'; -- Info about table: creation date, rows count.
 SELECT
     table_name, create_time
 FROM information_schema.tables

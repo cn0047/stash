@@ -56,7 +56,7 @@ export GOROOT=$HOME/go
 export GOFLAGS=-mod=vendor
 
 GOARCH=386 go build
-go build                  # Compiles and installs packages and dependencies
+go build                  # compiles and installs packages and dependencies
 go build -race ./example  #
 go build -gcflags -S z.go # assembly output
 go tool compile -S x.go   # assembly output
@@ -74,11 +74,11 @@ go env
 go env GOOS
 go env -json
 go env GOPATH
-go fmt ./...                          # Format code
-go get ./...                          # Install all project dependencies
-go golint ./...                       # Check code
-go install                            # Install packages and dependencies
-go list                               # List packages
+go fmt ./...                          # format code
+go get ./...                          # install all project dependencies
+go golint ./...                       # check code
+go install                            # install packages and dependencies
+go list                               # list packages
 go list -f '{{ join .Imports "\n" }}' # directly imported packages
 go list -f '{{ join .Deps "\n" }}'    # all subdependencies
 go list -json -f {{.Deps}} net/http
@@ -276,7 +276,6 @@ Ctx may be: WithCancel, WithDeadline, WithTimeout, or WithValue.
 #### Data types
 
 Basic types:
-
 * bool
 * string
 * int (int8 (aka byte), int16, int32 (aka rune), int64)
@@ -285,7 +284,6 @@ Basic types:
 * complex64, complex128
 
 Other types:
-
 * array
 * slice (passes by ref)
 * map (passes by ref)
@@ -296,7 +294,6 @@ Other types:
 * pointer (*passes by ref*)
 
 Comparable types:
-
 * bool
 * string
 * int
@@ -482,7 +479,6 @@ ch := make(chan type, value)
 ````
 
 Blocking channels:
-
 1. A send operation on a channel blocks until a receiver is available.
    No recipient for the value on ch - no other value can be put in the channel
 
@@ -584,16 +580,13 @@ lets the programmer set what the maximum heap size should be.
 Execution stack for goroutine = 2Kb.
 
 There are 3 places memory can be allocated:
-
 * the stack - function's parameters and local variables allocated on the stack (≈1GB limit).
   Each goroutine has its own stack.
   Goroutine stacks are allocated on the heap (‼️).
   If the stack needs to grow then heap operations (allocate new, copy old to new, free old) will occur.
-
 * the heap - does not have a single partition of allocated and free regions, set of of free regions.
   Unlike the stack, the heap is not owned by one goroutine
   (manipulating the set of free regions in the heap requires synchronization).
-
 * the data segment - this is where global variables are stored.
   Defined at compile time and therefore does not grow and shrink at runtime.
 
@@ -629,12 +622,10 @@ The core idea of TCMalloc (thread cache malloc)
 is to divide the memory into multiple levels to reduce the granularity of the lock.
 
 Inside TCMalloc memory management is divided into two parts:
-
   * thread memory:
     each memory page divided into Free List of multiple fixed allocatable size-classes;
     each thread will have a cache for small objects without locks,
     which makes it very efficient to allocate small objects (<=32K) under parallel programs;
-
   * page heap:
     when allocated Object is larger than 32K, Pages Heap is used for allocation;
     if not enough memory to allocate small objects - go to page heap for memory;
