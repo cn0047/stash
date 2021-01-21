@@ -40,7 +40,43 @@ func f2() {
 	time.Sleep(5 * time.Second)
 }
 
+func f3() {
+	timer := time.NewTimer(time.Second)
+	defer timer.Stop()
+
+	messages := make(chan int)
+	go func() {
+		for i := 0; i < 1e5; i++ {
+			time.Sleep(500 * time.Millisecond)
+			messages <- i
+		}
+		close(messages)
+	}()
+
+	for {
+		select {
+		case <-timer.C:
+			fmt.Println("Timeout")
+			return
+		case msg := <-messages:
+			fmt.Println(msg)
+			// Important.
+			if !timer.Stop() {
+				v := <-timer.C
+				fmt.Printf("timer.C=%v", v)
+			}
+		default:
+			time.Sleep(100 * time.Millisecond)
+			fmt.Print(".")
+		}
+
+		// Reset to reuse.
+		//timer.Reset(time.Second)
+	}
+}
+
 func main() {
-	f1()
+	// f1()
 	// f2()
+	f3()
 }

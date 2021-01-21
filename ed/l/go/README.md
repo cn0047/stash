@@ -3,6 +3,7 @@ Go (Golang)
 <br>1.13
 <br>1.10.1
 <br>1.9.3
+Since 2009.
 
 [doc](https://golang.org/)
 [github](https://github.com/golang/go/wiki)
@@ -580,8 +581,9 @@ lets the programmer set what the maximum heap size should be.
 Execution stack for goroutine = 2Kb.
 
 There are 3 places memory can be allocated:
-* the stack - function's parameters and local variables allocated on the stack (≈1GB limit).
+* the stack - function's parameters and local variables allocated on the stack (default maximum stack size ≈1GB limit).
   Each goroutine has its own stack.
+  The initial stack size of each goroutine is small (about 2k bytes on 64-bit systems).
   Goroutine stacks are allocated on the heap (‼️).
   If the stack needs to grow then heap operations (allocate new, copy old to new, free old) will occur.
 * the heap - does not have a single partition of allocated and free regions, set of of free regions.

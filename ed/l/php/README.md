@@ -6,6 +6,7 @@ PHP
 <br>5.4.35
 <br>5.3.3
 <br>5.1.6
+Since 1994.
 
 PHP - is high-level (not assembler), dynamic (behavior determines in runtime)
 weakly typed, object-oriented
