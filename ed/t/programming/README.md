@@ -17,14 +17,6 @@ Thread is the segment of a process, run in a shared memory space.
 A thread is an entity within a process that can be scheduled for execution.
 All threads of a process share its virtual address space and system resources.
 
-## Common stuff
-
-An `expression` evaluates to a value. A `statement` does something.
-````sh
-y = x + 1   # an expression
-print y     # a statement
-````
-
 #### Stack and Heap
 
 Stack - function's parameters and local variables allocated on the stack.
@@ -40,6 +32,14 @@ OS specifies min heap size (`ulimit` in linux).
 * lexer
 * parser
 * compiler
+
+## Common stuff
+
+An `expression` evaluates to a value. A `statement` does something.
+````sh
+y = x + 1   # an expression
+print y     # a statement
+````
 
 ## Paradigms
 
