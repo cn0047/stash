@@ -1,3 +1,8 @@
+// Quick sort (reqursive).
+// Worst case = O(n^2).
+// Average case = O(n log n).
+// Best case = O(n log n).
+// Space required = O(n).
 package main
 
 import (

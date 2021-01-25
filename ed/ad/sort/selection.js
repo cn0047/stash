@@ -1,3 +1,12 @@
+// Selection sort.
+// Worst case = O(n^2).
+// Average case = O(n^2).
+// Best case = O(n^2).
+// Space required = O(n).
+// Good for small arrays. Bad for big arrays.
+// In practice it better than bubble sort but worst than insertion sort.
+// Don't do many swaps but do lot of comparisons.
+//
 // The plan:
 // start from begin of array,
 // check first array element with all elements and find the smallest one

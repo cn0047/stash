@@ -1,3 +1,11 @@
+// Merge sort (reqursive).
+// @see: https://upload.wikimedia.org/wikipedia/commons/c/cc/Merge-sort-example-300px.gif
+// Worst case = O(n log n),(less than O(n^2)).
+// Average case = O(n log n).
+// Best case = O(n log n).
+// Space required = O(n)
+// Provides ability to perform sub-sorts in parallel.
+// Predicteble algorithm because only size of array influence performance.
 package main
 
 import (

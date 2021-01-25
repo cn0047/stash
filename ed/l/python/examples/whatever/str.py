@@ -38,8 +38,15 @@ def concat():
   print('foo '+'bar') # foo bar
 
 
+def to_str():
+  data = ['foo', 'bar']
+  s = ','.join('{"'+v+'":"yes"}' for v in data)
+  print(f'result: [{s}]')
+
+
 # f1()
 # f2()
 # multi_line_format()
 # multi_line_concat()
-concat()
+# concat()
+to_str()

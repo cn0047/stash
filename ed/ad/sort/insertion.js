@@ -1,3 +1,11 @@
+// Insertion sort.
+// @see https://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif
+// Worst case = O(n^2).
+// Average case = O(n^2).
+// Best case = O(n).
+// Good for small arrays. Bad for big arrays.
+// No extra memory allocations needed for insertion sort!
+//
 // The plan:
 // just like sorting bunch of cards in hands.
 function insertionSort(arr) {

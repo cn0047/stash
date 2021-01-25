@@ -1,3 +1,4 @@
+// Worst case = O(n log n).
 package main
 
 import (

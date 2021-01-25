@@ -1,5 +1,5 @@
 /**
- * Kadane's algorithm
+ * Kadane's algorithm.
  */
 
 var f = function (a) {

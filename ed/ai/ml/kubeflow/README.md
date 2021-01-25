@@ -70,4 +70,21 @@ run = client.run_pipeline(
     pipeline_id=PIPELINE_ID,
 )
 
+# Sidecar
+sc1 = dsl.Sidecar(
+    name='sc1',
+    image='cn007b/alpine',
+    args=[
+        "/bin/sh",
+        "-c",
+        "curl -i -XPOST 'https://realtimelog.herokuapp.com:443/rkc8q6llprn' -H 'Content-Type: application/json' -d '{\"status\": \"204\"}'",
+    ]
+)
+op = dsl.ContainerOp(
+    name='op1',
+    image='cn007b/alpine',
+    command=['sh', '-c'],
+    arguments=['while true; do echo `date`; sleep 0.5; done'],
+    sidecars=[sc1],
+)
 ````

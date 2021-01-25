@@ -1,3 +1,11 @@
+// Bubble sort.
+// @see: https://upload.wikimedia.org/wikipedia/commons/c/c8/Bubble-sort-example-300px.gif
+// Worst case = O(n^2).
+// Average case = O(n^2).
+// Best case = O(n).
+// Good for small arrays. Bad for big arrays.
+// No extra memory allocations needed for bubble sort!
+//
 // The plan:
 // start from begin of array,
 // check two adjacent elements and move bigger to right,
