@@ -13,9 +13,9 @@ Primary concerns:
 
 CAP Theorem states that in a distributed system,
 it is impossible to simultaneously guarantee all of the following (pick 2out of 3):
-* Consistency
-* Availability
-* Partition tolerance
+* Consistency - data is the same across the cluster.
+* Availability - ability to access cluster even if node goes down.
+* Partition tolerance - cluster continues to function even if communication break between 2 nodes.
 
 Storage Scalability:
 * What is the amount of data that we need to store?

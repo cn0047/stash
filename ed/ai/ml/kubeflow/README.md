@@ -71,20 +71,23 @@ run = client.run_pipeline(
 )
 
 # Sidecar
+from kubernetes.client.models import V1Volume
 sc1 = dsl.Sidecar(
     name='sc1',
     image='cn007b/alpine',
     args=[
-        "/bin/sh",
-        "-c",
-        "curl -i -XPOST 'https://realtimelog.herokuapp.com:443/rkc8q6llprn' -H 'Content-Type: application/json' -d '{\"status\": \"204\"}'",
-    ]
+        'tail -f /tmp/x.log',
+    ],
+    mirror_volume_mounts=True,
 )
 op = dsl.ContainerOp(
     name='op1',
     image='cn007b/alpine',
     command=['sh', '-c'],
-    arguments=['while true; do echo `date`; sleep 0.5; done'],
+    arguments=['while true; do echo `date`; echo `date` >> /tmp/x.log ; sleep 0.5; done'],
     sidecars=[sc1],
+    pvolumes={
+        '/tmp': dsl.PipelineVolume(volume=V1Volume(empty_dir={}, name='tmp')),
+    },
 )
 ````

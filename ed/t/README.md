@@ -17,6 +17,8 @@ Theory
 <br>BLOB    - Binary Large Object.
 <br>CRM     - Customer relationship management.
 <br>DRY     - Don't repeat yourself.
+<br>ERP     - Enterprise Resource Planning.
+<br>ETL     - Extract, Transform, Load.
 <br>GMT     - Greenwich Mean Time.
 <br>GTIN    - Global Trade Item Number.
 <br>GUI     - Graphical user interface.
