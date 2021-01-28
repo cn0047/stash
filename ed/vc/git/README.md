@@ -80,6 +80,9 @@ git pull upstream master
 
 # cleanup unnecessary files and optimize the local repository
 git gc --aggressive
+
+git reset x.go         # is the opposite of git add x.go
+git reset --soft HEAD^ # undo a commit (delete accidentally committed file)
 ````
 
 #### rebase
