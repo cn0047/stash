@@ -88,6 +88,7 @@ go list ...
 go run --work ed/go/examples/whatever/hw.go # see the location of temporary exec file
 go run -race ed/go/examples/whatever/hw.go
 go vet # examines Go coge, reports suspicious constructs (Printf with wrong arguments).
+go vet -all ./...
 go bug # creates issue on github
 godoc -http=:6060 -goroot=$PWD
 go tool fix # finds Go programs that use old APIs and rewrites them to use newer ones

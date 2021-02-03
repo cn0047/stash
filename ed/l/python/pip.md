@@ -24,6 +24,7 @@ pip3 install /app/my_prj
 pip3 install tensorflow==1.14 --force-reinstall
 
 pip3 uninstall requests
+pip3 uninstall -y numpy
 
 pip3 config -v list
 

@@ -53,6 +53,7 @@ which software the init command launches or shuts off on a given runlevel.
 /media                                  #
 /opt                                    # optional software directory
 /proc/$pid/                             # $pid process related stuff
+/proc/$pid/cmdline                      # $pid process full command line
 /proc/$pid/fd/0                         # $pid process stdin
 /proc/$pid/fd/1                         # $pid process stdout
 /proc/$pid/fd/2                         # $pid process stderr

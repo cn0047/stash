@@ -6,7 +6,7 @@ Security
 [vulnerabilities](http://cve.mitre.org/) [and](https://cwe.mitre.org/)
 [twitter](https://twitter.com/MisterRobot245/following/)
 [check dns](https://dnsspy.io/)
-[check site](https://observatory.mozilla.org/)
+[check site](https://observatory.mozilla.org/) [and](https://securityheaders.com)
 [check headers](https://securityheaders.com)
 [security platform](https://www.hackerone.com/)
 [exploits](https://www.exploit-db.com/)

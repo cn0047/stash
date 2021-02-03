@@ -86,24 +86,24 @@ that is used in order to take the sorted set ordered.
 Can be at max 512 Megabytes in length.
 
 ````sh
-lpush mylist 0     # insert at the head of the list
-lpop mylist        # delete from head
-rpush mylist A     # insert at the tail of the list
-rpush mylist B
-rpush mylist C
-rpush mylist End
-rpop mylist        # delete from tail
-ltrim mylist 0 2   # trim from 0 element to 2nd element including (length will be 3)
-lrange mylist 0 -1 # print all values in a list
-llen mylist        # list length
+lpush  mylist 0     # insert at the head of the list
+lpop   mylist       # delete from head
+rpush  mylist A     # insert at the tail of the list
+rpush  mylist B
+rpush  mylist C
+rpush  mylist End
+rpop   mylist       # delete from tail
+ltrim  mylist 0 2   # trim from 0 element to 2nd element including (length will be 3)
+lrange mylist 0 -1  # print all values in a list
+llen   mylist       # list length
 
 # circular buffer, with length 3
-lpush mylist 1
-lpush mylist 2
-lpush mylist 3
-lpush mylist 4
+lpush  mylist 1
+lpush  mylist 2
+lpush  mylist 3
+lpush  mylist 4
 lrange mylist 0 -1
-ltrim mylist 0 2
+ltrim  mylist 0 2
 ````
 
 #### Hash:

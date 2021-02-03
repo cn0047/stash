@@ -13,7 +13,7 @@ COMMIT;
 ````
 
 ### Transaction Isolation Levels:
-* Read uncommitted
-* Read committed (default)
-* Repeatable read
-* Serializable (strictest)
+* Read uncommitted.
+* Read committed (default).
+* Repeatable read.
+* Serializable (strictest).

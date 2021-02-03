@@ -35,7 +35,10 @@ OS specifies min heap size (`ulimit` in linux).
 
 ## Common stuff
 
-An `expression` evaluates to a value. A `statement` does something.
+An `expression` evaluates to a value.
+A `statement` does something.
+`...` - spread operator in variadic function.
+
 ````sh
 y = x + 1   # an expression
 print y     # a statement
