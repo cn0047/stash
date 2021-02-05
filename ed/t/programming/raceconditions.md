@@ -19,6 +19,8 @@ When memcache expires data for heavy query - few threads may run heavy query sim
 * Daylight saving time.
 * Nepal Time UTC/GMT+05:45.
 
+Always benchmark in nanoseconds it's more accurate that milliseconds and microseconds.
+
 #### MySql
 
 Optimistic Locking.

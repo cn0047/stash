@@ -30,6 +30,7 @@ Content-Type: application/x-thrift
 {"str":"this is string"}
 
 {"lst":["str",2,"tag1","tag2"]}                     # list of strings with length 2
+{"set":["str",1,"tag1"]}                            #
 {"set":["rec",1,{"1":{"str":"foo"},"2":{"i32":9}}]} # set with 2 items
 {"map":["str","str",1,{"en":"title"}]}              # map
 {"map":["str","rec",1,{"en":{"1":{"str":"msg"}}}]}  # map
