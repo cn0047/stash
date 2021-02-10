@@ -3,7 +3,8 @@ OAuth2
 
 OpenID needed to understand who user is.
 
-OAuth2 it's about delegated authorization.
+OAuth2 it's about delegated authorization, for example:
+facebook delegates permissions via token to perform certain actions on user's behalf.
 It's simplified version of OAuth.
 
 OAuth2 - is not protocol, because big companies (google, facebook, etc) made own changes that's why it's framework.

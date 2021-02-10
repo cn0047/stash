@@ -70,6 +70,9 @@ git remote set-url origin git+ssh://git@github.com/cn007b/my.git
 # grab commit from another branch into current
 git cherry-pick hash-to-commit
 
+# develop - merge with squash
+# master  - merge with fastforward
+git merge
 # in case of conflicts during merge:
 git merge --abort
 

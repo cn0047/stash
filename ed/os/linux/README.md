@@ -52,18 +52,33 @@ which software the init command launches or shuts off on a given runlevel.
 /etc/ttys                               # logged in users
 /media                                  #
 /opt                                    # optional software directory
-/proc/$pid/                             # $pid process related stuff
-/proc/$pid/cmdline                      # $pid process full command line
-/proc/$pid/fd/0                         # $pid process stdin
-/proc/$pid/fd/1                         # $pid process stdout
-/proc/$pid/fd/2                         # $pid process stderr
+/proc                                   # mount point for procfs
+/proc/$pid/                             # process related stuff
+/proc/$pid/cmdline                      # process full command line
+/proc/$pid/cwd                          # cwd for process
+/proc/$pid/environ                      # env vars for process
+/proc/$pid/fd                           # open file descriptors
+/proc/$pid/fd/0                         # process stdin
+/proc/$pid/fd/1                         # process stdout
+/proc/$pid/fd/2                         # process stderr
+/proc/$pid/fd/2                         # process stderr
+/proc/$pid/mem                          # virtual memory for process
+/proc/$pid/root                         # root for process
+/proc/$pid/status                       # status about process
+/proc/$pid/statm                        # mem stats about process
 /proc/cpuinfo                           # info about cpu
 /proc/meminfo                           # info about memory (+ memory usage)
+/proc/net                               # network
+/proc/malloc                            #
+/proc/stat                              # system stats
 /proc/net/ip_vs                         #
+/proc/sys/kernel                        # kernel parameters
 /proc/sys/fs/file-max                   # ↓
 /proc/sys/kernel/random/entropy_avail   # entropy pool size
 /proc/sys/net/core/somaxconn            # ↓
 /proc/sys/net/ipv4/tcp_keepalive_time   # current tcp_keepalive_time value
+/proc/zoneinfo                          # info about virtual memory zones
+/proc/version                           # kernel version
 /sys/devices/system/cpu/cpu[0-7]        #
 /usr/bin                                #
 /usr/lib/pkgconfig                      # dir for pkgconfig files
