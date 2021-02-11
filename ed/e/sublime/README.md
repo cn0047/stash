@@ -22,3 +22,12 @@ subl /Users/$u/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Subli
 # keys
 ALT+CMD+O # Insert key
 ````
+
+Quick File Open settings:
+````
+{
+  "files": [
+    "/Users/k/web/..."
+  ]
+}
+````
