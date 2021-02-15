@@ -22,6 +22,9 @@ twurl /1.1/statuses/user_timeline.json | jq
 ````
 
 ````bash
+# not working now
+# curl -X GET 'http://search.twitter.com/search.json?q=007'
+
 # tweet text msg
 twurl -X POST -H api.twitter.com "/1.1/statuses/update.json?status=Hello! This Tweet was sent via the Twitter API." | jq
 

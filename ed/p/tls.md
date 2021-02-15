@@ -44,7 +44,7 @@ Certificate types: self-signed and wildcard (`*.kint.com`)
    and transmits it to the server.
 5. Server decrypt pre-master and generates symmetric key.
    Now both client and server have symmetric key (session key).
-5. SSL is established and secure communication begins.
+5. TLS is established and secure communication begins.
 
 Step 3:
 Browsers have public keys for all of the major Certificate Authorities,

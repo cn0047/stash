@@ -35,6 +35,8 @@ python3 # REPL
 cd ed/l/python/examples/whatever
 python3 -m unittest
 python -c 'print(200)'
+
+python -m CGIHTTPServer 8080
 ````
 
 ````py

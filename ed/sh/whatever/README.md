@@ -99,6 +99,7 @@ ping 8.8.8.8 -c 15
 traceroute http://cn007b.tumblr.com # print the route packets take to network host
 nslookup git.mdm.comodo.od.ua
 host github.com # Shows ip by host.
+host -t A github.com
 dig domain
 whois ip
 nmap --script=http-headers www.zii.com # scan ports

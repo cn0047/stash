@@ -6,6 +6,8 @@ HTTPS - HyperText Transfer Protocol Secure
 [http vs https](https://www.httpvshttps.com/)
 [test ssl](https://www.ssllabs.com/ssltest/)
 
+Encrypts headers and body.
+
 The main point of HTTPS is
 authentication of the visited website and protection of the privacy and integrity of the exchanged data.
 HTTPS creates a secure channel over an insecure network.
