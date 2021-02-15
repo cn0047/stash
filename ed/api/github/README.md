@@ -12,7 +12,6 @@ Don't forget to hit "Squash and merge" instead of "Merge pull request" for pr wi
 # ~/.ssh/config
 Host github.com
   IdentityFile ~/.ssh/id_rsa_my
-
 ````
 
 ````sh
