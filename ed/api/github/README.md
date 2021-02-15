@@ -8,7 +8,14 @@ GitHub
 
 Don't forget to hit "Squash and merge" instead of "Merge pull request" for pr with > 1 commits.
 
-````bash
+````sh
+# ~/.ssh/config
+Host github.com
+  IdentityFile ~/.ssh/id_rsa_my
+
+````
+
+````sh
 curl -i https://api.github.com/users
 
 curl https://api.github.com/users/cn007b
