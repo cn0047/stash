@@ -5,7 +5,6 @@ Elasticsearch
 <br>1.6.0
 
 [docs](https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html)
-[Mapping Field datatypes](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html)
 [Mapping Params](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-params.html)
 [Mapping Meta fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-fields.html).
 [Groovy](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-scripting.html#_document_fields).
@@ -41,6 +40,24 @@ Elasticsearch optimizes numeric fields, such as `integer or long`, for `range` q
 Instead, `text` fields use a query-time in-memory data structure called `fielddata`.
 This data structure is built on demand the first time that a field is used for aggregations,
 sorting, or in a script.
+
+#### Mapping Field data types
+
+[docs](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html)
+
+binary
+boolean
+keyword - ID, email, hostname, etc.
+long
+double
+alias - alias for an existing field.
+
+object -  inner object.
+flattened - JSON object as single field value.
+nested - arrays of objects.
+join - parent/child relationship.
+
+...
 
 #### Versioning
 

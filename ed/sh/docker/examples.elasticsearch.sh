@@ -2,9 +2,24 @@
 
 #### ES cluster v7
 
-docker run -it --rm -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" --name es \
+img=docker.elastic.co/elasticsearch/elasticsearch:7.5.1
+img=elasticsearch:7.1.1
+docker run -it --rm -p 9200:9200 -p 9300:9300 --name es \
   -v $PWD/.data/.docker/elasticsearch:/usr/share/elasticsearch/data \
-  elasticsearch:7.1.1
+  --memory=1024m \
+  -e http.host=0.0.0.0 \
+  -e http.publish_host=127.0.0.1 \
+  -e network.publish_host=127.0.0.1 \
+  -e transport.host=127.0.0.1 \
+  -e ES_JAVA_OPTS="-Xms512m -Xmx512m" \
+  -e discovery.type=single-node \
+  -e discovery.zen.minimum_master_nodes=1 \
+  -e http.port=9200 \
+  -e xpack.security.enabled=false \
+  -e xpack.monitoring.enabled=false \
+  -e xpack.graph.enabled=false \
+  -e xpack.watcher.enabled=false \
+  $img
 
 #### ES cluster v5
 

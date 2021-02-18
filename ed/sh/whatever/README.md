@@ -750,6 +750,7 @@ size filename
 get filename    # receive file
 recv filename   # receive file
 delete filename
+rename from to  # rename
 
 bye             # exit
 close
