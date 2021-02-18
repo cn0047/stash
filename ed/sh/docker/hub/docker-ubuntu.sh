@@ -6,6 +6,7 @@ version=17.10
 version=18.04
 version=18.04-video
 version=20.04
+version=20.04-protobuf-3
 docker build -t cn007b/ubuntu:$version docker/$version
 
 # check
@@ -38,17 +39,13 @@ docker run -ti --rm cn007b/ubuntu:$version sh -c 'hash dstat'
 docker run -ti --rm cn007b/ubuntu:$version sh -c 'hash iotop'
 docker run -ti --rm cn007b/ubuntu:$version sh -c 'hash cbm'
 docker run -ti --rm cn007b/ubuntu:$version sh -c 'hash mpstat'
+# check protobuf-3
+docker run -ti --rm cn007b/ubuntu:$version sh -c 'hash protoc'
+docker run -ti --rm cn007b/ubuntu:$version sh -c 'hash clang-format'
 
 # video
 docker run -ti --rm cn007b/ubuntu:$version ffmpeg -version \
   2>&1 1>/dev/null && if [[ $? -eq 0 ]]; then echo -e "\033[32mok\033[0m"; else echo -e "\033[31merr\033[0m"; fi
-
-# protobuf-3
-docker build -t cn007b/ubuntu:$version-protobuf-3 docker/$version-protobuf-3
-# check
-docker run -ti --rm cn007b/ubuntu:$version-protobuf-3 protoc --version
-# push
-docker push cn007b/ubuntu:$version-protobuf-3
 
 # push
 docker push cn007b/ubuntu:$version

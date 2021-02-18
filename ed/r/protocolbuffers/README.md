@@ -24,6 +24,13 @@ Protocol Buffers are not designed to handle large messages.
 If you are dealing in messages larger than a megabyte each,
 it may be time to consider an alternate strategy.
 
+````sh
+message Job {
+  reserved 20;
+  string id = 1;
+}
+````
+
 #### shell
 
 ````sh
