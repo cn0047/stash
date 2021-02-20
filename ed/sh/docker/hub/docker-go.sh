@@ -10,6 +10,7 @@ version=1.13-neo4j
 version=1.14
 version=1.14-alpine
 version=1.15
+version=1.16-protobuf
 docker build -t cn007b/go:$version ./docker/$version
 # check
 docker run -it --rm cn007b/go:$version sh -c 'hash go'

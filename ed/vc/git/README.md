@@ -56,6 +56,18 @@ git commit -m "PROJ-123 my comment..." # for JIRA
 git commit --amend # update commit message
 git commit --amend --author="V.Kovpak <cn007b@gmail.com>"
 
+git log -2                # last 2 commits
+git log -p                # shows commits & code in commit
+git log --stat            # statiistic about changes
+git log --no-meges        # log without merges
+git log --follow file.txt # viewing history of deleted files !!!
+git log --author=Jack
+git log --date=short --no-merges --shortstat
+
+git diff --cached or diff --staged # after git add shows diff
+git diff branch..subBrach
+git diff branch:file file # !!!
+
 # remove untracked files
 git clean -fd
 
@@ -86,6 +98,28 @@ git gc --aggressive
 
 git reset x.go         # is the opposite of git add x.go
 git reset --soft HEAD^ # undo a commit (delete accidentally committed file)
+````
+
+#### branch
+
+````sh
+git checkout --track -b master origin/master
+git checkout --track -b develop origin/develop
+
+git branch develop --set-upstream-to origin/develop
+
+git show branchName
+git rev-parse HEAD # current commit hash
+git rev_parse branch
+git brnach
+git rev-parse --abbrev-ref HEAD # branch name only
+git branch --no-merged
+git branch --merged                               # branches merged with current
+git branch -v                                     # all branches Y last branch commit
+git branch -vv                                    # + tracking remote branch
+git push remoteRepoName pushedBranch
+git push remoteRepoName pushedBranch:newBranchName
+git push remoteRepoName :branch                   # delete branch from remote repo
 ````
 
 #### rebase
@@ -136,47 +170,13 @@ git bisect good
 git bisect reset
 ````
 
-#### diff
+#### submodule
 
 ````sh
-git diff --cached or diff --staged # after git add shows diff
-git diff branch..subBrach
-git diff branch:file file # !!!
-````
-
-#### log
-
-````sh
-git log -2                # last 2 commits
-git log -p                # shows commits & code in commit
-git log --stat            # statiistic about changes
-git log --no-meges        # log without merges
-git log --follow file.txt # viewing history of deleted files !!!
-git log --author=Jack
-
-git log --date=short --no-merges --shortstat
-````
-
-#### branch
-
-````sh
-git checkout --track -b master origin/master
-git checkout --track -b develop origin/develop
-
-git branch develop --set-upstream-to origin/develop
-
-git show branchName
-git rev-parse HEAD # current commit hash
-git rev_parse branch
-git brnach
-git rev-parse --abbrev-ref HEAD # branch name only
-git branch --no-merged
-git branch --merged                               # branches merged with current
-git branch -v                                     # all branches Y last branch commit
-git branch -vv                                    # + tracking remote branch
-git push remoteRepoName pushedBranch
-git push remoteRepoName pushedBranch:newBranchName
-git push remoteRepoName :branch                   # delete branch from remote repo
+git submodule init
+git submodule update
+git submodule sync --recursive
+git submodule update --init --recursive
 ````
 
 #### config

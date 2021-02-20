@@ -90,6 +90,7 @@ F12 # Sound up
 brew ls
 brew services list
 
+brew info xdebug
 brew search xdebug
 
 brew install grc # colors in terminal

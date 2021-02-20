@@ -31,6 +31,7 @@ docker run -it --rm --net=xnet -v $PWD:/gh -w /gh xpy /bin/bash
 # ubuntu
 docker pull cn007b/ubuntu
 docker tag cn007b/ubuntu xubuntu
+docker tag cn007b/ubuntu:20.04-protobuf-3 xubuntu
 docker run -it --rm --net=xnet -v $PWD:/gh -w /gh xubuntu /bin/bash
 
 # debian
