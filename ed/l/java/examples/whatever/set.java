@@ -1,6 +1,8 @@
 import java.util.Arrays;
 import java.util.Set;
+import java.util.Set;
 import java.util.HashSet;
+import java.util.stream.Collectors;
 
 public class set
 {
@@ -10,7 +12,25 @@ public class set
         // inSet();
         // inHashSet();
         // loop();
-        len();
+        // len();
+        fromIntSetToStrSet();
+    }
+
+    public static void fromIntSetToStrSet()
+    {
+        Set<Integer> si = getIntSet();
+        Set<String> ss = si.stream().map(String::valueOf).collect(Collectors.toSet());
+        System.out.println(si);
+        System.out.println(ss);
+    }
+
+    public static Set<Integer> getIntSet()
+    {
+        Set<Integer> s = new HashSet<>();
+        s.add(1);
+        s.add(2);
+        s.add(3);
+        return s;
     }
 
     public static void len()

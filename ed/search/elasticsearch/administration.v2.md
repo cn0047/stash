@@ -77,10 +77,10 @@ curl -XPOST '$h/_shutdown'
 curl $h'/_cat/health?v'
 
 # show shards
-curl $h/_cat/shards?v
+curl "$h/_cat/shards?v"
 
 # master
-curl $h/_cat/master?v
+curl "$h/_cat/master?v"
 
 # node
 curl $h/_cat/nodeattrs?v
@@ -98,16 +98,16 @@ curl $h'/_nodes/stats/process?pretty' | jq
 
 # Local
 curl $h/_nodes/_local?pretty
-curl $h/_cluster/health?pretty
+curl "$h/_cluster/health?pretty"
 
-curl -XGET $h/_cluster/stats?pretty
+curl "$h/_cluster/stats?pretty"
 
-curl -XGET $h/_nodes?pretty
+curl $h/_nodes?pretty
 
-curl -XGET $h/_nodes/stats?pretty
+curl $h/_nodes/stats?pretty
 
 # Cluster Settings
-curl -XGET $h/_cluster/settings | jq
+curl $h/_cluster/settings | jq
 
 # Cluster Update Settings
 # temporary
@@ -124,7 +124,7 @@ curl -XPUT $h/_cluster/settings -d '{
 }'
 
 # tasks
-curl -XGET $h/_tasks?pretty
+curl $h/_tasks?pretty
 ````
 
 ````sh
@@ -141,16 +141,17 @@ curl -XDELETE $h/$idx -H $jh -d '{
 
 # get index settings
 curl "$h/$idx/_settings?pretty"
-# or
+
+# get all indexes
 # BEST ONE + SIZES !!! 👍
 curl "$h/_cat/indices?v"
 
 # get all mappings (types)
-curl -XGET $h/_mapping
+curl $h/_mapping
 
 # get mapping
-curl -XGET $h/$idx/_mapping/$type
-curl -XGET $h/$idx/_mapping
+curl $h/$idx/_mapping/$type
+curl $h/$idx/_mapping
 
 # put mapping for employee
 curl -XPUT $h/$idx/_mapping/$type -d '{

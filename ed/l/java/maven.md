@@ -13,5 +13,8 @@ mvn package
 
 mvn dependency:tree
 
+mvn test
+mvn test -Dtest=MyTest
+
 ls $HOME/.m2
 ````
