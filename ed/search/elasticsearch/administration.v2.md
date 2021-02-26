@@ -195,6 +195,12 @@ curl -XPOST $h/_aliases -d '{
 ]
 }'
 
+# update alias
+curl -XPUT $h/$idx/_alias/$a
+
+# delete alias
+curl -XPUT $h/$idx/_alias/$a
+
 # get aliases
 curl "$h/_alias/" | jq
 curl "$h/_cat/aliases?v"
