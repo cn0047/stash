@@ -50,3 +50,8 @@ Load average - The average number of processes sitting in the ready queue waitin
 
 * Asymmetric multiprocessing.
 * Symmetric multiprocessing, SMP.
+
+#### Arch
+
+* x86: Intel, AMD; CISC - Complex Instruction Set Computer;
+* ARM: ; RISC - Reduced Instruction Set Computing;
