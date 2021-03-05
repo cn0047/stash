@@ -76,4 +76,26 @@ curl -XPOST 'localhost:9200/megacorp/employee/2/_update' -d '{
         "params" : {"tag" : "rock music"}
     }
 }'
+
+
+
+# just example
+def found = -1;
+  for (int i = 0; i < ctx._source.arr.length; ++i) {
+    if (ctx._source.arr[i].id==params.id) {
+      found=i;
+    }
+  }
+  if (ctx._source.id == "" || ctx._source.id.compareTo(params.id) > 0 ) {
+    ctx._source.id = params.id;
+  } else if (ctx._source.id == params.id && ctx._source.rev <= params.rev ) {
+    ctx._source.id = params.id;
+  }
+  if (found==-1) {
+    ctx._source.arr.add(params.id);
+  } else if (ctx._source.arr[found].rev < params.rev) {
+    ctx._source.arr[found]=params
+  }
+  long seven_days_ago = Instant.ofEpochMilli(params.now).minus(7, ChronoUnit.DAYS).toEpochMilli();
+  ctx._source.arr.removeIf(doc -> doc.created_at_ms != null && doc.created_at_ms < seven_days_ago);
 ````

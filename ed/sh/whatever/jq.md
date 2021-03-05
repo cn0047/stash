@@ -29,11 +29,15 @@ jq type # simple way to check JSON validity
 ... | jq '.[]|= keys'          # 1st level keys
 ... | jq -r '.taskArns[0]'     # string without quotes
 
-echo '{"foo": "f", "bar": "b", "items": [1, 2, 3] }' | jq # prettify json output
-echo '{"foo": "f", "bar": "b", "items": [1, 2, 3] }' | jq '.items | length' # count
-echo '{"foo": "f", "bar": "b", "items": [1, 2, 3] }' | jq '.items | last'   # 3
-echo '[{"n":"foo"},{"n":"bar"}]' | jq '.[].n'     # foo \n bar
-echo '{"arr": [0, 1, "a", "b"]}' | jq '.arr[2:]'  # ["a","b"]
+o='{"foo": "f", "bar": "b", "items": [1, 2, 3] }'
+echo $o | jq                                # prettify json output
+echo $o | jq '.items | length'              # count
+echo $o | jq '.items | last'                # 3
+echo $o | jq '.items | map(select(. >= 2))' # [2,3]
+
+echo '{"arr": [0, 1, "a", "b"]}' | jq '.arr[2:]'                    # ["a","b"]
+echo '[{"n":"foo"},{"n":"bar"}]' | jq '.[].n'                       # foo \n bar
+echo '[{"n":"foo"},{"n":"bar"}]' | jq '.[] | select(.n == ("foo"))' # {"n": "foo"}
 
 cat data.json \
 | jq '.gcp_price_list | del(.sustained_use_base,.sustained_use_tiers) | .[] | keys[]' \

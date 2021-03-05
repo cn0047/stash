@@ -14,14 +14,12 @@ host stackoverflow.com
 
 Filter:
 
-`frame contains pluralsight.com`
-
 ````sh
-env SSLKEYLOGFILE='/path/to/sslkey.log'
-# and specify this file in Preferences -> Protocols -> SSL
+frame contains pluralsight.com
 ````
 
 HTTPS:
+
 ````sh
 # 1
 SSLKEYLOGFILE=/tmp/https.log open /Applications/Firefox.app

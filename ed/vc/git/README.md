@@ -177,6 +177,9 @@ git submodule init
 git submodule update
 git submodule sync --recursive
 git submodule update --init --recursive
+
+git submodule status
+git submodule update --remote --recursive
 ````
 
 #### config

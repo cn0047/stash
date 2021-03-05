@@ -54,7 +54,7 @@ alias - alias for an existing field.
 
 object -  inner object.
 flattened - JSON object as single field value.
-nested - arrays of objects.
+nested - array of objects.
 join - parent/child relationship.
 
 ...

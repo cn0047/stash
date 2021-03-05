@@ -26,6 +26,7 @@ export GOFLAGS=-mod=readonly
 export GOFLAGS=-mod=vendor
 export GOFLAGS=-mod=
 
+# to fix error: fatal: could not read Username for 'https://*.com': terminal prompts disabled
 git config --global url."git@github.com:".insteadOf "https://github.com/"
 git config --global url."git@bitbucket.org:".insteadOf "https://bitbucket.org/"
 

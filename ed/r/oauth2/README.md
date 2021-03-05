@@ -1,5 +1,7 @@
-OAuth2
+OAuth
 -
+<br>OAuth1
+<br>OAuth2
 
 OpenID needed to understand who user is.
 
@@ -10,6 +12,14 @@ It's simplified version of OAuth.
 OAuth2 - is not protocol, because big companies (google, facebook, etc) made own changes that's why it's framework.
 
 `Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9` works only with SSL.
+
+````
+ConsumerKey.
+ConsumerSecret.
+Realm - realm of authorization.
+Signer - OAuth1 Signer (HMAC-SHA1, HMAC-SHA256).
+Noncer - creates request nonces.
+````
 
 Example (Facebook):
 

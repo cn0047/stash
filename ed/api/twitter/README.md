@@ -2,7 +2,8 @@ twitter
 -
 
 [api](https://apps.twitter.com)
-[dev](dev.twitter.com)
+[dev](https://dev.twitter.com)
+[new app](https://dev.twitter.com/apps/new)
 
 ````bash
 # to see tweet on twitter
