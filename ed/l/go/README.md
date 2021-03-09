@@ -109,6 +109,9 @@ ptrace
 ````
 
 ````golang
+// +build tools
+// ↑ ⚠️ build tag comment: ensures file.go won't be compiled into the binary
+
 import (
     "fmt"
     "os"

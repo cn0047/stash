@@ -26,8 +26,12 @@ Boolean:
 * filter - must appear in result but result not scored.
 
 ````sh
+h=localhost:9200
+idx=megacorp
+t=employee
+
 # Get employee 1
-curl -XGET localhost:9200/megacorp/employee/1
+curl -XGET $h/$idx/$t/1
 
 # Multi get
 curl 'localhost:9200/_mget?pretty' -d '{
@@ -39,53 +43,55 @@ curl 'localhost:9200/_mget?pretty' -d '{
 }'
 
 # Multi get by certain index and type
-curl 'localhost:9200/megacorp/employee/_mget?pretty' -d '{
+curl '$h/$idx/$t/_mget?pretty' -d '{
     "docs" : [{"_id" : "1"}, {"_id" : "2"}]
 }'
 # or
-curl 'localhost:9200/megacorp/employee/_mget?pretty' -d '{
+curl '$h/$idx/$t/_mget?pretty' -d '{
     "ids" : ["1", "2"]
 }'
 ````
 
 ````sh
 # find all employee
-curl -XGET localhost:9200/megacorp/employee/_search
+curl -XGET "$h/$idx/$t/_search"
+# or
+curl "$h/$idx/_search?pretty=true&q=*:*"
 
-curl -XGET localhost:9200/megacorp/employee/_search?q=last_name:Smith
+curl -XGET $h/$idx/$t/_search?q=last_name:Smith
 
 # validate query
-curl -XGET localhost:9200/megacorp/employee/_validate/query -d '{
+curl -XGET $h/$idx/$t/_validate/query -d '{
     "query": {"match_all" : {}}
 }'
 
 # calculate count of all documents
-curl -XGET localhost:9200/megacorp/employee/_count -d '{
+curl -XGET $h/$idx/$t/_count -d '{
     "query": {"match_all" : {}}
 }'
 
 # explain
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
+curl -XGET $h/$idx/$t/_search -d '{
     "explain": true,
     "query": {"match_all" : {}}
 }'
 # or
-curl -XGET localhost:9200/megacorp/employee/4/_explain?q=first_name:Louis&pretty
+curl -XGET $h/$idx/$t/4/_explain?q=first_name:Louis&pretty
 
 # profile
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
+curl -XGET $h/$idx/$t/_search -d '{
     "profile": true,
     "query": {"match_all" : {}}
 }'
 
 # version for each search hit
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
+curl -XGET $h/$idx/$t/_search -d '{
     "version": true,
     "query": {"match_all" : {}}
 }'
 
 # Search by AND condition
-curl -XPOST 'localhost:9200/megacorp/employee/_search?pretty' -d '{
+curl -XPOST '$h/$idx/$t/_search?pretty' -d '{
   "query": {
     "bool": {
       "must": [
@@ -97,7 +103,7 @@ curl -XPOST 'localhost:9200/megacorp/employee/_search?pretty' -d '{
 }'
 
 # Search all and filter result by AND condition
-curl -XGET localhost:9200/megacorp/employee/_search?pretty -d '{
+curl -XGET $h/$idx/$t/_search?pretty -d '{
     "fields": ["last_login_at", "age"],
     "query" : {
         "bool": {
@@ -111,7 +117,7 @@ curl -XGET localhost:9200/megacorp/employee/_search?pretty -d '{
 }'
 
 # Array interests contains sports and music
-curl -XPOST 'localhost:9200/megacorp/employee/_search?pretty' -d '{
+curl -XPOST '$h/$idx/$t/_search?pretty' -d '{
   "query": {
     "bool": {
       "must": [
@@ -122,7 +128,7 @@ curl -XPOST 'localhost:9200/megacorp/employee/_search?pretty' -d '{
   }
 }'
 # or (using query_string)
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
+curl -XGET $h/$idx/$t/_search -d '{
 "query" : {
     "query_string": {
       "query": "(interests:sports AND interests:music)"
@@ -131,7 +137,7 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
 }'
 
 # Array interests contains sports or music
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
+curl -XGET $h/$idx/$t/_search -d '{
   "query": {
     "filtered": {
       "query": {"match_all": {}},
@@ -146,7 +152,7 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
 }'
 
 # nested
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
+curl -XGET $h/$idx/$t/_search -d '{
   "query": {
     "bool": {
       "must": [
@@ -168,7 +174,7 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
 }'
 
 # has_child - return parent document which have child
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
+curl -XGET $h/$idx/$t/_search -d '{
 "query": {
     "bool": {
         "should": [
@@ -203,7 +209,7 @@ curl -XGET localhost:9200/megacorp/car/_search -d '{
 }
 }'
 
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
+curl -XGET $h/$idx/$t/_search -d '{
     "query" : {
         "filtered" : {
             "filter" : { "range" : { "age" : { "gt" : 30 } } }
@@ -211,7 +217,7 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
     }
 }'
 
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
+curl -XGET $h/$idx/$t/_search -d '{
     "query" : {
         "filtered" : {
             "filter" : { "range" : { "age" : { "gt" : 30 } } },
@@ -220,7 +226,7 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
     }
 }'
 
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
+curl -XGET $h/$idx/$t/_search -d '{
     "query" : {
         "filtered" : {
             "query" : { "match" : { "first_name" : "Douglas" } }
@@ -228,7 +234,7 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
     }
 }'
 
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
+curl -XGET $h/$idx/$t/_search -d '{
     "query" : {
         "filtered" : {
             "query" : { "match_all" : {  } },
@@ -238,7 +244,7 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
 }'
 
 # Search which IF CONDITION
-curl -XGET localhost:9200/megacorp/employee/_search?pretty -d '{
+curl -XGET $h/$idx/$t/_search?pretty -d '{
     "fields": ["city", "first_name", "last_name", "last_login_at"],
     "post_filter":{
         "script": {
@@ -250,7 +256,7 @@ curl -XGET localhost:9200/megacorp/employee/_search?pretty -d '{
     }
 }'
 
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
+curl -XGET $h/$idx/$t/_search -d '{
     "query" : {"bool": {
         "filter": {
             "script": {
@@ -260,7 +266,7 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
     }}
 }'
 
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
+curl -XGET $h/$idx/$t/_search -d '{
     "query" : {"bool": {
         "filter": {
             "script": {
@@ -273,23 +279,23 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
     }}
 }'
 
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
+curl -XGET $h/$idx/$t/_search -d '{
     "post_filter": {
         "range": {"age": {"gt" : 35}}
     }
 }'
 
 # Simple sort
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
+curl -XGET $h/$idx/$t/_search -d '{
     "sort" : [{ "city" : "asc" }]
 }'
 
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
+curl -XGET $h/$idx/$t/_search -d '{
     "fielddata_fields" : ["first_name", "age"]
 }'
 
 # order mode
-curl -XGET localhost:9200/megacorp/employee/_search?pretty -d '{
+curl -XGET $h/$idx/$t/_search?pretty -d '{
     "fields": ["age"],
     "sort" : [{ "age" : {"order" : "asc", "mode" : "avg"} }]
 }'
@@ -297,7 +303,7 @@ curl -XGET localhost:9200/megacorp/employee/_search?pretty -d '{
 
 ````sh
 # Custom field
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
+curl -XGET $h/$idx/$t/_search -d '{
     "script_fields": {"name": {
         "script" : "_source.first_name + _source.last_name"
     }}
@@ -314,7 +320,7 @@ curl -XPOST 'localhost:9200/zii/users/18330/_update?pretty' -d '{
 
 ````sh
 # Find Cristiano Ronaldo by geo_distance
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
+curl -XGET $h/$idx/$t/_search -d '{
     "query":{
         "bool": {
             "must": {"match_all": {}},
@@ -329,7 +335,7 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
 }'
 
 # Sorting by distance from London.
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
+curl -XGET $h/$idx/$t/_search -d '{
   "sort": [
     {
       "_geo_distance": {
@@ -345,7 +351,7 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
   ]
 }'
 
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
+curl -XGET $h/$idx/$t/_search -d '{
     "fields" : ["city"],
     "query" : {
         "bool": {

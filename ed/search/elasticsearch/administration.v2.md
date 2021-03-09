@@ -102,29 +102,29 @@ curl "$h/_cluster/health?pretty"
 
 curl "$h/_cluster/stats?pretty"
 
-curl $h/_nodes?pretty
+curl "$h/_nodes?pretty"
 
-curl $h/_nodes/stats?pretty
+curl "$h/_nodes/stats?pretty"
 
 # Cluster Settings
-curl $h/_cluster/settings | jq
+curl "$h/_cluster/settings" | jq
 
 # Cluster Update Settings
 # temporary
-curl -XPUT $h/_cluster/settings -d '{
+curl -XPUT "$h/_cluster/settings" -d '{
     "transient" : {
         "discovery.zen.minimum_master_nodes" : 2
     }
 }'
 # persistent
-curl -XPUT $h/_cluster/settings -d '{
+curl -XPUT "$h/_cluster/settings" -d '{
     "persistent" : {
         "discovery.zen.minimum_master_nodes" : 2
     }
 }'
 
 # tasks
-curl $h/_tasks?pretty
+curl "$h/_tasks?pretty"
 ````
 
 ````sh
@@ -170,7 +170,7 @@ curl -XPUT $h/$idx/_mapping/$type -d '{
 }'
 
 # put mapping from file
-curl -XPUT http://localhost:9200/zii -d @/vagrant/vagrant/elasticsearch.mapping.json
+curl -XPUT $h/zii -d @/vagrant/vagrant/elasticsearch.mapping.json
 
 # IMPORTANT! Fields in the same index with the same name in two different types must have the same mapping
 # Next code will spawn error
@@ -240,13 +240,13 @@ curl 'localhost:9200/_stats/request_cache?pretty&human'
 curl 'localhost:9200/_nodes/stats/indices/request_cache?pretty&human'
 
 # Clear Cache
-curl -XPOST 'http://localhost:9200/megacorp/_cache/clear'
+curl -XPOST "$h/$idx/_cache/clear"
 # or
-curl -XPOST 'localhost:9200/kimchy,elasticsearch/_cache/clear?request_cache=true'
+curl -XPOST "$h/kimchy,elasticsearch/_cache/clear?request_cache=true"
 
 # Flush
-curl -XPOST 'http://localhost:9200/megacorp/_flush'
+curl -XPOST "$h/$idx/_flush"
 
 # Refresh index
-curl -XPOST 'http://localhost:9200/megacorp/_refresh'
+curl -XPOST "$h/$idx/_refresh"
 ````
