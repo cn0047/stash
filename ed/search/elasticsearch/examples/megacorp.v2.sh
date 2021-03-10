@@ -1,14 +1,21 @@
 #!/bin/sh
 
+h=localhost:9200
+idx=megacorp
+type=employee
+url=$h/$idx/$type
+
+
+
 # Create new documents (car)
-curl -XPUT localhost:9200/megacorp/car/15?parent=15 -d '{
+curl -XPUT $h/$idx/car/15?parent=15 -d '{
     "name" : "RANGE_ROVER_SPORT",
     "brand" : "land rover",
     "about": "cool car!"
 }'
 
 # Bulk insert (the possible actions are index, create, delete and update)
-curl -XPOST 'localhost:9200/megacorp/employee/_bulk?pretty' -d '
+curl -XPOST "$url/_bulk?pretty" -d '
 {"index":{"_id":"8"}}
 {"name": "John Doe" }
 {"index":{"_id":"9"}}
@@ -16,7 +23,7 @@ curl -XPOST 'localhost:9200/megacorp/employee/_bulk?pretty' -d '
 '
 
 # Bulk insert from file
-curl -XPOST 'localhost:9200/megacorp/employee/_bulk?pretty' --data-binary "@/vagrant/megacorpEmployee.json"
+curl -XPOST "$url/_bulk?pretty" --data-binary "@/vagrant/megacorpEmployee.json"
 
 curl -XPUT 'http://localhost:9200/twitter/tweet/1?ttl=1m' -d '{
     "user": "kimchy",
@@ -24,10 +31,6 @@ curl -XPUT 'http://localhost:9200/twitter/tweet/1?ttl=1m' -d '{
 }'
 
 
-
-h=localhost:9200
-idx=megacorp
-type=employee
 
 # mapping for megacorp
 curl -XPUT $h/$idx -d '{
@@ -61,7 +64,7 @@ curl -XPUT $h/$idx -d '{
 
 # Create new documents (employee)
 # routing - routing to paritcular shard in cluster
-curl -XPUT $h/$idx/$type/1?routing=JohnSmith -d '{
+curl -XPUT "$url/1?routing=JohnSmith" -d '{
     "first_name" : "John",
     "last_name" : "Smith",
     "age" : 25,
@@ -76,7 +79,7 @@ curl -XPUT $h/$idx/$type/1?routing=JohnSmith -d '{
       {"type": 2, "name": "private1"}
     ]
 }'
-curl -XPUT $h/$idx/$type/2 -d '{
+curl -XPUT $url/2 -d '{
     "first_name" : "Jane",
     "last_name" : "Smith",
     "age" : 32,
@@ -89,7 +92,7 @@ curl -XPUT $h/$idx/$type/2 -d '{
       {"type": 1, "name": "mainForUser2"}
     ]
 }'
-curl -XPUT $h/$idx/$type/3 -d '{
+curl -XPUT $url/3 -d '{
     "first_name" : "Douglas",
     "last_name" : "Fir",
     "age" : 35,
@@ -102,7 +105,7 @@ curl -XPUT $h/$idx/$type/3 -d '{
       {"type": 2, "name": "mainForUser3"}
     ]
 }'
-curl -XPUT $h/$idx/$type/4 -d '{
+curl -XPUT $url/4 -d '{
     "first_name" : "Louis",
     "last_name" : "de Funès",
     "age" : 70,
@@ -112,7 +115,7 @@ curl -XPUT $h/$idx/$type/4 -d '{
     "location": {"lat": 48.8567, "lon": 2.3508},
     "interests": [ "fantomas", "theatre", "hollywood" ]
 }'
-curl -XPUT $h/$idx/$type/5 -d '{
+curl -XPUT $url/5 -d '{
     "first_name" : "Cristiano",
     "last_name" : "Ronaldo",
     "age" : 31,
@@ -122,7 +125,7 @@ curl -XPUT $h/$idx/$type/5 -d '{
     "location": {"lat": 37.1939, "lon": 7.4158},
     "interests": [ "football", "cars", "casino" ]
 }'
-curl -XPUT $h/$idx/$type/6 -d '{
+curl -XPUT $url/6 -d '{
     "first_name" : "Gennady",
     "last_name" : "Golovkin",
     "age" : 33,
@@ -132,7 +135,7 @@ curl -XPUT $h/$idx/$type/6 -d '{
     "location": {"lat": 49.8333, "lon": 73.1667},
     "interests": [ "boxing", "WBA", "IBO", "cars" ]
 }'
-curl -XPUT $h/$idx/$type/7 -d '{
+curl -XPUT $url/7 -d '{
     "first_name" : "Jackie",
     "last_name" : "Chan",
     "age" : 61,
@@ -142,7 +145,7 @@ curl -XPUT $h/$idx/$type/7 -d '{
     "location": {"lat": 22.2783, "lon": 114.1747},
     "interests": [ "movie", "hollywood", "kong foo" ]
 }'
-curl -XPUT $h/$idx/$type/13 -d '{
+curl -XPUT $url/13 -d '{
     "first_name" : "Wladimir",
     "last_name" : "Klitschko",
     "age" : 40,
@@ -152,7 +155,7 @@ curl -XPUT $h/$idx/$type/13 -d '{
     "location": {"lat": 50.4501, "lon": 30.5234},
     "interests": [ "boxing", "sport", "movie", "hollywood" ]
 }'
-curl -XPUT $h/$idx/$type/14 -d '{
+curl -XPUT $url/14 -d '{
     "first_name" : "Paul",
     "last_name" : "McCartney",
     "age" : 74,
@@ -162,7 +165,7 @@ curl -XPUT $h/$idx/$type/14 -d '{
     "location": {"lat": 51.5074, "lon": 0.1278},
     "interests": [ "london", "music" ]
 }'
-curl -XPUT $h/$idx/$type/15 -d '{
+curl -XPUT $url/15 -d '{
     "first_name" : "Wayne",
     "last_name" : "Rooney",
     "age" : 30,
@@ -173,7 +176,7 @@ curl -XPUT $h/$idx/$type/15 -d '{
     "interests": ["football", "sport", "cars"],
     "fetish": {"name": "RANGE_ROVER_SPORT"}
 }'
-curl -XPUT $h/$idx/$type/16 -d '{
+curl -XPUT $url/16 -d '{
     "first_name" : "Jayce",
     "last_name" : "Chan",
     "age" : 33,

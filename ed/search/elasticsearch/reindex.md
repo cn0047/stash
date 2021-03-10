@@ -4,6 +4,7 @@ Reindex
 #### To put document into index use:
 
 ````sh
+# v7
 PUT  /$idx/_doc/$id
 POST /$idx/_doc/
 PUT  /$idx/_create/$id

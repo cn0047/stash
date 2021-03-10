@@ -2,16 +2,17 @@ Aggregations (Analytics)
 -
 
 Types:
-
 * methic - stats (avg, cardinality)
 * bucketing - categorize into groups
 * matrix - may be deleted in future releases
 * pipeline - may be deleted in future releases
 
 ````sh
+url=localhost:9200/megacorp/employee
+
 # SELECT city, COUNT(*) FROM employee GROUP BY city ORDER BY COUNT(*) DESC
 # size=0 to not show search hits
-curl -XPOST 'localhost:9200/megacorp/employee/_search?pretty' -d '{
+curl -XPOST "$url/_search?pretty" -d '{
   "size": 0,
   "aggs": {
     "group_by_city": {
@@ -19,8 +20,8 @@ curl -XPOST 'localhost:9200/megacorp/employee/_search?pretty' -d '{
     }
   }
 }'
-# same, but ordered by aggregated value (also can use: _term)
-curl -XPOST 'localhost:9200/megacorp/employee/_search?pretty' -d '{
+# Same, but ordered by aggregated value (also can use: _term)
+curl -XPOST "$url/_search?pretty" -d '{
   "size": 0,
   "aggs": {
     "group_by_city": {
@@ -28,8 +29,8 @@ curl -XPOST 'localhost:9200/megacorp/employee/_search?pretty' -d '{
     }
   }
 }'
-# same, but ordered by city
-curl -XPOST 'localhost:9200/megacorp/employee/_search?pretty' -d '{
+# Same, but ordered by city
+curl -XPOST "$url/_search?pretty" -d '{
   "size": 0,
   "aggs": {
     "group_by_city": {
@@ -39,8 +40,8 @@ curl -XPOST 'localhost:9200/megacorp/employee/_search?pretty' -d '{
   "sort" : [{ "city" : {"order" : "desc"} }]
 }'
 
-# like prev example + AVG(age)
-curl -XPOST 'localhost:9200/megacorp/employee/_search?pretty' -d '{
+# Like prev example + AVG(age)
+curl -XPOST "$url/_search?pretty" -d '{
   "size": 0,
   "aggs": {
     "group_by_city": {
@@ -54,8 +55,8 @@ curl -XPOST 'localhost:9200/megacorp/employee/_search?pretty' -d '{
   }
 }'
 
-# like prev example + ORDER BY average_age DESC
-curl -XPOST 'localhost:9200/megacorp/employee/_search?pretty' -d '{
+# Like prev example + ORDER BY average_age DESC
+curl -XPOST "$url/_search?pretty" -d '{
   "size": 0,
   "aggs": {
     "group_by_city": {
@@ -70,21 +71,21 @@ curl -XPOST 'localhost:9200/megacorp/employee/_search?pretty' -d '{
 }'
 
 # Stats Aggregation
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
+curl -XGET $url/_search -d '{
     "aggs" : {
         "stats" : { "stats" : { "field" : "age" } }
     }
 }'
 
 # Extended Stats Aggregation
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
+curl -XGET $url/_search -d '{
     "aggs" : {
         "e_stats" : { "extended_stats" : { "field" : "age" } }
     }
 }'
 
 # Filter Aggregation
-curl -XGET localhost:9200/megacorp/employee/_search?pretty -d '{
+curl -XGET "$url/_search?pretty" -d '{
     "aggs" : {
         "age31" : {
             "filter" : {"range" : {"age": {"gt": 31}}},
@@ -96,7 +97,7 @@ curl -XGET localhost:9200/megacorp/employee/_search?pretty -d '{
 }'
 
 # Missing Aggregation
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
+curl -XGET $url/_search -d '{
     "aggs" : {
         "without_age" : { "missing" : { "field" : "age" } }
     }
@@ -104,7 +105,7 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
 
 # Nested Aggregation
 # this example won't work it is here just for facilitate future investigations...
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
+curl -XGET $url/_search -d '{
     "aggs" : {
         "n_a" : {
             "nested" : { "path" : "location" },
@@ -116,28 +117,28 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
 }'
 
 # cardinality (distinct)
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
+curl -XGET $url/_search -d '{
     "aggs" : {
         "crd" : { "cardinality" : { "field" : "age" } }
     }
 }'
 
 # Percentiles
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
+curl -XGET $url/_search -d '{
     "aggs" : {
         "p_stats" : { "percentiles" : { "field" : "age" } }
     }
 }'
 
 # get count of each interest
-curl -XGET localhost:9200/megacorp/employee/_search?pretty -d '{
+curl -XGET "$url/_search?pretty" -d '{
   "size": 0,
   "aggs":{
     "interest_count":{"terms":{"field": "interests"}}
   }
 }'
 
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
+curl -XGET $url/_search -d '{
     "query": {
         "match": { "last_name": "smith" }
     },
@@ -148,7 +149,7 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
     }
 }'
 
-curl -XGET localhost:9200/megacorp/employee/_search -d '{
+curl -XGET $url/_search -d '{
     "aggs" : {
         "all_interests" : {
             "terms" : { "field" : "interests" },
@@ -158,4 +159,24 @@ curl -XGET localhost:9200/megacorp/employee/_search -d '{
         }
     }
 }'
+
+
+
+url=$h/$idx
+curl -XPOST "$url/_search?size=0" -H $ctj -d '{
+    "aggs" : {
+        "aggregated" : {
+            "filter" : {
+              "bool": {"must": [
+                {"match": {"name": "'$m'"}},
+                {"term": {"properties.by_user_id": "'$uId'"}},
+                {"range" : {"timestamp": {"from": 1178323112, "to": 2579519655}}}
+              ]}
+            },
+            "aggs": {
+                "aggregated": {"avg": {"field" : "properties.value"}}
+            }
+        }
+    }
+}' | jq
 ````
