@@ -106,6 +106,7 @@ nmap --script=http-headers www.zii.com # scan ports
 
 timedatectl status | grep "Time zone"
 colordiff -u file1 file2
+colordiff -y file1 file2
 
 # Soft link - is an actual link to the original file.
 # Hard link - is a mirror copy of the original file.
