@@ -68,6 +68,8 @@ curl -XGET $url_validate/query -d '{
 }'
 
 # calculate count of all documents
+curl -XGET $h/$idx/_count | jq
+# or
 curl -XGET $url/_count -d '{
     "query": {"match_all" : {}}
 }'

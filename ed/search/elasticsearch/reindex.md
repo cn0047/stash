@@ -14,11 +14,13 @@ POST /$idx/_create/$id
 #### To reindex all documents:
 
 ````sh
-export h='localhost:9200'
-export idx=megacorp
-export newindex=megacorp2
-export alias=megacorpalias
-export type=employee
+jh='Content-Type: application/json'
+
+h='localhost:9200'
+idx=megacorp
+newindex=megacorp2
+alias=megacorpalias
+type=employee
 
 
 
@@ -31,7 +33,7 @@ curl -XPUT $h/$newidx/ -d '{
 }'
 
 # 3: Update alias to point to new index.
-curl -XPOST $h/_aliases -d '{
+curl -XPOST -H $jh $h/_aliases -d '{
 "actions": [
     { "remove": { "index": "'$idx'", "alias": "'$alias'" }},
     { "add":    { "index": "'$newidx'", "alias": "'$alias'" }}
