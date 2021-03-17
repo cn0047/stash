@@ -251,6 +251,10 @@ go run main.go k5
 # aws sqs
 go run main.go
 
+# gcp
+cd $PWD/ed/l/go/examples/3rdparty/gcp
+go run main.go
+
 # jwt
 export GOPATH=$PWD/ed/l/go/examples/jwt
 cd $GOPATH

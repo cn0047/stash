@@ -18,6 +18,7 @@ func main() {
     // println(r("Last config, last but not least (conf 4)."))
     // noCapture()
     checkIsValidGeneralID()
+    // r2()
 }
 
 func checkIsValidGeneralID() {
@@ -43,6 +44,11 @@ func r(s string) string {
     re := regexp.MustCompile(`[^\w\d]+`)
     str := re.ReplaceAllString(s, "-")
     return strings.ToLower(str)
+}
+
+func r2() {
+    re := regexp.MustCompile(`(\*pkg\.|Type|_)`)
+    fmt.Printf("🎾 %+v \n", re.ReplaceAllString("*pkg.Type_Name", "")) // Name
 }
 
 func instagram(ss string) string {
