@@ -17,8 +17,9 @@ composer.lock
 config.php
 
 # golang
-**/vendor/
+**/gcp/sa.json
 go.sum
+**/vendor/
 ed/l/go/**/bin/
 ed/l/go/**/pkg/
 # ed/l/go/**/src/

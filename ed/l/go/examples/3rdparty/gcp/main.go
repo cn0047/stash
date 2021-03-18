@@ -6,9 +6,10 @@ import (
 
 const (
 	ProjectID  = ""
+	BucketName = ""
 	SAFilePath = "./sa.json"
 )
 
 func main() {
-	storage.Run(ProjectID, SAFilePath)
+	storage.Run(ProjectID, SAFilePath, BucketName)
 }
