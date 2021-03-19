@@ -17,7 +17,10 @@ func main() {
 	// loop()
 	// ifWithNotDefinedVar()
 	// eqSimple()
-	orWithEq()
+	// orWithEq()
+	// andSimple()
+	// notSimple()
+	notWithAnd()
 }
 
 func three() {
@@ -123,6 +126,41 @@ func orSimple() {
 	data := map[string]interface{}{
 		"a": false,
 		"b": true,
+	}
+	if err := tmpl.Execute(os.Stdout, data); err != nil {
+		panic(err)
+	}
+}
+
+func andSimple() {
+	t := `<br>[andSimple] {{if and .a .b}} TRUE {{end}} <hr>`
+	tmpl := template.Must(template.New("tmpl").Parse(t))
+	data := map[string]interface{}{
+		"a": true,
+		"b": true,
+	}
+	if err := tmpl.Execute(os.Stdout, data); err != nil {
+		panic(err)
+	}
+}
+
+func notSimple() {
+	t := `<br>[notSimple] {{if not .a}} TRUE {{end}} <hr>`
+	tmpl := template.Must(template.New("tmpl").Parse(t))
+	data := map[string]interface{}{
+		"a": false,
+	}
+	if err := tmpl.Execute(os.Stdout, data); err != nil {
+		panic(err)
+	}
+}
+
+func notWithAnd() {
+	t := `<br>[notWithAnd] {{if and .a (not .b)}} TRUE {{end}} <hr>`
+	tmpl := template.Must(template.New("tmpl").Parse(t))
+	data := map[string]interface{}{
+		"a": true,
+		"b": false,
 	}
 	if err := tmpl.Execute(os.Stdout, data); err != nil {
 		panic(err)
