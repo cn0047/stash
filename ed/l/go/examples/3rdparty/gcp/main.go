@@ -1,6 +1,7 @@
 package main
 
 import (
+	"gcp/iam"
 	"gcp/storage"
 )
 
@@ -11,5 +12,7 @@ const (
 )
 
 func main() {
+	iam.Run(ProjectID, SAFilePath)
+	return
 	storage.Run(ProjectID, SAFilePath, BucketName)
 }
