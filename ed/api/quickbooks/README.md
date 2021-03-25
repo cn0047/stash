@@ -15,6 +15,7 @@ jha='Accept: application/json'
 
 
 # get token, step 1
+go run ed/l/go/examples/http/http.server.debug.go
 cb='http://localhost:8080'
 cb='http%3A%2F%2Flocalhost%3A8080'
 s='7d04dcc2-11e8-44fc-b466-8bb0c1d5ff48'
@@ -49,8 +50,6 @@ jh='Content-Type: application/json'
 t=''
 a="Authorization: Bearer $t"
 
-
-
 # query
 qr() {
   curl -X GET -H $a -H $jha -H $jh "$h/v3/company/$rId/query?query=$q"
@@ -71,6 +70,10 @@ q='select count(*) from Item'
 q='select+count%28%2A%29+from+Item'
 q='select * from Item'
 q='select+%2A+from+Item'
+q='select * from Item order by Id startposition 0 maxresults 10'
+q='select%20%2A%20from%20Item%20order%20by%20Id%20startposition%200%20maxresults%2010'
+q='select * from Item where Type='Inventory' order by Id startposition 0 maxresults 10'
+q='select%20%2A%20from%20Item%20where%20Type%3D%27Inventory%27%20order%20by%20Id%20startposition%200%20maxresults%2010'
 qr | jq
 
 

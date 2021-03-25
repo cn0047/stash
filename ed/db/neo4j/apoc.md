@@ -60,9 +60,18 @@ CALL apoc.when(
   'RETURN value1',
   'RETURN value2',
   {value1:$x, value2:$y}
-)
-YIELD value;
+) YIELD value;
 // Result: {"value2":2}
+
+// do.when
+CALL apoc.do.when(
+  $x > $y,
+  'RETURN value1',
+  'RETURN value2',
+  {value1:$x, value2:$y}
+) YIELD value;
+
+apoc.create.setProperty(node, property, value);
 ````
 
 Redirect relationships:

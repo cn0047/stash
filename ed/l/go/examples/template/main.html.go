@@ -20,7 +20,8 @@ func main() {
 	// orWithEq()
 	// andSimple()
 	// notSimple()
-	notWithAnd()
+	// notWithAnd()
+	objAsParams()
 }
 
 func three() {
@@ -72,6 +73,20 @@ func two() {
 		"public": true,
 	}
 	if err := t.ExecuteTemplate(os.Stdout, "tplTwo", data); err != nil {
+		panic(err)
+	}
+}
+
+type params struct {
+	Msg string
+	Ok  bool
+}
+
+func objAsParams() {
+	t := `<br>[objAsParams]: {{ if .Ok }} {{ .Msg }} {{ end }} <hr>`
+	tmpl := template.Must(template.New("tmpl").Parse(t))
+	data := params{Msg: "test", Ok: true}
+	if err := tmpl.Execute(os.Stdout, data); err != nil {
 		panic(err)
 	}
 }
