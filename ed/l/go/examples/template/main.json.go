@@ -19,18 +19,6 @@ type Data struct {
 	Items     []Item
 }
 
-func main() {
-	d := Data{
-		Name:      "Example 1",
-		CreatedAt: time.Now().Unix(),
-		Items:     []Item{{Name: "ball", Type: "a", Count: 2}, {Name: "pump", Type: "b", Count: 1}},
-	}
-
-	//res := naive(d)
-	res := withChan(d)
-	fmt.Printf("\n%s\n", res)
-}
-
 var templateJSON = `{
 	"name": "{{ .data.Name }}",
 	"ts": {{ .data.CreatedAt }},
@@ -42,7 +30,27 @@ var templateJSON = `{
 	]
 }`
 
-var tmpl = template.Must(template.New("tmpl").Parse(templateJSON))
+var tmpl *template.Template
+
+func main() {
+	d := Data{
+		Name:      "Example 1",
+		CreatedAt: time.Now().Unix(),
+		Items:     []Item{{Name: "ball", Type: "a", Count: 2}, {Name: "pump", Type: "b", Count: 1}},
+	}
+
+	//tmpl = template.Must(template.New("tmpl").Parse(templateJSON))
+	// or
+	var err error
+	tmpl, err = template.New("tmpl").Parse(templateJSON)
+	if err != nil {
+		panic(err)
+	}
+
+	//res := naive(d)
+	res := withChan(d)
+	fmt.Printf("\n%s\n", res)
+}
 
 func naive(data Data) string {
 	var buf bytes.Buffer

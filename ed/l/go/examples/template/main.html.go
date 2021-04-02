@@ -11,7 +11,7 @@ var (
 )
 
 func main() {
-	// f1()
+	// getSliceElementByIndex()
 	// orSimple()
 	// three()
 	// loop()
@@ -21,7 +21,8 @@ func main() {
 	// andSimple()
 	// notSimple()
 	// notWithAnd()
-	objAsParams()
+	// objAsParams()
+	getValueFromMapInMap()
 }
 
 func three() {
@@ -101,11 +102,22 @@ func one() {
 	}
 }
 
-func f1() {
+func getSliceElementByIndex() {
 	t := `<br> Title: {{index .titles 0}}<hr>`
 	tmpl := template.Must(template.New("tmpl").Parse(t))
 	data := map[string]interface{}{
 		"titles": []string{"test1", "test2"},
+	}
+	if err := tmpl.Execute(os.Stdout, data); err != nil {
+		panic(err)
+	}
+}
+
+func getValueFromMapInMap() {
+	t := `<br>[getValueFromMapInMap] {{ .params.foo }}<hr>`
+	tmpl := template.Must(template.New("tmpl").Parse(t))
+	data := map[string]interface{}{
+		"params": map[string]string{"foo": "bar"},
 	}
 	if err := tmpl.Execute(os.Stdout, data); err != nil {
 		panic(err)

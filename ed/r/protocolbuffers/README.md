@@ -28,6 +28,8 @@ it may be time to consider an alternate strategy.
 message Job {
   reserved 20;
   string id = 1;
+  repeated string tags = 2;
+  map<string, string> params = 3;
 }
 ````
 

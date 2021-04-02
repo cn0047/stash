@@ -42,6 +42,10 @@ eu-central-1 # EU (Frankfurt)
 
 Bastion host - special-purpose computer on a network specifically designed and configured to withstand attacks.
 
+# AWS Cloud Map
+
+AWS Cloud Map - service discovery.
+
 # Elastic Beanstalk
 
 EB - service for deploying and scaling web applications and services.
