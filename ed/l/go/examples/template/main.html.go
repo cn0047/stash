@@ -22,7 +22,27 @@ func main() {
 	// notSimple()
 	// notWithAnd()
 	// objAsParams()
-	getValueFromMapInMap()
+	// getValueFromMapInMap()
+	// invalidTemplate()
+	// invalidTemplate()
+	invalidTemplateParams()
+}
+
+func invalidTemplateParams() {
+	t := `<br>[invalidTemplateParams] {{range $i,$u := .us}} {{$u.Name}} {{end}} <hr>`
+	tmpl := template.Must(template.New("tmpl").Parse(t))
+	data := map[string]interface{}{
+		"us": "ok",
+	}
+	if err := tmpl.Execute(os.Stdout, data); err != nil {
+		fmt.Printf("[invalidTemplateParams] execute error: %+v \n", err)
+	}
+}
+
+func invalidTemplate() {
+	t := "<br>[invalidTemplate]: {{ range $i, $unit := .units }}"
+	_, err := template.New("tmpl").Parse(t)
+	fmt.Printf("[invalidTemplate] parse error: %+v \n", err)
 }
 
 func three() {

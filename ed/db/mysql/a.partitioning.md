@@ -11,6 +11,8 @@ The user-selected rule by which the division of data is accomplished is known as
 Horizontal sharding - split 1 big table into 2 small by logic rule (leads_0, leads_1, leads_2).
 Vertical sharding - move table into separate database.
 
+Subpartitioning — composite partitioning, is further division of each partition in a partitioned table.
+
 ## Partitioning Types:
 
     1 RANGE Partitioning
