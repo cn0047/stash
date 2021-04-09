@@ -65,10 +65,13 @@ func poolInvoke() {
 	var wg sync.WaitGroup
 
 	count := 10
-	p, _ := ants.NewPoolWithFunc(count, func(i interface{}) {
+	p, err := ants.NewPoolWithFunc(count, func(i interface{}) {
 		inc(i)
 		wg.Done()
 	})
+	if err != nil {
+		// return fmt.Errorf("failed to create new ants pool, error: %v", err)
+	}
 	defer p.Release()
 
 	n := 100
