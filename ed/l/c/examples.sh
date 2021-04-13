@@ -6,7 +6,7 @@ d=$gh/ed/l/c/examples
 objdump -d /tmp/x
 
 cr() {
-    gcc -o /tmp/x -Wall $1 && /tmp/x
+  gcc -o /tmp/x -Wall $1 && /tmp/x
 }
 
 cr ed/l/c/examples/whatever/assert.c
