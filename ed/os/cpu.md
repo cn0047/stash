@@ -1,6 +1,12 @@
 CPU
 -
 
+CPU Instruction Types:
+* Data handling and memory operations
+* Arithmetic and logic operations
+* Control flow operations
+* Coprocessor instructions
+
 Almost all processes alternate between two states in a continuing cycle:
 * A CPU burst - performing calculations.
 * An I/O burst - waiting for data transfer in or out of the system.
@@ -21,13 +27,16 @@ Turnaround time - Time required for a particular process to complete.
 Waiting time - How much time processes spend in the ready queue waiting their turn to get on the CPU.
 Load average - The average number of processes sitting in the ready queue waiting their turn to get into the CPU.
 
-#### CPU specific metrics:
-
+CPU specific metrics:
 * utilization  - the % how CPU is loaded (sum of work handled by CPU).
 * idle         - the % of time that CPU was idle.
 * i/o wait     - the % of time that CPU was idle during disk I/O request.
 * interrupts   - the % of time that CPU spent to service hardware interrupts.
 * system level - the % of CPU utilization that occurred while executing at the system level.
+
+Thread Scheduling:
+* Contention Scope.
+* Pthread Scheduling.
 
 #### Scheduling Algorithms:
 
@@ -41,17 +50,15 @@ Load average - The average number of processes sitting in the ready queue waitin
 * Multilevel Queue Scheduling.
 * Multilevel Feedback-Queue Scheduling.
 
-#### Thread Scheduling:
-
-* Contention Scope.
-* Pthread Scheduling.
-
 #### Multiple-Processor Scheduling:
 
 * Asymmetric multiprocessing.
 * Symmetric multiprocessing, SMP.
 
 #### Arch
+
+386 (aka i386, 80386) - 32-bit microprocessor introduced in 1985.
+x64 (aka x86_64, amd64, intel64) - 64-bit version of the x86 instruction set in 1999.
 
 * x86: Intel, AMD; CISC - Complex Instruction Set Computer;
 * ARM: ; RISC - Reduced Instruction Set Computing;
