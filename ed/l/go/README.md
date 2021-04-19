@@ -115,6 +115,9 @@ ptrace
 import (
     "fmt"
     "os"
+    // when file git.x.com/go/prj/pkg/file/file_executor.go
+    // has package filexecutor
+    file_executor "git.x.com/go/prj/pkg/file"
 )
 
 var (

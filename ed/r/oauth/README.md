@@ -13,8 +13,14 @@ It's simplified version of OAuth.
 
 OAuth2 - is not protocol, because big companies (google, facebook, etc) made own changes that's why it's framework.
 
-`Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9` works only with SSL.
+````sh
+# oauth1
+Authorization: OAuth oauth_consumer_key='',oauth_timestamp='1488918667',oauth_nonce='Mevx8gQQ3pzmkdXq',oauth_version='1.0',oauth_signature_method='HMAC-SHA1',oauth_token='',oauth_signature='95556c9e7...',oauth_callback='nop',application_name='app'
 
+# oauth2
+# works only with SSL.
+Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9
+````
 ````
 ConsumerKey.
 ConsumerSecret.
