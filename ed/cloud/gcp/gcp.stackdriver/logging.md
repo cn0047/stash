@@ -27,6 +27,9 @@ gcloud logging read --format=json --limit=50 --freshness=2d '
 
 Log view filter:
 ````sh
+jsonPayload.msg:"my message"
+````
+````sh
 text:unicorn
 text:unicorn text:phoenix          # unicorn or phoenix
 text:"unicorn phoenix"             # unicorn and phoenix

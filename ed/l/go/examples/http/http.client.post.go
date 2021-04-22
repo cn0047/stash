@@ -61,3 +61,32 @@ func two() {
 	// req.Header.Set("Content-Type", "application/json")
 	// fmt.Printf("%+#\n", x)
 }
+
+func formUrlEncoded() {
+	parm := url.Values{}
+	parm.Add("grant_type", "refresh_token")
+	parm.Add("refresh_token", "t")
+
+	u := "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer"
+	req, err := http.NewRequest(http.MethodPost, u, strings.NewReader(parm.Encode()))
+	if err != nil {
+		panic(err)
+	}
+	req.Header.Set("Authorization", "Basic ht")
+	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+
+	client := &http.Client{}
+	res, err := client.Do(req)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println("response Status:", res.Status)
+	body, _ := ioutil.ReadAll(res.Body)
+	fmt.Println("response Body:", string(body))
+
+	err = res.Body.Close()
+	if err != nil {
+		panic(err)
+	}
+}

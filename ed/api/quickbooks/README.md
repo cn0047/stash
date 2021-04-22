@@ -5,7 +5,12 @@ QuickBooks
 [app keys](https://developer.intuit.com/app/developer/appdetail/test/keys)
 
 ````sh
-# consumer_key/id; consumer_secret; realm_id
+access_token  expires_in                 3600    = 60min
+refresh_token x_refresh_token_expires_in 8726109 = few years
+````
+
+````sh
+# consumer_key/client_id; consumer_secret; realm_id
 cId=''
 scrt=''
 rId=''

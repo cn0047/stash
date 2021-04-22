@@ -748,10 +748,14 @@ dir             # list contents of remote directory
 ls              # list contents of remote directory
 
 size filename
-get filename    # receive file
-recv filename   # receive file
-delete filename
-rename from to  # rename
+get filename                 # receive file
+recv filename                # receive file
+delete filename              # delete file
+rename /from/f.txt /to/f.txt # move file
+
+# upload file
+binary
+put f.txt
 
 bye             # exit
 close
