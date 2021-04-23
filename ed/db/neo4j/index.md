@@ -10,6 +10,7 @@ USING INDEX SEEK - index seek.
 USING JOIN       - @see: https://neo4j.com/docs/cypher-manual/current/query-tuning/using/#_hinting_a_join_on_a_single_node
 
 For `CONTAINS, ENDS WITH` use index provider `lucene+native-3.0` (not `native-btree-1.0`).
+It's beneficial to have couple labels per node, and have index per certain label.
 
 `native-btree-1.0` has key size limit 8kB.
 `lucene+native-3.0` has key size limit 32kB.

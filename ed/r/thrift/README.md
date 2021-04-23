@@ -14,7 +14,26 @@ Types:
 * set<t1> - Set of unique elements of one type
 * map<t1,t2> - Map from one type to another
 
-enum
+* struct
+* enum
+
+````sh
+struct MyStruct {
+    1: optional string id
+}
+
+enum MyEnum {
+  Foo = 1
+  Bar = 2
+}
+
+struct Bag {
+  1: optional list<MyStruct> myList
+  2: optional set<MyStruct> mySet
+  3: optional map<string, MyStruct> myMap
+  4: optional MyEnum myEnumVal
+}
+````
 
 Thrift JSON:
 ````sh

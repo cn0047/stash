@@ -146,6 +146,7 @@ sort.Strings(strSlice)
 
 // https://golang.org/pkg/fmt/#hdr-Printing
 fmt.Printf("%T", myType)
+fmt.Printf("%t", myBool)
 fmt.Printf("%+v", myVal)
 fmt.Printf("%p", myPointer)
 
