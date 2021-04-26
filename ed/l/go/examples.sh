@@ -270,6 +270,13 @@ export GOPATH=$PWD'/ed/l/go/examples/websocket'
 go get -u github.com/gorilla/websocket
 cd $GOPATH/src/app && go run $GOPATH/src/app/websockets.go
 
+# image
+i=./ed/l/php/php.yii/examples/testdrive/css/bg.gif
+i=./ed/l/go/examples/3rdparty/aws/src/app/s3/s.png
+i=./ed/l/nodejs/examples/mongo.university/mongomart/static/img/logo.jpg
+i=./ed/security/exploit.seh.jpeg
+go run ed/l/go/examples/image/main.go $i
+
 # debug
 export GOPATH=$PWD'/ed/l/go/examples/debug'
 # install delve
