@@ -1,12 +1,15 @@
 package main
 
 import (
+	"bytes"
 	"encoding/base64"
 	"fmt"
 	"image"
 	"image/gif"
 	"image/jpeg"
 	"image/png"
+	"io"
+	"net/http"
 	"os"
 	"strings"
 )
@@ -20,11 +23,12 @@ func main() {
 	if len(os.Args) > 1 {
 		imgFilePath = os.Args[1]
 	}
+	if imgFilePath != "" {
+		fmt.Printf("imgFilePath: %+v \n", imgFilePath)
+	}
 
-	img := decodeFile(imgFilePath)
-	_ = img
-	fmt.Printf("🎾 img=%+v \n", img)
-
+	downloadAndConvertIfGIF()
+	//img := decodeFile(imgFilePath)
 	//toGIF(img)
 	//toJPEG(img)
 	//toPNG(img)
@@ -37,8 +41,57 @@ func he(err error) {
 	}
 }
 
+func downloadAndConvertIfGIF() {
+	//u := "https://www.clipartmax.com/png/small/21-219198_balloon-free-png-transparent-background-images-free-party-balloons-png.png"
+	//u := "https://c0.klipartz.com/pngpicture/460/619/gratis-png-dibujo-corazon-stock-photography-corazon.png"
+	//u := "https://blog.craigjoneswildlifephotography.co.uk/wp-content/uploads/2010/07/CMJ4893Jpeg-FB.jpg"
+	//u := "https://raw.githubusercontent.com/Rapol/M101JS/master/project/mongomart/static/img/logo.jpg"
+	u := "https://i.pinimg.com/originals/65/ba/48/65ba488626025cff82f091336fbf94bb.gif"
+	req, err := http.NewRequest("GET", u, nil)
+	he(err)
+
+	// GET image.
+	client := &http.Client{}
+	res, err := client.Do(req)
+	he(err)
+	defer res.Body.Close()
+
+	// Read image twice.
+	var body bytes.Buffer
+	bodyReader := io.TeeReader(res.Body, &body)
+
+	// Result reader.
+	var r io.Reader
+	// Write to file (Going to be 2nd read).
+	r = &body
+
+	// Detect format (1st read).
+	img, fmtName, err := image.Decode(bodyReader)
+	he(err)
+	fmt.Printf("Format is: %v \n", fmtName)
+	if fmtName == "gif" {
+		buffer := bytes.NewBuffer(make([]byte, 0))
+		err := png.Encode(buffer, img)
+		he(err)
+		// Overwrite result reader.
+		r = buffer
+		fmt.Printf("GIF converted to PNG \n")
+	}
+
+	// Write file (2nd read or read overwritten data).
+	out, err := os.Create("/tmp/x.png")
+	he(err)
+	defer out.Close()
+	io.Copy(out, r)
+}
+
 func strImgToFile(strImg string) {
 	i := base64.NewDecoder(base64.StdEncoding, strings.NewReader(GopherImg))
+
+	//_, fmtName, err := image.Decode(i)
+	//he(err)
+	//fmt.Printf("🎾 fmtName=%+v \n", fmtName)
+
 	img, err := png.Decode(i)
 	he(err)
 	toPNG(img)

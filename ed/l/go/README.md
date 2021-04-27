@@ -202,7 +202,7 @@ switch t := areaIntf.(type) {
 type MyFloat float64
 
 // debug
-f, _ := os.OpenFile("/tmp/debug.log", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0777); f.WriteString("dbg" + "\n")
+f, _ := os.OpenFile("/tmp/debug.log", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0777); f.WriteString(fmt.Sprintf("%+v \n", 1))
 // or
 logfile, _ := os.Create("/tmp/debug.log")
 defer logfile.Close()

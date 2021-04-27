@@ -175,10 +175,10 @@ git bisect reset
 ````sh
 git submodule init
 git submodule update
+git submodule status
+
 git submodule sync --recursive
 git submodule update --init --recursive
-
-git submodule status
 git submodule update --remote --recursive
 ````
 
@@ -220,7 +220,7 @@ git submodule update --remote --recursive
     l   = log --pretty=format:\"%h %ad | [%an] %s%d\" --graph --date=short --no-merges
     lg  = log --pretty=format:\"%h %ad | [%an] %s%d\" --graph --date=short
     f   = fetch origin
-    p   = pull
+    p   = pull --ff-only
     po  = pull origin
     ph  = push origin HEAD
     pt  = push origin --tags

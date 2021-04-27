@@ -1,13 +1,17 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"net/http"
 )
 
 func main() {
 	// one()
+	readBodyTwice()
+	return
 
 	go two()
 	go two()
@@ -56,4 +60,31 @@ func one() {
 	defer resp.Body.Close()
 
 	fmt.Printf("Resp: %+v", resp.Body)
+}
+
+func he(err error) {
+	if err != nil {
+		panic(err)
+	}
+}
+
+func readBodyTwice() {
+	req, err := http.NewRequest("GET", "https://api.github.com/users/cn007b", nil)
+	he(err)
+
+	client := &http.Client{}
+	res, err := client.Do(req)
+	he(err)
+	defer res.Body.Close()
+
+	var body bytes.Buffer
+	bodyReader := io.TeeReader(res.Body, &body)
+
+	d1, err := ioutil.ReadAll(bodyReader)
+	he(err)
+	d2, err := ioutil.ReadAll(&body)
+	he(err)
+
+	fmt.Printf("%s \n======\n", d1)
+	fmt.Printf("%s \n======\n", d2)
 }
