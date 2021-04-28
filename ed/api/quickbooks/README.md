@@ -6,7 +6,7 @@ QuickBooks
 
 ````sh
 access_token  expires_in                 3600    = 60min
-refresh_token x_refresh_token_expires_in 8726109 = few years
+refresh_token x_refresh_token_expires_in 8726109 ≈ 100 days
 ````
 
 ````sh
