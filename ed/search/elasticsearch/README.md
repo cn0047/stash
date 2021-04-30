@@ -28,6 +28,11 @@ the more relevant the document is, the lower the score, the less relevant the do
 `filter` clauses which allow to use a query
 to restrict the documents that will be matched by other clauses, without changing how scores are computed.
 
+`?refresh`, @see: https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-refresh.html
+`?refresh=true` - refresh relevant primary and replica shards immediately after operation.
+`?refresh=false` - don't no refresh.
+`?refresh=wait_for` - wait for changes to be visible before replying.
+
 A shard is a single Lucene instance.
 An index is a logical namespace which points to primary and replica shards.
 

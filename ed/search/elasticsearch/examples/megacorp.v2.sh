@@ -7,8 +7,8 @@ url=$h/$idx/$type
 
 
 
-# Create new documents (car)
-curl -XPUT $h/$idx/car/15?parent=15 -d '{
+# Create new documents (car) with parent and with refresh
+curl -XPUT "$h/$idx/car/15?parent=15&refresh=true" -d '{
     "name" : "RANGE_ROVER_SPORT",
     "brand" : "land rover",
     "about": "cool car!"

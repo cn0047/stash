@@ -19,7 +19,7 @@ jha='Accept: application/json'
 
 
 
-# get token, step 1
+# get token, step 1 (consent page)
 go run ed/l/go/examples/http/http.server.debug.go
 cb='http://localhost:8080'
 cb='http%3A%2F%2Flocalhost%3A8080'

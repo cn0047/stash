@@ -93,6 +93,11 @@ git remote add upstream https://github.com/golang/go.git
 git fetch upstream
 git pull upstream master
 
+# pull
+git pull --ff-only
+git pull -r
+git pull -r=false
+
 # cleanup unnecessary files and optimize the local repository
 git gc --aggressive
 
