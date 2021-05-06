@@ -22,6 +22,7 @@ Theory
 <br>GMT     - Greenwich Mean Time.
 <br>GTIN    - Global Trade Item Number.
 <br>GUI     - Graphical user interface.
+<br>GUID    - Globally Unique Identifier.
 <br>IDL     - Interface Definition Language.
 <br>IPC     - Inter-process communication (processes manage shared data).
 <br>JIT     - Just-in-time compilation.
@@ -44,6 +45,7 @@ Theory
 <br>SDLC    - Software development life-cycle.
 <br>UPI     - Unique Product Identifier.
 <br>UTC     - Coordinated Universal Time.
+<br>UUID    - Universally Unique Identifier.
 <br>VOIP    - Voice over Internet Protocol.
 <br>WORA    - Write once, run anywhere.
 <br>WSDL    - Web Service Definition Language.
