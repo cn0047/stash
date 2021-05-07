@@ -10,7 +10,8 @@ import (
 
 func main() {
 	// one()
-	readBodyTwice()
+	//readBodyTwiceWithTeeReader()
+	readBodyTwiceWithNewReader()
 	return
 
 	go two()
@@ -68,7 +69,7 @@ func he(err error) {
 	}
 }
 
-func readBodyTwice() {
+func readBodyTwiceWithTeeReader() {
 	req, err := http.NewRequest("GET", "https://api.github.com/users/cn007b", nil)
 	he(err)
 
@@ -83,6 +84,26 @@ func readBodyTwice() {
 	d1, err := ioutil.ReadAll(bodyReader)
 	he(err)
 	d2, err := ioutil.ReadAll(&body)
+	he(err)
+
+	fmt.Printf("%s \n======\n", d1)
+	fmt.Printf("%s \n======\n", d2)
+}
+
+func readBodyTwiceWithNewReader() {
+	req, err := http.NewRequest("GET", "https://api.github.com/users/cn007b", nil)
+	he(err)
+
+	client := &http.Client{}
+	res, err := client.Do(req)
+	he(err)
+	defer res.Body.Close()
+
+	body, err := io.ReadAll(res.Body)
+	he(err)
+	d1 := body
+	buf := bytes.NewReader(body)
+	d2, err := ioutil.ReadAll(buf)
 	he(err)
 
 	fmt.Printf("%s \n======\n", d1)

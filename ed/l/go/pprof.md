@@ -4,6 +4,12 @@ pprof
 ````bash
 go tool pprof -h
 
+# memprofile
+go build -gcflags='-memprofile mem.out' -o=app main.go
+go tool pprof -pdf -output report.mem.pdf ./app mem.out
+
+
+
 # test
 goapp test ./ -v
 goapp test ./ -cover
@@ -13,6 +19,7 @@ goapp test ./ -v -cpuprofile cpu.out
 go tool pprof -pdf -output report.cpu.pdf cpu.out
 # mem
 goapp test ./ -v -memprofile mem.out
+goapp test ./ -v -memprofile mem.out -test.memprofilerate=1
 go tool pprof -pdf -output report.mem.pdf mem.out
 #
 goapp test ./ -v -mutexprofile mtx.out

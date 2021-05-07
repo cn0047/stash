@@ -57,11 +57,15 @@ export GOROOT=$HOME/go
 export GOFLAGS=-mod=vendor
 
 GOARCH=386 go build
-go build                  # compiles and installs packages and dependencies
-go build -race ./example  #
-go build -gcflags -S z.go # assembly output
-go tool compile -S x.go   # assembly output
-go build -gcflags='-m -m' # provides info about optimization decisions
+go build                     # compiles and installs packages and dependencies
+go build -race ./example     #
+go tool compile -S x.go      # assembly output
+go build -gcflags='-v'       # verbose
+go build -gcflags '-S' x.go  # assembly output
+go build -gcflags='-m'       # print optimization decisions
+go build -gcflags='-m -m'    # -m - escape analysis
+go build -gcflags='-m -l'    # -l - omit inlining decisions
+go build -gcflags='-m -m -l' #
 go build -mod=vendor
 go build -o newname
 GOOS=linux GOARCH=amd64 go build \
