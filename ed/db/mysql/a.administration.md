@@ -144,7 +144,7 @@ SET SQL_SAFE_UPDATES = 0;
 SET FOREIGN_KEY_CHECKS = 0;
 
 SELECT SQL_CACHE
-SELECT SQL_NO_CACHE
+SELECT SQL_NO_CACHE ... -- disable query cache
 ````
 
 #### Slow query log
@@ -220,7 +220,7 @@ SET global general_log_file='/var/log/mysql/general.log';
 SET global general_log_file='/tmp/mysql.general.log';
 SET global general_log = 1;
 
-SET profiling = 1;
+SET PROFILING = 1; -- enable profiling
 SHOW PROFILES;
 SHOW PROFILE;
 SHOW PROFILE FOR QUERY 1;

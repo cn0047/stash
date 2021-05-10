@@ -5,13 +5,52 @@ import (
 	"encoding/gob"
 	"encoding/json"
 	"fmt"
+	"io"
 )
 
 func main() {
-	one()
-	two()
-	three()
-	forth()
+	//one()
+	//two()
+	//three()
+	//forth()
+	//readTwiceFromBuffer()
+	readTwiceFromBufferReaderWithReset()
+}
+
+func readTwiceFromBufferReaderWithReset() {
+	msg := []byte("ok")
+
+	b := bytes.NewReader(msg)
+
+	content1, err := io.ReadAll(b)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("content1: '%s' \n", content1) // content1: 'ok'
+
+	b.Reset(msg)
+
+	content2, err := io.ReadAll(b)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("content2: '%s' \n", content2) // content2: 'ok'
+}
+
+func readTwiceFromBuffer() {
+	b := bytes.NewBuffer([]byte("ok"))
+
+	content1, err := io.ReadAll(b)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("content1: '%s' \n", content1) // content1: 'ok'
+
+	content2, err := io.ReadAll(b)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("content2: '%s' \n", content2) // content2: ''
 }
 
 func one() {

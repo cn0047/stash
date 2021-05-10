@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"fmt"
+	_ "image/gif"
 	"io"
 
 	"github.com/valyala/bytebufferpool"

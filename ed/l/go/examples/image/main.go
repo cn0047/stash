@@ -46,7 +46,8 @@ func downloadAndConvertIfGIF() {
 	//u := "https://c0.klipartz.com/pngpicture/460/619/gratis-png-dibujo-corazon-stock-photography-corazon.png"
 	//u := "https://blog.craigjoneswildlifephotography.co.uk/wp-content/uploads/2010/07/CMJ4893Jpeg-FB.jpg"
 	//u := "https://raw.githubusercontent.com/Rapol/M101JS/master/project/mongomart/static/img/logo.jpg"
-	u := "https://i.pinimg.com/originals/65/ba/48/65ba488626025cff82f091336fbf94bb.gif"
+	//u := "https://i.pinimg.com/originals/65/ba/48/65ba488626025cff82f091336fbf94bb.gif"
+	u := "https://cdn1.nuorder.com/product/fe2670dd16943a102cd52a68f6e67433.jpg"
 	req, err := http.NewRequest("GET", u, nil)
 	he(err)
 
