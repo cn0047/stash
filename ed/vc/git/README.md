@@ -95,8 +95,8 @@ git pull upstream master
 
 # pull
 git pull --ff-only
-git pull -r
-git pull -r=false
+git pull -r        # rebase
+git pull -r=false  # no rebase
 
 # cleanup unnecessary files and optimize the local repository
 git gc --aggressive
@@ -142,6 +142,9 @@ And you have to: `git ph -f`
 The Golden Rule of Rebasing - never use it on public branches.
 
 ````sh
+git rebase -m # use merging strategies
+git rebase -r # rebase merges
+
 git rebase --abort
 
 # squash - rebase 2 commits into 1:
@@ -150,7 +153,7 @@ git rebase -i HEAD~2
 # :wq
 git ph -f
 
-# don't merge master but rebase to master
+# rebase to master (not merge master)
 git rebase master
 git ph -f
 ````
@@ -235,9 +238,9 @@ git submodule update --remote --recursive
     d   = diff --word-diff
     df  = diff
     dfc = diff --cached
+    dff = diff --name-only
     dfl = diff origin/live
     dfm = diff origin/master
-    dff = diff origin/live --name-only
 [core]
     excludesfile = ~/.gitignore
     editor       = vim
