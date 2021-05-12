@@ -36,6 +36,9 @@ apoc.rel.type(relationship);
 
 apoc.diff.nodes(node1, node2);
 
+// run query in separate transactions (limit is batch size per transaction)
+CALL apoc.periodic.commit("MATCH (u:User) WITH u LIMIT $limit SET u.x = 1 RETURN count(u) ", {limit: 1000});
+
 // run 2nd statement for each item returned by 1st statement.
 apoc.periodic.iterate('return items', 'handle item', {batchSize: 10})
 CALL apoc.periodic.iterate(
