@@ -221,6 +221,7 @@ git submodule update --remote --recursive
     ss  = stash save --include-untracked
     sa  = stash apply
     sp  = stash pop
+    su  = submodule update --remote --recursive
     rh  = reset HEAD
     rb  = rebase -i HEAD~2
     ca  = commit -am

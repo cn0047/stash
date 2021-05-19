@@ -216,7 +216,7 @@ UTF-8 character   - 2byte (for special chars)
 
 ````
 nil | null | none | blank | undefined | unknown | void | empty
-anonymous |
+anonymous | anon
 environments: local; dev; stage|staging; prod|production;
 ````
 
