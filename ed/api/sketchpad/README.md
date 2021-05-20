@@ -4,5 +4,6 @@ Sketchpad
 [docs](https://sketch.io/sketchpad/guide)
 
 ````
-Space # to switch to zoom mode
+space  # to switch to zoom mode
+option # move/resize while draw
 ````

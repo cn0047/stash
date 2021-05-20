@@ -36,7 +36,7 @@ CREATE (p:Person {name: 'M', code: 'm'});
 CREATE (p:Person {name: 'Vesper Lynd', code: 'vesper'});
 CREATE (p:Person {name: 'Blofeld'});
 
-CREATE (o:Organization {name:'MI6'});
+CREATE (o:Organization {name:'MI6', status:'active'});
 CREATE (o:Organization {name:'CIA'});
 CREATE (o:Organization {name:'test'});
 CREATE (o:Organization {name:'00*'});
@@ -118,8 +118,12 @@ MATCH (o:Organization {name:'MI6'})
 RETURN p, o;
 
 // update
+MATCH (n:Organization {name:'test'}) RETURN n;
 MATCH (n:Organization {name:'test'}) SET n.name = 'TEST_ORG' RETURN n.name;
 MATCH (n:Organization {name:'TEST_ORG'}) RETURN n;
+// update with where
+MATCH (n:Organization) WHERE NOT EXISTS (n.status) RETURN n;
+MATCH (n:Organization) WHERE NOT EXISTS (n.status) SET n.status = 'pending' RETURN n;
 
 // replace node
 MATCH (p:Person {code: '007'}) SET p = {age: 30} RETURN p;
