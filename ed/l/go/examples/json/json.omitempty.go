@@ -10,7 +10,9 @@ func main() {
 	//f2()
 	//f3()
 	// sliceOfStructs()
-	sliceOfStructsPointers()
+	// sliceOfStructsPointers()
+	// boolValue()
+	boolSlice()
 }
 
 type Foo struct {
@@ -33,6 +35,14 @@ type Bars struct {
 
 type BarsPointers struct {
 	Data []*Bar `json:"data,omitempty"`
+}
+
+type BoolStruct struct {
+	Value bool `json:"value,omitempty`
+}
+
+type BoolBag struct {
+	Data []BoolStruct `json:"data,omitempty`
 }
 
 func f1() {
@@ -73,7 +83,7 @@ func sliceOfStructs() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("[sliceOfStructs] Result: %s \n", j) // Result: {"data":[{"value":"1"},{"value":"2"},{}]}
+	fmt.Printf("[sliceOfStructs] Result: %s \n", j) // {"data":[{"value":"1"},{"value":"2"},{}]}
 }
 
 func sliceOfStructsPointers() {
@@ -87,5 +97,31 @@ func sliceOfStructsPointers() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("[sliceOfStructsPointers] Result: %s \n", j) // [sliceOfStructsPointers] Result: {"data":[{"value":"1"},{"value":"2"},{}]}
+	fmt.Printf("[sliceOfStructsPointers] Result: %s \n", j) // {"data":[{"value":"1"},{"value":"2"},{}]}
+}
+
+func boolValue() {
+	s1 := BoolStruct{Value: true}
+	j1, err := json.Marshal(s1)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("[boolValue] Result 1: %s \n", j1) // {"Value":true}
+
+	s2 := BoolStruct{Value: false}
+	j2, err := json.Marshal(s2)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("[boolValue] Result 2: %s \n", j2) // {"Value":false}
+}
+
+func boolSlice() {
+	d := BoolBag{Data: []BoolStruct{{Value: true}, {Value: false}}}
+	j, err := json.Marshal(d)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Printf("[boolSlice] Result: %s \n", j) // {"Data":[{"Value":true},{"Value":false}]}
 }
