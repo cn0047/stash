@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"io"
+	"io/ioutil"
+	"net"
 	"strings"
 	"time"
 
@@ -11,10 +13,12 @@ import (
 )
 
 const (
-	HOST = ""
-	PORT = ""
-	USER = ""
-	PASS = ""
+	Host      = ""
+	Port      = "22"
+	User      = "ec2-user"
+	Pass      = ""
+	PathToKey = ""
+	Key       = `-----BEGIN RSA PRIVATE KEY-----\n MIIEogIBAAKCAQ...\n -----END RSA PRIVATE KEY-----\n`
 )
 
 func main() {
@@ -22,17 +26,18 @@ func main() {
 }
 
 func one() {
-	conn, c := getClient()
+	//conn, c := getPasswordBasedClient()
+	conn, c := getKeyFileBasedClient()
 	_ = conn
 
-	p := "testing/test"
+	p := "/tmp"
 	//mkdir(c, p)
-	write(c, p, "It works!\n")
+	write(c, p, "It works!!!\n")
 	lstat(c, p)
 }
 
 func write(c *sftp.Client, path string, msg string) {
-	data := strings.NewReader("it works!\n")
+	data := strings.NewReader(msg)
 
 	f, err := c.Create(path + "/" + "test.txt")
 	if err != nil {
@@ -70,13 +75,13 @@ func lstat(c *sftp.Client, path string) {
 	fmt.Printf("🎾 %+v \n", info)
 }
 
-func getClient() (*ssh.Client, *sftp.Client) {
-	addr := fmt.Sprintf("%s:%s", HOST, PORT)
+func getPasswordBasedClient() (*ssh.Client, *sftp.Client) {
+	addr := fmt.Sprintf("%s:%s", Host, Port)
 	auths := []ssh.AuthMethod{
-		ssh.Password(PASS),
+		ssh.Password(Pass),
 	}
 	config := ssh.ClientConfig{
-		User:            USER,
+		User:            User,
 		Auth:            auths,
 		HostKeyCallback: ssh.InsecureIgnoreHostKey(),
 		Timeout:         180 * time.Second,
@@ -89,6 +94,41 @@ func getClient() (*ssh.Client, *sftp.Client) {
 	c, err := sftp.NewClient(conn, sftp.MaxConcurrentRequestsPerFile(1), sftp.UseFstat(false))
 	if err != nil {
 		panic(err)
+	}
+
+	return conn, c
+}
+
+func getKeyFileBasedClient() (*ssh.Client, *sftp.Client) {
+	key, err := ioutil.ReadFile(PathToKey)
+	if err != nil {
+		panic(fmt.Errorf("failed to read key file, error: %w", err))
+	}
+	// or
+	//key = []byte(Key)
+
+	signer, err := ssh.ParsePrivateKey(key)
+	if err != nil {
+		panic(fmt.Errorf("failed to parse key file, error: %w", err))
+	}
+
+	config := &ssh.ClientConfig{
+		User: User,
+		Auth: []ssh.AuthMethod{ssh.PublicKeys(signer)},
+		HostKeyCallback: func(hostname string, remote net.Addr, key ssh.PublicKey) error {
+			return nil
+		},
+		Timeout: 180 * time.Second,
+	}
+	addr := fmt.Sprintf("%s:%s", Host, Port)
+	conn, err := ssh.Dial("tcp", addr, config)
+	if err != nil {
+		panic(fmt.Errorf("failed to dial ssh host, error: %w", err))
+	}
+
+	c, err := sftp.NewClient(conn, sftp.MaxConcurrentRequestsPerFile(1), sftp.UseFstat(false))
+	if err != nil {
+		panic(fmt.Errorf("failed to create new client, error: %w", err))
 	}
 
 	return conn, c
