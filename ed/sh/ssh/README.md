@@ -10,6 +10,9 @@ ssh-keygen -t rsa
 # get key's fingerprint
 ssh-keygen -E md5 -lf keyFile.pem
 
+# get public key from private one
+ssh-keygen -y -f ~/.ssh/id_rsa > ~/.ssh/id_rsa.pub
+
 locate sshd_config
 
 ssh-add ~/.ssh/id_rsa
@@ -50,4 +53,14 @@ Host ec2
     Hostname ec2-52-211-26-56.eu-west-1.compute.amazonaws.com
     User ec2-user
     IdentifyFile ~/path_to_ssh_key
+````
+
+Examples:
+
+````
+RSA/EC/DSA/OPENSSH
+
+-----BEGIN RSA PRIVATE KEY-----
+94bdTb18N6Zi9l23UXIQKpIh0pwqFYS7...
+-----END RSA PRIVATE KEY-----
 ````

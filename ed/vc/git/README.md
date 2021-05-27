@@ -95,8 +95,8 @@ git pull upstream master
 
 # pull
 git pull --ff-only
-git pull -r        # rebase
-git pull -r=false  # no rebase
+git pull --rebase
+git pull --no-rebase
 
 # cleanup unnecessary files and optimize the local repository
 git gc --aggressive

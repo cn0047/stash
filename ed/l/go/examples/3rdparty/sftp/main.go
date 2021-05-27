@@ -13,12 +13,13 @@ import (
 )
 
 const (
-	Host      = ""
-	Port      = "22"
-	User      = "ec2-user"
-	Pass      = ""
-	PathToKey = ""
-	Key       = `-----BEGIN RSA PRIVATE KEY-----\n MIIEogIBAAKCAQ...\n -----END RSA PRIVATE KEY-----\n`
+	Host             = ""
+	Port             = "22"
+	User             = "ec2-user"
+	Pass             = ""
+	PathToPrivateKey = ""
+	PrivateKey       = ``
+	PublicKey        = ``
 )
 
 func main() {
@@ -26,8 +27,12 @@ func main() {
 }
 
 func one() {
-	//conn, c := getPasswordBasedClient()
-	conn, c := getKeyFileBasedClient()
+	//cfg := getPasswordBasedConfig()
+	//cfg := getPrivateKeyFileBasedConfig()
+	//cfg := getPrivateKeyBasedConfig()
+	cfg := getRawPrivateKeyBasedConfig()
+	//cfg := getPublicKeyBasedConfig()
+	conn, c := getClient(cfg)
 	_ = conn
 
 	p := "/tmp"
@@ -72,54 +77,10 @@ func lstat(c *sftp.Client, path string) {
 		return
 	}
 
-	fmt.Printf("🎾 %+v \n", info)
+	fmt.Printf("[lstat] info: %+v \n", info)
 }
 
-func getPasswordBasedClient() (*ssh.Client, *sftp.Client) {
-	addr := fmt.Sprintf("%s:%s", Host, Port)
-	auths := []ssh.AuthMethod{
-		ssh.Password(Pass),
-	}
-	config := ssh.ClientConfig{
-		User:            User,
-		Auth:            auths,
-		HostKeyCallback: ssh.InsecureIgnoreHostKey(),
-		Timeout:         180 * time.Second,
-	}
-	conn, err := ssh.Dial("tcp", addr, &config)
-	if err != nil {
-		panic(err)
-	}
-
-	c, err := sftp.NewClient(conn, sftp.MaxConcurrentRequestsPerFile(1), sftp.UseFstat(false))
-	if err != nil {
-		panic(err)
-	}
-
-	return conn, c
-}
-
-func getKeyFileBasedClient() (*ssh.Client, *sftp.Client) {
-	key, err := ioutil.ReadFile(PathToKey)
-	if err != nil {
-		panic(fmt.Errorf("failed to read key file, error: %w", err))
-	}
-	// or
-	//key = []byte(Key)
-
-	signer, err := ssh.ParsePrivateKey(key)
-	if err != nil {
-		panic(fmt.Errorf("failed to parse key file, error: %w", err))
-	}
-
-	config := &ssh.ClientConfig{
-		User: User,
-		Auth: []ssh.AuthMethod{ssh.PublicKeys(signer)},
-		HostKeyCallback: func(hostname string, remote net.Addr, key ssh.PublicKey) error {
-			return nil
-		},
-		Timeout: 180 * time.Second,
-	}
+func getClient(config *ssh.ClientConfig) (*ssh.Client, *sftp.Client) {
 	addr := fmt.Sprintf("%s:%s", Host, Port)
 	conn, err := ssh.Dial("tcp", addr, config)
 	if err != nil {
@@ -132,4 +93,111 @@ func getKeyFileBasedClient() (*ssh.Client, *sftp.Client) {
 	}
 
 	return conn, c
+}
+
+func getPasswordBasedConfig() *ssh.ClientConfig {
+	auth := []ssh.AuthMethod{ssh.Password(Pass)}
+	config := &ssh.ClientConfig{
+		User:            User,
+		Auth:            auth,
+		HostKeyCallback: ssh.InsecureIgnoreHostKey(),
+		Timeout:         180 * time.Second,
+	}
+
+	return config
+}
+
+func getPrivateKeyFileBasedConfig() *ssh.ClientConfig {
+	key, err := ioutil.ReadFile(PathToPrivateKey)
+	if err != nil {
+		panic(fmt.Errorf("failed to read key file, error: %w", err))
+	}
+
+	signer, err := ssh.ParsePrivateKey(key)
+	if err != nil {
+		panic(fmt.Errorf("failed to parse key file, error: %w", err))
+	}
+
+	auth := []ssh.AuthMethod{ssh.PublicKeys(signer)}
+
+	return getConfig(auth)
+}
+
+func getPrivateKeyBasedConfig() *ssh.ClientConfig {
+	signer, err := ssh.ParsePrivateKey([]byte(PrivateKey))
+	if err != nil {
+		panic(fmt.Errorf("failed to parse private key, error: %w", err))
+	}
+
+	auth := []ssh.AuthMethod{ssh.PublicKeys(signer)}
+
+	return getConfig(auth)
+}
+
+func getRawPrivateKeyBasedConfig() *ssh.ClientConfig {
+	k, err := ssh.ParseRawPrivateKey([]byte(PrivateKey))
+	if err != nil {
+		panic(fmt.Errorf("failed to parse raw private key, error: %w", err))
+	}
+
+	signer, err := ssh.NewSignerFromKey(k)
+	if err != nil {
+		panic(fmt.Errorf("failed to create new signer, error: %w", err))
+	}
+
+	auth := []ssh.AuthMethod{ssh.PublicKeys(signer)}
+
+	return getConfig(auth)
+}
+
+func getPublicKeyBasedConfig_invalid_1() *ssh.ClientConfig {
+	k, err := ssh.ParsePublicKey([]byte(PublicKey))
+	if err != nil {
+		panic(fmt.Errorf("failed to parse public key, error: %w", err))
+	}
+
+	signer, err := ssh.NewSignerFromKey(k)
+	if err != nil {
+		panic(fmt.Errorf("failed to create new signer, error: %w", err))
+	}
+
+	auth := []ssh.AuthMethod{ssh.PublicKeys(signer)}
+
+	return getConfig(auth)
+}
+
+func getPublicKeyBasedConfig_invalid_2() *ssh.ClientConfig {
+	k, comment, options, rest, err := ssh.ParseAuthorizedKey([]byte(PublicKey))
+	if err != nil {
+		panic(fmt.Errorf("failed to parse public key, error: %w", err))
+	}
+	_ = comment
+	_ = options
+	_ = rest
+
+	signer, err := ssh.NewSignerFromKey(k)
+	if err != nil {
+		panic(fmt.Errorf("failed to create new signer, error: %w", err))
+	}
+
+	auth := []ssh.AuthMethod{ssh.PublicKeys(signer)}
+
+	return getConfig(auth)
+}
+
+func getPublicKeyBasedConfig() *ssh.ClientConfig {
+	return getPublicKeyBasedConfig_invalid_1()
+}
+
+func getConfig(auth []ssh.AuthMethod) *ssh.ClientConfig {
+	config := &ssh.ClientConfig{
+		User: User,
+		Auth: auth,
+		HostKeyCallback: func(hostname string, remote net.Addr, key ssh.PublicKey) error {
+			return nil
+		},
+		Timeout: 180 * time.Second,
+	}
+
+	return config
 }
