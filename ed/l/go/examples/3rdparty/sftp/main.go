@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/base64"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -18,6 +19,7 @@ const (
 	User             = "ec2-user"
 	Pass             = ""
 	PathToPrivateKey = ""
+	PrivateKeyBase64 = ``
 	PrivateKey       = ``
 	PublicKey        = ``
 )
@@ -30,7 +32,8 @@ func one() {
 	//cfg := getPasswordBasedConfig()
 	//cfg := getPrivateKeyFileBasedConfig()
 	//cfg := getPrivateKeyBasedConfig()
-	cfg := getRawPrivateKeyBasedConfig()
+	//cfg := getRawPrivateKeyBasedConfig(fromBase64(toBase64(PrivateKey)))
+	cfg := getRawPrivateKeyBasedConfig(fromBase64(PrivateKeyBase64))
 	//cfg := getPublicKeyBasedConfig()
 	conn, c := getClient(cfg)
 	_ = conn
@@ -39,6 +42,19 @@ func one() {
 	//mkdir(c, p)
 	write(c, p, "It works!!!\n")
 	lstat(c, p)
+}
+
+func toBase64(s string) string {
+	return base64.StdEncoding.EncodeToString([]byte(s))
+}
+
+func fromBase64(s string) string {
+	decoded, err := base64.StdEncoding.DecodeString(s)
+	if err != nil {
+		panic(fmt.Errorf("failed to decode base64 string, err: %w", err))
+	}
+
+	return string(decoded)
 }
 
 func write(c *sftp.Client, path string, msg string) {
@@ -134,8 +150,8 @@ func getPrivateKeyBasedConfig() *ssh.ClientConfig {
 	return getConfig(auth)
 }
 
-func getRawPrivateKeyBasedConfig() *ssh.ClientConfig {
-	k, err := ssh.ParseRawPrivateKey([]byte(PrivateKey))
+func getRawPrivateKeyBasedConfig(key string) *ssh.ClientConfig {
+	k, err := ssh.ParseRawPrivateKey([]byte(key))
 	if err != nil {
 		panic(fmt.Errorf("failed to parse raw private key, error: %w", err))
 	}

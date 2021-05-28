@@ -24,6 +24,12 @@ CALL apoc.monitor.tx();
 
 
 
+// get IDs by regex
+RETURN apoc.text.regexGroups(
+'[{"id":"c6f68cdf-7deb-48c3-9b85-1a0ff545cd3a","name":"a"},{"id":"48d7f2cd-d596-4c94-b2b2-71bd0dee7576","name":"b"}]',
+'(?<="id":")\w{8}-\w{4}-\w{4}-\w{4}-\w{12}'
+) AS ids;
+
 CALL apoc.static.set('x.user', 'Mike');
 RETURN apoc.static.get('x.user') AS value;
 
