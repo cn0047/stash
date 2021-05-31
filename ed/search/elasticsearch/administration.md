@@ -147,7 +147,7 @@ curl $h/_mapping
 
 # get mapping v2
 curl $h/$idx/_mapping/$type
-curl $h/$idx/_mapping
+curl $h/$idx/_mapping | jq
 # get mapping v7
 curl -XGET $h/$idx/_mapping | jq
 

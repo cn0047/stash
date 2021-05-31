@@ -197,9 +197,14 @@ curl -XGET $h/$idx/$t/_search -d '{
     }
 }'
 
-# Simple sort
+# simple sort
 curl -XGET $h/$idx/$t/_search -d '{
     "sort" : [{ "city" : "asc" }]
+}'
+
+# sort by relevance (score)
+curl -XGET $h/$idx/$t/_search -d '{
+    "sort" : [{"_score":{"order":"desc"}}]
 }'
 
 curl -XGET $h/$idx/$t/_search -d '{

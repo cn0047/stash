@@ -24,6 +24,9 @@ Boolean:
 * must_not
 * filter - must appear in result but result not scored.
 
+`search_after` more efficient than `from/size` and `scroll`,
+just use value from `sort` field provided by previous search.
+
 ````sh
 h=localhost:9200
 idx=megacorp
@@ -67,7 +70,7 @@ curl -XGET $url_validate/query -d '{
     "query": {"match_all" : {}}
 }'
 
-# calculate count of all documents
+# get count of all documents
 curl -XGET $h/$idx/_count | jq
 # or
 curl -XGET $url/_count -d '{
