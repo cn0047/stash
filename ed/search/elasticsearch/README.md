@@ -1,4 +1,4 @@
-Elasticsearch
+ElasticSearch
 -
 <br>2.3.3
 <br>2.2
@@ -33,6 +33,7 @@ to restrict the documents that will be matched by other clauses, without changin
 `?refresh=false` - don't no refresh.
 `?refresh=wait_for` - wait for changes to be visible before replying.
 
+ElasticSearch is using lucene engine.
 A shard is a single Lucene instance.
 An index is a logical namespace which points to primary and replica shards.
 
