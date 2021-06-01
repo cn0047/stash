@@ -98,38 +98,38 @@ go run ed/l/go/examples/blur/app/bench.go
 # '
 
 # db postgresql
-docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/l/go/examples/db/' \
+docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/l/go/examples/3rdparty/db/' \
   xgo sh -c 'cd $GOPATH && go get github.com/lib/pq'
 # run
-docker run -it --rm --net=xnet -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/l/go/examples/db/' \
+docker run -it --rm --net=xnet -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/l/go/examples/3rdparty/db/' \
   xgo sh -c 'cd $GOPATH && go run src/postgresql/simplest.go'
 # local
 GOPATH=$PWD/ed/l/go/examples/db
 go run $GOPATH/src/postgresql/simplest.go
 
 # db mongo
-docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/l/go/examples/db/' \
+docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/l/go/examples/3rdparty/db/' \
   xgo sh -c 'cd $GOPATH && go get gopkg.in/mgo.v2'
 # or
-docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/l/go/examples/db/' \
+docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/l/go/examples/3rdparty/db/' \
   xgo sh -c 'cd $GOPATH && go get ./...'
 # run
-docker run -it --rm --net=xnet -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/l/go/examples/db/' \
+docker run -it --rm --net=xnet -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/l/go/examples/3rdparty/db/' \
   xgo sh -c 'cd $GOPATH && go run src/mongodb/simple.go'
 
 # db mysql
-docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/l/go/examples/db/' \
+docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/l/go/examples/3rdparty/db/' \
   xgo sh -c 'cd $GOPATH && go get github.com/go-sql-driver/mysql'
 # run
-docker run -it --rm --net=xnet -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/l/go/examples/db/' \
+docker run -it --rm --net=xnet -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/l/go/examples/3rdparty/db/' \
   xgo sh -c 'cd $GOPATH && go run src/mysql/simple.go'
 
 # mysql-wear
-docker run -it --rm --net=xnet -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/l/go/examples/db/' \
+docker run -it --rm --net=xnet -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/l/go/examples/3rdparty/db/' \
   xgo sh -c 'cd $GOPATH && go run src/mysql-wear/simple.go'
 
 # neo4j
-docker run -it --rm --net=xnet -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/l/go/examples/db/' cn007b/go:1.13-neo4j sh -c '
+docker run -it --rm --net=xnet -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/l/go/examples/3rdparty/db/' cn007b/go:1.13-neo4j sh -c '
   cd $GOPATH; \
   go get github.com/neo4j/neo4j-go-driver/neo4j; \
   go run src/neo4j/simple.go
