@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"log"
+
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 )
@@ -12,9 +12,11 @@ type Test struct {
 }
 
 func main() {
-	session, err := mgo.Dial("dbu:dbp@xmongo:27017/test")
+	//u := "dbu:dbp@xmongo:27017/test"
+	u := "dbu:dbp@localhost:27017/test"
+	session, err := mgo.Dial(u)
 	if err != nil {
-		panic(err)
+		panic(fmt.Errorf("failed to dial mongo, err: %w", err))
 	}
 	defer session.Close()
 	session.SetMode(mgo.Monotonic, true)
@@ -26,9 +28,9 @@ func main() {
 }
 
 func insert(c *mgo.Collection) {
-	err := c.Insert(&Test{202}, &Test{204})
+	err := c.Insert(&Test{Code: 202}, &Test{Code: 204})
 	if err != nil {
-		log.Fatal(err)
+		panic(fmt.Errorf("failed to perform insert, err: %w", err))
 	}
 }
 
@@ -36,8 +38,7 @@ func find(c *mgo.Collection, code int) {
 	result := Test{}
 	err := c.Find(bson.M{"code": code}).One(&result)
 	if err != nil {
-		log.Fatal("NOT FOUND.")
-		log.Fatal(err)
+		panic(fmt.Errorf("failed to perform find, err: %w", err))
 	}
 	fmt.Printf("%+v\n", result)
 }
