@@ -5,6 +5,14 @@ The update operation supports the following query-string
 [parameters](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-update.html#_parameters_3).
 
 ````sh
+# groovy
+
+# array functions
+ctx._source.my_array.add(element)
+ctx._source.my_array.remove(0)
+````
+
+````sh
 # Update particular document and particular property
 curl -XPOST "$url/1/_update?pretty" -d '{
   "doc": { "first_name": "JohnnNnn" }

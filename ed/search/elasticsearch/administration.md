@@ -170,7 +170,7 @@ curl -XPUT $h/$idx/_mapping/$type -d '{
 }'
 
 # put mapping from file v2
-curl -XPUT $h/zii -d @/vagrant/vagrant/elasticsearch.mapping.json
+curl -XPUT $h/zii -H $jh -d @/vagrant/vagrant/elasticsearch.mapping.json
 # put mapping from file v7
 m=/tmp/mapping.json
 curl -XPUT $h/$inx/_mapping -H $jh -d @$m | jq
