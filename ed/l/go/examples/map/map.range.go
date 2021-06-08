@@ -10,7 +10,7 @@ func main() {
 	m[2] = 0
 	fmt.Println(m) // map[2:0 1:0]
 
-	rangeLoop(m) // not deterministic
+	rangeLoop(m) // ‼️ not deterministic
 	forLoop(m)   // ok
 }
 
@@ -22,6 +22,7 @@ func forLoop(m map[int]int) {
 	fmt.Println(m) // map[2:0 11:0 12:0 1:0]
 }
 
+// rangeLoop performs loop over map and inserts values into map.
 func rangeLoop(m map[int]int) {
 	for k, _ := range m {
 		fmt.Println("len:", len(m))

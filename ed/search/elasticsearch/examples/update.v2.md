@@ -10,6 +10,7 @@ The update operation supports the following query-string
 # array functions
 ctx._source.my_array.add(element)
 ctx._source.my_array.remove(0)
+ctx._source.my_array.length
 ````
 
 ````sh
