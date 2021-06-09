@@ -8,7 +8,8 @@ Node JS
 [compatibility tables](http://node.green/)
 [jsdoc](http://usejsdoc.org/) `node_modules/.bin/jsdoc -r src -d docs`.
 [https](https://github.com/cn007b/my/blob/master/ed/nodejs.express/examples/coursera.passport/bin/www#L42)
-[testing tool](github.com/cucumber/cucumber-js)
+[testing tool](https://github.com/cucumber/cucumber-js)
+[testing tool](https://www.npmjs.com/package/puppeteer)
 
 ````sh
 sudo ln -s /usr/bin/nodejs /usr/bin/node
