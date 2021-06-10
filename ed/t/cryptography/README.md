@@ -1,6 +1,8 @@
 Cryptography
 -
 
+Shared Secret - piece of data, known only to the parties involved (usually refers to symmetric cryptography).
+
 Symmetric encryption (symmetric key cryptography) - sender and receiver have same secret key.
 Same key for encrypting and decrypting.
 

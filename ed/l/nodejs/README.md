@@ -9,7 +9,7 @@ Node JS
 [jsdoc](http://usejsdoc.org/) `node_modules/.bin/jsdoc -r src -d docs`.
 [https](https://github.com/cn007b/my/blob/master/ed/nodejs.express/examples/coursera.passport/bin/www#L42)
 [testing tool](https://github.com/cucumber/cucumber-js)
-[testing tool](https://www.npmjs.com/package/puppeteer)
+[testing tool](https://pptr.dev/)
 
 ````sh
 sudo ln -s /usr/bin/nodejs /usr/bin/node
