@@ -1,9 +1,12 @@
 <?php
+/**
+ * @see https://www.google.com/settings/security/lesssecureapps
+ */
 
 $box = "{imap.gmail.com:993/imap/ssl}INBOX";
 $user = "mail@gmail.com";
 $pass = "pwd";
-// @see https://www.google.com/settings/security/lesssecureapps
+
 $mbox = imap_open($box, $user, $pass);
 if ($mbox === false) {
     var_export([
@@ -12,7 +15,7 @@ if ($mbox === false) {
     ]);
 } else {
     $totalInTheBox = imap_num_msg($mbox);
-    echo "In inbox: $totalInTheBox \n";
+    echo "In inbox: $totalInTheBox messages\n";
     if ($totalInTheBox > 0) {
         $id = 1;
         $message = imap_fetchbody($mbox, imap_uid($mbox, $id), 1.2, FT_UID | FT_PEEK);

@@ -6,10 +6,11 @@ sudo ifconfig lo0 alias 10.254.254.254
 docker network create --driver bridge xnet
 
 # php
-docker pull cn007b/php:7.1-protobuf-3
-docker tag cn007b/php:7.1-protobuf-3 xphp
-docker pull cn007b/php
-docker tag cn007b/php xphp
+tag=latest
+tag=7.1-protobuf-3
+tag=7.1
+docker pull cn007b/php:$tag
+docker tag cn007b/php:$tag xphp
 # docker tag cn007b/php nphp
 docker run -it --rm --net=xnet -v $PWD:/gh -w /gh -p 8080:80 xphp /bin/bash
 
