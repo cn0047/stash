@@ -119,6 +119,8 @@
     // SFTP
     ,{ "keys": ["f6"], "command": "sftp_upload_file" }
 
+    ,{ "keys": ["command+shift+j", "ctrl+command+j"], "command": "pretty_json" }
+
     // OS X
 
     // EDIT

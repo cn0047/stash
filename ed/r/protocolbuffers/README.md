@@ -30,6 +30,15 @@ message Job {
   string id = 1;
   repeated string tags = 2;
   map<string, string> params = 3;
+
+  oneof kind {
+    UnitKind unit = 1;
+    ModuleKind module = 2;
+  }
+
+  message UnitKind {}
+
+  message ModuleKind {}
 }
 ````
 
