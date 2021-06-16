@@ -128,6 +128,7 @@
     ,{ "keys": ["ctrl+alt+super+down"], "command": "swap_line_down" }
     ,{ "keys": ["super+shift+v"], "command": "paste_from_history" }
     ,{ "keys": ["super+alt+w"], "command": "wrap_lines" }
+    ,{ "keys": ["command+j"], "command": "join_lines" }
 
     // FIND
     ,{ "keys": ["super+space"], "command": "find_under_expand" }

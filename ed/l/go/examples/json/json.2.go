@@ -15,6 +15,16 @@ type Req2 struct {
 	Hidden string
 }
 
+type RegsBag struct {
+	Regs []Req2
+}
+
+func main() {
+	// withTags()
+	// withoutTags()
+	nullStringAfterMarshal()
+}
+
 func withTags() {
 	p := []byte(`{"val": "yes", "hidden": "no"}`)
 	r := Req1{}
@@ -35,7 +45,12 @@ func withoutTags() {
 	fmt.Printf("%#v \n", r) // main.Req2{Val:"yes", Hidden:"no"}
 }
 
-func main() {
-	// withTags()
-	withoutTags()
+func nullStringAfterMarshal() {
+	r := RegsBag{}
+	j, err := json.Marshal(r.Regs)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Printf("[nullStringAfterMarshal] %s \n", j)
 }
