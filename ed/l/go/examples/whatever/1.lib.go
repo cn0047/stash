@@ -20,8 +20,41 @@ int64, err := strconv.ParseInt(str, 10, 32); int32(int64)     // str     -> int3
 int64, err := strconv.ParseInt(str, 10, 64);                  // str     -> int64
 uint64, err := strconv.ParseUint(str, 10, 64)                 // str     -> uint64
 s := fmt.Sprintf("%.0f", fl64); int32, err := strconv.Atoi(s) // float64 -> int32
+↑; int64 = int64(int32)                                       // float64 -> int64
 
 if !regexp.MustCompile(`^[\d]+$`).MatchString(ds) {}
+
+func pow32(x, y int32) int32 {
+	if y == 0 || x == 1 {
+		return 1
+	}
+	if y == 1 {
+		return x
+	}
+
+	var res = x
+	for i := int32(1); i < y; i++ {
+		res = res * x
+	}
+
+	return res
+}
+
+func pow64(x, y int64) int64 {
+	if y == 0 || x == 1 {
+		return 1
+	}
+	if y == 1 {
+		return x
+	}
+
+	var res = x
+	for i := int64(1); i < y; i++ {
+		res = res * x
+	}
+
+	return res
+}
 
 // ReverseInt32 returns 321 for 123 etc.
 func ReverseInt32(n int32) int32 {
