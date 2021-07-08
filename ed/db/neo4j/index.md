@@ -21,6 +21,7 @@ CALL db.indexes();
 CREATE INDEX ON :Person(code);
 DROP INDEX ON :Person(code);
 CREATE INDEX ON :Person(name, active);
+DROP INDEX ON :Person(name, active);
 
 // hint
 MATCH (p:Person {code: '007'})

@@ -14,6 +14,7 @@ node._lock = true
 
 
 WITH 204 as c RETURN c;
+WITH timestamp()/1000 as current_timestamp RETURN current_timestamp; // unix timestamp (now)
 // var
 // IMPORTANT: don't use _ in var name
 :param code => 200;
