@@ -69,3 +69,9 @@ Non-Primitive Data Types:
 
 Special types:
 * Null
+
+#### Collections
+
+* List
+* Set
+* Map
