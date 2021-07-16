@@ -146,6 +146,8 @@ Common SLIs include latency, throughput, availability, error rate, durability, c
 `snake_case`
 
 ````sh
+12:25AM # 00:25
+
 Odd  (1, 3, 5...) -> x % 2 = 1.
 Even (2, 4, 6...) -> x % 2 = 0.
 

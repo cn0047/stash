@@ -36,6 +36,11 @@ class Foo implements Comparable<Bar> {}
 super.parentMethod();
 
 Objects.isNull(v);
+
+// generics
+Class<?> aClass = Some.class; // any class
+List<? extends Person> persons // anything which extends Person
+List<T extends Person> persons
 ````
 
 POM  - Project Object Model.
@@ -72,6 +77,6 @@ Special types:
 
 #### Collections
 
-* List
+* List (ArrayList, LinkedList)
 * Set
 * Map
