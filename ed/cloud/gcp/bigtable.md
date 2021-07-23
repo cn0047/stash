@@ -17,4 +17,7 @@ Replication across clusters works in eventual consistency way.
 gcloud components install cbt
 
 echo project=myprj > ~/.cbtrc
+
+gcloud bigtable clusters list
+gcloud bigtable instances list
 ````

@@ -42,6 +42,9 @@ ffmpeg \
 
 
 
+# compress video
+ffmpeg -i $in.mp4 $out.mp4
+
 # change audio volume (256=normal)
 ffmpeg -i $fmov -vol 256 'res-'$fmov
 ffmpeg -i $fmov -vcodec copy -af "volume=1dB" 'res-'$fmov
@@ -68,7 +71,7 @@ drawtext="text='Test Text':x=100:y=50: fontsize=24:fontcolor=yellow:box=1:boxcol
 ffmpeg -i $fmov $fmp4
 ffmpeg -i $fmov -q:v 0 $fmp4
 
-# video duration
+# get video duration
 duration=`ffprobe -show_streams -print_format json $fmp4 2>/tmp/ffprobe.tmp | jq -r '.streams[0].duration'`
 
 # create dir with png frames

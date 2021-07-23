@@ -1,18 +1,21 @@
 package main
 
 import (
+	"gcp/bigtable"
 	"gcp/iam"
 	"gcp/storage"
 )
 
 const (
-	ProjectID  = ""
-	BucketName = ""
-	SAFilePath = "./sa.json"
+	ProjectID          = ""
+	BigTableInstanceID = ""
+	BucketName         = ""
+	SAFilePath         = "./sa.json"
 )
 
 func main() {
-	iam.Run(ProjectID, SAFilePath)
+	bigtable.Run(ProjectID, BigTableInstanceID, SAFilePath)
 	return
+	iam.Run(ProjectID, SAFilePath)
 	storage.Run(ProjectID, SAFilePath, BucketName)
 }
