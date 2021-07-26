@@ -1,7 +1,7 @@
 BigTable
 -
 
-BigTable - is NoSQL and it scales to patabytes.
+BigTable - NoSQL database service which scales to patabytes.
 
 4-Dimensional Data Model: row key, column family, column, timestamp.
 Data stored as: RowKey:ColumnFamily:Column:Value.

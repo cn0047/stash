@@ -3,6 +3,8 @@ BigQuery
 
 [doc](https://cloud.google.com/bigquery/docs)
 
+BigQuery - serverless, highly scalable, cost-effective multicloud data warehouse.
+
 ````sql
 select regexp_extract(field, r"^[^\s]+") ua
 from tbl`;
