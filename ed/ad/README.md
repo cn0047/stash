@@ -11,6 +11,8 @@ Factorial: `5! = 5 * 4 * 3 * 2 * 1 = 120`
 
 Palindrome word which reads the same backward as forward: `madam, racecar, 10801`.
 
+Non-degenerate triangle - `edge1 + edge2 > edge3`.
+
 Binary decision diagram (BDD) -  is a data structure
 that is used to represent a Boolean function.
 On a more abstract level, BDDs can be considered

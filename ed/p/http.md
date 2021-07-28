@@ -103,9 +103,9 @@ MyFile
 The currently registered top-level type names are:
 * application:
   ````
+  application/octet-stream # binary file
   application/javascript
   application/json
-  application/octet-stream
   application/pdf
   application/soap+xml
   application/x-www-form-urlencoded
