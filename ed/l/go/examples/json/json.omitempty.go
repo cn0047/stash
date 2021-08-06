@@ -12,7 +12,12 @@ func main() {
 	// sliceOfStructs()
 	// sliceOfStructsPointers()
 	// boolValue()
-	boolSlice()
+	// boolSlice()
+	zeroIntVal()
+}
+
+type IntVal struct {
+	Value int `json:"value,omitempty"`
 }
 
 type Foo struct {
@@ -124,4 +129,21 @@ func boolSlice() {
 	}
 
 	fmt.Printf("[boolSlice] Result: %s \n", j) // {"Data":[{"Value":true},{"Value":false}]}
+}
+
+func zeroIntVal() {
+	v1 := IntVal{Value: 0}
+	j1, err := json.Marshal(v1)
+	if err != nil {
+		panic(err)
+	}
+
+	v2 := []IntVal{{Value: 0}}
+	j2, err := json.Marshal(v2)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Printf("[zeroIntVal] Result 1: %s \n", j1) // [zeroIntVal] Result 1: {}
+	fmt.Printf("[zeroIntVal] Result 2: %s \n", j2) // [zeroIntVal] Result 2: [{}]
 }

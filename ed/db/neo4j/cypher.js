@@ -199,6 +199,8 @@ RETURN c1, o1, p1, c2, o2, p2;
 // a path of length 2
 MATCH (a:Person)-[*2]->(b:Country) RETURN a, b;
 MATCH (a:Person)-[*3..5]->(b:Country) RETURN a, b;
+// many FAMILIAR relationships
+MATCH (a:Person)-[:FAMILIAR*]->(b:Person)
 
 // shortest path
 MATCH (a:Person {code: 'vesper'}), (b:Person {code: 'm'}), p = shortestPath((a)-[*]-(b))
