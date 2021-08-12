@@ -405,6 +405,9 @@ that growth will be no more than ~12.5%
 Use append only to append new value to given slice, not to create new slice
 (never call append without assigning back to the same variable)!
 
+**fuzzing** - type of auto testing which continuously manipulates inputs to program
+o find issues such as panics, bugs, data races.
+
 **OOP** in go represented by **structures**. Inheritance in go represented by composition.
 
 **struct** is a collection of fields.
