@@ -22,7 +22,11 @@ Image - (template) OS configuration (FS, tools, etc.) which is used to create co
 Container - (an instance of an image) OS Process namespace, also it's loosely isolated environment.
 Containers are lightweight because they don’t need the extra load of a hypervisor,
 but run directly within the host machine’s kernel.
-<br>Container is not VM: VM uses hypervisor(hyperkit or virtualbox) but docker not,
+
+Hypervisor (supervisor of the supervisors) - kind of emulator (software, firmware or hardware)
+that creates and runs VM.
+
+Container is not VM: VM uses hypervisor(hyperkit or virtualbox) but docker not,
 VMs use a separate kernel to run the OS, In Docker containers share same kernel.
 VMs - houses, docker containers - apartments.
 <br>Containers should be ephemeral (can be stopped and destroyed and a new one built and put in place).

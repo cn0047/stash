@@ -26,15 +26,15 @@ RETURN $code;
 
 
 // NODES
-CREATE (n:Person:Agent); // with multiple labels
-CREATE (p:Person:Agent {name: 'James Bond', code: '007', active: true}) RETURN p;
-CREATE (p:Person {name: 'James Bond', code: '007', active: true}) RETURN p;
+CREATE (p:Person:Agent { // with multiple labels
+  name: 'James Bond', code: '007', active: true, about: 'favorite cocktail: vodka martini shaken, not stirred'
+}) RETURN p;
+CREATE (p:Person {name: 'Felix Leiter', code: 'felix', about: 'vodka - ok, martini - ok'});
 CREATE (p:Person {name: 'Moneypenny', code: 'mp', active: true}) RETURN p;
-CREATE (p:Person {name: 'Felix Leiter', code: 'felix'});
 CREATE (p:Person {name: '008', code: '008'}) RETURN p;
 CREATE (p:Person {name: 'Q', code: 'q'});
-CREATE (p:Person {name: 'M', code: 'm'});
-CREATE (p:Person {name: 'Vesper Lynd', code: 'vesper'});
+CREATE (p:Person {name: 'M', code: 'm', about: 'vodka - probably no; best agent - 007'});
+CREATE (p:Person {name: 'Vesper Lynd', code: 'vesper', about: 'martini - ok'});
 CREATE (p:Person {name: 'Blofeld'});
 
 CREATE (o:Organization {name:'MI6', status:'active'});
@@ -273,6 +273,7 @@ UNWIND [1, 1, 1, 2, 3, NULL] AS x WITH DISTINCT x RETURN COLLECT(x);
 
 
 // AGGREGATION
+MATCH (n) RETURN COUNT(n) as count; // total nodes count
 MATCH (n:Person) RETURN COUNT(n) as count;
 MATCH (n:Person) RETURN DISTINCT LABELS(n), COUNT(*);
 MATCH (n:Person) RETURN DISTINCT n.code;
