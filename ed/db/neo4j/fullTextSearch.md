@@ -36,6 +36,9 @@ CALL db.index.fulltext.queryNodes('idx_about', 'vodka martini') YIELD node, scor
 // phrase search
 CALL db.index.fulltext.queryNodes('idx_about', '"vodka martini"') YIELD node, score RETURN node, score;
 
+// fuzziness
+CALL db.index.fulltext.queryNodes('idx_about', 'vod~') YIELD node, score RETURN node, score;
+
 CALL db.index.fulltext.queryNodes('idx_all_text', '007') YIELD node, score RETURN node, score;
 CALL db.index.fulltext.queryNodes('idx_all_text', '007 OR about:vod*') YIELD node, score RETURN node, score;
 CALL db.index.fulltext.queryNodes('idx_all_text', 'about:(007 vod*)') YIELD node, score RETURN node, score;
@@ -47,4 +50,27 @@ CALL db.index.fulltext.queryNodes('idx_all_text', 'about:vodka^3 about:martini')
 CALL db.index.fulltext.queryNodes('idx_all_text', '007 OR about:vod*') YIELD node, score
 WHERE EXISTS ( (node)-[:WORKS_AT]->(:Organization {name:'MI6'}) )
 RETURN node, score;
+
+// decay
+WITH apoc.text.join(
+  [
+    x IN range(10, 30, 10)
+    | "createdAt:" + "{"+ toString(timestamp() - (x * 3600 * 1000)) + " TO " + toString(timestamp() - ((x-10) * 3600 * 1000)) +"}^" + toInteger(((100-x)/10)+1)
+  ],
+  " "
+) AS decay RETURN decay;
+// Result:  "createdAt:{1629261161806 TO 1629297161806}^10 createdAt:{1629225161806 TO 1629261161806}^9 createdAt:{1629189161806 TO 1629225161806}^8"
+
+// query with decay
+WITH apoc.text.join(
+  [
+    x IN range(10, 30, 10)
+    | "createdAt:" + "{"+ toString(timestamp() - (x * 3600 * 1000)) + " TO " + toString(timestamp() - ((x-10) * 3600 * 1000)) +"}^" + toInteger(((100-x)/10)+1)
+  ],
+  " "
+) AS decay
+CALL db.index.fulltext.queryNodes('idx_all_text', 'about:gadget~ ' + decay) YIELD node, score RETURN node, score;
+// without decay, for comparison
+CALL db.index.fulltext.queryNodes('idx_all_text', 'about:gadget~ ') YIELD node, score RETURN node, score;
+
 ````

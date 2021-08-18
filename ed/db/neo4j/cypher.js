@@ -32,7 +32,7 @@ CREATE (p:Person:Agent { // with multiple labels
 CREATE (p:Person {name: 'Felix Leiter', code: 'felix', about: 'vodka - ok, martini - ok'});
 CREATE (p:Person {name: 'Moneypenny', code: 'mp', active: true}) RETURN p;
 CREATE (p:Person {name: '008', code: '008'}) RETURN p;
-CREATE (p:Person {name: 'Q', code: 'q'});
+CREATE (p:Person {name: 'Q', code: 'q', createdAt: '1629261161807', about: 'I like gadgets'});
 CREATE (p:Person {name: 'M', code: 'm', about: 'vodka - probably no; best agent - 007'});
 CREATE (p:Person {name: 'Vesper Lynd', code: 'vesper', about: 'martini - ok'});
 CREATE (p:Person {name: 'Blofeld'});
