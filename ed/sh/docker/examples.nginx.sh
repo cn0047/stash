@@ -1,6 +1,5 @@
 #### NGINX
 
-
 # html
 docker run -ti --rm --name nginx-html \
     -v $PWD/.docker/nginx/html.conf:/etc/nginx/conf.d/default.conf \

@@ -1,5 +1,6 @@
 # MongoDB
 
+docker pull mongo:latest
 
 docker run -it --rm --net=xnet -p 27017:27017 --hostname xmongo --name xmongo \
     -v $PWD/.docker/.data/mongodb:/data/db mongo:latest
@@ -14,6 +15,9 @@ docker exec -it xmongo mongo
 docker exec -it xmongo mongo test --eval 'db.test.insert({code : "200", status: "ok"})'
 docker exec -it xmongo mongo test \
     --eval 'db.createUser({user: "dbu", pwd: "dbp", roles: ["readWrite", "dbAdmin"]})'
+docker exec -it xmongo mongo 'mongodb://localhost:27017/test'
+docker exec -it xmongo mongo 'mongodb://localhost:27017/test' --username 'dbu' --password 'dbp'
+docker exec -it xmongo mongo 'mongodb://localhost:27017/test' -u 'dbu' -p 'dbp'
 
 #### MongoDB cluster (replica set)
 

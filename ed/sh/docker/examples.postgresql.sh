@@ -1,6 +1,5 @@
 # PostgreSQL
 
-
 docker run -it --rm --name xpostgres --hostname xpostgres --net=xnet \
     -v $PWD/.docker/.data/postgresql/xpostgres:/var/lib/postgresql/data \
     -e POSTGRES_DB=test -e POSTGRES_USER=dbu -e POSTGRES_PASSWORD=dbp postgres

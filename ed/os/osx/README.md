@@ -104,7 +104,6 @@ brew install nmap
 brew install sshuttle
 brew install awscli
 
-brew install mongodb
 brew install mysql
 brew install nginx
 brew install ffmpeg
@@ -114,6 +113,10 @@ brew install postgresql
 brew install redis
 brew install terraform
 brew install openssl@1.1 # install specific version
+
+brew install mongodb
+# or
+brew tap mongodb/brew && brew install mongodb-community@4.4
 
 brew list --versions openssl # shows installed versions
 
