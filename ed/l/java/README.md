@@ -80,3 +80,11 @@ Special types:
 * List (ArrayList, LinkedList)
 * Set
 * Map
+
+#### Concurrency
+
+* ThreadPoolExecutor, new Thread
+* Executors.newWorkStealingPool, ForkJoinPool, ForkJoinTask, BlockingQueue
+* ExecutorCompletionService
+* CountDownLatch, CompletableFuture, Semaphore, CyclicBarrier
+* keywords: volatile, synchronized
