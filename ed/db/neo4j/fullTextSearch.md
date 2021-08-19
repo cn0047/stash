@@ -29,7 +29,10 @@ CALL db.index.fulltext.queryNodes('idx_name', '*ond') YIELD node, score RETURN n
 CALL db.index.fulltext.queryNodes('idx_name', 'bon*') YIELD node, score RETURN node, score;
 CALL db.index.fulltext.queryNodes('idx_name', 'b*nd') YIELD node, score RETURN node, score;
 
+// wildcard
 CALL db.index.fulltext.queryNodes('idx_about', 'vod*') YIELD node, score RETURN node, score;
+// single character wildcard
+CALL db.index.fulltext.queryNodes('idx_about', 'vod?a') YIELD node, score RETURN node, score;
 
 // vodka OR martini
 CALL db.index.fulltext.queryNodes('idx_about', 'vodka martini') YIELD node, score RETURN node, score;
@@ -42,6 +45,9 @@ CALL db.index.fulltext.queryNodes('idx_about', 'vod~') YIELD node, score RETURN 
 CALL db.index.fulltext.queryNodes('idx_all_text', '007') YIELD node, score RETURN node, score;
 CALL db.index.fulltext.queryNodes('idx_all_text', '007 OR about:vod*') YIELD node, score RETURN node, score;
 CALL db.index.fulltext.queryNodes('idx_all_text', 'about:(007 vod*)') YIELD node, score RETURN node, score;
+
+// range - string_rating:[50 TO 99]
+// CALL db.index.fulltext.queryNodes('idx_all_text', 'code:[005 TO 009]') YIELD node, score RETURN node, score;
 
 // boosting
 CALL db.index.fulltext.queryNodes('idx_all_text', 'about:vodka^3 about:martini') YIELD node, score RETURN node, score;

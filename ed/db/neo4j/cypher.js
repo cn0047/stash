@@ -7,6 +7,9 @@ relationships()
 length(path)
 
 
+// funcs
+range(0,8) // [0, 1, 2, 3, 4, 5, 6, 7, 8]
+
 
 // lock
 node._lock = true
@@ -14,7 +17,6 @@ node._lock = true
 
 
 WITH 204 as c RETURN c;
-WITH timestamp()/1000 as current_timestamp RETURN current_timestamp; // unix timestamp (now)
 // var
 // IMPORTANT: don't use _ in var name
 :param code => 200;
@@ -22,6 +24,11 @@ WITH $code as c RETURN c;
 RETURN $code;
 // to see all vars
 :params
+
+
+
+WITH date() AS d RETURN d; // "2021-08-19"
+WITH timestamp()/1000 as current_timestamp RETURN current_timestamp; // unix timestamp (now)
 
 
 
