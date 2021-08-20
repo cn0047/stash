@@ -88,3 +88,7 @@ Special types:
 * ExecutorCompletionService
 * CountDownLatch, CompletableFuture, Semaphore, CyclicBarrier
 * keywords: volatile, synchronized
+
+#### Asynchronous Programming
+
+Executors.newSingleThreadExecutor, new Signal, CompletableFuture.supplyAsync
