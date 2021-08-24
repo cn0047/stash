@@ -9,7 +9,7 @@ Data structures
 whose instances are collections of other objects. In other words, container store **objects in an organized way**.
 
 * `Collection` - is a grouping of some variable number of data items (possibly zero)
-that have some shared significance to the problem being solved (Generally, the data items will be of the **same type**).
+that have some shared significance to the problem being solved (generally, the data items will be of the **same type**).
 
 * `Associative array`, map, symbol table, or dictionary - is an abstract data type
 composed of a collection of **(key, value) pairs**, such that each possible **key appears just once** in the collection.

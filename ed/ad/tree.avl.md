@@ -9,5 +9,5 @@ Balance factor: +1, 0, -1
 
 LL | RR rotations.
 
-Height h = log N
-Worst time complexity for search = h = O(h) = log N
+Height: `h = log N`.
+Worst time complexity for search: `h = O(h) = log N`.

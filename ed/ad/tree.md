@@ -71,7 +71,7 @@ All normal operations on a binary search tree are combined with one basic operat
 
 * `R-tree` - tree data structures **used for spatial access methods**.
 
-* `R*-trees` - have slightly higher construction cost than standard R-trees,
+* `R*-tree` - has slightly higher construction cost than standard R-tree,
 as the data may need to be reinserted;
 but the resulting tree will usually have a better query performance.
 

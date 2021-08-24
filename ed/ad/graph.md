@@ -68,7 +68,7 @@ add node to stack
 
 ## Topological Sorting
 
-Topological Sorting not have to be unique.
+Topological Sorting don't have to be unique.
 Won't work for Directed Acyclic Graph (DAG).
 
 * Kahn's Algorithm

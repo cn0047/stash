@@ -3,7 +3,7 @@ Binary Search Tree (BST)
 
 Level-Order Traversal aka BFS.
 
-Full BT - every node other than the leaves has two children,
+Full BT - every non-leaf node has two children,
 no space to add element into tree without affecting tree's height.
 
 Complete BT - if store BST in array, there must NOT be missing elements in array (`[a,b,-,d]`).
