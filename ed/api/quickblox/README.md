@@ -18,8 +18,10 @@ https://$apiHost/users.json
 ````
 
 #### Get TOKEN
+
 https://screencast.com/t/K0CqTyWht
-````
+
+````sh
 php -r '
 $USER_LOGIN = "";
 $USER_PASSWORD = "";

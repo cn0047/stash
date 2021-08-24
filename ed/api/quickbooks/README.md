@@ -4,6 +4,8 @@ QuickBooks
 [dashboard](https://developer.intuit.com/app/developer/dashboard)
 [app keys](https://developer.intuit.com/app/developer/appdetail/test/keys)
 
+QuickBooks - business accounting soft.
+
 ````sh
 access_token  expires_in                 3600    = 60min
 refresh_token x_refresh_token_expires_in 8726109 ≈ 100 days

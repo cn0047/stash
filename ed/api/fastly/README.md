@@ -1,5 +1,7 @@
-Fastly
+Fastly 
 -
+
+Fastly - CDN.
 
 #### API
 

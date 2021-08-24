@@ -3,6 +3,8 @@ Sumologic
 
 [docs](https://help.sumologic.com/)
 
+Sumologic - log.
+
 ````
 (_sourceName=my_svc)
 | where msg = "log message"
