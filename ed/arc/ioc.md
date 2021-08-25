@@ -28,16 +28,16 @@ IoC serves the following design purposes:
 * To prevent side effects when replacing a low-level module.
 
 There are several basic techniques to implement inversion of control:
-* Using a factory pattern
-* Using a service locator pattern
-* Using a dependency injection, for example
-  * constructor injection
-  * setter injection
-  * interface injection - define injector method in interface
-  * [parameter injection]
-* Using a contextualized lookup
-* Using template method design pattern
-* Using strategy design pattern
+* Using a factory pattern.
+* Using a service locator pattern.
+* Using a dependency injection, for example:
+  * constructor injection.
+  * setter injection.
+  * interface injection - define injector method in interface.
+  * [parameter injection].
+* Using a contextualized lookup.
+* Using template method design pattern.
+* Using strategy design pattern.
 
 Dependency inversion principle -
 High-level modules should not depend on low-level modules. Both should depend on abstractions.
@@ -48,7 +48,7 @@ not 1 interface for 1 particular class (there is no benefit).
 Because in this case 2 classes will have 2 interfaces which may differ
 and to solve it we inverse interfaces and create 1 interfaces for all any implementations.
 
-**Flow inversion** (Hollywood Principle - Don't call us, we'll call you).
+**Flow inversion** - hollywood principle (don't call us, we'll call you).
 
 **Creation inversion** - use factory pattern or service locator or dependency injection.
 

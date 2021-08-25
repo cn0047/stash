@@ -2,81 +2,82 @@ Enterprise Application Architecture Patterns
 -
 
 1. Domain Logic Patterns:
-    * Transaction Script
-    * Domain Model
-    * Table Module
-    * Service Layer
+  * Transaction Script
+  * Domain Model
+  * Table Module
+  * Service Layer
 
 2. Data Source Architectural Patterns:
-    * Table Data Gateway
-    * Row Data Gateway
-    * Active Record
-    * Data Mapper
+  * Table Data Gateway
+  * Row Data Gateway
+  * Active Record
+  * Data Mapper
 
 3. Object-Relational Behavioral Patterns:
-    * Unit of Work
-    * Identity Map
-    * Lazy Load
+  * Unit of Work
+  * Identity Map
+  * Lazy Load
 
 4. Object-Relational Structural Patterns:
-    * Identity Field
-    * Foreign Key Mapping
-    * Association Table
-    * Dependent Mapping
-    * Embedded Value
-    * Serialized LOB
-    * Single Table Inheritance
-    * Class Table Inheritance
-    * Concrete Table Inheritance
-    * Inheritance Mappers
+  * Identity Field
+  * Foreign Key Mapping
+  * Association Table
+  * Dependent Mapping
+  * Embedded Value
+  * Serialized LOB
+  * Single Table Inheritance
+  * Class Table Inheritance
+  * Concrete Table Inheritance
+  * Inheritance Mappers
 
 5. Object-Relational Metadata Mapping Patterns:
-    * Metadata Mapping
-    * Query Object
-    * Repository
+  * Metadata Mapping
+  * Query Object
+  * Repository
 
 6. Web Presentation Patterns:
-    * Model View Controller
-    * Page Controller
-    * Front Controller
-    * Template View
-    * Transform View
-    * Two Step View
-    * Application Controller
+  * Model View Controller
+  * Page Controller
+  * Front Controller
+  * Template View
+  * Transform View
+  * Two Step View
+  * Application Controller
 
 7. Distribution Patterns:
-    * Remote Facade
-    * Data Transfer Object
+  * Remote Facade
+  * Data Transfer Object
 
 8. Offline Concurrency Patterns:
-    * Optimistic Offline Lock
-    * Pessimistic Offline Lock
-    * Coarse-Grained Lock
-    * Implicit Lock
+  * Optimistic Offline Lock
+  * Pessimistic Offline Lock
+  * Coarse-Grained Lock
+  * Implicit Lock
 
 9. Session State Patterns:
-    * Client Session State
-    * Server Session State
-    * DB Session State
+  * Client Session State
+  * Server Session State
+  * DB Session State
 
 10. Base Patterns:
-    * Gateway
-    * Mapper
-    * Layer Supertype
-    * Separated Interface
-    * Registry
-    * Money
-    * Special Case
-    * Plugin
-    * Service Stub
-    * Record Set
-    * Value Object
+  * Gateway
+  * Mapper
+  * Layer Supertype
+  * Separated Interface
+  * Registry
+  * Money
+  * Special Case
+  * Plugin
+  * Service Stub
+  * Record Set
+  * Value Object
 
 ## Domain Logic Patterns:
 
 **Transaction Script**
 Keep business logic as stored procedures, so just use DB.
-Good for apps with small amount of logic. Introduce very little DB overhead in performance and in understanding.
+Good for apps with small amount of logic.
+Introduce very little DB overhead in performance and in understanding.
 
 **Domain Model**
 Requires Data Mapper.
@@ -103,7 +104,7 @@ should contain only DB access logic and no domain logic (Active Record).
 **Active Record**
 Object that wraps a row in a DB table or view,
 encapsulates the DB access, and adds domain logic on that data.
-Good choice for domain logic that isn’t too complex.
+Good choice for domain logic that isn't too complex.
 
 **Data Mapper**
 A layer of mappers that moves data between objects and a DB
@@ -125,7 +126,7 @@ you greatly reduce the risk of dead-locks.
 Ensures that each object gets loaded only once by keeping every loaded object in a map.
 
 **Lazy Load**
-An object that doesn’t contain all of the data you need but knows how to get it.
+An object that doesn't contain all of the data you need but knows how to get it.
 
 ## Object-Relational Structural Patterns:
 
@@ -139,16 +140,18 @@ Maps an object reference to a foreign key in the DB, many-to-many associations.
 Link table with foreign keys to the tables that are linked by the association (many-to-many).
 
 **Dependent Mapping**
-When you have an object that’s only referred to by one other object,
+When you have an object that's only referred to by one other object,
 
 **Embedded Value**
-Maps an object into several fields of another object’s table.
+Maps an object into several fields of another object's table.
 
 **Serialized LOB**
-Saves a graph of objects by serializing them into a single large object (LOB), which it stores in a DB field.
+Saves a graph of objects by serializing them into a single large object (LOB),
+which it stores in a DB field.
 
 **Single Table Inheritance**
-Represents an inheritance hierarchy of classes as single table that has columns for all fields of various classes.
+Represents an inheritance hierarchy of classes as single table that has columns
+for all fields of various classes.
 
 **Class Table Inheritance**
 Represents an inheritance hierarchy of classes with one table for each class.
@@ -181,9 +184,9 @@ using a collection-like interface for accessing domain objects.
 **Model View Controller**
 Splits user interface interaction into three distinct roles.
 <br>
-1. model — contains the core functionality and data.
-2. view — displays the information to the user.
-3. controller — handles the input from the user.
+1. model - contains the core functionality and data.
+2. view - displays the information to the user.
+3. controller - handles the input from the user.
 <br>
 Usage: architecture for World Wide Web app.
 
@@ -230,7 +233,7 @@ Forces a business transaction to acquire a lock
 on a piece of data before it starts to use it,
 
 **Coarse-Grained Lock**
-ACoarse-Grained Lock is a single lock that covers many objects.
+A Coarse-Grained Lock is a single lock that covers many objects.
 
 **Implicit Lock**
 Allows framework or layer supertype code to acquire offline locks.
@@ -279,7 +282,7 @@ Removes dependence upon problematic services during testing.
 Record Set An in-memory representation of tabular data.
 
 **Value Object**
-A small simple object, like money or a date range, whose equality isn’t based on identity.
+A small simple object, like money or a date range, whose equality isn't based on identity.
 Value Objects are small objects, such as a money object or a date,
 while reference objects are large, such as an order or a customer.
 <br>
@@ -288,6 +291,6 @@ A reference object uses identity (primary key in a relational DB) as the basis f
 A Value Object bases its notion of equality on field values within the class.
 Thus, two date objects may be the same if their day, month, and year values are the same.
 <br>
-For value objects to work properly in these cases it’s a very good idea to make them immutable.
-Value Objects shouldn’t be persisted as complete records.
-Treat something as a Value Object when you’re basing equality on something other than an identity.
+For value objects to work properly in these cases it's a very good idea to make them immutable.
+Value Objects shouldn't be persisted as complete records.
+Treat something as a Value Object when you're basing equality on something other than an identity.

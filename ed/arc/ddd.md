@@ -7,8 +7,8 @@ A sphere of knowledge, influence, or activity. The subject area.
 
 #### Model.
 
-A system of abstractions that describes selected aspects of a domain.
-(aggregates, entities, factories)
+A system of abstractions that describes selected aspects of a domain
+(aggregates, entities, factories).
 
 #### Ubiquitous Language.
 
@@ -47,8 +47,8 @@ the infrastructure layer.
 It provides communication between layers,
 implements persistence for business objects, contains
 supporting libraries for the user interface layer, etc.
-(Order is a domain concept whereas Table, Column and so on are infrastructure concerns.)
-(Here we put all the implementations of the interfaces defined in the domain layer.)
+(Order is a domain concept, whereas Table and Column and so on are infrastructure concerns).
+(Here we put all the implementations of the interfaces defined in the domain layer).
 
 Example:
 ````
@@ -69,7 +69,6 @@ Is a category of objects which seem to have an identity.
 #### Value Objects (VO).
 
 An object that contains attributes but has no conceptual identity.
-
 VOs must be placed in application layer
 because only this layer aware how to interact with domain layer from the outside world.
 
@@ -108,8 +107,7 @@ Something like:
 │      │       └── Persistence
 │      │           ├── Doctrine
 │      │           ├── SQL
-│      │           ├── InMemory
-│      │           └── Redis
+│      │           └── InMemory
 │      ├── Catalog
 │      ├── Common
 │      └── Identity
@@ -134,9 +132,9 @@ Car it is aggregate for: wheels, engine, spark and fuel, etc.
 
 A domain object that defines an event (something that happens).
 
-* Modeling a Domain Event is like writing a news article
-* Publishing a Domain Event is like printing the article on the paper
-* Spreading a Domain Event is like sending the newspaper so everyone can read the article
+* Modeling a Domain Event is like writing a news article.
+* Publishing a Domain Event is like printing the article on the paper.
+* Spreading a Domain Event is like sending the newspaper so everyone can read the article.
 
 #### DBAL - Database Abstraction Layer.
 
@@ -151,8 +149,8 @@ by coupling the domain model with the ORM.
 ORM Doctrine is an implementation of the Data Mapper pattern.
 
 Doctrine annotations is bad for DDD, because:
-* domain concerns are mixed with infrastructure concerns
-* if the entity were required to be persisted using another entity
+* Domain concerns are mixed with infrastructure concerns.
+* If the entity were required to be persisted using another entity
 manager and with a different mapping metadata, it would not be possible.
 
 So better use XML mapping files.
@@ -160,7 +158,7 @@ So better use XML mapping files.
 #### Factory.
 
 Methods for creating domain objects
-should delegate to a specialized Factory.
+should be delegated to a specialized Factory.
 
 #### CQRS.
 
@@ -182,11 +180,11 @@ concept which does not naturally belong to an Entity or Value Object.
 3. The operation is stateless.
 
 There are typically three different types of service:
-* Application (middleware between the outside world and the domain logic)
-* Domain (domain services are stateless)
-* Infrastructure (sending emails, logging meaningful data etc)
+* Application (middleware between the outside world and the domain logic).
+* Domain (domain services are stateless).
+* Infrastructure (sending emails, logging meaningful data etc).
 
-In DDD, transactions are handled at the Application Service level (for example TransactionalApplicationService).
+In DDD, transactions are handled at the Application layer (for example TransactionalApplicationService).
 
 Domain Services are used to describe things into the domain,
 operations that don’t belong to entities nor value objects.
@@ -234,4 +232,4 @@ Switch from one front-end framework to another? ~~And server-side rendering?~~
 
 Confusion:
 * VO, DTO - own meaning in Java world.
-* Entity - in symfony world.
+* Entity - own meaning in symfony world.

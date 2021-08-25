@@ -3,10 +3,7 @@ CQRS - Command Query Responsibility Segregation
 
 Type 1 - Single database CQRS.
 
-Type 2 - Two database CQRS:
-
-* Commands use write DB
-* Queries use read DB
+Type 2 - Two database CQRS: Commands use write DB, Queries use read DB.
 
 Type 3 - **Event Sourcing**:
 

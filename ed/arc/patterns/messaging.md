@@ -23,7 +23,7 @@ Specific benefits of messaging:
 * Asynchronous Communication.
 * Variable Timing (external API may respond 1 or 3 or 5 seconds).
 * Reliable Communication.
-* Disconnected Operation (When offline -> put in queue, when online -> consume).
+* Disconnected Operation (when offline -> put in queue, when online -> consume).
 * Mediation (message broker behaves like brain).
 
 #### Message Exchange Patterns:
@@ -47,7 +47,7 @@ Specific benefits of messaging:
 
 #### In ØMQ:
 
-* **Request–reply** - RPC
+* **Request–reply** - RPC.
 
 * **Publish–subscribe** (data distribution pattern) - connects
   a set of publishers to a set of subscribers.

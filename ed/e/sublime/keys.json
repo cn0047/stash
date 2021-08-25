@@ -119,7 +119,9 @@
     // SFTP
     ,{ "keys": ["f6"], "command": "sftp_upload_file" }
 
+    // MISC
     ,{ "keys": ["command+shift+j", "ctrl+command+j"], "command": "pretty_json" }
+    ,{ "keys": ["option+command+enter"], "command": "link_opener_open_url" }
 
     // OS X
 

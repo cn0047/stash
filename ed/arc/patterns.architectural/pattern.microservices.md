@@ -5,7 +5,7 @@ For service discovery: [consul](https://www.consul.io/), [etcd](https://github.c
 
 Microservices is a variant of the SOA
 architectural style that structures an application as a collection of loosely coupled services.
-It is modern interpretation of SOA used to build distributed software systems.
+It is *modern* interpretation of SOA used to build distributed software systems.
 Microservices easier to scale than SOA (because you have scale only 1 service not bunch).
 
 Philosophy: Do one thing and do it well.
@@ -14,7 +14,7 @@ Microservice must have: high cohesion; loose coupling;
 lightweight communication mechanism; independent data storage;
 Microservice must be resilient. And respond to changes quickly.
 
-Microservices-based architectures enable continuous delivery and deployment.
+Microservices-based architectures enable Continuous Delivery and Deployment.
 
 Microservices is known as a "share-nothing" architecture
 or at least "share-as-little-as-possible".
@@ -29,10 +29,10 @@ Asynchronous communication:
 * Event based
 * Message queue protocol
 
-Orchestration - it is when one microservice supervise and manage else microservices.
-<br>Choreography - it is when microservice independent, and only have to know about message-queue.
+Orchestration - when one microservice supervise and manage else microservices.
+<br>Choreography - when microservice independent, and only have to know about message-queue.
 
-The less well you understand a domain,
+The less well you understand domain,
 the harder it will be for you to find proper bounded contexts for your services.
 In case you don't have clear bounded contexts - do refactoring
 with purpose to split stuff into separated modules (same approach for database).
@@ -41,19 +41,19 @@ So again, consider starting monolithic first and break things out when you’re 
 
 Many of the challenges you’re going to face with microservices get worse with scale.
 
-* Model Around Business Concepts
+* Model around business concepts
   (use bounded contexts)
-* Adopt a Culture of Automation
+* Adopt a culture of automation
   (automated testing, deploy the same way everywhere, continuous delivery)
-* Hide Internal Implementation Details
+* Hide internal implementation details
   (modeling bounded contexts, services should also hide their databases, consider using REST)
-* Decentralize All the Things
+* Decentralize all the things
   (teams own their services, align teams to the organization, prefer choreography over orchestration)
-* Independently Deployable
+* Independently deployable
   (coexist versioned endpoints, one-service-per-host)
-* Isolate Failure
+* Isolate failure
   (expect failure will occur anywhere and everywhere)
-* Highly Observable
+* Highly observable
   (aggregate your logs, aggregate your stats)
 
 In real world app it's ok to have **HYBRID-Microservices** architecture.
@@ -70,11 +70,10 @@ In real world app it's ok to have **HYBRID-Microservices** architecture.
 
 #### Disadvantages
 
-* Networks are unreliable.
-* Networks are slow.
+* Networks are unreliable and slow.
 * Required reliable CI/CD.
 * Architecture has to be well-thought through from the beginning.
-* Duplicate code / data.
+* Duplicate code/data.
 * Too many programing languages.
 * Making components work together.
 * Requires more effort in communication.
@@ -84,7 +83,7 @@ In real world app it's ok to have **HYBRID-Microservices** architecture.
 * Logging to one place is challenging.
 * Having more and more microservices makes the whole system more complex and harder to oversee the whole operation.
 * Hard to see the whole usage graph.
-* Github for configs / db migrations / etc.
+* Github for configs, db migrations, etc.
 
 #### Have to have
 
