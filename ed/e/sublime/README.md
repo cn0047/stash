@@ -24,7 +24,7 @@ ALT+CMD+O # Insert key
 ````
 
 Quick File Open settings:
-````
+````js
 {
   "files": [
     "/Users/k/web/..."

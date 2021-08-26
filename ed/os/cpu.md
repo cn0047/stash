@@ -2,14 +2,14 @@ CPU
 -
 
 CPU Instruction Types:
-* Data handling and memory operations
-* Arithmetic and logic operations
-* Control flow operations
-* Coprocessor instructions
+* Data handling and memory operations.
+* Arithmetic and logic operations.
+* Control flow operations.
+* Coprocessor instructions.
 
 Almost all processes alternate between two states in a continuing cycle:
 * A CPU burst - performing calculations.
-* An I/O burst - waiting for data transfer in or out of the system.
+* An I/O burst - waiting for data transfer in/out of the system.
 
 CPU bursts vary from process to process, and from program to program.
 
@@ -19,13 +19,13 @@ A scheduling system allows one process to use the CPU while another is waiting f
 
 OS thread is just a sequence of instructions that can be executed independently by a processor.
 OS threads are lighter than the process so you can spawn a lot of them.
-Linux doesn’t distinguish between threads and processes and both are called tasks.
+Linux doesn't distinguish between threads and processes and both are called tasks.
 
 CPU utilization - % of CPU busyness.
-Throughput - Number of processes completed per unit time.
-Turnaround time - Time required for a particular process to complete.
-Waiting time - How much time processes spend in the ready queue waiting their turn to get on the CPU.
-Load average - The average number of processes sitting in the ready queue waiting their turn to get into the CPU.
+Throughput - number of processes completed per unit time.
+Turnaround time - time required for a particular process to complete.
+Waiting time - how much time processes spend in the ready queue waiting their turn to get on the CPU.
+Load average - the average number of processes sitting in the ready queue waiting their turn to get into the CPU.
 
 CPU specific metrics:
 * utilization  - the % how CPU is loaded (sum of work handled by CPU).

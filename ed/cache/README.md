@@ -6,9 +6,9 @@ of recently or frequently accessed data
 that is stored temporarily in a rapidly accessible storage.
 
 Cache algorithms:
-LFU - Least Frequently Used
-LRU - Least Recently Used
-MRU - Most Recently Used
+LFU - Least Frequently Used.
+LRU - Least Recently Used.
+MRU - Most Recently Used.
 
 ## Cache invalidation
 

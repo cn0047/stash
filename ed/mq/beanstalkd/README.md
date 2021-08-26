@@ -1,9 +1,11 @@
 Beanstalkd
 -
 
+[protocol](https://github.com/kr/beanstalkd/blob/master/doc/protocol.txt)
+
 ````sh
 sudo service beanstalkd status
-ps aux|grep beanstalkd|grep grep -v
+ps aux | grep beanstalkd | grep grep -v
 ````
 
 #### Commmands:
@@ -44,7 +46,7 @@ use tube_chat
 # add job to tube
 # where 95 - str length of data
 # use tube_chat
-put 1024 0 60 95
+put 1024 0 60 91
 {"login":"user_46205","password":"4rfOoPdwz====___","target_user_id":282040,"message":"x5"}
 # use tube_pictureCompression
 put 1024 0 60 95
@@ -78,5 +80,3 @@ DELAYED - put with delay
 RESERVED - reserve job for the worker
 BURIED
 ````
-
-https://github.com/kr/beanstalkd/blob/master/doc/protocol.txt

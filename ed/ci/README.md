@@ -21,12 +21,12 @@ Every software change is automatically built, tested, and deployed to production
 
 Continuous Deployment - is a synonym to Continuous Delivery.
 
-<br>Pre-alpha ⇒ Alpha ⇒ Beta ⇒ Release candidate ⇒ Gold
-<br> Beta ⇒ Dev; Gamma ⇒ QA;
+<br>Pre-alpha ⇒ Alpha ⇒ Beta ⇒ Release candidate ⇒ Gold.
+<br> Beta ⇒ Dev; Gamma ⇒ QA.
 
 Problems:
-* db migrations (slow migrations, few steps migrations)
-* `cron`
+* db migrations (slow migrations, few steps migrations).
+* `cron`.
 
 #### Deployments Strategies
 
@@ -51,6 +51,6 @@ Rolling Deploy with two groups - continuation of the canary with two groups.
 Don't forget about:
 Users may see V1 of a page on one click, then see V2 on refresh and back to V1 on yet another refresh.
 As solution you can suggest:
-* to use separated site for some users (http://beta.yourcompany.com)
-* or use "Feature Toggles"
-* or A/B
+* to use separated site for some users (http://beta.yourcompany.com).
+* or use "Feature Toggles".
+* or A/B.

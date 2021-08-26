@@ -11,25 +11,22 @@ Declaring a queue is idempotent - it will only be created if it doesn't exist al
 Keep in mind that messages are sent asynchronously from the server to the clients.
 
 Queue can be:
-
 * `durable` - queue won't be lost even if RabbitMQ restarts (persisting queue to disk).
 * `exclusive` - delete queue when not needed (when all connections to queue closed).
 * `auto delete` - delete queue when consumer unsubscribes.
 
-Marking messages as persistent doesn't fully guarantee that a message won't be lost...
+Marking messages as persistent doesn't fully guarantee that a message won't be lost.
 It tells RabbitMQ to save the message to disk.
 
 Avoid black hole messages:
-
-* Have its delivery mode option set to 2 (persistent)
-* Be published into a durable exchange
-* Arrive in a durable queue
+* Have its delivery mode option set to 2 (persistent).
+* Be published into a durable exchange.
+* Arrive in a durable queue.
 
 Messages from queue can be `dead-lettered` if:
-
-* message is rejected
-* TTL expired
-* queue length limit exceeded
+* message is rejected.
+* TTL expired.
+* queue length limit exceeded.
 
 Dead letter exchanges (DLXs) are normal exchanges.
 They can be any of the usual types and are declared as usual.
@@ -38,7 +35,6 @@ They can be any of the usual types and are declared as usual.
 
 Exchange - receives messages from producers and pushes them to queues.
 There are a few exchange types available:
-
 * direct
 * fanout
 * topic

@@ -14,7 +14,8 @@ Ctrl-Shift-Enter # does the same thing, but with the full path included.
 
 ````
 
-####Editing Files
+#### Edit file
+
 ````
 F3              # select some text, F3 again to stop selecting
 Ctrl-u          # undo
