@@ -33,23 +33,23 @@ Segment is then encapsulated into an Internet Protocol (IP) datagram, and exchan
 Segment consists of a segment header and a data section.
 
 TCP Header:
-* Source port
-* Destination port
-* Sequence number
-* Acknowledgment number
-* Data offset (size of the TCP header)
-* Reserved
-* Flags (aka Control bits)
-* Window size
-* Checksum (for error-checking of the header)
-* Urgent pointer
-* Options
-* Padding
+* Source port.
+* Destination port.
+* Sequence number.
+* Acknowledgment number.
+* Data offset (size of the TCP header).
+* Reserved.
+* Flags (aka Control bits).
+* Window size.
+* Checksum (for error-checking of the header).
+* Urgent pointer.
+* Options.
+* Padding.
 
 TCP ports:
-* FTP - 20 and 21
-* SSH - 22
-* TELNET - 23
-* SMTP - 25
-* HTTP - 80
-* HTTP over SSL/TLS - 443
+* FTP - 20 and 21.
+* SSH - 22.
+* TELNET - 23.
+* SMTP - 25.
+* HTTP - 80.
+* HTTP over SSL/TLS - 443.

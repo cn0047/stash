@@ -102,7 +102,7 @@ MyFile
 
 The currently registered top-level type names are:
 * application:
-  ````
+````
   application/octet-stream # binary file
   application/javascript
   application/json
@@ -110,7 +110,7 @@ The currently registered top-level type names are:
   application/soap+xml
   application/x-www-form-urlencoded
   application/zip
-  ````
+````
 * audio ("audio/mp4", "audio/mpeg")
 * example
 * image ("image/png")

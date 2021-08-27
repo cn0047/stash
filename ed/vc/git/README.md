@@ -64,6 +64,8 @@ git log --follow file.txt # viewing history of deleted files !!!
 git log --author=Jack
 git log --date=short --no-merges --shortstat
 
+git reflog # local repository log
+
 git diff --cached or diff --staged # after git add shows diff
 git diff branch..subBrach
 git diff branch:file file # !!!
@@ -156,6 +158,11 @@ git ph -f
 # rebase to master (not merge master)
 git rebase master
 git ph -f
+
+# undo rebase
+git reset --hard ORIG_HEAD
+# show ORIG_HEAD value
+git log -1 ORIG_HEAD
 ````
 
 If some feature has > 1 commit,

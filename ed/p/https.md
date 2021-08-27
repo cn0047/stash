@@ -1,10 +1,12 @@
-HTTPS - HyperText Transfer Protocol Secure 
+HTTPS - HyperText Transfer Protocol Secure
 -
 
 [to add your site to preload](https://hstspreload.org/)
 [helps to find problems with https](https://www.badssl.com/)
 [http vs https](https://www.httpvshttps.com/)
 [test ssl](https://www.ssllabs.com/ssltest/)
+
+Important: SSL 3.0 is vulnerable.
 
 Encrypts headers and body.
 
@@ -14,11 +16,11 @@ HTTPS creates a secure channel over an insecure network.
 
 Solves problems with:
 * Man-In-The-Middle.
-* Phishing
-* DNS hijacking
+* Phishing.
+* DNS hijacking.
 
 <br>CA - Certification Authority.
-<br>SSL - Secure Sockets Layer (SSL 3.0 is vulnerable).
+<br>SSL - Secure Sockets Layer.
 <br>TLS - Transport Layer Security, is modern implementation of SSL.
 
 HTTP Strict Transport Security:
