@@ -21,8 +21,8 @@ and the operation is repeated.
 
 Methods:
 * CONNECT - client asks an HTTP Proxy server to tunnel the TCP connection.
-* HEAD
-* GET
+* HEAD.
+* GET.
 * ...
 
 #### URL
@@ -44,19 +44,19 @@ URN - Uniform Resource Name (host + path + all after question mark).
 
 #### Headers
 
-* Accept
-* Accept-Charset
-* Accept-Encoding
-* Accept-Language
-* Authorization
-* Content-Type
-* Cookie
-* If-Modified-Since
-* Referer
+* Accept.
+* Accept-Charset.
+* Accept-Encoding.
+* Accept-Language.
+* Authorization.
+* Content-Type.
+* Cookie.
+* If-Modified-Since.
+* Referer.
 * Transfer-Encoding - form of encoding used to safely transfer the body payload.
-* User-Agent
+* User-Agent.
 * X-Forwarded-Proto - identifying the protocol.
-* X-Forwarded-Port
+* X-Forwarded-Port.
 
 ````sh
 GET /api/collection
@@ -111,26 +111,26 @@ The currently registered top-level type names are:
   application/x-www-form-urlencoded
   application/zip
 ````
-* audio ("audio/mp4", "audio/mpeg")
-* example
-* image ("image/png")
-* message
-* model
-* multipart
-* text ("text/plain", "text/html", "text/csv", "text/rtf")
-* video ("video/avi", "ideo/mpeg")
+* audio ("audio/mp4", "audio/mpeg").
+* example.
+* image ("image/png").
+* message.
+* model.
+* multipart.
+* text ("text/plain", "text/html", "text/csv", "text/rtf").
+* video ("video/avi", "ideo/mpeg").
 
 Currently the following trees are created:
-* standard ("application/xhtml+xml", "image/png")
-* vendor ("application/vnd.ms-excel", "application/vnd.oasis.opendocument.text")
-* personal or vanity
-* unregistered "x."
+* standard ("application/xhtml+xml", "image/png").
+* vendor ("application/vnd.ms-excel", "application/vnd.oasis.opendocument.text").
+* personal or vanity.
+* unregistered "x.".
 
 ## Connections
 
-* parallel (in the past, browsers have used multiple TCP connections to issue parallel requests)
-* persistent (HTTP 2 connections are persistent, only one connection per origin is required)
-* pipeline (multiple HTTP requests are sent on a single TCP connection)
+* parallel (in the past, browsers have used multiple TCP connections to issue parallel requests).
+* persistent (HTTP 2 connections are persistent, only one connection per origin is required).
+* pipeline (multiple HTTP requests are sent on a single TCP connection).
 
 ## Response
 
@@ -141,19 +141,19 @@ Currently the following trees are created:
 ````
 
 Headers:
-* Access-Control-Allow-Origin
-* Connection (close)
-* Location (path for 302 HTTP code)
-* Set-Cookie
-* Content-Type
-* Content-Length
-* Cache-Control (private (client's browser), public|max-age|s-maxage (public proxy servers), no-cache)
-* Last-Modified
-* Expires
-* ETag
-* X-Powered-By
-* X-Frame-Options
-* Content-Security-Policy (prevent xss, clickjacking and other code injection attacks)
+* Access-Control-Allow-Origin.
+* Connection (close).
+* Location (path for 302 HTTP code).
+* Set-Cookie.
+* Content-Type.
+* Content-Length.
+* Cache-Control (private (client's browser), public|max-age|s-maxage (public proxy servers), no-cache).
+* Last-Modified.
+* Expires.
+* ETag.
+* X-Powered-By.
+* X-Frame-Options.
+* Content-Security-Policy (prevent xss, clickjacking and other code injection attacks).
 
 ````sh
 Server: nginx/1.10.2
@@ -210,98 +210,98 @@ Access-Control-Allow-Headers: *
 ## Codes
 
 1xx Informational:
-* 100 **Continue**
-* 101 **Switching Protocols**
-* 102 **Processing** (WebDAV; RFC 2518)
-* 103 Checkpoint (draft POST PUT)
-* 105 Name Not Resolved
+* 100 **Continue**.
+* 101 **Switching Protocols**.
+* 102 **Processing** (WebDAV; RFC 2518).
+* 103 Checkpoint (draft POST PUT).
+* 105 Name Not Resolved.
 
 2xx Success:
-* 200 **OK**
-* 201 **Created**
-* 202 **Accepted**
-* 203 Non-Authoritative Information (since HTTP/1.1)
-* 204 **No Content**
-* 205 Reset Content
-* 206 Partial Content
-* 207 Multi-Status (WebDAV; RFC 4918)
-* 208 Already Reported (WebDAV; RFC 5842)
-* 226 IM Used (RFC 3229)
+* 200 **OK**.
+* 201 **Created**.
+* 202 **Accepted**.
+* 203 Non-Authoritative Information (since HTTP/1.1).
+* 204 **No Content**.
+* 205 Reset Content.
+* 206 Partial Content.
+* 207 Multi-Status (WebDAV; RFC 4918).
+* 208 Already Reported (WebDAV; RFC 5842).
+* 226 IM Used (RFC 3229).
 
 3xx Redirection:
-* 300 Multiple Choices
-* 301 **Moved Permanently** (http -> https)
-* 302 **Found / Moved Temporary** (location header)
-* 303 See Other (since HTTP/1.1) (reidrect in golang)
-* 304 **Not Modified**
-* 305 Use Proxy (since HTTP/1.1)
-* 306 Switch Proxy
-* 307 **Temporary Redirect** (Internal) (strict-transport-security) (since HTTP/1.1)
-* 308 Permanent Redirect (approved as experimental RFC)[12]
+* 300 Multiple Choices.
+* 301 **Moved Permanently** (http -> https).
+* 302 **Found / Moved Temporary** (location header).
+* 303 See Other (since HTTP/1.1) (reidrect in golang).
+* 304 **Not Modified**.
+* 305 Use Proxy (since HTTP/1.1).
+* 306 Switch Proxy.
+* 307 **Temporary Redirect** (Internal) (strict-transport-security) (since HTTP/1.1).
+* 308 Permanent Redirect (approved as experimental RFC)[12].
 
 4xx Client Error:
-* 400 **Bad Request**
-* 401 **Unauthorized**
-* 402 **Payment Required**
-* 403 **Forbidden**
-* 404 **Not Found**
-* 405 **Method Not Allowed**
-* 406 Not Acceptable
-* 407 Proxy Authentication Required
-* 408 **Request Timeout**
-* 409 **Conflict**
-* 410 Gone
-* 411 Length Required
-* 412 Precondition Failed
-* 413 Request Entity Too Large
-* 414 Request-URI Too Long
-* 415 Unsupported Media Type
-* 416 Requested Range Not Satisfiable
-* 417 Expectation Failed
-* 418 *I'm a teapot* (RFC 2324)
-* 419 Authentication Timeout (not in RFC 2616)
-* 420 Enhance Your Calm (Twitter)
-* 420 Method Failure (Spring Framework)
-* 422 **Unprocessable Entity** (WebDAV; RFC 4918)
-* 423 Locked (WebDAV; RFC 4918)
-* 424 Failed Dependency (WebDAV; RFC 4918)
-* 424 Method Failure (WebDAV)[14]
-* 425 Unordered Collection (Internet draft)
-* 426 Upgrade Required (RFC 2817)
-* 428 Precondition Required (RFC 6585)
-* 429 Too Many Requests (RFC 6585)
-* 431 Request Header Fields Too Large (RFC 6585)
-* 434 Requested host unavailable.
-* 440 Login Timeout (Microsoft)
-* 444 No Response (Nginx)
-* 449 Retry With (Microsoft)
-* 450 Blocked by Windows Parental Controls (Microsoft)
-* 451 Redirect (Microsoft)
-* 451 Unavailable For Legal Reasons (Internet draft)
-* 456 Unrecoverable Error
-* 494 Request Header Too Large (Nginx)
-* 495 Cert Error (Nginx)
-* 496 No Cert (Nginx)
-* 497 HTTP to HTTPS (Nginx)
-* 499 Client Closed Request (Nginx)
+* 400 **Bad Request**.
+* 401 **Unauthorized**.
+* 402 **Payment Required**.
+* 403 **Forbidden**.
+* 404 **Not Found**.
+* 405 **Method Not Allowed**.
+* 406 Not Acceptable.
+* 407 Proxy Authentication Required.
+* 408 **Request Timeout**.
+* 409 **Conflict**.
+* 410 Gone.
+* 411 Length Required.
+* 412 Precondition Failed.
+* 413 Request Entity Too Large.
+* 414 Request-URI Too Long.
+* 415 Unsupported Media Type.
+* 416 Requested Range Not Satisfiable.
+* 417 Expectation Failed.
+* 418 *I'm a teapot* (RFC 2324).
+* 419 Authentication Timeout (not in RFC 2616).
+* 420 Enhance Your Calm (Twitter).
+* 420 Method Failure (Spring Framework).
+* 422 **Unprocessable Entity** (WebDAV; RFC 4918).
+* 423 Locked (WebDAV; RFC 4918).
+* 424 Failed Dependency (WebDAV; RFC 4918).
+* 424 Method Failure (WebDAV)[14].
+* 425 Unordered Collection (Internet draft).
+* 426 Upgrade Required (RFC 2817).
+* 428 Precondition Required (RFC 6585).
+* 429 Too Many Requests (RFC 6585).
+* 431 Request Header Fields Too Large (RFC 6585).
+* 434 Requested host unavailable..
+* 440 Login Timeout (Microsoft).
+* 444 No Response (Nginx).
+* 449 Retry With (Microsoft).
+* 450 Blocked by Windows Parental Controls (Microsoft).
+* 451 Redirect (Microsoft).
+* 451 Unavailable For Legal Reasons (Internet draft).
+* 456 Unrecoverable Error.
+* 494 Request Header Too Large (Nginx).
+* 495 Cert Error (Nginx).
+* 496 No Cert (Nginx).
+* 497 HTTP to HTTPS (Nginx).
+* 499 Client Closed Request (Nginx).
 
 5xx Server Error:
-* 500 **Internal Server Error**
-* 501 **Not Implemented**
-* 502 **Bad Gateway**
-* 503 **Service Unavailable**
-* 504 **Gateway Timeout**
-* 505 HTTP Version Not Supported
-* 506 Variant Also Negotiates (RFC 2295)
-* 507 Insufficient Storage (WebDAV; RFC 4918)
-* 508 Loop Detected (WebDAV; RFC 5842)
-* 509 Bandwidth Limit Exceeded (Apache bw/limited extension)
-* 510 Not Extended (RFC 2774)
-* 511 Network Authentication Required (RFC 6585)
-* 520 Unknown Error
-* 520 Origin Error (Cloudflare)
-* 522 Connection timed out
-* 523 Proxy Declined Request (Cloudflare)
-* 524 A timeout occurred (Cloudflare)
-* 598 Network read timeout error (Unknown)
-* 599 Network connect timeout error (Unknown)
+* 500 **Internal Server Error**.
+* 501 **Not Implemented**.
+* 502 **Bad Gateway**.
+* 503 **Service Unavailable**.
+* 504 **Gateway Timeout**.
+* 505 HTTP Version Not Supported.
+* 506 Variant Also Negotiates (RFC 2295).
+* 507 Insufficient Storage (WebDAV; RFC 4918).
+* 508 Loop Detected (WebDAV; RFC 5842).
+* 509 Bandwidth Limit Exceeded (Apache bw/limited extension).
+* 510 Not Extended (RFC 2774).
+* 511 Network Authentication Required (RFC 6585).
+* 520 Unknown Error.
+* 520 Origin Error (Cloudflare).
+* 522 Connection timed out.
+* 523 Proxy Declined Request (Cloudflare).
+* 524 A timeout occurred (Cloudflare).
+* 598 Network read timeout error (Unknown).
+* 599 Network connect timeout error (Unknown).

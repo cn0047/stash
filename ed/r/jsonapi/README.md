@@ -13,18 +13,18 @@ JSON API requires use of the JSON API media type (`application/vnd.api+json`) fo
 
 A JSON `object` MUST be at the root of every JSON API request and response containing data:
 
-* `data`: the document’s "primary data"
-* `errors`: an array of error objects
+* `data`: the document’s "primary data".
+* `errors`: an array of error objects.
 * `meta`: a meta object that contains non-standard meta-information.
 
-The members data and errors MUST NOT coexist in the same document.
+The members `data` and `errors` MUST NOT coexist in the same document.
 
 #### Resource Object
 
 A resource object MUST contain at least the following top-level members:
 
-* `id`
-* `type`
+* `id`.
+* `type`.
 
 #### Compound Documents
 
@@ -37,13 +37,12 @@ in a top-level `included` member.
 #### Pagination
 
 Pagination links MUST appear in the `links` object that corresponds to a collection.
-
 The following keys MUST be used for pagination links:
 
-* `first`: the first page of data
-* `last`: the last page of data
-* `prev`: the previous page of data
-* `next`: the next page of data
+* `first`: the first page of data.
+* `last`: the last page of data.
+* `prev`: the previous page of data.
+* `next`: the next page of data.
 
 #### Fetching Data
 
@@ -64,9 +63,7 @@ Accept: application/vnd.api+json
 #### Creating Resources
 
 `POST` method.
-
 The response SHOULD include a `Location` header identifying the location of the newly created resource.
-
 The response MUST also include a document that contains the primary resource created.
 
 #### Updating Resources
@@ -79,7 +76,7 @@ The response MUST also include a document that contains the primary resource cre
 POST /photos HTTP/1.1
 ````
 
-The request SHOULD return a status 202 Accepted with a link in the Content-Location header.
+The request SHOULD return a status 202 Accepted with a link in the `Content-Location` header.
 
 ````sh
 HTTP/1.1 202 Accepted
@@ -112,9 +109,9 @@ optionally, the server can return a `Retry-After` header.
 
 #### Relationships
 
-Relationships may be to-one or to-many.
-`null` for empty to-one relationships.
-an empty array (`[]`) for empty to-many relationships.
+Relationships may be `to-one` or `to-many`.
+`null` for empty `to-one` relationships.
+an empty array (`[]`) for empty `to-many` relationships.
 
 `links, data, meta`
 

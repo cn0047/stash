@@ -15,7 +15,6 @@ Useful for:
   the senders are who they say they are).
 
 Tokens consist of three parts separated by dots (.), which are:
-
 * Header (hashing algorithm being used: HMAC, SHA256 or RSA).
 * Payload (claims).
 * Signature (used to verify that the sender of the JWT is who it says it is).

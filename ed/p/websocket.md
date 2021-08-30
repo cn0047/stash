@@ -21,19 +21,19 @@ wss:// # TLS
 ````
 
 Message Types:
-* text
-* data
-* control (ping, pong, close)
+* text.
+* data.
+* control (ping, pong, close).
 
 Events:
-* onopen
-* onmessage
-* onerror
-* onclose
+* onopen.
+* onmessage.
+* onerror.
+* onclose.
 
 API:
-* send
-* close
+* send.
+* close.
 
 #### Limits
 

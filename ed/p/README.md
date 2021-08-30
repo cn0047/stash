@@ -171,18 +171,18 @@ Broadcast Address - very last IP in local network -> all host bits are turned on
 
 ## Internet Protocol Stack
 
-* Application
-* Transport
-* Network (router)
-* Link (switch)
-* Physical (hub)
+* Application.
+* Transport.
+* Network (router).
+* Link (switch).
+* Physical (hub).
 
-Hub    - when node sends data to hub, hub replicates data on all other nodes (waste of bandwidth).
-Switch - has switch table between switch ports and network nodes MAC addresses.
-Router - passes packet from network to network, like bridge between private network and
-         public network of internet provider.
-         A packet is typically forwarded from one router to another router through the networks
-         that constitute an internetwork until it reaches its destination node.
+Hub - when node sends data to hub, hub replicates data on all other nodes (waste of bandwidth).
+<br>Switch - has switch table between switch ports and network nodes MAC addresses.
+<br>Router - passes packet from network to network, like bridge between private network and
+public network of internet provider.
+A packet is typically forwarded from one router to another router through the networks
+that constitute an internetwork until it reaches its destination node.
 
 ## Firewall
 

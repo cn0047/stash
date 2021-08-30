@@ -12,27 +12,27 @@ Certificate types: self-signed and wildcard (`*.kint.com`)
 
 #### Data Encryption Protocols Cipher:
 
-* ~~3DES~~ (168 bits) (don't use is vulnerable)
-* AES (128 or 256 bits) (*USA government standard encryption protocol now*)
-  * GCM
-  * CBC
-* Chacha20
-  * Poly1305
+* ~~3DES~~ (168 bits) (don't use is vulnerable).
+* AES (128 or 256 bits) (*USA government standard encryption protocol now*).
+  * GCM.
+  * CBC.
+* Chacha20.
+  * Poly1305.
 
 #### Key Encryption Protocols:
 
-* RSA (don't use is vulnerable)
-* DH (Diffie-Hellman)
-  * Signed with RSA
-* ECDH (Elliptical Curve Diffie-Hellman)
-  * Signed with ECDSA
-  * Signed with RSA
+* RSA (don't use is vulnerable).
+* DH (Diffie-Hellman).
+  * Signed with RSA.
+* ECDH (Elliptical Curve Diffie-Hellman).
+  * Signed with ECDSA.
+  * Signed with RSA.
 
 #### Handshake Intergrity
 
-* SHA
-* SHA-256
-* SHA-384
+* SHA.
+* SHA-256.
+* SHA-384.
 
 #### TLS handshake:
 

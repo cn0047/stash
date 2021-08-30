@@ -5,33 +5,33 @@ https://spacetelescope.github.io/understanding-json-schema/
 https://github.com/epoberezkin/ajv-keywords
 
 ````js
-{ "type": "string" }
-{ "type": "array", "uniqueItems": true }
-{ "type": "string", "enum": ["red", "amber", "green"] }
+{"type": "string"}
+{"type": "array", "uniqueItems": true}
+{"type": "string", "enum": ["red", "amber", "green"]}
 
-{ "id": "http://yourdomain.com/schemas/myschema.json" }
-{ "$schema": "http://json-schema.org/draft-04/schema#" }
-{ "$ref": "#/definitions/address" }
+{"id": "http://yourdomain.com/schemas/myschema.json"}
+{"$schema": "http://json-schema.org/draft-04/schema#"}
+{"$ref": "#/definitions/address"}
 
-{ "allOf": [ { "type": "string" }, { "maxLength": 5 } ] }
-{ "anyOf": [ { "type": "string" }, { "type": "number" } ] } # valid against any (one or more) 
-{ "oneOf": [ { "type": "number", "multipleOf": 5 }, { "type": "number", "multipleOf": 3 } ] } # valid against exactly one
-{ "not": { "type": "string" } }
+{"allOf": [{"type": "string"}, {"maxLength": 5}]}
+{"anyOf": [{"type": "string"}, {"type": "number"}]} // valid against any (one or more)
+{"oneOf": [{"type": "number", "multipleOf": 5}, {"type": "number", "multipleOf": 3}]} // valid against exactly one
+{"not": {"type": "string"}}
 ````
 
 ````js
-# dependencies
+// dependencies
 {
   "type": "object",
   "properties": {
-    "name": { "type": "string" },
-    "credit_card": { "type": "number" },
-    "billing_address": { "type": "string" }
-  },
+    "name": {"type": "string"},
+    "credit_card": {"type": "number"},
+    "billing_address": {"type": "string"}
+ },
   "required": ["name"],
   "dependencies": {
     "credit_card": ["billing_address"]
-  }
+ }
 }
 
 const schema = {
@@ -39,36 +39,36 @@ const schema = {
   required: [
     // 'multicastAddressBlock',
     'isAutoMulticast',
-  ],
+ ],
   properties: {
     multicastAddressBlock: {
       oneOf: [
-        { type: 'null' },
-        { type: 'string', format: 'ipv4' },
+        {type: 'null'},
+        {type: 'string', format: 'ipv4'},
       ],
     },
     isAutoMulticast: {
       type: 'boolean',
     },
-  },
+ },
   switch: [
     {
       if: {
         properties: {
-          isAutoMulticast: { enum: [false] },
+          isAutoMulticast: {enum: [false]},
         },
       },
       then: {
         required: ['multicastAddressBlock'],
         properties: {
           multicastAddressBlock: {
-            not: { type: 'null' },
+            not: {type: 'null'},
           },
         },
       },
       continue: true,
     },
-  ],
+ ],
 };
 
 const schema = {
@@ -80,7 +80,7 @@ const schema = {
     'enableDtmfInfo',
     'enableStun',
     'enableSrtp',
-  ],
+ ],
   properties: {
     interface: {
       title: 'Core Interface',
@@ -120,7 +120,7 @@ const schema = {
           minLength: 1,
           maxLength: 255,
         },
-        { type: 'null' },
+        {type: 'null'},
       ],
     },
     enableSrtp: {
@@ -142,7 +142,7 @@ const schema = {
     {
       if: {
         properties: {
-          enableDtmfInfo: { enum: [true] },
+          enableDtmfInfo: {enum: [true]},
         },
       },
       then: {
@@ -153,7 +153,7 @@ const schema = {
     {
       if: {
         properties: {
-          enableDtmfInfo: { enum: [false] },
+          enableDtmfInfo: {enum: [false]},
         },
       },
       then: {
@@ -164,7 +164,7 @@ const schema = {
     {
       if: {
         properties: {
-          enableStun: { enum: [true] },
+          enableStun: {enum: [true]},
         },
       },
       then: {

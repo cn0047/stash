@@ -21,7 +21,7 @@ it provides no guarantees to the upper layer protocol for message delivery
 and the UDP layer retains no state of UDP messages once sent.
 
 UDP Header:
-* Source port number
-* Destination port number
-* Length
-* Checksum
+* Source port number.
+* Destination port number.
+* Length.
+* Checksum.
