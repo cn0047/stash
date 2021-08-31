@@ -1,10 +1,9 @@
 Security Attacks
 -
 
-* HTTP Desync Attack (Request Smuggling)
-* Shellshock
-
-* Regular expression Denial of Service (ReDoS)
+* HTTP Desync Attack (Request Smuggling).
+* Shellshock.
+* Regular expression Denial of Service (ReDoS).
 
 #### Server-Site Request Forgery (SSRF)
 
@@ -48,10 +47,10 @@ data enters through an untrusted source;
 dynamic content validation.
 
 Categories:
-* stored (database)
-* reflected (response includes some malicious input)
-* DOM - malicious data does not touch the web server
-* self - user has own xss on own social page or something like that
+* stored (database).
+* reflected (response includes some malicious input).
+* DOM - malicious data does not touch the web server.
+* self - user has own xss on own social page or something like that.
 
 ````sh
 w.Header().Set("X-XSS-Protection", "0")
@@ -81,14 +80,12 @@ SQL Injection and whatnot.
 
 AKA: ../ (dot dot slash) attack.
 AIM: gain unauthorized access to the file system.
-
-It is exploiting insufficient security validation / sanitization of user-supplied input file names.
+It is exploiting insufficient security validation/sanitization of user-supplied input file names.
 
 ````php
 <?php
 $template = 'red.php';
-if (isset($_COOKIE['TEMPLATE']))
-   $template = $_COOKIE['TEMPLATE'];
+if (isset($_COOKIE['TEMPLATE'])) $template = $_COOKIE['TEMPLATE'];
 include ("/home/users/phpguru/templates/" . $template);
 ````
 ````
@@ -100,7 +97,6 @@ FIX: Query string is usually URI decoded before use.
 #### ~~Clickjacking (UI redress attack)~~
 
 The hacker can only send a single click.
-
 For example, imagine an attacker who builds a web site that has a button on it that says "click here for a free iPod".
 However, on top of that web page, the attacker has loaded an iframe with your mail account,
 and lined up exactly the "delete all messages" button directly on top of the "free iPod" button.
@@ -126,5 +122,4 @@ is processed by a weakly configured XML parser.
 
 A distributed DDoS is a cyber-attack where the perpetrator uses more than one unique IP address,
 often thousands of them.
-
 Distributed autoscale systems may try to cope with DDoS.

@@ -6,16 +6,15 @@ Protocol Buffers (protobuf)
 Canonically, messages are serialized into a binary wire format.
 
 Scalar Value Types:
-
-* double
-* float
-* int32, int64
+* double.
+* float.
+* int32, int64.
 * uint32, uint64 - Uses variable-length encoding (integer in php).
 * sint32, sint64 - (integer in php).
 * fixed32, fixed64 - (integer in php).
 * sfixed32, sfixed64 - (integer in php).
-* bool
-* string
+* bool.
+* string.
 * bytes - any arbitrary sequence of bytes (string in php).
 
 `repeated` keyword for arrays.

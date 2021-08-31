@@ -80,9 +80,9 @@ HTTP Strict-Transport-Security (HSTS):
 ````sh
 Strict-Transport-Security: max-age=<expire-time-in-seconds>; includeSubDomains; preload
 ````
-* client should interact over https
-* protects against "downgrade attack"
-* relies on "trust on first use" (TOFU)
+* client should interact over https.
+* protects against "downgrade attack".
+* relies on "trust on first use" (TOFU).
 
 Subresource Integrity (SRI):
 ````html

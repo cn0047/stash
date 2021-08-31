@@ -4,7 +4,7 @@ REST (Representational State Transfer) aka RESTful
 REST - software architectural style.
 
 Properties:
-* Performance (Servers and clients may be replaced and developed independently).
+* Performance (servers and clients may be replaced and developed independently).
 * Scalability to support large numbers of components.
 * Simplicity of interfaces.
 * Stateless (RESTful APIs).
@@ -51,8 +51,8 @@ Use nouns and NOT the verbs. Also use plurals.
 |   | OPTIONS  | return available HTTP methods                                           |
 
 PATCH applies a delta rather than (PUT) replacing the entire resource.
-PUT method body contains entire entity.
 PATCH method body describes modifications to be made to a resource.
+PUT method body contains entire entity.
 
 The PUT and DELETE methods are referred to as idempotent,
 meaning that the operation will produce the same result no matter how many times it is repeated.
@@ -67,22 +67,22 @@ The GET method is a safe method (or nullipotent), meaning that calling it produc
 | 401 Unauthorized | missing or invalid authentication token                |
 | 403 Forbidden    | user is not authorized                                 |
 
-| method              | success                               |   fail                                                               |
-|---------------------|---------------------------------------|----------------------------------------------------------------------|
-| GET      PUT DELETE | 200 OK                                |                                                                      |
-|     POST PUT        | 201 Created                           |                                                                      |
-|     POST PUT DELETE | 202 Accepted (eventual consistency)   |                                                                      |
-|     POST PUT DELETE | 204 No Content (eventual consistency) |                                                                      |
-| GET POST PUT DELETE |                                       | 400 Bad Request                                                      |
-| GET POST PUT DELETE |                                       | 401 Unauthorized                                                     |
-| GET POST PUT        |                                       | 402 Payment Required                                                 |
-| GET POST PUT DELETE |                                       | 403 Forbidden                                                        |
-| GET POST PUT DELETE |                                       | 404 Not Found                                                        |
-|     POST PUT        |                                       | 404 Not Found (processing request that references related resource ) |
-|     POST PUT DELETE |                                       | 405 Method Not Allowed                                               |
-|     POST PUT        |                                       | 409 Conflict                                                         |
+| method              | success                               |   fail                                                              |
+|---------------------|---------------------------------------|---------------------------------------------------------------------|
+| GET      PUT DELETE | 200 OK                                |                                                                     |
+|     POST PUT        | 201 Created                           |                                                                     |
+|     POST PUT DELETE | 202 Accepted (eventual consistency)   |                                                                     |
+|     POST PUT DELETE | 204 No Content (eventual consistency) |                                                                     |
+| GET POST PUT DELETE |                                       | 400 Bad Request                                                     |
+| GET POST PUT DELETE |                                       | 401 Unauthorized                                                    |
+| GET POST PUT        |                                       | 402 Payment Required                                                |
+| GET POST PUT DELETE |                                       | 403 Forbidden                                                       |
+| GET POST PUT DELETE |                                       | 404 Not Found                                                       |
+|     POST PUT DELETE |                                       | 404 Not Found (processing request that references related resource) |
+|     POST PUT DELETE |                                       | 405 Method Not Allowed                                              |
+|     POST PUT        |                                       | 409 Conflict                                                        |
 
-For security it's better to return JSON with an Object on the outside:
+For security it's better to return JSON with an object:
 <br>not: `[{"object": "inside an array"}]`
 <br>but: `{"result": [{"object": "inside an array"}]}`
 
@@ -101,7 +101,7 @@ curl -X GET api.svc.com/v1/notifications/push/devices/{dID}/enabled
 <br>S: `/users/?email=e`.
 
 <br>P: GET aggregated user (db, facebook, twitter, etc) - how to provide payload.
-<br>S: Use api-gateway.
+<br>S: Use api-gateway and `included` object in response (JSON API).
 
 <br>P: Pagination - how to provide limit, offset.
 <br>S: Provide or header either body payload (or in url):

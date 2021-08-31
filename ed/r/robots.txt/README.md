@@ -1,6 +1,8 @@
 robots.txt
 -
 
+robots.txt - text file with instructions for search engine crawlers.
+
 ````html
 <meta name="robots" content="noindex">
 ````
