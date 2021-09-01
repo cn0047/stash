@@ -7,13 +7,12 @@ Two-pizza teams - where no team should be so big that it could not be fed with t
 
 #### TL
 
-Avoid conflicts.
-Let offer new ideas.
-Ask do people need help.
-Help feel okay to admit being wrong.
-Know team: skils, strengths, goals, interests.
-
-Bit of delegating & directing and more supporting & coaching.
+* Avoid conflicts.
+* Let offer new ideas.
+* Ask do people need help.
+* Help feel okay to admit being wrong.
+* Know team: skils, strengths, goals, interests.
+* Bit of delegating & directing and more supporting & coaching.
 
 TL must be:
 * Like a teacher and have authority to teach team.
@@ -36,75 +35,72 @@ rest = rest
 #### Agile
 
 The Agile Manifesto is based on 12 principles:
-
-1.  Customer satisfaction by rapid delivery of useful software
-2.  **Welcome changing requirements, even late in development**
-3.  Working software is delivered frequently (weeks rather than months)
-4.  Close, **daily cooperation between business people and developers**
-5.  **Projects are built around motivated individuals**, who should be trusted
-6.  **Face-to-face conversation** is the best form of communication (co-location)
-7.  Working software is the principal measure of progress
-8.  Sustainable development, able to maintain a constant pace
-9.  Continuous attention to technical excellence and good design
-10. Simplicity—the art of maximizing the amount of work not done—is essential
-11. **Self-organizing teams**
-11. **Regular adaptation to changing circumstance**
+1.  Customer satisfaction by rapid delivery of useful software.
+2.  **Welcome changing requirements, even late in development**.
+3.  Working software is delivered frequently (weeks rather than months).
+4.  Close, **daily cooperation between business people and developers**.
+5.  **Projects are built around motivated individuals**, who should be trusted.
+6.  **Face-to-face conversation** is the best form of communication (co-location).
+7.  Working software is the principal measure of progress.
+8.  Sustainable development, able to maintain a constant pace.
+9.  Continuous attention to technical excellence and good design.
+10. Simplicity—the art of maximizing the amount of work not done—is essential.
+11. **Self-organizing teams**.
+11. **Regular adaptation to changing circumstance**.
 
 Agile software development methods:
-
-* Adaptive software development (ASD)
-* Agile modeling
-* Agile Unified Process (AUP)
-* Crystal Clear Methods
-* Disciplined agile delivery
-* Dynamic systems development method (DSDM)
-* **Extreme programming** (XP)
-* Feature-driven development (FDD)
-* Lean software development
-* **Kanban** (development)
-* **Scrum**
-* Scrum ban
+* Adaptive software development (ASD).
+* Agile modeling.
+* Agile Unified Process (AUP).
+* Crystal Clear Methods.
+* Disciplined agile delivery.
+* Dynamic systems development method (DSDM).
+* **Extreme programming** (XP).
+* Feature-driven development (FDD).
+* Lean software development.
+* **Kanban** (development).
+* **Scrum**.
+* Scrum ban.
 
 Agile practices:
-
-* Acceptance test-driven development (**ATDD**)
-* Agile modeling
-* Backlogs (Product and Sprint)
-* Behavior-driven development (**BDD**)
-* Cross-functional team
-* Continuous integration (**CI**)
-* Domain-driven design (**DDD**)
-* Information radiators (scrum board, task board, visual management board, burndown chart)
-* Iterative and incremental development (**IID**)
-* **Pair programming**
-* Planning poker
-* Refactoring
-* **Scrum events**
-* Test-driven development (**TDD**)
-* Agile testing
-* Timeboxing
-* Use case
-* User story
-* Story-driven modeling
-* Retrospective (good/bad/continue to do)
-* **Velocity tracking**
+* Acceptance test-driven development (**ATDD**).
+* Agile modeling.
+* Backlogs (Product and Sprint).
+* Behavior-driven development (**BDD**).
+* Cross-functional team.
+* Continuous integration (**CI**).
+* Domain-driven design (**DDD**).
+* Information radiators (scrum board, task board, visual management board, burndown chart).
+* Iterative and incremental development (**IID**).
+* **Pair programming**.
+* Planning poker.
+* Refactoring.
+* **Scrum events**.
+* Test-driven development (**TDD**).
+* Agile testing.
+* Timeboxing.
+* Use case.
+* User story.
+* Story-driven modeling.
+* Retrospective (good/bad/continue to do).
+* **Velocity tracking**.
 
 #### Extreme Programming:
 
 Core Practices:
-* Simple Design
-* Test-Driven Development
-* Small Releases
-* Continuous Integration
-* Pair Programming
-* Collective Code Ownership
-* Metaphor (common vision of how the program works)
-* Whole Team
-* Coding Standard
-* Design Improvement (Refactoring)
-* Planning Game (Release Planning, Iteration Planning)
-* Customer Tests
-* Sustainable Pace
+* Simple Design.
+* Test-Driven Development.
+* Small Releases.
+* Continuous Integration.
+* Pair Programming.
+* Collective Code Ownership.
+* Metaphor (common vision of how the program works).
+* Whole Team.
+* Coding Standard.
+* Design Improvement (Refactoring).
+* Planning Game (Release Planning, Iteration Planning).
+* Customer Tests.
+* Sustainable Pace.
 
 #### Kanban
 
@@ -114,12 +110,12 @@ in order to balance demand with available capacity and spot bottlenecks.
 Kanban focuses on the customer and work which meets their needs.
 
 General practices:
-* visualization
-* limiting work in progress
-* flow management
-* making policies explicit
-* using feedback loops
-* collaborative or experimental evolution
+* Visualization.
+* Limiting work in progress.
+* Flow management.
+* Making policies explicit.
+* Using feedback loops.
+* Collaborative or experimental evolution.
 
 #### Crystal Clear Methods
 
@@ -131,7 +127,7 @@ General practices:
   People in team polite and calm anyone can ask any stupid question.
 * Focus:
   1. Two-hour period where the developer is to have no interruptions, meetings, long questions, phone call, etc.
-  2. definition of goals should be clear.
+  2. Definition of goals should be clear.
 * Easy access to expert users.
 * Technical environment with automated tests, configuration management, and frequent integration.
 
@@ -146,22 +142,22 @@ Roles:
 * Development Team.
 
 Events:
-* sprint planning (planning poker)
-* grooming (backlog refinement)
-* daily scrum
-* demo
-* sprint review and retrospective (what to start/stop/continue to do)
+* Sprint planning (planning poker).
+* Grooming (backlog refinement).
+* Daily scrum.
+* Demo.
+* Sprint review and retrospective (what to start/stop/continue to do).
 
 Artifacts:
-* Product backlog
-* Management (prioritize product backlog items)
-* Sprint backlog
-* Product increment (product backlog items completed during a sprint)
-* Extensions
-  * Sprint burn-down chart
-  * Release burn-up chart
-  * Definition of done (DoD)
-  * Velocity
+* Product backlog.
+* Management (prioritize product backlog items).
+* Sprint backlog.
+* Product increment (product backlog items completed during a sprint).
+* Extensions:
+  * Sprint burn-down chart.
+  * Release burn-up chart.
+  * Definition of done (DoD).
+  * Velocity.
 
 **Velocity** is a measure of the amount of work a Team can tackle
 during a single Sprint and is the key metric in Scrum.
@@ -200,12 +196,12 @@ Correct question - is **"where is that on the hill?"**
 Continuous learning and adaptation to the emergent state of the project.
 The characteristics of an ASD life cycle are that it is:
 
-* mission focused
-* feature based
-* iterative
-* timeboxed
-* risk driven
-* change tolerant
+* Mission focused.
+* Feature based.
+* Iterative.
+* Timeboxed.
+* Risk driven.
+* Change tolerant.
 
 #### Rapid-application development
 

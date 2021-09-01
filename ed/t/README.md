@@ -12,7 +12,7 @@ Theory
 
 <br>ACL     - Access Control Lists.
 <br>API     - Application programming interface.
-<br>B2B     - Business to business.
+<br>B2B     - Business to Business.
 <br>BAAS    - Back-end as a service.
 <br>BLOB    - Binary Large Object.
 <br>CRM     - Customer relationship management.
@@ -56,8 +56,6 @@ Theory
 Scraping - programmatically get web page, extract very specific data.
 Crawling - programmatically get web page, extract hyperlinks and follow them.
 
-Consensus - getting all of the nodes to agree on something.
-
 Systems of record - aka source of truth.
 
 Batch processing systems - offline systems.
@@ -70,7 +68,7 @@ once an initial client connection has been established.
 IO throughput - data transfer speed in megabytes per second (MB/s or MBPS).
 
 To deal with big complicated problems - have to perform breakdown or decomposition.
-One of the best ways to deal with complexity is divide and conquer — split the problem
+One of the best ways to deal with complexity is divide and conquer - split the problem
 into smaller problems and solve each one separately.
 
 Fault - when one component of the system deviating from its spec.

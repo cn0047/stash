@@ -1,7 +1,7 @@
 Video
 -
 
-**Video** - a series of pictures / frames running at a given rate.
+**Video** - a series of pictures/frames running at a given rate.
 
 **Bit rate** - amount of data encoded per second in a video.
 DVD - Bit rate = 4-8Mbps.

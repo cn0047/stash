@@ -3,7 +3,7 @@ Stats
 
 Metric summaries:
 * Count or n — count the number of observations in a specific time interval.
-* Sum —  sum (addtogether) values from all observations in a specific time interval.
+* Sum — sum (addtogether) values from all observations in a specific time interval.
 * Average — the mean of all values in a specific time interval.
 * Median — dead center of our values: exactly 50% of values are below it, and 50% are above it.
 * Percentiles — the values below which a given percentage of observations in a group of observations fall.

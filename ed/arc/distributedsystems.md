@@ -1,6 +1,8 @@
 Distributed Systems
 -
 
+Consensus - getting all of the nodes to agree on something.
+
 Make all nodes to behave idempotent as much as possible,
 because some actions may repeat twice:
 * DB incremented value but network response failed.
