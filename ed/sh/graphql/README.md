@@ -7,10 +7,10 @@ GraphQL
 GraphQL is Language and Runtime.
 
 Language:
-* field
-* variable `$varName`
-* directive `@include(if: $var)`
-* alias `aliasName: originName`
-* fragment `...FragmentName`
+* field.
+* variable `$varName`.
+* directive `@include(if: $var)`.
+* alias `aliasName: originName`.
+* fragment `...FragmentName`.
 
 Runtime.

@@ -15,6 +15,9 @@ CALL db.index.fulltext.createNodeIndex('idx_all_text', ['Person'], ['name', 'cod
 CALL db.index.fulltext.createNodeIndex('idx_code', ['Person'], ['code'], {analyzer: 'url_or_email', eventually_consistent: 'true'});
 
 // get indexes
+CALL db.indexes();
+
+// get analyzers
 CALL db.index.fulltext.listAvailableAnalyzers;
 
 // delete index
@@ -33,6 +36,10 @@ CALL db.index.fulltext.queryNodes('idx_name', 'b*nd') YIELD node, score RETURN n
 CALL db.index.fulltext.queryNodes('idx_about', 'vod*') YIELD node, score RETURN node, score;
 // single character wildcard
 CALL db.index.fulltext.queryNodes('idx_about', 'vod?a') YIELD node, score RETURN node, score;
+
+// simple sort
+CALL db.index.fulltext.queryNodes('idx_about', 'vod*') YIELD node, score
+RETURN node, node.code, score ORDER BY node.code ASC;
 
 // vodka OR martini
 CALL db.index.fulltext.queryNodes('idx_about', 'vodka martini') YIELD node, score RETURN node, score;

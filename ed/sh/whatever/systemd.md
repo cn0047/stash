@@ -24,7 +24,7 @@ systemd-analyze
 Place bin file in `/home/k/myapp`
 run `vim /lib/systemd/system/myapp.service`.
 
-````
+````sh
 [Unit]
 Description=myapp
 

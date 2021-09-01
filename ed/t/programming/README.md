@@ -22,16 +22,16 @@ All threads of a process share its virtual address space and system resources.
 Stack - function's parameters and local variables allocated on the stack.
 If the stack needs to grow then heap operations (allocate new, copy old to new, free old) will occur.
 
-Heap - does not have a single partition of allocated and free regions, set of of free regions.
+Heap - does not have a single partition of allocated and free regions, set of free regions.
 Unlike the stack, the heap is not owned by one function.
 (manipulating the set of free regions in the heap requires synchronization).
 OS specifies min heap size (`ulimit` in linux).
 
 ## Language
 
-* lexer
-* parser
-* compiler
+* lexer.
+* parser.
+* compiler.
 
 ## Common stuff
 
@@ -51,31 +51,28 @@ Imperative program consists of commands for the computer to perform.
 
 **Structured** programming - is a programming paradigm
 aimed at improving the clarity, quality, and development time of a computer program
-by making extensive use of subroutines (procedure, function, method or subprogram),
+by making extensive use of subroutines (procedure, function, method or subprogram)
 block structures, for and while loops.
 
 **Procedural** programming - is a programming paradigm, derived from structured programming,
-based upon the concept of the procedure call.
-(Fortran, Pascal).
+based upon the concept of the procedure call (Fortran, Pascal).
 
 **Declarative** programming - focuses on what the program should accomplish
 without specifying how the program should achieve the result (SQL, CSS, regex).
 <br>The declarative layer describes what the code will do,
-while the implementation layer describes how the code does it.
-(The declarative layer is, in effect, a small domain-specific language).
+while the implementation layer describes how the code does it
+(the declarative layer is, in effect, a small domain-specific language).
 
 **Functional** programming - is a programming paradigm,
 a style of building the structure and elements of computer programs
 that treats computation as the evaluation of mathematical (pure & deterministic) functions
-and avoids changing-state and mutable data.
-(JavaScript, Scala).
+and avoids changing-state and mutable data (JavaScript, Scala).
 
 **Object-oriented** programming - is a programming paradigm based on the concept of objects,
 which may contain data, in the form of fields, often known as attributes,
 and code, in the form of procedures, often known as methods.
 
-**Event-driven** programming – program control flow is determined by events.
-(JavaScript).
+**Event-driven** programming – program control flow is determined by events (JavaScript).
 
 **Metaprogramming** - is a programming technique
 in which computer programs have the ability to treat programs as their data.
@@ -100,34 +97,34 @@ Basically, classes are the tightest form of coupling in object-oriented programm
 
 #### Code quality
 
-Readable
-Understandable
-Maintainable
-Extendable
-Reusable
-Testable
-Documentable
-Well designed (patterns)
-Follows SOLID
-Don't have memory leaks
-Don't have vulnerabilities and security issues
-Cares about backward compatibility
+* Readable.
+* Understandable.
+* Maintainable.
+* Extendable.
+* Reusable.
+* Testable.
+* Documentable.
+* Well designed (patterns).
+* Follows SOLID.
+* Don't have memory leaks.
+* Don't have vulnerabilities and security issues.
+* Cares about backward compatibility.
 
-Fault tolerance
-Predictability
-Resilience - is the ability of a system to adapt or keep working when challenges occur.
-Elasticity
+* Fault tolerance.
+* Predictability.
+* Resilience - is the ability of a system to adapt or keep working when challenges occur.
+* Elasticity.
 
-Rigidity
-Fragility
-Immobility
-Complexity
+* Rigidity.
+* Fragility.
+* Immobility.
+* Complexity.
 
-Self-optimization
-Self-protection
-Self-adaptation
-Self-configuration
-Self-healing
+* Self-optimization.
+* Self-protection.
+* Self-adaptation.
+* Self-configuration.
+* Self-healing.
 
 #### Comments
 

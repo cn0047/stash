@@ -98,7 +98,7 @@ sshuttle -v -r usr@ec2-us-east-1.smth.com 10.3.0.0/16
 ping 8.8.8.8 -c 15
 traceroute http://cn007b.tumblr.com # print the route packets take to network host
 nslookup git.mdm.comodo.od.ua
-host github.com # Shows ip by host.
+host github.com # shows ip by host.
 host -t A github.com
 dig domain
 whois ip
@@ -129,7 +129,7 @@ nc -zv 10.0.2.2 22
 nc -zv 78.140.186.238 1-65535
 nc -zv 10.0.2.2 22
 
-Public DNS IP addresses:
+# public DNS IP addresses:
 8.8.8.8
 8.8.4.4
 
@@ -275,13 +275,13 @@ watch -n.5 grep ctxt /proc/$pid/status
 #### disk usage
 
 ````sh
-df               # Show information about the file system.
+df               # show information about the file system.
 df -h            # all drives
 df -ih           # inodes
 lsblk            # all attached drives
-df -T            # Show filesystem type
-du               # Summarize disk usage of each FILE.
-du -sh web/*     # Summarize disk usage of each dir in foto dir.
+df -T            # show filesystem type
+du               # summarize disk usage of each FILE.
+du -sh web/*     # summarize disk usage of each dir in foto dir.
 ````
 
 #### cut
@@ -612,9 +612,9 @@ ab -k -n 5000 -c 100 -t 2 "http://localhost"
 # -n   Number of requests.
 # -c   Concurrency.
 # -t   Timelimit in seconds.
-````
 
 docker run -ti --rm cn007b/ubuntu ab -k -n 100 -c 100 -t 5 "http://10.254.254.254:8080/9"
+````
 
 #### upstart
 

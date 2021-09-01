@@ -57,7 +57,7 @@ Host ec2
 
 Examples:
 
-````
+````sh
 RSA/EC/DSA/OPENSSH
 
 -----BEGIN RSA PRIVATE KEY-----

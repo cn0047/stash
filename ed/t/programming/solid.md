@@ -1,11 +1,11 @@
 SOLID
 -
 
-* Single responsibility principle
-* Open/closed principle
-* Liskov substitution principle
-* Interface segregation principle
-* Dependency inversion principle
+* Single responsibility principle.
+* Open/closed principle.
+* Liskov substitution principle.
+* Interface segregation principle.
+* Dependency inversion principle.
 
 SRP - states that every class should have responsibility over a single part
 of the functionality provided by the software.
@@ -13,6 +13,7 @@ If description contains word AND or OR - it's not SRP.
 
 OCP - (classes, modules, functions, etc.)
 should be open for extension, but closed for modification.
+Problems: Code base may contain leftover classes.
 
 LSP - if S is a subtype of T,
 then objects of type T may be replaced with objects of type S
@@ -31,8 +32,4 @@ DIP - refers to a specific form of decoupling software modules.
     * No method should override an implemented method.
     * All variable instantiation requires the implementation of a Creational pattern
       as the Factory Method or the Factory pattern,
-    or the more complex use of a Dependency Injection framework.
-
-Problems:
-
-OCP - code base may contain leftover classes.
+      or the more complex use of a Dependency Injection framework.

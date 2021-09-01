@@ -17,9 +17,9 @@ jq type # simple way to check JSON validity
 ````sh
 .foo.bar
 .["foo::bar"] # special chars
-.foo?         # Optional object identifier
-.[10:15]      # Array/string slice
-,             # (comma) Two filters separated by a comma
+.foo?         # optional object identifier
+.[10:15]      # array/string slice
+,             # (comma) two filters separated by a comma
 
 .items[]|.id
 ... | jq '.items[]|.ImageLink' # ✅

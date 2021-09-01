@@ -66,6 +66,10 @@ git log --date=short --no-merges --shortstat
 
 git reflog # local repository log
 
+git rev_parse branch
+git rev-parse HEAD              # current commit hash
+git rev-parse --abbrev-ref HEAD # branch name only
+
 git diff --cached or diff --staged # after git add shows diff
 git diff branch..subBrach
 git diff branch:file file # !!!
@@ -116,17 +120,14 @@ git checkout --track -b develop origin/develop
 git branch develop --set-upstream-to origin/develop
 
 git show branchName
-git rev-parse HEAD # current commit hash
-git rev_parse branch
 git brnach
-git rev-parse --abbrev-ref HEAD # branch name only
 git branch --no-merged
-git branch --merged                               # branches merged with current
-git branch -v                                     # all branches Y last branch commit
-git branch -vv                                    # + tracking remote branch
+git branch --merged                                # branches merged with current
+git branch -v                                      # all branches Y last branch commit
+git branch -vv                                     # + tracking remote branch
 git push remoteRepoName pushedBranch
 git push remoteRepoName pushedBranch:newBranchName
-git push remoteRepoName :branch                   # delete branch from remote repo
+git push remoteRepoName :branch                    # delete branch from remote repo
 ````
 
 #### rebase

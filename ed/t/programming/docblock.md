@@ -16,7 +16,6 @@ DocBlock
 ````
 
 Tests:
-
 ````
 /**
  * @covers BankAccount::getBalance

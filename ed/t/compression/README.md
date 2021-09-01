@@ -2,8 +2,8 @@ Compression
 -
 
 Compression methods:
-* compress
-* deflate
-* sdch
-* gzip
-* bzip2
+* compress.
+* deflate.
+* sdch.
+* gzip.
+* bzip2.

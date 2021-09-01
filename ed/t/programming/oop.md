@@ -21,7 +21,6 @@ Object - runtime concrete occurrence of class instance.
 #### Problems
 
 Inheritance:
-
 * Banana Monkey Jungle Problem.
 * The Fragile Base Class Problem.
 * The Hierarchy Problem (deep, unclear, multiple).
@@ -29,12 +28,10 @@ Inheritance:
 Design patterns and delegation brakes inheritance.
 
 Encapsulation:
-
-* The Reference Problem (update object by reference)
+* The Reference Problem (update object by reference).
 
 Polymorphism:
-
-No need in OOP, just need interface-based polymorphism.
+* No need in OOP, just need interface-based polymorphism.
 
 #### OOD
 

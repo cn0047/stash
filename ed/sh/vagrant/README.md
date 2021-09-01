@@ -4,7 +4,8 @@ Vagrant
 1.8.1
 1.7.4
 
-[download vagrant](https://www.vagrantup.com/downloads.html).
+[download vagrant](https://www.vagrantup.com/downloads.html)
+[multi machine](https://www.vagrantup.com/docs/multi-machine/)
 
 ````sh
 vboxmanage --version
@@ -41,4 +42,11 @@ vagrant resume # after suspend
 guest machine - virtual box.
 host machine - your laptop.
 
-https://www.vagrantup.com/docs/multi-machine/
+````sh
+sudo vim /etc/hosts
+127.0.0.1 laravel.one.dev laravel.two.dev
+127.0.0.1 symfony.bb.dev
+
+
+http://laravel.one.dev:8080/
+````

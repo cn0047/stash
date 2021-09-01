@@ -23,7 +23,7 @@ But better rule is to think of one coherent feature per test,
 which might be represented by up to a handful of assertions.
 And better writing tests where each method exercises a unique aspect of the target code’s behavior.
 
-All code should emphasize "what" it does over "how", including test code;
+All code should emphasize "what" it does over "how", including test code.
 
 A common technique to isolate tests that use a transactional resource (such as a database)
 is to run each test in a transaction which is then rolled back at the end of the test.
@@ -72,7 +72,7 @@ It involves assuring that all the integrated pieces of an application function a
 
 Does the whole system work?
 
-Acceptance criteria come in many different varieties; for one thing, they can be functional or nonfunctional.
+Acceptance criteria come in many different varieties, for one thing, they can be functional or nonfunctional.
 Nonfunctional acceptance criteria include things like:
 **capacity**, **performance**, modifiability, **availability**, **security**, usability, and so forth.
 The key point here is that when the acceptance tests associated with a particular story or requirement pass.
