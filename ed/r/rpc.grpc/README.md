@@ -3,6 +3,11 @@ gRPC
 
 [grpc](https://grpc.io/docs)
 
+````sh
+Content-Type: application/grpc+json
+Content-Type: application/grpc+proto
+````
+
 gRPC - open source RPC framework.
 
 RPC based on actons & functions (for example REST based on resources).
