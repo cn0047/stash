@@ -1,6 +1,9 @@
 Dataflow
 -
 
+[docs](https://cloud.google.com/dataflow/docs/quickstarts)
+[resources](https://cloud.google.com/dataflow/docs/resources)
+
 Dataflow - service for creating and evaluating data processing pipelines.
 Streaming analytics for stream and batch processing.
 
