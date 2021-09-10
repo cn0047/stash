@@ -44,6 +44,9 @@ gcloud auth application-default login
 gcloud auth activate-service-account --key-file=service-account.json
 gcloud auth list
 
+# default service account
+# ls ls ~/.config/gcloud/application_default_credentials.json
+
 gcloud config configurations list
 gcloud config list
 gcloud config set project itismonitoring
