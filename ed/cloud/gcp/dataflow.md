@@ -17,3 +17,5 @@ Sink.
 Schema.
 State.
 Timer (event time, processing time).
+
+ParDo - transform for generic parallel processing.
