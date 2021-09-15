@@ -70,6 +70,9 @@ severity>=CRITICAL
 severity>=ERROR
 severity>=WARNING
 NOT "GET /sitemap/"
+
+resource.type="dataflow_step"
+("thrashing=true" OR "OutOfMemoryError" OR "Out of memory" OR "Shutting down JVM")
 ````
 
 Go:
