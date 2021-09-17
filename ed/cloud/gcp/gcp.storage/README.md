@@ -15,6 +15,8 @@ Cloud Storage - like AWS S3.
 ````sh
 # ls /Users/k/.google-cloud-sdk/bin/gsutil
 
+gsutil config
+
 gsutil acl get gs://itisgnp.appspot.com
 gsutil acl ch -u itisgnp@appspot.gserviceaccount.com:O gs://itisgnp.appspot.com
 

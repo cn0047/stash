@@ -7,19 +7,19 @@
 terraform.*
 
 # nodejs
-**/node_modules/
+ed/l/nodejs/**/node_modules/
 package-lock.json
 yarn.lock
 
 # php
-**/vendor/
+ed/l/php/**/vendor/
 composer.lock
 config.php
 
 # golang
 **/gcp/sa.json
 go.sum
-**/vendor/
+ed/l/go/**/vendor/
 ed/l/go/**/bin/
 ed/l/go/**/pkg/
 # ed/l/go/**/src/
@@ -30,6 +30,9 @@ ed/l/go/**/src/gopkg.in
 ed/l/go/**/src/gocv.io
 
 # python
-**/__pycache__/
-**/.ipynb_checkpoints/
-**/venv/
+ed/l/python/**/__pycache__/
+ed/l/python/**/.ipynb_checkpoints/
+ed/l/python/**/venv/
+
+# java
+ed/l/java/**/target/

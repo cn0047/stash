@@ -12,7 +12,7 @@ mvn clean
 mvn compile
 mvn compiler:compile
 mvn install --fail-never # install in local dir
-mvn package
+mvn package # build jar into target dir
 
 mvn dependency:tree
 mvn dependency:analyze

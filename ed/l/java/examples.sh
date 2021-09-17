@@ -39,6 +39,14 @@ mvn compile
 mvn package
 # java -jar target/xmaven.jar
 
+#### Beam
+
+# simple
+# cd ed/l/java/examples/3rdparty/beam/simple
+# mvn compile exec:java \
+#   -Dexec.mainClass=com.p.apache.AveragePriceProcessing \
+#   -Dexec.args="--outputFile=/tmp/r.csv"
+
 #### Java Spring
 
 # demo

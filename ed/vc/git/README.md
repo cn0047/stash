@@ -9,6 +9,10 @@ RCS - Revision control system.
 Git is a free and open source distributed version control system.
 
 ````sh
+<<<<<<< HEAD
+=======
+>>>>>>> somehash
+
 export GIT_TRACE_PACKET=1
 export GIT_TRACE_PACK_ACCESS=1
 export GIT_TRACE_PERFORMANCE=1
