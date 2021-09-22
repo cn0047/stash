@@ -6,7 +6,14 @@ import (
 
 func main() {
 	// f1()
-	f2()
+	// f2()
+	swap()
+}
+
+func swap() {
+	s := []string{"a", "b", "c"}
+	s[1], s[2] = s[2], s[1]
+	fmt.Println("[swap]", s) // [swap] [a c b]
 }
 
 func f2() {

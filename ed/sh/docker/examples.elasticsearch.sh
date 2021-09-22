@@ -2,8 +2,8 @@
 
 #### ES cluster v7
 
-img=docker.elastic.co/elasticsearch/elasticsearch:7.5.1
 img=elasticsearch:7.1.1
+img=docker.elastic.co/elasticsearch/elasticsearch:7.5.1
 docker run -it --rm -p 9200:9200 -p 9300:9300 --name es \
   -v $PWD/.data/.docker/elasticsearch:/usr/share/elasticsearch/data \
   --memory=1024m \

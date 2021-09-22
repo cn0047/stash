@@ -1,6 +1,15 @@
 Binary Search Tree (BST)
 -
 
+When BST saved in array, elements can be found by:
+
+````
+i          - element index
+2*i        - left child
+2*i+1      - right child
+floor(i/2) - parent
+````
+
 Level-Order Traversal aka BFS.
 
 Full BT - every non-leaf node has two children,
@@ -29,6 +38,8 @@ Binomial heap - is a heap similar to a binary heap
 but also supports **quick merging of two heaps**.
 Fibonacci heap - is a data structure for **priority queue operations,
 consisting of a collection of heap-ordered trees**.
+
+Only root element can be deleted from heap (not any arbitrary element).
 
 #### Find inorder predecessor
 

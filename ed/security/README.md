@@ -33,6 +33,8 @@ Sensitive Data Exposure:
 * Leakage of Cookie with Sensitive Data (session ID, `document.cookie='x='+v+';'+exp+': secure';`).
 * Leakage of Sensitive Data via Referer Header.
 
+SSO (single sign-on) - system that allows for a single username & password that grants access to other sites (like okta).
+
 ## WEB
 
 FIEO - filter input escape output.

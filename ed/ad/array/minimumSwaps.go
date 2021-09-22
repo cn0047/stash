@@ -32,5 +32,6 @@ func minimumSwaps(a []int) int {
 			i--
 		}
 	}
+
 	return count
 }
