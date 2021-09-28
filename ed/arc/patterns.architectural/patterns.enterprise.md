@@ -2,75 +2,75 @@ Enterprise Application Architecture Patterns
 -
 
 1. Domain Logic Patterns:
-  * Transaction Script
-  * Domain Model
-  * Table Module
-  * Service Layer
+  * Transaction Script.
+  * Domain Model.
+  * Table Module.
+  * Service Layer.
 
 2. Data Source Architectural Patterns:
-  * Table Data Gateway
-  * Row Data Gateway
-  * Active Record
-  * Data Mapper
+  * Table Data Gateway.
+  * Row Data Gateway.
+  * Active Record.
+  * Data Mapper.
 
 3. Object-Relational Behavioral Patterns:
-  * Unit of Work
-  * Identity Map
-  * Lazy Load
+  * Unit of Work.
+  * Identity Map.
+  * Lazy Load.
 
 4. Object-Relational Structural Patterns:
-  * Identity Field
-  * Foreign Key Mapping
-  * Association Table
-  * Dependent Mapping
-  * Embedded Value
-  * Serialized LOB
-  * Single Table Inheritance
-  * Class Table Inheritance
-  * Concrete Table Inheritance
-  * Inheritance Mappers
+  * Identity Field.
+  * Foreign Key Mapping.
+  * Association Table.
+  * Dependent Mapping.
+  * Embedded Value.
+  * Serialized LOB.
+  * Single Table Inheritance.
+  * Class Table Inheritance.
+  * Concrete Table Inheritance.
+  * Inheritance Mappers.
 
 5. Object-Relational Metadata Mapping Patterns:
-  * Metadata Mapping
-  * Query Object
-  * Repository
+  * Metadata Mapping.
+  * Query Object.
+  * Repository.
 
 6. Web Presentation Patterns:
-  * Model View Controller
-  * Page Controller
-  * Front Controller
-  * Template View
-  * Transform View
-  * Two Step View
-  * Application Controller
+  * Model View Controller.
+  * Page Controller.
+  * Front Controller.
+  * Template View.
+  * Transform View.
+  * Two Step View.
+  * Application Controller.
 
 7. Distribution Patterns:
-  * Remote Facade
-  * Data Transfer Object
+  * Remote Facade.
+  * Data Transfer Object.
 
 8. Offline Concurrency Patterns:
-  * Optimistic Offline Lock
-  * Pessimistic Offline Lock
-  * Coarse-Grained Lock
-  * Implicit Lock
+  * Optimistic Offline Lock.
+  * Pessimistic Offline Lock.
+  * Coarse-Grained Lock.
+  * Implicit Lock.
 
 9. Session State Patterns:
-  * Client Session State
-  * Server Session State
-  * DB Session State
+  * Client Session State.
+  * Server Session State.
+  * DB Session State.
 
 10. Base Patterns:
-  * Gateway
-  * Mapper
-  * Layer Supertype
-  * Separated Interface
-  * Registry
-  * Money
-  * Special Case
-  * Plugin
-  * Service Stub
-  * Record Set
-  * Value Object
+  * Gateway.
+  * Mapper.
+  * Layer Supertype.
+  * Separated Interface.
+  * Registry.
+  * Money.
+  * Special Case.
+  * Plugin.
+  * Service Stub.
+  * Record Set.
+  * Value Object.
 
 ## Domain Logic Patterns:
 

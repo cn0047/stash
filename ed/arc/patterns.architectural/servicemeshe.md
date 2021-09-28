@@ -14,11 +14,11 @@ service discovery, load balancing, rate limiting, circuit breake, retry, etc.
 ## Service meshe infrastructure:
 
 Control plane:
-* Authentication
-* Routing
-* Retry
-* Timeout
-* Circuit Breaker
+* Authentication.
+* Routing.
+* Retry.
+* Timeout.
+* Circuit Breaker.
 
 ````
 pilot, mixer, cit

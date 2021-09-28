@@ -80,10 +80,10 @@ But:
 
 #### Clean Architecture
 
-* Entities
-* Use Cases (Business Logic)
-* Controller
-* Framework & Driver
+* Entities.
+* Use Cases (Business Logic).
+* Controller.
+* Framework & Driver.
 
 #### Monolith
 

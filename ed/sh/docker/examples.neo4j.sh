@@ -6,14 +6,11 @@
 
 
 
-# 4.1
+tag=4.1
+tag=4.1.1-enterprise
+tag=4.3.3
 docker run -it --rm --net=xnet -p 7474:7474 -p 7687:7687 --name xneo4j --hostname xneo4j \
-  -v $PWD/.data/.docker/neo4j_41:/data \
-  neo4j:4.1
-
-# 4.1 enterprise
-docker run -it --rm --net=xnet -p 7474:7474 -p 7687:7687 --name xneo4j --hostname xneo4j \
-  -v $PWD/.data/.docker/neo4j_41:/data \
+  -v $PWD/.data/.docker/neo4j_$tag:/data \
   -e NEO4J_AUTH=neo4j/test \
   \
   -e NEO4J_ACCEPT_LICENSE_AGREEMENT=yes \
@@ -23,9 +20,9 @@ docker run -it --rm --net=xnet -p 7474:7474 -p 7687:7687 --name xneo4j --hostnam
   -e NEO4J_apoc_import_file_use__neo4j__config=true \
   -e NEO4JLABS_PLUGINS=\[\"apoc\"\] \
   \
-  neo4j:4.1.1-enterprise \
+  neo4j:$tag \
   \
-  /bin/bash # in case of import/dump
+  /bin/bash # in case of import/dump or some shell commands
 
 # 3.5
 docker run -it --rm --net=xnet -p 7474:7474 -p 7687:7687 --name xneo4j --hostname xneo4j \

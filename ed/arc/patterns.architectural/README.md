@@ -2,9 +2,9 @@ Architectural patterns
 -
 
 Architecture must care about:
-* Durability
-* Utility
-* Beauty
+* Durability.
+* Utility.
+* Beauty.
 
 Common questions:
 1. MVC, MVP, MVVM etc:
@@ -13,34 +13,34 @@ Common questions:
 
 An architectural pattern is a proven structural organization schema for software systems.
 
-* Model-View-Controller
-* Presentation-Abstraction-Control
-* Model-View-Presenter
-* Model-View-ViewModel (MVVM)
-* Entity-Control-Boundary
-* Layers
+* Model-View-Controller.
+* Presentation-Abstraction-Control.
+* Model-View-Presenter.
+* Model-View-ViewModel (MVVM).
+* Entity-Control-Boundary.
+* Layers.
 
-* Active record
-* Data mapper
-* CQRS
-* Operational Data Store
+* Active record.
+* Data mapper.
+* CQRS.
+* Operational Data Store.
 
-* Client-server
-* Master-slave
-* Peer-to-peer
-* Pipe-filter
+* Client-server.
+* Master-slave.
+* Peer-to-peer.
+* Pipe-filter.
 
-* API Gateway
-* Broker
-* Event-bus
+* API Gateway.
+* Broker.
+* Event-bus.
 
-* Event-driven architecture
-* Service-oriented architecture
-* Microservices
-* Blackboard
+* Event-driven architecture.
+* Service-oriented architecture.
+* Microservices.
+* Blackboard.
 
-* Implicit invocation
-* Naked objects
+* Implicit invocation.
+* Naked objects.
 
 **Client-server**
 Usage: online app like email, document sharing and banking.

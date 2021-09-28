@@ -8,7 +8,8 @@ import (
 func main() {
 	// one()
 	// two()
-	three()
+	// three()
+	oneBlockedChanAndThreeWaitingGoroutines()
 }
 
 func three() {
@@ -27,6 +28,25 @@ func two() {
 	}()
 	time.Sleep(1 * time.Second)
 	close(c) // after this will print ok
+	fmt.Scanln()
+}
+
+func oneBlockedChanAndThreeWaitingGoroutines() {
+	c := make(chan struct{})
+	go func() {
+		<-c
+		fmt.Println("ok1")
+	}()
+	go func() {
+		<-c
+		fmt.Println("ok2")
+	}()
+	go func() {
+		<-c
+		fmt.Println("ok3")
+	}()
+	time.Sleep(2 * time.Second)
+	close(c) // after this will print ok1, ok2, ok3
 	fmt.Scanln()
 }
 

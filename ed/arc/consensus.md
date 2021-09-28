@@ -1,6 +1,6 @@
 Consensus Algorithms
 -
 
-* Paxos
-* Chandra–Toueg
-* Raft
+* Paxos.
+* Chandra–Toueg.
+* Raft.

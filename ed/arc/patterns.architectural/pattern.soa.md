@@ -11,7 +11,6 @@ In SOA, services use protocols that describe how they pass
 and parse messages using description metadata.
 
 Each SOA building block can be:
-
-* Service provider
-* Service broker
-* Service requester/consumer
+* Service provider.
+* Service broker.
+* Service requester/consumer.

@@ -1,10 +1,10 @@
 Layers (AKA multitier or 3-tier or n-tier)
 -
 
-* Presentation layer (UI layer (presentation))
-* Application layer (service layer)
-* Business logic layer (domain layer)
-* Data access layer (persistence (data source) layer)
+* Presentation layer (UI layer (presentation)).
+* Application layer (service layer).
+* Business logic layer (domain layer).
+* Data access layer (persistence (data source) layer).
 
 Classic 3-tier: Presentation -> Business -> Data.
 

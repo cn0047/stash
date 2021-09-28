@@ -20,14 +20,14 @@ Microservices is known as a "share-nothing" architecture
 or at least "share-as-little-as-possible".
 
 Synchronous communication:
-* Request/Response
-* RPC
-* HTTP
-* REST
+* Request/Response.
+* RPC.
+* HTTP.
+* REST.
 
 Asynchronous communication:
-* Event based
-* Message queue protocol
+* Event based.
+* Message queue protocol.
 
 Orchestration - when one microservice supervise and manage else microservices.
 <br>Choreography - when microservice independent, and only have to know about message-queue.
