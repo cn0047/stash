@@ -40,7 +40,11 @@ db.isMaster()
 rs.status()
 // sharding status
 sh.status()
-db.killOp()
+
+// get queries
+db.currentOp();
+// kill query
+db.killOp($opID);
 
 db.stats()
 // slow queries log

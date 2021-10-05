@@ -44,7 +44,7 @@ db.getCollection('_foo').find()
 db.testData.findOne()
 db.testData.find().limit(3)
 db.testData.find().skip(3).limit(3)
-db.testData.find({ name : "mongo" })
+db.testData.find({name : "mongo"})
 // iterate over the cursor with a loop:
 // (The driver will send a query to MongoDB
 // when call a cursor method passing a callback function to process query result).
@@ -53,14 +53,14 @@ while (c.hasNext()) printjson(c.next())
 // print 4th item in list
 printjson(c[4])
 // print(tojson(c[4]));
-var myCursor =  db.inventory.find( { type: 'food' } );
+var myCursor =  db.inventory.find({type: 'food'});
 myCursor.forEach(printjson);
 // cursor to array
-var myCursor = db.inventory.find( { type: 'food' } );
+var myCursor = db.inventory.find({type: 'food'});
 var documentArray = myCursor.toArray();
 var myDocument = documentArray[3];
 // or
-var myCursor = db.inventory.find( { type: 'food' } );
+var myCursor = db.inventory.find({type: 'food'});
 var myDocument = myCursor[3];
 // or
 myCursor.toArray() [3];
@@ -71,27 +71,27 @@ db.users.find({age:{$gt: 18}}).sort({age; 1})
 db.users.find({age:{$gte: 18}}).sort({age; 1})
 db.users.find({age:{$ne: 18}}) // not equal
 // projections - 2nd param in find (fields in result)
-db.records.find( { "user_id": { $lte: 42} }, { "name": 1, "email": 1} )
+db.records.find({"user_id":{$lte: 42}},{"name": 1, "email": 1})
 // switch on/off fields
 db.users.find({age: {$gt: 18}}, {name: 1, address: 1, _id: 0}).limit(5)
 // 'food' or 'snacks'
-db.inventory.find({ type: { $in: [ 'food', 'snacks' ] } })
-db.inventory.find({ type: { $nin: [ 'food', 'snacks' ] } })
+db.inventory.find({type:{$in: ['food', 'snacks']}})
+db.inventory.find({type:{$nin: ['food', 'snacks']}})
 // food and a less than ($lt) price
-db.inventory.find( { type: 'food', price: { $lt: 9.95 } } )
+db.inventory.find({type: 'food', price:{$lt: 9.95}})
 
 // subdocument
-db.inventory.find({producer: {company: 'ABC123', address: '123 Street'} })
-db.inventory.find( { 'producer.company': 'ABC123' } )
+db.inventory.find({producer: {company: 'ABC123', address: '123 Street'}})
+db.inventory.find({'producer.company': 'ABC123'})
 // tags is an array
-db.inventory.find( { tags: [ 'fruit', 'food', 'citrus' ] } )
+db.inventory.find({tags: ['fruit', 'food', 'citrus']})
 // value of the tags field is an array whose first element equals 'fruit'
-db.inventory.find( { 'tags.0' : 'fruit' } )
-db.inventory.find( { 'memos.0.by': 'shipping' } )
+db.inventory.find({'tags.0' : 'fruit'})
+db.inventory.find({'memos.0.by': 'shipping'})
 // field memo equal to 'on time' and the field by equal to 'shipping'
-db.inventory.find({'memos.memo': 'on time', 'memos.by': 'shipping'} )
+db.inventory.find({'memos.memo': 'on time', 'memos.by': 'shipping'})
 // memos is an array that has memo equal to 'on time' and the field by equal to 'shipping'
-db.inventory.find( {memos: {$elemMatch: {memo : 'on time', by: 'shipping'} } } )
+db.inventory.find( {memos: {$elemMatch: {memo : 'on time', by: 'shipping'}}})
 
 // server will close CURSOR after 10 minutes, to avoid it do:
 var myCursor = db.inventory.find().addOption(DBQuery.Option.noTimeout);
@@ -101,11 +101,14 @@ var myFirstDocument = myCursor.hasNext() ? myCursor.next() : null;
 // shows how many documents remain in batch
 myCursor.objsLeftInBatch();
 // info about all cursors
-db.runCommand( { cursorInfo: 1 } )
+db.runCommand({cursorInfo: 1})
 
 // select count(user_id) from users
-db.users.count( { user_id: { $exists: true } } )
-db.users.distinct( "status" )
+db.users.count({user_id:{$exists: true}})
+// get count from metadata
+db.users.estimatedDocumentCount();
+
+db.users.distinct("status")
 
 // copy all objects from one collection to another
 db.collection.copyTo(newCollection)
@@ -117,8 +120,8 @@ db.collection.explain(true).find()
 // "stage": "COLLSCAN" - very bad case.
 // "stage": "IXSCAN" - index scan.
 // hint - Forces MongoDB to use a specific index for a query.
-db.inventory.find( { type: 'food' } ).hint( { type: 1 } ).explain()
-db.inventory.find( { type: 'food' } ).hint( { type: 1, name: 1 } ).explain()
+db.inventory.find({type: 'food'}).hint({type: 1}).explain()
+db.inventory.find({type: 'food'}).hint({type: 1, name: 1}).explain()
 // more info
 db.collection.explain('executionStats').find()
 db.collection.explain('allPlansExecution').find()
@@ -131,62 +134,62 @@ db.collection.explain('allPlansExecution').find()
 db.users.insert({name: "sue", age: 26, status: "A"})
 // save() - replaces an existing document with the same _id
 db.inventory.save({type: "book", item: "notebook", qty: 40})
-db.inventory.save({_id: 10, type: "misc", item: "placard"} )
+db.inventory.save({_id: 10, type: "misc", item: "placard"})
 
 // UPDATE
 // update() - modify existing data or modify a group of documents
 // by default mongo update single doc. use {multi: true} to update all maches documents
-db.users.update({ age: { $gt: 18 } }, { $set: { status: "A" } }, { multi: true })
-db.inventory.update({ type : "book" }, { $inc : { qty : -1 } }, { multi: true } )
+db.users.update({age:{$gt: 18}},{$set:{status: "A"}},{multi: true})
+db.inventory.update({type : "book"},{$inc :{qty : -1}},{multi: true})
 db.students.update(
-    { _id: 1 },
-    { $push: { scores: {
-        $each : [{ attempt: 3, score: 7 },
-        { attempt: 4, score: 4 } ],
-        $sort: { score: 1 },
+   {_id: 1},
+   {$push:{scores: {
+        $each : [{attempt: 3, score: 7},
+       {attempt: 4, score: 4}],
+        $sort:{score: 1},
         $slice: -3
-    } } }
+  }}}
 )
 db.users.update(
-    { },
-    { $unset: { join_date: "" } },
-    { multi: true }
+   {},
+   {$unset:{join_date: ""}},
+   {multi: true}
 )
 book = {
     _id: 123456789,
     title: "MongoDB: The Definitive Guide",
-    author: [ "Kristina Chodorow", "Mike Dirolf" ],
+    author: ["Kristina Chodorow", "Mike Dirolf"],
     published_date: ISODate("2010-09-24"),
     pages: 216,
     language: "English",
     publisher_id: "oreilly",
     available: 3,
-    checkout: [ { by: "joe", date: ISODate("2012-10-15") } ]
+    checkout: [{by: "joe", date: ISODate("2012-10-15")}]
 }
 db.books.findAndModify ({
     query: {
         _id: 123456789,
-        available: { $gt: 0 }
-    },
+        available:{$gt: 0}
+   },
     update: {
-        $inc: { available: -1 },
-        $push: { checkout: { by: "abc", date: new Date() } }
-    }
+        $inc:{available: -1},
+        $push:{checkout:{by: "abc", date: new Date()}}
+   }
 })
 // REPLACE
 db.inventory.update(
-    { type: "book", item : "journal" },
-    { $set : { qty: 10 } },
-    { upsert : true }
+   {type: "book", item : "journal"},
+   {$set :{qty: 10}},
+   {upsert : true}
 )
 
 // DELETE
-db.users.remove({ status: "D" })
+db.users.remove({status: "D"})
 // delete documents but don't delete indexes
 // to remove data and indexes use method drop()
 
 // remove 1 document
-db.inventory.remove( { type : "food" }, 1 )
+db.inventory.remove({type : "food"}, 1 )
 
 db.users.drop()
 
@@ -197,7 +200,7 @@ db.users.drop()
 // specify w values of 1 and set the journal or j option to true for your driver.
 // To set replica acknowledged write concern, specify w values greater than 1 to your driver.
 
-db.runCommand( { getLastError: 1, j: "true" } )
+db.runCommand({getLastError: 1, j: "true"})
 ````
 
 ####[Database Commands](http://docs.mongodb.org/manual/reference/command/)!!!
@@ -227,24 +230,24 @@ What information embed in which collection depends on:
 
 ````js
 // Model Tree Structures with Parent References
-db.categories.insert( { _id: "MongoDB", parent: "Databases" } )
-db.categories.insert( { _id: "dbm", parent: "Databases" } )
-db.categories.insert( { _id: "Databases", parent: "Programming" } )
-db.categories.insert( { _id: "Languages", parent: "Programming" } )
-db.categories.insert( { _id: "Programming", parent: "Books" } )
-db.categories.insert( { _id: "Books", parent: null } )
+db.categories.insert({_id: "MongoDB", parent: "Databases"})
+db.categories.insert({_id: "dbm", parent: "Databases"})
+db.categories.insert({_id: "Databases", parent: "Programming"})
+db.categories.insert({_id: "Languages", parent: "Programming"})
+db.categories.insert({_id: "Programming", parent: "Books"})
+db.categories.insert({_id: "Books", parent: null})
 // parent
-db.categories.findOne( { _id: "MongoDB" } ).parent
+db.categories.findOne({_id: "MongoDB"}).parent
 // index
-db.categories.ensureIndex( { parent: 1 } )
+db.categories.ensureIndex({parent: 1})
 
 // Model Tree Structures with Child References
-db.categories.insert( { _id: "MongoDB", children: [] } )
-db.categories.insert( { _id: "dbm", children: [] } )
-db.categories.insert( { _id: "Databases", children: [ "MongoDB", "dbm" ] } )
-db.categories.insert( { _id: "Languages", children: [] } )
-db.categories.insert( { _id: "Programming", children: [ "Databases", "Languages" ] } )
-db.categories.insert( { _id: "Books", children: [ "Programming" ] } )
+db.categories.insert({_id: "MongoDB", children: []})
+db.categories.insert({_id: "dbm", children: []})
+db.categories.insert({_id: "Databases", children: ["MongoDB", "dbm"]})
+db.categories.insert({_id: "Languages", children: []})
+db.categories.insert({_id: "Programming", children: ["Databases", "Languages"]})
+db.categories.insert({_id: "Books", children: ["Programming"]})
 
 // Manual References
 original_id = ObjectId()
@@ -259,7 +262,7 @@ db.people.insert({
     "url":  "bc.example.net/Erin"
 })
 // DBRef
-{ "$ref" : <value(collection)>, "$id" : <value(_id)>, "$db" : <value> }
+{"$ref" : <value(collection)>, "$id" : <value(_id)>, "$db" : <value>}
 {
     "_id" : ObjectId("5126bbf64aed4daf9e2ab771"),
     // .. application fields
@@ -267,7 +270,7 @@ db.people.insert({
         "$ref" : "creators",
         "$id" : ObjectId("5126bc054aed4daf9e2ab772"),
         "$db" : "users"
-    }
+   }
 }
 oId = ObjectId();
 db.address.insert({'_id' : oId, country: 'UK', city: 'London'});
@@ -293,7 +296,7 @@ mydate1.toString();
     scores: [
         {attempt: 1, score: 10},
         {attempt: 2, score:8}
-    ]
+   ]
 }
 */
 db.students.update(
@@ -307,7 +310,7 @@ db.students.update(
             $sort: {score: 1},
             $slice: -3
         }}
-    }
+   }
 );
 /*
 Result:
@@ -317,7 +320,7 @@ Result:
         {"attempt" : 3, "score" : 7},
         {"attempt" : 2, "score" : 8},
         {"attempt" : 1, "score" : 10}
-    ]
+   ]
 }
 */
 ````
