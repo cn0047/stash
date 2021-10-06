@@ -12,7 +12,7 @@ func main() {
 func f2() {
 	v := 1
 	changeValue(&v)
-	fmt.Println("[2]", v) // [2] 2
+	fmt.Println("[f2]", v) // [f2] 2
 }
 
 func changeValue(p *int) {

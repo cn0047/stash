@@ -38,11 +38,14 @@ echo $o | jq '.items | map(select(. >= 2))' # [2,3]
 echo '{"arr": [0, 1, "a", "b"]}' | jq '.arr[2:]'                    # ["a","b"]
 echo '[{"n":"foo"},{"n":"bar"}]' | jq '.[].n'                       # foo \n bar
 echo '[{"n":"foo"},{"n":"bar"}]' | jq '.[] | select(.n == ("foo"))' # {"n": "foo"}
+echo '[{"a":1, "b":2}]' | jq '.[] | select(.a == 1 and .b == 2)'    # {"a":1, "b":2}
 
 cat data.json \
 | jq '.gcp_price_list | del(.sustained_use_base,.sustained_use_tiers) | .[] | keys[]' \
 | uniq
 
+# pipeline
+echo '{"obj":{"foo":"bar"}}' | jq '.obj | {"f": .foo, "updated": true}'
 ````
 
 Select:

@@ -9,9 +9,9 @@ Best Practices
 * Use separated `doc.go` for pkg documentation.
 * Use `-race` option.
 * Follow:
-    * on save: `go fmt ./... && golint ./...` or `imports`
-    * on build: `go vet` and `golint` and `go test`
-    * on deploy: `go test -tags=integration`
+    * on save: `go fmt ./... && golint ./...` or `imports`.
+    * on build: `go vet && golint && go test`.
+    * on deploy: `go test -tags=integration`.
 * `camelCase` for constants.
 * `snake_case` for filenames.
 * `lowercase` for packages (directories), like: `"net/http/httptrace"`.
@@ -45,6 +45,6 @@ Best Practices
 
 * It's better to name return values.
 * `pkg.New()` - ok in case you have 1 struct per package,
-otherwise have to have: `pkg.NewUser() & pkg.NewLocation()`.
+otherwise have to have: `pkg.NewUser(); pkg.NewLocation()`.
 * Inline error check (`if err := x.f(); err != nil {}`) - debugger won't stop before error check.
 * Use underscore in test cases names (`ts.Run("test_case", ...`).

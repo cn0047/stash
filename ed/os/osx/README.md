@@ -1,7 +1,5 @@
-osx
+osx (darwin)
 -
-
-darwin
 
 The default shell in Mac OS X is the Bourne-again shell.
 
@@ -9,6 +7,16 @@ The default shell in Mac OS X is the Bourne-again shell.
 `quicksilver` tool for quick app's launch ([default config](https://monosnap.com/file/UH48Ulyzm6IzKxhlWqBuozkAOgciUQ)).
 `monosnap` tool for screenshots.
 `GIPHY` tool to convert video into gif.
+
+````sh
+# .bash_profile
+
+setopt INTERACTIVE_COMMENTS
+
+export PATH=/Users/k/go/bin:$PATH
+
+export SSLKEYLOGFILE=/tmp/https.log
+````
 
 ````sh
 man grep
@@ -22,8 +30,6 @@ open 'http://google.com/'
 
 # cpu cores count
 sysctl -n hw.ncpu
-
-export PATH=/Users/k/go/bin:$PATH
 
 $HOME/Library/Caches # cache dir
 ````
