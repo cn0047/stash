@@ -269,13 +269,13 @@ Go is compiled, garbage-collected, concurrent, type-safe.
 Go source code is always UTF-8.
 
 A workspace is a directory hierarchy with three directories at its root:
-* bin (executable commands)
-* pkg (package objects)
-* src (source code)
+* bin (executable commands).
+* pkg (package objects).
+* src (source code).
 
 Put code into `internal` dir to make it private (magic).
 
-Sentinel error -  custom error value
+Sentinel error - custom error value
 (standard library: sql.ErrNoRows, io.EOF, etc).
 [wrap error tool](github.com/pkg/errors)
 <br>`errors.Is` like a comparison to a sentinel error,
@@ -289,38 +289,38 @@ Ctx may be: WithCancel, WithDeadline, WithTimeout, or WithValue.
 #### Data types
 
 Basic types:
-* bool
-* string
-* int (int8 (aka byte), int16, int32 (aka rune), int64)
-* uint (uint8, uint16, uint32, uint64, uintptr (large enough to hold the bit pattern of any pointer))
-* float32, float64
-* complex64, complex128
+* bool.
+* string.
+* int (int8 (aka byte), int16, int32 (aka rune), int64).
+* uint (uint8, uint16, uint32, uint64, uintptr (large enough to hold the bit pattern of any pointer)).
+* float32, float64.
+* complex64, complex128.
 
 Other types:
-* array
-* slice (passes by ref)
-* map (passes by ref)
-* channel (passes by ref)
-* function
-* interface
-* struct
-* pointer (*passes by ref*)
+* array.
+* slice (passes by ref).
+* map (passes by ref).
+* channel (passes by ref).
+* function.
+* interface.
+* struct.
+* pointer (*passes by ref*).
 
 Comparable types:
-* bool
-* string
-* int
-* float
-* complex
+* bool.
+* string.
+* int.
+* float.
+* complex.
 
-* array (if values of the array element type are comparable)
-- slice (NOT COMPARABLE)
-- map (NOT COMPARABLE)
-* channel (if they created by the same call to `make` or nil)
-- func (NOT COMPARABLE)
-* interface (if they have identical dynamic types and equal dynamic values or nil)
-* struct (if all their fields are comparable)
-* pointer (if they point to the same var or nil)
+* array (if values of the array element type are comparable).
+- slice (NOT COMPARABLE).
+- map (NOT COMPARABLE).
+* channel (if they created by the same call to `make` or nil).
+- func (NOT COMPARABLE).
+* interface (if they have identical dynamic types and equal dynamic values or nil).
+* struct (if all their fields are comparable).
+* pointer (if they point to the same var or nil).
 
 Ref variables stores in the heap, which is garbage collected
 and which is a much larger memory space than the stack.
@@ -421,9 +421,9 @@ Go  ⇒ struct ⇒ object   ⇒ field
 
 #### Interface
 
-Interface — set of methods required to implement such interface.
+Interface - set of methods required to implement such interface.
 
-Interface type (interface{}) — variable of interface type which can hold any value,
+Interface type (interface{}) - variable of interface type which can hold any value,
 meaning no guarantee of any methods at all: it could contain any type.
 The comma-ok assignment asks whether it is possible
 to convert interface value to some type.
@@ -445,9 +445,9 @@ Two crucial concepts make Go’s concurrency model work: Goroutines & Channels.
 #### Goroutine
 
 States:
-* not runnable
-* runnable
-* running
+* not runnable.
+* runnable.
+* running.
 
 Goroutine - lightweight version of thread, with very low cost of starting up.
 Each goroutine is described by struct called G.
@@ -537,10 +537,10 @@ For standard Go compiler, size of channel element types must be smaller than 655
 #### Runtime
 
 runtime:
-* memory allocation
-* channel creation
-* goroutines creation (and control goroutines)
-* garbage collection
+* memory allocation.
+* channel creation.
+* goroutines creation (and control goroutines).
+* garbage collection.
 
 Runtime manages: scheduling, garbage collection, and the runtime environment for goroutines.
 

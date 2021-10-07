@@ -104,9 +104,9 @@ can provide load balancing, SSL termination and name-based virtual hosting.
 Persistent Volume - to store data permanently.
 
 accessModes:
-* ReadWriteOnce — volume mounted as read-write by a single node
-* ReadWriteMany — read-write by many nodes
-* ReadOnlyMany  — read-only by many nodes
+* ReadWriteOnce — volume mounted as read-write by a single node.
+* ReadWriteMany — read-write by many nodes.
+* ReadOnlyMany  — read-only by many nodes.
 
 storageClassName: manual, gp2, aws-efs.
 

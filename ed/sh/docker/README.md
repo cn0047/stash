@@ -4,7 +4,7 @@ docker
 <br>1.12.5
 
 [compose-file](https://docs.docker.com/compose/compose-file/)
-[](https://mobyproject.org)
+[moby](https://mobyproject.org)
 
 ## Overview
 
@@ -32,7 +32,7 @@ VMs - houses, docker containers - apartments.
 <br>Containers should be ephemeral (can be stopped and destroyed and a new one built and put in place).
 <br>Hence container must be stateless.
 <br>Each container should have only one concern (1 process per container).
-<br>`Ctrl + P + Q # ‼️ detach from container`
+<br>`Ctrl + P + Q # ‼️ detach from container`.
 
 Docker Engine - client-server app with:
 * Daemon (dockerd) - it's a server.
@@ -51,8 +51,8 @@ docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
 docker pull ubuntu
 
 # build image from Dokerfile in dir ./examples/mydockerbuild
-# -t - it is tag
-# .  - it is current directory
+# -t - tag
+# .  - current directory
 docker build -t cn007b/pi -f Dockerfile .
 # push to docker hub
 docker push cn007b/pi
@@ -85,8 +85,8 @@ docker run -d -p 192.168.0.32:1111:1111 cn007b/ubuntu
 docker attach container_name
 
 # exec
-docker exec -it happy_babbage
-docker exec -it happy_babbage bash
+docker exec -it xsh
+docker exec -it xsh bash
 cd /opt/docker/etc/supervisor.d
 
 docker-machine ip
@@ -119,13 +119,13 @@ docker stop
 docker stop $(docker ps -a -q)
 
 # start stopped container (starts a container)
-docker start nostalgic_morse
+docker start xcontainer
 
 # remove the web application container
-docker rm nostalgic_morse
+docker rm xcontainer
 
 # delete
-docker rmi -f docker-whale
+docker rmi -f xcontainer
 
 # layers of image
 # less commands in dockerfile - least layers
@@ -151,7 +151,6 @@ du -sh $HOME/Library/Containers/com.docker.docker/Data
 ````
 
 Copy container manually:
-
 ````sh
 # on machine 1
 docker commit {CONTEINER_ID} $imgName
@@ -165,7 +164,7 @@ docker load -i img.dump.tar
 
 ````sh
 FROM        (`FROM scratch`)
-MAINTAINER  Vladimir Kovpak
+MAINTAINER  Vladimir Kovpak|Volodymyr Kovpak
 ARG         `ARG CODE_VERSION=latest`
 ENV         `ENV NODE_PORT=3000`
 ADD         `ADD ./healthCheck.js /app/healthCheck.js`, allows `<src>` to be a URL
