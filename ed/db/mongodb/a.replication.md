@@ -4,10 +4,10 @@ Replication
 [FAQ: Replication and Replica Sets](http://docs.mongodb.org/manual/faq/replica-sets/)
 
 Nodes types:
-* regular (primary, secondary) [takes part in election]
-* arbiter [takes part in election]
-* delayed (can't be primary)
-* hidden (can't be primary) [takes part in election]
+* regular (primary, secondary) [takes part in election].
+* arbiter [takes part in election].
+* delayed (can't be primary).
+* hidden (can't be primary) [takes part in election].
 
 It's possible to use different engines for different nodes!
 
@@ -15,9 +15,9 @@ When node comes back up as a secondary and oplog has looped - the
 entire db will be copied from primary.
 
 Minimal Replica Set in mongo:œ
-* primary
-* secondary
-* arbiter (for election when primary down)
+* primary.
+* secondary.
+* arbiter (for election when primary down).
 
 ````js
 rs.initiate({

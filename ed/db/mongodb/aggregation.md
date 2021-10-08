@@ -13,32 +13,32 @@ In addition, the aggregation pipeline has an internal optimization phase.
 Result is limited by size = 16MB.
 
 For performance (follow this flow):
-1. $match as early as possible
-2. $project as early as possible
-3. $sort as early as possible
-4. use index
+1. $match as early as possible.
+2. $project as early as possible.
+3. $sort as early as possible.
+4. use index.
 
 #### Pipeline Aggregation Stages
 
 * $collStats - statistics regarding a collection.
 * $indexStats - returns statistics regarding the use of each index for the collection.
 * $count - returns a count of the number of documents at this stage of the aggregation pipeline.
-* $project - like select in SQL
+* $project - like select in SQL.
 * $match - filters the document stream.
 * $unwind - from document with array to documents with only one element.
-* $sort
+* $sort.
 * $sortByCount - groups incoming documents based on the value of a specified expression.
-* $group
-* $limit
-* $skip
+* $group.
+* $limit.
+* $skip.
 * $out - must be the last stage in the pipeline.
 * $redact - can be used to implement field level redaction.
-* $sample
-* $geoNear
-* $lookup
+* $sample.
+* $geoNear.
+* $lookup.
 * $facet - processes multiple aggregation pipelines.
 * $bucket - categorizes incoming documents into groups.
-* $bucketAuto
+* $bucketAuto.
 * $addFields - adds new fields to documents.
 * $replaceRoot - replaces a document with the specified embedded document.
 * $graphLookup - performs a recursive search on a collection.

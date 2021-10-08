@@ -5,11 +5,11 @@ INDEX
 [Text Search Languages](http://docs.mongodb.org/manual/reference/text-search-languages/)
 
 Types:
-* B-tree
-* Hash
-* GEO
-* Text
-* TTL
+* B-tree.
+* Hash.
+* GEO.
+* Text.
+* TTL.
 
 Limitations:
 ````

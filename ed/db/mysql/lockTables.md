@@ -86,11 +86,10 @@ and raise an exception if one tries to update an object with an outdated version
 
 Example:
 
-1 `SELECT data from a row having one ID filed (ID) and two data fields (val1, val2)`.
+1 `SELECT data FROM a row having one ID filed (ID) and two data fields (val1, val2)`.
 2 UPDATE data of that row.
 
 Optimistic locking way is:
-
 1 SELECT.
 2 UPDATE.
 3 if AffectedRows == 1 OK else FAIL.
@@ -123,13 +122,13 @@ Deadlocks occur because of write operations.
 To reduce the possibility of deadlocks, use transactions rather than LOCK TABLES statements;
 To see the last deadlock use `SHOW ENGINE INNODB STATUS` command.
 
-| Session 1 | Session 2 |
-|-----------|-----------|
-| CREATE TABLE t (i INT) ENGINE = InnoDB; | |
-| INSERT INTO t (i) VALUES(1); | |
-| START TRANSACTION; | |
-| SELECT * FROM t WHERE i = 1 LOCK IN SHARE MODE; | |
-| | START TRANSACTION; |
-| | DELETE FROM t WHERE i = 1; |
-| DELETE FROM t WHERE i = 1; | |
-| | -- ERROR 1213 (40001): Deadlock found when trying to get lock; try restarting transaction |
+| Session 1                                       | Session 2                  |
+|-------------------------------------------------|----------------------------|
+| CREATE TABLE t (i INT) ENGINE = InnoDB;         |                            |
+| INSERT INTO t (i) VALUES(1);                    |                            |
+| START TRANSACTION;                              |                            |
+| SELECT * FROM t WHERE i = 1 LOCK IN SHARE MODE; |                            |
+|                                                 | START TRANSACTION;         |
+|                                                 | DELETE FROM t WHERE i = 1; |
+| DELETE FROM t WHERE i = 1;                      |                            |
+|                                                 | -- ERROR 1213 (40001): Deadlock found when trying to get lock; try restarting transaction |

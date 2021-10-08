@@ -51,17 +51,17 @@ data management systems.
 
 #### Rules
 
-* INSTEAD
-* ALSO (additional command to original command)
+* INSTEAD.
+* ALSO (additional command to original command).
 
 Triggers better than rules.
 
 #### PL - Procedural Languages.
 
-* PL/pgSQL (default and has optimal performance)
-* PL/Tcl
-* PL/Perl
-* PL/Python
+* PL/pgSQL (default and has optimal performance).
+* PL/Tcl.
+* PL/Perl.
+* PL/Python.
 
 We can return multiple values from procedures.
 
@@ -100,56 +100,55 @@ And the system must NOT be running in single-user mode.
 boolean
 
 * character values:
-  * char: holds a single character
-  * char (#): holds # number of characters.
-  * varchar (#)
+  * char: holds a single character.
+  * char (#): holds # number of characters..
+  * varchar (#).
 
 * integer values:
-  * smallint
-  * int
-  * serial
+  * smallint.
+  * int.
+  * serial.
 
 * floating-point values:
-  * float (#)
-  * real: 8-byte floating point number
-  * numeric (#,after_dec)
+  * float (#).
+  * real: 8-byte floating point number.
+  * numeric (#,after_dec).
 
 * date and time values:
-  * date
-  * time
-  * timestamp
-  * timestamptz
-  * interval
+  * date.
+  * time.
+  * timestamp.
+  * timestamptz.
+  * interval.
 
 * geometric data:
-  * point
-  * line
-  * lseg
-  * box
-  * polygon
+  * point.
+  * line.
+  * lseg.
+  * box.
+  * polygon.
 
 * device specifications:
-  * inet
-  * macaddr
+  * inet.
+  * macaddr.
 
 Pseudo-Types:
-
-* any
-* anyelement
-* anyarray
-* anynonarray
-* anyenum
-* anyrange
-* cstring
-* internal
-* language_handler
-* fdw_handler
-* index_am_handler
-* tsm_handler
-* record
-* trigger
-* event_trigger
-* pg_ddl_command
-* void
-* unknown
-* opaque
+* any.
+* anyelement.
+* anyarray.
+* anynonarray.
+* anyenum.
+* anyrange.
+* cstring.
+* internal.
+* language_handler.
+* fdw_handler.
+* index_am_handler.
+* tsm_handler.
+* record.
+* trigger.
+* event_trigger.
+* pg_ddl_command.
+* void.
+* unknown.
+* opaque.

@@ -82,13 +82,13 @@ CYPHER replan=force EXPLAIN MATCH ...
 ````
 
 [In query plan](https://neo4j.com/docs/cypher-manual/current/execution-plans/operator-summary/):
-* AllNodesScan
-* NodeByLabelScan
-* NodeIndexScan
+* AllNodesScan.
+* NodeByLabelScan.
+* NodeIndexScan.
 * NodeIndexSeek - Single-property index, Equality check.
-* NodeIndexSeekByRange
-* NodeIndexContainsScan
-* NodeIndexEndsWithScan
+* NodeIndexSeekByRange.
+* NodeIndexContainsScan.
+* NodeIndexEndsWithScan.
 
 Execution Plans:
 * Evaluation model.

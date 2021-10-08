@@ -7,8 +7,8 @@ Sharding
 For PROD must be 3 config servers.
 
 Ways to shard:
-* range based
-* hash based (document must contain shard key)
+* range based.
+* hash based (document must contain shard key).
 
 If the shard key is not included in a find operation
 and there are 4 shards - mongos has to send the query

@@ -224,9 +224,9 @@ don't use embedded data - it's gonna kill performance.
 To represent tree data structure in mongo use linking.
 
 What information embed in which collection depends on:
-* frequency of access data (books or authors)
-* size of items (especially when document larger 16Mb)
-* atomicity of data
+* frequency of access data (books or authors).
+* size of items (especially when document larger 16Mb).
+* atomicity of data.
 
 ````js
 // Model Tree Structures with Parent References

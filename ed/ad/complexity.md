@@ -2,9 +2,9 @@ Complexity of algorithms
 -
 
 Important to find upper bound for algorithm.
-<br>`time` - it isn't possible to estimate time because it's vary on different machines (CPU, memory, etc.)
-<br>`memory (space)`
-<br>`count of steps (actions)`
+<br>`time` - it isn't possible to estimate time because it's vary on different machines (CPU, memory, etc.).
+<br>`memory (space)`.
+<br>`count of steps (actions)`.
 
 Big O - Dependency between count of iterations and input parameters.
 

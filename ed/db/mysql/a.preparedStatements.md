@@ -58,7 +58,7 @@ EXECUTE stmt;
 ````
 
 The following SQL statements can be used in prepared statements:
-````
+````sql
 ALTER TABLE
 CALL
 COMMIT
@@ -76,17 +76,17 @@ TRUNCATE TABLE
 UPDATE
 ````
 MySQL 5.0.15
-````
+````sql
 {CREATE | DROP} VIEW
 ````
 MySQL 5.0.23
-````
+````sql
 ANALYZE TABLE
 OPTIMIZE TABLE
 REPAIR TABLE
 ````
 MySQL 5.1.12
-````
+````sql
 CACHE INDEX
 CHANGE MASTER
 CHECKSUM {TABLE | TABLES}

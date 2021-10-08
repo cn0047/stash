@@ -2,6 +2,7 @@ Operators
 -
 
 #### [Operators](http://docs.mongodb.org/manual/reference/operator/query/)
+
 ````js
 // OR
 // all the clauses in the $or expression must be supported by indexes.
@@ -111,6 +112,7 @@ db.foo.update({status : "A" , $isolated : 1}, {$inc : {count : 1}}, {multi: true
 ````
 
 #### Aggregation Pipeline Operators
+
 ````js
 // $geoNear
 // ...
@@ -123,6 +125,7 @@ db.inventory.aggregate([{$project: {
 ````
 
 #### Set Operators (Aggregation)
+
 ````js
 // $allElementsTrue
 {$allElementsTrue: [[true, 1, "someString"]]} // true

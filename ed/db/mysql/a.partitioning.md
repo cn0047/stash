@@ -13,13 +13,12 @@ Vertical sharding - move table into separate database.
 
 Subpartitioning — composite partitioning, is further division of each partition in a partitioned table.
 
-## Partitioning Types:
-
-    1 RANGE Partitioning
-    2 LIST Partitioning
-    3 COLUMNS Partitioning
-    4 HASH Partitioning
-    5 KEY Partitioning
+Partitioning Types:
+* RANGE Partitioning.
+* LIST Partitioning.
+* COLUMNS Partitioning.
+* HASH Partitioning.
+* KEY Partitioning.
 
 
 ````sql

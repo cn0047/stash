@@ -12,19 +12,19 @@ Operators:
 
 Functions:
 
-* to_json(string)
-* to_jsonb
-* array_to_json
-* row_to_json(fieldFromDB)
-* json_build_array
-* jsonb_build_array
-* json_build_objectB
-* jsonb_build_objectB
-* json_object
-* jsonb_object
-* json_object('{a, 1, b, "def", c, 3.5}')
-* jsonb_object
-* json_agg(fieldFromDB)
+* to_json(string).
+* to_jsonb.
+* array_to_json.
+* row_to_json(fieldFromDB).
+* json_build_array.
+* jsonb_build_array.
+* json_build_objectB.
+* jsonb_build_objectB.
+* json_object.
+* jsonb_object.
+* json_object('{a, 1, b, "def", c, 3.5}').
+* jsonb_object.
+* json_agg(fieldFromDB).
 
 ````sql
 -- sum
