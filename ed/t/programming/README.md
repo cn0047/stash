@@ -6,6 +6,15 @@ JS - NOT fault tolerant.
 
 Mixin better than OOP.
 
+`...` - spread operator in variadic function.
+
+````sh
+y = x + 1   # an expression - evaluates to a value.
+print y     # statement - does something.
+````
+
+Good comment must explain: `what? why? how?`
+
 #### Process and Thread
 
 Process - any program. It's isolated from other processes.
@@ -32,17 +41,6 @@ OS specifies min heap size (`ulimit` in linux).
 * lexer.
 * parser.
 * compiler.
-
-## Common stuff
-
-An `expression` evaluates to a value.
-A `statement` does something.
-`...` - spread operator in variadic function.
-
-````sh
-y = x + 1   # an expression
-print y     # a statement
-````
 
 ## Paradigms
 
@@ -126,9 +124,6 @@ Basically, classes are the tightest form of coupling in object-oriented programm
 * Self-configuration.
 * Self-healing.
 
-#### Comments
-
-Good comment must explain: `what? why? how?`
 
 #### [Clean Code](https://monosnap.com/file/9UGwycGbfCus8TRIXPjFWGsI2pKOKW)
 

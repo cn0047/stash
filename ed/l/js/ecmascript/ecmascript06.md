@@ -1,6 +1,8 @@
 ECMAScript 6
 -
 
+[all features](http://es6-features.org/)
+
 ````js
 // Constants.
 const PI = 3.141593
@@ -21,8 +23,7 @@ for (let i = 0; i < 3; i++) {}
 // Block-Scoped Functions.
 {
     function foo () { return 1 }
-    foo() === 1
-    {
+    foo() === 1 {
         function foo () { return console.log(2) }
         foo() === 2
     }
@@ -223,4 +224,3 @@ var r = new Rectangle(50, 20);
 r.area === 1000
 ````
 
-All features available here: http://es6-features.org/
