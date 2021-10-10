@@ -28,6 +28,7 @@ Best Practices
 * Always read response body even the data is not important
   `_, err = io.Copy(ioutil.Discard, resp.Body)`
   to avoid memory leak when reusing http connection.
+* Don't forget about padding bytes in structures declaration (8 byte).
 
 #### Anti-Patterns
 

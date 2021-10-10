@@ -20,6 +20,8 @@ Kubernetes - orchestrator for microservice apps (desired state management tool).
 
 Manifest file - describe desired state.
 
+Operator - software extensions that make use of custom resources.
+
 ## Master
 
 `etcd` (cluster data store) is an open source distributed key-value store (https://coreos.com/etcd).

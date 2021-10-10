@@ -9,6 +9,14 @@ then decrypting the TLS and passing unencrypted request downstream.
 TLS works on top of TCP.
 
 Certificate types: self-signed and wildcard (`*.kint.com`)
+Certificate probably must contain: issuer (signed by), expire date, public key, something else.
+
+Examples:
+````sh
+-----BEGIN CERTIFICATE-----
+.....Yj6ZXtQl+XZ/Xhz9Y=
+-----END CERTIFICATE-----
+````
 
 #### Data Encryption Protocols Cipher:
 

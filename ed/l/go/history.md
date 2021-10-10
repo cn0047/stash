@@ -1,15 +1,19 @@
 History of Go
 -
 
+[release notes](https://golang.org/doc/go1.13)
+
 #### go1.17
 
 #### go1.16
+
+* Embed package.
 
 #### go1.15
 
 #### go1.14
 
-#### [go1.13](https://golang.org/doc/go1.13)
+#### go1.13
 
 * Error wrapping.
 
