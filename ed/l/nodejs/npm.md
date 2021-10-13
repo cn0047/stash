@@ -41,6 +41,8 @@ npm publish
 
 npm prune
 
+npm cache clean --force
+
 npm audit fix --force
 ````
 
