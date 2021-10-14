@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -8,8 +9,9 @@ import (
 )
 
 func main() {
-	printFileContent("/tmp/debug.txt")
+	// printFileContent("/tmp/debug.txt")
 	// printFileContentSafe("/tmp/debug.txt")
+	printFileContentSafeLineByLine("/tmp/debug.txt")
 }
 
 func printFileContent(path string) {
@@ -45,8 +47,31 @@ func printFileContentSafe(path string) {
 		}
 
 		if err != nil {
-			fmt.Errorf("failed to read %d bytes, error: %v", n, err)
-			break
+			panic(fmt.Errorf("failed to read %d bytes, error: %v", n, err))
 		}
+	}
+}
+
+func printFileContentSafeLineByLine(path string) {
+	file, err := os.Open(path)
+	if err != nil {
+		panic(err)
+	}
+	defer func() {
+		if err = file.Close(); err != nil {
+			panic(err)
+		}
+	}()
+
+	reader := bufio.NewReader(file)
+	for {
+		line, err := reader.ReadString('\n')
+		if err != nil {
+			if err == io.EOF {
+				break
+			}
+			panic(fmt.Errorf("failed to read line, error: %v", err))
+		}
+		fmt.Printf("%s ⮐ \n", line)
 	}
 }
