@@ -28,7 +28,8 @@ To make Minimum spanning tree use:
 
 ## Trees
 
-* AST - Abstract Syntax Tree (used by webpack, babel, etc). https://astexplorer.net/
+* AST - Abstract Syntax Tree (used by webpack, babel, etc).
+[explorer](https://astexplorer.net/)
 
 * `Binary search trees` (ordered, sorted binary trees) - particular type of containers,
 data structures that store items in memory.
