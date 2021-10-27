@@ -2,6 +2,7 @@ GKE - Google Kubernetes Engine
 -
 
 [docs](https://cloud.google.com/kubernetes-engine/docs/)
+[pricing](https://cloud.google.com/kubernetes-engine/pricing)
 
 ````sh
 gcloud --project $p container clusters list

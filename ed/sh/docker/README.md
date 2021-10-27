@@ -218,8 +218,10 @@ docker-compose ps
 docker-compose exec php-cli php /gh/x.php
 docker-compose exec mysql /bin/bash
 
-# restart stopped container
+# start stopped container
 docker-compose start
+
+docker-compose restart $container
 
 docker-compose stop
 ````
