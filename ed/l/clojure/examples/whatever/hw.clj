@@ -1,5 +1,9 @@
 (ns clojure.examples.hello
-   (:gen-class))
+  (:gen-class))
+
+;; This is "Hellow World" program.
 (defn hello-world []
-   (println "Hello World"))
+  (def msg "Hello World")
+  (println msg)
+)
 (hello-world)

@@ -18,6 +18,7 @@ psql -h localhost -p 5432 -U dbu -d td < /var/lib/postgresql/data/dump.sql
 # remote connection
 ssh -i $k -N -L 5431:remoteDBHostName:5432 ubuntu@$h
 psql -p 5431 -d postgres://dbu:dbp@localhost/db
+psql -p 5432 -d postgres://dbu:dbp@localhost/test
 
 pg_ctl status
 

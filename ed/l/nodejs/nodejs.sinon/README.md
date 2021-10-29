@@ -1,6 +1,8 @@
 sinon
 -
 
+Sinon - spies, stubs and mocks.
+
 ````js
 // Perfect for callbacks, to check was cb called and how many times etc.
 sinon.spy();

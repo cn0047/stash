@@ -11,6 +11,9 @@ u=kovpakvolodymyr
 # subl in terminal
 sudo ln -s "/Applications/Sublime Text.app//Contents/SharedSupport/bin/subl" /usr/local/bin/
 
+# delete project from list
+vim /Users/$u/Library/Application\ Support/Sublime\ Text\ 3/Local/Session.sublime_session
+
 # packages list
 subl /Users/$u/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Package\ Control.sublime-settings
 
