@@ -1,4 +1,4 @@
-(ns clojure.examples.hello
+(ns clojure.examples.hw
   (:gen-class))
 
 ;; This is "Hellow World" program.

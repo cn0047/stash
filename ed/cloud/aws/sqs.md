@@ -20,4 +20,9 @@ Queue Attributes:
 
 ````sh
 aws --profile=$p sqs list-queues
+
+aws sqs get-queue-attributes \
+  --queue-url https://sqs.us-west-2.amazonaws.com/$SOME_ID/$SOME_Q \
+  --attribute-names ApproximateNumberOfMessages ApproximateNumberOfMessagesDelayed ApproximateNumberOfMessagesNotVisible
+  
 ````

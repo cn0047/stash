@@ -13,7 +13,21 @@ min 1 2 3
 
 rem 3 2 ;; remainder of dividing
 
+(println (format "Hello , %s" "World"))
+
+; destructuring
+(let [[a b c d] my-vector]
+  (println a b c d)
+)
+
 ```
+
+Predicate - function that evaluates condition and returns true or false.
+
+Macros - used to generate inline code.
+
+Watcher - function added to variable such as atoms and reference variables
+which get invoked when value of the variable changes.
 
 #### Data types
 

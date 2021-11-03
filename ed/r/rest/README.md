@@ -116,4 +116,6 @@ products?limit=25&offset=50
 
 <br>P: Versioning API.
 <br>S: Use API version in url, like: `my-api-host.com/v1/users/12345`,
-version in url super simple to invalidate, version in header harder to invalidate.
+version in url super simple to invalidate, version in header harder to invalidate,
+also version in header won't be logged by nginx logger etc.
+also rounting and load balancing is easier with version in url.
