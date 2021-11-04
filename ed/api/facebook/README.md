@@ -2,6 +2,7 @@ facebook
 -
 
 [Doc](https://developers.facebook.com/)
+[API](https://developers.facebook.com/docs/reference/api/)
 [API explorer](https://developers.facebook.com/tools/explorer/)
 [Token](https://developers.facebook.com/tools/debug/accesstoken/)
 

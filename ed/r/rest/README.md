@@ -91,7 +91,8 @@ For security it's better to return JSON with an object:
 <br>P: URL Path to endpoint which answers yes/no to send push notification.
 <br>S:
 ````sh
-curl -X GET api.svc.com/v1/notifications/push/devices/{dID}/enabled
+curl -X GET api.svc.com/v1/notifications/pushes/devices/{dID}/enabled
+curl -X GET api.svc.com/v1/notifications/emails/devices/{dID}/enabled
 ````
 
 <br>P: What to do with ugly names like: deploys...

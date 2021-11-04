@@ -61,7 +61,7 @@ paths:
         - $ref: '#/parameters/offset'
       responses:
         200:
-          description: Successfully retrieved events
+          description: "Successfully retrieved events"
           schema:
             type: object
             properties:
