@@ -13,7 +13,7 @@ Apache Lucene
 
 id:>400
 
-_exists_:user.name # exists field
+_exists_:user.name # exists field, colon ":" here to separate field name
 NOT _exists_:user.name # exists field
 
 /[a-z0-9]/ # regex
