@@ -7,13 +7,13 @@ a = 1.1;             typeof a; // "number"
 a = '1';             typeof a; // "string"
 a = true;            typeof a; // "boolean"
 a = {};              typeof a; // "object"
-a = [];              typeof a; // "object" But: a instanceof Array; // true
+a = [];              typeof a; // "object" but: a instanceof Array; // true
 a = new Array(1, 2); typeof a; // "object"
-a = null;            typeof a; // "object" And: a instanceof null; //  Uncaught TypeError: Expecting a function in instanceof check, but got null
+a = null;            typeof a; // "object" and: a instanceof null; //  Uncaught TypeError: Expecting a function in instanceof check, but got null
 a = undefined;       typeof a; // "undefined"
 a = NaN;             typeof a; // "number"
 a = function () {};  typeof a; // "function"
-a = /.*/;            typeof a; // "object" But: a instanceof RegExp; // true
+a = /.*/;            typeof a; // "object" but: a instanceof RegExp; // true
 a = new RegExp();    typeof a; // "object"
 a = new Date();      typeof a; // "object"
 
@@ -21,23 +21,23 @@ function isObject(o) {
     return o instanceof Object && o.constructor === Object;
 }
 
-6 + '1'     // 61    - as string.
-6 - '1'     // 5     - as int.
-"3" + 4 + 5 // "345" - as string.
-3 + 4 + "5" // "75"  - as int and as string.
+6 + '1'     // 61    - string.
+6 - '1'     // 5     - int.
+"3" + 4 + 5 // "345" - string.
+3 + 4 + "5" // "75"  - int and as string.
 
-0 == false // true
-0 == null // false
+0 == false    // true
+0 == null     // false
 false == null // false
-null == null // true
-NaN == NaN // false
-NaN === NaN // false
-[] == [] // false
-[] === [] // false
-{} == {} // false
-{} === {} // false
+null == null  // true
+NaN == NaN    // false
+NaN === NaN   // false
+[] == []      // false
+[] === []     // false
+{} == {}      // false
+{} === {}     // false
 
-if (true) {} elseif (true) {} // Uncaught SyntaxError: Unexpected token {
+if (true) {} elseif (true) {}  // Uncaught SyntaxError: Unexpected token {
 if (true) {} else if (true) {} // OK.
 ````
 
@@ -51,12 +51,12 @@ clearInterval(i);
 ````
 
 ````js
-navigator.cookieEnabled; // Show is cookie allowed.
-navigator.serviceWorker
+navigator.cookieEnabled; // show is cookie allowed.
+navigator.serviceWorker;
 'serviceWorker' in navigator
 
-location.reload();  // Reload document
-location.replace(); // Reload document, and don't save action in history
+location.reload();  // reload document
+location.replace(); // reload document, and don't save action in history
 
 window.history.back
 window.history.forward
@@ -123,11 +123,11 @@ confirm(message);
 var o = {x: 1, y: 2};
 delete o.x; // delete property x
 typeof o.x; // undefined
-delete o; // false. Cant't delete global var.
+delete o;   // false. Cant't delete global var.
 
-o['y']; // Access to associative array.
+o['y']; // access to associative array.
 
-void varName; // Set undefined to var;
+void varName; // set undefined to var;
 
 null == undefined  // true
 null === undefined // false
@@ -151,7 +151,7 @@ switch (x) {
         break;
 }
 
-// Convenience method but slow (many optimizations disabled here)...
+// Convenient method but slow (many optimizations disabled here)...
 // It won't create new proberty in scope of object.
 // It creates new own execution scope...
 with (frames[1].document.forms[0]) {
@@ -273,12 +273,12 @@ number.toPrecision(7);                                 // 12345.68
 
 ````js
 Boolean(bool);
-var b = !! bool; // To boolean
+var b = !! bool; // to boolean
 
-const foo = a || b; // a ? a : b; # better use code below
+const foo = a || b;                              // a ? a : b; # better use code below
 [target = 'default'] = [valueProvidedInFunction] // it works like isset
-const bar = !!c; // c ? true : false;
-const baz = !c; // c ? false : true;
+const bar = !!c;                                 // c ? true : false;
+const baz = !c;                                  // c ? false : true;
 ````
 
 #### Symbol
@@ -295,7 +295,7 @@ console.log(typeof v !== 'undefined'); // isset variable v.
 
 ````js
 Object.assign(dst, src1, src2)
-fr_obj = Object.freeze(obj) // freeze obj, but freeze is not recursive! Nested objects won't be frozen.
+fr_obj = Object.freeze(obj) // freeze obj, but freeze is not recursive! nested objects won't be frozen.
 Object.isFrozen(obj);
 Object.seal(obj); // preventing add new properties and marking all existing properties as non-configurable.
 Object.defineProperties(obj, props); // defines|modifies object's properties
@@ -330,7 +330,6 @@ d = Date.parse(str);
 ````
 
 Errors:
-
 * Error
 * EvalError
 * InternalError
@@ -340,7 +339,7 @@ Errors:
 * TypeError
 * URIError
 
-````
+````js
 const err = new Error('Name required');
 err.status = 400;
 err.expose = true;
@@ -348,9 +347,8 @@ throw err;
 ````
 
 Regex:
-
-````
- /hello/.test('hello world');
+````js
+/hello/.test('hello world');
 ````
 
 #### Function
@@ -399,30 +397,34 @@ array.concat(var_name);
 var a = ["dog", "cat", "hen"];
 a[100] = "fox";
 a.length; // 101
-// Remember — the length of the array is one more than the highest index.
+// remember — the length of the array is one more than the highest index.
 
 for (key in array) {
     console.log(array[key]);
 }
-var a = [];
-a[5] = 5; // Perfectly legal JavaScript that resizes the array.
-for (var i=0; i<a.length; i++) {
-    // Iterates over numeric indexes from 0 to 5, as everyone expects.
-}
 
+// ‼️ don't use this one
 var a = [];
 a[5] = 5;
-for (var x in a) {
-    // Shows only the explicitly set index of "5", and ignores 0-4
+for (var i = 0; i < a.length; i++) {
+    console.log(i);
 }
+// result: 0, 1, 2, 3, 4, 5
 
-// Somewhere deep in your JavaScript library...
+// ✅ use this one
+var a = [];
+a[5] = 5;
+for (var el in a) {
+    console.log(el);
+}
+// result: 5
+
+// ⚠️ somewhere deep in your JavaScript library...
 Array.prototype.foo = 1;
-// Now you have no idea what the below code will do.
-var a = [1,2,3,4,5];
+// now you have no idea what the below code will do.
+var a = [1, 2, 3, 4, 5];
 for (var x in a) {
-    // Now foo is a part of EVERY array and
+    // now foo is a part of EVERY array and
     // will show up here as a value of 'x'.
 }
 ````
-

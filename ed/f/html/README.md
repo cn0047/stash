@@ -2,7 +2,7 @@ HTML (HyperText Markup Language)
 -
 5
 
-````
+````html
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <meta name="robots" content="noindex">
@@ -11,11 +11,16 @@ HTML (HyperText Markup Language)
 <meta http-equiv="refresh" content="30">
 ````
 
-````
-link rel="preload" rel="preconnect"
+````html
+rel="preload" - resources which you want to start loading early in the page lifecycle.
+<link rel="preload" href="style.css" as="style">
+
+link rel="preconnect" - hint to browsers that
+the user is likely to need resources from the target resource's origin.
+<link rel="preconnect" href="https://example.com">
 ````
 
-````
+````html
 HTML5:
 <address>  - contact information
 <article>  - article
@@ -35,7 +40,7 @@ HTML5:
 
 #### Special Characters
 
-````
+````html
 &nbsp;       # space
 &#34; &quot; # double quotes
 &#38; &amp;  # &
@@ -60,7 +65,7 @@ data-sheets-userformat="{&#34;2&#34;:513,&#34;3&#34;:{&#34;1&#34;:0},&#34;12&#34
 
 #### Script
 
-````
+````html
 <script src="demo_async.js" async defer></script>
 ````
 
@@ -74,7 +79,7 @@ before the browser continues parsing the page.
 
 #### Microdata
 
-````
+````html
 <span itemprop="name">Elizabeth</span>
 ````
 
@@ -82,7 +87,7 @@ before the browser continues parsing the page.
 
 "multipart/form-data"
 
-````
+````html
 <form action="file" method="post" enctype="multipart/form-data">
   <input type="text" id="msg" name="msg">
   <input type="file" id="file" name="file">

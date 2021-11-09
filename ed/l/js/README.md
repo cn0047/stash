@@ -12,14 +12,13 @@ to support canvas (an HTML5 feature) in older browsers.
 
 A shim is more generalized. A polyfill is a type of shim.
 
-Lexical scope - code author's scope (context of the surrounding code)...
+Lexical scope - code author's scope (context of the surrounding code).
 To cheat with lexical scope use `eval` or `with`.
 `eval` is slow because no optimizaton for unknown code.
 
-Dynamical scope - Runtime scope.
+Dynamical scope - runtime scope.
 
 Create new scope - use IIFE or catch block.
-
 IIFE (Immediately-Invoked Function Expression) - needed for creating new scope,
 and hide some stuff from outer scope.
 
@@ -48,24 +47,16 @@ but how it will be called, how much time, etc - it is out of our control.
 **this**, The value of this within any given function call is determined by *how the function is called*.
 Function's own execution context.
 
-Rule 4: `new` keyword.
-
+Rule 4: `new` keyword;
 Rule 3: Explicit binding - `func.call` & `func.apply`;
-
-Rule 2: Implicit binding - reference to a function via object property reference (`obj.foo()`);
-
+Rule 2: Implicit binding - reference to function via object property reference (`obj.foo()`);
 Rule 1: Default binding - strict mode - undefined; non strict - global object (window);
 
 **new**.
-
 1. Creates new object.
-
 2. Links new object to constructor function (`prototype`).
-
 3. Makes `this` variable point to the new object.
-
 4. Executes constructor function using the new object and implicit perform `return this`;
-
 5. Assigns constructor function name to new object's property `constructor`.
 
 `Object.create` - performs first 2 steps form `new`.

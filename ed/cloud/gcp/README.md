@@ -5,6 +5,8 @@ Google Cloud
 [products](https://cloud.google.com/products/)
 [console](https://console.cloud.google.com/)
 [APIs](https://developers.google.com/api-client-library/)
+[go libraries](https://pkg.go.dev/cloud.google.com/go#section-readme)
+[go libraries](https://github.com/googleapis)
 [locations](https://cloud.google.com/about/locations/)
 [machine types](https://cloud.google.com/compute/docs/machine-types)
 [tags by image](https://cloud.google.com/vision/docs/drag-and-drop)
