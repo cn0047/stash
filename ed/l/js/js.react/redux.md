@@ -16,7 +16,7 @@ redux-promise-middleware
 
 To bind react component state to redux state use `connect` method from `react-redux` package:
 
-````
+````js
 /**
  * @param {Object} mapStateToProps Object which describes what map from redux to component.
  * @param {Object} mapDispatchToProps Object which describes actions to dispatch.

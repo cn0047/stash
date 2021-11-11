@@ -1,7 +1,7 @@
 DocBlock
 -
 
-````
+````php
 @author
 @see
 @link
@@ -16,7 +16,7 @@ DocBlock
 ````
 
 Tests:
-````
+````php
 /**
  * @covers BankAccount::getBalance
  */

@@ -236,7 +236,7 @@ environments: local; dev; stage|staging; prod|production;
 ` Back quote (back tick)
 / Slash (forward slash)
 \ Backward Slash
-# Pound
+# Pound, Number sign
 $ Dollar
 % Percent
 & Ampersand

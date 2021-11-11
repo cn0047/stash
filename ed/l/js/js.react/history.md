@@ -1,10 +1,18 @@
 History of React JS
 -
 
+#### 17.0
+
+* No new features only improvements.
+
+#### 16.8
+
+* Hooks.
+
 #### 16.0
 
-Fiber (new reconciliation engine).
-Error Handling `componentDidCatch`.
-Render Arrays, Strings and Numbers.
-`React.Fragment`.
-Support for custom DOM attributes.
+* Fiber (new reconciliation engine).
+* `React.Fragment` - return Array, String, Number from a component’s render.
+* Error Handling `componentDidCatch`.
+* Support for custom DOM attributes.
+* Portals - render children in any DOM node.

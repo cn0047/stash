@@ -11,6 +11,8 @@ When you scan the index, you have to scan the tree AND
 sequentially read what is still in the pending list.
 If the pending list is long, this will have some impact on performance.
 
+Index hint - PostgreSQL don't support index hint.
+
 ### Types:
 
 * B-tree (default).

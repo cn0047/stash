@@ -87,3 +87,9 @@ CALL db.index.fulltext.queryNodes('idx_all_text', 'about:gadget~ ' + decay) YIEL
 CALL db.index.fulltext.queryNodes('idx_all_text', 'about:gadget~ ') YIELD node, score RETURN node, score;
 
 ````
+
+## Custom analyzer
+
+[example](https://graphaware.com/neo4j/2019/09/06/custom-fulltext-analyzer.html)
+[example](https://github.com/graphaware/custom-fulltext-analyzer-blog)
+[maven for analyzer](https://neo4j.com/docs/java-reference/current/extending-neo4j/procedures-and-functions/procedures-setup/#extending-neo4j-procedures-setup)
