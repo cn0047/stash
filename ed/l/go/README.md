@@ -29,6 +29,7 @@ Since 2009.
 [covererage](https://gocover.io/) [![and](https://gocover.io/_badge/github.com/thepkg/strings)](https://gocover.io/github.com/thepkg/strings)
 [json to struct](https://mholt.github.io/json-to-go/)
 [sql code gen](https://github.com/kyleconroy/sqlc)
+[project layout](https://github.com/golang-standards/project-layout)
 
 Go - statically-typed, general-purpose, with type safety
 and automatic memory management programming language.

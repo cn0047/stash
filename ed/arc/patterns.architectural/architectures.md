@@ -319,4 +319,15 @@ root
 │   └── infrastructure
 ├── cmd
 └── ops # devops
+
+root
+├── ops
+├── cmd
+│   └── app-name
+│       └── main.go
+├── app
+│   ├── svc1
+│   ├── svc2
+│   └── ...
+└── go.mod
 ````
