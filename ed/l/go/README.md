@@ -42,7 +42,7 @@ $GOROOT_FINAL # if go moved from $GOROOT
 $GOPATH       # environment variable specifies the location of your workspace.
 $GOBIN        # GOBIN=$GOROOT/bin
 $GOCACHE      #
-$GOOS         # (windows|linux)
+$GOOS         # (windows|linux|darwin)
 $GOARCH       # (386|amd64)
 $GOMAXPROCS   # number of OS threads that can execute user-level Go code simultaneously.
 $GOTRACEBACK  # (none|single|all|system|crash) verbosity level in case of panic

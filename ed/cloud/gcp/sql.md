@@ -38,3 +38,5 @@ user:password@cloudsql(prj:us-central1:dbname)
 unix(/cloudsql/prj:us-central1:instance-name)
 user:password@unix(/cloudsql/prj:us-central1:instance-name)/dbname
 ````
+
+Cloud SQL instance configured per region.
