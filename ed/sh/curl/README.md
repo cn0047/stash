@@ -52,6 +52,9 @@ curl http://localhost:3000 -H 'Authorization: Basic YWRtaW46cGFzc3dvcmQ='
 curl $url -o $out
 # download file and use remote name
 curl -O $url
+# download file with origin name into target dir
+curl -O --create-dirs --output-dir /tmp/x $url
+
 
 # upload file
 curl http://localhost:8000 -F "file=@/home/kovpak/Downloads/download.jpg"

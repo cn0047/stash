@@ -1,6 +1,7 @@
 #!/bin/bash
 
 declare -a arr1=("element1" "element2" "element3")
+printf "len(arr1): ${#arr1[@]} \n" # len(arr1): 3
 
 declare -A arr2
 arr2['first']='First element'

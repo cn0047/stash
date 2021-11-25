@@ -301,6 +301,11 @@ if [[ $1 =~ ^[0-9]+$ ]]; # is number
 #### Numbers:
 
 ````bash
+# random number 3 digits
+echo $((RANDOM%1000))
+# or (darwin)
+shuf -i 0-50 -n 1 # range 0-50
+
 -eq
 -ne
 -le
