@@ -8,6 +8,8 @@ Terraform
 [aws](https://www.terraform.io/docs/providers/aws/index.html)
 [functions](https://www.terraform.io/docs/configuration/functions/strrev.html)
 
+Terraform - tool for defining infrastructure as code.
+
 <br>Module - container for multiple resources that are used together.
 <br>Sentinel - embedded policy-as-code framework integrated with the HashiCorp Enterprise products.
 <br>Providers - aws, gcp, etc.

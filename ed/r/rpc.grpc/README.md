@@ -8,7 +8,14 @@ Content-Type: application/grpc+json
 Content-Type: application/grpc+proto
 ````
 
-gRPC - open source RPC framework.
+gRPC - open source RPC framework, provides features such as:
+* authentication.
+* bidirectional streaming and flow control.
+* blocking or nonblocking bindings.
+* cancellation.
+* timeouts.
+
+gRPC uses HTTP/2 for transport.
 
 RPC based on actons & functions (for example REST based on resources).
 

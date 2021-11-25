@@ -24,7 +24,6 @@ gtag('event', 'streamIdMismatchCount', {'streamIdMismatch': 1});
 ````
 
 Event Tracking:
-
 ````sh
 v=1              # Version.
 &tid=UA-XXXXX-Y  # Tracking ID / Property ID.

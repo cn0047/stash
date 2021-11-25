@@ -64,7 +64,6 @@ go doc rsc.io/quote/v3
 go get -d github.com/thepkg/strings # get not to build or install package, just download
 # update all ✅
 go get -u ./... or go get -u=patch ./... # update all direct and indirect dependencies
-go get -u ./...
 go get -u all
 go get -u github.com/thepkg/strings@master
 go mod tidy
