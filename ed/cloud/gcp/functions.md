@@ -6,3 +6,5 @@ Cloud Functions
 ````sh
 gcloud functions --help
 ````
+
+Trigger type: HTTP, PubSub, GCS, Firestore, Firebase.
