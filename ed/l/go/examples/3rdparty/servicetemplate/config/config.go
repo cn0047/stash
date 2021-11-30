@@ -10,9 +10,9 @@ import (
 
 // Config contains all configuration values.
 type Config struct {
-	Env  string `json:"env"`
-	Host string `json:"host"`
-	Port int    `json:"port"`
+	Env  string `json:"env" mapstructure:"env"`
+	Host string `json:"host" mapstructure:"host"`
+	Port int    `json:"port" mapstructure:"port"`
 
 	// BuildCommitHash contains hash for GIT commit which was used to build app.
 	BuildCommitHash string
@@ -31,6 +31,7 @@ func New() (*Config, error) {
 	}
 
 	v := viper.New()
+	v.AutomaticEnv()
 	v.SetConfigType("json")
 	v.SetConfigFile(*configPath)
 	err := v.ReadInConfig()
@@ -45,4 +46,4 @@ func New() (*Config, error) {
 
 	return cfg, nil
 }
-å
+
