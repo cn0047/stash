@@ -1,4 +1,4 @@
-Cloud Functions
+Cloud Function
 -
 
 [pricing](https://cloud.google.com/functions/pricing)

@@ -13,7 +13,7 @@ y = x + 1   # an expression - evaluates to a value.
 print y     # statement - does something.
 ````
 
-Good comment must explain: `what? why? how?`
+Good comment must explain: `what? why? how?`.
 
 #### Process and Thread
 

@@ -57,6 +57,8 @@ docker build -t cn007b/pi -f Dockerfile .
 # push to docker hub
 docker push cn007b/pi
 
+docker tag $srcImage $targetImage
+
 docker build -t nphp https://raw.githubusercontent.com/cn007b/my/master/docker/php-nginx/Dockerfile?latest
 
 # ARG ENV in Dockerfile
