@@ -1,4 +1,4 @@
-var spawn = require('child_process').spawn;
+var spawn = require('./child_process').spawn;
 var net = require('net');
 var client = new net.Socket();
 client.setEncoding('utf8');

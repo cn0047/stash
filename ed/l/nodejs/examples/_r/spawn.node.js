@@ -1,4 +1,4 @@
-var spawn = require('child_process').spawn, pwd = spawn('pwd');
+var spawn = require('./child_process').spawn, pwd = spawn('pwd');
 pwd.stdout.on('data', function (data) {
     console.log('stdout: ' + data);
 });

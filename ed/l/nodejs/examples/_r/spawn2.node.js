@@ -1,5 +1,5 @@
 // This scritp do the same with: find . -ls | grep test
-var spawn = require('child_process').spawn,
+var spawn = require('./child_process').spawn,
 find = spawn('find',['.','-ls']),
 grep = spawn('grep',['test']);
 grep.stdout.setEncoding('utf8');

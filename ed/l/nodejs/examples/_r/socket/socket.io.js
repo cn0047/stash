@@ -1,5 +1,5 @@
 var app = require('http').createServer(handler)
-    , io = require('socket.io').listen(app)
+    , io = require('ed/l/nodejs/examples/_r/socket/socket.io').listen(app)
     , fs = require('fs');
 var counter;
 app.listen(8124);

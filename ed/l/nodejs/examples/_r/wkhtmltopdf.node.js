@@ -1,4 +1,4 @@
-var spawn = require('child_process').spawn;
+var spawn = require('./child_process').spawn;
 // аргументы командной строки
 var url = process.argv[2];
 var output = process.argv[3];
