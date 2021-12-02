@@ -31,20 +31,20 @@ which get invoked when value of the variable changes.
 
 #### Data types
 
-* Integers (Decimal , Octal, Hexadecimal, Radix)
-* Floating point
-* char
-* Boolean
-* String
-* Nil
-* Atom (shared, synchronous, independent state)
+* Integers (Decimal , Octal, Hexadecimal, Radix).
+* Floating point.
+* char.
+* Boolean.
+* String.
+* Nil.
+* Atom (shared, synchronous, independent state).
 
 #### Variables types
 
-* short (short number)
-* int
-* long
-* float
-* char
-* Boolean
-* String
+* short (short number).
+* int.
+* long.
+* float.
+* char.
+* Boolean.
+* String.
