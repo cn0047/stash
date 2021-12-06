@@ -171,6 +171,13 @@ RETURN n;
 
 
 
+// union
+MATCH (n:Person)       RETURN n.name AS name
+UNION ALL
+MATCH (n:Organization) RETURN n.name AS name;
+
+
+
 // node's relationships
 MATCH (:Person {code: '007'})-[r]-() RETURN r;
 MATCH (:Person {code: '007'})-[r]-() RETURN type(r);

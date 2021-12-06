@@ -1,6 +1,8 @@
 Spanner
 -
 
+[docs](https://cloud.google.com/spanner/docs/apis)
+
 Spanner - fully managed relational database with unlimited scale and strong consistency.
 
 Spanner instance configured per region.
