@@ -5,7 +5,7 @@ tag=8.0.27
 tag=latest
 docker run -it --rm --net=xnet -p 3307:3306 --name xmysql --hostname xmysql \
     -v $PWD/.data/.docker/mysql_$tag:/var/lib/mysql -v /tmp:/tmp \
-    -e MYSQL_ROOT_PASSWORD=root -e MYSQL_USER=dbu -e MYSQL_PASSWORD=dbp -e MYSQL_DATABASE=test \
+    -e MYSQL_ROOT_PASSWORD=root -e MYSQL_USER=dbu -e MYSQL_PASSWORD=dbp -e MYSQL_PWD=dbp -e MYSQL_DATABASE=test \
     mysql:$tag
 
 # general_log
