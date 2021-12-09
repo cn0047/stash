@@ -254,6 +254,10 @@ go run main.go
 # gcp
 cd $PWD/ed/l/go/examples/3rdparty/gcp
 go run main.go
+#
+cd $PWD/ed/l/go/examples/3rdparty/gcp/function
+export SPANNER_EMULATOR_HOST=localhost:9010
+go run spanner.go
 
 # jwt
 export GOPATH=$PWD/ed/l/go/examples/jwt

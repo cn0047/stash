@@ -49,6 +49,9 @@ gcloud auth list
 # default service account
 # ls -la ~/.config/gcloud/application_default_credentials.json
 
+gcloud config configurations create my_cfg
+gcloud config configurations activate my_cfg
+gcloud auth login
 gcloud config configurations list
 gcloud config list
 gcloud config set project itismonitoring
