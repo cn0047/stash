@@ -111,6 +111,10 @@ gosec -fmt=json -out=/tmp/gosec_output.json -tests ed/go/examples/bench/...
 
 strace go_bin_file
 ptrace
+
+# in alpine docker image
+go get -u github.com/go-swagger/go-swagger/cmd/swagger
+$GOPATH/bin/swagger
 ````
 
 ````golang

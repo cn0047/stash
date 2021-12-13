@@ -22,12 +22,19 @@ gcloud spanner instances list
 gcloud spanner instances create test-instance \
   --config=to --description="TestEmulatorInstance" --nodes=1
 
-gcloud spanner databases list
+gcloud spanner databases list --instance=test-instance
 # create db
 gcloud spanner databases create testdb --instance=test-instance
 
 gcloud spanner databases ddl update testdb --instance=test-instance \
   --ddl='CREATE TABLE test (id INT64 NOT NULL, msg STRING(100) ) PRIMARY KEY(id);'
+
+gcloud spanner databases execute-sql testdb --instance=test-instance --sql='
+  SELECT * FROM test;
+'
+gcloud spanner databases execute-sql testdb --instance=test-instance --sql="
+  INSERT INTO test (id, msg) VALUES (1, 'one');
+"
 
 ````
 

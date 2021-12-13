@@ -14,8 +14,10 @@ docker tag cn007b/php:$tag xphp
 docker run -it --rm --net=xnet -v $PWD:/gh -w /gh -p 8080:80 xphp /bin/bash
 
 # go
+docker pull cn007b/go:1.16-alpine
 docker pull cn007b/go:latest
 docker tag cn007b/go xgo
+docker run -it --rm --net=xnet -v $PWD:/gh -w /gh xgo sh
 docker run -it --rm --net=xnet -v $PWD:/gh -w /gh xgo /bin/bash
 docker run -it --rm --net=xnet -v $PWD:/gh -w /gh -e GOPATH='/gh' xgo /bin/bash
 
