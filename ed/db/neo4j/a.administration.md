@@ -31,6 +31,10 @@ Graph - data model within database.
 ````js
 :SYSINFO
 
+// get version
+CALL dbms.components() yield name, versions, edition UNWIND versions AS version
+RETURN name, version, edition;
+
 SHOW DATABASES;
 SHOW DEFAULT DATABASE;
 SHOW DATABASE system;

@@ -1,5 +1,5 @@
-k8s examples
--
+# k8s examples
+
 # build docker image
 ctx=ed/sh/docker/examples.Dockerfile
 # 1
