@@ -11,8 +11,6 @@ length(path)
 range(0,8) // [0, 1, 2, 3, 4, 5, 6, 7, 8]
 
 
-// lock
-node._lock = true
 
 
 
@@ -22,6 +20,11 @@ WITH 204 as c RETURN c;
 :param code => 200;
 WITH $code as c RETURN c;
 RETURN $code;
+
+:param id => ['a', 'b'];
+with 'a' in $id as in_arr return *; // true
+with 'x' in $id as in_arr return *; // false
+
 // to see all vars
 :params
 

@@ -203,7 +203,7 @@ docker-compose build --no-cache --force-rm serviceName
 
 # shutdown/cleanup
 docker-compose down
-docker-compose down --volumes
+docker-compose down --volumes --remove-orphans
 
 # builds, (re)creates, starts, and attaches to containers for a service.
 docker-compose up

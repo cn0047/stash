@@ -17,13 +17,14 @@ docker build -t cn007b/go:$version ./docker/$version
 # check
 docker run -it --rm cn007b/go:$version sh -c 'hash go'
 docker run -it --rm cn007b/go:$version sh -c 'go version'
-docker run -it --rm cn007b/go:$version sh -c 'hash dep'
 docker run -it --rm cn007b/go:$version sh -c 'hash golint'
 docker run -it --rm cn007b/go:$version sh -c 'hash golangci-lint'
 docker run -it --rm cn007b/go:$version sh -c 'hash goveralls'
+docker run -it --rm cn007b/go:$version sh -c 'hash gosec'
+#
+docker run -it --rm cn007b/go:$version sh -c 'hash dep'
 docker run -it --rm cn007b/go:$version sh -c 'hash dlv'
 docker run -it --rm cn007b/go:$version sh -c 'hash gin'
-docker run -it --rm cn007b/go:$version sh -c 'hash gosec'
 docker run -it --rm cn007b/go:$version sh -c 'hash pprof'
 docker run -it --rm cn007b/go:$version sh -c 'hash dot'
 # push

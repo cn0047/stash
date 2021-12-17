@@ -83,6 +83,7 @@ go env GOPATH
 go fmt ./...                          # format code
 go get ./...                          # install all project dependencies
 go golint ./...                       # check code
+golint app/...                        #
 go install                            # install packages and dependencies
 go list                               # list packages
 go list -f '{{ join .Imports "\n" }}' # directly imported packages
