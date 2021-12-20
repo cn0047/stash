@@ -2,7 +2,7 @@
     // BOOKMARK
     { "keys": ["ctrl+,"], "command": "sublime_bookmark", "args" : { "type" : "goto_previous" } },
     { "keys": ["ctrl+."], "command": "sublime_bookmark", "args" : { "type" : "goto_next" } },
-    { "keys": ["ctrl+m"], "command": "sublime_bookmark", "args" : { "type" : "toggle_line"  } },
+    { "keys": ["ctrl+m", "option+m"], "command": "sublime_bookmark", "args" : { "type" : "toggle_line"  } },
     { "keys": ["ctrl+shift+m"], "command": "sublime_bookmark", "args" : { "type" : "goto"  } },
     { "keys": ["alt+shift+m"], "command": "sublime_bookmark", "args" : { "type" : "remove"  } },
 
