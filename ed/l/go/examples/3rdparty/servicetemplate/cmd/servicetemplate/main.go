@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/org/repo/app"
-	"github.com/org/repo/config"
+	"github.com/cn007b/servicetemplate/app"
+	"github.com/cn007b/servicetemplate/config"
 )
 
 var (
@@ -21,6 +21,11 @@ func main() {
 	}
 	cfg.BuildCommitHash = BuildCommitHash
 
-	a := app.New(cfg)
+	a, err := app.New(cfg)
+	if err != nil {
+		fmt.Printf("failed to create new application, err: %+v \n", err)
+		os.Exit(1)
+	}
+
 	a.Run()
 }

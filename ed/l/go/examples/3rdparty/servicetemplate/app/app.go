@@ -11,7 +11,7 @@ import (
 
 	"github.com/gorilla/mux"
 
-	"github.com/org/repo/config"
+	"github.com/cn007b/servicetemplate/config"
 )
 
 // App represents main application struct.
@@ -20,10 +20,10 @@ type App struct {
 }
 
 // New returns new application instance.
-func New(cfg *config.Config) *App {
+func New(cfg *config.Config) (*App, error) {
 	a := &App{Config: cfg}
 
-	return a
+	return a, nil
 }
 
 // Run starts application.
