@@ -27,8 +27,9 @@ gcloud spanner databases list --instance=test-instance
 gcloud spanner databases create testdb --instance=test-instance
 
 gcloud spanner databases ddl update testdb --instance=test-instance \
-  --ddl='CREATE TABLE test (id INT64 NOT NULL, msg STRING(100) ) PRIMARY KEY(id);'
+  --ddl='CREATE TABLE test (id INT64 NOT NULL, msg STRING(100), data JSON) PRIMARY KEY(id)'
 
+# query
 gcloud spanner databases execute-sql testdb --instance=test-instance --sql='
   SELECT * FROM test;
 '

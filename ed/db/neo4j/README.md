@@ -10,6 +10,7 @@ Neo4j
 [cypher styleguide](https://neo4j.com/docs/cypher-manual/current/styleguide/)
 [algorithms](https://neo4j.com/developer/graph-data-science/graph-algorithms/)
 [links](https://neo4j.com/developer/resources/)
+[cheat sheet](https://neo4j.com/docs/cypher-refcard/current/)
 
 ````sh
 cypher-shell -u neo4j -p test
