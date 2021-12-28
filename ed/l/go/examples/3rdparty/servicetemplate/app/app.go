@@ -3,13 +3,13 @@ package app
 import (
 	"context"
 	"fmt"
-	"log"
 	"net/http"
 	"os"
 	"os/signal"
 	"time"
 
 	"github.com/gorilla/mux"
+	log "github.com/sirupsen/logrus"
 
 	"github.com/cn007b/servicetemplate/config"
 )
@@ -17,11 +17,28 @@ import (
 // App represents main application struct.
 type App struct {
 	Config *config.Config
+
+	HTTPAddress string
+	HTTPServer  *http.Server
 }
 
 // New returns new application instance.
 func New(cfg *config.Config) (*App, error) {
-	a := &App{Config: cfg}
+	a := &App{}
+
+	// Init logger.
+	log.SetFormatter(&log.JSONFormatter{})
+	log.SetOutput(os.Stdout)
+
+	// Init HTTP routes.
+	router := mux.NewRouter()
+	InitRoutes(a, router)
+
+	// Init HTTP server.
+	a.HTTPAddress = fmt.Sprintf("%s:%s", cfg.Host, cfg.Port)
+	a.HTTPServer = &http.Server{Addr: a.HTTPAddress, Handler: router}
+
+	a.Config = cfg
 
 	return a, nil
 }
@@ -30,18 +47,12 @@ func New(cfg *config.Config) (*App, error) {
 // For now this method starts only HTTP server,
 // but GRPC server may be added here later if needed.
 func (a *App) Run() {
-	// Init HTTP routes.
-	router := mux.NewRouter()
-	InitRoutes(a, router)
-
 	// Start HTTP server.
-	addr := fmt.Sprintf("%s:%d", a.Config.Host, a.Config.Port)
-	srv := &http.Server{Addr: addr, Handler: router}
-	log.Printf("starting HTTP server on: %s\n", addr)
+	log.Infof("starting HTTP server on: %s", a.HTTPAddress)
 	go func() {
-		err := srv.ListenAndServe()
+		err := a.HTTPServer.ListenAndServe()
 		if err != nil {
-			fmt.Printf("failed to ListenAndServe, err: %+v \n", err)
+			log.Errorf("failed to ListenAndServe, err: %+v", err)
 		}
 	}()
 
@@ -49,13 +60,19 @@ func (a *App) Run() {
 	c := make(chan os.Signal, 1)
 	signal.Notify(c, os.Interrupt) // SIGINT (Ctrl+C).
 	<-c
+	a.Shutdown()
+
+	os.Exit(0)
+}
+
+// Shutdown stops application.
+func (a *App) Shutdown() {
 	ctx, cancel := context.WithTimeout(context.Background(), 1*time.Minute)
 	defer cancel()
-	err := srv.Shutdown(ctx)
-	if err != nil {
-		fmt.Printf("failed to perform shutdown, err: %+v \n", err)
-	}
 
-	log.Println("shutting down HTTP server")
-	os.Exit(0)
+	log.Info("shutting down HTTP server")
+	err := a.HTTPServer.Shutdown(ctx)
+	if err != nil {
+		log.Errorf("failed to perform shutdown, err: %+v", err)
+	}
 }

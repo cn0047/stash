@@ -37,6 +37,7 @@ RETURN apoc.create.uuid() AS uuid;
 
 apoc.node.id(node);
 apoc.node.labels(node);
+apoc.node.relationship.types(node);
 apoc.rel.id(relationship);
 apoc.rel.type(relationship);
 

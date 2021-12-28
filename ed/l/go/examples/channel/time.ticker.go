@@ -5,6 +5,12 @@ import (
 	"time"
 )
 
+func main() {
+	// f1()
+	simpleTicker()
+	// f3()
+}
+
 func f1() {
 	threshold := 2 * time.Second
 	ticker := time.NewTicker(threshold)
@@ -25,19 +31,24 @@ func f1() {
 	fmt.Scanln()
 }
 
-func f2() {
-	done := time.After(1 * time.Second)
+func simpleTicker() {
+	done := time.After(7 * time.Second)
 	ticker := time.NewTicker(2 * time.Second)
 	go func() {
-		select {
-		case <-done:
-			print("done")
-		case <-ticker.C:
-			print("ticker")
+		defer fmt.Println("exit")
+		for {
+			select {
+			case <-done:
+				fmt.Println("done")
+				ticker.Stop()
+				return
+			case <-ticker.C:
+				fmt.Println("ticker")
+			}
 		}
 	}()
 
-	time.Sleep(5 * time.Second)
+	fmt.Scanln()
 }
 
 func f3() {
@@ -73,10 +84,4 @@ func f3() {
 		// Reset to reuse.
 		//timer.Reset(time.Second)
 	}
-}
-
-func main() {
-	// f1()
-	// f2()
-	f3()
 }

@@ -301,6 +301,8 @@ echo b1nd | tr 1 o               # bond # replace 1 to o
 echo b1nd | tr -d [0-9]          # result: bnd
 echo 'abc' | tr -d 'b'           # ac
 echo '(x)' | tr '()' '[]'        # result: [x]
+echo "1\n2" | tr -d '\n'         # result: 12
+echo '1\n2' | tr '\n' ' '        # result: 1 2
 echo 'hello   world' | tr -s ' ' # result: hello world
 tr -d '[:punct:]'                # punctuations: !@#$%^&*()_-+={}[];:'"`/>?.,<~|\
 ````

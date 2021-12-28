@@ -7,6 +7,19 @@ Spanner
 [golang](https://pkg.go.dev/cloud.google.com/go/spanner)
 
 ````sh
+db=testdb
+dbi=test-instance
+ddl() {
+  s=`echo $1 | tr '\n' ' '`
+  gcloud spanner databases ddl update $db --instance=$dbi --ddl=$s
+}
+q() {
+  s=`echo $1 | tr '\n' ' '`
+  gcloud spanner databases execute-sql $db --instance=$dbi --sql=$s
+}
+
+
+
 gcloud emulators spanner start
 
 # emulator
@@ -17,17 +30,20 @@ gcloud config set api_endpoint_overrides/spanner http://localhost:9020/
 
 
 
+db=testdb
+dbi=test-instance
+
 gcloud spanner instances list
 # emulator
-gcloud spanner instances create test-instance \
+gcloud spanner instances create $dbi \
   --config=to --description="TestEmulatorInstance" --nodes=1
 
-gcloud spanner databases list --instance=test-instance
+gcloud spanner databases list --instance=$dbi
 # create db
-gcloud spanner databases create testdb --instance=test-instance
+gcloud spanner databases create $db --instance=$dbi
 
-gcloud spanner databases ddl update testdb --instance=test-instance \
-  --ddl='CREATE TABLE test (id INT64 NOT NULL, msg STRING(100), data JSON) PRIMARY KEY(id)'
+ddl 'CREATE TABLE test (id INT64 NOT NULL, msg STRING(100), data JSON) PRIMARY KEY(id)'
+ddl 'DROP TABLE test'
 
 # query
 gcloud spanner databases execute-sql testdb --instance=test-instance --sql='

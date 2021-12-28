@@ -62,9 +62,9 @@ func insertJSON(ctx context.Context, c *spanner.Client) error {
 }
 
 type TestRow struct {
-	ID   int64            `json:"id"`
-	Msg  string           `json:"msg"`
-	Data spanner.NullJSON `json:"data"`
+	ID   int64            `json:"id" spanner:"id"`
+	Msg  string           `json:"msg" spanner:"msg"`
+	Data spanner.NullJSON `json:"data" spanner:"data"`
 }
 
 func selectTestRow1(ctx context.Context, c *spanner.Client) error {
