@@ -58,6 +58,8 @@ gcloud config set project itismonitoring
 gcloud config set project thisisrealtimelog
 gcloud config set disable_prompts false
 gcloud config set disable_usage_reporting true
+# ls configurations
+ls ~/.config/gcloud/configurations/
 
 gcloud projects list --format="json"
 gcloud projects list \
