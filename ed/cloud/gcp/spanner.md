@@ -10,12 +10,14 @@ Spanner
 db=testdb
 dbi=test-instance
 ddl() {
+  gcloud spanner databases ddl update $db --instance=$dbi --ddl=$1
+}
+ddl2() {
   s=`echo $1 | tr '\n' ' '`
-  gcloud spanner databases ddl update $db --instance=$dbi --ddl=$s
+  ddl $s
 }
 q() {
-  s=`echo $1 | tr '\n' ' '`
-  gcloud spanner databases execute-sql $db --instance=$dbi --sql=$s
+  gcloud spanner databases execute-sql $db --instance=$dbi --sql=$1
 }
 
 
@@ -44,14 +46,8 @@ gcloud spanner databases create $db --instance=$dbi
 
 ddl 'CREATE TABLE test (id INT64 NOT NULL, msg STRING(100), data JSON) PRIMARY KEY(id)'
 ddl 'DROP TABLE test'
-
-# query
-gcloud spanner databases execute-sql testdb --instance=test-instance --sql='
-  SELECT * FROM test;
-'
-gcloud spanner databases execute-sql testdb --instance=test-instance --sql="
-  INSERT INTO test (id, msg) VALUES (1, 'one');
-"
+q "INSERT INTO test (id, msg) VALUES (1, 'one')"
+q 'SELECT * FROM test'
 
 ````
 

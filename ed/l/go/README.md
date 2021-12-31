@@ -116,6 +116,9 @@ ptrace
 # in alpine docker image
 go get -u github.com/go-swagger/go-swagger/cmd/swagger
 $GOPATH/bin/swagger
+
+brew install golangci-lint
+golangci-lint run
 ````
 
 ````golang

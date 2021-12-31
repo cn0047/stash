@@ -22,7 +22,9 @@ func main() {
 
 	ctx := context.Background()
 	//err = insertJSON(ctx, c)
-	err = selectTestRow1(ctx, c)
+	//err = selectTestRow1(ctx, c)
+	//err = deleteTestRow1(ctx, c)
+	err = deleteTestRow1v2(ctx, c)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -65,6 +67,38 @@ type TestRow struct {
 	ID   int64            `json:"id" spanner:"id"`
 	Msg  string           `json:"msg" spanner:"msg"`
 	Data spanner.NullJSON `json:"data" spanner:"data"`
+}
+
+func deleteTestRow1v2(ctx context.Context, c *spanner.Client) error {
+	cb := func(ctx context.Context, txn *spanner.ReadWriteTransaction) error {
+		stmt := spanner.Statement{
+			SQL:    `DELETE FROM test WHERE id = @id`,
+			Params: map[string]interface{}{"id": 1},
+		}
+		_, err := txn.Update(ctx, stmt)
+		if err != nil {
+			return fmt.Errorf("failed to delete row from spanner, err: %w", err)
+		}
+		return nil
+	}
+	_, err := c.ReadWriteTransaction(ctx, cb)
+	if err != nil {
+		return fmt.Errorf("failed to perform transaction, err: %w", err)
+	}
+
+	return nil
+}
+
+func deleteTestRow1(ctx context.Context, c *spanner.Client) error {
+	m := []*spanner.Mutation{
+		spanner.Delete("test", spanner.Key{1}),
+	}
+	_, err := c.Apply(ctx, m)
+	if err != nil {
+		return fmt.Errorf("failed to delete row from spanner, err: %w", err)
+	}
+
+	return nil
 }
 
 func selectTestRow1(ctx context.Context, c *spanner.Client) error {
