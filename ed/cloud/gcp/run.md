@@ -18,4 +18,7 @@ gcloud run deploy $SERVICE_NAME \
   --allow-unauthenticated --platform=managed \
   --project=$PROJECT_ID
 
+# assign 100% of traffic to latest revision
+gcloud run services update-traffic $SERVICE_NAME --to-latest
+
 ````
