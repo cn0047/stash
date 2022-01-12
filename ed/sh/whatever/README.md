@@ -634,7 +634,7 @@ ss -an | grep 80 # ✅
 
 # osx
 sudo lsof -i -n -P | grep TCP
-sudo lsof -i -n -P | grep TCP.*80
+sudo lsof -i -n -P | grep 8080
 
 lsof -p $pid # info about process
 

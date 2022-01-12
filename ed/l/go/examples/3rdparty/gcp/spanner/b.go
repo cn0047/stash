@@ -40,7 +40,7 @@ func getClient() (*spanner.Client, error) {
 }
 
 func insertJSON(ctx context.Context, c *spanner.Client) error {
-	cb := func(ctx context.Context, txn *spanner.ReadWriteTransaction) error {
+	cb := func(ctx context.Context, tx *spanner.ReadWriteTransaction) error {
 		stmt := spanner.Statement{
 			SQL: `INSERT INTO test (id, msg, data) VALUES (@id, @msg, @data)`,
 			Params: map[string]interface{}{
@@ -49,7 +49,7 @@ func insertJSON(ctx context.Context, c *spanner.Client) error {
 				"data": spanner.NullJSON{Value: map[string]string{"foo": "bar"}, Valid: true},
 			},
 		}
-		_, err := txn.Update(ctx, stmt)
+		_, err := tx.Update(ctx, stmt)
 		if err != nil {
 			return fmt.Errorf("failed to perform insert, err: %w", err)
 		}
@@ -70,12 +70,12 @@ type TestRow struct {
 }
 
 func deleteTestRow1v2(ctx context.Context, c *spanner.Client) error {
-	cb := func(ctx context.Context, txn *spanner.ReadWriteTransaction) error {
+	cb := func(ctx context.Context, tx *spanner.ReadWriteTransaction) error {
 		stmt := spanner.Statement{
 			SQL:    `DELETE FROM test WHERE id = @id`,
 			Params: map[string]interface{}{"id": 1},
 		}
-		_, err := txn.Update(ctx, stmt)
+		_, err := tx.Update(ctx, stmt)
 		if err != nil {
 			return fmt.Errorf("failed to delete row from spanner, err: %w", err)
 		}
@@ -130,7 +130,7 @@ func updateUsingDMLStruct(w io.Writer, db string) error {
 	}
 	defer client.Close()
 
-	cb := func(ctx context.Context, txn *spanner.ReadWriteTransaction) error {
+	cb := func(ctx context.Context, tx *spanner.ReadWriteTransaction) error {
 		var n = Name{"Timothy", "Campbell"}
 		stmt := spanner.Statement{
 			SQL: `
@@ -139,7 +139,7 @@ func updateUsingDMLStruct(w io.Writer, db string) error {
 			`,
 			Params: map[string]interface{}{"name": n},
 		}
-		rowCount, err := txn.Update(ctx, stmt)
+		rowCount, err := tx.Update(ctx, stmt)
 		if err != nil {
 			return err
 		}

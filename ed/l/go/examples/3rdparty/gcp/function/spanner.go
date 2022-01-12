@@ -135,7 +135,7 @@ func InsertIntoTestTable1(ctx context.Context) error {
 
 // InsertIntoTestTable2 - Approach #2.
 func InsertIntoTestTable2(ctx context.Context) error {
-	cb := func(ctx context.Context, txn *spanner.ReadWriteTransaction) error {
+	cb := func(ctx context.Context, tx *spanner.ReadWriteTransaction) error {
 		stmt := spanner.Statement{
 			SQL: `INSERT INTO test (id, msg) VALUES (@id, @msg)`,
 			Params: map[string]interface{}{
@@ -143,7 +143,7 @@ func InsertIntoTestTable2(ctx context.Context) error {
 				"msg": "New message #2 generated at: " + time.Now().Format(time.Kitchen),
 			},
 		}
-		_, err := txn.Update(ctx, stmt)
+		_, err := tx.Update(ctx, stmt)
 		if err != nil {
 			return fmt.Errorf("failed to perform insert, err: %w", err)
 		}
@@ -159,7 +159,7 @@ func InsertIntoTestTable2(ctx context.Context) error {
 
 // InsertIntoTestTable3 - Approach #3.
 func InsertIntoTestTable3(ctx context.Context) error {
-	cb := func(ctx context.Context, txn *spanner.ReadWriteTransaction) error {
+	cb := func(ctx context.Context, tx *spanner.ReadWriteTransaction) error {
 		stmt := spanner.Statement{
 			SQL: `
 				INSERT INTO test (id, msg)
@@ -170,7 +170,7 @@ func InsertIntoTestTable3(ctx context.Context) error {
 				"msg": "New message #3 with sub query generated at: " + time.Now().Format(time.Kitchen),
 			},
 		}
-		_, err := txn.Update(ctx, stmt)
+		_, err := tx.Update(ctx, stmt)
 		if err != nil {
 			return fmt.Errorf("failed to perform insert, err: %w", err)
 		}
