@@ -13,6 +13,7 @@ for i in $( cat file.txt ); do
     echo item: $i;
 done
 
-for i in $( ls ); do
+# loop over files in dir
+for i in $( ls . ); do
     echo item: $i;
 done

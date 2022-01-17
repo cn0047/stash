@@ -7,7 +7,7 @@ Spanner
 [golang](https://pkg.go.dev/cloud.google.com/go/spanner)
 
 ````sh
-db=testdb
+db=test-db
 dbi=test-instance
 ddl() {
   gcloud spanner databases ddl update $db --instance=$dbi --ddl=$1
@@ -32,7 +32,7 @@ gcloud config set api_endpoint_overrides/spanner http://localhost:9020/
 
 
 
-db=testdb
+db=test-db
 dbi=test-instance
 
 gcloud spanner instances list
