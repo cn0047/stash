@@ -1,0 +1,49 @@
+name: Action to run integration tests
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "**"
+      - ".github/workflows/test.yml"
+  pull_request:
+    paths:
+      - "**"
+      - ".github/workflows/test.yml"
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Test env"
+        required: true
+        default: "test"
+
+env:
+  working-directory: "${{ github.workspace }}"
+  workflow-directory: "${{ github.workspace }}/.github/workflows"
+
+defaults:
+  run:
+    working-directory: .
+
+jobs:
+  tests-with-spanner:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: 'Set up Cloud SDK'
+        uses: google-github-actions/setup-gcloud@v0
+
+      - name: 'Start Spanner Emulator'
+        run: |
+          .ops/script/spanner.sh spanner-start test test-instance test-db
+          .ops/script/spanner.sh spanner-load-fixtures test-instance test-db
+
+      - name: 'Set up Go'
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.17
+
+      - name: 'Run BDD tests'
+        run: SPANNER_EMULATOR_HOST=localhost:9010 go test -v ./test/...
