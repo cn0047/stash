@@ -3,6 +3,7 @@ Spanner
 
 [docs](https://cloud.google.com/spanner/docs/apis)
 [query syntax](https://cloud.google.com/spanner/docs/reference/standard-sql/query-syntax#having_clause)
+[funcs](https://cloud.google.com/spanner/docs/reference/standard-sql/syntax)
 [golang](https://cloud.google.com/spanner/docs/getting-started/go)
 [golang](https://pkg.go.dev/cloud.google.com/go/spanner)
 
