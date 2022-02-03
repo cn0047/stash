@@ -18,7 +18,9 @@ curl
 -v, --verbose
 -x, --proxy [PROTOCOL://]HOST[:PORT] # Use proxy on given port
 
--H 'Content-Type: application/json; charset=UTF-8 application/json; charset=UTF-8' \
+jh='Content-Type: application/json'
+jh='Content-Type: application/json; charset=UTF-8 application/json; charset=UTF-8'
+-H $jh
 
 # (REST) JSON at POST.
 # More examples available here: https://github.com/cn007b/my/blob/master/ed/php.symfony/generateRESTapi.md

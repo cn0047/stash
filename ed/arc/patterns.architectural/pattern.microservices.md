@@ -127,3 +127,6 @@ have to use **Correlation ID** (or **Trace ID**) for each service call
 
 * Use an **exponential backoff** algorithm retries requests exponentially,
 increasing the waiting time between retries up to a maximum backoff time.
+
+* Use separate Authentication & Authorization service for auth,
+which is connected with API-Gateway (or part of it).

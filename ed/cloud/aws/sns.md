@@ -8,23 +8,23 @@ SNS - pub/sub (many-to-many, fan out) messaging service.
 Use to push message.
 
 Types of clients:
-* Publisher (aka Producer)
-* Subscriber (aka Consumer)
+* Publisher (aka Producer).
+* Subscriber (aka Consumer).
 
 The type of endpoint to subscribe:
-* HTTP
-* HTTPS
-* Email
-* Email-Json
-* AWS SQS
-* AWS Lambda
-* Platform Application Endpoint
-* SMS
+* HTTP.
+* HTTPS.
+* Email.
+* Email-Json.
+* AWS SQS.
+* AWS Lambda.
+* Platform Application Endpoint.
+* SMS.
 
 Components:
-* Topic
-* Subscription
-* Publisher
+* Topic.
+* Subscription.
+* Publisher.
 
 Topic settings:
 * Delivery retry policy:
