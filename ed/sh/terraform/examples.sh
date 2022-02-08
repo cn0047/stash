@@ -13,17 +13,17 @@ open https://realtimelog.herokuapp.com:443/64kfym341kp2
 go run $GOPATH/src/app/main.go k31 val200 200
 for i in $(seq 2000 2999); do go run $GOPATH/src/app/main.go "k$i" val200 $i; done
 
-# aws.ec2
-cd ed/sh/terraform/examples/aws.ec2
+# aws.ec2only
+cd ed/sh/terraform/examples/aws.ec2only
 c=plan
 c=apply
 c=refresh
 c=destroy
 terraform $c -var-file=ec2.tfvars -lock=false
 
-# aws.x
+# aws.ec2
 # @see: docket image build in k8s
-cd ed/sh/terraform/examples/aws.x/environments/dev
+cd ed/sh/terraform/examples/aws.ec2/environments/dev
 export AWS_PROFILE=x
 terraform init
 terraform plan
