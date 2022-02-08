@@ -35,6 +35,17 @@ scp -i $key /tmp/xgoapp ec2-user@$h:/tmp
 # ssh and run bin file
 ssh -i $key ec2-user@$h
 
+
+
+# gcp.storage
+cd ed/sh/terraform/examples/gcp.storage/
+terraform init
+terraform plan
+terraform apply
+terraform destroy
+
+
+
 #
 cd ed/sh/terraform/examples/aws.k8s
 terraform init
