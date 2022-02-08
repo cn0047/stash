@@ -27,6 +27,8 @@ export GOOGLE_APPLICATION_CREDENTIALS=${CURDIR}/serviceAccount.json
 
 gcloud app describe
 
+gcloud compute zones list
+
 gcloud components list
 gcloud components update
 gcloud components install app-engine-php

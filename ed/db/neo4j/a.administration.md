@@ -67,6 +67,7 @@ CALL db.schema(); // v3
 CALL db.schema.visualization();
 CALL db.labels();
 CALL dbms.procedures() YIELD name, signature RETURN * ;
+CALL apoc.meta.stats(); // the best!
 
 // properties for node Activity
 CALL apoc.meta.schema() YIELD value as schemaMap
