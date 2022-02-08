@@ -1,4 +1,14 @@
-# tf xamples
+# tf examples
+
+# common
+terraform init
+terraform init -reconfigure
+terraform plan
+terraform apply
+terraform apply -auto-approve
+terraform destroy
+
+
 
 # aws.st
 cd ed/sh/terraform/examples/aws.st
@@ -25,9 +35,7 @@ terraform $c -var-file=ec2.tfvars -lock=false
 # @see: docket image build in k8s
 cd ed/sh/terraform/examples/aws.ec2/environments/dev
 export AWS_PROFILE=x
-terraform init
-terraform plan
-terraform apply
+# use common commands here
 # run
 h=''
 key=/Users/kovpakvolodymyr/web/kovpak/gh/ed/sh/ssh/examples/nopwd/id_rsa
@@ -35,23 +43,9 @@ scp -i $key /tmp/xgoapp ec2-user@$h:/tmp
 # ssh and run bin file
 ssh -i $key ec2-user@$h
 
-
-
-# gcp.storage
-cd ed/sh/terraform/examples/gcp.storage/
-terraform init
-terraform plan
-terraform apply
-terraform destroy
-
-
-
-#
+# aws.k8s
 cd ed/sh/terraform/examples/aws.k8s
-terraform init
-terraform plan
-terraform apply
-terraform destroy
+# use common commands here
 cfg=kubeconfig_my-cluster
 d=~/web/kovpak/gh/
 kubectl --kubeconfig=$cfg get pods
@@ -59,3 +53,17 @@ kubectl --kubeconfig=$cfg apply --force=true -f $d/ed/sh/kubernetes/examples/log
 kubectl --kubeconfig=$cfg apply --force=true -f $d/ed/sh/kubernetes/examples/sh/pod.yaml
 kubectl --kubeconfig=$cfg delete pod log-pod
 kubectl --kubeconfig=$cfg delete pod ksh-pod
+
+
+
+# gcp.storage
+cd ed/sh/terraform/examples/gcp.storage
+# use common commands here
+
+# gcp.function
+cd ed/sh/terraform/examples/gcp.function
+zip func.zip func.go
+# use common commands here
+
+# gcp.apigee
+cd ed/sh/terraform/examples/gcp.apigee/environments/test

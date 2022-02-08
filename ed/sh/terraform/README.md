@@ -49,6 +49,7 @@ var.a != "" ? var.a : "default-a"
 
 ````sh
 terraform init
+terraform init -reconfigure
 
 # shows plan which will by applied
 terraform plan
