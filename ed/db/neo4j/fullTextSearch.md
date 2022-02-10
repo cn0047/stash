@@ -13,6 +13,11 @@ CALL db.index.fulltext.createNodeIndex('idx_name', ['Person', 'Organization'], [
 CALL db.index.fulltext.createNodeIndex('idx_about', ['Person'], ['about']);
 CALL db.index.fulltext.createNodeIndex('idx_all_text', ['Person'], ['name', 'code', 'about']);
 CALL db.index.fulltext.createNodeIndex('idx_code', ['Person'], ['code'], {analyzer: 'url_or_email', eventually_consistent: 'true'});
+// or
+CREATE FULLTEXT INDEX idx_all_text
+FOR (n:Person)
+ON EACH [n.name, n.code, n.about]
+OPTIONS {indexConfig: {`fulltext.analyzer`: 'my-analyzer'}};
 
 // get indexes
 CALL db.indexes();
@@ -22,6 +27,7 @@ CALL db.index.fulltext.listAvailableAnalyzers;
 
 // delete index
 CALL db.index.fulltext.drop('idx_code');
+DROP INDEX idx_code IF EXISTS;
 ````
 
 ## Search

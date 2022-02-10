@@ -33,7 +33,7 @@ Noncer - creates request nonces.
 Example (Facebook):
 
 1st time:
-  * Login page "Log in with Facebook" and href leads to `fb-callback.php`.
+  * Login page "Login with Facebook" and href leads to `fb-callback.php`.
   * `SDK.getAccessTokenFromFacebook()` opens page "Facebook agreement".
   * Facebook sends callback to `fb-callback.php` with token.
   * `$tokenMetadata->validateAppId(APP_ID);`.

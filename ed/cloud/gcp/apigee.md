@@ -2,6 +2,7 @@ Apigee
 -
 
 [docs](https://cloud.google.com/apigee/docs)
+[oauth](https://cloud.google.com/apigee/docs/api-platform/tutorials/secure-calls-your-api-through-oauth-20-client-credentials)
 
 Apigee - gateway.
 
@@ -14,6 +15,12 @@ gcloud apigee products list
 
 gcloud alpha apigee operations list
 
+````
+
+API key policy:
+````
+<APIKey ref="request.queryparam.apikey"/>
+<APIKey ref="request.header.x-api-key"/>
 ````
 
 ````sh
@@ -75,9 +82,48 @@ INTERNAL_LOAD_BALANCER_IP=$(curl -H "$AUTH" "https://apigee.googleapis.com/v1/or
 # download certificate
 curl -H "$AUTH" "https://apigee.googleapis.com/v1/organizations/$PROJECT_ID" | jq -r .caCertificate | base64 -d > cacert.crt
 
+
+
 # curl
-curl -H "Host: $ENV_GROUP_HOSTNAME" "https://example.$PROJECT_ID.apigee.internal/hw" \
-  --resolve "example.$PROJECT_ID.apigee.internal:443:$INTERNAL_LOAD_BALANCER_IP" \
-  --cacert cacert.crt
+h="Host: $ENV_GROUP_HOSTNAME"
+r="example.$PROJECT_ID.apigee.internal:443:$INTERNAL_LOAD_BALANCER_IP"
+c='cacert.crt'
+# &
+u="https://example.$PROJECT_ID.apigee.internal/hw"
+curl -H "$h" --cacert $c --resolve $r $u
+
+# auth url
+u="https://example.$PROJECT_ID.apigee.internal/hw2"
+u="https://example.$PROJECT_ID.apigee.internal/hw2?apikey=$key"
+curl -H "$h" --cacert $c --resolve $r $u
+
+# auth header
+k="x-api-key: $key"
+u="https://example.$PROJECT_ID.apigee.internal/hw3"
+curl -H "$h" --cacert $c --resolve $r -H "$k" $u
+
+
+````
+
+````sh
+# curl internal apigee proxy with oauth
+
+# api key
+key=''
+secret=''
+
+# curl
+u="https://example.$PROJECT_ID.apigee.internal/hw5"
+curl -v -H "$h" --cacert $c --resolve $r $u
+# get token
+u="https://example.$PROJECT_ID.apigee.internal/oauth/client_credential/accesstoken?grant_type=client_credentials"
+curl -v -X POST -H "$h" --cacert $c --resolve $r $u \
+-H "Content-Type: application/x-www-form-urlencoded" \
+-d "client_id=$key&client_secret=$secret"
+# use access_token from output
+at=''
+t="Authorization: Bearer $at"
+u="https://example.$PROJECT_ID.apigee.internal/hw5"
+curl -H "$h" --cacert $c --resolve $r -H "$t" $u
 
 ````
