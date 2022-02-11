@@ -10,7 +10,9 @@ tag=4.1
 tag=4.1.1-enterprise
 tag=4.3.3
 tag=4.3.7
-docker run -it --rm --net=xnet -p 7474:7474 -p 7687:7687 --name xneo4j --hostname xneo4j \
+tag=4.4.0
+tag=4.4.0-enterprise
+docker run -it --rm --net=xnet -v $PWD:/gh -p 7474:7474 -p 7687:7687 --name xneo4j --hostname xneo4j \
   -v $PWD/.data/.docker/neo4j_$tag:/data \
   -e NEO4J_AUTH=neo4j/test \
   \

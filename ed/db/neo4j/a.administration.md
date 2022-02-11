@@ -243,6 +243,19 @@ docker exec -it xneo4j sh -c '
 '
 ````
 
+Backup:
+
+````sh
+db=''
+dir="$db.bak"
+from='localhost:7474'
+
+neo4j-admin backup --database=$db --from=$from --backup-dir=$dir \
+  --check-consistency=false --verbose
+
+neo4j-admin restore --from=$dir --database=$db --force --verbose
+````
+
 ## Configuration
 
 ````sh
