@@ -4,6 +4,7 @@ Apigee
 [docs](https://cloud.google.com/apigee/docs)
 [docs](https://docs.apigee.com/api-platform/reference/apigee-reference)
 [oauth](https://cloud.google.com/apigee/docs/api-platform/tutorials/secure-calls-your-api-through-oauth-20-client-credentials)
+[examples](https://github.com/apigee/api-platform-samples)
 
 Apigee - gateway.
 
@@ -34,7 +35,7 @@ PROJECT_NUMBER=$(gcloud projects describe $PROJECT_ID --format="value(projectNum
 TOKEN=$(gcloud auth print-access-token)
 AUTH="Authorization: Bearer $TOKEN"
 # get apigee instance
-curl -H $AUTH "https://apigee.googleapis.com/v1/organizations/$PROJECT_ID/instances"
+curl -H $AUTH "https://apigee.googleapis.com/v1/organizations/$PROJECT_ID/instances" | jq
 
 # use name from output
 INSTANCE_NAME='us-central1'
@@ -65,7 +66,7 @@ gcloud beta compute --project=$PROJECT_ID instances create $INSTANCE_NAME \
   --shielded-integrity-monitoring \
   --reservation-affinity=any
 
-# check
+# list instances
 gcloud beta compute instances list
 
 # delete if needed

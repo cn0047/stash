@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout continueOnError="false" enabled="true" name="Service-Callout-1">
+    <DisplayName>Service Callout-1</DisplayName>
+    <Properties/>
+    <Request clearPayload="true" variable="myRequest">
+        <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+        <Add>
+            <Headers>
+                <Header name="X-Token">{request.header.X-Token}</Header>
+            </Headers>
+        </Add>
+    </Request>
+    <Response>calloutResponse</Response>
+    <HTTPTargetConnection>
+        <Properties/>
+        <URL>https://us-central1-sandbox-x.cloudfunctions.net/auth_checker</URL>
+    </HTTPTargetConnection>
+</ServiceCallout>
