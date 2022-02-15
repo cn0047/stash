@@ -2,6 +2,7 @@ Apigee
 -
 
 [docs](https://cloud.google.com/apigee/docs)
+[docs](https://docs.apigee.com/api-platform/reference/apigee-reference)
 [oauth](https://cloud.google.com/apigee/docs/api-platform/tutorials/secure-calls-your-api-through-oauth-20-client-credentials)
 
 Apigee - gateway.
@@ -63,6 +64,9 @@ gcloud beta compute --project=$PROJECT_ID instances create $INSTANCE_NAME \
   --shielded-vtpm \
   --shielded-integrity-monitoring \
   --reservation-affinity=any
+
+# check
+gcloud beta compute instances list
 
 # delete if needed
 gcloud beta compute --project=$PROJECT_ID instances delete $INSTANCE_NAME
