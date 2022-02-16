@@ -259,6 +259,8 @@ neo4j-admin restore --from=$dir --database=$db --force --verbose
 ## Configuration
 
 ````sh
+NEO4J_HOME=/var/lib/neo4j    # default
+
 $NEO4J_HOME/conf/neo4j.conf
 $NEO4J_HOME/data             # data dir
 $NEO4J_HOME/import           # `LOAD CSV`

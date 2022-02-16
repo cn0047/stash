@@ -4,6 +4,8 @@
 # -e NEO4J_dbms_ssl_policy_bolt_enabled=false \
 # -e NEO4J_dbms_ssl_policy_https_enabled=false \
 
+NEO4JLABS_PLUGINS='["apoc", "streams", "graphql", "graph-algorithms", "n10s"]'
+
 
 
 tag=4.1
@@ -14,6 +16,7 @@ tag=4.4.0
 tag=4.4.0-enterprise
 docker run -it --rm --net=xnet -v $PWD:/gh -p 7474:7474 -p 7687:7687 --name xneo4j --hostname xneo4j \
   -v $PWD/.data/.docker/neo4j_$tag:/data \
+  -v $PWD/.data/.docker/neo4j_gs_plugins:/var/lib/neo4j/plugins \
   -e NEO4J_AUTH=neo4j/test \
   \
   -e NEO4J_ACCEPT_LICENSE_AGREEMENT=yes \
@@ -21,11 +24,16 @@ docker run -it --rm --net=xnet -v $PWD:/gh -p 7474:7474 -p 7687:7687 --name xneo
   -e NEO4J_apoc_export_file_enabled=true \
   -e NEO4J_apoc_import_file_enabled=true \
   -e NEO4J_apoc_import_file_use__neo4j__config=true \
-  -e NEO4JLABS_PLUGINS=\[\"apoc\"\] \
+  -e NEO4JLABS_PLUGINS='["apoc"]' \
   \
   neo4j:$tag \
   \
   /bin/bash # in case of import/dump or some shell commands
+
+# in case of apoc related error
+rm $PWD/.data/.docker/neo4j_gs_plugins/apoc.jar
+
+
 
 # 3.5
 docker run -it --rm --net=xnet -p 7474:7474 -p 7687:7687 --name xneo4j --hostname xneo4j \

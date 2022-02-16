@@ -7,6 +7,7 @@ GitHub
 [status](https://www.githubstatus.com/)
 [REST API](https://docs.github.com/en/rest)
 [actions example](https://github.com/cn007b/docker-ubuntu/blob/master/.github/workflows/docker-image.yml)
+[diagram in markdown](https://github.com/mermaid-js/mermaid)
 
 Don't forget to hit "Squash and merge" instead of "Merge pull request" for pr with > 1 commits.
 
