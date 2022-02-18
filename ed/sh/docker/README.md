@@ -44,9 +44,9 @@ Docker registry - stores Docker images.
 Docker objects: images, containers, networks, volumes, etc.
 
 ````sh
-http://host.docker.internal         # connect to host machine from container.
-http://docker.for.mac.host.internal # ↑
-http://gateway.docker.internal
+host.docker.internal         # connect to host machine from container.
+docker.for.mac.host.internal # ↑
+gateway.docker.internal
 ````
 
 ````sh
