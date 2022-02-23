@@ -3,6 +3,7 @@ slack
 
 [status](https://status.slack.com/)
 [emoji](https://slackmojis.com/)
+[status](https://status.slack.com/)
 
 ````
 @here

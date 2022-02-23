@@ -22,6 +22,8 @@ npm -g install connect
 npm uninstall modulename
 npm update modulename
 
+npm init
+
 npm ll
 npm ls
 npm ls -g
@@ -71,7 +73,7 @@ nsp # CLI tool to help identify known vulnerabilities
 @nuxtjs/localtunnel # expose your localhost as public server
 ````
 
-````
+````js
 console.log(argv.one + " " + argv.two);
 ./app2.js --one="My" --two="Name"
 ````
@@ -113,7 +115,7 @@ console.log(argv.one + " " + argv.two);
 
 ### Colors
 
-````
+````js
 npm install colors
 
 var colors = require('colors');
