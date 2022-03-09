@@ -5,8 +5,12 @@ Apigee
 [docs](https://docs.apigee.com/api-platform/reference/apigee-reference)
 [oauth](https://cloud.google.com/apigee/docs/api-platform/tutorials/secure-calls-your-api-through-oauth-20-client-credentials)
 [examples](https://github.com/apigee/api-platform-samples)
+[API](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest)
+[API operations](https://apidocs.apigee.com/operations)
 
 Apigee - gateway.
+
+Apigee environment deployment type: proxy, archive.
 
 ````sh
 gcloud apigee applications list
@@ -29,11 +33,53 @@ API key policy:
 # curl internal apigee proxy
 
 PROJECT_ID='' # !!!
+ORG=''
 SA='' # !!!
 SUBNET='default'
 PROJECT_NUMBER=$(gcloud projects describe $PROJECT_ID --format="value(projectNumber)")
+
+# get token
 TOKEN=$(gcloud auth print-access-token)
 AUTH="Authorization: Bearer $TOKEN"
+````
+
+````sh
+h='https://api.enterprise.apigee.com'
+h='https://apigee.googleapis.com'
+
+# get environments
+curl -X GET -H $AUTH "$h/v1/organizations/$ORG/environments" | jq
+
+# targetservers
+env='test'
+curl -X GET -H $AUTH "$h/v1/organizations/$ORG/environments/$env/targetservers" | jq
+
+# get apigee instances
+curl -X GET -H $AUTH "$h/v1/organizations/$ORG/instances" | jq
+
+# get APIs
+curl -X GET -H $AUTH "$h/v1/organizations/$ORG/apis" | jq
+
+# get API
+curl -X GET -H $AUTH "$h/v1/organizations/$ORG/apis/$name" | jq
+
+# create API
+curl -X POST -H $AUTH "$h/v1/organizations/$ORG/apis" \
+  -H Content-Type="multipart/form-data" -F "file=@apiproxy.zip"
+
+# delete API
+curl -X DELETE -H $AUTH "$h/v1/organizations/$ORG/apis/$name" | jq
+
+# get revisions
+curl -X GET -H $AUTH "$h/v1/organizations/$ORG/apis/$name/revisions" | jq
+curl -X GET -H $AUTH "$h/v1/organizations/$ORG/apis/$name/revisions/$revision" | jq
+
+# get deployments
+curl -X GET -H $AUTH "$h/v1/organizations/$ORG/apis/$name/deployments" | jq
+
+````
+
+````sh
 # get apigee instance
 curl -H $AUTH "https://apigee.googleapis.com/v1/organizations/$PROJECT_ID/instances" | jq
 

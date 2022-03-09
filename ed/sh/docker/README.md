@@ -50,6 +50,11 @@ gateway.docker.internal
 ````
 
 ````sh
+# ddos
+docker run -it --rm alpine/bombardier -c 1000 -d 3600s -l https://realtimelog.herokuapp.com/
+````
+
+````sh
 docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
 
 docker pull ubuntu
