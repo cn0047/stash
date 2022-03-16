@@ -3,10 +3,12 @@ GitHub
 
 [most followed](https://github.com/search?utf8=%E2%9C%93&q=followers%3A%3E%3D10000&type=Users)
 [top repositories](https://github.com/search?q=stars:%3E1&s=stars&type=Repositories)
-[sponsors](https://help.github.com/en/github/supporting-the-open-source-community-with-github-sponsors/about-github-sponsors)
+[sponsors](https://github.com/sponsors/cn007b)
+[sponsors docs](https://help.github.com/en/github/supporting-the-open-source-community-with-github-sponsors/about-github-sponsors)
 [status](https://www.githubstatus.com/)
 [REST API](https://docs.github.com/en/rest)
 [actions example](https://github.com/cn007b/docker-ubuntu/blob/master/.github/workflows/docker-image.yml)
+[actions docs](https://docs.github.com/en/actions/creating-actions/about-custom-actions)
 [diagram in markdown](https://github.com/mermaid-js/mermaid)
 [actions toolkit](https://github.com/actions/toolkit)
 

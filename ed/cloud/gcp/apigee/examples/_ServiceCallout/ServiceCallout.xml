@@ -13,6 +13,6 @@
     <Response>calloutResponse</Response>
     <HTTPTargetConnection>
         <Properties/>
-        <URL>https://us-central1-sandbox-x.cloudfunctions.net/auth_checker</URL>
+        <URL>https://host.com/auth_checker</URL>
     </HTTPTargetConnection>
 </ServiceCallout>

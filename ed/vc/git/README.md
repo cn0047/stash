@@ -13,6 +13,12 @@ Git is a free and open source distributed version control system.
 =======
 >>>>>>> somehash
 
+git config user.name "V.K."
+git config user.email "cn007b@gmail.com"
+git commit --amend --author="V.K. <cn007b@gmail.com>"
+
+
+
 export GIT_TRACE_PACKET=1
 export GIT_TRACE_PACK_ACCESS=1
 export GIT_TRACE_PERFORMANCE=1
@@ -31,7 +37,7 @@ git config --global core.compression 0
 # get config value
 git config user.name
 # set config value
-git config user.name "V. Kovpak"
+git config user.name "V.K."
 git config user.email "cn007b@gmail.com"
 
 # from jenkins
@@ -58,7 +64,7 @@ HEAD^^ == HEAD~2
 git commit -m 'Message'
 git commit -m "PROJ-123 my comment..." # for JIRA
 git commit --amend # update commit message
-git commit --amend --author="V.Kovpak <cn007b@gmail.com>"
+git commit --amend --author="V.K. <cn007b@gmail.com>"
 
 git log -2                # last 2 commits
 git log -p                # shows commits & code in commit
