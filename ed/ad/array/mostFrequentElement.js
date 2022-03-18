@@ -2,7 +2,6 @@
  * Get position in array of most frequent element.
  *
  * @param {array} a Array with numbers.
- *
  * @return {number} Index in array of most frequent element.
  */
 function f(arr) {
