@@ -88,15 +88,15 @@ Analyzers are used - when we index a document.
 #### Aggregations (Analytics)
 
 Types:
-* methic - stats (avg, cardinality)
-* bucketing - categorize into groups
-* matrix - may be deleted in future releases
-* pipeline - may be deleted in future releases
+* methic - stats (avg, cardinality).
+* bucketing - categorize into groups.
+* matrix - may be deleted in future releases.
+* pipeline - may be deleted in future releases.
 
 #### Full-text search
 
 Types:
-* match
-* match_phrase
-* wildcard
-* prefix
+* match.
+* match_phrase.
+* wildcard.
+* prefix.

@@ -19,10 +19,10 @@ The parameters allowed in the URI search
 There are three types of `match` query: `boolean`, `phrase`, and `phrase_prefix`.
 
 Boolean:
-* must - clause must appear in matching documents.
-* should - may appear but may ney not.
-* must_not
-* filter - must appear in result but result not scored.
+* `must` - clause must appear in matching documents.
+* `must_not` - clause must not appear in matching documents.
+* `should` - may appear but may ney not.
+* `filter` - must appear in result but result not scored.
 
 `search_after` more efficient than `from/size` and `scroll`,
 just use value from `sort` field provided by previous search.
@@ -98,4 +98,3 @@ curl -XGET $url/_search -d '{
 }'
 
 ````
-

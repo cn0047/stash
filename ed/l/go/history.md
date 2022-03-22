@@ -3,6 +3,12 @@ History of Go
 
 [release notes](https://golang.org/doc/go1.13)
 
+#### go1.18
+
+* Generics.
+* Fuzzing.
+* Multiple modules workspaces.
+
 #### go1.17
 
 #### go1.16

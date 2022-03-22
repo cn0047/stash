@@ -2,10 +2,10 @@ Aggregations (Analytics)
 -
 
 Types:
-* methic - stats (avg, cardinality)
-* bucketing - categorize into groups
-* matrix - may be deleted in future releases
-* pipeline - may be deleted in future releases
+* methic - stats (avg, cardinality).
+* bucketing - categorize into groups.
+* matrix - may be deleted in future releases.
+* pipeline - may be deleted in future releases.
 
 ````sh
 url=localhost:9200/megacorp/employee

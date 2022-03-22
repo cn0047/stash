@@ -160,7 +160,7 @@ Artifacts:
   * Velocity.
 
 **Velocity** is a measure of the amount of work a Team can tackle
-during a single Sprint and is the key metric in Scrum.
+during a single sprint and is the key metric in Scrum.
 <br>Velocity is equivalent to a specification of an object's
 speed and direction of motion (e.g. 60 km/h to the north).
 

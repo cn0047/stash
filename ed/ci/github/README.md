@@ -1,14 +1,37 @@
 GitHub Actions
 -
 
-````
+[context](https://docs.github.com/en/actions/learn-github-actions/contexts#github-context)
+[env](https://docs.github.com/en/actions/learn-github-actions/environment-variables#default-environment-variables)
+[workflow](https://docs.github.com/en/actions/using-workflows)
+[custom action](https://docs.github.com/en/actions/creating-actions/about-custom-actions)
+[toolkit](https://github.com/actions/toolkit)
+[docker example](https://github.com/cn007b/docker-ubuntu/blob/master/.github/workflows/docker-image.yml)
+
+Workflow - configurable automated process that will run one or more jobs.
+Event - specific activity in a repo that triggers workflow run.
+Job - set of steps in a workflow.
+Action - custom application for the GitHub actions platform that performs a complex task.
+Runner - server that runs workflow.
+
+````sh
+# set secret in repo with workflow for more debug logs:
+ACTIONS_STEP_DEBUG=true
+
 ${{secrets.MY_KEY}}
 ````
 
 ````yaml
+# .github/workflows/x.yaml
+
 env:
   HASH: $(git rev-parse --short "$GITHUB_SHA")
   BRANCH: ${GITHUB_REF##*/}
+  working-directory: "${{ github.workspace }}"
+
+defaults:
+  run:
+    working-directory: .
 
 jobs:
   _not_push_to_gcr_1:

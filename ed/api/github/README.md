@@ -7,10 +7,7 @@ GitHub
 [sponsors docs](https://help.github.com/en/github/supporting-the-open-source-community-with-github-sponsors/about-github-sponsors)
 [status](https://www.githubstatus.com/)
 [REST API](https://docs.github.com/en/rest)
-[actions example](https://github.com/cn007b/docker-ubuntu/blob/master/.github/workflows/docker-image.yml)
-[actions docs](https://docs.github.com/en/actions/creating-actions/about-custom-actions)
 [diagram in markdown](https://github.com/mermaid-js/mermaid)
-[actions toolkit](https://github.com/actions/toolkit)
 
 Don't forget to hit "Squash and merge" instead of "Merge pull request" for pr with > 1 commits.
 
@@ -28,6 +25,8 @@ curl https://api.github.com/users/cn007b/repos
 curl https://api.github.com/users/cn007b/orgs
 # url to tar archive to last release
 curl https://api.github.com/repos/cn007b/monitoring/releases | jq '.[0].assets[].browser_download_url' | grep linux
+
+https://api.github.com/orgs/thepkg
 ````
 
 To add image into gist:
