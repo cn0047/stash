@@ -3,6 +3,7 @@
 # @example:
 # grabDockerHubTags 'tensorflow/tensorflow'
 # grabDockerHubTags 'cn007b/ubuntu'
+# grabDockerHubTags 'library/golang'
 grabDockerHubTags() {
   repo=$1
   rm -rf ./dockerHubTags && mkdir ./dockerHubTags && cd ./dockerHubTags
