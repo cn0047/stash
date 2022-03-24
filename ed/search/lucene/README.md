@@ -17,9 +17,11 @@ id:>400
 
 _exists_:user.name # exists field, colon ":" here to separate field name
 NOT _exists_:user.name # exists field
+
+labels: (* AND -foo) # labels string not contains foo
 ````
 
-Operators: AND, "+", OR, NOT, "-" (‼️ operators must be ALL CAPS).
+Operators: AND, "+", OR, NOT, "-" (‼️ operators must be all in UPPER CASE).
 ````sh
 msg -Error # not Error
 msg !Error # not Error
