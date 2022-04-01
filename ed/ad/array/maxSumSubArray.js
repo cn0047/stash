@@ -1,25 +1,26 @@
 // Kadane's algorithm.
 // @see: https://leetcode.com/problems/maximum-subarray
 
+// Returns subarray with the largest sum.
 var f = function (a) {
-  var maxSoFar = a[0];
-  var maxEnding = 0;
-  var start = 0;
-  var end = 0;
+  var max = a[0];
+  var currentMax = 0;
+  var startIndex = 0;
+  var endIndex = 0;
   var s = 0;
   for (var i = 0; i < a.length; i++) {
-    maxEnding += a[i];
-    if (maxSoFar < maxEnding) {
-      maxSoFar = maxEnding;
-      start = s;
-      end = i;
+    currentMax += a[i];
+    if (max < currentMax) {
+      max = currentMax;
+      startIndex = s;
+      endIndex = i;
     }
-    if (maxEnding < 0) {
-      maxEnding = 0;
+    if (currentMax < 0) {
+      currentMax = 0;
       s = i + 1;
     }
   }
-  return maxSoFar;
+  return max;
 }
 
 console.log(f([-2, 1, -3, 4, -1, 2, 1, -5, 4])); // 6
