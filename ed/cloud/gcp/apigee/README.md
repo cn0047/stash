@@ -12,6 +12,11 @@ Apigee - gateway.
 
 Apigee environment deployment type: proxy, archive.
 
+Organization - top-level container in Apigee.
+It contains all API proxies and related resources.
+
+Organization types: paid, evaluation.
+
 ````sh
 gcloud apigee applications list
 gcloud apigee deployments list
@@ -21,6 +26,8 @@ gcloud apigee products list
 
 gcloud alpha apigee operations list
 
+gcloud alpha apigee organizations list
+gcloud alpha apigee organizations delete $org
 ````
 
 API key policy:

@@ -543,6 +543,16 @@ Only the sender should close a channel, never the receiver
 
 For standard Go compiler, size of channel element types must be smaller than 65536.
 
+#### Generics
+
+**generics**.
+
+**constraint** allows any type implementing the interface.
+
+**any** type constraint that permits any type.
+
+**type parameter** - type that is currently unknown but that will be known when the function is called.
+
 #### Runtime
 
 runtime:

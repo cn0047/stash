@@ -49,7 +49,11 @@ npm audit fix --force
 ````
 
 ````sh
+npm i
 npm install --only=prod
+
+# for automated environments: test, ci/cd
+npm ci
 
 # npm install -g nodemon
 nodemon ./server.js localhost 8080

@@ -29,6 +29,7 @@ export GOFLAGS=-mod=
 # to fix error: fatal: could not read Username for 'https://*.com': terminal prompts disabled
 git config --global url."git@github.com:".insteadOf "https://github.com/"
 git config --global url."git@bitbucket.org:".insteadOf "https://bitbucket.org/"
+git config --global url."git@github.com:org/".insteadOf "https://github.com/org/"
 
 go mod init
 go mod init example.com/my/module/v2

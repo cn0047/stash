@@ -48,6 +48,8 @@ var.a != "" ? var.a : "default-a"
 ````
 
 ````sh
+brew install tflint
+
 terraform init
 terraform init -reconfigure
 

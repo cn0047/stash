@@ -28,6 +28,7 @@ env:
   HASH: $(git rev-parse --short "$GITHUB_SHA")
   BRANCH: ${GITHUB_REF##*/}
   working-directory: "${{ github.workspace }}"
+  env-name: ${{ (github.event.inputs && github.event.inputs.environment) || 'stg' }}
 
 defaults:
   run:

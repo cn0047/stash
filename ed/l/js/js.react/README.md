@@ -4,9 +4,11 @@ React JS
 <br>v16.8.6
 <br>v15.4.0
 
+[Supported HTML Attributes](https://facebook.github.io/react/docs/dom-elements.html#all-supported-html-attributes)
+[SyntheticEvent](https://facebook.github.io/react/docs/events.html#supported-events)
 [Wall](https://github.com/cn007b/wall/blob/master/wall/src/web/js/implementation/react/babel/app.babel)
 
-React is a declarative, efficient, and flexible JavaScript library for building user interfaces.
+React is a declarative, efficient, and flexible JS library for building user interfaces.
 
 ````sh
 <script src="https://unpkg.com/react@latest/dist/react.js"></script>
@@ -24,20 +26,16 @@ cd hello-world
 npm start
 ````
 
-````js
-this.setState(prevState => Object.assign({}, prevState, {new: "new"}));
-````
-
 Component may be:
-* function component (`const MyCmpnt = () => { return someJSX }`)
-* class component
+* function component (`const MyCmpnt = () => { return someJSX }`).
+* class component.
 
 Use class component when you need: to work with state, refs, lifecycle events, child functions.
-Everywhere else use function component (stateless component).
+Everywhere else use function component (stateless component) (`React.FunctionComponent`).
 
 Container (aka controller-view):
 * no markup.
-* pass data and actions down.
+* passes data and actions down.
 * knows about redux.
 * stateful.
 
@@ -69,7 +67,6 @@ function App2() {
   const props = {firstName: 'Ben', lastName: 'Hector'};
   return <Greeting {...props} />;
 }
-
 <div> {props.cards.map(card => <Card {...card} />)} </div>
 ````
 
@@ -120,7 +117,6 @@ but trigger the normal lifecycle methods for child.
 Uncontrolled Component - (use a `ref`) gets values from the DOM.
 ````js
 return <input ref="inp" />;
-...
 componentDidMount: () => {
   console.log(this.refs.inp.getDOMNode().value);
 }
@@ -130,7 +126,7 @@ Reconciliation - all path from virtual DOM to the actual DOM.
 
 Conditionally render React elements: `{showHeader && <Header />}`.
 
-Convert false, true, null, undefined to string: `<div>My JavaScript variable is {String(myVariable)}.</div>`.
+Convert `false, true, null, undefined` to string: `<div>My JavaScript variable is {String(myVariable)}.</div>`.
 
 Most of the time, you can use `React.PureComponent` instead of writing your own `shouldComponentUpdate`.
 
@@ -143,6 +139,8 @@ but when comparing objects it compares only references (helps to improve perform
 
 Not mutating data:
 ````js
+this.setState(prevState => Object.assign({}, prevState, {new: "new"}));
+
 function updateColorMap(colormap) {
   return Object.assign({}, colormap, {right: 'blue'});
   // OR in ECS6
@@ -175,10 +173,21 @@ and methods prefixed with `did` are called right after something happens.
 
 `ReactDOM.findDOMNode(node)`.
 
-All Supported HTML Attributes available
-[here](https://facebook.github.io/react/docs/dom-elements.html#all-supported-html-attributes).
+Hooks let you use state and other React features without writing a class.
 
-[SyntheticEvent](https://facebook.github.io/react/docs/events.html#supported-events).
+Basic Hooks:
+* useState - `[countValue, setCount] = useState(0 /* init count value */);`.
+* useEffect - similar to componentDidMount and componentDidUpdate.
+* useContext.
+
+Additional Hooks:
+* useReducer.
+* useCallback.
+* useMemo - will only recompute memoized value when one of dependencies has changed.
+* useRef.
+* useImperativeHandle.
+* useLayoutEffect.
+* useDebugValue.
 
 ````js
 var Settings = React.createClass({
