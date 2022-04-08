@@ -9,7 +9,7 @@ Schema
 [FK](https://cloud.google.com/spanner/docs/foreign-keys/how-to)
 [check constraint](https://cloud.google.com/spanner/docs/check-constraint/how-to)
 
-view - virtual table defined by a SQL query.
+View - virtual table defined by a SQL query.
 
 Check constraint - `CONSTRAINT start_before_end CHECK(StartTime < EndTime)`.
 If expression evaluates to TRUE or NULL - data change is allowed.
