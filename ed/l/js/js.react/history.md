@@ -1,6 +1,8 @@
 History of React JS
 -
 
+#### 18.0
+
 #### 17.0
 
 * No new features only improvements.

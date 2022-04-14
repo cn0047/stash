@@ -7,6 +7,12 @@ import (
 )
 
 func main() {
+	//one()
+	two()
+}
+
+func one() {
+	fmt.Printf("[one] \n")
 	var wg sync.WaitGroup
 	var x int32 = 0
 	for i := 0; i < 100; i++ {
@@ -22,7 +28,29 @@ func main() {
 	fmt.Println(atomic.LoadInt32(&x))
 }
 
+func two() {
+	fmt.Printf("[two] \n")
+	var wg sync.WaitGroup
+	wg.Add(100) // !!!
+	var x int32 = 0
+	for i := 0; i < 100; i++ {
+		go func() {
+			atomic.AddInt32(&x, 1)
+			wg.Done()
+		}()
+	}
+
+	fmt.Println("Wait ...")
+	wg.Wait()
+	fmt.Println(atomic.LoadInt32(&x))
+}
+
 /*
+[one]
 Wait ...
 99
+
+[two]
+Wait ...
+100
 */

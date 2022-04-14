@@ -8,8 +8,8 @@ Spanner
 [golang](https://pkg.go.dev/cloud.google.com/go/spanner)
 
 ````sh
-db=test-db
 dbi=test-instance
+db=test-db
 ddl() {
   gcloud spanner databases ddl update $db --instance=$dbi --ddl=$1
 }

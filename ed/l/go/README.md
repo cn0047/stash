@@ -30,6 +30,7 @@ Since 2009.
 [json to struct](https://mholt.github.io/json-to-go/)
 [sql code gen](https://github.com/kyleconroy/sqlc)
 [project layout](https://github.com/golang-standards/project-layout)
+[generic examples](https://go.googlesource.com/proposal/+/refs/heads/master/design/43651-type-parameters.md#examples)
 
 Go - statically-typed, general-purpose, with type safety
 and automatic memory management programming language.
@@ -549,9 +550,13 @@ For standard Go compiler, size of channel element types must be smaller than 655
 
 **constraint** allows any type implementing the interface.
 
-**any** type constraint that permits any type.
+**contract** specify that a type argument must implement a particular method.
 
 **type parameter** - type that is currently unknown but that will be known when the function is called.
+
+**any** type constraint that permits any type.
+
+**comparable** - predeclared contract.
 
 #### Runtime
 

@@ -2,6 +2,8 @@ Swagger
 -
 
 [editor](http://editor.swagger.io/)
+[String Formats](https://swagger.io/docs/specification/data-models/data-types/).
+[Supported JSON Schema Keywords](https://swagger.io/docs/specification/data-models/keywords/).
 
 Swagger is a set of open-source tools built around the OpenAPI Specification
 that can help you design, build, document and consume REST APIs.
@@ -38,11 +40,7 @@ oneOf:
   - type: integer
 ````
 
-[String Formats](https://swagger.io/docs/specification/data-models/data-types/).
-
 `oneOf`, `anyOf`, `allOf`, `not`.
-
-[Supported JSON Schema Keywords](https://swagger.io/docs/specification/data-models/keywords/).
 
 #### YAML
 

@@ -24,7 +24,7 @@ func real() {
 	}
 }
 
-// ✅
+// ok
 func test() {
 	server := httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
 		_, err := res.Write([]byte(`{"login":"test"}`))
@@ -34,7 +34,7 @@ func test() {
 	defer server.Close()
 
 	err := one(server.URL, server.Client())
-	fmt.Printf("🔴 %+v \n", err)
+	fmt.Printf("[test] %+v \n", err)
 }
 
 func one(url string, client *http.Client) error {

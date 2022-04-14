@@ -1,14 +1,13 @@
 package main
 
 import (
-	"fmt"
 	"bytes"
-	"io"
 	"encoding/csv"
+	"fmt"
+	"io"
 )
 
 var (
-
 	csvData = `
 id,name,email
 1,bond,007@mi6.com
@@ -22,7 +21,7 @@ func main() {
 	c := NewCSVReader(r)
 	for {
 		data := c.GetRecord()
-		if  data == nil {
+		if data == nil {
 			break
 		}
 		fmt.Printf("%s\n", data)
@@ -30,7 +29,7 @@ func main() {
 }
 
 type CSVReader struct {
-	reader *csv.Reader
+	reader  *csv.Reader
 	headers map[string]int
 }
 

@@ -33,4 +33,7 @@ func my() {
 Starting goroutine.
 Panicking...
 panic: some error
+goroutine 18 [running]:
+main.my()
+...
 */

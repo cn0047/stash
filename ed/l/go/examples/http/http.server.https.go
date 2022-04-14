@@ -15,9 +15,9 @@ func main() {
 			return
 		}
 		if _, err := fmt.Fprintf(w, "%s", dump); err != nil {
-			log.Printf("🟥 error: %#v\n", err)
+			log.Printf("error: %#v\n", err)
 		}
-		log.Printf("✳️\n%s", dump)
+		log.Printf("[main] \n%s", dump)
 	})
 	c := "/Users/kovpakvolodymyr/web/kovpak/gh/ed/l/nodejs/nodejs.express/examples/coursera.passport/bin/httpsKeys/certificate.pem"
 	k := "/Users/kovpakvolodymyr/web/kovpak/gh/ed/l/nodejs/nodejs.express/examples/coursera.passport/bin/httpsKeys/private.key"

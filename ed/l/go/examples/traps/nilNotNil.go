@@ -13,7 +13,7 @@ func (m MyErr) Error() string {
 
 func main() {
 	err := f()
-	fmt.Printf("🔴 %+v \n", err == nil) // err is NOT nil
+	fmt.Printf("[main] %+v \n", err == nil) // err is NOT nil
 }
 
 func f() error {

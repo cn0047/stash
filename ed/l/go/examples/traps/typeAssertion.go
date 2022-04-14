@@ -5,25 +5,27 @@ import (
 )
 
 func main() {
-	var x Animal = Dog{"Rosie"}
+	var v AliveBeing = Animal{name: "Rex"} // Human - NOT ok, <> speaks
+	//var v AliveBeing = Human{name: "Bob"} // Human - ok, <Bob> speaks
 
-	if x, ok := x.(Human); ok { // in case of fail x contains ZERO VALUE of type (Human)
-		fmt.Println(x.name, "doesn't want to be treated like dog.")
+	x, ok := v.(Human) // in case of fail x contains ZERO VALUE of type (Human)
+	if ok {
+		fmt.Printf("Human - ok, %s \n", x.Say())
 	} else {
-		fmt.Println(x.Say())
+		fmt.Printf("Human - NOT ok, %s \n", x.Say())
 	}
 }
 
-type Animal interface {
+type AliveBeing interface {
 	Say() string
 }
 
-type Dog struct {
+type Animal struct {
 	name string
 }
 
-func (d Dog) Say() string {
-	return fmt.Sprintf("%v barks", d.name)
+func (a Animal) Say() string {
+	return fmt.Sprintf("<%v> barks", a.name)
 }
 
 type Human struct {
@@ -31,5 +33,5 @@ type Human struct {
 }
 
 func (h Human) Say() string {
-	return fmt.Sprintf("%v speaks", h.name)
+	return fmt.Sprintf("<%v> speaks", h.name)
 }

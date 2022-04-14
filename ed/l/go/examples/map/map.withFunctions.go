@@ -15,7 +15,7 @@ type MyFunc func(s string)
 
 func main() {
 	f := "bar"
-	Funcs[f]("test")
+	Funcs[f]("test") // Bar: test
 }
 
 func Foo(s string) {

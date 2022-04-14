@@ -5,6 +5,8 @@ GKE - Google Kubernetes Engine
 [pricing](https://cloud.google.com/kubernetes-engine/pricing)
 
 ````sh
-gcloud --project $p container clusters list
-gcloud --project $p --region $r container clusters get-credentials $name
+gcloud container clusters list # --project $p
+gcloud container clusters get-credentials
+gcloud container clusters get-credentials $name # --project $p --region $r
+
 ````

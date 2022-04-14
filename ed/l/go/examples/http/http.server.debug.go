@@ -14,9 +14,9 @@ func debug(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	if _, err := fmt.Fprintf(w, "%s", dump); err != nil {
-		log.Printf("🟥 error: %#v\n", err)
+		log.Printf("error: %#v\n", err)
 	}
-	log.Printf("✳️\n%s", dump)
+	log.Printf("[debug] \n%s", dump)
 }
 
 func main() {

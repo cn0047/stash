@@ -91,7 +91,7 @@ func strImgToFile(strImg string) {
 
 	//_, fmtName, err := image.Decode(i)
 	//he(err)
-	//fmt.Printf("🎾 fmtName=%+v \n", fmtName)
+	//fmt.Printf("fmtName=%+v \n", fmtName)
 
 	img, err := png.Decode(i)
 	he(err)
@@ -105,7 +105,7 @@ func decodeFile(imgFilePath string) image.Image {
 
 	img, fmtName, err := image.Decode(f)
 	he(err)
-	fmt.Printf("🎾 ColorModel=%+v, fmtName=%+v \n", img.ColorModel(), fmtName)
+	fmt.Printf("ColorModel=%+v, fmtName=%+v \n", img.ColorModel(), fmtName)
 
 	return img
 }

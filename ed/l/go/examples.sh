@@ -175,6 +175,9 @@ docker run -it --rm --name go-one -p 8000:8000 -p 8001:8001 \
 # check
 curl -i http://localhost:8001/health-check
 
+# test fuzz
+go test -fuzz=Fuzz -v ed/l/go/examples/whatever/test.fuzz_test.go
+
 # web.three ⭐️⭐️⭐️
 docker run -it --rm -v $PWD:/gh -w /gh -e GOPATH='/gh/ed/l/go/examples/web.three/' xgo sh -c '
   cd $GOPATH \

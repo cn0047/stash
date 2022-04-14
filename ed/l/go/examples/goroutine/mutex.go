@@ -30,5 +30,5 @@ func main() {
 	}
 
 	time.Sleep(time.Second)
-	fmt.Println(c.Value("somekey"))
+	fmt.Println(c.Value("somekey")) // 50
 }

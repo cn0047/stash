@@ -11,7 +11,7 @@ import (
 func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		n := runtime.NumGoroutine()
-		log.Printf("🔴 %+v", n)
+		log.Printf("n = %+v", n)
 		time.Sleep(5 * time.Second)
 		err := json.NewEncoder(w).Encode(map[string]int{"NumGoroutine": n})
 		if err != nil {

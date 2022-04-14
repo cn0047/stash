@@ -92,3 +92,15 @@ Contains the expected cryptographic checksums of the content of specific module 
 This file must be commited into git.
 
 `vendor/modules.txt` describes how each entry in go.mod file corresponds to which subdirectory within `vendor/`.
+
+`go.work` for multiple modules workspace (file syntax is similar to go.mod file).
+
+````sh
+go work init
+
+go work use $m # add module to workspace
+
+go work use -r # recursively add/remove directories to workspace
+
+go work sync
+````

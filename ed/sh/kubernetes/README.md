@@ -200,6 +200,7 @@ kubectl api-versions | sort
 kubectl --kubeconfig=$cfg
 kubectl cluster-info
 kubectl cluster-info dump
+kubectl config get-contexts
 kubectl config current-context
 kubectl config view
 kubectl get namespaces

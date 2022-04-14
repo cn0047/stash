@@ -52,6 +52,7 @@ npm audit fix --force
 npm i
 npm install --only=prod
 
+# install a project with a clean slate
 # for automated environments: test, ci/cd
 npm ci
 

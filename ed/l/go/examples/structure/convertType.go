@@ -22,5 +22,5 @@ func main() {
 func two() {
 	f := &Foo{ID: 1, Name: "foo"}
 	b := Bar(*f)
-	fmt.Printf("🔴 %#v", b) // main.Bar{ID:1, Name:"foo"}
+	fmt.Printf("[two] %#v", b) // main.Bar{ID:1, Name:"foo"}
 }

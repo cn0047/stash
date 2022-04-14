@@ -42,3 +42,22 @@ func out(c chan int) {
 		time.Sleep(time.Millisecond * 200)
 	}
 }
+
+/*
+len = 1
+received value: 0
+added into chan value: 1
+added into chan value: 2
+len = 2
+received value: 1
+len = 1
+len = 1
+received value: 2
+len = 0
+len = 0
+len = 0
+len = 0
+len = 0
+len = 0
+...
+*/

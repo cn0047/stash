@@ -24,6 +24,17 @@ ${{secrets.MY_KEY}}
 ````yaml
 # .github/workflows/x.yaml
 
+on:
+  push:
+  pull_request:
+  workflow_dispatch: # ‼️ works only for workflow_dispatch event
+    inputs:
+      env: # @use: ${{ github.event.inputs.env || 'test' }}
+        description: "env name"
+        type: string
+        required: true
+        default: "test"
+
 env:
   HASH: $(git rev-parse --short "$GITHUB_SHA")
   BRANCH: ${GITHUB_REF##*/}

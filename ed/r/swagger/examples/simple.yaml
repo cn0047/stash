@@ -1,0 +1,67 @@
+swagger: "2.0"
+info:
+  description: "Test API swagger document."
+  version: "1.0.0"
+  title: "Test API"
+  contact:
+    email: "cn007b@gmail.com"
+  license:
+    name: "ISC"
+host: "test.swagger.io"
+basePath: "/v1"
+schemes:
+- "https"
+- "http"
+
+externalDocs:
+  url: "https://gist.githubusercontent.com/cn007b/91dc2a6e0f4695eb6046182e3b6be393/raw/93644f9f0aa038115796d34f30042988a51fee1d/swagger.json"
+  description: "Public URL to this swagger file."
+
+definitions:
+  Response400:
+    type: object
+    properties:
+      errors:
+        type: array
+        items:
+          type: object
+          properties:
+            error:
+              type: string
+              description: "Actual error message."
+              example: "Invalid parameter."
+            ref:
+              type: string
+              description: "In case when provided invalid parameter this field will contain parameter as reference to source of error."
+              example: "parameter"
+            type:
+              type: string
+              example: "validation"
+
+paths:
+  /health:
+    get:
+      description: "Health check."
+      responses:
+        200:
+          description: "Successful response."
+        400:
+          description: "Bad Request."
+          schema:
+            $ref: "#/definitions/Response400"
+  /echo:
+    post:
+      description: "Endpoint to echo message"
+      parameters:
+      - name: msg
+        in: query
+        type: string
+        required: true
+        description: "Message to echo."
+      responses:
+        200:
+          description: "Successful response."
+        400:
+          description: "Bad Request."
+          schema:
+            $ref: "#/definitions/Response400"

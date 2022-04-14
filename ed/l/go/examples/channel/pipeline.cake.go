@@ -42,3 +42,16 @@ func main() {
 
 	time.Sleep(1 * time.Second)
 }
+
+/*
+{id:0 state:cooked;iced;}
+{id:1 state:cooked;iced;}
+{id:2 state:cooked;iced;}
+{id:3 state:cooked;iced;}
+{id:4 state:cooked;iced;}
+{id:5 state:cooked;iced;}
+{id:6 state:cooked;iced;}
+{id:7 state:cooked;iced;}
+{id:8 state:cooked;iced;}
+{id:9 state:cooked;iced;}
+*/

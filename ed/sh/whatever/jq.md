@@ -27,7 +27,7 @@ jq type # simple way to check JSON validity
 ... | jq '.items[]|{id, name}'
 ... | jq '.items|join(",")'
 ... | jq '.[]|= keys'          # 1st level keys
-... | jq -r '.taskArns[0]'     # string without quotes
+... | jq -r '.taskArgs[0]'     # string without quotes
 
 o='{"foo": "f", "bar": "b", "items": [1, 2, 3] }'
 echo $o | jq                                # prettify json output
