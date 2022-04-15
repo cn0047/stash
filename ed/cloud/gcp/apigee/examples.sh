@@ -48,6 +48,9 @@ curl -X POST -H $AUTH "$h/v1/organizations/$ORG/apis/$name/revisions/$revision" 
 curl -X GET -H $AUTH "$h/v1/organizations/$ORG/apis/$name/deployments" | jq
 curl -X GET -H $AUTH "$h/v1/organizations/$ORG/apis/$name/revisions/$revision/deployments" | jq
 
+# generate deploy change report
+curl -X POST -H $AUTH "$h/v1/organizations/$ORG/environments/$env/apis/$name/revisions/$revision/deployments:generateDeployChangeReport" | jq
+
 # CREATE API proxy, step 1: IMPORT API from zip
 cd ed/cloud/gcp/apigee/examples/API.One/
 zip -r apiproxy.zip apiproxy
@@ -64,6 +67,12 @@ curl -X POST -H $AUTH "$h/v1/organizations/$ORG/environments/$env/apis/$name/rev
 
 # list shared flows
 curl -X GET -H $AUTH "$h/v1/organizations/$ORG/sharedflows" | jq
+
+# get shared flows
+curl -X GET -H $AUTH "$h/v1/organizations/$ORG/sharedflows/$name" | jq
+
+# get deployments
+curl -X GET -H $AUTH "$h/v1/organizations/$ORG/environments/$env/sharedflows/$name/deployments" | jq
 
 # CREATE SharedFlow, step 1: IMPORT shared flow from zip
 cd ed/cloud/gcp/apigee/examples/SF.Auth/
