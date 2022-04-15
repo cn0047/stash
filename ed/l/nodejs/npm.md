@@ -11,7 +11,7 @@ npm
 npm -g i npm@latest
 ````
 
-````
+````sh
 ^4.13.3 # equals to 4.*.* which is same major version
 ~4.13.3 # equals to 4.13.* which is same minor version
 ````

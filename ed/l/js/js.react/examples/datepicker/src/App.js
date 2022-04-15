@@ -1,45 +1,19 @@
-import React, { useState } from "react";
-import DatePicker from "react-datepicker";
+import React from "react";
 
 import './App.css';
-import "react-datepicker/dist/react-datepicker.css";
-// import 'react-datepicker/dist/react-datepicker-cssmodules.css';
+
+import ReactDatePicker from './ReactDatePicker';
+import MUIDatePicker from './MUIDatePicker';
 
 function App() {
-  const [startDate, setStartDate] = useState(new Date());
-  const ExampleCustomTimeInput = ({ date, value, onChange }) => (
-    <input
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      style={{ border: "solid 1px pink" }}
-    />
-  );
   return (
     <div className="App">
       <header className="App-header">
-        <p>DatePicker</p>
+        <p>DatePickers</p>
       </header>
-      <div className="App-content">
-        <br /> dp1:
-        <DatePicker selected={startDate} onChange={(date:Date) => setStartDate(date)} />
-
-        <br /> dp2:
-        <DatePicker
-          selected={startDate} onChange={(date) => setStartDate(date)}
-          showTimeInput customTimeInput={<ExampleCustomTimeInput/>}
-        />
-
-        <br /> dp3:
-        <DatePicker
-          selected={startDate} onChange={(date) => setStartDate(date)}
-          showTimeSelect timeInputLabel="Time:" dateFormat="MM/dd/yyyy h:mm aa"
-        />
-
-        <br /> dp4:
-        <DatePicker
-          selected={startDate} onChange={(date) => setStartDate(date)}
-          showTimeInput timeInputLabel="Time:" dateFormat="MM/dd/yyyy h:mm aa"
-        />
+      <div>
+        {/*<ReactDatePicker />*/}
+        <MUIDatePicker />
       </div>
     </div>
   );

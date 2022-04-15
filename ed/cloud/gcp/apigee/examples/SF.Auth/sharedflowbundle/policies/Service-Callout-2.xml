@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout continueOnError="false" enabled="true" name="Service-Callout-2">
+    <DisplayName>Callout to auth_checker func.</DisplayName>
+    <Properties/>
+    <Request clearPayload="true" variable="myRequest">
+        <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+        <Add>
+            <Headers>
+                <Header name="X-Token">{request.header.X-Token}</Header>
+            </Headers>
+        </Add>
+    </Request>
+    <Response>calloutResponse</Response>
+    <HTTPTargetConnection>
+        <Properties/>
+        <URL>https://some.host.net/auth_checker</URL>
+    </HTTPTargetConnection>
+</ServiceCallout>

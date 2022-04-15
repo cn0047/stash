@@ -20,11 +20,13 @@ curl -X GET -H $AUTH "$h/v1/organizations/$ORG/environments" | jq
 # get apigee instances
 curl -X GET -H $AUTH "$h/v1/organizations/$ORG/instances" | jq
 
-# targetservers
+# target servers
 env='test'
 curl -X GET -H $AUTH "$h/v1/organizations/$ORG/environments/$env/targetservers" | jq
 
-# get APIs
+
+
+# list APIs
 curl -X GET -H $AUTH "$h/v1/organizations/$ORG/apis" | jq
 
 # get API
@@ -46,21 +48,34 @@ curl -X POST -H $AUTH "$h/v1/organizations/$ORG/apis/$name/revisions/$revision" 
 curl -X GET -H $AUTH "$h/v1/organizations/$ORG/apis/$name/deployments" | jq
 curl -X GET -H $AUTH "$h/v1/organizations/$ORG/apis/$name/revisions/$revision/deployments" | jq
 
-
-
-#### create API proxy
-
-# import API from zip
-cd ed/cloud/gcp/apigee/examples/One/
+# CREATE API proxy, step 1: IMPORT API from zip
+cd ed/cloud/gcp/apigee/examples/API.One/
 zip -r apiproxy.zip apiproxy
 name='one'
 curl -X POST -H $AUTH "$h/v1/organizations/$ORG/apis?action=validate&name=$name" -F "file=@apiproxy.zip"
 curl -X POST -H $AUTH "$h/v1/organizations/$ORG/apis?action=import&name=$name" -F "file=@apiproxy.zip"
 
-# deploy revision to env
+# CREATE API proxy, step 2: deploy revision to env
 env='test'
 revision='1'
 curl -X POST -H $AUTH "$h/v1/organizations/$ORG/environments/$env/apis/$name/revisions/$revision/deployments"
+
+
+
+# list shared flows
+curl -X GET -H $AUTH "$h/v1/organizations/$ORG/sharedflows" | jq
+
+# CREATE SharedFlow, step 1: IMPORT shared flow from zip
+cd ed/cloud/gcp/apigee/examples/SF.Auth/
+zip -r sharedflowbundle.zip sharedflowbundle
+name='auth'
+curl -X POST -H $AUTH "$h/v1/organizations/$ORG/sharedflows?action=validate&name=$name" -F "file=@sharedflowbundle.zip"
+curl -X POST -H $AUTH "$h/v1/organizations/$ORG/sharedflows?action=import&name=$name" -F "file=@sharedflowbundle.zip"
+
+# CREATE SharedFlow, step 2: deploy revision to env
+env='test'
+revision='1'
+curl -X POST -H $AUTH "$h/v1/organizations/$ORG/environments/$env/sharedflows/$name/revisions/$revision/deployments"
 
 
 

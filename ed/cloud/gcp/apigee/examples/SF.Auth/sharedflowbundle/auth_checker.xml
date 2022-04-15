@@ -1,0 +1,13 @@
+<SharedFlowBundle revision="8" name="auth_checker">
+    <DisplayName></DisplayName>
+    <Description></Description>
+    <CreatedAt>1645467801545</CreatedAt>
+    <LastModifiedAt>1645467801545</LastModifiedAt>
+    <Policies>
+        <Policy>Service-Callout-1</Policy>
+    </Policies>
+    <SharedFlows>
+        <SharedFlow>default</SharedFlow>
+    </SharedFlows>
+    <subType>SharedFlow</subType>
+</SharedFlowBundle>
