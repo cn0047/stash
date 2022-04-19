@@ -28,9 +28,9 @@ func one() {
 
 	println("main")
 	/*
-	   main
-	   bottom
-	   top
+		main
+		bottom
+		top
 	*/
 }
 

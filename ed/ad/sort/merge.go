@@ -1,5 +1,6 @@
 // Merge sort (reqursive).
 // @see: https://upload.wikimedia.org/wikipedia/commons/c/cc/Merge-sort-example-300px.gif
+//
 // Worst case = O(n log n),(less than O(n^2)).
 // Average case = O(n log n).
 // Best case = O(n log n).
@@ -20,32 +21,39 @@ func MergeSort(slice []int) []int {
 	if len(slice) < 2 {
 		return slice
 	}
+
 	mid := len(slice) / 2
-	r1 := MergeSort(slice[:mid])
-	r2 := MergeSort(slice[mid:])
-	r := merge(r1, r2)
-	return r
+	part1 := MergeSort(slice[mid:])
+	part2 := MergeSort(slice[:mid])
+	result := merge(part1, part2)
+
+	return result
 }
 
 func merge(left, right []int) []int {
 	size := len(left) + len(right)
-	slice := make([]int, size, size)
-	i := 0
-	j := 0
-	for k := 0; k < size; k++ {
-		if i > len(left)-1 && j <= len(right)-1 { // Reached end of left slice.
-			slice[k] = right[j]
-			j++
-		} else if j > len(right)-1 && i <= len(left)-1 { // Reached end of right slice.
-			slice[k] = left[i]
-			i++
-		} else if left[i] < right[j] { // Use value from left slice.
-			slice[k] = left[i]
-			i++
+	result := make([]int, size, size)
+
+	leftI := 0
+	rightI := 0
+	leftLen := len(left) - 1
+	rightLen := len(right) - 1
+
+	for resultI := 0; resultI < size; resultI++ {
+		if leftI > leftLen && rightI <= rightLen { // Reached end of left slice.
+			result[resultI] = right[rightI]
+			rightI++
+		} else if leftI <= leftLen && rightI > rightLen { // Reached end of right slice.
+			result[resultI] = left[leftI]
+			leftI++
+		} else if left[leftI] < right[rightI] { // Use value from left slice.
+			result[resultI] = left[leftI]
+			leftI++
 		} else { // Use value from right slice.
-			slice[k] = right[j]
-			j++
+			result[resultI] = right[rightI]
+			rightI++
 		}
 	}
-	return slice
+
+	return result
 }

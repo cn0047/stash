@@ -34,5 +34,5 @@ func setValueToSliceItemByIndexInSlice() {
 	items = Set(items, 3, 13)
 	items = Set(items, 9, 19)
 
-	fmt.Printf("🎾 %+v \n", items)
+	fmt.Printf("[setValueToSliceItemByIndexInSlice] %+v \n", items)
 }

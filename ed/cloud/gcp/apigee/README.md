@@ -33,6 +33,14 @@ gcloud alpha apigee organizations delete $org
 gcloud alpha apigee organizations provision \
   --authorized-network=default
 
+
+
+# lint
+npm i apigeelint
+d=gh/ed/cloud/gcp/apigee/examples/API.One/apiproxy
+apigeelint -s $d | jq
+apigeelint --maxWarnings 0  --profile apigeex --formatter stylish.js --path $d
+
 ````
 
 API key policy:

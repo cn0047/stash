@@ -7,8 +7,12 @@ import (
 func main() {
 	concatenation()
 	slice3()
+
+	fmt.Println("\n three: -------------------")
 	three()
-	three2()
+
+	fmt.Println("\n four: -------------------")
+	four()
 }
 
 func concatenation() {
@@ -27,8 +31,8 @@ func slice3() {
 	fmt.Printf("%+v \n", s) // [2]
 }
 
+// three describes copy & copy by link cases.
 func three() {
-	fmt.Println("\n three: -------------------")
 	a := [...]string{"r", "o", "a", "d"} // array
 	a2 := a[:]
 	a[3] = "x"
@@ -47,9 +51,7 @@ func three() {
 
 }
 
-func three2() {
-	fmt.Println("\n three2: -------------------")
-
+func four() {
 	s := make([]int, 3, 5)
 	// s[5] = 1 // panic: runtime error: index out of range
 	_ = s

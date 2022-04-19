@@ -33,11 +33,11 @@ func one() {
 	cur := 0
 
 	cur |= name
-	log.Printf("🔴 %#v \t %+v", cur, cur == ok)
+	log.Printf("%#v \t %+v", cur, cur == ok)
 
 	cur |= email
-	log.Printf("🔴 %#v \t %+v", cur, cur == ok)
+	log.Printf("%#v \t %+v", cur, cur == ok)
 
 	cur |= phone
-	log.Printf("🔴 %#v \t %+v", cur, cur == ok)
+	log.Printf("%#v \t %+v", cur, cur == ok)
 }

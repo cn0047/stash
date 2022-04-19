@@ -34,3 +34,5 @@ Quick File Open settings:
   ]
 }
 ````
+
+Search: `ed/l/nodejs,-*/node_modules/*`.

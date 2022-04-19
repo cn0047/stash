@@ -2,7 +2,7 @@
  * BFS - Breadth First Search.
  *
  * step 1: Put root node into queue.
- * step 2: Dequeue element, print value and put into queue node's childs.
+ * step 2: Dequeue element, print value and put into queue node's children.
  * step 2: Goto step 2.
  *
  * @param {number} f From node.
@@ -13,11 +13,11 @@
  */
 function bfs(f, t, ed) {
   let q = [{i: f, deep: 1}]; // queue
-  let v = []; // visited
+  let visited = []; // visited
   while (q.length > 0) {
     let co = q.shift();
     let c = co.i; // current vertex
-    v.push(c);
+    visited.push(c);
     if (typeof ed[c] === 'undefined') {
       // If no edges for current vertex.
       continue;
@@ -27,7 +27,7 @@ function bfs(f, t, ed) {
       if (node === t) {
         return co.deep;
       }
-      if (v.indexOf(node) === -1) {
+      if (visited.indexOf(node) === -1) {
         q.push({i: node, deep: co.deep + 1});
       }
     }

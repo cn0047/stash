@@ -2,14 +2,16 @@ package main
 
 import (
 	"fmt"
+
 	"golang.org/x/sync/errgroup"
 )
 
 func main() {
-	f1()
+	//simpleCase()
+	notRunningGoroutines()
 }
 
-func f1() {
+func simpleCase() {
 	var urls = []string{
 		"http://www.1.com/",
 		"http://www.2.com/",
@@ -25,4 +27,10 @@ func f1() {
 	}
 	err := g.Wait()
 	fmt.Printf("err: %#v \n", err) // err: &errors.errorString{s:"fail with: http://www.3.com/"}
+}
+
+func notRunningGoroutines() {
+	var g errgroup.Group
+	err := g.Wait()
+	fmt.Printf("err: %#v \n", err)
 }

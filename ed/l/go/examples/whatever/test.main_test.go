@@ -26,10 +26,10 @@ func TestX(t *testing.T) {
 
 func TestY(t *testing.T) {
 	t.Run("testCase1", func(t *testing.T) {
-		t.Logf("🎾")
+		t.Logf("TestY-1")
 	})
 
 	t.Run("testCase2", func(t *testing.T) {
-		t.Logf("🔴")
+		t.Logf("TestY-2")
 	})
 }

@@ -1,5 +1,6 @@
 // Bubble sort.
 // @see: https://upload.wikimedia.org/wikipedia/commons/c/c8/Bubble-sort-example-300px.gif
+//
 // Worst case = O(n^2).
 // Average case = O(n^2).
 // Best case = O(n).

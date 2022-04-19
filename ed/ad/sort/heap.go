@@ -1,3 +1,5 @@
+// Heap sort.
+//
 // Worst case = O(n log n).
 package main
 

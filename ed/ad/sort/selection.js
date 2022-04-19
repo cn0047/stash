@@ -1,4 +1,6 @@
 // Selection sort.
+// @see: https://upload.wikimedia.org/wikipedia/commons/9/94/Selection-Sort-Animation.gif
+//
 // Worst case = O(n^2).
 // Average case = O(n^2).
 // Best case = O(n^2).
@@ -9,8 +11,8 @@
 //
 // The plan:
 // start from begin of array,
-// check first array element with all elements and find the smallest one
-// swap first array element with smallest one
+// check first array element with all elements, and find the smallest one,
+// swap first array element with smallest one,
 // now first element in array is in sorted position,
 // go to next iteration.
 function selectionSort(a) {

@@ -28,7 +28,7 @@ function f(A) {
 }
 
 /**
- * My HEURISTIC.
+ * HEURISTIC.
  *
  * Finds min missing POSITIVE number in array.
  *

@@ -20,23 +20,23 @@ func x(t *testing.T, n int) {
 func TestOne(t *testing.T) {
 	t.Run("-2", func(st *testing.T) {
 		x(st, -2)
-		fmt.Printf("🔴 -2")
+		fmt.Printf("[TestOne] -2")
 	})
 
 	t.Run("-1", func(st *testing.T) {
 		return
 		x(st, -1)
-		fmt.Printf("🔴 -1")
+		fmt.Printf("[TestOne] -1")
 	})
 
 	t.Run("0", func(st *testing.T) {
 		x(st, 0)
-		fmt.Printf("🔴 0")
+		fmt.Printf("[TestOne] 0")
 	})
 
 	t.Run("1", func(st *testing.T) {
 		x(st, 1)
-		fmt.Printf("🔴 1")
+		fmt.Printf("[TestOne] 1")
 	})
 }
 

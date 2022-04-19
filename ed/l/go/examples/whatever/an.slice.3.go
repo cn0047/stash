@@ -22,6 +22,7 @@ func f2() {
 	fmt.Println("[f2]", s[1:]) // [f2] [b c]
 }
 
+// f1 describes slice length & capacity.
 func f1() {
 	s1 := make([]int, 2) // length
 	s1 = append(s1, 1)

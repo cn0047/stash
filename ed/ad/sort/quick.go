@@ -1,4 +1,6 @@
 // Quick sort (reqursive).
+// @see: https://upload.wikimedia.org/wikipedia/commons/6/6a/Sorting_quicksort_anim.gif
+//
 // Worst case = O(n^2).
 // Average case = O(n log n).
 // Best case = O(n log n).
@@ -20,16 +22,17 @@ func main() {
 	fmt.Println(quickSort(a, 0, n))
 }
 
-func quickSort(a []int, begin int, end int) []int {
+func quickSort(arr []int, begin int, end int) []int {
 	if begin < end {
-		p := partition(a, begin, end)
-		a = quickSort(a, begin, p-1)
-		a = quickSort(a, p+1, end)
+		p := partition(arr, begin, end)
+		arr = quickSort(arr, begin, p-1)
+		arr = quickSort(arr, p+1, end)
 	}
 
-	return a
+	return arr
 }
 
+// partition return pivot element position.
 func partition(a []int, begin int, end int) int {
 	pivot := a[end]
 	i := begin - 1

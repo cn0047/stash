@@ -50,6 +50,7 @@ PATH=$PATH:~/bin
 
 # set Input Field Separator, by default ` ` (space)
 IFS=:
+IFS=$'\n'
 
 $0   # name of called script
 $1   # 1st script parameter
