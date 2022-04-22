@@ -24,19 +24,23 @@ func main() {
 // request allows 3 requests per 1 minute.
 func request(user string) string {
 	_, ok := log[user]
+
+	// Init logs for user.
 	if !ok {
 		t := time.Now()
 		log[user] = []time.Time{t} // init.
 		return fmt.Sprintf("ok - 1 %s", t)
 	}
 
+	// Add new log.
 	nt := time.Now()
 	log[user] = append(log[user], nt) // add time.
 
+	// Delete old logs.
 	for len(log[user]) > 0 {
 		t := log[user][0]
 		diff := time.Since(t)
-		if diff.Minutes() >= 1 {
+		if diff.Minutes() >= 1 { // IMPORTANT: 1 minute is threshold.
 			// delete old log.
 			log[user] = log[user][1:]
 			fmt.Println("del:", t)
@@ -46,6 +50,7 @@ func request(user string) string {
 		}
 	}
 
+	// Throttle.
 	if len(log[user]) > 3 {
 		return fmt.Sprintf("sorry %s", nt)
 	}

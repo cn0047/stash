@@ -1,4 +1,4 @@
-# apigee examples
+# apigee API examples
 
 PROJECT_ID='' # !!!
 ORG=''
@@ -85,6 +85,13 @@ curl -X POST -H $AUTH "$h/v1/organizations/$ORG/sharedflows?action=import&name=$
 env='test'
 revision='1'
 curl -X POST -H $AUTH "$h/v1/organizations/$ORG/environments/$env/sharedflows/$name/revisions/$revision/deployments"
+
+
+
+# KVMs
+curl -X GET -H $AUTH "$h/v1/organizations/$ORG/keyvaluemaps" | jq
+name='kvm'
+curl -X GET -H $AUTH "$h/v1/organizations/$ORG/apis/$name/keyvaluemaps" | jq
 
 
 

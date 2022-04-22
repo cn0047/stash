@@ -64,21 +64,21 @@ To differentiate is it a pointer to child or to predecessor/successor TBT has le
 
 #### Preorder Traversal (Shortcut Trick)
 
-1. print node
-2. go to left child
-3. go to right child
+1. print node.
+2. go to left child.
+3. go to right child.
 
 #### Postorder Traversal (Shortcut Trick)
 
-1. go to left child
-2. go to right child
-3. print node
+1. go to left child.
+2. go to right child.
+3. print node.
 
 #### Inorder Traversal (Shortcut Trick)
 
-1. go to left child
-2. print node
-3. go to right child
+1. go to left child.
+2. print node.
+3. go to right child.
 
 ### BFS/DFS (Breadth/Depth First Search) in binary tree
 
@@ -102,10 +102,10 @@ Delete leaf node - just delete it.
 
 ### Spiral (zig-zag) traversal of a binary tree
 
-1. add root to Stack1
-2. pop all from Stack1 and push left child into Stack2 and right child into Stack2
-3. pop all from Stack2 and push right child into Stack1 and left child into Stack1
-4. go to step 2
+1. add root to Stack1.
+2. pop all from Stack1 and push left child into Stack2 and right child into Stack2.
+3. pop all from Stack2 and push right child into Stack1 and left child into Stack1.
+4. go to step 2.
 
 ### Diagonal distance
 

@@ -87,8 +87,10 @@ git diff branch:file file # !!!
 # remove untracked files
 git clean -fd
 
+git fetch --tags
 git tag 1.1.1
 git push origin --tags
+git push origin v1.7
 
 git blame -L 11,12 file
 

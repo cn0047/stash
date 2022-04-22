@@ -12,13 +12,13 @@ var (
 func main() {
 	go worker()
 	for i := 1; i > 0; i++ {
-		fmt.Println(lbrequest(i))
+		fmt.Println(lbRequest(i))
 		time.Sleep(100 * time.Millisecond)
 	}
 }
 
-// lbrequest adds request to queue (buckets) if it has space (only 3 items in queue allowed).
-func lbrequest(n int) string {
+// lbRequest adds request to queue (buckets) if it has space (only 3 items in queue allowed).
+func lbRequest(n int) string {
 	if len(queue) == 3 {
 		return fmt.Sprintf("%d \t sorry", n)
 	}

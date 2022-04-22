@@ -15,19 +15,19 @@ var (
 )
 
 func main() {
-	sleep := 100 * time.Millisecond
+	timeToSleep := 100 * time.Millisecond
 
-	fmt.Println(tbrequest("user-1"))
-	time.Sleep(sleep)
-	fmt.Println(tbrequest("user-1"))
-	time.Sleep(sleep)
-	fmt.Println(tbrequest("user-1"))
-	time.Sleep(sleep)
-	fmt.Println(tbrequest("user-1"))
+	fmt.Println(tbRequest("user-1"))
+	time.Sleep(timeToSleep)
+	fmt.Println(tbRequest("user-1"))
+	time.Sleep(timeToSleep)
+	fmt.Println(tbRequest("user-1"))
+	time.Sleep(timeToSleep)
+	fmt.Println(tbRequest("user-1"))
 }
 
-// tbrequest allows 3 requests per 1 second.
-func tbrequest(user string) string {
+// tbRequest allows 3 requests per 1 second.
+func tbRequest(user string) string {
 	accessRate, ok := store[user]
 	if !ok {
 		// Init user's tokens.
@@ -36,7 +36,7 @@ func tbrequest(user string) string {
 	}
 
 	diff := time.Since(accessRate.Time)
-	if diff.Seconds() > 1 {
+	if diff.Seconds() > 1 { // IMPORTANT: 1 second is threshold.
 		// Refresh tokens.
 		store[user] = AccessRate{Time: time.Now(), Tokens: 3 - 1}
 		return "ok - 2"

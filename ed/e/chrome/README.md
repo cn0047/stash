@@ -8,6 +8,8 @@ Chrome
 # delete URL suggestion:
 start typing in url -> select bad suggestion -> Fn + Shift + Delete
 
+https://chrome.google.com/webstore/category/extensions
+
 chrome://restart
 chrome://downloads
 chrome://version

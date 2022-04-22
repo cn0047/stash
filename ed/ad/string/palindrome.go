@@ -5,7 +5,8 @@ import (
 )
 
 func main() {
-	fmt.Println(f("this is Palindrome test, looking to: racecar and madam"))
+	// fmt.Println(f("this is Palindrome test, looking to: racecar and madam"))
+	fmt.Println(IsPalindrome("racecar"))
 }
 
 func f(str string) []string {

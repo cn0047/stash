@@ -2,10 +2,10 @@ Algorithms & Data structures
 -
 
 Operations with sets ([1, 2, 3] [2, 3, 4]):
-* union
-* intersection
-* diff
-* symmetric diff
+* union.
+* intersection.
+* diff.
+* symmetric diff.
 
 Factorial: `5! = 5 * 4 * 3 * 2 * 1 = 120`
 

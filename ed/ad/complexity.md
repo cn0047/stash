@@ -41,7 +41,7 @@ O(log n)                = if divide in 1/2 or myltiply by 2
 ````
 
 For array inside another array - `Big O(a * b)`,
-whre a - 1st array length, b - 2nd.
+whre a - 1st array length, b - 2nd array length.
 
 If algorithm takes half of elements on iteration - `Big O = O(log N)`.
 

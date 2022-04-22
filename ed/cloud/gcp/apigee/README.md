@@ -17,6 +17,8 @@ It contains all API proxies and related resources.
 
 Organization types: paid, evaluation.
 
+KVM (Key Value Map) - not requires proxy redeployment.
+
 ````sh
 gcloud apigee applications list
 gcloud apigee deployments list

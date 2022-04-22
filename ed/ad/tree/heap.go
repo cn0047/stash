@@ -11,16 +11,31 @@ func main() {
 	heapCheck4()
 }
 
+// getHeap returns nex heap.
+/*
+	arr: [10 30 90 100 50]
+	tree:
+	      10
+	     /  \
+	   30    90
+	  /  \
+	100  50
+*/
+func getHeap() []int {
+	h := []int{}
+	h = Add(h, 50)
+	h = Add(h, 100)
+	h = Add(h, 90)
+	h = Add(h, 30)
+	h = Add(h, 10)
+
+	assert("len", len(h), 5)
+	assert("min", h[0], 10)
+
+	return h
+}
+
 func heapCheck4() {
-	/*
-		arr: [10 30 90 100 50]
-		tree:
-		      10
-		     /  \
-		   30    90
-		  /  \
-		100  50
-	*/
 	h := getHeap()
 
 	h, _ = Del(h)
@@ -65,20 +80,6 @@ func heapCheck1() {
 	h, _ = Del(h)
 	assert("len3", len(h), 3)
 	assert("min3", h[0], 50)
-}
-
-func getHeap() []int {
-	h := []int{}
-	h = Add(h, 50)
-	h = Add(h, 100)
-	h = Add(h, 90)
-	h = Add(h, 30)
-	h = Add(h, 10)
-
-	assert("len", len(h), 5)
-	assert("min", h[0], 10)
-
-	return h
 }
 
 func assert(msg string, actual int, expected int) {

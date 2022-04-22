@@ -27,6 +27,9 @@ ${{secrets.MY_KEY}}
 on:
   push:
   pull_request:
+    branches:
+      - master
+    types: [closed]
   workflow_dispatch: # ‼️ works only for workflow_dispatch event
     inputs:
       env: # @use: ${{ github.event.inputs.env || 'test' }}
