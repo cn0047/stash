@@ -5,34 +5,10 @@ import (
 )
 
 func main() {
-	//heapCheck1()
-	//heapCheck2()
-	//heapCheck3()
+	heapCheck1()
+	heapCheck2()
+	heapCheck3()
 	heapCheck4()
-}
-
-// getHeap returns nex heap.
-/*
-	arr: [10 30 90 100 50]
-	tree:
-	      10
-	     /  \
-	   30    90
-	  /  \
-	100  50
-*/
-func getHeap() []int {
-	h := []int{}
-	h = Add(h, 50)
-	h = Add(h, 100)
-	h = Add(h, 90)
-	h = Add(h, 30)
-	h = Add(h, 10)
-
-	assert("len", len(h), 5)
-	assert("min", h[0], 10)
-
-	return h
 }
 
 func heapCheck4() {
@@ -84,9 +60,64 @@ func heapCheck1() {
 
 func assert(msg string, actual int, expected int) {
 	if actual == expected {
+		fmt.Printf(".")
 		return
 	}
 	fmt.Printf("[%s] actual: %+v, expected: %v \n", msg, actual, expected)
+}
+
+func lessThan(arr []int, i int, j int) bool {
+	return arr[i] < arr[j]
+}
+
+func swap(arr []int, i int, j int) []int {
+	arr[i], arr[j] = arr[j], arr[i]
+
+	return arr
+}
+
+// getHeap returns next heap.
+/*
+	arr: [10 30 90 100 50]
+	tree:
+	      10
+	     /  \
+	   30    90
+	  /  \
+	100  50
+*/
+func getHeap() []int {
+	h := []int{}
+	h = Add(h, 50)
+	h = Add(h, 100)
+	h = Add(h, 90)
+	h = Add(h, 30)
+	h = Add(h, 10)
+
+	assert("len", len(h), 5)
+	assert("min", h[0], 10)
+
+	return h
+}
+
+func Add(arr []int, v int) []int {
+	arr = append(arr, v)
+	arr = heapifyUp(arr, len(arr)-1)
+
+	return arr
+}
+
+func heapifyUp(arr []int, i int) []int {
+	for {
+		p := (i - 1) / 2 // parent
+		if p == i || !lessThan(arr, i, p) {
+			break
+		}
+		arr = swap(arr, p, i)
+		i = p
+	}
+
+	return arr
 }
 
 func DelVal(arr []int, v int) []int {
@@ -105,7 +136,7 @@ func DelByIndex(arr []int, i int) ([]int, int) {
 		arr = swap(arr, i, n)
 		arr, d := down(arr, i, n)
 		if !d {
-			arr = up(arr, i)
+			arr = heapifyUp(arr, i)
 		}
 	}
 
@@ -135,10 +166,10 @@ func down(arr []int, idx int, n int) ([]int, bool) {
 		}
 		j := j1 // left child
 		j2 := j1 + 1
-		if j2 < n && less(arr, j2, j1) {
+		if j2 < n && lessThan(arr, j2, j1) {
 			j = j2 // = 2*i + 2  // right child
 		}
-		if !less(arr, j, i) {
+		if !lessThan(arr, j, i) {
 			break
 		}
 		arr = swap(arr, i, j)
@@ -146,34 +177,4 @@ func down(arr []int, idx int, n int) ([]int, bool) {
 	}
 
 	return arr, i > idx
-}
-
-func Add(arr []int, v int) []int {
-	arr = append(arr, v)
-	arr = up(arr, len(arr)-1)
-
-	return arr
-}
-
-func up(arr []int, i int) []int {
-	for {
-		p := (i - 1) / 2 // parent
-		if p == i || !less(arr, i, p) {
-			break
-		}
-		arr = swap(arr, p, i)
-		i = p
-	}
-
-	return arr
-}
-
-func less(arr []int, i int, j int) bool {
-	return arr[i] < arr[j]
-}
-
-func swap(arr []int, i int, j int) []int {
-	arr[i], arr[j] = arr[j], arr[i]
-
-	return arr
 }

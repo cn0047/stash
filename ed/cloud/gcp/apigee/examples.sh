@@ -9,6 +9,8 @@ PROJECT_NUMBER=$(gcloud projects describe $PROJECT_ID --format="value(projectNum
 TOKEN=$(gcloud auth print-access-token)
 AUTH="Authorization: Bearer $TOKEN"
 
+jh='Content-Type: application/json'
+
 h='https://api.enterprise.apigee.com'
 h='https://apigee.googleapis.com'
 
@@ -90,7 +92,7 @@ curl -X POST -H $AUTH "$h/v1/organizations/$ORG/environments/$env/sharedflows/$n
 
 # KVMs
 curl -X GET -H $AUTH "$h/v1/organizations/$ORG/keyvaluemaps" | jq
-name='kvm'
+curl -X GET -H $AUTH "$h/v1/organizations/$ORG/environments/$env/keyvaluemaps" | jq
 curl -X GET -H $AUTH "$h/v1/organizations/$ORG/apis/$name/keyvaluemaps" | jq
 
 

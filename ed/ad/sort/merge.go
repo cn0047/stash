@@ -39,18 +39,18 @@ func merge(left, right []int) []int {
 	leftLen := len(left) - 1
 	rightLen := len(right) - 1
 
-	for resultI := 0; resultI < size; resultI++ {
+	for i := 0; i < size; i++ {
 		if leftI > leftLen && rightI <= rightLen { // Reached end of left slice.
-			result[resultI] = right[rightI]
+			result[i] = right[rightI]
 			rightI++
 		} else if leftI <= leftLen && rightI > rightLen { // Reached end of right slice.
-			result[resultI] = left[leftI]
+			result[i] = left[leftI]
 			leftI++
 		} else if left[leftI] < right[rightI] { // Use value from left slice.
-			result[resultI] = left[leftI]
+			result[i] = left[leftI]
 			leftI++
 		} else { // Use value from right slice.
-			result[resultI] = right[rightI]
+			result[i] = right[rightI]
 			rightI++
 		}
 	}

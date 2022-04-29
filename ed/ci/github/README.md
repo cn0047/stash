@@ -51,6 +51,8 @@ defaults:
 jobs:
   _not_push_to_gcr_1:
     runs-on: ubuntu-latest
+    env:
+      CODE: 200
     steps:
     - uses: actions/checkout@v2
     - name: Setup gcloud

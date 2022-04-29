@@ -34,7 +34,16 @@ func main() {
 	// f5()
 	// f6()
 	// f7()
-	AddDate()
+	// AddDate()
+	AfterFunc()
+}
+
+func AfterFunc() {
+	time.AfterFunc(1*time.Second, func() {
+		fmt.Printf("[AfterFunc] 2\n")
+	})
+	fmt.Printf("[AfterFunc] 1\n")
+	_, _ = fmt.Scanln()
 }
 
 func AddDate() {
