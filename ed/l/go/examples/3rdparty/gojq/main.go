@@ -11,6 +11,7 @@ func main() {
 	var err error
 
 	err = jq(`{"list":["a", "b", "c"]}`, ".list[]")
+	err = jq(`{"data":{"status":"ok","items":[{"id":1,"name":"foo"},{"id":2,"name":"bar"}]}}`, ".data.items")
 	err = jq(`{"data":{"status":"ok","items":[{"id":1,"name":"foo"},{"id":2,"name":"bar"}]}}`, ".data.items[].name")
 
 	if err != nil {
@@ -39,7 +40,7 @@ func jq(input string, query string) error {
 		return fmt.Errorf("failed to parse query, err: %w", err)
 	}
 
-	fmt.Printf("[jq] Result for: %s | %s \n", input, query)
+	fmt.Printf("\n[jq] Result for: %s | %s \n", input, query)
 	i := q.Run(in)
 	for {
 		v, ok := i.Next()

@@ -32,9 +32,6 @@ Since 2009.
 [project layout](https://github.com/golang-standards/project-layout)
 [generic examples](https://go.googlesource.com/proposal/+/refs/heads/master/design/43651-type-parameters.md#examples)
 
-Go - statically-typed, general-purpose, with type safety
-and automatic memory management programming language.
-
 ````bash
 export PATH=$PATH:/Users/kovpakvolodymyr/go/bin
 
@@ -198,7 +195,6 @@ v := varI.(T)
 if v, ok := varI.(T); ok { // "comma ok" idiom.
     Process(v) return
 }
-// varI is not of type T
 
 switch t := areaIntf.(type) {
     case *Square:
@@ -275,6 +271,9 @@ http.Handle("/img/", http.FileServer(http.Dir("public")))
 mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {})
 ````
 
+Go - statically-typed, general-purpose, with type safety
+and automatic memory management programming language.
+
 Go is compiled, garbage-collected, concurrent, type-safe.
 Go source code is always UTF-8.
 
@@ -347,7 +346,8 @@ under the covers, references to data structures that must be initialized before 
 
 **defer** pushes a function call in list,
 list will be executed after the surrounding function returns.
-Example: `defer file.Close()`.
+<br>
+`defer file.Close()`.
 
 **panic** is a built-in function that stops the ordinary flow of control and begins *panicking*.
 
@@ -356,40 +356,34 @@ Example: `defer file.Close()`.
 **range** (`for name, value := range m {}`) over map - there is no guarantee
 regarding the order of hash map.
 
-**string**
-String it is immutable slice of bytes.
+**string** - immutable slice of bytes.
 When we store a character value in a string, we store its byte-at-a-time representation.
 Go strings aren’t always UTF-8, only string literals are UTF-8.
 String values can contain arbitrary bytes
 (string literals always contain UTF-8 text as long as they have no byte-level escapes).
 
 **map**
-
 `Key` may be any type that is comparable and `Value` may be any type at all.
-
 `make(map[int]int, 100)`
 the initial capacity does not bound its size, it's only a hint.
 The goal to use this capacity - is to not resize map to often.
 If you know that you will store 100 entries in map,
 it's better to allocate map with such (or greater) capacity.
 
-**delete**
-Func to delete element from map.
+**delete** - func to delete element from map.
 
 **array**
 An array's size is fixed.
 An array variable denotes the entire array; it is not a pointer to the first array element, etc.
-
 An array's length is part of its type, so arrays cannot be resized.
 
-**slice**
-Slice is a descriptor of an array segment.
+**slice** - descriptor of an array segment.
 It consists of a pointer to the array (pointer to the data inside an array),
 the length of the segment, and its capacity
 (three-item descriptor, and until those items are initialized, the slice is nil).
 The length is the number of elements referred to by the slice.
 The capacity is the number of elements in the underlying array.
-<br>The zero value of a slice is nil.
+The zero value of a slice is nil.
 The len and cap functions will both return 0 for a nil slice.
 <br>
 `make` allocates an array and returns a slice that refers to that array.
@@ -416,9 +410,9 @@ Use append only to append new value to given slice, not to create new slice
 (never call append without assigning back to the same variable)!
 
 **fuzzing** - type of auto testing which continuously manipulates inputs to program
-o find issues such as panics, bugs, data races.
+to find issues such as panics, bugs, data races.
 
-**OOP** in go represented by **structures**. Inheritance in go represented by composition.
+**OOP** in go represented by **structures**. Inheritance in go represented by **composition**.
 
 **struct** is a collection of fields.
 ````
@@ -449,7 +443,7 @@ type Logger interface {
 
 #### Concurrency
 
-Go uses the concurrency model called Communicating Sequential Processes (CSP).
+Go uses the concurrency model called **Communicating Sequential Processes** (CSP).
 Two crucial concepts make Go’s concurrency model work: Goroutines & Channels.
 
 #### Goroutine
@@ -506,8 +500,7 @@ ch := make(chan type, value)
 
 Blocking channels:
 1. A send operation on a channel blocks until a receiver is available.
-   No recipient for the value on ch - no other value can be put in the channel
-
+   No recipient for the value on ch - no other value can be put in the channel.
 2. A receive operation for a channel blocks until a sender is available.
    If there is no value in the channel, the receiver blocks.
 
@@ -516,8 +509,7 @@ until both sender and receiver are ready to communicate.
 That’s why unbuffered channels are also called synchronous.
 
 In case a channel has a buffer - all read operations succeed without blocking
-if the buffer is not empty,
-and write operations - if the buffer is not full.
+if the buffer is not empty, and write operations - if the buffer is not full.
 These channels are called asynchronous.
 
 ````golang
@@ -539,8 +531,7 @@ Once chan is closed range loop exit.
 Closing a channel has one more useful feature - reading operations on closed channels
 do not block and always return default value for a channel type.
 
-Only the sender should close a channel, never the receiver
-(otherwise panic).
+Only the sender should close a channel, never the receiver (otherwise panic).
 
 For standard Go compiler, size of channel element types must be smaller than 65536.
 
@@ -585,7 +576,7 @@ If you want to run goroutines in parallel, you must use more than one logical pr
 But to have true parallelism, you still need to run your program
 on a machine with multiple physical processors.
 
-#### GC
+#### GC (mark and sweep)
 
 During the mark phase, the runtime will traverse all the objects
 that the application has references to on the heap and mark them as still in use.
@@ -663,11 +654,11 @@ The core idea of TCMalloc (thread cache malloc)
 is to divide the memory into multiple levels to reduce the granularity of the lock.
 
 Inside TCMalloc memory management is divided into two parts:
-  * thread memory:
-    each memory page divided into Free List of multiple fixed allocatable size-classes;
-    each thread will have a cache for small objects without locks,
-    which makes it very efficient to allocate small objects (<=32K) under parallel programs;
-  * page heap:
-    when allocated Object is larger than 32K, Pages Heap is used for allocation;
-    if not enough memory to allocate small objects - go to page heap for memory;
-    if not enough - page heap will ask more memory from the Operating System;
+* thread memory:
+  each memory page divided into free List of multiple fixed allocatable size-classes;
+  each thread will have a cache for small objects without locks,
+  which makes it very efficient to allocate small objects (<=32K) under parallel programs;
+* page heap:
+  when allocated Object is larger than 32K, Pages Heap is used for allocation;
+  if not enough memory to allocate small objects - go to page heap for memory;
+  if not enough - page heap will ask more memory from the Operating System;

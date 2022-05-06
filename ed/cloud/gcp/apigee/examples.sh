@@ -55,8 +55,10 @@ curl -X POST -H $AUTH "$h/v1/organizations/$ORG/environments/$env/apis/$name/rev
 
 # CREATE API proxy, step 1: IMPORT API from zip
 cd ed/cloud/gcp/apigee/examples/API.One/
+cd ed/cloud/gcp/apigee/examples/API.hw/
 zip -r apiproxy.zip apiproxy
 name='one'
+name='hw'
 curl -X POST -H $AUTH "$h/v1/organizations/$ORG/apis?action=validate&name=$name" -F "file=@apiproxy.zip"
 curl -X POST -H $AUTH "$h/v1/organizations/$ORG/apis?action=import&name=$name" -F "file=@apiproxy.zip"
 
@@ -94,6 +96,13 @@ curl -X POST -H $AUTH "$h/v1/organizations/$ORG/environments/$env/sharedflows/$n
 curl -X GET -H $AUTH "$h/v1/organizations/$ORG/keyvaluemaps" | jq
 curl -X GET -H $AUTH "$h/v1/organizations/$ORG/environments/$env/keyvaluemaps" | jq
 curl -X GET -H $AUTH "$h/v1/organizations/$ORG/apis/$name/keyvaluemaps" | jq
+
+# create KVM
+# IMPORTANT: encrypted must be true
+curl -X POST -H $AUTH -H $jh "$h/v1/organizations/$ORG/environments/$env/keyvaluemaps" -d '{
+  "name":"one",
+  "encrypted": true
+}'
 
 
 

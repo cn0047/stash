@@ -3,6 +3,7 @@ Apigee
 
 [docs](https://cloud.google.com/apigee/docs)
 [docs](https://docs.apigee.com/api-platform/reference/apigee-reference)
+[vars](https://cloud.google.com/apigee/docs/api-platform/reference/variables-reference)
 [oauth](https://cloud.google.com/apigee/docs/api-platform/tutorials/secure-calls-your-api-through-oauth-20-client-credentials)
 [examples](https://github.com/apigee/api-platform-samples)
 [API](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest)
@@ -43,6 +44,32 @@ d=gh/ed/cloud/gcp/apigee/examples/API.One/apiproxy
 apigeelint -s $d | jq
 apigeelint --maxWarnings 0  --profile apigeex --formatter stylish.js --path $d
 
+````
+
+````sh
+# vars
+proxy.basepath      # /v1/weather
+proxy.pathsuffix
+client.scheme       # https
+request.verb
+request.header.host
+request.uri
+request.querystring
+request.formparam.count
+
+# property set
+# where:
+# $fnp - property file name without (.properties)
+# $vn - var name from properties file
+{propertyset.$fnp.$vn}
+
+# tricks
+{firstnonnull(target-path,proxy.pathsuffix)}
+````
+
+````js
+print(context.getVariable('foo'));
+context.setVariable("response.header.X-Apigee-Target", context.getVariable("target.name"));
 ````
 
 API key policy:
