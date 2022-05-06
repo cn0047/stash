@@ -1,0 +1,20 @@
+<APIProxy revision="4" name="dynamicTarget">
+    <DisplayName></DisplayName>
+    <Description></Description>
+    <CreatedAt>1651840013242</CreatedAt>
+    <LastModifiedAt>1651840013242</LastModifiedAt>
+    <BasePaths>/dt</BasePaths>
+    <Policies>
+        <Policy>Assign-Message1</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>properties://main.properties</Resource>
+    </Resources>
+    <TargetEndpoints>
+        <TargetEndpoint>v1</TargetEndpoint>
+        <TargetEndpoint>v2</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

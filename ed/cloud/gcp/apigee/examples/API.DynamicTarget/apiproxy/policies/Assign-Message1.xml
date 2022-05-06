@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="Assign-Message1">
+    <DisplayName>Assign Message</DisplayName>
+    <Properties/>
+    <Set>
+        <QueryParams>
+            <QueryParam name="cache">1</QueryParam>
+        </QueryParams>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</AssignMessage>
