@@ -16,7 +16,7 @@ in terms of their interfaces and functionality, instead of their implementation 
 
 Class - program-code-template for creating objects.
 
-Object - runtime concrete occurrence of class instance.
+Object - runtime particular occurrence of class instance.
 
 #### Problems
 

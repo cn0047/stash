@@ -119,5 +119,5 @@ echo fs.file-max=500000 >> /etc/sysctl.conf # permanent conf
 ````
 
 Each directory contains subdirectories `.` and `..`.
-<br>`dot` refers to the current directory,
-<br>`dot-dot` refers to the parent directory,
+<br>`.` refers to the current directory,
+<br>`..` refers to the parent directory,

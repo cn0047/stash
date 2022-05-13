@@ -1,8 +1,8 @@
 Graph
 -
 
-<br>Graph - it's mathematical structure used to model pairwise relations between objects.
-<br>Graph - it's just dots and lines connecting them.
+<br>Graph - mathematical structure used to model pairwise relations between objects.
+<br>Graph - just dots and lines connecting them.
 <br>Vertices - points.
 <br>Cardinality of graph - count of vertices.
 <br>Edges - lines.
@@ -32,7 +32,7 @@ Graph in DB:
 <br>Euler path - includes exactly once all the edges and has different first and last veritces.
 Also all vertex have even degree but 2 have odd degree.
 
-## Held Karp Algorithm.
+## Held Karp Algorithm
 
 ...
 

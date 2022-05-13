@@ -7,7 +7,7 @@ Shared Secret - piece of data, known only to the parties involved
 Symmetric encryption (symmetric key cryptography) - sender and receiver have same secret key.
 Same key for encrypting and decrypting.
 
-Public key cryptography - sender have public key, receiver have private key.
+Public key cryptography - sender has public key, receiver has private key.
 It is expensive type of cryptography.
 
 Hashing algorithms:

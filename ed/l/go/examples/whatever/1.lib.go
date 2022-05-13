@@ -21,6 +21,7 @@ int64, err := strconv.ParseInt(str, 10, 64);                  // str     -> int6
 uint64, err := strconv.ParseUint(str, 10, 64)                 // str     -> uint64
 s := fmt.Sprintf("%.0f", fl64); int32, err := strconv.Atoi(s) // float64 -> int32
 ↑; int64 = int64(int32)                                       // float64 -> int64
+str := strconv.FormatBool(true)                               // bool    -> str
 
 if !regexp.MustCompile(`^[\d]+$`).MatchString(ds) {}
 

@@ -35,6 +35,8 @@ Sensitive Data Exposure:
 
 SSO (single sign-on) - system that allows for a single username & password that grants access to other sites (like okta).
 
+Spoof - Tricking or deceiving computer systems or other computer users.
+
 ## WEB
 
 FIEO - filter input escape output.

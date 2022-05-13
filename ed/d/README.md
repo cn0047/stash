@@ -1,6 +1,11 @@
 Databases
 -
 
+<br>DDL - Data Definition Language: `CREATE, ALTER, DROP, TRUNCATE...`.
+<br>DML - Data Manipulation Language: `SELECT, INSERT, UPDATE, DELETE...`.
+<br>DCL - Data Control Language: `GRANT, REVOKE`.
+<br>TCL - Transaction Control Language: `COMMIT, ROLLBACK, SAVEPOINT...`.
+
 Writes are *40* times more expensive than reads.
 
 Optimize wide. Make writes as parallel as you can.
@@ -17,24 +22,19 @@ Create table with `uuid()`.
 Serializability is an isolation property of transactions, where every transaction may
 read and write multiple objects (rows, documents, records).
 It guarantees that transactions behave the same as if they had executed
-in some serial order (each transaction running to completion before the next transaction starts). 
+in some serial order (each transaction running to completion before the next transaction starts).
 
 Derived data systems - is the result of taking some existing data from another system
 and transforming or processing it in some way.
 If you lose derived data, you can recreate it from the original source.
 A classic example is a cache.
 
-<br>DDL - Data Definition Language: `CREATE, ALTER, DROP, TRUNCATE...`.
-<br>DML - Data Manipulation Language: `SELECT, INSERT, UPDATE, DELETE...`.
-<br>DCL - Data Control Language: `GRANT, REVOKE`.
-<br>TCL - Transaction Control Language: `COMMIT, ROLLBACK, SAVEPOINT...`.
-
 ## ACID
 
 <br>Atomicity - all or nothing (an indivisible and irreducible series of database operations).
 <br>Consistency - ensures that any transaction will bring the database from one valid state to another (constraints, cascades, triggers).
 <br>Isolation - ensures that the concurrent execution of transactions will executed serially, i.e., one after the other.
-<br>Durability - ensures that once a transaction has been committed, it will remain so, even in the event of power loss, crashes, or errors...
+<br>Durability - ensures that once a transaction has been committed, it will remain so, even in the event of power loss, crashes, or errors.
 
 ## BASE
 
@@ -52,8 +52,8 @@ BASE is opposite to ACID.
 * Shrinking phase: locks are released and no locks are acquired.
 
 Locks types:
-* Read-lock, Shared
-* Write-lock, Exclusive
+* Read-lock, Shared.
+* Write-lock, Exclusive.
 
 <br>Acquired Read-lock  blocks new Write-lock.
 <br>Acquired Write-lock blocks new Read-lock.

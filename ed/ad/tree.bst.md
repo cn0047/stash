@@ -2,7 +2,6 @@ Binary Search Tree (BST)
 -
 
 When BST saved in array, elements can be found by:
-
 ````
 i          - element index
 2*i        - left child
@@ -20,7 +19,6 @@ Complete BT - if store BST in array, there must NOT be missing elements in array
 #### Heap
 
 Heap - complete BST.
-
 ````
 find max               - O(1)
 insert                 - O(log n)

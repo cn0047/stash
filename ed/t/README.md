@@ -50,11 +50,12 @@ Theory
 <br>WORA    - Write once, run anywhere.
 <br>WSDL    - Web Service Definition Language.
 <br>WYSIWYG - What you see is what you get.
-<br>XML     - Extensible Markup Language.
 <br>YAGNI   - You ain't gonna need it.
 
 Scraping - programmatically get web page, extract very specific data.
 Crawling - programmatically get web page, extract hyperlinks and follow them.
+
+Read limits before use something.
 
 Systems of record - aka source of truth.
 
@@ -110,14 +111,10 @@ of the SLA such as availability, throughput, frequency, response time, or qualit
 Service-level indicator (SLI) - measure of the service level provided by a service provider to a customer.
 Common SLIs include latency, throughput, availability, error rate, durability, correctness, etc.
 
-#### !
-
-* Read limits before use something.
-
 #### Full stack:
 
 * Presentation layer (html, css, js).
-* Business layer (node, php, etc).
+* Business layer (go, php, node, etc).
 * Data access layer (mongo, mysql, etc).
 
 #### 10 Questions Developers Should be Asking Themselves
@@ -125,23 +122,21 @@ Common SLIs include latency, throughput, availability, error rate, durability, c
 * Is there a pattern here?
 * How can I make this simpler?
 * Why does it work like that?
-  (Knowing that something works and knowing why it works that way are two very  different things.)
+  (Knowing that something works and knowing why it works that way are two very  different things).
 * Has somebody done this before?
 * Who said it first?
-  (Always try read the original source of a concept or theory.)
+  (Always try read the original source of a concept or theory).
 * Do I love what I’m doing?
 * Where else could I use this?
 * What did I fail at today?
 * How can we make this possible?
-  (Start from the assumption that whatever you want to do is possible.)
+  (Start from the assumption that whatever you want to do is possible).
 * Who can I learn from?
-  (You should never work anywhere where you are the smartest person in the room.)
+  (You should never work anywhere where you are the smartest person in the room).
 
 #### Simple stuff
 
-`camelCase`
-`kebab-case`
-`snake_case`
+`camelCase, kebab-case, snake_case`
 
 ````sh
 12:25AM # 00:25
@@ -217,7 +212,7 @@ UTF-8 character   - 2byte (for special chars)
 ````
 nil | null | none | blank | undefined | unknown | void | empty
 anonymous | anon
-environments: local; dev; stage|staging; prod|production;
+environments: local; dev; stage; staging; prod; production;
 ````
 
 ````

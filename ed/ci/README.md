@@ -4,13 +4,13 @@ Continuous Integration/Continuous Delivery
 How long would it take your organization to deploy a change that involves just one single line of code?
 Do you do this on a repeatable, reliable basis?
 
-A deployment pipeline is, in essence, an automated implementation of your application’s
+A deployment pipeline - automated implementation of your application’s
 build, deploy, test, and release process.
 
 The practice of building and testing your application on every check-in
 is known as continuous integration.
 
-Continuous Integration - it is a software development practice
+Continuous Integration - software development practice
 where members of a team use a version control system
 and integrate their work frequently to the same location, such as a master branch.
 Each change is built and verified by tests and other verifications

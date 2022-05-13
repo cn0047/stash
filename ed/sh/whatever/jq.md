@@ -29,6 +29,10 @@ jq type # simple way to check JSON validity
 ... | jq '.[]|= keys'          # 1st level keys
 ... | jq -r '.taskArgs[0]'     # string without quotes
 
+# reshape
+echo '{"id":1,"list":[{"n":"foo"},{"n":"bar"}]}' | jq '. | {id: .id, n: .list[].n}' # {"id":1,"n":"foo"}
+                                                                                    # {"id":1,"n":"bar"}
+
 o='{"foo": "f", "bar": "b", "items": [1, 2, 3] }'
 echo $o | jq                                # prettify json output
 echo $o | jq '.items | length'              # count

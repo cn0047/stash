@@ -13,7 +13,7 @@ Almost all processes alternate between two states in a continuing cycle:
 
 CPU bursts vary from process to process, and from program to program.
 
-Whenever the CPU becomes idle, it is the job of the CPU Scheduler (short-term scheduler)
+Whenever the CPU becomes idle, it's the job of the CPU Scheduler (short-term scheduler)
 to select another process from the ready queue (FIFO) to run next.
 A scheduling system allows one process to use the CPU while another is waiting for I/O.
 
@@ -55,10 +55,10 @@ Thread Scheduling:
 * Asymmetric multiprocessing.
 * Symmetric multiprocessing, SMP.
 
-#### Arch
+#### Arch:
 
 386 (aka i386, 80386) - 32-bit microprocessor introduced in 1985.
 x64 (aka x86_64, amd64, intel64) - 64-bit version of the x86 instruction set in 1999.
 
 * x86: Intel, AMD; CISC - Complex Instruction Set Computer;
-* ARM: ; RISC - Reduced Instruction Set Computing;
+* ARM:           ; RISC - Reduced Instruction Set Computing;

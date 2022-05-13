@@ -2,10 +2,10 @@ Tree
 -
 
 Balancing tree:
-* Right rotation (when tree is left heavy)
-* Left rotation (when tree is right heavy)
-* Right-Left rotation
-* Left-Right rotation
+* Right rotation (when tree is left heavy).
+* Left rotation (when tree is right heavy).
+* Right-Left rotation.
+* Left-Right rotation.
 
 ````
 Update segment tree            - O(log n).
@@ -53,7 +53,7 @@ B-tree is also self managed multi-level index,
 it means when data in index grows, B-tree creates index in front of index, and so on,
 and when data deletes, B-tree deletes index.
 
-* Red–black tree - is a kind of self-balancing binary search tree.
+* `Red–black tree` - is a kind of self-balancing binary search tree.
 **Each node** of the binary tree **has an extra bit**,
 and that bit is often interpreted as the color (red or black) of the node.
 These color bits are used **to ensure the tree remains approximately balanced** during insertions and deletions.
@@ -62,7 +62,7 @@ These color bits are used **to ensure the tree remains approximately balanced** 
 2-node if it has one data element and two children.
 3-node if it has two data elements and three children.
 
-* AA tree (named for Arne Andersson, their inventor) - variation of the red-black tree,
+* AA tree (named for inventor Arne Andersson) - variation of the red-black tree,
 is a form of binary search tree which supports efficient addition and deletion of entries.
 **Unlike red-black** trees, **red nodes** on an AA tree **can only be added as a right subchild**.
 

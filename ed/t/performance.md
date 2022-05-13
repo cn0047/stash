@@ -17,9 +17,7 @@ Resilience - is the ability of a system to adapt or keep working when challenges
 
 2. Use a Content Delivery Network.
 
-3. Add an Expires Header:
-  * Expires Header.
-  * Max-Age and mod_expires.
+3. Add an Expires Header (Expires, Max-Age and mod_expires).
 
 4. Gzip Components (scripts and stylesheets).
 
@@ -35,9 +33,7 @@ Resilience - is the ability of a system to adapt or keep working when challenges
 
 9. Reduce DNS Lookups (using Keep-Alive and fewer domains).
 
-10. Minify JavaScript:
-  * Minification.
-  * Obfuscation.
+10. Minify JavaScript (minification, obfuscation).
 
 11. Avoid Redirects:
   * Alternatives to Redirects (Missing Trailing Slash, and else).

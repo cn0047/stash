@@ -15,7 +15,8 @@ and there can be no duplicate rows).
 #### 2NF
 
 Table is in **2NF** if it is in 1NF
-and every non-prime attribute of the table (in main table) is dependent on the whole of every candidate key.
+and every non-prime attribute of the table (in main table)
+is dependent on the whole of every candidate key.
 
 R1
 

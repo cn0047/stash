@@ -12,7 +12,7 @@ and use `‘cuisine_known:yes’`.
 
 * Avoid large documents.
 
-* Don’t return large result sets.
+* Don't return large result sets.
 
 * Narrow the range before sorting!!! (modre additional filters - less data to sort).
 

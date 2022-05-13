@@ -33,7 +33,7 @@ The database, in turn, checks its integrity constraints.
 A test that never commits does not fully exercise how the code under test interacts with the database.
 
 What not to automate with tests:
-* Database schema changes - slow...
+* Database schema changes - slow.
 * Software and hardware configuration changes.
 
 Regression testing - is designed to avoid regressing your application to a previous buggy state.
@@ -72,7 +72,7 @@ It involves assuring that all the integrated pieces of an application function a
 
 Does the whole system work?
 
-Acceptance criteria come in many different varieties, for one thing, they can be functional or nonfunctional.
+Acceptance criteria come in many different varieties, for one thing, they can be **functional** or **nonfunctional**.
 Nonfunctional acceptance criteria include things like:
 **capacity**, **performance**, modifiability, **availability**, **security**, usability, and so forth.
 The key point here is that when the acceptance tests associated with a particular story or requirement pass.
