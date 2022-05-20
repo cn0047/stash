@@ -1,9 +1,9 @@
-<APIProxy revision="1" name="one">
+<APIProxy revision="2" name="lb">
     <DisplayName></DisplayName>
     <Description></Description>
-    <CreatedAt>1644186154460</CreatedAt>
-    <LastModifiedAt>1644186154460</LastModifiedAt>
-    <BasePaths>/props</BasePaths>
+    <CreatedAt>1652726623837</CreatedAt>
+    <LastModifiedAt>1652726623837</LastModifiedAt>
+    <BasePaths>/lb</BasePaths>
     <ProxyEndpoints>
         <ProxyEndpoint>default</ProxyEndpoint>
     </ProxyEndpoints>

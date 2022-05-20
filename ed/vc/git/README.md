@@ -201,6 +201,10 @@ git bisect reset
 #### submodule
 
 ````sh
+cat .gitmodules            # get submodules
+git submodule              # get submodules list
+git submodule--helper list # get submodules list
+
 git submodule init
 git submodule update
 git submodule status

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Javascript continueOnError="false" enabled="true" timeLimit="200" name="JavaScript1">
+    <DisplayName>JavaScript1</DisplayName>
+    <Properties/>
+    <ResourceURL>jsc://JavaScript1.js</ResourceURL>
+</Javascript>

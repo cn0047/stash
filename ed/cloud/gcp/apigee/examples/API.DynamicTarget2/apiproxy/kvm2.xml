@@ -1,0 +1,21 @@
+<APIProxy revision="15" name="kvm2">
+    <DisplayName></DisplayName>
+    <Description></Description>
+    <CreatedAt>1652423786992</CreatedAt>
+    <LastModifiedAt>1652423786992</LastModifiedAt>
+    <BasePaths>/kvm2</BasePaths>
+    <Policies>
+        <Policy>ExtractVariables</Policy>
+        <Policy>JavaScript1</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>jsc://JavaScript1.js</Resource>
+        <Resource>properties://main.properties</Resource>
+    </Resources>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

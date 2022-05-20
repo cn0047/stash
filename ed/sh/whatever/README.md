@@ -692,7 +692,10 @@ echo "{'foo':'bar'}"       | sed "s/'/\"/g"               # replace ' to "
 
 echo "Version: 4.4.0.157.165" | sed -E 's/.*Version: ([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)\.[0-9]+/\1/'
 
-sed -i "s/admin_user/user/" /var/www/html/config.php
+sed -i     "s/admin_user/user/" /var/www/html/config.php
+sed -i.bak "s/admin_user/user/" /var/www/html/config.php
+
+sed -i -E $'s/\t/    /' file.json # replace \t to spaces
 
 echo 'car mAn' | sed -e 's/a/{&}/ig'
 

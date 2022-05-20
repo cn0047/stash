@@ -1,0 +1,17 @@
+<APIProxy revision="20" name="dbg">
+    <DisplayName></DisplayName>
+    <Description></Description>
+    <CreatedAt>1652911500358</CreatedAt>
+    <LastModifiedAt>1652911500358</LastModifiedAt>
+    <BasePaths>/dbg</BasePaths>
+    <Policies>
+        <Policy>Assign-Message-1</Policy>
+        <Policy>Assign-Message-2</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

@@ -5,14 +5,11 @@ import (
 )
 
 func main() {
-	concatenation()
-	slice3()
-
-	fmt.Println("\n three: -------------------")
-	three()
-
-	fmt.Println("\n four: -------------------")
-	four()
+	//concatenation()
+	//slice3()
+	//copyByLink()
+	copySimple()
+	//four()
 }
 
 func concatenation() {
@@ -27,28 +24,39 @@ func concatenation() {
 
 func slice3() {
 	a := []int{0, 1, 2, 3, 4, 5}
-	s := a[2:3:4]           // from:to:capacity
-	fmt.Printf("%+v \n", s) // [2]
+	s := a[2:3:4]                    // from:to:capacity
+	fmt.Printf("[slice3] %+v \n", s) // [2]
 }
 
-// three describes copy & copy by link cases.
-func three() {
+// copyByLink describes copy by link cases.
+func copyByLink() {
 	a := [...]string{"r", "o", "a", "d"} // array
 	a2 := a[:]
 	a[3] = "x"
-	fmt.Printf("a = %+v, a2 = %+v \n", a, a2) // a = [r o a x], a2 = [r o a x]
+	fmt.Printf("[copyAllegedly] a = %+v, a2 = %+v \n", a, a2) // a = [r o a x], a2 = [r o a x]
 
 	s := []string{"r", "o", "a", "d"} // slice
 	s2 := s[:]
 	s2[3] = "x"
-	fmt.Printf("s = %+v, s2 = %+v \n", s, s2) // s = [r o a x], s2 = [r o a x]
+	fmt.Printf("[copyAllegedly] s = %+v, s2 = %+v \n", s, s2) // s = [r o a x], s2 = [r o a x]
+}
 
-	c := []string{"a"}
+func copySimple() {
+	c1 := []string{"a"}
 	c2 := make([]string, 1)
-	copy(c2, c)
+	r1 := copy(c2, c1)
 	c2[0] = "b"
-	fmt.Printf("c = %+v, c2 = %+v \n", c, c2) // c = [a], c2 = [b]
+	fmt.Printf("[copySimple] c1: %+v, c2: %+v, r: %+v \n", c1, c2, r1) // c1: [a], c2: [b], r: 1
 
+	s1 := []string{"1", "2", "3"}
+	s2 := []string{"4", "5"}
+	r2 := copy(s1, s2)
+	fmt.Printf("[copySimple] s1: %+v, r: %+v \n", s1, r2) // s1: [4 5 3], r: 2
+
+	a1 := []string{"1", "2"}
+	a2 := []string{"3", "4", "5"}
+	r3 := copy(a1, a2)
+	fmt.Printf("[copySimple] a1: %+v, r: %+v \n", a1, r3) // a1: [3 4], r: 2
 }
 
 func four() {

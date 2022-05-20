@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables continueOnError="false" enabled="true" name="ExtractVariables">
+    <DisplayName>ExtractVariables</DisplayName>
+    <Properties/>
+    <URIPath>
+        <Pattern ignoreCase="true">/{version}/command-server/message/{functionName}</Pattern>
+    </URIPath>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <Source clearPayload="false">request</Source>
+    <VariablePrefix>x</VariablePrefix>
+</ExtractVariables>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="Assign-Message-1">
+    <AssignVariable>
+        <Name>x.path</Name>
+        <Template>/get?foo=bar</Template>
+    </AssignVariable>
+</AssignMessage>

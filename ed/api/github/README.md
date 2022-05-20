@@ -9,12 +9,15 @@ GitHub
 [REST API](https://docs.github.com/en/rest)
 [diagram in markdown](https://github.com/mermaid-js/mermaid)
 
-Don't forget to hit "Squash and merge" instead of "Merge pull request" for pr with > 1 commits.
-
 ````sh
 # ~/.ssh/config
 Host github.com
   IdentityFile ~/.ssh/id_rsa_my
+
+# push gist config with http
+url = https://gist.github.com/cn007b/b0136cc4db3ad91774e93dbaadcf0331
+# push gist config with ssh
+url = git@gist.github.com:b0136cc4db3ad91774e93dbaadcf0331.git
 ````
 
 ````sh
@@ -28,6 +31,8 @@ curl https://api.github.com/repos/cn007b/monitoring/releases | jq '.[0].assets[]
 
 https://api.github.com/orgs/thepkg
 ````
+
+Don't forget to hit "Squash and merge" instead of "Merge pull request" for pr with > 1 commits.
 
 To add image into gist:
 

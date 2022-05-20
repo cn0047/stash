@@ -5,9 +5,30 @@ import (
 )
 
 func main() {
-	one()
-	one2()
-	two()
+	//one()
+	//one2()
+	//two()
+	updateArray()
+}
+
+func updateArray() {
+	a := [3]int{0, 1, 2}
+	incEach(a)
+	fmt.Printf("[updateArray] %+v \n", a)           // [updateArray] [0 1 2]
+	fmt.Printf("[updateArray] %+v \n", incEach2(a)) // [updateArray] [0 2 4]
+}
+
+func incEach(a [3]int) {
+	for k, v := range a {
+		a[k] = v + v
+	}
+}
+
+func incEach2(a [3]int) [3]int {
+	for k, v := range a {
+		a[k] = v + v
+	}
+	return a
 }
 
 func one() {

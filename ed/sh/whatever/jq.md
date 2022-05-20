@@ -30,8 +30,15 @@ jq type # simple way to check JSON validity
 ... | jq -r '.taskArgs[0]'     # string without quotes
 
 # reshape
-echo '{"id":1,"list":[{"n":"foo"},{"n":"bar"}]}' | jq '. | {id: .id, n: .list[].n}' # {"id":1,"n":"foo"}
-                                                                                    # {"id":1,"n":"bar"}
+echo '{"id":1,"list":[{"n":"foo"},{"n":"bar"}]}' | jq '. | {id: .id, n: .list[].n}'
+# result: {"id":1,"n":"foo"} {"id":1,"n":"bar"}
+
+doc='{"list":[
+  {"id":1,"items":[{"n":"foo"}]},
+  {"id":2,"items":[{"n":"bar"}]}
+]}'
+echo $doc | jq '.|{id:.list[].id,n:.list[].items[].n}' # produce 4 objects
+echo $doc | jq '.|.list[]|{id:.id,n:.items[].n}'       # produce 2 objects
 
 o='{"foo": "f", "bar": "b", "items": [1, 2, 3] }'
 echo $o | jq                                # prettify json output
