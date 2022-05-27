@@ -1,0 +1,21 @@
+# {"userId": "cn007b"}
+main:
+  params: [args]
+  steps:
+    - init_log:
+        call: sys.log
+        args:
+          text: ${"userId = " + args.userId}
+          severity: INFO
+    - get_info:
+        call: http.get
+        args:
+          url: ${"https://api.github.com/users/" + args.userId}
+        result: user_info
+    - get_info_log:
+        call: sys.log
+        args:
+          text: ${"user_info = " + json.encode_to_string(user_info.body)}
+          severity: INFO
+    - result:
+        return: ${user_info.body.name}

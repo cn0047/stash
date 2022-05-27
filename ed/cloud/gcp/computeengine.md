@@ -15,13 +15,13 @@ GCE - Compute Engine
 Shared core machines: f1-micro, g1-small.
 
 Predefined Virtual Machines types:
-* standard
-* shared-core
-* high-cpu
-* high-memory
+* standard.
+* shared-core.
+* high-cpu.
+* high-memory.
 
 Instance template - define machine type, image, zone and other properties.
 
 Instance groups:
-* managed (zonal, regional)
-* unmanaged
+* managed (zonal, regional).
+* unmanaged.

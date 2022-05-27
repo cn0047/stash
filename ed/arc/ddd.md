@@ -34,11 +34,11 @@ It does not contain business logic.
 It does not hold the state of the business objects,
 but it can hold the state of an application task progress.
 (Used by external consumers to talk to your system).
-(Application services should generally represent all possible use cases).
+(Application services should generally **represent all possible use cases**).
 (It can check whether a domain object exists or not and throw exceptions accordingly).
 
 * Domain - This layer contains information about the domain.
-This is the heart of the business software.
+This is the **heart of the business software**.
 The state of business objects is held here.
 Persistence of the business objects and possibly their state is delegated to
 the infrastructure layer.
@@ -48,7 +48,7 @@ It provides communication between layers,
 implements persistence for business objects, contains
 supporting libraries for the user interface layer, etc.
 (Order is a domain concept, whereas Table and Column and so on are infrastructure concerns).
-(Here we put all the implementations of the interfaces defined in the domain layer).
+(Here we put all the **implementations of the interfaces defined in the domain layer**).
 
 Example:
 ````
@@ -195,7 +195,7 @@ operations that don’t belong to entities nor value objects.
 Communication between the delivery mechanism
 and the domain is carried by data structures called DTO.
 
-DTO it is something like request/response VO for domain.
+DTO is something like request/response VO for domain.
 DTO does not have any behavior except for storage and retrieval of its own data.
 DTOs are simple objects that should not contain any business logic.
 
@@ -203,7 +203,7 @@ Interface to DTO must be placed in domain layer.
 Particular DTO implementation (mysql, mongo, etc) must be placed in infrastructure layer
 because it contains specific stuff (related to rows in mysql, how to get data, how to transform, etc).
 
-DTO it's just data container which used to transport data between different layers.
+DTO it's just data container which used **to transport data between different layers**.
 
 #### Repositories.
 

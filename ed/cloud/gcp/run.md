@@ -1,5 +1,7 @@
-Run
+Cloud Run
 -
+
+[pricing](https://cloud.google.com/run/pricing)
 
 ````sh
 export PROJECT_ID='my-sandbox'

@@ -11,8 +11,8 @@ but, writes to item by different processes have to be seen in the same order by 
 
 **Causal consistency**:
 Weakening model of sequential consistency.
-Only write operations that are causally related, need to be seen in the same order by all processes.
-(Client is guaranteed to read at least its own writes.)
+Only write operations that are causally related, need to be seen in the same order by all processes
+(client is guaranteed to read at least its own writes).
 
 **Eventual consistency (Optimistic Replication)**:
 For high availability.

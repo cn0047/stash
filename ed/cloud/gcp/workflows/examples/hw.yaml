@@ -1,0 +1,7 @@
+main:
+  steps:
+    - init:
+      assign:
+        - msg: "Hello World!" 
+    - step_one:
+      return: ${msg}

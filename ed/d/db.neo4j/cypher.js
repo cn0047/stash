@@ -277,9 +277,13 @@ WHERE a.code = '007' AND b.name = 'CIA'
 // RETURN *;
 FOREACH (n IN nodes(p)| SET n.path1 = true);
 
-// call
+// call subquery
 MATCH (p:Person {code:'007'})
-CALL { WITH p OPTIONAL MATCH (p)-[:FAMILIAR]->(other:Person) RETURN other }
+CALL {
+  WITH p OPTIONAL MATCH (p)-[:FAMILIAR]->(other:Person)
+  // WITH other, "1" as x - hack
+  RETURN other
+}
 RETURN p, other;
 
 // unwind - expands list into sequence of rows.

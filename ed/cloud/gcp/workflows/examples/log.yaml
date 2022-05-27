@@ -1,0 +1,27 @@
+# {"msg": "204"}
+main:
+  params: [args]
+  steps:
+    - init:
+        assign:
+          - outputVar: ${"MSG = " + args.msg}
+    - log_1:
+        call: sys.log
+        args:
+          text: ${"[log1] outputVar = " + outputVar}
+          severity: INFO
+    - log_2:
+        call: http.post
+        args:
+          url: https://logging.googleapis.com/v2/entries:write
+          auth:
+            type: OAuth2
+          body:
+            entries:
+              - logName: ${"projects/" + sys.get_env("GOOGLE_CLOUD_PROJECT_ID") + "/logs/workflows"}
+                resource:
+                  type: "audited_resource"
+                  labels: {}
+                textPayload: ${"[log2] outputVar = " + outputVar}
+    - result:
+        return: ${outputVar}

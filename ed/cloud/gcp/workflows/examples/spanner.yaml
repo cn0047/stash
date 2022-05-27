@@ -1,0 +1,50 @@
+# {"id": "3", "msg": "foo"}
+# {"id": "4", "msg": "bar"}
+main:
+  params: [args]
+  steps:
+    - create_write_request:
+      assign:
+        - wreq:
+          mutations:
+          - insert:
+            table: test
+            columns:
+              - id
+              - msg
+            values:
+              - - ${args.id}
+              - ${args.msg}
+          singleUseTransaction:
+          readWrite: {}
+    - create_read_request:
+      assign:
+        - rreq:
+          sql: "SELECT * FROM test"
+    - create_spanner_session:
+      call: googleapis.spanner.v1.projects.instances.databases.sessions.create
+      args:
+        database: ${"projects/" + sys.get_env("GOOGLE_CLOUD_PROJECT_ID") + "/instances/main/databases/testdb"}
+      result: session
+    - write_query:
+      call: googleapis.spanner.v1.projects.instances.databases.sessions.commit
+      args:
+        session: ${session.name}
+        body: ${wreq}
+    - read_query:
+      call: googleapis.spanner.v1.projects.instances.databases.sessions.executeSql
+      args:
+        session: ${session.name}
+        body: ${rreq}
+      result: rres
+    - delete_spanner_session:
+      call: googleapis.spanner.v1.projects.instances.databases.sessions.delete
+      args:
+        name: ${session.name}
+    - log_res:
+      call: sys.log
+      args:
+        text: ${"rres = " + json.encode_to_string(rres)}
+        severity: INFO
+    - the_end:
+      return: ${rres}
