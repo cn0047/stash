@@ -1,4 +1,4 @@
-rust
+Rust
 -
 <br>rustc 1.40.0
 Since 2006.
@@ -6,12 +6,15 @@ Since 2006.
 [docs](https://www.rust-lang.org/learn)
 [playground](https://play.rust-lang.org/)
 
-cargo - Rust's package manager
 ````
 CARGO_HOME
 
 cargo new hw --bin
 ````
+Rust - multi-paradigm, general-purpose lang designed for performance, safety, concurrency.
+Without garbage collector and with strong, static, safe typing.
+
+cargo - Rust's package manager.
 
 Data ytpes:
 

@@ -2,7 +2,7 @@ JavaScript
 -
 Since 1995.
 
-JS - is a high-level (not assembler), dynamic (behavior determines in runtime)
+JS - high-level (not assembler), dynamic (behavior determines in runtime)
 weakly typed, object-based, multi-paradigm (event-driven, functional, imperative, prototype-based, object-oriented)
 and interpreted client-side programming language.
 

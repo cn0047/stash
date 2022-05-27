@@ -8,7 +8,7 @@ PHP
 <br>5.1.6
 Since 1994.
 
-PHP - is high-level (not assembler), dynamic (behavior determines in runtime)
+PHP - high-level (not assembler), dynamic (behavior determines in runtime)
 weakly typed, object-oriented
 and interpreted server-side scripting language.
 

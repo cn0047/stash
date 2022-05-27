@@ -4,11 +4,13 @@ Since 1989.
 
 [source code](http://git.savannah.gnu.org/cgit/coreutils.git/tree/src/comm.c)
 
+Bash - unix shell and command lang.
+
 Variables in bash are untyped, but bash has:
-* number
-* string
-* array
-* function
+* number.
+* string.
+* array.
+* function.
 
 ````sh
 bash --version

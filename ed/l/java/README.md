@@ -3,6 +3,9 @@ Java
 
 [jdk](http://jdk.java.net/)
 
+Java - high-level OOP lang and runtime environment,
+with static, strong, safe typing.
+
 ````sh
 java -version
 

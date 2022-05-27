@@ -4,6 +4,8 @@ Since 1985.
 
 [docs](https://isocpp.org/)
 
+c++ - general-purpose lang with static typing.
+
 ````sh
 ldconfig -p | grep opencv
 pkg-config --cflags --libs opencv

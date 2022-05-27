@@ -2,9 +2,6 @@ Scala
 -
 2.12.3
 
-Scala - is static typed programming language,
-fuses both imperative-programming and functional-programming styles.
-
 ````sh
 scala hw.scala
 
@@ -15,20 +12,21 @@ sbt
 run
 ````
 
-Basic types:
+Scala - static typed programming language,
+for both imperative-programming and functional-programming styles.
 
-* Byte
-* Short
-* Int
-* Char
-* Float
-* Double
-* Boolean
-* String
+Basic types:
+* Byte.
+* Short.
+* Int.
+* Char.
+* Float.
+* Double.
+* Boolean.
+* String.
 
 
 Traversable:
-
 Iterable
   Seq
   Set
@@ -60,7 +58,7 @@ Iterable
   EmptyMap,
   Map1, Map2, Map3, Map4
 
-````
+````scala
 // keywords
 4 to 6 
 abs
@@ -89,7 +87,7 @@ receive {
 
 Loops:
 
-````
+````scala
 args.foreach(arg => println(arg))
 
 args.foreach((arg: String) => println(arg))
@@ -111,7 +109,7 @@ list.map(_.grouped(2).map(_.reverse).mkString("")).map(println)
 
 Functions:
 
-````
+````scala
 def f () = println("Hello World")
 
 def f(delim:Int,arr:List[Int]):List[Int] = for{a <- arr if a < delim } yield a
@@ -129,7 +127,7 @@ def f (args: Number) {
 
 Data structures:
 
-````
+````scala
 val buf = collection.mutable.ArrayBuffer.empty[Int]
 
 val input = io.Source.stdin.getLines.drop(1).toList;
@@ -174,7 +172,7 @@ println(treasureMap(2))
 
 Class:
 
-````
+````scala
 class ChecksumAccumulator {
     private var sum = 0
     def add(b: Byte): Unit = { sum += b }

@@ -5,6 +5,11 @@ Go (Golang)
 <br>1.9.3
 Since 2009.
 
+Go - statically-typed, general-purpose, with type safety
+and automatic memory management programming language.
+Go is compiled, garbage-collected, concurrent, type-safe.
+Go source code is always UTF-8.
+
 [doc](https://golang.org/)
 [github](https://github.com/golang/go/wiki)
 [spec](https://golang.org/ref/spec)
@@ -270,12 +275,6 @@ err := http.ListenAndServeTLS(":443", "server.crt", "server.key", nil)
 http.Handle("/img/", http.FileServer(http.Dir("public")))
 mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {})
 ````
-
-Go - statically-typed, general-purpose, with type safety
-and automatic memory management programming language.
-
-Go is compiled, garbage-collected, concurrent, type-safe.
-Go source code is always UTF-8.
 
 A workspace is a directory hierarchy with three directories at its root:
 * bin (executable commands).

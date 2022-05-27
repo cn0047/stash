@@ -4,6 +4,8 @@ Clojure
 [docs](https://clojure.org/guides/getting_started)
 [github](https://github.com/clojure/clojure)
 
+Clojure - dynamic and functional dialect of Lisp lang on Java platform.
+
 ```clj
 inc 5
 dec 5
