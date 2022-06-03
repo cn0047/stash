@@ -3,12 +3,13 @@ Aggregations (Analytics)
 
 Types:
 * methic - stats (avg, cardinality).
-* bucketing - categorize into groups.
+* bucketing - group documents into buckets.
 * matrix - may be deleted in future releases.
-* pipeline - may be deleted in future releases.
+* pipeline - take input from other aggregations instead of documents or fields.
 
 ````sh
 url=localhost:9200/megacorp/employee
+url=$h/$idx
 
 # SELECT city, COUNT(*) FROM employee GROUP BY city ORDER BY COUNT(*) DESC
 # size=0 to not show search hits
@@ -162,7 +163,6 @@ curl -XGET $url/_search -d '{
 
 
 
-url=$h/$idx
 curl -XPOST "$url/_search?size=0" -H $ctj -d '{
     "aggs" : {
         "aggregated" : {
@@ -178,5 +178,15 @@ curl -XPOST "$url/_search?size=0" -H $ctj -d '{
             }
         }
     }
-}' | jq
+}'
+
+curl -XPOST "$url/_search" -H $ctj -d '{
+    "aggs": {
+        "nested_count": {
+            "sum": {
+                "script": {"lang": "painless", "source": "params[\"_source\"][\"nested_array\"].size()"}
+            }
+        }
+    }
+}'
 ````

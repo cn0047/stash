@@ -10,11 +10,11 @@ Enterprise Application Architecture Patterns
 2. Data Source Architectural Patterns:
   * Table Data Gateway.
   * Row Data Gateway.
-  * Active Record.
-  * Data Mapper.
+  * **Active Record**.
+  * **Data Mapper**.
 
 3. Object-Relational Behavioral Patterns:
-  * Unit of Work.
+  * **Unit of Work**.
   * Identity Map.
   * Lazy Load.
 
@@ -26,19 +26,19 @@ Enterprise Application Architecture Patterns
   * Embedded Value.
   * Serialized LOB.
   * Single Table Inheritance.
-  * Class Table Inheritance.
+  * class Table Inheritance.
   * Concrete Table Inheritance.
   * Inheritance Mappers.
 
 5. Object-Relational Metadata Mapping Patterns:
   * Metadata Mapping.
   * Query Object.
-  * Repository.
+  * **Repository**.
 
 6. Web Presentation Patterns:
-  * Model View Controller.
+  * **Model View Controller**.
   * Page Controller.
-  * Front Controller.
+  * **Front Controller**.
   * Template View.
   * Transform View.
   * Two Step View.
@@ -46,11 +46,11 @@ Enterprise Application Architecture Patterns
 
 7. Distribution Patterns:
   * Remote Facade.
-  * Data Transfer Object.
+  * **Data Transfer Object**.
 
 8. Offline Concurrency Patterns:
-  * Optimistic Offline Lock.
-  * Pessimistic Offline Lock.
+  * **Optimistic Offline Lock**.
+  * **Pessimistic Offline Lock**.
   * Coarse-Grained Lock.
   * Implicit Lock.
 
@@ -60,7 +60,7 @@ Enterprise Application Architecture Patterns
   * DB Session State.
 
 10. Base Patterns:
-  * Gateway.
+  * **Gateway**.
   * Mapper.
   * Layer Supertype.
   * Separated Interface.
@@ -70,7 +70,7 @@ Enterprise Application Architecture Patterns
   * Plugin.
   * Service Stub.
   * Record Set.
-  * Value Object.
+  * **Value Object**.
 
 ## Domain Logic Patterns:
 
@@ -98,7 +98,7 @@ Holds all SQL for accessing a single table.
 The simplest DB interface pattern to use (maps easy to table).
 
 **Row Data Gateway**
-Object that exactly mimics a single record (DB row).
+Object that exactly mimics a single record (DB row),
 should contain only DB access logic and no domain logic (Active Record).
 
 **Active Record**
@@ -140,7 +140,7 @@ Maps an object reference to a foreign key in the DB, many-to-many associations.
 Link table with foreign keys to the tables that are linked by the association (many-to-many).
 
 **Dependent Mapping**
-When you have an object that's only referred to by one other object,
+When you have an object that's only referred to by one other object.
 
 **Embedded Value**
 Maps an object into several fields of another object's table.
@@ -230,7 +230,7 @@ and compare the version stored in your session data to the current version in th
 Prevents conflicts between concurrent business transactions
 by allowing only one business transaction at a time to access data.
 Forces a business transaction to acquire a lock
-on a piece of data before it starts to use it,
+on a piece of data before it starts to use it.
 
 **Coarse-Grained Lock**
 A Coarse-Grained Lock is a single lock that covers many objects.

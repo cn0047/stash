@@ -2,10 +2,11 @@
 
 #### ES cluster v7
 
-img=elasticsearch:7.1.1
-img=docker.elastic.co/elasticsearch/elasticsearch:7.5.1
+tag=7.1.1
+img="elasticsearch:${tag}"
+# img=docker.elastic.co/elasticsearch/elasticsearch:7.5.1
 docker run -it --rm -p 9200:9200 -p 9300:9300 --name es \
-  -v $PWD/.data/.docker/elasticsearch:/usr/share/elasticsearch/data \
+  -v $PWD/.data/.docker/elasticsearch-$tag:/usr/share/elasticsearch/data \
   --memory=1024m \
   -e http.host=0.0.0.0 \
   -e http.publish_host=127.0.0.1 \
