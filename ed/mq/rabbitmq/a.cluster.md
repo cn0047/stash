@@ -1,7 +1,7 @@
 Cluster
 -
 
-````
+````sh
 erl -sname test
 ````
 ````sh

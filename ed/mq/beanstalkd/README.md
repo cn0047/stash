@@ -72,11 +72,9 @@ kick-job jobId
 stats-job jobId
 ````
 
-Job status:
+Job statuses:
 
-````
-READY - put job
-DELAYED - put with delay
-RESERVED - reserve job for the worker
-BURIED
-````
+* READY - put job.
+* DELAYED - put with delay.
+* RESERVED - reserve job for the worker.
+* BURIED.
