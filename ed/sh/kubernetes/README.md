@@ -247,9 +247,12 @@ kubectl logs $p -c $containerName
 kubectl logs -f $p # follow
 kubectl logs -p $p # previous
 
+kubectl port-forward $pod 8181:8080 # portOnHost:portInPod
+kubectl port-forward $svc 9200
+
 # run pod
 kubectl run log-pod --image=cn007b/pi
-kubectl port-forward $p 8181:8080 # portOnHost:portInPod
+kubectl port-forward $p 8181:8080
 curl 'localhost:8181?yes'
 
 kubectl patch --type=merge pod $p -p '{"metadata":{"labels":{"main":"cli"}}}'

@@ -42,19 +42,19 @@ So again, consider starting monolithic first and break things out when you’re 
 Many of the challenges you’re going to face with microservices get worse with scale.
 
 * Model around business concepts
-  (use bounded contexts)
+  (use bounded contexts).
 * Adopt a culture of automation
-  (automated testing, deploy the same way everywhere, continuous delivery)
+  (automated testing, deploy the same way everywhere, continuous delivery).
 * Hide internal implementation details
-  (modeling bounded contexts, services should also hide their databases, consider using REST)
+  (modeling bounded contexts, services should also hide their databases, consider using REST).
 * Decentralize all the things
-  (teams own their services, align teams to the organization, prefer choreography over orchestration)
+  (teams own their services, align teams to the organization, prefer choreography over orchestration).
 * Independently deployable
-  (coexist versioned endpoints, one-service-per-host)
+  (coexist versioned endpoints, one-service-per-host).
 * Isolate failure
-  (expect failure will occur anywhere and everywhere)
+  (expect failure will occur anywhere and everywhere).
 * Highly observable
-  (aggregate your logs, aggregate your stats)
+  (aggregate your logs, aggregate your stats).
 
 In real world app it's ok to have **HYBRID-Microservices** architecture.
 

@@ -16,7 +16,7 @@ Bob Martin's (uncle Bob) CopyProgram:
 ````
 Now we need add ability to: Write to disc...
 
-Inversion of control - is used to increase modularity of the program and make it extensible.
+Inversion of control - used to increase modularity of the program and make it extensible.
 <br>Software frameworks, CALLBACKS, schedulers, event loops and dependency injection
 are examples of design patterns that follow the inversion of control principle.
 

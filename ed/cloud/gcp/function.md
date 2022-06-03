@@ -22,3 +22,5 @@ gcloud functions describe hw
 ````
 
 Trigger type: HTTP, PubSub, GCS, Firestore, Firebase.
+
+HTTP trigger looks like: `https://$region-$prj.cloudfunctions.net/$funcName`.

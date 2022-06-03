@@ -1,7 +1,7 @@
 Architectures
 -
 
-````
+````sh
 coordinator
 dispatcher
 processor

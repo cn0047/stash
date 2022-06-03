@@ -91,7 +91,7 @@ ANAME fater that CNAME.
 
 IoT Protocols: MQTT, CoAP (lightweight HTTP).
 
-## OSI model
+## OSI model (Open Systems Interconnection)
 
 7. Application Layer - High-level APIs.
 6. Presentation Layer - Translation of data between a networking service and an application

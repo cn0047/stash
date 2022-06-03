@@ -23,13 +23,13 @@ Design patterns offer a common solution for a common problem in the form of clas
   * chainOfResponsibility - each object contains logic and link to the next object.
   * command - object encapsulate all information needed to call a method.
   * dependencyInjection - IoC.
-  * interpreter.
   * iterator - used to traverse a container.
   * mediator - object that encapsulates how a set of objects interact.
   * memento - provides the ability to restore an object to its previous state.
   * observer (publish-subscribe).
   * state - encapsulate varying behavior based on an object's state.
   * strategy - behavior to be selected at runtime.
+  * interpreter.
   * templateMethod.
   * visitor.
 
@@ -49,7 +49,7 @@ leads to an exponential list of constructors.
 but leaves the choice of its type to the subclasses,
 *creation being deferred at run-time*.
 
-**Prototype** it is used when the type of objects
+**Prototype** used when the type of objects
 to create is determined by a *prototypical instance*.
 For example: daily meeting in calendar has same members, same time, etc.
 You don't need to provide such information each time,
@@ -74,10 +74,10 @@ The intent of a **Composite** is to compose objects into *tree structures*.
 to an individual object, either statically or dynamically,
 without affecting the behavior of other objects from the same class.
 
-A **Facade** is an object that provides a *simplified interface*
+A **Facade** - object that provides a *simplified interface*
 to a larger body of code, such as a class library.
 
-A **Flyweight** (*lazy load*) is an object that minimizes memory use
+A **Flyweight** (*lazy load*) - object that minimizes memory use
 by sharing as much data as possible with other similar objects.
 
 A **Proxy**, in its most general form,
@@ -85,52 +85,49 @@ is a class functioning as an *interface to something else*.
 
 ## Behaviour:
 
-**Chain of Responsibility** is a design pattern consisting of objects,
+**Chain of Responsibility** - design pattern consisting of objects,
 *each object contains logic and link to the next processing object* in the chain,
 that will be invoked.
 
-**Command** - is a pattern in which an object is used to represent and encapsulate
+**Command** - pattern in which an object is used to represent and encapsulate
 *all the information needed to call a method*.
 
 **Dependency Injection** separates the creation of a client's dependencies
 from its own behavior, which allows program designs to be loosely coupled
 and to follow the *dependency inversion* and single responsibility principles.
-Types of dependency injection:
-1) constructor injection
-2) setter injection
-3) interface injection
+Types of dependency injection: constructor, setter, interface.
 
-**Interpreter** - is a pattern that specifies *how to evaluate sentences
+**Interpreter** - pattern that specifies *how to evaluate sentences
 in a language*. The basic idea is to have a class
 for each symbol (terminal or nonterminal) in a specialized computer language.
 
-**Iterator** - is a pattern in which an iterator is used
+**Iterator** - pattern in which an iterator is used
 to *traverse a container* and access the container's elements.
 
 **Mediator** defines an object that *encapsulates how a set of objects interact*.
 For example: brain is a mediator for all body parts.
 
-**Memento** is a pattern that provides the *ability to restore an object
+**Memento** - pattern that provides the *ability to restore an object
 to its previous state* (undo via rollback).
 
-**Observer** (aka *Publish-Subscribe*) - is a design pattern
+**Observer** (aka *Publish-Subscribe*) - design pattern
 in which an object, called the subject,
 maintains a list of its dependents, called observers,
 and notifies them automatically of any state changes.
 
-**State** this pattern is used to encapsulate varying behavior
+**State** - pattern used to encapsulate varying behavior
 for the same routine *based on an object's state*.
 
-**Strategy** - is a pattern that enables an algorithm's *behavior
+**Strategy** - pattern that enables an algorithm's *behavior
 to be selected at runtime*.
 
-**Template method** - it’s another way of encapsulation piece of algorithms
+**Template method** - another way of encapsulation piece of algorithms
 so the sub-classes can hook themselves right into computation
 any time they want.
 For example: applying same (template) approach for bunch of stuff:
 bus, plain, boat: start engine, leave terminal, entertainment, arrive, etc.
 
-**Visitor** - is a way of separating an algorithm from an object structure
+**Visitor** - way of separating an algorithm from an object structure
 on which it operates. A practical result of this separation
 is the ability to add new operations to existing object structures
 without modifying those structures.

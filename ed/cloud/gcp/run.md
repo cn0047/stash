@@ -24,3 +24,7 @@ gcloud run deploy $SERVICE_NAME \
 gcloud run services update-traffic $SERVICE_NAME --to-latest
 
 ````
+
+Cloud run configuration has autoscaling with min/max number of instances.
+
+Cloud run URL looks like: `https://$runName-$someHash-uc.a.run.app`.

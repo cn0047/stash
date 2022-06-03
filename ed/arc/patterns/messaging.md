@@ -37,13 +37,13 @@ Specific benefits of messaging:
 
 * **In-Optional-Out** - response is optional.
 
-* **Out-Only** (reverse In-Only) - supports event notification.
+* Out-Only (reverse In-Only) - supports event notification.
 
-* **Robust Out-Only** - like out-only but it can trigger a fault message.
+* Robust Out-Only - like out-only but it can trigger a fault message.
 
-* **Out-In** (reverse In-Out) - consumer initiates the exchange.
+* Out-In (reverse In-Out) - consumer initiates the exchange.
 
-* **Out-Optional-In** (reverse In-Optional-Out) - incoming message is optional (Optional-in).
+* Out-Optional-In (reverse In-Optional-Out) - incoming message is optional (Optional-in).
 
 #### In ØMQ:
 

@@ -28,6 +28,7 @@ db.articles.find({$text: {$search: "coffee"}})
 db.articles.find({$text: {$search: "bake coffee -cake"}})
 // WHERE
 db.myCollection.find({$where: "this.credits == this.debits"});
+db.myCollection.find({$where: "this.name.length > 1"});
 db.myCollection.find({$where: function() {return obj.credits == obj.debits;}});
 // ALL - Equivalent to $and Operation, array contains all specified elements.
 {tags: {$all: ["ssl" , "security"]}}
