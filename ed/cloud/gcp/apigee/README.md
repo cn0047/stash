@@ -33,8 +33,7 @@ gcloud alpha apigee operations list
 
 gcloud alpha apigee organizations list
 gcloud alpha apigee organizations delete $org
-gcloud alpha apigee organizations provision \
-  --authorized-network=default
+gcloud alpha apigee organizations provision --authorized-network=default
 
 
 

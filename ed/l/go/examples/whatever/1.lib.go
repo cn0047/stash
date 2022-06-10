@@ -25,6 +25,16 @@ str := strconv.FormatBool(true)                               // bool    -> str
 
 if !regexp.MustCompile(`^[\d]+$`).MatchString(ds) {}
 
+// sortCharsInString represents string sort.
+func sortCharsInString(str string) string {
+	tmp := make([]string, 0, len(str))
+	for i := 0; i < len(str); i++ {
+		tmp = append(tmp, string(str[i]))
+	}
+	sort.Strings(tmp)
+	return strings.Join(tmp, "")
+}
+
 func pow32(x, y int32) int32 {
 	if y == 0 || x == 1 {
 		return 1

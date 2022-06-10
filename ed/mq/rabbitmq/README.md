@@ -24,9 +24,9 @@ Avoid black hole messages:
 * Arrive in a durable queue.
 
 Messages from queue can be `dead-lettered` if:
-* message is rejected.
+* Message is rejected.
 * TTL expired.
-* queue length limit exceeded.
+* Queue length limit exceeded.
 
 Dead letter exchanges (DLXs) are normal exchanges.
 They can be any of the usual types and are declared as usual.
@@ -35,17 +35,17 @@ They can be any of the usual types and are declared as usual.
 
 Exchange - receives messages from producers and pushes them to queues.
 There are a few exchange types available:
-* direct
-* fanout
-* topic
-* headers
+* direct.
+* fanout.
+* topic.
+* headers.
 
 Direct (workers; rpc; routing key `info`, `warning` etc) exchange
 delivers messages to queues based on the message routing key.
 
 Fanout ignores the routing key (ideal for the broadcast).
 If N queues are bound to a fanout exchange, when a new message is published to that exchange
-a copy of the message is delivered to all N queues. 
+a copy of the message is delivered to all N queues.
 
 Topic (producer `anonymous.info`; recipient `*.critical`, `#`, `kernel.*` ...) exchanges
 route messages to one or many queues

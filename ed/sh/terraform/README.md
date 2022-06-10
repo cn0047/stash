@@ -109,7 +109,7 @@ terraform {
 
 resource "aws_instance" "myec2" {
   count         = 1
-  ami           = "ami-00aa4671cbf840d82" // default Amazon Linux 2 AMI
+  ami           = "ami-00aa4671cbf840d82" # default Amazon Linux 2 AMI
   instance_type = "t2.micro"
   tags = {
     Name = "myec2-1"

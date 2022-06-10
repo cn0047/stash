@@ -114,8 +114,7 @@ docker top CONTAINER_ID
 # shows the standard output of a container
 docker logs
 docker logs --details # ENV variables
-# follow
-docker logs -f
+docker logs -f # follow
 
 # show containers & images
 docker images
@@ -133,22 +132,21 @@ docker stop
 docker stop $(docker ps -a -q)
 
 # start stopped container (starts a container)
-docker start xcontainer
+docker start $cId
 
 # remove the web application container
-docker rm xcontainer
+docker rm $cId
 
 # delete
-docker rmi -f xcontainer
+docker rmi -f $cId
 
 # layers of image
 # less commands in dockerfile - least layers
-docker history php-cli
+docker history $img
 
 # shows used ports
-docker port xmongo
+docker port $cId
 
-exit
 ````
 
 ````sh
@@ -176,28 +174,28 @@ docker load -i img.dump.tar
 
 ## Dockerfile
 
-````sh
-FROM        (`FROM scratch`)
-MAINTAINER  Vladimir Kovpak|Volodymyr Kovpak
-ARG         `ARG CODE_VERSION=latest`
-ENV         `ENV NODE_PORT=3000`
-ADD         `ADD ./healthCheck.js /app/healthCheck.js`, allows `<src>` to be a URL
-COPY        `COPY ./healthCheck.js /app/healthCheck.js`, same as `ADD`, but without the tar and remote URL handling
-VOLUME      mount point with the specified name
-WORKDIR     `WORKDIR /app`
-RUN         `RUN ls - la /app/healthCheck.js`
-EXPOSE      `EXPOSE $NODE_PORT`
-CMD         provide default (default arguments) for an executing container (ENTRYPOINT),
+````
+FROM        `FROM scratch`.
+MAINTAINER  V.K. <cn007b@gmail.com>.
+ARG         `ARG CODE_VERSION=latest`.
+ENV         `ENV NODE_PORT=3000`.
+ADD         `ADD ./healthCheck.js /app/healthCheck.js`, allows `<src>` to be a URL.
+COPY        `COPY ./healthCheck.js /app/healthCheck.js`, same as `ADD`, but without the tar and remote URL handling.
+VOLUME      Mount point with the specified name.
+WORKDIR     `WORKDIR /app`.
+RUN         `RUN ls - la /app/healthCheck.js`.
+EXPOSE      `EXPOSE $NODE_PORT`.
+CMD         Provide default (default arguments) for an executing container (ENTRYPOINT),
             `CMD ["php"]`, in Dockerfile can be only 1 CMD instruction,
             if list more than one CMD then only last CMD will take effect,
             `CMD echo "This is a test." | wc -` # execute in shell `/bin/sh -c`,
-            `CMD ["/usr/bin/wc","--help"]` # run without shell (preferred),
-ENTRYPOINT  configure a container that will run as an executable,
-            `ENTRYPOINT [ "sh", "-c", "echo $HOME" ]`
-            `ENTRYPOINT service memcached start`
+            `CMD ["/usr/bin/wc","--help"]` # run without shell (preferred).
+ENTRYPOINT  Configure a container that will run as an executable,
+            `ENTRYPOINT ["sh", "-c", "echo $HOME"]`
+            `ENTRYPOINT service memcached start`.
             `ENTRYPOINT` will be started as a subcommand of `/bin/sh -c`, which does not pass OS signals
             command line arguments to `docker run <image>` will be appended to `ENTRYPOINT`
-            `ENTRYPOINT ["/bin/sh", "-c", "curl -i -XPOST 'https://realtimelog.herokuapp.com:443/rkc8q6llprn' -H 'Content-Type: application/json' -d '{\"code\": 200, \"status\": \"ok\"}'"]`
+            `ENTRYPOINT ["/bin/sh", "-c", "curl -i -XPOST 'https://realtimelog.herokuapp.com:443/rkc8q6llprn' -H 'Content-Type: application/json' -d '{\"code\": 200, \"status\": \"ok\"}'"]`.
 ````
 
 Less instructions in Dockerfile - least layers in built image.
@@ -208,10 +206,10 @@ Less instructions in Dockerfile - least layers in built image.
 for defining and running multi-container Docker applications.
 
 ````sh
-docker-compose build serviceName
+docker-compose build $serviceName
 # --no-cache - do not use cache
 # --force-rm - remove intermediate containers
-docker-compose build --no-cache --force-rm serviceName
+docker-compose build --no-cache --force-rm $serviceName
 
 # shutdown/cleanup
 docker-compose down
@@ -235,7 +233,7 @@ docker-compose exec mysql /bin/bash
 # start stopped container
 docker-compose start
 
-docker-compose restart $container
+docker-compose restart $cId
 
 docker-compose stop
 ````

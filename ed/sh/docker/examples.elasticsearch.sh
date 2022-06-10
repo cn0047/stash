@@ -2,7 +2,7 @@
 
 #### ES cluster v7
 
-tag=7.1.1
+tag=7.16.1
 img="elasticsearch:${tag}"
 # img=docker.elastic.co/elasticsearch/elasticsearch:7.5.1
 docker run -it --rm -p 9200:9200 -p 9300:9300 --name es \

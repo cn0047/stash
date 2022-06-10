@@ -16,7 +16,7 @@ open https://github.com/kubernetes/minikube/blob/master/docs/drivers.md#hyperkit
 
 Kubernetes - orchestrator for microservice apps (desired state management tool).
 <br>Kubernetes has three namespaces by default: default, kube-system, kube-public.
-<br>Minikube - tool to use K8s on dev.
+<br>Minikube - tool to use K8s for local env.
 
 Manifest file - describe desired state.
 

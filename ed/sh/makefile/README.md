@@ -2,10 +2,11 @@ Makefile
 -
 
 Makefiles contain five kinds of things:
-* explicit rules,
-* implicit rules,
-* variable definitions,
-* directives, and comments.
+* explicit rules.
+* implicit rules.
+* variable definitions.
+* directives.
+* comments.
 
 The `@` before echo means - don't print this command to stdout before running it.
 

@@ -63,8 +63,6 @@ flattened - JSON object as single field value.
 nested - array of objects.
 join - parent/child relationship.
 
-...
-
 #### Versioning
 
 Internally, Elasticsearch has marked the old document as deleted and added an entirely new document.
