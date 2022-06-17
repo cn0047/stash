@@ -20,7 +20,6 @@ UML
 
 * Relationships:
 <img src="https://github.com/cn007b/my/blob/master/ed/r/uml/img/relationships.1.png" width="70%" />
-<img src="https://github.com/cn007b/my/blob/master/ed/r/uml/img/relationships.2.webp" width="70%" />
 
   * Association.
   * Generalization (inheritance) (solid line with not filled arrow)
@@ -28,6 +27,8 @@ UML
   * Implementation (not filled dashed arrow)
     (arrow head points on interface).
   * Dependency (dashed arrow with open arrow head).
+
+<img src="https://github.com/cn007b/my/blob/master/ed/r/uml/img/relationships.2.webp" width="70%" />
 
 ### Structural Diagrams:
 
