@@ -19,7 +19,8 @@ UML
   * Action (filled rounded rectangle).
 
 * Relationships:
-![Relationships](https://github.com/cn007b/my/blob/master/ed/r/uml/img/relationships.png)
+![Relationships](https://github.com/cn007b/my/blob/master/ed/r/uml/img/relationships.1.png =200x150)
+![Relationships](https://github.com/cn007b/my/blob/master/ed/r/uml/img/relationships.2.webp =200x150))
 
   * Association.
   * Generalization (inheritance) (solid line with not filled arrow)
