@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package thepkg.x.app;
+option go_package = "src/github.com/thepkg/x/app";
+
+message Payload {
+    string data = 1;
+}

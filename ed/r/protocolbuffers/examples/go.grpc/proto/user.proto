@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package thepkg.x.user;
+option go_package = "src/github.com/thepkg/x/user";
+
+message User {
+    string email = 1;
+}

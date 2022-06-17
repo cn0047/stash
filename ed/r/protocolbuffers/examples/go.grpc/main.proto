@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package thepkg.x.app;
+option go_package = "src/github.com/thepkg/x/app";
+
+import "proto/payload.proto";
+import "proto/user.proto";
+
+message Input {
+    string id = 1;
+    thepkg.x.user.User user = 10;
+    Payload payload = 2;
+}

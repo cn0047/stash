@@ -10,6 +10,10 @@ terraform destroy
 
 
 
+# sh
+cd ed/sh/terraform/examples/sh
+# use common commands here
+
 # aws.st
 cd ed/sh/terraform/examples/aws.st
 # aws lambda

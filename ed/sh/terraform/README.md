@@ -53,6 +53,9 @@ brew install tflint
 
 terraform init
 terraform init -reconfigure
+terraform init -backend-config="bucket=$bkt"
+
+terraform validate
 
 # shows plan which will by applied
 terraform plan
@@ -67,11 +70,12 @@ terraform apply -auto-approve
 
 terraform refresh
 
+terraform state list # list all resources in the state
+
 terraform show -json
 
-# destroy all from tf file
-terraform destroy
-terraform destroy -target=resource
+terraform destroy                  # destroy all from tf file
+terraform destroy -target=resource # only certain resource, like: google_cloud_run_service.default
 
 terraform graph
 terraform fmt # format tf files
@@ -85,6 +89,8 @@ terraform workspace show
 ````
 
 ````sh
+flatten([["a", "b"], [], ["c"]])      # result: ["a", "b", "c"]
+merge({a="b", c="d"}, {e="f", c="z"}) # result: {"a" = "b", "c" = "z", "e" = "f"}
 resource "random_int" "rand" {
   min = 100
   max = 999

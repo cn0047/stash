@@ -3,6 +3,18 @@ Protocol Buffers (protobuf)
 
 [docs](https://developers.google.com/protocol-buffers/)
 
+````sh
+protoc --proto_path=$pathToProtoFiles
+
+cat foo.msg | protoc --encode=Package.Foo foo.proto
+
+cat cmdmWindows.Query.msq | protoc --encode=cmdmWindows.Query cmdmWindows.proto
+cat cmdmWindows.Query.msq \
+  | protoc --encode=cmdmWindows.Query cmdmWindows.proto \
+  | curl -k -X PUT --data-binary @- https://10.254.254.254:443/command/windows \
+  | protoc --decode cmdmWindows.Response cmdmWindows.proto
+````
+
 Canonically, messages are serialized into a binary wire format.
 
 Scalar Value Types:
@@ -39,16 +51,4 @@ message Job {
 
   message ModuleKind {}
 }
-````
-
-#### shell
-
-````sh
-cat foo.msg | protoc --encode=Package.Foo foo.proto
-
-cat cmdmWindows.Query.msq | protoc --encode=cmdmWindows.Query cmdmWindows.proto
-cat cmdmWindows.Query.msq \
-  | protoc --encode=cmdmWindows.Query cmdmWindows.proto \
-  | curl -k -X PUT --data-binary @- https://10.254.254.254:443/command/windows \
-  | protoc --decode cmdmWindows.Response cmdmWindows.proto
 ````

@@ -22,6 +22,7 @@ Go source code is always UTF-8.
 [badges](https://goreportcard.com/)
 [avatar](https://gopherize.me/)
 [pprof-ui](https://www.speedscope.app/)
+[performance](https://github.com/golang/perf)
 [city](https://go-city.github.io/#/github.com/cn007b/monitoring)
 [DIC (wire)](https://github.com/google/go-cloud/tree/master/wire)
 [DIC (wire) tutorial](https://github.com/google/go-cloud/tree/master/samples/wire)
@@ -36,6 +37,7 @@ Go source code is always UTF-8.
 [sql code gen](https://github.com/kyleconroy/sqlc)
 [project layout](https://github.com/golang-standards/project-layout)
 [generic examples](https://go.googlesource.com/proposal/+/refs/heads/master/design/43651-type-parameters.md#examples)
+[code gen from sql](https://github.com/kyleconroy/sqlc)
 
 ````bash
 export PATH=$PATH:/Users/kovpakvolodymyr/go/bin
