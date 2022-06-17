@@ -4,8 +4,8 @@ UML
 ### Building blocks:
 
 * Things:
-![things](https://github.com/cn007b/my/blob/master/ed/l/uml/things.png)
-![messagesAndActions](https://github.com/cn007b/my/blob/master/ed/l/uml/messagesAndActions.png)
+![things](https://github.com/cn007b/my/blob/master/ed/r/uml/things.png)
+![messagesAndActions](https://github.com/cn007b/my/blob/master/ed/r/uml/messagesAndActions.png)
 
   * Class.
   * Use case (filled oval).
@@ -19,7 +19,7 @@ UML
   * Action (filled rounded rectangle).
 
 * Relationships:
-![Relationships](https://github.com/cn007b/my/blob/master/ed/l/uml/relationships.png)
+![Relationships](https://github.com/cn007b/my/blob/master/ed/r/uml/relationships.png)
 
   * Association.
   * Generalization (inheritance) (solid line with not filled arrow)
@@ -31,7 +31,7 @@ UML
 ### Structural Diagrams:
 
 * Class diagram:
-![Class diagram](https://github.com/cn007b/my/blob/master/ed/l/uml/diagram.class.png)
+![Class diagram](https://github.com/cn007b/my/blob/master/ed/r/uml/diagram.class.png)
 
   * Basic (solid line).
   * Aggregation (solid line with open diamond)
@@ -42,7 +42,7 @@ UML
     (arrow point on class which are using another class (start of arrow)).
 
 * Component diagram:
-![Component diagram](https://github.com/cn007b/my/blob/master/ed/l/uml/diagram.component.png)
+![Component diagram](https://github.com/cn007b/my/blob/master/ed/r/uml/diagram.component.png)
 
   * Loosely connected:
     1. Interface
@@ -51,12 +51,12 @@ UML
   * Tightly connected (solid line and squares in both ends).
 
 * Package diagram:
-![Package diagram](https://github.com/cn007b/my/blob/master/ed/l/uml/diagram.package.png)
+![Package diagram](https://github.com/cn007b/my/blob/master/ed/r/uml/diagram.package.png)
 
   * Basic (like file folder).
 
 * Deployment diagram:
-![Deployment diagram](https://github.com/cn007b/my/blob/master/ed/l/uml/diagram.deployment.png)
+![Deployment diagram](https://github.com/cn007b/my/blob/master/ed/r/uml/diagram.deployment.png)
 
   * Nodes:
     1. Processors: Cubes (db); Stereotyped (any server);
@@ -65,7 +65,7 @@ UML
 ### Behavioral Diagrams:
 
 * Use case diagram:
-![Use case diagram](https://github.com/cn007b/my/blob/master/ed/l/uml/diagram.useCase.png)
+![Use case diagram](https://github.com/cn007b/my/blob/master/ed/r/uml/diagram.useCase.png)
 
   * User tasks.
   * System interactions.
@@ -76,7 +76,7 @@ UML
   * Relationships (solid lines).
 
 * Sequence diagram:
-![Sequence diagram](https://github.com/cn007b/my/blob/master/ed/l/uml/diagram.sequence.png)
+![Sequence diagram](https://github.com/cn007b/my/blob/master/ed/r/uml/diagram.sequence.png)
 
   * Lifeline (dashed vertical line with filled square in top).
   * Focus of control.
@@ -89,7 +89,7 @@ UML
   * Parallel (like conditional but with tag par).
 
 * State diagram:
-![State diagram](https://github.com/cn007b/my/blob/master/ed/l/uml/diagram.state.png)
+![State diagram](https://github.com/cn007b/my/blob/master/ed/r/uml/diagram.state.png)
 
   * States:
     * Basic (rounded rectangle).
@@ -106,7 +106,7 @@ UML
   * Composite state - state inside state.
 
 * Activity diagram:
-![Activity diagram](https://github.com/cn007b/my/blob/master/ed/l/uml/diagram.activity.png)
+![Activity diagram](https://github.com/cn007b/my/blob/master/ed/r/uml/diagram.activity.png)
 
   * Ations (single step).
   * Activity (multiple step).
@@ -118,5 +118,5 @@ UML
 ### Interaction Diagrams:
 
 * Collaboration diagram.
-![Collaboration diagram](https://github.com/cn007b/my/blob/master/ed/l/uml/diagram.collaboration.png)
+![Collaboration diagram](https://github.com/cn007b/my/blob/master/ed/r/uml/diagram.collaboration.png)
 * Sequence diagram.
