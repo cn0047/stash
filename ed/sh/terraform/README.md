@@ -46,6 +46,9 @@ aws_instance.example[0].id
 
 var.a != "" ? var.a : "default-a"
 "Hello, %{ if var.name != "" }${var.name}%{ else }unnamed%{ endif }!"
+
+flatten([["a", "b"], [], ["c"]])      # result: ["a", "b", "c"]
+merge({a="b", c="d"}, {e="f", c="z"}) # result: {"a" = "b", "c" = "z", "e" = "f"}
 ````
 
 ````sh
@@ -89,8 +92,6 @@ terraform workspace show
 ````
 
 ````sh
-flatten([["a", "b"], [], ["c"]])      # result: ["a", "b", "c"]
-merge({a="b", c="d"}, {e="f", c="z"}) # result: {"a" = "b", "c" = "z", "e" = "f"}
 resource "random_int" "rand" {
   min = 100
   max = 999
@@ -126,4 +127,18 @@ resource "aws_instance" "myec2" {
     ]
   }
 }
+````
+
+#### GCP
+
+````sh
+google_compute_network                       # VPC network
+google_compute_region_network_endpoint_group # regional NEG
+google_compute_router                        # router within GCE
+google_compute_router_nat                    #
+google_compute_subnetwork                    #
+google_compute_url_map                       # route requests to BE svc
+google_compute_target_https_proxy            # for global forwarding rule
+                                             # to route incoming HTTPS requests to URL map
+google_compute_global_forwarding_rule        # to forward traffic to correct HTTP LB
 ````

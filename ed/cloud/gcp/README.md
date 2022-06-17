@@ -98,9 +98,25 @@ Managed instances groups used for LB.
 Google Cloud Interconnect extends your on-premises network
 to Google's network through a highly available, low latency connection.
 
+Each VPC network is a global entity spanning all GCP regions.
+Each VPC network is subdivided into subnets,
+and each subnet is contained within a single region.
+Each subnet has a contiguous private RFC1918 IP space.
+Virtual machine instances in a VPC network can communicate with instances
+in all other subnets of the same VPC network, regardless of region,
+using their RFC1918 private IP addresses.
+You can isolate portions of the network, even entire subnets, using firewall rules.
+
 Max 5 network per GCP project.
 Internal Ip address used internal DNS server for FQDN.
 To scale Cloud VPN - add multiple tunnels.
 Subnets can not span across multiple regions.
 Cloud Router doesn't use BGP link to advertise network changes.
 Google Virtual Network Subnets are regional resource.
+
+#### ESP (Extensible Service Proxy)
+
+ESP - Envoy-based high-performance, scalable proxy that runs in front of
+OpenAPI or gRPC API backend and provides API management features.
+
+#### NAT (Network Address Translation)

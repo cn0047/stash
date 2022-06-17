@@ -12,8 +12,7 @@ JSON API requires use of the JSON API media type (`application/vnd.api+json`) fo
 #### Document Structure
 
 A JSON `object` MUST be at the root of every JSON API request and response containing data:
-
-* `data`: the document’s "primary data".
+* `data`: the document’s primary data.
 * `errors`: an array of error objects.
 * `meta`: a meta object that contains non-standard meta-information.
 
@@ -22,7 +21,6 @@ The members `data` and `errors` MUST NOT coexist in the same document.
 #### Resource Object
 
 A resource object MUST contain at least the following top-level members:
-
 * `id`.
 * `type`.
 
@@ -38,7 +36,6 @@ in a top-level `included` member.
 
 Pagination links MUST appear in the `links` object that corresponds to a collection.
 The following keys MUST be used for pagination links:
-
 * `first`: the first page of data.
 * `last`: the last page of data.
 * `prev`: the previous page of data.
@@ -47,14 +44,12 @@ The following keys MUST be used for pagination links:
 #### Fetching Data
 
 Multiple related resources can be requested in a comma-separated list:
-
 ````sh
 GET /articles/1?include=author,comments.author HTTP/1.1
 Accept: application/vnd.api+json
 ````
 
 A client MAY request that an endpoint return only specific fields:
-
 ````sh
 GET /articles?include=author&fields[articles]=title,body&fields[people]=name HTTP/1.1
 Accept: application/vnd.api+json
@@ -77,7 +72,6 @@ POST /photos HTTP/1.1
 ````
 
 The request SHOULD return a status 202 Accepted with a link in the `Content-Location` header.
-
 ````sh
 HTTP/1.1 202 Accepted
 Content-Type: application/vnd.api+json
@@ -98,7 +92,6 @@ Content-Location: https://example.com/photos/queue-jobs/5234
 ````
 
 To check the status of the job process:
-
 ````sh
 GET /photos/queue-jobs/5234 HTTP/1.1
 Accept: application/vnd.api+json
