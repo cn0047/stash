@@ -66,6 +66,7 @@ which software the init command launches or shuts off on a given runlevel.
 /proc/$pid/root                         # root for process
 /proc/$pid/status                       # status about process
 /proc/$pid/statm                        # mem stats about process
+/proc/$pid/smaps                        #
 /proc/cpuinfo                           # info about cpu
 /proc/meminfo                           # info about memory (+ memory usage)
 /proc/net                               # network

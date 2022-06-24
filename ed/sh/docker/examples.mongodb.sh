@@ -21,6 +21,8 @@ docker exec -it xmongo mongo 'mongodb://localhost:27017/test'
 docker exec -it xmongo mongo 'mongodb://localhost:27017/test' --username 'dbu' --password 'dbp'
 docker exec -it xmongo mongo 'mongodb://localhost:27017/test' -u 'dbu' -p 'dbp'
 
+
+
 #### MongoDB cluster (replica set)
 
 # primary
@@ -58,6 +60,8 @@ docker exec -it xmongo-primary-1 mongo --port 27017 --eval 'db.rs.insert({c:200}
 # docker exec -it xmongo-secondary-1 mongo --port 27018 --eval 'db.setSlaveOk()'
 # docker exec -it xmongo-secondary-1 mongo --port 27018 --eval 'db.rs.find()'
 docker exec -it xmongo-secondary-1 mongo --port 27018 --eval 'db.setSlaveOk();db.rs.find()'
+
+
 
 #### MongoDB cluster (sharding)
 

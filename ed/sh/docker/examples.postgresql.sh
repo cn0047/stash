@@ -24,6 +24,8 @@ docker exec -ti xpostgres psql -h localhost -p 5432 -U dbu -d test
 docker exec -ti -e PGPASSWORD=dbp xpostgres psql -h localhost -p 5432 -U dbu -d test
 docker exec -ti xpostgres psql -d postgres://dbu:dbp@localhost/test
 
+
+
 #### PostgreSQL cluster
 
 docker run -it --rm -p 5432:5432 --name postgres-master --hostname postgres-master \

@@ -30,8 +30,8 @@ Data Types:
 * array.
 * object.
 
-No null type, the nullable attribute is used.
-Not data type: Enum, Dictionaries, HashMaps and Associative Arrays. Use object instead.
+No `null` type, the `nullable attribute` is used.
+No data type: Enum, Dictionaries, HashMaps and Associative Arrays, use object instead.
 
 Mixed Types:
 ````

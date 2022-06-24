@@ -79,7 +79,7 @@ IPv4 address range: https://regex101.com/r/O4t93o/2/
 | e | evaluate replacement                      |
 | u | upgready|unicode                          |
 
-````
+````sh
 /(['"])[^'"]*\1/
 
 (aa){1,2}?                   # exactly 2 aa, not 4 aa (2 aa & 2 aa)

@@ -7,6 +7,8 @@ docker run -it --rm --net=xnet -p 6379:6379 --name xredis --hostname xredis redi
 docker exec -ti xredis redis-cli
 docker exec -ti xredis redis-cli -h localhost -p 6379
 
+
+
 #### Redis cluster (replication)
 
 # master
@@ -24,6 +26,8 @@ docker exec -ti xredis-master-1 redis-cli -h localhost -p 6378
 docker exec -ti xredis-slave-1 redis-cli -h localhost -p 6377
 # and
 docker exec -ti xredis-slave-1 redis-cli -h localhost -p 6377 info | grep -E '(replica|master|slave|status)'
+
+
 
 #### Redis cluster (sharding) (not finished)
 

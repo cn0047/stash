@@ -9,6 +9,8 @@ i          - element index
 floor(i/2) - parent
 ````
 
+BFS/DFS (Breadth/Depth First Search) in binary tree: @look: graph.md
+
 Level-Order Traversal aka BFS.
 
 Full BT - every non-leaf node has two children,
@@ -24,22 +26,27 @@ Find inorder successor:
 If right child is present - got to right child and go to [most left](http://prntscr.com/hdpsl5),
 otherwise - search from where we take the [last left turn](http://prntscr.com/hdptzo).
 
-Preorder Traversal (Shortcut Trick):
+Preorder traversal:
 1. print node.
 2. go to left child.
 3. go to right child.
 
-Postorder Traversal (Shortcut Trick):
+Postorder traversal:
 1. go to left child.
 2. go to right child.
 3. print node.
 
-Inorder Traversal (Shortcut Trick):
+Inorder traversal:
 1. go to left child.
 2. print node.
 3. go to right child.
 
-Delete a node from Binary Search Tree:
+Vertical order traversal:
+1. put in queue root, root height = 0.
+2. deque, left child height = parent height -1, right child height = parent height +1.
+3. enqueue left child & right child.
+
+Delete a node from BST:
 1. delete leaf node - just delete it.
 2. delete node with 1 child - replace node with it's child.
 3. delete node with 2 childs - replace with node wich is minimum in right child.
@@ -69,11 +76,9 @@ left child = parent d
 Number of Binary Search Trees possible with N nodes:
 For example, `for: [5, 6] result: [5, 6], [6, 5] (all permutations)`.
 
-BFS/DFS (Breadth/Depth First Search) in binary tree: @look: graph.md
+Get BST height: recursive call height for left & right; return max(left height, right height)+1.
 
-Get BST height: recursive call height for left & right; return max(left height, right height)+1
-
-Insert into BST: `val < left.val -> insert into left node, else insert into right node`
+Insert into BST: `val < left.val -> insert into left node, else insert into right node`.
 
 #### Heap
 

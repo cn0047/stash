@@ -17,7 +17,6 @@ nullparam:
 ````
 
 Anchor:
-
 ````yaml
 DEFAULT: &DEFAULT
   description: "single ping #1"
@@ -29,9 +28,7 @@ cron:
 
 - <<: *DEFAULT
 ````
-
 or:
-
 ````yaml
 song:
   - &name Al

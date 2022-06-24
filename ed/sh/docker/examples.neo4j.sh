@@ -69,19 +69,18 @@ docker run -it --rm --net=xnet -p 7474:7474 -p 7687:7687 --name xneo4j --hostnam
 docker exec -it xneo4j sh -c 'tail -f /logs/debug.log'
 
 
-
+# test UI
 # usr=neo4j
 # pwd=test
 # pwd=1
 # prev_pwd=neo4j
 open http://0.0.0.0:7474/
 
-# REPL
+# test REPL
 docker exec -it xneo4j sh -c 'cypher-shell -u neo4j -p test'
 docker exec -it xneo4j sh -c 'cypher-shell -u neo4j -p 1'
 docker exec -it xneo4j sh -c 'cypher-shell -u neo4j -p test -d mydb'
 docker exec -it xneo4j sh -c 'cypher-shell -u neo4j -p test "SHOW DATABASES"'
-
 #
 docker exec -it xneo4j /bin/bash
 docker exec -it xneo4j sh -c 'neo4j status'

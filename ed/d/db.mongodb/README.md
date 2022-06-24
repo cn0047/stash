@@ -176,6 +176,11 @@ db.books.findAndModify ({
         $push:{checkout:{by: "abc", date: new Date()}}
    }
 })
+// update nested array element
+db.schemas.update(
+    {myId: ObjectId("123"), myType: "foo", "arr.name": "bar"},
+    {$set: {"arr.$.active": true}}
+)
 // REPLACE
 db.inventory.update(
    {type: "book", item : "journal"},

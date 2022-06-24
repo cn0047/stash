@@ -2,7 +2,7 @@ JSON API
 -
 v1.0
 
-[jsonapi](http://jsonapi.org/)
+[jsonapi](https://jsonapi.org/format/)
 
 JSON API is a format that works with HTTP.
 It delineates how clients should request data from a server, and how the server should respond.

@@ -13,8 +13,11 @@ docker exec -ti xmysql mysql -P3307 -uroot -proot -e "set global general_log_fil
 docker exec -ti xmysql mysql -P3307 -uroot -proot -e "set global general_log = 1;"
 docker exec -ti xmysql tail -f /tmp/mysql.general.log
 
+# test
 docker exec -ti xmysql mysql -P3307 -uroot -proot
 docker exec -ti xmysql mysql -P3307 -udbu -pdbp -Dtest
+
+
 
 #### MySQL cluster
 

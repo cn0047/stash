@@ -45,7 +45,7 @@ Use nouns and NOT the verbs. Also use plurals.
 | ● | GET      |                                                                         |
 |   | HEAD     | like get but return header only (good to check whether resource exists) |
 | ● | POST     | create                                                                  |
-| ● | PUT      | update (if it does not exist, create it.)                               |
+| ● | PUT      | update (if it does not exist, create it)                                |
 |   | PATCH    | update                                                                  |
 | ● | DELETE   |                                                                         |
 |   | OPTIONS  | return available HTTP methods                                           |
@@ -78,7 +78,7 @@ The GET method is a safe method (or nullipotent), meaning that calling it produc
 | GET POST PUT        |                                       | 402 Payment Required                                                |
 | GET POST PUT DELETE |                                       | 403 Forbidden                                                       |
 | GET POST PUT DELETE |                                       | 404 Not Found                                                       |
-|     POST PUT DELETE |                                       | 404 Not Found (processing request that references related resource) |
+| GET POST PUT DELETE |                                       | 404 Not Found (processing request that references related resource) |
 |     POST PUT DELETE |                                       | 405 Method Not Allowed                                              |
 |     POST PUT        |                                       | 409 Conflict                                                        |
 
@@ -120,3 +120,19 @@ products?limit=25&offset=50
 version in url super simple to invalidate, version in header harder to invalidate,
 also version in header won't be logged by nginx logger etc.
 also rounting and load balancing is easier with version in url.
+
+<br>P: batch/bulk operations
+<br>S1:
+````sh
+POST /users/_bulk
+[{"id": 1, "name": "Bond"}, {"id": 2, "name": "Leiter"}, ...]
+````
+<br>S2:
+````sh
+POST /_bulk
+[
+  {"path": "/user/1", "method": "put", "code": "007"},
+  {"path": "/user/2", "method": "delete"},
+  ...
+]
+````

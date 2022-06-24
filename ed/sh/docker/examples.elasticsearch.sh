@@ -22,6 +22,11 @@ docker run -it --rm -p 9200:9200 -p 9300:9300 --name es \
   -e xpack.watcher.enabled=false \
   $img
 
+# test
+curl 'http://localhost:9200'
+
+
+
 #### ES cluster v5
 
 # init master 1 node
@@ -36,6 +41,8 @@ docker run -it --rm -p 9201:9200 --name es-data-1 --link es-master-1  \
   -e "http.host=_eth0_" -e "cluster.name=ec" \
   -e "node.master=false" -e "node.data=true" \
   -e "discovery.zen.ping.unicast.hosts=es-master-1" elasticsearch:5.4
+
+
 
 #### ES cluster v2
 

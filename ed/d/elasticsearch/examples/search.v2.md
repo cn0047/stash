@@ -41,11 +41,24 @@ curl -XPOST '$h/$idx/$t/_search?pretty' -d '{
 }'
 # or (using query_string)
 curl -XGET $h/$idx/$t/_search -d '{
-"query" : {
+  "query" : {
     "query_string": {
       "query": "(interests:sports AND interests:music)"
     }
   }
+}'
+# or
+curl -XGET $h/$idx/$t/_search -d '{
+  "query": {
+    "bool": {
+      "must": {
+        "simple_query_string": {
+          "fields": ["name"],
+          "query": "foo"
+        }
+      }
+    }
+  },
 }'
 
 # Array interests contains sports or music

@@ -1,9 +1,7 @@
 <?php
 
-define('LOG_FILE', '/tmp/jobSeeker.dou.log');
-
-$baseURL = 'https://jobs.dou.ua/vacancies/feeds/?';
-$arr = [
+// Update CATEGORIES & BLACKLIST accordingly to you requirements.
+define('CATEGORIES', [
     'city=Kyiv&category=Golang',
     'remote&category=Golang',
     // 'city=Kyiv&category=PHP',
@@ -16,19 +14,32 @@ $arr = [
     // 'remote&category=Blockchain',
     'city=Kyiv&category=Other',
     'remote&category=Other',
-];
-foreach ($arr as $el) {
-    run($baseURL, $el);
+]);
+define('BLACKLIST', '/wordpress|magento/msi');
+
+
+
+// No need to change next code.
+
+define('BASE_URL', 'https://jobs.dou.ua/vacancies/feeds/?');
+define('LOG_FILE', '/tmp/jobSeeker.dou.log');
+
+main(CATEGORIES);
+
+function main(array $categories) {
+    foreach ($categories as $queryString) {
+        run(BASE_URL, $queryString);
+    }
 }
 
-function run(string $baseURL, string $qs)
+function run(string $baseURL, string $queryString)
 {
-    $url = $baseURL . $qs;
+    $url = $baseURL . $queryString;
     $xmlDoc = new DOMDocument();
     $xmlDoc->load($url);
     $items = $xmlDoc->getElementsByTagName('item');
     $res = find($items);
-    printf("\n%s items: \n\n %s", colorize($qs), implode('', $res));
+    printf("\n%s items: \n%s", colorize($queryString), implode('', $res));
 }
 
 function colorize(string $str): string
@@ -45,9 +56,9 @@ function find(object $items): array
         $desc = $el->getElementsByTagName('description')->item(0)->childNodes->item(0)->nodeValue;
         $title = $el->getElementsByTagName('title')->item(0)->childNodes->item(0)->nodeValue;
         $link = $el->getElementsByTagName('link')->item(0)->childNodes->item(0)->nodeValue;
-        $sign = notInteresting($title, $desc);
-        $out = sprintf("\t%s \t%s \t %s\n", $link, $sign, $title);
-        if (strlen($sign) === 0) {
+        $signs = getSigns($title, $desc);
+        $out = sprintf("%s \t%s \t %s\n", $signs, $link, $title);
+        if (strlen($signs) === 0) {
             file_put_contents(LOG_FILE, deleteNoiseWords($out), FILE_APPEND);
             file_put_contents(LOG_FILE.'.desc', $desc, FILE_APPEND);
             continue;
@@ -83,7 +94,7 @@ function deleteNoiseWords(string $str): string
     return $str;
 }
 
-function notInteresting(string $title, string $desc): string
+function getSigns(string $title, string $desc): string
 {
     $inBlackList = isInBlackList($title) === true || isInBlackList($desc) === true;
     $notCTO = isCTO($title) === false && isCTO($desc) === false;
@@ -95,14 +106,14 @@ function notInteresting(string $title, string $desc): string
     $noMoney = withMoney($title) === false && withMoney($desc) === false;
 
     $res = '';
-    // $res .= $inBlackList === true ? '' : '';
-    $res .= $notCTO === true ? '' : '✳️';
-    $res .= $notArchitect === true ? '' : '👔';
-    $res .= $notLead === true ? '' : '🙎‍♂️';
-    $res .= $notBackEnd === true ? '' : '📺';
-    $res .= $notRust === true ? '' : '🅡';
-    $res .= $noMoney === true ? '' : '💵';
-    $res .= $noNumbers === true ? '' : '🔢';
+    $res .= $inBlackList  === true ? '' : '🔴';
+    $res .= $notCTO       === true ? '' : '👨‍💼';
+    $res .= $notArchitect === true ? '' : '👷‍♂️';
+    $res .= $notLead      === true ? '' : '👨‍🔧';
+    $res .= $notBackEnd   === true ? '' : '📺';
+    $res .= $notRust      === true ? '' : '🅡';
+    $res .= $noMoney      === true ? '' : '💵';
+    $res .= $noNumbers    === true ? '' : '🔢';
 
     return $res;
 }
@@ -126,7 +137,7 @@ function withMoney(string $str): bool
 
 function isInBlackList(string $str): bool
 {
-    $no = preg_match('/wordpress|magento/msi', $str);
+    $no = preg_match(BLACKLIST, $str);
     $res = $no === 0;
 
     return $res;
