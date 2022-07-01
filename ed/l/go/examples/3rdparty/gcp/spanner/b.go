@@ -8,9 +8,10 @@ import (
 	"time"
 
 	"cloud.google.com/go/spanner"
+	"google.golang.org/api/iterator"
 )
 
-const DB = "projects/$p/instances/$i/databases/$db"
+const DB = "projects/test-project/instances/test-instance/databases/test-db"
 
 func main() {
 	var err error
@@ -23,6 +24,7 @@ func main() {
 	ctx := context.Background()
 	//err = insertJSON(ctx, c)
 	//err = selectTestRow1(ctx, c)
+	//err = selectTestRows(ctx, c)
 	//err = deleteTestRow1(ctx, c)
 	err = deleteTestRow1v2(ctx, c)
 	if err != nil {
@@ -44,7 +46,7 @@ func insertJSON(ctx context.Context, c *spanner.Client) error {
 		stmt := spanner.Statement{
 			SQL: `INSERT INTO test (id, msg, data) VALUES (@id, @msg, @data)`,
 			Params: map[string]interface{}{
-				"id":   1,
+				"id":   11,
 				"msg":  "New message generated at: " + time.Now().Format(time.Kitchen),
 				"data": spanner.NullJSON{Value: map[string]string{"foo": "bar"}, Valid: true},
 			},
@@ -96,6 +98,56 @@ func deleteTestRow1(ctx context.Context, c *spanner.Client) error {
 	_, err := c.Apply(ctx, m)
 	if err != nil {
 		return fmt.Errorf("failed to delete row from spanner, err: %w", err)
+	}
+
+	return nil
+}
+
+func selectTestRows(ctx context.Context, c *spanner.Client) error {
+	stmt := spanner.Statement{
+		SQL:    `SELECT id, msg FROM test WHERE id IN UNNEST(@ids)`,
+		Params: map[string]interface{}{"ids": []int64{1, 11}},
+	}
+	iter := c.Single().Query(ctx, stmt)
+	defer iter.Stop()
+	for {
+		row, err := iter.Next()
+		if err == iterator.Done {
+			break
+		}
+		if err != nil {
+			return fmt.Errorf("failed to get next, err: %w", err)
+		}
+		r := TestRow{}
+		if err := row.Columns(&r.ID, &r.Msg); err != nil {
+			return fmt.Errorf("failed to get columns, err: %w", err)
+		}
+		fmt.Printf("test row with ID *: %+v \n", r)
+	}
+
+	return nil
+}
+
+func selectTestRow1WithQuery(ctx context.Context, c *spanner.Client) error {
+	stmt := spanner.Statement{
+		SQL:    `SELECT id, msg FROM test WHERE id = @id`,
+		Params: map[string]interface{}{"id": 1},
+	}
+	iter := c.Single().Query(ctx, stmt)
+	defer iter.Stop()
+	for {
+		row, err := iter.Next()
+		if err == iterator.Done {
+			break
+		}
+		if err != nil {
+			return fmt.Errorf("failed to get next, err: %w", err)
+		}
+		r := TestRow{}
+		if err := row.Columns(&r.ID, &r.Msg); err != nil {
+			return fmt.Errorf("failed to get columns, err: %w", err)
+		}
+		fmt.Printf("test row with ID *: %+v \n", r)
 	}
 
 	return nil

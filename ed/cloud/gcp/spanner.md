@@ -33,8 +33,8 @@ gcloud config set api_endpoint_overrides/spanner http://localhost:9020/
 
 
 
-db=test-db
 dbi=test-instance
+db=test-db
 
 gcloud spanner instances list
 # emulator

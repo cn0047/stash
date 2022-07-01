@@ -4,16 +4,14 @@ def func1():
     try:
       print(d['bar'])
     except KeyError as e:
-      print("bar is not in dict")
+      print('bar is not in dict')
 
 
 def func2():
     d1 = dict(foo='bar')
-    d2 = {'foo': 'bar'}
-    d3 = {"foo": "bar"}
-    print(d1)
-    print(d2)
-    print(d3)
+    d3 = {'foo': 'bar'}
+    d3['code'] = 200
+    print('[func2]', d1, d3, d3.get('code'), d3.get('x'))
 
 
 # func1()

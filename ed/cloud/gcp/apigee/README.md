@@ -64,6 +64,12 @@ request.formparam.count
 
 # tricks
 {firstnonnull(target-path,proxy.pathsuffix)}
+
+# js
+httpClient.send(new Request(
+'https://realtimelog.herokuapp.com:443/kaiuw6t7v8n', 'POST', {'Content-Type': 'application/json'},
+JSON.stringify({code: 200, status: 'OK'})
+));
 ````
 
 ````js
