@@ -207,6 +207,9 @@ Response:
 Access-Control-Allow-Origin: *
 Access-Control-Allow-Methods: OPTIONS, GET, POST, PUT, DELETE
 Access-Control-Allow-Headers: *
+
+# To indicate which HTTP headers can be used during the actual request.
+Access-Control-Expose-Headers: MyOrg-Resource
 ````
 
 ## Codes
