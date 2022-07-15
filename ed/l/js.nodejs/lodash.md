@@ -1,6 +1,8 @@
 Lodash
 -
-4.17.4
+<br>4.17.4
+
+[docs](https://lodash.com/docs/)
 
 #### Collection
 
