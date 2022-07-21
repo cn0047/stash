@@ -1,5 +1,3 @@
-// task 3
-
 function cmp(a, b) {
     return a - b;
 }

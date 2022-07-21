@@ -20,11 +20,11 @@ function f(A) {
   // OPTION # 1
   let n = A.length + 1;
   let v1 = (n * (n + 1)) / 2;
-  let s = 0;
+  let sum = 0;
   for (let i = 0; i < A.length; i++) {
-    s += A[i];
+    sum += A[i];
   }
-  return v1 - s;
+  return v1 - sum;
 }
 
 /**
@@ -37,20 +37,20 @@ function f(A) {
  */
 function f2(A) {
   A.sort(function (a, b) { return a - b; });
-  var min = 1;
+  var minMissing = 1;
   for (var i = 0; i < A.length; i++) {
     var v = A[i];
     if (v > 0) {
-      if (min === v) {
-        min += 1;
+      if (minMissing === v) {
+        minMissing += 1;
       } else {
-        if (v > min) {
-          return min;
+        if (v > minMissing) {
+          return minMissing;
         }
       }
     }
   }
-  return min;
+  return minMissing;
 }
 
 console.log(f2([1, 3, 6, 4, 1, 2]));

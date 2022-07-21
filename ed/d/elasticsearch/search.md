@@ -24,6 +24,11 @@ Boolean:
 * `should` - may appear but may ney not.
 * `filter` - must appear in result but result not scored.
 
+`query_string_query`.
+
+`simple_query_string` simplified form of the `query_string_query`
+and it's fault-tolerant (doesn't return errors when syntax wrong).
+
 `search_after` more efficient than `from/size` and `scroll`,
 just use value from `sort` field provided by previous search.
 

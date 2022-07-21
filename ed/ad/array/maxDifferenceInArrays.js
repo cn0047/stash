@@ -1,3 +1,4 @@
+// solution finds maxDifferenceInArrays.
 function solution(A) {
     var b;
     var max;
@@ -9,8 +10,8 @@ function solution(A) {
         // for extracted elements from origin array `A`,
         // it helps to have better performance.
         b = b > v ? b : v;
-        var maxFromA = Math.max.apply(Math, A);
-        // maxFromA may contain value '-Infinity' which we have to exclude
+        var maxFromA = Math.max.apply(Math, A); // find max value in array.
+        // maxFromA may contain value '-Infinity' which we have to exclude.
         if (isFinite(maxFromA)) {
             var newMax = Math.abs(b - maxFromA);
             max = max > newMax ? max : newMax;
@@ -21,3 +22,4 @@ function solution(A) {
 
 console.log(solution([1, 3, -3]));
 console.log(solution([4, 3, 2, 5, 1, 1]));
+console.log(solution([-4, -3, -7, -1]));

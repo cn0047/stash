@@ -12,8 +12,8 @@ func main() {
 	fmt.Println(f([]int{3, 7, 9}))
 }
 
-// f returns next greater element from given array.
-// This solution based on stack usage.
+// f returns next greater (second greather) element from given array.
+// This solution based on stack usage (here stack only with 2 slots).
 func f(a []int) int {
 	var stack []int
 	if a[0] > a[1] {

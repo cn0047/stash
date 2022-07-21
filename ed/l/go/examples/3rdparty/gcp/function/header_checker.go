@@ -1,3 +1,5 @@
+// This is 1 gen func.
+
 package p
 
 import (

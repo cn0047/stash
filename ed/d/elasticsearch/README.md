@@ -51,17 +51,17 @@ sorting, or in a script.
 
 [docs](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html)
 
-binary
-boolean
-keyword - ID, email, hostname, etc.
-long
-double
-alias - alias for an existing field.
+* binary
+* boolean
+* keyword - ID, email, hostname, etc.
+* long
+* double
+* alias - alias for an existing field.
 
-object -  inner object.
-flattened - JSON object as single field value.
-nested - array of objects.
-join - parent/child relationship.
+* object -  inner object.
+* flattened - JSON object as single field value.
+* nested - array of objects.
+* join - parent/child relationship.
 
 #### Versioning
 
@@ -70,9 +70,9 @@ The old version of the document doesn't disappear immediately,
 although you won't be able to access it.
 Elasticsearch cleans up deleted documents in the background as you continue to index more data.
 
-#### Analyzers
+#### Analyzer
 
-Analyzers are used - when we index a document.
+Analyzer used to index document.
 
 * `Standard` - divides text into terms on word boundaries.
 * `Simple` - divides whenever it encounters a character which is not a letter.
@@ -82,6 +82,11 @@ Analyzers are used - when we index a document.
 * `Pattern` - uses a regular expression to split the text into terms.
 * `Language` - language-specific analyzers like english or french.
 * `Fingerprint` - is a specialist analyzer which creates a fingerprint which can be used for duplicate detection.
+
+#### Tokenizer
+
+Tokenizer receives stream of characters, breaks it up into tokens (usually individual words)
+and outputs stream of tokens.
 
 #### Aggregations (Analytics)
 

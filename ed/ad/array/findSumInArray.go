@@ -10,6 +10,8 @@ func main() {
 	fmt.Println(findSumInArray([]int32{1, 4, 5, 3, 2}, 4))
 }
 
+// findSumInArray returns 2 indexes to elements in array arr
+// sum of which will be equal to seaking sum value.
 func findSumInArray(arr []int32, sum int32) (int32, int32) {
 	n := len(arr)
 

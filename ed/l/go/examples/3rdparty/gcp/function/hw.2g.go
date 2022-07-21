@@ -1,4 +1,4 @@
-// This is 1 gen func.
+// This is 2 gen func.
 
 package p
 
@@ -8,7 +8,13 @@ import (
 	"log"
 	"net/http"
 	"time"
+
+	"github.com/GoogleCloudPlatform/functions-framework-go/functions"
 )
+
+func init() {
+	functions.HTTP("HelloWorldEntryPoint", HelloWorld)
+}
 
 func HelloWorld(w http.ResponseWriter, r *http.Request) {
 	msg := fmt.Sprintf("Hello World at: %s!", time.Now().Format(time.Kitchen))

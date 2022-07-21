@@ -1,4 +1,6 @@
-package main
+// This is 1 gen func.
+
+package p
 
 import (
 	"context"

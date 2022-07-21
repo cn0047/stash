@@ -66,8 +66,6 @@ Stream processing systems (near-real-time systems) - a stream processor consumes
 Server-Sent Events - servers can initiate data transmission towards clients
 once an initial client connection has been established.
 
-IO throughput - data transfer speed in megabytes per second (MB/s or MBPS).
-
 To deal with big complicated problems - have to perform breakdown or decomposition.
 One of the best ways to deal with complexity is divide and conquer - split the problem
 into smaller problems and solve each one separately.
@@ -100,25 +98,12 @@ PC: CPU, Main Memory, Secondary Memory (SSD).
 
 Weight Gross - with pack; Weight Net - without pack;
 
-#### SLA/SLO/SLI
-
-Service-level agreement (SLA) - commitment between a service provider and a client:
-quality, availability, responsibility, performance, costs, etc.
-
-Service-level objective (SLO) - (key element of SLA) specific measurable characteristics
-of the SLA such as availability, throughput, frequency, response time, or quality.
-
-Service-level indicator (SLI) - measure of the service level provided by a service provider to a customer.
-Common SLIs include latency, throughput, availability, error rate, durability, correctness, etc.
-
-#### Full stack:
-
+Full stack:
 * Presentation layer (html, css, js).
 * Business layer (go, php, node, etc).
 * Data access layer (mongo, mysql, etc).
 
-#### 10 Questions Developers Should be Asking Themselves
-
+10 Questions Developers Should be Asking Themselves:
 * Is there a pattern here?
 * How can I make this simpler?
 * Why does it work like that?

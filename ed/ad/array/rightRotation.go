@@ -12,13 +12,13 @@ func main() {
 // rotateArrayToTheRight rotates array to the right rotationCount times.
 func rotateArrayToTheRight(a []int, rotationCount int) []int {
 	l := len(a)
-	arr := make([]int, l, l)
+	resArr := make([]int, l, l)
 
 	// No need to rotate array, just put element into right place.
 	for i:=0; i<l; i++ {
 		idx := (i+rotationCount)%l
-		arr[idx] = a[i]
+		resArr[idx] = a[i]
 	}
 
-	return arr
+	return resArr
 }

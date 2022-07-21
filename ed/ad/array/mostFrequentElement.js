@@ -5,14 +5,15 @@
  *
  * @return {number} Index in array of most frequent element.
  */
-function f(a) {
+function f(arr) {
   var a = [...arr];
+
   if (a.length === 0) {
     return -1;
   }
-  a.sort(function (a, b) {
-    return a - b;
-  });
+
+  a.sort(function (a, b) { return a - b; });
+
   var frequentElement = a[0];
   var frequentElementCount = 1;
   var currentElement = a[0];
@@ -29,6 +30,7 @@ function f(a) {
       frequentElementCount = currentElementCount;
     }
   }
+
   var isFrequentElementDominator = frequentElementCount > (a.length / 2);
   return isFrequentElementDominator ? arr.indexOf(frequentElement) : -1;
 }

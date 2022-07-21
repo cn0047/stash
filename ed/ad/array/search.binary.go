@@ -15,8 +15,8 @@ func main() {
 func binarySearch(a []int, v int) int {
 	start := 0
 	end := len(a) - 1
+
 	for start <= end {
-		fmt.Print(".")
 		mid := (start + end) / 2
 		if a[mid] == v {
 			return mid
@@ -27,5 +27,6 @@ func binarySearch(a []int, v int) int {
 			start = mid + 1
 		}
 	}
+
 	return -1
 }

@@ -56,7 +56,7 @@ Spanner - fully managed relational database with unlimited scale and strong cons
 Spanner instance configured per region.
 DB sequences (or auto-increment) - anti-pattern (it creates hotspots), use UUID generator.
 
-Data types:
+[Data types](https://cloud.google.com/spanner/docs/reference/standard-sql/data-types):
 * bool.
 * int64.
 * float64.
