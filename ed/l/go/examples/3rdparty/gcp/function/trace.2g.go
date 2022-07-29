@@ -19,16 +19,21 @@ import (
 	"go.opencensus.io/trace"
 )
 
-func init() {
-	l("init") // invoked by GCP
+var (
+	traceExporter *stackdriver.Exporter
+)
 
-	functions.HTTP("mainEntryPoint", MainHandler)
+func init() {
+	l("init1") // invoked by GCP
+
+	functions.HTTP("mainEntryPoint", MainTraceHandler2Gen)
 
 	exporter, err := stackdriver.NewExporter(stackdriver.Options{
 		//ProjectID: "",
 		DefaultTraceAttributes: map[string]interface{}{
 			"service-name": "ftrace2g",
 		},
+		//NumberOfWorkers: 1,
 	})
 	if err != nil {
 		log.Fatal(err)
@@ -40,8 +45,11 @@ func init() {
 	if err := exporter.StartMetricsExporter(); err != nil {
 		log.Fatal(err)
 	}
+	traceExporter = exporter
 	//defer exporter.Flush()
 	//defer exporter.StopMetricsExporter()
+
+	l("init2") // invoked by GCP
 }
 
 func main() {
@@ -65,7 +73,37 @@ func l(d interface{}) {
 	_, _ = http.Post("https://realtimelog.herokuapp.com:443/rkc8q6llprn", "application/json", bytes.NewBuffer(j))
 }
 
-func doSomething(ctx context.Context) {
+func doSomething2(cntx context.Context) {
+	ctx, span := trace.StartSpan(cntx, "ftrace2g.doSomething2")
+	defer span.End()
+
+	req, err := http.NewRequest("GET", "https://www.youtube.com/watch?v=mZkSBnQUMiU", nil)
+	if err != nil {
+		log.Printf("failed to create new request err: %v", err)
+		return
+	}
+	req.WithContext(ctx)
+
+	c := &http.Client{}
+	res, err := c.Do(req)
+	if err != nil {
+		log.Printf("failed to send request err: %v", err)
+		return
+	}
+	defer res.Body.Close()
+
+	if res.StatusCode != 200 {
+		log.Printf("got response status code: %v", res.StatusCode)
+		return
+	}
+
+	doSomething1(ctx)
+}
+
+func doSomething1(cntx context.Context) {
+	ctx, span := trace.StartSpan(cntx, "ftrace2g.doSomething1")
+	defer span.End()
+
 	req, err := http.NewRequest("GET", "https://www.youtube.com/watch?v=mZkSBnQUMiU", nil)
 	if err != nil {
 		log.Printf("failed to create new request err: %v", err)
@@ -87,11 +125,12 @@ func doSomething(ctx context.Context) {
 	}
 }
 
-func MainHandler(w http.ResponseWriter, r *http.Request) {
-	ctx, span := trace.StartSpan(context.Background(), "trace.2g.MainHandler")
+func MainTraceHandler2Gen(w http.ResponseWriter, r *http.Request) {
+	defer traceExporter.Flush()
+	ctx, span := trace.StartSpan(r.Context(), "ftrace2g.MainTraceHandler2Gen")
 	defer span.End()
 
-	doSomething(ctx)
+	doSomething2(ctx)
 
 	msg := fmt.Sprintf("traced at: %s", time.Now().Format(time.Kitchen))
 	_, _ = fmt.Fprint(w, html.EscapeString(msg))

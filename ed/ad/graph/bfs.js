@@ -14,9 +14,10 @@
 function bfs(f, t, ed) {
   let q = [{i: f, deep: 1}]; // queue
   let visited = []; // visited
+
   while (q.length > 0) {
-    let co = q.shift();
-    let c = co.i; // current vertex
+    let curObj = q.shift();
+    let c = curObj.i; // current vertex
     visited.push(c);
     if (typeof ed[c] === 'undefined') {
       // If no edges for current vertex.
@@ -25,12 +26,13 @@ function bfs(f, t, ed) {
     for (let i = 0; i < ed[c].length; i++) {
       let node = ed[c][i];
       if (node === t) {
-        return co.deep;
+        return curObj.deep;
       }
       if (visited.indexOf(node) === -1) {
-        q.push({i: node, deep: co.deep + 1});
+        q.push({i: node, deep: curObj.deep + 1});
       }
     }
   }
+
   return -1;
 }

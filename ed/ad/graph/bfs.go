@@ -51,7 +51,7 @@ func (g Graph) SetNode(node *Node) {
 	g[node.Value] = node
 }
 
-func (g Graph) AddNode(value int32) {
+func (g Graph) AddNodeByValue(value int32) {
 	node := &Node{Value: value, Edges: make(map[int32]struct{}, 0)}
 	g.SetNode(node)
 }
@@ -83,7 +83,7 @@ func (g Graph) Init(edges [][]int32) {
 
 		// Not edge but only 1 node.
 		if len(edge) == 1 {
-			g.AddNode(fromValue)
+			g.AddNodeByValue(fromValue)
 			continue
 		}
 
@@ -94,6 +94,7 @@ func (g Graph) Init(edges [][]int32) {
 	}
 }
 
+// BFS represents Breadth First Search.
 func (g Graph) BFS(fromValue int32, toValue int32) int32 {
 	if fromValue == toValue {
 		return 0

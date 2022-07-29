@@ -21,7 +21,7 @@ There are three types of `match` query: `boolean`, `phrase`, and `phrase_prefix`
 Boolean:
 * `must` - clause must appear in matching documents.
 * `must_not` - clause must not appear in matching documents.
-* `should` - may appear but may ney not.
+* `should` - may appear but may not.
 * `filter` - must appear in result but result not scored.
 
 `query_string_query`.

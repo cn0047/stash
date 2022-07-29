@@ -13,14 +13,14 @@ function insertionSort(arr) {
   for (let i = 1; i < arr.length; i++) {
     let j = i - 1;
     do {
-      let v = arr[j + 1];
-      if (v < arr[j]) {
+      if (arr[j + 1] < arr[j]) {
         arr[j + 1] = arr[j];
-        arr[j] = v;
+        arr[j] = arr[j + 1];
       }
       j--;
     } while (j >= 0);
   }
+
   return arr;
 }
 

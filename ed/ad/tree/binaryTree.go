@@ -1,6 +1,48 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
+
+type BinaryTree struct {
+	Tree map[int32]*Node
+	Root int32
+}
+
+func (b *BinaryTree) AddNode(value int32, left int32, right int32) {
+	// Init map for tree data.
+	if b.Tree == nil {
+		b.Tree = make(map[int32]*Node)
+	}
+
+	node, ok := b.Tree[value]
+	if !ok {
+		b.Root = value
+		node = &Node{Tree: b, Deep: 1, Value: value}
+	}
+	node.Left = left
+	node.Right = right
+	b.Tree[value] = node
+
+	_, lOk := b.Tree[left]
+	if left != -1 && !lOk {
+		b.Tree[left] = &Node{Tree: b, Deep: node.Deep + 1, Value: left, Root: value}
+	}
+
+	_, rOk := b.Tree[right]
+	if right != -1 && !rOk {
+		b.Tree[right] = &Node{Tree: b, Deep: node.Deep + 1, Value: right, Root: value}
+	}
+}
+
+func (b *BinaryTree) GetRoot() *Node {
+	node, ok := b.Tree[b.Root]
+	if !ok {
+		return nil
+	}
+
+	return node
+}
 
 type Node struct {
 	Tree  *BinaryTree
@@ -85,46 +127,6 @@ func (n *Node) SwapChildren() {
 	tmp := n.Left
 	n.Left = n.Right
 	n.Right = tmp
-}
-
-type BinaryTree struct {
-	Tree map[int32]*Node
-	Root int32
-}
-
-func (b *BinaryTree) AddNode(value int32, left int32, right int32) {
-	// Init map for tree data.
-	if b.Tree == nil {
-		b.Tree = make(map[int32]*Node)
-	}
-
-	node, ok := b.Tree[value]
-	if !ok {
-		b.Root = value
-		node = &Node{Tree: b, Deep: 1, Value: value}
-	}
-	node.Left = left
-	node.Right = right
-	b.Tree[value] = node
-
-	_, lOk := b.Tree[left]
-	if left != -1 && !lOk {
-		b.Tree[left] = &Node{Tree: b, Deep: node.Deep + 1, Value: left, Root: value}
-	}
-
-	_, rOk := b.Tree[right]
-	if right != -1 && !rOk {
-		b.Tree[right] = &Node{Tree: b, Deep: node.Deep + 1, Value: right, Root: value}
-	}
-}
-
-func (b *BinaryTree) GetRoot() *Node {
-	node, ok := b.Tree[b.Root]
-	if !ok {
-		return nil
-	}
-
-	return node
 }
 
 func main() {

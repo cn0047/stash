@@ -81,7 +81,13 @@ func ReverseInt32(n int32) int32 {
 	return int32(r)
 }
 
-// SwapInIntSlice swaps i element with j element in array a.
+// SwapInIntSlice swaps i element with j element in array arr.
+func SwapInIntSlice(arr []int, i int, j int) []int {
+	arr[i], arr[j] = arr[j], arr[i]
+	return arr
+}
+
+// @DEPRECATED.
 func SwapInIntSlice(a []int, i int, j int) []int {
 	v1 := a[i]
 	v2 := a[j]
@@ -177,7 +183,7 @@ func rtl(data interface{}) {
 	j, err := json.Marshal(data)
 	if err != nil {
 	}
-	_, err2 := http.Post("https://realtimelog.herokuapp.com:443/sddjklskj", "application/json", bytes.NewBuffer(j))
+	_, err2 := http.Post("https://realtimelog.herokuapp.com:443/rkc8q6llprn", "application/json", bytes.NewBuffer(j))
 	if err2 != nil {
 	}
 }

@@ -10,13 +10,13 @@ func main() {
 
 func findWord(arr []string) string {
 	// Put into result array first element (characters pair) from input array.
-	res := string(arr[0][0]) + string(arr[0][2])
+	res := string(arr[0][0]) + string(arr[0][2]) // "I>N" -> "IN"
 	// Cut off from input array first element.
 	arr = arr[1:]
 
 	for len(arr) > 0 {
 		s := arr[0] // get next characters pair.
-		arr = arr[1:]  // cut off characters pair.
+		arr = arr[1:] // cut off characters pair.
 		c1 := s[0]
 		c2 := s[2]
 		if c2 == res[0] {

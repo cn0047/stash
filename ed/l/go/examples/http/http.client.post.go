@@ -56,7 +56,7 @@ func two() {
 	jsonPayload, _ := json.Marshal(data)
 	fmt.Printf("%+#\n", jsonPayload)
 
-	// url := "https://realtimelog.herokuapp.com:443/sddjklskj"
+	// url := "https://realtimelog.herokuapp.com:443/rkc8q6llprn"
 	// req, x := http.NewRequest("POST", url, bytes.NewBuffer(jsonPayload))
 	// req.Header.Set("Content-Type", "application/json")
 	// fmt.Printf("%+#\n", x)

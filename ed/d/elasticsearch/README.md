@@ -98,8 +98,15 @@ Types:
 
 #### Full-text search
 
+Supports: wildcard, prefix.
+
 Types:
-* match.
-* match_phrase.
-* wildcard.
-* prefix.
+* match - standard full-text search + fuzzy.
+* match_phrase - matching exact phrases.
+* match_phrase_prefix - `match_phrase` + wildcard search.
+* match_bool_prefix - `bool` query that matches each term as a `term` query.
+* multi_match - multi-field version of `match`.
+* combined_fields - search over multiple fields as if they indexed into one combined field.
+* query_string - compact Lucene query string syntax.
+* simple_query_string - robust version of `query_string` suitable for exposing directly to users.
+* intervals - allows fine-grained control of the ordering and proximity of matching terms.

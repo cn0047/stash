@@ -14,6 +14,7 @@ func main() {
 	fmt.Println(inString("this is not barfoo", "foo") == true)
 }
 
+// IMPORTANT: suboptimal algorithm.
 func inString0(ls string, ss string) bool {
 	for len(ls) >= len(ss) {
 		for i := 0; i < len(ss); i++ {
@@ -25,11 +26,12 @@ func inString0(ls string, ss string) bool {
 		}
 		ls = ls[1:]
 	}
+
 	return false
 }
 
 // inString returns true in case inStr contains subStr.
-// IMPORTANT: suboptimal algorithm.
+// IMPORTANT: naive (suboptimal) algorithm.
 func inString(inStr string, subStr string) bool {
 	for j := 0; j <= len(inStr)-len(subStr); j++ {
 		for i := 0; i < len(subStr); i++ {
@@ -42,5 +44,6 @@ func inString(inStr string, subStr string) bool {
 			}
 		}
 	}
+
 	return false
 }

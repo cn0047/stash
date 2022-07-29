@@ -10,7 +10,7 @@ sudo dpkg -i {name}
 
 uname -a # Shows 32 or 64 bit OS.
 uname -r # Show the kernel version.
-cat /etc/*release # all ablut ubuntu
+cat /etc/*release # all ablut os
 ````
 
 On Linux systems, a kernel configuration parameter called `net.core.somaxconn`

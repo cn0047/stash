@@ -14,20 +14,21 @@ func main() {
 // Remove Outermost Parentheses.
 func f(s string) string {
 	inStack := 0
-	rs := ""
+	res := ""
 	for i := 0; i < len(s); i++ {
 		if s[i] == '(' {
 			inStack++
 			if inStack >= 2 {
-				rs += string(s[i])
+				res += string(s[i])
 			}
 		}
 		if s[i] == ')' {
 			inStack--
 			if inStack >= 1 {
-				rs += string(s[i])
+				res += string(s[i])
 			}
 		}
 	}
-	return rs
+
+	return res
 }

@@ -16,25 +16,31 @@ import (
 	"go.opencensus.io/trace"
 )
 
+var (
+	traceExporter *stackdriver.Exporter
+)
+
 func init() {
 	l("init") // invoked by GCP
 
 	exporter, err := stackdriver.NewExporter(stackdriver.Options{
 		//ProjectID: "",
 		DefaultTraceAttributes: map[string]interface{}{
-			"service-name": "ftrace",
+			"service-name": "ftrace1g",
 		},
+		NumberOfWorkers: 1,
 	})
 	if err != nil {
 		log.Fatal(err)
 	}
 	trace.RegisterExporter(exporter)
 	trace.ApplyConfig(trace.Config{
-		DefaultSampler: trace.ProbabilitySampler(1.0),
+		DefaultSampler: trace.ProbabilitySampler(1.0), // % of requests to trace
 	})
 	if err := exporter.StartMetricsExporter(); err != nil {
 		log.Fatal(err)
 	}
+	traceExporter = exporter
 	//defer exporter.Flush()
 	//defer exporter.StopMetricsExporter()
 }
@@ -70,7 +76,9 @@ func doSomething(ctx context.Context) {
 	}
 }
 
-func MainHandler(w http.ResponseWriter, r *http.Request) {
+func MainTraceHandler1Gen(w http.ResponseWriter, r *http.Request) {
+	defer traceExporter.Flush()
+
 	doSomething(context.Background())
 
 	msg := fmt.Sprintf("traced at: %s", time.Now().Format(time.Kitchen))

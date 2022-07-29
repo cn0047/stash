@@ -71,8 +71,8 @@ curl -A 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit
 curl -k https://localhost:4433
 
 # shows spent time (⏱)
-time curl -si https://realtimelog.herokuapp.com/sddjklskj
-curl -si -w "@$HOME/web/kovpak/gh/ed/sh/curl/writeout.fmt.txt" https://realtimelog.herokuapp.com/sddjklskj
+time curl -si https://realtimelog.herokuapp.com/rkc8q6llprn
+curl -si -w "@$HOME/web/kovpak/gh/ed/sh/curl/writeout.fmt.txt" https://realtimelog.herokuapp.com/rkc8q6llprn
 
 curl -s 'https://github.com/cn007b' -o /dev/null -w '%{http_code}'
 curl -s 'https://github.com/cn007b' -o /dev/null -w '%{time_total}'

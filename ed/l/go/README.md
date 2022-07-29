@@ -124,6 +124,8 @@ $GOPATH/bin/swagger
 
 brew install golangci-lint
 golangci-lint run
+
+gofmt -w $pathToFile
 ````
 
 ````golang
@@ -243,60 +245,7 @@ template.HTMLEscapeString(input)
 template.JSEscapeString(input)
 ````
 
-#### HTTP
-
-````golang
-http.Server{IdleTimeout}
-
-b, err := httputil.DumpRequest(ctx.Request(), true)
-
-query := req.URL.Query()
-q := query["q"]
-page := query.Get("page")
-req.FormValue("timeout")
-
-err := req.ParseForm()
-f := req.Form
-un := f["username"] // array of values
-p := f.Get["username"] // value
-
-tr := &http.Transport{DisableKeepAlives: true}
-client := http.Client{Transport: tr}
-client := http.Client{Timeout: time.Millisecond * timeout}
-
-// by default behaves like curl -L
-http.Client{}.Get(URL)
-
-// w http.ResponseWriter
-w.Write([]byte("html"))
-
-// to enable http2
-err := http.ListenAndServeTLS(":443", "server.crt", "server.key", nil)
-
-// Handle vs HandleFunc
-http.Handle("/img/", http.FileServer(http.Dir("public")))
-mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {})
-````
-
-A workspace is a directory hierarchy with three directories at its root:
-* bin (executable commands).
-* pkg (package objects).
-* src (source code).
-
-Put code into `internal` dir to make it private (magic).
-
-Sentinel error - custom error value
-(standard library: sql.ErrNoRows, io.EOF, etc).
-[wrap error tool](github.com/pkg/errors)
-<br>`errors.Is` like a comparison to a sentinel error,
-<br>`errors.As` like type assertion (`if e, ok := err.(*QueryError); ok { … }`).
-<br>`fmt.Errorf("decompress %v: %w", name, err)`
-
-**Context** carries deadlines, cancelation signals, and other request-scoped values
-across API boundaries and between processes.
-Ctx may be: WithCancel, WithDeadline, WithTimeout, or WithValue.
-
-#### Data types
+**Data types:**
 
 Basic types:
 * bool.
@@ -535,6 +484,59 @@ do not block and always return default value for a channel type.
 Only the sender should close a channel, never the receiver (otherwise panic).
 
 For standard Go compiler, size of channel element types must be smaller than 65536.
+
+#### HTTP
+
+````golang
+http.Server{IdleTimeout}
+
+b, err := httputil.DumpRequest(ctx.Request(), true)
+
+query := req.URL.Query()
+q := query["q"]
+page := query.Get("page")
+req.FormValue("timeout")
+
+err := req.ParseForm()
+f := req.Form
+un := f["username"] // array of values
+p := f.Get["username"] // value
+
+tr := &http.Transport{DisableKeepAlives: true}
+client := http.Client{Transport: tr}
+client := http.Client{Timeout: time.Millisecond * timeout}
+
+// by default behaves like curl -L
+http.Client{}.Get(URL)
+
+// w http.ResponseWriter
+w.Write([]byte("html"))
+
+// to enable http2
+err := http.ListenAndServeTLS(":443", "server.crt", "server.key", nil)
+
+// Handle vs HandleFunc
+http.Handle("/img/", http.FileServer(http.Dir("public")))
+mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {})
+````
+
+A workspace is a directory hierarchy with three directories at its root:
+* bin (executable commands).
+* pkg (package objects).
+* src (source code).
+
+Put code into `internal` dir to make it private (magic).
+
+Sentinel error - custom error value
+(standard library: sql.ErrNoRows, io.EOF, etc).
+[wrap error tool](github.com/pkg/errors)
+<br>`errors.Is` like a comparison to a sentinel error,
+<br>`errors.As` like type assertion (`if e, ok := err.(*QueryError); ok { … }`).
+<br>`fmt.Errorf("decompress %v: %w", name, err)`
+
+**Context** carries deadlines, cancelation signals, and other request-scoped values
+across API boundaries and between processes.
+Ctx may be: WithCancel, WithDeadline, WithTimeout, or WithValue.
 
 #### Generics
 

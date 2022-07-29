@@ -1,5 +1,3 @@
-// task 1
-
 /**
  * Gets MAX possible triangle perimeter from array with numbers.
  *

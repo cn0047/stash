@@ -12,6 +12,7 @@ func main() {
 	fmt.Printf("'%s'\n", s)
 }
 
+// IMPORTANT: naive algorithm.
 func sortStringChars(in string) string {
 	s := strings.Split(in, "")
 	sort.Strings(s)

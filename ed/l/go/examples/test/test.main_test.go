@@ -6,6 +6,7 @@ import (
 	"testing"
 )
 
+// TestMain represents main entry point for tests.
 func TestMain(m *testing.M) {
 	fmt.Println("🚧")
 	r := m.Run()

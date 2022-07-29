@@ -114,6 +114,27 @@ terraform {
   }
 }
 
+# module
+source = "git@github.com:org/tf-module.git?ref=0.7.0"
+````
+
+#### GCP
+
+````sh
+google_compute_network                       # VPC network
+google_compute_region_network_endpoint_group # regional NEG (bind network and cloudrun)
+google_compute_router                        # router within GCE
+google_compute_router_nat                    #
+google_compute_subnetwork                    #
+google_compute_url_map                       # route requests to BE svc
+google_compute_target_https_proxy            # for global forwarding rule
+                                             # to route incoming HTTPS requests to URL map
+google_compute_global_forwarding_rule        # to forward traffic to correct HTTP LB
+````
+
+#### AWS
+
+````sh
 resource "aws_instance" "myec2" {
   count         = 1
   ami           = "ami-00aa4671cbf840d82" # default Amazon Linux 2 AMI
@@ -127,18 +148,4 @@ resource "aws_instance" "myec2" {
     ]
   }
 }
-````
-
-#### GCP
-
-````sh
-google_compute_network                       # VPC network
-google_compute_region_network_endpoint_group # regional NEG
-google_compute_router                        # router within GCE
-google_compute_router_nat                    #
-google_compute_subnetwork                    #
-google_compute_url_map                       # route requests to BE svc
-google_compute_target_https_proxy            # for global forwarding rule
-                                             # to route incoming HTTPS requests to URL map
-google_compute_global_forwarding_rule        # to forward traffic to correct HTTP LB
 ````

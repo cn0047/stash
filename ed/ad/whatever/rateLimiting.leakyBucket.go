@@ -1,3 +1,6 @@
+// Leaky bucket holds requests in queue (memory eager).
+// Worst case for request = O(1).
+
 package main
 
 import (
@@ -12,13 +15,13 @@ var (
 func main() {
 	go worker()
 	for i := 1; i > 0; i++ {
-		fmt.Println(lbRequest(i))
+		fmt.Println(request(i))
 		time.Sleep(100 * time.Millisecond)
 	}
 }
 
-// lbRequest adds request to queue (buckets) if it has space (only 3 items in queue allowed).
-func lbRequest(n int) string {
+// request adds request to queue (buckets) if it has space (only 3 items in queue allowed).
+func request(n int) string {
 	if len(queue) == 3 {
 		return fmt.Sprintf("%d \t sorry", n)
 	}

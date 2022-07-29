@@ -58,9 +58,7 @@ type stack struct {
 }
 
 func NewStack() *stack {
-	return &stack{
-		values: make([]string, 0),
-	}
+	return &stack{values: make([]string, 0)}
 }
 
 func (s *stack) IsEmpty() bool {

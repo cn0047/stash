@@ -1,3 +1,6 @@
+// Sliding logs holds requests with time in queue (memory eager).
+// Worst case for request = O(n).
+
 package main
 
 import (
@@ -24,9 +27,8 @@ func main() {
 // request allows 3 requests per 1 minute.
 func request(user string) string {
 	_, ok := log[user]
-
-	// Init logs for user.
 	if !ok {
+		// Init logs for user.
 		t := time.Now()
 		log[user] = []time.Time{t} // init.
 		return fmt.Sprintf("ok - 1 %s", t)
@@ -41,11 +43,11 @@ func request(user string) string {
 		t := log[user][0]
 		diff := time.Since(t)
 		if diff.Minutes() >= 1 { // IMPORTANT: 1 minute is threshold.
-			// delete old log.
+			// Delete old log.
 			log[user] = log[user][1:]
 			fmt.Println("del:", t)
 		} else {
-			// no use to continue loop, next logs even more fresh.
+			// No use to continue loop, next logs even more fresh.
 			break
 		}
 	}

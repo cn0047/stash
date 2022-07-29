@@ -32,12 +32,12 @@ func assert(arr []int) {
 func hs(arr []int) []int {
 	n := len(arr)
 
-	// build heap
+	// Build heap.
 	for i := n/2 - 1; i >= 0; i-- {
 		heapify(arr, i, n)
 	}
 
-	// extract from heap root
+	// Extract from heap root.
 	for i := n - 1; i >= 0; i-- {
 		swap(arr, 0, i)
 		heapify(arr, 0, i)

@@ -29,6 +29,7 @@ function selectionSort(a) {
         a[min] = t;
       }
   }
+
   return a;
 }
 

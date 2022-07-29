@@ -48,11 +48,13 @@ Availability:
 • What level of service do competitors provide?
 • Is service for consumers or enterprises?
 
-Service-level agreement (SLA) - commitment between a service provider and a client:
-quality, availability, responsibility, performance, costs, etc.
+Service-level indicator (SLI) - measure of the service level provided by a service provider to a customer.
+Common SLIs include latency, throughput, availability, error rate, durability, correctness, etc.
 
 Service-level objective (SLO) - (key element of SLA) specific measurable characteristics
 of the SLA such as availability, throughput, frequency, response time, or quality.
+SLOs - `lower bound ≤ SLI ≤ upper bound`.
+Publishing SLOs to users sets expectations about how service will perform.
 
-Service-level indicator (SLI) - measure of the service level provided by a service provider to a customer.
-Common SLIs include latency, throughput, availability, error rate, durability, correctness, etc.
+Service-level agreement (SLA) - commitment (contract) between a service provider and a client:
+quality, availability, responsibility, performance, costs, etc.

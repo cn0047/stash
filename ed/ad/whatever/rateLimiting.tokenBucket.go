@@ -1,3 +1,6 @@
+// Token bucket holds for requests only tokens and last access time.
+// Worst case for request = O(1).
+
 package main
 
 import (
@@ -17,17 +20,17 @@ var (
 func main() {
 	timeToSleep := 100 * time.Millisecond
 
-	fmt.Println(tbRequest("user-1"))
+	fmt.Println(request("user-1"))
 	time.Sleep(timeToSleep)
-	fmt.Println(tbRequest("user-1"))
+	fmt.Println(request("user-1"))
 	time.Sleep(timeToSleep)
-	fmt.Println(tbRequest("user-1"))
+	fmt.Println(request("user-1"))
 	time.Sleep(timeToSleep)
-	fmt.Println(tbRequest("user-1"))
+	fmt.Println(request("user-1"))
 }
 
-// tbRequest allows 3 requests per 1 second.
-func tbRequest(user string) string {
+// request allows 3 requests per 1 second.
+func request(user string) string {
 	accessRate, ok := store[user]
 	if !ok {
 		// Init user's tokens.

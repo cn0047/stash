@@ -21,6 +21,15 @@ url = git@gist.github.com:b0136cc4db3ad91774e93dbaadcf0331.git
 ````
 
 ````sh
+brew install gh # https://github.com/cli/cli
+
+gh auth login
+
+gh repo list $org -L 100
+
+````
+
+````sh
 curl -i https://api.github.com/users
 
 curl https://api.github.com/users/cn007b

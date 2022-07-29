@@ -22,7 +22,7 @@ func modulo(n int) int {
 }
 
 // solution finds maxDifferenceInArrays.
-// IMPORTANT: It's suboptimal, O(n log n)!
+// IMPORTANT: naive algorithm, O(n log n)!
 func solution(arr []int) int {
 	sort.Ints(arr)
 	n := len(arr)-1

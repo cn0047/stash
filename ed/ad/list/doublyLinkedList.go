@@ -45,6 +45,7 @@ func buildLinkedList(s string) {
 		valB := values[1]
 		nodeA := l.get(valA)
 		nodeB := l.get(valB)
+
 		if nodeA == nil && nodeB == nil {
 			if len(l) > 0 {
 				fmt.Printf("New chunk not connected to rest elements.\n")

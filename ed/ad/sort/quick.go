@@ -47,12 +47,7 @@ func partition(a []int, begin int, end int) int {
 	return i + 1
 }
 
-func swap(a []int, i int, j int) []int {
-	v1 := a[i]
-	v2 := a[j]
-
-	a = append(a[:i], append([]int{v2}, a[i+1:]...)...)
-	a = append(a[:j], append([]int{v1}, a[j+1:]...)...)
-
-	return a
+func swap(arr []int, a int, b int) []int {
+	arr[a], arr[b] = arr[b], arr[a]
+	return arr
 }

@@ -7,6 +7,7 @@ import (
 func main() {
 	// fmt.Println(f("this is Palindrome test, looking to: racecar and madam"))
 	fmt.Println(IsPalindrome("racecar"))
+	fmt.Println(IsPalindrome("abba"))
 }
 
 func f(str string) []string {
@@ -30,6 +31,7 @@ func f(str string) []string {
 	return res
 }
 
+// IsPalindrome returns true for word which reads same backward as forward.
 func IsPalindrome(s string) bool {
 	n := len(s)
 

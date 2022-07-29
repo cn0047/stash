@@ -6,7 +6,7 @@ import (
 
 // Print all possible char combinations from given string.
 func main() {
-	s := "abcd"
+	s := "abc"
 	permute(s, 0, len(s)-1)
 }
 

@@ -19,9 +19,7 @@ type queue struct {
 }
 
 func NewQueue() *queue {
-	return &queue{
-		values: make([]string, 0),
-	}
+	return &queue{values: make([]string, 0)}
 }
 
 func (q *queue) IsEmpty() bool {
