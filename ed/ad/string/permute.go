@@ -1,3 +1,5 @@
+// Worst case for permutation = O(n!)
+
 package main
 
 import (

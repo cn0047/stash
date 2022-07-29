@@ -46,7 +46,7 @@ Also all vertex have even degree but 2 have odd degree.
 
 ## Search
 
-BFS (Breadth First Search).
+BFS (Breadth First Search) - O(|V| + |E|).
 BFS generates a spanning tree.
 
 Uses queue:
@@ -56,7 +56,7 @@ add node to queu
   -> deque top of queue
 ````
 
-DFS (Depth First Search).
+DFS (Depth First Search) - O(|V| + |E|).
 
 Uses recursion or stack:
 ````
