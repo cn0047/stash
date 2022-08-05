@@ -19,6 +19,21 @@ Runner - server that runs workflow.
 ACTIONS_STEP_DEBUG=true
 
 ${{secrets.MY_KEY}}
+
+github.ref == 'refs/heads/master'
+github.event_name == 'pull_request'
+
+${{ github.event.number }}
+${{ github.HEAD_REF }} # branch
+${{ github.BASE_REF }} # base
+${{ github.repository }}
+${{ github.event.push.ref }} # branch name
+${{ secrets.GITHUB_TOKEN }}
+
+format('Out: {0} {1} {2}', 'a', 'b', 'c')
+join(github.event.issue.labels.*.name, ', ')
+toJSON(value)
+fromJSON(value)
 ````
 
 ````yaml
@@ -41,7 +56,7 @@ on:
 env:
   HASH: $(git rev-parse --short "$GITHUB_SHA")
   BRANCH: ${GITHUB_REF##*/}
-  working-directory: "${{ github.workspace }}"
+  working-directory: "${{ github.workspace }}" # ${{ env.working-directory }}
   env-name: ${{ (github.event.inputs && github.event.inputs.environment) || 'stg' }}
 
 defaults:
@@ -88,4 +103,22 @@ jobs:
         run: |-
           docker push eu.gcr.io/${{ secrets.GCP_PROJECT_ID }}/go:1.17-alpine
 
+````
+
+````yaml
+# .github/actions/x.yaml
+
+name: "X-Action."
+description: "X-Action."
+
+inputs:
+  name:
+    required: true
+    description: "Name"
+
+runs:
+  using: "composite"
+  steps:
+    - run: echo Hello ${{ inputs.name }}.
+      shell: bash
 ````

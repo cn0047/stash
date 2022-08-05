@@ -1,6 +1,18 @@
 Algorithms & Data structures
 -
 
+Algorithm solving plan:
+* Clarifications about input:
+  (array of integers or strings or mix, negative, duplicates, count of items in array, etc.).
+* Think about input validation inside your func (empty array, blank string, etc.).
+* What edge cases and pitfalls here.
+* Clarifications about output.
+* Think out loud about solution.
+* Think about BigO (time and memory).
+* Write code.
+* Test code in mind using provided input.
+* Run code.
+
 Operations with sets ([1, 2, 3] [2, 3, 4]):
 * union.
 * intersection.

@@ -88,7 +88,7 @@ db.inventory.update({_id: 1}, {$addToSet: {tags: "accessories" }})
 db.students.update({_id: 1}, {$pop: {scores: -1}}) // -1 first, 1 last
 // $pullAll
 db.survey.update({_id: 1}, {$pullAll: {scores: [0, 5]}})
-// $pull
+// $pull - delete from embeded (nested) array
 db.cpuinfo.update({flags: "msr"}, {$pull: {flags: "msr"}}, {multi: true})
 db.profiles.update({_id: 1}, {$pull: {votes: {$gte: 6}}})
 // $pushAll

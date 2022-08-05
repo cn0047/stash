@@ -1,0 +1,83 @@
+# action
+
+name: "SonarQube action."
+description: "SonarQube action."
+
+inputs:
+  src-path:
+    required: true
+    description: "Path to src dir."
+  sonar-host:
+    required: true
+    description: "SonarQube host."
+  sonar-token:
+    required: true
+    description: "SonarQube token."
+  github-token:
+    required: true
+    description: "GitHub token."
+  go-version:
+    required: true
+    description: "Golang version."
+    default: "1.16"
+
+runs:
+  using: "composite"
+  steps:
+    - name: "Set up Golang"
+      uses: actions/setup-go@v2
+      with:
+        go-version: ${{ inputs.go-version }}
+
+    - name: "Download code coverage file"
+      uses: actions/download-artifact@v3
+      with:
+        name: code-coverage-file
+        path: ${{ inputs.src-path }}
+
+    - name: "Download tests run file"
+      uses: actions/download-artifact@v3
+      with:
+        name: tests-run-file
+        path: ${{ inputs.src-path }}
+
+    - name: "SonarQube scan (PR)"
+      id: sonar-scan-pr
+      if: always() && github.event_name == 'pull_request'
+      uses: sonarsource/sonarqube-scan-action@master
+      env:
+        GITHUB_TOKEN: ${{ inputs.github-token }}
+        SONAR_HOST_URL: ${{ inputs.sonar-host }}
+        SONAR_TOKEN: ${{ inputs.sonar-token }}
+      with:
+        projectBaseDir: ${{ inputs.src-path }}
+        args: >
+          -Dsonar.pullrequest.key=${{ github.event.number }}
+          -DPath to src dir}}
+          -Dsonar.pullrequest.base=${{ github.BASE_REF }}
+          -Dsonar.pullrequest.github.repository=${{ github.repository }}
+          -Dsonar.scm.provider=git
+
+    - name: "SonarQube scan (master)"
+      id: sonar-scan-master
+      if: always() && github.ref == 'refs/heads/master'
+      uses: sonarsource/sonarqube-scan-action@master
+      env:
+        GITHUB_TOKEN: ${{ inputs.github-token }}
+        SONAR_HOST_URL: ${{ inputs.sonar-host }}
+        SONAR_TOKEN: ${{ inputs.sonar-token }}
+      with:
+        projectBaseDir: ${{ inputs.src-path }}
+        args: >
+          -Dsonar.branch.name=master
+          -Dsonar.scm.provider=git
+
+    - name: "SonarQube quality gate"
+      if: always() && (steps.sonar-scan-pr.outcome == 'success' || steps.sonar-scan-master.outcome == 'success')
+      uses: sonarsource/sonarqube-quality-gate-action@master
+      with:
+        scanMetadataReportFile: ${{ inputs.src-path }}/.scannerwork/report-task.txt
+      env:
+        GITHUB_TOKEN: ${{ inputs.github-token }}
+        SONAR_HOST_URL: ${{ inputs.sonar-host }}
+        SONAR_TOKEN: ${{ inputs.sonar-token }}

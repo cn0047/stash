@@ -52,8 +52,8 @@ q 'SELECT * FROM test'
 
 ````
 
+Spanner instance can be per region or multi-regional.
 Spanner - fully managed relational database with unlimited scale and strong consistency.
-Spanner instance configured per region.
 DB sequences (or auto-increment) - anti-pattern (it creates hotspots), use UUID generator.
 
 [Data types](https://cloud.google.com/spanner/docs/reference/standard-sql/data-types):

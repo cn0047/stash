@@ -14,7 +14,7 @@ Graph
 <br>Directed Acyclic Graph - finite directed graph with no directed cycles.
 <br>Directed acyclic word graph - ...
 
-All edges can be stored in adjacent matrix or adjacent list or in icidence matrix.
+To save graph in memory use: objects + pointers, matrix, or adjacency list.
 
 Graph in DB:
 * Adjacency list.

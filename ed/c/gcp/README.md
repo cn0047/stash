@@ -96,6 +96,9 @@ Managed instances groups used for LB.
 
 #### Networking
 
+34 regions now.
+103 zones now.
+
 Google Cloud Interconnect extends your on-premises network
 to Google's network through a highly available, low latency connection.
 

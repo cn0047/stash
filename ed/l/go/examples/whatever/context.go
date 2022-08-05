@@ -10,9 +10,10 @@ import (
 )
 
 func main() {
-	//withTimeout()
-	//withCancel()
-	three()
+	// withTimeout()
+	// withCancel()
+	// three()
+	withValue()
 }
 
 func three() {
@@ -74,4 +75,17 @@ func withTimeout() {
 			fmt.Print(".")
 		}
 	}
+}
+
+
+func withValue() {
+	type ContextKey string
+	const MyContextKey ContextKey = "X-Key"
+
+	// set value
+	ctx := context.WithValue(context.Background(), MyContextKey, "foo")
+
+	// get value
+	v := ctx.Value(MyContextKey).(string)
+	fmt.Println("[withValue] value:", v)
 }
