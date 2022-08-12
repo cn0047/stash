@@ -7,10 +7,12 @@ import (
 )
 
 func main() {
-	fmt.Println(findSumInArray([]int32{1, 4, 5, 3, 2}, 4))
+	fmt.Println(findSumInArrayNoSort([]int32{1, 4, 5, 3, 2}, 4))
+	fmt.Println(findSumInArrayNoSort([]int32{-2, 1, 2, 4, 5, 2, 3}, 4))
+	fmt.Println(findSumInArrayNoSort([]int32{1, 4, 5, -3, 2, 13, 0, 4, 0, 3, -3}, 4))
 }
 
-// findSumInArray returns 2 indexes to elements in array arr
+// findSumInArray returns 2 values from array arr
 // sum of which will be equal to seaking sum value.
 func findSumInArray(arr []int32, sum int32) (int32, int32) {
 	n := len(arr)
@@ -29,6 +31,26 @@ func findSumInArray(arr []int32, sum int32) (int32, int32) {
 		} else {
 			return sarr[l], sarr[r]
 		}
+	}
+
+	return -1, -1
+}
+
+// findSumInArray returns 2 indexes to elements in array arr
+// sum of which will be equal to seaking sum value.
+func findSumInArrayNoSort(arr []int32, sum int32) (int32, int32) {
+	value := arr[0]
+	index := int32(0)
+	cache := map[int32]int32{value: index}
+
+	for i := 1; i < len(arr); i++ {
+		value := arr[i]
+		diff := sum - value
+		index, ok := cache[diff]
+		if ok {
+			return index, int32(i)
+		}
+		cache[value] = int32(i)
 	}
 
 	return -1, -1

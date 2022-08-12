@@ -11,7 +11,7 @@ import (
 	"google.golang.org/api/iterator"
 )
 
-const DB = "projects/test-project/instances/test-instance/databases/test-db"
+const DB = "projects/sandbox-20211128-sy7ccu/instances/test-instance/databases/test-db"
 
 func main() {
 	var err error
@@ -26,7 +26,8 @@ func main() {
 	//err = selectTestRow1(ctx, c)
 	//err = selectTestRows(ctx, c)
 	//err = deleteTestRow1(ctx, c)
-	err = deleteTestRow1v2(ctx, c)
+	//err = deleteTestRow1v2(ctx, c)
+	err = upsertUsingMutation(ctx, c)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -201,4 +202,18 @@ func updateUsingDMLStruct(w io.Writer, db string) error {
 	_, err = client.ReadWriteTransaction(ctx, cb)
 
 	return err
+}
+
+func upsertUsingMutation(ctx context.Context, c *spanner.Client) error {
+	table := "test"
+	columns := []string{"id", "msg"}
+	m := []*spanner.Mutation{
+		spanner.InsertOrUpdate(table, columns, []interface{}{5, "upsert"}),
+	}
+	_, err := c.Apply(ctx, m)
+	if err != nil {
+		return fmt.Errorf("failed to upsert row into spanner, err: %w", err)
+	}
+
+	return nil
 }
