@@ -37,7 +37,8 @@ func GetArticle(articleID string) {
 	res, er3 := client.Do(req)
 	fmt.Printf("%v\n", er3)
 	defer res.Body.Close()
-	data, er4 := ioutil.ReadAll(res.Body)
+	// data, er4 := ioutil.ReadAll(res.Body)
+	data, er4 := io.ReadAll(res.Body)
 	fmt.Printf("%v\n", er4)
 
 	fmt.Printf("%s\n", data)

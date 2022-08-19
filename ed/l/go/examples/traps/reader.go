@@ -9,7 +9,8 @@ import (
 
 func issue() {
 	f := func(data io.Reader) string {
-		d, err := ioutil.ReadAll(data)
+		// d, err := ioutil.ReadAll(data)
+		d, err := io.ReadAll(data)
 		if err != nil {
 			panic(err)
 		}

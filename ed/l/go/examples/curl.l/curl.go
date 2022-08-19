@@ -50,7 +50,8 @@ func Unmarshal(o Options, p interface{}) error {
 		return errors.New(resp.Status)
 	}
 
-	body, err := ioutil.ReadAll(resp.Body)
+	// body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return err
 	}

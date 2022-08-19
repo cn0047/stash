@@ -67,7 +67,8 @@ func one(url string, client *http.Client) error {
 		return fmt.Errorf("failed to perform request, error: %w", err)
 	}
 
-	data, err := ioutil.ReadAll(res.Body)
+	// data, err := ioutil.ReadAll(res.Body)
+	data, err := io.ReadAll(res.Body)
 	if err != nil {
 		return fmt.Errorf("failed to read response body, error: %w", err)
 	}

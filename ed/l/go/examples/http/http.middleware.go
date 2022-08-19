@@ -10,7 +10,8 @@ import (
 
 func middlewareB(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		b, err := ioutil.ReadAll(r.Body)
+		// b, err := ioutil.ReadAll(r.Body)
+		b, err := io.ReadAll(r.Body)
 		if err != nil {
 			fmt.Printf("error 3: %+v \n", err)
 		}
@@ -54,7 +55,8 @@ func main() {
 		w.Write([]byte("OK"))
 	})
 	postHandler := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		b, err := ioutil.ReadAll(r.Body)
+		// b, err := ioutil.ReadAll(r.Body)
+		b, err := io.ReadAll(r.Body)
 		if err != nil {
 			fmt.Printf("error 1: %+v \n", err)
 		}

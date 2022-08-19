@@ -143,7 +143,8 @@ func transmitRequest(w http.ResponseWriter, r *http.Request, targetURI string) {
 		return
 	}
 
-	resBody, err := ioutil.ReadAll(res.Body)
+	// resBody, err := ioutil.ReadAll(res.Body)
+	resBody, err := io.ReadAll(res.Body)
 	if err != nil {
 		err(w, err, "failed to read response body")
 		return

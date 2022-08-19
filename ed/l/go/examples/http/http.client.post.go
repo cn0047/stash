@@ -40,7 +40,8 @@ func one() {
 
 	fmt.Println("response Status:", res.Status)
 	fmt.Println("response Headers:", res.Header)
-	body, _ := ioutil.ReadAll(res.Body)
+	// body, _ := ioutil.ReadAll(res.Body)
+	body, _ := io.ReadAll(res.Body)
 	fmt.Println("response Body:", string(body))
 
 	err = res.Body.Close()
@@ -82,7 +83,8 @@ func formUrlEncoded() {
 	}
 
 	fmt.Println("response Status:", res.Status)
-	body, _ := ioutil.ReadAll(res.Body)
+	// body, _ := ioutil.ReadAll(res.Body)
+	body, _ := io.ReadAll(res.Body)
 	fmt.Println("response Body:", string(body))
 
 	err = res.Body.Close()

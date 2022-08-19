@@ -9,7 +9,8 @@ import (
 func main() {
   http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
     // Read request body:
-    j, err := ioutil.ReadAll(r.Body)
+    // j, err := ioutil.ReadAll(r.Body)
+    j, err := io.ReadAll(r.Body)
     if err != nil {
       fmt.Fprintf(w, "error: %s", err)
       return

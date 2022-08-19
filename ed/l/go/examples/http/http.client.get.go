@@ -35,7 +35,8 @@ func two() {
 	}
 	defer res.Body.Close()
 
-	body, err := ioutil.ReadAll(res.Body)
+	// body, err := ioutil.ReadAll(res.Body)
+	body, err := io.ReadAll(res.Body)
 	if err != nil {
 		panic(err.Error())
 	}
@@ -81,9 +82,11 @@ func readBodyTwiceWithTeeReader() {
 	var body bytes.Buffer
 	bodyReader := io.TeeReader(res.Body, &body)
 
-	d1, err := ioutil.ReadAll(bodyReader)
+	// d1, err := ioutil.ReadAll(bodyReader)
+	d1, err := io.ReadAll(bodyReader)
 	he(err)
-	d2, err := ioutil.ReadAll(&body)
+	// d2, err := ioutil.ReadAll(&body)
+	d2, err := io.ReadAll(&body)
 	he(err)
 
 	fmt.Printf("%s \n======\n", d1)
@@ -103,7 +106,8 @@ func readBodyTwiceWithNewReader() {
 	he(err)
 	d1 := body
 	buf := bytes.NewReader(body)
-	d2, err := ioutil.ReadAll(buf)
+	// d2, err := ioutil.ReadAll(buf)
+	d2, err := io.ReadAll(buf)
 	he(err)
 
 	fmt.Printf("%s \n======\n", d1)

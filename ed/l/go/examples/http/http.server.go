@@ -41,7 +41,8 @@ func get1(w http.ResponseWriter, r *http.Request) {
 }
 
 func post1(w http.ResponseWriter, r *http.Request) {
-	body1, err := ioutil.ReadAll(r.Body)
+	// body1, err := ioutil.ReadAll(r.Body)
+	body1, err := io.ReadAll(r.Body)
 	if err != nil {
 		panic(err)
 	}
@@ -51,7 +52,8 @@ func post1(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 
-	body2, err := ioutil.ReadAll(r.Body)
+	// body2, err := ioutil.ReadAll(r.Body)
+	body2, err := io.ReadAll(r.Body)
 	if err != nil {
 		panic(err)
 	}
@@ -68,7 +70,8 @@ func post1(w http.ResponseWriter, r *http.Request) {
 
 // @see curl -X POST 'http://localhost:8080/post' -H 'Content-Type: application/json' -d '{"code":"200", "status": "OK", "message": "200 OK"}'
 func post2(w http.ResponseWriter, r *http.Request) {
-	body, err := ioutil.ReadAll(r.Body)
+	// body, err := ioutil.ReadAll(r.Body)
+	body, err := io.ReadAll(r.Body)
 	if err != nil {
 		panic(err)
 	}
@@ -170,7 +173,8 @@ func uploadFile(w http.ResponseWriter, r *http.Request) {
 	defer res.Body.Close()
 
 	fmt.Fprintf(w, "response Status: %v", res.Status)
-	b, _ := ioutil.ReadAll(res.Body)
+	// b, _ := ioutil.ReadAll(res.Body)
+	b, _ := io.ReadAll(res.Body)
 	fmt.Fprintf(w, "response Body: %s", b)
 	// for images:
 	// fmt.Fprintf(w, "%s", b)

@@ -142,7 +142,8 @@ func readFromGCStorage(w http.ResponseWriter, r *http.Request) {
   }
   defer rc.Close()
 
-  data, err := ioutil.ReadAll(rc)
+  // data, err := ioutil.ReadAll(rc)
+  data, err := io.ReadAll(rc)
   if err != nil {
     panic("[4] " + err.Error())
   }

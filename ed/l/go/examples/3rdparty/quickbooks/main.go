@@ -53,7 +53,8 @@ func getToken(refreshToken string) {
 	}
 
 	fmt.Println("response Status:", res.Status)
-	body, err := ioutil.ReadAll(res.Body)
+	// body, err := ioutil.ReadAll(res.Body)
+	body, err := io.ReadAll(res.Body)
 	if err != nil {
 		panic(err)
 	}

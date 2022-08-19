@@ -24,7 +24,8 @@ func f1(filename string) {
 		return
 	}
 
-	data, err := ioutil.ReadAll(jsonFile)
+	// data, err := ioutil.ReadAll(jsonFile)
+	data, err := io.ReadAll(jsonFile)
 	if err != nil {
 		fmt.Printf("failed to read json file, error: %v", err)
 		return

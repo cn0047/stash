@@ -14,12 +14,13 @@ grabDockerHubTags() {
     echo -n "\rProcessing page: $i"
     file="?page_size=100&page=$i"
     curl -s -O -H $ua "https://hub.docker.com/v2/repositories/$repo/tags/$file"
-    cat $file | jq -r '.results[].name' >> tags
+    cat $file | jq -r '.results[].name' >> tags.txt
     next=`cat $file | jq .next`
     rm -rf $file
     if [[ $next = 'null' ]]; then break; fi
   done
   echo "\nFound tags:"
-  cat tags | sort
+  cat tags.txt | sort
+  echo "\nTo see all tags, run: open dockerHubTags/tags.txt"
   cd ..
 }

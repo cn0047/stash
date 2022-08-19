@@ -27,7 +27,8 @@ func Get1() (*http.Response, error) {
 func Get2() (User, error) {
 	r, _ := http.Get(url1)
 	defer r.Body.Close()
-	body, _ := ioutil.ReadAll(r.Body)
+	// body, _ := ioutil.ReadAll(r.Body)
+	body, _ := io.ReadAll(r.Body)
 	u := User{}
 	json.Unmarshal(body, &u)
 
@@ -39,7 +40,8 @@ func Get3() (User, error) {
 	c := http.Client{}
 	r, _ := c.Do(req)
 	defer r.Body.Close()
-	body, _ := ioutil.ReadAll(r.Body)
+	// body, _ := ioutil.ReadAll(r.Body)
+	body, _ := io.ReadAll(r.Body)
 	u := User{}
 	json.Unmarshal(body, &u)
 
