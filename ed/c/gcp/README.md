@@ -64,6 +64,8 @@ gcloud config set disable_usage_reporting true
 # ls configurations
 ls ~/.config/gcloud/configurations/
 
+export PROJECT_ID=`gcloud config get project`
+
 gcloud projects list --format="json"
 gcloud projects list \
   --format="table(projectNumber,projectId,createTime)" \

@@ -9,7 +9,7 @@ i          - element index
 floor(i/2) - parent
 ````
 
-BFS/DFS (Breadth/Depth First Search) in binary tree: @look: graph.md
+BFS/DFS (Breadth/Depth First Search) in binary tree: @see: graph.md
 
 Level-Order Traversal aka BFS.
 
@@ -88,7 +88,7 @@ find max               - O(1)
 insert                 - O(log n)
 delete                 - O(log n)
 create heap from array - O(n log n)
-heapify                - O(n)
+# heapify              - O(n)
 ````
 
 **In a max heap, the keys of parent nodes are always greater than or equal to those of the children**

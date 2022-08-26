@@ -41,6 +41,7 @@ Theory
 <br>RTB     - Real-time bidding.
 <br>RTC     - Real-time communication.
 <br>SaaS    - [Software as a service](https://raw.githubusercontent.com/cn007b/my/master/ed/t/i/cloudComputingTypes.jpeg).
+<br>SAML    - Security Assertion Markup Language.
 <br>SDK     - Software development kit.
 <br>SDLC    - Software development life-cycle.
 <br>UPI     - Unique Product Identifier.
@@ -79,6 +80,9 @@ servers may have dual power supplies and hot-swappable CPUs,
 and datacenters may have batteries and diesel generators for backup power...
 
 Telemetry - monitoring performance metrics and error rates.
+
+Monitoring should address two questions: what's broken, and why?
+Golden signals of monitoring: latency, traffic, errors, saturation (how "full" your service is: CPU, mem, I/O).
 
 Concurrency - single process use multiple threads.
 But each thread uses the same resource concurrently.

@@ -194,19 +194,19 @@ These contents will be written to the file.
 EOF
 
 # @see: https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html
-set -e           # exit immediately whenever a command fails
-set -n           # validate but not exec script
-set -o           # display options
 set -o noclobber # to enable option
 set +o noclobber # to disable option
 set -o allexport #
+set -e           # exit immediately whenever a command fails
+set -n           # validate but not exec script
+set -o           # display options
 set -o pipefail  # sets exit code of pipeline to rightmost command to exit with non-zero status
 set -u           # error when using uniinitialized var
 set -v           #
 set -v           # print each command
 set -x           # (xtrace) to start debug
 --               # no arguments follow
--                #  end of options
+-                # end of options
 
 set -euo pipefail
 ````

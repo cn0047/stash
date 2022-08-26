@@ -3,16 +3,23 @@ Complexity of algorithms
 
 [cheatsheet](https://www.bigocheatsheet.com/)
 
+`O` Big O notation - Upper bound.
+`Θ` Theta notation - Tight bound.
+`Ω` Omega notation - Lower bound.
+
+Big O - Dependency between count of iterations and input parameters.
+
 Important to find upper bound for algorithm.
 <br>`time` - it isn't possible to estimate time because it's vary on different machines (CPU, memory, etc.).
 <br>`memory (space)`.
 <br>`count of steps (actions)`.
 
-Big O - Dependency between count of iterations and input parameters.
-
 Drop constants in big O. Not O(2n), not O(3n).
 Ignore the base of logs (log2, log10).
 Just looking for how thing scale roughtly (lineral, quadratic, etc).
+
+Algorithm X is asymptotically more efficient than Y -
+X will always be a better choice for large inputs.
 
 ````
 # time complexity:
@@ -66,13 +73,6 @@ for (int i = n; i > 0; i /= 2) {
   }
 }
 ````
-
-Algorithm X is asymptotically more efficient than Y -
-X will always be a better choice for large inputs.
-
-`O` Big O notation - Upper bound.
-`Θ` Theta notation - Tight bound.
-`Ω` Omega notation - Lower bound.
 
 #### log
 

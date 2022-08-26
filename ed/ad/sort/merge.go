@@ -17,14 +17,14 @@ func main() {
 	fmt.Println(MergeSort([]int{9, 3, 11, -1, 3, 7}))
 }
 
-func MergeSort(slice []int) []int {
-	if len(slice) < 2 {
-		return slice
+func MergeSort(arr []int) []int {
+	if len(arr) < 2 {
+		return arr
 	}
 
-	mid := len(slice) / 2
-	part1 := MergeSort(slice[mid:])
-	part2 := MergeSort(slice[:mid])
+	mid := len(arr) / 2
+	part1 := MergeSort(arr[mid:])
+	part2 := MergeSort(arr[:mid])
 	result := merge(part1, part2)
 
 	return result

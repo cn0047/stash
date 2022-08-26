@@ -33,7 +33,7 @@ func hs(arr []int) []int {
 	n := len(arr)
 
 	// Build heap.
-	for i := n/2 - 1; i >= 0; i-- {
+	for i := n/2 - 1; i >= 0; i-- { // n/2 - 1 - middle of the tree.
 		heapify(arr, i, n)
 	}
 
@@ -46,6 +46,8 @@ func hs(arr []int) []int {
 	return arr
 }
 
+// heapify rearranges elements in slice arr from position i to position n (end),
+// it builds "Max heap".
 func heapify(arr []int, i int, n int) {
 	root := i
 	l := 2*i + 1
