@@ -35,9 +35,9 @@ CURRENT_DATE                       -- today
 REPLACE('vvv.site.com', 'v', 'w')  -- www.site.com
 
 SELECT SUBSTRING_INDEX('www.mysql.com', '.', 1); -- www
-SELECT SUBSTRING_INDEX('www.mysql.com', '.', 2); -- www.mysql 
+SELECT SUBSTRING_INDEX('www.mysql.com', '.', 2); -- www.mysql
 SELECT SUBSTRING_INDEX('www.mysql.com', '.', -1); -- com
-SELECT SUBSTRING_INDEX('www.mysql.com', '.', -2); -- mysql.com 
+SELECT SUBSTRING_INDEX('www.mysql.com', '.', -2); -- mysql.com
 SELECT SUBSTRING_INDEX('yoyo3450@hotmail.com', '@', -1); -- hotmail.com
 SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(jsonField, '"name":"', -1), '"', 1) name from users; -- name field from JSON field
 SELECT ELT(1, 'foo', 'bar');       -- foo
@@ -50,8 +50,6 @@ INET_NTOA(i)
 
 UUID()
 ````
-
-#### Flashback
 
 ````sql
 INSERT INTO brand2 (name) SELECT name FROM brand;

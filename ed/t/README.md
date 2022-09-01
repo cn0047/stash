@@ -237,4 +237,14 @@ _ Underscore
 ≈ Almost Equal
 : Colon
 ; Semicolon
+
+——— straight line
+||  parallel line
+--- dashed line
+··· dotted line
+-·- dash-dotted line
+〰〰 wavy line
+➰  curly line
+⌒   curved line
+꩜   spiral line
 ````

@@ -51,11 +51,11 @@ sorting, or in a script.
 
 [docs](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html)
 
-* binary
-* boolean
+* binary.
+* boolean.
 * keyword - ID, email, hostname, etc.
-* long
-* double
+* long.
+* double.
 * alias - alias for an existing field.
 
 * object -  inner object.

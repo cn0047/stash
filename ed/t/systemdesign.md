@@ -39,6 +39,12 @@ Elements of a System:
 * Interfaces.
 * Data.
 
+Think about:
+* DB (SQL, NoSQL), schema, indexes, ACID/BASE, replication, writes/reads.
+* Cache, CDN.
+* API, REST, gRPC, etc.
+* LB.
+
 #### SLA/SLO/SLI
 
 Availability:

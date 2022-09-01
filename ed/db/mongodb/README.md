@@ -208,9 +208,9 @@ db.users.drop()
 db.runCommand({getLastError: 1, j: "true"})
 ````
 
-####[Database Commands](http://docs.mongodb.org/manual/reference/command/)!!!
+#### [Database Commands](http://docs.mongodb.org/manual/reference/command/)!!!
 
-####[mongo Shell Methods](http://docs.mongodb.org/manual/reference/method/)!!!
+#### [mongo Shell Methods](http://docs.mongodb.org/manual/reference/method/)!!!
 
 [Geospatial Query Operators](http://docs.mongodb.org/manual/reference/operator/query-geospatial/#geospatial-query-operators)
 

@@ -145,7 +145,8 @@ db.inventory.aggregate([{$project: {
 {$setUnion: [["a", "b", "a"], ["b", "a"]]} // ["b", "a"]
 ````
 
-####[Comparison Aggregation Operators](http://docs.mongodb.org/manual/reference/operator/aggregation-comparison/)
+#### [Comparison Aggregation Operators](http://docs.mongodb.org/manual/reference/operator/aggregation-comparison/)
+
 ````js
 $cmp
 $eq
@@ -156,7 +157,8 @@ $lte
 $ne
 ````
 
-####[Arithmetic Aggregation Operators](http://docs.mongodb.org/manual/reference/operator/aggregation-arithmetic/)
+#### [Arithmetic Aggregation Operators](http://docs.mongodb.org/manual/reference/operator/aggregation-arithmetic/)
+
 ````js
 $add
 $divide
@@ -165,7 +167,8 @@ $multiply
 $subtract
 ````
 
-####[String Aggregation Operators](http://docs.mongodb.org/manual/reference/operator/aggregation-string/)
+#### [String Aggregation Operators](http://docs.mongodb.org/manual/reference/operator/aggregation-string/)
+
 ````js
 $concat
 $strcasecmp
@@ -174,28 +177,33 @@ $toLower
 $toUpper
 ````
 
-####[Text Search Aggregation Operators](http://docs.mongodb.org/manual/reference/operator/aggregation-text-search/)
+#### [Text Search Aggregation Operators](http://docs.mongodb.org/manual/reference/operator/aggregation-text-search/)
+
 ````js
 $meta
 ````
 
-####[Array Aggregation Operators](http://docs.mongodb.org/manual/reference/operator/aggregation-array/)
+#### [Array Aggregation Operators](http://docs.mongodb.org/manual/reference/operator/aggregation-array/)
+
 ````js
 $size
 ````
 
-####[Aggregation Variable Operators](http://docs.mongodb.org/manual/reference/operator/aggregation-projection/)
+#### [Aggregation Variable Operators](http://docs.mongodb.org/manual/reference/operator/aggregation-projection/)
+
 ````js
 $let
 $map
 ````
 
-####[Aggregation Literal Operators](http://docs.mongodb.org/manual/reference/operator/aggregation-literal/)
+#### [Aggregation Literal Operators](http://docs.mongodb.org/manual/reference/operator/aggregation-literal/)
+
 ````js
 $literal // does not evaluate the expression
 ````
 
-####[Date Aggregation Operators](http://docs.mongodb.org/manual/reference/operator/aggregation-date/)
+#### [Date Aggregation Operators](http://docs.mongodb.org/manual/reference/operator/aggregation-date/)
+
 ````js
 $dayOfMonth
 $dayOfWeek
@@ -209,13 +217,15 @@ $week
 $year
 ````
 
-####[Conditional Aggregation Operators](http://docs.mongodb.org/manual/reference/operator/aggregation-conditional/)
+#### [Conditional Aggregation Operators](http://docs.mongodb.org/manual/reference/operator/aggregation-conditional/)
+
 ````js
 $cond // $cond: {if: {$gte: ["$qty", 250]}, then: 30, else: 20}
 $ifNull
 ````
 
-####[Query Modifiers](http://docs.mongodb.org/manual/reference/operator/query-modifier/)
+#### [Query Modifiers](http://docs.mongodb.org/manual/reference/operator/query-modifier/)
+
 ````sh
 $comment
 $explain

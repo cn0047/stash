@@ -1,7 +1,5 @@
 # Nested objects limit.
 
-
-
 h=localhost:9200
 idx=nested_test
 

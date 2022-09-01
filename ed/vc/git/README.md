@@ -89,6 +89,7 @@ git clean -fd
 
 git fetch --tags
 git tag 1.1.1
+git tag -d 1.1.1
 git push origin --tags
 git push origin v1.7
 

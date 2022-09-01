@@ -27,4 +27,4 @@ the subset is defined by a conditional expression (called the predicate of the p
 
 Allowed max 32 columns in multicolumn index.
 
-`ANALYZE VERBOSE tableName`
+`ANALYZE VERBOSE tableName`.

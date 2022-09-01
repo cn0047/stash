@@ -36,7 +36,7 @@ Used for comparisons: =, <=>.
 Adaptive HASH - hash index in top of btree.
 The hash index is always built based on an existing InnoDB secondary index,
 which is organized as a B-tree structure.
-MySQL builds a hash index using a prefix of the index key. The prefix of the key can be any length...
+MySQL builds a hash index using a prefix of the index key. The prefix of the key can be any length.
 You should benchmark with `innodb_adaptive_hash_index` configuration feature both enabled and disabled.
 
 Spatial (R-tree) - for geo data.

@@ -80,13 +80,17 @@ DBRef("<name>", "<id>")
 db.inventory.find({price: {$type: 1}});
 db.inventory.find({$where: "Array.isArray(this.tags)"})
 [Available types values](http://docs.mongodb.org/manual/reference/operator/query/type/)
+````
 
+````sh
 // Collection Export
 mongoexport --collection collection --out collection.json
 mongoexport --db sales --collection contacts --query '{"field": 1}'
 // Collection Import
 mongoimport --collection collection --file collection.json
+````
 
+````js
 // Creates a new collection explicitly.
 // maximum size of 5 megabytes and a maximum of 5000 documents.
 db.createCollection("log", { capped : true, size : 5242880, max : 5000 })
@@ -165,6 +169,7 @@ db.setProfilingLevel(level)
 ````
 
 #### Dump
+
 ````sh
 mongodump --host mongodb1.example.net --port 3017 --username user --password pass --out /opt/backup/mongodump-2013-10-24
 mongorestore --host mongodb1.example.net --port 3017 --username user --password pass /opt/backup/mongodump-2013-10-24/

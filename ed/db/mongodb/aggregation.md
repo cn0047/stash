@@ -63,6 +63,7 @@ db.device_file.aggregate([
 ````
 
 #### [Group Accumulator Operators](http://docs.mongodb.org/manual/reference/operator/aggregation-group/)
+
 ````js
 $addToSet - put grouped documents into one (only distinct)
 $avg
@@ -75,6 +76,7 @@ $sum
 ````
 
 #### Aggregation with the Zip Code Data Set
+
 ````js
 // Return States with Populations above 10 Million.
 /*
@@ -142,6 +144,7 @@ db.zipcodes.aggregate(
 ````
 
 #### Aggregation with User Preference Data.
+
 ````js
 /*
 {
@@ -286,6 +289,7 @@ Result:
 ````
 
 #### Perform Incremental Map-Reduce
+
 ````js
 var mapFunction = function () {
     var key = this.userid;

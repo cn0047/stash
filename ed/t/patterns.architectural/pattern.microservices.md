@@ -56,7 +56,7 @@ Many of the challenges you’re going to face with microservices get worse with 
 * Highly observable
   (aggregate your logs, aggregate your stats).
 
-In real world app it's ok to have **HYBRID-Microservices** architecture.
+In real world app it's *ok* to have **HYBRID-Microservices** architecture.
 
 #### Advantages
 

@@ -1,6 +1,6 @@
 function hw(s) {
-    var message = 'Hello, ' + s + '!';
-    console.log(message);
+  var message = 'Hello, ' + s + '!';
+  console.log(message);
 }
 
 hw('World');

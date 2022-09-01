@@ -99,6 +99,7 @@ Problems With Sharding:
 
 * Statement Based Replication.
 * Row Based Replication.
+
 * Based on Write-Ahead Log - changes are first recorded in the log,
   and nodes (master and slave) processes this log and builds exact same data.
 * Trigger Based Replication - triggers write changes to replication table

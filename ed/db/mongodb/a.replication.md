@@ -14,7 +14,7 @@ It's possible to use different engines for different nodes!
 When node comes back up as a secondary and oplog has looped - the
 entire db will be copied from primary.
 
-Minimal Replica Set in mongo:œ
+Minimal Replica Set in mongo:
 * primary.
 * secondary.
 * arbiter (for election when primary down).

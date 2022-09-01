@@ -20,8 +20,8 @@ It's impossible to use unique key with sharding,
 because there is no way to check uniqueness between all shards.
 
 AutoSharding - app doesn't need to specify:
-* where documents go when writing
-* which shard to read from
+* where documents go when writing.
+* which shard to read from.
 
 ````js
 // in mongos
