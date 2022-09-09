@@ -45,6 +45,10 @@ URI - Uniform Resource Identifier (protocol + URN).
 URL - Uniform Resource Locator (protocol + host + path).
 URN - Uniform Resource Name (host + path + all after question mark).
 
+protocol/scheme - case-insensitive.
+host - case-insensitive.
+path,query,fragment - may be case-sensitive, depends on WEB-server.
+
 ?id=1&id=2&id=3 - array in query string
 
 %40 - @
