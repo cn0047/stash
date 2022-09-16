@@ -8,6 +8,7 @@ GitHub
 [status](https://www.githubstatus.com/)
 [REST API](https://docs.github.com/en/rest)
 [diagram in markdown](https://github.com/mermaid-js/mermaid)
+[watching page](https://github.com/watching)
 
 ````sh
 # ~/.ssh/config
@@ -26,7 +27,6 @@ brew install gh # https://github.com/cli/cli
 gh auth login
 
 gh repo list $org -L 100
-
 ````
 
 ````sh
@@ -44,8 +44,7 @@ https://api.github.com/orgs/thepkg
 Don't forget to hit "Squash and merge" instead of "Merge pull request" for pr with > 1 commits.
 
 To add image into gist:
-
-Clone gist by using gist URL.
+Clone gist by using SSH gist URL.
 Add images into gist repo & commit.
 Now images public available so it's possible to copy image url from gist web page,
 and add into page like this:

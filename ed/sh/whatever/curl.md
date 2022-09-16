@@ -23,7 +23,7 @@ jh='Content-Type: application/json; charset=UTF-8 application/json; charset=UTF-
 -H $jh
 
 # (REST) JSON at POST.
-# More examples available here: https://github.com/cn007b/my/blob/master/ed/php.symfony/generateRESTapi.md
+# More examples available here: php.symfony/generateRESTapi.md
 curl -XPOST http://localhost:3000/dishes \
     -H 'Content-Type: application/json' -d '{"name": "newDish", "description": "newDesc"}'
 curl -X POST -H 'application/json' -d '{"key":"val"}' http://url.com
@@ -57,10 +57,12 @@ curl -O $url
 # download file with origin name into target dir
 curl -O --create-dirs --output-dir /tmp/x $url
 
-
 # upload file
 curl http://localhost:8000 -F "file=@/home/kovpak/Downloads/download.jpg"
 curl http://localhost:8000 -H "Content-Type: multipart/form-data" -F "file=@/Users/k/f.txt" -F "msg=MyFile"
+
+# simple file upload to: https://gofile.io
+curl -F email=cnfxlr@gmail.com -F file=@x.txt https://srv-file6.gofile.io/uploadFile
 
 curl -T firmware.bin http://0.0.0.48/cgi-bin/package_install?hash=017
 
@@ -71,14 +73,19 @@ curl -A 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit
 curl -k https://localhost:4433
 
 # shows spent time (⏱)
+cat << EOF >> /tmp/writeout.fmt.txt
+\n\n
+time_namelookup:    \t%{time_namelookup}s\n
+time_redirect:      \t%{time_redirect}s\n
+time_connect:       \t%{time_connect}s\n
+time_appconnect:    \t%{time_appconnect}s\n
+time_pretransfer:   \t%{time_pretransfer}s\n
+time_starttransfer: \t%{time_starttransfer}s\n
+Total time:         \t%{time_total}s\n
+EOF
 time curl -si https://realtimelog.herokuapp.com/rkc8q6llprn
-curl -si -w "@$HOME/web/kovpak/gh/ed/sh/curl/writeout.fmt.txt" https://realtimelog.herokuapp.com/rkc8q6llprn
+curl -si -w "@/tmp/writeout.fmt.txt" https://realtimelog.herokuapp.com/rkc8q6llprn
 
 curl -s 'https://github.com/cn007b' -o /dev/null -w '%{http_code}'
 curl -s 'https://github.com/cn007b' -o /dev/null -w '%{time_total}'
-````
-
-````sh
-# simple file upload to: https://gofile.io
-curl -F email=cnfxlr@gmail.com -F file=@x.txt https://srv-file6.gofile.io/uploadFile
 ````

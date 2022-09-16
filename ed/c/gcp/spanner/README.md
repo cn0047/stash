@@ -2,6 +2,7 @@ Spanner
 -
 
 [docs](https://cloud.google.com/spanner/docs/apis)
+
 [query syntax](https://cloud.google.com/spanner/docs/reference/standard-sql/query-syntax#having_clause)
 [funcs](https://cloud.google.com/spanner/docs/reference/standard-sql/syntax)
 [golang](https://cloud.google.com/spanner/docs/getting-started/go)
@@ -54,7 +55,10 @@ q 'SELECT * FROM test'
 
 Spanner instance can be per region or multi-regional.
 Spanner - fully managed relational database with unlimited scale and strong consistency.
+Spanner DB dialect: Google Standard SQL, PostgreSQL.
 DB sequences (or auto-increment) - anti-pattern (it creates hotspots), use UUID generator.
+
+Check constraint - `CONSTRAINT start_before_end CHECK(StartTime < EndTime)`.
 
 [Data types](https://cloud.google.com/spanner/docs/reference/standard-sql/data-types):
 * bool.
@@ -71,10 +75,16 @@ DB sequences (or auto-increment) - anti-pattern (it creates hotspots), use UUID 
 
 ````sql
 CREATE TABLE test (
-id INT64,
+id STRING(36) NOT NULL,
+i1 INT64 NOT NULL,
+s1 STRING(100) NOT NULL,
+b1 BOOL NOT NULL,
+d1 DATE NOT NULL,
+ts TIMESTAMP NOT NULL,
+
 ids ARRAY<INT64>,
 names ARRAY<STRING(50)>,
-) PRIMARY KEY (id);
+) PRIMARY KEY (id1, id2);
 
 SELECT 2 IN UNNEST(ARRAY_CONCAT([1, 2], [3, 4])) in_array;
 

@@ -1,5 +1,6 @@
 // Token bucket holds for requests only tokens and last access time.
 // Worst case for request = O(1).
+// This algorithm is used in GCP Apigee SpikeArrest.
 
 package main
 

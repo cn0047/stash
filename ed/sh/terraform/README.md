@@ -11,15 +11,21 @@ Terraform
 
 Terraform - tool for defining infrastructure as code.
 
+<br>HCL - configuration files.
+<br>Syntax - blocks and nested blocks.
 <br>Module - container for multiple resources that are used together.
+<br>Workspace - holds backend that defines how operations executed and where persistent state and else.
 <br>Sentinel - embedded policy-as-code framework integrated with the HashiCorp Enterprise products.
 <br>Providers - aws, gcp, etc.
-<br>Data sources - allows configuration to use information defined outside of tf (`data "aws_ami" "example" { ...`).
+<br>Resources - ec2, s3, rds, etc.
 <br>Input variables - serve as parameters for a tf module (`variable "x" {type = string}`).
 <br>Output values - return values of a Terraform module (`val = aws_instance.server.private_ip`).
 <br>Expressions - refer to or compute values within a configuration.
 <br>Backends - determines how state is loaded (s3, artifactory, consul, etc.).
-<br>Provisioners.
+<br>Data sources - allows configuration to use information defined outside of tf
+(`data "aws_ami" "example" { ...`) (it could be list of aws availability zones, etc.).
+<br>Provisioners - used to model specific actions on machine in order
+to prepare servers or other infrastructure objects (file, local-exec, remote-exec).
 
 ````sh
 src
@@ -28,6 +34,11 @@ src
    │  ├ dev
    │  └ qa
    └─ modules
+
+.auto.tfvars
+.auto.tfvars.json
+terraform.tfvars
+terraform.tfvars.json
 ````
 
 ````
@@ -53,6 +64,8 @@ merge({a="b", c="d"}, {e="f", c="z"}) # result: {"a" = "b", "c" = "z", "e" = "f"
 
 ````sh
 brew install tflint
+
+terraform console
 
 terraform init
 terraform init -reconfigure
@@ -82,6 +95,7 @@ terraform destroy -target=resource # only certain resource, like: google_cloud_r
 
 terraform graph
 terraform fmt # format tf files
+terraform fmt -recursive
 terraform output
 
 # workspace

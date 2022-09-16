@@ -61,6 +61,7 @@ db.collection.stats()
 db.collection.dataSize()
 db.collection.storageSize()
 db.collection.totalSize()
+db.collection.getIndexes()
 db.collection.totalIndexSize()
 
 // Data Type Fidelity

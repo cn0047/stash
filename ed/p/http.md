@@ -274,7 +274,7 @@ Access-Control-Expose-Headers: MyOrg-Resource
 * 425 Unordered Collection (Internet draft).
 * 426 Upgrade Required (RFC 2817).
 * 428 Precondition Required (RFC 6585).
-* 429 Too Many Requests (RFC 6585).
+* 429 **Too Many Requests** (RFC 6585).
 * 431 Request Header Fields Too Large (RFC 6585).
 * 434 Requested host unavailable..
 * 440 Login Timeout (Microsoft).

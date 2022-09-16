@@ -1,3 +1,5 @@
+# workflow
+
 name: Action to run integration tests
 
 on:
@@ -47,3 +49,27 @@ jobs:
 
       - name: 'Run BDD tests'
         run: SPANNER_EMULATOR_HOST=localhost:9010 go test -v ./test/...
+
+  test-db-migration:
+    name: "Test DB Migration"
+    runs-on: ubuntu-latest
+    env:
+      SPANNER_EMULATOR_HOST: localhost:9010
+    services:
+      emulator:
+        image: gcr.io/cloud-spanner-emulator/emulator:latest
+        ports:
+          - 9010:9010
+          - 9020:9020
+    steps:
+      - name: "Checkout source code"
+        uses: actions/checkout@v2
+
+      - name: "Set up Cloud SDK"
+        uses: google-github-actions/setup-gcloud@v0
+
+      - name: "Run migrations"
+        run: |
+          make migrate-init
+          make spanner-start
+          make spanner-init

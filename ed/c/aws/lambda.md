@@ -4,6 +4,8 @@ Lambda
 [docs](https://docs.aws.amazon.com/lambda/?id=docs_gateway)
 [limits](https://docs.aws.amazon.com/lambda/latest/dg/limits.html)
 
+<img src="https://gist.github.com/cn007b/384d6938ebef985347b29c15476b55c5/raw/7071e67fad3938045037e7ce92db65b2c4dab3f9/aws.lambda.events.jpeg" width="70%" />
+
 When you invoke a function synchronously, Lambda runs the function and waits for a response.
 When you invoke a function asynchronously, Lambda sends the event to a queue.
 A separate process reads events from the queue and runs your function.

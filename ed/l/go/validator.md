@@ -3,6 +3,7 @@ Validator
 
 ````sh
 go get gopkg.in/go-playground/validator.v9
+go get github.com/go-playground/validator/v10
 ````
 
 * len=10

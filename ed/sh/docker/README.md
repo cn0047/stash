@@ -223,6 +223,7 @@ docker-compose up -d
 
 # runs a one-time command against a service (will start service if needed)
 docker-compose run
+docker-compose run -T # disable pseudo-tty allocation
 
 docker-compose ps
 

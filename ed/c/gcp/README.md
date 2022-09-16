@@ -10,6 +10,7 @@ Google Cloud
 [locations](https://cloud.google.com/about/locations/)
 [machine types](https://cloud.google.com/compute/docs/machine-types)
 [tags by image](https://cloud.google.com/vision/docs/drag-and-drop)
+[measure latency](https://gcping.com/)
 
 ````bash
 # ~/.google-cloud-sdk/bin/gcloud

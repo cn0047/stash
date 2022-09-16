@@ -20,6 +20,9 @@ Organization types: paid, evaluation.
 
 KVM (Key Value Map) - not requires proxy redeployment.
 
+L1 cache - memory cache in each MessageProcessor.
+L2 cache - shared runtime data store (DB).
+
 ````sh
 gcloud apigee applications list
 gcloud apigee deployments list
