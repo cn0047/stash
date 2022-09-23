@@ -11,6 +11,8 @@ Img for video: 1920x1080px!
 Video file name **MUST** contains keywords!
 Link to video: https://youtu.be/EFqj53mXLKY where EFqj53mXLKY - video ID.
 
+Link to video in playlist: https://www.youtube.com/watch?v=mZkSBnQUMiU&list=PL2PBCmoCwpnIvoh7PeGgA7C-UO9r66LWg
+
 ````sh
 l         # forward 10 seconds forward
 Shift + n # next in youtube

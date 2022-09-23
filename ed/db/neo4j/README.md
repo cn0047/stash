@@ -11,6 +11,7 @@ Neo4j
 [algorithms](https://neo4j.com/developer/graph-data-science/graph-algorithms/)
 [links](https://neo4j.com/developer/resources/)
 [cheat sheet](https://neo4j.com/docs/cypher-refcard/current/)
+[cypher to RDBMS](https://neo4j.com/developer/kb/how-do-i-use-cypher-to-connect-to-a-rbms-using-jdbc/)
 
 ````sh
 cypher-shell -u neo4j -p test

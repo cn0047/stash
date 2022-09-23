@@ -8,6 +8,9 @@ Spanner
 [golang](https://cloud.google.com/spanner/docs/getting-started/go)
 [golang](https://pkg.go.dev/cloud.google.com/go/spanner)
 
+DDL - data definition language.
+DML - data manipulation language.
+
 ````sh
 dbi=test-instance
 db=test-db

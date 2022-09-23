@@ -11,8 +11,7 @@ Graph
 <br>Directed graph - all edges are directed (have direction) from one vertex to another.
 <br>Weighted graph - each edge have numerical weight.
 <br>Complete graph - every vertex is connected to every other vertex.
-<br>Directed Acyclic Graph - finite directed graph with no directed cycles.
-<br>Directed acyclic word graph - ...
+<br>Topological sort(ordering) - linear ordering of its vertices (`a->b && a<b`).
 
 To save graph in memory use: objects + pointers, matrix, or adjacency list.
 
@@ -31,6 +30,11 @@ Graph in DB:
 <br>Euler circuit - path has same initial and terminal veritces. Also all veritces have even degree.
 <br>Euler path - includes exactly once all the edges and has different first and last veritces.
 Also all vertex have even degree but 2 have odd degree.
+
+## DAG
+
+Directed Acyclic Graph -  finite directed graph with no directed cycles.
+DAG alway topologically ordered.
 
 ## Held Karp Algorithm
 
@@ -56,7 +60,7 @@ add node to queu
   -> deque top of queue
 ````
 
-DFS (Depth First Search) - O(|V| + |E|).
+DFS (Depth First Search) - `O(|V| + |E|)`.
 
 Uses recursion or stack:
 ````

@@ -8,6 +8,8 @@ export PROJECT_ID='my-sandbox'
 export PROJECT_NUMBER=29220930000
 export SERVICE_NAME='my-svc'
 
+gcloud run services list
+
 # deploy
 # source: dir or dir with Dockerfile or .tar.gz
 #         when provided dir - GCP use Artifact Registry Docker repository

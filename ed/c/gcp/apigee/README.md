@@ -34,7 +34,9 @@ gcloud apigee products list
 
 gcloud alpha apigee operations list
 
+gcloud apigee organizations list
 gcloud alpha apigee organizations list
+gcloud beta apigee organizations list
 gcloud alpha apigee organizations delete $org
 gcloud alpha apigee organizations provision --authorized-network=default
 

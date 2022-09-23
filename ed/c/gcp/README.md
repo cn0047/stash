@@ -13,6 +13,9 @@ Google Cloud
 [measure latency](https://gcping.com/)
 
 ````bash
+# in URL:
+# ?project=PROJECT_ID&authuser=2
+
 # ~/.google-cloud-sdk/bin/gcloud
 
 export GOOGLE_APPLICATION_CREDENTIALS=${CURDIR}/serviceAccount.json
@@ -29,6 +32,7 @@ export GOOGLE_APPLICATION_CREDENTIALS=${CURDIR}/serviceAccount.json
 gcloud app describe
 
 gcloud compute zones list
+gcloud compute regions list
 
 gcloud components list
 gcloud components update
