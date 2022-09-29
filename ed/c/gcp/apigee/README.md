@@ -11,6 +11,8 @@ Apigee
 
 Apigee - gateway.
 
+Apigee instance is per region.
+
 Apigee environment deployment type: proxy, archive.
 
 Organization - top-level container in Apigee.

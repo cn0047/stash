@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables continueOnError="false" enabled="true" name="ExtractVariablesResponseRS">
+    <DisplayName>ExtractVariablesResponseRS</DisplayName>
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    <Source clearPayload="true">response</Source>
+    <JSONPayload>
+        <Variable name="b">
+            <JSONPath>$.b</JSONPath>
+        </Variable>
+        <Variable name="o">
+            <JSONPath>$.o</JSONPath>
+        </Variable>
+    </JSONPayload>
+    <VariablePrefix>out.ResponseRS</VariablePrefix>
+</ExtractVariables>

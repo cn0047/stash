@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Javascript continueOnError="false" enabled="true" timeLimit="200" name="JavaScriptFUC">
+    <DisplayName>JavaScriptFUC</DisplayName>
+    <Properties/>
+    <ResourceURL>jsc://JavaScriptFUC.js</ResourceURL>
+</Javascript>

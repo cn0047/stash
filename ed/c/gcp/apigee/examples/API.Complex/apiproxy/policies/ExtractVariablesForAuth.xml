@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables continueOnError="false" enabled="true" name="ExtractVariablesForAuth">
+    <DisplayName>ExtractVariablesForAuth</DisplayName>
+    <Header name="X-e">
+        <Pattern ignoreCase="true">{e}</Pattern>
+    </Header>
+    <Header name="X-R">
+        <Pattern ignoreCase="true">{r}</Pattern>
+    </Header>
+    <Header name="X-M">
+        <Pattern ignoreCase="true">{m}</Pattern>
+    </Header>
+    <Source clearPayload="false">request</Source>
+    <VariablePrefix>target.route</VariablePrefix>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</ExtractVariables>

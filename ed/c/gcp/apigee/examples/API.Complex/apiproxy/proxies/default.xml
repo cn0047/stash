@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <FaultRules>
+        <FaultRule name="auth_checker_error">
+            <Condition>(fault.name Matches "ExecutionFailed")</Condition>
+            <Step>
+                <Name>RaiseFault</Name>
+                <Condition>(user.auth_access_granted != true)</Condition>
+            </Step>
+        </FaultRule>
+    </FaultRules>
+    <PreFlow name="PreFlow">
+        <Request>
+            <Step>
+                <Name>ExtractVariablesForFlow</Name>
+            </Step>
+            <Step>
+                <Name>ExtractVariablesForAuth</Name>
+            </Step>
+            <Step>
+                <Name>AssignMessageForAuth</Name>
+            </Step>
+            <Step>
+                <Name>AuthCallout</Name>
+            </Step>
+            <Step>
+                <Condition>(propertyset.main.strategy == "fromV1toV2" and in.functionName == "b")</Condition>
+                <Name>JavaScriptFUC</Name>
+            </Step>
+            <Step>
+                <Condition>(propertyset.main.strategy == "fromV1toV2" and in.functionName == "ac")</Condition>
+                <Name>AssignMessageAC</Name>
+            </Step>
+            <Step>
+                <Condition>(propertyset.main.strategy == "fromV1toV2" and in.functionName == "aec")</Condition>
+                <Name>AssignMessageAEC</Name>
+            </Step>
+            <Step>
+                <Condition>(propertyset.main.strategy == "fromV1toV2" and in.functionName == "rs")</Condition>
+                <Name>AssignMessageRS</Name>
+            </Step>
+            <Step>
+                <Condition>(propertyset.main.strategy == "fromV1toV2" and in.functionName == "mer")</Condition>
+                <Name>AssignMessageMER</Name>
+            </Step>
+            <Step>
+                <Condition>(propertyset.main.strategy == "fromV1toV2" and in.functionName == "fuc")</Condition>
+                <Name>AssignMessageFUC</Name>
+            </Step>
+            <Step>
+                <Condition>(propertyset.main.strategy == "fromV1toV2" and in.functionName == "b")</Condition>
+                <Name>AssignMessageB</Name>
+            </Step>
+        </Request>
+        <Response>
+            <Step>
+                <Condition>(propertyset.main.strategy == "fromV1toV2" and in.functionName == "b")</Condition>
+                <Name>ExtractVariablesResponseB</Name>
+            </Step>
+            <Step>
+                <Condition>(propertyset.main.strategy == "fromV1toV2" and in.functionName == "b")</Condition>
+                <Name>AssignMessageResponseB</Name>
+            </Step>
+            <Step>
+                <Condition>(propertyset.main.strategy == "fromV1toV2" and in.functionName == "ac")</Condition>
+                <Name>ExtractVariablesResponseAC</Name>
+            </Step>
+            <Step>
+                <Condition>(propertyset.main.strategy == "fromV1toV2" and in.functionName == "ac")</Condition>
+                <Name>AssignMessageResponseAC</Name>
+            </Step>
+            <Step>
+                <Condition>(propertyset.main.strategy == "fromV1toV2" and in.functionName == "aec")</Condition>
+                <Name>ExtractVariablesResponseAEC</Name>
+            </Step>
+            <Step>
+                <Condition>(propertyset.main.strategy == "fromV1toV2" and in.functionName == "aec")</Condition>
+                <Name>AssignMessageResponseAEC</Name>
+            </Step>
+            <Step>
+                <Condition>(propertyset.main.strategy == "fromV1toV2" and in.functionName == "rs")</Condition>
+                <Name>ExtractVariablesResponseRS</Name>
+            </Step>
+            <Step>
+                <Condition>(propertyset.main.strategy == "fromV1toV2" and in.functionName == "rs")</Condition>
+                <Name>AssignMessageResponseRS</Name>
+            </Step>
+            <Step>
+                <Condition>(propertyset.main.strategy == "fromV1toV2" and in.functionName == "mer")</Condition>
+                <Name>ExtractVariablesResponseMER</Name>
+            </Step>
+            <Step>
+                <Condition>(propertyset.main.strategy == "fromV1toV2" and in.functionName == "mer")</Condition>
+                <Name>AssignMessageResponseMER</Name>
+            </Step>
+            <Step>
+                <Condition>(propertyset.main.strategy == "fromV1toV2" and in.functionName == "fuc")</Condition>
+                <Name>ExtractVariablesResponseFUC</Name>
+            </Step>
+            <Step>
+                <Condition>(propertyset.main.strategy == "fromV1toV2" and in.functionName == "fuc")</Condition>
+                <Name>AssignMessageResponseFUC</Name>
+            </Step>
+        </Response>
+    </PreFlow>
+    <Flows>
+        <Flow name="get /c/{cId}/configs">
+            <Condition>(proxy.pathsuffix MatchesPath "/c/*/configs") and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="get /c/{cId}/ta">
+            <Condition>(proxy.pathsuffix MatchesPath "/c/*/ta") and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="post /c/{cId}/ta/{id}">
+            <Condition>(proxy.pathsuffix MatchesPath "/c/*/ta/*") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="delete /c/{cId}/ta/{id}">
+            <Condition>(proxy.pathsuffix MatchesPath "/c/*/ta/*") and (request.verb = "DELETE")</Condition>
+        </Flow>
+        <Flow name="patch /c/{cId}/ta/{id}">
+            <Condition>(proxy.pathsuffix MatchesPath "/c/*/ta/*") and (request.verb = "PATCH")</Condition>
+        </Flow>
+    </Flows>
+    <PostFlow name="PostFlow">
+    </PostFlow>
+    <HTTPProxyConnection>
+        <BasePath>/td</BasePath>
+    </HTTPProxyConnection>
+    <RouteRule name="RouteRuleT1">
+        <Condition>(propertyset.main.strategy == "v1")</Condition>
+        <TargetEndpoint>t1</TargetEndpoint>
+    </RouteRule>
+    <RouteRule name="RouteRuleT2">
+        <Condition>(propertyset.main.strategy == "fromV1toV2")</Condition>
+        <TargetEndpoint>t2</TargetEndpoint>
+    </RouteRule>
+</ProxyEndpoint>

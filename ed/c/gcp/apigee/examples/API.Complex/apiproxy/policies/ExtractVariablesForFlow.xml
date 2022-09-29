@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables continueOnError="false" enabled="true" name="ExtractVariablesForFlow">
+    <DisplayName>ExtractVariables</DisplayName>
+    <Properties/>
+    <URIPath>
+        <Pattern ignoreCase="true">/{version}/cs/m/{functionName}</Pattern>
+    </URIPath>
+    <JSONPayload>
+        <Variable name="arg0" type="string">
+            <JSONPath>$.args[0]</JSONPath>
+        </Variable>
+        <Variable name="arg1" type="string">
+            <JSONPath>$.args[1]</JSONPath>
+        </Variable>
+        <Variable name="arg2" type="string">
+            <JSONPath>$.args[2]</JSONPath>
+        </Variable>
+        <Variable name="body">
+            <JSONPath>$</JSONPath>
+        </Variable>
+    </JSONPayload>
+    <Source clearPayload="false">request</Source>
+    <VariablePrefix>in</VariablePrefix>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</ExtractVariables>

@@ -11,6 +11,8 @@ Workflows
 [cheat-sheet](https://cloud.google.com/workflows/docs/reference/syntax/syntax-cheat-sheet)
 [pricing](https://cloud.google.com/workflows/pricing)
 
+Workflows are per region.
+
 Workflows orchestrates multiple HTTP-based services into durable, stateful workflow.
 It has low latency and can handle high number of executions. It's serverless.
 

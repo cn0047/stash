@@ -108,7 +108,7 @@ mongomart
 log
 └── src
     ├── 🗂 configs       # All app configs.
-    ├── 🗂 middlewares   # CORS. X-Powered-By.
+    ├── 🗂 middlewares   # CORS, X-Powered-By, etc.
     ├── 🗂 routes        # HTTP controllers. BL.
     ├── 🗂 sockets       # WS controllers. BL.
     ├── 🗂 views         # Templates.

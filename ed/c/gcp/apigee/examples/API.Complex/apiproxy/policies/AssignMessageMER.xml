@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="AssignMessageMER">
+    <DisplayName>AssignMessageMER</DisplayName>
+    <Set>
+        <Verb>PATCH</Verb>
+        <Payload contentType="application/json">{"ta":{"lId": "error", "tId": "{in.arg1}"}}</Payload>
+    </Set>
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+    <AssignVariable>
+        <Name>out.path</Name>
+        <Template>v2/c/{target.route.r}/m/{target.route.m}/ta</Template>
+    </AssignVariable>
+</AssignMessage>

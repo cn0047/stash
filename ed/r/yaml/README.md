@@ -5,11 +5,11 @@ detection: ~
 
 ````yaml
 include_newlines: |
-            exactly as
-            you see
+  exactly as
+  you see
 fold_newlines: >
-            this is
-            single line
+  this is
+  single line
 # null value
 nullparam: null
 nullparam: ~

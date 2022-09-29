@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="AssignMessageForAuth">
+    <DisplayName>AssignMessageForAuth</DisplayName>
+    <AssignVariable>
+        <Name>target.route.permission</Name>
+        <Value>can_view</Value>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+</AssignMessage>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables continueOnError="false" enabled="true" name="ExtractVariablesResponseAC">
+    <DisplayName>ExtractVariablesResponseAC</DisplayName>
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    <Source clearPayload="true">response</Source>
+    <JSONPayload>
+        <Variable name="oId">
+            <JSONPath>$.ta.oId</JSONPath>
+        </Variable>
+        <Variable name="tId">
+            <JSONPath>$.ta.tId</JSONPath>
+        </Variable>
+        <Variable name="lId">
+            <JSONPath>$.ta.lId</JSONPath>
+        </Variable>
+    </JSONPayload>
+    <VariablePrefix>out.ResponseAC</VariablePrefix>
+</ExtractVariables>

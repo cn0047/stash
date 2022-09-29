@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="AssignMessageAEC">
+    <DisplayName>AssignMessageAEC</DisplayName>
+    <Set>
+        <Verb>POST</Verb>
+        <Payload contentType="application/json">{"ta":{"oId": "{in.arg1}", "tId": "{in.arg2}", "e": true}}</Payload>
+    </Set>
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+    <AssignVariable>
+        <Name>out.path</Name>
+        <Template>v2/c/{request.header.X-R}/m/{in.arg0}/ta</Template>
+    </AssignVariable>
+</AssignMessage>

@@ -26,7 +26,7 @@ Enterprise Application Architecture Patterns
   * Embedded Value.
   * Serialized LOB.
   * Single Table Inheritance.
-  * class Table Inheritance.
+  * Class Table Inheritance.
   * Concrete Table Inheritance.
   * Inheritance Mappers.
 

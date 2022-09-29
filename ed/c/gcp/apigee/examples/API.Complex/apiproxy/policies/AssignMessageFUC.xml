@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="AssignMessageFUC">
+    <DisplayName>AssignMessageFUC</DisplayName>
+    <Set>
+        <Verb>DELETE</Verb>
+        <Payload contentType="application/json"/>
+    </Set>
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+    <AssignVariable>
+        <Name>out.path</Name>
+        <Template>v2/c/{request.header.X-R}/m/{in.arg0}/ta?tId={in.arg1}</Template>
+    </AssignVariable>
+</AssignMessage>

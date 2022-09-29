@@ -27,9 +27,10 @@ q() {
 
 
 
-gcloud emulators spanner start
-
 # emulator
+# image: gcr.io/cloud-spanner-emulator/emulator:latest
+gcloud emulators spanner start
+#
 export SPANNER_EMULATOR_HOST=localhost:9010
 #
 gcloud config set auth/disable_credentials true

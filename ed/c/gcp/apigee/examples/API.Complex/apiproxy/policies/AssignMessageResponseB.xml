@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="AssignMessageResponseB">
+    <DisplayName>AssignMessageResponseB</DisplayName>
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    <Set>
+        <Payload contentType="application/json">{"success": {}}</Payload>
+    </Set>
+</AssignMessage>

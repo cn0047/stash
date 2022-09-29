@@ -56,6 +56,8 @@ gcloud app browse
 gcloud app logs tail -s $service
 ````
 
+AppEngine is per region.
+
 ## Overview
 
 Warmup Requests - you can use to avoid latency while loading application code on a fresh instance.

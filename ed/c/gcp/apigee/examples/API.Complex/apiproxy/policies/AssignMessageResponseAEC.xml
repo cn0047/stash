@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="AssignMessageResponseAEC">
+    <DisplayName>AssignMessageResponseAEC</DisplayName>
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    <Set>
+        <Payload contentType="application/json">{"success": {"sc": "{out.ResponseAEC.lId}", "message": "{out.ResponseAEC.oId}/{out.ResponseAEC.tId}"}}</Payload>
+    </Set>
+</AssignMessage>

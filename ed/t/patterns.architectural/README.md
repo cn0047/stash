@@ -7,9 +7,7 @@ Architecture must care about:
 * Beauty.
 
 Common questions:
-1. MVC, MVP, MVVM etc:
-    * What about helpers?
-    * What about stuff common for 2, 3 models?
+1. MVC, MVP, MVVM etc: What about helpers? What about stuff common for 2, 3 models?
 
 An architectural pattern is a proven structural organization schema for software systems.
 
