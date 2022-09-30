@@ -1,0 +1,31 @@
+CREATE TABLE Users (
+  ID STRING(36) NOT NULL,
+  Email STRING(100) NOT NULL,
+  FirstName STRING(100) NOT NULL,
+  LastName STRING(100) NOT NULL,
+  Password STRING(62) NOT NULL,
+  CreatedAt INT64 NOT NULL
+) PRIMARY KEY (ID);
+
+CREATE UNIQUE INDEX Users_Unique_IDX ON Users (Email);
+
+CREATE TABLE Quizzes (
+  ID STRING(36) NOT NULL,
+  Questions JSON,
+  Author STRING(36) NOT NULL,
+  Published BOOL NOT NULL,
+  UpdatedAt INT64 NOT NULL,
+  Deleted BOOL NOT NULL,
+  DeletedAt INT64 NOT NULL
+) PRIMARY KEY (ID);
+
+CREATE TABLE Submissions (
+  ID STRING(36) NOT NULL,
+  UserID STRING(36) NOT NULL,
+  QuizID STRING(36) NOT NULL,
+  QuizAuthor STRING(36) NOT NULL,
+  Score JSON,
+  SubmittedAt INT64 NOT NULL
+) PRIMARY KEY (ID);
+
+CREATE UNIQUE INDEX Submissions_Unique_IDX ON Submissions (UserID, QuizID);
