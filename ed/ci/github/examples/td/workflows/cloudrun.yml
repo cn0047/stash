@@ -1,0 +1,103 @@
+name: Cloud Run
+
+on:
+  pull_request:
+    branches:
+      - master
+    types: [closed]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Cloud run env"
+        required: true
+        default: "sandbox"
+
+env:
+  working-directory: "${{ github.workspace }}"
+  terraform-directory: "${{ github.workspace }}/.ops/terraform"
+  workflow-directory: "${{ github.workspace }}/.github/workflows"
+
+defaults:
+  run:
+    working-directory: .
+
+jobs:
+  load-config:
+    name: Load Config
+    runs-on: ubuntu-latest
+    outputs:
+      sandbox-config: ${{ steps.load-config-sandbox.outputs.config }}
+    steps:
+      - uses: actions/checkout@v2
+      - id: load-config-sandbox
+        run: echo "::set-output name=config::$(jq .sandbox ${{ env.workflow-directory }}/config.json -c)"
+
+  create-sandbox-build:
+    name: Create and push docker image to sandbox
+    if: (github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'sandbox') ||
+      (github.event_name == 'push' && github.ref == 'refs/heads/master') ||
+      contains(github.event.pull_request.labels.*.name, 'auto-deploy-sandbox')
+    runs-on: ubuntu-latest
+    needs:
+      - load-config
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Log in to gcr.io Docker Registry
+        uses: docker/login-action@v1
+        with:
+          registry: gcr.io
+          username: _json_key
+          password: ${{ secrets.GCP_SA_SANDBOX }}
+
+      - name: Build docker image
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          context: .
+          file: ./Dockerfile
+          tags: gcr.io/${{ fromJSON(needs.load-config.outputs.sandbox-config).projectId }}/td:latest
+
+  deploy-sandbox:
+    name: Deploy sandbox
+    if: (github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'sandbox') ||
+        (github.event_name == 'push' && github.ref == 'refs/heads/master') ||
+        contains(github.event.pull_request.labels.*.name, 'auto-deploy-sandbox')
+    runs-on: ubuntu-latest
+    needs:
+      - load-config
+    env:
+      GCP_PROJECT_ID : ${{ fromJSON(needs.load-config.outputs.sandbox-config).projectId }}
+    strategy:
+      matrix:
+        region: ${{ fromJSON(needs.load-config.outputs.sandbox-config).regions }}
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Auth
+        uses: google-github-actions/auth@v0
+        with:
+          credentials_json: ${{ secrets.GCP_SA_SANDBOX }}
+
+      - name: Deploy
+        uses: google-github-actions/deploy-cloudrun@v0
+        with:
+          project_id: ${{ env.GCP_PROJECT_ID }}
+          service: td
+          image: gcr.io/${{ env.GCP_PROJECT_ID }}/td:latest
+          region: ${{ matrix.region }}
+          env_vars: >
+            ENV=sandbox,
+            HOST=0.0.0.0,
+            SPANNER_DATABASE=projects/${{ env.GCP_PROJECT_ID }}/instances/x/databases/y,
+            MFC_CONFIG_AUTO_REFRESH_TIME=120,
+            DB_LOG_ENABLED=true,
+            GOOGLE_PROJECT_ID=${{ env.GCP_PROJECT_ID }}
+          no_traffic: true
+
+      - name: Route traffic to deployed revision
+        run: >
+          gcloud run services update-traffic td
+          --region ${{ matrix.region }}
+          --project ${{ env.GCP_PROJECT_ID }}
+          --to-latest

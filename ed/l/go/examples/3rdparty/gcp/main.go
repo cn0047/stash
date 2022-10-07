@@ -9,17 +9,18 @@ import (
 )
 
 const (
-	ProjectID          = ""
+	ProjectID          = "test-project"
 	SAFilePath         = "./sa.json"
 	BigTableInstanceID = ""
 	BucketName         = ""
-	PubSubSubscription = "test-1"
+	PubSubTopic        = "test-topic"
+	PubSubSubscription = "test-subscription"
 )
 
 func main() {
-	gsm.Run(ProjectID, SAFilePath)
+	pubsub.Run(ProjectID, PubSubTopic, PubSubSubscription)
 	return
-	pubsub.Run(ProjectID, PubSubSubscription)
+	gsm.Run(ProjectID, SAFilePath)
 	bigtable.Run(ProjectID, BigTableInstanceID, SAFilePath)
 	iam.Run(ProjectID, SAFilePath)
 	storage.Run(ProjectID, SAFilePath, BucketName)

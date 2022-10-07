@@ -15,7 +15,7 @@ Go source code is always UTF-8.
 [spec](https://golang.org/ref/spec)
 [cmd](https://golang.org/cmd/go/)
 [packages](https://golang.org/pkg/) [and](https://godoc.org/) [and](https://gopkg.in/)
-[golang.org/x/\*](https://pkg.go.dev/search?q=golang.org%2Fx)
+[golang.org/x/\*](https://pkg.go.dev/golang.org/x)
 [examples](https://gobyexample.com/)
 [online editor](https://play.golang.org/) [and](https://goplay.space/)
 [sizeof](http://golang-sizeof.tips/)

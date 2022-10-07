@@ -1,0 +1,9 @@
+{
+  "sandbox": {
+    "projectId": "sandbox-x-y",
+    "envType": "sandbox",
+    "regions": [
+      "us-central1"
+    ]
+  }
+}

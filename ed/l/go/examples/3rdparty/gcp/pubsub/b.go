@@ -8,14 +8,16 @@ import (
 	"cloud.google.com/go/pubsub"
 )
 
-func Run(projectID string, pubSubSubscription string) {
+func Run(projectID, topic, subscription string) {
 	ctx := context.Background()
 	c, err := getClient(ctx, projectID)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	err = getFromSubscription(ctx, c, pubSubSubscription)
+	publish(ctx, c, topic)
+
+	err = receive(ctx, c, subscription)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -30,9 +32,17 @@ func getClient(ctx context.Context, projectID string) (*pubsub.Client, error) {
 	return c, nil
 }
 
-func getFromSubscription(ctx context.Context, c *pubsub.Client, pubSubSubscription string) error {
-	sub := c.Subscription(pubSubSubscription)
-	err := sub.Receive(ctx, func(ctx context.Context, m *pubsub.Message) {
+func publish(ctx context.Context, c *pubsub.Client, topic string) {
+	t := c.Topic(topic)
+	result := t.Publish(ctx, &pubsub.Message{
+		Data: []byte("Message 1"),
+	})
+	fmt.Printf("Got result: %+v \n", result)
+}
+
+func receive(ctx context.Context, c *pubsub.Client, subscription string) error {
+	s := c.Subscription(subscription)
+	err := s.Receive(ctx, func(ctx context.Context, m *pubsub.Message) {
 		fmt.Printf("Got message: %s \n", m.Data)
 		m.Ack() // Acknowledge consumed message.
 	})

@@ -20,12 +20,12 @@ ACTIONS_STEP_DEBUG=true
 
 ${{secrets.MY_KEY}}
 
-github.ref == 'refs/heads/master'
+github.ref == 'refs/heads/master' # example: refs/pull/13/merge
 github.event_name == 'pull_request'
 
 ${{ github.event.number }}
-${{ github.HEAD_REF }} # branch
-${{ github.BASE_REF }} # base
+${{ github.HEAD_REF }} # example: refs/heads/master
+${{ github.BASE_REF }} # example: master
 ${{ github.repository }}
 ${{ github.event.push.ref }} # branch name
 ${{ secrets.GITHUB_TOKEN }}

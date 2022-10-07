@@ -98,6 +98,9 @@ IPv4 address range: https://regex101.com/r/O4t93o/2/
 (?{GROUP_MATCHED?}REPLACEMENT_IF_YES:REPLACEMENT_IF_NO} # conditional replacement
 (?|(regex1)|(regex2))                                   # branch reset group
 (\2two|(one))+                                          # forward references # /(\2two|(one))+/ -> oneonetwo
+
+# path traversal attack prevent, @see: https://regex101.com/r/5GrZlo/1
+^\w+([^\\/\s]*[\w=-@#$%&*]*)*$
 ````
 
 ````sh

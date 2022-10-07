@@ -260,7 +260,9 @@ go run main.go
 #
 cd $PWD/ed/l/go/examples/3rdparty/gcp/function
 export SPANNER_EMULATOR_HOST=localhost:9010
+export PUBSUB_EMULATOR_HOST=localhost:8681
 go run spanner.go
+run main.go
 #
 cd $PWD/ed/l/go/examples/3rdparty/gcp/spanner
 export SPANNER_EMULATOR_HOST=localhost:9010

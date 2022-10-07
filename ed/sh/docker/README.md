@@ -249,6 +249,7 @@ services:
       context: ./dir
       dockerfile: Dockerfile-alternate
     image: myImg:latest
+    restart: always|on-failure
 ````
 
 ## Network
