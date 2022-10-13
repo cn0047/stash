@@ -116,7 +116,7 @@ git = True
 [extensions]
 color =
 [ui]
-username = Vladimir Kovpak <cn007b@gmail.com>
+username = V.K. <cn007b@gmail.com>
 merge = internal:merge
 ignore = ~/.hgignore
 [alias]

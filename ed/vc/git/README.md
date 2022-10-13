@@ -272,7 +272,7 @@ git submodule update --remote --recursive
     editor       = vim
     ignoreCase   = false
 [user]
-    name = V.Kovpak
+    name = V.K.
 [url "git@github.com:"]
     insteadOf = https://github.com/
 [url "git@bitbucket.org:"]

@@ -4,6 +4,7 @@ docker-alpine
 # alpine
 version=3.12
 version=3.15
+version=3.16
 docker build -t cn007b/alpine:$version docker/$version
 
 # # check

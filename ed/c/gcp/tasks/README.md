@@ -23,3 +23,4 @@ curl 'https://cloudtasks.googleapis.com/v2beta3/projects/prj/locations/us-centra
 ````
 
 Tasks are per region.
+Tasks goes into push queue.

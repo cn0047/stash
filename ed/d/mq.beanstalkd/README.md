@@ -53,7 +53,7 @@ put 1024 0 60 95
 {"folder":"000009345","thumbnail":true,"file":"public/photo_2016-07-05_17-07-34_thumbnail.jpg"}
 # use tube_emails
 put 1024 0 60 110
-{"reason":"Marketing or partnership","email":"vladimir.kovpak@dm-companies.com","name":"xxx","message":"TEST"}
+{"reason":"Marketing or partnership","email":"x@dkint.com","name":"xxx","message":"TEST"}
 
 # delete job from tube
 use tube_documents

@@ -18,7 +18,7 @@ gcloud debug source gen-repo-info-file --output-directory source
 go build -gcflags='-N -l' src/go-app/.gae/main.go
 cd src/go-app/.gae && go build -gcflags='-N -l'
 
-export GOPATH=/Users/k/web/kovpak/monitoring
+export GOPATH=/Users/k/web/k/monitoring
 export GOBIN=$GOPATH/bin
 
 ./go-cloud-debug \

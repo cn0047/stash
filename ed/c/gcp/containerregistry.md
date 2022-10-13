@@ -15,11 +15,11 @@ docker build -t cn007b/ubuntu-gcloud https://raw.githubusercontent.com/cn007b/do
 docker run -ti --rm cn007b/ubuntu-gcloud echo "OK"
 
 # push
-docker tag cn007b/ubuntu-gcloud gcr.io/c-dev/kovpak-test:latest
-docker push gcr.io/c-dev/kovpak-test:latest
+docker tag cn007b/ubuntu-gcloud gcr.io/c-dev/k-test:latest
+docker push gcr.io/c-dev/k-test:latest
 # open
-open http://gcr.io/c-dev/kovpak-test
+open http://gcr.io/c-dev/k-test
 
 # pull
-docker pull gcr.io/c-dev/kovpak-test:latest
+docker pull gcr.io/c-dev/k-test:latest
 ````

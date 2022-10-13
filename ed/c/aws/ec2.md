@@ -39,7 +39,7 @@ aws --profile=$p ec2 describe-key-pairs
 
 # import ssh key
 aws --profile=$p ec2 import-key-pair --key-name "defaultsshkey" \
-  --public-key-material file://~/web/kovpak/gh/ed/sh/ssh/examples/nopwd/id_rsa.pub
+  --public-key-material file://~/web/k/gh/ed/sh/ssh/examples/nopwd/id_rsa.pub
 
 # list vpcs
 aws --profile=$p ec2 describe-vpcs
@@ -53,7 +53,7 @@ aws ec2 run-instances \
   --security-groups ssh cklm web default \
   --key-name zkey \
   --user-data 'echo 200' \
-  --client-token KovpakTest4 \
+  --client-token kTest4 \
 
   --instance-type t2.micro \
 
@@ -70,7 +70,7 @@ aws ec2 run-instances \
   --instance-type t2.large \
   --count 1 \
   --subnet-id subnet-2eadd305 \
-  --iam-instance-profile Name='Kovpak-EC2' \
+  --iam-instance-profile Name='k-EC2' \
   --associate-public-ip-address \
   --key-name claws \
   --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=legacy-files-prod-3x}]' \

@@ -36,6 +36,8 @@ What not to automate with tests:
 * Database schema changes - slow.
 * Software and hardware configuration changes.
 
+Smoke testing.
+
 Regression testing - is designed to avoid regressing your application to a previous buggy state.
 
 ## White-box testing

@@ -7,6 +7,7 @@ version=18.04
 version=18.04-video
 version=20.04
 version=20.04-protobuf-3
+version=22.10
 docker build -t cn007b/ubuntu:$version docker/$version
 
 # check
