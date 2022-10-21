@@ -29,9 +29,11 @@ jq type # simple way to check JSON validity
 ... | jq '.[]|= keys'          # 1st level keys
 ... | jq -r '.taskArgs[0]'     # string without quotes
 
-# reshape
+# reshape 1
 echo '{"id":1,"list":[{"n":"foo"},{"n":"bar"}]}' | jq '. | {id: .id, n: .list[].n}'
 # result: {"id":1,"n":"foo"} {"id":1,"n":"bar"}
+# reshape 2
+echo '[{"id":"1","n":"a"},{"id":"2","n":"b"}]' | jq '[.[]|.id+":"+.n]|join(";")' # "1:a;2:b"
 
 doc='{"list":[
   {"id":1,"items":[{"n":"foo"}]},
@@ -49,6 +51,7 @@ echo $o | jq '.items | map(select(. >= 2))' # [2,3]
 echo '{"arr": [0, 1, "a", "b"]}' | jq '.arr[2:]'                    # ["a","b"]
 echo '[{"n":"foo"},{"n":"bar"}]' | jq '.[].n'                       # foo \n bar
 echo '[{"n":"foo"},{"n":"bar"}]' | jq '.[] | select(.n == ("foo"))' # {"n": "foo"}
+echo '[{"n":"foo"},{"n":"bar"}]' | jq '[.[].n]'                     # ["foo","bar"]
 echo '[{"a":1, "b":2}]' | jq '.[] | select(.a == 1 and .b == 2)'    # {"a":1, "b":2}
 echo '[{"a":1, "b":2}]' | jq '.[] | select(.a == 1 or .a == 2)'     # {"a":1, "b":2}
 
