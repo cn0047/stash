@@ -42,7 +42,7 @@ gcloud config set api_endpoint_overrides/spanner "http://localhost:9020/"
 
 
 
-cfg=to
+cfg=test
 prj=test-project
 dbi=test-instance
 db=test-db

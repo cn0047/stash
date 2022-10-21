@@ -6,6 +6,7 @@ GitHub Actions
 [workflow](https://docs.github.com/en/actions/using-workflows)
 [custom action](https://docs.github.com/en/actions/creating-actions/about-custom-actions)
 [toolkit](https://github.com/actions/toolkit)
+[playground](https://github-actions-hero.vercel.app/)
 [docker example](https://github.com/cn007b/docker-ubuntu/blob/master/.github/workflows/docker-image.yml)
 
 Workflow - configurable automated process that will run one or more jobs.
@@ -21,6 +22,7 @@ ACTIONS_STEP_DEBUG=true
 ${{secrets.MY_KEY}}
 
 github.ref == 'refs/heads/master' # example: refs/pull/13/merge
+github.ref == 'refs/pull/13/merge'
 github.event_name == 'pull_request'
 
 ${{ github.event.number }}
@@ -34,6 +36,18 @@ format('Out: {0} {1} {2}', 'a', 'b', 'c')
 join(github.event.issue.labels.*.name, ', ')
 toJSON(value)
 fromJSON(value)
+contains(fromJson('["bar", "foo"]'), github.event.action)
+
+::set-env name=DBG::1
+::set-output name=CODE::200
+::add-path::/path/to/dir
+::add-mask::msg
+::debug::msg
+::debug file=name,line=1,col=1::msg
+::warning file=name,line=1,col=1::msg
+::error file=name,line=1,col=1::msg
+::stop-comands::token # stop
+::token:: # start
 ````
 
 ````yaml
@@ -68,8 +82,21 @@ jobs:
     runs-on: ubuntu-latest
     env:
       CODE: 200
+    outputs:
+      project-id: ${{ steps.setvars.outputs.project-id }}
     steps:
     - uses: actions/checkout@v2
+    - name: "Set vars"
+      id: setvars
+      run: |
+        PROJECT_ID="test-prj"
+        echo PROJECT_ID=$PROJECT_ID >> $GITHUB_ENV
+        # use it with: ${{ env.PROJECT_ID }}
+        echo "::set-output name=project-id::$PROJECT_ID"
+        # use it with: ${{ steps.setvars.outputs.project-id }}
+        #
+        echo "{name}={value}" >> $GITHUB_STATE
+        echo "{name}={value}" >> $GITHUB_OUTPUT
     - name: Setup gcloud
       uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
       with:

@@ -44,7 +44,9 @@ Theory
 <br>SAML    - Security Assertion Markup Language.
 <br>SDK     - Software development kit.
 <br>SDLC    - Software development life-cycle.
+<br>SKU     - Stock keeping unit.
 <br>UPI     - Unique Product Identifier.
+<br>UPC     - Universal Product Code.
 <br>UTC     - Coordinated Universal Time.
 <br>UUID    - Universally Unique Identifier.
 <br>VOIP    - Voice over Internet Protocol.

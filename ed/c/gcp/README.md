@@ -4,7 +4,7 @@ Google Cloud
 [doc](https://cloud.google.com/sdk/gcloud/)
 [products](https://cloud.google.com/products/)
 [console](https://console.cloud.google.com/)
-[APIs](https://developers.google.com/api-client-library/)
+[API clients](https://developers.google.com/api-client-library/)
 [go libraries](https://pkg.go.dev/cloud.google.com/go#section-readme)
 [go libraries](https://github.com/googleapis)
 [locations](https://cloud.google.com/about/locations/)
