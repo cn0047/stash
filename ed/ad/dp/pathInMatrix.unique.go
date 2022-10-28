@@ -13,6 +13,8 @@ func main() {
 	fmt.Printf("Result: %v", r)
 }
 
+// uniquePaths returns unique paths count to get to bottom-right corner.
+// @see: https://leetcode.com/problems/unique-paths/
 func uniquePaths(m int, n int) int {
 	cache := make([][]int, m)
 	for i := 0; i < m; i++ {
