@@ -63,13 +63,13 @@ Example:
 
 | session 1 query                                      | session 1 result              | session 2 query               | session 2 result |
 |------------------------------------------------------|-------------------------------|-------------------------------|------------------|
-| select count(*) from product;                        | 5                             |                               |                  |
-|                                                      |                               | select count(*) from product; | 5                |
-| lock tables product write;                           |                               |                               |                  |
-|                                                      |                               | select count(*) from product; | 5                |
-| insert into product set category_id=1, name = 'boo'; |                               |                               |                  |
-|                                                      |                               | select count(*) from product; | --hang           |
-| unlock tables;                                       |                               |                               |                  |
+| SELECT COUNT(*) FROM product;                        | 5                             |                               |                  |
+|                                                      |                               | SELECT COUNT(*) FROM product; | 5                |
+| LOCK TABLES product write;                           |                               |                               |                  |
+|                                                      |                               | SELECT COUNT(*) FROM product; | 5                |
+| INSERT INTO product SET category_id=1, name = 'boo'; |                               |                               |                  |
+|                                                      |                               | SELECT COUNT(*) FROM product; | --hang           |
+| UNLOCK TABLES;                                       |                               |                               |                  |
 |                                                      |                               |                               | 6                |
 
 

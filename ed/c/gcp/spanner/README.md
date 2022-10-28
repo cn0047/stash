@@ -28,24 +28,26 @@ q() {
 
 
 # emulator
-gcloud emulators spanner start
-
-# start docker
-# image: gcr.io/cloud-spanner-emulator/emulator:latest
-# stop
-docker stop `docker ps | grep spanner-emulator | awk '{print $1}'`
-
-export SPANNER_EMULATOR_HOST=localhost:9010
-#
-gcloud config set auth/disable_credentials true
-gcloud config set api_endpoint_overrides/spanner "http://localhost:9020/"
-
-
-
+# docker image: gcr.io/cloud-spanner-emulator/emulator:latest
 cfg=test
 prj=test-project
 dbi=test-instance
 db=test-db
+# start
+gcloud config configurations activate $cfg || gcloud config configurations create $cfg
+gcloud config set project $prj
+gcloud config set auth/disable_credentials true
+gcloud config set api_endpoint_overrides/spanner 'http://localhost:9020/'
+gcloud -q emulators spanner start &
+gcloud -q spanner instances create $dbi --config=$cfg --description="TestEmulatorInstance" --nodes=1
+gcloud -q spanner databases create $db --instance=$dbi
+# stop
+docker stop `docker ps | grep spanner-emulator | awk '{print $1}'`
+
+# !!!
+export SPANNER_EMULATOR_HOST=localhost:9010
+
+
 
 gcloud spanner instances list
 # emulator

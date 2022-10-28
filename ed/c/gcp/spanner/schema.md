@@ -21,6 +21,28 @@ FKs not co-locate tables in the same storage layer.
 FKs permit circular references.
 
 ````sql
+CREATE TABLE Singers (
+  SingerId   INT64 NOT NULL,
+  FirstName  STRING(100),
+  LastName   STRING(100)
+) PRIMARY KEY (SingerId);
+
+CREATE TABLE Albums (
+  SingerId     INT64 NOT NULL,
+  AlbumId      INT64 NOT NULL,
+  AlbumTitle   STRING(MAX),
+) PRIMARY KEY (SingerId, AlbumId), INTERLEAVE IN PARENT Singers ON DELETE CASCADE;
+
+-- ok
+INSERT INTO Singers (SingerId, LastName) VALUES (1, "Lamar");
+INSERT INTO Albums (SingerId, AlbumId, AlbumTitle) VALUES (1, 1, "1st");
+
+-- HTTPError 404: {"code":5,"message":"Insert failed because key was not found in parent table:  Parent Table: Singers  Child Table: Albums  Key: {Int64(0)}"}
+INSERT INTO Albums (SingerId, AlbumId, AlbumTitle) VALUES (3, 2, "2nd");
+
+````
+
+````sql
 CREATE TABLE Customers (
   ID INT64 NOT NULL,
   FirstName STRING(100),

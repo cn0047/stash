@@ -36,6 +36,7 @@ set session tx_isolation='READ-COMMITTED';
 #### Example
 
 ````sql
+drop table if exists tree;
 create table if not exists tree (id int, title varchar(50));
 insert into tree values (9, 'service 9');
 insert into tree values (8, 'service 8');
@@ -43,61 +44,90 @@ insert into tree values (7, 'service 7');
 insert into tree values (6, 'service 6');
 ````
 
+Case 1:
+
 | terminal 1                                         | terminal 2                                                  |
 |----------------------------------------------------|-------------------------------------------------------------|
-| select title from tree where id = 9; -- service 9  |                                                             |
-| start transaction;                                 |                                                             |
-| update tree set title = 'service 99' where id = 9; |                                                             |
+| SELECT title FROM tree WHERE id = 9; -- service 9  |                                                             |
+| START TRANSACTION;                                 |                                                             |
+| UPDATE tree SET title = 'service 99' WHERE id = 9; |                                                             |
 | -- Query OK                                        |                                                             |
-|                                                    | select title from tree where id = 9; -- service 9           |
-|                                                    | start transaction;                                          |
-|                                                    | update tree set title = 'service 999' where id = 9; -- hang |
-| commit;                                            |                                                             |
+|                                                    | SELECT title FROM tree WHERE id = 9; -- service 9           |
+|                                                    | START TRANSACTION;                                          |
+|                                                    | UPDATE tree SET title = 'service 999' WHERE id = 9; -- hang |
+| COMMIT;                                            |                                                             |
 |                                                    | -- Query OK                                                 |
-| select title from tree where id = 9; -- service 99 |                                                             |
-|                                                    | commit;                                                     |
-|                                                    | select title from tree where id = 9; -- service 999         |
-| select title from tree where id = 9; -- service 999|                                                             |
+| SELECT title FROM tree WHERE id = 9; -- service 99 |                                                             |
+|                                                    | COMMIT;                                                     |
+|                                                    | SELECT title FROM tree WHERE id = 9; -- service 999         |
+| SELECT title FROM tree WHERE id = 9; -- service 999|                                                             |
+
+Case 2:
+
+| terminal 1                                         | terminal 2                                                                    |
+|----------------------------------------------------|-------------------------------------------------------------------------------|
+| START TRANSACTION;                                 |                                                                               |
+| UPDATE tree SET title = 'service 99' WHERE id = 9; |                                                                               |
+| -- Query OK                                        |                                                                               |
+|                                                    | START TRANSACTION;                                                            |
+|                                                    | UPDATE tree SET title = 'service 999' WHERE id = 9; -- hang                   |
+| -- leave it for a while                            |                                                                               |
+|                                                    | -- ERROR 1205 (HY000): Lock wait timeout exceeded; try restarting transaction |
+
+Case 3:
+
+| terminal 1                                               | terminal 2                                                  |
+|----------------------------------------------------------|-------------------------------------------------------------|
+|                                                          | START TRANSACTION;                                          |
+|                                                          | SELECT title FROM tree WHERE id = 9; -- service 9           |
+| START TRANSACTION;                                       |                                                             |
+| SELECT title FROM tree WHERE id = 9; -- service 9        |                                                             |
+| UPDATE tree SET title = CONCAT(title, "a") WHERE id = 9; |                                                             |
+| COMMIT;                                                  |                                                             |
+|                                                          | SELECT title FROM tree WHERE id = 9; -- service 9           |
+|                                                          | UPDATE tree SET title = CONCAT(title, "b") WHERE id = 9;    |
+|                                                          | COMMIT;                                                     |
+|                                                          | SELECT title FROM tree WHERE id = 9; -- service 9ab         |
 
 #### READ COMMITTED
 
 | terminal 1                                         | terminal 2                                                  |
 |----------------------------------------------------|-------------------------------------------------------------|
-| select title from tree where id = 8; -- service 8  |                                                             |
-|                                                    | select title from tree where id = 8; -- service 8           |
-| set session tx_isolation='READ-COMMITTED';         |                                                             |
-| start transaction;                                 |                                                             |
-| update tree set title = 'service 88' where id = 8; |                                                             |
-|                                                    | select title from tree where id = 8; -- service 8           |
+| SELECT title FROM tree WHERE id = 8; -- service 8  |                                                             |
+|                                                    | SELECT title FROM tree WHERE id = 8; -- service 8           |
+| SET session tx_isolation='READ-COMMITTED';         |                                                             |
+| START TRANSACTION;                                 |                                                             |
+| UPDATE tree SET title = 'service 88' WHERE id = 8; |                                                             |
+|                                                    | SELECT title FROM tree WHERE id = 8; -- service 8           |
 | commit;                                            |                                                             |
-| select title from tree where id = 8; -- service 88 |                                                             |
-|                                                    | select title from tree where id = 8; -- service 88          |
+| SELECT title FROM tree WHERE id = 8; -- service 88 |                                                             |
+|                                                    | SELECT title FROM tree WHERE id = 8; -- service 88          |
 
 #### READ UNCOMMITTED
 
 | terminal 1                                         | terminal 2                                                  |
 |----------------------------------------------------|-------------------------------------------------------------|
-| select title from tree where id = 7; -- service 7  |                                                             |
-|                                                    | select title from tree where id = 7; -- service 7           |
-| set session tx_isolation='READ-UNCOMMITTED';       |                                                             |
-| start transaction;                                 |                                                             |
-| update tree set title = 'service 77' where id = 7; |                                                             |
-|                                                    | select title from tree where id = 7; -- service 7           |
-| commit;                                            |                                                             |
-| select title from tree where id = 7; -- service 77 |                                                             |
-|                                                    | select title from tree where id = 7; -- service 77
+| SELECT title FROM tree WHERE id = 7; -- service 7  |                                                             |
+|                                                    | SELECT title FROM tree WHERE id = 7; -- service 7           |
+| SET session tx_isolation='READ-UNCOMMITTED';       |                                                             |
+| START TRANSACTION;                                 |                                                             |
+| UPDATE tree SET title = 'service 77' WHERE id = 7; |                                                             |
+|                                                    | SELECT title FROM tree WHERE id = 7; -- service 7           |
+| COMMIT;                                            |                                                             |
+| SELECT title FROM tree WHERE id = 7; -- service 77 |                                                             |
+|                                                    | SELECT title FROM tree WHERE id = 7; -- service 77
 
 | terminal 1                                         | terminal 2                                                  |
 |----------------------------------------------------|-------------------------------------------------------------|
-| select title from tree where id = 6; -- service 6  |                                                             |
-|                                                    | select title from tree where id = 6; -- service 6           |
-| set session tx_isolation='READ-UNCOMMITTED';       |                                                             |
-| start transaction;                                 |                                                             |
-| update tree set title = 'service 66' where id = 6; |                                                             |
-|                                                    | select title from tree where id = 6; -- service 6           |
-|                                                    | set session tx_isolation='READ-UNCOMMITTED';                |
-|                                                    | start transaction;                                          |
-|                                                    | update tree set title = 'service 666' where id = 6; -- hang |
+| SELECT title FROM tree WHERE id = 6; -- service 6  |                                                             |
+|                                                    | SELECT title FROM tree WHERE id = 6; -- service 6           |
+| SET session tx_isolation='READ-UNCOMMITTED';       |                                                             |
+| START TRANSACTION;                                 |                                                             |
+| UPDATE tree SET title = 'service 66' WHERE id = 6; |                                                             |
+|                                                    | SELECT title FROM tree WHERE id = 6; -- service 6           |
+|                                                    | SET session tx_isolation='READ-UNCOMMITTED';                |
+|                                                    | START TRANSACTION;                                          |
+|                                                    | UPDATE tree SET title = 'service 666' WHERE id = 6; -- hang |
 
 #### Nested transaction
 
@@ -105,14 +135,14 @@ insert into tree values (6, 'service 6');
 drop table if exists tree;
 create table if not exists tree (id int, title varchar(50));
 
-start transaction;
+START TRANSACTION;
 insert into tree values (1, 'service 1');
 
-start transaction;
+START TRANSACTION;
 insert into tree values (2, 'service 2');
 
 commit;
-select * from tree;
+SELECT * FROM tree;
 ````
 result (😮):
 ````
