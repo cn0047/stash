@@ -21,7 +21,8 @@ Problems:
 
 Steps for solution:
 * Define objective function.
-* Identify base cases.
+* Identify base cases
+  (think about smallest dataset, like: array with 1 element or matrix 1x1 or etc.).
 * Transition function (recurrence relation).
 * Order of computation.
 * Location of the answer.

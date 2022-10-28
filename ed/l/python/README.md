@@ -21,6 +21,8 @@ characterized by the presence of many `if` statements.
 python -V
 python3 -V
 
+ln -s /usr/local/bin/python3 /usr/local/bin/python
+
 WORK_HOME=/path
 PROJECT_HOME=/path
 PYTHONUNBUFFERED=1 # output sends straight to terminal without buffering

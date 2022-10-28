@@ -1,6 +1,8 @@
 Validator
 -
 
+[docs](https://github.com/go-playground/validator)
+
 ````sh
 go get gopkg.in/go-playground/validator.v9
 go get github.com/go-playground/validator/v10
@@ -15,50 +17,21 @@ go get github.com/go-playground/validator/v10
 * oneof=5 7 9
 * gt=10
 * lt=10
-* unique # arrays & slices withoud duplicates
-* alpha # alpha characters only
+* unique (arrays & slices withoud duplicates)
+* alpha (alpha characters only)
 * alphanum
 * numeric
-* hexadecimal
-* hexcolor
-* rgb # rgb color string
-* email
-* url
-* uri
-* base64
+* rgb (rgb color string)
 * contains=@
 * containsany=!@#?
 * excludes=@
 * excludesall=!@#?
-* uuid
-* uuid3
-* uuid4
-* uuid5
-* ascii
-* latitude
-* longitude
-* ip
-* ipv4
-* ipv6
-* tcp_addr
-* udp_addr
-* hostname
-* regexp=^[a-zA-Z0-9_]*$ (won't vork in v9)
+* regexp=`^[a-zA-Z0-9_]*$` (won't vork in v9)
 
 Cross-Field Validation:
 
 * eqfield # eqfield=ConfirmPassword
 * nefield
-* gtfield
-* gtefield
-* ltfield
-* ltefield
-* eqcsfield
-* necsfield
-* gtcsfield
-* gtecsfield
-* ltcsfield
-* ltecsfield
 
 ````golang
 type User struct {
@@ -71,6 +44,8 @@ type User struct {
 validate := validator.New()
 err := validate.Struct(user)
 ````
+
+Register custom validation:
 
 ````golang
 package service
@@ -87,12 +62,6 @@ type ConfigPrototype struct {
   Value       interface{} `json:"value" validate:"required"`
 }
 
-func validateKey(field validator.FieldLevel) bool {
-  keyRegex := regexp.MustCompile("^[a-zA-Z0-9_\\-:]+$")
-
-  return keyRegex.MatchString(field.Field().String())
-}
-
 func (cp ConfigPrototype) Validate() error {
   v := validator.New()
   v.RegisterValidation("key", validateKey)
@@ -102,4 +71,20 @@ func (cp ConfigPrototype) Validate() error {
 
   return nil
 }
+
+var keyRegex = regexp.MustCompile("^[a-zA-Z0-9_\\-:]+$")
+
+func validateKey(field validator.FieldLevel) bool {
+  return keyRegex.MatchString(field.Field().String())
+}
+
+var (
+  // ResourceNameRegex - represents regex pattern to validate resource name.
+  ResourceNameRegex = regexp.MustCompile(`^([\w:-])+$`)
+)
+
+func IsResourceNameValid(value string) bool {
+  return ResourceNameRegex.MatchString(value)
+}
+
 ````

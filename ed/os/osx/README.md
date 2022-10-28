@@ -98,6 +98,9 @@ brew services list
 
 brew info xdebug
 brew search xdebug
+brew reinstall xdebug
+brew list --versions xdebug # shows installed versions
+brew remove xdebug
 
 brew install grc # colors in terminal
 brew install bash-completion
@@ -124,9 +127,6 @@ brew install mongodb
 # or
 brew tap mongodb/brew && brew install mongodb-community@4.4
 
-brew list --versions openssl # shows installed versions
-
-brew remove nginx
 brew update && brew cleanup
 brew upgrade
 

@@ -122,9 +122,13 @@ Deadlocks occur because of write operations.
 To reduce the possibility of deadlocks, use transactions rather than LOCK TABLES statements;
 To see the last deadlock use `SHOW ENGINE INNODB STATUS` command.
 
+````sql
+DROP TABLE IF EXISTS t;
+CREATE TABLE t (i INT KEY) ENGINE = InnoDB;
+````
+
 | Session 1                                       | Session 2                  |
 |-------------------------------------------------|----------------------------|
-| CREATE TABLE t (i INT) ENGINE = InnoDB;         |                            |
 | INSERT INTO t (i) VALUES(1);                    |                            |
 | START TRANSACTION;                              |                            |
 | SELECT * FROM t WHERE i = 1 LOCK IN SHARE MODE; |                            |

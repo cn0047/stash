@@ -53,6 +53,7 @@ git remote -v                      # shows remote repository
 git remote show remoteRepoName     # shows all about remote repo (remote show origin)
 git remote add origin ssh://gitolite@repo.com:1011/repoName.git
 git remote update origin
+git remote prune origin # when blocking reference, error: cannot lock ref 'refs/remotes/origin/brhcn'
 git fetch remoteRepoName
 
 git show commit-hash

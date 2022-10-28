@@ -2,9 +2,9 @@ Spanner
 -
 
 [docs](https://cloud.google.com/spanner/docs/apis)
-
 [query syntax](https://cloud.google.com/spanner/docs/reference/standard-sql/query-syntax#having_clause)
 [funcs](https://cloud.google.com/spanner/docs/reference/standard-sql/syntax)
+[mutations](https://cloud.google.com/spanner/docs/modify-mutation-api)
 [golang](https://cloud.google.com/spanner/docs/getting-started/go)
 [golang](https://pkg.go.dev/cloud.google.com/go/spanner)
 
@@ -67,8 +67,6 @@ Spanner instance can be per region or multi-regional.
 Spanner - fully managed relational database with unlimited scale and strong consistency.
 Spanner DB dialect: Google Standard SQL, PostgreSQL.
 DB sequences (or auto-increment) - anti-pattern (it creates hotspots), use UUID generator.
-
-Check constraint - `CONSTRAINT start_before_end CHECK(StartTime < EndTime)`.
 
 [Data types](https://cloud.google.com/spanner/docs/reference/standard-sql/data-types):
 * bool.

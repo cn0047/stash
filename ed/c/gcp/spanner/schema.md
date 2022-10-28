@@ -1,9 +1,24 @@
-Foreign key
+Schema
 -
+
+Check constraint - `CONSTRAINT start_before_end CHECK(StartTime < EndTime)`.
+If expression evaluates to TRUE or NULL - data change is allowed.
+Expression can only reference columns in the same table.
+No CK on column `allow_commit_timestamp=true`.
+
+Parent-child relationships: interleaving or foreign keys, but not both.
 
 Interleaved table - child table, albums is interleaved table for singers (no singer -> no album).
 For interleaved table can be only 1 parent.
 Parent table primary key must be part of child table primary key.
+Interleaved tables helps with performance, spanner co-locate tables in the same storage layer.
+`DELETE CASCADE` works only for interleaved tables.
+
+Foreign keys needed for referential integrity.
+No FK on column `allow_commit_timestamp=true` or with array, JSON type.
+FKs create own backing indexes.
+FKs not co-locate tables in the same storage layer.
+FKs permit circular references.
 
 ````sql
 CREATE TABLE Customers (
@@ -31,8 +46,7 @@ CREATE TABLE OrderItems (
   OrderID INT64 NOT NULL,
   OrderItemID INT64 NOT NULL,
   ProductID INT64,
-  Quantity INT64,
-  FOREIGN KEY (OrderID) REFERENCES Orders (OrderID)
+  Quantity INT64
 ) PRIMARY KEY (OrderID, OrderItemID), INTERLEAVE IN PARENT Orders ON DELETE CASCADE;
 
 INSERT INTO Customers (ID, FirstName, LastName) VALUES (1, "Bob", "None");

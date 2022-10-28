@@ -2,6 +2,7 @@
 
 tag=5.7.27
 tag=8.0.27
+tag=8.0.31
 tag=latest
 docker run -it --rm --net=xnet -p 3307:3306 --name xmysql --hostname xmysql \
     -v $PWD/.data/.docker/mysql_$tag:/var/lib/mysql -v /tmp:/tmp \

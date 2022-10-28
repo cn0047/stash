@@ -4,6 +4,7 @@
 # make -f ed/sh/makefile/example/one/Makefile x=200 cmd
 # make -f ed/sh/makefile/example/one/Makefile       cmd2
 # make -f ed/sh/makefile/example/one/Makefile x=200 cmd2
+# make -f ed/sh/makefile/example/one/Makefile print_f2
 
 TOP := "TOP △ "
 ROOT = "ROOT ▼ "
@@ -60,3 +61,7 @@ print_f2: prnt/204
 
 prnt/%:
 	@echo $(@F) # will print: 204
+
+# @TODO
+%: foo bar
+	echo $@
