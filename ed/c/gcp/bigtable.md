@@ -13,6 +13,8 @@ BigTable instance:
 * BigTable Cluster (nodes).
 * Colossus (tables) - Google's proprietary high durable file system.
 
+BigTable has autoscaling to automatically add and remove nodes.
+
 Replication across clusters works in eventual consistency way.
 
 ````sh

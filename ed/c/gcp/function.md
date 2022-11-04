@@ -21,6 +21,8 @@ gcloud functions list
 gcloud functions describe hw
 ````
 
+Function is per region.
+
 Trigger type: HTTP, PubSub, GCS, Firestore, Firebase.
 
 HTTP trigger looks like: `https://$region-$prj.cloudfunctions.net/$funcName`.
