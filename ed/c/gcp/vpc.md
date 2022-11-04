@@ -10,3 +10,6 @@ sourceRanges[0]:       0.0.0.0/0
 allowed[0].IPProtocol: tcp
 allowed[0].ports[0]:   22
 ````
+
+Subnet is per region.
+Dynamic routing mode can be global or regional.

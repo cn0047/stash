@@ -7,6 +7,8 @@ Dataflow
 Dataflow - service for creating and evaluating data processing pipelines.
 Streaming analytics for stream and batch processing.
 
+Dataflow is per region.
+
 # Apache Beam
 
 [docs](http://beam.apache.org/documentation/)

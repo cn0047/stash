@@ -22,6 +22,8 @@ curl -X POST 'https://datastore.googleapis.com/v1/projects/itismonitoring:export
 Google Cloud DataStore is a NoSQL document database.
 In DataStore nested transactions are not supported.
 
+DataStore doesn't have region configuration.
+
 Cloud Datastore uses optimistic concurrency to manage transactions.
 
 ````

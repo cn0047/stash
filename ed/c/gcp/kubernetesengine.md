@@ -10,3 +10,5 @@ gcloud container clusters get-credentials
 gcloud container clusters get-credentials $name # --project $p --region $r
 
 ````
+
+GKE may be per zone or per region.

@@ -25,3 +25,5 @@ Instance template - define machine type, image, zone and other properties.
 Instance groups:
 * managed (zonal, regional).
 * unmanaged.
+
+instance is per region.
