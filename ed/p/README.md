@@ -216,9 +216,10 @@ Layer 4 - Transport Layer LB.
 Methods:
 * Least Connection - use the service with the fewest active connections.
 * Round Robin - assigns connection to the first service in the list,
-and then moves that service to the bottom of the list.
+  and then moves that service to the bottom of the list.
+* Weighted Round Robin.
 * Least Response Time - use service with the fewest active connections
-and the lowest average response time.
+  and the lowest average response time.
 * Least Bandwidth - use service that is currently serving the least amount of traffic (Mbps).
 * URL param or RDP-cookie.
 

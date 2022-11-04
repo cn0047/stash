@@ -34,6 +34,7 @@ jobs:
 
     - name: Test
       run: |
+        set -xe
         git config --global url."https://${{ secrets.BOT_TOKEN }}:@github.com/thepkg/".insteadOf "https://github.com/thepkg/"
         go test -v ./app/...
         go test -v ./cmd/...

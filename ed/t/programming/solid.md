@@ -26,10 +26,10 @@ DIP - refers to a specific form of decoupling software modules.
 * High-level modules should not depend on low-level modules. Both should depend on abstractions.
 * Abstractions should not depend on details. Details should depend on abstractions.
 * Abstraction dependency:
-    * All member variables in a class must be interfaces or abstracts.
-    * All concrete class packages must connect only through interface/abstract classes packages.
-    * No class should derive from a concrete class.
-    * No method should override an implemented method.
-    * All variable instantiation requires the implementation of a Creational pattern
-      as the Factory Method or the Factory pattern,
-      or the more complex use of a Dependency Injection framework.
+  * All member variables in a class must be interfaces or abstracts.
+  * All concrete class packages must connect only through interface/abstract classes packages.
+  * No class should derive from a concrete class.
+  * No method should override an implemented method.
+  * All variable instantiation requires the implementation of a Creational pattern
+    as the Factory Method or the Factory pattern,
+    or the more complex use of a Dependency Injection framework.

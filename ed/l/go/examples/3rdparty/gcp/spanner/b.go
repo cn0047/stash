@@ -5,13 +5,14 @@ import (
 	"fmt"
 	"io"
 	"log"
+	"math/big"
 	"time"
 
 	"cloud.google.com/go/spanner"
 	"google.golang.org/api/iterator"
 )
 
-const DB = "projects/sandbox-20211128-sy7ccu/instances/test-instance/databases/test-db"
+const DB = "projects/test-project/instances/test-instance/databases/test-db"
 
 func main() {
 	var err error
@@ -22,12 +23,14 @@ func main() {
 	}
 
 	ctx := context.Background()
+	//err = selectTestRow1(ctx, c) // Sanity check.
 	//err = insertJSON(ctx, c)
-	//err = selectTestRow1(ctx, c)
+	//err = insertItoFieldsTest(ctx, c)
+	err = readFromFieldsTest(ctx, c)
 	//err = selectTestRows(ctx, c)
 	//err = deleteTestRow1(ctx, c)
 	//err = deleteTestRow1v2(ctx, c)
-	err = upsertUsingMutation(ctx, c)
+	//err = upsertUsingMutation(ctx, c)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -40,6 +43,92 @@ func getClient() (*spanner.Client, error) {
 	}
 
 	return c, nil
+}
+
+type FieldsTestRowWrite struct {
+	ID1 string           `spanner:"id1"`
+	ID2 string           `spanner:"id2"`
+	B1  bool             `spanner:"b1"`
+	I1  int64            `spanner:"i1"`
+	F1  float64          `spanner:"f1"`
+	N1  big.Rat          `spanner:"n1"`
+	S1  string           `spanner:"s1"`
+	J1  spanner.NullJSON `spanner:"j1"`
+	BT1 string           `spanner:"bt1"`
+	D1  string           `spanner:"d1"`
+	T1  time.Time        `spanner:"t1"`
+	T2  time.Time        `spanner:"t2"`
+	A1  []int64          `spanner:"a1"`
+	A2  []string         `spanner:"a2"`
+}
+
+type FieldsTestRowRead struct {
+	ID1 string           `spanner:"id1"`
+	ID2 string           `spanner:"id2"`
+	B1  bool             `spanner:"b1"`
+	I1  int64            `spanner:"i1"`
+	F1  float64          `spanner:"f1"`
+	N1  big.Rat          `spanner:"n1"`
+	S1  string           `spanner:"s1"`
+	J1  spanner.NullJSON `spanner:"j1"`
+	BT1 []byte           `spanner:"bt1"`
+	D1  spanner.NullDate `spanner:"d1"`
+	T1  time.Time        `spanner:"t1"`
+	T2  time.Time        `spanner:"t2"`
+	A1  []int64          `spanner:"a1"`
+	A2  []string         `spanner:"a2"`
+}
+
+func insertItoFieldsTest(ctx context.Context, c *spanner.Client) error {
+	location, err := time.LoadLocation("Europe/Kyiv")
+	if err != nil {
+		return fmt.Errorf("failed to create location, err: %w", err)
+	}
+	now := time.Now()
+	nowInKyiv := now.In(location)
+
+	input := FieldsTestRowWrite{
+		ID1: "a",
+		ID2: "1",
+		D1:  "2022-11-03",
+		T1:  nowInKyiv, // In Spanner value will be saved in UTC.
+	}
+	m1, err := spanner.InsertStruct("fields_test", input)
+	if err != nil {
+		return fmt.Errorf("failed to create insert mutation, err: %w", err)
+	}
+	mutations := []*spanner.Mutation{m1}
+
+	cb := func(ctx context.Context, tx *spanner.ReadWriteTransaction) error {
+		err := tx.BufferWrite(mutations)
+		if err != nil {
+			return fmt.Errorf("failed to perform BufferWrite, err: %w", err)
+		}
+		return nil
+	}
+	_, err = c.ReadWriteTransaction(ctx, cb)
+	if err != nil {
+		return fmt.Errorf("failed to perform ReadWriteTransaction, err: %w", err)
+	}
+
+	return nil
+}
+
+func readFromFieldsTest(ctx context.Context, c *spanner.Client) error {
+	fields := []string{"a1", "a2", "b1", "bt1", "d1", "f1", "i1", "id1", "id2", "j1", "n1", "s1", "t1", "t2"}
+	row, err := c.Single().ReadRow(ctx, "fields_test", spanner.Key{"a", "1"}, fields)
+	if err != nil {
+		return fmt.Errorf("failed to perform ReadRow, err: %w", err)
+	}
+
+	r := FieldsTestRowRead{}
+	err = row.ToStruct(&r)
+	if err != nil {
+		return fmt.Errorf("failed convert row to struct, err: %w", err)
+	}
+	fmt.Printf("result row: %+v \n", r)
+
+	return nil
 }
 
 func insertJSON(ctx context.Context, c *spanner.Client) error {

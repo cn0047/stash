@@ -37,6 +37,7 @@ jobs:
 
       - name: 'Start Spanner Emulator'
         run: |
+          set -xe
           make spanner-start
           make spanner-load-fixtures
 

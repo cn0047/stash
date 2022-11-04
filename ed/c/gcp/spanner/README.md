@@ -84,16 +84,21 @@ DB sequences (or auto-increment) - anti-pattern (it creates hotspots), use UUID 
 * array.
 
 ````sql
-CREATE TABLE test (
-id STRING(36) NOT NULL,
-i1 INT64 NOT NULL,
-s1 STRING(100) NOT NULL,
-b1 BOOL NOT NULL,
-d1 DATE NOT NULL,
-ts TIMESTAMP NOT NULL,
-
-ids ARRAY<INT64>,
-names ARRAY<STRING(50)>,
+CREATE TABLE fields_test (
+id1 STRING(36) NOT NULL,
+id2 STRING(36) NOT NULL,
+b1  BOOL,
+i1  INT64,
+f1  FLOAT64,
+n1  NUMERIC,
+s1  STRING(100),
+j1  JSON,
+bt1 BYTES(MAX),
+d1  DATE,
+t1  TIMESTAMP,
+t2  TIMESTAMP OPTIONS (allow_commit_timestamp=true),
+a1  ARRAY<INT64>,
+a2  ARRAY<STRING(50)>
 ) PRIMARY KEY (id1, id2);
 
 SELECT 2 IN UNNEST(ARRAY_CONCAT([1, 2], [3, 4])) in_array;

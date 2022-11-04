@@ -13,7 +13,9 @@ curl
 -i                                   # Include the HTTP-headers
 -o, --output FILE                    # Write output to <file> instead of stdout
 -O, --remote-name                    # Write output to file wiht origin name
+-L                                   # Follow location response header
 -s, --silent
+-S, --show-error
 -u, --user USER[:PASSWORD]           # Server user and password
 -v, --verbose
 -x, --proxy [PROTOCOL://]HOST[:PORT] # Use proxy on given port

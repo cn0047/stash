@@ -1,6 +1,30 @@
 History of NodeJS
 -
 
+## node.js 18
+
+* Global fetch.
+* Built-in test runner.
+* V8 10.1.
+
+## node.js 17
+
+* OpenSSL 3.0 support.
+* New Promise-based APIs.
+* V8 9.5.
+
+## node.js 16
+
+* Web Crypto API.
+* V8 9.0.
+
+## node.js 15
+
+* Throw on unhandled rejections.
+* AbortController.
+* Support for QUIC.
+* npm 7.
+
 ## node.js 14
 
 * V8 has been upgraded to V8 8.1.
