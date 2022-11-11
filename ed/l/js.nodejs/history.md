@@ -1,7 +1,7 @@
 History of NodeJS
 -
 
-## node.js 18
+## node.js 18 (Hydrogen)
 
 * Global fetch.
 * Built-in test runner.
@@ -13,7 +13,7 @@ History of NodeJS
 * New Promise-based APIs.
 * V8 9.5.
 
-## node.js 16
+## node.js 16 (Gallium)
 
 * Web Crypto API.
 * V8 9.0.
@@ -25,19 +25,19 @@ History of NodeJS
 * Support for QUIC.
 * npm 7.
 
-## node.js 14
+## node.js 14 (Fermium)
 
 * V8 has been upgraded to V8 8.1.
 
 ## node.js 13
 
-## node.js 12
+## node.js 12 (Erbium)
 
 * Public/Private class fields.
 
 ## node.js 11
 
-## node.js 10
+## node.js 10 (Dubnium)
 
 * Error codes.
 

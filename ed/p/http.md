@@ -42,6 +42,10 @@ URL - Uniform Resource Locator (protocol + host + path).
 URN - Uniform Resource Name (host + path + all after question mark).
 
 ?id=1&id=2&id=3 - array in query string
+
+%2f - /
+%40 - @
+%20 - space
 ````
 
 #### Headers

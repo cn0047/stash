@@ -8,6 +8,7 @@ Security
 [check dns](https://dnsspy.io/)
 [check site](https://observatory.mozilla.org/) [and](https://securityheaders.com)
 [check headers](https://securityheaders.com)
+[check url](https://www.virustotal.com/)
 [security platform](https://www.hackerone.com/)
 [exploits](https://www.exploit-db.com/)
 [exploits](https://github.com/hackerhouse-opensource/exploits)
