@@ -73,14 +73,6 @@ To deal with big complicated problems - have to perform breakdown or decompositi
 One of the best ways to deal with complexity is divide and conquer - split the problem
 into smaller problems and solve each one separately.
 
-Fault - when one component of the system deviating from its spec.
-Failure - when the system as a whole stops providing the required service to the user.
-Generally prefer tolerating faults over preventing faults.
-For example, hardware faults:
-disks may be set up in a RAID configuration,
-servers may have dual power supplies and hot-swappable CPUs,
-and datacenters may have batteries and diesel generators for backup power...
-
 Telemetry - monitoring performance metrics and error rates.
 
 Monitoring should address two questions: what's broken, and why?

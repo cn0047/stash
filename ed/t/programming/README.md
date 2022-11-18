@@ -16,6 +16,8 @@ print y     # statement - does something.
 Good comment must explain: `what? why? how?`.
 Add comments when fixing bugs.
 
+Recursion is bad because it can end up with stack overflow.
+
 #### Process and Thread
 
 Process - any program. It's isolated from other processes.

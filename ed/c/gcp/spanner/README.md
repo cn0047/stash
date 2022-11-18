@@ -5,6 +5,7 @@ Spanner
 [query syntax](https://cloud.google.com/spanner/docs/reference/standard-sql/query-syntax#having_clause)
 [funcs](https://cloud.google.com/spanner/docs/reference/standard-sql/syntax)
 [mutations](https://cloud.google.com/spanner/docs/modify-mutation-api)
+[TTL](https://cloud.google.com/spanner/docs/ttl/working-with-ttl#syntax)
 [golang](https://cloud.google.com/spanner/docs/getting-started/go)
 [golang](https://pkg.go.dev/cloud.google.com/go/spanner)
 

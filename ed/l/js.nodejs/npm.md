@@ -24,8 +24,8 @@ npm update modulename
 
 npm init
 
-npm ll
-npm ls
+npm ll # list installed packages
+npm ls # list installed packages
 npm ls -g
 
 npm run script
@@ -45,7 +45,10 @@ npm prune
 
 npm cache clean --force
 
+npm audit # security audit
 npm audit fix --force
+
+npm outdated # check outdated packages
 ````
 
 ````sh
@@ -84,6 +87,10 @@ console.log(argv.one + " " + argv.two);
 ````
 
 ### File
+
+devDependencies - packages needed only for development.
+peerDependencies - (when publishing own package) means that own package needs
+same dependency as the person installing your own package.
 
 ````js
 {

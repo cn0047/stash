@@ -3,6 +3,7 @@ Concurrency
 
 Mutex - (locking mechanism) mutual exclusion object that synchronizes access to a resource.
 
+Semaphore - variable or abstract data type used to control access to common resource by multiple threads.
 Semaphore - (signalling mechanism):
 * counting semaphore - count is the number of available resources.
 * binary semaphore - like counting semaphore but value restricted to 0 and 1.
