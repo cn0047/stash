@@ -119,6 +119,8 @@ Full stack:
 
 #### Simple stuff
 
+`persistent/ephemeral`
+
 `camelCase, kebab-case, snake_case`
 
 ````sh

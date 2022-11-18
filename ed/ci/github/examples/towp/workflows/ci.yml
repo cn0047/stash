@@ -1,0 +1,143 @@
+name: "CI"
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  workflow_dispatch:
+
+env:
+  go-version: "1.19.1"
+
+jobs:
+
+  lint-go-code:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout source code"
+        uses: actions/checkout@v3
+      - name: "Setup Go"
+        uses: actions/setup-go@v3
+        with:
+          go-version: ${{ env.go-version }}
+      - name: "Configure Go modules"
+        shell: bash
+        run: git config --global url."https://${{ secrets.BOT_TOKEN }}:@github.com/org/".insteadOf "https://github.com/org/"
+      - name: "Fmt"
+        run: go fmt ./...
+      - name: "Vet"
+        run: go vet ./...
+      - name: "Lint"
+        uses: golangci/golangci-lint-action@v3
+        with:
+          args: --timeout=10m0s -c ./.golangci.yaml
+      - name: "Static check"
+        uses: reviewdog/action-staticcheck@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+          filter_mode: nofilter
+          fail_on_error: true
+          workdir: .
+
+  test-db-migration-and-go-code:
+    runs-on: ubuntu-latest
+    env:
+      GOOGLE_PROJECT_ID: test-project
+      ENV: local
+      SPANNER_EMULATOR_HOST: localhost:9010
+      PUBSUB_EMULATOR_HOST: localhost:8681
+    services:
+      spanner_emulator:
+        image: gcr.io/cloud-spanner-emulator/emulator:latest
+        ports:
+          - 9010:9010
+          - 9020:9020
+      pubsub_emulator:
+        image: messagebird/gcloud-pubsub-emulator
+        env:
+          PUBSUB_PROJECT1: test-project,app.event:app.sub
+        ports:
+          - 8681:8681
+    steps:
+      - name: "Checkout source code"
+        uses: actions/checkout@v3
+      - name: "Set up Cloud SDK"
+        uses: google-github-actions/setup-gcloud@v0
+      - name: "Run emulators"
+        run: |
+          make gcloud-init
+          make spanner-start
+          make spanner-init
+          make migrate-init
+          make load-migrations
+      - name: "Setup Go"
+        uses: actions/setup-go@v3
+        with:
+          go-version: ${{ env.go-version }}
+      - name: "Configure Go modules"
+        shell: bash
+        run: git config --global url."https://${{ secrets.BOT_TOKEN }}:@github.com/org/".insteadOf "https://github.com/org/"
+      - name: "Test"
+        shell: bash
+        run: go test ./... -race -covermode=atomic -coverprofile=coverage.out -json | tee tests_run.json
+      - name: "Upload code coverage file"
+        uses: actions/upload-artifact@v3
+        with:
+          name: code-coverage-file
+          retention-days: 1
+          path: ./coverage.out
+      - name: "Upload tests run file"
+        uses: actions/upload-artifact@v3
+        with:
+          name: tests-run-file
+          retention-days: 1
+          path: ./tests_run.json
+
+  sonar-check-go-code:
+    runs-on: ubuntu-latest
+    needs:
+      - test-db-migration-and-go-code
+    steps:
+      - name: "Checkout source code"
+        uses: actions/checkout@v3
+      - name: "Download code coverage file"
+        uses: actions/download-artifact@v3
+        with:
+          name: code-coverage-file
+          path: ./coverage.out
+      - name: "Download tests run file"
+        uses: actions/download-artifact@v3
+        with:
+          name: tests-run-file
+          path: ./tests_run.json
+      - name: "SonarQube scan (PR)"
+        id: sonar-scan-pr
+        if: always() && github.event_name == 'pull_request'
+        uses: sonarsource/sonarqube-scan-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_HOST_URL: "https://sonarqube.x.org.com"
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          projectBaseDir: .
+          args: >
+            -Dsonar.pullrequest.key=${{ github.event.number }}
+            -Dsonar.pullrequest.branch=${{ github.HEAD_REF }}
+            -Dsonar.pullrequest.base=${{ github.BASE_REF }}
+            -Dsonar.pullrequest.github.repository=${{ github.repository }}
+            -Dsonar.scm.provider=git
+      - name: "SonarQube scan (master)"
+        id: sonar-scan-master
+        if: always() && github.ref == 'refs/heads/master'
+        uses: sonarsource/sonarqube-scan-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_HOST_URL: "https://sonarqube.x.org.com"
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          projectBaseDir: .
+          args: >
+            -Dsonar.branch.name=master
+            -Dsonar.scm.provider=git

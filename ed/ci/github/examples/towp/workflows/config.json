@@ -1,0 +1,7 @@
+{
+  "dev": {
+    "projectId": "prj-x-id",
+    "regions": ["us-central1"],
+    "pubSubTopic": "dev.app.events"
+  }
+}

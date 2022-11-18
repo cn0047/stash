@@ -21,7 +21,7 @@ Terraform - tool for defining infrastructure as code.
 <br>Input variables - serve as parameters for a tf module (`variable "x" {type = string}`).
 <br>Output values - return values of a Terraform module (`val = aws_instance.server.private_ip`).
 <br>Expressions - refer to or compute values within a configuration.
-<br>Backends - determines how state is loaded (s3, artifactory, consul, etc.).
+<br>Backends - determines how state is loaded/stored (s3, artifactory, consul, etc.).
 <br>Data sources - allows configuration to use information defined outside of tf
 (`data "aws_ami" "example" { ...`) (it could be list of aws availability zones, etc.).
 <br>Provisioners - used to model specific actions on machine in order
@@ -87,8 +87,16 @@ terraform apply -auto-approve
 terraform refresh
 
 terraform state list # list all resources in the state
+terraform state show # show details about object
+terraform state rm # remove object from state
+terraform state pull
+terraform state push
 
 terraform show -json
+
+# import already existing resource into tf
+terraform import -var-file=tf.vars $addr $id
+terraform import -var-file=tf.vars module.vpc.aws_subnet.public[2] subnet-x9cb23
 
 terraform destroy                  # destroy all from tf file
 terraform destroy -target=resource # only certain resource, like: google_cloud_run_service.default
@@ -106,6 +114,9 @@ terraform workspace show
 ````
 
 ````sh
+# simple interpolation
+"${var.prefix}-app"
+
 resource "random_int" "rand" {
   min = 100
   max = 999

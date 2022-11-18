@@ -1,0 +1,135 @@
+name: "CD"
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Environment"
+        required: true
+        default: dev
+        type: environment
+      git-ref:
+        description: "Git tag/commit"
+        required: false
+        type: string
+
+env:
+  service-name: "x-app"
+  working-directory: "${{ github.workspace }}"
+  workflow-directory: "${{ github.workspace }}/.github/workflows"
+  go-version: "1.19.1"
+
+jobs:
+
+  init:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.setvars.outputs.matrix }}
+    steps:
+      - name: "Define environments matrix"
+        id: setvars
+        run: |
+          set -e
+          if [[ "${{github.event.inputs.environment}}" == "prod" ]]; then
+            echo "matrix=[\"prod\"]" >> $GITHUB_OUTPUT
+          elif [[ "${{github.event.inputs.environment}}" == "dev" ]]; then
+            echo "matrix=[\"dev\"]" >> $GITHUB_OUTPUT
+          else
+            echo "matrix=[]" >> $GITHUB_OUTPUT
+          fi
+
+  publish-docker-image:
+    name: "Publish docker image"
+    needs: init
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+      pull-requests: write
+    strategy:
+      matrix:
+        env: ${{ fromJSON(needs.init.outputs.matrix) }}
+    environment: ${{ matrix.env }}
+    env:
+      GOPRIVATE: github.com/org/*
+    outputs:
+      env-name: ${{ steps.setvars.outputs.env-name }}
+      project-id: ${{ steps.setvars.outputs.project-id }}
+      regions: ${{ steps.setvars.outputs.regions }}
+      pubsub-topic: ${{ steps.setvars.outputs.pubsub-topic }}
+      docker-image-tag: ${{ steps.setvars.outputs.docker-image-tag }}
+    steps:
+      - name: "Checkout source code"
+        uses: actions/checkout@v3
+      - name: "Set vars"
+        id: setvars
+        run: |
+          PROJECT_ID=$(jq -r -c .${{ matrix.env }}.projectId ${{ env.workflow-directory }}/config.json)
+          REGIONS=$(jq -r -c .${{ matrix.env }}.regions ${{ env.workflow-directory }}/config.json)
+          DOCKER_IMAGE_TAG=$(date +%Y%m%d%H%M%S)
+          PUBSUB_TOPIC=$(
+            jq -r -c .${{ matrix.env }}.pubSubTopic ${{ env.workflow-directory }}/config.json
+          )
+          echo "env-name=${{ matrix.env }}" >> $GITHUB_OUTPUT
+          echo "project-id=$PROJECT_ID" >> $GITHUB_OUTPUT
+          echo "regions=$REGIONS" >> $GITHUB_OUTPUT
+          echo "pubsub-topic=$PUBSUB_TOPIC" >> $GITHUB_OUTPUT
+          echo "docker-image-tag=$DOCKER_IMAGE_TAG" >> $GITHUB_OUTPUT
+      - name: "Publish docker image"
+        uses: ./.github/actions/publish-docker-image
+        with:
+          workload-identity-provider: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}
+          service-account-email: ${{ secrets.GCP_GITHUB_SERVICE_ACCOUNT_EMAIL }}
+          bot-token: ${{ secrets.BOT_TOKEN }}
+          git-ref: ${{ inputs.git-ref }}
+          go-version: ${{ env.go-version }}
+          main-go-path: ${{ env.working-directory }}/cmd/${{ env.service-name }}
+          docker-repo: gcr.io/${{ steps.setvars.outputs.project-id }}/${{ env.service-name }}
+          docker-image-tag: ${{ steps.setvars.outputs.docker-image-tag }}
+
+  deploy-cloudrun:
+    name: "Deploy cloudrun"
+    needs: publish-docker-image
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+      pull-requests: write
+    strategy:
+      matrix:
+        region: ${{ fromJSON(needs.publish-docker-image.outputs.regions) }}
+    environment: ${{ needs.publish-docker-image.outputs.env-name }}
+    steps:
+      - name: "Checkout source code"
+        uses: actions/checkout@v3
+      - name: "Deploy cloudrun"
+        uses: ./.github/actions/deploy-cloudrun
+        with:
+          workload-identity-provider: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}
+          service-account-email: ${{ secrets.GCP_GITHUB_SERVICE_ACCOUNT_EMAIL }}
+          cloudrun-service-account-email: ${{ secrets.GCP_SERVICE_ACCOUNT_EMAIL }}
+          service-name: ${{ env.service-name }}
+          env-name: ${{ needs.publish-docker-image.outputs.env-name }}
+          project-id: ${{ needs.publish-docker-image.outputs.project-id }}
+          region: ${{ matrix.region }}
+          docker-repo: gcr.io/${{ needs.publish-docker-image.outputs.project-id }}/${{ env.service-name }}
+          docker-image-tag: ${{ needs.publish-docker-image.outputs.docker-image-tag }}
+          additional-flags: |
+            --concurrency=1000 \
+            --min-instances=1 \
+            --max-instances=30 \
+            --memory=512Mi \
+            --cpu=1000m \
+            --set-env-vars ENV=${{ needs.publish-docker-image.outputs.env-name }} \
+            --set-env-vars GOOGLE_PROJECT_ID=${{ needs.publish-docker-image.outputs.project-id }} \
+            --set-env-vars TOPIC=${{ needs.publish-docker-image.outputs.pubsub-topic }} \
+            --set-env-vars HOST=0.0.0.0
+
+  call-migrate-workflow:
+    name: "Migrate DB"
+    needs: init
+    if: "${{ github.event.inputs.environment != 'prod' }}"
+    uses: ./.github/workflows/migrate.yml
+    with:
+      environment: "${{ github.event.inputs.environment }}"
+    secrets: inherit

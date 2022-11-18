@@ -1,0 +1,86 @@
+name: "Migrate DB schema"
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Environment"
+        required: true
+        default: dev
+        type: environment
+  workflow_call:
+    inputs:
+      environment:
+        description: "Environment"
+        required: true
+        default: dev
+        type: string
+
+env:
+  go-version: "1.19.1"
+  workflow-directory: "${{ github.workspace }}/.github/workflows"
+
+jobs:
+
+  init:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.setvars.outputs.matrix }}
+    steps:
+      - name: "Define environments matrix"
+        id: setvars
+        run: |
+          set -e
+          echo "matrix=[\"${{github.event.inputs.environment}}\"]" >> $GITHUB_OUTPUT
+
+  prepare-migrate-db:
+    name: "Prepare migrate DB"
+    needs: init
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+      pull-requests: write
+    strategy:
+      matrix:
+        env: ${{ fromJSON(needs.init.outputs.matrix) }}
+    environment: ${{ matrix.env }}
+    outputs:
+      env-name: ${{ steps.setvars.outputs.env-name }}
+      project-id: ${{ steps.setvars.outputs.project-id }}
+      spanner-dbs: ${{ steps.setvars.outputs.spanner-dbs }}
+    steps:
+      - name: "Checkout source code"
+        uses: actions/checkout@v3
+      - name: "Set vars"
+        id: setvars
+        run: |
+          PROJECT_ID=$(jq -r -c .${{ matrix.env }}.projectId ${{ env.workflow-directory }}/config.json)
+          echo "env-name=${{ matrix.env }}" >> $GITHUB_OUTPUT
+          echo "project-id=$PROJECT_ID" >> $GITHUB_OUTPUT
+
+  migrate-db:
+    name: "Migrate DB"
+    needs: prepare-migrate-db
+    runs-on: ubuntu-latest
+    if: contains(fromJson('["uat", "dev"]'), needs.prepare-migrate-db.outputs.env-name)
+    permissions:
+      contents: read
+      id-token: write
+      pull-requests: write
+    strategy:
+      matrix:
+        spanner-db:  ${{ fromJSON(needs.prepare-migrate-db.outputs.spanner-dbs) }}
+    environment: ${{ needs.prepare-migrate-db.outputs.env-name }}
+    steps:
+      - name: "Checkout source code"
+        uses: actions/checkout@v3
+      - name: "Migrate"
+        uses: ./.github/actions/migrate-spanner
+        with:
+          workload-identity-provider: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}
+          service-account-email: ${{ secrets.GCP_GITHUB_SERVICE_ACCOUNT_EMAIL }}
+          env-name: ${{ needs.prepare-migrate-db.outputs.env-name }}
+          project-id: ${{ needs.prepare-migrate-db.outputs.project-id }}
+          spanner-instance-name: ${{ matrix.spanner-db.instance }}
+          spanner-db-name: ${{ matrix.spanner-db.db }}
