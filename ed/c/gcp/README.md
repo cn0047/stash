@@ -11,6 +11,7 @@ Google Cloud
 [machine types](https://cloud.google.com/compute/docs/machine-types)
 [tags by image](https://cloud.google.com/vision/docs/drag-and-drop)
 [measure latency](https://gcping.com/)
+[certification](https://cloud.google.com/certification/cloud-developer)
 
 ````bash
 # in URL:

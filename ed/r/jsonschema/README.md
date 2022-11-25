@@ -1,22 +1,55 @@
 JSON-Schema
 -
 
-https://spacetelescope.github.io/understanding-json-schema/
-https://github.com/epoberezkin/ajv-keywords
+[docs](https://spacetelescope.github.io/understanding-json-schema/)
+[validator](https://www.jsonschemavalidator.net/)
+[additional keywords](https://github.com/epoberezkin/ajv-keywords)
 
 ````js
 {"type": "string"}
 {"type": "array", "uniqueItems": true}
 {"type": "string", "enum": ["red", "amber", "green"]}
 
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+}
 {"id": "http://yourdomain.com/schemas/myschema.json"}
-{"$schema": "http://json-schema.org/draft-04/schema#"}
 {"$ref": "#/definitions/address"}
 
 {"allOf": [{"type": "string"}, {"maxLength": 5}]}
 {"anyOf": [{"type": "string"}, {"type": "number"}]} // valid against any (one or more)
 {"oneOf": [{"type": "number", "multipleOf": 5}, {"type": "number", "multipleOf": 3}]} // valid against exactly one
 {"not": {"type": "string"}}
+
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "object",
+      "properties": {
+        "created_at": {
+          "type": "string"
+        },
+        "arr": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            },
+            "required": ["id"]
+          }
+        }
+      },
+      "required": ["created_at","arr"]
+    }
+  },
+  "required": ["data"]
+}
 ````
 
 ````js

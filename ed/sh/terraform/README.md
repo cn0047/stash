@@ -101,6 +101,8 @@ terraform import -var-file=tf.vars module.vpc.aws_subnet.public[2] subnet-x9cb23
 terraform destroy                  # destroy all from tf file
 terraform destroy -target=resource # only certain resource, like: google_cloud_run_service.default
 
+terraform taint # mark resource for recreation
+
 terraform graph
 terraform fmt # format tf files
 terraform fmt -recursive

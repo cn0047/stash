@@ -36,27 +36,27 @@ that has matching rows in the child table,
 the result depends on the referential action specified using ON UPDATE and ON DELETE
 subclauses of the FOREIGN KEY clause.
 
-*CASCADE:*
+**CASCADE:**
 Delete or update the row from the parent table,
 and automatically delete or update the matching rows in the child table.
 Both ON DELETE CASCADE and ON UPDATE CASCADE are supported.
 (Currently, cascaded foreign key actions do not activate triggers.)
 
-*SET NULL:*
+**SET NULL:**
 Delete or update the row from the parent table,
 and set the foreign key column or columns in the child table to NULL.
 Both ON DELETE SET NULL and ON UPDATE SET NULL clauses are supported.
 (If you specify a SET NULL action,
 make sure that you have not declared the columns in the child table as NOT NULL.)
 
-*RESTRICT:*
+**RESTRICT:**
 Rejects the delete or update operation for the parent table.
 Specifying RESTRICT (or NO ACTION) is the same as omitting the ON DELETE or ON UPDATE clause.
 
-*NO ACTION:*
+**NO ACTION:**
 Equivalent to RESTRICT.
 
-*SET DEFAULT:*
+**SET DEFAULT:**
 InnoDB rejects table definitions containing ON DELETE SET DEFAULT or ON UPDATE SET DEFAULT clauses.
 
 ````sql

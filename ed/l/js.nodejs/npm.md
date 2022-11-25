@@ -41,6 +41,9 @@ npm config set keyname value
 npm config set @qsc:registry "http://npm.qrmmlab.qsc.com/repository/npm/"
 
 npm publish
+npm unpublish
+
+npm view $pkg # view info about package
 
 npm prune
 
