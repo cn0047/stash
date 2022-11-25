@@ -54,7 +54,7 @@ Option = Alt
 Command-Shift-G         # goto in finder
 
 Command-Control-o       # insert mode
-Command-Control-Space   # emoji 🤓
+Command-Control-Space   # emoji
 
 Control-Shift-Power     # Lock screen
 Command-Option-Power    # Put MacBook to sleep
@@ -88,6 +88,8 @@ F1  # Bright down
 F2  # Bright up
 F11 # Sound down
 F12 # Sound up
+
+/ # go to path in finder
 ````
 
 ## Brew
