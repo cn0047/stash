@@ -7,6 +7,8 @@ npm
 
 [Shorthands](https://docs.npmjs.com/misc/config#shorthands-and-other-cli-niceties)
 
+npx - npm package runner that executes $command from bin dir.
+
 ````sh
 npm -g i npm@latest
 ````
@@ -43,7 +45,9 @@ npm config set @qsc:registry "http://npm.qrmmlab.qsc.com/repository/npm/"
 npm publish
 npm unpublish
 
-npm view $pkg # view info about package
+npm view $pkg           # view info about package
+npm show $pkg           # ↑
+npm show $pkg@* version # show available package versions
 
 npm prune
 

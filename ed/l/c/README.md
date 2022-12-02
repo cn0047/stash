@@ -4,7 +4,7 @@ Since 1972.
 
 [c debugger](https://web.eecs.umich.edu/~sugih/pointers/summary.html)
 
-c -  general-purpose lang with static typing.
+c -  general-purpose language with static typing.
 
 ````sh
 # -Wall - warnings all

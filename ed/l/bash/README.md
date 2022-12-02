@@ -4,7 +4,7 @@ Since 1989.
 
 [source code](http://git.savannah.gnu.org/cgit/coreutils.git/tree/src/comm.c)
 
-Bash - unix shell and command lang.
+Bash - unix shell and command language.
 
 Variables in bash are untyped, but bash has:
 * number.

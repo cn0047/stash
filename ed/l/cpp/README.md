@@ -4,7 +4,7 @@ Since 1985.
 
 [docs](https://isocpp.org/)
 
-c++ - general-purpose lang with static typing.
+c++ - general-purpose language with static typing.
 
 ````sh
 ldconfig -p | grep opencv

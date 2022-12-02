@@ -99,6 +99,7 @@ brew ls
 brew services list
 
 brew info xdebug
+brew --prefix xdebug # show install path
 brew search xdebug
 brew reinstall xdebug
 brew list --versions xdebug # shows installed versions

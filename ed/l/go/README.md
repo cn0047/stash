@@ -8,7 +8,6 @@ Since 2009.
 Go - statically-typed, general-purpose, with type safety
 and automatic memory management programming language.
 Go is compiled, garbage-collected, concurrent, type-safe.
-Go source code is always UTF-8.
 
 [doc](https://golang.org/)
 [github](https://github.com/golang/go/wiki)
@@ -244,6 +243,8 @@ log.Println("message")
 template.HTMLEscapeString(input)
 template.JSEscapeString(input)
 ````
+
+Go source code is always UTF-8.
 
 **Data types:**
 

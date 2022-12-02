@@ -17,6 +17,7 @@ History of NodeJS
 
 * Web Crypto API.
 * V8 9.0.
+* npm 8.
 
 ## node.js 15
 
@@ -28,6 +29,7 @@ History of NodeJS
 ## node.js 14 (Fermium)
 
 * V8 has been upgraded to V8 8.1.
+* npm 6.
 
 ## node.js 13
 

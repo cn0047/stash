@@ -2,7 +2,7 @@ Assembly (Assembler)
 -
 Since 1949.
 
-Assembler - low-level lang which works with machine code instructions.
+Assembler - low-level language which works with machine code instructions.
 
 ````sh
 *.s # source code files written in assembly

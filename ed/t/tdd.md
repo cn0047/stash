@@ -67,7 +67,7 @@ Functions are tested by feeding them input and examining the output (type of bla
 
 ## End-to-End (E2E) Testing
 
-End-to-end testing is where you test your whole application from start to finish.
+End-to-end testing is where you test your whole application from start to finish (full flow).
 It involves assuring that all the integrated pieces of an application function and work together as expected.
 
 ## Acceptance

@@ -59,6 +59,11 @@ gcloud spanner databases list --instance=$dbi
 # create db
 gcloud spanner databases create $db --instance=$dbi
 
+
+
+q "SELECT t.table_name FROM information_schema.tables AS t"
+q "SELECT t.table_name FROM information_schema.tables AS t WHERE t.table_catalog = '' and t.table_schema = ''"
+
 ddl 'CREATE TABLE test (id INT64 NOT NULL, msg STRING(100), data JSON) PRIMARY KEY(id)'
 ddl 'DROP TABLE test'
 q "INSERT INTO test (id, msg) VALUES (1, 'one')"
