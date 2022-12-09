@@ -19,6 +19,8 @@ u="jdbc:cloudspanner://$SPANNER_EMULATOR_HOST/projects/$prj/instances/$dbi/datab
 cl=examples/gcpSpanner/changelog.xml
 cp=examples/gcpSpanner/liquibase-spanner-4.5.0-all.jar
 
+liquibase --url=$u --changelog-file=$cl --classpath=$cp --hub-mode=off status
+
 liquibase --url=$u --changelog-file=$cl --classpath=$cp --hub-mode=off updateSQL
 liquibase --url=$u --changelog-file=$cl --classpath=$cp --hub-mode=off update
 liquibase --url=$u --changelog-file=$cl --classpath=$cp --hub-mode=off rollbackCountSQL 1
