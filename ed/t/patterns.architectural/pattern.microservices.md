@@ -74,6 +74,7 @@ In real world app it's *ok* to have **HYBRID-Microservices** architecture.
 * Required reliable CI/CD.
 * Architecture has to be well-thought through from the beginning.
 * Duplicate code/data.
+* No foreign keys for decoupled DBs.
 * Too many programing languages.
 * Making components work together.
 * Requires more effort in communication.

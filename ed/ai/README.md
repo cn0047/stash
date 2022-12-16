@@ -8,6 +8,9 @@ between two consecutive frames caused by the movemement of object or camera.
 
 Data mining - process of discovering patterns in large data sets.
 
+GPT (Generative Pre-trained Transformer) - autoregressive language model
+that uses DL to produce human-like text.
+
 Neuro-linguistic programming (NLP) - .
 
 Optimal Brain Damage (OBD) - .

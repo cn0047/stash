@@ -41,12 +41,13 @@ Theory
 <br>RTB     - Real-time bidding.
 <br>RTC     - Real-time communication.
 <br>SaaS    - [Software as a service](https://raw.githubusercontent.com/cn007b/my/master/ed/t/i/cloudComputingTypes.jpeg).
-<br>SAML    - Security Assertion Markup Language.
+<br>SAML    - Security Assertion Markup Language (used in SSO).
 <br>SDK     - Software development kit.
 <br>SDLC    - Software development life-cycle.
 <br>SKU     - Stock keeping unit.
-<br>UPI     - Unique Product Identifier.
+<br>SSO     - Single-Sign-On.
 <br>UPC     - Universal Product Code.
+<br>UPI     - Unique Product Identifier.
 <br>UTC     - Coordinated Universal Time.
 <br>UUID    - Universally Unique Identifier.
 <br>VOIP    - Voice over Internet Protocol.

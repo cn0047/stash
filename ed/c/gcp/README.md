@@ -19,6 +19,7 @@ Google Cloud
 
 # ~/.google-cloud-sdk/bin/gcloud
 
+echo $GOOGLE_APPLICATION_CREDENTIALS
 export GOOGLE_APPLICATION_CREDENTIALS=${CURDIR}/serviceAccount.json
 
 ~/.google-cloud-sdk/bin/dev_appserver.py \

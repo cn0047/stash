@@ -250,9 +250,9 @@ Access-Control-Expose-Headers: MyOrg-Resource
 
 4xx Client Error:
 * 400 **Bad Request**.
-* 401 **Unauthorized**.
+* 401 **Unauthorized** (lack of valid authentication credentials).
 * 402 **Payment Required**.
-* 403 **Forbidden**.
+* 403 **Forbidden** (insufficient rights).
 * 404 **Not Found**.
 * 405 **Method Not Allowed**.
 * 406 Not Acceptable.

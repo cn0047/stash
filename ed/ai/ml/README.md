@@ -3,7 +3,7 @@ Machine Learning
 
 ML - perform task without using explicit instructions (relying on patterns).
 
-Deep Learning - area of ML whose goal is to learn complex functions
+DL (Deep Learning) - area of ML whose goal is to learn complex functions
 using special neural network architectures that are "deep" (consist of many layers).
 
 Classic Problems:

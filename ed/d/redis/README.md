@@ -58,6 +58,8 @@ memory usage key
 Redis - in-memory data structure store (persistent), used as database,
 with server-side scripts (lua).
 
+Redis is fast because of IO Multiplexing (EventLoop).
+
 #### Data types:
 
 * Strings - A String value can be at max 512 Megabytes in length.

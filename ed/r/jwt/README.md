@@ -27,3 +27,5 @@ iat - issued at
 HMAC (symmetric) algorithm - probably the most common algorithm for signed JWTs.
 HS256 - HMAC with SHA-256.
 RSA and ECDSA algorithms (asymmetric).
+
+Never include secret info into JWT.

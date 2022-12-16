@@ -49,6 +49,14 @@ git clone ssh://gitolite@repo.com:1011/repoName.git
 # lightweight clone certain branch
 git clone --depth=1 --branch=master git://github.com/cn007b/vo
 
+# fetch - download objects and refs (branches and/or tags)
+git fetch
+
+# pull - incorporates changes from remote repo into the current branch.
+git pull --ff-only
+git pull --rebase
+git pull --no-rebase
+
 git remote -v                      # shows remote repository
 git remote show remoteRepoName     # shows all about remote repo (remote show origin)
 git remote add origin ssh://gitolite@repo.com:1011/repoName.git
@@ -112,11 +120,6 @@ git merge --abort
 git remote add upstream https://github.com/cn007b/stash.git
 git fetch upstream
 git pull upstream master
-
-# pull
-git pull --ff-only
-git pull --rebase
-git pull --no-rebase
 
 # cleanup unnecessary files and optimize the local repository
 git gc --aggressive
