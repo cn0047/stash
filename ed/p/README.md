@@ -51,6 +51,17 @@ if your median response time is 200 ms, that means half your requests return in 
 and half your requests take longer than that.
 The median is also known as the 50th percentile, and sometimes abbreviated as p50.
 
+Proxy:
+* forward-proxy: 
+  * protects clients' online identity.
+  * bypass browsing restrictions.
+  * blocks access to certain content.
+* reverse-proxy:
+  * protect website (website's IP hidden from web).
+  * LB.
+  * caching.
+  * handle SSL encription.
+
 ````sh
 nslookup github.com
 

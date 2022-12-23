@@ -1,0 +1,61 @@
+name: Terraform Plan
+
+on:
+  pull_request:
+    paths:
+      - "terraform/**"
+      - ".github/workflows/terraform.yml"
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "dev"
+        required: true
+        default: "dev"
+
+env:
+  env-name: ${{ github.event.inputs.environment || (github.event_name == 'push' && github.ref == 'refs/heads/master' && 'prod' || 'dev') }}
+
+jobs:
+  plan-terraform:
+    name: Display Terraform Plan
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: "${{ github.workspace }}/terraform/${{ env.env-name }}"
+    environment:
+      name: ${{ github.event.inputs.environment || (github.event_name == 'push' && github.ref == 'refs/heads/master' && 'prod' || 'dev') }}
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: ./.github/actions/setup-terraform
+        with:
+          terraform-directory: "${{ github.workspace }}/terraform/${{ env.env-name }}"
+          WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}
+          GCP_SERVICE_ACCOUNT_EMAIL:  ${{ secrets.GCP_SERVICE_ACCOUNT_EMAIL }}
+          APP_TOKEN:                  ${{ secrets.APP_TOKEN }}
+          GOOGLE_STATE_BUCKET:        ${{ secrets.GOOGLE_STATE_BUCKET }}
+
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate -no-color
+
+      - name : Terraform Format
+        id: format
+        run: terraform fmt -check
+
+      - name: Terraform Plan (PR)
+        id: plan
+        run: terraform plan -no-color
+        continue-on-error: true
+        env:
+          TF_VAR_token: ${{ secrets.APP_TOKEN }}
+          TF_VAR_project_id: ${{ secrets.GOOGLE_PROJECT_ID }}
+          TF_VAR_state_bucket: ${{ secrets.GOOGLE_STATE_BUCKET }}
+
+      - name: Terraform Plan Status
+        if: steps.plan.outcome == 'failure'
+        run: exit 1

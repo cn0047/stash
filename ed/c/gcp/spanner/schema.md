@@ -15,7 +15,7 @@ Interleaved tables helps with performance, spanner co-locate tables in the same 
 `DELETE CASCADE` works only for interleaved tables.
 
 Foreign keys needed for referential integrity.
-No FK on column `allow_commit_timestamp=true` or with array, JSON type.
+No FK on column `allow_commit_timestamp=true` or with array or JSON type.
 FKs create own backing indexes.
 FKs not co-locate tables in the same storage layer.
 FKs permit circular references.

@@ -1,0 +1,54 @@
+name: Terraform Import
+
+on: 
+  workflow_dispatch:
+    inputs:
+      terraformId:
+        description: 'terraform resource ID to link'
+        required: true 
+        type: string
+      remoteId:
+        description: 'GCP resource ID to import'
+        required: true 
+        type: string
+      environment:
+        description: "dev"
+        required: true
+        type: environment
+        default: "dev"
+
+jobs:
+  import-resource:
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ github.event.inputs.environment }}
+    permissions:
+      id-token: write
+      contents: read
+    defaults:
+      run:
+        working-directory: "${{ github.workspace }}/terraform/${{ github.event.inputs.environment }}"
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: ./.github/actions/setup-terraform
+        with:
+          terraform-directory: "${{ github.workspace }}/terraform/${{ github.event.inputs.environment }}"
+          WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}
+          GCP_SERVICE_ACCOUNT_EMAIL:  ${{ secrets.GCP_SERVICE_ACCOUNT_EMAIL }}
+          APP_TOKEN:                  ${{ secrets.APP_TOKEN }}
+          GOOGLE_STATE_BUCKET:        ${{ secrets.GOOGLE_STATE_BUCKET }}
+
+
+      - name: Terraform Init
+        id: init
+        run: terraform init -backend-config="bucket=${{ secrets.GOOGLE_STATE_BUCKET }}"
+
+      - name: Terraform Import
+        id: import
+        run: terraform import '${{ github.event.inputs.terraformId }}' '${{ github.event.inputs.remoteId }}'
+        env:
+          TF_VAR_token: ${{ secrets.APP_TOKEN }}
+          TF_VAR_project_id: ${{ secrets.GOOGLE_PROJECT_ID }}
+          TF_VAR_state_bucket: ${{ secrets.GOOGLE_STATE_BUCKET }}

@@ -1,0 +1,43 @@
+name: Terraform Apply
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "dev"
+        required: true
+        default: "dev"
+
+jobs:
+  apply-terraform:
+    name: Apply Terraform
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ github.event.inputs.environment }}
+
+    defaults:
+      run:
+        working-directory: "${{ github.workspace }}/terraform/${{ github.event.inputs.environment }}"
+
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: ./.github/actions/setup-terraform
+        with:
+          terraform-directory: "${{ github.workspace }}/terraform/${{ github.event.inputs.environment }}"
+          WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}
+          GCP_SERVICE_ACCOUNT_EMAIL:  ${{ secrets.GCP_SERVICE_ACCOUNT_EMAIL }}
+          APP_TOKEN:                  ${{ secrets.APP_TOKEN }}
+          GOOGLE_STATE_BUCKET:        ${{ secrets.GOOGLE_STATE_BUCKET }}
+
+      - name: Terraform Apply
+        id: apply
+        run: terraform apply -auto-approve -input=false
+        env:
+          TF_VAR_token: ${{ secrets.APP_TOKEN }}
+          TF_VAR_project_id: ${{ secrets.GOOGLE_PROJECT_ID }}
+          TF_VAR_state_bucket: ${{ secrets.GOOGLE_STATE_BUCKET }}

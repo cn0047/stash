@@ -1,0 +1,41 @@
+name: Terraform Force Unlock
+
+on: 
+  workflow_dispatch:
+    inputs:
+      lockId:
+        description: 'lock ID to force unlock'
+        required: true 
+        type: string
+      environment:
+        description: "dev"
+        required: true
+        type: environment
+        default: "dev"
+
+jobs:
+  force-unlock:
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ github.event.inputs.environment }}
+    permissions:
+      id-token: write
+      contents: read
+    defaults:
+      run:
+        working-directory: "${{ github.workspace }}/terraform/${{ github.event.inputs.environment }}"
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: ./.github/actions/setup-terraform
+        with:
+          terraform-directory: "${{ github.workspace }}/terraform/${{ github.event.inputs.environment }}"
+          WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}
+          GCP_SERVICE_ACCOUNT_EMAIL:  ${{ secrets.GCP_SERVICE_ACCOUNT_EMAIL }}
+          APP_TOKEN:                  ${{ secrets.APP_TOKEN }}
+          GOOGLE_STATE_BUCKET:        ${{ secrets.GOOGLE_STATE_BUCKET }}
+
+      - name: Terraform Force Unlock
+        id: unlock
+        run: terraform force-unlock -force ${{ github.event.inputs.lockId }}

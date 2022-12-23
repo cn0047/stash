@@ -1,6 +1,7 @@
 Cloud Function
 -
 
+[docs](https://cloud.google.com/functions/docs/quickstarts)
 [pricing](https://cloud.google.com/functions/pricing)
 
 ````sh

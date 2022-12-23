@@ -13,7 +13,12 @@ Workflows
 
 Workflows are per region.
 
+Workflow itself is yaml file with instructions.
+
 Workflows orchestrates multiple HTTP-based services into durable, stateful workflow.
 It has low latency and can handle high number of executions. It's serverless.
 
-Trigger: cloud scheduler, eventarc (event or pubsub message).
+Trigger:
+* cloud scheduler.
+* pubsub.
+* eventarc.

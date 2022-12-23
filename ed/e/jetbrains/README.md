@@ -1,19 +1,21 @@
 JetBrains
 -
 
-#### Live templates:
+Inlay Hints: Usages, Code author.
 
-````php
+Live templates:
+
+````sh
+# php
 d1 - file_put_contents('/tmp/debug.log', var_export($END$, 1)."\n", FILE_APPEND); /// tail -f /tmp/debug.log
-````
 
-````js
+# js
 l - console.log($END$);
 ````
 
-#### .editorconfig
+`.editorconfig`:
 
-````
+````sh
 indent_style = space
 indent_size = 4
 

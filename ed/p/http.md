@@ -43,8 +43,10 @@ URN - Uniform Resource Name (host + path + all after question mark).
 
 ?id=1&id=2&id=3 - array in query string
 
-%2f - /
 %40 - @
+%2f - /
+%5B - [
+%5D - ]
 %20 - space
 ````
 
@@ -261,7 +263,7 @@ Access-Control-Expose-Headers: MyOrg-Resource
 * 409 **Conflict**.
 * 410 Gone.
 * 411 Length Required.
-* 412 Precondition Failed.
+* 412 **Precondition Failed** (access to target resource has been denied, due to some conditional requests).
 * 413 Request Entity Too Large.
 * 414 Request-URI Too Long.
 * 415 Unsupported Media Type.
@@ -271,7 +273,7 @@ Access-Control-Expose-Headers: MyOrg-Resource
 * 419 Authentication Timeout (not in RFC 2616).
 * 420 Enhance Your Calm (Twitter).
 * 420 Method Failure (Spring Framework).
-* 422 **Unprocessable Entity** (WebDAV; RFC 4918).
+* 422 **Unprocessable Entity** (WebDAV; RFC 4918) (server understands request entity, and syntax of request is correct, but server was unable to process it).
 * 423 Locked (WebDAV; RFC 4918).
 * 424 Failed Dependency (WebDAV; RFC 4918).
 * 424 Method Failure (WebDAV)[14].
@@ -280,7 +282,7 @@ Access-Control-Expose-Headers: MyOrg-Resource
 * 428 Precondition Required (RFC 6585).
 * 429 **Too Many Requests** (RFC 6585).
 * 431 Request Header Fields Too Large (RFC 6585).
-* 434 Requested host unavailable..
+* 434 Requested host unavailable.
 * 440 Login Timeout (Microsoft).
 * 444 No Response (Nginx).
 * 449 Retry With (Microsoft).

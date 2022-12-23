@@ -1,6 +1,7 @@
 Cloud Run
 -
 
+[docs](https://cloud.google.com/run/docs/quickstarts)
 [pricing](https://cloud.google.com/run/pricing)
 
 ````sh

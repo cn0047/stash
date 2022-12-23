@@ -1,7 +1,7 @@
 REST (Representational State Transfer) aka RESTful
 -
 
-REST - software architectural style.
+REST - software architectural style (loose set of rules).
 
 Properties:
 * Performance (servers and clients may be replaced and developed independently).

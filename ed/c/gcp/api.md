@@ -2,6 +2,7 @@ APIs
 -
 
 [docs](https://cloud.google.com/apis/docs/getting-started)
+[design](https://cloud.google.com/apis/design)
 [library](https://console.cloud.google.com/apis/library/browse)
 [dashboard](https://console.cloud.google.com/apis/dashboard)
 
@@ -96,4 +97,18 @@ curl -X POST -H $AUTH -H $jh "$h/v1/${sess}:commit" -d '{
   ],
   "transactionId": "'$t'"
 }'
+
+
+
+# list backups
+curl -X GET -H $AUTH "$h/v1/projects/$prj/instances/$i/backups" | jq
+
+# create backup
+id='test-backup-1'
+dbn="projects/$prj/instances/$i/databases/$db"
+curl -X POST -H $AUTH -H $jh "$h/v1/projects/$prj/instances/$i/backups?backupId="$id -d '{
+  "database": "'$dbn'",
+  "expireTime": "2023-01-01T00:00:00.1Z"
+}'
+
 ````

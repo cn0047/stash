@@ -1,0 +1,61 @@
+name: Setup Terraform Context.
+description: Setup Terraform Context.
+
+inputs:
+  WORKLOAD_IDENTITY_PROVIDER:
+    required: true
+  GCP_SERVICE_ACCOUNT_EMAIL:
+    required: true
+  APP_TOKEN:
+    required: true
+  GOOGLE_STATE_BUCKET:
+    required: true
+  terraform-directory:
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_wrapper: false
+
+    - id: auth
+      name: Authenticate to Google Cloud
+      uses: google-github-actions/auth@v0
+      with:
+        workload_identity_provider: ${{ inputs.WORKLOAD_IDENTITY_PROVIDER }}
+        service_account: ${{ inputs.GCP_SERVICE_ACCOUNT_EMAIL }}
+
+    - name: Set up Cloud SDK
+      uses: google-github-actions/setup-gcloud@v0
+
+    - name: Swap to HTTPS
+      id: http
+      working-directory: ${{ inputs.terraform-directory }}
+      shell: bash
+      run: |
+        git config --global url."https://oauth2:${{ inputs.APP_TOKEN }}@github.com".insteadOf ssh://git@github.com
+
+    - name: Terraform Init
+      id: init
+      working-directory: ${{ inputs.terraform-directory }}
+      shell: bash
+      run: terraform init -backend-config="bucket=${{ inputs.GOOGLE_STATE_BUCKET }}"
+
+    - name: Make workspace name
+      id: make_ws_name
+      working-directory: ${{ inputs.terraform-directory }}
+      shell: bash
+      run: echo "::set-output name=ws-name::$(echo ${{ github.repository }} | sed -e 's|.*/\(.*\)$|\1|')"
+
+    - name: Terraform Swap Workspace
+      id: swap_ws
+      working-directory: ${{ inputs.terraform-directory }}
+      shell: bash
+      env:
+        WORKSPACE_NAME: ${{ steps.make_ws_name.outputs.ws-name }}
+      run: |-
+        if ! terraform workspace select $WORKSPACE_NAME; then
+          terraform workspace new $WORKSPACE_NAME
+        fi

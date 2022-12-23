@@ -84,22 +84,24 @@ terraform apply
 terraform apply plan
 terraform apply -auto-approve
 
-terraform refresh
+terraform refresh # update the state
 
 terraform state list # list all resources in the state
 terraform state show # show details about object
-terraform state rm # remove object from state
+terraform state rm $resource # remove object from state
 terraform state pull
 terraform state push
 
 terraform show -json
 
-# import already existing resource into tf
+# import already existing resource into tf state
 terraform import -var-file=tf.vars $addr $id
 terraform import -var-file=tf.vars module.vpc.aws_subnet.public[2] subnet-x9cb23
+terraform import -var-file=tf.vars module.my-dev-gcp-sa-module.module.gh_oidc.google_iam_workload_identity_pool_provider.main projects/test-prj/locations/global/workloadIdentityPools/my-ga-pool/providers/my-ga-pool-provider
 
-terraform destroy                  # destroy all from tf file
+terraform destroy # destroy all from tf file
 terraform destroy -target=resource # only certain resource, like: google_cloud_run_service.default
+terraform destroy -auto-approve -input=false -target=$resource
 
 terraform taint # mark resource for recreation
 

@@ -1,0 +1,17 @@
+- first_step:
+    assign:
+    - expireTime: ${sys.now() + 2592000} # 30 hours
+    - backupId: ${"wp-dev-" + text.replace_all(string(sys.now() * 1000), ".", "_")}
+    - formattedExpireTime: ${time.format(expireTime)}
+- createBackup:
+    call: http.post
+    args:
+        url: ${"https://content-spanner.googleapis.com/v1/projects/test-prj/instances/test-instance/backups?backupId=" + backupId}
+        body:
+            expireTime: ${formattedExpireTime}
+            database: projects/test-prj/instances/test-instance/databases/test-db
+        auth:
+            type: OAuth2
+    result: createBackupResult
+- returnOutput:
+        return: ${createBackupResult.code}
