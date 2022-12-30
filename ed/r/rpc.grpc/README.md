@@ -29,6 +29,8 @@ gRPC uses HTTP/2 for transport.
 
 RPC based on actons & functions (for example REST based on resources).
 
+By default, gRPC limits incoming messages to 4 MB.
+
 Kinds of service method:
 * Unary RPCs
   `rpc SayHello(HelloRequest) returns (HelloResponse){}`.
