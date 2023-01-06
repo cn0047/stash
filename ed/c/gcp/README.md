@@ -54,6 +54,7 @@ gcloud auth login
 gcloud auth application-default login
 gcloud auth activate-service-account --key-file=service-account.json
 gcloud auth list
+gcloud auth print-identity-token
 
 # default service account
 ls -la ~/.config/gcloud/application_default_credentials.json

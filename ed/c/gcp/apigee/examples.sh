@@ -104,6 +104,8 @@ curl -X POST -H $AUTH -H $jh "$h/v1/organizations/$ORG/environments/$env/keyvalu
   "encrypted": true
 }'
 
+# to work with KVM entries see: https://cloud.google.com/apigee/docs/reference/apis/apigee/rest#rest-resource:-v1.organizations.apis.keyvaluemaps.entries
+
 
 
 #### curl internal apigee proxy

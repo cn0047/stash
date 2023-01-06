@@ -15,6 +15,8 @@ Security
 
 [php virus](https://www.youtube.com/watch?v=2Ra1CCG8Guo)
 
+dirb - tool to scan pages on website.
+
 ````
 GET / HTTP/1.1
 Host: cow"onerror='alert(1)'rel='stylesheet'

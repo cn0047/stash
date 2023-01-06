@@ -7,6 +7,7 @@ Terraform
 [registry](https://registry.terraform.io/)
 [aws](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
 [gcp](https://registry.terraform.io/providers/hashicorp/google/latest/docs)
+[gcp samples](https://github.com/terraform-google-modules/terraform-docs-samples)
 [functions](https://www.terraform.io/docs/configuration/functions/strrev.html)
 
 Terraform - tool for defining infrastructure as code.

@@ -2,6 +2,7 @@ Cloud Function
 -
 
 [docs](https://cloud.google.com/functions/docs/quickstarts)
+[samples](https://cloud.google.com/functions/docs/samples)
 [pricing](https://cloud.google.com/functions/pricing)
 
 ````sh
