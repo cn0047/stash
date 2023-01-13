@@ -26,7 +26,7 @@ DBQuery.shellBatchSize = 10;
 db.getLastError()
 db.getLastErrorObj()
 
-db.adminCommand('listDatabases');
+db.adminCommand('listDatabases'); // list DBs
 db.getSiblingDB('<db>');
 db.getCollectionNames();
 db.getUsers();

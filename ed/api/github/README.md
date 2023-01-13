@@ -1,12 +1,12 @@
 GitHub
 -
 
+[github API](https://docs.github.com/en/rest)
+[status](https://www.githubstatus.com/)
 [most followed](https://github.com/search?utf8=%E2%9C%93&q=followers%3A%3E%3D10000&type=Users)
 [top repositories](https://github.com/search?q=stars:%3E1&s=stars&type=Repositories)
 [sponsors](https://github.com/sponsors/cn007b)
 [sponsors docs](https://help.github.com/en/github/supporting-the-open-source-community-with-github-sponsors/about-github-sponsors)
-[status](https://www.githubstatus.com/)
-[REST API](https://docs.github.com/en/rest)
 [diagram in markdown](https://github.com/mermaid-js/mermaid)
 [watching page](https://github.com/watching)
 

@@ -1,8 +1,21 @@
-TDD
+TDD - Test-driven development.
 -
 
-Test-driven development.
+````sh
+# http stress tester
+siege -c 10 -t 1m -b http://mysite.dev
 
+artillery quick -d 300 -r 30 $url
+
+# apachebench
+ab -k -n 5000 -c 100 -t 2 "http://localhost"
+docker run -ti --rm cn007b/ubuntu ab -k -n 100 -c 100 -t 5 "http://10.254.254.254:8080/9"
+# Where:
+# -n   Number of requests.
+# -c   Concurrency.
+# -t   Timelimit in seconds.
+
+````
 ````
 Stub    - an object that provides predefined answers to method calls.
 Mock    - (->createMock()) an object on which you set expectations.

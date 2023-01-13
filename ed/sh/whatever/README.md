@@ -55,6 +55,7 @@ apt update && apt-get install vim
 shutdown -h now
 
 env        # prints all ENV vars
+printenv   # prints all ENV vars
 declare -p # vars (including local)
 
 nproc # available processing units
@@ -95,15 +96,6 @@ echo 1 || : # echo 1 or do nothing
 # 10.3.0.0/16 - network interface to connect to.
 sshuttle -v -r usr@ec2-us-east-1.smth.com 10.3.0.0/16
 
-ping 8.8.8.8 -c 15
-traceroute http://cn007b.tumblr.com # print the route packets take to network host
-nslookup git.mdm.comodo.od.ua
-host github.com # shows ip by host.
-host -t A github.com
-dig domain
-whois ip
-nmap --script=http-headers www.zii.com # scan ports
-
 timedatectl status | grep "Time zone"
 colordiff -u file1 file2
 colordiff -y file1 file2
@@ -122,21 +114,7 @@ file ed/bash/README.md                         # prints file type
 fswatch ./src | while read f; do echo $f; done # watch changes in directory
 mkdir -m 777 test                              # directory mode
 mkfifo mypipe                                  # create named pipe
-ss                                             # tool for sockets
 uuid -n 1                                      # generates uuid
-
-nc -zv 10.0.2.2 22
-nc -zv 78.140.186.238 1-65535
-nc -zv 10.0.2.2 22
-
-# public DNS IP addresses:
-8.8.8.8
-8.8.4.4
-
-# osx proxy
-sudo networksetup -setwebproxy "Wi-Fi" 54.174.16.166 80
-# '71.4.186.100:21288', '198.7.96.243:21239', '104.128.17.224:21237', '209.48.175.196:21325', '172.102.207.55:21279', '198.7.97.209:21297', '162.248.134.54:21326', '23.239.219.244:21325', '143.191.19.7:21238', '173.44.12.201:21259', '173.44.5.52:21310', '173.44.12.68:21305', '173.44.26.80:21269', '107.152.144.66:21291', '208.73.73.206:21257', '204.14.87.85:21326', '144.168.128.88:21244', '204.14.87.149:21271', '45.57.195.33:21232', '173.44.5.185:21247', '173.44.12.141:21280', '173.44.26.220:21318', '107.152.144.219:21274', '208.73.73.9:21278', '143.191.19.89:21263', '143.191.31.123:21304', '69.174.99.149:21322', '50.117.15.33:21318', '173.44.12.16:21297', '216.172.144.220:21285',
-sudo networksetup -setwebproxystate "Wi-Fi" off
 
 # base64
 stringInBase64=`echo "shaken not stirred" | base64`
@@ -151,9 +129,6 @@ nohup myscript &
 nice myscript
 nohup nice myscript &
 nice -n 19 myscript
-
-# http stress tester
-siege -c 10 -t 1m -b http://mysite.dev
 
 # xml
 echo '<?xml version="1.0" encoding="UTF-8"?><note><f>foo</f><b>bar</b></note>' | xmllint --format -
@@ -292,6 +267,7 @@ cut -d' ' -f2 /tmp/file.txt # print column 2 from file using ' ' as delimer
 cut -c1,2                   # column 1,2
 cut -c 1-5                  # from 1 to 5 columns
 cut -c13-                   # from 13 char to the end of string
+cut -d ',' -f3,5 f.csv      # column 3,5 from csv file
 ````
 
 #### tr
@@ -604,18 +580,6 @@ read -r; echo $REPLY
 read -r -n 1; echo $REPLY
 
 printf "1\n2\n3\n" | while read line; do echo "got line: ${line}"; done
-````
-
-#### apachebench
-
-````sh
-ab -k -n 5000 -c 100 -t 2 "http://localhost"
-# Where:
-# -n   Number of requests.
-# -c   Concurrency.
-# -t   Timelimit in seconds.
-
-docker run -ti --rm cn007b/ubuntu ab -k -n 100 -c 100 -t 5 "http://10.254.254.254:8080/9"
 ````
 
 #### upstart

@@ -11,6 +11,9 @@ DB can contains schema, and schema contains tables.
 Schema - like directory in file system.
 
 ````sql
+# vertical output
+\x
+
 # shows all variables
 \set
 

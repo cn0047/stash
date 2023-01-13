@@ -13,6 +13,8 @@ Google Cloud
 [measure latency](https://gcping.com/)
 [certification](https://cloud.google.com/certification/cloud-developer)
 
+<img src="https://gist.github.com/cn007b/384d6938ebef985347b29c15476b55c5/raw/7b19f9797d647c75fdbd7098a359d8788e0a7107/gcp.funcOrRun.png" width="70%" />
+
 ````bash
 # in URL:
 # ?project=PROJECT_ID&authuser=2

@@ -42,6 +42,8 @@ oneOf:
 
 `oneOf`, `anyOf`, `allOf`, `not`.
 
+No way to define 2 response shapes for single endpoint (ShorResponse, FullResponse).
+
 #### YAML
 
 ````yaml

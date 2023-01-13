@@ -37,6 +37,7 @@ Go is compiled, garbage-collected, concurrent, type-safe.
 [project layout](https://github.com/golang-standards/project-layout)
 [generic examples](https://go.googlesource.com/proposal/+/refs/heads/master/design/43651-type-parameters.md#examples)
 [code gen from sql](https://github.com/kyleconroy/sqlc)
+[code gen](https://autostrada.dev/)
 
 ````bash
 export PATH=$PATH:/Users/kovpakvolodymyr/go/bin
@@ -85,10 +86,12 @@ go env GOOS
 go env -json
 go env GOPATH
 go fmt ./...                          # format code
-go get ./...                          # install all project dependencies
+go get ./...                          # [old] install all project dependencies
+                                      # [now] is dedicated to adjusting dependencies
 go golint ./...                       # check code
 golint app/...                        #
-go install                            # install packages and dependencies
+go install                            # [old] install packages and dependencies
+                                      # [now] compiles and installs packages
 go list                               # list packages
 go list -f '{{ join .Imports "\n" }}' # directly imported packages
 go list -f '{{ join .Deps "\n" }}'    # all subdependencies

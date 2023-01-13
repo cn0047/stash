@@ -1,4 +1,4 @@
-Security Attacks
+Security attacks
 -
 
 * HTTP Desync Attack (Request Smuggling).

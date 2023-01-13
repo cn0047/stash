@@ -3,6 +3,7 @@ Cloud Run
 
 [docs](https://cloud.google.com/run/docs/quickstarts)
 [pricing](https://cloud.google.com/run/pricing)
+[container runtime contract](https://cloud.google.com/run/docs/container-contract)
 
 ````sh
 export PROJECT_ID='my-sandbox'
@@ -20,8 +21,12 @@ gcloud run deploy $SERVICE_NAME \
   --image=$img \
   --set-env-vars ENV=sandbox \
   --set-env-vars HOST=0.0.0.0 \
-  --allow-unauthenticated --platform=managed \
+  --allow-unauthenticated \
+  --platform=managed \
+  --tag=traffic-tag-123 \
   --project=$PROJECT_ID
+
+--tag # valid value: [a-z-]
 
 # assign 100% of traffic to latest revision
 gcloud run services update-traffic $SERVICE_NAME --to-latest
@@ -33,3 +38,5 @@ Cloud run configuration has autoscaling with min/max number of instances.
 Cloud run URL looks like: `https://$runName-$someHash-uc.a.run.app`.
 
 When GCP stops app it sends `SIGTERM`.
+
+Cloud Run job - runs container to completion.

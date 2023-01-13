@@ -9,6 +9,10 @@ vim file +7
 ````
 
 ````sh
+ctrl+p  - show competition
+shift+v - visual line mode
+ctrl+b  - visual block mode
+
 :%!xxd    # transform to hex editor
 :%!xxd -r # reverse transform
 
@@ -23,8 +27,6 @@ u               # undo last change
 :redo or CTRL+R
 
 :%s/text/newText/ # replace
-
-ctrl+p - show competition
 
 :split         # 2 windows
 ctrl+shift+w   # switch window
