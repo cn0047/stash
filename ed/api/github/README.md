@@ -25,6 +25,8 @@ url = git@gist.github.com:b0136cc4db3ad91774e93dbaadcf0331.git
 brew install gh # https://github.com/cli/cli
 
 gh auth login
+gh auth status
+gh auth logout
 
 gh repo list $org -L 100
 ````

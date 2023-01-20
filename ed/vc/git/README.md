@@ -190,6 +190,8 @@ git log -1 ORIG_HEAD
 If some feature has > 1 commit,
 it hard to revert whole feature, have to revert each commit,
 so it make sense to squash all commits related to feature into 1 commit.
+Drawback here: will be only 1 commit, with last implementation,
+and without all intermediate implementations.
 
 #### bisect
 

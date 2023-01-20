@@ -4,6 +4,8 @@ Cloud Run
 [docs](https://cloud.google.com/run/docs/quickstarts)
 [pricing](https://cloud.google.com/run/pricing)
 [container runtime contract](https://cloud.google.com/run/docs/container-contract)
+[secrets](https://cloud.google.com/run/docs/configuring/secrets)
+[vpc](https://cloud.google.com/run/docs/configuring/connecting-vpc#gcloud)
 
 ````sh
 export PROJECT_ID='my-sandbox'
@@ -28,6 +30,12 @@ gcloud run deploy $SERVICE_NAME \
 
 --tag # valid value: [a-z-]
 
+# 0% of traffic
+gcloud run deploy --image $img --no-traffic
+
+# 50% of traffic
+gcloud run services update-traffic $svc --to-revisions $r=50
+
 # assign 100% of traffic to latest revision
 gcloud run services update-traffic $SERVICE_NAME --to-latest
 
@@ -40,3 +48,5 @@ Cloud run URL looks like: `https://$runName-$someHash-uc.a.run.app`.
 When GCP stops app it sends `SIGTERM`.
 
 Cloud Run job - runs container to completion.
+
+To set up custom domain use: global LB, Firebase Hosting, Cloud Run domain mapping.

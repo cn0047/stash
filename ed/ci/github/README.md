@@ -19,7 +19,8 @@ Runner - server that runs workflow.
 # set secret in repo with workflow for more debug logs:
 ACTIONS_STEP_DEBUG=true
 
-${{secrets.MY_KEY}}
+${{ secrets.MY_KEY }}
+${{ secrets.GITHUB_TOKEN }}
 
 github.ref == 'refs/heads/master' # example: refs/pull/13/merge
 github.ref == 'refs/pull/13/merge'
@@ -30,7 +31,6 @@ ${{ github.HEAD_REF }} # example: refs/heads/master
 ${{ github.BASE_REF }} # example: master
 ${{ github.repository }}
 ${{ github.event.push.ref }} # branch name
-${{ secrets.GITHUB_TOKEN }}
 
 format('Out: {0} {1} {2}', 'a', 'b', 'c')
 join(github.event.issue.labels.*.name, ', ')

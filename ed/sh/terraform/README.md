@@ -92,6 +92,7 @@ terraform state show # show details about object
 terraform state rm $resource # remove object from state
 terraform state pull
 terraform state push
+terraform state mv
 
 terraform show -json
 
