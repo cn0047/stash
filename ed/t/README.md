@@ -164,7 +164,7 @@ zettabyte (ZB) -            ~ 1000^7 ~
 yottabyte (YB) -            ~ 1000^8 ~
 
 millisecond - 0,001
-microsecond - 0,000 001
+microsecond (µs) - 0,000 001
 nanosecond  - 0,000 000 001
 ````
 

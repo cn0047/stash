@@ -6,6 +6,8 @@ Cloud Run
 [container runtime contract](https://cloud.google.com/run/docs/container-contract)
 [secrets](https://cloud.google.com/run/docs/configuring/secrets)
 [vpc](https://cloud.google.com/run/docs/configuring/connecting-vpc#gcloud)
+[vpc](https://cloud.google.com/run/docs/securing/private-networking)
+[service-to-service auth](https://cloud.google.com/run/docs/authenticating/service-to-service#run-service-to-service-example-go)
 
 ````sh
 export PROJECT_ID='my-sandbox'
@@ -45,8 +47,25 @@ Cloud run is per region.
 Cloud run configuration has autoscaling with min/max number of instances.
 Cloud run URL looks like: `https://$runName-$someHash-uc.a.run.app`.
 
-When GCP stops app it sends `SIGTERM`.
-
 Cloud Run job - runs container to completion.
 
 To set up custom domain use: global LB, Firebase Hosting, Cloud Run domain mapping.
+
+Startup:
+You can enable startup CPU boost to reduce startup latency.
+Request waiting for container instance to start
+will be kept in a queue for a maximum of 10 seconds.
+
+Processing a request:
+For Cloud Run services, CPU is always allocated
+when the container instance is processing at least 1 request.
+
+Idle:
+CPU depends on "minimum number of container instances" configuration setting.
+
+Shutdown:
+When GCP stops app it sends `SIGTERM`.
+
+Cloud Run will only scale out when CPU utilization during request processing exceeds 60%.
+
+Session Affinity - sticky session with TTL for cookie 30 days.
