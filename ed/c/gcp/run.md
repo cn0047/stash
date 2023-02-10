@@ -15,6 +15,7 @@ export PROJECT_NUMBER=29220930000
 export SERVICE_NAME='my-svc'
 
 gcloud run services list
+gcloud run services describe $svc
 
 # deploy
 # source: dir or dir with Dockerfile or .tar.gz

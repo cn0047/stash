@@ -4,6 +4,7 @@ import (
 	"gcp/bigtable"
 	"gcp/gsm"
 	"gcp/iam"
+	"gcp/iap"
 	"gcp/pubsub"
 	"gcp/storage"
 )
@@ -18,8 +19,9 @@ const (
 )
 
 func main() {
-	pubsub.Run(ProjectID, PubSubTopic, PubSubSubscription)
+	iap.Run(ProjectID)
 	return
+	pubsub.Run(ProjectID, PubSubTopic, PubSubSubscription)
 	gsm.Run(ProjectID, SAFilePath)
 	bigtable.Run(ProjectID, BigTableInstanceID, SAFilePath)
 	iam.Run(ProjectID, SAFilePath)

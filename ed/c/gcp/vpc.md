@@ -11,5 +11,9 @@ allowed[0].IPProtocol: tcp
 allowed[0].ports[0]:   22
 ````
 
+````sh
+gcloud compute networks subnets list
+````
+
 Subnet is per region.
 Dynamic routing mode can be global or regional.

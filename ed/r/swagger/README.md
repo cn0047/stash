@@ -1,6 +1,11 @@
 Swagger
 -
+<br>3.0
+<br>2.0
 
+[docs v2](https://swagger.io/docs/specification/2-0/basic-structure/)
+[docs v3](https://swagger.io/docs/specification/basic-structure/)
+[enum in v2](https://swagger.io/docs/specification/2-0/enums/)
 [editor](http://editor.swagger.io/)
 [String Formats](https://swagger.io/docs/specification/data-models/data-types/).
 [Supported JSON Schema Keywords](https://swagger.io/docs/specification/data-models/keywords/).
@@ -29,9 +34,10 @@ Data Types:
 * boolean.
 * array.
 * object.
+* enum (v3).
 
 No `null` type, the `nullable attribute` is used.
-No data type: Enum, Dictionaries, HashMaps and Associative Arrays, use object instead.
+No data type: Enum (not in v2), Dictionaries, HashMaps and Associative Arrays, use object instead.
 
 Mixed Types:
 ````

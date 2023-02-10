@@ -239,7 +239,7 @@ docker exec -it xneo4j sh -c '
 '
 
 docker exec -it xneo4j sh -c '
-  neo4j-admin load --from=1.dump --database=mydb2
+  neo4j-admin load --from=1.dump --database=dataBaseName
 '
 ````
 

@@ -6,6 +6,7 @@ IAM - Identity & Access Management
 
 ````sh
 gcloud iam service-accounts list
+gcloud iam service-accounts list --format="value(email)"
 
 gcloud iam service-accounts describe fastly@thisisrealtimelog.iam.gserviceaccount.com
 
