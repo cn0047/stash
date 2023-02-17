@@ -2,6 +2,7 @@ Cloud Run
 -
 
 [docs](https://cloud.google.com/run/docs/quickstarts)
+[code samples](https://cloud.google.com/run/docs/samples)
 [pricing](https://cloud.google.com/run/pricing)
 [container runtime contract](https://cloud.google.com/run/docs/container-contract)
 [secrets](https://cloud.google.com/run/docs/configuring/secrets)

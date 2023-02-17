@@ -2,6 +2,7 @@ Google Cloud
 -
 
 [doc](https://cloud.google.com/sdk/gcloud/)
+[code samples](https://cloud.google.com/docs/samples)
 [products](https://cloud.google.com/products/)
 [console](https://console.cloud.google.com/)
 [API clients](https://developers.google.com/api-client-library/)

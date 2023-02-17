@@ -8,6 +8,7 @@ Workflows
 [env](https://cloud.google.com/workflows/docs/reference/environment-variables)
 [connectors](https://cloud.google.com/workflows/docs/reference/googleapis)
 [samples](https://cloud.google.com/workflows/docs/samples)
+[cloudRun example](https://cloud.google.com/run/docs/tutorials/workflows)
 [cheat-sheet](https://cloud.google.com/workflows/docs/reference/syntax/syntax-cheat-sheet)
 [pricing](https://cloud.google.com/workflows/pricing)
 
