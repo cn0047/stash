@@ -19,10 +19,6 @@ git commit --amend --author="V.K. <cn007b@gmail.com>"
 
 
 
-git rebase -i HEAD~2
-
-
-
 export GIT_TRACE_PACKET=1
 export GIT_TRACE_PACK_ACCESS=1
 export GIT_TRACE_PERFORMANCE=1
@@ -258,7 +254,7 @@ git submodule update --remote --recursive
     sp  = stash pop
     su  = submodule update --remote --recursive
     rh  = reset HEAD
-    rb  = rebase -i HEAD~2
+    rb  = !sh -c 'git rebase -i HEAD~$1' -
     ca  = commit -am
     cm  = commit -m
     l   = log --pretty=format:\"%h %ad | [%an] %s%d\" --graph --date=short --no-merges

@@ -106,7 +106,7 @@ colordiff -y file1 file2
 # soft link has no value, because it points to non-existent file,
 # but the hard link will still has the data of the original file.
 # If create hard link and change the content of either of the files - the change will be seen on both!
-ln -s {file} {symbolic-name} # symbolic (or soft) link
+ln -s $src $link # symbolic (or soft) link
 ln {file} {hard-name}        # hard link
 
 echo 200 | pbcopy                              # copy data into clipboard buffer

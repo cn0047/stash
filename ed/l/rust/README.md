@@ -6,7 +6,9 @@ Since 2006.
 [docs](https://www.rust-lang.org/learn)
 [playground](https://play.rust-lang.org/)
 
-````
+````sh
+rustc --version
+
 CARGO_HOME
 
 cargo new hw --bin

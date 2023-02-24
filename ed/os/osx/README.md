@@ -32,6 +32,8 @@ open 'http://google.com/'
 sysctl -n hw.ncpu
 
 $HOME/Library/Caches # cache dir
+
+ls /usr/local/bin
 ````
 
 Colorize CLI:
