@@ -8,6 +8,7 @@ Spanner
 [TTL](https://cloud.google.com/spanner/docs/ttl/working-with-ttl#syntax)
 [golang](https://cloud.google.com/spanner/docs/getting-started/go)
 [golang](https://pkg.go.dev/cloud.google.com/go/spanner)
+[rest](https://cloud.google.com/spanner/docs/getting-started/rest)
 
 DDL - data definition language.
 DML - data manipulation language.

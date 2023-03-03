@@ -37,9 +37,12 @@ curl -X GET -H $AUTH "$h/v1/organizations/$ORG/apis/$name" | jq
 # delete API
 curl -X DELETE -H $AUTH "$h/v1/organizations/$ORG/apis/$name" | jq
 
-# get revisions
+# list revisions
 curl -X GET -H $AUTH "$h/v1/organizations/$ORG/apis/$name/revisions" | jq
 curl -X GET -H $AUTH "$h/v1/organizations/$ORG/apis/$name/revisions/$revision" | jq
+
+# delete revision
+curl -X DELETE -H $AUTH "$h/v1/organizations/$ORG/apis/$name/revisions/$revision" | jq
 
 # update revision
 revision='1'
