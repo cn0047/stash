@@ -120,7 +120,7 @@ terraform workspace show
 ````
 
 ````sh
-# simple interpolation
+# simple string interpolation
 "${var.prefix}-app"
 
 resource "random_int" "rand" {

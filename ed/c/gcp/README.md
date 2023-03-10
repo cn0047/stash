@@ -13,6 +13,7 @@ Google Cloud
 [tags by image](https://cloud.google.com/vision/docs/drag-and-drop)
 [measure latency](https://gcping.com/)
 [certification](https://cloud.google.com/certification/cloud-developer)
+[resource manager](https://console.cloud.google.com/cloud-resource-manager)
 
 <img src="https://gist.github.com/cn007b/384d6938ebef985347b29c15476b55c5/raw/7b19f9797d647c75fdbd7098a359d8788e0a7107/gcp.funcOrRun.png" width="70%" />
 

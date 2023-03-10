@@ -728,7 +728,7 @@ rename /from/f.txt /to/f.txt # move file
 binary
 put f.txt
 
-bye             # exit
+bye # exit
 close
 ````
 
