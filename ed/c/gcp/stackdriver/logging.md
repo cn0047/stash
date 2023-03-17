@@ -61,6 +61,7 @@ protoPayload.status=500
 
 resource.type="gae_app"
 resource.labels.module_id="cws-products"
+resource.labels.project_id="prj-id"
 logName="projects/itismonitoring/logs/appengine.googleapis.com%2Frequest_log"
 protoPayload.resource!="/health-check"
 protoPayload.resource!="/cron/addPingJobs"

@@ -123,6 +123,8 @@ terraform workspace show
 # simple string interpolation
 "${var.prefix}-app"
 
+tolist([var.env])
+
 resource "random_int" "rand" {
   min = 100
   max = 999

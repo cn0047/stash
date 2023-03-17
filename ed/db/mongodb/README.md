@@ -32,8 +32,8 @@ db = connect("myhost:30002/mydb")
 // _id not specified - mongo'll generate _id for us
 j = {name : "mongo"}
 db.testData.insert(j)
-db.test.insert({x :MaxKey})
-db.test.insert({x :MinKey})
+db.test.insert({x: MaxKey})
+db.test.insert({x: MinKey})
 
 // insertMany
 db.test.insertMany([{}, {}])
@@ -176,11 +176,40 @@ db.books.findAndModify ({
         $push:{checkout:{by: "abc", date: new Date()}}
    }
 })
+
 // update nested array element
 db.schemas.update(
     {myId: ObjectId("123"), myType: "foo", "arr.name": "bar"},
     {$set: {"arr.$.active": true}}
 )
+// @example
+db.test.insert({_id: ObjectId("641388040f88c7c10c38e550"), name: "foo", data: [
+    {_id: ObjectId("641388040f88c7c10c38e55a"), name: "a", value: 1, desc: "something related to a"},
+    {_id: ObjectId("641388040f88c7c10c38e55b"), name: "b", value: 2, desc: "something related to b"},
+]})
+db.test.find().pretty()
+db.test.update(
+    {_id: ObjectId("641388040f88c7c10c38e550"), "data._id": ObjectId("641388040f88c7c10c38e55a")},
+    {
+        $set: {
+            "data.$": {_id: ObjectId("641388040f88c7c10c38e55a"), name: "aa", desc: "something related to aa"},
+            modified_on: new Date()
+        }
+    }
+)
+db.test.update(
+    {_id: ObjectId("641388040f88c7c10c38e550"), "data._id": ObjectId("641388040f88c7c10c38e55a")},
+    {
+        $set: {
+            "data.$.name": "aaa",
+            // keep field "value" unchanged
+            "data.$.desc": "something related to aaa",
+            modified_on: new Date()
+        }
+    }
+)
+db.test.drop()
+
 // REPLACE
 db.inventory.update(
    {type: "book", item : "journal"},
