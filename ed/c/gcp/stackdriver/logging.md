@@ -69,7 +69,8 @@ protoPayload.resource!="/worker/ping"
 protoPayload.resource!="/static/"
 severity>=CRITICAL
 severity>=ERROR
-severity>=WARNING
+severity>=WARNING # without INFO
+severity>=INFO
 NOT "GET /sitemap/"
 
 resource.type="dataflow_step"
