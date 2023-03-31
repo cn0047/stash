@@ -20,7 +20,7 @@ Terraform - tool for defining infrastructure as code.
 <br>Providers - aws, gcp, etc.
 <br>Resources - ec2, s3, rds, etc.
 <br>Input variables - serve as parameters for a tf module (`variable "x" {type = string}`).
-<br>Output values - return values of a Terraform module (`val = aws_instance.server.private_ip`).
+<br>Output values - return values of a terraform module (`val = aws_instance.server.private_ip`).
 <br>Expressions - refer to or compute values within a configuration.
 <br>Backends - determines how state is loaded/stored (s3, artifactory, consul, etc.).
 <br>Data sources - allows configuration to use information defined outside of tf

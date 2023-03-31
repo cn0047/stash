@@ -49,7 +49,7 @@ $GOBIN        # GOBIN=$GOROOT/bin
 $GOCACHE      #
 $GOOS         # (windows|linux|darwin)
 $GOARCH       # (386|amd64)
-$GOMAXPROCS   # number of OS threads that can execute user-level Go code simultaneously.
+$GOMAXPROCS   # (numLogicalProcessors) number of OS threads that can execute user-level Go code simultaneously.
 $GOTRACEBACK  # (none|single|all|system|crash) verbosity level in case of panic
 $GOGC         # Garbage Collector ↓
 $GODEBUG      # https://godoc.org/runtime#hdr-Environment_Variables
@@ -100,19 +100,19 @@ go list -e -json -f {{.Deps}} products/service/scraper
 go list ...
 go run --work ed/go/examples/whatever/hw.go # see the location of temporary exec file
 go run -race ed/go/examples/whatever/hw.go
-go vet # examines Go coge, reports suspicious constructs (Printf with wrong arguments).
+go vet                                # examines Go coge, reports suspicious constructs (Printf with wrong arguments).
 go vet -all ./...
-go bug # creates issue on github
+go bug                                # creates issue on github
 godoc -http=:6060 -goroot=$PWD
-go tool fix # finds Go programs that use old APIs and rewrites them to use newer ones
-gorename # Performs precise type-safe renaming of identifiers
-gomvpkg # moves go packages, updating import declarations
+go tool fix                           # finds Go programs that use old APIs and rewrites them to use newer ones
+gorename                              # Performs precise type-safe renaming of identifiers
+gomvpkg                               # moves go packages, updating import declarations
 
 # Gopkg.toml, Gopkg.lock
 dep init
 dep status
-dep ensure         # ensure a dependency is safely vendored in the project
-dep ensure -update # update the locked versions of all dependencies
+dep ensure                            # ensure a dependency is safely vendored in the project
+dep ensure -update                    # update the locked versions of all dependencies
 
 gosec -tests ed/go/examples/bench/...
 gosec -fmt=json -out=/tmp/gosec_output.json -tests ed/go/examples/bench/...
@@ -180,15 +180,11 @@ type Func func(fl FieldLevel) bool
 type LogFunc func(ctx context.Context, format string, args ...interface{})
 // ✳️
 type F func (s string) string
-func (f F) Bar(s string) {
-}
+func (f F) Bar(s string) {}
 
-if p := "MR"; isFormal {
-}
+if p := "MR"; isFormal {}
 
-if len(os.Args) != 2 {
-    os.Exit(1)
-}
+if len(os.Args) != 2 { os.Exit(1) }
 fmt.Println("It's over", os.Args[1])
 
 // read input from CLI
@@ -196,11 +192,8 @@ var option string
 fmt.ScanIn(&option)
 println(option)
 
-for i := 0; i < 100; i++ {
-}
-for c := n.FirstChild; c != nil; c = c.NextSibling {
-  f(c)
-}
+for i := 0; i < 100; i++ { }
+for c := n.FirstChild; c != nil; c = c.NextSibling { f(c) }
 
 v := varI.(T)
 if v, ok := varI.(T); ok { // "comma ok" idiom.
@@ -230,7 +223,8 @@ defer logfile.Close()
 logger := log.New(logfile, "[example] ", log.LstdFlags|log.Lshortfile)
 logger.Println("This is a regular message.")
 
-// Verify statically that *Transport implements http.RoundTripper.
+// verify statically that *Transport implements http.RoundTripper.
+// returns error (not panic) and will fail build.
 var _ http.RoundTripper = (*Transport)(nil)
 
 // check that obj has method
@@ -242,12 +236,16 @@ log.SetPrefix("TRACE: ")
 log.SetFlags(log.Ldate | log.Lmicroseconds | log.Llongfile)
 log.Println("message")
 
-"html/template"
-template.HTMLEscapeString(input)
-template.JSEscapeString(input)
 ````
 
 Go source code is always UTF-8.
+
+A workspace is a directory hierarchy with three directories at its root:
+* bin (executable commands).
+* pkg (package objects).
+* src (source code).
+
+Put code into `internal` dir to make it private (magic).
 
 **Data types:**
 
@@ -277,13 +275,15 @@ Comparable types:
 * complex.
 
 * array (if values of the array element type are comparable).
-- slice (NOT COMPARABLE).
-- map (NOT COMPARABLE).
 * channel (if they created by the same call to `make` or nil).
-- func (NOT COMPARABLE).
 * interface (if they have identical dynamic types and equal dynamic values or nil).
 * struct (if all their fields are comparable).
 * pointer (if they point to the same var or nil).
+
+Not comparable types:
+* slice.
+* map.
+* func.
 
 Ref variables stores in the heap, which is garbage collected
 and which is a much larger memory space than the stack.
@@ -298,7 +298,7 @@ under the covers, references to data structures that must be initialized before 
 <br>
 `make([]int, 0, 10) // slice of length 0 and capacity 10.`
 
-**defer** pushes a function call in list,
+**defer** pushes a function call in list (stack),
 list will be executed after the surrounding function returns.
 <br>
 `defer file.Close()`.
@@ -377,6 +377,17 @@ Go  ⇒ struct ⇒ object   ⇒ field
 **pointer**
 [Pointers make stack allocation mostly infeasible](https://segment.com/blog/allocation-efficiency-in-high-performance-go-services/).
 
+**sentinel error** - custom error value
+(standard library: sql.ErrNoRows, io.EOF, etc).
+[wrap error tool](github.com/pkg/errors)
+<br>`errors.Is` like a comparison to a sentinel error,
+<br>`errors.As` like type assertion (`if e, ok := err.(*QueryError); ok { … }`).
+<br>`fmt.Errorf("decompress %v: %w", name, err)`
+
+**context** carries deadlines, cancelation signals, and other request-scoped values
+across API boundaries and between processes.
+Ctx may be: WithCancel, WithDeadline, WithTimeout, or WithValue.
+
 #### Interface
 
 Interface - set of methods required to implement such interface.
@@ -421,7 +432,7 @@ runtime will detach the thread from the P (and from M) and create a new thread
 (if idle thread doesn’t exist) to service that processor.
 When a system calls resumes, the goroutine is placed back.
 
-‼️ Do not communicate by sharing memory. Instead, share memory by communicating.
+⚠️ Do not communicate by sharing memory. Instead, share memory by communicating.
 <br>⚠️ Do not use global variables or shared memory, they make your code unsafe for running concurrently.
 
 `kill -6 {PID}` kill the program and give a stack trace for each goroutine.
@@ -524,37 +535,19 @@ http.Handle("/img/", http.FileServer(http.Dir("public")))
 mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {})
 ````
 
-A workspace is a directory hierarchy with three directories at its root:
-* bin (executable commands).
-* pkg (package objects).
-* src (source code).
-
-Put code into `internal` dir to make it private (magic).
-
-Sentinel error - custom error value
-(standard library: sql.ErrNoRows, io.EOF, etc).
-[wrap error tool](github.com/pkg/errors)
-<br>`errors.Is` like a comparison to a sentinel error,
-<br>`errors.As` like type assertion (`if e, ok := err.(*QueryError); ok { … }`).
-<br>`fmt.Errorf("decompress %v: %w", name, err)`
-
-**Context** carries deadlines, cancelation signals, and other request-scoped values
-across API boundaries and between processes.
-Ctx may be: WithCancel, WithDeadline, WithTimeout, or WithValue.
-
 #### Generics
 
 **generics**.
 
 **constraint** allows any type implementing the interface.
 
-**contract** specify that a type argument must implement a particular method.
-
-**type parameter** - type that is currently unknown but that will be known when the function is called.
-
 **any** type constraint that permits any type.
 
+**contract** specify that a type argument must implement a particular method.
+
 **comparable** - predeclared contract.
+
+**type parameter** - type that is currently unknown but that will be known when the function is called.
 
 #### Runtime
 
@@ -569,7 +562,7 @@ Runtime manages: scheduling, garbage collection, and the runtime environment for
 Runtime scheduler creates threads (Logical Processors, named P)
 over Physical CPUs (called M, or Machine).
 `runtime.GOMAXPROCS(numLogicalProcessors)`
-`runtime.GOMAXPROCS(1)` - tell the scheduler to use a single Logical Processor for program.
+`runtime.GOMAXPROCS(1)` - tell the scheduler to use a single logical processor for program.
 `runtime.GOMAXPROCS` limits number of threads that can execute user-level Go code simultaneously.
 For each P (thread) we have goroutines queue.
 
@@ -585,7 +578,7 @@ on a machine with multiple physical processors.
 
 #### GC (mark and sweep)
 
-During the mark phase, the runtime will traverse all the objects
+During the **mark phase**, the runtime will traverse all the objects
 that the application has references to on the heap and mark them as still in use.
 This set of objects is known as live memory.
 After this phase, everything else on the heap that is not marked is considered garbage,

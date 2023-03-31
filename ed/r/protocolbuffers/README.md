@@ -15,6 +15,8 @@ cat cmdmWindows.Query.msq \
   | protoc --decode cmdmWindows.Response cmdmWindows.proto
 ````
 
+Protocol buffers - language & platform neutral, extensible mechanism for serializing structured data.
+
 Canonically, messages are serialized into a binary wire format.
 
 Scalar Value Types:

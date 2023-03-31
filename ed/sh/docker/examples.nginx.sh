@@ -1,4 +1,4 @@
-#### NGINX
+# NGINX
 
 # html
 docker run -ti --rm --name nginx-html \

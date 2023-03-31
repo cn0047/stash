@@ -8,7 +8,9 @@ Content-Type: application/grpc+json
 Content-Type: application/grpc+proto
 ````
 
-gRPC - open source RPC framework, provides features such as:
+gRPC - open source, language & platform neutral RPC framework, based on Protocol Buffers.
+
+Provides features such as:
 * authentication.
 * bidirectional streaming and flow control.
 * blocking or nonblocking bindings.

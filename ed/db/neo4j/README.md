@@ -54,6 +54,8 @@ neo4j  # the default database
 Transactions can be executed in: read or write mode.
 Access modes can be supplied: per transaction or per session.
 
+Neo4j supports: READ_COMMITTED (default), SERIALIZABLE isolation levels.
+
 ## Cypher
 
 Cypher - declarative graph query language.

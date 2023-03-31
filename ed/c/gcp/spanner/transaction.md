@@ -1,6 +1,13 @@
 Transaction
 -
 
+[docs](https://cloud.google.com/spanner/docs/transactions)
+
+Spanner provides clients with the strictest concurrency-control guarantees for transactions - external consistency.
+TrueTime is a highly available, distributed clock that is provided to applications on all GCP servers.
+
+Avoid mixing DML and mutation in the same transaction.
+
 Transaction modes:
 * Locking **read-write** - writing data into Spanner.
   Rely on pessimistic locking and, if necessary, two-phase commit.

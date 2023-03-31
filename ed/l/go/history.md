@@ -3,6 +3,10 @@ History of Go
 
 [release notes](https://golang.org/doc/go1.13)
 
+#### go1.20
+
+#### go1.19
+
 #### go1.18
 
 * Generics.

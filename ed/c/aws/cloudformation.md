@@ -1,7 +1,8 @@
 CloudFormation
 -
 
-Allows to use simple text file to model and provision all the resources needed for application.
+CloudFormation - infrastructure as code (IaC) service that allows
+to use simple text file to model and provision and manage all the resources needed for application.
 
 ````
 Ref PubSubTopic # reference

@@ -12,7 +12,7 @@ Redis
 #### redis-cli
 
 ````sh
-redis-cli # connect to redis
+redis-cli       # connect to redis
 redis-benchmark # shell tool for benchmarking
 ````
 
@@ -40,7 +40,7 @@ set mk 'hello' nx px 30000
 setnx mk "World"
 
 expire mk 10 # ttl 10 seconds
-ttl mk
+ttl mk       # returns remaining time to live
 
 get mk
 mget mk mykey foo
@@ -62,26 +62,26 @@ Redis is fast because of IO Multiplexing (EventLoop).
 
 #### Data types:
 
-* Strings - A String value can be at max 512 Megabytes in length.
+* String - string value can be at max 512 Megabytes in length.
 You can:
 Use Strings as atomic counters;
 Append to strings;
 Use Strings a random access vectors;
 
-* Lists - simply lists of strings.
+* List - simply list of strings.
 The max length of a list is 2^32 (more than 4 billion of elements per list).
 
-* Sets - an unordered non repeating collections of Strings.
+* Set - an unordered non repeating collections of strings.
 The max number of members in a set is 2^32.
 
-* Hashes - maps between string fields and string values.
+* Hash - map between string field and string value.
 Every hash can store up to 2^32 field-value pairs.
 
-* Sorted sets - similarly to Sets,
-the difference is that every member of a Sorted Set is associated with score,
+* Sorted set - similarly to set,
+the difference is that every member of a sorted set is associated with score,
 that is used in order to take the sorted set ordered.
 
-* Bitmaps and HyperLogLogs
+* Bitmap and HyperLogLog.
 
 #### List (Linked List):
 

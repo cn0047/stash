@@ -10,9 +10,11 @@ Microservices easier to scale than SOA (because you have scale only 1 service no
 
 Philosophy: Do one thing and do it well.
 Microservice must be stateless.
-Microservice must have: high cohesion; loose coupling;
-lightweight communication mechanism; independent data storage;
 Microservice must be resilient. And respond to changes quickly.
+Microservice must have:
+* high cohesion & loose coupling.
+* lightweight communication mechanism.
+* independent data storage.
 
 Microservices-based architectures enable Continuous Delivery and Deployment.
 

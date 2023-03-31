@@ -3,7 +3,8 @@ docker
 <br>17.09.1
 <br>1.12.5
 
-[compose-file](https://docs.docker.com/compose/compose-file/)
+[compose](https://docs.docker.com/compose)
+[compose-file](https://docs.docker.com/compose/compose-file)
 [moby](https://mobyproject.org)
 
 ## Overview
@@ -109,7 +110,7 @@ docker-machine ip
 docker ps -a
 
 # top
-docker top CONTAINER_ID
+docker top CONTAINER_ID # show all containers (default shows just running)
 
 # shows the standard output of a container
 docker logs
@@ -134,10 +135,10 @@ docker stop $(docker ps -a -q)
 # start stopped container (starts a container)
 docker start $cId
 
-# remove the web application container
+# remove container
 docker rm $cId
 
-# delete
+# remove image
 docker rmi -f $cId
 
 # layers of image
@@ -202,8 +203,7 @@ Less instructions in Dockerfile - least layers in built image.
 
 ## Compose
 
-[Compose](https://docs.docker.com/compose) is a tool
-for defining and running multi-container Docker applications.
+Compose - tool for defining and running multi-container Docker applications.
 
 ````sh
 docker-compose build $serviceName
@@ -218,7 +218,7 @@ docker-compose down --volumes --remove-orphans
 # builds, (re)creates, starts, and attaches to containers for a service.
 docker-compose up
 docker-compose -f dkr/docker-compose.yml up
-# build the project and detached
+# build the project and detache container
 docker-compose up -d
 
 # runs a one-time command against a service (will start service if needed)

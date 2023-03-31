@@ -12,10 +12,17 @@ availability = successful requests / total requests
 IO throughput - data transfer speed in megabytes per second (MB/s or MBPS).
 
 System Design Plan:
-1: Clarify constraints and use cases.
-2: Abstract design.
-3: Understand bottlenecks.
-4: Scale your abstract design.
+* Clarify constraints and use cases, functional & non-functional requirements.
+* Abstract design, propose high-level design.
+* Understand bottlenecks.
+* Scale your abstract design.
+* Wrap up.
+
+Steps:
+* Do math (how many reads/writes, total users, daily active users, size of message/post/etc., PRS, etc.)
+* Draw diagram app/topology/design/interactions/use case/etc.
+* Iteratively go into details and deep dive.
+* Q/A session.
 
 Storage Scalability:
 * What is the amount of data that we need to store?
@@ -44,6 +51,9 @@ Think about:
 * Cache, CDN.
 * API, REST, gRPC, etc.
 * LB.
+* Latency.
+* Keep all geographically close to each other.
+* Scale & Performance.
 
 #### SLA/SLO/SLI
 

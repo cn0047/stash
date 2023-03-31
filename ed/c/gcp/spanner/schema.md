@@ -1,6 +1,16 @@
 Schema
 -
 
+[best practices](https://cloud.google.com/spanner/docs/schema-design)
+[design schema](https://cloud.google.com/spanner/docs/schema-and-data-model)
+[view](https://cloud.google.com/spanner/docs/views)
+[secondary indexes](https://cloud.google.com/spanner/docs/secondary-indexes)
+[FK](https://cloud.google.com/spanner/docs/foreign-keys/overview)
+[FK](https://cloud.google.com/spanner/docs/foreign-keys/how-to)
+[check constraint](https://cloud.google.com/spanner/docs/check-constraint/how-to)
+
+view - virtual table defined by a SQL query.
+
 Check constraint - `CONSTRAINT start_before_end CHECK(StartTime < EndTime)`.
 If expression evaluates to TRUE or NULL - data change is allowed.
 Expression can only reference columns in the same table.

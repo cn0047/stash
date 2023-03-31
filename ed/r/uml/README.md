@@ -122,3 +122,7 @@ UML
 * Collaboration diagram.
 <img src="https://github.com/cn007b/my/blob/master/ed/r/uml/img/diagram.collaboration.png" width="70%" />
 * Sequence diagram.
+
+### Design Diagrams:
+
+* Application diagrams.

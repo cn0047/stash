@@ -40,15 +40,15 @@ Good:
 ````
 Use nouns and NOT the verbs. Also use plurals.
 
-|   | name     | description                                                             |
-|---|----------|-------------------------------------------------------------------------|
-| ● | GET      |                                                                         |
-|   | HEAD     | like get but return header only (good to check whether resource exists) |
-| ● | POST     | create                                                                  |
-| ● | PUT      | update (if it does not exist, create it)                                |
-|   | PATCH    | update                                                                  |
-| ● | DELETE   |                                                                         |
-|   | OPTIONS  | return available HTTP methods                                           |
+|   | name     | description                                                              |
+|---|----------|--------------------------------------------------------------------------|
+| ● | GET      |                                                                          |
+|   | HEAD     | like get, but return header only (good to check whether resource exists) |
+| ● | POST     | create                                                                   |
+| ● | PUT      | update (if it does not exist, create it)                                 |
+|   | PATCH    | update                                                                   |
+| ● | DELETE   |                                                                          |
+|   | OPTIONS  | return available HTTP methods                                            |
 
 PATCH applies a delta rather than (PUT) replacing the entire resource.
 PATCH method body describes modifications to be made to a resource.

@@ -20,10 +20,8 @@ You can use a Lambda function to process requests from an Application Load Balan
 Lambda automatically scales to handle 1000 concurrent executions per Region.
 
 Trigger DynamoDB:
-* Batch size
-The largest number of records that will be read from your table’s update stream at once.
-* Batch window
-The maximum amount of time to gather records before invoking the function, in seconds.
+* Batch size - largest number of records that will be read from your table’s update stream at once.
+* Batch window - maximum amount of time to gather records before invoking the function, in seconds.
 
 ````sh
 aws --profile=$p lambda list-functions

@@ -36,7 +36,7 @@ Quick File Open settings:
 ````
 
 Search:
-````
+````sh
 ed/l/nodejs,-*/node_modules/*
 ed/l/go,-*/vendor/*
 ````

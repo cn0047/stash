@@ -1,4 +1,4 @@
-#### RabbitMQ
+# RabbitMQ
 
 # init rabbit
 docker run -it --rm --hostname localhost --name rabbit rabbitmq:latest

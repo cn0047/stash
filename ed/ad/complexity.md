@@ -21,7 +21,7 @@ Just looking for how thing scale roughtly (lineral, quadratic, etc).
 Algorithm X is asymptotically more efficient than Y -
 X will always be a better choice for large inputs.
 
-````
+````sh
 # time complexity:
 O(1)      # constant time
 O(log(n)) # logarithmic time
@@ -76,7 +76,7 @@ for (int i = n; i > 0; i /= 2) {
 
 #### log
 
-````
+````sh
 a^x = b           # 2^3 = 8
 x = log a (b)     # 3 = log 2 (8)
 

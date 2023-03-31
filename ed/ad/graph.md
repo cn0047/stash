@@ -24,7 +24,7 @@ Graph in DB:
 ## Path
 
 <br>Path - set of edges that conncect 2 nodes.
-<br>Cycle - ...
+<br>Cycle - path that starts and ends at the same vertex, without repeating any other vertices.
 <br>Simple path - only use every edge at most once.
 <br>Hamiltonion path - path that visits each node exactly once.
 <br>Euler circuit - path has same initial and terminal veritces. Also all veritces have even degree.

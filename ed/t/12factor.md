@@ -1,6 +1,8 @@
 The Twelve-Factor App
 -
 
+12 Factor App - methodology for building SaaS applications.
+
 1. Codebase:
 There is **only one codebase per app**.
 If there are multiple codebases, it’s not an app – it’s a distributed system.
@@ -48,7 +50,7 @@ Maximize robustness with **fast startup and graceful shutdown**.
 Processes can be started or stopped at any time.
 Processes shut down gracefully when they receive a SIGTERM signal.
 
-10. Dev/Prod parity:
+10. Env Dev/Prod parity:
 All environments must be as **similar** as possible.
 
 11. Logs:

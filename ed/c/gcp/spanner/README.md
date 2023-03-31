@@ -2,6 +2,7 @@ Spanner
 -
 
 [docs](https://cloud.google.com/spanner/docs/apis)
+[IAM](https://cloud.google.com/spanner/docs/iam)
 [query syntax](https://cloud.google.com/spanner/docs/reference/standard-sql/query-syntax#having_clause)
 [funcs](https://cloud.google.com/spanner/docs/reference/standard-sql/syntax)
 [mutations](https://cloud.google.com/spanner/docs/modify-mutation-api)
@@ -9,9 +10,12 @@ Spanner
 [golang](https://cloud.google.com/spanner/docs/getting-started/go)
 [golang](https://pkg.go.dev/cloud.google.com/go/spanner)
 [rest](https://cloud.google.com/spanner/docs/getting-started/rest)
-
-DDL - data definition language.
-DML - data manipulation language.
+[change instance conf](https://cloud.google.com/spanner/docs/move-instance)
+[migrate to spanner](https://cloud.google.com/spanner/docs/migration-overview)
+[import/export](https://cloud.google.com/spanner/docs/import-export-overview)
+[DML](https://cloud.google.com/spanner/docs/dml-tasks)
+[partitioned DML](https://cloud.google.com/spanner/docs/dml-partitioned)
+[mutations](https://cloud.google.com/spanner/docs/modify-mutation-api)
 
 ````sh
 dbi=test-instance
@@ -76,6 +80,16 @@ Spanner instance can be per region or multi-regional.
 Spanner - fully managed relational database with unlimited scale and strong consistency.
 Spanner DB dialect: Google Standard SQL, PostgreSQL.
 DB sequences (or auto-increment) - anti-pattern (it creates hotspots), use UUID generator.
+
+DDL - data definition language.
+DML - data manipulation language (INSERT, UPDATE, DELETE).
+
+Standard DML - standard OLTP (Online Transaction Processing).
+Partitioned DML - designed for bulk updates.
+Mutations - inserts/updates/deletes sequence that Spanner applies atomically to different rows/tables in DB.
+
+Read Your Writes supported only in DML.
+Upsert supported only in mutations.
 
 [Data types](https://cloud.google.com/spanner/docs/reference/standard-sql/data-types):
 * bool.

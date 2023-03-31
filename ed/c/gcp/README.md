@@ -99,14 +99,7 @@ Computing service:
 * GCE - Compute Engine (IaaS)
 * Cloud Functions (Serverless)
 
-#### LB (Load Balancer)
-
-Global external LB: HTTP(S), SSL, TCP Proxy.
-Regional external LB: Network, Internal.
-
-* HTTP(S)
-* TCP
-* UDP
+.gcloudignore - holds files to be ignored during uploading directory to GCP.
 
 Managed instances groups used for LB.
 

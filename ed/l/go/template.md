@@ -3,6 +3,13 @@ template
 
 [pkg](https://golang.org/pkg/text/template/)
 
+````go
+"html/template"
+
+template.HTMLEscapeString(input)
+template.JSEscapeString(input)
+````
+
 ````
 {{ (print "\n---\n") -}}
 

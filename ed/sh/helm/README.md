@@ -4,7 +4,7 @@ helm
 [docs](https://helm.sh/docs/)
 [hub](https://hub.helm.sh/)
 
-Helm - package manager for k8s.
+Helm - tool for managing packages (charts) of templated Kubernetes resources.
 Chart - package.
 
 ````sh
