@@ -1,3 +1,4 @@
+// @see: https://gobyexample.com/worker-pools
 package main
 
 import (

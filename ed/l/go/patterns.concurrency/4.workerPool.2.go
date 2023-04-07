@@ -6,10 +6,10 @@ import (
 
 func worker(id int, jobs <-chan rune, results chan<- string) {
 	for j := range jobs {
-		fmt.Println("🎾 worker", id, "busy with job:", string(j))
+		fmt.Println("worker", id, "busy with job:", string(j))
 		results <- fmt.Sprintf("done job: %s", string(j))
 	}
-	fmt.Println("🔴 worker", id, "exited")
+	fmt.Println("worker", id, "exited")
 }
 
 func main() {

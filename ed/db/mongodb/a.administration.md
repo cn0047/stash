@@ -58,7 +58,7 @@ mongotop
 db.runCommand({serverStatus: 1, workingSet: 1})
 
 db.collection.stats()
-db.collection.dataSize()
+db.collection.dataSize() // collection's size in bytes
 db.collection.storageSize()
 db.collection.totalSize()
 db.collection.getIndexes()
@@ -84,10 +84,10 @@ db.inventory.find({$where: "Array.isArray(this.tags)"})
 ````
 
 ````sh
-// Collection Export
+# Collection Export
 mongoexport --collection collection --out collection.json
 mongoexport --db sales --collection contacts --query '{"field": 1}'
-// Collection Import
+# Collection Import
 mongoimport --collection collection --file collection.json
 ````
 

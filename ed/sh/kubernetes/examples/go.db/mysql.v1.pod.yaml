@@ -1,3 +1,4 @@
+# IMPORTANT: keep vertical spaces here.
 kind: Pod
 apiVersion: v1
 metadata:

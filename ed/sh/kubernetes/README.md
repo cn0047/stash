@@ -1,4 +1,4 @@
-Kubernetes (K8s)
+Kubernetes (k8s)
 -
 <br>1.10
 
@@ -14,28 +14,41 @@ open https://github.com/kubernetes/minikube/blob/master/docs/drivers.md#hyperkit
 # ${HOME}/.kube
 ````
 
-Kubernetes - orchestrator for microservice apps (desired state management tool).
-<br>Kubernetes has three namespaces by default: default, kube-system, kube-public.
+Kubernetes - orchestrator for microservice apps (containers) (desired state management tool).
+<br>k8s has three namespaces by default: default, kube-system, kube-public.
 <br>Minikube - tool to use K8s for local env.
+
+Advantages:
+* scalable (nodes).
+* horizontal scaling (pods).
+* has self-healing.
+* highly-available.
+* automated rollbacks.
+* it's portable (gcp, aws, etc.).
+
+Drawbacks:
+* complexity.
+* upfront cost is high.
+* cost (it may be overkill for small orgs).
 
 Manifest file - describe desired state.
 
 Operator - software extensions that make use of custom resources.
 
-## Master
-
-`etcd` (cluster data store) is an open source distributed key-value store (https://coreos.com/etcd).
-Kubernetes stores all the RESTful API objects here.
+## Master (Control plane)
 
 `kube-controller-manager` - controls lots of different things
-in the cluster. Replication Controller Manager ensures all the Replication
-Controllers run on the desired container amount.
+in the cluster. Replication Controller Manager ensures all the Replication Controllers
+run on the desired container amount.
 
 `kube-scheduler` - decides which node is suitable for pods to run on,
 according to the resource capacity or the balance of the resource utilization on the node.
 
+`etcd` (cluster data store) is an open source distributed key-value store (https://coreos.com/etcd).
+k8s stores all the RESTful API objects here.
+
 `kube-apiserver` (API server) - provides an HTTP/HTTPS server,
-which provides a RESTful API for all the components in the Kubernetes master.
+which provides a RESTful API for all the components in the k8s master.
 All k8s commands come here.
 
 ## Node (minion)
@@ -45,7 +58,7 @@ A node is a worker machine in k8s, previously known as a minion.
 `kubelet` is a major process (agent) in the nodes, which reports node activities back
 to kubeapiserver periodically, such as pod health, node health, and liveness probe.
 
-`container engine` - docker or rkt.
+`container engine(runtime)` - docker or rkt.
 
 `kube-proxy` - k8s networking, handles the routing between pod load balancer (a.k.a. service)
 and pods, it also provides the routing from outside to service.
@@ -56,8 +69,8 @@ necessary to run pods and is managed by the master components.
 #### Pod
 
 Pod - (like container in docker)
+the smallest deployable unit in k8s,
 description of a set of container(s) that need to run together.
-Pod is the smallest deployable unit in Kubernetes.
 It can contain one or more containers.
 Most of the time, we just need one container per pod.
 Pod is also designed as mortal.
@@ -85,7 +98,7 @@ and rolling back pods and ReplicaSets.
 Main feature - zero downtime deployment.
 
 Deployment strategies `StrategyType`:
-* RollingUpdate (default).
+* RollingUpdate (default) - create new set of pods & gradually replace old pods.
 * Recreate - just drop everything and create new (with down time).
 
 Deployment creates ReplicaSet under the hood.
@@ -106,9 +119,9 @@ can provide load balancing, SSL termination and name-based virtual hosting.
 Persistent Volume - to store data permanently.
 
 accessModes:
+* ReadOnlyMany  — read-only by many nodes.
 * ReadWriteOnce — volume mounted as read-write by a single node.
 * ReadWriteMany — read-write by many nodes.
-* ReadOnlyMany  — read-only by many nodes.
 
 storageClassName: manual, gp2, aws-efs.
 
@@ -121,7 +134,7 @@ storageClassName: manual, gp2, aws-efs.
 
 A federation is a cluster of clusters.
 
-KOps stands for Kubernetes operations (for AWS).
+KOps stands for k8s operations (for AWS).
 
 CRD - Custom Resource Definition.
 

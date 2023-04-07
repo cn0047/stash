@@ -65,18 +65,16 @@ Mutual blocking between transactions results in a deadlock.
 
 Update account table with transaction.
 
-0. [account table] Add field pendingTransactions.
+0. [account table]      Add field pendingTransactions.
 1. [transactions table] Insert record with state initial.
 2. [transactions table] Update record with state initial to pending.
-3. [account table] Update record (decrement)
-   & add transaction to pendingTransactions field for this record.
-4. [account table] Update next record (increment)
-   & add transaction to pendingTransactions field for this record.
+3. [account table]      Update record (decrement) & add transaction to pendingTransactions field for this record.
+4. [account table]      Update next record (increment) & add transaction to pendingTransactions field for this record.
 5. [transactions table] Update transaction with state pending to committed.
-6. [account table] Delete transactions from pendingTransactions.
+6. [account table]      Delete transactions from pendingTransactions.
 7. [transactions table] Update transaction set state done.
 
-## MVCC (Multiversion concurrency control):
+## MVCC (Multiversion concurrency control)
 
 It's a concurrency control method in DBs
 which provide concurrent access to DB and transactions in programming languages.

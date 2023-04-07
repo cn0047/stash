@@ -11,7 +11,7 @@ availability = successful requests / total requests
 
 IO throughput - data transfer speed in megabytes per second (MB/s or MBPS).
 
-System Design Plan:
+System design plan:
 * Clarify constraints and use cases, functional & non-functional requirements.
 * Abstract design, propose high-level design.
 * Understand bottlenecks.
@@ -24,7 +24,7 @@ Steps:
 * Iteratively go into details and deep dive.
 * Q/A session.
 
-Storage Scalability:
+Storage scalability:
 * What is the amount of data that we need to store?
 * Will the data keep growing over time? If yes, then at what rate?
 

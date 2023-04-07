@@ -17,6 +17,7 @@ func main() {
 	// loop()
 	// ifWithNotDefinedVar()
 	// eqSimple()
+	qtSimple()
 	// orWithEq()
 	// andSimple()
 	// notSimple()
@@ -25,7 +26,7 @@ func main() {
 	// getValueFromMapInMap()
 	// invalidTemplate()
 	// invalidTemplate()
-	invalidTemplateParams()
+	// invalidTemplateParams()
 }
 
 func invalidTemplateParams() {
@@ -149,6 +150,17 @@ func eqSimple() {
 	tmpl := template.Must(template.New("tmpl").Parse(t))
 	data := map[string]interface{}{
 		"a": 1,
+	}
+	if err := tmpl.Execute(os.Stdout, data); err != nil {
+		panic(err)
+	}
+}
+
+func qtSimple() {
+	t := `<br>[qtSimple] {{if gt .a 1}} ok {{end}} <hr>`
+	tmpl := template.Must(template.New("tmpl").Parse(t))
+	data := map[string]interface{}{
+		"a": 10,
 	}
 	if err := tmpl.Execute(os.Stdout, data); err != nil {
 		panic(err)

@@ -8,6 +8,7 @@ DocBlock
 @example
 @param
 @return
+@uses
 
 @todo
 @deprecated

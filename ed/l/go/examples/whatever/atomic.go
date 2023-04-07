@@ -23,3 +23,7 @@ func main() {
 	wg.Wait()
 	fmt.Println("ops:", ops)
 }
+/*
+Result:
+ops: 50
+*/

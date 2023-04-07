@@ -1,12 +1,10 @@
 /*
-
 Books
     Science
         Chemistry
         Physics
             Classical Mechanics
             Quantum Mechanics
-
 */
 db.categories.insertOne({"_id": "Quantum Mechanics", "ancestors": ["Books", "Science", "Physics"], "parent": "Physics"})
 db.categories.insertOne({"_id": "Classical Mechanics", "ancestors": ["Books", "Science", "Physics"], "parent": "Physics"})

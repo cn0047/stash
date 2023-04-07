@@ -40,7 +40,7 @@ Implementing Linearizable Systems:
 
 For linearizability important ordering guarantees so it may be confused with serializability,
 but they are different,
-serializability related to db transaction isolation level,
+serializability related to DB transaction isolation level,
 but linearizability is a recency guarantee on reads and writes of a register (an individual object),
 moreover linearizability guarantees order, like: `a -> b -> c`
 but for serializability it's ok when: `b -> a -> c` only important separately execute actions.

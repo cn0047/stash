@@ -1,9 +1,7 @@
 /*
-
 Task:
 For companies in our collection founded in 2004 and having 5 or more rounds of funding,
 calculate the average amount raised in each round of funding.
-
 */
 
 db.companies.aggregate([

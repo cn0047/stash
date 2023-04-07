@@ -82,6 +82,6 @@ func f3() {
 		}
 
 		// Reset to reuse.
-		//timer.Reset(time.Second)
+		// timer.Reset(time.Second)
 	}
 }

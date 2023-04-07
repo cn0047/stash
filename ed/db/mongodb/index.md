@@ -39,8 +39,7 @@ db.items.dropIndex({name : 1})
 db.accounts.reIndex()
 /*
 {
-  topics: ["whaling" , "allegory" , "revenge" ,
-    "American" , "novel" , "nautical" , "voyage" , "Cape Cod"]
+  topics: ["whaling", "allegory", "revenge", "American", "novel", "nautical", "voyage", "Cape Cod"]
 }
 */
 db.volumes.ensureIndex({topics: 1});
@@ -167,7 +166,7 @@ you can specify a sort on the subsets { c: 1 } or { c: 1, d: 1 }
 // THE sort() OPERATION WILL ABORT WHEN IT USES 32 MEGABYTES OF MEMORY.
 // Collection has the following index: {a: 1, b: 1, c: 1, d: 1}
 // Then following operations can use the index efficiently:
-db.collection.find({a: 5}).sort({a: 1, b: 1});
+db.collection.find({a: 5}).sort({a: 1, b: 1})
 db.collection.find({a: 5}).sort({b: 1, c: 1})
 db.collection.find({a: 5, c: 4, b: 3}).sort({d: 1})
 

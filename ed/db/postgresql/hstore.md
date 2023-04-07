@@ -19,7 +19,7 @@ psql -h localhost -d test -c 'create extension hstore;'
 'a=>1'::hstore ? 'a'
 'a=>1,b=>2'::hstore ?& ARRAY['a','b']
 'a=>1,b=>2'::hstore ?| ARRAY['b','c']
-'a=>b, b=>1, c=>NULL'::hstore @> 'b=>1'
+'a=>b,b=>1,c=>NULL'::hstore @> 'b=>1'
 
 # will return false
 'a=>1,b=>2'::hstore ?| ARRAY['c'];
@@ -47,7 +47,7 @@ CREATE INDEX hidx ON testhstore USING GIN (h);
 ````
 
 HSTORE also supports btree or hash indexes for the = operator.
-This allows HSTORE columns to be declared UNIQUE, or to be used in GROUP BY, ORDER BY or DISTINCT expressions. 
+This allows HSTORE columns to be declared UNIQUE, or to be used in GROUP BY, ORDER BY or DISTINCT expressions.
 
 ````sql
 CREATE INDEX hidx ON testhstore USING BTREE (h);

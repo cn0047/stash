@@ -1,6 +1,8 @@
 History of MongoDB
 -
 
+#### 6.x.x
+
 #### 5.x.x
 
 #### 4.x.x

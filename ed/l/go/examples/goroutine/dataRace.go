@@ -1,11 +1,15 @@
 package main
 
+import (
+	"fmt"
+)
+
 var (
 	n = 0
 )
 
 func main() {
-	for i := 0; i < 5; i++ {
+	for i := 0; i < 15; i++ {
 		go func(i int) {
 			println(i)
 			n++ // here
@@ -16,6 +20,7 @@ func main() {
 			break
 		}
 	}
+	fmt.Scanln()
 }
 
 /*

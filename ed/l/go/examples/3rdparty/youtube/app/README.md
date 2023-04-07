@@ -3,7 +3,7 @@ YouTube
 
 See: https://github.com/youtube/api-samples/tree/master/go
 
-````
+````sh
 # @see
 /Users/kovpakvolodymyr/.credentials/youtube-go.json
 

@@ -1,5 +1,9 @@
 package main
 
+import (
+  "fmt"
+)
+
 var (
   LogPanic = false
 )
@@ -7,13 +11,14 @@ var (
 func main() {
   r := f1()
   println(r)
+  fmt.Scanln()
 }
 
 func f1() (r int) {
   defer func() {
     p := recover()
     if p != nil {
-      if LogPanic {
+      if LogPanic { // current panic is not LogPanic
         println("[panic] ", p)
       }
       r = -1
@@ -29,3 +34,8 @@ func f1() (r int) {
 func panicFunc() (r int) {
   panic("panic")
 }
+
+/*
+Result:
+-1
+*/

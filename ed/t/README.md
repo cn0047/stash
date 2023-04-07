@@ -71,7 +71,7 @@ Server-Sent Events - servers can initiate data transmission towards clients
 once an initial client connection has been established.
 
 To deal with big complicated problems - have to perform breakdown or decomposition.
-One of the best ways to deal with complexity is divide and conquer - split the problem
+One of the best way to deal with complexity is divide and conquer - split the problem
 into smaller problems and solve each one separately.
 
 Telemetry - monitoring performance metrics and error rates.
@@ -133,7 +133,7 @@ Even (2, 4, 6...) -> x % 2 = 0.
 3+4 = 7    # 3 - addend 1;     4 - addend 2;                7    - sum;
 3-4 = -1   # 3 - minuend;      4 - subtrahend;             -1    - difference;
 3*4 = 12   # 3 - multiplicand; 4 - multiplicator (factor);  12   - product;
-3/4 = 0.75 # 3 - numerator;    4 - denominator;             0.75 - ;
+3/4 = 0.75 # 3 - numerator;    4 - denominator;             0.75 - quotient;
 3^4 = 81   # 3 - base;         4 - power/exponent;
 ````
 
@@ -163,9 +163,9 @@ exabyte   (EB) -            ~ 1000^6 ~
 zettabyte (ZB) -            ~ 1000^7 ~
 yottabyte (YB) -            ~ 1000^8 ~
 
-millisecond - 0,001
+millisecond      - 0,001
 microsecond (µs) - 0,000 001
-nanosecond  - 0,000 000 001
+nanosecond       - 0,000 000 001
 ````
 
 ````

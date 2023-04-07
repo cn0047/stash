@@ -31,6 +31,18 @@ func avoidHangWithSelect() {
 	}()
 	fmt.Scanln()
 }
+/*
+Result:
+reading
+got 0
+reading
+got 1
+reading
+got 2
+reading
+got nothing
+exit
+*/
 
 func hangToReadWithCommaOk() {
 	c := make(chan int, 3)

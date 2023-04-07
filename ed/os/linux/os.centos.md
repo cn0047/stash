@@ -1,4 +1,4 @@
-centos
+Centos
 -
 
 [packages](http://mirror.centos.org/centos/7/extras/x86_64/Packages/)
