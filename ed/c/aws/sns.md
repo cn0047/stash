@@ -23,8 +23,8 @@ The type of endpoint to subscribe:
 
 Components:
 * Topic.
-* Subscription.
 * Publisher.
+* Subscription.
 
 Topic settings:
 * Delivery retry policy:

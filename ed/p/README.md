@@ -53,7 +53,7 @@ The median is also known as the 50th percentile, and sometimes abbreviated as p5
 
 Proxy:
 * forward-proxy: 
-  * protects clients' online identity.
+  * protects clients online identity.
   * bypass browsing restrictions.
   * blocks access to certain content.
 * reverse-proxy:
@@ -108,7 +108,7 @@ IoT Protocols: MQTT, CoAP (lightweight HTTP).
 6. Presentation Layer - Translation of data between a networking service and an application
    (encoding/compression/encryption/decryption).
 5. Session Layer - managing communication sessions.
-4. Transport Layer -  reliable transmission of data segments between points on a network.
+4. Transport Layer -  reliable transmission of data segments between points on a network (TCP, UDP).
 3. Network Layer - structuring and managing a multi-node network,
    including addressing, routing and traffic control.
 2. Data Link Layer - reliable transmission of data frames between two nodes.

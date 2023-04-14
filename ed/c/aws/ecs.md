@@ -4,6 +4,10 @@ ECS (Elastic Container Service)
 [fargate pricing](https://aws.amazon.com/fargate/pricing/)
 
 ````sh
+Clusters > $name > Services > $name > Task definition > $task
+````
+
+````sh
 aws ecs list-clusters
 
 aws ecs list-task-definitions
@@ -42,15 +46,4 @@ deploy_dev:
     | grep --color=never -Eo 'lf-dev:[0-9]+' \
     | tail -n +6 \
     | while read v; do aws ecs deregister-task-definition --task-definition=$$v; done
-````
-
-# (ECR) Elastic Container Registry
-
-````sh
-aws ecr get-login --region us-east-1 --no-include-email
-aws ecr create-repository --region us-east-1 --repository-name rName
-
-aws ecr list-images --repository-name=x-eval
-
-aws ecr describe-images --region us-east-1 --repository-name lf-dev
 ````

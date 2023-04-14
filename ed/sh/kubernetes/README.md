@@ -16,7 +16,7 @@ open https://github.com/kubernetes/minikube/blob/master/docs/drivers.md#hyperkit
 
 Kubernetes - orchestrator for microservice apps (containers) (desired state management tool).
 <br>k8s has three namespaces by default: default, kube-system, kube-public.
-<br>Minikube - tool to use K8s for local env.
+<br>Minikube - tool to use k8s for local env.
 
 Advantages:
 * scalable (nodes).
@@ -86,7 +86,7 @@ Types:
 * NodePort
   Primitive way to get external traffic directly to service.
   Opens a specific port on all the nodes.
-* LoadBalancer.
+* LoadBalancer (externally available).
 * Ingress - Something like smart router.
 
 **ReplicaSet** controls that pods count matches desired count.

@@ -51,7 +51,7 @@ $GOOS         # (windows|linux|darwin)
 $GOARCH       # (386|amd64)
 $GOMAXPROCS   # (numLogicalProcessors) number of OS threads that can execute user-level Go code simultaneously.
 $GOTRACEBACK  # (none|single|all|system|crash) verbosity level in case of panic
-$GOGC         # Garbage Collector ↓
+$GOGC         # Garbage Collector, default GOGC=100
 $GODEBUG      # https://godoc.org/runtime#hdr-Environment_Variables
               # scheddetail=1 - detailed scheduler info
               # schedtrace=1000 - single line to standard error every 1000 milliseconds
@@ -405,6 +405,13 @@ type Logger interface {
     Log(message string)
 }
 ````
+
+From go1.18 interface may embed not just other interfaces, but any type,
+union of types, or infinite set of types that share the same underlying type.
+
+A type T implements interface I if:
+T is not an interface and is element of the type set of I; or
+T is an interface and the type set of T is a subset of the type set of I.
 
 #### Concurrency
 

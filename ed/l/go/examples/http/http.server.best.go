@@ -25,9 +25,9 @@ func main() {
 
 	s := http.Server{
 		Addr:         p,
+		Handler:      mux,
 		ReadTimeout:  2 * time.Second,
 		WriteTimeout: 2 * time.Second,
-		Handler:      mux,
 	}
 
 	signals := make(chan os.Signal, 1)

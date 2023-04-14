@@ -40,7 +40,7 @@ Keep their keys in sorted order, so that lookup and other operations can **use t
 
 * `Self-balancing binary search tree` (height-balanced) - is any node-based binary search tree
 that automatically **keeps its height small** in the face of arbitrary item insertions and deletions.
-Search performance = O(log n)
+Search performance = `O(log n)`.
 
 * `B-tree` - self-balancing, self managed, multi-level binary search tree.
 

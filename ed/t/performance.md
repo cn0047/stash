@@ -15,23 +15,24 @@ L1/L2 cache access   - 1-10 nanosecond
 L3 cache access      - 10-100 nanosecond
 System call (kernel) - 100-1000 nanosecond
 
-Context switch                         - 1-10 microsecond
-HTTP request                           - 10-100 microsecond
+Context switch                         -  1-10 microsecond
+HTTP request                           -  10-100 microsecond
 Read 1MB data from memory sequentially - ~15 microsecond
 Read 8K page from SSD                  - ~100 microsecond
 SSD page write                         - ~1000 microsecond
 Network roundtrip                      - ~100 microsecond
 
 Memcache/Redis operation               - ~1 millisecond (includes roundtrip)
-Intra-zone network roundtrip           - 5 millisecond
-HHD seek time                          - 5 millisecond
-Network roundtrip US-west -> US-east   - 10-100 millisecond
-Network roundtrip US-east -> Europe    - 10-100 millisecond
-Read 1GB sequentially from memory      - 10-100 millisecond
+Intra-zone network roundtrip           -  5 millisecond
+HHD seek time                          -  5 millisecond
+MySQL optimized read 1 row             - ~5-10 millisecond
+Network roundtrip US-west -> US-east   -  10-100 millisecond
+Network roundtrip US-east -> Europe    -  10-100 millisecond
+Read 1GB sequentially from memory      -  10-100 millisecond
 bcrypt password                        - ~300 millisecond
-TLS handshake                          - 250-500 millisecond (depends on participants distance)
-Network roundtrip US-west -> Singapore - 100-1000 millisecond
-Read 1GB sequentially from SSD         - 100-1000 millisecond
+TLS handshake                          -  250-500 millisecond (depends on participants distance)
+Network roundtrip US-west -> Singapore -  100-1000 millisecond
+Read 1GB sequentially from SSD         -  100-1000 millisecond
 
 Transfer 1GB over network within same region - ~10 second
 ````

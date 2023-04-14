@@ -23,6 +23,7 @@ Methods:
 * CONNECT - client asks an HTTP Proxy server to tunnel the TCP connection.
 * HEAD.
 * GET.
+* OPTIONS.
 * POST.
 * PUT.
 * PATCH.

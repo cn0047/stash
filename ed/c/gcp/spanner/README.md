@@ -5,6 +5,9 @@ Spanner
 [IAM](https://cloud.google.com/spanner/docs/iam)
 [query syntax](https://cloud.google.com/spanner/docs/reference/standard-sql/query-syntax#having_clause)
 [funcs](https://cloud.google.com/spanner/docs/reference/standard-sql/syntax)
+[array funcs])(https://cloud.google.com/spanner/docs/reference/standard-sql/arrays)
+[JSON data](https://cloud.google.com/spanner/docs/working-with-json)
+[JSONB data](https://cloud.google.com/spanner/docs/working-with-jsonb)
 [mutations](https://cloud.google.com/spanner/docs/modify-mutation-api)
 [TTL](https://cloud.google.com/spanner/docs/ttl/working-with-ttl#syntax)
 [golang](https://cloud.google.com/spanner/docs/getting-started/go)
@@ -16,6 +19,8 @@ Spanner
 [DML](https://cloud.google.com/spanner/docs/dml-tasks)
 [partitioned DML](https://cloud.google.com/spanner/docs/dml-partitioned)
 [mutations](https://cloud.google.com/spanner/docs/modify-mutation-api)
+[troubleshoot latency](https://cloud.google.com/spanner/docs/latency-points)
+[key visualizer](https://cloud.google.com/spanner/docs/key-visualizer)
 
 ````sh
 dbi=test-instance

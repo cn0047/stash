@@ -12,11 +12,13 @@ str := strconv.FormatInt(int64(int32), 10)                    // int32   -> str
 str := strconv.FormatInt(int64(intV), 10)                     // int     -> str
 int, err := strconv.Atoi("-42")                               // str     -> int
 int64, err := strconv.ParseInt(str, 10, 32); int32(int64)     // str     -> int32
-int64, err := strconv.ParseInt(str, 10, 64);                  // str     -> int64
+int64, err := strconv.ParseInt(str, 10, 64)                   // str     -> int64
 uint64, err := strconv.ParseUint(str, 10, 64)                 // str     -> uint64
+float32, err := strconv.ParseFloat(str, 32)                   // str     -> float32
 s := fmt.Sprintf("%.0f", fl64); int32, err := strconv.Atoi(s) // float64 -> int32
 ↑; int64 = int64(int32)                                       // float64 -> int64
 str := strconv.FormatBool(true)                               // bool    -> str
+int = int(int32)                                              // int32   -> int
 
 if !regexp.MustCompile(`^[\d]+$`).MatchString(ds) {}
 
