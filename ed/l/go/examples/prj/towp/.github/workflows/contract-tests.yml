@@ -1,0 +1,65 @@
+# This workflow can only be triggered by Pactflow webhook.
+# Contract tests are also run on PR event together with regular unit tests, as part of main CI.
+
+name: wp provider contract verification
+
+on:
+  repository_dispatch:
+    types:
+      - contract_requiring_verification_published
+
+env:
+  go-version: "1.19.1"
+
+jobs:
+  verify-consumer-contract:
+    runs-on: ubuntu-latest
+    env:
+      PACT_BROKER_URL: ${{ secrets.PACT_BROKER_URL }}
+      PACT_BROKER_TOKEN: ${{ secrets.PACT_BROKER_TOKEN }}
+    steps:
+      - name: checkout source code
+        uses: actions/checkout@v3
+#      - name: Get latest tag
+#        # this verification triggered by webhook, we want to compare consumer's contract
+#        # against the latest master tag, so here we fetch it
+#        uses: WyriHaximus/github-action-get-previous-tag@v1
+#        id: latest-tag
+      - uses: actions-ecosystem/action-get-latest-tag@v1
+        id: get-latest-tag
+      - name: "Setup Go"
+        uses: actions/setup-go@v3
+        with:
+          go-version: ${{ env.go-version }}
+      - name: "Configure access to to Go modules"
+        shell: bash
+        run: git config --global url."https://${{ secrets.toBOT_TOKEN }}:@github.com/to-com/".insteadOf "https://github.com/to-com/"
+      - name: "Run contract tests"
+        shell: bash
+        run: |
+          export DEV_MODE=true
+          export PATH=$PATH:$GOPATH/bin
+          go install github.com/pact-foundation/pact-go/v2@2.x.x
+          pact-go -l DEBUG install -d "/tmp"
+          pact-go version
+          
+          echo "consumer_name=${{ github.event.client_payload.consumer_name }}" 
+          echo "consumer_version = ${{ github.event.client_payload.consumer_version }}"
+          echo "latest_tag = ${{ steps.get-latest-tag.outputs.tag }}"
+          
+          export PACT_BROKER_URL=${{ env.PACT_BROKER_URL}}
+          export PACT_BROKER_TOKEN=${{ env.PACT_BROKER_TOKEN}}
+          export CONSUMER_NAME=${{ github.event.client_payload.consumer_name }}
+          export CONSUMER_VERSION=${{ github.event.client_payload.consumer_version }}
+          export PROVIDER_BRANCH=master
+          export PROVIDER_VERSION=${{ steps.get-latest-tag.outputs.tag }}
+          
+          echo "PROVIDER_BRANCH=${PROVIDER_BRANCH}"
+          echo "PROVIDER_VERSION=${PROVIDER_VERSION}"
+
+          case $CONSUMER_NAME in
+          outboundbff-wp)
+            go test ./... -run TestOutboundBackendPact;;
+          *)
+            echo "ERROR: pact verification test is not defined for your consumer" | exit 1 ;;
+          esac

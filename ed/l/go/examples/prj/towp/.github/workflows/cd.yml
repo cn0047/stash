@@ -1,0 +1,173 @@
+name: "CD"
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Environment"
+        required: true
+        default: dev
+        type: environment
+      git-ref:
+        description: "Git tag/commit"
+        required: false
+        type: string
+
+env:
+  service-name: "wp"
+  working-directory: "${{ github.workspace }}"
+  workflow-directory: "${{ github.workspace }}/.github/workflows"
+  go-version: "1.19.1"
+
+jobs:
+
+  init:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.setvars.outputs.matrix }}
+      release-version: ${{ steps.setvars.outputs.release-version }}
+      release-tag: ${{ steps.setvars.outputs.release-tag }}
+    steps:
+      - name: "Define environments matrix"
+        id: setvars
+        run: |
+          set -e
+          if [[ "${{github.event.inputs.environment}}" == "prod" ]]; then
+            echo "matrix=[\"prod\"]" >> $GITHUB_OUTPUT
+          elif [[ "${{github.event.inputs.environment}}" == "uat" ]]; then
+            echo "matrix=[\"uat\"]" >> $GITHUB_OUTPUT
+          elif [[ "${{github.event.inputs.environment}}" == "qai" ]]; then
+            echo "matrix=[\"qai\"]" >> $GITHUB_OUTPUT
+          elif [[ "${{github.event.inputs.environment}}" == "dev" ]]; then
+            echo "matrix=[\"dev\"]" >> $GITHUB_OUTPUT
+          else
+            echo "matrix=[]" >> $GITHUB_OUTPUT
+          fi
+          RELEASE_VERSION=$(date +%y-%m-%d).$GITHUB_RUN_NUMBER
+          RELEASE_TAG=r$(date +%y-%m-%d)-$GITHUB_RUN_NUMBER
+          echo "release-version=$RELEASE_VERSION" >> $GITHUB_OUTPUT
+          echo "release-tag=$RELEASE_TAG" >> $GITHUB_OUTPUT
+
+  publish-docker-image:
+    name: "Publish docker image"
+    needs: init
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+      pull-requests: write
+    strategy:
+      matrix:
+        env: ${{ fromJSON(needs.init.outputs.matrix) }}
+    environment: ${{ matrix.env }}
+    env:
+      GOPRIVATE: github.com/to-com/*
+      RELEASE_VERSION: ${{ needs.init.outputs.release-version }}
+      RELEASE_TAG: ${{ needs.init.outputs.release-tag }}
+    outputs:
+      env-name: ${{ steps.setvars.outputs.env-name }}
+      project-id: ${{ steps.setvars.outputs.project-id }}
+      regions: ${{ steps.setvars.outputs.regions }}
+      spanner-instance: ${{ steps.setvars.outputs.spanner-instance }}
+      spanner-db: ${{ steps.setvars.outputs.spanner-db }}
+      pubsub-topic-wave-plan: ${{ steps.setvars.outputs.pubsub-topic-wave-plan }}
+      docker-image-tag: ${{ steps.setvars.outputs.docker-image-tag }}
+      release-version: ${{ steps.setvars.outputs.release-version }}
+      release-tag: ${{ steps.setvars.outputs.release-tag }}
+    steps:
+      - name: "Checkout source code"
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.inputs.git-ref }}
+      - name: "Set vars"
+        id: setvars
+        run: |
+          PROJECT_ID=$(jq -r -c .${{ matrix.env }}.projectId ${{ env.workflow-directory }}/config.json)
+          REGIONS=$(jq -r -c .${{ matrix.env }}.regions ${{ env.workflow-directory }}/config.json)
+          PUBSUB_TOPIC_WAVE_PLAN=$(
+            jq -r -c .${{ matrix.env }}.pubSubwpTopic ${{ env.workflow-directory }}/config.json
+          )
+          SPANNER_INSTANCE=$(jq -r -c .${{ matrix.env }}.spannerInstance ${{ env.workflow-directory }}/config.json)
+          SPANNER_DB=$(jq -r -c .${{ matrix.env }}.spannerDB ${{ env.workflow-directory }}/config.json)
+          echo "env-name=${{ matrix.env }}" >> $GITHUB_OUTPUT
+          echo "project-id=$PROJECT_ID" >> $GITHUB_OUTPUT
+          echo "regions=$REGIONS" >> $GITHUB_OUTPUT
+          echo "spanner-instance=$SPANNER_INSTANCE" >> $GITHUB_OUTPUT 
+          echo "spanner-db=$SPANNER_DB" >> $GITHUB_OUTPUT 
+          echo "pubsub-topic-wave-plan=$PUBSUB_TOPIC_WAVE_PLAN" >> $GITHUB_OUTPUT
+          echo "docker-image-tag=$RELEASE_TAG" >> $GITHUB_OUTPUT
+          echo "release-version=$RELEASE_VERSION" >> $GITHUB_OUTPUT
+          echo "release-tag=$RELEASE_TAG" >> $GITHUB_OUTPUT
+      - name: "Publish docker image"
+        uses: ./.github/actions/publish-docker-image
+        with:
+          workload-identity-provider: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}
+          service-account-email: ${{ secrets.GCP_GITHUB_SERVICE_ACCOUNT_EMAIL }}
+          to-bot-token: ${{ secrets.toBOT_TOKEN }}
+          git-ref: ${{ github.event.inputs.git-ref }}
+          go-version: ${{ env.go-version }}
+          main-go-path: ${{ env.working-directory }}/cmd/${{ env.service-name }}
+          docker-repo: gcr.io/${{ steps.setvars.outputs.project-id }}/${{ env.service-name }}
+          docker-image-tag: ${{ steps.setvars.outputs.docker-image-tag }}
+
+  deploy-cloudrun:
+    name: "Deploy cloudrun"
+    needs: publish-docker-image
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+      pull-requests: write
+    strategy:
+      matrix:
+        region: ${{ fromJSON(needs.publish-docker-image.outputs.regions) }}
+    environment: ${{ needs.publish-docker-image.outputs.env-name }}
+    steps:
+      - name: "Checkout source code"
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.inputs.git-ref }}
+      - name: "Deploy cloudrun"
+        uses: ./.github/actions/deploy-cloudrun
+        with:
+          workload-identity-provider: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}
+          service-account-email: ${{ secrets.GCP_GITHUB_SERVICE_ACCOUNT_EMAIL }}
+          cloudrun-service-account-email: ${{ secrets.GCP_wp_SERVICE_ACCOUNT_EMAIL }}
+          service-name: ${{ env.service-name }}-${{ needs.publish-docker-image.outputs.env-name }}
+          env-name: ${{ needs.publish-docker-image.outputs.env-name }}
+          project-id: ${{ needs.publish-docker-image.outputs.project-id }}
+          region: ${{ matrix.region }}
+          docker-repo: gcr.io/${{ needs.publish-docker-image.outputs.project-id }}/${{ env.service-name }}
+          docker-image-tag: ${{ needs.publish-docker-image.outputs.docker-image-tag }}
+          cloud-run-tag: ${{ needs.publish-docker-image.outputs.release-tag }}
+          additional-flags: |
+            --concurrency=1000 \
+            --min-instances=1 \
+            --max-instances=30 \
+            --memory=512Mi \
+            --cpu=1000m \
+            --set-env-vars ENV=${{ needs.publish-docker-image.outputs.env-name }} \
+            --set-env-vars GOOGLE_PROJECT_ID=${{ needs.publish-docker-image.outputs.project-id }} \
+            --set-env-vars SPANNER_INSTANCE=${{ needs.publish-docker-image.outputs.spanner-instance }} \
+            --set-env-vars SPANNER_DB=${{ needs.publish-docker-image.outputs.spanner-db }} \
+            --set-env-vars WAVE_PLAN_TOPIC=${{ needs.publish-docker-image.outputs.pubsub-topic-wave-plan }} \
+            --set-env-vars HOST=0.0.0.0
+
+  call-migrate-workflow:
+    name: "Migrate DB"
+    needs: init
+    if: "${{ github.event.inputs.environment != 'prod' }}"
+    uses: ./.github/workflows/migrate.yml
+    with:
+      environment: "${{ github.event.inputs.environment }}"
+      command: "update"
+    secrets: inherit
+
+  release:
+    name: "Create GitHub Release"
+    needs: init
+    if: "${{ github.ref == 'refs/heads/master' }}"
+    uses: ./.github/workflows/release.yml
+    with:
+      version: ${{ needs.init.outputs.release-version }}
+    secrets: inherit

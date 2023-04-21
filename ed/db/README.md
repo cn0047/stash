@@ -29,6 +29,10 @@ and transforming or processing it in some way.
 If you lose derived data, you can recreate it from the original source.
 A classic example is a cache.
 
+Transaction - unit of work  performed within DB
+that is treated in coherent and reliable way independent of other transactions
+(atomic, isolated, with failure recovery & keeps DB consistent).
+
 ## ACID
 
 <br>Atomicity - all or nothing (an indivisible and irreducible series of database operations).

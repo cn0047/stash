@@ -1,0 +1,38 @@
+{
+  "uat": {
+    "projectId": "prj-outbound-uat-a337",
+    "regions": [
+      "asia-east1",
+      "europe-west1",
+      "us-central1"
+    ],
+    "spannerInstance": "outbound-nam-eur-asia",
+    "spannerDB": "wp-uat",
+    "pubSubwpTopic": "uat.wp.events"
+  },
+  "dev": {
+    "projectId": "prj-outbound-nonprod-dbec",
+    "regions": ["us-central1"],
+    "spannerInstance": "outbound-us",
+    "spannerDB": "wp-dev",
+    "pubSubwpTopic": "dev-nonprod.wp.events"
+  },
+  "qai": {
+    "projectId": "prj-outbound-nonprod-dbec",
+    "regions": ["us-central1"],
+    "spannerInstance": "outbound-us",
+    "spannerDB": "wp-qai",
+    "pubSubwpTopic": "qai-nonprod.wp.events"
+  },
+  "prod": {
+    "projectId": "prj-outbound-prod-c458",
+    "regions": [
+      "asia-east1",
+      "europe-west1",
+      "us-central1"
+    ],
+    "spannerInstance": "outbound-nam-eur-asia",
+    "spannerDB": "wp-prod",
+    "pubSubwpTopic": "prod.wp.events"
+  }
+}

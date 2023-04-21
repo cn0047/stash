@@ -1,0 +1,15 @@
+{
+  "sandbox": {
+    "projectId": "sandbox-20211128-sy7ccu",
+    "envType": "sandbox",
+    "regions": [
+      "us-central1"
+    ],
+    "stableRegions": [
+      "us-central1"
+    ],
+    "allRegions": [
+      "us-central1"
+    ]
+  }
+}

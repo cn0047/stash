@@ -1,0 +1,61 @@
+name: "Publish docker image"
+description: "Publish docker image action"
+
+inputs:
+  workload-identity-provider:
+    required: true
+    description: "Workload identity provider"
+  service-account-email:
+    required: true
+    description: "Service account email"
+  to-bot-token:
+    required: true
+    description: "secrets.toBOT_TOKEN"
+  git-ref:
+    description: "Git tag/commit"
+    required: true
+  go-version:
+    description: "Go version"
+    required: true
+  main-go-path:
+    description: "Path to main.go file"
+    required: true
+  docker-repo:
+    description: "Docker repo"
+    required: true
+  docker-image-tag:
+    description: "Tag for docker image"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: "Setup Go"
+      uses: actions/setup-go@v3
+      with:
+        go-version: ${{ inputs.go-version }}
+    - name: "Checkout source code"
+      uses: actions/checkout@v3
+      with:
+        ref: ${{ inputs.git-ref }}
+    - name: "Configure access to to Go modules"
+      shell: bash
+      run: git config --global url."https://${{ inputs.to-bot-token }}:@github.com/to-com/".insteadOf "https://github.com/to-com/"
+    - name: "Setup ko"
+      uses: ko-build/setup-ko@v0.6
+    - name: "Authenticate to Google Cloud"
+      uses: google-github-actions/auth@v1
+      with:
+        token_format: access_token
+        workload_identity_provider: ${{ inputs.workload-identity-provider }}
+        service_account: ${{ inputs.service-account-email }}
+    - name: "Set up Cloud SDK"
+      uses: google-github-actions/setup-gcloud@v0
+    - run: gcloud auth configure-docker
+      shell: bash
+    - name: "Publish docker image"
+      shell: bash
+      env:
+        KO_DOCKER_REPO: ${{ inputs.docker-repo }}
+        TAG: ${{ inputs.docker-image-tag }}
+      run: cd ${{ inputs.main-go-path }} && ko publish main.go --tags ${{ inputs.docker-image-tag }} -B

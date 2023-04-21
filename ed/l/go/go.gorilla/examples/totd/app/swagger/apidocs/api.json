@@ -1,0 +1,827 @@
+{
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "description": "API for dispatch lane and flow rack.\nSchemes:\nhttp\nhttps",
+    "title": "API.",
+    "version": "1.0.0"
+  },
+  "host": "td.to-api.com",
+  "basePath": "/v2",
+  "paths": {
+    "/clients/{clientId}/mfcs/{mfcId}/configs": {
+      "get": {
+        "summary": "Get configs.",
+        "operationId": "getConfigs",
+        "parameters": [
+          {
+            "$ref": "#/parameters/clientId"
+          },
+          {
+            "$ref": "#/parameters/mfcId"
+          },
+          {
+            "type": "string",
+            "name": "ClientID",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "MfcID",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "schema": {
+              "$ref": "#/definitions/listConfigsResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request.",
+            "schema": {
+              "$ref": "#/definitions/Response400"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update config.",
+        "operationId": "updateConfig",
+        "parameters": [
+          {
+            "$ref": "#/parameters/clientId"
+          },
+          {
+            "$ref": "#/parameters/mfcId"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/updateConfigsRequest"
+            }
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/updateConfigsRequest"
+            }
+          },
+          {
+            "type": "string",
+            "name": "ClientID",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "MfcID",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "schema": {
+              "$ref": "#/definitions/updateConfigsResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request.",
+            "schema": {
+              "$ref": "#/definitions/Response400"
+            }
+          }
+        }
+      }
+    },
+    "/clients/{clientId}/mfcs/{mfcId}/toteAssignments": {
+      "get": {
+        "summary": "List tote assignments.",
+        "externalDocs": {
+          "description": "Previous endpoint: https://host/api/v1/command-server/message/ramp-state",
+          "url": "https://ims-api-maf-uat.tom.to.com/api/v1/command-server/index.html#/message"
+        },
+        "operationId": "listToteAssignments",
+        "parameters": [
+          {
+            "$ref": "#/parameters/clientId"
+          },
+          {
+            "$ref": "#/parameters/mfcId"
+          },
+          {
+            "enum": [
+              "groupedByOrder"
+            ],
+            "type": "string",
+            "name": "view",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "orderId",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "ClientID",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "MfcID",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "OrderID",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "View",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "schema": {
+              "$ref": "#/definitions/listToteAssignmentsResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request.",
+            "schema": {
+              "$ref": "#/definitions/Response400"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete tote assignment.",
+        "externalDocs": {
+          "description": "Previous endpoint: https://host/api/v1/command-server/message/free-up-channel",
+          "url": "https://ims-api-maf-uat.tom.to.com/api/v1/command-server/index.html#/message"
+        },
+        "operationId": "deleteToteAssignment",
+        "parameters": [
+          {
+            "$ref": "#/parameters/clientId"
+          },
+          {
+            "$ref": "#/parameters/mfcId"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi",
+            "name": "toteId",
+            "in": "query",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "ClientID",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "MfcID",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi",
+            "name": "ToteID",
+            "in": "query",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "schema": {
+              "$ref": "#/definitions/deleteToteAssignmentResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request.",
+            "schema": {
+              "$ref": "#/definitions/Response400"
+            }
+          }
+        }
+      }
+    },
+    "/clients/{clientId}/mfcs/{mfcId}/toteAssignments/{toteAssignmentId}": {
+      "post": {
+        "summary": "Create tote assignment wit order and lane.",
+        "externalDocs": {
+          "description": "Previous endpoint: https://host/api/v1/command-server/message/allocate-channel",
+          "url": "https://ims-api-maf-uat.tom.to.com/api/v1/command-server/index.html#/message"
+        },
+        "operationId": "createToteAssignment",
+        "parameters": [
+          {
+            "$ref": "#/parameters/clientId"
+          },
+          {
+            "$ref": "#/parameters/mfcId"
+          },
+          {
+            "$ref": "#/parameters/toteAssignmentId"
+          },
+          {
+            "type": "boolean",
+            "description": "Use it only for development purposes.",
+            "name": "dryRun",
+            "in": "query"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/createToteAssignmentRequest"
+            }
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/createToteAssignmentRequest"
+            }
+          },
+          {
+            "type": "string",
+            "name": "ClientID",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "boolean",
+            "description": "Use it only for development purposes.",
+            "name": "DryRun",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "MfcID",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "ToteAssignmentID",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "schema": {
+              "$ref": "#/definitions/createToteAssignmentResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request.",
+            "schema": {
+              "$ref": "#/definitions/Response400"
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update tote assignment (not entire resource but only provided attributes like: laneId).",
+        "externalDocs": {
+          "description": "Previous endpoint: https://host/api/v1/command-server/message/move-error-ramp",
+          "url": "https://ims-api-maf-uat.tom.to.com/api/v1/command-server/index.html#/message"
+        },
+        "operationId": "updateToteAssignment",
+        "parameters": [
+          {
+            "$ref": "#/parameters/clientId"
+          },
+          {
+            "$ref": "#/parameters/mfcId"
+          },
+          {
+            "$ref": "#/parameters/toteAssignmentId"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/updateToteAssignmentRequest"
+            }
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/updateToteAssignmentRequest"
+            }
+          },
+          {
+            "type": "string",
+            "name": "ClientID",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "MfcID",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "ToteAssignmentID",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "schema": {
+              "$ref": "#/definitions/updateToteAssignmentResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request.",
+            "schema": {
+              "$ref": "#/definitions/Response400"
+            }
+          }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "summary": "Health check.",
+        "operationId": "healthCheck",
+        "responses": {
+          "200": {
+            "description": "Successful response."
+          },
+          "400": {
+            "description": "Bad Request.",
+            "schema": {
+              "$ref": "#/definitions/Response400"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Config": {
+      "type": "object",
+      "properties": {
+        "clientId": {
+          "type": "string",
+          "example": "maf"
+        },
+        "count": {
+          "type": "integer",
+          "example": 17
+        },
+        "depth": {
+          "type": "integer",
+          "example": 3
+        },
+        "env": {
+          "type": "string",
+          "example": "dev"
+        },
+        "errorRamp": {
+          "type": "integer",
+          "example": 99
+        },
+        "expressLaneMapping": {
+          "description": "Express lanes mapping, where key is priority ID and value is actual lane ID.",
+          "type": "object",
+          "example": "{\"1\":5}"
+        },
+        "flowRacksMapping": {
+          "description": "Flow racks mapping.",
+          "type": "object",
+          "example": "{\"1\":\"R7L2P01\"}"
+        },
+        "idGen": {
+          "description": "Format string to generate/format id.",
+          "type": "string",
+          "example": "DISPATCH%02d."
+        },
+        "laneMapping": {
+          "description": "Lanes mapping, where key is priority ID and value is actual lane ID.",
+          "type": "object",
+          "example": "{\"1\":2, \"2\":1}"
+        },
+        "mfcId": {
+          "type": "string",
+          "example": "D01"
+        },
+        "start": {
+          "type": "integer",
+          "example": 1
+        }
+      }
+    },
+    "Response400": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "error": {
+                "description": "Actual error message.",
+                "type": "string",
+                "example": "Invalid clientId."
+              },
+              "ref": {
+                "description": "In case when provided invalid parameter 'clientId' this field will contain 'clientId' as reference to source of error.",
+                "type": "string",
+                "example": "clientId"
+              },
+              "type": {
+                "type": "string",
+                "example": "validation"
+              }
+            }
+          }
+        }
+      }
+    },
+    "ToteAssignment": {
+      "type": "object",
+      "properties": {
+        "clientId": {
+          "type": "string",
+          "example": "maf"
+        },
+        "createdAt": {
+          "type": "integer",
+          "example": 1640249542
+        },
+        "id": {
+          "type": "string",
+          "example": 99800700119149
+        },
+        "laneId": {
+          "type": "string",
+          "example": "DISPATCH01"
+        },
+        "mfcId": {
+          "type": "string",
+          "example": "do1"
+        },
+        "orderId": {
+          "type": "string",
+          "example": "pp_052-101102934"
+        },
+        "toteId": {
+          "type": "string",
+          "example": 99800700119149
+        }
+      }
+    },
+    "createToteAssignmentRequest": {
+      "type": "object",
+      "properties": {
+        "toteAssignment": {
+          "type": "object",
+          "properties": {
+            "isExpress": {
+              "type": "boolean"
+            },
+            "orderId": {
+              "type": "string"
+            },
+            "toteId": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "createToteAssignmentResponse": {
+      "type": "object",
+      "properties": {
+        "toteAssignment": {
+          "$ref": "#/definitions/ToteAssignment"
+        }
+      }
+    },
+    "deleteToteAssignmentResponse": {
+      "type": "object",
+      "properties": {
+        "toteAssignment": {
+          "$ref": "#/definitions/ToteAssignment"
+        }
+      }
+    },
+    "listConfigsResponse": {
+      "type": "object",
+      "properties": {
+        "configs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Config"
+          }
+        }
+      }
+    },
+    "listToteAssignmentsResponse": {
+      "type": "object",
+      "properties": {
+        "balance \u003c!-- when view=groupedByOrder --\u003e": {
+          "description": "Map where key looks like: sc-a:0124:DISPATCH04, and value is array of totes, like: ['99800700116902', '99900700125314'].",
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "example": "{\"sc-a:0124:DISPATCH07\": [\"99800700116902\"]}"
+        },
+        "orders \u003c!-- when view=groupedByOrder --\u003e": {
+          "description": "Map where key is order id and value is array of totes, like: ['99800700116902'].",
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "example": "{\"pp_052-101102934\": [\"99800700119149\"]}"
+        },
+        "toteAssignments \u003c!-- default --\u003e": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ToteAssignment"
+          }
+        }
+      }
+    },
+    "updateConfigsRequest": {
+      "type": "object",
+      "properties": {
+        "config": {
+          "$ref": "#/definitions/Config"
+        }
+      }
+    },
+    "updateConfigsResponse": {
+      "type": "object",
+      "properties": {
+        "config": {
+          "$ref": "#/definitions/Config"
+        }
+      }
+    },
+    "updateToteAssignmentRequest": {
+      "type": "object",
+      "properties": {
+        "toteAssignment": {
+          "type": "object",
+          "properties": {
+            "laneId": {
+              "description": "Particular laneId like: DISPATCH01 or error in case of error lane.",
+              "type": "string",
+              "example": "DISPATCH01"
+            },
+            "toteId": {
+              "type": "string",
+              "example": 99800700119149
+            }
+          }
+        }
+      }
+    },
+    "updateToteAssignmentResponse": {
+      "type": "object",
+      "properties": {
+        "toteAssignment": {
+          "$ref": "#/definitions/ToteAssignment"
+        }
+      }
+    }
+  },
+  "parameters": {
+    "clientId": {
+      "type": "string",
+      "name": "clientId",
+      "in": "path",
+      "required": true
+    },
+    "laneId": {
+      "type": "string",
+      "name": "laneId",
+      "in": "path",
+      "required": true
+    },
+    "mfcId": {
+      "type": "string",
+      "name": "mfcId",
+      "in": "path",
+      "required": true
+    },
+    "toteAssignmentId": {
+      "type": "string",
+      "name": "toteAssignmentId",
+      "in": "path",
+      "required": true
+    },
+    "toteId": {
+      "type": "string",
+      "name": "toteId",
+      "in": "path",
+      "required": true
+    }
+  },
+  "responses": {
+    "createToteAssignmentBadRequest": {
+      "description": "CreateToteAssignmentBadRequest Bad Request.",
+      "schema": {
+        "$ref": "#/definitions/Response400"
+      },
+      "headers": {
+        "body": {
+          "description": "In: Body"
+        }
+      }
+    },
+    "createToteAssignmentOK": {
+      "description": "CreateToteAssignmentOK Successful response.",
+      "schema": {
+        "$ref": "#/definitions/createToteAssignmentResponse"
+      },
+      "headers": {
+        "body": {
+          "description": "In: Body"
+        }
+      }
+    },
+    "deleteToteAssignmentBadRequest": {
+      "description": "DeleteToteAssignmentBadRequest Bad Request.",
+      "schema": {
+        "$ref": "#/definitions/Response400"
+      },
+      "headers": {
+        "body": {
+          "description": "In: Body"
+        }
+      }
+    },
+    "deleteToteAssignmentOK": {
+      "description": "DeleteToteAssignmentOK Successful response.",
+      "schema": {
+        "$ref": "#/definitions/deleteToteAssignmentResponse"
+      },
+      "headers": {
+        "body": {
+          "description": "In: Body"
+        }
+      }
+    },
+    "getConfigsBadRequest": {
+      "description": "GetConfigsBadRequest Bad Request.",
+      "schema": {
+        "$ref": "#/definitions/Response400"
+      },
+      "headers": {
+        "body": {
+          "description": "In: Body"
+        }
+      }
+    },
+    "getConfigsOK": {
+      "description": "GetConfigsOK Successful response.",
+      "schema": {
+        "$ref": "#/definitions/listConfigsResponse"
+      },
+      "headers": {
+        "body": {
+          "description": "In: Body"
+        }
+      }
+    },
+    "healthCheckBadRequest": {
+      "description": "HealthCheckBadRequest Bad Request.",
+      "schema": {
+        "$ref": "#/definitions/Response400"
+      },
+      "headers": {
+        "body": {
+          "description": "In: Body"
+        }
+      }
+    },
+    "healthCheckOK": {
+      "description": "HealthCheckOK Successful response."
+    },
+    "listToteAssignmentsBadRequest": {
+      "description": "ListToteAssignmentsBadRequest Bad Request.",
+      "schema": {
+        "$ref": "#/definitions/Response400"
+      },
+      "headers": {
+        "body": {
+          "description": "In: Body"
+        }
+      }
+    },
+    "listToteAssignmentsOK": {
+      "description": "ListToteAssignmentsOK Successful response.",
+      "schema": {
+        "$ref": "#/definitions/listToteAssignmentsResponse"
+      },
+      "headers": {
+        "body": {
+          "description": "In: Body"
+        }
+      }
+    },
+    "updateConfigBadRequest": {
+      "description": "UpdateConfigBadRequest Bad Request.",
+      "schema": {
+        "$ref": "#/definitions/Response400"
+      },
+      "headers": {
+        "body": {
+          "description": "In: Body"
+        }
+      }
+    },
+    "updateConfigOK": {
+      "description": "UpdateConfigOK Successful response.",
+      "schema": {
+        "$ref": "#/definitions/updateConfigsResponse"
+      },
+      "headers": {
+        "body": {
+          "description": "In: Body"
+        }
+      }
+    },
+    "updateToteAssignmentBadRequest": {
+      "description": "UpdateToteAssignmentBadRequest Bad Request.",
+      "schema": {
+        "$ref": "#/definitions/Response400"
+      },
+      "headers": {
+        "body": {
+          "description": "In: Body"
+        }
+      }
+    },
+    "updateToteAssignmentOK": {
+      "description": "UpdateToteAssignmentOK Successful response.",
+      "schema": {
+        "$ref": "#/definitions/updateToteAssignmentResponse"
+      },
+      "headers": {
+        "body": {
+          "description": "In: Body"
+        }
+      }
+    }
+  }
+}

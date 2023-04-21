@@ -1,0 +1,467 @@
+openapi: 3.0.3
+info:
+  title: Wave Planner OpenAPI
+  description: |-
+    This is a specification for Wave Planner service
+  version: 1.0.1
+tags:
+  - name: wp
+paths:
+  /v1/retailers/{retailerId}/mfcs/{mfcId}/wp:
+    get:
+      tags:
+        - wp
+      summary: Get wave plan for site
+      description: Retrieves waves and schedules for site
+      operationId: getwp
+      parameters:
+        - name: retailerId
+          in: path
+          description: Id of retailer
+          required: true
+          schema:
+            type: string
+          example: "maf"
+        - name: mfcId
+          in: path
+          description: Id of mfc
+          required: true
+          schema:
+            type: string
+          example: "D02"
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetwpSuccessResponse'
+    post:
+      tags:
+        - wp
+      summary: Create wave plan
+      description: Add a new wave plan for for site
+      operationId: createwp
+      parameters:
+        - name: retailerId
+          in: path
+          description: Id of retailer
+          required: true
+          schema:
+            type: string
+          example: "MAF"
+        - name: mfcId
+          in: path
+          description: Id of mfc
+          required: true
+          schema:
+            type: string
+          example: "D02"
+        - name: X-Token
+          in: header
+          description: "Access token that validated against Auth service"
+          required: true
+          schema:
+            type: string
+          example: "3MjSxEhTDHL79udAS"
+      requestBody:
+        description: create wave plan request body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatewpRequestBody'
+        required: true
+      responses:
+        '201':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatewpSuccessResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatewpNonSuccessResponse'
+
+        '500':
+          description: Plan storage issue
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatewpNonSuccessResponse'
+  /v1/triggers:generate:
+    post:
+      tags:
+        - wp
+      summary: Generate triggers
+      description: Generate triggers for all schedules stored in DB.
+      operationId: generateTriggers
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenerateTriggersSuccessResponse'
+  /v1/triggers:fire:
+    post:
+      tags:
+        - wp
+      summary: Fire triggers
+      description: Fires non-fired triggers
+      operationId: fireTriggers
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FireTriggersSuccessResponse'
+  /v1/triggers:
+    get:
+      tags:
+        - wp
+      summary: Get triggers
+      description: Get triggers details
+      operationId: getTriggers
+      parameters:
+        - name: retailerId
+          in: query
+          description: Id of retailer
+          required: true
+          example: MAF
+          schema:
+            type: string
+        - name: mfcId
+          in: query
+          description: Id of mfc
+          required: true
+          example: D02
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTriggersSuccessResponse'
+
+components:
+  schemas:
+    UserId:
+      type: string
+      description: "Encoded user"
+      example: "dsaAddgG"
+    CutoffTime:
+      type: string
+      description: "Cutoff time in HH:mm format"
+      example: "14:00"
+    FromTime:
+      type: string
+      description: "Stage order from time in HH:mm format"
+      example: "16:00"
+    ToTime:
+      type: string
+      description: "Stage order to time in HH:mm format"
+      example: "18:00"
+
+    ScheduleResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: "uuid"
+          example: "791e58c7-c45f-4e18-bdf0-110c5cec9dce"
+        schedule_type:
+          type: string
+          enum:
+            - prelim_picklist
+            - delta_picklist
+        schedule_time:
+          type: string
+          description: "Schedule time in HH:mm format"
+          example: "12:00"
+
+    WaveResponse:
+      type: object
+      required:
+        - id
+        - cutoff_time
+        - from_time
+        - to_time
+      properties:
+        id:
+          type: string
+          format: "uuid"
+          example: "791e58c6-c45f-4e18-bdf0-110c5cec9dce"
+        cutoff_time:
+          $ref: "#/components/schemas/CutoffTime"
+        from_time:
+          $ref: "#/components/schemas/FromTime"
+        to_time:
+          $ref: "#/components/schemas/ToTime"
+        schedules:
+          type: array
+          description: "List of schedules for wave"
+          items:
+            $ref: '#/components/schemas/ScheduleResponse'
+
+    GetwpSuccessResponse:
+      type: object
+      required:
+        - id
+        - retailer_id
+        - mfc_id
+        - timezone
+        - created_at
+        - created_by
+        - waves
+      properties:
+        id:
+          type: string
+          format: "uuid"
+          example: "791e58c6-c45f-4e18-bdf0-010c5cec9dce"
+        retailer_id:
+          type: string
+          example: "MAF"
+        mfc_id:
+          type: string
+          example: "D02"
+        timezone:
+          type: string
+          example: "Asia/Dubai"
+        created_at:
+          type: string
+          format: date-time
+          example: "2016-11-01T20:44:39Z"
+        created_by:
+          $ref: '#/components/schemas/UserId'
+        waves:
+          description: List of waves
+          type: array
+          items:
+            $ref: '#/components/schemas/WaveResponse'
+
+    PlanSaveError:
+      type: object
+      required:
+        - error
+      properties:
+        cutoff_time:
+          $ref: "#/components/schemas/CutoffTime"
+        error_fields:
+          type: array
+          description: "List of schedules for wave"
+          items:
+            type: string
+        error:
+          type: string
+          example: "Site ID is empty"
+
+    CreateWaveRequest:
+      type: object
+      required:
+        - cutoff_time
+        - from_time
+        - to_time
+      properties:
+        cutoff_time:
+          $ref: "#/components/schemas/CutoffTime"
+        from_time:
+          $ref: "#/components/schemas/FromTime"
+        to_time:
+          $ref: "#/components/schemas/ToTime"
+        prelim_picklist_schedule_time:
+          type: string
+          description: "Trigger time for preliminary picklist in HH:mm format"
+          example: "12:00"
+        delta_picklist_schedule_time:
+          type: string
+          description: "Trigger time for delta picklist in HH:mm format"
+          example: "13:00"
+
+    CreatewpRequestBody:
+      type: object
+      required:
+        - waves
+      properties:
+        waves:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateWaveRequest'
+
+    CreatewpSuccessResponse:
+      type: object
+      required:
+        - id
+        - retailer_id
+        - mfc_id
+        - created_at
+        - created_by
+        - waves
+      properties:
+        id:
+          type: string
+          format: "uuid"
+          example: "791e58c6-c45f-4e18-bdf0-010c5cec9dce"
+        retailer_id:
+          type: string
+          example: "MAF"
+        mfc_id:
+          type: string
+          example: "D02"
+        created_at:
+          type: string
+          format: date-time
+          example: "2016-11-01T20:44:39Z"
+        created_by:
+          $ref: '#/components/schemas/UserId'
+        waves:
+          description: List of waves
+          type: array
+          items:
+            $ref: '#/components/schemas/WaveResponse'
+
+    CreatewpNonSuccessResponse:
+      type: object
+      required:
+        - errors
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlanSaveError'
+
+    TriggerResponse:
+      type: object
+      required:
+        - retailer_id
+        - mfc_id
+        - wave_plan_id
+        - wave_id
+        - cutoff_time
+        - schedule_id
+        - schedule_time
+        - trigger_at
+        - created_at
+        - cutoff_datetime
+        - fire_at
+      properties:
+        retailer_id:
+          type: string
+          example: "MAF"
+        mfc_id:
+          type: string
+          example: "D02"
+        wave_plan_id:
+          type: string
+          format: "uuid"
+          example: "791e58c6-c45f-4e18-bdf0-010c5cec9dce"
+        wave_id:
+          type: string
+          format: "uuid"
+          example: "791e58c6-c45f-4e18-bdf0-010c5cec9dce"
+        cutoff_time:
+          $ref: "#/components/schemas/CutoffTime"
+        schedule_id:
+          type: string
+          format: "uuid"
+          example: "791e58c6-c45f-4e18-bdf0-010c5cec9dce"
+        schedule_time:
+          type: string
+          description: "Schedule time in HH:mm format"
+          example: "12:00"
+        trigger_at:
+          type: string
+          format: date-time
+          example: "2016-11-01T20:44:39Z"
+        cutoff_datetime:
+          type: string
+          format: date-time
+          example: "2016-11-01T19:44:39Z"
+        created_at:
+          type: string
+          format: date-time
+          example: "2016-11-01T19:44:39Z"
+        fired_at:
+          type: string
+          nullable: true
+          format: date-time
+          example: "2016-11-01T20:44:39Z"
+
+    GetTriggersSuccessResponse:
+      type: object
+      required:
+        - triggers
+      properties:
+        triggers:
+          description: List of triggers
+          type: array
+          items:
+            $ref: '#/components/schemas/TriggerResponse'
+
+    FireTriggerResponse:
+      type: object
+      required:
+        - retailer_id
+        - mfc_id
+        - schedule_id
+        - schedule_type
+        - cutoff_datetime
+        - trigger_at
+        - created_at
+        - fired_at
+      properties:
+        retailer_id:
+          type: string
+          example: "MAF"
+        mfc_id:
+          type: string
+          example: "D02"
+        schedule_id:
+          type: string
+          format: "uuid"
+          example: "791e58c6-c45f-4e18-bdf0-110c5cec9dce"
+        schedule_type:
+          type: string
+          enum:
+            - prelim_picklist
+            - delta_picklist
+        cutoff_datetime:
+          type: string
+          format: date-time
+          example: "2016-11-01T20:44:39Z"
+        trigger_at:
+          type: string
+          format: date-time
+          example: "2016-11-01T20:44:39Z"
+        created_at:
+          type: string
+          format: date-time
+          example: "2016-11-01T20:44:39Z"
+        fired_at:
+          type: string
+          format: date-time
+          example: "2016-11-01T20:44:39Z"
+
+    FireTriggersSuccessResponse:
+      type: "object"
+      required:
+        - triggers
+      properties:
+        triggers:
+          description: List of triggers
+          type: "array"
+          items:
+            $ref: "#/components/schemas/FireTriggerResponse"
+
+    GenerateTriggersSuccessResponse:
+      type: object
+      properties:
+        generated_triggers:
+          description: Created triggers count
+          type: integer
+          example: 5

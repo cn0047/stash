@@ -72,6 +72,11 @@ terraform init
 terraform init -reconfigure
 terraform init -backend-config="bucket=$bkt"
 
+terraform graph
+terraform fmt # format tf files
+terraform fmt -recursive
+terraform output
+
 terraform validate
 
 # shows plan which will by applied
@@ -106,11 +111,6 @@ terraform destroy -target=resource # only certain resource, like: google_cloud_r
 terraform destroy -auto-approve -input=false -target=$resource
 
 terraform taint # mark resource for recreation
-
-terraform graph
-terraform fmt # format tf files
-terraform fmt -recursive
-terraform output
 
 # workspace
 terraform workspace list

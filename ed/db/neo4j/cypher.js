@@ -1,6 +1,6 @@
 // Cypher
 
-keys()
+keys() // list of all property names for node
 labels()
 nodes()
 relationships()

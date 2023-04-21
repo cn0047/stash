@@ -1,0 +1,19 @@
+{
+  "waves": [
+    {
+      "cutoff_time": "10:00",
+      "from_time": "12:00",
+      "to_time": "17:59"
+    },
+    {
+      "cutoff_time": "11:00",
+      "from_time": "18:00",
+      "to_time": "22:59"
+    },
+    {
+      "cutoff_time": "13:30",
+      "from_time": "23:00",
+      "to_time": "11:59"
+    }
+  ]
+}

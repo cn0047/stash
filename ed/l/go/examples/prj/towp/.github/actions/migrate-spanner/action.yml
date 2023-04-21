@@ -1,0 +1,43 @@
+name: "Migrate spanner"
+description: "Migrate spanner action"
+
+inputs:
+  workload-identity-provider:
+    required: true
+    description: "Workload identity provider"
+  service-account-email:
+    required: true
+    description: "Service account email"
+  env-name:
+    description: "Environment name"
+    required: true
+  project-id:
+    description: "GCP project ID"
+    required: true
+  spanner-instance-name:
+    description: "Spanner instance name"
+    required: true
+  spanner-db-name:
+    description: "Spanner DB name"
+    required: true
+  command:
+    description: "`update / updateCount 1 / rollbackCount 1` - command for liquibase with count number (if needed)."
+    required: true
+    default: "update"
+
+runs:
+  using: "composite"
+  steps:
+    - name: "Checkout source code"
+      uses: actions/checkout@v3
+    - name: "Authenticate to Google Cloud"
+      uses: google-github-actions/auth@v1
+      with:
+        token_format: access_token
+        workload_identity_provider: ${{ inputs.workload-identity-provider }}
+        service_account: ${{ inputs.service-account-email }}
+    - name: "Migrate"
+      shell: bash
+      run: |
+        cp $GOOGLE_APPLICATION_CREDENTIALS ${{ github.workspace }}/database/credentials.json
+        docker run --rm -e GOOGLE_APPLICATION_CREDENTIALS="/liquibase/changelog/credentials.json" -v ${{ github.workspace }}/database:/liquibase/changelog liquibase/liquibase:4.17.2 --defaultsFile=/liquibase/changelog/schema.properties --url=jdbc:cloudspanner:/projects/${{ inputs.project-id }}/instances/${{ inputs.spanner-instance-name }}/databases/${{ inputs.spanner-db-name }} ${{ inputs.command }}

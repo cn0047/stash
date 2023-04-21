@@ -1,0 +1,30 @@
+{
+  "waves": [
+    {
+      "cutoff_time": "10:00",
+      "from_time": "12:00",
+      "to_time": "14:59",
+      "prelim_picklist_schedule_time": "09:00"
+    },
+    {
+      "cutoff_time": "11:00",
+      "from_time": "15:00",
+      "to_time": "17:59",
+      "prelim_picklist_schedule_time": "09:00",
+      "delta_picklist_schedule_time": "10:00"
+    },
+    {
+      "cutoff_time": "14:00",
+      "from_time": "18:00",
+      "to_time": "22:59",
+      "prelim_picklist_schedule_time": "10:00",
+      "delta_picklist_schedule_time": "13:00"
+    },
+    {
+      "cutoff_time": "16:00",
+      "from_time": "23:00",
+      "to_time": "11:59",
+      "delta_picklist_schedule_time": "15:00"
+    }
+  ]
+}

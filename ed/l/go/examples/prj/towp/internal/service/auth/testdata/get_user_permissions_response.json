@@ -1,0 +1,28 @@
+{
+  "user_id": "OSdP9Zt7yeNguXDXjkkRjV7nL2b2",
+  "email": "tom.system@to.com",
+  "name": "it",
+  "roles": [
+    {
+      "role": "admin",
+      "product": "tom",
+      "permissions": [
+        "can_access",
+        "can_edit_attributes",
+        "can_edit_coupons",
+        "can_manage_config_values",
+        "can_play_calls"
+      ],
+      "environment": {
+        "shoppingsite_mapping": {
+          "default": [
+            "66000789",
+            "mfc-1",
+            "9999",
+            "mfc-volo-test"
+          ]
+        }
+      }
+    }
+  ]
+}

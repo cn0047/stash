@@ -1,0 +1,33 @@
+name: "Create GitHub release"
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version"
+        required: true
+        type: string
+  workflow_call:
+    inputs:
+      version:
+        description: "Version"
+        required: true
+        type: string
+
+env:
+  workflow-directory: "${{ github.workspace }}/.github/workflows"
+
+jobs:
+
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout source code"
+        uses: actions/checkout@v3
+      - name: "Create release"
+        uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: ${{ secrets.toBOT_TOKEN }}
+          title: ${{ inputs.version }}
+          automatic_release_tag: ${{ inputs.version }}
+          prerelease: false

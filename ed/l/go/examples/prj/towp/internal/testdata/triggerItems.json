@@ -1,0 +1,46 @@
+{
+  "triggers": [
+    {
+      "retailer_id": "fake-retailer",
+      "mfc_id": "fake-mfc",
+      "timezone": "Asia/Dubai",
+      "wave_plan_id": "4cc24254-4f09-41b9-8c66-ff599980ea50",
+      "wave_id": "10676a5f-0a18-4037-84b8-d5a1ae0d1543",
+      "cutoff_time": "11:00",
+      "schedule_id": "2d57388f-9ff9-41e8-bfd8-9653f7146d5f",
+      "schedule_time": "10:00",
+      "trigger_at": "2022-12-09T06:00:00Z",
+      "created_at": "2022-12-08T15:44:23.192642Z",
+      "cutoff_datetime": "2022-12-09T07:00:00Z",
+      "fired_at": null
+    },
+    {
+      "retailer_id": "fake-retailer",
+      "mfc_id": "fake-mfc",
+      "timezone": "Asia/Dubai",
+      "wave_plan_id": "4cc24254-4f09-41b9-8c66-ff599980ea50",
+      "wave_id": "10676a5f-0a18-4037-84b8-d5a1ae0d1543",
+      "cutoff_time": "11:00",
+      "schedule_id": "cfbc0c72-5502-4802-a85d-7325ac03eaed",
+      "schedule_time": "09:00",
+      "trigger_at": "2022-12-09T05:00:00Z",
+      "created_at": "2022-12-08T15:44:23.192723Z",
+      "cutoff_datetime": "2022-12-09T07:00:00Z",
+      "fired_at": null
+    },
+    {
+      "retailer_id": "fake-retailer",
+      "mfc_id": "fake-mfc",
+      "timezone": "Asia/Dubai",
+      "wave_plan_id": "4cc24254-4f09-41b9-8c66-ff599980ea50",
+      "wave_id": "040407a9-3ae8-4bec-9d60-f9f658b94490",
+      "cutoff_time": "16:00",
+      "schedule_id": "9d499bb5-a400-4b7c-8a5d-276dc29bc5cc",
+      "schedule_time": "15:00",
+      "trigger_at": "2022-12-09T11:00:00Z",
+      "created_at": "2022-12-08T15:44:23.1927Z",
+      "cutoff_datetime": "2022-12-09T12:00:00Z",
+      "fired_at": null
+    }
+  ]
+}

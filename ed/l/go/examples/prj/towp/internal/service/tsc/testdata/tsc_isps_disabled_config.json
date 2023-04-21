@@ -1,0 +1,12 @@
+[
+  {
+    "categories": [
+      "pickerman",
+      "isps"
+    ],
+    "name": "ISPS_ENABLED",
+    "value": false,
+    "location-code-tom": "D02",
+    "value-type": "boolean"
+  }
+]

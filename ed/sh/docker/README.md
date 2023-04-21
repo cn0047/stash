@@ -106,7 +106,8 @@ cd /opt/docker/etc/supervisor.d
 
 docker-machine ip
 
-# information about all the containers (list containers)
+# list containers (default shows just running)
+# -a - show all
 docker ps -a
 
 # top
@@ -117,12 +118,15 @@ docker logs
 docker logs --details # ENV variables
 docker logs -f # follow
 
-# show containers & images
+# list images
 docker images
 # only IDs
 docker images -q
 
 docker image rm $img
+
+# list containers
+docker container ls
 
 docker volume ls
 

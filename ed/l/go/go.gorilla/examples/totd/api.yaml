@@ -1,0 +1,376 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "API."
+  description: "API for dispatch lane and flow rack."
+host: td.to-api.com
+schemes:
+  - http
+  - https
+basePath: "/v2"
+
+parameters:
+  clientId:
+    name: clientId
+    in: path
+    required: true
+    type: string
+  mfcId:
+    name: mfcId
+    in: path
+    required: true
+    type: string
+  toteAssignmentId:
+    name: toteAssignmentId
+    in: path
+    required: true
+    type: string
+  laneId:
+    name: laneId
+    in: path
+    required: true
+    type: string
+  toteId:
+    name: toteId
+    in: path
+    required: true
+    type: string
+
+definitions:
+  Config:
+    type: object
+    properties:
+      clientId:
+        type: string
+        example: maf
+      env:
+        type: string
+        example: dev
+      mfcId:
+        type: string
+        example: D01
+      errorRamp:
+        type: integer
+        example: 99
+      count:
+        type: integer
+        example: 17
+      depth:
+        type: integer
+        example: 3
+      start:
+        type: integer
+        example: 1
+      idGen:
+        type: string
+        example: "DISPATCH%02d."
+        description: "Format string to generate/format id."
+      laneMapping:
+        type: object
+        example: '{"1":2, "2":1}'
+        description: "Lanes mapping, where key is priority ID and value is actual lane ID."
+      expressLaneMapping:
+        type: object
+        example: '{"1":5}'
+        description: "Express lanes mapping, where key is priority ID and value is actual lane ID."
+      flowRacksMapping:
+        type: object
+        example: '{"1":"R7L2P01"}'
+        description: "Flow racks mapping."
+
+  ToteAssignment:
+    type: object
+    properties:
+      id:
+        type: string
+        example: 99800700119149
+      clientId:
+        type: string
+        example: maf
+      mfcId:
+        type: string
+        example: do1
+      orderId:
+        type: string
+        example: "pp_052-101102934"
+      toteId:
+        type: string
+        example: 99800700119149
+      laneId:
+        type: string
+        example: DISPATCH01
+      createdAt:
+        type: integer
+        example: 1640249542
+
+  listConfigsResponse:
+    type: object
+    properties:
+      configs:
+        type: array
+        items:
+          $ref: "#/definitions/Config"
+
+  updateConfigsRequest:
+    type: object
+    properties:
+      config:
+        $ref: "#/definitions/Config"
+
+  updateConfigsResponse:
+    type: object
+    properties:
+      config:
+        $ref: "#/definitions/Config"
+
+  listToteAssignmentsResponse:
+    type: object
+    properties:
+      "toteAssignments <!-- default -->":
+        type: array
+        items:
+          $ref: "#/definitions/ToteAssignment"
+      "balance <!-- when view=groupedByOrder -->":
+        type: object
+        description: "Map where key looks like: sc-a:0124:DISPATCH04,
+          and value is array of totes, like: ['99800700116902', '99900700125314']."
+        example: '{"sc-a:0124:DISPATCH07": ["99800700116902"]}'
+        additionalProperties:
+          type: array
+          items:
+            type: string
+      "orders <!-- when view=groupedByOrder -->":
+        type: object
+        description: "Map where key is order id and value is array of totes, like: ['99800700116902']."
+        example: '{"pp_052-101102934": ["99800700119149"]}'
+        additionalProperties:
+          type: array
+          items:
+            type: string
+
+  updateToteAssignmentRequest:
+    type: object
+    properties:
+      toteAssignment:
+        type: object
+        properties:
+          laneId:
+            type: string
+            description: "Particular laneId like: DISPATCH01 or error in case of error lane."
+            example: DISPATCH01
+          toteId:
+            type: string
+            example: 99800700119149
+
+  updateToteAssignmentResponse:
+    type: object
+    properties:
+      toteAssignment:
+        $ref: "#/definitions/ToteAssignment"
+
+  deleteToteAssignmentResponse:
+    type: object
+    properties:
+      toteAssignment:
+        $ref: "#/definitions/ToteAssignment"
+
+  createToteAssignmentRequest:
+    type: object
+    properties:
+      toteAssignment:
+        type: object
+        properties:
+          orderId:
+            type: string
+          toteId:
+            type: string
+          isExpress:
+            type: boolean
+
+  createToteAssignmentResponse:
+    type: object
+    properties:
+      toteAssignment:
+        $ref: "#/definitions/ToteAssignment"
+
+  Response400:
+    type: object
+    properties:
+      errors:
+        type: array
+        items:
+          type: object
+          properties:
+            error:
+              type: string
+              description: "Actual error message."
+              example: "Invalid clientId."
+            ref:
+              type: string
+              description: "In case when provided invalid parameter 'clientId'
+                this field will contain 'clientId' as reference to source of error."
+              example: "clientId"
+            type:
+              type: string
+              example: validation
+
+paths:
+  /health:
+    get:
+      description: "Health check."
+      operationId: "healthCheck"
+      responses:
+        200:
+          description: "Successful response."
+        400:
+          description: "Bad Request."
+          schema:
+            $ref: "#/definitions/Response400"
+
+  /clients/{clientId}/mfcs/{mfcId}/configs:
+    get:
+      description: "Get configs."
+      operationId: "getConfigs"
+      parameters:
+        - $ref: "#/parameters/clientId"
+        - $ref: "#/parameters/mfcId"
+      responses:
+        200:
+          description: "Successful response."
+          schema:
+            $ref: "#/definitions/listConfigsResponse"
+        400:
+          description: "Bad Request."
+          schema:
+            $ref: "#/definitions/Response400"
+
+    put:
+      description: "Update config."
+      operationId: "updateConfig"
+      parameters:
+        - $ref: "#/parameters/clientId"
+        - $ref: "#/parameters/mfcId"
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/updateConfigsRequest"
+      responses:
+        200:
+          description: "Successful response."
+          schema:
+            $ref: "#/definitions/updateConfigsResponse"
+        400:
+          description: "Bad Request."
+          schema:
+            $ref: "#/definitions/Response400"
+
+  /clients/{clientId}/mfcs/{mfcId}/toteAssignments:
+    get:
+      description: "List tote assignments."
+      operationId: "listToteAssignments"
+      externalDocs:
+        description: "Previous endpoint: https://host/api/v1/command-server/message/ramp-state"
+        url: "https://ims-api-maf-uat.tom.to.com/api/v1/command-server/index.html#/message"
+      parameters:
+        - $ref: "#/parameters/clientId"
+        - $ref: "#/parameters/mfcId"
+        - name: view
+          type: string
+          in: query
+          enum:
+            - groupedByOrder
+        - name: orderId
+          type: string
+          in: query
+      responses:
+        200:
+          description: "Successful response."
+          schema:
+            $ref: "#/definitions/listToteAssignmentsResponse"
+        400:
+          description: "Bad Request."
+          schema:
+            $ref: "#/definitions/Response400"
+
+    delete:
+      description: "Delete tote assignment."
+      operationId: "deleteToteAssignment"
+      externalDocs:
+        description: "Previous endpoint: https://host/api/v1/command-server/message/free-up-channel"
+        url: "https://ims-api-maf-uat.tom.to.com/api/v1/command-server/index.html#/message"
+      parameters:
+        - $ref: "#/parameters/clientId"
+        - $ref: "#/parameters/mfcId"
+        - name: toteId
+          in: query
+          required: true
+          type: array
+          collectionFormat: multi
+          items:
+            type: string
+      responses:
+        200:
+          description: "Successful response."
+          schema:
+            $ref: "#/definitions/deleteToteAssignmentResponse"
+        400:
+          description: "Bad Request."
+          schema:
+            $ref: "#/definitions/Response400"
+
+  /clients/{clientId}/mfcs/{mfcId}/toteAssignments/{toteAssignmentId}:
+    post:
+      description: "Create tote assignment wit order and lane."
+      operationId: "createToteAssignment"
+      externalDocs:
+        description: "Previous endpoint: https://host/api/v1/command-server/message/allocate-channel"
+        url: "https://ims-api-maf-uat.tom.to.com/api/v1/command-server/index.html#/message"
+      parameters:
+        - $ref: "#/parameters/clientId"
+        - $ref: "#/parameters/mfcId"
+        - $ref: "#/parameters/toteAssignmentId"
+        - name: dryRun
+          in: query
+          type: boolean
+          required: false
+          description: "Use it only for development purposes."
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/createToteAssignmentRequest"
+      responses:
+        200:
+          description: "Successful response."
+          schema:
+            $ref: "#/definitions/createToteAssignmentResponse"
+        400:
+          description: "Bad Request."
+          schema:
+            $ref: "#/definitions/Response400"
+
+    patch:
+      description: "Update tote assignment (not entire resource but only provided attributes like: laneId)."
+      operationId: "updateToteAssignment"
+      externalDocs:
+        description: "Previous endpoint: https://host/api/v1/command-server/message/move-error-ramp"
+        url: "https://ims-api-maf-uat.tom.to.com/api/v1/command-server/index.html#/message"
+      parameters:
+        - $ref: "#/parameters/clientId"
+        - $ref: "#/parameters/mfcId"
+        - $ref: "#/parameters/toteAssignmentId"
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/updateToteAssignmentRequest"
+      responses:
+        200:
+          description: "Successful response."
+          schema:
+            $ref: "#/definitions/updateToteAssignmentResponse"
+        400:
+          description: "Bad Request."
+          schema:
+            $ref: "#/definitions/Response400"

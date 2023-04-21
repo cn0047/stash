@@ -1,0 +1,31 @@
+{
+  "id": "286ca4bf-edc9-4458-ac21-1448de8f102b",
+  "retailer_id": "fake-retailer",
+  "mfc_id": "fake-mfc",
+  "timezone": "Asia/Dubai",
+  "created_time": "2022-12-05T12:00:00Z",
+  "created_by": "test-user",
+  "waves": [
+    {
+      "id": "ef1e007b-d27b-4a0a-a075-8ebbd43bbbca",
+      "cutoff_time": "10:00",
+      "from_time": "12:00",
+      "to_time": "17:59",
+      "schedules": []
+    },
+    {
+      "id": "4629a336-049f-4ed3-85dd-0757ae53d20b",
+      "cutoff_time": "11:00",
+      "from_time": "18:00",
+      "to_time": "22:59",
+      "schedules": []
+    },
+    {
+      "id": "ad887b91-4c3b-447e-9bf5-e46d69f96934",
+      "cutoff_time": "13:30",
+      "from_time": "23:00",
+      "to_time": "11:59",
+      "schedules": []
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+name: "Deploy cloudrun"
+description: "Deploy cloudrun action"
+
+inputs:
+  workload-identity-provider:
+    required: true
+    description: "Workload identity provider"
+  service-account-email:
+    required: true
+    description: "Service account email"
+  cloudrun-service-account-email:
+    required: true
+    description: "Service account email for cloudrun runtime usage"
+  service-name:
+    description: "Service name"
+    required: true
+  env-name:
+    description: "Environment name"
+    required: true
+  project-id:
+    description: "GCP project ID"
+    required: true
+  region:
+    description: "GCP region"
+    required: true
+  git-ref:
+    description: "Git tag/commit"
+    required: false
+  docker-repo:
+    description: "Docker repo"
+    required: true
+  docker-image-tag:
+    description: "Tag for docker image"
+    required: true
+  cloud-run-tag:
+    description: "Clod Run tag"
+    required: true
+  additional-flags:
+    description: "Additional flags for gcloud command"
+    required: false
+
+runs:
+  using: "composite"
+  steps:
+    - name: "Checkout source code"
+      uses: actions/checkout@v3
+      with:
+        ref: ${{ inputs.git-ref }}
+    - name: "Authenticate to Google Cloud"
+      uses: google-github-actions/auth@v1
+      with:
+        token_format: access_token
+        workload_identity_provider: ${{ inputs.workload-identity-provider }}
+        service_account: ${{ inputs.service-account-email }}
+    - name: "Set up Cloud SDK"
+      uses: google-github-actions/setup-gcloud@v0
+    - name: "Set vars"
+      id: setvars
+      shell: bash
+      run: |
+        NO_TRAFFIC_DEPLOY=--no-traffic
+        gcloud run services describe ${{ inputs.service-name }} --region=${{ inputs.region }} || NO_TRAFFIC_DEPLOY=''
+        echo NO_TRAFFIC_DEPLOY=$NO_TRAFFIC_DEPLOY >> $GITHUB_ENV
+    - name: "Deploy"
+      shell: bash
+      run: |
+        gcloud run deploy ${{ inputs.service-name }} \
+          --project=${{ inputs.project-id }} \
+          --region ${{ inputs.region }} \
+          --image ${{ inputs.docker-repo }}/main.go:${{ inputs.docker-image-tag }} \
+          --service-account=${{ inputs.cloudrun-service-account-email }} \
+          --platform managed \
+          --ingress=internal-and-cloud-load-balancing \
+          --allow-unauthenticated \
+          --tag=${{ inputs.cloud-run-tag }} \
+          ${{ env.NO_TRAFFIC_DEPLOY }} ${{ inputs.additional-flags }}
+    - name: "Route traffic to just deployed new revision"
+      shell: bash
+      run: |
+        gcloud run services update-traffic ${{ inputs.service-name }} \
+          --project ${{ inputs.project-id }} \
+          --region ${{ inputs.region }} \
+          --to-latest

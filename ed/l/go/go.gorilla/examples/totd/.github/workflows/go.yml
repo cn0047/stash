@@ -1,0 +1,43 @@
+name: Go lint
+
+on:
+  push:
+    branches: [ master, '**' ]
+  pull_request:
+    branches: [ master, '**' ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      GOPRIVATE: github.com/to-com/*
+      GH_ACCESS_TOKEN: ${{ secrets.toBOT_TOKEN }}
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.19
+
+    - name: Format
+      run: go fmt ./...
+
+    - name: Vet
+      run: go vet ./...
+
+    - name: golangci-lint
+      uses: golangci/golangci-lint-action@v3
+
+    - name: Test
+      run: |
+        git config --global url."https://${{ secrets.TO_TOKEN }}:@github.com/to-com/".insteadOf "https://github.com/to-com/"
+        go test -v ./app/...
+        go test -v ./cmd/...
+        go test -v ./config/...
+
+    - name: Build
+      run: go build -v ./cmd/poc-td

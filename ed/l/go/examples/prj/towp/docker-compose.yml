@@ -1,0 +1,37 @@
+version: "3.0"
+
+services:
+
+  spanner_emulator:
+    image: "gcr.io/cloud-spanner-emulator/emulator:latest"
+    ports:
+      - "9010:9010"
+      - "9020:9020"
+
+  pubsub_emulator:
+    image: "messagebird/gcloud-pubsub-emulator"
+    environment:
+      PUBSUB_PROJECT1: test-project,wave-plan.event:wave-plan.sub
+    ports:
+      - "8681:8681"
+
+  gcp_init:
+    image: "google/cloud-sdk:latest"
+    working_dir: /app
+    volumes:
+      - ./:/app/
+    command: bash -c "make gcloud-init && make spanner-init"
+    network_mode: host
+    depends_on:
+      - spanner_emulator
+      - pubsub_emulator
+
+  spanner_schema:
+    image: "liquibase/liquibase:4.17.2"
+    volumes:
+      - ./database:/liquibase/changelog
+    command: liquibase --defaultsFile=/liquibase/changelog/schema.properties --url="jdbc:cloudspanner://localhost:9010/projects/test-project/instances/outbound-us/databases/wp-dev;usePlainText=true" update
+    network_mode: host
+    depends_on:
+      - gcp_init
+    restart: on-failure

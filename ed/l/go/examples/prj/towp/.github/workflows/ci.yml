@@ -1,0 +1,162 @@
+name: "CI"
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  workflow_dispatch:
+
+env:
+  go-version: "1.19.1"
+
+jobs:
+
+  set-version:
+    name: Setting version number
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+      - name: Version
+        shell: bash
+        id: version
+        run: |
+          if [[ ${{ github.event_name }} == "pull_request" ]]; then
+            VERSION=PR${{ github.event.number }}.$GITHUB_RUN_NUMBER
+          else
+            VERSION=$(date +%y-%m-%d).$GITHUB_RUN_NUMBER
+          fi
+          echo "version=${VERSION}" >> $GITHUB_OUTPUT
+
+  lint-go-code:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout source code"
+        uses: actions/checkout@v3
+      - name: "Setup Go"
+        uses: actions/setup-go@v3
+        with:
+          go-version: ${{ env.go-version }}
+      - name: "Configure access to to Go modules"
+        shell: bash
+        run: git config --global url."https://${{ secrets.toBOT_TOKEN }}:@github.com/to-com/".insteadOf "https://github.com/to-com/"
+      - name: "Fmt"
+        run: go fmt ./...
+      - name: "Vet"
+        run: go vet ./...
+      - name: "Lint"
+        uses: golangci/golangci-lint-action@v3
+        with:
+          args: --timeout=10m0s -c ./.golangci.yaml
+      - name: "Static check"
+        uses: reviewdog/action-staticcheck@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+          filter_mode: nofilter
+          fail_on_error: true
+          workdir: .
+
+  test-db-migration-and-go-code:
+    runs-on: ubuntu-latest
+    needs:
+      set-version
+    env:
+      GOOGLE_PROJECT_ID: test-project
+      ENV: local
+      SPANNER_EMULATOR_HOST: localhost:9010
+      PUBSUB_EMULATOR_HOST: localhost:8681
+      PACT_BROKER_URL: ${{ secrets.PACT_BROKER_URL }}
+      PACT_BROKER_TOKEN: ${{ secrets.PACT_BROKER_TOKEN }}
+
+    steps:
+      - name: "Checkout source code"
+        uses: actions/checkout@v3
+      - name: "Set up Cloud SDK"
+        uses: google-github-actions/setup-gcloud@v0
+      - name: "Run emulators"
+        run: docker-compose -f docker-compose.yml up -d
+      - name: "Setup Go"
+        uses: actions/setup-go@v3
+        with:
+          go-version: ${{ env.go-version }}
+      - name: "Configure access to to Go modules"
+        shell: bash
+        run: git config --global url."https://${{ secrets.toBOT_TOKEN }}:@github.com/to-com/".insteadOf "https://github.com/to-com/"
+      - name: "Test"
+        shell: bash
+        run: |
+          export DEV_MODE=true
+          export PATH=$PATH:$GOPATH/bin
+          go install "github.com/pact-foundation/pact-go/v2@2.x.x"
+          pact-go -l DEBUG install -d "/tmp"
+          pact-go version
+          export PACT_BROKER_URL=${{ env.PACT_BROKER_URL}}
+          export PACT_BROKER_TOKEN=${{ env.PACT_BROKER_TOKEN}}
+          export CONSUMER_VERSION=master
+          export PROVIDER_VERSION=${{ needs.set-version.outputs.version }}
+          export PROVIDER_BRANCH=${{ github.head_ref || github.ref_name }}
+          go test ./... -race -covermode=atomic -coverprofile=coverage.out -json | tee tests_run.json
+
+      - name: "Upload code coverage file"
+        uses: actions/upload-artifact@v3
+        with:
+          name: code-coverage-file
+          retention-days: 1
+          path: ./coverage.out
+      - name: "Upload tests run file"
+        uses: actions/upload-artifact@v3
+        with:
+          name: tests-run-file
+          retention-days: 1
+          path: ./tests_run.json
+
+  sonar-check-go-code:
+    runs-on: ubuntu-latest
+    needs:
+      - test-db-migration-and-go-code
+    steps:
+      - name: "Checkout source code"
+        uses: actions/checkout@v3
+      - name: "Download code coverage file"
+        uses: actions/download-artifact@v3
+        with:
+          name: code-coverage-file
+          path: ./coverage.out
+      - name: "Download tests run file"
+        uses: actions/download-artifact@v3
+        with:
+          name: tests-run-file
+          path: ./tests_run.json
+      - name: "SonarQube scan (PR)"
+        id: sonar-scan-pr
+        if: always() && github.event_name == 'pull_request'
+        uses: sonarsource/sonarqube-scan-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_HOST_URL: "https://sonarqube.tom.to.com"
+          SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
+        with:
+          projectBaseDir: .
+          args: >
+            -Dsonar.pullrequest.key=${{ github.event.number }}
+            -Dsonar.pullrequest.branch=${{ github.HEAD_REF }}
+            -Dsonar.pullrequest.base=${{ github.BASE_REF }}
+            -Dsonar.pullrequest.github.repository=${{ github.repository }}
+            -Dsonar.scm.provider=git
+      - name: "SonarQube scan (master)"
+        id: sonar-scan-master
+        if: always() && github.ref == 'refs/heads/master'
+        uses: sonarsource/sonarqube-scan-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_HOST_URL: "https://sonarqube.tom.to.com"
+          SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
+        with:
+          projectBaseDir: .
+          args: >
+            -Dsonar.branch.name=master
+            -Dsonar.scm.provider=git

@@ -1,0 +1,8 @@
+{
+  "env": "local",
+  "host": "0.0.0.0",
+  "port": 9000,
+  "spanner_database": "projects/test-project/instances/test-instance/databases/test-db",
+  "mfc_config_auto_refresh_time": 120,
+  "db_log_enabled": true
+}
