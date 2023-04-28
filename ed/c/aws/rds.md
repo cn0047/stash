@@ -9,10 +9,10 @@ psql -p 5431 -d postgres://$usr:$pwd@localhost/$db
 ````
 
 Engine:
-* Aurora MySQL
-* Aurora PostgreSQL
-* MySQL
-* MariaDB
-* PostgreSQL
-* Oracle
-* Microsoft SQL Server
+* Aurora MySQL.
+* Aurora PostgreSQL.
+* MySQL.
+* MariaDB.
+* PostgreSQL.
+* Oracle.
+* Microsoft SQL Server.

@@ -5,10 +5,10 @@ ElasticSearch
 <br>1.6.0
 
 [docs](https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html)
-[Mapping Params](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-params.html)
-[Mapping Meta fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-fields.html).
-[Groovy](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-scripting.html#_document_fields).
-[Glossary](https://www.elastic.co/guide/en/elasticsearch/reference/current/glossary.html).
+[mapping params](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-params.html)
+[mapping meta fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-fields.html).
+[groovy](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-scripting.html#_document_fields).
+[glossary](https://www.elastic.co/guide/en/elasticsearch/reference/current/glossary.html).
 
 In Elasticsearch, a document belongs to a type, and those types live inside an index.
 You can draw some (rough) parallels to a traditional relational database:

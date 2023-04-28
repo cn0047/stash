@@ -18,9 +18,9 @@ CRUN_WORK_DIR=/var/www/vhosts/host/htdocs
 
 * * * * *
 │ │ │ │ │
-│ │ │ │ day (week)
+│ │ │ │ day (of week)
 │ │ │ month
-│ │ day (month)
+│ │ day (of month)
 │ hour
 minute
 

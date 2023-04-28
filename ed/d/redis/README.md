@@ -64,9 +64,9 @@ Redis is fast because of IO Multiplexing (EventLoop).
 
 * String - string value can be at max 512 Megabytes in length.
 You can:
-Use Strings as atomic counters;
-Append to strings;
-Use Strings a random access vectors;
+* Use Strings as atomic counters.
+* Append to strings.
+* Use Strings as random access vectors.
 
 * List - simply list of strings.
 The max length of a list is 2^32 (more than 4 billion of elements per list).

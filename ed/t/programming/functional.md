@@ -6,10 +6,10 @@ Separate mutation from calculation.
 Separate function from rule.
 
 Basic principles of functional programming:
-* Immutability - once you assign a value to something, that value won't change.
-* Disciplined state - shared mutable state is evil, don't use global vars.
 * Pure functions.
 * First class functions (which can take a function as input or return a function as output).
+* Immutability - once you assign a value to something, that value won't change.
+* Disciplined state - shared mutable state is evil, don't use global vars.
 * Referential transparency - pure functions + immutable data = referential transparency.
 
 **Pure** function:

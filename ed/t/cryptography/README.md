@@ -37,6 +37,6 @@ Hashing algorithms:
 * Scrypt.
 * PBKDF2.
 
-Don't use (it's vulnerable) : MD5, SHA1, 3DES, RC4.
+Don't use (it's vulnerable): MD5, SHA1, 3DES, RC4.
 <br>Use SHA2, SHA3 (most secure).
 Not secure: CRC32.

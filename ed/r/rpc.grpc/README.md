@@ -12,10 +12,10 @@ gRPC - open source, language & platform neutral RPC framework, based on Protocol
 
 Provides features such as:
 * authentication.
-* bidirectional streaming and flow control.
-* blocking or nonblocking bindings.
 * cancellation.
 * timeouts.
+* bidirectional streaming and flow control.
+* blocking or nonblocking bindings.
 
 gRPC uses HTTP/2 for transport.
 

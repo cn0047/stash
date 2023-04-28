@@ -23,8 +23,8 @@ or at least "share-as-little-as-possible".
 
 Synchronous communication:
 * Request/Response.
-* RPC.
 * HTTP.
+* RPC.
 * REST.
 
 Asynchronous communication:

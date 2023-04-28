@@ -92,7 +92,7 @@ curl -s "$h/_cat/allocation?v"
 curl "$h/$idx/_stats?pretty" | jq
 curl "$h/_nodes/stats/process?pretty" | jq
 
-# Local
+# local
 curl "$h/_nodes/_local?pretty"
 curl "$h/_cluster/health?pretty"
 
@@ -102,10 +102,10 @@ curl "$h/_nodes?pretty"
 
 curl "$h/_nodes/stats?pretty"
 
-# Cluster Settings
+# cluster settings
 curl "$h/_cluster/settings" | jq
 
-# Cluster Update Settings
+# cluster update settings
 # temporary
 curl -XPUT "$h/_cluster/settings" -d '{
     "transient" : {
@@ -223,7 +223,7 @@ curl -XPOST $h/_reindex -d '{
 ````
 
 ````sh
-# Enabling caching per request
+# enabling caching per request
 curl "$h/$idx/_search?request_cache=true" -d'
 {
   "size": 0,
@@ -237,19 +237,19 @@ curl "$h/$idx/_search?request_cache=true" -d'
 }
 '
 
-# Monitoring cache usage
+# monitoring cache usage
 curl "$h/_stats/request_cache?pretty&human"
 # or
 curl "$h/_nodes/stats/indices/request_cache?pretty&human"
 
-# Clear Cache
+# clear cache
 curl -XPOST "$h/$idx/_cache/clear"
 # or
 curl -XPOST "$h/kimchy,elasticsearch/_cache/clear?request_cache=true"
 
-# Flush
+# flush
 curl -XPOST "$h/$idx/_flush"
 
-# Refresh index
+# refresh index
 curl -XPOST "$h/$idx/_refresh"
 ````

@@ -217,23 +217,6 @@ Types:
 * Proxies - proxy server is a gateway from one network to another.
 * Network address translation - not only NAT ↑ but also hide the true address of computer.
 
-## Load Balancer
-
-Load balancers are generally grouped into two categories:
-Layer 7 - Application LB
-          (based on application specific data such as HTTP headers, cookies, etc).
-Layer 4 - Transport Layer LB.
-
-Methods:
-* Least Connection - use the service with the fewest active connections.
-* Round Robin - assigns connection to the first service in the list,
-  and then moves that service to the bottom of the list.
-* Weighted Round Robin.
-* Least Response Time - use service with the fewest active connections
-  and the lowest average response time.
-* Least Bandwidth - use service that is currently serving the least amount of traffic (Mbps).
-* URL param or RDP-cookie.
-
 ## Virtual Machine
 
 Virtual Machine may have max 4096 ports.

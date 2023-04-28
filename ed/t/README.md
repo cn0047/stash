@@ -95,7 +95,9 @@ RBAC: Permissions based on role.
 
 PC: CPU, Main Memory, Secondary Memory (SSD).
 
-Weight Gross - with pack; Weight Net - without pack;
+Weight Gross - with pack, Weight Net - without pack.
+
+Interviewer - who asks questions, Interviewee - candidate.
 
 Full stack:
 * Presentation layer (html, css, js).

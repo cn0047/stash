@@ -18,6 +18,9 @@ Add comments when fixing bugs.
 
 Recursion is bad because it can end up with stack overflow.
 
+Cyclomatic complexity - metric to indicate complexity of program.
+It's number of linearly independent paths through program's source code.
+
 #### Process and Thread
 
 Process - any program. It's isolated from other processes.

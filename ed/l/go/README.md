@@ -380,9 +380,9 @@ Go  ⇒ struct ⇒ object   ⇒ field
 **sentinel error** - custom error value
 (standard library: sql.ErrNoRows, io.EOF, etc).
 [wrap error tool](github.com/pkg/errors)
-<br>`errors.Is` like a comparison to a sentinel error,
+<br>`errors.Is` like a comparison to a sentinel error.
 <br>`errors.As` like type assertion (`if e, ok := err.(*QueryError); ok { … }`).
-<br>`fmt.Errorf("decompress %v: %w", name, err)`
+<br>`fmt.Errorf("decompress %v: %w", name, err)`.
 
 **context** carries deadlines, cancelation signals, and other request-scoped values
 across API boundaries and between processes.

@@ -2,6 +2,7 @@ Supervisor
 -
 
 #### Configuration file
+
 ````sh
 /etc/supervisor/supervisord.conf
 ````

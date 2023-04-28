@@ -7,8 +7,8 @@ Swagger
 [docs v3](https://swagger.io/docs/specification/basic-structure/)
 [enum in v2](https://swagger.io/docs/specification/2-0/enums/)
 [editor](http://editor.swagger.io/)
-[String Formats](https://swagger.io/docs/specification/data-models/data-types/).
-[Supported JSON Schema Keywords](https://swagger.io/docs/specification/data-models/keywords/).
+[string formats](https://swagger.io/docs/specification/data-models/data-types/).
+[supported JSON schema keywords](https://swagger.io/docs/specification/data-models/keywords/).
 
 Swagger is a set of open-source tools built around the OpenAPI Specification
 that can help you design, build, document and consume REST APIs.
