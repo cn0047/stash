@@ -12,6 +12,9 @@ u=kovpakvolodymyr
 sudo ln -s "/Applications/Sublime Text.app//Contents/SharedSupport/bin/subl" /usr/local/bin/
 
 # delete project from list
+vim /Users/$u/Library/Application\ Support/Sublime\ Text\ 3/Local/Auto\ Save\ Session.sublime_session
+vim /Users/$u/Library/Application\ Support/Sublime\ Text\ 3/Local/Backup\ Auto\ Save\ Session.sublime_session
+vim /Users/$u/Library/Application\ Support/Sublime\ Text\ 3/Local/Backup\ Session.sublime_session
 vim /Users/$u/Library/Application\ Support/Sublime\ Text\ 3/Local/Session.sublime_session
 
 # packages list

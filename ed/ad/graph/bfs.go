@@ -24,8 +24,58 @@ func bfs(edges [][]int32, from int32, to int32) int32 {
 	g := NewGraph()
 	g.Init(edges)
 
-	return g.BFS(from, to)
+	return BFS(g, from, to)
 }
+
+// BFS represents Breadth First Search.
+func BFS(g Graph, fromValue int32, toValue int32) int32 {
+	if fromValue == toValue {
+		return 0
+	}
+
+	fromNode := g.GetNode(fromValue)
+	if fromNode == nil {
+		return -1
+	}
+	toNode := g.GetNode(toValue)
+	if toNode == nil {
+		return -1
+	}
+
+	queue := NewQueue()
+	seenEdges := make(map[int32]struct{})
+
+	seenEdges[fromValue] = struct{}{}
+	for edge, _ := range fromNode.Edges {
+		queue.Push(edge, 1)
+	}
+
+	for queue.Len() > 0 {
+		itemFromQueue := queue.Pop()
+
+		if itemFromQueue.Value == toValue {
+			return itemFromQueue.Path
+		}
+
+		node := g.GetNode(itemFromQueue.Value)
+		if node == nil {
+			continue
+		}
+
+		seenEdges[node.Value] = struct{}{}
+		for edge, _ := range node.Edges {
+			_, seen := seenEdges[edge]
+			if seen {
+				continue
+			}
+			queue.Push(edge, itemFromQueue.Path+1)
+		}
+	}
+
+	return -1
+}
+
+// ============================================================================
 
 type Node struct {
 	Value int32
@@ -51,7 +101,7 @@ func (g Graph) SetNode(node *Node) {
 	g[node.Value] = node
 }
 
-func (g Graph) AddNodeByValue(value int32) {
+func (g Graph) AddNode(value int32) {
 	node := &Node{Value: value, Edges: make(map[int32]struct{}, 0)}
 	g.SetNode(node)
 }
@@ -83,7 +133,7 @@ func (g Graph) Init(edges [][]int32) {
 
 		// Not edge but only 1 node.
 		if len(edge) == 1 {
-			g.AddNodeByValue(fromValue)
+			g.AddNode(fromValue)
 			continue
 		}
 
@@ -94,65 +144,19 @@ func (g Graph) Init(edges [][]int32) {
 	}
 }
 
-// BFS represents Breadth First Search.
-func (g Graph) BFS(fromValue int32, toValue int32) int32 {
-	if fromValue == toValue {
-		return 0
-	}
+// ============================================================================
 
-	fromNode := g.GetNode(fromValue)
-	if fromNode == nil {
-		return -1
-	}
-	toNode := g.GetNode(toValue)
-	if toNode == nil {
-		return -1
-	}
-
-	queue := NewQueue()
-	seenEdges := make(map[int32]struct{})
-
-	seenEdges[fromValue] = struct{}{}
-	for edge, _ := range fromNode.Edges {
-		queue.Push(edge, 1)
-	}
-
-	for queue.Len() > 0 {
-		queueElement := queue.Pop()
-
-		if queueElement.Value == toValue {
-			return queueElement.Path
-		}
-
-		node := g.GetNode(queueElement.Value)
-		if node == nil {
-			continue
-		}
-
-		seenEdges[node.Value] = struct{}{}
-		for edge, _ := range node.Edges {
-			_, seen := seenEdges[edge]
-			if seen {
-				continue
-			}
-			queue.Push(edge, queueElement.Path+1)
-		}
-	}
-
-	return -1
-}
-
-type QueueElement struct {
+type itemFromQueue struct {
 	Value int32
 	Path  int32
 }
 
 type Queue struct {
-	Data []*QueueElement
+	Data []*itemFromQueue
 }
 
 func NewQueue() *Queue {
-	return &Queue{Data: make([]*QueueElement, 0)}
+	return &Queue{Data: make([]*itemFromQueue, 0)}
 }
 
 func (q *Queue) Len() int {
@@ -160,10 +164,10 @@ func (q *Queue) Len() int {
 }
 
 func (q *Queue) Push(value int32, path int32) {
-	q.Data = append(q.Data, &QueueElement{Value: value, Path: path})
+	q.Data = append(q.Data, &itemFromQueue{Value: value, Path: path})
 }
 
-func (q *Queue) Pop() *QueueElement {
+func (q *Queue) Pop() *itemFromQueue {
 	if len(q.Data) == 0 {
 		return nil
 	}

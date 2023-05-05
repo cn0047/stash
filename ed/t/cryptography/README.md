@@ -10,6 +10,8 @@ Same key for encrypting and decrypting.
 Public key cryptography - sender has public key, receiver has private key.
 It is expensive type of cryptography.
 
+One way encryption (no way to decrypt it): SHA, etc.
+
 Hashing algorithms:
 
 * ~~3DES~~ (168 bits).

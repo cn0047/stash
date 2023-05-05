@@ -1,6 +1,6 @@
 Terraform
 -
-
+<br>v1.4.0
 <br>v0.12.12
 
 [docs](https://www.terraform.io/docs/index.html)
@@ -9,6 +9,12 @@ Terraform
 [gcp](https://registry.terraform.io/providers/hashicorp/google/latest/docs)
 [gcp samples](https://github.com/terraform-google-modules/terraform-docs-samples)
 [functions](https://www.terraform.io/docs/configuration/functions/strrev.html)
+[precondition](https://developer.hashicorp.com/terraform/language/modules/develop/composition#assumptions-and-guarantees)
+[expressions](https://developer.hashicorp.com/terraform/language/expressions)
+[functions](https://developer.hashicorp.com/terraform/language/functions)
+[state](https://developer.hashicorp.com/terraform/language/state)
+[ENV vars](https://developer.hashicorp.com/terraform/cli/config/environment-variables)
+[github-actions](https://developer.hashicorp.com/terraform/tutorials/automation/github-actions)
 
 Terraform - tool for defining infrastructure as code.
 
@@ -27,6 +33,15 @@ Terraform - tool for defining infrastructure as code.
 (`data "aws_ami" "example" { ...`) (it could be list of aws availability zones, etc.).
 <br>Provisioners - used to model specific actions on machine in order
 to prepare servers or other infrastructure objects (file, local-exec, remote-exec).
+
+`_override.tf` - override file for resource with same name (tf using merging behavior).
+
+Resource Meta-Arguments:
+* depends_on.
+* count - to create that many instances.
+* for_each.
+* provider.
+* lifecycle - `lifecycle { create_before_destroy = true }`.
 
 ````sh
 src
@@ -73,8 +88,10 @@ terraform init -reconfigure
 terraform init -backend-config="bucket=$bkt"
 
 terraform graph
+
 terraform fmt # format tf files
 terraform fmt -recursive
+
 terraform output
 
 terraform validate

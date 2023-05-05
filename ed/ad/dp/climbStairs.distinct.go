@@ -22,25 +22,25 @@ func climbStairsDistinctCount(n int) int {
 }
 
 func climbStairsDistinctCount2(n int) int {
-	cache := make([]int, n+1)
-	cache[0] = 1
-	cache[1] = 1
+	dp := make([]int, n+1)
+	dp[0] = 1
+	dp[1] = 1
 	for i := 2; i < n+1; i++ {
-		cache[i] = cache[i-2] + cache[i-1] // OPTIMIZATION: don't store whole array, just 2 elements
+		dp[i] = dp[i-2] + dp[i-1] // OPTIMIZATION: don't store whole array, just 2 elements
 	}
-	return cache[n]
+	return dp[n]
 }
 
 // @see: https://monosnap.com/file/LcQPQGS9b5LrdvExSHRO1C0Y5DPrF5
 func climbStairsDistinctCount1(n int) int {
-	cache := make([]int, n+1)
-	cache[n] = 1
-	cache[n-1] = 1
+	dp := make([]int, n+1)
+	dp[n] = 1
+	dp[n-1] = 1
 	for i := n - 2; i >= 0; i-- {
-		cache[i] = cache[i+1] + cache[i+2] // OPTIMIZATION: don't store whole array, just 2 elements
+		dp[i] = dp[i+1] + dp[i+2] // OPTIMIZATION: don't store whole array, just 2 elements
 	}
 
-	return cache[0]
+	return dp[0]
 }
 
 // climbStairsDistinctCount0 - OPTIMIZED solution.
