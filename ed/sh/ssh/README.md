@@ -13,6 +13,9 @@ ssh-keygen -E md5 -lf keyFile.pem
 # get public key from private one
 ssh-keygen -y -f ~/.ssh/id_rsa > ~/.ssh/id_rsa.pub
 
+# get hash like in gitlab
+cat .ssh_my/id_rsa.pub | awk '{print $2}' | base64 -d | md5sum
+
 locate sshd_config
 
 ssh-add ~/.ssh/id_rsa
