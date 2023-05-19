@@ -18,6 +18,13 @@ TL must be:
 * Like a teacher and have authority to teach team.
 * Like a coach.
 
+#### KPI (Key Performance Indicators)
+
+* Cycle time (from zero - to prod).
+* Burdown.
+* Velocity.
+* PRs count.
+
 #### Waterfall
 
 Originated in the manufacturing and construction industries.

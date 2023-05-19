@@ -51,6 +51,7 @@ URN - Uniform Resource Name (host + path + all after question mark).
 %2f - /
 %5B - [
 %5D - ]
+%2B - +
 %20 - space
 ````
 

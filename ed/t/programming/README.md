@@ -130,6 +130,7 @@ Basically, classes are the tightest form of coupling in object-oriented programm
 * Self-configuration.
 * Self-healing.
 
+Pick 2 out of 3: speed, quality, cost.
 
 #### [Clean Code](https://monosnap.com/file/9UGwycGbfCus8TRIXPjFWGsI2pKOKW)
 

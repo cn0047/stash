@@ -238,6 +238,8 @@ log.Println("message")
 
 ````
 
+Unit in Go - package.
+
 Go source code is always UTF-8.
 
 A workspace is a directory hierarchy with three directories at its root:
