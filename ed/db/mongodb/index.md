@@ -4,6 +4,8 @@ INDEX
 [reference](http://docs.mongodb.org/manual/reference/indexes/)
 [Text Search Languages](http://docs.mongodb.org/manual/reference/text-search-languages/)
 
+`_id` field is reserved for primary key in mongo.
+
 Types:
 * B-tree.
 * Hash.

@@ -5,14 +5,14 @@ Lodash
 #### Collection
 
 ````js
-# flatMap
+// flatMap
 function duplicate(n) {
   return [n, n];
 }
 _.flatMap([1, 2], duplicate);
 // => [1, 1, 2, 2]
 
-# invokeMap
+// invokeMap
 _.invokeMap([[5, 1, 7], [3, 2, 1]], 'sort');
 // => [[1, 5, 7], [1, 2, 3]]
 ````

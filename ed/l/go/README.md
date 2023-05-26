@@ -92,7 +92,7 @@ go golint ./...                       # check code
 golint app/...                        #
 go install                            # [old] install packages and dependencies
                                       # [now] compiles and installs packages
-go list                               # list packages
+go list ./...                         # list packages
 go list -f '{{ join .Imports "\n" }}' # directly imported packages
 go list -f '{{ join .Deps "\n" }}'    # all subdependencies
 go list -json -f {{.Deps}} net/http
@@ -128,6 +128,8 @@ brew install golangci-lint
 golangci-lint run
 
 gofmt -w $pathToFile
+
+go-callvis ./... # visualize go code
 ````
 
 ````golang

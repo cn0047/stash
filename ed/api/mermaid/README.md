@@ -4,7 +4,6 @@ mermaid
 [docs](https://mermaid-js.github.io/)
 [editor](https://mermaid-js.github.io/docs/mermaid-live-editor-beta)
 
-````
 ````mermaid
 erDiagram
 one ||..|{ two : ""

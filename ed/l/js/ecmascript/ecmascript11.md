@@ -16,7 +16,7 @@ console.log(phoneApple?.())
 // NOT: TypeError: phoneApple is not a function
 
 // Nullish Coalescing
-let number = theNumber ?? 5
+let str = val ?? 'default string';
 
 // Private Fields
 class Smartphones {

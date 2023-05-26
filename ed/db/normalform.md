@@ -1,6 +1,9 @@
 Normal form in Relational Database
 -
 
+Table that holds relationships between other tables known as:
+join/intersection/associative/bridge/link table.
+
 #### 1NF
 
 A relation is in **1NF** if the domain of each attribute contains only atomic values.

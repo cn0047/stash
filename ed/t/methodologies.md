@@ -5,6 +5,18 @@ The ideal task size is not bigger than 1 day work.
 
 Two-pizza teams - where no team should be so big that it could not be fed with two pizzas.
 
+Software Architect:
+* Designing the system structure: components, modules, subsystems.
+* Defining technical standards.
+* Ensuring system quality attributes: non-functional requirements.
+* Collaborating with development teams.
+
+Solution Architect:
+* Analyzing business requirements (with stakeholders & BA).
+* Designing end-to-end solutions.
+* Managing trade-offs: balance conflicting requirements and find optimal solutions.
+* Collaborating with multiple teams.
+
 #### TL
 
 * Avoid conflicts.

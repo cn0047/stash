@@ -13,6 +13,8 @@ DocBlock
 @todo
 @deprecated
 
+@category MySpecificDomainCategory
+
 {@inheritdoc}
 ````
 
