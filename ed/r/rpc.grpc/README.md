@@ -4,6 +4,12 @@ gRPC
 [grpc](https://grpc.io/docs)
 
 ````sh
+# golang struct -> protobuf
+# @see: https://github.com/anjmao/go2proto
+go2proto -f ./protoDir -p "git.org.tech/scope/pkg"
+````
+
+````sh
 Content-Type: application/grpc+json
 Content-Type: application/grpc+proto
 ````

@@ -1,0 +1,23 @@
+syntax = "proto3";
+package lib;
+
+
+message Data {
+  string value = 1;
+}
+
+message DataBag {
+  string name = 1;
+  int64 code = 2;
+  SomeData meta = 3;
+  SomeData data = 4;
+}
+
+message Meta {
+  string value = 1;
+}
+
+message SomeData {
+  string value = 1;
+}
+

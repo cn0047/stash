@@ -136,7 +136,7 @@ docker run -it --rm --net=xnet -p 8080:8080 -v $PWD:/gh -w /gh -e GOPATH='/gh/ed
 '
 
 # grpc one
-docker run -it --rm --name=grpcone -v $PWD:/gh -w /gh/ed/l/go/examples/grpc/one xgo sh -c '
+docker run -it --rm --name=grpcone -v $PWD:/gh -w /gh/ed/l/go/examples/3rdparty/grpc/one xgo sh -c '
   export GOPATH=$PWD;
   go get -u google.golang.org/grpc;
   go get -u github.com/golang/protobuf/protoc-gen-go;
@@ -146,6 +146,17 @@ docker run -it --rm --name=grpcone -v $PWD:/gh -w /gh/ed/l/go/examples/grpc/one 
 '
 # &
 docker exec -it grpcone sh -c 'export GOPATH=$PWD; go run src/app/client.go'
+
+# grpc two
+cd /Users/k/web/kovpak/gh/ed/l/go/examples/3rdparty/grpc/two
+# codegen: golang -> proto
+# @see: https://github.com/anjmao/go2proto
+go2proto -f ./lib -p github.com/grpc/two
+# codegen: proto -> golang
+# @todo: replace `package proto;` -> `package lib;`
+protoc --gofast_out=plugins=grpc:. lib/output.proto
+# &
+go run main.go
 
 # youtube
 GOPATH=$PWD/ed/l/go/examples/youtube

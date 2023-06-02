@@ -25,13 +25,13 @@ package Domain {
     node Admin1 {
     }
 
-    rectangle Admin2 {
+    rectangle Admin2 #LightGreen {
     }
 
-    rectangle Admin3  #line.dotted {
+    rectangle Admin3 #line.dotted {
     }
 
-    rectangle Else  #line.dotted {
+    rectangle Else #line.dotted {
     }
 
     frame Scope {

@@ -5,6 +5,26 @@ The ideal task size is not bigger than 1 day work.
 
 Two-pizza teams - where no team should be so big that it could not be fed with two pizzas.
 
+Strengths:
+* Fast learner.
+* Detail oriented.
+* Passionate & committed.
+* Disciplined and focused.
+* Collaborative.
+* Flexible & versatile.
+* Creative & innovative.
+* Loyal & trustworthy.
+* Resourceful.
+* Commercially aware.
+
+Weakness:
+* Detail oriented.
+* Difficult to ask other people to help.
+* Not good at giving people feedback.
+* Hard saying no to people.
+* Sometimes too sensitive.
+* Get stressed if project runs over deadline.
+
 Software Architect:
 * Designing the system structure: components, modules, subsystems.
 * Defining technical standards.

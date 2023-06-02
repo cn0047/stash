@@ -182,7 +182,7 @@ Basic Hooks:
 
 Additional Hooks:
 * useReducer.
-* useCallback.
+* useCallback - caches function definition between re-renders.
 * useMemo - will only recompute memoized value when one of dependencies has changed.
 * useRef.
 * useImperativeHandle.
