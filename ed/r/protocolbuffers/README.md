@@ -38,6 +38,11 @@ If you are dealing in messages larger than a megabyte each,
 it may be time to consider an alternate strategy.
 
 ````sh
+import "google/protobuf/any.proto";
+import "google/protobuf/timestamp.proto";
+
+import "proto/common.proto";
+
 message Job {
   reserved 20;
   string id = 1;

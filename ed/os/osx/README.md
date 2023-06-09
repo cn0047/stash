@@ -133,7 +133,7 @@ brew install mongodb
 brew tap mongodb/brew && brew install mongodb-community@4.4
 
 brew update && brew cleanup
-brew upgrade
+brew upgrade jq
 
 brew services start postgresql
 ````

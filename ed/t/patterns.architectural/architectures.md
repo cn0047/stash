@@ -299,6 +299,19 @@ wall
         └── 🗂 symfony           # Symfony entry point.
 ````
 
+#### Hexagonal
+
+````
+prj
+├── cmd
+│   └── main.app
+├── adapters
+└── core
+    ├── ports
+    ├── usecases
+    └── domain
+````
+
 #### Tests
 
 ````

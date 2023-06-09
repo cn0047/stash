@@ -132,6 +132,18 @@ Basically, classes are the tightest form of coupling in object-oriented programm
 
 Pick 2 out of 3: speed, quality, cost.
 
+#### Refactoring
+
+Refactoring - restructuring existing code without changing its external behavior.
+
+Refactoring techniques:
+* Renaming vars/func/etc.
+* Extracting repeated code.
+* Simplifying complex code.
+* Fixing code smells.
+* Applying design patterns.
+* Optimizing performance.
+
 #### [Clean Code](https://monosnap.com/file/9UGwycGbfCus8TRIXPjFWGsI2pKOKW)
 
 Clean code always looks like it was written by someone who cares.

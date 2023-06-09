@@ -1,6 +1,14 @@
-Design thinking
+Thinking
 -
 
+Critical thinking:
+* Formulate your question.
+* Gather your information.
+* Apply the information (concepts, assumptions, interpretation).
+* Consider the implications.
+* Explore other viewpoints.
+
+Design thinking:
 * Empathize (for who is invention).
 * Define.
 * Ideation (brainstorm ideas).
