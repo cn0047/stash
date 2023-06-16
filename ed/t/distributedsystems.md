@@ -4,9 +4,9 @@ Distributed Systems
 Observability - not only monitoring cpu/mem/net/etc usage, but also:
 * logging.
 * tracing.
-* SLI metrics monitoring.
-* health check.
+* health checking.
 * distributed events monitoring.
+* SLI metrics monitoring.
 
 Consensus - getting all of the nodes to agree on something.
 

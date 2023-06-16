@@ -28,7 +28,7 @@ db.getLastErrorObj()
 
 db.adminCommand('listDatabases'); // list DBs
 db.getSiblingDB('<db>');
-db.getCollectionNames();
+db.getCollectionNames(); // list collections
 db.getUsers();
 db.getRoles({showBuiltinRoles: true});
 

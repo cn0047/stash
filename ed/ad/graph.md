@@ -50,7 +50,7 @@ DAG alway topologically ordered.
 
 ## Search
 
-BFS (Breadth First Search) - O(|V| + |E|).
+BFS (Breadth First Search) - `O(|V| + |E|)` (V - vertices, E - edges).
 BFS generates a spanning tree.
 
 Uses queue:
@@ -60,7 +60,7 @@ add node to queu
   -> deque top of queue
 ````
 
-DFS (Depth First Search) - `O(|V| + |E|)`.
+DFS (Depth First Search) - `O(|V| + |E|)` (V - vertices, E - edges).
 
 Uses recursion or stack:
 ````

@@ -55,6 +55,20 @@ Think about:
 * Keep all geographically close to each other.
 * Scale & Performance.
 
+Architectural plan:
+1) Introduction and goals (fundamental requirements).
+2) Constraints.
+3) Context and scope (external systems and interfaces).
+4) Solution strategy (core ideas and approaches).
+5) Building block view (structure of source code modularisation).
+6) Runtime view (important runtime scenarios).
+7) Deployment view (hardware and infrastructure).
+8) Crocccuttings concepts.
+9) Architectural decisions.
+10) Quality requirements.
+11) Risk and technical depth (known problems and risks).
+12) Glossary (ubiquitous language).
+
 #### SLA/SLO/SLI
 
 Availability:
