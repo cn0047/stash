@@ -63,7 +63,7 @@ Architectural plan:
 5) Building block view (structure of source code modularisation).
 6) Runtime view (important runtime scenarios).
 7) Deployment view (hardware and infrastructure).
-8) Crocccuttings concepts.
+8) Crosscutting concepts.
 9) Architectural decisions.
 10) Quality requirements.
 11) Risk and technical depth (known problems and risks).

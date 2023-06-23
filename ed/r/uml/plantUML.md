@@ -8,6 +8,13 @@ PlantUML
 allowmixing
 
 hide ComponentID
+
+'comment
+
+#line.dotted
+#lightgreen
+#lightyellow
+#lightpink
 ````
 
 #### Component diagram.
@@ -20,12 +27,13 @@ Components: folder, package, node, rectangle, frame, cloud, database.
 title Example 1.
 
 left to right direction
+allowmixing
 
 package Domain {
     node Admin1 {
     }
 
-    rectangle Admin2 #LightGreen {
+    rectangle Admin2 #lightgreen {
     }
 
     rectangle Admin3 #line.dotted {

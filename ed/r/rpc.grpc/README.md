@@ -2,6 +2,7 @@ gRPC
 -
 
 [grpc](https://grpc.io/docs)
+[grpcurl](https://github.com/fullstorydev/grpcurl)
 
 ````sh
 # golang struct -> protobuf

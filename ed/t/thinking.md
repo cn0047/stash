@@ -29,3 +29,9 @@ Mind Traps:
 * Zeigarnik effect: we remember incomplete task but easily forget completed tasks.
   **To stop this effect no need to complete task, just write plan how to complete it**.
 * Paradox of choice: having many choices may be worse than having couple choices.
+
+Logical Reasoning:
+* Inductive (research, find facts, more facts, etc).
+* Deductive.
+* Analogy.
+* Abductive.

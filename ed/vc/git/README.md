@@ -261,6 +261,7 @@ git submodule update --remote --recursive
     lg  = log --pretty=format:\"%h %ad | [%an] %s%d\" --graph --date=short
     f   = fetch origin
     p   = pull --ff-only
+    pr  = pull --rebase
     po  = pull origin
     ph  = push origin HEAD
     pt  = push origin --tags

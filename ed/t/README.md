@@ -44,7 +44,7 @@ Theory
 <br>SAML    - Security Assertion Markup Language (used in SSO).
 <br>SDK     - Software development kit.
 <br>SDLC    - Software development life-cycle.
-<br>SKU     - Stock keeping unit.
+<br>SKU     - Stock keeping unit (unique identifier (bar code) used in retail and manufacturing to keep track of inventory).
 <br>SSO     - Single-Sign-On.
 <br>UPC     - Universal Product Code.
 <br>UPI     - Unique Product Identifier.
