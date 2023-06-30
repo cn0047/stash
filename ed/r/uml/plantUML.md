@@ -2,6 +2,7 @@ PlantUML
 -
 
 [docs](https://plantuml.com/)
+[guide](https://crashedmind.github.io/PlantUMLHitchhikersGuide/)
 
 ````plantuml
 @startuml

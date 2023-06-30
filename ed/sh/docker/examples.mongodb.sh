@@ -4,6 +4,7 @@ docker pull mongo:$tag
 
 tag=latest
 tag=3.4.4
+tag=5.0.9
 docker run -it --rm --net=xnet -p 27017:27017 --hostname xmongo --name xmongo \
     -v $PWD/.data/.docker/mongodb:/data/db mongo:$tag
     # -v /Users/k/Downloads/:/tmp/d \
