@@ -126,3 +126,15 @@ and each subsequent step is triggered by the completion
 of the previous one.
 
 Implementations: Choreography, Orchestration.
+
+## Database selection
+
+Questions to answer:
+* How is the data structured (unstructured, key-value, semi-structured, relational)?
+* Is ACID compliance required?
+* What consistency model is required (strong, eventual)?
+* What data types and sizes required (text, spatial, time-series, BLOB)?
+* How will scalability requirements change over time?
+* What is read/write queries ratio?
+* How is data sensitive (protection, encryption)?
+* What level of durability is required?

@@ -251,6 +251,8 @@ kubectl get pods -o wide # shows pods and nodes
 kubectl get pods -o json
 kubectl get pods -o jsonpath='{.items[*].metadata.name}'
 
+kubectl -n=$ns describe pod $p
+
 lbl='app='
 p=`kubectl get pods -l $lbl -o jsonpath='{.items[*].metadata.name}'`
 kubectl logs -f $p

@@ -8,6 +8,8 @@ PlantUML
 @startuml
 allowmixing
 
+!includesub diagram.subpart.1.puml!SUBPART1
+
 hide ComponentID
 
 'comment

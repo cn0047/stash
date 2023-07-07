@@ -12,9 +12,9 @@ Philosophy: Do one thing and do it well.
 Microservice must be stateless.
 Microservice must be resilient. And respond to changes quickly.
 Microservice must have:
-* high cohesion & loose coupling.
-* lightweight communication mechanism.
-* independent data storage.
+* High cohesion & loose coupling.
+* Lightweight communication mechanism.
+* Independent data storage.
 
 Microservices-based architectures enable Continuous Delivery and Deployment.
 
