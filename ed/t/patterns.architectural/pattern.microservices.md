@@ -41,6 +41,11 @@ with purpose to split stuff into separated modules (same approach for database).
 Greenfield development is also quite challenging.
 So again, consider starting monolithic first and break things out when you’re stable.
 
+Boundary context might be defined by:
+* Business feature.
+* Data.
+* Process.
+
 Many of the challenges you’re going to face with microservices get worse with scale.
 
 * Model around business concepts

@@ -17,8 +17,9 @@ func main() {
 	// println(r("this is test # 3"))
 	// println(r("Last config, last but not least (conf 4)."))
 	// noCapture()
-	checkIsValidGeneralID()
+	// checkIsValidGeneralID()
 	// r2()
+	allFindFuncs()
 }
 
 func checkIsValidGeneralID() {
@@ -158,4 +159,54 @@ func removeWWW() {
 func DeleteAttrsFromTag(s string) (res string) {
 	res = regexp.MustCompile(`<(\w+)(\s*[\w-]+=["][^"]*["])*(\s*[/])?>`).ReplaceAllString(s, "<$1$3>")
 	return res
+}
+
+func allFindFuncs() {
+	pattern := `-([a-z0-9]+)-`
+	s := `style1-season2-color3-test3-test4`
+	b := []byte(s)
+
+	re, err := regexp.Compile(pattern)
+	if err != nil {
+		panic(err)
+	}
+
+	m01 := re.FindAllStringSubmatch(s, -1)
+	m02 := re.Find(b)
+	m03 := re.FindAll(b, -1)
+	m04 := re.FindAllIndex(b, -1)
+	m05 := re.FindIndex(b)
+	m06 := re.FindAllString(s, -1)
+	m07 := re.FindAllStringIndex(s, -1)
+	m08 := re.FindAllStringSubmatch(s, -1)
+	m09 := re.FindAllStringSubmatchIndex(s, -1)
+	m10 := re.FindAllSubmatch(b, -1)
+	m11 := re.FindAllSubmatchIndex(b, -1)
+	m12 := re.FindIndex(b)
+	m13 := re.FindString(s)
+	m14 := re.FindStringIndex(s)
+	m15 := re.FindStringSubmatch(s)
+	m16 := re.FindStringSubmatchIndex(s)
+	m17 := re.FindSubmatch(b)
+	m18 := re.FindSubmatchIndex(b)
+
+	fmt.Printf("Matches01: %v\n", m01) // Matches01: [[-season2- season2] [-test3- test3]]
+	fmt.Printf("Matches02: %s\n", m02) // Matches02: -season2-
+	fmt.Printf("Matches03: %s\n", m03) // Matches03: [-season2- -test3-]
+	fmt.Printf("Matches04: %v\n", m04) // Matches04: [[6 15] [21 28]]
+	fmt.Printf("Matches05: %v\n", m05) // Matches05: [6 15]
+	fmt.Printf("Matches06: %v\n", m06) // Matches06: [-season2- -test3-]
+	fmt.Printf("Matches07: %v\n", m07) // Matches07: [[6 15] [21 28]]
+	fmt.Printf("Matches08: %v\n", m08) // Matches08: [[-season2- season2] [-test3- test3]]
+	fmt.Printf("Matches09: %v\n", m09) // Matches09: [[6 15 7 14] [21 28 22 27]]
+	fmt.Printf("Matches10: %s\n", m10) // Matches10: [[-season2- season2] [-test3- test3]]
+	fmt.Printf("Matches11: %v\n", m11) // Matches11: [[6 15 7 14] [21 28 22 27]]
+	fmt.Printf("Matches12: %v\n", m12) // Matches12: [6 15]
+	fmt.Printf("Matches13: %v\n", m13) // Matches13: -season2-
+	fmt.Printf("Matches14: %v\n", m14) // Matches14: [6 15]
+	fmt.Printf("Matches15: %v\n", m15) // Matches15: [-season2- season2]
+	fmt.Printf("Matches16: %v\n", m16) // Matches16: [6 15 7 14]
+	fmt.Printf("Matches17: %s\n", m17) // Matches17: [-season2- season2]
+	fmt.Printf("Matches18: %v\n", m18) // Matches18: [6 15 7 14]
+
 }
