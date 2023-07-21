@@ -110,13 +110,13 @@ Basically, classes are the tightest form of coupling in object-oriented programm
 * Documentable.
 * Well designed (patterns).
 * Follows SOLID.
-* Don't have memory leaks.
-* Don't have vulnerabilities and security issues.
-* Cares about backward compatibility.
+* Without memory leaks.
+* Without vulnerabilities and security issues.
+* Backward compatible.
 
 * Fault tolerance.
 * Predictability.
-* Resilience - is the ability of a system to adapt or keep working when challenges occur.
+* Resilience - ability of system to adapt or keep working when challenges occur.
 * Elasticity.
 
 * Rigidity.

@@ -1,4 +1,4 @@
-IAP - Identity-Aware Proxy
+IAP (Identity-Aware Proxy)
 -
 
 [docs](https://cloud.google.com/iap/docs/concepts-overview)

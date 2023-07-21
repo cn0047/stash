@@ -57,6 +57,15 @@ TL must be:
 * Velocity.
 * PRs count.
 
+#### SDLC (Software development life-cycle)
+
+* Plan (collect requirements from stakeholders).
+* Design (analyze requirements and identify the best solutions).
+* Implement (coding).
+* Test (automation and manual testing).
+* Deploy (production).
+* Maintain.
+
 #### Waterfall
 
 Originated in the manufacturing and construction industries.

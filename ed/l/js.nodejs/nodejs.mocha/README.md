@@ -15,6 +15,7 @@ open coverage/lcov-report/*.html
 ````
 
 ````js
+xit // skip
 it.skip
 it.only
 this.retries(2);

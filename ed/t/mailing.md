@@ -4,6 +4,7 @@ mailing
 MIME - Multipurpose Internet Mail Extensions.
 MTA - Message (or Mail) Transfer Agent.
 SMTP - Simple Mail Transfer Protocol.
+DMARC - Domain-based Message Authentication, Reporting and Conformance (email authentication protocol).
 
 * Don't use `*.bmp`.
 * Use RGB.

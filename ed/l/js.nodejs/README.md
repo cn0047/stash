@@ -16,7 +16,7 @@ sudo ln -s /usr/bin/nodejs /usr/bin/node
 ````
 
 ````sh
-node --inspect --inspect-brk x.js
+node --trace-events-enabled --inspect --inspect-brk x.js
 # or
 # inject debug in already runned process
 kill -SIGUSR1 2128

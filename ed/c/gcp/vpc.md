@@ -1,4 +1,4 @@
-VPC
+VPC (Virtual Private Cloud)
 -
 
 ````sh

@@ -1,4 +1,4 @@
-IAM - Identity & Access Management
+IAM (Identity & Access Management)
 -
 
 [docs](https://cloud.google.com/iam/docs/)

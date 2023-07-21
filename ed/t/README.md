@@ -43,7 +43,6 @@ Theory
 <br>SaaS    - [Software as a service](https://raw.githubusercontent.com/cn007b/my/master/ed/t/i/cloudComputingTypes.jpeg).
 <br>SAML    - Security Assertion Markup Language (used in SSO).
 <br>SDK     - Software development kit.
-<br>SDLC    - Software development life-cycle.
 <br>SKU     - Stock keeping unit (unique identifier (bar code) used in retail and manufacturing to keep track of inventory).
 <br>SSO     - Single-Sign-On.
 <br>UPC     - Universal Product Code.

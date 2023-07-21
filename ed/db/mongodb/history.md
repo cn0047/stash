@@ -5,7 +5,11 @@ History of MongoDB
 
 #### 5.x.x
 
-#### 4.x.x
+#### 4.2
+
+#### 4.0
+
+* Transactions.
 
 #### 3.4.9
 

@@ -3,8 +3,10 @@ Explain
 
 [demo db](http://bit.ly/pagilia-dl)
 
+````sql
 ANALYZE
 BUFFERS
+````
 
 In output:
 * `cost` - time expended before output phase begin,

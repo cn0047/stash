@@ -44,6 +44,11 @@ Docker registry - stores Docker images.
 
 Docker objects: images, containers, networks, volumes, etc.
 
+Docker file sharing implementation:
+* VirtioFS
+* gRPC FUSE (Filesystem in Userspace server running over gRPC over Hypervisor sockets)
+* osxfs (Legacy)
+
 ````sh
 host.docker.internal         # connect to host machine from container.
 docker.for.mac.host.internal # ↑
@@ -226,8 +231,10 @@ docker-compose -f dkr/docker-compose.yml up
 docker-compose up -d
 
 # runs a one-time command against a service (will start service if needed)
-docker-compose run
-docker-compose run -T # disable pseudo-tty allocation
+docker-compose run \
+-T              # disable pseudo-tty allocation
+--rm            # remove container after run
+--service-ports # run with service's ports enabled and mapped to the host
 
 docker-compose ps
 
