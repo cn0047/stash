@@ -205,8 +205,10 @@ If-None-Match: "6d82cbb050ddc7fa9cbb659014546e59"
 
 ## CORS (Cross-Origin Resource Sharing)
 
-A CORS preflight request is a CORS request that checks to see if the CORS protocol is understood.
-It is an OPTIONS request:
+Current browser URL is called current origin and the third-party URL is cross-origin.
+
+A CORS preflight request is CORS request sent by browser to checks whether CORS protocol is understood.
+It is an `OPTIONS` request:
 ````sh
 OPTIONS /resource/foo
 Access-Control-Request-Method: DELETE

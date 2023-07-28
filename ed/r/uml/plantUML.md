@@ -27,9 +27,10 @@ Components: folder, package, node, rectangle, frame, cloud, database.
 ```plantuml
 @startuml
 
-title Example 1.
+title Componets diagram, example #1.
 
 left to right direction
+top to bottom direction
 allowmixing
 
 package Domain {
@@ -71,6 +72,33 @@ rectangle UI {
 }
 
 UI --> Controller3
+
+@enduml
+```
+
+```plantuml
+@startuml
+
+title State diagram, example #1.
+
+state Up {
+}
+
+Up --> A
+
+state A {
+    state B #lightpink {
+    }
+
+    state C #lightyellow {
+    }
+
+    [*] -[#pink]-> B
+    [*] -[#grey]-> C
+    C -d-> D
+    D -r-> E
+    D -[hidden]r-> E
+}
 
 @enduml
 ```

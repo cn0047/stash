@@ -6,7 +6,10 @@ nvm (Node Version Manager)
 ````sh
 nvm ls
 nvm ls-remote
-nvm install 10.1
-nvm use 10.1
-nvm alias default 10.1
+
+v=10.1
+nvm install $v
+nvm uninstall $v
+nvm use $v
+nvm alias default $v
 ````

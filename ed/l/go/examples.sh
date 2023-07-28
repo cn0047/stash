@@ -158,6 +158,22 @@ protoc --gofast_out=plugins=grpc:. lib/output.proto
 # &
 go run main.go
 
+# grpc three
+cd /Users/k/web/kovpak/gh/ed/l/go/examples/3rdparty/grpc/three
+clang-format -style=file -i proto/main.proto
+# generate BE part
+OUT_DIR=proto/backend
+protoc \
+  --gofast_out=plugins=grpc:$OUT_DIR proto/main.proto
+# generate FE part
+OUT_DIR=proto/frontend
+protoc \
+  --js_out=import_style=commonjs:$OUT_DIR \
+  --grpc-web_out=import_style=commonjs+dts,mode=grpcwebtext:$OUT_DIR proto/main.proto
+#
+go run main.go server
+go run main.go client
+
 # youtube
 GOPATH=$PWD/ed/l/go/examples/youtube
 

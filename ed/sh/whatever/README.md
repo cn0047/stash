@@ -355,6 +355,11 @@ openssl x509 -req -in cert.csr -signkey private.key -out certificate.pem
 ````
 
 ````sh
+# go run /Users/k/web/kovpak/gh/ed/l/go/examples/http/http.server.https.go
+openssl s_client -connect localhost:4433
+GET / HTTP/1.1
+Host: localhost:4433
+
 # https request
 r="GET / HTTP/1.1
 Host: localhost:4433
@@ -380,6 +385,7 @@ EOF
 #### telnet
 
 ````sh
+# go run /Users/k/web/kovpak/gh/ed/l/go/examples/http/http.server.hw.go
 telnet localhost 8080
 GET / HTTP/1.1
 Host: localhost:8080

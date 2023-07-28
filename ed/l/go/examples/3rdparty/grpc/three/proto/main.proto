@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package proto;
+option go_package = "proto";
+
+import "google/protobuf/any.proto";
+import "google/protobuf/timestamp.proto";
+
+message AppError {
+  int32 ErrorCode = 1;
+  string ErrorMessage = 2;
+}
+
+message EchoRequest { string Message = 1; }
+
+message EchoResponse {
+  string Message = 1;
+  AppError Error = 2;
+}
+
+message PingRequest { string Message = 1; }
+
+message PingResponse {
+  string Message = 1;
+  AppError Error = 2;
+}
+
+service MainService {
+  rpc Echo(EchoRequest) returns (EchoResponse);
+  rpc Ping(PingRequest) returns (PingResponse);
+}

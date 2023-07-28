@@ -57,6 +57,8 @@ npm audit # security audit
 npm audit fix --force
 
 npm outdated # check outdated packages
+
+npm root -g
 ````
 
 ````sh

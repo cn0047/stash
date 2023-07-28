@@ -2,24 +2,17 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"net/http"
-	"net/http/httputil"
+	"time"
 )
 
 func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		dump, err := httputil.DumpRequest(r, true)
-		if err != nil {
-			http.Error(w, fmt.Sprint(err), http.StatusInternalServerError)
-			return
-		}
-		if _, err := fmt.Fprintf(w, "%s", dump); err != nil {
-			log.Printf("error: %#v\n", err)
-		}
-		log.Printf("[main] \n%s", dump)
+		fmt.Printf("req [%s]\n", time.Now())
+		w.Write([]byte("Hello world!\n"))
 	})
-	c := "/Users/kovpakvolodymyr/web/kovpak/gh/ed/l/nodejs/nodejs.express/examples/coursera.passport/bin/httpsKeys/certificate.pem"
-	k := "/Users/kovpakvolodymyr/web/kovpak/gh/ed/l/nodejs/nodejs.express/examples/coursera.passport/bin/httpsKeys/private.key"
-	http.ListenAndServeTLS(":4433", c, k, nil)
+	p := ":4433"
+	c := "/Users/k/web/kovpak/gh/ed/l/js.nodejs/nodejs.express/examples/coursera.passport/bin/httpsKeys/certificate.pem"
+	k := "/Users/k/web/kovpak/gh/ed/l/js.nodejs/nodejs.express/examples/coursera.passport/bin/httpsKeys/private.key"
+	http.ListenAndServeTLS(p, c, k, nil)
 }

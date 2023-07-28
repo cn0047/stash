@@ -12,6 +12,7 @@ Theory
 
 <br>ACL     - Access Control Lists.
 <br>API     - Application programming interface.
+<br>ATAM    - Architecture Tradeoff Analysis Method.
 <br>B2B     - Business to Business.
 <br>BAAS    - Back-end as a service.
 <br>BLOB    - Binary Large Object.

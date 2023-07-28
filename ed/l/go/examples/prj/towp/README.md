@@ -1,4 +1,4 @@
-Wave Planner
+WP
 -
 
 Information about wp you can find in next documents:
