@@ -74,6 +74,7 @@ git commit -m "PROJ-123 my comment..." # for JIRA
 git commit --amend # update commit message
 git commit --amend --author="V.K. <cn007b@gmail.com>"
 git commit --date "2024-03-08" -m 'Message'
+git commit --amend --date="2024-03-08" --no-edit
 
 git log -2                # last 2 commits
 git log -p                # shows commits & code in commit
