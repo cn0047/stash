@@ -104,6 +104,8 @@ IoT Protocols: MQTT, CoAP (lightweight HTTP).
 
 ## OSI model (Open Systems Interconnection)
 
+<img src="https://gist.github.com/cn007b/384d6938ebef985347b29c15476b55c5/raw/9357d5528a6648a6e02b23bb9c8badc3be40fd40/OSIModel.png" width="70%" />
+
 OSI describes 7 layers that computer systems use to communicate over network.
 
 7. Application Layer - High-level APIs (**SMTP**, **HTTP**, **FTP**, etc).

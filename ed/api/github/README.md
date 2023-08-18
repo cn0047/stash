@@ -18,7 +18,7 @@ Host github.com
 # push gist config with http
 url = https://gist.github.com/cn007b/b0136cc4db3ad91774e93dbaadcf0331
 # push gist config with ssh
-url = git@gist.github.com:b0136cc4db3ad91774e93dbaadcf0331.git
+url = git@gist.github.com:384d6938ebef985347b29c15476b55c5.git
 ````
 
 ````sh
