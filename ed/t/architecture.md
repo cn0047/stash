@@ -32,6 +32,11 @@ Architectural view model:
 * Physical view - system engineer's point of view (instances topology).
 * Scenarios - use cases.
 
+Architecture must care about:
+* Durability.
+* Utility.
+* Beauty.
+
 #### SLA/SLO/SLI
 
 Availability:

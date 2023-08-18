@@ -104,15 +104,17 @@ IoT Protocols: MQTT, CoAP (lightweight HTTP).
 
 ## OSI model (Open Systems Interconnection)
 
-7. Application Layer - High-level APIs.
+OSI describes 7 layers that computer systems use to communicate over network.
+
+7. Application Layer - High-level APIs (**SMTP**, **HTTP**, **FTP**, etc).
 6. Presentation Layer - Translation of data between a networking service and an application
    (encoding/compression/encryption/decryption).
 5. Session Layer - managing communication sessions.
-4. Transport Layer -  reliable transmission of data segments between points on a network (TCP, UDP).
+4. Transport Layer -  reliable transmission of data segments between points on a network (**TCP**, **UDP**).
 3. Network Layer - structuring and managing a multi-node network,
-   including addressing, routing and traffic control.
-2. Data Link Layer - reliable transmission of data frames between two nodes.
-1. Physical Layer - transmission and reception of raw bit streams over a physical medium.
+   including addressing, **routing** and traffic control (betweep 2 IPs).
+2. Data Link Layer - reliable transmission of data **frames** between two nodes.
+1. Physical Layer - transmission and reception of **raw bit streams** over a physical medium.
 
 ## DNS
 

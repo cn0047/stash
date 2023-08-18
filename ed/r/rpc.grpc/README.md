@@ -21,7 +21,7 @@ Provides features such as:
 * authentication.
 * cancellation.
 * timeouts.
-* bidirectional streaming and flow control.
+* unary and bidirectional streaming and flow control.
 * blocking or nonblocking bindings.
 
 gRPC uses HTTP/2 for transport.

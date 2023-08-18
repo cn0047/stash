@@ -15,6 +15,7 @@ UDP is lightweight, connectionless, unreliable protocol,
 which doesn't care about errors.
 UDP is RTP (Real-time Transport Protocol).
 UDP is good for broadcast.
+UDP doesn't have handshake because it's connectionless.
 
 Although UDP provides integrity verification (via checksum) of the header and payload,
 it provides no guarantees to the upper layer protocol for message delivery

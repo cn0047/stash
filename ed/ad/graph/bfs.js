@@ -2,7 +2,7 @@
  * BFS - Breadth First Search.
  *
  * step 1: Put root node into queue.
- * step 2: Dequeue element, print value and put into queue node's children.
+ * step 2: Dequeue element, process value and put into queue node's children.
  * step 2: Goto step 2.
  *
  * @param {number} f From node.

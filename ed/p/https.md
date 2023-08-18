@@ -10,6 +10,8 @@ Important: SSL 3.0 is vulnerable.
 
 Encrypts headers and body.
 
+HTTPS - extension of HTTP, uses encryption for secure communication over network.
+
 The main point of HTTPS is
 authentication of the visited website and protection of the privacy and integrity of the exchanged data.
 HTTPS creates a secure channel over an insecure network.

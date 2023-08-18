@@ -130,6 +130,10 @@ golangci-lint run
 gofmt -w $pathToFile
 
 go-callvis ./... # visualize go code
+
+# vulnerability check
+go install golang.org/x/vuln/cmd/govulncheck@latest
+govulncheck ./...
 ````
 
 ````golang
@@ -329,6 +333,8 @@ If you know that you will store 100 entries in map,
 it's better to allocate map with such (or greater) capacity.
 
 **delete** - func to delete element from map.
+
+**clear** - takes map|slice|parameter type, and deletes or zeroes out all elements.
 
 **array**
 An array's size is fixed.

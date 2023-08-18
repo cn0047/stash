@@ -1,5 +1,16 @@
-Binary Search Tree (BST)
+Binary Tree
 -
+
+Binary Tree - tree data structure where each node has at most 2 children.
+
+#### Binary Search Tree (BST)
+
+BST (ordered, sorted binary trees) - particular type of containers,
+data structures that store items in memory.
+They allow fast lookup, addition and removal of items,
+and can be used to implement either dynamic sets of items,
+or lookup tables that allow finding an item by its keys.
+Keep their keys in sorted order, so that lookup and other operations can **use the principle of binary search**.
 
 When BST saved in array, elements can be found by:
 ````
@@ -12,6 +23,8 @@ floor(i/2) - parent
 BFS/DFS (Breadth/Depth First Search) in binary tree: @see: graph.md
 
 Level-Order Traversal aka BFS.
+
+Preorder Traversal aka DFS.
 
 Full BT - every non-leaf node has two children,
 no space to add element into tree without affecting tree's height.

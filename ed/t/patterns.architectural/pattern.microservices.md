@@ -140,3 +140,7 @@ increasing the waiting time between retries up to a maximum backoff time.
 
 * Use separate Authentication & Authorization service for auth,
 which is connected with API-Gateway (or part of it).
+
+* If you need to deploy microservice and for that you need to deploy another one - you're not
+doing microservices, you're doing another kind of services but not microservices.
+Microservices must be independently deployable.

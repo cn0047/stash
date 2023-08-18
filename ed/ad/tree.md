@@ -31,12 +31,7 @@ To make Minimum spanning tree use:
 * AST - Abstract Syntax Tree (used by webpack, babel, etc).
 [explorer](https://astexplorer.net/)
 
-* `Binary search trees` (ordered, sorted binary trees) - particular type of containers,
-data structures that store items in memory.
-They allow fast lookup, addition and removal of items,
-and can be used to implement either dynamic sets of items,
-or lookup tables that allow finding an item by its keys.
-Keep their keys in sorted order, so that lookup and other operations can **use the principle of binary search**.
+* `Binary search trees` (ordered, sorted binary trees) - can **use the principle of binary search**.
 
 * `Self-balancing binary search tree` (height-balanced) - is any node-based binary search tree
 that automatically **keeps its height small** in the face of arbitrary item insertions and deletions.

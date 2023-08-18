@@ -713,6 +713,13 @@ ftp $hostname
 # connect in passive mode
 ftp -p $hostname
 
+# all in 1 run
+ftp -inv -p ftp.staging.nuorder.com <<EOF
+user $usr $pass
+cd /test/k
+ls
+EOF
+
 ncftpput -R -v -u {user} {host} remote_path ./local_path/*
 ````
 
