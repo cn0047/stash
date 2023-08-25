@@ -38,6 +38,9 @@ pg_trgm # Trigram (Trigraph) module
 \pset pager off
 -- \setenv PAGER less
 
+# expanded display, \G in mysql
+\x
+
 \set PROMPT2 '    '
 
 # show databases
@@ -51,6 +54,10 @@ pg_trgm # Trigram (Trigraph) module
 \dt *test*
 # more info
 \d+ viewName
+
+# show functions/procedures
+\df
+\df+ funcName
 
 # `SHOW CREATE TABLE`
 pg_dump -t tableName --schema-only

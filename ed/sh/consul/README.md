@@ -18,6 +18,10 @@ consul agent -config-dir configs
 consul services register -name=web services.hcl
 ````
 
+````sh
+curl -H "X-Consul-Token: $CONSUL_TOKEN"
+````
+
 Consul - tool for discovering and configuring services.
 
 Consul offers:
@@ -65,9 +69,18 @@ API gateway - allows external network clients to access services running in Cons
 * Control access at the point of entry (with TLS certificates).
 * Simplify traffic management (load balance requests).
 
-Cluster peering - connects two or more independent Consul clusters.
+Cluster peering - connect two or more independent Consul clusters.
 
 Failover - route traffic to and from unhealthy or unreachable service.
+
+Dataplane - manages Envoy proxies and leaves responsibility
+for other functions (communications between service instances, their sidecar proxies, and the servers)
+to the orchestrator (for example kubelet in k8s).
+
+KV Store - simple Key/Value store.
+
+ACLs - authenticate requests and authorize access to resources.
+Rule -> Policy -> Token (PolicyA, PolicyB).
 
 ````sh
 # consul-server.mesh.hcl

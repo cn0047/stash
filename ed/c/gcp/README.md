@@ -70,6 +70,7 @@ gcloud config configurations activate my_cfg
 gcloud auth login
 gcloud auth application-default login
 gcloud config configurations list
+gcloud config configurations delete my_cfg
 gcloud config list
 gcloud config set project itismonitoring
 gcloud config set project thisisrealtimelog

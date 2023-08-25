@@ -8,6 +8,10 @@ docker
 [compose-file](https://docs.docker.com/compose/compose-file)
 [moby](https://mobyproject.org)
 
+````sh
+ls /Users/k/Library/Group\ Containers/group.com.docker/settings.json
+````
+
 ## Overview
 
 Docker - an open platform for developing, shipping, and running applications.
