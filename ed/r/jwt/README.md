@@ -29,3 +29,8 @@ HS256 - HMAC with SHA-256.
 RSA and ECDSA algorithms (asymmetric).
 
 Never include secret info into JWT.
+
+Token could be stolen, so it must have expiration.
+
+AccessToken - with short TTL.
+RefreshToken - with long TTL, used only to get new AccessToken, will be expired after 1 usage.

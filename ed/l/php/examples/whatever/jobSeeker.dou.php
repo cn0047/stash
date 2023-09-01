@@ -2,8 +2,10 @@
 
 // Update CATEGORIES & BLACKLIST accordingly to you requirements.
 define('CATEGORIES', [
-    'city=Kyiv&category=Golang',
-    'remote&category=Golang',
+    'category=Architect',
+    'category=Golang',
+    // 'city=Kyiv&category=Golang',
+    // 'remote&category=Golang',
     // 'city=Kyiv&category=PHP',
     // 'remote&category=PHP',
     // 'city=Kyiv&category=Front+End',
@@ -12,10 +14,11 @@ define('CATEGORIES', [
     // 'remote&category=Node.js',
     // 'city=Kyiv&category=Blockchain',
     // 'remote&category=Blockchain',
-    'city=Kyiv&category=Other',
-    'remote&category=Other',
+    // 'city=Kyiv&category=Other',
+    // 'remote&category=Other',
+    'category=Other',
 ]);
-define('BLACKLIST', '/wordpress|magento/msi');
+define('BLACKLIST', '/junior|middle|wordpress|magento/msi');
 
 
 
@@ -101,6 +104,7 @@ function getSigns(string $title, string $desc): string
     $notArchitect = isArchitect($title) === false && isArchitect($desc) === false;
     $notLead = isLead($title) === false && isLead($desc) === false;
     $notBackEnd = isBackEnd($title) === false;
+    $notGolang = isGolang($title) === false && isGolang($desc) === false;
     $notRust = isRust($title) === false && isRust($desc) === false;
     $noNumbers = withAnyNumber($title) === false && withAnyNumber($desc) === false;
     $noMoney = withMoney($title) === false && withMoney($desc) === false;
@@ -111,6 +115,7 @@ function getSigns(string $title, string $desc): string
     $res .= $notArchitect === true ? '' : '👷‍♂️';
     $res .= $notLead      === true ? '' : '👨‍🔧';
     $res .= $notBackEnd   === true ? '' : '📺';
+    $res .= $notGolang    === true ? '' : '🅖';
     $res .= $notRust      === true ? '' : '🅡';
     $res .= $noMoney      === true ? '' : '💵';
     $res .= $noNumbers    === true ? '' : '🔢';
@@ -191,6 +196,14 @@ function isRemote(string $str): bool
 function isRust(string $str): bool
 {
     $ok = preg_match('/rust/msi', $str);
+    $res = $ok === 1;
+
+    return $res;
+}
+
+function isGolang(string $str): bool
+{
+    $ok = preg_match('/golang/msi', $str);
     $res = $ok === 1;
 
     return $res;

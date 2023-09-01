@@ -31,6 +31,8 @@ To make Minimum spanning tree use:
 * AST - Abstract Syntax Tree (used by webpack, babel, etc).
 [explorer](https://astexplorer.net/)
 
+* `Binary tree` - data structure in which each node has at most two children.
+
 * `Binary search trees` (ordered, sorted binary trees) - can **use the principle of binary search**.
 
 * `Self-balancing binary search tree` (height-balanced) - is any node-based binary search tree

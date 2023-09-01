@@ -1,6 +1,11 @@
 DDD (Domain-driven design)
 -
 
+Core principles:
+* Focus on core domain and domain logic.
+* Base complex designs on models of the domain.
+* Collaboration with domain experts to improve the application model and resolve any emerging domain-related issues.
+
 #### Domain.
 
 A sphere of knowledge, influence, or activity. The subject area.

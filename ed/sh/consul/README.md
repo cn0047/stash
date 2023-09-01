@@ -3,11 +3,14 @@ Consul
 
 [docs](https://developer.hashicorp.com/consul/docs)
 [glossary](https://developer.hashicorp.com/consul/docs/install/glossary)
-[services configuration](https://developer.hashicorp.com/consul/docs/services/configuration/services-configuration-reference)
-[service mesh configuration](https://developer.hashicorp.com/consul/docs/connect/config-entries)
-[api-gateway configuration](https://developer.hashicorp.com/consul/docs/connect/gateways/api-gateway/configuration/api-gateway)
-[http-route configuration](https://developer.hashicorp.com/consul/docs/connect/gateways/api-gateway/configuration/http-route)
-[tcp-route configuration](https://developer.hashicorp.com/consul/docs/connect/gateways/api-gateway/configuration/tcp-route)
+[services conf](https://developer.hashicorp.com/consul/docs/services/configuration/services-configuration-reference)
+[service mesh conf](https://developer.hashicorp.com/consul/docs/connect/config-entries)
+[api-gateway conf](https://developer.hashicorp.com/consul/docs/connect/gateways/api-gateway/configuration/api-gateway)
+[http-route conf](https://developer.hashicorp.com/consul/docs/connect/gateways/api-gateway/configuration/http-route)
+[tcp-route conf](https://developer.hashicorp.com/consul/docs/connect/gateways/api-gateway/configuration/tcp-route)
+[agent conf](https://developer.hashicorp.com/consul/docs/agent/config)
+[agent conf file](https://developer.hashicorp.com/consul/docs/agent/config/config-files)
+[rate limiting](https://developer.hashicorp.com/consul/docs/agent/limits)
 
 ````sh
 consul version
@@ -81,23 +84,3 @@ KV Store - simple Key/Value store.
 
 ACLs - authenticate requests and authorize access to resources.
 Rule -> Policy -> Token (PolicyA, PolicyB).
-
-````sh
-# consul-server.mesh.hcl
-
-node_name = "consul-server"
-server    = true
-bootstrap = true
-ui_config {
-  enabled = true
-}
-datacenter = "dc1"
-data_dir   = "consul/data"
-log_level  = "INFO"
-addresses {
-  http = "0.0.0.0"
-}
-connect {
-  enabled = true
-}
-````

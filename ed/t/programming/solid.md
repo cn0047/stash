@@ -33,3 +33,7 @@ DIP - refers to a specific form of decoupling software modules.
   * All variable instantiation requires the implementation of a Creational pattern
     as the Factory Method or the Factory pattern,
     or the more complex use of a Dependency Injection framework.
+
+# Extra
+
+Common-Closure Principle - classes that change together must be packaged together.

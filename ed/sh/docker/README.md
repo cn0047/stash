@@ -88,7 +88,9 @@ ARG DOCKER_BUILD_IMAGE="gcr.io/org-$ENV/golang:latest"
 FROM $DOCKER_BUILD_IMAGE AS build
 
 # THE BEST COMMAND
-docker inspect docker-whale
+docker inspect $name
+
+docker scout quickview $img
 
 # shows CPU/MEM usage
 docker stats $cId
