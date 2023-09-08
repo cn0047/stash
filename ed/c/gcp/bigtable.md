@@ -18,6 +18,14 @@ BigTable has autoscaling to automatically add and remove nodes.
 Replication across clusters works in eventual consistency way.
 
 ````sh
+# emulator
+gcloud beta emulators bigtable start
+gcloud beta emulators bigtable env-init
+
+export BIGTABLE_EMULATOR_HOST=localhost:8086
+
+
+
 gcloud components install cbt
 
 echo project=myprj > ~/.cbtrc

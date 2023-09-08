@@ -91,9 +91,12 @@ Acceptance criteria come in many different varieties, they can be **functional**
 
 Functional acceptance criteria include things like: features, ...
 
-Nonfunctional acceptance criteria include things like:
+Nonfunctional acceptance criteria (AKA "quality requirements") include things like:
 **capacity**, **performance**, maintainability, **availability**,
 scalability, reliability, **security**, usability, compliance and so forth.
+
+Functional requirements define what system is supposed to do,
+non-functional requirements define how system is supposed to be.
 
 Acceptance tests are business-facing, not developer-facing.
 They test whole stories at a time against a running version of the application in a production-like environment.

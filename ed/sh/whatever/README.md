@@ -681,6 +681,9 @@ sed ' s/^/echo -n /e ' /tmp/x
 
 # print
 echo 'this is foo' | sed -n 's/.*\(is\).*/\1/p'
+
+# find in go file MyStructName and delete entire line
+find cmd -name "*.go" -exec sed -i '' "/MyStructName/d" {} +
 ````
 
 #### awk

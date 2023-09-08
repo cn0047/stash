@@ -7,12 +7,17 @@ Java - high-level OOP language and runtime environment,
 with static, strong, safe typing.
 
 ````sh
+/usr/libexec/java_home --verbose
+ls /Library/Java/JavaVirtualMachines/
+
+# point JAVA_HOME to certain JAVA version
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/amazon-corretto-11.jdk/Contents/Home
+
 java -version
 
 java $f
 javac $f # compile
-
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 
 HEAP_SIZE
 JVM_ARGS="-XX:+UseG1GC"

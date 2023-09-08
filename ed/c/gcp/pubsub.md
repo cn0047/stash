@@ -5,6 +5,7 @@ Pub/Sub
 # emulator
 gcloud components install pubsub-emulator
 gcloud beta emulators pubsub start
+gcloud beta emulators pubsub env-init
 
 # start docker
 docker run --rm -ti -p 8681:8681 --name pubsub-emulator \

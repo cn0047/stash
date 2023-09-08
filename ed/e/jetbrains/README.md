@@ -34,10 +34,10 @@ indent_size = 2
 #### PhpStorm
 
 Plugins:
-* PhpInspectionsEA
-* Symfony2 Plugin
-* PHP Annotation
-* Lines Sorter
+* PhpInspectionsEA.
+* Symfony2 Plugin.
+* PHP Annotation.
+* Lines Sorter.
 
 Keys:
 * `Shift+Enter` Show intention actions (quick fixes).

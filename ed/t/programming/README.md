@@ -83,6 +83,10 @@ in which computer programs have the ability to treat programs as their data.
 It means that a program can be designed to read, generate, analyse or transform
 other programs, and even modify itself while running.
 
+**AOP** (Aspect-oriented programming) - programming paradigm
+that aims to increase modularity by allowing the separation of cross-cutting concerns.
+Logging, caching, security, and transaction management are examples of cross-cutting concerns.
+
 #### Low coupling and high cohesion.
 
 **Coupling** refers to the interdependencies between modules.

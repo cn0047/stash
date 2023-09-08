@@ -17,4 +17,7 @@ Some content...
 {expand: Click to see more}
     Some info...
 {expand}
+
+{code:go}
+{code}
 ````
