@@ -1,0 +1,82 @@
+{
+  "id": "7dde4635-dee5-4fd4-bd22-4b8a049e3cbe",
+  "version": "2.0",
+  "name": "loopExample1",
+  "url": "https://github.com",
+  "tests": [
+    {
+      "id": "aaddb309-5a66-447a-8adb-c262e5f63247",
+      "name": "loop",
+      "commands": [
+        {
+          "id": "24b20cb2-7acd-476d-9a8e-4450c9626221",
+          "comment": "",
+          "command": "executeScript",
+          "target": "return 0",
+          "targets": [],
+          "value": "i"
+        },
+        {
+          "id": "1e42c929-b072-479f-8be9-f5d13ba379bf",
+          "comment": "",
+          "command": "echo",
+          "target": "start, i=${i}",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "19d27dd4-2899-470d-970d-53a200c700bf",
+          "comment": "",
+          "command": "while",
+          "target": "${i} < 10",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "44a64868-800d-43ae-9710-bb53444aad26",
+          "comment": "",
+          "command": "executeScript",
+          "target": "return ${i}+1",
+          "targets": [],
+          "value": "i"
+        },
+        {
+          "id": "c6ae2790-7516-4d95-b9ff-98a3ecebc977",
+          "comment": "",
+          "command": "echo",
+          "target": "${i}",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "c33dfcce-a80c-49cd-bec7-a932d4f5c260",
+          "comment": "",
+          "command": "echo",
+          "target": "end, i=${i}",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "c90874e2-294d-49e5-8ce2-4077c27f9aab",
+          "comment": "",
+          "command": "end",
+          "target": "",
+          "targets": [],
+          "value": ""
+        }
+      ]
+    }
+  ],
+  "suites": [
+    {
+      "id": "92e35003-b686-4d83-aad0-dd28fb9e69d9",
+      "name": "Default Suite",
+      "persistSession": false,
+      "parallel": false,
+      "timeout": 300,
+      "tests": ["8a781985-e93b-4567-84f5-06a4b1f4b453"]
+    }
+  ],
+  "urls": ["https://github.com/"],
+  "plugins": []
+}

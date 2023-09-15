@@ -125,7 +125,9 @@ updates data within a single service,
 and each subsequent step is triggered by the completion
 of the previous one.
 
-Implementations: Choreography, Orchestration.
+Implementations:
+* Choreography (simplicity, loose coupling; difficult to understand, cyclic dependencies between services).
+* Orchestration (all complexity in 1 place).
 
 ## Database selection
 

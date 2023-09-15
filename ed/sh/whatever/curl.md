@@ -33,6 +33,7 @@ curl -X POST -H 'Content-Type: text/plain' -d @/tmp/foo.txt http://url.com
 echo '{"fromFile":"yes"}' > /tmp/x.json \
   && curl -XPOST 'https://realtimelog.herokuapp.com:443/pvq6l1g0m8d' \
   -H 'Content-Type: application/json' -d @/tmp/x.json
+
 curl http://url.com -d x=1 -d y=2
 
 curl -XPOST 'https://realtimelog.herokuapp.com:443/ka01kxtxsh' \

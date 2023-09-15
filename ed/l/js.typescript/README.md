@@ -1,5 +1,6 @@
 TypeScript
 -
+Since 2012.
 
 TypeScript - typed superset of JS that transpiles to plain JS.
 

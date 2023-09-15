@@ -48,6 +48,10 @@ Boundary context might be defined by:
 * Data.
 * Process.
 
+Defining services by applying the decompose by:
+* business capability pattern (courier|restaurant|order management).
+* sub-domain pattern (DDD bounded context + SRP, CCP).
+
 Many of the challenges you’re going to face with microservices get worse with scale.
 
 * Model around business concepts
@@ -144,3 +148,5 @@ which is connected with API-Gateway (or part of it).
 * If you need to deploy microservice and for that you need to deploy another one - you're not
 doing microservices, you're doing another kind of services but not microservices.
 Microservices must be independently deployable.
+
+* Size of a service is mostly unimportant.

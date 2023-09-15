@@ -36,7 +36,7 @@ func main() {
 func testClient(addr string) {
 	conn, c := client.NewMainServerClient(addr)
 	ping(c)
-	echo(c)
+	// echo(c)
 
 	err := conn.Close()
 	if err != nil {
