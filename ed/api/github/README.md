@@ -29,7 +29,8 @@ url = git@gist.github.com:384d6938ebef985347b29c15476b55c5.git
   ignorecase = true
   precomposeunicode = true
 [remote "origin"]
-  url = https://github.com/cn007b/stash.git
+  # url = https://github.com/cn007b/stash.git
+  url = git@github.com:cn007b/stash.git
   fetch = +refs/heads/*:refs/remotes/origin/*
 [user]
   name = V.K.
