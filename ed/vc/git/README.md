@@ -280,8 +280,9 @@ git submodule update --remote --recursive
     ignoreCase   = false
 [user]
     name = V.K.
-[url "git@github.com:"]
-    insteadOf = https://github.com/
-[url "git@bitbucket.org:"]
-    insteadOf = https://bitbucket.org/
+# [url "git@github.com:"]
+#     insteadOf = https://github.com/
+# [url "git@bitbucket.org:"]
+#     insteadOf = https://bitbucket.org/
+
 ````

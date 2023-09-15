@@ -19,6 +19,25 @@ Host github.com
 url = https://gist.github.com/cn007b/b0136cc4db3ad91774e93dbaadcf0331
 # push gist config with ssh
 url = git@gist.github.com:384d6938ebef985347b29c15476b55c5.git
+
+# gh
+[core]
+  repositoryformatversion = 0
+  filemode = true
+  bare = false
+  logallrefupdates = true
+  ignorecase = true
+  precomposeunicode = true
+[remote "origin"]
+  url = https://github.com/cn007b/stash.git
+  fetch = +refs/heads/*:refs/remotes/origin/*
+[user]
+  name = V.K.
+  email = cn007b@gmail.com
+[branch "master"]
+  remote = origin
+  merge = refs/heads/master
+
 ````
 
 ````sh
