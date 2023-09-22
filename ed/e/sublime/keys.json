@@ -2,7 +2,7 @@
     // BOOKMARK
     { "keys": ["ctrl+,"], "command": "sublime_bookmark", "args" : { "type" : "goto_previous" } },
     { "keys": ["ctrl+."], "command": "sublime_bookmark", "args" : { "type" : "goto_next" } },
-    { "keys": ["ctrl+m", "option+m"], "command": "sublime_bookmark", "args" : { "type" : "toggle_line"  } },
+    { "keys": ["ctrl+m"], "command": "sublime_bookmark", "args" : { "type" : "toggle_line"  } },
     { "keys": ["ctrl+shift+m"], "command": "sublime_bookmark", "args" : { "type" : "goto"  } },
     { "keys": ["alt+shift+m"], "command": "sublime_bookmark", "args" : { "type" : "remove"  } },
 
@@ -120,7 +120,7 @@
     ,{ "keys": ["f6"], "command": "sftp_upload_file" }
 
     // MISC
-    ,{ "keys": ["command+shift+j", "ctrl+command+j"], "command": "pretty_json" }
+    ,{ "keys": ["ctrl+command+j"], "command": "pretty_json" }
     ,{ "keys": ["option+command+enter"], "command": "link_opener_open_url" }
 
     // OS X
@@ -145,4 +145,6 @@
     ,{ "keys": ["alt+shift+down"], "command": "select_lines", "args": {"forward": true} }
     ,{ "keys": ["alt+c"], "command": "show_overlay", "args": {"overlay": "command_palette", "text": "copy filepath"} }
     ,{ "keys": ["ctrl+c"], "command": "show_overlay", "args": {"overlay": "command_palette", "text": "copy reference"} }
+
+    ,{ "keys": ["shift+f6"], "command": "side_bar_rename" }
 ]
