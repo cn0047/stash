@@ -1,0 +1,58 @@
+{
+  "id": "2c296c3c-1850-4bec-b182-9416765ac954",
+  "version": "2.0",
+  "name": "loopForEachExample1",
+  "url": "https://github.com",
+  "tests": [
+    {
+      "id": "8caac314-bd22-4e7c-bcd1-78f40669d141",
+      "name": "LoopforEach",
+      "commands": [
+        {
+          "id": "9e10a591-478f-4ab1-947d-90ccb9713b8b",
+          "comment": "",
+          "command": "executeScript",
+          "target": "return ['a', 'b', 'c']",
+          "targets": [],
+          "value": "arr"
+        },
+        {
+          "id": "30340a8f-a570-49d9-8117-6591b9522410",
+          "comment": "",
+          "command": "forEach",
+          "target": "arr",
+          "targets": [],
+          "value": "el"
+        },
+        {
+          "id": "1d74d5a5-f779-4f21-9cbf-c3e31f7a2017",
+          "comment": "",
+          "command": "echo",
+          "target": "${el}",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "abad5f6a-ca41-4402-af29-df22fce71768",
+          "comment": "",
+          "command": "end",
+          "target": "",
+          "targets": [],
+          "value": ""
+        }
+      ]
+    }
+  ],
+  "suites": [
+    {
+      "id": "2a91314a-7dd8-4f93-89f9-8e660380534e",
+      "name": "main",
+      "persistSession": false,
+      "parallel": false,
+      "timeout": 300,
+      "tests": []
+    }
+  ],
+  "urls": ["https://github.com/"],
+  "plugins": []
+}

@@ -1,12 +1,12 @@
 {
   "id": "7dde4635-dee5-4fd4-bd22-4b8a049e3cbe",
   "version": "2.0",
-  "name": "loopExample1",
+  "name": "loopWhileExample1",
   "url": "https://github.com",
   "tests": [
     {
       "id": "aaddb309-5a66-447a-8adb-c262e5f63247",
-      "name": "loop",
+      "name": "loopWhile",
       "commands": [
         {
           "id": "24b20cb2-7acd-476d-9a8e-4450c9626221",

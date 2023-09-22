@@ -9,6 +9,12 @@ The default shell in Mac OS X is the Bourne-again shell.
 `GIPHY` tool to convert video into gif.
 
 ````sh
+# .zshrc
+
+. /Users/k/.bash_profile
+````
+
+````sh
 # .bash_profile
 
 setopt INTERACTIVE_COMMENTS

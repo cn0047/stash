@@ -1,7 +1,8 @@
 .DS_Store/
 .idea/
-
 .data/
+
+**/gcp/sa.json
 
 .terraform*
 terraform.tf*
@@ -18,17 +19,16 @@ composer.lock
 config.php
 
 # golang
-**/gcp/sa.json
-go.sum
-ed/l/go/**/vendor/
-ed/l/go/**/bin/
-ed/l/go/**/pkg/
 # ed/l/go/**/src/
 !ed/l/go/**/src/app/
 ed/l/go/**/src/github.com
 ed/l/go/**/src/golang.org
 ed/l/go/**/src/gopkg.in
 ed/l/go/**/src/gocv.io
+ed/l/go/**/bin/
+ed/l/go/**/pkg/
+ed/l/go/**/vendor/
+go.sum
 
 # python
 ed/l/python/**/__pycache__/
@@ -37,3 +37,8 @@ ed/l/python/**/venv/
 
 # java
 ed/l/java/**/target/
+
+# c#
+ed/l/cs/**/bin/
+ed/l/cs/**/obj/
+ed/l/cs/**/*.csproj
