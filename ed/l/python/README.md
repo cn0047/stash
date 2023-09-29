@@ -22,6 +22,7 @@ characterized by the presence of many `if` statements.
 python -V
 python3 -V
 
+ln -s /usr/bin/python3 /usr/local/bin/python
 ln -s /usr/local/bin/python3 /usr/local/bin/python
 
 WORK_HOME=/path

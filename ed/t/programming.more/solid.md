@@ -36,4 +36,12 @@ DIP - refers to a specific form of decoupling software modules.
 
 # Extra
 
-Common-Closure Principle - classes that change together must be packaged together.
+Package cohesion:
+REP - Release Reuse Equivalency Principle, the granule of reuse is the granule of release.
+CCP - Common-Closure Principle, classes that change together are packaged together.
+CRP - Common Reuse Principle, classes that are used together are packaged together.
+
+Couplings between packages:
+ADP - Acyclic Dependencies Principle, the dependency graph of packages must have no cycles.
+SDP - Stable Dependencies Principle, depend in the direction of stability.
+SAP - Stable Abstractions Principle, abstractness increases with stability.

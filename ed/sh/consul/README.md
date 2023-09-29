@@ -20,6 +20,8 @@ Consul
 consul version
 consul validate $f
 
+consul members
+
 consul agent -config-dir configs
 
 consul services register -name=web services.hcl

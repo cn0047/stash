@@ -129,6 +129,19 @@ Implementations:
 * Choreography (simplicity, loose coupling; difficult to understand, cyclic dependencies between services).
 * Orchestration (all complexity in 1 place).
 
+Anomalies:
+* Lost updates — one saga overwrites without reading changes made by another saga.
+* Dirty reads — one saga reads updates that another saga hasn't yet completed.
+* Fuzzy/nonrepeatable reads — two sagas read same data and get different results because another saga has made updates.
+
+Countermeasures:
+* Semantic lock - sets flag in record which indicates that record isn’t committed yet.
+* Commutative updates - operations are commutative if they can be executed in any order (debit, credit).
+* Pessimistic view - reorders steps of saga to minimize business risk due to dirty read.
+* Reread value - rereads record before updating it, verifies it’s unchanged, then updates record.
+* Version file - handle out-of-order requests (ensure AuthorizeCard before CancelAuthorization).
+* By value - selecting concurrency mechanisms based on business risk.
+
 ## Database selection
 
 Questions to answer:

@@ -1,4 +1,4 @@
-// Longest String Chain
+// Longest String Chain.
 // @see: https://leetcode.com/problems/longest-string-chain/
 package main
 

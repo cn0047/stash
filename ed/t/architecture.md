@@ -37,6 +37,8 @@ Architecture must care about:
 * Utility.
 * Beauty.
 
+ADR (Architectural Decision Record) - document about why and how Architectural Decision was made.
+
 #### SLA/SLO/SLI
 
 Availability:

@@ -1,6 +1,6 @@
-// Boxy Theme
 A File Icon
 AlignTab
+Babel
 BracketHighlighter
 Copy Filepath With Line Numbers
 Dockerfile Syntax Highlighting
@@ -10,21 +10,29 @@ Filter Lines
 Function Name Display
 Git
 GitHubinator
-Gofmt
 GoImports
 Gomod
+LinkOpener
 Markdown Extended
+nginx
 Package Control
 Pretty JSON
+Protobuf Syntax Hightlighting
 Quick File Open
+ReactJS
 SimpleMovements
+Status Bar JsonPath
 Sublime Bookmarks
 SublimeLinter
 Super Calculator
+Terraform
 Theme - Soda
+Assembly
 
-// Golite
+// Boxy Theme
 // FavoriteFiles
+// Gofmt
+// Golite
 // MarkdownHighlighting
 // Theme - Solarized Space
 ApacheConf.tmLanguage

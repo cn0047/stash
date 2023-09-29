@@ -28,3 +28,21 @@ docker push cn007b/pi:$tag
 # latest
 docker tag cn007b/alpine cn007b/pi:latest
 docker push cn007b/pi:latest
+
+
+
+# go
+s=ed/l/go/examples/http/http.server.hw2.go
+s=ed/l/go/examples/http/http.client.hw.go
+GOOS=linux GOARCH=amd64 go build -o app $s
+#
+tag=hws
+tag=hwc
+t=$d/go.$tag.Dockerfile
+f=$d/go.app.Dockerfile
+
+docker build -t cn007b/pi:$tag -f $f .
+# check
+docker run -it --rm -p 8080:8080 cn007b/pi:$tag
+# push
+docker push cn007b/pi:$tag

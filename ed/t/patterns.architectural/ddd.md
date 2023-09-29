@@ -135,7 +135,7 @@ Car it is aggregate for: wheels, engine, spark and fuel, etc.
 
 #### Domain Event.
 
-A domain object that defines an event (something that happens).
+A domain object that defines an event (something that happens, when X happens to Y).
 
 * Modeling a Domain Event is like writing a news article.
 * Publishing a Domain Event is like printing the article on the paper.
