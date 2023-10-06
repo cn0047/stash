@@ -52,6 +52,14 @@ Defining services by applying the decompose by:
 * business capability pattern (courier|restaurant|order management).
 * sub-domain pattern (DDD bounded context + SRP, CCP).
 
+Business logic organization patterns:
+* Transaction script pattern.
+  Organize business logic as collection of procedural transaction scripts, one for each type of request.
+* Domain model pattern.
+  Organize business logic as object model consisting of classes that have state and behavior.
+* Domain event.
+  An aggregate publishes domain event when it’s created or undergoes some other significant change.
+
 Many of the challenges you’re going to face with microservices get worse with scale.
 
 * Model around business concepts
