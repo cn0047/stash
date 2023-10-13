@@ -1,8 +1,11 @@
 Engine
 -
 
-````
+````sh
 mongod -storageEngine wiredTiger
+````
+````
+db.serverStatus().storageEngine;
 ````
 
 #### In-Memory Storage Engine (MongoDB Enterprise)

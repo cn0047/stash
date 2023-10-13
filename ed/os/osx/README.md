@@ -58,7 +58,6 @@ alias grep='grep --color=always'
 ````sh
 Option = Alt
 
-
 Command-Shift-G         # goto in finder
 
 Command-Control-o       # insert mode
@@ -117,13 +116,14 @@ brew install grc # colors in terminal
 brew install bash-completion
 brew install colordiff
 brew install jq
+brew install yq
 brew install md5sha1sum # md5sum
 brew install qcachegrind # KCacheGrind
 brew install telnet
+
 brew install nmap
 brew install sshuttle
 brew install awscli
-
 brew install mysql
 brew install nginx
 brew install ffmpeg
@@ -132,11 +132,8 @@ brew install mercurial
 brew install postgresql
 brew install redis
 brew install terraform
-brew install openssl@1.1 # install specific version
-
 brew install mongodb
-# or
-brew tap mongodb/brew && brew install mongodb-community@4.4
+brew install openssl@1.1 # install specific version
 
 brew update && brew cleanup
 brew upgrade jq

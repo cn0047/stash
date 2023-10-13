@@ -1,9 +1,11 @@
 Mongo DB
 -
+<br>4.4
 <br>3.4.9
 <br>2.4.6
 
 [university](https://university.mongodb.com)
+[limits](https://www.mongodb.com/docs/manual/reference/limits/)
 
 `printjson()`, `.pretty()`
 
@@ -226,7 +228,25 @@ db.users.remove({status: "D"})
 db.inventory.remove({type : "food"}, 1 )
 
 db.users.drop()
+````
 
+Read concern level:
+* local.
+  Returns data from instance with no guarantee that data has been written to majority of the replica set members.
+  Default for: reads against primary, reads against secondaries with causally consistent sessions.
+* available.
+  Returns data from instance with no guarantee that data has been written to majority of the replica set members.
+  Default for: reads against secondaries not with causally consistent sessions.
+* majority.
+  Query returns the data that has been acknowledged by majority of replica set members.
+* linearizable.
+  Query returns data that reflects all successful majority-acknowledged writes.
+  Availability: unavailable for use with causally consistent sessions, available for read operations on primary only.
+* snapshot.
+  Complete copy of the data in a mongod instance at a specific point in time.
+  Availability: only for use with multi-document transactions, for transactions on a sharded cluster.
+
+````
 // To set errors ignored write concern, specify w values of -1 to your driver.
 // To set unacknowledged write concern, specify w values of  0 to your driver.
 // To set acknowledged   write concern, specify w values of  1 to your driver. DEFAULT.

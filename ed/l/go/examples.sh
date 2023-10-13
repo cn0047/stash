@@ -159,7 +159,7 @@ protoc --gofast_out=plugins=grpc:. lib/output.proto
 go run main.go
 
 # grpc three
-cd /Users/k/web/kovpak/gh/ed/l/go/examples/3rdparty/grpc/three
+cd /Users/$USER/web/kovpak/gh/ed/l/go/examples/3rdparty/grpc/three
 clang-format -style=file -i proto/main.proto
 # generate BE part
 OUT_DIR=proto/backend

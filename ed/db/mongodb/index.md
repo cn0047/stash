@@ -99,8 +99,11 @@ db.blog.ensureIndex(
 {_id: 6, dept: "food", description: "red potato"}
 */
 db.inventory.ensureIndex({dept: 1, description: "text"});
+
+// Create hash Index.
 // Do not use a hashed index for floating point numbers.
 db.active.ensureIndex({a: 'hashed'});
+
 // Unique Indexes
 db.members.ensureIndex({'user_id': 1}, {unique: true});
 ````

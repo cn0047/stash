@@ -34,6 +34,7 @@ db.getRoles({showBuiltinRoles: true});
 
 db.currentOp()
 // kill <mongod process ID>
+
 db.serverStatus()
 db.isMaster()
 // replica set’s status
@@ -108,7 +109,7 @@ db.log.events.ensureIndex( { "createdAt": 1 }, { expireAfterSeconds: 3600 } )
 // Expire Documents at a Certain Clock Time
 db.app.events.ensureIndex( { "expireAt": 1 }, { expireAfterSeconds: 0 } )
 
-db.runCommand({ isMaster: 1 })
+db.runCommand({isMaster: 1})
 db.runCommand({buildInfo: 1})
 db._adminCommand({buildInfo: 1})
 // Shut down the mongod from the mongo shell
