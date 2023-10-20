@@ -1,6 +1,8 @@
 DDD (Domain-driven design)
 -
 
+[awesome](https://github.com/heynickc/awesome-ddd)
+
 Core principles:
 * Focus on core domain and domain logic.
 * Base complex designs on models of the domain.
@@ -9,6 +11,29 @@ Core principles:
 #### Domain.
 
 A sphere of knowledge, influence, or activity. The subject area.
+Domain - core concepts, rules, and logic that are essential to the problem being solved by the software.
+
+Subdomain - further decomposition of complex domain into smaller, more manageable parts for:
+* Decomposition -  break down a large and complex problem space into smaller.
+* Bounded Contexts - isolated areas within a system.
+* Ownership - subdomains can be owned/managed by different teams.
+* Integration - subdomains may need have strict and defined way of integration.
+* Separation of concerns - each subdomain responsible for specific business rules and logic.
+
+To determine domain/subdomain focus on:
+* Distinct problem areas.
+* Clear boundaries (minimal dependencies on other domains/subdomains).
+* Context mapping (interactions and relationships between subdomains).
+* Business capability (domain/subdomain should align with business capabilities/units).
+* Ownership and responsibility (particular team or department or group).
+* Independence and autonomy (between other domains/subdomains).
+* Data consistency (data flows, who own data, etc.).
+* External dependencies (external systems, services, third-party components that interact with domain/subdomain).
+* Evolution and change (some domains may be more frequently updated).
+* Customer or user needs (how customers interact with different parts of domain).
+* Feedback from domain experts, stakeholders, and development teams.
+* Ubiquitous Language (own consistent and specialized language).
+* Iterative approach.
 
 #### Model.
 
@@ -22,12 +47,25 @@ and used by all team members.
 
 #### Bounded Context.
 
+Simply draw line around something and say:
+within this space this what that word means and these are the rule here.
+
+Bounded Context - specific responsibility enforced by explicit boundaries.
+
 Multiple models are in play on any large project.
 It is often unclear in what context a model should not be applied.
+
+Think about Bounded Context not only from data point of view,
+but also company's business capabilities (capabilities which context provides to the rest of domain).
+First "What does this context do?", and then "So what data does it need to do that?".
+
+Bounded Context reffers to domains and to models in one domain.
 
 #### Continuous integration.
 
 #### Context map.
+
+Diagram that illustrates relationships and interactions between various bounded contexts.
 
 #### Layered Architecture.
 

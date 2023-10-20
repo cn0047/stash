@@ -16,6 +16,7 @@ Theory
 <br>B2B     - Business to Business.
 <br>BAAS    - Back-end as a service.
 <br>BLOB    - Binary Large Object.
+<br>BRD     - Business Requirement Documents.
 <br>CRM     - Customer relationship management.
 <br>DRY     - Don't repeat yourself.
 <br>ERP     - Enterprise Resource Planning.

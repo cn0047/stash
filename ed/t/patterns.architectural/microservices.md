@@ -43,23 +43,6 @@ with purpose to split stuff into separated modules (same approach for database).
 Greenfield development is also quite challenging.
 So again, consider starting monolithic first and break things out when you’re stable.
 
-Boundary context might be defined by:
-* Business feature.
-* Data.
-* Process.
-
-Defining services by applying the decompose by:
-* business capability pattern (courier|restaurant|order management).
-* sub-domain pattern (DDD bounded context + SRP, CCP).
-
-Business logic organization patterns:
-* Transaction script pattern.
-  Organize business logic as collection of procedural transaction scripts, one for each type of request.
-* Domain model pattern.
-  Organize business logic as object model consisting of classes that have state and behavior.
-* Domain event.
-  An aggregate publishes domain event when it’s created or undergoes some other significant change.
-
 Many of the challenges you’re going to face with microservices get worse with scale.
 
 * Model around business concepts
@@ -116,6 +99,25 @@ In real world app it's *ok* to have **HYBRID-Microservices** architecture.
 * Routing (healthcheck, discovery).
 * Retry/Timeout/Circuit Breaker implementations.
 * LB (to scale).
+
+#### Monolith to microservices
+
+Boundary context might be defined by:
+* Business feature or UI composition (widget).
+* Data.
+* Process.
+
+Defining services by applying the decompose by:
+* business capability pattern (courier, restaurant, order management, etc.).
+* sub-domain pattern (DDD bounded context + SRP, CCP).
+
+Business logic organization patterns:
+* Transaction script pattern.
+  Organize business logic as collection of procedural transaction scripts, one for each type of request.
+* Domain model pattern.
+  Organize business logic as object model consisting of classes that have state and behavior.
+* Domain event.
+  An aggregate publishes domain event when it’s created or undergoes some other significant change.
 
 #### Info
 

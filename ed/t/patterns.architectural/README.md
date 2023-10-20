@@ -35,6 +35,12 @@ An architectural pattern is a proven structural organization schema for software
 * Implicit invocation.
 * Naked objects.
 
+**API Gateway**
+* Request routing.
+* API composition.
+* Edge functions (authentication, authorization, rate limiting, caching, metrics collection, logging).
+* Protocol translation (from client-friendly to client-unfriendly protocol, etc.).
+
 **Client-server**
 Usage: online app like email, document sharing and banking.
 

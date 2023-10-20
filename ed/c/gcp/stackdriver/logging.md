@@ -6,7 +6,7 @@ Stackdriver Logging
 [quotas](https://cloud.google.com/logging/quotas)
 
 ````sh
-gcloud logging logs list
+gcloud logging logs list # list of names for `logName=$name`
 gcloud logging metrics list
 gcloud logging sinks list
 

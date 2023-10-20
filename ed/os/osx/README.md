@@ -58,7 +58,7 @@ alias grep='grep --color=always'
 ````sh
 Option = Alt
 
-Command-Shift-G         # goto in finder
+Command-Shift-G         # goto file in finder (open input for file path)
 
 Command-Control-o       # insert mode
 Command-Control-Space   # emoji
