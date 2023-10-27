@@ -11,6 +11,7 @@ Core principles:
 #### Domain.
 
 A sphere of knowledge, influence, or activity. The subject area.
+Domain - subject area to which the user applies the program.
 Domain - core concepts, rules, and logic that are essential to the problem being solved by the software.
 
 Subdomain - further decomposition of complex domain into smaller, more manageable parts for:
@@ -27,10 +28,10 @@ To determine domain/subdomain focus on:
 * Business capability (domain/subdomain should align with business capabilities/units).
 * Ownership and responsibility (particular team or department or group).
 * Independence and autonomy (between other domains/subdomains).
+* Customer or user needs (business features, how customers interact with different parts of domain).
 * Data consistency (data flows, who own data, etc.).
 * External dependencies (external systems, services, third-party components that interact with domain/subdomain).
 * Evolution and change (some domains may be more frequently updated).
-* Customer or user needs (how customers interact with different parts of domain).
 * Feedback from domain experts, stakeholders, and development teams.
 * Ubiquitous Language (own consistent and specialized language).
 * Iterative approach.

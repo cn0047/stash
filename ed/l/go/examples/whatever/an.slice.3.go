@@ -6,8 +6,8 @@ import (
 
 func main() {
 	// f1()
-	// f2()
-	swap()
+	f2()
+	// swap()
 }
 
 func swap() {
@@ -17,9 +17,11 @@ func swap() {
 }
 
 func f2() {
-	s := []string{"a", "b", "c"}
-	fmt.Println("[f2]", s[:1]) // [f2] [a]
-	fmt.Println("[f2]", s[1:]) // [f2] [b c]
+	s := []string{"a", "b", "c", "d"}
+	fmt.Println("[f2]", s[:1])    // [f2] [a]
+	fmt.Println("[f2]", s[1:])    // [f2] [b c d]
+	fmt.Println("[f2]", s[0:2:2]) // [f2] [a b]
+	fmt.Println("[f2]", s[0:3:4]) // [f2] [a b c]
 }
 
 // f1 describes slice length & capacity.

@@ -1,6 +1,8 @@
 Binary Tree
 -
 
+#### Binary Tree
+
 Binary Tree - tree data structure where each node has at most 2 children.
 
 #### Binary Search Tree (BST)

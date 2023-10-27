@@ -39,6 +39,8 @@ Solution Architect:
 * Managing trade-offs: balance conflicting requirements and find optimal solutions.
 * Collaborating with multiple teams.
 
+ADR (Architectural Decision Record) - document about why and how Architectural Decision was made.
+
 #### TL
 
 * Avoid conflicts.

@@ -11,6 +11,18 @@ availability = successful requests / total requests
 
 IO throughput - data transfer speed in megabytes per second (MB/s or MBPS).
 
+Architectural view model:
+* Logical view - functionality that system provides to end-users.
+* Process view - run-time behavior of system (concurrency, performance, scalability, etc.).
+* Development view - development view (implementation view: packages, components, etc.).
+* Physical view - system engineer's point of view (instances topology).
+* Scenarios - use cases.
+
+Architecture must care about:
+* Durability.
+* Utility.
+* Beauty.
+
 Architectural plan:
 1) Introduction and goals (fundamental requirements).
 2) Constraints.
@@ -24,20 +36,6 @@ Architectural plan:
 10) Quality requirements.
 11) Risk and technical depth (known problems and risks).
 12) Glossary (ubiquitous language).
-
-Architectural view model:
-* Logical view - functionality that system provides to end-users.
-* Process view - run-time behavior of system (concurrency, performance, scalability, etc.).
-* Development view - development view (implementation view: packages, components, etc.).
-* Physical view - system engineer's point of view (instances topology).
-* Scenarios - use cases.
-
-Architecture must care about:
-* Durability.
-* Utility.
-* Beauty.
-
-ADR (Architectural Decision Record) - document about why and how Architectural Decision was made.
 
 #### SLA/SLO/SLI
 
