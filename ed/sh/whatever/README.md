@@ -385,7 +385,7 @@ EOF
 #### telnet
 
 ````sh
-# go run /Users/k/web/kovpak/gh/ed/l/go/examples/http/http.server.hw.go
+# go run /Users/$USER/web/kovpak/gh/ed/l/go/examples/http/http.server.hw.go
 telnet localhost 8080
 GET / HTTP/1.1
 Host: localhost:8080
@@ -717,11 +717,14 @@ ftp $hostname
 ftp -p $hostname
 
 # all in 1 run
-ftp -inv -p ftp.staging.nuorder.com <<EOF
+ftp -inv -p ftp.staging.x.com <<EOF
 user $usr $pass
 cd /test/k
 ls
 EOF
+
+# linux alpine
+lftp ftp://usr:pass@ftp.staging.x.com
 
 ncftpput -R -v -u {user} {host} remote_path ./local_path/*
 ````

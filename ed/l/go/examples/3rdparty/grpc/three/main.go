@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"io"
 	"log"
 	"net"
 	"os"
@@ -19,7 +20,7 @@ import (
 )
 
 func main() {
-	if len(os.Args) == 1 {
+	if len(os.Args) <= 1 {
 		log.Fatalf("provide param server or client")
 	}
 
@@ -29,25 +30,54 @@ func main() {
 	case "server":
 		startServer(addr)
 	case "client":
-		testClient(addr)
+		testClient(addr, os.Args[1:])
 	}
 }
 
-func testClient(addr string) {
-	conn, c := client.NewMainServerClient(addr)
-	ping(c)
-	// echo(c)
-
-	err := conn.Close()
-	if err != nil {
-		log.Fatalf("failed to close client conn, err: %#v", err)
-	}
-}
-
-func echo(client proto.MainServiceClient) {
+func testClient(addr string, params []string) {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
 
+	connMain, cMain := client.NewMainServerClient(addr)
+	connMon, cMon := client.NewMonitoringServerClient(addr)
+
+	if len(params) > 1 {
+		switch params[1] {
+		case "health":
+			health(ctx, cMain)
+		case "ping":
+			ping(ctx, cMain)
+		case "echo":
+			echo(ctx, cMain)
+		case "gossip":
+			gossip(ctx, cMain)
+		case "log":
+			mLog(ctx, cMon)
+		default:
+			ping(ctx, cMain)
+		}
+	} else {
+		ping(ctx, cMain)
+	}
+
+	if err := connMain.Close(); err != nil {
+		log.Fatalf("failed to close connMain, err: %#v", err)
+	}
+	if err := connMon.Close(); err != nil {
+		log.Fatalf("failed to close connMon, err: %#v", err)
+	}
+}
+
+func health(ctx context.Context, client proto.MainServiceClient) {
+	r, err := client.Health(ctx, &proto.HealthRequest{})
+	if err != nil {
+		log.Fatalf("failed to perform health, res: %#v, err: %#v", r, err)
+	}
+
+	log.Printf("\nRes: %#v \nErr: %#v", r, err)
+}
+
+func echo(ctx context.Context, client proto.MainServiceClient) {
 	r, err := client.Echo(ctx, &proto.EchoRequest{Message: "ping"})
 	if err != nil {
 		if e, ok := status.FromError(err); ok {
@@ -66,13 +96,42 @@ func echo(client proto.MainServiceClient) {
 	log.Printf("\nRes: %#v \nErr: %#v", r, err)
 }
 
-func ping(client proto.MainServiceClient) {
-	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
-	defer cancel()
-
+func ping(ctx context.Context, client proto.MainServiceClient) {
 	r, err := client.Ping(ctx, &proto.PingRequest{Message: "ping"})
 	if err != nil {
 		log.Fatalf("failed to perform ping, res: %#v, err: %#v", r, err)
+	}
+
+	log.Printf("\nRes: %#v \nErr: %#v", r, err)
+}
+
+func gossip(ctx context.Context, client proto.MainServiceClient) {
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Minute)
+	defer cancel()
+
+	r, err := client.Gossip(ctx, &proto.GossipRequest{Message: "rumor"})
+	if err != nil {
+		log.Fatalf("failed to perform gossip, res: %#v, err: %#v", r, err)
+	}
+
+	for {
+		data, err := r.Recv()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			log.Fatalf("failed to get stream data, err: %#v", err.Error())
+		}
+		log.Printf("\nRes chunk: %#v", data.Message)
+	}
+
+	log.Printf("\nRes: end")
+}
+
+func mLog(ctx context.Context, client proto.MonitoringServiceClient) {
+	r, err := client.Log(ctx, &proto.LogRequest{Message: "log"})
+	if err != nil {
+		log.Fatalf("failed to perform log, res: %#v, err: %#v", r, err)
 	}
 
 	log.Printf("\nRes: %#v \nErr: %#v", r, err)
@@ -85,8 +144,8 @@ func startServer(addr string) {
 	}
 
 	s := grpc.NewServer()
-	mainServer := &server.MainServer{}
-	proto.RegisterMainServiceServer(s, mainServer)
+	proto.RegisterMainServiceServer(s, &server.MainServer{})
+	proto.RegisterMonitoringServiceServer(s, &server.MonitoringServer{})
 	reflection.Register(s)
 	fmt.Printf("Starting to serve on: %s\n", addr)
 	err = s.Serve(lis)

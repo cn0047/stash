@@ -1,6 +1,8 @@
 Sublime Text
 -
-3
+<br>3
+
+[docs](https://www.sublimetext.com/docs/index.html)
 
 ### OSX
 

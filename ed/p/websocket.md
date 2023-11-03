@@ -7,6 +7,11 @@ WebSocket is a computer communications protocol,
 providing full-duplex (allows communication in both directions)
 long-lived, low-latency communication channels over a single TCP connection.
 
+WebSocket connection is stateful,
+so server needs to maintain an open connection with each connected client.
+Load balancing WebSocket connection can be more complex than load balancing stateless HTTP request.
+If number of clients increases - it might be limiting factor.
+
 WebSocket handshake uses the `HTTP Upgrade header`
 to change from the HTTP protocol to the WebSocket protocol,
 they not based on HTTP itself, they utilize underlying TCP protocol.

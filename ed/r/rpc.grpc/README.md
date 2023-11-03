@@ -2,6 +2,7 @@ gRPC
 -
 
 [grpc](https://grpc.io/docs)
+[golang](https://grpc.io/docs/languages/go/quickstart/)
 [grpcurl](https://github.com/fullstorydev/grpcurl)
 
 ````sh

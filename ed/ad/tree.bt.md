@@ -1,37 +1,56 @@
 Binary Tree
 -
 
-#### Binary Tree
+**Tree** - connected graph with N nodes & N-1 edges.
 
-Binary Tree - tree data structure where each node has at most 2 children.
+Tree center - middle vertex (1 or 2) in longest path.
+Isomorphic Tree - special case of graph isomorphism.
 
-#### Binary Search Tree (BST)
+Storing undirected trees:
+* Edge list: [(0,1), (1,2), (0,3)].
+* Adjacency list: 0 -> [1,3], 1 -> [2].
+* Adjacency matrix: axis x - nodes values; axis y - nodes values, cells - edge between nodes.
 
-BST (ordered, sorted binary trees) - particular type of containers,
-data structures that store items in memory.
-They allow fast lookup, addition and removal of items,
-and can be used to implement either dynamic sets of items,
-or lookup tables that allow finding an item by its keys.
-Keep their keys in sorted order, so that lookup and other operations can **use the principle of binary search**.
+**Rooted tree** - tree with designated root node.
 
-When BST saved in array, elements can be found by:
-````
-i          - element index
-2*i        - left child
-2*i+1      - right child
-floor(i/2) - parent
-````
+Storing rooted tree:
+* Flattened array: [0,1,3,2].
 
-BFS/DFS (Breadth/Depth First Search) in binary tree: @see: graph.md
+**Binary tree** - data structure where each node has at most 2 children.
 
-Level-Order Traversal aka BFS.
-
-Preorder Traversal aka DFS.
+Height of BT = 1 + numbers of edges on the longest path from root to leaf.
+Diameter of a BT - longest path of tree between 2 leafs.
+Delete from BT = Postorder + function free().
 
 Full BT - every non-leaf node has two children,
 no space to add element into tree without affecting tree's height.
 
 Complete BT - if store BST in array, there must NOT be missing elements in array (`[a,b,-,d]`).
+
+BFS/DFS (Breadth/Depth First Search) in binary tree: @see: graph.md
+Level-Order Traversal aka BFS.
+Preorder Traversal aka DFS.
+
+**Binary Search Tree** (BST) (ordered, sorted binary trees) - can **use the principle of binary search**,
+particular type of containers, data structures that store items in memory.
+They allow fast lookup, addition and removal of items,
+and can be used to implement either dynamic sets of items,
+or lookup tables that allow finding an item by its keys.
+Keep their keys in sorted order, so that lookup and other operations can **use the principle of binary search**.
+
+BST invariant: `x.left.value <= x.value <= x.right.value`.
+BST uniqueness: `x.left.value < x.value < x.right.value`.
+
+Get BST height: recursive call height for left & right; return max(left height, right height)+1.
+Insert into BST: `val < left.val -> insert into left node, else insert into right node`.
+
+When BST saved in array, elements can be found by:
+````
+i                        - element index
+2*i          2*i+1       - left child
+2*i+1        2*i+2       - right child
+floor(i/2)  floor(i-1/2) - parent
+````
 
 Find inorder predecessor:
 If left child is present - got to left child and go to [most right](http://prntscr.com/hdpp78),
@@ -90,37 +109,3 @@ left child = parent d
 
 Number of Binary Search Trees possible with N nodes:
 For example, `for: [5, 6] result: [5, 6], [6, 5] (all permutations)`.
-
-Get BST height: recursive call height for left & right; return max(left height, right height)+1.
-
-Insert into BST: `val < left.val -> insert into left node, else insert into right node`.
-
-#### Heap
-
-Heap - complete BST.
-````
-find max               - O(1)
-insert                 - O(log n)
-delete                 - O(log n)
-create heap from array - O(n log n)
-# heapify              - O(n)
-````
-
-**In a max heap, the keys of parent nodes are always greater than or equal to those of the children**
-and the highest key is in the root node.
-In a min heap, the keys of parent nodes are less than or equal.
-
-Binary heap - is a heap data structure created using a binary tree.
-Binomial heap - is a heap similar to a binary heap
-but also supports **quick merging of two heaps**.
-Fibonacci heap - is a data structure for **priority queue operations,
-consisting of a collection of heap-ordered trees**.
-
-Only root element can be deleted from heap (not any arbitrary element).
-
-#### Threaded binary tree (TBT)
-
-Every node have value and left pointer and right pointer.
-In case we have left or right pointer empty - we can fill it with link to inorder predecessor/successor,
-so it become a TBT.
-To differentiate is it a pointer to child or to predecessor/successor TBT has left and right flags.

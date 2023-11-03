@@ -11,6 +11,13 @@ message AppError {
   string ErrorMessage = 2;
 }
 
+message HealthRequest {}
+
+message HealthResponse {
+  string Message = 1;
+  AppError Error = 2;
+}
+
 message EchoRequest { string Message = 1; }
 
 message EchoResponse {
@@ -25,7 +32,28 @@ message PingResponse {
   AppError Error = 2;
 }
 
+message LogRequest { string Message = 1; }
+
+message LogResponse {
+  string Message = 1;
+  AppError Error = 2;
+}
+
+message GossipRequest { string Message = 1; }
+
+message GossipResponse {
+  string Message = 1;
+  AppError Error = 2;
+}
+
 service MainService {
-  rpc Echo(EchoRequest) returns (EchoResponse);
+  rpc Health(HealthRequest) returns (HealthResponse);
   rpc Ping(PingRequest) returns (PingResponse);
+  rpc Echo(EchoRequest) returns (EchoResponse);
+  rpc Gossip(GossipRequest) returns (stream GossipResponse);
+}
+
+service MonitoringService {
+  rpc Health(HealthRequest) returns (HealthResponse); // collides with MainService.Health.
+  rpc Log(LogRequest) returns (LogResponse);
 }

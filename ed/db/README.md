@@ -33,6 +33,9 @@ Transaction - unit of work  performed within DB
 that is treated in coherent and reliable way independent of other transactions
 (atomic, isolated, with failure recovery & keeps DB consistent).
 
+Referential integrity - constraint on the DB
+that makes certain that each foreign key in table point to unique primary key value in another table.
+
 ## ACID
 
 <br>Atomicity - all or nothing (an indivisible and irreducible series of database operations).

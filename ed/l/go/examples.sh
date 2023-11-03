@@ -159,20 +159,31 @@ protoc --gofast_out=plugins=grpc:. lib/output.proto
 go run main.go
 
 # grpc three
+brew install protobuf@3
+export GO_PATH=~/go
+export GO111MODULE=off
+go get github.com/gogo/protobuf/protoc-gen-gofast
+#
 cd /Users/$USER/web/kovpak/gh/ed/l/go/examples/3rdparty/grpc/three
 clang-format -style=file -i proto/main.proto
 # generate BE part
 OUT_DIR=proto/backend
+mkdir -p $OUT_DIR
 protoc \
   --gofast_out=plugins=grpc:$OUT_DIR proto/main.proto
 # generate FE part
 OUT_DIR=proto/frontend
+mkdir -p $OUT_DIR
 protoc \
   --js_out=import_style=commonjs:$OUT_DIR \
   --grpc-web_out=import_style=commonjs+dts,mode=grpcwebtext:$OUT_DIR proto/main.proto
 #
 go run main.go server
-go run main.go client
+go run main.go client echo
+go run main.go client ping
+go run main.go client health
+go run main.go client log
+go run main.go client gossip
 
 # youtube
 GOPATH=$PWD/ed/l/go/examples/youtube

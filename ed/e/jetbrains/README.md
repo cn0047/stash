@@ -1,6 +1,8 @@
 JetBrains
 -
 
+[GoLand](https://www.jetbrains.com/help/go/getting-started.html)
+
 Inlay Hints: Usages, Code author.
 
 Live templates:

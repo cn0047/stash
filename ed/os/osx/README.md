@@ -119,7 +119,7 @@ brew install jq
 brew install yq
 brew install md5sha1sum # md5sum
 brew install qcachegrind # KCacheGrind
-brew install telnet
+brew install inetutils # ftp telnet
 
 brew install nmap
 brew install sshuttle

@@ -37,7 +37,6 @@ RAID - Risks, Assumptions, Issues, Dependencies.
 RACI - Responsible (who do work), Accountable (sign off), Consulted (consultant or counsel), Informed.
 
 Power/interest matrix:
-
 POWER (INFLUENCE)
 ├──────────────────┬─────────────────┐ HIGH
 │ Keep Satisfied   │ Key Players     │

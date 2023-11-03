@@ -11,21 +11,21 @@ Majority element - number of occurrences > n/2.
 
 ## Array types
 
-* Bit array (bitmap, bitset, bit string, or bit vector) - is array data structure that compactly **stores bits**.
+**Bit array** (bitmap, bitset, bit string, or bit vector) - is array data structure that compactly **stores bits**.
 Is effective at exploiting bit-level parallelism in hardware to perform operations quickly.
 
-* `Circular buffer` (circular queue, cyclic buffer or ring buffer) -  is data structure
+**Circular buffer** (circular queue, cyclic buffer or ring buffer) -  is data structure
 that uses a single, fixed-size buffer as if it were **end-to-end connected**.
 
-* `Dynamic array` (growable array, resizable array, dynamic table, mutable array, or array list) -
+**Dynamic array** (growable array, resizable array, dynamic table, mutable array, or array list) -
 is a **random access, variable-size** list data structure that allows elements to be added or removed.
 
-* `Sparse array` - is **an array** in which most of the elements have the **default value** (usually 0 or null).
+**Sparse array** - is **an array** in which most of the elements have the **default value** (usually 0 or null).
 
-* `Hashed array tree` - is dynamic array data-structure which have
+**Hashed array tree** - is dynamic array data-structure which have
 top-level array where each entry is pointer to array with elements.
 
-* `Hash table` (hash map) - is a data structure
+**Hash table** (hash map) - is a data structure
 used to implement an associative array, a structure that can **map keys to values**.
 A hash table uses a hash function
 to compute an index into an array of buckets or slots, from which the desired value can be found.

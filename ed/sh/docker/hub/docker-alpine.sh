@@ -5,6 +5,7 @@ docker-alpine
 version=3.12
 version=3.15
 version=3.16
+version=3.18
 docker build -t cn007b/alpine:$version docker/$version
 
 # # check
@@ -20,6 +21,7 @@ docker run -ti --rm cn007b/alpine:$version sh -c 'hash wget'
 docker run -ti --rm cn007b/alpine:$version sh -c 'hash nmap'
 docker run -ti --rm cn007b/alpine:$version sh -c 'hash telnet'
 # docker run -ti --rm cn007b/alpine:$version sh -c 'hash ftp'
+docker run -ti --rm cn007b/alpine:$version sh -c 'hash lftp'
 docker run -ti --rm cn007b/alpine:$version sh -c 'hash zip'
 docker run -ti --rm cn007b/alpine:$version sh -c 'hash unzip'
 docker run -ti --rm cn007b/alpine:$version sh -c 'hash rsync'

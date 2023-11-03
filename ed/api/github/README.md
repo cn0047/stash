@@ -52,6 +52,8 @@ gh repo list $org -L 100
 ````
 
 ````sh
+https://github.com/pulls?q=is:pr+author:cn007b+archived:false
+
 curl -i https://api.github.com/users
 
 curl https://api.github.com/users/cn007b
