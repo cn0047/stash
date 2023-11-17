@@ -109,3 +109,24 @@ left child = parent d
 
 Number of Binary Search Trees possible with N nodes:
 For example, `for: [5, 6] result: [5, 6], [6, 5] (all permutations)`.
+
+**Self-balancing binary search tree** (height-balanced) - is any node-based binary search tree
+that automatically **keeps its height small** in the face of arbitrary item insertions and deletions.
+Search performance = `O(log n)`.
+
+Balancing tree:
+* Right rotation (when tree is left heavy).
+* Left rotation (when tree is right heavy).
+* Right-Left rotation.
+* Left-Right rotation.
+
+**B-tree** - self-balancing, self managed, multi-level binary search tree.
+
+B-tree is a self-balancing tree data structure
+that keeps data sorted and allows searches,
+sequential access, insertions, and deletions in logarithmic time.
+The B-tree is a generalization of a binary search tree in that a node **can have more than two children**.
+
+B-tree is also self managed multi-level index,
+it means when data in index grows, B-tree creates index in front of index, and so on,
+and when data deletes, B-tree deletes index.

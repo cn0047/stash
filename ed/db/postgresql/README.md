@@ -19,6 +19,8 @@ Schema - like directory in file system.
 
 \set x 204
 select :x;
+\set s 'No Content'
+select :'s';
 
 set var.x = 100;
 select current_setting('var.x');

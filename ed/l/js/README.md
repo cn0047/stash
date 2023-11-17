@@ -78,7 +78,7 @@ its parent object will be asked.
 
 __proto__ - internal property used by the js engine for inheritance.
 
-Shadowing - it is when parent class* have method which is overridden in child class*,
+Shadowing - it is when parent class *have method which is overridden in child class*,
 so child can't call parent class and have to use: `Parent.prototype.func.call(this)`.
 
 ````js

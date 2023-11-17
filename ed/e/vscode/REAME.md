@@ -6,3 +6,9 @@ VSCode
 ````
 code ~/.bash_profile
 ````
+
+````
+command+shift+p #
+````
+
+Activity bar - left panel.

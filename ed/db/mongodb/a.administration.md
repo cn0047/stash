@@ -19,6 +19,13 @@ mongo
 ````
 
 ````js
+// set custom prompt
+prompt = () => {
+    return `main@primary> `;
+}
+````
+
+````js
 db.version();
 
 DBQuery.shellBatchSize = 10;

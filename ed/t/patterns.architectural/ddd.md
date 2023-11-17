@@ -70,6 +70,8 @@ Diagram that illustrates relationships and interactions between various bounded 
 
 #### Layered Architecture.
 
+<img src="https://gist.github.com/cn007b/384d6938ebef985347b29c15476b55c5/raw/95e80250d0c5968b3d541c8d1f81be8876a721c6/ddd.LayeredArchitecture.png" width="70%" />
+
 * User Interface - Responsible for presenting information to the user and
 interpreting user commands.
 
@@ -115,6 +117,7 @@ Is a category of objects which seem to have an identity.
 An object that contains attributes but has no conceptual identity.
 VOs must be placed in application layer
 because only this layer aware how to interact with domain layer from the outside world.
+VO must be immutable.
 
 #### Modules.
 

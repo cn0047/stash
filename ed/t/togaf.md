@@ -45,7 +45,7 @@ POWER (INFLUENCE)
 └──────────────────┴─────────────────┴ LEVEL OF INTEREST (IMPACT)
 LOW
 
-#### Architecture development method:
+#### ADM (Architecture development method):
 
 **Preliminary Phase**.
 What needs to be done? How will it be carried out?

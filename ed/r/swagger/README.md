@@ -11,7 +11,7 @@ Swagger
 [supported JSON schema keywords](https://swagger.io/docs/specification/data-models/keywords/).
 
 Swagger is a set of open-source tools built around the OpenAPI Specification
-that can help you design, build, document and consume REST APIs.
+that can help to design, build, document and consume REST APIs.
 
 OpenAPI Specification (formerly Swagger Specification) is an API description format for REST APIs.
 

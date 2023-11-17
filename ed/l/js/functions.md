@@ -77,7 +77,7 @@ JSON.parse(string)                     // JSON string to object
 
 console.group('Application Log', 'font-size: x-large');
 console.time('ttt');
-console.timeEnd(ttt'); // shows spent time
+console.timeEnd('ttt'); // shows spent time
 console.log('Application Log');
 console.error('E');
 console.warn('W');
