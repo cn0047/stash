@@ -43,7 +43,7 @@ which software the init command launches or shuts off on a given runlevel.
 /etc/os-release                         # about linux
 /etc/pam.d/common-session               #
 /etc/pam.d/common-session-noniteractive #
-/etc/passwd                             # ↓
+/etc/passwd                             #
 /etc/resolv.conf                        # for networking
 /etc/security/limits.conf               # limits per user
 /etc/shadow                             # file with passwords
@@ -74,9 +74,9 @@ which software the init command launches or shuts off on a given runlevel.
 /proc/stat                              # system stats
 /proc/net/ip_vs                         #
 /proc/sys/kernel                        # kernel parameters
-/proc/sys/fs/file-max                   # ↓
+/proc/sys/fs/file-max                   # contains open file limit
 /proc/sys/kernel/random/entropy_avail   # entropy pool size
-/proc/sys/net/core/somaxconn            # ↓
+/proc/sys/net/core/somaxconn            #
 /proc/sys/net/ipv4/tcp_keepalive_time   # current tcp_keepalive_time value
 /proc/zoneinfo                          # info about virtual memory zones
 /proc/version                           # kernel version

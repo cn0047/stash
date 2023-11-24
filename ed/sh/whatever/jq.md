@@ -22,7 +22,7 @@ jq type # simple way to check JSON validity
 ,             # (comma) two filters separated by a comma
 
 .items[]|.id
-... | jq '.items[]|.ImageLink' # ✅
+... | jq '.items[]|.ImageLink'
 ... | jq '.items[]|.id,.name'
 ... | jq '.items[]|{id, name}'
 ... | jq '.items|join(",")'

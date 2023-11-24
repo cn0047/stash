@@ -40,12 +40,9 @@ Thread Scheduling:
 
 #### Scheduling Algorithms:
 
-* First-Come First-Serve Scheduling, FCFS
-  (just a FIFO queue).
-* Shortest-Job-First Scheduling, SJF
-  (to pick the quickest fastest little job that needs to be done).
-* Priority Scheduling
-  (is a more general case of SJF, in which each job is assigned a priority).
+* First-Come First-Serve Scheduling, FCFS (just a FIFO queue).
+* Shortest-Job-First Scheduling, SJF (to pick the quickest fastest little job that needs to be done).
+* Priority Scheduling (is a more general case of SJF, in which each job is assigned a priority).
 * Round Robin Scheduling.
 * Multilevel Queue Scheduling.
 * Multilevel Feedback-Queue Scheduling.

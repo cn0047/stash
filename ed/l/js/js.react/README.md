@@ -62,7 +62,7 @@ To figure out whether something is state - ask next questions about each piece o
 Treat `this.state` as if it were immutable.
 
 Spread attributes:
-````js
+````jsx
 function App2() {
   const props = {firstName: 'Ben', lastName: 'Hector'};
   return <Greeting {...props} />;
@@ -71,7 +71,7 @@ function App2() {
 ````
 
 Fragment - group list of children without adding extra nodes to the DOM.
-````js
+````jsx
 return (
   <dl>
     {props.items.map(item => (
@@ -94,7 +94,7 @@ return (
 
 Portal - insert child into different location in DOM
 outside the DOM hierarchy of the parent component.
-````js
+````jsx
 render() {
   return ReactDOM.createPortal(this.props.children, domNode);
 }
@@ -102,7 +102,7 @@ render() {
 
 To pass data through the component tree without having to pass props
 down into each component - use `context`.
-````js
+````jsx
 const MyContext = React.createContext(defaultValue);
 ````
 
@@ -115,7 +115,7 @@ Changes in context won't cause re-render not in parent nor in child.
 but trigger the normal lifecycle methods for child.
 
 Uncontrolled Component - (use a `ref`) gets values from the DOM.
-````js
+````jsx
 return <input ref="inp" />;
 componentDidMount: () => {
   console.log(this.refs.inp.getDOMNode().value);
@@ -128,7 +128,7 @@ Conditionally render React elements: `{showHeader && <Header />}`.
 
 Convert `false, true, null, undefined` to string: `<div>My JavaScript variable is {String(myVariable)}.</div>`.
 
-Most of the time, you can use `React.PureComponent` instead of writing your own `shouldComponentUpdate`.
+Most of the time `React.PureComponent` can be used instead of writing `shouldComponentUpdate`.
 
 Difference between `React.PureComponent` and `React.Component`
 `PureComponent` does a shallow comparison on state change.
@@ -138,7 +138,7 @@ but when comparing objects it compares only references (helps to improve perform
 <br>All child components to `React.PureComponent` must also be `React.PureComponent`.
 
 Not mutating data:
-````js
+````jsx
 this.setState(prevState => Object.assign({}, prevState, {new: "new"}));
 
 function updateColorMap(colormap) {
@@ -173,7 +173,7 @@ and methods prefixed with `did` are called right after something happens.
 
 `ReactDOM.findDOMNode(node)`.
 
-Hooks let you use state and other React features without writing a class.
+Hooks allow to use state and other React features without writing a class.
 
 Basic Hooks:
 * useState - `[countValue, setCount] = useState(0 /* init count value */);`.
@@ -189,7 +189,7 @@ Additional Hooks:
 * useLayoutEffect.
 * useDebugValue.
 
-````js
+````jsx
 var Settings = React.createClass({
   statics: {
     willTransitionTo: function (transition, params, query, callback) {

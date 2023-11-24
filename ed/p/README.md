@@ -98,7 +98,7 @@ DNAME record creates an alias for subdomains.
 ANAME record - ALIAS Name record.
 ANAME records are typically configured to point to another domain,
 but when queried by a client, answer with an IP address.
-ANAME fater that CNAME.
+ANAME faster that CNAME.
 
 IoT Protocols: MQTT, CoAP (lightweight HTTP).
 
@@ -180,9 +180,9 @@ D: Multicast (2 - 4.0.0.0 - 239.255.255.255)
 E: Reserved
 ````
 
-Network Address - opposite to broadcast address ->  all host bits are turned off (0000 0000).
+Network Address - opposite to broadcast address -> all host bits are turned off (0000 0000).
 Broadcast Address - very last IP in local network -> all host bits are turned on (1111 1111).
-                    255.255.255.255 - is also broadcast address (reserved) for local network.
+255.255.255.255 - is also broadcast address (reserved) for local network.
 
 ## Internet Protocol Stack
 
