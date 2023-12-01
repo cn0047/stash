@@ -23,6 +23,16 @@ function main() {
   if (returnTrue() && returnFalse() && returnTrue()) {
     console.log('in3');
   }
+
+  console.log('\ncheck4');
+  if (returnFalse() || returnTrue()) {
+    console.log('in4');
+  }
+
+  console.log('\ncheck5');
+  if (returnTrue() || returnFalse()) {
+    console.log('in5');
+  }
 }
 
 main();
@@ -39,5 +49,14 @@ returnFalse
 check3
 returnTrue
 returnFalse
+
+check4
+returnFalse
+returnTrue
+in4
+
+check5
+returnTrue
+in5
 
 */

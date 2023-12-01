@@ -53,27 +53,17 @@ floor(i/2)  floor(i-1/2) - parent
 ````
 
 Find inorder predecessor:
-If left child is present - got to left child and go to [most right](http://prntscr.com/hdpp78),
-otherwise - search from where we take the [last right turn](http://i.prntscr.com/N07a6FMpQxy0ho1XoQ0RdQ.png).
+If left child is present - got to left child and go to most right,
+otherwise - search from where we take the last right turn.
 
 Find inorder successor:
-If right child is present - got to right child and go to [most left](http://prntscr.com/hdpsl5),
-otherwise - search from where we take the [last left turn](http://prntscr.com/hdptzo).
+If right child is present - got to right child and go to most left,
+otherwise - search from where we take the last left turn.
 
-Preorder traversal:
-1. print node.
-2. go to left child.
-3. go to right child.
-
-Postorder traversal:
-1. go to left child.
-2. go to right child.
-3. print node.
-
-Inorder traversal:
-1. go to left child.
-2. print node.
-3. go to right child.
+Preorder traversal (DFS): print node; go to left child; go to right child;
+Postorder traversal (DFS): go to left child; go to right child; print node;
+Inorder traversal (DFS): go to left child; print node; go to right child;
+Level traversal (BFS);
 
 Vertical order traversal:
 1. put in queue root, root height = 0.

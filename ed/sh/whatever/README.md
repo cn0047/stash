@@ -861,7 +861,7 @@ uuencode card.jpg card.jpg | mail mail@com.com
 -B              # num lines before each match
 ````
 
-`grep match -wrni --color=always --include=*.php . | grep notMatch -v --color=always`
+`grep match -wrni --color=always --include='*.php' . | grep notMatch -v --color=always`
 
 #### screen
 
