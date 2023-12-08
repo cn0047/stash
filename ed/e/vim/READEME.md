@@ -1,7 +1,6 @@
 vim
 -
-
-version 7.4
+<br>version 7.4
 
 ````sh
 # open file & goto line 7
