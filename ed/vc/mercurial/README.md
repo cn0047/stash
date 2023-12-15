@@ -1,6 +1,6 @@
 Mercurial
 -
-version 3.4
+<br>version 3.4
 
 ````sh
 hg version

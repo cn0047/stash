@@ -1,6 +1,5 @@
 GIT
 -
-
 <br>git version 2.5.0
 <br>git version 2.15.0
 
