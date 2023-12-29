@@ -76,6 +76,13 @@ The use of `.innerText` will prevent most XSS problems as it will automatically 
 
 SQL Injection and whatnot.
 
+#### CSV Injection
+
+CSV Injection (aka Formula Injection) - when websites embed untrusted input inside CSV files.
+
+To remediate it: ensure that no cells begin with any of the following characters: `=, +, -, @, 0x09, 0x0D`.
+And quote: `,;'"`.
+
 #### Directory (path) traversal attack
 
 AKA: ../ (dot dot slash) attack.
