@@ -90,12 +90,6 @@ shell uname -s
 
 echo 1 || : # echo 1 or do nothing
 
-# SSH tunnel.
-# Remote server just needs to have python available.
-# usr@ec2-us-east-1.smth.com - remote host.
-# 10.3.0.0/16 - network interface to connect to.
-sshuttle -v -r usr@ec2-us-east-1.smth.com 10.3.0.0/16
-
 timedatectl status | grep "Time zone"
 colordiff -u file1 file2
 colordiff -y file1 file2

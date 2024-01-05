@@ -7,13 +7,16 @@ ssh (Secure Shell)
 # generate new ssh key
 ssh-keygen -t rsa
 
+# get key's fingerprint, like in github
+ssh-keygen -lf .ssh_my/id_rsa
+
 # get key's fingerprint
 ssh-keygen -E md5 -lf keyFile.pem
 
 # get public key from private one
 ssh-keygen -y -f ~/.ssh/id_rsa > ~/.ssh/id_rsa.pub
 
-# get hash like in gitlab
+# get hash, like in gitlab
 cat .ssh_my/id_rsa.pub | awk '{print $2}' | base64 -d | md5sum
 
 locate sshd_config
@@ -48,6 +51,12 @@ ssh -i $key -N -L 9229:127.0.0.1:9229 root@server
 ssh -i $k ubuntu@$h "echo 200 > /tmp/x"
 
 scp -rp -i $key user@host:~/dir/ ~/dir/
+
+# SSH tunnel.
+# Remote server just needs to have python available.
+# usr@ec2-us-east-1.smth.com - remote host.
+# 10.3.0.0/16 - network interface to connect to.
+sshuttle -v -r usr@ec2-us-east-1.smth.com 10.3.0.0/16
 ````
 
 `vim ~/.ssh/config`

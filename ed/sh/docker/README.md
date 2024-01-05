@@ -109,6 +109,8 @@ docker run --gpus all ...
 docker run -d -p 8081:80 cn007b/ubuntu
 docker run -d -p 192.168.0.32:1111:1111 cn007b/ubuntu
 
+docker run --cpus=4 ...
+
 docker attach container_name
 
 # exec
