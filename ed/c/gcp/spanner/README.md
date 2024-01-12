@@ -2,6 +2,7 @@ Spanner
 -
 
 [docs](https://cloud.google.com/spanner/docs/apis)
+[limits](https://cloud.google.com/spanner/quotas)
 [IAM](https://cloud.google.com/spanner/docs/iam)
 [query syntax](https://cloud.google.com/spanner/docs/reference/standard-sql/query-syntax#having_clause)
 [funcs](https://cloud.google.com/spanner/docs/reference/standard-sql/syntax)

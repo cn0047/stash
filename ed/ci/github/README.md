@@ -8,6 +8,11 @@ GitHub Actions
 [toolkit](https://github.com/actions/toolkit)
 [playground](https://github-actions-hero.vercel.app/)
 [docker example](https://github.com/cn007b/docker-ubuntu/blob/master/.github/workflows/docker-image.yml)
+[example 1](https://github.com/cn007b/docker-go/tree/master/.github)
+[example 2](https://github.com/cn007b/docker-ubuntu/tree/master/.github)
+[example 3](https://github.com/cn007b/log-action/tree/main/.github)
+[example 4](https://github.com/thepkg/awsl/tree/master/.github)
+[example 5](https://github.com/thepkg/hrd/tree/main/.github)
 
 Workflow - configurable automated process that will run one or more jobs.
 Event - specific activity in a repo that triggers workflow run.

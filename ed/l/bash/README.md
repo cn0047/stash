@@ -420,6 +420,7 @@ continue
 while true; do echo -n . ; done
 while true; do echo -n . ; sleep 999; done
 until false; do echo -n . ; done
+i=0; while [ $i -ne 10 ]; do; i=$(($i+1)); echo "$i"; done
 
 # wait dir
 while true ; do [[ -d '/tmp/x' ]] && break ; echo -n '.' ; sleep 1 ; done

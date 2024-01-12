@@ -16,6 +16,7 @@ sudo service mongodb restart
 brew services start mongodb
 
 mongo
+mongo | tee log.txt
 ````
 
 ````js
