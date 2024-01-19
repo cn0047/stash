@@ -8,6 +8,7 @@ workstation create
 
 workstation start
 workstation stop
+workstation delete $name
 
 workstation ssh
 

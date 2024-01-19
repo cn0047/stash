@@ -1,0 +1,105 @@
+image: cn007b/go:1.19-alpine
+
+variables:
+  PROJECT_NAME: my_prj
+  GOOS: linux
+  GOARCH: amd64
+
+stages:
+  - test
+  - fail_test
+  - build
+  - fail_build
+  - deploy
+
+lint:
+  stage: test
+  variables: { }
+  script:
+    - golangci-lint version
+    - golangci-lint run
+    - go vet ./...
+
+test:
+  stage: test
+  services:
+    - name: mongo:3.4.19
+      alias: mongo
+    - name: postgres:latest
+      alias: postgres
+    - name: redis:latest
+      alias: redis
+  variables:
+    REDIS_HOST: redis
+    REDIS_URL: redis://redis:6379
+    MONGO_DATABASE: test
+    MONGO_URI: mongodb://mongo:27017
+    POSTGRES_URI: "postgres://postgres:postgres@postgres:5432/postgres"
+    POSTGRES_MIGRATIONS_PATH: "/builds/data/postgres/migrations"
+    POSTGRES_HOST_AUTH_METHOD: trust
+  script:
+    - go test -v -coverpkg="$(go list ./... | grep -v -e "[/]mock" | grep -v -e "[/]logger" | paste -s -d,)" -coverprofile=profile.cov ./...
+    - echo "TEST_COVERAGE=$(go tool cover -func profile.cov | tail -n 1 | grep -o '[0-9.%]*')" >> cover.env
+    - cat cover.env
+  coverage: '/\d+.\d+%/'
+  artifacts:
+    reports:
+      dotenv: cover.env
+
+fail_test_dev:
+  stage: fail_test
+  image: curlimages/curl
+  script:
+    - set +e; curl -X POST -H 'Content-type:application/json' --data '{"text":":x:Fail! CI Test Stage APP='$CI_PROJECT_NAME' NameBranch='$CI_BUILD_REF_NAME' by '$GITLAB_USER_LOGIN'"}' $SLACK_INIT; set -e
+  when: on_failure
+
+build:
+  stage: build
+  script:
+    - make
+  artifacts:
+    paths:
+      - data/*
+      - bin/$PROJECT_NAME
+    name: build
+
+fail_build_dev:
+  stage: fail_build
+  image: curlimages/curl
+  script:
+    - set +e; curl -X POST -H 'Content-type:application/json' --data '{"text":":x:Fail! CI Build Stage APP='$CI_PROJECT_NAME' NameBranch='$CI_BUILD_REF_NAME' by '$GITLAB_USER_LOGIN'"}' $SLACK_INIT; set -e
+  when: on_failure
+
+deploy-s3:
+  stage: deploy
+  variables:
+    S3_ARTIFACT: s3://$ARTIFACT_S3_FOLDER/$PROJECT_NAME/dev_$CI_COMMIT_SHORT_SHA.zip
+  rules:
+    - if: $CI_COMMIT_BRANCH == 'dev'
+      when: always
+    - if: $CI_COMMIT_TAG
+      variables:
+        S3_ARTIFACT: s3://$ARTIFACT_S3_FOLDER/$PROJECT_NAME/$CI_COMMIT_TAG.zip
+  script:
+    - zip -r app.zip bin/$PROJECT_NAME data/
+    - aws s3 cp app.zip $S3_ARTIFACT
+  dependencies:
+    - build
+
+deploy-docker:
+  stage: deploy
+  image: docker
+  variables:
+    CONTAINER: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+  rules:
+    - if: $CI_COMMIT_BRANCH == 'dev'
+      when: always
+    - if: $CI_COMMIT_TAG
+      variables:
+        CONTAINER: $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker build -t $CONTAINER -f Dockerfile --build-arg CA_CERTIFICATE="$CA_CERTIFICATE" .
+    - docker push $CONTAINER
+  dependencies:
+    - build

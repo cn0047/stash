@@ -2,6 +2,7 @@ Best Practices
 -
 
 [code style](https://github.com/golang/go/wiki/CodeReviewComments)
+[code style](https://google.github.io/styleguide/go)
 [code style](https://google.github.io/styleguide/go/best-practices)
 [uber code style](https://github.com/uber-go/guide/blob/master/style.md)
 

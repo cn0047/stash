@@ -68,6 +68,11 @@ Bounded Context reffers to domains and to models in one domain.
 
 Diagram that illustrates relationships and interactions between various bounded contexts.
 
+#### Shared kernel.
+
+Shared kernel is often the "core domain", some set of "generic subdomains", or both.
+The goal is to reduce duplication and make integration between the two subsystems relatively easy.
+
 #### Layered Architecture.
 
 <img src="https://gist.github.com/cn007b/384d6938ebef985347b29c15476b55c5/raw/95e80250d0c5968b3d541c8d1f81be8876a721c6/ddd.LayeredArchitecture.png" width="70%" />
