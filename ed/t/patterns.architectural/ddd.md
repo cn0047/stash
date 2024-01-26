@@ -41,12 +41,12 @@ To determine domain/subdomain focus on:
 A system of abstractions that describes selected aspects of a domain
 (aggregates, entities, factories).
 
-#### Ubiquitous Language.
+#### Ubiquitous language.
 
 A language structured around the domain model
 and used by all team members.
 
-#### Bounded Context.
+#### Bounded context.
 
 Simply draw line around something and say:
 within this space this what that word means and these are the rule here.
@@ -73,7 +73,7 @@ Diagram that illustrates relationships and interactions between various bounded 
 Shared kernel is often the "core domain", some set of "generic subdomains", or both.
 The goal is to reduce duplication and make integration between the two subsystems relatively easy.
 
-#### Layered Architecture.
+#### Layered architecture.
 
 <img src="https://gist.github.com/cn007b/384d6938ebef985347b29c15476b55c5/raw/95e80250d0c5968b3d541c8d1f81be8876a721c6/ddd.LayeredArchitecture.png" width="70%" />
 
@@ -110,6 +110,10 @@ src/Domain/Model/ParticularModel/Service/Query/CreateParticularModel.php - (CQRS
 src/Infrastructure/Command/ParticularModel/PersisterDoctrine.php - Doctrine EM Wrapper.
 src/Infrastructure/DataProvider/
 ````
+
+#### Anticorruption layer.
+
+It is combination of Facades and Adapters.
 
 #### Entities.
 
@@ -180,7 +184,7 @@ that can be treated as a single unit.
 
 Car it is aggregate for: wheels, engine, spark and fuel, etc.
 
-#### Domain Event.
+#### Domain event.
 
 A domain object that defines an event (something that happens, when X happens to Y).
 
@@ -242,7 +246,7 @@ Domain Services are used to describe things into the domain,
 operations that don’t belong to entities nor value objects.
 (Cross-aggregate behavor, repositories, external services).
 
-#### DTO - Data transfer object.
+#### DTO - Data Transfer Object.
 
 Communication between the delivery mechanism
 and the domain is carried by data structures called DTO.
@@ -265,7 +269,7 @@ such that alternative storage implementations may be easily interchanged.
 
 Repositories are not DAOs.
 
-#### DAO - Data access object.
+#### DAO - Data Access Object.
 
 Typically a DAO would contain CRUD methods for a particular domain object.
 DAOs must be placed in domain layer.

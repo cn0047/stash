@@ -26,4 +26,4 @@ Instance groups:
 * managed (zonal, regional).
 * unmanaged.
 
-instance is per region.
+Instance is per region.

@@ -1,7 +1,7 @@
 Workflows
 -
 
-[docs](https://cloud.google.com/workflows)
+[docs](https://cloud.google.com/workflows/docs)
 [syntax](https://cloud.google.com/workflows/docs/reference/syntax)
 [datatypes](https://cloud.google.com/workflows/docs/reference/syntax/datatypes)
 [stdlib](https://cloud.google.com/workflows/docs/reference/stdlib/overview)

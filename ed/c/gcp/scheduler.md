@@ -1,8 +1,11 @@
 Scheduler
 -
 
+[docs](https://cloud.google.com/scheduler/docs)
+[REST API](https://cloud.google.com/scheduler/docs/reference/rest)
+
 Cloud Scheduler is per region.
-Cloud Scheduler type: HTTP, PubSub.
+Cloud Scheduler type: HTTP, PubSub, AppEngine HTTP, Workflows.
 
 HTTP scheduler can specify headers as well.
 

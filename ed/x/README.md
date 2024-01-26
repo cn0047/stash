@@ -1,6 +1,7 @@
 Security
 -
 
+[awesome](https://github.com/carpedm20/awesome-hacking)
 [map](http://map.norsecorp.com/)
 [xss](https://www.openbugbounty.org/)
 [vulnerabilities](http://cve.mitre.org/) [and](https://cwe.mitre.org/)

@@ -1,0 +1,33 @@
+{
+    "databases":
+    [
+        {
+            "name": "projects/n-testing/instances/s1-t-n-zone/databases/test_27033484",
+            "state": "READY",
+            "createTime": "2024-01-23T18:36:17.128619Z",
+            "versionRetentionPeriod": "1h",
+            "earliestVersionTime": "2024-01-24T08:40:20.286216Z",
+            "encryptionInfo":
+            [
+                {
+                    "encryptionType": "GOOGLE_DEFAULT_ENCRYPTION"
+                }
+            ],
+            "databaseDialect": "GOOGLE_STANDARD_SQL"
+        },
+        {
+            "name": "projects/n-testing/instances/s1-t-n-zone/databases/test_27056167",
+            "state": "READY",
+            "createTime": "2024-01-24T07:18:47.156519Z",
+            "versionRetentionPeriod": "1h",
+            "earliestVersionTime": "2024-01-24T08:40:20.286218Z",
+            "encryptionInfo":
+            [
+                {
+                    "encryptionType": "GOOGLE_DEFAULT_ENCRYPTION"
+                }
+            ],
+            "databaseDialect": "GOOGLE_STANDARD_SQL"
+        }
+    ]
+}

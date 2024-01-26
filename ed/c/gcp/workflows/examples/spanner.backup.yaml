@@ -1,7 +1,7 @@
 - first_step:
     assign:
     - expireTime: ${sys.now() + 2592000} # 30 hours
-    - backupId: ${"wp-dev-" + text.replace_all(string(sys.now() * 1000), ".", "_")}
+    - backupId: ${"svc-name-dev-env-" + text.replace_all(string(sys.now() * 1000), ".", "_")}
     - formattedExpireTime: ${time.format(expireTime)}
 - createBackup:
     call: http.post

@@ -35,3 +35,18 @@ Logical Reasoning:
 * Deductive.
 * Analogy.
 * Abductive.
+
+SMART goal-setting:
+* Specific.
+* Measurable.
+* Achievable.
+* Realistic.
+* Time-bound.
+
+Values types:
+* Who (people focused).
+* What (things focused: cars, gadgets, etc).
+* Why (what the reason).
+* How (process focused).
+* When (time focused).
+* Where (place focused).

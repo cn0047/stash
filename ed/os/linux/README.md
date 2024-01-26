@@ -27,6 +27,8 @@ The `SysV init` is a standard process used by Red Hat Linux to control
 which software the init command launches or shuts off on a given runlevel.
 
 ````sh
+/                                       # root
+/bin                                    #
 /bin/true                               # returns 0 code
 /dev/null                               # stream, hide output
 /dev/random                             # random data for entropy
@@ -50,9 +52,11 @@ which software the init command launches or shuts off on a given runlevel.
 /etc/sudoers                            #
 /etc/sysctl.conf                        #
 /etc/ttys                               # logged in users
+/home                                   #
+/lib                                    #
 /media                                  #
 /opt                                    # optional software directory
-/proc                                   # mount point for procfs
+/proc                                   # mount point for procfs (this directory holds OS state)
 /proc/$pid/                             # process related stuff
 /proc/$pid/cmdline                      # process full command line
 /proc/$pid/cwd                          # cwd for process
@@ -64,28 +68,34 @@ which software the init command launches or shuts off on a given runlevel.
 /proc/$pid/fd/2                         # process stderr
 /proc/$pid/mem                          # virtual memory for process
 /proc/$pid/root                         # root for process
-/proc/$pid/status                       # status about process
-/proc/$pid/statm                        # mem stats about process
 /proc/$pid/smaps                        #
+/proc/$pid/statm                        # mem stats about process
+/proc/$pid/status                       # status about process
 /proc/cpuinfo                           # info about cpu
+/proc/malloc                            #
 /proc/meminfo                           # info about memory (+ memory usage)
 /proc/net                               # network
-/proc/malloc                            #
-/proc/stat                              # system stats
 /proc/net/ip_vs                         #
-/proc/sys/kernel                        # kernel parameters
+/proc/stat                              # system stats
 /proc/sys/fs/file-max                   # contains open file limit
+/proc/sys/kernel                        # kernel parameters
 /proc/sys/kernel/random/entropy_avail   # entropy pool size
 /proc/sys/net/core/somaxconn            #
 /proc/sys/net/ipv4/tcp_keepalive_time   # current tcp_keepalive_time value
-/proc/zoneinfo                          # info about virtual memory zones
 /proc/version                           # kernel version
+/proc/zoneinfo                          # info about virtual memory zones
+/run                                    # runtime info
+/sys                                    # kernel & hardware objects
 /sys/devices/system/cpu/cpu[0-7]        #
+/usr                                    # Unix System Resources
 /usr/bin                                #
+/usr/lib                                #
 /usr/lib/pkgconfig                      # dir for pkgconfig files
 /usr/local/bin                          #
 /usr/share/pkgconfig                    # dir for pkgconfig files
 /usr/share/zoneinfo                     #
+/var                                    #
+/var/log                                #
 /var/log/wtmp                           # contains recent logins
 ````
 
