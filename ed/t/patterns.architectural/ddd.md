@@ -36,6 +36,10 @@ To determine domain/subdomain focus on:
 * Ubiquitous Language (own consistent and specialized language).
 * Iterative approach.
 
+Generic subdomain - general principles everyone knows
+or details that belong to specialties which are not primary domain focus,
+but play a supporting role.
+
 #### Model.
 
 A system of abstractions that describes selected aspects of a domain

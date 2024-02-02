@@ -34,7 +34,6 @@ Go is compiled, garbage-collected, concurrent, type-safe.
 [covererage](https://gocover.io/) [![and](https://gocover.io/_badge/github.com/thepkg/strings)](https://gocover.io/github.com/thepkg/strings)
 [json to struct](https://mholt.github.io/json-to-go/)
 [sql code gen](https://github.com/kyleconroy/sqlc)
-[project layout](https://github.com/golang-standards/project-layout)
 [generic examples](https://go.googlesource.com/proposal/+/refs/heads/master/design/43651-type-parameters.md#examples)
 [code gen from sql](https://github.com/kyleconroy/sqlc)
 [code gen](https://autostrada.dev/)

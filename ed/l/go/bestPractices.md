@@ -5,6 +5,8 @@ Best Practices
 [code style](https://google.github.io/styleguide/go)
 [code style](https://google.github.io/styleguide/go/best-practices)
 [uber code style](https://github.com/uber-go/guide/blob/master/style.md)
+[project layout](https://github.com/golang-standards/project-layout)
+[recipes](https://github.com/nikolaydubina/go-recipes)
 
 * Avoid nesting by handling errors first.
 * Make your packages "go get"-able.
