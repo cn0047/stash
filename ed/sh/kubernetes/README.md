@@ -132,6 +132,8 @@ storageClassName: manual, gp2, aws-efs.
 **Job** creates one or more Pods and ensures that a specified number of them successfully complete.
 `restartPolicy: Never|OnFailure`
 
+**CronJob**.
+
 A federation is a cluster of clusters.
 
 KOps stands for k8s operations (for AWS).

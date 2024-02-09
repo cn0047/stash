@@ -171,7 +171,7 @@ B: Devices - Medium networks (128.0.0.0 - 191.255.0.0)
               n     host
 
 C: Devices -  Small networks (192.0.0.0 - 223.255.255.0)
-             130.2.3.4
+             1**.2.3.4
              └──────┘└┘
               network host
 

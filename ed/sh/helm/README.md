@@ -9,9 +9,14 @@ Chart - package.
 
 ````sh
 # v2.16
-download *.tar.gz from https://github.com/helm/helm/releases/tag/v2.16.12
+v=v2.16.12
+v=v3.6.0
+download *.tar.gz from https://github.com/helm/helm/releases/tag/$v
+tar -xvf $f
 mv ./Downloads/darwin-amd64/helm /usr/local/bin/helm
 mv ./Downloads/darwin-amd64/tiller /usr/local/bin/tiller
+# or
+mv ./Downloads/darwin-arm64/helm /usr/local/bin/helm
 
 mkdir -p /Users/k/.helm/repository/
 touch    /Users/k/.helm/repository/repositories.yaml
@@ -44,5 +49,5 @@ helm delete $release
 cd ed/sh/helm/examples
 chart=sh
 env=dev
-# ⬆
+
 ````
