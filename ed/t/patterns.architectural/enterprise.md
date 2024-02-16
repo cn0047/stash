@@ -78,6 +78,8 @@ Enterprise Application Architecture Patterns
 Keep business logic as stored procedures, so just use DB.
 Good for apps with small amount of logic.
 Introduce very little DB overhead in performance and in understanding.
+Transaction Script - single procedure created for each of business transactions,
+and it is grouped in some kind of static manager or service class.
 
 **Domain Model**
 Requires Data Mapper.

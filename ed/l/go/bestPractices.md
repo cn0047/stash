@@ -35,7 +35,7 @@ Best Practices
   to avoid memory leak when reusing http connection.
 * Don't forget about padding bytes in structures declaration (8 byte).
 
-#### Anti-Patterns
+#### Anti-patterns
 
 * [Tiny package syndrome](https://www.youtube.com/watch?v=ltqV6pDKZD8&feature=youtu.be&t=7m30s).
 * Premature Exportation - over export small struct, func, etc.
@@ -54,3 +54,7 @@ Best Practices
 otherwise have to have: `pkg.NewUser(); pkg.NewLocation()`.
 * Inline error check (`if err := x.f(); err != nil {}`) - debugger won't stop before error check.
 * Use underscore in test cases names (`ts.Run("test_case", ...`).
+
+#### Non-classified
+
+* Ternary operator `$cnd ? true : false;`.

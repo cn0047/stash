@@ -1,0 +1,13 @@
+# common values
+
+global:
+    no:
+        revision: "revision_missing"
+        dockerImage: ""
+        trace:
+            enable: false
+        mongodb:
+            max_pool_size: 300
+            min_pool_size: 5
+            max_conn_idle_time_ms: 600000
+            read_preference: "secondary"

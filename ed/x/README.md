@@ -41,6 +41,8 @@ SSO (single sign-on) - system that allows for a single username & password that 
 
 Spoof - tricking or deceiving computer systems or other computer users.
 
+Cloud Misconfigurations - don't use default configs.
+
 ## WEB
 
 FIEO - filter input escape output.

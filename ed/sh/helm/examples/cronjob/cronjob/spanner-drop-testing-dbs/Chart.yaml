@@ -1,0 +1,8 @@
+apiVersion: v2
+description: A Helm chart for NO to delete spanner testing DBs.
+name: spanner-drop-testing-dbs
+version: 0.1.0
+dependencies:
+  - name: no-common
+    repository: file://../../no-common
+    version: 0.1.0

@@ -127,6 +127,8 @@ Full stack:
 
 `camelCase, kebab-case, snake_case`
 
+Referrer -> Reference -> Referee.
+
 ````sh
 12:25AM # 00:25
 

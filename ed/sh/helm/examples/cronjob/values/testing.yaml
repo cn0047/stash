@@ -1,0 +1,10 @@
+global:
+    no:
+        environment: testing
+        base_domain: testing.no.com
+        trace:
+            enable: true
+        spanner:
+            database: no-testing
+            instance: s1-testing-no-zone
+            project_id: no-testing

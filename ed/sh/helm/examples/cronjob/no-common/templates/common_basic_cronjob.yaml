@@ -1,0 +1,34 @@
+{{- define "common_basic_cronjob" }}
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ required "resourceName is required" .resourceName | quote }}
+  namespace: {{ .Release.Namespace | quote }}
+  labels:
+    service: {{ .serviceName | quote }}
+spec:
+  schedule: {{ required "cronJob.schedule is required" .cronJob.schedule | quote }}
+  concurrencyPolicy: {{ .cronJob.concurrencyPolicy | quote }}
+  failedJobsHistoryLimit: {{ default "2" .cronJob.failedJobsHistoryLimit }}
+  successfulJobsHistoryLimit: {{ default "2" .cronJob.successfulJobsHistoryLimit }}
+  startingDeadlineSeconds: {{ default "120" .cronJob.startingDeadlineSeconds }}
+  jobTemplate:
+    spec:
+      backoffLimit: 0
+      template:
+        spec:
+          restartPolicy: {{ .cronJob.restartPolicy | quote }}
+          activeDeadlineSeconds: {{ default "300" .cronJob.activeDeadlineSeconds }}
+          {{- if .cronJob.serviceAccountName }}
+          serviceAccountName: {{ .cronJob.serviceAccountName | quote }}
+          {{- end }}
+          containers:
+            - name: "{{ .resourceName }}-cronjob-pod"
+              image: {{ required "cronjob.dockerImage is required" .cronJob.dockerImage | quote }}
+              imagePullPolicy: {{ default "Always" .cronJob.imagePullPolicy | quote }}
+              args: {{- range $index, $arg := .args }}
+                - {{ $arg | quote }}
+              {{- end }}
+              terminationMessagePath: /dev/termination-log
+              terminationMessagePolicy: File
+{{- end }}

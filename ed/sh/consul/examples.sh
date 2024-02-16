@@ -1,4 +1,4 @@
-# consul
+# consul examples
 
 # hw
 go run ed/l/go/examples/http/http.server.hw2.go

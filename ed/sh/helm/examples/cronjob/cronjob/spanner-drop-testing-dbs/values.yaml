@@ -1,0 +1,8 @@
+resourceName: "no-spanner-drop-testing-dbs"
+serviceName: "no-go"
+cmd_project: ""
+cronJob:
+    schedule: "0 0 * * *" # every day at midnight
+    concurrencypolicy: "forbid"
+    restartpolicy: "never"
+    dockerImage: "us.gcr.io/no-images/go/no:master"

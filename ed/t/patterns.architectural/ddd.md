@@ -72,10 +72,14 @@ Bounded Context reffers to domains and to models in one domain.
 
 Diagram that illustrates relationships and interactions between various bounded contexts.
 
+To define context map - keep in mind: technical reality and organizational reality.
+
 #### Shared kernel.
 
 Shared kernel is often the "core domain", some set of "generic subdomains", or both.
 The goal is to reduce duplication and make integration between the two subsystems relatively easy.
+
+Core domain - distinctive part of the model, central to the user’s goals.
 
 #### Layered architecture.
 
@@ -293,3 +297,20 @@ Switch from one front-end framework to another? ~~And server-side rendering?~~
 Confusion:
 * VO, DTO - own meaning in Java world.
 * Entity - own meaning in symfony world.
+
+The Strategic Patterns of DDD:
+* Distilling the problem domain to reveal what is important.
+* Creating a model to solve domain problems.
+* Using a shared language to enable modeling collaboration.
+* Isolate models from ambiguity and corruption.
+* Understanding the relationships between contexts.
+
+The practices and principles of DDD:
+* Focusing on the core domain.
+* Learning through collaboration.
+* Creating models through exploration and experimentation.
+* Communication.
+* Understanding the applicability of a model.
+* Constantly evolving the model.
+
+Teach your domain experts to focus on the problem and not jump to a solution.

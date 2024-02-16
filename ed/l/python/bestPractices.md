@@ -5,7 +5,8 @@ Best Practices
 * use `sphinx` for docs.
 * use `mypy` to checker type hint.
 
-[zen](https://www.python.org/dev/peps/pep-0020/):
+#### [zen](https://www.python.org/dev/peps/pep-0020/)
+
 * Beautiful is better than ugly.
 * Explicit is better than implicit.
 * Simple is better than complex.
@@ -13,7 +14,8 @@ Best Practices
 * Readability counts.
 * Errors should never pass silently.
 
-PEP8: Coding style:
+#### PEP8: Coding style
+
 * module - short lowercase names.
 * class - CamelCase.
 * func - lower_with_underscore.

@@ -1,0 +1,8 @@
+{{- $resourceName := default "no-spanner-drop-testing-dbs" .Values.resourceName }}
+{{- $serviceName := default "no-go" .Values.serviceName }}
+{{- $cronJob := .Values.cronJob }}
+{{- $args := list "spanner" "drop-testing-dbs" "--older-than" "86400" }}
+
+{{- with $env := dict "Values" .Values "Release" .Release "resourceName" $resourceName "serviceName" $serviceName "cronJob" $cronJob "args" $args }}
+{{- include "common_basic_cronjob" . }}
+{{- end }}

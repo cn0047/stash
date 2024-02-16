@@ -5,7 +5,8 @@ The ideal task size is not bigger than 1 day work.
 
 Two-pizza teams - where no team should be so big that it could not be fed with two pizzas.
 
-Stakeholder (holds stake) - business/company decision-making person/group/organization.
+Stakeholder - business/company decision-making person/group/organization.
+Shareholder - owner of company's outstanding shares.
 
 Strengths:
 * Fast learner.
