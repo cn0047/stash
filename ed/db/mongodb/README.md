@@ -22,6 +22,11 @@ MongoDB implements locks on a per-database basis for most read and write operati
 In MongoDB, operations are atomic at the document level.
 No single write operation can change more than one document.
 
+Pessimistic concurrency control, used in systems with "locks",
+blocks any potentially conflicting operations even if they may not conflict.
+Optimistic concurrency control, used by WiredTiger, delays checking until after conflict may have occurred,
+ending and retrying one of the operations in any write conflict.
+
 ````js
 // current database
 db

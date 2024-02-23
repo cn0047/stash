@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	a, err := NewApp(WithKey("MyKey"))
+	a, err := NewApp(WithVal("Key", "MyKey"))
 	if err != nil {
 		log.Printf("failed to create new app, err: %v\n", err)
 		return
@@ -36,9 +36,10 @@ func NewApp(options ...AppOptionFunc) (*App, error) {
 	return a, nil
 }
 
-func WithKey(key string) AppOptionFunc {
+func WithVal(key string, val any) AppOptionFunc {
 	return func(a *App) error {
-		a.Key = key
+		// @TODO: Finish next line.
+		log.Printf("set to key: %s, val: %v\n", key, val)
 		return nil
 	}
 }

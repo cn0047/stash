@@ -64,7 +64,7 @@ Option = Alt
 
 Command-Shift-G         # goto file in finder (open input for file path)
 
-Command-Control-o       # insert mode
+Command-Control-O       # insert mode
 Command-Control-Space   # emoji
 
 Control-Shift-Power     # Lock screen
@@ -72,20 +72,20 @@ Command-Option-Power    # Put MacBook to sleep
 Command-Option-Esc      # Force Quit
 
 Command-Shift-.         # Show hidden files
-Command-h:              # Hide
-Command-m:              # Minimize
-Command-Option-w:       # Close all windows at once
+Command-H:              # Hide
+Command-M:              # Minimize
+Command-Option-W:       # Close all windows at once
 
 Option-Del              # Del word
 Control-K               # Del row
 Command-Del             # Del to home
 Control-O               # Insert a new line after
 
-Fn–u|d                  # Move page U/D
-Fn–l|r                  # Scroll B/E document.
-Command–u|d             # Move B/en document.
-Command–l|r             # Move B/E current line.
-Option–l|r              # Move B/E previous word.
+Fn–U|D                  # Move page U/D
+Fn–L|R                  # Scroll B/E document.
+Command–U|D             # Move B/en document.
+Command–L|R             # Move B/E current line.
+Option–L|R              # Move B/E previous word.
 
 Shift–Option–U|D|L|R    # Extended text selection
 Command-Option          # Select text column in terminal

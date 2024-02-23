@@ -16,6 +16,9 @@ db.serverStatus().storageEngine;
 * Compression (data, indexes).
 * No in place updates.
 
+For most read and write operations, WiredTiger uses optimistic concurrency control.
+WiredTiger uses only intent locks at the global, database and collection levels.
+
 #### MMAPv1
 
 * Collection level lock.

@@ -58,6 +58,7 @@ $GODEBUG      # https://godoc.org/runtime#hdr-Environment_Variables
               # gctrace=1 - single line to standard error at each collection
               # GODEBUG=allocfreetrace=1,gcpacertrace=1,gctrace=1,scavenge=1,scheddetail=1,scheddetail=1,schedtrace=1000
               # GODEBUG=gocacheverify=1,gocachehash=1,gocachetest=1
+$GOEXPERIMENT # GOEXPERIMENT=rangefunc
 
 export GOROOT=$HOME/go
 export GOFLAGS=-mod=vendor
@@ -134,6 +135,9 @@ go-callvis ./... # visualize go code
 # vulnerability check
 go install golang.org/x/vuln/cmd/govulncheck@latest
 govulncheck ./...
+
+go install golang.org/x/tools/cmd/deadcode@latest
+deadcode -help
 ````
 
 ````golang

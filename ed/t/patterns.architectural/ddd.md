@@ -314,3 +314,19 @@ The practices and principles of DDD:
 * Constantly evolving the model.
 
 Teach your domain experts to focus on the problem and not jump to a solution.
+
+Common problems:
+* Underestimating the cost of applying DDD.
+* Missing the real value of DDD: collaboration, communication, and context.
+* Applying DDD to every problem.
+* Making simple problems complex.
+* Spending too much time on what's not important.
+* Applying DDD principles to a trivial domain with little business expectation.
+* Using the domain model pattern for every bounded context.
+* Using the same architecture for all bounded contexts.
+* Trying to succeed without a motivated and focused team.
+* Causing ambiguity and misinterpretations by failing to create a UL.
+* Producing a big ball of mud due to underestimating the importance of context.
+* Designing technical-focused solutions due to a lack of collaboration.
+* Always striving for beautiful code.
+* Ask yourself: is it worth this extra complexity?.
