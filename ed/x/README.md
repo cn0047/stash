@@ -116,3 +116,9 @@ Content-Security-Policy: upgrade-insecure-requests;
 ````sh
 Content-Security-Policy-Report-Only: default-src https:; report-uri /csp-violation-report-endpoint/
 ````
+
+#### AI
+
+* Injection into AI.
+* Make AI to use other resource with injection.
+* Poisoning data.

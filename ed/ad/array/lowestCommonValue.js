@@ -2,6 +2,7 @@ function cmp(a, b) {
     return a - b;
 }
 
+// solution returns lowest common value for 2 arrays.
 function solution(A, B) {
     var n = A.length;
     var m = B.length;

@@ -59,3 +59,4 @@ otherwise have to have: `pkg.NewUser(); pkg.NewLocation()`.
 #### Non-classified
 
 * Ternary operator `$cnd ? true : false;`.
+* `iota` (have to calculate value every time).

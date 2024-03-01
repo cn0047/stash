@@ -7,6 +7,8 @@ Find the number which occurs odd number times in an Array:
 Rotated array - array where 2 parts sorted but this parts not consequent.
 Pivot element of array - element which changes the order of array.
 
+Sub array - set of contiguous elements.
+
 Majority element - number of occurrences > n/2.
 
 ## Array types
