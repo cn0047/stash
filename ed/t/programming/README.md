@@ -177,3 +177,26 @@ The word `table` should never appear in a table name. How is NameString better t
 Would a Name ever be a floating point number? If so, it breaks an earlier rule about disinformation.
 Imagine finding one class named Customer and another named CustomerObject.
 What should you understand as the distinction? Which one will represent the best path to a customer’s payment history?
+
+#### Estimation
+
+Is it including: development, testing, deployment, documentation, etc.
+
+Not only estimation but also probability of success completence.
+
+Source of uncertainty:
+* Incomplete, inaccurate or changing input information.
+* Inaccurate of estimation process.
+
+Overestimation leads to leneral problems.
+Underestimation leads to exponential problems.
+
++20-30% as spare buffer on work package (group of tasks).
+
+Methods:
+* Big/Small/Uncertain.
+* T-shirt: XS, S, M, L, XL.
+* Scrum planning poker: 0, 1, 2, ...
+* Bucket system.
+* Dot voting.
+* Maximum size or less.

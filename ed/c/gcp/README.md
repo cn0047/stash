@@ -104,7 +104,7 @@ Computing service:
 
 Managed instances groups used for LB.
 
-#### Networking
+# Networking
 
 34 regions now.
 103 zones now.
@@ -128,9 +128,9 @@ Subnets can not span across multiple regions.
 Cloud Router doesn't use BGP link to advertise network changes.
 Google Virtual Network Subnets are regional resource.
 
-#### ESP (Extensible Service Proxy)
+# ESP (Extensible Service Proxy)
 
 ESP - Envoy-based high-performance, scalable proxy that runs in front of
 OpenAPI or gRPC API backend and provides API management features.
 
-#### NAT (Network Address Translation)
+# NAT (Network Address Translation)

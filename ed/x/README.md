@@ -117,6 +117,8 @@ Content-Security-Policy: upgrade-insecure-requests;
 Content-Security-Policy-Report-Only: default-src https:; report-uri /csp-violation-report-endpoint/
 ````
 
+#### Social Engineer
+
 #### AI
 
 * Injection into AI.

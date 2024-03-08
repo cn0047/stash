@@ -1,6 +1,9 @@
 Pub/Sub
 -
 
+[docs](https://cloud.google.com/pubsub/docs/overview)
+[SLA](https://cloud.google.com/pubsub/sla)
+
 ````sh
 # emulator
 gcloud components install pubsub-emulator
@@ -40,6 +43,8 @@ gcloud pubsub subscriptions pull --auto-ack --limit=1 $subscription
 Pub/sub topic - doesn't have region configuration (it's global beneath).
 Pub/sub subscription - doesn't have region configuration as well.
 
-Subscription delivery types: pull, push.
-Subscription has filter (`attributes.key="foo"`).
-Subscription has retry after exponential backoff delay.
+Subscription delivery types: pull, push, write to BigQuery, write to Cloud Storage.
+Subscription filter: `attributes.key="foo"`.
+Subscription has: exactly once delivery.
+Subscription has: dead lettering.
+Subscription has: retry after exponential backoff delay.
