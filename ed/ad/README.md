@@ -55,8 +55,3 @@ by assigning them a position on an abstract circle (HashRing).
   2. If server there - ok, otherwise travel clockwise on the ring until find the first server.
 
 When a hash table is resized, only `keys/n` need to be remapped.
-
-
-https://www.coursera.org/learn/algorithms-graphs-data-structures
-https://www.coursera.org/learn/algorithms-divide-conquer
-https://www.coursera.org/specializations/algorithms
