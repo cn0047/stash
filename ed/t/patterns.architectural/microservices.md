@@ -10,6 +10,8 @@ architectural style that structures an application as a collection of loosely co
 It is *modern* interpretation of SOA used to build distributed software systems.
 Microservices easier to scale than SOA (because you have scale only 1 service not bunch).
 
+Microservices are independently deployable services modeled around a business domain.
+
 Philosophy: Do one thing and do it well.
 Microservice must be stateless.
 Microservice must be resilient. And respond to changes quickly.

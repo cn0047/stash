@@ -1,6 +1,6 @@
 Sparse Table
 -
 
-Sparse Table - data structure, that allows answering range queries.
+Sparse table - data structure that efficiently answers range queries on static array.
 
-Calculate for numbers in powe of 2: 1, 2, 4, 8, ... log(n)+1.
+Length of arrays in sparse table: 1, 2, 4, 8, ... log(n)+1 (x^2).

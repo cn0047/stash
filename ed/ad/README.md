@@ -1,6 +1,9 @@
 Algorithms & Data structures
 -
 
+[awesome](https://github.com/tayllan/awesome-algorithms)
+[awesome](https://github.com/gaerae/awesome-algorithms-education)
+
 Algorithm solving plan:
 * Clarifications about input:
   (array of integers or strings or mix, negative, duplicates, count of items in array, etc.).
@@ -37,3 +40,23 @@ used to test whether an element is a member of a set.
 Query returns either "possibly in set" or "definitely not in set".
 Elements can be added to the set, but not removed.
 The more elements that are added to the set, the larger the probability of false positives.
+
+#### Consistent Hashing
+
+Consistent Hashing is a distributed hashing scheme
+that operates independently of the number of servers or objects in a distributed hash table
+by assigning them a position on an abstract circle (HashRing).
+
+1. Create HashRing of all possible values.
+   (You can think of the circle as all integers 0..2^32-1.)
+2. Place servers on the HashRing.
+3. Read/Write data:
+  1. Calculate the hash `serverIndex = hashValue % n` and map it to some position on the HashRing.
+  2. If server there - ok, otherwise travel clockwise on the ring until find the first server.
+
+When a hash table is resized, only `keys/n` need to be remapped.
+
+
+https://www.coursera.org/learn/algorithms-graphs-data-structures
+https://www.coursera.org/learn/algorithms-divide-conquer
+https://www.coursera.org/specializations/algorithms

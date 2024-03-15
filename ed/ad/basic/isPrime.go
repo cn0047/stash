@@ -5,6 +5,7 @@ import (
 	"strconv"
 )
 
+// isPrime returns prime number.
 // Prime number - a number that is divisible only by itself and 1.
 func isPrime(s string) string {
 	x, _ := strconv.ParseInt(s, 10, 64)
