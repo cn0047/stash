@@ -11,7 +11,6 @@ Graph
 <br>Directed graph - all edges are directed (have direction) from one vertex to another.
 <br>Weighted graph - each edge have numerical weight.
 <br>Complete graph - every vertex is connected to every other vertex.
-<br>Topological sort(ordering) - linear ordering of its vertices (`a->b && a<b`).
 
 To save graph in memory use: objects + pointers, matrix, or adjacency list.
 
@@ -34,9 +33,9 @@ Also all vertex have even degree but 2 have odd degree.
 ## DAG
 
 Directed Acyclic Graph -  finite directed graph with no directed cycles.
-DAG alway topologically ordered.
+DAG always topologically ordered.
 
-## Held Karp Algorithm
+## Held Karp algorithm
 
 ...
 
@@ -70,10 +69,12 @@ add node to stack
     -> if no childs to add - pop element from stack
 ````
 
-## Topological Sorting
+## Topological sorting
 
 Topological Sorting don't have to be unique.
-Won't work for Directed Acyclic Graph (DAG).
+Won't work for non Directed Acyclic Graph (DAG).
+
+Topological sort - graph traversal in which each node visited after all its dependencies are visited. 
 
 * Kahn's Algorithm.
 * Tarjan's Algorithm.

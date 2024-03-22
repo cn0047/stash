@@ -1,6 +1,14 @@
 Monotilth
 -
 
+Monolith - unit of deployment.
+Monolith is not synonymous with legacy, it has advantages & disadvantages.
+
+Single process monolith.
+
+Modular monolith - subset of single process monolith,
+which consists of separate modules.
+
 Distributed Monolith - when microservices tightly bounded,
 and have high complexity of connections within the system.
 

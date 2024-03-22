@@ -1,4 +1,4 @@
-// @see: https://www.hackerrank.com/challenges/ctci-ice-cream-parlor/problem
+// @see: https://www.hackerrank.com/challenges/ctci-ice-cream-parlor
 package main
 
 import (

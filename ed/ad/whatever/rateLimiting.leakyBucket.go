@@ -1,6 +1,5 @@
 // Leaky bucket holds requests in queue (memory eager).
 // Worst case for request = O(1).
-
 package main
 
 import (

@@ -1,7 +1,4 @@
-// https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/description/
-
-// gofmt -w x.go && go run x.go
-
+// @see: https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree
 package main
 
 import (
@@ -39,27 +36,6 @@ var (
 	tree2 = []int{3, 5, 1, 6, 2, 0, 8, 7, 4, null, null, null, null, null, null, 10, null, null, 9}
 )
 
-func main() {
-	r := lowestCommonAncestor(
-		// toTree(tree1), &TreeNode{Val: 5}, &TreeNode{Val: 1}, // 3
-		// toTree(tree1), &TreeNode{Val: 5}, &TreeNode{Val: 4}, // 5
-		// toTree(tree1), &TreeNode{Val: 6}, &TreeNode{Val: 4}, // 5
-		// toTree(tree1), &TreeNode{Val: 6}, &TreeNode{Val: 8}, // 3
-		// toTree(tree1), &TreeNode{Val: 7}, &TreeNode{Val: 8}, // 3
-		// toTree(tree1), &TreeNode{Val: 8}, &TreeNode{Val: 7}, // 3
-		// toTree(tree1), &TreeNode{Val: 7}, &TreeNode{Val: 4}, // 2
-		// toTree(tree1), &TreeNode{Val: 6}, &TreeNode{Val: 88}, // 6
-		// toTree(tree2), &TreeNode{Val: 7}, &TreeNode{Val: 0}, // 3
-		// toTree(tree2), &TreeNode{Val: 10}, &TreeNode{Val: 9}, // 6
-		toTree(tree2), &TreeNode{Val: 8}, &TreeNode{Val: 9}, // 3
-	)
-	fmt.Printf("===\n%v\n", r.Val)
-
-	// t, m, h := toTreeWithInfo([]int{3, 5, 1, 6, 2, 0, 8, null, null, 7, 4})
-	// printTree(t, m, h)
-	// fmt.Printf("===\n%v %v\n", m, h)
-}
-
 func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
 	if root == nil {
 		return nil
@@ -81,6 +57,27 @@ func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
 	}
 
 	return right
+}
+
+func main() {
+	r := lowestCommonAncestor(
+		// toTree(tree1), &TreeNode{Val: 5}, &TreeNode{Val: 1}, // 3
+		// toTree(tree1), &TreeNode{Val: 5}, &TreeNode{Val: 4}, // 5
+		// toTree(tree1), &TreeNode{Val: 6}, &TreeNode{Val: 4}, // 5
+		// toTree(tree1), &TreeNode{Val: 6}, &TreeNode{Val: 8}, // 3
+		// toTree(tree1), &TreeNode{Val: 7}, &TreeNode{Val: 8}, // 3
+		// toTree(tree1), &TreeNode{Val: 8}, &TreeNode{Val: 7}, // 3
+		// toTree(tree1), &TreeNode{Val: 7}, &TreeNode{Val: 4}, // 2
+		// toTree(tree1), &TreeNode{Val: 6}, &TreeNode{Val: 88}, // 6
+		// toTree(tree2), &TreeNode{Val: 7}, &TreeNode{Val: 0}, // 3
+		// toTree(tree2), &TreeNode{Val: 10}, &TreeNode{Val: 9}, // 6
+		toTree(tree2), &TreeNode{Val: 8}, &TreeNode{Val: 9}, // 3
+	)
+	fmt.Printf("Result:\n%v\n", r.Val)
+
+	// t, m, h := toTreeWithInfo([]int{3, 5, 1, 6, 2, 0, 8, null, null, 7, 4})
+	// printTree(t, m, h)
+	// fmt.Printf("Result:\n%v %v\n", m, h)
 }
 
 type TreeNode struct {
@@ -132,7 +129,7 @@ func toTreeWithInfo(input []int) (rootNode *TreeNode, maxVal int, height int) {
 }
 
 func printTree(root *TreeNode, max int, height int) {
-	fmt.Printf("===\n%v\n", root)
+	fmt.Printf("Result:\n%v\n", root)
 }
 
 func toTree(input []int) *TreeNode {

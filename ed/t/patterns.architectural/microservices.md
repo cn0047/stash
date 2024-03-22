@@ -121,6 +121,22 @@ Business logic organization patterns:
 * Domain event.
   An aggregate publishes domain event when it’s created or undergoes some other significant change.
 
+Key questions:
+* What are you hoping to achieve?
+* Have you considered alternatives to using microservices?
+* How will you know if the transition is working?
+
+When might microservices be a bad idea:
+* Unclear domain.
+* Startup.
+* Customer-installed and managed software.
+* Not having a good reason.
+
+Pay attention to:
+* shifting structures.
+* reorganizing teams.
+* how will you know if the transition is working?
+
 #### Info
 
 * Avoid shared database because changes in schema in 1 microservice

@@ -1,4 +1,4 @@
-// see: https://www.hackerrank.com/challenges/flipping-bits/problem?h_l=interview&playlist_slugs%5B%5D%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D%5B%5D=miscellaneous
+// @see: https://www.hackerrank.com/challenges/flipping-bits
 package main
 
 import (

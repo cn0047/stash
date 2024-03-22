@@ -4,29 +4,6 @@ import (
 	"fmt"
 )
 
-func main() {
-	var r int32
-
-	r = bfs([][]int32{{1, 2}, {1, 3}, {3, 4}, {4, 5}}, 4, 1)
-	fmt.Printf("case 1: %+v \n", r == 2)
-
-	r = bfs([][]int32{{1, 2}, {1, 3}, {3, 4}, {4, 5}}, 1, 5)
-	fmt.Printf("case 2: %+v \n", r == 3)
-
-	r = bfs([][]int32{{1, 2}, {1, 3}, {3, 4}, {1, 5}, {5, 6}, {6, 7}}, 7, 2)
-	fmt.Printf("case 3: %+v \n", r == 4)
-
-	r = bfs([][]int32{{1, 2}, {1, 3}, {2, 4}, {2, 5}, {3, 6}, {3, 7}, {6, 8}, {8, 9}, {9, 10}}, 5, 10)
-	fmt.Printf("case 4: %+v \n", r == 7)
-}
-
-func bfs(edges [][]int32, from int32, to int32) int32 {
-	g := NewGraph()
-	g.Init(edges)
-
-	return BFS(g, from, to)
-}
-
 // BFS represents Breadth First Search.
 func BFS(g Graph, fromValue int32, toValue int32) int32 {
 	if fromValue == toValue {
@@ -74,7 +51,28 @@ func BFS(g Graph, fromValue int32, toValue int32) int32 {
 	return -1
 }
 
-// ============================================================================
+func main() {
+	var r int32
+
+	r = bfs([][]int32{{1, 2}, {1, 3}, {3, 4}, {4, 5}}, 4, 1)
+	fmt.Printf("case 1: %+v \n", r == 2)
+
+	r = bfs([][]int32{{1, 2}, {1, 3}, {3, 4}, {4, 5}}, 1, 5)
+	fmt.Printf("case 2: %+v \n", r == 3)
+
+	r = bfs([][]int32{{1, 2}, {1, 3}, {3, 4}, {1, 5}, {5, 6}, {6, 7}}, 7, 2)
+	fmt.Printf("case 3: %+v \n", r == 4)
+
+	r = bfs([][]int32{{1, 2}, {1, 3}, {2, 4}, {2, 5}, {3, 6}, {3, 7}, {6, 8}, {8, 9}, {9, 10}}, 5, 10)
+	fmt.Printf("case 4: %+v \n", r == 7)
+}
+
+func bfs(edges [][]int32, from int32, to int32) int32 {
+	g := NewGraph()
+	g.Init(edges)
+
+	return BFS(g, from, to)
+}
 
 type Node struct {
 	Value int32
@@ -142,8 +140,6 @@ func (g Graph) Init(edges [][]int32) {
 		g.AddEdge(fromValue, toValue)
 	}
 }
-
-// ============================================================================
 
 type itemFromQueue struct {
 	Value int32

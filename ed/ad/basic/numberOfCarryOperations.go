@@ -7,7 +7,6 @@
 //
 // carry = 1
 //
-
 package main
 
 import (
@@ -63,7 +62,7 @@ func numberOfCarryOperationsV2(a int, b int) int {
 	return res
 }
 
-// @DEPRECATED
+// @deprecated
 func numberOfCarryOperationsV1(a int, b int) int {
 	sa := strconv.Itoa(a)
 	sb := strconv.Itoa(b)

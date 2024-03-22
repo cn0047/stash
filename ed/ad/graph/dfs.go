@@ -4,27 +4,7 @@ import (
 	"fmt"
 )
 
-func main() {
-	var r int32
-
-	r = dfs([][]int32{{1, 2}, {1, 3}, {3, 4}, {4, 5}}, 4, 1)
-	fmt.Printf("case 1: %+v \n", r == 2)
-
-	r = dfs([][]int32{{1, 2}, {1, 3}, {3, 4}, {4, 5}}, 1, 5)
-	fmt.Printf("case 1: %+v \n", r == 3)
-
-	r = dfs([][]int32{{1, 2}, {1, 3}, {3, 4}, {1, 5}, {5, 6}, {6, 7}}, 7, 2)
-	fmt.Printf("case 3: %+v \n", r == 4)
-}
-
-func dfs(edges [][]int32, from int32, to int32) int32 {
-	g := NewGraph()
-	g.Init(edges)
-
-	return DFS(g, from, to)
-}
-
-// DFS - Depth First Search.
+// DFS represents Depth First Search.
 //
 // step 1: Put root node into stack.
 // step 2: Get element from stack, process value and put into stack node's children.
@@ -75,7 +55,25 @@ func DFS(g Graph, fromValue int32, toValue int32) int32 {
 	return -1
 }
 
-// ============================================================================
+func main() {
+	var r int32
+
+	r = dfs([][]int32{{1, 2}, {1, 3}, {3, 4}, {4, 5}}, 4, 1)
+	fmt.Printf("case 1: %+v \n", r == 2)
+
+	r = dfs([][]int32{{1, 2}, {1, 3}, {3, 4}, {4, 5}}, 1, 5)
+	fmt.Printf("case 1: %+v \n", r == 3)
+
+	r = dfs([][]int32{{1, 2}, {1, 3}, {3, 4}, {1, 5}, {5, 6}, {6, 7}}, 7, 2)
+	fmt.Printf("case 3: %+v \n", r == 4)
+}
+
+func dfs(edges [][]int32, from int32, to int32) int32 {
+	g := NewGraph()
+	g.Init(edges)
+
+	return DFS(g, from, to)
+}
 
 type Node struct {
 	Value int32
@@ -143,8 +141,6 @@ func (g Graph) Init(edges [][]int32) {
 		g.AddEdge(fromValue, toValue)
 	}
 }
-
-// ============================================================================
 
 type itemFromStack struct {
 	Value int32

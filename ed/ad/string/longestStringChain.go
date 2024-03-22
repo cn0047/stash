@@ -11,7 +11,6 @@
 // We can make the chains:
 //   I -> IN -> SIN -> SIGN -> SIGNS (length 5)
 //   I -> IN -> SIN -> SING -> STING -> STRING -> STRINGS (length 7)
-
 package main
 
 import (

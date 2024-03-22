@@ -1,4 +1,4 @@
-// @see: https://leetcode.com/problems/3sum/?envType=list&envId=xrjuu1wm
+// @see: https://leetcode.com/problems/3sum
 package main
 
 import (
@@ -15,7 +15,7 @@ func main() {
 	// nums = []int{-1, 0, 2, 1, 2, -1, -4, 0} // probably: [[-4 2 2],[-1 -1 2],[-1 0 1]]
 	// nums = []int{-3, 3, 4, 2, 0, -3, 1, 2, -4} //
 	r := threeSum(nums)
-	fmt.Printf("===\n%v \n", r)
+	fmt.Printf("Result:\n%v \n", r)
 }
 
 // threeSum returns array of elements sum of which equals to 0.

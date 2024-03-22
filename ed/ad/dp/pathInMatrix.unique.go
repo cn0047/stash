@@ -16,7 +16,7 @@ func main() {
 }
 
 // uniquePaths returns unique paths count to get to bottom-right corner.
-// @see: https://leetcode.com/problems/unique-paths/
+// @see: https://leetcode.com/problems/unique-paths
 func uniquePaths(m int, n int) int {
 	cache := make([][]int, m)
 	for i := 0; i < m; i++ {
@@ -48,7 +48,7 @@ func dump(arr [][]int) {
 }
 
 // uniquePathsWithObstacles returns count of unique paths without obstacles to get to bottom-right corner.
-// @see: https://leetcode.com/problems/unique-paths-ii/
+// @see: https://leetcode.com/problems/unique-paths-ii
 func uniquePathsWithObstacles(obstacles [][]int) int {
 	m := len(obstacles)
 	n := len(obstacles[0])

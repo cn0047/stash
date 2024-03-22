@@ -1,3 +1,4 @@
+// @see: https://leetcode.com/problems/subsets
 package main
 
 import (
@@ -11,7 +12,6 @@ func main() {
 
 // subsets generates all possible subsets for given slice nums.
 // Example: iput: [1,2,3], output: [[] [1] [2] [2 1] [3] [3 1] [3 2] [3 2 1]]
-// @see: https://leetcode.com/problems/subsets/
 func subsets(nums []int) [][]int {
 	res := [][]int{{}}
 

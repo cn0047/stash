@@ -4,6 +4,78 @@ import (
 	"fmt"
 )
 
+// SwapChildrenAtDeep performs swapping of node's children at certain level,
+// level is deep or height of tree,
+// where node's deep value must be: n.Deep % deepValue == 0.
+func (n *Node) SwapChildrenAtDeep(deepValue int32) {
+	if n.Deep%deepValue == 0 {
+		tmp := n.Left
+		n.Left = n.Right
+		n.Right = tmp
+	}
+
+	l := n.GetLeft()
+	if l != nil {
+		l.SwapChildrenAtDeep(deepValue)
+	}
+
+	r := n.GetRight()
+	if r != nil {
+		r.SwapChildrenAtDeep(deepValue)
+	}
+}
+
+func swapNodes(indexes [][]int32, queries []int32) (result [][]int32) {
+	tree := BinaryTree{}
+	for i, ind := range indexes {
+		tree.AddNode(int32(i+1), ind[0], ind[1])
+	}
+
+	for _, k := range queries {
+		tree.GetRoot().SwapChildrenAtDeep(k)
+		result = append(result, tree.Tree[1].GetValuesInOrderTraversal())
+	}
+
+	return result
+}
+
+func main() {
+	i := [][]int32{
+		//{2, 3},
+		//{-1, -1},
+		//{-1, -1},
+		//
+		//{2, 3},
+		//{-1, 4},
+		//{-1, 5},
+		//{-1, -1},
+		//{-1, -1},
+		//
+		{2, 3},
+		{4, -1},
+		{5, -1},
+		{6, -1},
+		{7, 8},
+		{-1, 9},
+		{-1, -1},
+		{10, 11},
+		{-1, -1},
+		{-1, -1},
+		{-1, -1},
+	}
+	q := []int32{
+		//1,
+		//1,
+		//
+		//2,
+		//
+		2,
+		4,
+	}
+	r := swapNodes(i, q)
+	fmt.Println(r)
+}
+
 type BinaryTree struct {
 	Tree map[int32]*Node
 	Root int32
@@ -92,27 +164,6 @@ func (n *Node) GetValuesInOrderTraversal() []int32 {
 	return result
 }
 
-// SwapChildrenAtDeep performs swapping of node's children at certain level,
-// level is deep or height of tree,
-// where node's deep value must be: n.Deep % deepValue == 0.
-func (n *Node) SwapChildrenAtDeep(deepValue int32) {
-	if n.Deep%deepValue == 0 {
-		tmp := n.Left
-		n.Left = n.Right
-		n.Right = tmp
-	}
-
-	l := n.GetLeft()
-	if l != nil {
-		l.SwapChildrenAtDeep(deepValue)
-	}
-
-	r := n.GetRight()
-	if r != nil {
-		r.SwapChildrenAtDeep(deepValue)
-	}
-}
-
 func (n *Node) SwapChildren() {
 	l := n.GetLeft()
 	if l != nil {
@@ -127,55 +178,4 @@ func (n *Node) SwapChildren() {
 	tmp := n.Left
 	n.Left = n.Right
 	n.Right = tmp
-}
-
-func main() {
-	i := [][]int32{
-		//{2, 3},
-		//{-1, -1},
-		//{-1, -1},
-		//
-		//{2, 3},
-		//{-1, 4},
-		//{-1, 5},
-		//{-1, -1},
-		//{-1, -1},
-		//
-		{2, 3},
-		{4, -1},
-		{5, -1},
-		{6, -1},
-		{7, 8},
-		{-1, 9},
-		{-1, -1},
-		{10, 11},
-		{-1, -1},
-		{-1, -1},
-		{-1, -1},
-	}
-	q := []int32{
-		//1,
-		//1,
-		//
-		//2,
-		//
-		2,
-		4,
-	}
-	r := swapNodes(i, q)
-	fmt.Println(r)
-}
-
-func swapNodes(indexes [][]int32, queries []int32) (result [][]int32) {
-	tree := BinaryTree{}
-	for i, ind := range indexes {
-		tree.AddNode(int32(i+1), ind[0], ind[1])
-	}
-
-	for _, k := range queries {
-		tree.GetRoot().SwapChildrenAtDeep(k)
-		result = append(result, tree.Tree[1].GetValuesInOrderTraversal())
-	}
-
-	return result
 }

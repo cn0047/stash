@@ -1,6 +1,5 @@
 // Sliding logs holds requests with time in queue (memory eager).
 // Worst case for request = O(n).
-
 package main
 
 import (

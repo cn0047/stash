@@ -16,3 +16,9 @@ Metric summaries:
   Group data together - a process which is called "binning" — and present the groups in a such a way
   that their relative sizes are visualized.
   The most common visualization of a frequency distribution is a histogram.
+
+Sales & Marketing metrics:
+* Customer Acquisition Cost (impression, click, lead, registration, deposit).
+* User Retention Rate.
+* Conversion.
+* Return On Investment.

@@ -19,7 +19,7 @@ func main() {
 }
 
 // climbStairsMinCost returns min cost to climb to the top.
-// @see: https://leetcode.com/problems/min-cost-climbing-stairs/
+// @see: https://leetcode.com/problems/min-cost-climbing-stairs
 // @see: https://monosnap.com/file/naSjIx1Rg3blc9onRoPINWiCIsFvEG
 func climbStairsMinCost(cost []int) int {
 	for i := len(cost) - 3; i >= 0; i-- {

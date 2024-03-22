@@ -14,7 +14,7 @@ func main() {
 }
 
 // climbStairs returns count of distinct ways to climb to the top.
-// @see: https://leetcode.com/problems/climbing-stairs/
+// @see: https://leetcode.com/problems/climbing-stairs
 func climbStairsDistinctCount(n int) int {
 	return climbStairsDistinctCount0(n)
 	// return climbStairsDistinctCount1(n)

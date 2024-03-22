@@ -1,5 +1,5 @@
 // Longest String Chain.
-// @see: https://leetcode.com/problems/longest-string-chain/
+// @see: https://leetcode.com/problems/longest-string-chain
 package main
 
 import (
