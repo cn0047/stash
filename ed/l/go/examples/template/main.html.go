@@ -17,12 +17,12 @@ func main() {
 	// loop()
 	// ifWithNotDefinedVar()
 	// eqSimple()
-	qtSimple()
+	// qtSimple()
 	// orWithEq()
 	// andSimple()
 	// notSimple()
 	// notWithAnd()
-	// objAsParams()
+	objAsParams()
 	// getValueFromMapInMap()
 	// invalidTemplate()
 	// invalidTemplate()
@@ -100,14 +100,15 @@ func two() {
 }
 
 type params struct {
-	Msg string
-	Ok  bool
+	Msg        string
+	Ok         bool
+	Attributes map[string]string
 }
 
 func objAsParams() {
-	t := `<br>[objAsParams]: {{ if .Ok }} {{ .Msg }} {{ end }} <hr>`
+	t := `<br>[objAsParams]: {{ if .Ok }} {{ .Msg }} | {{ printf "%#v" .Attributes }} {{ end }} <hr>`
 	tmpl := template.Must(template.New("tmpl").Parse(t))
-	data := params{Msg: "test", Ok: true}
+	data := params{Msg: "test", Ok: true, Attributes: map[string]string{"foo": "bar"}}
 	if err := tmpl.Execute(os.Stdout, data); err != nil {
 		panic(err)
 	}

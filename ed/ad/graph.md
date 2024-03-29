@@ -74,7 +74,10 @@ add node to stack
 Topological Sorting don't have to be unique.
 Won't work for non Directed Acyclic Graph (DAG).
 
-Topological sort - graph traversal in which each node visited after all its dependencies are visited. 
+Topological sort - graph traversal in which each node visited after all its dependencies are visited.
 
-* Kahn's Algorithm.
+**Kahn's algorithm** - find vertices without incoming edges,
+remove them from graph, repeat until: all nodes checked or there only nodes with incoming edges (cycle).
+Use it to check whether graph is DAG.
+
 * Tarjan's Algorithm.
