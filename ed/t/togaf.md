@@ -44,7 +44,11 @@ Architect Focus:
 
 RAID - Risks, Assumptions, Issues, Dependencies.
 
-RACI - Responsible (who do work), Accountable (sign off), Consulted (consultant or counsel), Informed.
+RACI:
+* Responsible - who do work.
+* Accountable - sign off.
+* Consulted - consultant or counsel.
+* Informed.
 
 #### ADM (Architecture development method):
 

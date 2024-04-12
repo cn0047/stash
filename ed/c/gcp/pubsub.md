@@ -25,8 +25,9 @@ gcloud config set auth/disable_credentials true
 gcloud config set api_endpoint_overrides/pubsub "http://localhost:8085/"
 gcloud config set api_endpoint_overrides/pubsub "http://localhost:8681/"
 
+````
 
-
+````sh
 topic=test
 gcloud pubsub topics create $topic
 gcloud pubsub topics list
