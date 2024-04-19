@@ -2,6 +2,8 @@
 
 # run redis
 docker run -it --rm --net=xnet -p 6379:6379 --name xredis --hostname xredis redis:latest
+docker run -it --rm --net=xnet -p 6379:6379 --name xredis --hostname xredis \
+    -v $PWD/.data/.docker/redis:/data redis:latest
 
 # check redis
 docker exec -ti xredis redis-cli

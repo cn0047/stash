@@ -106,7 +106,7 @@ boolean
 
 * character values:
   * char: holds a single character.
-  * char (#): holds # number of characters..
+  * char (#): holds # number of characters.
   * varchar (#).
 
 * integer values:

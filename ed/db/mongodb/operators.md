@@ -93,7 +93,7 @@ db.cpuinfo.update({flags: "msr"}, {$pull: {flags: "msr"}}, {multi: true})
 db.profiles.update({_id: 1}, {$pull: {votes: {$gte: 6}}})
 // $pushAll
 db.collection.update({field: value}, {$pushAll: {field1: [value1, value2, value3]}});
-// $push
+// $push - appends value to array
 db.students.update({_id: 1}, {$push: {scores: 89}})
 db.students.update({name: "joe"}, {$push: {scores: {$each: [90, 92, 85]}}})
 // $each
