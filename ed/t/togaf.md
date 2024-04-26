@@ -2,53 +2,8 @@ TOGAF (The Open Group Architecture Framework)
 -
 
 [docs](https://www.opengroup.org/togaf)
-[stakeholder management](https://pubs.opengroup.org/architecture/togaf9-doc/arch/chap21.html)
 
 TOGAF - architectural framework.
-
-Enterprise Architecture:
-* Discipline.
-* Process (create -> evolve -> change -> manage architecture).
-* Work products (roadmap, org chart, matrices, etc.).
-
-Business driver - resource, process or condition that is vital for continued success and growth of business.
-Business goal - high-level statement of intent, direction, or desired end state.
-Business objective - actionable items needed to achieve business goals.
-Business value - generated value like concrete products or services.
-Business capability - people, processes, technology.
-
-Stakeholder - individual, group, or organization who may affect, be affected by,
-or perceive itself to be affected by a decision, activity, or outcome of a project (someone interested in project).
-
-Stakeholder management approach (power/interest matrix):
-Power (Influence)
-├──────────────────┬─────────────────┐ HIGH
-│ Keep Satisfied   │ Key Players     │
-├──────────────────┼─────────────────┤
-│ Minimal Effort   │ Keep Informed   │
-└──────────────────┴─────────────────┴ Level of interest (impact)
-LOW
-
-Requirements:
-* business requirements.
-* stakeholder requirements.
-* transition requirements (migration).
-
-Solution requirements:
-* Functional requirements.
-* Non-functional requirements.
-
-Architect Focus:
-* business drivers, goals, objectives;
-* stakeholders, business processes, requirements;
-
-RAID - Risks, Assumptions, Issues, Dependencies.
-
-RACI:
-* Responsible - who do work.
-* Accountable - sign off.
-* Consulted - consultant or counsel.
-* Informed.
 
 #### ADM (Architecture development method):
 

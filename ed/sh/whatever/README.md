@@ -660,6 +660,7 @@ sed -i     "s/admin_user/user/" /var/www/html/config.php
 sed -i.bak "s/admin_user/user/" /var/www/html/config.php
 
 sed -i -E $'s/\t/    /' file.json # replace \t to spaces
+sed -i -E $'s/    /\t/' file.json # replace spaces to \t
 
 echo 'car mAn' | sed -e 's/a/{&}/ig'
 
