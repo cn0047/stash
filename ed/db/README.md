@@ -122,7 +122,7 @@ because due to replication lag user may not see recent updates on slave.
 
 ## Saga Pattern
 
-Saga is a sequence of local transactions where each transaction
+Saga is a sequence of transactions where each transaction
 updates data within a single service,
 1st transaction is initiated by an external request
 and each subsequent step is triggered by the completion
@@ -144,6 +144,9 @@ Countermeasures:
 * Reread value - rereads record before updating it, verifies it’s unchanged, then updates record.
 * Version file - handle out-of-order requests (ensure AuthorizeCard before CancelAuthorization).
 * By value - selecting concurrency mechanisms based on business risk.
+
+Issues:
+* During rollback when some subsequent rollback fails.
 
 ## Database selection
 
