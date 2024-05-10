@@ -1,4 +1,4 @@
-// @see: https://leetcode.com/problems/course-schedule
+// @see: https://leetcode.com/problems/course-schedule-ii
 package main
 
 import (
@@ -6,24 +6,84 @@ import (
 )
 
 func main() {
-	edges := [][]int{}
-	edges = [][]int{{2, 3}, {3, 1}, {4, 0}, {4, 1}, {5, 0}, {5, 2}} // true
-	edges = [][]int{{0, 1}, {1, 2}, {3, 2}, {3, 4}}                 // true
-	edges = [][]int{{1, 2}, {2, 3}, {3, 4}, {4, 1}}                 // false
-	edges = [][]int{{1, 2}, {2, 3}, {3, 4}, {4, 1}, {4, 2}, {4, 3}} // false
-	edges = [][]int{{1, 4}, {2, 4}, {3, 1}, {3, 2}}                 // true
-	edges = [][]int{{1, 0}}                                         // true
-	edges = [][]int{{1, 0}, {0, 1}}                                 // false
-	r := courseSchedule(edges)
+	edges, n := [][]int{}, 0
+	edges, n = [][]int{{0, 1}, {1, 2}, {3, 1}, {3, 2}}, 4                 // [2 1 3 0]
+	edges, n = [][]int{{2, 3}, {3, 1}, {4, 0}, {4, 1}, {5, 0}, {5, 2}}, 6 // [1 3 2 0 5 4]
+	edges, n = [][]int{{1, 0}, {0, 1}}, 2                                 // []
+	edges, n = [][]int{{1, 0}}, 1                                         //
+	edges, n = [][]int{{0, 1}}, 1                                         //
+	edges, n = [][]int{}, 0                                               //
+	edges, n = [][]int{}, 2                                               //
+	edges, n = [][]int{}, 3                                               //
+	edges, n = [][]int{{1, 0}}, 3                                         //
+	r := courseSchedule(edges, n)
 	fmt.Printf("res: %v \n", r)
 }
 
-func courseSchedule(edges [][]int) bool {
+func courseSchedule(edges [][]int, n int) []int {
 	edges = swapElementsInSubSlices(edges)
+	n = adjustN(edges, n)
 
 	hasCycle := kahn(edges)
+	if hasCycle {
+		return nil
+	}
 
-	return !hasCycle
+	return topologicalSort(groupEdgesDirectionFromLeftToRight(edges), n)
+}
+
+func adjustN(edges [][]int, n int) int {
+	max := 0
+	for i := 0; i < len(edges); i++ {
+		e := edges[i]
+		if e[0] > max {
+			max = e[0]
+		}
+		if e[1] > max {
+			max = e[1]
+		}
+	}
+
+	if max > n {
+		return max
+	}
+
+	return n
+}
+
+// topologicalSort represents function to perform topological sort.
+func topologicalSort(edges map[int][]int, n int) []int {
+	stack := []int{}
+	visited := make(map[int]struct{}, n)
+	res := []int{}
+
+	for i := 0; i < n; i++ {
+		_, ok := visited[i]
+		if !ok {
+			topologicalSubSort(i, edges, visited, &stack)
+		}
+	}
+
+	for len(stack) > 0 {
+		v := stack[len(stack)-1]
+		stack = stack[:len(stack)-1]
+		res = append(res, v)
+	}
+
+	return res
+}
+
+func topologicalSubSort(v int, edges map[int][]int, visited map[int]struct{}, stack *[]int) {
+	visited[v] = struct{}{}
+
+	for _, i := range edges[v] {
+		_, ok := visited[i]
+		if !ok {
+			topologicalSubSort(i, edges, visited, stack)
+		}
+	}
+
+	*stack = append(*stack, v)
 }
 
 // kahn represents Kahn's algorithm,
