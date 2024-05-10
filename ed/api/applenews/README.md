@@ -41,9 +41,9 @@ canonicalURL="GET$url$date"
 # run curl
 
 # promote articles in section
-sectionId=""
+sectionID=""
 articleID=""
-url="https://news-api.apple.com/sections/$sectionId/promotedArticles"
+url="https://news-api.apple.com/sections/$sectionID/promotedArticles"
 body='{"data":{"promotedArticles":["https://news-api.apple.com/articles/'$articleID'"]}}'
 canonicalURL="POST$url$date$contentType$body"
 # run POST curl

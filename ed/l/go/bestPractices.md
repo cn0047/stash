@@ -62,3 +62,4 @@ otherwise have to have: `pkg.NewUser(); pkg.NewLocation()`.
 * Ternary operator `$cnd ? true : false;`.
 * `iota` (have to calculate value every time, or rely on IDE).
 * No `this, self`.
+* `*_test.go` for files, but nothing for directories (mocks, fixtures, testdata).

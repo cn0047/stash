@@ -136,6 +136,18 @@ Basically, classes are the tightest form of coupling in object-oriented programm
 
 Pick 2 out of 3: speed, quality, cost.
 
+#### Software product quality (ISO-25010)
+
+* Functional suitability (functional completeness, correctness and appropriateness).
+* Performance efficiency (time behaviour, resource utilization, capacity).
+* Compatibility (co-existence, interoperability).
+* Interaction capability (learnability, operability, error protection, self-descriptiveness).
+* Reliability (faultlessness, availability, recoverability).
+* Security (confidentiality, integrity, resistance).
+* Maintainability (modularity, reusability, modifiability, testability).
+* Flexibility (adaptability, scalability, replaceability).
+* Safety (risk identification, fail safe).
+
 #### Refactoring
 
 Refactoring - restructuring existing code without changing its external behavior.

@@ -2,6 +2,14 @@ Architectural Methodologies
 -
 [stakeholder management](https://pubs.opengroup.org/architecture/togaf9-doc/arch/chap21.html)
 
+Fitness functions - describe how close an architecture is to achieving an architectural aim:
+* Observability.
+* Performance.
+* Resiliency.
+* Security.
+* Compliance (regulatory, legal or corporate in a specific business or industry).
+* Operability.
+
 Enterprise Architecture:
 * Discipline.
 * Process (create -> evolve -> change -> manage architecture).
