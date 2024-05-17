@@ -156,7 +156,7 @@ Refactoring techniques:
 * Renaming vars/func/etc.
 * Extracting repeated code.
 * Simplifying complex code.
-* Fixing code smells.
+* Fixing code smells (duplicate code, long func/classe, complex conditionals, inappropriate naming, comments).
 * Applying design patterns.
 * Optimizing performance.
 

@@ -251,6 +251,8 @@ log.Println("message")
 Unit in Go - package.
 
 Go source code is always UTF-8.
+However when string obtained from somewhere else (not the source code, reading from the filesystem)
+then we can’t necessarily assume that it uses the UTF-8 encoding.
 
 A workspace is a directory hierarchy with three directories at its root:
 * bin (executable commands).

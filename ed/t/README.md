@@ -174,6 +174,10 @@ microsecond (µs) - 0,000 001
 nanosecond       - 0,000 000 001
 ````
 
+Unicode charset contains 2^21 characters.
+Encoding - translation of a character’s list into binary.
+UTF-8 - encoding standard capable of encoding all Unicode characters into variable number of bytes (from 1 to 4 bytes).
+Character in Unicode also known as `code point`.
 ````
 UTF-8  - from 1 to 4 bytes
 UTF-16 - from 2 to 4 bytes

@@ -10,12 +10,12 @@ func main() {
 	edges, n = [][]int{{0, 1}, {1, 2}, {3, 1}, {3, 2}}, 4                 // [2 1 3 0]
 	edges, n = [][]int{{2, 3}, {3, 1}, {4, 0}, {4, 1}, {5, 0}, {5, 2}}, 6 // [1 3 2 0 5 4]
 	edges, n = [][]int{{1, 0}, {0, 1}}, 2                                 // []
-	edges, n = [][]int{{1, 0}}, 1                                         //
-	edges, n = [][]int{{0, 1}}, 1                                         //
-	edges, n = [][]int{}, 0                                               //
-	edges, n = [][]int{}, 2                                               //
-	edges, n = [][]int{}, 3                                               //
-	edges, n = [][]int{{1, 0}}, 3                                         //
+	edges, n = [][]int{{1, 0}}, 1                                         // [0 1]
+	edges, n = [][]int{{0, 1}}, 1                                         // [0]
+	edges, n = [][]int{}, 0                                               // []
+	edges, n = [][]int{}, 2                                               // [1 0]
+	edges, n = [][]int{}, 3                                               // [2 1 0]
+	edges, n = [][]int{{1, 0}}, 3                                         // [2 0 1]
 	r := courseSchedule(edges, n)
 	fmt.Printf("res: %v \n", r)
 }
@@ -85,6 +85,8 @@ func topologicalSubSort(v int, edges map[int][]int, visited map[int]struct{}, st
 
 	*stack = append(*stack, v)
 }
+
+// ============================================================================
 
 // kahn represents Kahn's algorithm,
 // and returns true in case when graph represented by edges has cycle.
