@@ -32,6 +32,7 @@ go test -json
 go test -timeout 2s
 go test -list
 go test -parallel
+go test -shuffle=on
 
 goapp test -v transactional/users/service -run TestGetServiceAccountsForAdmin
 

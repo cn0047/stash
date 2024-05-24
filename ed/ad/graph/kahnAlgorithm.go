@@ -1,4 +1,5 @@
 // @see: https://leetcode.com/problems/course-schedule
+// @see: https://gist.github.com/cn007b/85f0c72b2b854a857a06f32af89b1e3e
 package main
 
 import (
@@ -6,112 +7,57 @@ import (
 )
 
 func main() {
-	edges := [][]int{}
-	edges = [][]int{{2, 3}, {3, 1}, {4, 0}, {4, 1}, {5, 0}, {5, 2}} // true
-	edges = [][]int{{0, 1}, {1, 2}, {3, 2}, {3, 4}}                 // true
-	edges = [][]int{{1, 2}, {2, 3}, {3, 4}, {4, 1}}                 // false
-	edges = [][]int{{1, 2}, {2, 3}, {3, 4}, {4, 1}, {4, 2}, {4, 3}} // false
-	edges = [][]int{{1, 4}, {2, 4}, {3, 1}, {3, 2}}                 // true
-	edges = [][]int{{1, 0}}                                         // true
-	edges = [][]int{{1, 0}, {0, 1}}                                 // false
-	r := courseSchedule(edges)
+	n, edges := 0, [][]int{}
+	n, edges = 6, [][]int{{2, 3}, {3, 1}, {4, 0}, {4, 1}, {5, 0}, {5, 2}} // true
+	n, edges = 5, [][]int{{0, 1}, {1, 2}, {3, 2}, {3, 4}}                 // true
+	n, edges = 5, [][]int{{1, 2}, {2, 3}, {3, 4}, {4, 1}}                 // false
+	n, edges = 5, [][]int{{1, 2}, {2, 3}, {3, 4}, {4, 1}, {4, 2}, {4, 3}} // false
+	n, edges = 5, [][]int{{1, 4}, {2, 4}, {3, 1}, {3, 2}}                 // true
+	n, edges = 2, [][]int{{1, 0}}                                         // true
+	n, edges = 2, [][]int{{1, 0}, {0, 1}}                                 // false
+	r := courseSchedule(n, edges)
 	fmt.Printf("res: %v \n", r)
 }
 
-func courseSchedule(edges [][]int) bool {
-	edges = swapElementsInSubSlices(edges)
-
-	hasCycle := kahn(edges)
+func courseSchedule(n int, edges [][]int) bool {
+	hasCycle := kahn(n, edges)
 
 	return !hasCycle
 }
 
-// kahn represents Kahn's algorithm,
-// and returns true in case when graph represented by edges has cycle.
-func kahn(edges [][]int) (hasCycle bool) {
-	edgesCount := len(edges)
-	vertices := getVertices(edges)
-	verticesCount := len(vertices)
+func kahn(n int, edges [][]int) (hasCycle bool) {
+	adjacentNodes := make([][]int, n)
+	inDegree := make([]int, n)
 
-	// inDegree holds map where key is vertice and value is verrice's incoming degree.
-	inDegree := make(map[int]int, verticesCount)
-	for i := 0; i < edgesCount; i++ {
-		vertice := edges[i][1] // edge direction from left to right.
-		_, ok := inDegree[vertice]
-		if !ok {
-			inDegree[vertice] = 0
-		}
-		inDegree[vertice]++
+	for _, edge := range edges {
+		a, b := edge[0], edge[1] // direction right to left
+		adjacentNodes[b] = append(adjacentNodes[b], a) // adjacentNodes holds targets for node b from edge.
+		inDegree[a]++
 	}
 
-	// Push into queue vertices without inDegree.
-	queue := make([]int, 0, verticesCount)
-	for v, _ := range vertices {
-		val, ok := inDegree[v]
-		if !ok || val == 0 {
-			queue = append(queue, v)
+	queue := make([]int, 0, n)
+	for i := 0; i < n; i++ {
+		if inDegree[i] == 0 {
+			queue = append(queue, i)
 		}
 	}
 
-	groupedEdges := groupEdgesDirectionFromLeftToRight(edges)
-	checkedVertices := make([]int, 0, verticesCount)
-
+	checkedVertices := 0
 	for len(queue) > 0 {
 		node := queue[0]
-		queue = queue[1:] // dequeue.
-		checkedVertices = append(checkedVertices, node)
-
-		adjacentNodes := groupedEdges[node]
-		for _, adjacent := range adjacentNodes {
-			_, ok := inDegree[adjacent]
-			if ok {
-				inDegree[adjacent]--
-				if inDegree[adjacent] == 0 {
-					queue = append(queue, adjacent)
-				}
+		queue = queue[1:]
+		checkedVertices++
+		for _, neighbor := range adjacentNodes[node] {
+			inDegree[neighbor]--
+			if inDegree[neighbor] == 0 {
+				queue = append(queue, neighbor)
 			}
 		}
 	}
 
-	if verticesCount != len(checkedVertices) {
-		hasCycle = true
+	if checkedVertices != n {
+		return true
 	}
 
-	return hasCycle
-}
-
-// groupEdgesDirectionFromLeftToRight converts [][]int{{0, 1}, {1, 2}, {3, 1}, {3, 2}} into map[0:[1] 1:[2] 3:[1 2]]
-// where key is vertice 1 (1st value from edge pair),
-// and value is all vertices 2 (2nd value from edge pair) of all edges for vertice 1.
-func groupEdgesDirectionFromLeftToRight(edges [][]int) map[int][]int {
-	res := make(map[int][]int, len(edges))
-	for _, edge := range edges {
-		_, ok := res[edge[0]]
-		if !ok {
-			res[edge[0]] = make([]int, 0, 0)
-		}
-		res[edge[0]] = append(res[edge[0]], edge[1])
-	}
-
-	return res
-}
-
-func getVertices(edges [][]int) map[int]struct{} {
-	res := make(map[int]struct{}, len(edges))
-	for _, edge := range edges {
-		res[edge[0]] = struct{}{}
-		res[edge[1]] = struct{}{}
-	}
-
-	return res
-}
-
-func swapElementsInSubSlices(edges [][]int) [][]int {
-	res := make([][]int, len(edges))
-	for i := 0; i < len(edges); i++ {
-		edge := edges[i]
-		res[i] = []int{edge[1], edge[0]}
-	}
-
-	return res
+	return false
 }

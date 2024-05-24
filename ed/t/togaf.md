@@ -12,8 +12,7 @@ What needs to be done? How will it be carried out?
 
 **Phase A**: Architecture Vision.
 Identify stakeholders.
-Confirm business goals, drivers & constraints.
-And more...
+Confirm business goals, drivers & constraints, etc.
 
 **Phase B**: Business Architecture.
 Focus on business.

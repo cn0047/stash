@@ -45,6 +45,7 @@ go list -m all # view final versions that will be used in a build
 go list -u -m all # view available minor and patch upgrades
 go list -m -versions rsc.io/sampler
 go list -deps -f '{{with .Module}}{{.Path}} {{.Version}}{{end}}' ./... | sort -u
+go list -f '{{range $imp := .Imports}}{{printf "%s\n" $imp}}{{end}}' | sort # imports for current directory package
 
 go get foo@v1.2.3 # get specific versions of pkg
 

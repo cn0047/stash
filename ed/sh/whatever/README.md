@@ -47,6 +47,8 @@ Ctrl-w # delete word
 # display traffic
 iftop -i eth0
 
+# get mod
+stat -f "%OLp" /tmp
 # when apt-get install won't work
 chown root:root /tmp
 chmod ugo+rwXt /tmp
@@ -411,6 +413,16 @@ Content-Type: application/json
 User-Agent: curl/7.64.1
 
 {"code":"200", "status": "OK"}
+````
+
+#### nmap
+
+[download](https://nmap.org/download.html)
+
+````sh
+h=github.com
+nmap -vvv $h
+nmap -vvv --min-parallelism 10 $h
 ````
 
 #### syslog
