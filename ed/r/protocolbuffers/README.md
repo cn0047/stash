@@ -38,7 +38,7 @@ Protocol Buffers are not designed to handle large messages.
 If you are dealing in messages larger than a megabyte each,
 it may be time to consider an alternate strategy.
 
-````sh
+````go
 import "google/protobuf/any.proto";
 import "google/protobuf/timestamp.proto";
 
@@ -48,7 +48,8 @@ message Job {
   reserved 20;
   string id = 1;
   repeated string tags = 2;
-  map<string, string> params = 3;
+  map<string, string> params = 3; // grpcwebtext will not generate seter for map
+  google.protobuf.Timestamp created_at  = 5;
 
   oneof kind {
     UnitKind unit = 1;

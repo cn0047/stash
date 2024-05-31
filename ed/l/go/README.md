@@ -38,6 +38,7 @@ Go is compiled, garbage-collected, concurrent, type-safe.
 [code gen from sql](https://github.com/kyleconroy/sqlc)
 [code gen](https://autostrada.dev/)
 [concurrency](https://github.com/sourcegraph/conc)
+[go-architect](https://go-architect.github.io/)
 
 ````bash
 export PATH=$PATH:/Users/kovpakvolodymyr/go/bin

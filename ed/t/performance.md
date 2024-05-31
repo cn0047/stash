@@ -37,7 +37,7 @@ Read 1GB sequentially from SSD         -  100-1000 millisecond
 Transfer 1GB over network within same region - ~10 second
 ````
 
-#### High Performance Web Sites:
+#### High Performance Web Sites
 
 1. Make Fewer HTTP Requests:
   * Image Maps.
