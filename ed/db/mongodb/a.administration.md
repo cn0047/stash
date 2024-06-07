@@ -31,6 +31,9 @@ db.version();
 
 DBQuery.shellBatchSize = 10;
 
+// to fix NotPrimaryNoSecondaryOk
+rs.secondaryOk()
+
 db.getLastError()
 db.getLastErrorObj()
 

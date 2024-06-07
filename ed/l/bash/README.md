@@ -148,6 +148,11 @@ if [[ -z "$string" ]];      then echo "$string is empty"
 
 local val=${1:?Must provide an argument}
 
+v="ok"
+echo $v # "ok"
+unset v
+echo $v # ""
+
 # default value
 declare y=${myDefVar:-"nil"}
 echo $y # nil

@@ -35,6 +35,8 @@ Manifest file - describe desired state.
 
 Operator - software extensions that make use of custom resources.
 
+Workload - application running on k8s (Deployment, ReplicaSet, StatefulSet, DaemonSet, Job, CronJob).
+
 ## Master (Control plane)
 
 `kube-controller-manager` - controls lots of different things

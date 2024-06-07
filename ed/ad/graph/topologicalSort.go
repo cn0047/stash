@@ -53,6 +53,7 @@ func adjustN(edges [][]int, n int) int {
 }
 
 // topologicalSort represents function to perform topological sort.
+// @uses: recursion topologicalSubSort.
 func topologicalSort(edges [][]int, n int) []int {
 	adjacentNodes := make([][]int, n)
 	for _, edge := range edges {

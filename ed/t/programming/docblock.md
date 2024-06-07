@@ -16,6 +16,7 @@ DocBlock
 @todo
 @ignore
 @deprecated
+@internal
 
 @category MySpecificDomainCategory
 

@@ -31,6 +31,10 @@ Publishing SLOs to users sets expectations about how service will perform.
 Service-level agreement (SLA) - commitment (contract) between a service provider and a client:
 quality, availability, responsibility, performance, costs, etc.
 
+````sh
+SLA=99.99 -> 100 fails for 1M requests
+````
+
 #### CAP
 
 CAP theorem states that in a distributed system,

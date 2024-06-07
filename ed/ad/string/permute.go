@@ -11,6 +11,7 @@ func main() {
 	permute(s, 0, len(s)-1)
 }
 
+// @uses: recursion.
 func permute(s string, l int, r int) {
 	if l == r {
 		fmt.Println(s)

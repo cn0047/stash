@@ -48,6 +48,7 @@ func hs(arr []int) []int {
 
 // heapify rearranges elements in slice arr from position i to position n (end),
 // it builds "Max heap".
+// @uses: recursion.
 func heapify(arr []int, i int, n int) {
 	root := i
 	l := 2*i + 1

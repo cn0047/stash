@@ -22,6 +22,7 @@ func main() {
 	fmt.Println(quickSort(a, 0, n))
 }
 
+// @uses: recursion.
 func quickSort(arr []int, begin int, end int) []int {
 	if begin < end {
 		p := partition(arr, begin, end)

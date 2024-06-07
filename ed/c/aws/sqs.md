@@ -2,6 +2,7 @@ SQS (Simple Queue Service)
 -
 
 [docs](https://docs.aws.amazon.com/sqs/index.html)
+[SLA](https://aws.amazon.com/messaging/sla/)
 
 DLQ - Dead-Letter Queue.
 

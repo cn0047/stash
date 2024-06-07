@@ -17,6 +17,7 @@ func main() {
 	fmt.Println(MergeSort([]int{9, 3, 11, -1, 3, 7}))
 }
 
+// @uses: recursion.
 func MergeSort(arr []int) []int {
 	if len(arr) < 2 {
 		return arr
