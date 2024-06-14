@@ -23,3 +23,9 @@ Sales & Marketing metrics:
 * User Retention Rate.
 * Conversion.
 * Return On Investment.
+
+Time Series Analysis:
+* Trend.
+* Seasonality.
+* Cycle.
+* Variation.

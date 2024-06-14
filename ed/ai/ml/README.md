@@ -26,7 +26,7 @@ Precision and recall - example: given 8 dogs and 4 cats,
 ML found 8 dogs (real: 5 dogs (true positives) & 3 cats (false positives)),
 so precision = 5/8 while its recall is 5/12.
 
-**SUPERVISED learning** - when we have info, like cat is on picture.
+**Supervised learning** - when we have info, like cat is on picture.
 (email spam/not spam, cancer tumor).
 Needs training data.
 ````
@@ -35,14 +35,14 @@ prepare data -> select algorithml -> train model -> test model
 data = 70% training, 30% testing
 ````
 
-**UNSUPERVISED learning** - no info.
+**Unsupervised learning** - no info.
 (database of custome data (market segments), news.google.com articles).
 Identify clusters of like data.
 ````
 UML Algorithml -> Classify -> Model
 ````
 
-**REINFORCEMENT learning**.
+**Reinforcement learning**.
 
 ## Neural network
 
