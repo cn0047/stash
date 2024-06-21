@@ -2,6 +2,8 @@ template
 -
 
 [pkg](https://golang.org/pkg/text/template/)
+[playground](https://repeatit.io/)
+[func for templates](https://masterminds.github.io/sprig/)
 
 ````go
 "html/template"

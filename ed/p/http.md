@@ -1,7 +1,7 @@
 HTTP (Hypertext Transfer Protocol)
 -
-2.0
-1.1
+<br>2.0
+<br>1.1
 
 HTTP 1.1 was standardized in 1997.
 
@@ -119,7 +119,7 @@ MyFile
 
 The currently registered top-level type names are:
 * application:
-````
+````sh
 application/octet-stream # binary file
 application/javascript
 application/json
@@ -127,6 +127,7 @@ application/pdf
 application/soap+xml
 application/x-www-form-urlencoded
 application/zip
+application/grpc-web-text # grpc proto
 ````
 * audio ("audio/mp4", "audio/mpeg").
 * example.
