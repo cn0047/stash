@@ -2,7 +2,8 @@ PostgreSQL
 -
 <br>10.0
 
-[online config](http://pgtune.leopard.in.ua/).
+[online config](http://pgtune.leopard.in.ua/)
+[limits](https://www.postgresql.org/docs/current/limits.html)
 
 (ORDBMS) Object-Relational Database Management System.
 `pgfouine` - profiler.

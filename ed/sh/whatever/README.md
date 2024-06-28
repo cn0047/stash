@@ -754,6 +754,9 @@ rename /from/f.txt /to/f.txt # move file
 binary
 put f.txt
 
+# upload files
+mput *
+
 bye # exit
 close
 ````
