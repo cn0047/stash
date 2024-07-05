@@ -48,6 +48,11 @@ Methods:
 * Least Bandwidth - use service that is currently serving the least amount of traffic (Mbps).
 * URL param or RDP-cookie.
 
+Communication types:
+* Unicast - one-to-one.
+* Broadcast - one-to-all.
+* Multicast - one-to-few.
+
 ## Back End
 
 URL routing should be decoupled from the controllers

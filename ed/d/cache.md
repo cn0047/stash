@@ -35,7 +35,7 @@ Example: e-commerce products.
 **Write-Through**.
 When: write operation, then: update DB & update cache simultaneously, so cache is always fresh.
 Pros: Data consistency between cache and DB.
-Cons: Latency in write operations. Overall performance .
+Cons: Latency in write operations. Overall performance.
 For: Applications where data consistency is vital, like account balances.
 
 **Write-Behind**.

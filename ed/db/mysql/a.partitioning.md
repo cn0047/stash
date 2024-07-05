@@ -1,6 +1,5 @@
 Partitioning
 -
-
 <br>MySQL 5.7
 <br>MySQL 5.5
 

@@ -127,6 +127,7 @@ application/pdf
 application/soap+xml
 application/x-www-form-urlencoded
 application/zip
+application/grpc
 application/grpc-web-text # grpc proto
 ````
 * audio ("audio/mp4", "audio/mpeg").
