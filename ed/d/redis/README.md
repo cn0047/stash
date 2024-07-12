@@ -5,7 +5,7 @@ Redis
 
 [php client](https://github.com/phpredis/phpredis)
 [docs](https://redis.io/documentation)
-[commands](https://redis.io/commands)
+[commands](https://redis.io/docs/latest/commands)
 [lua](https://redis.io/commands/eval)
 [pipelining](https://redis.io/topics/pipelining)
 
@@ -62,26 +62,41 @@ Redis is fast because of IO Multiplexing (EventLoop).
 
 #### Data types:
 
-* String - string value can be at max 512 Megabytes in length.
+**String** - string value can be at max 512 Megabytes in length.
 You can:
 * Use Strings as atomic counters.
 * Append to strings.
 * Use Strings as random access vectors.
 
-* List - simply list of strings.
+**List** - simply list of strings.
 The max length of a list is 2^32 (more than 4 billion of elements per list).
 
-* Set - an unordered non repeating collections of strings.
+**Set** - an unordered non repeating collections of strings.
 The max number of members in a set is 2^32.
 
-* Hash - map between string field and string value.
+**Hash** - map between string field and string value.
 Every hash can store up to 2^32 field-value pairs.
 
-* Sorted set - similarly to set,
+**Sorted set** - similarly to set,
 the difference is that every member of a sorted set is associated with score,
 that is used in order to take the sorted set ordered.
 
-* Bitmap and HyperLogLog.
+**Stream** - data structure that acts like an append-only log.
+
+**Geospatial indexes** - useful for finding locations within given geographic radius.
+
+**Bitmap** - to perform bitwise operations on strings.
+
+**Bitfields** - efficiently encode multiple counters in a string value.
+
+**HyperLogLog** - provide probabilistic estimates of the cardinality
+(i.e., number of elements) of large sets.
+
+#### Extensions:
+
+JSON - support for JSON notation.
+Time series - support for time series data structure.
+Probabilistic: HyperLogLog, Bloom filter, and [more](https://redis.io/docs/latest/develop/data-types/probabilistic)
 
 #### List (Linked List):
 
@@ -188,3 +203,17 @@ exec
 For best performance - use pipelining.
 Pipelining - to send multiple commands to the server without waiting for the replies at all,
 and finally read the replies in a single step.
+
+#### Pub/sub
+
+````sh
+PING
+PSUBSCRIBE
+PUNSUBSCRIBE
+QUIT
+RESET
+SSUBSCRIBE
+SUBSCRIBE
+SUNSUBSCRIBE
+UNSUBSCRIBE
+````

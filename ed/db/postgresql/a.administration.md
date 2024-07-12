@@ -47,7 +47,7 @@ pg_trgm # Trigram (Trigraph) module
 \l
 \d
 # use db
-\c unittests
+\c db
 
 # show tables
 \dt *.*

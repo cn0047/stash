@@ -12,6 +12,9 @@ DB can contains schema, and schema contains tables.
 Schema - like directory in file system.
 
 ````sql
+# use db
+\c db
+
 # vertical output
 \x
 
