@@ -4,6 +4,7 @@ Protocol Buffers (protobuf)
 [docs](https://developers.google.com/protocol-buffers/)
 [versions](https://github.com/protocolbuffers/protobuf/tags)
 [programming guides](https://protobuf.dev/programming-guides/style/)
+[size limit](https://protobuf.dev/programming-guides/encoding/#size-limit)
 
 ````sh
 protoc --proto_path=$pathToProtoFiles
@@ -38,6 +39,8 @@ Scalar Value Types:
 Protocol Buffers are not designed to handle large messages.
 If you are dealing in messages larger than a megabyte each,
 it may be time to consider an alternate strategy.
+
+Size Limitations: protos must be smaller than 2 GiB when serialized.
 
 ````go
 import "google/protobuf/any.proto";

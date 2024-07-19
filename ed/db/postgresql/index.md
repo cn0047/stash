@@ -3,6 +3,8 @@ Index
 
 ````sql
 CREATE INDEX "IDX_image_created" ON image USING btree (created);
+
+SELECT * FROM pg_indexes WHERE tablename = 'tbl';
 ````
 
 When a row is added, it does not go to the main index directly.
@@ -27,4 +29,6 @@ the subset is defined by a conditional expression (called the predicate of the p
 
 Allowed max 32 columns in multicolumn index.
 
-`ANALYZE VERBOSE tableName`.
+````sql
+ANALYZE VERBOSE tableName
+````

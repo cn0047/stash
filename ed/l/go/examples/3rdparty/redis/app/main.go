@@ -20,6 +20,7 @@ const (
 func main() {
 	//goRedisPing()
 	//goRedisLock()
+	goRedisIncr()
 	//goRedisSet()
 	//goRedisGet1()
 	//goRedisGet2()
@@ -27,7 +28,7 @@ func main() {
 	//radixSet()
 	//radixScript1()
 	//radixCircularBuffer()
-	radixCircularBuffer2()
+	//radixCircularBuffer2()
 }
 
 func getRadixPool() *radix.Pool {
@@ -221,6 +222,12 @@ func goRedisSet() {
 	c := getGoRedisClient()
 	r := c.Set("foo", "bar", 2*time.Second)
 	log.Printf("[go-redis set] %+v", r)
+}
+
+func goRedisIncr() {
+	c := getGoRedisClient()
+	r := c.Incr("counter") // r contains new actual value.
+	log.Printf("[go-redis incr] %+v", r)
 }
 
 func goRedisGet1() {

@@ -193,8 +193,9 @@ GOPATH=$PWD/ed/l/go/examples/youtube
 docker run -it --rm --net=xnet -p 8080:8080 -v $PWD:/gh -e GOPATH=/gh/ed/l/go/examples/redis/app xgo sh -c '
   cd $GOPATH && go run main.go'
 # or
-GOPATH=$PWD/ed/l/go/examples/redis
+GOPATH=$PWD/ed/l/go/examples/3rdparty/redis
 cd $GOPATH
+go mod vendor
 go run app/main.go
 
 # web.one
