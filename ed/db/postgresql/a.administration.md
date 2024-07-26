@@ -35,7 +35,7 @@ pg_trgm # Trigram (Trigraph) module
 ````sql
 \pset pager on
 \pset pager always
-\pset pager off
+\pset pager off # no scroll
 -- \setenv PAGER less
 
 # expanded display, \G in mysql

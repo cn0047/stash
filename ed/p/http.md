@@ -52,7 +52,7 @@ path,query,fragment - may be case-sensitive, depends on WEB-server.
 ?id=1&id=2&id=3 - array in query string
 
 %40 - @
-%2f - /
+%2F - /
 %5B - [
 %5D - ]
 %2B - +

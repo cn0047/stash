@@ -18,7 +18,7 @@ Index hint - PostgreSQL don't support index hint.
 ### Types:
 
 * B-tree (default).
-* Hash.
+* Hash (can't be unique key).
 * Generalized Inverted Index (GIN) - for array and full text.
 * Generalized Search Tree Index (GIST) - geo ~and full text~.
 * Space-Partitioned GIST (SP-GIST).

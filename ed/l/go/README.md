@@ -59,6 +59,11 @@ $GODEBUG      # https://godoc.org/runtime#hdr-Environment_Variables
               # gctrace=1 - single line to standard error at each collection
               # GODEBUG=allocfreetrace=1,gcpacertrace=1,gctrace=1,scavenge=1,scheddetail=1,scheddetail=1,schedtrace=1000
               # GODEBUG=gocacheverify=1,gocachehash=1,gocachetest=1
+              # GODEBUG=http1debug=1
+              # GODEBUG=http1debug=2
+              # GODEBUG=http2debug=1
+              # GODEBUG=http2debug=2
+              # GODEBUG=http2client=0
 $GOEXPERIMENT # GOEXPERIMENT=rangefunc
 
 export GOROOT=$HOME/go

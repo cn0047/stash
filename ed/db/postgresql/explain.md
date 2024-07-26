@@ -14,12 +14,13 @@ In output:
 * `rows` - estimated rows.
 * `width` - what we got as result divided to number of rows.
 
-<br>`Seq Scan` - not very good.
-<br>`Gather ... Parallel Seq Scan` - parallel query (must be not bad).
-<br>`Filter` - when field in where clause has NOT index.
-<br>`Index Cond` - when field in where clause has index.
-<br>`Index San using name_of_key` - good.
-<br>`Heap Fetches` - very good.
+`Seq Scan` - not very good.
+`Gather ... Parallel Seq Scan` - parallel query (must be not bad).
+`Filter` - when field in where clause has NOT index.
+`Index Cond` - when field in where clause has index.
+`Index San using name_of_key` - good.
+`Bitmap Heap Scan` - TODO.
+`Heap Fetches` - very good.
 
 Stats about index usage:
 ````sql
