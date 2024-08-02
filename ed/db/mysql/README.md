@@ -3,7 +3,12 @@ MySql
 <br>5.7.14-google-log
 <br>5.1.72-rel14.10
 
+[docs](https://dev.mysql.com/doc)
 [github](https://github.com/mysql/mysql-server)
+
+````
+Relational DB ⇒ Table ⇒ Row ⇒ Column
+````
 
 #### Snippets
 

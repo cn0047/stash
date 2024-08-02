@@ -2,8 +2,10 @@ PostgreSQL
 -
 <br>10.0
 
+[docs](https://www.postgresql.org/docs/current/index.html)
 [online config](http://pgtune.leopard.in.ua/)
 [limits](https://www.postgresql.org/docs/current/limits.html)
+[background worker](https://www.postgresql.org/docs/current/bgworker.html)
 
 (ORDBMS) Object-Relational Database Management System.
 `pgfouine` - profiler.
@@ -39,6 +41,10 @@ select now() \gset dt_
 select :'dt_now';
 ````
 
+````
+Relational DB ⇒ Table ⇒ Row ⇒ Column
+````
+
 postgress don't like > 100 connections.
 don't store json > 2KB in json field.
 use timeouts in postgress.
@@ -47,6 +53,8 @@ Advisory locks can be useful for locking strategies that are an awkward fit
 for the MVCC model. For example, a common use of advisory locks
 is to emulate pessimistic locking strategies typical of so-called "flat file"
 data management systems.
+
+**tuple** - individual state of row, each update of row creates new tuple for same logical row.
 
 #### System Columns:
 
@@ -59,6 +67,8 @@ data management systems.
 * `ctid` - The physical location of the row version within its table.
 
 #### Rules
+
+[docs](https://www.postgresql.org/docs/current/rules.html)
 
 * INSTEAD.
 * ALSO (additional command to original command).

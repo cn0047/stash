@@ -64,6 +64,7 @@ $GODEBUG      # https://godoc.org/runtime#hdr-Environment_Variables
               # GODEBUG=http2debug=1
               # GODEBUG=http2debug=2
               # GODEBUG=http2client=0
+              # GODEBUG=tlsrsakex=1
 $GOEXPERIMENT # GOEXPERIMENT=rangefunc
 
 export GOROOT=$HOME/go

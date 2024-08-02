@@ -43,7 +43,7 @@ ffmpeg \
 
 
 # compress video
-ffmpeg -i $in.mp4 $out.mp4
+ffmpeg -i $in.mp4 $out.c.mp4
 
 # change audio volume (256=normal)
 ffmpeg -i $fmov -vol 256 'res-'$fmov

@@ -10,6 +10,9 @@ Writes are *40* times more expensive than reads.
 
 Optimize wide. Make writes as parallel as you can.
 
+If table size >100Gb - it should be partitioned.
+If table size >1Tb - it should be sharded.
+
 Replication needed for high availability (in case node die - you'll have all data).
 
 When write to two tables (create relation records) wrap it by transaction.

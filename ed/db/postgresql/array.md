@@ -14,6 +14,8 @@ INSERT INTO arrayExample VALUES ('two', '{2, 20}', '{{"array", "test"}, {"nested
 -- Multidimensional arrays must have sub-arrays with matching dimensions.
 INSERT INTO arrayExample VALUES ('three', array[3, 30], array['pqsql']);
 INSERT INTO arrayExample VALUES ('four', array[4], array['1', '2', '3', '4']);
+
+UPDATE arrayExample SET tag = array_append(tag, 'sql') WHERE name = 'one';
 ````
 
 ````sql

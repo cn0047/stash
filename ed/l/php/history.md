@@ -3,6 +3,18 @@ History of PHP
 
 http://php.net/manual/en/appendices.php
 
+#### php 8.3.x
+
+#### php 8.2.x
+
+#### php 8.1.x
+
+#### php 8.0.x
+
+#### php 7.4.x
+
+#### php 7.3.x
+
 #### php 7.2.x
 
 * `object` type hint

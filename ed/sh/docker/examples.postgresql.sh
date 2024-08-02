@@ -1,6 +1,7 @@
 # PostgreSQL
 
 tag=9.6
+tag=12.19
 tag=latest
 docker run -it --rm -p 5432:5432 \
   -e POSTGRES_DB=test -e POSTGRES_USER=dbu -e POSTGRES_PASSWORD=dbp postgres:$tag

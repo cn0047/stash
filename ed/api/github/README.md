@@ -59,6 +59,10 @@ curl -i https://api.github.com/users
 curl https://api.github.com/users/cn007b
 curl https://api.github.com/users/cn007b/repos
 curl https://api.github.com/users/cn007b/orgs
+
+# repo
+curl https://api.github.com/repos/cn007b/stash
+
 # url to tar archive to last release
 curl https://api.github.com/repos/cn007b/monitoring/releases | jq '.[0].assets[].browser_download_url' | grep linux
 

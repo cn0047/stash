@@ -34,4 +34,6 @@ template.JSEscapeString(input)
 {{if or .a .b}}
   ok
 {{end}}
+
+{{ index $data "foo" }} // get from $data value by index "foo"
 ````

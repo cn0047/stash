@@ -44,6 +44,7 @@ The problem with this technique is that it doesn’t test what happens on commit
 The ORM flushes the state of the objects it is managing in memory to the database.
 The database, in turn, checks its integrity constraints.
 A test that never commits does not fully exercise how the code under test interacts with the database.
+And event with rollback some internal DB data will be used (for example tuple in PostgreSQL).
 
 What not to automate with tests:
 * Database schema changes - slow.

@@ -100,6 +100,11 @@ left child = parent d
 Number of Binary Search Trees possible with N nodes:
 For example, `for: [5, 6] result: [5, 6], [6, 5] (all permutations)`.
 
+Valid BST:
+1. Left subtree contains only nodes with keys less than the node's key.
+2. Right subtree contains only nodes with keys greater than the node's key.
+3. Both left and right subtrees also BST.
+
 **Self-balancing binary search tree** (height-balanced) - is any node-based binary search tree
 that automatically **keeps its height small** in the face of arbitrary item insertions and deletions.
 Search performance = `O(log n)`.

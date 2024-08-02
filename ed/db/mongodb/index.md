@@ -12,6 +12,7 @@ Types:
 * GEO.
 * Text.
 * TTL.
+* Wildcard (fields to index are unknown or may change).
 
 Limitations:
 ````
