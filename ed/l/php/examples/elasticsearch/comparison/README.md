@@ -70,5 +70,5 @@ Bash          took: 0.019164
 
 Ussing `docker` you can easily re-test my benchmark and prove or disproof it.
 
-In case I made mistake - please let me know through [twitter](https://twitter.com/cn007b) or [email](mailto:cn007b@gmail.com).
+In case I made mistake - please let me know through [twitter](https://twitter.com/cn0047) or [email](mailto:cn007b@gmail.com).
 In case you wanna add additional information or additional vendor - please make pull-request.

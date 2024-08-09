@@ -12,7 +12,9 @@ Graph
 <br>Weighted graph - each edge have numerical weight.
 <br>Complete graph - every vertex is connected to every other vertex.
 
-To save graph in memory use: objects + pointers, matrix, or adjacency list.
+To save graph in memory use: objects + pointers, adjacency matrix or adjacency list.
+Adjacency list space-efficient than adjacency matrix.
+Adjacency matrix allows to check whether two vertices are adjacent to each other in constant time.
 
 Graph in DB:
 * Adjacency list.

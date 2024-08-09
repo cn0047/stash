@@ -17,7 +17,7 @@
  *
  * CONTRIBUTING:
  *
- * In case I made mistake - please let me know through [twitter](https://twitter.com/cn007b) or [email](cn007b@gmail.com).
+ * In case I made mistake - please let me know through [twitter](https://twitter.com/cn0047) or [email](cn007b@gmail.com).
  * In case you wanna add additional information or additional vendor - please make pull-request.
  */
 

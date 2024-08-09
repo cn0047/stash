@@ -1,3 +1,5 @@
+// IMPORTANT: This package holds implementation for optimized Binary Tree.
+
 package main
 
 import (
@@ -76,8 +78,10 @@ func main() {
 	fmt.Println(r)
 }
 
+// BinaryTree represents optimized Binary Tree.
+// This struct holds all nodes and root.
 type BinaryTree struct {
-	Tree map[int32]*Node
+	Tree map[int32]*Node // Like cache for fast search, it's ok here, because it's not that important in this example.
 	Root int32
 }
 
@@ -89,6 +93,7 @@ func (b *BinaryTree) AddNode(value int32, left int32, right int32) {
 
 	node, ok := b.Tree[value]
 	if !ok {
+		// @TODO: Check if root is already set.
 		b.Root = value
 		node = &Node{Tree: b, Deep: 1, Value: value}
 	}

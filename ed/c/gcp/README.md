@@ -95,7 +95,7 @@ Organization ⇒ Folder ⇒ Project ⇒ Resource
 ````
 
 Computing service:
-* GAE - App Engine ([PaaS](https://twitter.com/cn007b/status/1024010042838851585))
+* GAE - App Engine ([PaaS](https://gist.githubusercontent.com/cn0047/384d6938ebef985347b29c15476b55c5/raw/a1b334180b6aaa745c22626a9d3489f840569edd/cloudComputingTypes.jpeg))
 * GKE - Container Engine (PaaS)
 * GCE - Compute Engine (IaaS)
 * Cloud Functions (Serverless)

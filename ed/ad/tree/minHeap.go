@@ -1,3 +1,5 @@
+// IMPORTANT: Heap stored here as array (golang slice) and values as regular numbers (golang int).
+
 package main
 
 import (

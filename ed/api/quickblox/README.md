@@ -1,6 +1,8 @@
 Quickblox
 -
 
+Quickblox - chat and calling functionality.
+
 ````sh
 export apiHost='api.quickblox.com'
 export chatHost='chat.quickblox.com'

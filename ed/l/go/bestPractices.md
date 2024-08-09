@@ -9,6 +9,9 @@ Best Practices
 [recipes](https://github.com/nikolaydubina/go-recipes)
 [panic detector](https://github.com/uber-go/nilaway/)
 [package import order](https://github.com/daixiang0/gci)
+[linter](https://github.com/golangci/golangci-lint)
+[linter](https://github.com/dominikh/go-tools)
+[error linter](https://github.com/kisielk/errcheck)
 
 * Avoid nesting by handling errors first.
 * Make your packages "go get"-able.
