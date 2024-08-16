@@ -41,15 +41,37 @@ Keep their keys in sorted order, so that lookup and other operations can **use t
 BST invariant: `x.left.value <= x.value <= x.right.value`.
 BST uniqueness: `x.left.value < x.value < x.right.value`.
 
-Get BST height: recursive call height for left & right; return max(left height, right height)+1.
-Insert into BST: `val < left.val -> insert into left node, else insert into right node`.
-
 When BST saved in array, elements can be found by:
 ````
 i                        - element index
 2*i          2*i+1       - left child
 2*i+1        2*i+2       - right child
 floor(i/2)  floor(i-1/2) - parent
+````
+
+BST is balanced if depth of two subtrees of every node never differs by more than 1.
+
+Get BST height: recursive call height for left & right; return max(left height, right height)+1.
+
+Insert into BST: `val < left.val -> insert into left node, else insert into right node`.
+
+Delete node from BST:
+1. delete leaf node - just delete it.
+2. delete node with 1 child - replace node with it's child.
+3. delete node with 2 childs - replace with node wich is minimum in right child.
+
+Valid BST:
+1. Left subtree contains only nodes with keys less than the node's key.
+2. Right subtree contains only nodes with keys greater than the node's key.
+3. Both left and right subtrees also BST.
+
+Print Root to Leaf Path with Given sum (K-Sum paths):
+````
+1. push root value into stack
+2. -> go into left child push value into stack and calculate stack sum
+  -> if it's:
+    node - go to step 2
+    leaf - pop value from stack and go into parent right child and go to step 2
 ````
 
 Find inorder predecessor:
@@ -70,20 +92,6 @@ Vertical order traversal:
 2. deque, left child height = parent height -1, right child height = parent height +1.
 3. enqueue left child & right child.
 
-Delete a node from BST:
-1. delete leaf node - just delete it.
-2. delete node with 1 child - replace node with it's child.
-3. delete node with 2 childs - replace with node wich is minimum in right child.
-
-Print Root to Leaf Path with Given sum (K-Sum paths):
-````
-1. push root value into stack
-2. -> go into left child push value into stack and calculate stack sum
-  -> if it's:
-    node - go to step 2
-    leaf - pop value from stack and go into parent right child and go to step 2
-````
-
 Spiral (zig-zag) traversal of a binary tree:
 1. add root to Stack1.
 2. pop all from Stack1 and push left child into Stack2 and right child into Stack2.
@@ -99,11 +107,6 @@ left child = parent d
 
 Number of Binary Search Trees possible with N nodes:
 For example, `for: [5, 6] result: [5, 6], [6, 5] (all permutations)`.
-
-Valid BST:
-1. Left subtree contains only nodes with keys less than the node's key.
-2. Right subtree contains only nodes with keys greater than the node's key.
-3. Both left and right subtrees also BST.
 
 **Self-balancing binary search tree** (height-balanced) - is any node-based binary search tree
 that automatically **keeps its height small** in the face of arbitrary item insertions and deletions.
@@ -125,3 +128,8 @@ The B-tree is a generalization of a binary search tree in that a node **can have
 B-tree is also self managed multi-level index,
 it means when data in index grows, B-tree creates index in front of index, and so on,
 and when data deletes, B-tree deletes index.
+
+**Threaded binary tree** (TBT) - every node have value and left pointer and right pointer.
+In case we have left or right pointer empty - we can fill it with link to inorder predecessor/successor,
+so it become a TBT.
+To differentiate is it a pointer to child or to predecessor/successor TBT has left and right flags.

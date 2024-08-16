@@ -18,18 +18,8 @@ To make Minimum spanning tree use:
 * Boruvka's Algorithm
 * Reverse-Delete Algorithm
 
-**Threaded binary tree** (TBT) - every node have value and left pointer and right pointer.
-In case we have left or right pointer empty - we can fill it with link to inorder predecessor/successor,
-so it become a TBT.
-To differentiate is it a pointer to child or to predecessor/successor TBT has left and right flags.
-
 **AST** - Abstract Syntax Tree (used by webpack, babel, etc).
 [explorer](https://astexplorer.net/)
-
-**Red–black tree** - is a kind of self-balancing binary search tree.
-**Each node** of the binary tree **has an extra bit**,
-and that bit is often interpreted as the color (red or black) of the node.
-These color bits are used **to ensure the tree remains approximately balanced** during insertions and deletions.
 
 **2–3 tree**:
 2-node if it has one data element and two children.
