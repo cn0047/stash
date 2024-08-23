@@ -9,6 +9,13 @@ mv ~/Downloads/Postman /Users/user/Library/Application\ Support/
 rm -rf /Users/user/Library/Application\ Support/_Postman
 ````
 
+Post-response script:
+````js
+const res = JSON.parse(pm.response.text());
+pm.environment.set("ID", res._id);
+console.log('Updated ENV var ID to:', res._id);
+````
+
 #### Authorization:
 
 OAuth1:

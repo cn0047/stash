@@ -3,6 +3,8 @@ Replication
 
 [FAQ: Replication and Replica Sets](http://docs.mongodb.org/manual/faq/replica-sets/)
 
+MongoDB doesn't natively support master-master replication.
+
 Nodes types:
 * regular (primary, secondary) [takes part in election].
 * arbiter [takes part in election].
