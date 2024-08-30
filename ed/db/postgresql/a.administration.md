@@ -45,7 +45,6 @@ pg_trgm # Trigram (Trigraph) module
 
 # show databases
 \l
-\d
 # use db
 \c db
 
@@ -61,6 +60,11 @@ pg_trgm # Trigram (Trigraph) module
 
 # `SHOW CREATE TABLE`
 pg_dump -t tableName --schema-only
+
+# dump
+pg_dump -h localhost -p 5430 -d $db -U $usr -t $tbl > $tbl.dump.sql
+# import
+psql -h localhost -p 5430 -d $db -U $usr < $tbl.dump.sql
 
 # store output into file
 \o /tmp/x.sql

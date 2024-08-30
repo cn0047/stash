@@ -22,6 +22,15 @@ Height of BT = 1 + numbers of edges on the longest path from root to leaf.
 Diameter of a BT - longest path of tree between 2 leafs.
 Delete from BT = Postorder + function free().
 
+By knowing that node may have at most 2 childs - BT may be stored as array.
+
+When BT saved in array, elements can be found by:
+````
+i                        - element index
+2*i          2*i+1       - left child
+2*i+1        2*i+2       - right child
+floor(i/2)  floor(i-1/2) - parent
+
 Full BT - every non-leaf node has two children,
 no space to add element into tree without affecting tree's height.
 
@@ -30,6 +39,21 @@ Complete BT - if store BST in array, there must NOT be missing elements in array
 BFS/DFS (Breadth/Depth First Search) in binary tree: @see: graph.md
 Level-Order Traversal aka BFS.
 Preorder Traversal aka DFS.
+
+Tree rotation - moves one node up in BT and one node down, to decrease its height,
+by moving smaller subtrees down and larger subtrees up.
+
+````
+rotate right ->
+
+    50         17
+   / \        / \
+  17  76     9  50
+ / \            / \
+9  23          23  76
+
+       <- rotate left
+````
 
 **Binary Search Tree** (BST) (ordered, sorted binary trees) - can **use the principle of binary search**,
 particular type of containers, data structures that store items in memory.
@@ -40,16 +64,10 @@ Keep their keys in sorted order, so that lookup and other operations can **use t
 
 BST invariant: `x.left.value <= x.value <= x.right.value`.
 BST uniqueness: `x.left.value < x.value < x.right.value`.
-
-When BST saved in array, elements can be found by:
-````
-i                        - element index
-2*i          2*i+1       - left child
-2*i+1        2*i+2       - right child
-floor(i/2)  floor(i-1/2) - parent
 ````
 
 BST is balanced if depth of two subtrees of every node never differs by more than 1.
+Balanced BST - BST that has minimum possible height.
 
 Get BST height: recursive call height for left & right; return max(left height, right height)+1.
 

@@ -79,7 +79,7 @@ func main() {
 }
 
 // BinaryTree represents optimized Binary Tree.
-// This struct holds all nodes and root.
+// This struct holds root noode, and all nodes as map (where key is node key and value is pointer to node itself).
 type BinaryTree struct {
 	Tree map[int32]*Node // Like cache for fast search, it's ok here, because it's not that important in this example.
 	Root int32
