@@ -1,4 +1,4 @@
-// @see: https://leetcode.com/problems/parallel-courses-iii/description
+// @see: https://leetcode.com/problems/parallel-courses-iii
 package main
 
 import (

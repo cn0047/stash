@@ -125,7 +125,7 @@ Full stack:
 
 `persistent/ephemeral`
 
-`camelCase, kebab-case, snake_case`
+`camelCase, PascalCase, snake_case, kebab-case`
 
 Referrer -> Reference -> Referee.
 

@@ -1,6 +1,8 @@
 Thrift
 -
 
+Thrift - serialization framework.
+
 Types:
 * bool - Boolean, one byte.
 * i8 (byte) - Signed 8-bit integer.

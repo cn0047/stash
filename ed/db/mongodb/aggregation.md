@@ -23,7 +23,7 @@ For performance (follow this flow):
 * $collStats - statistics regarding a collection.
 * $indexStats - returns statistics regarding the use of each index for the collection.
 * $count - returns a count of the number of documents at this stage of the aggregation pipeline.
-* $project - like select in SQL.
+* $project - like select clause in SQL.
 * $match - filters the document stream.
 * $unwind - from document with array to documents with only one element.
 * $sort.

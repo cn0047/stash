@@ -86,6 +86,7 @@ func topologicalSubSort(node int, adjacentNodes [][]int, visited map[int]struct{
 	*stack = append(*stack, node)
 }
 
+// @see: ed/ad/graph/kahnAlgorithm.go
 func kahn(n int, edges [][]int) (hasCycle bool) {
 	adjacentNodes := make([][]int, n)
 	inDegree := make([]int, n)

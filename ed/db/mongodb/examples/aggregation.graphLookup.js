@@ -20,7 +20,6 @@ db.employees.aggregate([{
 }])
 
 // Result:
-
 { "_id" : 1, "name" : "Dev", "reportingHierarchy" : [ ] }
 {
     "_id" : 2, "name" : "Eliot",
@@ -63,4 +62,3 @@ db.employees.aggregate([{
         {"_id" : 4, "name" : "Andrew", "reportsTo" : "Eliot"}
     ]
 }
-````

@@ -1,4 +1,4 @@
-// @see: https://leetcode.com/problems/validate-binary-search-tree/description/
+// @see: https://leetcode.com/problems/validate-binary-search-tree
 package main
 
 import (
@@ -137,6 +137,7 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
+// toTree creates tree out of slice.
 func toTree(input []int) *TreeNode {
 	if len(input) == 0 {
 		return nil

@@ -9,6 +9,12 @@ http://php.net/manual/en/appendices.php
 
 #### php 8.1.x
 
+* Enumerations (`enum`).
+* Fibers (multi-taaking).
+* Final class constants.
+* `never` type.
+* Intersection types.
+
 #### php 8.0.x
 
 #### php 7.4.x

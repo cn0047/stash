@@ -1,5 +1,5 @@
 // Insertion sort.
-// @see https://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif
+// @see: https://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif
 //
 // Worst case = O(n^2).
 // Average case = O(n^2).

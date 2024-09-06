@@ -76,6 +76,7 @@ db.collection.storageSize()
 db.collection.totalSize()
 db.collection.getIndexes()
 db.collection.totalIndexSize()
+db.collection.drop() // delete collection
 
 // Data Type Fidelity
 // data_binary

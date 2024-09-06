@@ -132,6 +132,7 @@ func printTree(root *TreeNode, max int, height int) {
 	fmt.Printf("Result:\n%v\n", root)
 }
 
+// @see: ed/ad/tree/binaryTreeValidation.go
 func toTree(input []int) *TreeNode {
 	if len(input) == 0 {
 		return nil
