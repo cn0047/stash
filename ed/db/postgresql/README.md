@@ -54,6 +54,8 @@ for the MVCC model. For example, a common use of advisory locks
 is to emulate pessimistic locking strategies typical of so-called "flat file"
 data management systems.
 
+Every table and index is stored as an array of pages of a fixed size (usually 8 kB).
+
 **tuple** - individual state of row, each update of row creates new tuple for same logical row.
 
 #### System Columns:
