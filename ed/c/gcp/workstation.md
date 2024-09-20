@@ -15,4 +15,5 @@ workstation ssh
 workstation start-tunnels
 workstation stop-tunnels
 
+gcloud beta workstations list
 ````

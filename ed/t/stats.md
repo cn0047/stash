@@ -1,6 +1,10 @@
 Stats
 -
 
+Metric types:
+* Counter - cumulative metric, single monotonically increasing counter, only can go up (number of requests, etc).
+* Gauge - single numerical value that can arbitrarily go up and down (current temperature, current memory usage, etc).
+
 Metric summaries:
 * Count or n — count the number of observations in a specific time interval.
 * Sum — sum (addtogether) values from all observations in a specific time interval.
