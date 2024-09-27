@@ -50,7 +50,14 @@ quad-word   - 8 bytes
 <br>Big-Endian - the most significant byte first.
 <br>Little-Endian - the last significant byte first.
 
-````
-ADD DEST, SOURCE
-SUB DEST, SOURCE
+````asm
+ADD  destination, source ; addition
+SUB  destination, source ; subtraction
+MUL  register            ; multiply
+IMUL register            ; integer multiply
+DIV  register            ; divide
+IDIV register            ; integer divide
+
+INC destination          ; increment
+DEC destination          ; decrement
 ````

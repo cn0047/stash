@@ -47,6 +47,8 @@ git init
 git clone ssh://gitolite@repo.com:1011/repoName.git
 # lightweight clone certain branch
 git clone --depth=1 --branch=master git://github.com/cn007b/vo
+# clone usink ssh key
+GIT_SSH_COMMAND='ssh -i ~/.ssh_my_key/id_rsa -o IdentitiesOnly=yes' git clone git@gitlab.com:pth/to/repo.git
 
 # fetch - download objects and refs (branches and/or tags)
 git fetch

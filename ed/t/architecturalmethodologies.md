@@ -1,5 +1,6 @@
 Architectural Methodologies
 -
+[awesome](https://github.com/simskij/awesome-software-architecture)
 [stakeholder management](https://pubs.opengroup.org/architecture/togaf9-doc/arch/chap21.html)
 
 Fitness functions - describe how close an architecture is to achieving an architectural aim:
