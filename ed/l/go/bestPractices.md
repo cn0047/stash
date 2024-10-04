@@ -12,6 +12,7 @@ Best Practices
 [linter](https://github.com/golangci/golangci-lint)
 [linter](https://github.com/dominikh/go-tools)
 [error linter](https://github.com/kisielk/errcheck)
+[raft protocol](https://github.com/hashicorp/raft)
 
 * Avoid nesting by handling errors first.
 * Make your packages "go get"-able.
