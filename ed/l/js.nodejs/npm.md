@@ -64,6 +64,7 @@ npm root -g
 ````sh
 npm i
 npm install --only=prod
+npm uninstall $pkg
 
 # install a project with a clean slate
 # for automated environments: test, ci/cd
