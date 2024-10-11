@@ -3,6 +3,8 @@ Complexity of algorithms
 
 [cheatsheet](https://www.bigocheatsheet.com/)
 
+Asymptotic analysis - defining mathematical foundation of algorithm's run-time performance.
+
 `O` Big O notation - Upper bound.
 `Θ` Theta notation - Tight bound.
 `Ω` Omega notation - Lower bound.

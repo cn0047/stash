@@ -29,9 +29,20 @@ To make Minimum spanning tree use:
 is a form of binary search tree which supports efficient addition and deletion of entries.
 **Unlike red-black** trees, **red nodes** on an AA tree **can only be added as a right subchild**.
 
-**Splay tree** - is a self-adjusting binary search **tree
-with the additional property that recently accessed elements** are quick to access again.
-All normal operations on a binary search tree are combined with one basic operation, called splaying.
+**Splay tree** - is a self-adjusting **BST with additional property - recently accessed elements**.
+Splay tree contains same basic BST operations (insert, delete, search) and after every operation
+there is additional operation - splaying.
+After each operation tree must be rebalanced and target node of operation must become root.
+
+Types of rotations:
+* Zig rotation.
+* Zag rotation.
+* Zig-Zig rotation.
+* Zag-Zag rotation.
+* Zig-Zag rotation.
+* Zag-Zig rotation.
+
+Applications: caching, DB indexing, file systems, data compression, text processing, graph algorithms, online gaming.
 
 **R-tree** - tree data structures **used for spatial access methods**.
 
@@ -50,13 +61,12 @@ intended to replace hash tables in purely functional programming.
 **Log-structured merge-tree** (LSM) - tree with performance characteristics that make it attractive
 for providing indexed access to files with high insert volume, such as transactional log data.
 
-**AVL tree** - (since 1962) the **heights of the two child subtrees of any node differ by at most one**.
+**AVL tree** - (since 1962) BST where **heights of the two child subtrees of any node differ by at most one**.
 Faster than red–black trees because they are more rigidly balanced.
 Similar to red–black trees, AVL trees are height-balanced.
 
 Balance factor: +1, 0, -1
-
-LL | RR rotations.
+Rotations: LL, RR, LR, RL.
 
 Height: `h = log N`.
 Worst time complexity for search: `h = O(h) = log N`.

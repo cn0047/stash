@@ -93,6 +93,7 @@ git rev-parse HEAD              # current commit hash
 git rev-parse --abbrev-ref HEAD # branch name only
 
 git diff --cached or diff --staged # after git add shows diff
+git diff --stat # file names only
 git diff branch..subBrach
 git diff branch:file file # !!!
 

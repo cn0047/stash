@@ -165,6 +165,7 @@ func main() {
 	fmt.Printf("===\n%v", r)
 }
 
+// levelOrder returns slice which represents level order traversal for tree represented by provided root node.
 func levelOrder(root *Node) (res []string) {
 	queue := []*Node{root}
 	for len(queue) > 0 {

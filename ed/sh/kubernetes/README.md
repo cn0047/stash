@@ -32,12 +32,15 @@ Drawbacks:
 * cost (it may be overkill for small orgs).
 
 Manifest file - describe desired state.
-
 Operator - software extensions that make use of custom resources.
-
 Workload - application running on k8s (Deployment, ReplicaSet, StatefulSet, DaemonSet, Job, CronJob).
+Cluster - control plane plus set of worker machines (nodes), that run containerized applications.
+
+Cluster limitations: max 110 pods per node, 5000 nodes, 150K pods in total, 300K containers in total.
 
 ## Master (Control plane)
+
+Control plane - set of components that manage and control the overall system.
 
 `kube-controller-manager` - controls lots of different things
 in the cluster. Replication Controller Manager ensures all the Replication Controllers

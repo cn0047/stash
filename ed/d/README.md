@@ -12,3 +12,5 @@ Requires predefined schema.
 DataLake - large volumes of raw and structured data (any kind),
 for analytics, processing, and data mining tasks,
 without pre-defined schemas.
+
+DataPlane - part of software that processes the data requests.
