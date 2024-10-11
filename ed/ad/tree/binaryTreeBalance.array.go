@@ -29,7 +29,7 @@ type TreeNode struct {
 func balanceBST(root *TreeNode) *TreeNode {
 	arr := []int{}
 	inOrder(root, &arr)
-	fmt.Printf("inOrder: %v\n", arr)
+	// fmt.Printf("inOrder: %v\n", arr)
 
 	t := toTreeFromArray(arr)
 

@@ -1,4 +1,4 @@
-// @see: https://leetcode.com/problems/first-missing-positive
+// @see *: https://leetcode.com/problems/first-missing-positive
 package main
 
 import (

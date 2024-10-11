@@ -57,7 +57,6 @@ func (n *Node) Insert(val int) *Node {
 }
 
 func (n *Node) rotateLeft() *Node {
-	fmt.Printf("\nrotateLeft: %d", n.Value)
 	r := n.Right
 	n.Right = r.Left
 	r.Left = n
@@ -67,7 +66,6 @@ func (n *Node) rotateLeft() *Node {
 }
 
 func (n *Node) rotateRight() *Node {
-	fmt.Printf("\nrotateRight: %d", n.Value)
 	l := n.Left
 	n.Left = l.Right
 	l.Right = n

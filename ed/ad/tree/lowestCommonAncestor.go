@@ -76,7 +76,6 @@ func main() {
 	fmt.Printf("Result:\n%v\n", r.Val)
 
 	// t, m, h := toTreeWithInfo([]int{3, 5, 1, 6, 2, 0, 8, null, null, 7, 4})
-	// printTree(t, m, h)
 	// fmt.Printf("Result:\n%v %v\n", m, h)
 }
 
@@ -126,10 +125,6 @@ func toTreeWithInfo(input []int) (rootNode *TreeNode, maxVal int, height int) {
 	}
 
 	return root, max, h
-}
-
-func printTree(root *TreeNode, max int, height int) {
-	fmt.Printf("Result:\n%v\n", root)
 }
 
 // @see: ed/ad/tree/binaryTreeValidation.go
