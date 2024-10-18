@@ -11,6 +11,7 @@ curl
 -F, --form CONTENT                   # Specify HTTP multipart POST data (H)
 -I                                   # Only the HTTP-headers
 -i                                   # Include the HTTP-headers
+-k                                   # Skip TLS verification
 -o, --output FILE                    # Write output to <file> instead of stdout
 -O, --remote-name                    # Write output to file wiht origin name
 -L                                   # Follow location response header

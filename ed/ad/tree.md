@@ -1,7 +1,6 @@
 Tree
 -
 
-<br>Segment tree - better for many updates.
 <br>Range array (tree) - better for many reads.
 <br>2 trees are isomorphic - if subtrees are isomorphic to each other.
 
@@ -76,9 +75,17 @@ This makes radix trees much more efficient for small sets
 (especially if the strings are long) and for sets of strings
 that share long prefixes.
 
-[Trie](https://monosnap.com/file/1sTq5fwBiVEvPWakJiGusGK7foFmji)
+[**Trie**](https://monosnap.com/file/1sTq5fwBiVEvPWakJiGusGK7foFmji)
 (digital or radix or prefix tree) - is an ordered tree data structure
-that is used to **store a dynamic set or associative array** where the keys are usually strings.
+that is used to **store dynamic set or associative array** where the keys are usually strings.
+
+Root node can have any number of nodes.
+Root does not contain value except the pointers to its child nodes.
+
+Types of trie data structures:
+* Standard tries.
+* Compressed tries.
+* Suffix tries.
 
 **Heap** - complete BST.
 ````
@@ -89,7 +96,7 @@ create heap from array - O(n log n)
 # heapify              - O(n)
 ````
 
-**In a max heap, the keys of parent nodes are always greater than or equal to those of the children**
+In a max heap, the keys of parent nodes are always greater than or equal to those of the children
 and the highest key is in the root node.
 In a min heap, the keys of parent nodes are less than or equal.
 
@@ -100,3 +107,8 @@ Fibonacci heap - is a data structure for **priority queue operations,
 consisting of a collection of heap-ordered trees**.
 
 Only root element can be deleted from heap (not any arbitrary element).
+
+**Segment tree** - binary tree whose nodes store information about segments.
+Good to solve range min/max/sum/geographic information systems/computational geometry
+queries and range updates in O(log n) time.
+Three operations: build tree, update tree, query tree.

@@ -30,6 +30,7 @@ i                        - element index
 2*i          2*i+1       - left child
 2*i+1        2*i+2       - right child
 floor(i/2)  floor(i-1/2) - parent
+````
 
 Full BT - every non-leaf node has two children,
 no space to add element into tree without affecting tree's height.
@@ -64,7 +65,6 @@ Keep their keys in sorted order, so that lookup and other operations can **use t
 
 BST invariant: `x.left.value <= x.value <= x.right.value`.
 BST uniqueness: `x.left.value < x.value < x.right.value`.
-````
 
 BST is balanced if depth of two subtrees of every node never differs by more than 1.
 Balanced BST - BST that has minimum possible height.
