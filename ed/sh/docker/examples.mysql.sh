@@ -10,15 +10,13 @@ docker run -it --rm --net=xnet -p 3307:3306 --name xmysql --hostname xmysql \
     mysql:$tag
 
 # general_log
-docker exec -ti xmysql mysql -P3307 -uroot -proot -e "set global general_log_file='/tmp/mysql.general.log';"
-docker exec -ti xmysql mysql -P3307 -uroot -proot -e "set global general_log = 1;"
-docker exec -ti xmysql tail -f /tmp/mysql.general.log
+docker exec -it xmysql mysql -P3307 -uroot -proot -e "set global general_log_file='/tmp/mysql.general.log';"
+docker exec -it xmysql mysql -P3307 -uroot -proot -e "set global general_log = 1;"
+docker exec -it xmysql tail -f /tmp/mysql.general.log
 
 # test
-docker exec -ti xmysql mysql -P3307 -uroot -proot
-docker exec -ti xmysql mysql -P3307 -udbu -pdbp -Dtest
-
-
+docker exec -it xmysql mysql -P3307 -uroot -proot
+docker exec -it xmysql mysql -P3307 -udbu -pdbp -Dtest
 
 #### MySQL cluster
 
@@ -48,4 +46,4 @@ docker exec mysql-slave-1 mysql -uroot -proot -e "SHOW SLAVE STATUS \G"
 docker exec mysql-master mysql -uroot -proot -Dtest -e "CREATE TABLE tmp(code INT); INSERT INTO tmp VALUES (200);"
 docker exec mysql-slave-1 mysql -uroot -proot -Dtest -e "SELECT * FROM tmp;"
 
-docker exec -ti mysql-master mysql -P3307 -udbu -pdbp -Dtest
+docker exec -it mysql-master mysql -P3307 -udbu -pdbp -Dtest

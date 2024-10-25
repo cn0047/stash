@@ -1,0 +1,8 @@
+syntax = 'proto3';
+
+message EventV2 {
+    int32 id = 1;
+    int64 created_at = 2;
+    string msg = 3;
+    // 4 is reserved
+}

@@ -6,8 +6,8 @@ docker run -it --rm --net=xnet -p 6379:6379 --name xredis --hostname xredis \
     -v $PWD/.data/.docker/redis:/data redis:latest
 
 # check redis
-docker exec -ti xredis redis-cli
-docker exec -ti xredis redis-cli -h localhost -p 6379
+docker exec -it xredis redis-cli
+docker exec -it xredis redis-cli -h localhost -p 6379
 
 
 
@@ -24,10 +24,10 @@ docker run -it --rm --net=xnet -p 6377:6377 --name xredis-slave-1 --hostname xre
     redis:latest redis-server /etc/redis.conf
 
 # test
-docker exec -ti xredis-master-1 redis-cli -h localhost -p 6378
-docker exec -ti xredis-slave-1 redis-cli -h localhost -p 6377
+docker exec -it xredis-master-1 redis-cli -h localhost -p 6378
+docker exec -it xredis-slave-1 redis-cli -h localhost -p 6377
 # and
-docker exec -ti xredis-slave-1 redis-cli -h localhost -p 6377 info | grep -E '(replica|master|slave|status)'
+docker exec -it xredis-slave-1 redis-cli -h localhost -p 6377 info | grep -E '(replica|master|slave|status)'
 
 
 
@@ -57,7 +57,7 @@ docker run -it --rm --net=xnet -p 6366:6366 --name xredis-shard-6 --hostname xre
     -v $PWD/ed/sh/sh.redis/examples/shard-6.redis.conf:/etc/redis.conf \
     redis:latest redis-server /etc/redis.conf
 
-docker exec -ti xredis-shard-1 redis-cli -h localhost -p 6361 --cluster create --cluster-replicas 1 \
+docker exec -it xredis-shard-1 redis-cli -h localhost -p 6361 --cluster create --cluster-replicas 1 \
   127.0.0.1:6361 \
   xredis-shard-2:6362 \
   xredis-shard-3:6363 \

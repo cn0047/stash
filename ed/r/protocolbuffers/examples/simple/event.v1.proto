@@ -1,0 +1,8 @@
+syntax = 'proto3';
+
+message EventV1 {
+    int32 id = 1;
+    int64 created_at = 2;
+    string msg = 3;
+    repeated string tags = 4;
+}

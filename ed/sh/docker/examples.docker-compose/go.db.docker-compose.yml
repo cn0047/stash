@@ -3,7 +3,7 @@
 # docker-compose -f ed/sh/docker/examples.docker-compose/go.db.docker-compose.yml up xmysql
 # docker-compose -f ed/sh/docker/examples.docker-compose/go.db.docker-compose.yml up mysqlapp
 #
-# docker exec -ti xmysql mysql -P3306 -udbu -pdbp -Dtest
+# docker exec -it xmysql mysql -P3306 -udbu -pdbp -Dtest
 # docker exec -it xmysqlapp /bin/bash
 
 version: '3'

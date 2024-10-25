@@ -12,10 +12,20 @@ Service.
 Stream.
 
 ````sh
+# server
+
 nats server run
 nats server run --jetstream
+````
 
-nats context select dev
+````sh
+# client
+
+nats context add localTest --description 'localTest'
+nats context add localTest --server localhost:4222 --description 'localTest'
+nats context ls
+nats context select localTest
+
 nats reply hello.bob "Hi"
 nats req hello.bob ""
 
@@ -28,6 +38,7 @@ nats pub hello.world "Hey"
 nats stream ls -a
 nats stream add
 
+nats consumer ls
 nats consumer create
 nats consumer info
 nats consumer next orders pull_consumer
@@ -35,3 +46,5 @@ nats consumer next orders pull_consumer
 nats kv add mybucket
 nats kv put mybucket foo bar
 ````
+
+https://github.com/nats-io/natscli

@@ -9,37 +9,37 @@ version=3.18
 docker build -t cn007b/alpine:$version docker/$version
 
 # # check
-docker run -ti --rm cn007b/alpine:$version sh -c 'hash vim'
-docker run -ti --rm cn007b/alpine:$version sh -c 'hash tree'
-docker run -ti --rm cn007b/alpine:$version sh -c 'hash mc'
-docker run -ti --rm cn007b/alpine:$version sh -c 'hash git'
-docker run -ti --rm cn007b/alpine:$version sh -c 'hash hg'
-docker run -ti --rm cn007b/alpine:$version sh -c 'hash colordiff'
-docker run -ti --rm cn007b/alpine:$version sh -c 'hash curl'
-docker run -ti --rm cn007b/alpine:$version sh -c 'hash wget'
-# docker run -ti --rm cn007b/alpine:$version net-tools
-docker run -ti --rm cn007b/alpine:$version sh -c 'hash nmap'
-docker run -ti --rm cn007b/alpine:$version sh -c 'hash telnet'
-# docker run -ti --rm cn007b/alpine:$version sh -c 'hash ftp'
-docker run -ti --rm cn007b/alpine:$version sh -c 'hash lftp'
-docker run -ti --rm cn007b/alpine:$version sh -c 'hash zip'
-docker run -ti --rm cn007b/alpine:$version sh -c 'hash unzip'
-docker run -ti --rm cn007b/alpine:$version sh -c 'hash rsync'
-docker run -ti --rm cn007b/alpine:$version sh -c 'hash make'
-# docker run -ti --rm cn007b/alpine:$version sh -c 'hash lsb_release'
-# docker run -ti --rm cn007b/alpine:$version sh -c 'hash uuid'
-docker run -ti --rm cn007b/alpine:$version sh -c 'hash jq'
+docker run -it --rm cn007b/alpine:$version sh -c 'hash vim'
+docker run -it --rm cn007b/alpine:$version sh -c 'hash tree'
+docker run -it --rm cn007b/alpine:$version sh -c 'hash mc'
+docker run -it --rm cn007b/alpine:$version sh -c 'hash git'
+docker run -it --rm cn007b/alpine:$version sh -c 'hash hg'
+docker run -it --rm cn007b/alpine:$version sh -c 'hash colordiff'
+docker run -it --rm cn007b/alpine:$version sh -c 'hash curl'
+docker run -it --rm cn007b/alpine:$version sh -c 'hash wget'
+# docker run -it --rm cn007b/alpine:$version net-tools
+docker run -it --rm cn007b/alpine:$version sh -c 'hash nmap'
+docker run -it --rm cn007b/alpine:$version sh -c 'hash telnet'
+# docker run -it --rm cn007b/alpine:$version sh -c 'hash ftp'
+docker run -it --rm cn007b/alpine:$version sh -c 'hash lftp'
+docker run -it --rm cn007b/alpine:$version sh -c 'hash zip'
+docker run -it --rm cn007b/alpine:$version sh -c 'hash unzip'
+docker run -it --rm cn007b/alpine:$version sh -c 'hash rsync'
+docker run -it --rm cn007b/alpine:$version sh -c 'hash make'
+# docker run -it --rm cn007b/alpine:$version sh -c 'hash lsb_release'
+# docker run -it --rm cn007b/alpine:$version sh -c 'hash uuid'
+docker run -it --rm cn007b/alpine:$version sh -c 'hash jq'
 #
-docker run -ti --rm cn007b/alpine:$version sh -c 'hash aws'
+docker run -it --rm cn007b/alpine:$version sh -c 'hash aws'
 #
-docker run -ti --rm cn007b/alpine:$version sh -c 'hash ab'
+docker run -it --rm cn007b/alpine:$version sh -c 'hash ab'
 #
-# docker run -ti --rm cn007b/alpine:$version sh -c 'hash dstat'
-docker run -ti --rm cn007b/alpine:$version sh -c 'hash mpstat'
-docker run -ti --rm cn007b/alpine:$version sh -c 'hash iotop'
-# docker run -ti --rm cn007b/alpine:$version sh -c 'hash cbm'
+# docker run -it --rm cn007b/alpine:$version sh -c 'hash dstat'
+docker run -it --rm cn007b/alpine:$version sh -c 'hash mpstat'
+docker run -it --rm cn007b/alpine:$version sh -c 'hash iotop'
+# docker run -it --rm cn007b/alpine:$version sh -c 'hash cbm'
 
-docker run -ti --rm cn007b/alpine:$version sh
+docker run -it --rm cn007b/alpine:$version sh
 
 # # push
 docker push cn007b/alpine:$version

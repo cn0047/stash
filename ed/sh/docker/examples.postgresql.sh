@@ -12,22 +12,22 @@ docker run -it --rm --name xpostgres --hostname xpostgres --net=xnet \
   -e POSTGRES_DB=test -e POSTGRES_USER=dbu -e POSTGRES_PASSWORD=dbp postgres:$tag
 
 # check
-docker exec -ti xpostgres psql -d postgres://dbu:dbp@xpostgres/test
-docker exec -ti xpostgres psql -d postgres://dbu:dbp@xpostgres/test -c 'select count(*) from test'
+docker exec -it xpostgres psql -d postgres://dbu:dbp@xpostgres/test
+docker exec -it xpostgres psql -d postgres://dbu:dbp@xpostgres/test -c 'select count(*) from test'
 
 # dump export
-docker exec -ti xpostgres pg_dump -d postgres://dbu:dbp@xpostgres/test -t test --schema-only
+docker exec -it xpostgres pg_dump -d postgres://dbu:dbp@xpostgres/test -t test --schema-only
 # dump import
-docker exec -ti xpostgres /bin/bash
+docker exec -it xpostgres /bin/bash
 psql -d postgres://dbu:dbp@xpostgres/test < /tmp/dump/dump.sql
 
 # import dump
-# docker exec -ti cpqsql /bin/bash -c "psql -d postgres://dbu:dbp@cpqsql/test < /app/dump.sql"
+# docker exec -it cpqsql /bin/bash -c "psql -d postgres://dbu:dbp@cpqsql/test < /app/dump.sql"
 
 # test
-docker exec -ti xpostgres psql -h localhost -p 5432 -U dbu -d test
-docker exec -ti -e PGPASSWORD=dbp xpostgres psql -h localhost -p 5432 -U dbu -d test
-docker exec -ti xpostgres psql -d postgres://dbu:dbp@localhost/test
+docker exec -it xpostgres psql -h localhost -p 5432 -U dbu -d test
+docker exec -it -e PGPASSWORD=dbp xpostgres psql -h localhost -p 5432 -U dbu -d test
+docker exec -it xpostgres psql -d postgres://dbu:dbp@localhost/test
 
 
 
@@ -39,4 +39,4 @@ docker run -it --rm -p 5432:5432 --name postgres-master --hostname postgres-mast
   -e POSTGRES_DB=test -e POSTGRES_USER=dbu -e POSTGRES_PASSWORD=dbp postgres
 
 # test
-docker exec -ti postgres-master psql -h localhost -p 5432 -U dbu -d test
+docker exec -it postgres-master psql -h localhost -p 5432 -U dbu -d test

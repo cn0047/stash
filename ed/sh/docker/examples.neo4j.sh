@@ -6,8 +6,6 @@
 
 NEO4JLABS_PLUGINS='["apoc", "streams", "graphql", "graph-algorithms", "n10s"]'
 
-
-
 tag=4.1
 tag=4.1.1-enterprise
 tag=4.3.3
@@ -32,8 +30,6 @@ docker run -it --rm --net=xnet -v $PWD:/gh -p 7474:7474 -p 7687:7687 --name xneo
 
 # in case of apoc related error
 rm $PWD/.data/.docker/neo4j_gs_plugins/apoc.jar
-
-
 
 # 3.5
 docker run -it --rm --net=xnet -p 7474:7474 -p 7687:7687 --name xneo4j --hostname xneo4j \
@@ -67,7 +63,6 @@ docker run -it --rm --net=xnet -p 7474:7474 -p 7687:7687 --name xneo4j --hostnam
 
 # logs
 docker exec -it xneo4j sh -c 'tail -f /logs/debug.log'
-
 
 # test UI
 # usr=neo4j
