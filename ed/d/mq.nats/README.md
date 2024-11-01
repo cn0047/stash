@@ -11,6 +11,9 @@ JetStream.
 Service.
 Stream.
 
+Leaf Node extends existing NATS system, optionally bridging both operator and security domains.
+Leaf Node transparently routes messages from local clients to one or more remote NATS system(s) and vice versa.
+
 ````sh
 # server
 

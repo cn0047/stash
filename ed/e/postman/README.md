@@ -1,6 +1,8 @@
 Postman
 -
 
+[docs](https://learning.postman.com/docs)
+
 ````sh
 # share
 cp -r /Users/user/Library/Application\ Support/Postman ~/Downloads

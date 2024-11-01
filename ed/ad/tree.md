@@ -30,8 +30,7 @@ is a form of binary search tree which supports efficient addition and deletion o
 
 **Splay tree** - is a self-adjusting **BST with additional property - recently accessed elements**.
 Splay tree contains same basic BST operations (insert, delete, search) and after every operation
-there is additional operation - splaying.
-After each operation tree must be rebalanced and target node of operation must become root.
+there is additional operation: splaying - tree must be rebalanced and target node of operation must become root.
 
 Types of rotations:
 * Zig rotation.
@@ -75,9 +74,20 @@ This makes radix trees much more efficient for small sets
 (especially if the strings are long) and for sets of strings
 that share long prefixes.
 
-[**Trie**](https://monosnap.com/file/1sTq5fwBiVEvPWakJiGusGK7foFmji)
-(digital or radix or prefix tree) - is an ordered tree data structure
+**Trie** - (digital or radix or prefix tree) - is an ordered tree data structure
 that is used to **store dynamic set or associative array** where the keys are usually strings.
+
+````
+           null
+          /    \
+        d        h
+       /  \      /
+      de  do     he
+     /          /  \
+   dea        hea  hen
+  /   \       /
+deal  dear   heat
+````
 
 Root node can have any number of nodes.
 Root does not contain value except the pointers to its child nodes.
