@@ -1,4 +1,4 @@
-// @see *: https://leetcode.com/problems/binary-tree-maximum-path-sum
+// @see: https://leetcode.com/problems/binary-tree-maximum-path-sum
 package main
 
 import (

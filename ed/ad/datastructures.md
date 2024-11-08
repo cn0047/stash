@@ -45,7 +45,7 @@ but allows for **efficient removal of both the maximum and minimum**.
 **Multiset** (or bag) - is similar to a set but allows repeated values (**duplicates**).
 
 **Disjoint-set** (union–find or merge–find) - is a data structure
-that keeps track of a set of elements partitioned into a number of disjoint (nonoverlapping) subsets.
+that stores a collection of disjoint (non-overlapping) sets.
 
 ## Linked
 

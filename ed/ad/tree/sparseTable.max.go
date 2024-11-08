@@ -1,4 +1,5 @@
 // @see: https://leetcode.com/problems/sliding-window-maximum
+// @category advanced
 package main
 
 import (

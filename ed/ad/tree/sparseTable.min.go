@@ -1,3 +1,4 @@
+// @category advanced
 package main
 
 import (

@@ -1,4 +1,5 @@
-// @see *: https://leetcode.com/problems/parallel-courses-iii
+// @see: https://leetcode.com/problems/parallel-courses-iii
+// @category leetCodeSpecificSolution
 package main
 
 import (

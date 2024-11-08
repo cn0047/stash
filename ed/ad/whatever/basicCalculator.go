@@ -58,7 +58,8 @@ func basicCalculator1(s string) (res int) {
 }
 
 // basicCalculator2 holds implementation for basic calculator with parentheses.
-// @see *: https://leetcode.com/problems/basic-calculator
+// @see: https://leetcode.com/problems/basic-calculator
+// @category leetCodeSpecificSolution
 func basicCalculator2(s string) (res int) {
 	n := len(s)
 	stack := []int{}

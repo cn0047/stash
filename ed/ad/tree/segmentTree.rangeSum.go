@@ -1,4 +1,5 @@
 // @see: https://leetcode.com/problems/range-sum-query-mutable
+// @category advanced
 package main
 
 import (

@@ -1,4 +1,5 @@
-// @see *: https://leetcode.com/problems/minimum-cost-to-reach-destination-in-time
+// @see: https://leetcode.com/problems/minimum-cost-to-reach-destination-in-time
+// @category leetCodeSpecificSolution
 package main
 
 import (

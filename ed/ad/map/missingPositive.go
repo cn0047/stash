@@ -1,4 +1,5 @@
-// @see *: https://leetcode.com/problems/first-missing-positive
+// @see https://leetcode.com/problems/first-missing-positive
+// @category advanced
 package main
 
 import (
@@ -19,7 +20,7 @@ func main() {
 func firstMissingPositive(nums []int) int {
 	n := len(nums)
 
-	maxPossible := n + 1 // Max possible value in array with given length.
+	maxPossible := n + 1 // max possible value in array with given length.
 	// Replace negative values and values with way-way bigger possible value to maxPossible.
 	for i := 0; i < n; i++ {
 		if nums[i] <= 0 || nums[i] > n {
