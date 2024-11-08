@@ -11,6 +11,14 @@ Update range array (tree)      - O(n).
 Select from range array (tree) - O(1).
 ````
 
+Types of trees: general tree, binary tree, binary search tree.
+
+Tree traversal:
+Preorder traversal (DFS): print node, go to left child, go to right child.
+Postorder traversal (DFS): go to left child, go to right child, print node.
+Inorder traversal (DFS): go to left child, print node, go to right child.
+Level traversal (BFS).
+
 To make Minimum spanning tree use:
 * Prim's Algorithm - like BFS but pick chipest node on each iteration.
 * Kruskal's Algorithm - connect to endes while them in different separated trees, because cycles not allowed.
@@ -40,7 +48,7 @@ Types of rotations:
 * Zig-Zag rotation.
 * Zag-Zig rotation.
 
-Applications: caching, DB indexing, file systems, data compression, text processing, graph algorithms, online gaming.
+Examples: caching, DB indexing, file systems, data compression, text processing, graph algorithms, online gaming.
 
 **R-tree** - tree data structures **used for spatial access methods**.
 
@@ -118,7 +126,11 @@ consisting of a collection of heap-ordered trees**.
 
 Only root element can be deleted from heap (not any arbitrary element).
 
-**Segment tree** - binary tree whose nodes store information about segments.
+**Segment tree** - binary tree whose nodes store information about range of elements.
 Good to solve range min/max/sum/geographic information systems/computational geometry
 queries and range updates in O(log n) time.
 Three operations: build tree, update tree, query tree.
+
+**Sparse table** - data structure that efficiently answers range queries on static array.
+Good for operations: min, max, gcd.
+Length of arrays in sparse table: 1, 2, 4, 8, ... log(n)+1 (x^2).

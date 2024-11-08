@@ -11,6 +11,7 @@ Graph
 <br>Directed graph - all edges are directed (have direction) from one vertex to another.
 <br>Weighted graph - each edge have numerical weight.
 <br>Complete graph - every vertex is connected to every other vertex.
+<br>Spanning tree - subset of undirected graph that contains all vertices of graph connected with minimum number of edges.
 
 To save graph in memory use: objects + pointers, adjacency matrix or adjacency list.
 Adjacency list space-efficient than adjacency matrix.

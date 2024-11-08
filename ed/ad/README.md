@@ -33,6 +33,33 @@ that is used to represent a Boolean function.
 On a more abstract level, BDDs can be considered
 as a compressed representation of sets or relations.
 
+#### Search
+
+Sequential searching: linear search.
+Interval searching: binary search, jump search, etc.
+
+**Jump search** - slightly modified version of the linear search algorithm,
+which uses blockSize to jump, blockSize = sqrt(list length),
+after overjump it uses linear search backwards.
+
+**Interpolation search** (position probing) - improved variant of binary search.
+It uses formula for next position to check:
+````
+mid = Lo + ( (Hi−Lo)*(X−A[Lo]) / A[Hi]−A[Lo] )
+A = list
+Lo = Lowest index of the list
+Hi = Highest index of the list
+A[n] = Value stored at index n in the list
+````
+
+**Exponential Search** (doubling search or finger search) - jumps through the array
+exponentially in the powers of 2, after overjump it uses binary search backwards.
+
+#### Divide & Conquer
+
+Divide and conquer - the problem is divided into smaller sub-problems and then each problem is solved independently.
+Examples: Max-Min problem, etc.
+
 #### [Bloom Filter](https://monosnap.com/file/pgYT6nOzrYcA9Y7Qx5Ed8EGDAO2QvX)
 
 Is a space-efficient probabilistic data structure

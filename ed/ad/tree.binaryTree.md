@@ -100,11 +100,6 @@ Find inorder successor:
 If right child is present - got to right child and go to most left,
 otherwise - search from where we take the last left turn.
 
-Preorder traversal (DFS): print node; go to left child; go to right child;
-Postorder traversal (DFS): go to left child; go to right child; print node;
-Inorder traversal (DFS): go to left child; print node; go to right child;
-Level traversal (BFS);
-
 Vertical order traversal:
 1. put in queue root, root height = 0.
 2. deque, left child height = parent height -1, right child height = parent height +1.
@@ -146,6 +141,8 @@ The B-tree is a generalization of a binary search tree in that a node **can have
 B-tree is also self managed multi-level index,
 it means when data in index grows, B-tree creates index in front of index, and so on,
 and when data deletes, B-tree deletes index.
+
+**B+-tree** - extensions B-tree designed to make insertion, deletion and searching operations more efficient.
 
 **Threaded binary tree** (TBT) - every node have value and left pointer and right pointer.
 In case we have left or right pointer empty - we can fill it with link to inorder predecessor/successor,
