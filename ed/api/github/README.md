@@ -14,6 +14,8 @@ GitHub
 # ~/.ssh/config
 Host github.com
   IdentityFile ~/.ssh/id_rsa_my
+Host gist.github.com
+  IdentityFile ~/.ssh_my/id_rsa
 
 # push gist config with http
 url = https://gist.github.com/cn007b/b0136cc4db3ad91774e93dbaadcf0331
