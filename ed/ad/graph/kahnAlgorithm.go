@@ -25,7 +25,7 @@ func courseSchedule(n int, edges [][]int) bool {
 	return !hasCycle
 }
 
-// kahn represents implementation for kahn algorith.
+// kahn represents implementation for kahn algorithm.
 func kahn(n int, edges [][]int) (hasCycle bool) {
 	adjacentNodes := make([][]int, n)
 	inDegree := make([]int, n)

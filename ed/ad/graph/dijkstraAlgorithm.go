@@ -11,7 +11,7 @@ func main() {
 	fmt.Printf("\n===\ncost:%v, path:%v \n", c, p)
 }
 
-// dijkstra represents implementation for dijkstra algorith.
+// dijkstra represents implementation for dijkstra algorithm.
 func dijkstra(edges [][]int) (path []int, spentCost int) {
 	n := len(edges)
 

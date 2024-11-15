@@ -425,7 +425,10 @@ continue
 while true; do echo -n . ; done
 while true; do echo -n . ; sleep 999; done
 until false; do echo -n . ; done
+# int range
 i=0; while [ $i -ne 10 ]; do; i=$(($i+1)); echo "$i"; done
+# str range
+declare -a arr1=("a" "b" "c"); for el in "${arr1[@]}"; do echo "$el"; done
 
 # wait dir
 while true ; do [[ -d '/tmp/x' ]] && break ; echo -n '.' ; sleep 1 ; done

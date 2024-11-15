@@ -23,6 +23,34 @@ Graph in DB:
 * Nested sets.
 * Closure table.
 
+Tarjan's algorithm.
+Held Karp algorithm.
+
+**Topological sort** - graph traversal in which each node visited after all its dependencies are visited.
+It helps to find shortest path through weighted DAG, won't work for non DAG.
+Result path don't have to be unique.
+
+**Kahn's algorithm** - find vertices without incoming edges,
+remove them from graph, repeat until: all nodes checked or there only nodes with incoming edges (cycle).
+Use it to check whether graph is DAG or not.
+
+**Prim’s algorithm** - one of the efficient methods to find the minimum spanning tree.
+Number of edges = number of vertices - 1.
+Algorithm: 1) select min edge, 2) select next connected min edge, 3) repeat 2 until all vertices visited.
+
+**Kruskal’s algorithm** - .
+Algorithm: 1) select min edge, 2) repeat 2, if edge creates cycle - skip it, repeat 2 until all vertices visited.
+
+**Dijkstra's Algorithm** - find the shortest paths between nodes in a weighted graph.
+Works only for positive weights.
+
+## Shortest path
+
+* Bellman-Ford Algorithm.
+* BFS.
+* Topological sort.
+* Floyd-Warshall Algorithm.
+
 ## Path
 
 <br>Path - set of edges that conncect 2 nodes.
@@ -37,18 +65,6 @@ Also all vertex have even degree but 2 have odd degree.
 
 Directed Acyclic Graph -  finite directed graph with no directed cycles.
 DAG always topologically ordered.
-
-## Held Karp algorithm
-
-...
-
-## Shortest path
-
-* Dijkstra's Algorithm (only for positive weights).
-* Bellman-Ford Algorithm.
-* BFS.
-* Topological sort.
-* Floyd-Warshall Algorithm.
 
 ## Search
 
@@ -67,19 +83,7 @@ DFS (Depth First Search) - `O(|V| + |E|)` (V - vertices, E - edges).
 Uses recursion or stack:
 ````
 add node to stack
-  -> add Non Visited CHILD (only one child) to stack
-  -> go deep and add next Non Visited CHILD to stack
-    -> if no childs to add - pop element from stack
+  -> add non visited CHILD (only one child) to stack
+  -> go deep and add next non visited CHILD to stack
+  -> if no childs to add - pop element from stack
 ````
-
-## Topological sorting
-
-Topological sort - graph traversal in which each node visited after all its dependencies are visited.
-Don't have to be unique.
-Won't work for non Directed Acyclic Graph (DAG).
-
-**Kahn's algorithm** - find vertices without incoming edges,
-remove them from graph, repeat until: all nodes checked or there only nodes with incoming edges (cycle).
-Use it to check whether graph is DAG.
-
-* Tarjan's Algorithm.
