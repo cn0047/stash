@@ -100,6 +100,8 @@ Weight Gross - with pack, Weight Net - without pack.
 
 Interviewer - who asks questions, Interviewee - candidate.
 
+For task success: determine DOD & timelines (better story points).
+
 Full stack:
 * Presentation layer (html, css, js).
 * Business layer (go, php, node, etc).
