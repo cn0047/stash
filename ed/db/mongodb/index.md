@@ -30,7 +30,7 @@ db.collection.getIndexes();
 db.system.indexes.find();
 // Each index requires at least 8KB of data space.
 db.inventory.find({ type: 'aston' });
-db.inventory.ensureIndex( { type: 1 })
+db.inventory.ensureIndex( { type: 1 });
 // index uses
 db.inventory.find({ type: "food", item:/^c/ }, { item: 1, _id: 0 })
 // index not uses, bacause query returns _id field
