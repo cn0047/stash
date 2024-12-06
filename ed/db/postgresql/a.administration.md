@@ -43,7 +43,7 @@ pg_trgm # Trigram (Trigraph) module
 
 \set PROMPT2 '    '
 
-# show databases
+# list databases
 \l
 # use db
 \c db

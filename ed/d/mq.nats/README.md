@@ -2,52 +2,115 @@ NATS
 -
 
 [docs](https://docs.nats.io/)
+[REPL](https://github.com/nats-io/natscli)
 
 NATS - high performance message system and connective fabric.
 
-NATS Core.
-JetStream.
+Core NATS:
+* Publish-Subscribe (fan-out, one-to-many communication).
+* Request-Reply.
+* Queue Groups (fan-out + queue group - only one randomly chosen subscriber of the queue group will consume message).
 
-Service.
-Stream.
+Multi-Tenancy:
+* JetStream accounts - use accounts to logically isolate different groups of users.
+* Subject isolation - topics in one account are isolated from another.
+* Resource management - each account can have own quotas.
+* Authentication and authorization.
+
+JetStream - streaming and persistence layer.
+Stream - message store, which defines how messages are stored and limits (duration, size, interest).
+Stream consumes normal NATS subject, any message published on subjects will be captured in the defined storage system.
+Consumer - stateful view of a stream.
+With message persistence + acknowledgment mechanisms, JetStream ensures messages are delivered at least once.
+Durable consumer persists state, so it can resume processing even after restart.
+Storage options: file-based, memory-based.
+Headers - used for: de-duplication, auto-purging, metadata from republished messages, etc.
 
 Leaf Node extends existing NATS system, optionally bridging both operator and security domains.
 Leaf Node transparently routes messages from local clients to one or more remote NATS system(s) and vice versa.
+
+Subjects:
+
+````sh
+time.us.east
+time.us.east.atlanta
+time.eu.east
+time.eu.east.warsaw
+
+time.*.east    # ok for: time.us.east, time.eu.east
+time.us.*      # ok for: time.us.east
+time.New*.east # no substring match
+time.us.>      # ok for: time.us.east, time.us.east.atlanta
+*.*.east.>     # ok for: time.us.east.atlanta
+````
 
 ````sh
 # server
 
 nats server run
 nats server run --jetstream
+
+nats server list
+nats server info
+nats server ping
+nats server check connection
 ````
 
 ````sh
 # client
 
-nats context add localTest --description 'localTest'
-nats context add localTest --server localhost:4222 --description 'localTest'
-nats context ls
-nats context select localTest
+h=localhost
+p=53341
+u=local
+pas=''
 
-nats reply hello.bob "Hi"
-nats req hello.bob ""
+nats --server $h:$p context add localTest --description 'localTest'
+nats --server $h:$p context ls
+nats --server $h:$p context select localTest
 
-nats sub hello.world
-nats sub hello.*.any
-nats sub hello.>
-nats sub >           # all
-nats pub hello.world "Hey"
+# key/value
+nats --server $h:$p --user $u --password $pas kv add myBucket
+nats --server $h:$p --user $u --password $pas kv put myBucket foo bar
+nats --server $h:$p --user $u --password $pas kv get myBucket foo
 
-nats stream ls -a
-nats stream add
+# request/reply
+# reply
+nats --server $h:$p --user $u --password $pas reply reqReply.test.1 "Hello"
+# request
+nats --server $h:$p --user $u --password $pas req reqReply.test.1 "Hi"
 
-nats consumer ls
-nats consumer create
-nats consumer info
-nats consumer next orders pull_consumer
+# pub/sub
+# subscribe
+nats --server $h:$p --user $u --password $pas sub 'pubSub.test.simple'
+nats --server $h:$p --user $u --password $pas sub 'pubSub.*.simple'
+nats --server $h:$p --user $u --password $pas sub 'pubSub.*.*'
+nats --server $h:$p --user $u --password $pas sub '*.test.>'
+nats --server $h:$p --user $u --password $pas sub '>' # all
+# publish
+nats --server $h:$p --user $u --password $pas pub 'pubSub.test.simple' "ping 1"
+nats --server $h:$p --user $u --password $pas pub 'pubSub.test.simple' "ping 2"
+nats --server $h:$p --user $u --password $pas pub 'pubSub.test.simple' "ping 3"
 
-nats kv add mybucket
-nats kv put mybucket foo bar
+# jetstream
+s=one # stream name
+sbj='jetStream.test.simple'
+nats --server $h:$p --user $u --password $pas stream ls -a
+nats --server $h:$p --user $u --password $pas stream add # interactive mode
+nats --server $h:$p --user $u --password $pas stream info
+nats --server $h:$p --user $u --password $pas stream report
+nats --server $h:$p --user $u --password $pas stream rm
+nats --server $h:$p --user $u --password $pas stream purge
+# consumer
+c=c1 # consumer name
+nats --server $h:$p --user $u --password $pas consumer ls
+nats --server $h:$p --user $u --password $pas consumer create # interactive mode
+nats --server $h:$p --user $u --password $pas consumer info
+nats --server $h:$p --user $u --password $pas consumer rm
+# publish
+nats --server $h:$p --user $u --password $pas pub $sbj "test 1"
+nats --server $h:$p --user $u --password $pas pub $sbj "test 2"
+nats --server $h:$p --user $u --password $pas pub $sbj "test 3"
+# consume
+nats --server $h:$p --user $u --password $pas consumer sub # interactive mode
+nats --server $h:$p --user $u --password $pas consumer next $s $c --no-ack
 ````
-
-https://github.com/nats-io/natscli
