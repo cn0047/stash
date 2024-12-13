@@ -92,7 +92,7 @@ nats --server $h:$p --user $u --password $pas pub 'pubSub.test.simple' "ping 2"
 nats --server $h:$p --user $u --password $pas pub 'pubSub.test.simple' "ping 3"
 
 # jetstream
-s=one # stream name
+s=s1 # stream name
 sbj='jetStream.test.simple'
 nats --server $h:$p --user $u --password $pas stream ls -a
 nats --server $h:$p --user $u --password $pas stream add # interactive mode
@@ -100,6 +100,10 @@ nats --server $h:$p --user $u --password $pas stream info
 nats --server $h:$p --user $u --password $pas stream report
 nats --server $h:$p --user $u --password $pas stream rm
 nats --server $h:$p --user $u --password $pas stream purge
+
+# if create new stream for subject used in other stream:
+# nats: error: could not create Stream: subjects overlap with an existing stream (10065)
+
 # consumer
 c=c1 # consumer name
 nats --server $h:$p --user $u --password $pas consumer ls
@@ -113,4 +117,6 @@ nats --server $h:$p --user $u --password $pas pub $sbj "test 3"
 # consume
 nats --server $h:$p --user $u --password $pas consumer sub # interactive mode
 nats --server $h:$p --user $u --password $pas consumer next $s $c --no-ack
+
+# if create new consumer for subject used in other consumer: ok, no error.
 ````

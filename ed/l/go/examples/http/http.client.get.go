@@ -2,16 +2,18 @@ package main
 
 import (
 	"bytes"
+	"encoding/json"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"net/http"
+	"net/url"
 )
 
 func main() {
 	// one()
 	//readBodyTwiceWithTeeReader()
-	readBodyTwiceWithNewReader()
+	// readBodyTwiceWithNewReader()
+	simpleGetJSON()
 	return
 
 	go two()
@@ -62,6 +64,37 @@ func one() {
 	defer resp.Body.Close()
 
 	fmt.Printf("Resp: %+v", resp.Body)
+}
+
+func simpleGetJSON() {
+	q := url.Values{}
+	q.Set("status", "test")
+
+	req, err := http.NewRequest("GET", "http://localhost:8080/get?"+q.Encode(), nil)
+	if err != nil {
+		panic(fmt.Errorf("failed to create request, err: %w", err))
+	}
+	req.Header.Set("User-Agent", "Test Go Services")
+	req.Header.Set("Content-Type", "application/json")
+
+	client := &http.Client{}
+	res, err := client.Do(req)
+	if err != nil {
+		panic(fmt.Errorf("failed to execute request, err: %w", err))
+	}
+	defer res.Body.Close()
+
+	resData, err := io.ReadAll(res.Body)
+	if err != nil {
+		panic(fmt.Errorf("failed to read response, err: %w", err))
+	}
+	var response interface{}
+	err = json.Unmarshal(resData, &response)
+	if err != nil {
+		panic(fmt.Errorf("failed to unmarshal response, err: %w", err))
+	}
+
+	fmt.Printf("Resp: %+v \n", response)
 }
 
 func he(err error) {
