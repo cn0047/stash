@@ -95,6 +95,7 @@ echo 1 || : # echo 1 or do nothing
 timedatectl status | grep "Time zone"
 colordiff -u file1 file2
 colordiff -y file1 file2
+colordiff --side-by-side --suppress-common-lines file1 file2
 
 # Soft link - is an actual link to the original file.
 # Hard link - is a mirror copy of the original file.
