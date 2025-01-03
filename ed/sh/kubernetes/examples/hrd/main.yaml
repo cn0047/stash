@@ -1,0 +1,45 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: hrd-deployment
+  labels:
+    app: hrd
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: hrd
+  template:
+    metadata:
+      labels:
+        app: hrd
+    spec:
+      containers:
+      - name: hrd-container
+        image: ghcr.io/thepkg/hrd:v1.1.2
+        ports:
+        - containerPort: 8080
+        env:
+        - name: APP_ENV
+          value: "local"
+        - name: TEST_LABEL
+          value: "xtest"
+        - name: APP_ORCHESTRATOR
+          value: "k8s"
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: hrd-service
+  labels:
+    app: hrd
+spec:
+  type: LoadBalancer
+  selector:
+    app: hrd
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080

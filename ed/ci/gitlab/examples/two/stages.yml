@@ -1,0 +1,6 @@
+stages:
+  - test
+  - push-image
+
+default:
+  tags: [example-two-runner]

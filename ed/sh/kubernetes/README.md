@@ -16,20 +16,20 @@ open https://github.com/kubernetes/minikube/blob/master/docs/drivers.md#hyperkit
 
 Kubernetes - orchestrator for microservice apps (containers) (desired state management tool).
 <br>k8s has three namespaces by default: default, kube-system, kube-public.
-<br>Minikube - tool to use k8s for local env.
+<br>Minikube - tool to use k8s on local env.
 
 Advantages:
-* scalable (nodes).
-* horizontal scaling (pods).
-* has self-healing.
-* highly-available.
-* automated rollbacks.
-* it's portable (gcp, aws, etc.).
+* Scalable (nodes).
+* Horizontal scaling (pods).
+* Has self-healing.
+* Highly-available.
+* Automated rollbacks.
+* It's portable (gcp, aws, etc.).
 
 Drawbacks:
-* complexity.
-* upfront cost is high.
-* cost (it may be overkill for small orgs).
+* Complexity.
+* Upfront cost is high.
+* Cost (it may be overkill for small orgs).
 
 Manifest file - describe desired state.
 Operator - software extensions that make use of custom resources.
@@ -73,8 +73,7 @@ necessary to run pods and is managed by the master components.
 
 #### Pod
 
-Pod - (like container in docker)
-the smallest deployable unit in k8s,
+Pod - (like container in docker) the smallest deployable unit in k8s,
 description of a set of container(s) that need to run together.
 It can contain one or more containers.
 Most of the time, we just need one container per pod.
@@ -200,13 +199,15 @@ spec:
 
 ````bash
 minikube version
-minikube delete; rm -rf ~/.minikube
+minikube delete; rm -rf ~/.minikube # deletes local k8s cluster
 minikube status
 minikube addons enable ingress
 minikube ip
 # xhyve|hyperkit
-minikube start --vm-driver=hyperkit
+minikube start --vm-driver=hyperkit # won't work on ARM
 minikube start --vm-driver=hyperkit --mount --mount-string="$HOME/web/kovpak/gh:/gh"
+minikube start --driver=docker
+minikube start --driver=docker --mount --mount-string="$HOME/web/kovpak/gh:/gh"
 # minikube start --vm-driver=hyperkit --mount --mount-string="$HOME/web/kovpak/gh/.data/.k8s/mysql:/var/lib/mysql"
 minikube stop
 minikube dashboard

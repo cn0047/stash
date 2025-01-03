@@ -1,0 +1,19 @@
+push-image:
+  interruptible: true
+  image: git-rep.priv.com/boost/base-image/ci-base-image:v1.5.0
+  stage: push-image
+  services:
+    - name: public.ecr.aws/docker/library/docker:26.0.2-dind
+      alias: docker
+  only:
+    - main
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker load -i image-$CI_PROJECT_NAME-$CI_PIPELINE_IID.tar
+    - docker tag tmpimage:$CI_PIPELINE_IID $CONTAINER_IMAGE
+    - docker push $CONTAINER_IMAGE
+  dependencies:
+    - docker-build
+  variables:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_TLS_CERTDIR: ""

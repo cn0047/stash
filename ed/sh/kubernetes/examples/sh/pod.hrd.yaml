@@ -1,0 +1,23 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: ksh-hrd-pod
+  labels:
+    app: ksh-hrd
+spec:
+  containers:
+  - name: ksh-hrd-pod-1
+    image: ghcr.io/thepkg/hrd:v1.1.2
+    env:
+    - name: APP_ENV
+      value: "local"
+    - name: TEST_LABEL
+      value: "xtest"
+    volumeMounts:
+    - mountPath: /gh
+      name: xvol
+  volumes:
+  - name: xvol
+    hostPath:
+      path: /gh
+      type: DirectoryOrCreate

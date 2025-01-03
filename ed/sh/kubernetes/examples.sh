@@ -25,6 +25,13 @@ kubectl logs -f ksh-pod klog-pod
 kubectl logs -f ksh-pod klog-pod-2
 kubectl exec -it ksh-pod /bin/bash
 kubectl delete pod ksh-pod
+# pod-hrd
+kubectl apply --force=true -f ed/sh/kubernetes/examples/sh/pod.hrd.yaml
+kubectl logs -f ksh-hrd-pod ksh-hrd-pod-1
+kubectl describe pod ksh-hrd-pod
+kubectl port-forward ksh-hrd-pod 8181:8080
+curl 'http://localhost:8181'
+kubectl delete pod ksh-hrd-pod
 # rc
 kubectl apply --force=true -f ed/sh/kubernetes/examples/sh/rc.yaml
 kubectl describe rc ksh-rc
@@ -34,6 +41,15 @@ kubectl apply --force=true -f ed/sh/kubernetes/examples/sh/depl.yaml
 kubectl describe deployment ksh-depl
 kubectl rollout status deployment ksh-depl
 kubectl delete deployment ksh-depl
+
+# hrd svc+depl example
+kubectl apply --force=true -f ed/sh/kubernetes/examples/hrd/main.yaml
+kubectl describe deployment hrd-deployment
+kubectl describe svc hrd-service
+minikube service hrd-service --url
+kubectl set image deployment hrd-deployment hrd-container=ghcr.io/thepkg/hrd:v1.1.5
+kubectl delete deployment hrd-deployment
+kubectl delete svc hrd-service
 
 # log example
 # pod
