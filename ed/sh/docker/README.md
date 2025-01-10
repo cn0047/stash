@@ -66,9 +66,13 @@ docker run -it --rm alpine/bombardier -c 1000 -d 3600s -l https://realtimelog.he
 ````
 
 ````sh
+# on ubuntu
+sudo pkill dockerd
+sudo dockerd
+
 docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
 
-docker pull ubuntu
+docker pull cn007b/pi
 
 # build image from Dokerfile in dir ./examples/mydockerbuild
 # -t - tag

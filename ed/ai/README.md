@@ -13,13 +13,22 @@ between two consecutive frames caused by the movemement of object or camera.
 
 Data mining - process of discovering patterns in large data sets.
 
-Neuro-linguistic programming (NLP).
+Neuro-Linguistic Programming (NLP).
 
 Optimal Brain Damage (OBD).
 
-large language model (LLM) -  ChatGPT, Microsoft Copilot, Gemini, Meta Llama.
+Large Language Model (LLM) -  ChatGPT, Microsoft Copilot, Gemini, Meta Llama.
 
 GPT (Generative Pre-trained Transformer) - autoregressive language model
 that uses DL to produce human-like text.
 
-GenAI - generates new data that mirrors the training set.
+Gen AI - generates new data that mirrors the training set.
+
+Agentic AI - system which can plan, decide and act,
+based on understanding of environment, constraints, and desired outcomes.
+Examples: autonomous vehicles, robotic process automation, game-playing AI, etc.
+Concerns: safety, ethics, control.
+
+Non-Agentic AI (passive AI) - provides outputs or predictions in response to inputs,
+without taking further actions.
+Examples: ML model predicting house prices - just predict without any action.
