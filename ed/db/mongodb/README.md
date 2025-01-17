@@ -36,6 +36,8 @@ use mydb
 
 db = connect("myhost:30002/mydb")
 
+ObjectId() // hexadecimal string: 4-byte timestamp + 5-byte random value + 3-byte incrementing counter.
+
 // insert a document into collection
 // _id not specified - mongo'll generate _id for us
 j = {name : "mongo"}

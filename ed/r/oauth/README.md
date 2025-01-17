@@ -7,6 +7,8 @@ OAuth
 
 OpenID needed to understand who user is.
 
+OIDC - OpenID Connect.
+
 OAuth2 it's about delegated authorization, for example:
 facebook delegates permissions via token to perform certain actions on user's behalf.
 It's simplified version of OAuth.

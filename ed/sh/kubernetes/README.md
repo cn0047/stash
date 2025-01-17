@@ -310,5 +310,7 @@ kubectl run mysql-client --image=mysql:5.7.27 -it --rm --restart=Never -- \
   mysql -h$mysqlHost -P3306 -udbu -pdbp -Dtest -e 'select * from tmp'
 
 kubectl get secrets
-kubectl create secret generic dev-db-secret --from-literal=username=devuser --from-literal=password='S!B\*d$zDsb'
+kubectl create secret generic dev-db-secret --from-literal=username=devuser --from-literal=password=dbpass
+kubectl get secret dev-db-secret -o jsonpath='{.data.username}' | base64 --decode
+kubectl get secret dev-db-secret -o jsonpath='{.data.password}' | base64 --decode
 ````

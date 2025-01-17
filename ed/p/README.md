@@ -18,7 +18,6 @@ MAC       - Media Access Control address.
 CDN       - Content Distribution Network.
 CIDR      - Classless Inter-Domain Routing.
 Cloud DNS - Domain Name System.
-DNS       - Domain Name System.
 ECMP      - Equal-Cost Multi-Path routing.
 FQDN      - Fully Qualified Domain Name.
 IANA      - Internet Assigned Numbers Authority (assigns addresses to RIR's).
@@ -83,16 +82,15 @@ IP masquerading - technique that hides an entire IP address space,
 usually consisting of private IP addresses,
 behind a single IP address in another, usually public address space.
 
-A record - Returns a 32-bit IPv4 address,
+A record - Returns 32-bit IPv4 address,
 most commonly used to map hostnames to an IP address of the host.
 
-CNAME - Canonical Name record.
+AAAA record - Returns IPv6 address.
+
+CNAME - Canonical name record.
 CNAME records must always point to another domain name,
 never directly to an IP address.
-CNAME record creates an alias for a single:
-````
-foo.example.com.  CNAME  bar.example.com.
-````
+CNAME record creates an alias for single: `www.example.com.  CNAME  example.com.`
 
 DNAME record - Delegation Name record.
 Creates an alias for an entire subtree of the domain name tree.
@@ -122,6 +120,22 @@ OSI describes 7 layers that computer systems use to communicate over network.
 1. Physical Layer - transmission and reception of **raw bit streams** over a physical medium.
 
 ## DNS
+
+Domain name - the human-readable address to access websites on the internet.
+Domain name formed by the rules and procedures of the DNS.
+Subdomain - prefix added before the main domain and separated by dot.
+
+For `www.example.com`: `www` - subdomain, `example` - second-level domain, `.com` - top-level domain.
+
+DNS (Domain Name System) - fundamental system of internet that translates human-readable domain name into IP address.
+
+DNS records types:
+* A record.
+* AAAA record.
+* CNAME record.
+* MX record (mail servers for email delivery).
+* NS record (authoritative name servers for the domain).
+* TXT Record (provides text-based information for verification or configuration purposes).
 
 TLD - Top Level Domain (.info, .com, .net, .org, ...).
 Authoritative Name Server.
