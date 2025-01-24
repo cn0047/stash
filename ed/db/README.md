@@ -39,6 +39,8 @@ that is treated in coherent and reliable way independent of other transactions
 Referential integrity - constraint on the DB
 that makes certain that each foreign key in table point to unique primary key value in another table.
 
+Databases store data either row-oriented or column-oriented.
+
 ## ACID
 
 <br>Atomicity - all or nothing (an indivisible and irreducible series of database operations).

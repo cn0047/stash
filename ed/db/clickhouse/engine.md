@@ -6,12 +6,12 @@ Engine
 MergeTree - supports data replication, partitioning, secondary data-skipping indexes, and more.
 
 Engines in the family:
-* MergeTree.
-* ReplacingMergeTree.
-* SummingMergeTree.
-* AggregatingMergeTree.
-* CollapsingMergeTree.
-* VersionedCollapsingMergeTree.
+* MergeTree - for high data ingest rates and huge data volumes.
+* ReplacingMergeTree - differs from MergeTree in that it removes duplicate entries with same sorting key.
+* SummingMergeTree - replaces rows with same primary key (or sorting key) with one row which contains summarized values.
+* AggregatingMergeTree - replaces rows with same primary key (or sorting key) with one row which contains combination of states of aggregate functions.
+* CollapsingMergeTree - inherits from MergeTree and adds logic for collapsing rows during the merge process.
+* VersionedCollapsingMergeTree - same as CollapsingMergeTree but uses different collapsing algorithm.
 * GraphiteMergeTree.
 
 #### Log

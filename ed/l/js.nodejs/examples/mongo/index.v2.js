@@ -1,3 +1,5 @@
+// "dependencies": {"mongodb": "^2.2.28"}
+
 let mongodb = require('mongodb');
 
 mongodb.MongoClient.connect('mongodb://dbu:dbp@xmongo:27017/test', function (err, db) {

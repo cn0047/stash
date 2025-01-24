@@ -5,6 +5,6 @@
   "description": "204",
   "private": false,
   "dependencies": {
-    "mongodb": "^2.2.28"
+    "mongodb": "^6.12.0"
   }
 }
