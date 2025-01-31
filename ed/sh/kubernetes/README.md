@@ -38,6 +38,10 @@ Cluster - control plane plus set of worker machines (nodes), that run containeri
 
 Cluster limitations: max 110 pods per node, 5000 nodes, 150K pods in total, 300K containers in total.
 
+Affinity - way to control how pods are scheduled onto nodes based on rules and conditions.
+* Node Affinity (assign pods to specific nodes).
+* Pod Affinity and Anti-Affinity (rules about how pods are scheduled relative to each other (keep pods together/apart)).
+
 ## Master (Control plane)
 
 Control plane - set of components that manage and control the overall system.

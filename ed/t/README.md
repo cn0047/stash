@@ -11,51 +11,52 @@ Theory
 ````
 
 <br>ACL     - Access Control Lists.
-<br>API     - Application programming interface.
+<br>API     - Application Programming Interface.
 <br>ATAM    - Architecture Tradeoff Analysis Method.
 <br>B2B     - Business to Business.
-<br>BAAS    - Back-end as a service.
+<br>BAAS    - Back-end As A Service.
 <br>BLOB    - Binary Large Object.
 <br>BRD     - Business Requirement Documents.
-<br>CRM     - Customer relationship management.
-<br>DRY     - Don't repeat yourself.
+<br>CRM     - Customer Relationship Management.
+<br>DRY     - Don't Repeat Yourself.
 <br>ERP     - Enterprise Resource Planning.
 <br>ETL     - Extract, Transform, Load.
 <br>GMT     - Greenwich Mean Time.
 <br>GTIN    - Global Trade Item Number.
-<br>GUI     - Graphical user interface.
+<br>GUI     - Graphical User interface.
 <br>GUID    - Globally Unique Identifier.
 <br>IDL     - Interface Definition Language.
-<br>IPC     - Inter-process communication (processes manage shared data).
-<br>JIT     - Just-in-time compilation.
-<br>KISS    - Keep it simple, stupid (noted in 1960).
+<br>IPC     - Inter-Process Communication.
+<br>JIT     - Just-In-Time compilation.
+<br>KISS    - Keep It Simple, Stupid (noted in 1960).
 <br>MPN     - Manufacturer Part Number.
-<br>NDA     - Non-disclosure agreement.
-<br>ODM     - Object-document mapping.
+<br>NDA     - Non-Disclosure agreement.
+<br>ODM     - Object-Document mapping.
+<br>OKR     - Objectives and Key Results.
 <br>RAID    - Redundant Array of Inexpensive Disks.
-<br>RBAC    - Role-based access control.
+<br>RBAC    - Role-Based Access Control.
 <br>REPL    - Read–Eval–Print Loop (interactive toplevel or language shell).
-<br>RFC     - Request for Comments.
+<br>RFC     - Request For Comments.
 <br>RMI     - Remote Method Invocation.
-<br>RnD     - Research and development.
-<br>ROI     - Return on investment.
+<br>RnD     - Research and Development.
+<br>ROI     - Return On Investment.
 <br>RSS     - Rich Site Summary or Really Simple Syndication.
-<br>RTB     - Real-time bidding.
-<br>RTC     - Real-time communication.
-<br>SaaS    - [Software as a service](https://raw.githubusercontent.com/cn007b/my/master/ed/t/i/cloudComputingTypes.jpeg).
+<br>RTB     - Real-Time Bidding.
+<br>RTC     - Real-Time Communication.
+<br>SAAS    - [Software As A Service](https://gist.githubusercontent.com/cn0047/384d6938ebef985347b29c15476b55c5/raw/15dc50eb538328b8352e09c2caebc852533da2b2/cloudComputingTypes.jpeg).
 <br>SAML    - Security Assertion Markup Language (used in SSO).
-<br>SDK     - Software development kit.
-<br>SKU     - Stock keeping unit (unique identifier (bar code) used in retail and manufacturing to keep track of inventory).
+<br>SDK     - Software Development Kit.
+<br>SKU     - Stock Keeping Unit (unique identifier (bar code) used in retail and manufacturing to keep track of inventory).
 <br>SSO     - Single-Sign-On.
 <br>UPC     - Universal Product Code.
 <br>UPI     - Unique Product Identifier.
 <br>UTC     - Coordinated Universal Time.
 <br>UUID    - Universally Unique Identifier.
-<br>VOIP    - Voice over Internet Protocol.
-<br>WORA    - Write once, run anywhere.
+<br>VOIP    - Voice Over Internet Protocol.
+<br>WORA    - Write Once, Run Anywhere.
 <br>WSDL    - Web Service Definition Language.
-<br>WYSIWYG - What you see is what you get.
-<br>YAGNI   - You ain't gonna need it.
+<br>WYSIWYG - What You See Is What You Get.
+<br>YAGNI   - You Ain't Gonna Need It.
 
 Scraping - programmatically get web page, extract very specific data.
 Crawling - programmatically get web page, extract hyperlinks and follow them.
