@@ -42,6 +42,9 @@ Affinity - way to control how pods are scheduled onto nodes based on rules and c
 * Node Affinity (assign pods to specific nodes).
 * Pod Affinity and Anti-Affinity (rules about how pods are scheduled relative to each other (keep pods together/apart)).
 
+**CoreDNS** - used for internal service discovery,
+it automatically assigns DNS name to each service in format: `<svc-name>.<namespace>.svc.cluster.local`.
+
 ## Master (Control plane)
 
 Control plane - set of components that manage and control the overall system.
@@ -186,6 +189,7 @@ readinessProbe:
 spec:
   containers:
   - name: x
+    image: cn007b/alpine
     resources:
       limits:
         memory: "128Mi"
@@ -197,6 +201,35 @@ spec:
       command:
         - cat
         - /tmp/health
+    env:
+      - name: POD_IP
+        valueFrom:
+          fieldRef:
+            fieldPath: status.podIP
+            # also available:
+            # spec.nodeName
+            # status.hostIP
+            # status.podIP
+            # metadata.name
+            # metadata.namespace
+            # spec.serviceAccountName
+            # metadata.uid
+            # metadata.labels['key']
+            # metadata.annotations['key']
+      - name: MEMORY_LIMIT
+        valueFrom:
+          resourceFieldRef:
+            containerName: random-generator
+            resource: limits.memory
+            # also available:
+            # requests.cpu
+            # limits.cpu
+            # requests.memory
+            # limits.memory
+            # requests.hugepages-<size>
+            # limits.hugepages-<size>
+            # requests.ephemeral-storage
+            # limits.ephemeral-storage
 ````
 
 ## sh

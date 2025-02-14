@@ -13,7 +13,31 @@ Behavioral Patterns:
 * Periodic job (kind: CronJob).
 * Daemon service (kind: DaemonSet).
 * Singleton service (kind: PodDisruptionBudget).
-* Stateless service (offload the state to some other stateful system or data store).
-* Stateful service.
-* Service discovery.
-* Self awareness.
+* Stateless service (example: nginx, authentication microservice, etc.).
+* Stateful service (example: mysql, rabbitmq, etc.).
+* Service discovery (CoreDNS).
+* Self awareness (fieldRef.fieldPath, resourceFieldRef.resource).
+
+Structural Patterns:
+* Init container.
+* Sidecar.
+* Adapter.
+* Ambassador.
+
+Configuration Patterns:
+* EnvVar configuration.
+* Configuration resource.
+* Immutable configuration.
+* Configuration template.
+
+Security Patterns:
+* Process containment.
+* Network segmentation.
+* Secure configuration.
+* Access control.
+
+Advanced Patterns:
+* Controller.
+* Operator.
+* Elastic scale.
+* Image builder.

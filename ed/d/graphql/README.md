@@ -4,8 +4,9 @@ GraphQL
 [docs](http://graphql.org/code/#javascript)
 [graphiql](https://graphql.github.io/swapi-graphql/)
 [playground](https://www.graphqlbin.com/v2/6RQ6TM)
+[graphql to json](https://datafetcher.com/graphql-json-body-converter)
 
-GraphQL is Language and Runtime.
+GraphQL - Language and Runtime.
 
 Language:
 * field.
