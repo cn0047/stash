@@ -400,6 +400,9 @@ Go  ⇒ struct ⇒ object   ⇒ field
 **pointer**
 [Pointers make stack allocation mostly infeasible](https://segment.com/blog/allocation-efficiency-in-high-performance-go-services/).
 
+**weak pointer** prevents reference cycles, it allow to reference an object without increasing its reference count,
+so object can be garbage collected when no strong references remain.
+
 **sentinel error** - custom error value
 (standard library: sql.ErrNoRows, io.EOF, etc).
 [wrap error tool](github.com/pkg/errors)
