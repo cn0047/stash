@@ -19,14 +19,14 @@ Behavioral Patterns:
 * Self awareness (fieldRef.fieldPath, resourceFieldRef.resource).
 
 Structural Patterns:
-* Init container.
-* Sidecar.
-* Adapter.
-* Ambassador.
+* Init container (init container executed first, if it finished successfully then executed application container).
+* Sidecar (helper container that runs alongside: logging, monitoring, service mesh, configuration management, etc.).
+* Adapter (sidecar which helps with incompatible interface of main container).
+* Ambassador (sidecar, which is like smart proxy to the outside world).
 
 Configuration Patterns:
-* EnvVar configuration.
-* Configuration resource.
+* EnvVar configuration (env, valueFrom.configMapKeyRef, valueFrom.secretKeyRef).
+* Configuration resource (kind: ConfigMap; envFrom.configMapRef, configMap).
 * Immutable configuration.
 * Configuration template.
 

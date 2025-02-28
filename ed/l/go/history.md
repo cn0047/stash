@@ -3,6 +3,14 @@ History of Go
 
 [release notes](https://golang.org/doc/go1.13)
 
+#### go1.24
+
+* Generic type aliases.
+
+#### go1.23
+
+#### go1.22
+
 #### go1.21
 
 New packages added to standard library: slices, maps, cmp.
