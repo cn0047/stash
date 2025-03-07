@@ -5,6 +5,8 @@ VSCode
 
 ````
 code ~/.bash_profile
+
+vim ~/Library/Application\ Support/Code/User/keybindings.json
 ````
 
 ````

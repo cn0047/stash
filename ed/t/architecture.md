@@ -43,5 +43,5 @@ it is impossible to simultaneously guarantee all of the following (pick 2 out of
 * Availability - ability to access cluster even if node goes down (can read & write data).
 * Partition tolerance - cluster continues to function even if communication break between 2 nodes (network partitioning).
 
-CAP means: network partition happens - you have to make decision tolerate failure or not,
+CAP means: when network partition happens - you have to make decision tolerate failure or not,
 so you may have consistent system or available, but not both.

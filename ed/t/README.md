@@ -33,6 +33,7 @@ Theory
 <br>NDA     - Non-Disclosure agreement.
 <br>ODM     - Object-Document mapping.
 <br>OKR     - Objectives and Key Results.
+<br>PaaS    - [Platform As A Service](https://gist.github.com/cn0047/384d6938ebef985347b29c15476b55c5/raw/15dc50eb538328b8352e09c2caebc852533da2b2/cloudComputingTypes.jpeg).
 <br>RAID    - Redundant Array of Inexpensive Disks.
 <br>RBAC    - Role-Based Access Control.
 <br>REPL    - Read–Eval–Print Loop (interactive toplevel or language shell).
@@ -43,7 +44,7 @@ Theory
 <br>RSS     - Rich Site Summary or Really Simple Syndication.
 <br>RTB     - Real-Time Bidding.
 <br>RTC     - Real-Time Communication.
-<br>SAAS    - [Software As A Service](https://gist.githubusercontent.com/cn0047/384d6938ebef985347b29c15476b55c5/raw/15dc50eb538328b8352e09c2caebc852533da2b2/cloudComputingTypes.jpeg).
+<br>SaaS    - [Software As A Service](https://gist.github.com/cn0047/384d6938ebef985347b29c15476b55c5/raw/15dc50eb538328b8352e09c2caebc852533da2b2/cloudComputingTypes.jpeg).
 <br>SAML    - Security Assertion Markup Language (used in SSO).
 <br>SDK     - Software Development Kit.
 <br>SKU     - Stock Keeping Unit (unique identifier (bar code) used in retail and manufacturing to keep track of inventory).

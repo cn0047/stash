@@ -1,7 +1,7 @@
 Messaging patterns
 -
 
-Messaging is a technology that enables
+Messaging - technology that enables
 high-speed, asynchronous, program-to-program communication with reliable delivery.
 
 In essence, a message is transmitted in five steps:
