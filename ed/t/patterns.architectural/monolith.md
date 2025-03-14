@@ -9,7 +9,7 @@ Single process monolith.
 Modular monolith - subset of single process monolith,
 which consists of separate modules.
 
-Distributed Monolith - when microservices tightly bounded,
+Distributed monolith - when microservices tightly bounded,
 and have high complexity of connections within the system.
 
 Some examples of business problems caused by monotilth:

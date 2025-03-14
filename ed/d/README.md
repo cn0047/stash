@@ -14,3 +14,8 @@ for analytics, processing, and data mining tasks,
 without pre-defined schemas.
 
 DataPlane - part of software that processes the data requests.
+
+Types of data models:
+* Conceptual Data Model – High-level, business-focused representation.
+* Logical Data Model – Detailed, structured representation, but DB-agnostic.
+* Physical Data Model – Implementation-specific, schemas, indexes, storage details.

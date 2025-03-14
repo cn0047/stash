@@ -5,6 +5,8 @@ The ideal task size is not bigger than 1 day work.
 
 Two-pizza teams - where no team should be so big that it could not be fed with two pizzas.
 
+WSJF - Weighted Shortest Job First.
+
 Stakeholder - business/company decision-making person/group/organization.
 Shareholder - owner of company's outstanding shares.
 

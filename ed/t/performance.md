@@ -7,6 +7,8 @@ Think upfront what will happen with program if run 2 instances simultaneously.
 
 Resilience - is the ability of a system to adapt or keep working when challenges occur.
 
+Graceful degradation - ability to maintain limited functionality even when large portion of it has been destroyed.
+
 #### Latency 2020
 
 ````

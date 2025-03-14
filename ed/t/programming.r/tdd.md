@@ -105,6 +105,11 @@ They test whole stories at a time against a running version of the application i
 The objective of acceptance tests is to prove that our application does
 what the customer meant it to, not that it works the way its programmers think it should.
 
+## Contract Testing
+
+Contract testing is type of software testing that ensures that two services can communicate
+correctly based on agreed contract.
+
 ## Testing Anti-Patterns
 
 * Paying excessive attention to test coverage

@@ -32,8 +32,8 @@ Configuration Patterns:
 
 Security Patterns:
 * Process containment (securityContext.runAsUser, securityContext.runAsGroup, securityContext.runAsNonRoot).
-* Network segmentation.
-* Secure configuration.
+* Network segmentation (kind: NetworkPolicy, AuthorizationPolicy).
+* Secure configuration (kind: SealedSecret, SecretStore, ExternalSecret, SecretProviderClass).
 * Access control.
 
 Advanced Patterns:

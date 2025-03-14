@@ -138,21 +138,21 @@ Pay attention to:
 * How will you know if the transition is working?
 
 Migration patterns:
-* Strangler fig application (HTTP reverse proxy), [see](https://gist.githubusercontent.com/cn007b/384d6938ebef985347b29c15476b55c5/raw/6bca609ed5dae87c29e867db082cb35db8a84b29/microservices.MigrationPattern.StranglerFigApplication.png).
-* UI composition (page composition, widget composition, micro frontends), [see](https://gist.githubusercontent.com/cn007b/384d6938ebef985347b29c15476b55c5/raw/6bca609ed5dae87c29e867db082cb35db8a84b29/microservices.MigrationPattern.UIComposition.png).
-* Branch by abstraction, [see](https://gist.githubusercontent.com/cn007b/384d6938ebef985347b29c15476b55c5/raw/6bca609ed5dae87c29e867db082cb35db8a84b29/microservices.MigrationPattern.BranchByAbstraction.png).
-* Parallel run (comparing credit derivative pricing), [see](https://gist.githubusercontent.com/cn007b/384d6938ebef985347b29c15476b55c5/raw/6bca609ed5dae87c29e867db082cb35db8a84b29/microservices.MigrationPattern.ParallelRun.png).
-* Decorating collaborator, [see](https://gist.githubusercontent.com/cn007b/384d6938ebef985347b29c15476b55c5/raw/6bca609ed5dae87c29e867db082cb35db8a84b29/microservices.MigrationPattern.DecoratingCollaborator.png).
-* Change data capture, [see](https://gist.githubusercontent.com/cn007b/384d6938ebef985347b29c15476b55c5/raw/6bca609ed5dae87c29e867db082cb35db8a84b29/microservices.MigrationPattern.ChangeDataCapture.png).
+* Strangler fig application (HTTP reverse proxy), [see](https://gist.github.com/cn0047/384d6938ebef985347b29c15476b55c5/raw/6bca609ed5dae87c29e867db082cb35db8a84b29/microservices.MigrationPattern.StranglerFigApplication.png).
+* UI composition (page composition, widget composition, micro frontends), [see](https://gist.github.com/cn0047/384d6938ebef985347b29c15476b55c5/raw/6bca609ed5dae87c29e867db082cb35db8a84b29/microservices.MigrationPattern.UIComposition.png).
+* Branch by abstraction, [see](https://gist.github.com/cn0047/384d6938ebef985347b29c15476b55c5/raw/6bca609ed5dae87c29e867db082cb35db8a84b29/microservices.MigrationPattern.BranchByAbstraction.png).
+* Parallel run (comparing credit derivative pricing), [see](https://gist.github.com/cn0047/384d6938ebef985347b29c15476b55c5/raw/6bca609ed5dae87c29e867db082cb35db8a84b29/microservices.MigrationPattern.ParallelRun.png).
+* Decorating collaborator, [see](https://gist.github.com/cn0047/384d6938ebef985347b29c15476b55c5/raw/6bca609ed5dae87c29e867db082cb35db8a84b29/microservices.MigrationPattern.DecoratingCollaborator.png).
+* Change data capture, [see](https://gist.github.com/cn0047/384d6938ebef985347b29c15476b55c5/raw/6bca609ed5dae87c29e867db082cb35db8a84b29/microservices.MigrationPattern.ChangeDataCapture.png).
 
 Decomposing database:
-* Shared database, [see](https://gist.githubusercontent.com/cn007b/384d6938ebef985347b29c15476b55c5/raw/6bca609ed5dae87c29e867db082cb35db8a84b29/microservices.DecomposingDataBase.SharedDatabase.png).
-* Database view, [see](https://gist.githubusercontent.com/cn007b/384d6938ebef985347b29c15476b55c5/raw/6bca609ed5dae87c29e867db082cb35db8a84b29/microservices.DecomposingDataBase.DatabaseView.png).
-* Database wrapping service, [see](https://gist.githubusercontent.com/cn007b/384d6938ebef985347b29c15476b55c5/raw/6bca609ed5dae87c29e867db082cb35db8a84b29/microservices.DecomposingDataBase.DatabaseWrappingService.png).
-* Aggregate exposing monolith, [see](https://gist.githubusercontent.com/cn007b/384d6938ebef985347b29c15476b55c5/raw/6bca609ed5dae87c29e867db082cb35db8a84b29/microservices.DecomposingDataBase.AggregateExposingMonolith.png).
-* Change data ownership, [see](https://gist.githubusercontent.com/cn007b/384d6938ebef985347b29c15476b55c5/raw/6bca609ed5dae87c29e867db082cb35db8a84b29/microservices.DecomposingDataBase.ChangeDataOwnership.png).
-* Synchronize data in application, [see](https://gist.githubusercontent.com/cn007b/384d6938ebef985347b29c15476b55c5/raw/6bca609ed5dae87c29e867db082cb35db8a84b29/microservices.DecomposingDataBase.SynchronizeDataInApplication.png).
-* Tracer write, [see](https://gist.githubusercontent.com/cn007b/384d6938ebef985347b29c15476b55c5/raw/6bca609ed5dae87c29e867db082cb35db8a84b29/microservices.DecomposingDataBase.TracerWrite.png).
+* Shared database, [see](https://gist.github.com/cn0047/384d6938ebef985347b29c15476b55c5/raw/6bca609ed5dae87c29e867db082cb35db8a84b29/microservices.DecomposingDataBase.SharedDatabase.png).
+* Database view, [see](https://gist.github.com/cn0047/384d6938ebef985347b29c15476b55c5/raw/6bca609ed5dae87c29e867db082cb35db8a84b29/microservices.DecomposingDataBase.DatabaseView.png).
+* Database wrapping service, [see](https://gist.github.com/cn0047/384d6938ebef985347b29c15476b55c5/raw/6bca609ed5dae87c29e867db082cb35db8a84b29/microservices.DecomposingDataBase.DatabaseWrappingService.png).
+* Aggregate exposing monolith, [see](https://gist.github.com/cn0047/384d6938ebef985347b29c15476b55c5/raw/6bca609ed5dae87c29e867db082cb35db8a84b29/microservices.DecomposingDataBase.AggregateExposingMonolith.png).
+* Change data ownership, [see](https://gist.github.com/cn0047/384d6938ebef985347b29c15476b55c5/raw/6bca609ed5dae87c29e867db082cb35db8a84b29/microservices.DecomposingDataBase.ChangeDataOwnership.png).
+* Synchronize data in application, [see](https://gist.github.com/cn0047/384d6938ebef985347b29c15476b55c5/raw/6bca609ed5dae87c29e867db082cb35db8a84b29/microservices.DecomposingDataBase.SynchronizeDataInApplication.png).
+* Tracer write, [see](https://gist.github.com/cn0047/384d6938ebef985347b29c15476b55c5/raw/6bca609ed5dae87c29e867db082cb35db8a84b29/microservices.DecomposingDataBase.TracerWrite.png).
 
 Splitting the database:
 * Split the database first (repository per bounded context, database per bounded context).

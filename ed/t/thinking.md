@@ -9,7 +9,7 @@ Critical thinking:
 * Explore other viewpoints.
 
 Design thinking:
-* Empathize (for who is invention).
+* Empathize (for who invention is).
 * Define.
 * Ideation (brainstorm ideas).
 * Prototype.

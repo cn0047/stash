@@ -12,6 +12,7 @@ java  ed/l/java/examples/whatever/map1.java
 java  ed/l/java/examples/whatever/cryptoAES.java
 java  ed/l/java/examples/whatever/date.java
 java  ed/l/java/examples/whatever/set.java
+java  ed/l/java/examples/whatever/ternary.java
 
 # javac whatever
 cd ed/l/java/examples/whatever

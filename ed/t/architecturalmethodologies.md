@@ -35,17 +35,17 @@ Power (Influence)
 LOW
 
 Requirements:
-* business requirements.
-* stakeholder requirements.
-* transition requirements (migration).
+* Business requirements.
+* Stakeholder requirements.
+* Transition requirements (migration).
 
 Solution requirements:
 * Functional requirements.
 * Non-functional requirements.
 
 Architect Focus:
-* business drivers, goals, objectives;
-* stakeholders, business processes, requirements;
+* Business drivers, goals, objectives;
+* Stakeholders, business processes, requirements;
 
 RAID - Risks, Assumptions, Issues, Dependencies.
 
