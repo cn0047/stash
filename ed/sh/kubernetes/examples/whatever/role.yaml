@@ -1,0 +1,63 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: developer-ro
+  namespace: default
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  - services
+  verbs:
+  - get
+  - list
+  - watch
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: dev-rolebinding
+subjects:
+- kind: User
+  name: alice
+  apiGroup: "rbac.authorization.k8s.io"
+- kind: ServiceAccount
+  name: contractor
+  apiGroup: ""
+roleRef:
+  kind: Role
+  name: developer-ro
+  apiGroup: rbac.authorization.k8s.io
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: view-pod
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: test-sa-crb
+subjects:
+- kind: ServiceAccount
+  name: test-sa
+  namespace: test
+roleRef:
+  kind: ClusterRole
+  name: view-pod
+  apiGroup: rbac.authorization.k8s.io

@@ -41,6 +41,11 @@ Kinds of service method:
 * Bidirectional streaming
   `rpc BidiHello(stream HelloRequest) returns (stream HelloResponse){}`.
 
+Versioning:
+* Version field in proto message.
+* Version in endpoint name.
+* Version in server name.
+
 Basic auth:
 ````go
 "crypto/tls"

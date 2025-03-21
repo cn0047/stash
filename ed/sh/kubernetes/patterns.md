@@ -34,10 +34,10 @@ Security Patterns:
 * Process containment (securityContext.runAsUser, securityContext.runAsGroup, securityContext.runAsNonRoot).
 * Network segmentation (kind: NetworkPolicy, AuthorizationPolicy).
 * Secure configuration (kind: SealedSecret, SecretStore, ExternalSecret, SecretProviderClass).
-* Access control.
+* Access control (kind: ServiceAccount, Secret, Role, ClusterRole).
 
 Advanced Patterns:
-* Controller.
-* Operator.
+* Controller (controller actively monitors and maintains set of k8s resources in desired state, built-in controllers: ReplicaSet, DaemonSet, StatefulSet, Deployment, Service).
+* Operator (operator - controller that uses CRD to encapsulate operational knowledge, kind: CustomResourceDefinition).
 * Elastic scale.
 * Image builder.
