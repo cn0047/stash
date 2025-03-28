@@ -39,5 +39,5 @@ Security Patterns:
 Advanced Patterns:
 * Controller (controller actively monitors and maintains set of k8s resources in desired state, built-in controllers: ReplicaSet, DaemonSet, StatefulSet, Deployment, Service).
 * Operator (operator - controller that uses CRD to encapsulate operational knowledge, kind: CustomResourceDefinition).
-* Elastic scale.
-* Image builder.
+* Elastic scale (kind: HorizontalPodAutoscaler, VerticalPodAutoscaler, ScaledObject).
+* Image builder (kind: BuildConfig (build.openshift.io/v1)).

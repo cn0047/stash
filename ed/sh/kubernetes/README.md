@@ -170,6 +170,7 @@ kind: Service
 kind: ServiceAccount
 kind: StatefulSet
 kind: StorageClass
+kind: ScaledObject               # KEDA - Kubernetes Event-Driven Autoscaling
 ````
 
 ## yaml

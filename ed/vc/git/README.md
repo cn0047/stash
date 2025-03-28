@@ -80,6 +80,7 @@ git commit --amend --date="2024-03-08" --no-edit
 
 git log -2                # last 2 commits
 git log -p                # shows commits & code in commit
+git log -G $pattern       # find by regex pattern
 git log --stat            # statiistic about changes
 git log --no-meges        # log without merges
 git log --follow file.txt # viewing history of deleted files !!!
