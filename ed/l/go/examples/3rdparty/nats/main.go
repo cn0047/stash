@@ -1,4 +1,6 @@
-// @example: go run main.go info s1 ''
+// @example:
+// go run main.go info s1 ''
+// go run main.go consumeFromConsumer 's1' 'jetStream.test.simple' 'c1'
 package main
 
 import (
@@ -11,11 +13,12 @@ import (
 )
 
 const (
-	ServerURL          = "nats://0.0.0.0:53341"
-	UserName           = "local"
-	UserPassword       = ""
-	DefaultStreamName  = "s1"
-	DefaultSubjectName = "jetStream.test.simple"
+	ServerURL           = "nats://0.0.0.0:53341"
+	UserName            = "local"
+	UserPassword        = ""
+	DefaultStreamName   = "s1"
+	DefaultSubjectName  = "jetStream.test.simple"
+	DefaultConsumerName = "c1"
 
 	key = "[v1] "
 )
@@ -28,6 +31,7 @@ func main() {
 	action := os.Args[1]
 	streamName := os.Args[2]
 	subjectName := os.Args[3]
+	consumerName := os.Args[4]
 
 	if streamName == "" {
 		streamName = DefaultStreamName
@@ -35,8 +39,12 @@ func main() {
 	if subjectName == "" {
 		subjectName = DefaultSubjectName
 	}
+	if consumerName == "" {
+		consumerName = DefaultConsumerName
+	}
 
 	c := getConn()
+	defer c.Drain()
 	js := getJetStreamContext(c)
 
 	switch action {
@@ -46,9 +54,12 @@ func main() {
 		publishMany(js, subjectName, key+"hello")
 	case "consume":
 		consume(js, subjectName)
+	case "consumeFromConsumer":
+		consumeFromConsumer(js, streamName, subjectName, consumerName)
 	case "info":
+		printStreamInfo(js, streamName)
 	default:
-		printStreamInfo(js, subjectName)
+		printStreamInfo(js, streamName)
 	}
 
 	fmt.Printf("done\n")
@@ -110,6 +121,20 @@ func consume(js nats.JetStreamContext, subjectName string) {
 		fmt.Printf("got: %v\n", data)
 	})
 	e(err)
+}
+
+func consumeFromConsumer(js nats.JetStreamContext, streamName, subjectName, consumerName string) {
+	sub, err := js.PullSubscribe(subjectName, consumerName, nats.Bind(streamName, consumerName))
+	e(err)
+
+	msgs, err := sub.Fetch(1, nats.MaxWait(5*time.Second))
+	e(err)
+
+	for _, msg := range msgs {
+		fmt.Printf("Received message: %s\n", string(msg.Data))
+		err := msg.Ack()
+		e(err)
+	}
 }
 
 func e(err error) {

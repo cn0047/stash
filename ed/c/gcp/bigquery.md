@@ -1,13 +1,15 @@
 BigQuery
 -
 
-[doc](https://cloud.google.com/bigquery/docs)
+[doc](https://cloud.google.com/bigquery/docs/introduction)
 
 BigQuery - serverless, highly scalable, cost-effective multicloud data warehouse.
 
 ````sql
-select regexp_extract(field, r"^[^\s]+") ua
-from tbl`;
+SELECT regexp_extract(field, r"^[^\s]+") ua
+FROM tbl;
+
+WHERE json_value(json_column, '$.field_name') = 'your_value';
 ````
 
 ````sh

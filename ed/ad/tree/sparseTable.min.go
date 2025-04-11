@@ -6,6 +6,24 @@ import (
 	"math"
 )
 
+func main() {
+	arr := []int{4, 6, 8, 7, 3, 2, 9, 5, 1}
+
+	sparseTable := make([][]int, len(arr))
+	n := int(math.Ceil(math.Log2(float64(len(arr))))) + 1
+	for i := range sparseTable {
+		sparseTable[i] = make([]int, n)
+	}
+	buildSparseTable(arr, sparseTable)
+
+	fmt.Println("Range Minimum Queries (2, 7):", query(2, 7, sparseTable))
+	fmt.Println("Range Minimum Queries (0, 2):", query(0, 2, sparseTable))
+	fmt.Println("Range Minimum Queries (0, 8):", query(0, 8, sparseTable))
+	fmt.Println("Range Minimum Queries (4, 5):", query(4, 5, sparseTable))
+	fmt.Println("Range Minimum Queries (7, 8):", query(7, 8, sparseTable))
+	fmt.Println("Range Minimum Queries (1, 4):", query(1, 4, sparseTable))
+}
+
 func buildSparseTable(arr []int, sparseTable [][]int) {
 	rows := len(arr)
 	cols := len(sparseTable[0])
@@ -40,22 +58,4 @@ func min(a, b int) int {
 		return a
 	}
 	return b
-}
-
-func main() {
-	arr := []int{4, 6, 8, 7, 3, 2, 9, 5, 1}
-
-	sparseTable := make([][]int, len(arr))
-	n := int(math.Ceil(math.Log2(float64(len(arr))))) + 1
-	for i := range sparseTable {
-		sparseTable[i] = make([]int, n)
-	}
-	buildSparseTable(arr, sparseTable)
-
-	fmt.Println("Range Minimum Queries (2, 7):", query(2, 7, sparseTable))
-	fmt.Println("Range Minimum Queries (0, 2):", query(0, 2, sparseTable))
-	fmt.Println("Range Minimum Queries (0, 8):", query(0, 8, sparseTable))
-	fmt.Println("Range Minimum Queries (4, 5):", query(4, 5, sparseTable))
-	fmt.Println("Range Minimum Queries (7, 8):", query(7, 8, sparseTable))
-	fmt.Println("Range Minimum Queries (1, 4):", query(1, 4, sparseTable))
 }
