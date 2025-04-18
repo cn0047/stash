@@ -2,6 +2,7 @@ ITerm2
 -
 
 ````
+Command-Return # ignore
 Command-Option # to select text column
 ````
 
