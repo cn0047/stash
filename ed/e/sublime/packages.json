@@ -1,9 +1,7 @@
 A File Icon
 AlignTab
-Babel
 BracketHighlighter
 Copy Filepath With Line Numbers
-Dockerfile Syntax Highlighting
 Emmet
 FileClose
 Filter Lines
@@ -14,12 +12,9 @@ GoImports
 Gomod
 LinkOpener
 Markdown Extended
-nginx
 Package Control
 Pretty JSON
-Protobuf Syntax Hightlighting
 Quick File Open
-ReactJS
 SimpleMovements
 Status Bar JsonPath
 Sublime Bookmarks
@@ -27,27 +22,28 @@ SublimeLinter
 Super Calculator
 Terraform
 Theme - Soda
-Assembly
 
+// ApacheConf.tmLanguage
+// Assembly
+// Babel
 // Boxy Theme
+// Color Highlighter
+// DocBlockr
+// Dockerfile Syntax Highlighting
 // FavoriteFiles
 // Gofmt
 // Golite
+// JavaScript Completions
+// JsFormat
+// JSX
 // MarkdownHighlighting
+// nginx
+// Phpcs
+// PhpDoc
+// PhpSpec Snippets
+// PHPUnit Completions
+// Protobuf Syntax Hightlighting
+// ReactJS
+// SFTP
 // Theme - Solarized Space
-ApacheConf.tmLanguage
-Babel
-Color Highlighter
-DocBlockr
-JavaScript Completions
-JsFormat
-JSX
-nginx
-Phpcs
-PhpDoc
-PhpSpec Snippets
-PHPUnit Completions
-Protobuf Syntax Hightlighting
-SFTP
-SublimeLinter-jshint
-Xdebug Client
+// Xdebug Client
