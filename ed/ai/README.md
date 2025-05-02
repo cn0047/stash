@@ -24,6 +24,8 @@ that uses DL to produce human-like text.
 
 Gen AI - generates new data that mirrors the training set.
 
+MCP (Model Context Protocol) - standard to streamline & standardize how LLMs interact with external tools, systems, etc.
+
 Agentic AI - system which can plan, decide and act,
 based on understanding of environment, constraints, and desired outcomes.
 Examples: autonomous vehicles, robotic process automation, game-playing AI, etc.

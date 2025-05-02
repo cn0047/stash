@@ -3,6 +3,7 @@ NATS
 
 [docs](https://docs.nats.io/)
 [REPL](https://github.com/nats-io/natscli)
+[leaf node](https://docs.nats.io/running-a-nats-service/configuration/leafnodes)
 
 NATS - high performance message system and connective fabric.
 
@@ -25,9 +26,6 @@ With message persistence + acknowledgment mechanisms, JetStream ensures messages
 Durable consumer persists state, so it can resume processing even after restart.
 Storage options: file-based, memory-based.
 Headers - used for: de-duplication, auto-purging, metadata from republished messages, etc.
-
-Leaf Node extends existing NATS system, optionally bridging both operator and security domains.
-Leaf Node transparently routes messages from local clients to one or more remote NATS system(s) and vice versa.
 
 Subjects:
 
@@ -96,6 +94,7 @@ s=s1 # stream name
 sbj='jetStream.test.simple'
 nats --server $h:$p --user $u --password $pas stream ls -a
 nats --server $h:$p --user $u --password $pas stream add # interactive mode
+nats --server $h:$p --user $u --password $pas stream add --replicas=3
 nats --server $h:$p --user $u --password $pas stream info
 nats --server $h:$p --user $u --password $pas stream report
 nats --server $h:$p --user $u --password $pas stream rm
@@ -119,4 +118,19 @@ nats --server $h:$p --user $u --password $pas consumer sub # interactive mode
 nats --server $h:$p --user $u --password $pas consumer next $s $c --no-ack
 
 # if create new consumer for subject used in other consumer: ok, no error.
+````
+
+## Leaf Nodes
+
+Leaf - special type of server connection that bridges two separate NATS servers or clusters together.
+Leaf Node extends existing NATS system, optionally bridging both operator and security domains.
+Leaf Node transparently routes messages from local clients to one or more remote NATS system(s) and vice versa.
+
+````sh
+# leaf.conf
+leafnodes {
+  remotes = [{url: "nats://<main-server-host>:7422"}]
+}
+
+nats-server -c leaf.conf
 ````

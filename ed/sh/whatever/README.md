@@ -276,6 +276,7 @@ echo 'abc' | tr -d 'b'           # ac
 echo '(x)' | tr '()' '[]'        # result: [x]
 echo "1\n2" | tr -d '\n'         # result: 12
 echo '1\n2' | tr '\n' ' '        # result: 1 2
+echo "1,2" | tr ',' '\n'         # result: 1\n2
 echo 'hello   world' | tr -s ' ' # result: hello world
 tr -d '[:punct:]'                # punctuations: !@#$%^&*()_-+={}[];:'"`/>?.,<~|\
 ````
@@ -705,9 +706,9 @@ AWK was created in the 1970s.
 echo 'one and two' | awk '{print $1}'                     # will print one
 echo 'one,two,three' | awk -F ',' '{print $1"-"$2}'       # csv: one-two
 awk 'BEGIN {print "Hello, world!"}'                       #
-ps aux | awk 'length($0) > 150'                           # Print lines longer than 150 characters
-printf "one\n* two\n" | awk '{print ($1=="*" ? $2 : $1)}' # Print one \n two
-printf "1\n 2\n 3\n" | awk 'ORS=NR?",":"\n"'              # Replace new line with comma
+ps aux | awk 'length($0) > 150'                           # print lines longer than 150 characters
+printf "one\n* two\n" | awk '{print ($1=="*" ? $2 : $1)}' # print one \n two
+printf "1\n 2\n 3\n" | awk 'ORS=NR?",":"\n"'              # replace new line with comma
 printf "1\n2\n3\n" | awk '{print}'                        #
 printf "1\n2\n3\n" | awk '/2/{print}'                     # match pattern
 printf "1\n2\n3\n" | awk '{if($1 ~/3/) print}'            # if
