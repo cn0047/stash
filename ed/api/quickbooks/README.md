@@ -3,6 +3,7 @@ QuickBooks
 
 [dashboard](https://developer.intuit.com/app/developer/dashboard)
 [app keys](https://developer.intuit.com/app/developer/appdetail/test/keys)
+[playground](https://developer.intuit.com/app/developer/playground)
 
 QuickBooks - business accounting soft.
 
@@ -12,6 +13,8 @@ refresh_token x_refresh_token_expires_in 8726109 ≈ 100 days
 ````
 
 ````sh
+# worked on 2021
+
 # consumer_key/client_id; consumer_secret; realm_id
 cId=''
 scrt=''
@@ -56,6 +59,8 @@ jh='Content-Type: application/json'
 
 t=''
 a="Authorization: Bearer $t"
+
+curl -X GET -H $a -H $jha -H $jh "$h/v1/openid_connect/userinfo" | jq
 
 # query
 qr() {

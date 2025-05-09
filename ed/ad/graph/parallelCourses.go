@@ -10,14 +10,14 @@ func main() {
 	n, e, t := 0, [][]int{}, []int{}
 	n, e, t = 3, [][]int{{1, 3}, {2, 3}}, []int{3, 2, 5}                               // 8
 	n, e, t = 5, [][]int{{1, 5}, {2, 5}, {3, 5}, {3, 4}, {4, 5}}, []int{1, 2, 3, 4, 5} // 12
-	r := minimumTime(n, e, t)
+	r := minTime(n, e, t)
 	fmt.Printf("\nres: %v", r)
 }
 
-// minimumTime returns minimum time required to finish all parallel courses.
+// minTime returns minimum time required to finish all parallel courses.
 // Slice edges contains nodes with values starting from 1 (indexation starts from 1, not form 0).
 // Slice time contains value in index 0 for node with value 1 (indexation starts from 0).
-func minimumTime(n int, edges [][]int, time []int) int {
+func minTime(n int, edges [][]int, time []int) int {
 	adjacentNodes := make([][]int, n+1)
 	inDegree := make([]int, n+1)
 	for _, edge := range edges {

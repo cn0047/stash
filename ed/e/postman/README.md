@@ -4,11 +4,7 @@ Postman
 [docs](https://learning.postman.com/docs)
 
 ````sh
-# share
-cp -r /Users/user/Library/Application\ Support/Postman ~/Downloads
-mv /Users/user/Library/Application\ Support/Postman /Users/user/Library/Application\ Support/_Postman
-mv ~/Downloads/Postman /Users/user/Library/Application\ Support/
-rm -rf /Users/user/Library/Application\ Support/_Postman
+ls /Users/$USER/Library/Application\ Support/Postman
 ````
 
 Post-response script:
