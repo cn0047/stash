@@ -3,33 +3,31 @@ Networking
 
 ![tcp vs udp](https://gist.github.com/cn007b/1859adf8ee58818fb19bd4ec2e9ca78f/raw/23279fd5ca4dc9dec2e3e0320dd51101ff835072/tcpAndUdp.jpeg)
 
-````
-BGP       - Border Gateway Protocol.
-CIP       - Common Industrial Protocol (control, safety, synchronization, motion, configuration & information).
-DHCP      - Dynamic Host Configuration Protocol (DHCP server can assign dynamic IP address).
-STUN      - Session Traversal Utilities for NAT, protocol to discover your public address.
-IMAP      - Internet Message Access Protocol.
-SFTP      - SSH (also Secure) File Transfer Protocol.
-LDAP      - Lightweight Directory Access Protocol.
+<br>BGP       - Border Gateway Protocol.
+<br>CIP       - Common Industrial Protocol (control, safety, synchronization, motion, configuration & information).
+<br>DHCP      - Dynamic Host Configuration Protocol (DHCP server can assign dynamic IP address).
+<br>STUN      - Session Traversal Utilities for NAT, protocol to discover your public address.
+<br>IMAP      - Internet Message Access Protocol.
+<br>SFTP      - SSH (also Secure) File Transfer Protocol.
+<br>LDAP      - Lightweight Directory Access Protocol.
 
-ISP       - Internet Service Provider.
-IP        - Internet Protocol asdress.
-MAC       - Media Access Control address.
-CDN       - Content Distribution Network.
-CIDR      - Classless Inter-Domain Routing.
-Cloud DNS - Domain Name System.
-ECMP      - Equal-Cost Multi-Path routing.
-FQDN      - Fully Qualified Domain Name.
-IANA      - Internet Assigned Numbers Authority (assigns addresses to RIR's).
-LAN       - Local Area Network.
-MPLS      - Multiprotocol Label Switching.
-NAT       - Network Address Translation.
-RIR       - Regional Internet Registry (assigns space to ISP's).
-VPC       - Virtual Private Cloud.
-VPN       - Virtual Private Network.
-VPS       - Virtual Private Server.
-WAN       - Wide Area Network.
-````
+<br>ISP       - Internet Service Provider.
+<br>IP        - Internet Protocol asdress.
+<br>MAC       - Media Access Control address.
+<br>CDN       - Content Distribution Network.
+<br>CIDR      - Classless Inter-Domain Routing.
+<br>Cloud DNS - Domain Name System.
+<br>ECMP      - Equal-Cost Multi-Path routing.
+<br>FQDN      - Fully Qualified Domain Name.
+<br>IANA      - Internet Assigned Numbers Authority (assigns addresses to RIR's).
+<br>LAN       - Local Area Network.
+<br>MPLS      - Multiprotocol Label Switching.
+<br>NAT       - Network Address Translation.
+<br>RIR       - Regional Internet Registry (assigns space to ISP's).
+<br>VPC       - Virtual Private Cloud.
+<br>VPN       - Virtual Private Network.
+<br>VPS       - Virtual Private Server.
+<br>WAN       - Wide Area Network.
 
 802     = LAN technologies.
 802.3   = Ethernet.

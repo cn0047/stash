@@ -14,6 +14,8 @@ Security & development compliance:
 * ISO 27001 – Security framework for protecting information.
 * Secure Coding Standards – OWASP Top 10, ensuring software is not vulnerable to attacks.
 
+<br> PII - Personally Identifiable Information.
+
 #### GDPR (General Data Protection Regulation)
 
 GDPR - data privacy law enacted by EU to protect personal data and privacy of individuals.

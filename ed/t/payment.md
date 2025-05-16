@@ -1,7 +1,9 @@
 Payment
 -
 
-PAN - Primary Account Number (payment card number).
+<br>PAN     - Primary Account Number (payment card number).
+<br>PIN     - Personal Identification Number.
+<br>CVV/CV2 - Card Verification Value.
 
 Pre-Authorization - to verify that credit card is valid and has sufficient funds.
 Puts hold on funds for 7-10 days, after which the funds are released back to cardholder,

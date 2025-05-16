@@ -5,7 +5,7 @@ Security tools
 msfconsole
 tcpdump -i eth0 -n udp port 53
 
-ss # tool for sockets
+ss # tool for sockets.
 
 nc -zv 10.0.2.2 22
 nc -zv 78.140.186.238 1-65535
@@ -21,12 +21,14 @@ sudo networksetup -setwebproxy "Wi-Fi" 54.174.16.166 80
 sudo networksetup -setwebproxystate "Wi-Fi" off
 
 ping 8.8.8.8 -c 15
-traceroute http://cn007b.tumblr.com # print the route packets take to network host
+traceroute http://cn007b.tumblr.com # print the route packets take to network host.
 nslookup git.mdm.comodo.od.ua
 host github.com # shows ip by host.
 host -t A github.com
 dig domain
 whois ip
-nmap --script=http-headers www.zii.com # scan ports
+nmap --script=http-headers www.zii.com # scan ports.
 
+
+dirb # tool to scan pages on website.
 ````

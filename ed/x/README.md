@@ -13,10 +13,8 @@ Security
 [security platform](https://www.hackerone.com/)
 [exploits](https://www.exploit-db.com/)
 [exploits](https://github.com/hackerhouse-opensource/exploits)
-
 [php virus](https://www.youtube.com/watch?v=2Ra1CCG8Guo)
 
-dirb - tool to scan pages on website.
 
 ````
 GET / HTTP/1.1
@@ -37,7 +35,8 @@ Sensitive Data Exposure:
 * Leakage of Cookie with Sensitive Data (session ID, `document.cookie='x='+v+';'+exp+': secure';`).
 * Leakage of Sensitive Data via Referer Header.
 
-SSO (single sign-on) - system that allows for a single username & password that grants access to other sites (like okta).
+<br>ISP - Information Security Policy.
+<br>SSO - (single sign-on) system that allows for a single username & password that grants access to other sites (like okta).
 
 Spoof - tricking or deceiving computer systems or other computer users.
 
