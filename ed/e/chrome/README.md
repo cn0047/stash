@@ -15,6 +15,7 @@ chrome://downloads
 chrome://version
 chrome://accessibility
 chrome://inspect
+chrome://policy
 chrome://settings
 chrome://settings/siteData
 chrome://settings/content/notifications
