@@ -3,6 +3,10 @@ History of MongoDB
 
 [info](https://www.mongodb.com/evolved)
 
+#### 8.0
+
+* Performance improvements (bulk writes, horizontal scaling, etc).
+
 #### 7.0
 
 * Performance improvements.
