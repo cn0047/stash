@@ -194,7 +194,13 @@ spec:
     resources:
       limits:
         memory: "128Mi"
-        cpu: "200m"
+        cpu: "200m" # 200 millicores, 0.2 CPU cores, 20% of a single CPU core.
+      limits:
+        cpu: "2"         # no more than 2 CPU cores.
+        memory: "2048Mi" # no more than 2GB memory.
+      requests:
+        cpu: "0.2"       # at least 0.2 CPU cores.
+        memory: "512Mi"  # at least 512MB memory.
     livenessProbe:
       httpGet:
         path: /health

@@ -46,6 +46,8 @@ func main() {
 	capacity, cost, weight := 0.0, []float64{}, []float64{}
 	capacity, cost, weight = 50.0, []float64{60, 100, 120}, []float64{10, 20, 30}                    // 240
 	capacity, cost, weight = 15.0, []float64{10, 5, 15, 7, 6, 18, 3}, []float64{2, 3, 5, 7, 1, 4, 1} //
+	capacity, cost, weight = 50.0, []float64{60, 100}, []float64{10, 20}                             // 160
+	capacity, cost, weight = 100.0, []float64{10, 20, 30}, []float64{5, 10, 15}                      // 60
 
 	fmt.Printf("res: %.2f \n", fractionalKnapsack(cost, weight, capacity))
 }
