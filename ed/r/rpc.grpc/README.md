@@ -4,6 +4,7 @@ gRPC
 [grpc](https://grpc.io/docs)
 [golang](https://grpc.io/docs/languages/go/quickstart/)
 [grpcurl](https://github.com/fullstorydev/grpcurl)
+[status codes](https://github.com/grpc/grpc/blob/master/doc/statuscodes.md)
 
 ````sh
 # golang struct -> protobuf
