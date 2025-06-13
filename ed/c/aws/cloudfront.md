@@ -1,5 +1,7 @@
-CloudFront (CDN)
+CloudFront
 -
+
+CloudFront - CDN.
 
 ````sh
 aws cloudfront list-distributions

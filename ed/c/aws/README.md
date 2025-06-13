@@ -42,9 +42,13 @@ eu-central-1 # EU (Frankfurt)
 
 Bastion host - special-purpose computer on a network specifically designed and configured to withstand attacks.
 
-# AWS Cloud Map
+# Cloud Map
 
-AWS Cloud Map - service discovery.
+CM - service discovery.
+
+# Secrets Manager
+
+SM - manage, retrieve, rotate secrets/keys/credentials/etc.
 
 # Elastic Beanstalk
 

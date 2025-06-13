@@ -1,7 +1,7 @@
 SSM (AWS Systems Manager)
 -
 
-Parameter Store - to store secrets & credentials.
+Parameter Store - to store secrets & credentials (way cheaper than Secrets Manager).
 
 ````sh
 aws ssm put-parameter --overwrite --name='/prj/qa/prm' --type='String' --value='none'
