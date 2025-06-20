@@ -1,6 +1,12 @@
 Security tools
 -
 
+[check dns](https://dnsspy.io/)
+[check site](https://observatory.mozilla.org/) [and](https://securityheaders.com)
+[check headers](https://securityheaders.com)
+[check url](https://www.virustotal.com/)
+[check email](https://haveibeenpwned.com/)
+
 ````sh
 msfconsole
 tcpdump -i eth0 -n udp port 53
