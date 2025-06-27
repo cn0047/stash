@@ -29,10 +29,10 @@ History of MongoDB
 #### 4.0
 
 * Multi-document ACID transactions.
-* MongoDB Charts.
+* MongoDB charts.
 
 #### 3.4.9
 
-* Schema Validation.
+* Schema validation.
 
 #### 2.4.6

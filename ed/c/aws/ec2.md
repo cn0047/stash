@@ -10,6 +10,8 @@ Users (for ssh):
 * ec2-user.
 * ubuntu for AMI with ubuntu.
 
+Graviton - instance powered by ARM-based processor (better price-performance, lower cost, energy efficient).
+
 Launch instance:
 On step 3: At `Advanced Details` in `User data` it is possible to write bash, like:
 ````sh
