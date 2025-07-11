@@ -10,11 +10,15 @@ import (
 func main() {
 	var r interface{}
 
-	r = getMinCoinsCountChange([]int{1, 2, 5}, 11) // 3
+	//r = getMinCoinsCountChange([]int{1, 2, 5}, 11) // 3
 	//r = getMinCoinsCountChange([]int{2}, 3)                    // -1
 	//r = getMinCoinsCountChange([]int{1}, 0)                    // 0
 	//r = getMinCoinsCountChange([]int{1, 2, 5, 10, 25, 50}, 73) // 5
 	//r = getMinCoinsCountChange([]int{1, 2, 5, 10, 25, 50}, 87) // 4
+
+	//r = getNumberOfCombinations([]int{1, 2, 5}, 5) // 4
+	// r = getNumberOfCombinations([]int{2}, 3)   // 0
+	r = getNumberOfCombinations([]int{10}, 10) // 1
 
 	fmt.Printf("result: %+v \n", r)
 }
@@ -50,4 +54,19 @@ func min(a, b int) int {
 	}
 
 	return b
+}
+
+// getNumberOfCombinations returns number of combinations to make up the amount.
+// @see: https://leetcode.com/problems/coin-change-ii
+func getNumberOfCombinations(coins []int, amount int) int {
+	dp := make([]int, amount+1)
+	dp[0] = 1
+
+	for _, coin := range coins {
+		for i := coin; i <= amount; i++ {
+			dp[i] += dp[i-coin]
+		}
+	}
+
+	return dp[amount]
 }

@@ -36,6 +36,10 @@ Scalar Value Types:
 
 `repeated` keyword for arrays.
 
+`enum` keyword for enumerations.
+First enum value must have value zero and should have name `*_UNSPECIFIED` or `*_UNKNOWN`,
+and should have no semantic meaning other than "this value was unspecified".
+
 Protocol Buffers are not designed to handle large messages.
 If you are dealing in messages larger than a megabyte each,
 it may be time to consider an alternate strategy.
