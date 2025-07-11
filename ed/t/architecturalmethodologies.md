@@ -10,6 +10,7 @@ Fitness functions - describe how close an architecture is to achieving an archit
 * Security.
 * Compliance (regulatory, legal or corporate in a specific business or industry).
 * Operability.
+Both architects and developers maintain the fitness functions.
 
 Architect - mix: technology, enterprise architecture, leadership, financial strategy & implementation.
 

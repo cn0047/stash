@@ -63,8 +63,8 @@ const multiply = (n1, n2) => {
 // karatsuba represents algorithm: Karatsuba Multiplication.
 // @see: https://en.wikipedia.org/wiki/Karatsuba_algorithm
 // @see: https://www.geeksforgeeks.org/karatsuba-algorithm-for-fast-multiplication-using-divide-and-conquer-algorithm
+// @TODO: Implement Karatsuba algorithm.
 const karatsuba = (num1, num2) => {
-  // @TODO.
 }
 
 const testAdd = () => {

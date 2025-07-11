@@ -43,11 +43,11 @@ type BarsPointers struct {
 }
 
 type BoolStruct struct {
-	Value bool `json:"value,omitempty`
+	Value bool `json:"value,omitempty"`
 }
 
 type BoolBag struct {
-	Data []BoolStruct `json:"data,omitempty`
+	Data []BoolStruct `json:"data,omitempty"`
 }
 
 func f1() {
