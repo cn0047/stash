@@ -40,8 +40,8 @@ url=$h/$idx/$t
 url=$h/$idx
 
 # Get document by id 1
-curl -XGET $h/$idx/$t/1
-curl -XGET $h/$idx/1
+# curl -XGET $h/$idx/$t/1
+# curl -XGET $h/$idx/1
 curl -XGET $h/$idx/_doc/1
 
 # Multi get v2

@@ -20,6 +20,7 @@ Recursion is bad because it can end up with stack overflow.
 
 Cyclomatic complexity - metric to indicate complexity of program.
 It's number of linearly independent paths through program's source code.
+`CC = E − N + 2`, N - lines of code, E - conditionals count (if statements).
 
 #### Process and Thread
 
