@@ -27,4 +27,3 @@ func main() {
 	} // min=21
 	fmt.Printf("res: %d\n", "")
 }
-4

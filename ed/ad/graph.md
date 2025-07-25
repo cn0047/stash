@@ -44,6 +44,13 @@ Algorithm: 1) select min edge, 2) repeat 2, if edge creates cycle - skip it, rep
 **Dijkstra's Algorithm** - find the shortest paths between nodes in a weighted graph.
 Works only for positive weights.
 
+**Set** - collection of vertices or edges.
+
+**Disjoint set (aka Union-Find)** - group of non-overlapping sets (sets have no element in common).
+Operations:
+Find - to find which set an element belongs to.
+Union - to merge two disjoint sets into a single set.
+
 ## Shortest path
 
 * Bellman-Ford Algorithm.

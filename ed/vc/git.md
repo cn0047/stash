@@ -54,9 +54,17 @@ GIT_SSH_COMMAND='ssh -i ~/.ssh_my_key/id_rsa -o IdentitiesOnly=yes' git clone gi
 git fetch
 
 # pull - incorporates changes from remote repo into the current branch.
+git pull upstream master
 git pull --ff-only
 git pull --rebase
 git pull --no-rebase
+
+# pull recursevelly all subdirectories
+find $(pwd) -type d -name ".git" | while read -r d; do
+  repo="$(dirname "$d")"
+  echo "Updating repo: $repo"
+  cd "$repo"; git pull; cd -
+done
 
 git remote -v                      # shows remote repository
 git remote show remoteRepoName     # shows all about remote repo (remote show origin)
