@@ -19,6 +19,8 @@ Enterprise Architecture:
 * Process (create -> evolve -> change -> manage architecture).
 * Work products (roadmap, org chart, matrices, etc.).
 
+Risk definition: $event due to $cause, which may result in $impact.
+
 Business driver - resource, process or condition that is vital for continued success and growth of business.
 Business goal - high-level statement of intent, direction, or desired end state.
 Business objective - actionable items needed to achieve business goals.
