@@ -30,6 +30,8 @@ UML
 
 <img src="https://github.com/cn007b/my/blob/master/ed/r/uml/img/relationships.2.webp" width="70%" />
 
+<img src="https://github.com/cn007b/my/blob/master/ed/r/uml/img/relationships.3.png" width="70%" />
+
 ### Structural Diagrams:
 
 * Class diagram:
