@@ -96,13 +96,22 @@ Logging, caching, security, and transaction management are examples of cross-cut
 **Low Coupling** is often a sign of a well-structured computer system and a **good** design.
 synonym: lose coupling, antonym: coupling.
 
+Basically, classes are the tightest form of coupling in object-oriented programming.
+
 **Cohesion** describes how related the functions within a single module are.
 <br>
 Classes should have a small number of instance variables.
 In general the more variables a method manipulates the more cohesive that method is to its class.
 A class in which each variable is used by each method is maximally cohesive.
 
-Basically, classes are the tightest form of coupling in object-oriented programming.
+Cohesion types:
+* Functional cohesion
+* Sequential cohesion
+* Communicational cohesion
+* Procedural cohesion
+* Temporal cohesion
+* Logical cohesion
+* Coincidental cohesion
 
 #### Code quality
 
