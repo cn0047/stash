@@ -50,6 +50,9 @@ y   # copy
 j   # join
 gJ  # join without spaces
 
+gg      # go to first line
+shift+g # go to last line
+
 K   # LOOK TO SCREEN
 
 ma  # bookmark a
