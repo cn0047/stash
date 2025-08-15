@@ -4,6 +4,7 @@
 
 **/gcp/sa.json
 
+# terraform
 .terraform*
 terraform.tf*
 
