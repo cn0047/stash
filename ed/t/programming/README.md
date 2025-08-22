@@ -105,13 +105,13 @@ In general the more variables a method manipulates the more cohesive that method
 A class in which each variable is used by each method is maximally cohesive.
 
 Cohesion types:
-* Functional cohesion
-* Sequential cohesion
-* Communicational cohesion
-* Procedural cohesion
-* Temporal cohesion
-* Logical cohesion
-* Coincidental cohesion
+* Functional cohesion.
+* Sequential cohesion.
+* Communicational cohesion.
+* Procedural cohesion.
+* Temporal cohesion.
+* Logical cohesion.
+* Coincidental cohesion.
 
 #### Code quality
 

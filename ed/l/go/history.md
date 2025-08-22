@@ -6,6 +6,7 @@ History of Go
 #### go1.24
 
 * Generic type aliases.
+* Map implementation based on Swiss Tables.
 
 #### go1.23
 

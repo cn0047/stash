@@ -11,6 +11,16 @@ availability = successful requests / total requests
 
 IO throughput - data transfer speed in megabytes per second (MB/s or MBPS).
 
+DORA Metrics (DevOps Research and Assessment):
+1) Deployment frequency (deploy smaller changes faster and often).
+2) Changes lead time (change from very beginning of development - to deploy on prod: dev, qa, deploy).
+3) Change failure rate (ratio deployed times to unsuccessful deployed times).
+  When developer involved in deployment - he can quickly fix issue,
+  and he better understand the impact, and the whole project itself.
+4) Mean time to recovery (time to recover from unhealthy situation).
+
+DORA is not about metrics, it is about developers.
+
 #### SLA/SLO/SLI
 
 Availability:

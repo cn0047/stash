@@ -15,6 +15,11 @@ because some actions may repeat twice:
 * DB incremented value but network response failed.
 * Retry due to timeout, but node processed request it just busy handling spikes.
 
+Think about:
+* Communication: sync, async.
+* Consistency: atomic, eventual.
+* Coordination: orchestration, choreography.
+
 **Gosip broadcast algorithm** - broadcast message only to 3-5 neighbors.
 
 **Fault** - when one component of the system deviating from its spec.
