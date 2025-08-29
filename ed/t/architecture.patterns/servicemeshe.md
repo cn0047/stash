@@ -19,7 +19,7 @@ The idea behind service meshe - is to add sidecar proxy to you microservice to h
 ## Service meshe infrastructure:
 
 Control plane:
-* Authentication.
+* Authentication (zero trust).
 * Routing.
 * Retry.
 * Timeout.

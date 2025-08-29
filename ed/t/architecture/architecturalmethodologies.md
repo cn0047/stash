@@ -79,7 +79,7 @@ Architectural view model:
 * Scenarios - use cases.
 
 Architectural plan:
-1) Introduction and goals (fundamental requirements).
+1) Introduction and goals (fundamental requirements, for how long system will last).
 2) Constraints.
 3) Context and scope (external systems and interfaces).
 4) Solution strategy (core ideas and approaches).
@@ -94,3 +94,37 @@ Architectural plan:
 
 Architectural assessment - structured evaluation of software architecture to determine
 whether it meets intended business goals, quality attributes, and technical requirements.
+* Requirements gathering.
+  * Functional requirements.
+  * Non-functional requirements.
+  * Quality atribute scenarios.
+  * Constraints.
+  * Architectural concerns risks.
+* Design architecture.
+  * Attribute Driven Design.
+  * C4 Architectural development method.
+  * ATAM.
+* Analys.
+  * Proof of concept.
+  * Advanced prototyping.
+  * ATAM Risk analysis.
+
+Architectural assessment template:
+* Introduction.
+* Executive summary.
+* Architectural drivers.
+* Architecture overview.
+* Architecture analysis.
+* Recomendations.
+* Improvement roadmap.
+
+Architectural Decision View - one of the architecture viewpoints (in ISO/IEC/IEEE 42010 or in TOGAF practice)
+that describes the key architectural decisions made during system design.
+* Intent.
+* Context.
+* Representation (visually (decision trees, decision maps) or textually; logical, process, deployment, information).
+* Element catalog (decisions themselves: name, description, etc.).
+* Interface.
+* Behavior.
+* Variability (options and alternatives).
+* Reasoning.

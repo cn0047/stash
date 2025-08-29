@@ -54,6 +54,7 @@ Theory
 <br>UTC     - Coordinated Universal Time.
 <br>UUID    - Universally Unique Identifier.
 <br>VOIP    - Voice Over Internet Protocol.
+<br>WBS     - Work Breakdown Structure.
 <br>WORA    - Write Once, Run Anywhere.
 <br>WSDL    - Web Service Definition Language.
 <br>WYSIWYG - What You See Is What You Get.
