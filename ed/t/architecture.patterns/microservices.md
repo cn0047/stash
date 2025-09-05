@@ -64,6 +64,8 @@ Many of the challenges you’re going to face with microservices get worse with 
 
 In real world app it's *ok* to have **HYBRID-Microservices** architecture.
 
+Microservices - it's when 1 service is down, but system continue to work.
+
 #### Advantages
 
 * Possibility to use different languages.
@@ -135,7 +137,6 @@ When might microservices be a bad idea:
 Pay attention to:
 * Shifting structures.
 * Reorganizing teams.
-* How will you know if the transition is working?
 
 Migration patterns:
 * Strangler fig application (HTTP reverse proxy), [see](https://gist.github.com/cn0047/384d6938ebef985347b29c15476b55c5/raw/6bca609ed5dae87c29e867db082cb35db8a84b29/microservices.MigrationPattern.StranglerFigApplication.png).
@@ -159,7 +160,7 @@ Splitting the database:
 * Split the code first (monolith as data access layer, multischema storage).
 * Split database and code together.
 
-#### Info
+#### More
 
 * Avoid shared database because changes in schema in 1 microservice
 leads to redeploy few microservices.
