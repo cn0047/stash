@@ -201,3 +201,7 @@ doing microservices, you're doing another kind of services but not microservices
 Microservices must be independently deployable.
 
 * Size of a service is mostly unimportant.
+
+* During transition from monolith to microservices pay attention to temporary hybrid state,
+some support for monolith will take place anyway, and microservices will grow/extend/evolve.
+Also monolith and microservices must care about: CAP, fault tolerance and all challenges related to distributed systems.

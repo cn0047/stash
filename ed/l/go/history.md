@@ -1,7 +1,9 @@
 History of Go
 -
 
-[release notes](https://golang.org/doc/go1.13)
+[release notes](https://golang.org/doc/go1.25)
+
+#### go1.25
 
 #### go1.24
 
@@ -14,7 +16,7 @@ History of Go
 
 #### go1.21
 
-New packages added to standard library: slices, maps, cmp.
+* New packages added to standard library: slices, maps, cmp.
 
 #### go1.20
 

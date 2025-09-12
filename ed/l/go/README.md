@@ -138,13 +138,17 @@ golangci-lint run
 gofmt -w $pathToFile
 
 go-callvis ./... # visualize go code
+go-callvis -focus github.com/my/pkg  -ignore gitlab.com/my/pkg -format png -file callvis.png ./...
+
+i='github.com,go.opentelemetry.io,go.uber.org,golang.org,google.golang.org,gopkg.in'
+godepgraph -s -nostdlib -novendor -i $i -p $i cmd/main.go | dot -Tpng -o godepgraph.png
 
 # vulnerability check
 go install golang.org/x/vuln/cmd/govulncheck@latest
 govulncheck ./...
 
 go install golang.org/x/tools/cmd/deadcode@latest
-deadcode -help
+deadcode ./...
 ````
 
 ````golang
