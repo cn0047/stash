@@ -30,6 +30,10 @@ process.exit(); // die;
 console.time('test');
 console.timeEnd('test');
 
+console.error(err.message);
+console.error(err.stack);
+console.trace();
+
 process.on('exit', () => {});
 process.on('uncaughtException', () => {});
 process.stdin.resume();

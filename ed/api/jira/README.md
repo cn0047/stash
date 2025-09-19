@@ -21,3 +21,12 @@ Some content...
 {code:go}
 {code}
 ````
+
+# Confluence
+
+Use "Insert markup" to add table to confluence page:
+````
+|| name || code ||
+| foo | 1 |
+| bar | 2 |
+````
