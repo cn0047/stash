@@ -22,6 +22,7 @@ cat .ssh_my/id_rsa.pub | awk '{print $2}' | base64 -d | md5sum
 locate sshd_config
 
 ssh-add ~/.ssh/id_rsa
+ssh-add -D # delete keys from agent
 vim /etc/ssh/sshd_config
 
 sshfs -o nonempty -p22 root@host:/home/host/www /home/user/web/www

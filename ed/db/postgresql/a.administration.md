@@ -57,6 +57,7 @@ pg_trgm # Trigram (Trigraph) module
 # show functions/procedures
 \df
 \df+ funcName
+\sf+ funcName
 
 # `SHOW CREATE TABLE`
 pg_dump -t tableName --schema-only

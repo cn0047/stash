@@ -89,6 +89,7 @@ GOOS=linux GOARCH=amd64 go build \
   -ldflags="-X github.com/org/repo/pkgName.BuildCommit=$GO_BUILD_COMMIT"
 
 go clean -r                           # clean unneeded files
+go clean -modcache
 go env
 go env GOOS
 go env -json
@@ -602,6 +603,11 @@ over Physical CPUs (called M, or Machine).
 `runtime.GOMAXPROCS(1)` - tell the scheduler to use a single logical processor for program.
 `runtime.GOMAXPROCS` limits number of threads that can execute user-level Go code simultaneously.
 For each P (thread) we have goroutines queue.
+In go 1.25 GOMAXPROCS take into account its container environment by default,
+If Go process is running inside container with CPU limit - GOMAXPROCS will default to the CPU limit,
+if it is less than the core count.
+Container orchestration systems may adjust container CPU limits on the fly,
+so Go 1.25 also periodically check the CPU limit and adjust GOMAXPROCS automatically.
 
 The OS schedules threads to run against processors regardless of the process they belong to.
 FYI: OS thereads expensive to start, stop, utilize.

@@ -3,6 +3,8 @@ ECS (Elastic Container Service)
 
 [fargate pricing](https://aws.amazon.com/fargate/pricing/)
 
+ECS - fully managed container orchestration service.
+
 ````sh
 Clusters > $name > Services > $name > Task definition > $task
 ````

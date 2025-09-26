@@ -11,6 +11,9 @@ Graceful degradation - ability to maintain limited functionality even when large
 
 #### Latency 2020
 
+Latency - time delay between: when request made and when response starts being received.
+Tail latency - slowest requests: P95, P99.
+
 ````
 Access CPU register  - 1 nanosecond
 L1/L2 cache access   - 1-10 nanosecond
