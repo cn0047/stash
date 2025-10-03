@@ -8,6 +8,8 @@ AC BC CB DB
 AD BD CD DC
 
 nPr = n!/(n-r)!
+n - total number of items.
+r - number of items to arrange.
 4P2 = 4!/(4-2)! = 4!/2! = 4*3*2*1/2*1 = 12 ↑
 ```
 
