@@ -272,3 +272,9 @@ The ideal is to be able to adapt quickly to both problems and opportunities.
 (There is an inevitable trade-off between flexibility and control, more of one means less of the other).
 
 Good for small and medium-sized projects.
+
+#### Shape Up
+
+1. Shape - define the problem to be solved and appetite (fixed time-budget).
+2. Bet - bet on which shaped projects will be done (what exactly will be done).
+3. Build - develop project during six-week cycle, and then two-week cooldown period (bugs, tech-debt, docs, etc).
