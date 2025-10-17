@@ -112,6 +112,11 @@ Content-Security-Policy: upgrade-insecure-requests;
 Content-Security-Policy-Report-Only: default-src https:; report-uri /csp-violation-report-endpoint/
 ````
 
+#### Broken Access Control
+
+It allows unauthorized users to perform actions they shouldn't be able to,
+and access data they are not authorized to view.
+
 #### Social Engineer
 
 #### AI

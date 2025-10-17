@@ -62,45 +62,48 @@ alias grep='grep --color=always'
 ````sh
 Option = Alt
 
-Command-Shift-G         # goto file in finder (open input for file path)
+Command-Shift-G         # goto file in finder (open input for file path).
 
 Command-Control-O       # insert mode
 Command-Control-Space   # emoji
 
-Control-Shift-Power     # Lock screen
-Command-Option-Power    # Put MacBook to sleep
-Command-Option-Esc      # Force Quit
+Control-Shift-Power     # lock screen.
+Command-Option-Power    # put MacBook to sleep.
+Command-Option-Esc      # force Quit.
 
-Command-Shift-.         # Show hidden files
-Command-H:              # Hide
-Command-M:              # Minimize
-Command-Option-W:       # Close all windows at once
+Fn-Control-L            # resize to left 1/2 of screen.
+Fn-Control-R            # resize to right 1/2 of screen.
 
-Option-Del              # Del word
-Control-K               # Del row
-Command-Del             # Del to home
-Control-O               # Insert a new line after
+Command-Shift-.         # show hidden files.
+Command-H:              # hide.
+Command-M:              # minimize.
+Command-Option-W:       # close all windows at once.
 
-Fn–U|D                  # Move page U/D
-Fn–L|R                  # Scroll B/E document.
-Command–U|D             # Move B/en document.
-Command–L|R             # Move B/E current line.
-Option–L|R              # Move B/E previous word.
+Option-Del              # del word.
+Control-K               # del row.
+Command-Del             # del to home.
+Control-O               # insert a new line after.
 
-Shift–Option–U|D|L|R    # Extended text selection
-Command-Option          # Select text column in terminal
+Fn–U|D                  # move page U/D.
+Fn–L|R                  # scroll B/E document.
+Command–U|D             # move B/en document.
+Command–L|R             # move B/E current line.
+Option–L|R              # move B/E previous word.
 
-Command-Shift-3         # Screenshot ALL SCREEN in file on desktop
-Command-Control-Shift-3 # Screenshot ALL SCREEN in buffer
-Command-Shift-4         # Screenshot (SELECTED SHAPE) in file on desktop ✅
-Command-Control-Shift-4 # Screenshot (SELECTED SHAPE) in buffer 💡
+Shift–Option–U|D|L|R    # extended text selection.
+Command-Option          # select text column in terminal.
 
-F1  # Bright down
-F2  # Bright up
-F11 # Sound down
-F12 # Sound up
+Command-Shift-3         # screenshot ALL SCREEN in file on desktop.
+Command-Control-Shift-3 # screenshot ALL SCREEN in buffer.
+Command-Shift-4         # screenshot (SELECTED SHAPE) in file on desktop ✅.
+Command-Control-Shift-4 # screenshot (SELECTED SHAPE) in buffer 💡.
 
-/ # go to path in finder
+F1                      # bright down.
+F2                      # bright up.
+F11                     # sound down.
+F12                     # sound up.
+
+/                       # go to path in finder.
 ````
 
 ## Brew
