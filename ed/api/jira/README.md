@@ -1,6 +1,8 @@
 Jira
 -
 
+[status](https://status.atlassian.com/)
+
 * roadmap planner
 
 ````sh
