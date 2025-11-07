@@ -7,8 +7,13 @@ Jira
 
 ````sh
 # to link GitHub PR with issue in JIRA:
-hg commit -m "DVCS-2 add a README file to the project."
-hg push
+git commit -m "PRJ-1273: Some comment."
+````
+
+````sql
+-- issues filter query
+assignee WAS currentUser() DURING (-26w, now())
+ORDER BY updated DESC
 ````
 
 ````
