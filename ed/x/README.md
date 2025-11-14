@@ -58,7 +58,7 @@ so after 10 tries it will take so much time to submit new request,
 so it will stop botnet brute force attack.
 
 Web account settings:
-To change email address - send email to origin email adress with link
+To change email address - send email to origin email address with link
 to verify that person who is changing email is owner of previous email.
 
 Reset password (not forgot password):
