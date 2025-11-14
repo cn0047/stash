@@ -5,6 +5,14 @@ Security attacks
 * Shellshock.
 * Regular expression Denial of Service (ReDoS).
 
+suplain chain attack
+
+#### Zero-Click Attack
+
+It is type of cyberattack that compromises device without requiring any interaction from user.
+Villain sends MMS (or so) that triggers the bug in the receiving application's code,
+which allows to execute own code remotely.
+
 #### Server-Site Request Forgery (SSRF)
 
 ````php
