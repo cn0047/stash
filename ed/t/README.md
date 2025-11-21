@@ -29,6 +29,7 @@ Theory
 <br>IPC     - Inter-Process Communication.
 <br>JIT     - Just-In-Time compilation.
 <br>KISS    - Keep It Simple, Stupid (noted in 1960).
+<br>KYC     - Know Your Customer.
 <br>MPN     - Manufacturer Part Number.
 <br>NDA     - Non-Disclosure agreement.
 <br>ODM     - Object-Document mapping.

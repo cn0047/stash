@@ -5,6 +5,13 @@ Cloud
 
 [cloud events](https://github.com/cloudevents/sdk-go)
 
+Before cloud:
+Data price was high, CPU price was low.
+
+After cloud:
+Basic data storage price is low, but network price is high (data egress).
+Also price is high for: managed databases, serverless functions, high-level AI services.
+
 ## Cloud Native
 
 Being Cloud Native means to satisfy and follow next requirements:
