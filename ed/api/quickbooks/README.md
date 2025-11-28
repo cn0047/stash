@@ -5,7 +5,7 @@ QuickBooks
 [app keys](https://developer.intuit.com/app/developer/appdetail/test/keys)
 [playground](https://developer.intuit.com/app/developer/playground)
 
-QuickBooks - business accounting soft.
+QuickBooks - business accounting software.
 
 ````sh
 access_token  expires_in                 3600    = 60min
@@ -20,9 +20,7 @@ cId=''
 scrt=''
 rId=''
 
-jha='Accept: application/json'
-
-
+jh='Accept: application/json'
 
 # get token, step 1 (consent page)
 go run ed/l/go/examples/http/http.server.debug.go
@@ -36,7 +34,7 @@ code=''
 rId=''
 t=`echo -n "$cId:$scrt" | base64`
 a="Authorization: Basic $t"
-curl -s -X POST -H $a -H $jha 'https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer' \
+curl -s -X POST -H $a -H $jh 'https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer' \
   -d grant_type=authorization_code \
   -d code=$code \
   -d redirect_uri=$cb \
@@ -44,7 +42,7 @@ curl -s -X POST -H $a -H $jha 'https://oauth.platform.intuit.com/oauth2/v1/token
 
 # refresh token
 rt=''
-curl -s -X POST -H $a -H $jha 'https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer' \
+curl -s -X POST -H $a -H $jh 'https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer' \
   -d grant_type=refresh_token \
   -d refresh_token=$rt \
   | jq
@@ -55,33 +53,37 @@ curl -s -X POST -H $a -H $jha 'https://oauth.platform.intuit.com/oauth2/v1/token
 h=https://quickbooks.api.intuit.com
 h=https://sandbox-quickbooks.api.intuit.com
 
-jh='Content-Type: application/json'
+jh='Accept: application/json'
 
 t=''
 a="Authorization: Bearer $t"
 
-curl -X GET -H $a -H $jha -H $jh "$h/v1/openid_connect/userinfo" | jq
+curl -X GET -H $a -H $jh "$h/v1/openid_connect/userinfo" | jq
 
 # query
-qr() {
-  curl -X GET -H $a -H $jha -H $jh "$h/v3/company/$rId/query?query=$q"
-}
+# qr
+curl -X GET -H $a -H $jh "$h/v3/company/$rId/query?query=$q" | jq
 
 
 
 # get company info
-curl -X GET -H $a -H $jha -H $jh "$h/v3/company/$rId/companyinfo/$rId?minorversion=8" | jq
+curl -X GET -H $a -H $jh "$h/v3/company/$rId/companyinfo/$rId?minorversion=75" | jq
 
 
 
 # get product
-curl -X GET -H $a -H $jha -H $jh "$h/v3/company/$rId/item/1" | jq
+curl -X GET -H $a -H $jh "$h/v3/company/$rId/item/1" | jq
 
 # products query
 q='select count(*) from Item'
 q='select+count%28%2A%29+from+Item'
 q='select * from Item'
 q='select+%2A+from+Item'
+q='select * from Item STARTPOSITION 0 MAXRESULTS 10'
+q='select+%2A+from+Item+STARTPOSITION+0+MAXRESULTS+10'
+q='select+%2A+from+Category'
+q="select * from Item where Type='Category'"
+q='select%20%2A%20from%20Item%20where%20Type%3D%27Category%27'
 q='select * from Item order by Id startposition 0 maxresults 10'
 q='select%20%2A%20from%20Item%20order%20by%20Id%20startposition%200%20maxresults%2010'
 q='select * from Item where Type='Inventory' order by Id startposition 0 maxresults 10'
@@ -91,7 +93,7 @@ qr | jq
 
 
 # get customer
-curl -X GET -H $a -H $jha -H $jh "$h/v3/company/$rId/customer/1" | jq
+curl -X GET -H $a -H $jh "$h/v3/company/$rId/customer/1" | jq
 
 # customers query
 q='select count(*) from Customer'

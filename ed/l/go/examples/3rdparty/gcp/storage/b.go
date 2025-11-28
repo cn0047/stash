@@ -2,6 +2,7 @@ package storage
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -101,5 +102,31 @@ func printBuckets(ctx context.Context, c *storage.Client, projectID string) {
 		}
 
 		fmt.Println(attrs.Name)
+	}
+}
+
+func find(ctx context.Context, c *storage.Client, bucketName string, prefix string) {
+	query := &storage.Query{
+		Prefix:    prefix,
+		Delimiter: "/",
+	}
+
+	it := c.Bucket(bucketName).Objects(ctx, query)
+	for {
+		attrs, err := it.Next()
+		if errors.Is(err, iterator.Done) {
+			break
+		}
+		if err != nil {
+			log.Fatalf("failed to perform GCP Storage get next, error: %v", err)
+		}
+
+		if attrs.Name != "" {
+			// File.
+			fmt.Printf("  File: gs://%s/%s (Size: %d bytes)\n", bucketName, attrs.Name, attrs.Size)
+		} else if attrs.Prefix != "" {
+			// Directory.
+			fmt.Printf("  Dir:  gs://%s/%s\n", bucketName, attrs.Prefix)
+		}
 	}
 }

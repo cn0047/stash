@@ -13,7 +13,7 @@ Cloud Storage
 Cloud Storage - like AWS S3.
 
 ````sh
-# ls /Users/k/.google-cloud-sdk/bin/gsutil
+# ls /Users/$USER/.google-cloud-sdk/bin/gsutil
 
 gsutil config
 
@@ -34,6 +34,7 @@ gsutil du -sh gs://example-bucket
 gsutil hash local-file
 gsutil stat gs://example-bucket/composite-object
 
+gsutil cp gs://example-bucket/obj ./obj
 gsutil -m cp -R top-level-dir gs://example-bucket
 gsutil -m cp -R top-level-dir/subdir/image* gs://example-bucket
 

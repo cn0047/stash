@@ -61,6 +61,8 @@ gcloud auth list
 gcloud auth print-access-token
 gcloud auth print-identity-token
 gcloud auth print-identity-token --impersonate-service-account=$sa --audiences=$cloudRunURL --include-email
+gcloud auth revoke --all # logout
+gcloud auth application-default revoke # logout
 
 # default service account
 ls -la ~/.config/gcloud/application_default_credentials.json
