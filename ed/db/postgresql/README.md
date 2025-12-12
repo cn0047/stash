@@ -58,7 +58,7 @@ Every table and index is stored as an array of pages of a fixed size (usually 8 
 
 **tuple** - individual state of row, each update of row creates new tuple for same logical row.
 
-#### System Columns:
+#### System Columns
 
 * `oid` - Object identifier (table was created using WITH OIDS).
 * `tableoid` - OID of the table containing this row.
@@ -77,7 +77,7 @@ Every table and index is stored as an array of pages of a fixed size (usually 8 
 
 Triggers better than rules.
 
-#### PL - Procedural Languages.
+#### PL - Procedural Languages
 
 * PL/pgSQL (default and has optimal performance).
 * PL/Tcl.
@@ -116,7 +116,7 @@ SET max_parallel_workers_per_gather = 4;
 Also `dynamic_shared_memory_type` must be set to a value other than none,
 And the system must NOT be running in single-user mode.
 
-#### Data Types:
+#### Data Types
 
 boolean
 

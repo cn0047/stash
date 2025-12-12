@@ -38,7 +38,7 @@ Thread Scheduling:
 * Contention Scope.
 * Pthread Scheduling.
 
-#### Scheduling Algorithms:
+#### Scheduling Algorithms
 
 * First-Come First-Serve Scheduling, FCFS (just a FIFO queue).
 * Shortest-Job-First Scheduling, SJF (to pick the quickest fastest little job that needs to be done).
@@ -47,12 +47,12 @@ Thread Scheduling:
 * Multilevel Queue Scheduling.
 * Multilevel Feedback-Queue Scheduling.
 
-#### Multiple-Processor Scheduling:
+#### Multiple-Processor Scheduling
 
 * Asymmetric multiprocessing.
 * Symmetric multiprocessing, SMP.
 
-#### Arch:
+#### Arch
 
 386 (aka i386, 80386) - 32-bit microprocessor introduced in 1985.
 x64 (aka x86_64, amd64, intel64) - 64-bit version of the x86 instruction set in 1999.

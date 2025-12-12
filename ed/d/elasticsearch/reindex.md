@@ -1,7 +1,7 @@
 Reindex
 -
 
-#### To put document into index use:
+#### To put document into index use
 
 ````sh
 # v7
@@ -11,7 +11,7 @@ PUT  /$idx/_create/$id
 POST /$idx/_create/$id
 ````
 
-#### To reindex all documents:
+#### To reindex all documents
 
 ````sh
 jh='Content-Type: application/json'

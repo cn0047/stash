@@ -14,7 +14,7 @@ facebook delegates permissions via token to perform certain actions on user's be
 It's simplified version of OAuth.
 
 OAuth2 - is not protocol, because big companies (google, facebook, etc) made own changes
-that's why it's framework.
+that's why it's framework/set of rules.
 
 Benefit: user won't share credentials, but token.
 Benefit: revoke token any time.

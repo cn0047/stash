@@ -74,7 +74,7 @@ SELECT * FROM nested_category ORDER BY category_id;
 +-------------+----------------------+-----+-----+
 ````
 
-#### Retrieving a full tree:
+#### Retrieving a full tree
 
 ````sql
 SELECT node.name
@@ -98,7 +98,7 @@ ORDER BY node.lft
 +----------------------+
 ````
 
-#### Finding all the leaf nodes:
+#### Finding all the leaf nodes
 
 ````sql
 SELECT name FROM nested_category WHERE rgt = lft + 1;
@@ -114,7 +114,7 @@ SELECT name FROM nested_category WHERE rgt = lft + 1;
 +--------------+
 ````
 
-#### Finding all the leaf nodes of subtree:
+#### Finding all the leaf nodes of subtree
 
 ````sql
 SELECT *
@@ -124,7 +124,7 @@ AND node.rgt = node.lft + 1
 ;
 ````
 
-#### Retrieving a single path:
+#### Retrieving a single path
 
 ````sql
 SELECT parent.name
@@ -142,7 +142,7 @@ ORDER BY parent.lft
 +----------------------+
 ````
 
-#### Finding the depth of the nodes:
+#### Finding the depth of the nodes
 
 ````sql
 SELECT node.name, (COUNT(parent.name) - 1) AS depth
@@ -189,7 +189,7 @@ ORDER BY node.lft
 +------------------------+
 ````
 
-#### Adding new nodes:
+#### Adding new nodes
 
 ````sql
 LOCK TABLE nested_category WRITE;
@@ -204,7 +204,7 @@ INSERT INTO nested_category(name, lft, rgt) VALUES ('GAME CONSOLES', @myRight + 
 UNLOCK TABLES;
 ````
 
-#### Deleting nodes:
+#### Deleting nodes
 
 ````sql
 LOCK TABLE nested_category WRITE;

@@ -1,9 +1,15 @@
 History of Redis
 -
 
+[versions](https://github.com/redis/redis/releases)
+
+#### 8.4
+
+New commands: DELEX, DIGEST, MSETEX, and more.
+
 #### 8
 
-* Performance improvements.
+* Performance improvements and security fixes.
 
 #### 7.2
 

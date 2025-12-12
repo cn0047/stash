@@ -30,7 +30,7 @@ pg_ctl status
 pg_trgm # Trigram (Trigraph) module
 ````
 
-#### REPL:
+#### REPL
 
 ````sql
 \pset pager on
@@ -79,7 +79,7 @@ COPY tableName TO 'filePath' CSV (DELIMER ',');
 COPY tableName FROM 'filePath' DELIMER ',';
 ````
 
-#### Configuration:
+#### Configuration
 
 `/etc/postgresql/8.3/main/postgresql.conf`
 `/usr/local/var/postgres/postgresql.conf`

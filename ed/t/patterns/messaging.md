@@ -26,7 +26,7 @@ Specific benefits of messaging:
 * Disconnected Operation (when offline -> put in queue, when online -> consume).
 * Mediation (message broker behaves like brain).
 
-#### Message Exchange Patterns:
+#### Message Exchange Patterns
 
 * **In-Only** (one-way) - send message receive status.
 
@@ -45,7 +45,7 @@ Specific benefits of messaging:
 
 * Out-Optional-In (reverse In-Optional-Out) - incoming message is optional (Optional-in).
 
-#### In ØMQ:
+#### In ØMQ
 
 * **Request–reply** - RPC.
 

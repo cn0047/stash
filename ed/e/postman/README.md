@@ -14,7 +14,7 @@ pm.environment.set("ID", res._id);
 console.log('Updated ENV var ID to:', res._id);
 ````
 
-#### Authorization:
+#### Authorization
 
 OAuth1:
 

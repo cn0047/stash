@@ -6,7 +6,7 @@ svn st      # status
 svn di file # diff
 ````
 
-#### The typical work cycle looks like this:
+#### The typical work cycle looks like this
 
 ````sh
 # Check out a working copy from a repository.

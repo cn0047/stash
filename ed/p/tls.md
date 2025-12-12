@@ -18,7 +18,7 @@ Examples:
 -----END CERTIFICATE-----
 ````
 
-#### Data Encryption Protocols Cipher:
+#### Data Encryption Protocols Cipher
 
 * ~~3DES~~ (168 bits) (don't use is vulnerable).
 * AES (128 or 256 bits) (*USA government standard encryption protocol now*).
@@ -27,7 +27,7 @@ Examples:
 * Chacha20.
   * Poly1305.
 
-#### Key Encryption Protocols:
+#### Key Encryption Protocols
 
 * RSA (don't use is vulnerable).
 * DH (Diffie-Hellman).
@@ -42,7 +42,7 @@ Examples:
 * SHA-256.
 * SHA-384.
 
-#### TLS handshake:
+#### TLS handshake
 
 1. After TCP handshake, Client sends hello to server.
 2. Server responds with hello and certificate

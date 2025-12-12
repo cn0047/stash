@@ -1,7 +1,7 @@
 Charles
 -
 
-#### On phone:
+#### On phone
 
 ````
 # HTTP Proxy:
@@ -11,7 +11,7 @@ Port: 8888
 
 chls.pro/ssl
 
-#### On PC:
+#### On PC
 
 ````
 Enable SSL Proxy

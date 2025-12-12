@@ -8,7 +8,7 @@ sudo service beanstalkd status
 ps aux | grep beanstalkd | grep grep -v
 ````
 
-#### Commmands:
+#### Commmands
 
 ````sh
 put         # create job

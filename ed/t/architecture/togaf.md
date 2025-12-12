@@ -5,7 +5,7 @@ TOGAF (The Open Group Architecture Framework)
 
 TOGAF - architectural framework.
 
-#### ADM (Architecture development method):
+#### ADM (Architecture development method)
 
 **Preliminary Phase**.
 What needs to be done? How will it be carried out?

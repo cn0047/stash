@@ -60,7 +60,7 @@ with server-side scripts (lua).
 
 Redis is fast because of IO Multiplexing (EventLoop).
 
-#### Data types:
+#### Data types
 
 **String** - string value can be at max 512 Megabytes in length.
 You can:
@@ -92,13 +92,13 @@ that is used in order to take the sorted set ordered.
 **HyperLogLog** - provide probabilistic estimates of the cardinality
 (i.e., number of elements) of large sets.
 
-#### Extensions:
+#### Extensions
 
 JSON - support for JSON notation.
 Time series - support for time series data structure.
 Probabilistic: HyperLogLog, Bloom filter, and [more](https://redis.io/docs/latest/develop/data-types/probabilistic)
 
-#### List (Linked List):
+#### List (Linked List)
 
 Can be at max 512 Megabytes in length.
 
@@ -123,7 +123,7 @@ lrange mylist 0 -1
 ltrim  mylist 0 2
 ````
 
-#### Hash:
+#### Hash
 
 ````sh
 hmset user:1 username antirez birthyear 1977 verified 1
@@ -150,7 +150,7 @@ hvals user:1
 hexists user:1 birthyear
 ````
 
-#### Set:
+#### Set
 
 ````sh
 sadd myset 1 2 3
@@ -168,7 +168,7 @@ srem myset 6
 sismember myset 3
 ````
 
-#### Associative array:
+#### Associative array
 
 ````sh
 sadd users:name Bob Sam Joe

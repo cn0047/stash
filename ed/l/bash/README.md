@@ -216,7 +216,7 @@ set -x           # (xtrace) to start debug
 set -euo pipefail
 ````
 
-#### Debug:
+#### Debug
 
 ````bash
 #!/bin/bash -x
@@ -229,7 +229,7 @@ set +x # to disable debug
 bash -x /Users/k/web/kovpak/gh/ed/bash/examples/hw.sh
 ````
 
-#### Strings:
+#### Strings
 
 ````bash
 v="hello world"
@@ -309,7 +309,7 @@ if [[ ! $1 ]];           # $1 is empty
 if [[ $1 =~ ^[0-9]+$ ]]; # is number
 ````
 
-#### Numbers:
+#### Numbers
 
 ````bash
 # random number 3 digits
@@ -338,7 +338,7 @@ const=3 # -bash: const: readonly variable
 declare -x var="outer" # export var for inluded scripts
 ````
 
-#### Array:
+#### Array
 
 ````bash
 declare -a ar=("element1" "element2" "element3")
@@ -387,7 +387,7 @@ printf '%s\n' "${@: -10:2}"
 printf '%s\n' "${@:0:2}"
 ````
 
-#### Function:
+#### Function
 
 ````bash
 # in case no return in function
@@ -416,7 +416,7 @@ $ bash
 pwned
 ````
 
-#### Loop:
+#### Loop
 
 ````bash
 break

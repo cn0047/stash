@@ -88,7 +88,13 @@ other programs, and even modify itself while running.
 that aims to increase modularity by allowing the separation of cross-cutting concerns.
 Logging, caching, security, and transaction management are examples of cross-cutting concerns.
 
-#### Low coupling and high cohesion.
+#### Coupling
+
+Afferent coupling - incomming dependencies (fan-in).
+Efferent coupling - outgoing dependencies (fan-out).
+Temporal Coupling - when order of execution between two components is critical, but this order is not enforced by code structure.
+
+#### Low coupling and high cohesion
 
 **Coupling** refers to the interdependencies between modules.
 <br>Tightly coupled code - bad code.

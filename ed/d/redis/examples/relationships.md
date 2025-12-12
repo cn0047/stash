@@ -18,7 +18,7 @@ Relationships like on twitter:
 +--------+----------+---------+
 ````
 
-#### Set:
+#### Set
 
 ````sh
 sadd srelationships:user10:following user1 user2 user3
@@ -37,7 +37,7 @@ srem srelationships:user10:followers user40
 sismember srelationships:user10:followers user40
 ````
 
-#### Hash:
+#### Hash
 
 ````sh
 hmset hrelationships:user10:following user1 1 user2 1 user3 1

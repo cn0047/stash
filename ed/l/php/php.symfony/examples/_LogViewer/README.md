@@ -8,7 +8,7 @@ Also available console commands:
 * to listen log files,
 * to review data in console (moreover in console you can use regex search).
 
-#### Examples:
+#### Examples
 
 Run command to read logs and collect data in db:
 ````

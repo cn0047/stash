@@ -8,7 +8,7 @@ Core principles:
 * Base complex designs on models of the domain.
 * Collaboration with domain experts to improve the application model and resolve any emerging domain-related issues.
 
-#### Domain.
+#### Domain
 
 A sphere of knowledge, influence, or activity. The subject area.
 Domain - subject area to which the user applies the program.
@@ -40,17 +40,17 @@ Generic subdomain - general principles everyone knows
 or details that belong to specialties which are not primary domain focus,
 but play a supporting role.
 
-#### Model.
+#### Model
 
 A system of abstractions that describes selected aspects of a domain
 (aggregates, entities, factories).
 
-#### Ubiquitous language.
+#### Ubiquitous language
 
 A language structured around the domain model
 and used by all team members.
 
-#### Bounded context.
+#### Bounded context
 
 Simply draw line around something and say:
 within this space this what that word means and these are the rule here.
@@ -66,22 +66,22 @@ First "What does this context do?", and then "So what data does it need to do th
 
 Bounded Context reffers to domains and to models in one domain.
 
-#### Continuous integration.
+#### Continuous integration
 
-#### Context map.
+#### Context map
 
 Diagram that illustrates relationships and interactions between various bounded contexts.
 
 To define context map - keep in mind: technical reality and organizational reality.
 
-#### Shared kernel.
+#### Shared kernel
 
 Shared kernel is often the "core domain", some set of "generic subdomains", or both.
 The goal is to reduce duplication and make integration between the two subsystems relatively easy.
 
 Core domain - distinctive part of the model, central to the user’s goals.
 
-#### Layered architecture.
+#### Layered architecture
 
 <img src="https://gist.github.com/cn007b/384d6938ebef985347b29c15476b55c5/raw/95e80250d0c5968b3d541c8d1f81be8876a721c6/ddd.LayeredArchitecture.png" width="70%" />
 
@@ -119,24 +119,24 @@ src/Infrastructure/Command/ParticularModel/PersisterDoctrine.php - Doctrine EM W
 src/Infrastructure/DataProvider/
 ````
 
-#### Anticorruption layer.
+#### Anticorruption layer
 
 It is combination of Facades and Adapters.
 
-#### Entities.
+#### Entities
 
 An object that is not defined by its attributes,
 but rather by a thread of continuity and its identity.
 Is a category of objects which seem to have an identity.
 
-#### Value Objects (VO).
+#### Value Objects (VO)
 
 An object that contains attributes but has no conceptual identity.
 VOs must be placed in application layer
 because only this layer aware how to interact with domain layer from the outside world.
 VO must be immutable.
 
-#### Modules.
+#### Modules
 
 For a large and complex application, the model tends to grow
 bigger and bigger. The model reaches a point where it is hard to
@@ -178,7 +178,7 @@ Something like:
 └── tests
 ````
 
-#### Aggregates.
+#### Aggregates
 
 A collection of objects that are bound together by a root entity.
 A model can contain a large number of domain objects.
@@ -192,7 +192,7 @@ that can be treated as a single unit.
 
 Car it is aggregate for: wheels, engine, spark and fuel, etc.
 
-#### Domain event.
+#### Domain event
 
 A domain object that defines an event (something that happens, when X happens to Y).
 
@@ -200,7 +200,7 @@ A domain object that defines an event (something that happens, when X happens to
 * Publishing a Domain Event is like printing the article on the paper.
 * Spreading a Domain Event is like sending the newspaper so everyone can read the article.
 
-#### DBAL - Database Abstraction Layer.
+#### DBAL - Database Abstraction Layer
 
 Active Record ORMs not good for DDD, because:
 * Active Record pattern assumes a one-to-one relation between an entity and a database table.
@@ -219,16 +219,16 @@ manager and with a different mapping metadata, it would not be possible.
 
 So better use XML mapping files.
 
-#### Factory.
+#### Factory
 
 Methods for creating domain objects
 should be delegated to a specialized Factory.
 
-#### CQRS.
+#### CQRS
 
 Command Query Responsibility Segregation.
 
-#### Service.
+#### Service
 
 When an operation does not conceptually belong to any object.
 An object does not have an internal state, and its purpose is to simply provide
@@ -254,7 +254,7 @@ Domain Services are used to describe things into the domain,
 operations that don’t belong to entities nor value objects.
 (Cross-aggregate behavor, repositories, external services).
 
-#### DTO - Data Transfer Object.
+#### DTO - Data Transfer Object
 
 Communication between the delivery mechanism
 and the domain is carried by data structures called DTO.
@@ -269,7 +269,7 @@ because it contains specific stuff (related to rows in mysql, how to get data, h
 
 DTO it's just data container which used **to transport data between different layers**.
 
-#### Repositories.
+#### Repositories
 
 Methods for retrieving domain objects
 should delegate to a specialized Repository object
@@ -277,12 +277,12 @@ such that alternative storage implementations may be easily interchanged.
 
 Repositories are not DAOs.
 
-#### DAO - Data Access Object.
+#### DAO - Data Access Object
 
 Typically a DAO would contain CRUD methods for a particular domain object.
 DAOs must be placed in domain layer.
 
-## Real problems.
+## Real problems
 
 * Configs and DI (especially DI) must be placed outside any layer (user-interface, application, domain, infrastructure)
   because they are not part of any layer.
