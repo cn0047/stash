@@ -14,5 +14,24 @@
     {
         "key": "ctrl+r",
         "command": "-workbench.action.openRecent"
+    },
+    {
+        "key": "alt+w",
+        "command": "composer.closeOtherComposerTabs"
+    },
+    {
+        "key": "ctrl+tab",
+        "command": "workbench.action.toggleSidebarVisibility",
+        "when": "!isAuxiliaryWindowFocusedContext"
+    },
+    {
+        "key": "ctrl+d",
+        "command": "editor.action.deleteLines",
+        "when": "textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+shift+tab",
+        "command": "workbench.action.toggleAuxiliaryBar",
+        "when": "!isAuxiliaryWindowFocusedContext"
     }
 ]

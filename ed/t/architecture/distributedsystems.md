@@ -20,6 +20,16 @@ Dynamic coupling:
 * Consistency: atomic, eventual.
 * Coordination: orchestration, choreography.
 
+Fallacies of distributed systems:
+* Network is reliable.
+* Latency is zero.
+* Bandwidth is infinite.
+* Network is secure.
+* Topology doesn't change.
+* There is only one administrator (devops, infrastructure engineer).
+* Transport cost is zero (network data send price).
+* Network is homogeneous (systems, networks, etc).
+
 **Gosip broadcast algorithm** - broadcast message only to 3-5 neighbors.
 
 **Fault** - when one component of the system deviating from its spec.
