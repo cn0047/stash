@@ -12,7 +12,6 @@ Theory
 
 <br>ACL     - Access Control Lists.
 <br>API     - Application Programming Interface.
-<br>ATAM    - Architecture Tradeoff Analysis Method.
 <br>B2B     - Business to Business.
 <br>BAAS    - Back-end As A Service.
 <br>BLOB    - Binary Large Object.
@@ -53,7 +52,6 @@ Theory
 <br>UPC     - Universal Product Code.
 <br>UPI     - Unique Product Identifier.
 <br>UTC     - Coordinated Universal Time.
-<br>UUID    - Universally Unique Identifier.
 <br>VOIP    - Voice Over Internet Protocol.
 <br>WBS     - Work Breakdown Structure.
 <br>WORA    - Write Once, Run Anywhere.
@@ -126,6 +124,11 @@ Full stack:
   (Start from the assumption that whatever you want to do is possible).
 * Who can I learn from?
   (You should never work anywhere where you are the smartest person in the room).
+
+Technical Breadth:
+* Stuff you know - deep understanding how tool works.
+* Stuff you know you don't know - heard about some tool, and why it's needed. TODO: expand this knowledge.
+* Stuff you don't know you don't know.
 
 #### Simple stuff
 

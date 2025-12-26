@@ -619,6 +619,11 @@ If you want to run goroutines in parallel, you must use more than one logical pr
 But to have true parallelism, you still need to run your program
 on a machine with multiple physical processors.
 
+#### GC (green tea)
+
+Based on concurrent mark-and-sweep, stop-the-world usually takes microseconds, tri-color marking:
+white (garbage), gray (to scan), black (alive).
+
 #### GC (mark and sweep)
 
 During the **mark phase**, the runtime will traverse all the objects

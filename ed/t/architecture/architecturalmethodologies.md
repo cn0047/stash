@@ -128,3 +128,34 @@ that describes the key architectural decisions made during system design.
 * Behavior.
 * Variability (options and alternatives).
 * Reasoning.
+
+#### ATAM
+
+ATAM (Architecture Tradeoff Analysis Method) - structured method to evaluate software architecture
+by analyzing how well it satisfies quality attributes and the tradeoffs between them.
+
+It helps to answer:
+* Will this architecture scale?
+* Will it be secure enough?
+* Will it be maintainable?
+* What risks does it carry?
+* What are tradeoffs?
+
+ATAM process steps:
+1. Present concept of ATAM to stakeholders.
+2. Present business drivers (everyone presents and evaluates business drivers).
+3. Present high-level architecture.
+4. Identify architectural approaches.
+5. Generate quality attribute utility tree (core business/technical requirements,
+   and map them to appropriate architectural property).
+6. Analyze architectural approaches (each scenario).
+7. Brainstorm and prioritize scenarios.
+8. Analyze architectural approaches (perform step 6 again with the added knowledge).
+9. Present results (provide all documentation).
+
+ATAM drawbacks:
+* Expensive and time-consuming.
+* Not continuous (it assumes requirements are complete and all scenarios are known up front,
+  and assumes one time process with no changes).
+* Stakehoders busy, hard to collect them all together, and get all requirements.
+* Heavy for Microservices (it originally designed for enterprise SOA).
