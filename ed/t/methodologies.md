@@ -46,6 +46,12 @@ Solution Architect:
 
 ADR (Architectural Decision Record) - document about why and how Architectural Decision was made.
 
+On questions about ETA:
+1. Understand who you speaking with and what kind of estimate is expected.
+2. Suggest maybe not certain date, but dates range (2-5 days).
+3. Ask about few days for gathering info to provide more precise estimate.
+4. When under pressure then say: if I say 1 day, I'll be 60% wrong, or so, is it ok.
+
 #### TL
 
 * Avoid conflicts.

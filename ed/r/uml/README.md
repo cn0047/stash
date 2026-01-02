@@ -46,7 +46,9 @@ UML
     (arrow point on class which are using another class (start of arrow)).
 
 * Component diagram:
-<img src="https://github.com/cn007b/my/blob/master/ed/r/uml/img/diagram.component.png" width="70%" />
+<img src="https://github.com/cn0047/stash/blob/master/ed/r/uml/img/diagram.component.png" width="70%" />
+
+<img src="https://gist.githubusercontent.com/cn0047/384d6938ebef985347b29c15476b55c5/raw/7b1b27cc9a782cb3ad1d8a60d4fbe48f4cc741b7/uml.interfaceAkaLollipopNotation.png" width="70%" />
 
   * Loosely connected:
     1. Interface

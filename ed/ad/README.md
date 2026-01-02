@@ -82,3 +82,20 @@ by assigning them a position on an abstract circle (HashRing).
   2. If server there - ok, otherwise travel clockwise on the ring until find the first server.
 
 When a hash table is resized, only `keys/n` need to be remapped.
+
+#### NP-Hard/NP-Complete
+
+Class P - polynomial time.
+Class NP - nondeterministic polynomial time.
+Class NP-Complete.
+Class NP-Hard.
+
+NP-Complete - problems that are:
+* In NP - you can verify solution quickly (polynomial time).
+* As hard as any NP problem.
+* If you solve one NP-Complete problem fast - all NP problems become easy.
+
+NP-Hard - problems that are:
+* At least as hard as NP-Complete.
+* Not required to be in NP (may not be able to verify solution quickly).
+* NP-Hard can be harder than NP-Complete.

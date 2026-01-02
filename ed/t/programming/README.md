@@ -22,6 +22,8 @@ Cyclomatic complexity - metric to indicate complexity of program.
 It's number of linearly independent paths through program's source code.
 `CC = E − N + 2`, N - lines of code, E - conditionals count (if statements).
 
+Abstraction - simplifying a concept by ignoring unimportant details.
+
 #### Process and Thread
 
 Process - any program. It's isolated from other processes.

@@ -77,6 +77,8 @@ To deal with big complicated problems - have to perform breakdown or decompositi
 One of the best way to deal with complexity is divide and conquer - split the problem
 into smaller problems and solve each one separately.
 
+Throughput - amount of output produced over time.
+
 Telemetry - monitoring performance metrics and error rates.
 
 Monitoring should address two questions: what's broken, and why?
