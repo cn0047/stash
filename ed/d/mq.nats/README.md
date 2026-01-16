@@ -48,10 +48,10 @@ time.us.>      # ok for: time.us.east, time.us.east.atlanta
 nats server run
 nats server run --jetstream
 
-nats server list
-nats server info
-nats server ping
-nats server check connection
+nats --server $h:$p --user $u --password $pas server list
+nats --server $h:$p --user $u --password $pas server info
+nats --server $h:$p --user $u --password $pas server ping
+nats --server $h:$p --user $u --password $pas server check connection
 ````
 
 ````sh

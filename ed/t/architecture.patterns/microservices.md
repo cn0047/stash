@@ -66,6 +66,13 @@ In real world app it's *ok* to have **HYBRID-Microservices** architecture.
 
 Microservices - it's when 1 service is down, but system continue to work.
 
+Microservice types:
+* Functional microservice.
+* Infrastructure microservice.
+* Orchestration microservice.
+* Aggregate microservice.
+* Gateway microservice.
+
 #### Advantages
 
 * Possibility to use different languages.

@@ -1,6 +1,8 @@
 Shopify
 -
 
+[dev dashboard](https://dev.shopify.com/dashboard)
+
 ````sh
 shop=mystore
 t=token
