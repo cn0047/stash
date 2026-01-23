@@ -1,6 +1,8 @@
 Messaging patterns
 -
 
+[cloud events](https://cloudevents.io/)
+
 Messaging - technology that enables
 high-speed, asynchronous, program-to-program communication with reliable delivery.
 

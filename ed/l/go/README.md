@@ -193,6 +193,7 @@ fmt.Printf("%T", myType)
 fmt.Printf("%t", myBool)
 fmt.Printf("%+v", myVal)
 fmt.Printf("%p", myPointer)
+fmt.Printf("%q", myQ) // safely escaped and wrapped in quotes string
 
 // init pkg
 func init() {}

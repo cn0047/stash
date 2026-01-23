@@ -114,9 +114,9 @@ Microservice types:
 #### Monolith to microservices
 
 Boundary context might be defined by:
-* Business feature or UI composition (widget).
+* Business feature/function or UI composition (widget).
 * Data.
-* Process.
+* Process (request data format).
 
 Defining services by applying the decompose by:
 * Business capability pattern (courier, restaurant, order management, etc.).

@@ -21,7 +21,8 @@ func Run(projectID, SAFilePath, bucketName string) {
 
 	//printBuckets(ctx, c, projectID)
 	//uploadTestFile(ctx, c, bucketName)
-	uploadFile(ctx, c, "/tmp/debug.txt", bucketName)
+	//uploadFile(ctx, c, "/tmp/debug.txt", bucketName)
+	delete(ctx, c, bucketName, "/tmp/debug.txt")
 }
 
 func getClientWithAPIKey(ctx context.Context, key string) *storage.Client {
@@ -129,4 +130,15 @@ func find(ctx context.Context, c *storage.Client, bucketName string, prefix stri
 			fmt.Printf("  Dir:  gs://%s/%s\n", bucketName, attrs.Prefix)
 		}
 	}
+}
+
+func delete(ctx context.Context, c *storage.Client, bucketName string, pathToObject string) {
+	b := c.Bucket(bucketName)
+	o := b.Object(pathToObject)
+	err := o.Delete(ctx)
+	if err != nil {
+		log.Fatalf("failed to delete object %q from bucket %q, error: %v", pathToObject, bucketName, err)
+	}
+
+	fmt.Printf("Successfully deleted gs://%s/%s\n", bucketName, pathToObject)
 }

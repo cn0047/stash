@@ -5,6 +5,7 @@ Protocol Buffers (protobuf)
 [versions](https://github.com/protocolbuffers/protobuf/tags)
 [programming guides](https://protobuf.dev/programming-guides/style/)
 [size limit](https://protobuf.dev/programming-guides/encoding/#size-limit)
+[buf](https://buf.build/)
 
 ````sh
 protoc --proto_path=$pathToProtoFiles

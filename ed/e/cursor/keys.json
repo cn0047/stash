@@ -33,5 +33,10 @@
         "key": "ctrl+shift+tab",
         "command": "workbench.action.toggleAuxiliaryBar",
         "when": "!isAuxiliaryWindowFocusedContext"
+    },
+    {
+        "key": "alt+c",
+        "command": "copyRelativeFilePath",
+        "when": "editorFocus"
     }
 ]
