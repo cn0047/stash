@@ -58,3 +58,14 @@ Steps to address Cascading Failures:
 * Drop traffic.
 * Enter degraded mode.
 * Eliminate bad traffic.
+
+**Thread Delegate Pattern** - helps to preserve messages order.
+
+Not every message must be ordered,
+but messages within certain context (user, company, shopping order, etc) must be ordered.
+
+* event producer - sends event to event dispatcher.
+* event dispatcher - has allocation map, knows which thread processing which context,
+  and routes message to appropriate thread.
+* thread delegate - thread which processes message,
+  if response is expected, then thread delegate sends response.

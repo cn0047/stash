@@ -38,5 +38,10 @@
         "key": "alt+c",
         "command": "copyRelativeFilePath",
         "when": "editorFocus"
-    }
+    },
+    {
+        "key": "ctrl+shift+tab",
+        "command": "workbench.action.toggleUnifiedSidebar",
+        "when": "cursor.agentIdeUnification.enabled && !isAuxiliaryWindowFocusedContext"
+    },
 ]

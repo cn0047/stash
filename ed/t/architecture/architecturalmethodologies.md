@@ -71,6 +71,11 @@ Architecture must care about:
 * Utility.
 * Beauty.
 
+Modern approaches to enterprise architecture:
+* Incremental approach - focus on small transformations.
+* Value-driven approach - focus on specific business value.
+* Adaptive approach - focus on highly adaptive systems that can evolve as business evolves.
+
 Architectural view model:
 * Logical view - functionality that system provides to end-users.
 * Process view - run-time behavior of system (concurrency, performance, scalability, etc.).
