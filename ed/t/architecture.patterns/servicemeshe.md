@@ -2,7 +2,7 @@ Service Meshe
 -
 
 ````
-istio
+istio (sidecar or ambient mode)
 envoy
 traefik
 consul

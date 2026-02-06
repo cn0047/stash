@@ -357,4 +357,5 @@ kubectl get secrets
 kubectl create secret generic dev-db-secret --from-literal=username=devuser --from-literal=password=dbpass
 kubectl get secret dev-db-secret -o jsonpath='{.data.username}' | base64 --decode
 kubectl get secret dev-db-secret -o jsonpath='{.data.password}' | base64 --decode
+kubectl get secret dev-db-secret -o json
 ````
