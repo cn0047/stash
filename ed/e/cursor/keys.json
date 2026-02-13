@@ -63,4 +63,8 @@
         "command": "editor.action.goToImplementation",
         "when": "editorHasImplementationProvider && editorTextFocus"
     },
+    {
+        "key": "ctrl+l",
+        "command": "workbench.action.gotoLine"
+    }
 ]

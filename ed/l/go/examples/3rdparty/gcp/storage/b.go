@@ -22,7 +22,11 @@ func Run(projectID, SAFilePath, bucketName string) {
 	//printBuckets(ctx, c, projectID)
 	//uploadTestFile(ctx, c, bucketName)
 	//uploadFile(ctx, c, "/tmp/debug.txt", bucketName)
-	delete(ctx, c, bucketName, "/tmp/debug.txt")
+	//delete(ctx, c, bucketName, "/tmp/debug.txt")
+	//list(ctx, c, bucketName, "")
+	//copy(ctx, c, bucketName, "debug.txt", "debug2.txt")
+	//move(ctx, c, bucketName, "debug.txt", "debug3.txt")
+	update(ctx, c, bucketName, "test.3.processed.txt")
 }
 
 func getClientWithAPIKey(ctx context.Context, key string) *storage.Client {
@@ -106,6 +110,22 @@ func printBuckets(ctx context.Context, c *storage.Client, projectID string) {
 	}
 }
 
+func list(ctx context.Context, c *storage.Client, bucketName string, path string) {
+	query := &storage.Query{Prefix: path, Delimiter: "/"}
+
+	it := c.Bucket(bucketName).Objects(ctx, query)
+	for {
+		attrs, err := it.Next()
+		if errors.Is(err, iterator.Done) {
+			break
+		}
+		if err != nil {
+			log.Fatalf("failed to list objects, err: %v", err)
+		}
+		fmt.Printf(" - %v %v\n", attrs.Prefix, attrs.Name)
+	}
+}
+
 func find(ctx context.Context, c *storage.Client, bucketName string, prefix string) {
 	query := &storage.Query{
 		Prefix:    prefix,
@@ -140,5 +160,40 @@ func delete(ctx context.Context, c *storage.Client, bucketName string, pathToObj
 		log.Fatalf("failed to delete object %q from bucket %q, error: %v", pathToObject, bucketName, err)
 	}
 
-	fmt.Printf("Successfully deleted gs://%s/%s\n", bucketName, pathToObject)
+	fmt.Printf("deleted: gs://%s/%s\n", bucketName, pathToObject)
+}
+
+func copy(ctx context.Context, c *storage.Client, bucketName, srcPath, dstPath string) {
+	b := c.Bucket(bucketName)
+	src := b.Object(srcPath)
+	dst := b.Object(dstPath)
+	_, err := dst.CopierFrom(src).Run(ctx)
+	if err != nil {
+		log.Fatalf("failed to copy object %q to %q, err: %v", srcPath, dstPath, err)
+	}
+}
+
+func move(ctx context.Context, c *storage.Client, bucketName, srcPath, dstPath string) {
+	b := c.Bucket(bucketName)
+	src := b.Object(srcPath)
+	dst := b.Object(dstPath)
+	_, err := dst.CopierFrom(src).Run(ctx)
+	if err != nil {
+		log.Fatalf("failed to copy object %q to %q, err: %v", srcPath, dstPath, err)
+	}
+	if err := src.Delete(ctx); err != nil {
+		log.Fatalf("failed to delete source object %q after copy, err: %v", srcPath, err)
+	}
+}
+
+func update(ctx context.Context, c *storage.Client, bucketName string, pathToObject string) {
+	b := c.Bucket(bucketName)
+	v := storage.ObjectAttrsToUpdate{Metadata: map[string]string{
+		"x-processed": "true",
+	}}
+	res, err := b.Object(pathToObject).Update(ctx, v)
+	if err != nil {
+		log.Fatalf("failed to update object %q, err: %v", pathToObject, err)
+	}
+	fmt.Printf("updated: %s, result: %v", pathToObject, res)
 }

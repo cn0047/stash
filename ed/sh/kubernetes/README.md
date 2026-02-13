@@ -303,6 +303,9 @@ kubectl get pods -o wide # shows pods and nodes
 kubectl get pods -o json
 kubectl get pods -o jsonpath='{.items[*].metadata.name}'
 
+kubectl get jobs
+kubectl delete job $job
+
 kubectl -n=$ns describe pod $p
 
 lbl='app='
