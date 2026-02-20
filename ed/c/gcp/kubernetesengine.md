@@ -6,8 +6,7 @@ GKE - Google Kubernetes Engine
 
 ````sh
 gcloud container clusters list # --project $p
-gcloud container clusters get-credentials
-gcloud container clusters get-credentials $name # --project $p --region $r
+gcloud container clusters get-credentials $clusterName --project $p --region $r
 
 ````
 
