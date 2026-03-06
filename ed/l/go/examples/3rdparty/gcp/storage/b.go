@@ -19,14 +19,15 @@ func Run(projectID, SAFilePath, bucketName string) {
 	c := getClientWithCredentialsFile(ctx, SAFilePath)
 	//c := getClientWithCredentialsJSON(ctx, []byte(``))
 
+	list(ctx, c, bucketName, "")
 	//printBuckets(ctx, c, projectID)
+	//printMetaData(ctx, c, bucketName, "debug.txt")
 	//uploadTestFile(ctx, c, bucketName)
 	//uploadFile(ctx, c, "/tmp/debug.txt", bucketName)
 	//delete(ctx, c, bucketName, "/tmp/debug.txt")
-	//list(ctx, c, bucketName, "")
 	//copy(ctx, c, bucketName, "debug.txt", "debug2.txt")
 	//move(ctx, c, bucketName, "debug.txt", "debug3.txt")
-	update(ctx, c, bucketName, "test.3.processed.txt")
+	//update(ctx, c, bucketName, "test.3.processed.txt")
 }
 
 func getClientWithAPIKey(ctx context.Context, key string) *storage.Client {
@@ -196,4 +197,13 @@ func update(ctx context.Context, c *storage.Client, bucketName string, pathToObj
 		log.Fatalf("failed to update object %q, err: %v", pathToObject, err)
 	}
 	fmt.Printf("updated: %s, result: %v", pathToObject, res)
+}
+
+func printMetaData(ctx context.Context, c *storage.Client, bucketName, objectName string) {
+	o := c.Bucket(bucketName).Object(objectName)
+	attrs, err := o.Attrs(ctx)
+	if err != nil {
+		log.Fatalf("failed to get metaData, err: %v", err)
+	}
+	fmt.Printf("metaData: %+v", attrs)
 }

@@ -284,6 +284,7 @@ docker network ls
 
 docker network create --driver bridge x_node_mongo
 docker network inspect x_node_mongo
+docker network rm x_node_mongo
 ````
 
 ## Machine
