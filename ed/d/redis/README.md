@@ -57,6 +57,7 @@ memory usage key
 
 Redis - in-memory data structure store (persistent), used as database,
 with server-side scripts (lua).
+By default it's "eventually persistent" not "instantly persistent".
 
 Redis is fast because of IO Multiplexing (EventLoop).
 
