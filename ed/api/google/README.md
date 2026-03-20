@@ -1,10 +1,11 @@
 Google
 -
 
+[products](https://about.google/products)
 [advanced search](https://www.google.com/advanced_search)
 [page speed](https://developers.google.com/speed/pagespeed/insights)
 [trends](https://trends.google.com/trends/explore?date=all&q=php,javascript)
-[fonts](https://fonts.google.com/)
+[fonts](https://fonts.google.com)
 [ai & ml](https://cloud.google.com/vision/docs/drag-and-drop)
 [2-step verification](http://g.co/2sv)
 

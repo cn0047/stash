@@ -7,7 +7,7 @@ Versions:
 v1: Time-based - MAC address + timestamp.
 v2: DCE security - v1 + POSIX UID/GID (rarely used).
 v3: Name-based - using MD5 hashing (same input = same UUID).
-v4: Random - most commonly used.
+v4: Random - most commonly used (example: f353ca91-4fc5-49f2-9b9e-304f83d11914).
 v5: Name-based - using SHA-1 hashing.
 v6: Reordered time-based - v1 but with sortable timestamp (for DB index).
 v7: Unix timestamp + random - time-ordered + random (best modern choice, for DBs as well).
