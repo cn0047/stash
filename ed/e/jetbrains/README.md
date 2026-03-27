@@ -2,6 +2,7 @@ JetBrains
 -
 
 [GoLand](https://www.jetbrains.com/help/go/getting-started.html)
+[http-client](https://examples.http-client.intellij.net/)
 
 Inlay Hints: Usages, Code author.
 

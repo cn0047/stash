@@ -22,6 +22,7 @@ Primary concerns:
 * Reliability (fault tolerant).
 * Scalability (increasing load).
 * Maintainability (code that can easily be understood, refactored and upgraded).
+* Feasibility.
 
 Elements of a System:
 * Architecture.
