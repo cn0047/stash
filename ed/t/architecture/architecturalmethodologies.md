@@ -49,8 +49,8 @@ Solution requirements:
 * Non-functional requirements.
 
 Architect Focus:
-* Business drivers, goals, objectives;
-* Stakeholders, business processes, requirements;
+* Business drivers, goals, objectives.
+* Stakeholders, business processes, requirements.
 
 RAID - Risks, Assumptions, Issues, Dependencies.
 
@@ -133,6 +133,18 @@ that describes the key architectural decisions made during system design.
 * Behavior.
 * Variability (options and alternatives).
 * Reasoning.
+
+Architecture Roadmaps:
+Iteration model - smal iterations, but each has some business value.
+Priority model - square with 4 sections with higher & lower priorities.
+Portfolio model - one of:
++------------------+---------------------------+----------------+
+|                  | Tactical (small & quick)  | Strategic      |
++------------------+---------------------------+----------------+
+| Localized scope  | Non-decisive battles  40% | Blockades  20% |
++------------------+---------------------------+----------------+
+| Enterprise scope | Decisive battles      35% | Invasions  50% |
++------------------+---------------------------+----------------+
 
 #### ATAM
 

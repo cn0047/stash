@@ -265,6 +265,7 @@ git submodule update --remote --recursive
     ss  = stash save --include-untracked
     sa  = stash apply
     sp  = stash pop
+    sd  = stash drop
     su  = submodule update --remote --recursive
     rh  = reset HEAD
     rb  = !sh -c 'git rebase -i HEAD~$1' -
