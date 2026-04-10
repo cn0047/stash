@@ -79,22 +79,6 @@ git show HEAD^2      # head second parent
 git show HEAD~2      # first parent of first commit
 HEAD^^ == HEAD~2
 
-git commit -m 'Message'
-git commit -m "PROJ-123 my comment..." # for JIRA
-git commit --amend # update commit message
-git commit --amend --author="V.K. <cn007b@gmail.com>"
-git commit --date "2024-03-08" -m 'Message'
-git commit --amend --date="2024-03-08" --no-edit
-
-git log -2                # last 2 commits
-git log -p                # shows commits & code in commit
-git log -G $pattern       # find by regex pattern
-git log --stat            # statiistic about changes
-git log --no-meges        # log without merges
-git log --follow file.txt # viewing history of deleted files !!!
-git log --author=Jack
-git log --date=short --no-merges --shortstat
-
 git reflog # local repository log
 
 git rev_parse branch
@@ -139,6 +123,30 @@ git gc --aggressive
 
 git reset x.go         # is the opposite of git add x.go
 git reset --soft HEAD^ # undo a commit (delete accidentally committed file)
+````
+
+#### commit
+
+````sh
+git commit -m 'Message'
+git commit -m "PROJ-123 my comment..." # for JIRA
+git commit --amend # update commit message
+git commit --amend --author="V.K. <cn007b@gmail.com>"
+git commit --date "2024-03-08" -m 'Message'
+git commit --amend --date="2024-03-08" --no-edit
+````
+
+#### log
+
+````sh
+git log -2                # last 2 commits
+git log -p                # shows commits & code in commit
+git log -G $pattern       # find by regex pattern
+git log --stat            # statiistic about changes
+git log --no-meges        # log without merges
+git log --follow file.txt # viewing history of deleted files !!!
+git log --author=Jack
+git log --date=short --no-merges --shortstat
 ````
 
 #### branch

@@ -64,8 +64,8 @@ Option = Alt
 
 Command-Shift-G         # goto file in finder (open input for file path).
 
-Command-Control-O       # insert mode
-Command-Control-Space   # emoji
+Command-Control-O       # insert mode.
+Command-Control-Space   # emoji.
 
 Control-Shift-Power     # lock screen.
 Command-Option-Power    # put MacBook to sleep.
