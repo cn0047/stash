@@ -13,6 +13,8 @@ Fitness functions - describe how close an architecture is to achieving an archit
 * Operability.
 Both architects and developers maintain the fitness functions.
 
+ADR (Architectural Decision Record) - document about why and how Architectural Decision was made.
+
 Architect - mix: technology, enterprise architecture, leadership, financial strategy & implementation.
 
 Enterprise Architecture:

@@ -44,8 +44,6 @@ Solution Architect:
 * Managing trade-offs: balance conflicting requirements and find optimal solutions.
 * Collaborating with multiple teams.
 
-ADR (Architectural Decision Record) - document about why and how Architectural Decision was made.
-
 On questions about ETA:
 1. Understand who you speaking with and what kind of estimate is expected.
 2. Suggest maybe not certain date, but dates range (2-5 days).
