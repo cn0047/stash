@@ -210,15 +210,14 @@ What should you understand as the distinction? Which one will represent the best
 
 #### Estimation
 
-Is it including: development, testing, deployment, documentation, etc.
-
-Not only estimation but also probability of success completence.
+Find out what is included: development, testing, deployment, documentation, etc.
+Provide not only estimation but also probability of success completence.
 
 Source of uncertainty:
 * Incomplete, inaccurate or changing input information.
 * Inaccurate of estimation process.
 
-Overestimation leads to leneral problems.
+Overestimation leads to lineral problems.
 Underestimation leads to exponential problems.
 
 +20-30% as spare buffer on work package (group of tasks).
