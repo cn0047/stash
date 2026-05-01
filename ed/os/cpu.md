@@ -34,6 +34,8 @@ CPU specific metrics:
 * interrupts   - the % of time that CPU spent to service hardware interrupts.
 * system level - the % of CPU utilization that occurred while executing at the system level.
 
+Teraflop - unit of computer performance measuring one trillion floating-point operations per second.
+
 Thread Scheduling:
 * Contention Scope.
 * Pthread Scheduling.
