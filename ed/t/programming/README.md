@@ -229,3 +229,13 @@ Methods:
 * Bucket system.
 * Dot voting.
 * Maximum size or less.
+
+####  Stages of software development life cycle
+
+1. Planning.
+2. Requirements analysis.
+3. System design.
+4. Coding (implementation).
+5. Testing.
+6. Deployment.
+7. Maintenance.

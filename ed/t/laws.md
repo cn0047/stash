@@ -47,3 +47,15 @@ Any measurement is better than nothing, start with something and work to improve
 
 Murphy's law:
 Anything that can go wrong will go wrong.
+
+Amdahl's law:
+The speedup from parallelism is limited by the sequential part.
+
+Postel's law:
+Be conservative in what you send, liberal in what you accept.
+
+Dunning-Kruger Effect:
+The less you know about something, the more confident you tend to be.
+
+Knuth's optimization principle:
+Premature optimization is the root of all evil.
