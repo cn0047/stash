@@ -34,6 +34,7 @@ Theory
 <br>ODM     - Object-Document mapping.
 <br>OKR     - Objectives and Key Results.
 <br>PaaS    - [Platform As A Service](https://gist.github.com/cn0047/384d6938ebef985347b29c15476b55c5/raw/15dc50eb538328b8352e09c2caebc852533da2b2/cloudComputingTypes.jpeg).
+<br>PII     - Personally Identifiable Information.
 <br>RAID    - Redundant Array of Inexpensive Disks.
 <br>RBAC    - Role-Based Access Control.
 <br>REPL    - Read–Eval–Print Loop (interactive toplevel or language shell).

@@ -50,3 +50,34 @@ Values types:
 * How (process focused).
 * When (time focused).
 * Where (place focused).
+
+Emotions:
+* Fear.
+* Anger.
+* Surprise.
+* Disgust.
+* Sadness.
+* Happiness.
+* Interest.
+* Satisfaction.
+
+Psycho-types:
+* Hyperthymic.
+* Depressive.
+* Hysteroid.
+* Schizoid.
+* Epileptoid.
+* Paranoid.
+* Emotive.
+* Anxious.
+
+States:
+* Childhood: Positive: Hyperthymic - Interest. Negative: Depressive - Sadness.
+* Trixter: Positive: Hysteroid - Happiness. Negative: Schizoid - Surprise.
+* Warrior: Positive: Epileptoid -  Anger. Negative: Paranoid - Disgust.
+* Owner: Positive: Emotive - Satisfaction. Negative: Anxious - Fear.
+
+Company can be created by:
+* Epileptoid - creates army.
+* Paranoid - creates sect.
+* Emotive - creates family.

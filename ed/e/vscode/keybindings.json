@@ -1,13 +1,1 @@
-// Place your key bindings in this file to override the defaults
-[
-    {
-        "key": "ctrl+alt+left",
-        "command": "workbench.action.navigateBack",
-        "when": "canNavigateBack"
-    },
-    {
-        "key": "ctrl+alt+right",
-        "command": "workbench.action.navigateForward",
-        "when": "canNavigateForward"
-    }
-]
+// @see: ed/e/cursor/keys.json

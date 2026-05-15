@@ -179,3 +179,118 @@ ATAM drawbacks:
   and assumes one time process with no changes).
 * Stakehoders busy, hard to collect them all together, and get all requirements.
 * Heavy for Microservices (it originally designed for enterprise SOA).
+
+#### Architecture characteristics
+
+Identify no more than 7 driving characteristics.
+Pick the top 3 characteristics (in any order).
+Implicit characteristics can become driving characteristics if they are critical concerns.
+Add 7 additional characteristics that weren't considered as important, as list of others considered.
+
+**Performance** - amount of time it takes for system to process a business request.
+**Responsiveness** - amount of time it takes to get a response to the user.
+**Availability** - amount of uptime of system, usually measured in 9's (e.g., 99.9%).
+**Fault tolerance** - when fatal errors occur, other parts of system continue to function.
+**Scalability** - when number of users/requests increase, responsiveness/performance/errors remain constant.
+**Elasticity** - system is able to expand and respond quickly to unexpected/extreme loads (from 20 to 2M users).
+**Data integrity** - data across system is correct and there is no data loss in system.
+**Data consistency** - data across system is in sync and consistent across databases and tables.
+
+**Adaptability** - how easy system can adapt to changes in environment and functionality.
+**Concurrency** - ability of system to process simultaneous requests, usualy in order in which they were received.
+**Extensibility** - how easy system can be extended with additional features and functionality.
+**Deployability** - level of effort needed for release, the frequency in which releases occur, and the overall risk of deployment.
+**Testability** - how ease to test and what is the test coverage.
+**Abstraction** - level at which parts of system are isolated from other parts.
+**Configurability** - ability of system to support multiple configurations, including custom on-demand.
+**Recoverability** - ability of system to start where it left off in the event of system crash.
+
+Implicit:
+**security** - ability of system to restrict access to sensitive information or functionality.
+**maintainability** - level of effort required to locate and apply changes to system.
+**observability** - ability of system to make available and stream metrics (performance, uptime, response times, etc.).
+**feasibility** - taking into account timeframes/budgets/developer skills when making architectural choices.
+
+All:
+* Accessibility.
+* Accountability.
+* Accuracy.
+* Adaptability.
+* Administrability.
+* Affordability.
+* Agility.
+* Auditability.
+* Autonomy.
+* Availability.
+* Compatibility.
+* Composability.
+* Configurability.
+* Correctness.
+* Credibility.
+* Customizability.
+* Debugability.
+* Degradability.
+* Determinability.
+* Demonstrability.
+* Dependability.
+* Deployability.
+* Discoverability.
+* Distributability.
+* Durability.
+* Effectiveness.
+* Efficiency.
+* Evolvability.
+* Extensibility.
+* Failure transparency.
+* Fault-tolerance.
+* Fidelity.
+* Flexibility.
+* Inspectability.
+* Installability.
+* Integrity.
+* Interchangeability.
+* Interoperability.
+* Learnability.
+* Maintainability.
+* Manageability.
+* Mobility.
+* Modifiability.
+* Modularity.
+* Operability.
+* Orthogonality.
+* Portability.
+* Precision.
+* Predictability.
+* Process capabilities.
+* Producibility.
+* Provability.
+* Recoverability.
+* Relevance.
+* Reliability.
+* Repeatability.
+* Reproducibility.
+* Resilience.
+* Responsiveness.
+* Reusability.
+* Robustness.
+* Safety.
+* Scalability.
+* Seamlessness.
+* Self-sustainability.
+* Serviceability.
+* Supportability.
+* Securability.
+* Simplicity.
+* Stability.
+* Standards compliance.
+* Survivability.
+* Sustainability.
+* Tailorability.
+* Testability.
+* Timeliness.
+* Traceability.
+* Transparency.
+* Ubiquity.
+* Understandability.
+* Upgradability.
+* Usability.
