@@ -126,6 +126,11 @@ Architectural assessment template:
 * Recomendations.
 * Improvement roadmap.
 
+Architectural vitality:
+* Business drivers - does architecture cover business needs.
+* Organizational structure - does architecture fit organizational structure.
+* Technology environment - does architecture compliant with modern technologies.
+
 Architectural Decision View - one of the architecture viewpoints (in ISO/IEC/IEEE 42010 or in TOGAF practice)
 that describes the key architectural decisions made during system design.
 * Intent.

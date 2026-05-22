@@ -8,3 +8,7 @@ open -a firefox
 
 SSLKEYLOGFILE=/tmp/https.log open /Applications/Firefox.app
 ````
+
+````sh
+about:keyboard
+````

@@ -1,6 +1,7 @@
 mermaid
 -
 
+[docs](https://mermaid.ai/open-source/intro/)
 [docs](https://mermaid-js.github.io/)
 [editor](https://mermaid-js.github.io/docs/mermaid-live-editor-beta)
 

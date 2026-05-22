@@ -23,9 +23,10 @@ Stream - message store, which defines how messages are stored and limits (durati
 Stream consumes normal NATS subject, any message published on subjects will be captured in the defined storage system.
 Consumer - stateful view of a stream.
 With message persistence + acknowledgment mechanisms, JetStream ensures messages are delivered at least once.
-Durable consumer persists state, so it can resume processing even after restart.
+Durable consumer persists state, it can resume processing even after restart.
 Storage options: file-based, memory-based.
 Headers - used for: de-duplication, auto-purging, metadata from republished messages, etc.
+`source/mirror` stream - designed to be robust and will recover from a loss of connection.
 
 Subjects:
 
