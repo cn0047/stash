@@ -20,6 +20,17 @@ System architecture methodology:
 
 ## Prompting technique:
 
+Basic prompt.
+
+````
+Context & Role:   What's the Situation? + Who is the AI?
+Audience:         Define target audience.
+Request & Reason: What is the Task and Goal (Why)?
+Augment:          Examples + Chain-of-thought reasoning.
+Format & Fences:  Output structure + Data Delimiters.
+Trust Boundaries: Constraints + Guardrails + What NOT to do.
+````
+
 **COT** (Chain of Thought) - technique that encourages the model to break down complex problem into series
 of logical steps before providing solution.
 Structure: Thought → Thought → ... → Answer.
