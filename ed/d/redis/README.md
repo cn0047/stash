@@ -5,6 +5,7 @@ Redis
 
 [php client](https://github.com/phpredis/phpredis)
 [docs](https://redis.io/documentation)
+[docs cluster](https://redis.io/docs/latest/operate/oss_and_stack/management/scaling/)
 [commands](https://redis.io/docs/latest/commands)
 [lua](https://redis.io/commands/eval)
 [pipelining](https://redis.io/topics/pipelining)
