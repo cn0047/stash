@@ -121,6 +121,14 @@ then green deployment and green service and change docker image selector in gree
 **Ingress** manages external access to the services in a cluster, typically HTTP,
 can provide load balancing, SSL termination and name-based virtual hosting.
 
+Ingress can work with gRPC, but it requires specific configuration because gRPC relies on HTTP/2.
+
+**Gateway API** - standardized successor to Ingress for routing traffic into/within the cluster (L4/L7).
+Resources are split by role: `GatewayClass/Gateway` (platform/infra — listeners, TLS, addresses),
+`HTTPRoute/GRPCRoute/TCPRoute` (own built applications — path/host rules, backends).
+
+Gateway API is minimal, portable, powerful, and expressive (header/path/weight routing, cross-namespace refs, backend policies, etc.).
+
 **Volume**:
 `emptyDir` - lifecycle tied to pod,
 `hostPath` - path on worker node,
@@ -155,6 +163,9 @@ CRD - Custom Resource Definition.
 kind: ConfigMap                  # separate configuration information from application definition
 kind: HorizontalPodAutoscaler    #
 kind: Ingress                    # specify how incoming network traffic should be routed to services and pods
+kind: GatewayClass               # Gateway API: define which controller implements gateways
+kind: Gateway                    # Gateway API: listener + TLS at cluster edge
+kind: HTTPRoute                  # Gateway API: HTTP routing rules to services (own built applications)
 kind: Job
 kind: LimitRange                 # default CPU/Memory requests/limits for namespace
 kind: Namespace
