@@ -1,5 +1,7 @@
 module ssh
 
-go 1.16
+go 1.24.0
 
-require golang.org/x/crypto v0.0.0-20210513164829-c07d793c2f9a
+require golang.org/x/crypto v0.45.0
+
+require golang.org/x/sys v0.38.0 // indirect
