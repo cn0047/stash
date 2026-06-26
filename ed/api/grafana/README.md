@@ -1,6 +1,10 @@
 Grafana
 -
 
+````sh
+url=~.*needle.*
+````
+
 #### TraceQL
 
 ````sh
