@@ -76,7 +76,7 @@ Insert into BST: `val < left.val -> insert into left node, else insert into righ
 Delete node from BST:
 1. delete leaf node - just delete it.
 2. delete node with 1 child - replace node with it's child.
-3. delete node with 2 childs - replace with node wich is minimum in right child.
+3. delete node with 2 children - replace with node which is minimum in right child.
 
 Valid BST:
 1. Left subtree contains only nodes with keys less than the node's key.
