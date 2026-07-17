@@ -73,6 +73,9 @@ git remote update origin
 git remote prune origin # when blocking reference, error: cannot lock ref 'refs/remotes/origin/brhcn'
 git fetch remoteRepoName
 
+git status
+git status -s # short notation
+
 git show commit-hash
 git show HEAD^       # head parent
 git show HEAD^2      # head second parent

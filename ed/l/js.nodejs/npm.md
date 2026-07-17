@@ -63,6 +63,7 @@ npm root -g
 
 ````sh
 npm i
+npm i --save-exact pkg@1.2.3
 npm install --only=prod
 npm uninstall $pkg
 
@@ -97,11 +98,12 @@ console.log(argv.one + " " + argv.two);
 ./app2.js --one="My" --two="Name"
 ````
 
-### File
+### File package.json
 
 devDependencies - packages needed only for development.
 peerDependencies - (when publishing own package) means that own package needs
 same dependency as the person installing your own package.
+overrides - force specific version of dependency, and nested dependency (dependency of dependency).
 
 ````js
 {

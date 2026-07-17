@@ -2,5 +2,14 @@
     {
         "key": "alt+w",
         "command": "workbench.action.closeOtherEditors"
-    }
+    },
+    {
+        "key": "ctrl+enter",
+        "command": "editor.action.revealDeclaration"
+    },
+    {
+        "key": "ctrl+enter",
+        "command": "editor.action.goToImplementation",
+        "when": "editorHasImplementationProvider && editorTextFocus"
+    },
 ]
