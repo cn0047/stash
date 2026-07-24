@@ -8,6 +8,7 @@ Google
 [fonts](https://fonts.google.com)
 [ai & ml](https://cloud.google.com/vision/docs/drag-and-drop)
 [2-step verification](http://g.co/2sv)
+[storage usage](https://one.google.com/storage/management)
 
 Cloud Identity - 👨‍👩‍👧‍👦.
 
