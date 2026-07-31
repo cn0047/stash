@@ -125,6 +125,9 @@ because due to replication lag user may not see recent updates on slave.
 * Rely on idempotency.
 * SAGA.
 
+Distributed transaction rollback is challenging.
+In case of transaction rollback fail the whole database state will be broken.
+
 ## Saga Pattern
 
 Saga is a sequence of transactions where each transaction

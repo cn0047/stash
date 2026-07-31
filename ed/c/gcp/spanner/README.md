@@ -132,3 +132,9 @@ a2  ARRAY<STRING(50)>
 SELECT 2 IN UNNEST(ARRAY_CONCAT([1, 2], [3, 4])) in_array;
 
 ````
+
+````sql
+SELECT t.json_data.field_name
+FROM my_table t
+WHERE JSON_VALUE(t.json_data.field_name) = 'value'
+````

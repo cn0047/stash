@@ -95,8 +95,8 @@ curl -X GET api.svc.com/v1/notifications/pushes/devices/{dID}/enabled
 curl -X GET api.svc.com/v1/notifications/emails/devices/{dID}/enabled
 ````
 
-<br>P: What to do with ugly names like: deploys...
-<br>S: ?
+<br>P: What to do with ugly names like: deploys, payloads, ...
+<br>S: TBD.
 
 <br>P: GET user not by ID (PK) but by email (unique key) - how url should look.
 <br>S: `/users/?email=e`.
@@ -121,7 +121,10 @@ version in url super simple to invalidate, version in header harder to invalidat
 also version in header won't be logged by nginx logger etc.
 also rounting and load balancing is easier with version in url.
 
-<br>P: batch/bulk operations
+<br>P: Keep info about each client of your API, so you can inform them about API deprecation.
+<br>S: TDB.
+
+<br>P: batch/bulk operations.
 <br>S1:
 ````sh
 POST /users/_bulk
