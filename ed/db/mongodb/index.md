@@ -131,6 +131,24 @@ db.scores.find({score: {$lt: 90}})
 {'_id' : ObjectId('523b6e61fb408eea0eec2648'), 'userid': 'abby', 'score': 82}
 ````
 
+Partial index - instead of indexing every single document, it only indexes the documents that match `partialFilterExpression`.
+
+````js
+db.orders.createIndex(
+  { customer_id: 1 },
+  { partialFilterExpression: { status: "pending" } }
+)
+````
+
+Hidden index - hidden index is not visible to query planner, it helps to evaluate the potential impact of dropping an index,
+if the impact is negative, then unhide the index, instead of having to recreate dropped index.
+
+````js
+db.addresses.createIndex({ zipCode: 1 }, { hidden: true });
+db.addresses.hideIndex(idx_name);
+db.addresses.unhideIndex(idx_name);
+````
+
 ````js
 // Create index in foreground:
 // 1) fast;
