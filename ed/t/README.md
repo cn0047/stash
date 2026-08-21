@@ -96,6 +96,9 @@ Tell, Don’t Ask.
 Law of Demeter - object A can call method of object B,
 but object A should not "reach through" object B to access yet another object C, to request its services.
 
+Authentication - answers the question: who the user is.
+Authorization - answers the question: what user can do.
+
 ACL (often simpler): List of users (IDs) and privileges to resource (what can do or see).
 RBAC: Permissions based on role.
 
