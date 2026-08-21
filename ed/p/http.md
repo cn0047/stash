@@ -178,6 +178,8 @@ Headers:
 Server: nginx/1.10.2
 
 Set-Cookie: AWSELB=3B731DCB1E7B5DC042400ABD5CCF735F3FFEB4F54E46E6B7D...
+Set-Cookie: a=b; SameSite=strict; secure; HttpOnly;
+                                  ^ SSL   ^ no JavaScript
 
 X-Powered-By: Express
 
