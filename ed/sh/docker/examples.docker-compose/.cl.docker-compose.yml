@@ -8,11 +8,16 @@ services:
             context: ../
             dockerfile: ./deploy/Dockerfile
         image: lf:latest
+        read_only: true
+        security_opt:
+            - no-new-privileges:true
 
     local:
         extends:
             file: ./docker-compose.yml
             service: app_base
+        security_opt:
+            - no-new-privileges:true
         links:
             - "postgres:postgres"
         ports:
@@ -30,6 +35,8 @@ services:
         extends:
             file: ./docker-compose.yml
             service: app_base
+        security_opt:
+            - no-new-privileges:true
         links:
             - "postgres:postgres"
         volumes:
@@ -40,6 +47,8 @@ services:
         extends:
             file: ./docker-compose.yml
             service: app_base
+        security_opt:
+            - no-new-privileges:true
         entrypoint: go run ./deploy/cmd/pgc/main.go
         links:
             - "postgres:postgres"
@@ -48,6 +57,9 @@ services:
 
     postgres:
         image: postgres:9.6
+        read_only: true
+        security_opt:
+            - no-new-privileges:true
         expose:
             - "5432"
         ports:
