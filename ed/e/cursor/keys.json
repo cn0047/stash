@@ -66,5 +66,15 @@
     {
         "key": "ctrl+l",
         "command": "workbench.action.gotoLine"
+    },
+    {
+        "key": "ctrl+c",
+        "command": "copyFilePath",
+        "when": "!editorFocus"
+    },
+    {
+        "key": "alt+c",
+        "command": "copyRelativeFilePath",
+        "when": "!editorFocus"
     }
 ]
