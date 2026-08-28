@@ -15,6 +15,7 @@ GLI-33 - standards for event Wagering Systems.
 ## GLI-19 - technical standards for Interactive Gaming Systems.
 
 System - Interactive Gaming System.
+Incentive credits - promotional credits/prizes (welcome bonus, free-play credit, cashback, promotional award, etc.).
 
 1.3.2 This document should not be interpreted to mean that if the technology is not mentioned,
 then it is not allowed.
