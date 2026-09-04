@@ -185,6 +185,23 @@ ATAM drawbacks:
 * Stakehoders busy, hard to collect them all together, and get all requirements.
 * Heavy for Microservices (it originally designed for enterprise SOA).
 
+#### Zachman Framework
+
+Rows:
+* Executive Perspective (Scope Contents).
+* Business Management Perspective (Business Concepts).
+* Architect Perspective (System Logic).
+* Engineer Perspective (Technology Physics).
+* Technician Perspective (Tool Components).
+
+Columns:
+* Inventory Sets – What.
+* Process Flows – How.
+* Distribution Networks – Where.
+* Responsibility Assignments – Who.
+* Timing Cycles – When.
+* Motivation Intentions – Why.
+
 #### Architecture characteristics
 
 Identify no more than 7 driving characteristics.

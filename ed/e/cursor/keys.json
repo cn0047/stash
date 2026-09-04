@@ -76,5 +76,17 @@
         "key": "alt+c",
         "command": "copyRelativeFilePath",
         "when": "!editorFocus"
+    },
+    {
+        "key": "alt+down",
+        "command": "editor.action.transformToLowercase"
+    },
+    {
+        "key": "alt+up",
+        "command": "editor.action.transformToUppercase"
+    },
+    {
+        "key": "alt+cmd+up",
+        "command": "editor.action.transformToTitlecase"
     }
 ]

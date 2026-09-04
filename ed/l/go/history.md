@@ -3,6 +3,14 @@ History of Go
 
 [release notes](https://golang.org/doc/go1.25)
 
+#### go1.27
+
+* Goroutine leak profiles.
+
+#### go1.26
+
+* Completely rewritten `go fix`.
+
 #### go1.25
 
 #### go1.24

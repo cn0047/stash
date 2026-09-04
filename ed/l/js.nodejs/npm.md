@@ -28,7 +28,7 @@ npm init
 
 npm ll # list installed packages
 npm ls # list installed packages
-npm ls $pkg # see who is using $pkg
+npm ls $pkg # see who is using $pkg and which version
 npm ls -g
 
 npm run script
