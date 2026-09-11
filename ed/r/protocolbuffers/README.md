@@ -58,6 +58,7 @@ message Job {
   string id = 1;
   repeated string tags = 2;
   map<string, string> params = 3; // grpcwebtext will not generate seter for map
+  string slug = 4 [deprecated = true];
   google.protobuf.Timestamp created_at  = 5;
 
   oneof kind {

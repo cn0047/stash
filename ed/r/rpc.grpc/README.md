@@ -47,6 +47,14 @@ Versioning:
 * Version in endpoint name.
 * Version in server name.
 
+````proto
+service MyService {
+  rpc Get(GetRequest) returns (GetResponse) {
+    option deprecated = true;
+  };
+}
+````
+
 Basic auth:
 ````go
 "crypto/tls"

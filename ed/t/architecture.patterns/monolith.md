@@ -1,13 +1,11 @@
 Monotilth
 -
 
-Monolith - unit of deployment.
+**Monolith** - unit of deployment (single process monolith).
 Monolith is not synonymous with legacy, it has advantages & disadvantages.
 
-Single process monolith.
-
-Modular monolith - subset of single process monolith,
-which consists of separate modules.
+**Modular monolith** - subset of single process monolith,
+which consists of separate modules (like vertical layers for domains).
 
 Distributed monolith - when microservices tightly bounded,
 and have high complexity of connections within the system.
@@ -22,3 +20,8 @@ Strategies for refactoring a monolith to microservices:
 * Implement new features as services.
 * Separate presentation layer and backend.
 * Break up the monolith by extracting functionality into services.
+
+Monolith isn't so awful in case of server-side-rendering.
+But:
+* [10K SLOC](https://en.wikipedia.org/wiki/Source_lines_of_code).
+* Extremely difficult to navigate the code and isolate your code.

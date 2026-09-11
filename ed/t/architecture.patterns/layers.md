@@ -1,6 +1,8 @@
 Layers (AKA multitier or 3-tier or n-tier)
 -
 
+Layered architecture - monolithic architectural pattern that organizes an application into layers.
+
 * Presentation layer (UI layer (presentation)).
 * Application layer (service layer).
 * Business logic layer (domain layer).
@@ -16,3 +18,9 @@ Disadvantages:
 * Extra layers can harm performance.
 
 Usage: desktop app, E-commerce, web app.
+
+**Functional layout** - group code by it’s functional type: controllers, models, etc.
+But: names are weird (controller.UserController, service.UserService, ...).
+
+**Module layout** - group code by it’s module: user, account, etc.
+But: names are weird (users.User, accounts.Controller, should interact with our `users.Controller` in `go` (-> critical err), ...).

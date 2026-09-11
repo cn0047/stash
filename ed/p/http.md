@@ -182,6 +182,7 @@ Set-Cookie: a=b; SameSite=strict; secure; HttpOnly;
                                   ^ SSL   ^ no JavaScript
 
 X-Powered-By: Express
+Deprecation: @1688169599 # deprecation timestamp.
 
 # CORS
 Access-Control-Allow-Origin: http://www.example.com

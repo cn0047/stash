@@ -83,21 +83,6 @@ Create directories: Customers, Products, Vendors, ... instead of Controllers, Mo
 Pros: easy to navigate.
 Cons: lose framework convention.
 
-#### Functional layout
-
-Group code by it’s functional type: controllers, models, etc.
-
-But:
-* names are atrocious (controller.UserController, service.UserService, ...).
-
-#### Module layout
-
-Group code by it’s module: user, account, etc.
-
-But:
-* terrible names like: (users.User, ...)
-  or `accounts.Controller` needs to interact with our `users.Controller` in `go` (-> critical err).
-
 #### Clean Architecture
 
 * Entities.
@@ -105,19 +90,11 @@ But:
 * Controller.
 * Framework & Driver.
 
-#### Monolith
-
-Not so awful in case of server-side-rendering.
-
-But:
-* [10K SLOC](https://en.wikipedia.org/wiki/Source_lines_of_code).
-* Extremely difficult to navigate the code and isolate your code.
-
 #### Simple
 
 ````
-mongomart
-└── src
+simpleapp
+└── 🗂 src
     ├── 🗂 static   # Img, css, etc.
     ├── 🗂 views    # Templates.
     ├── 🗂 dao      # DAO objects.
@@ -126,7 +103,7 @@ mongomart
 
 ````
 log
-└── src
+└── 🗂 src
     ├── 🗂 configs       # All app configs.
     ├── 🗂 middlewares   # CORS, X-Powered-By, etc.
     ├── 🗂 routes        # HTTP controllers. BL.
@@ -137,7 +114,7 @@ log
 
 ````
 sandbox-log
-└── src
+└── 🗂 src
     ├── 🗂 di
     │   ├── config.go
     │   └── container.go
@@ -154,94 +131,94 @@ sandbox-log
 
 ````
 monitoring.v1
-└── src
-    └── go-app
-        ├── .gae
+└── 🗂 src
+    └── 🗂 go-app
+        ├── 🗂 .gae
         │   ├── app.yaml
         │   └── main.go
-        ├── common
-        ├── config
-        ├── controller
-        ├── route
-        └── service
+        ├── 🗂 common
+        ├── 🗂 config
+        ├── 🗂 controller
+        ├── 🗂 route
+        └── 🗂 service
+````
+
+````
+monitoring.v2
+└── 🗂 src
+    └── 🗂 go-app
+        ├── 🗂 .gae
+        ├── 🗂 app
+        │   ├── 🗂 config
+        │   │   └── 🗂 taxonomy
+        │   ├── 🗂 errors
+        │   │   ├── 🗂 AppError
+        │   │   ├── 🗂 BLError
+        │   │   └── 🗂 InvalidVOError
+        │   ├── 🗂 routes
+        │   └── 🗂 vo
+        ├── 🗂 controller
+        │   ├── 🗂 ah
+        │   ├── 🗂 api
+        │   ├── 🗂 cron
+        │   ├── 🗂 home
+        │   └── 🗂 worker
+        ├── 🗂 middleware
+        └── 🗂 service
+            ├── 🗂 internal
+            │   ├── 🗂 cache
+            │   ├── 🗂 datastore
+            │   └── 🗂 vo
+            ├── 🗂 chart
+            ├── 🗂 measurement
+            ├── 🗂 ping
+            ├── 🗂 project
+            ├── 🗂 queue
+            ├── 🗂 renderer
+            └── 🗂 validator
 ````
 
 ````
 monitoring.v3
-└── src
-    └── go-app
-        ├── .gae
-        ├── app
-        │   ├── config
-        │   │   └── taxonomy
-        │   ├── errors
-        │   │   ├── AppError
-        │   │   ├── BLError
-        │   │   └── InvalidVOError
-        │   ├── routes
-        │   └── vo
-        ├── controller
-        │   ├── ah
-        │   ├── api
-        │   ├── cron
-        │   ├── home
-        │   └── worker
-        ├── middleware
-        └── service
-            ├── chart
-            ├── internal
-            │   ├── cache
-            │   ├── datastore
-            │   └── vo
-            ├── measurement
-            ├── ping
-            ├── project
-            ├── queue
-            ├── renderer
-            └── validator
-````
-
-````
-monitoring.next
-└── src
-    └── go-app
-        ├── .gae
-        ├── app
-        │   ├── config
-        │   ├── taxonomy
-        │   ├── errors
-        │   ├── routes
-        │   ├── middleware
-        │   ├── controller
-        │   └── vo             # optional here
-        └── service.v1
-            ├── internal
-            │   ├── cache
-            │   ├── datastore
-            │   └── vo         # ‼️ private VOs
-            ├── chart
-            ├── measurement
-            ├── ping
-            ├── project
-            ├── queue
-            ├── renderer
-            └── validator
+└── 🗂 src
+    └── 🗂 go-app
+        ├── 🗂 .gae
+        ├── 🗂 app
+        │   ├── 🗂 config
+        │   ├── 🗂 routes
+        │   ├── 🗂 middleware
+        │   ├── 🗂 controller
+        │   ├── 🗂 vo             # optional here
+        │   ├── 🗂 errors         # optional here
+        │   └── 🗂 taxonomy       # optional here
+        └── 🗂 service.v1
+            ├── 🗂 internal
+            │   ├── 🗂 cache
+            │   ├── 🗂 datastore
+            │   └── 🗂 vo         # ‼️ private VOs
+            ├── 🗂 chart
+            ├── 🗂 measurement
+            ├── 🗂 ping
+            ├── 🗂 project
+            ├── 🗂 queue
+            ├── 🗂 renderer
+            └── 🗂 validator
 ````
 
 #### DDD
 
 ````
 wall
-└── src
-    ├── 🗂 app ⓵   # PRESENTATION LAYER + Stuff common for all PHP and JavaScript frameworks + PHP frameworks.
-    ├── 🗂 bin ⓶   # All binary files must be hosted here (artisan, console, migration, etc).
+└── 🗂 src
+    ├── 🗂 app ⓵   # PRESENTATION LAYER + Stuff common for all PHP and JavaScript frameworks + PHP framework itself.
+    ├── 🗂 bin ⓶   # All binary files must be hosted here (artisan, console, migration run command, etc).
     ├── 🗂 ddd ⓷   # All stuff related to DDD.
     └── 🗂 web ⓸   # USER INTERFACE LAYER (public stuff).
 ````
 
 ````
 wall
-└── src
+└── 🗂 src
     └── 🗂 app ⓵
         ├── 🗂 config           # All project's configs.
         │                       # Any particular PHP implementation must use these configs.
@@ -256,25 +233,25 @@ wall
         │                       # One for any PHP framework implementation (with purpose to support DRY).
         │                       # This DIC also performs common stuff like init bridges, init facades
         │                       # with custom logic which is common for all PHP implementations.
-        ├── 🗂 migrations       # Framework agnostic DB migrations.
-        └── var                 # Cache, logs, etc.
+        ├── 🗂 migrations       # Framework agnostic DB migrations (actual migration instructions).
+        └── 🗂 var              # Cache, logs, etc.
 ````
 
 ````
 wall
-└── src
+└── 🗂 src
     └── 🗂 ddd ⓷
-        └── Wall
+        └── 🗂 Wall
             ├── 🗂 Application             # 🔰 APPLICATION DDD LAYER.
             │   │                          # Any PHP implementation can work only with this layer.
             │   ├── 🗂 Exception
             │   ├── 🗂 Service
             │   └── 🗂 VO                  # Any request must be represented by VO.
-            ├── Domain                     # 🔰 DOMAIN DDD LAYER.
+            ├── 🗂 Domain                  # 🔰 DOMAIN DDD LAYER.
             │   ├── 🗂 Model
             │   └── 🗂 Service
-            └── Infrastructure             # 🔰 INFRASTRUCTURE DDD LAYER.
-                ├── 🗂 FullTextSearching
+            └── 🗂 Infrastructure          # 🔰 INFRASTRUCTURE DDD LAYER.
+                ├── 🗂 FullTextSearch
                 │   └── 🗂 ElasticSearch
                 ├── 🗂 Logging
                 └── 🗂 Persistence         # Implements all domain interfaces and returns canonical DTOs as result.
@@ -284,17 +261,17 @@ wall
 
 ````
 wall
-└── src
+└── 🗂 src
     └── 🗂 web ⓸
         ├── 🗂 css
         │
         ├── 🗂 html
-        │   └── implementation
+        │   └── 🗂 implementation
         │       ├── 🗂 jquery    # Index page for SPA based on jQuery.
         │       └── 🗂 react     # Index page for SPA based on ReactJS.
         │
         ├── 🗂 js                # FRONTEND.
-        │   └── implementation
+        │   └── 🗂 implementation
         │       ├── 🗂 jquery    # jQuery scripts.
         │       └── 🗂 react     # ReactJS components, etc.
         │
@@ -308,29 +285,29 @@ wall
 
 ````
 prj
-├── cmd
+├── 🗂 cmd
 │   └── main.app
-├── adapters
-└── core
-    ├── ports
-    ├── usecases
-    └── domain
+├── 🗂 adapters
+└── 🗂 core
+    ├── 🗂 ports
+    ├── 🗂 usecases
+    └── 🗂 domain
 ````
 
 #### Tests
 
 ````
 prj
-├── src
-└── test
-    ├── functional
-    │   └── jmeter
-    ├── integration
-    └── unit
-        ├── fixture
-        ├── mock
-        ├── stub
-        └── prj
+├── 🗂 src
+└── 🗂 test
+    ├── 🗂 functional
+    │   └── 🗂 jmeter
+    ├── 🗂 integration
+    └── 🗂 unit
+        ├── 🗂 fixture
+        ├── 🗂 mock
+        ├── 🗂 stub
+        └── 🗂 prj
 ````
 
 #### Go
@@ -342,25 +319,25 @@ prj
 
 ````
 root
-├── domain
-├── infrastructure
+├── 🗂 domain
+├── 🗂 infrastructure
 └── myapp.go
 
 root
-├── app
-│   ├── domain
-│   └── infrastructure
-├── cmd
-└── ops # devops
+├── 🗂 app
+│   ├── 🗂 domain
+│   └── 🗂 infrastructure
+├── 🗂 cmd
+└── 🗂 ops # devops
 
 root
-├── ops
-├── cmd
-│   └── app-name
+├── 🗂 ops
+├── 🗂 cmd
+│   └── 🗂 app-name
 │       └── main.go
-├── app
-│   ├── svc1
-│   ├── svc2
+├── 🗂 app
+│   ├── 🗂 svc1
+│   ├── 🗂 svc2
 │   └── ...
 └── go.mod
 ````
