@@ -166,3 +166,55 @@ and more (@see doc).
 funds may be transferred from the player account balance to a credit meter for the gaming session.
 Once play is complete the player shall have the option to transfer some or all of their funds
 back to their player account balance.
+
+4.4.3 Line Games.
+For multi-line games, the game shall provide summary display of the paylines
+that are available to form winning combinations, the bet multiplier shall be shown,
+the artwork shall indicate any rules and/or limitations, winning paylines shall be clearly discernible to the player.
+
+4.4.4 Card Games.
+At the start of each game and/or hand, the cards shall be drawn from a randomly shuffled deck(s).
+Cards once removed from the deck(s) shall not be returned to the deck(s) except as provided by the rules of the game.
+Card faces shall clearly display the card value and the suit.
+
+4.4.5 Poker Games.
+The artwork shall provide clear indication of what variant of poker is being played and the rules that apply.
+Wild card rules shall be clearly explained in the help screens.
+
+4.4.6 Blackjack Games.
+
+4.4.7 Roulette Games.
+The method of selecting individual wagers shall be explained by the game rules.
+The wager(s) already selected by the player shall be displayed on the screen.
+
+4.4.8 Dice Games.
+
+4.4.9 Sports/Racing Games.
+
+4.4.10 Ball/Number Drawing Games.
+
+4.4.11 Keno/Bingo/Lottery Games.
+
+4.4.12 Scratch Ticket Games.
+
+4.4.13 Multi-Player Games.
+
+**4.5** Game Outcome Using a Random Number Generator (RNG).
+
+4.5.2 Game Selection Process.
+When making calls to the RNG, the game shall not limit the outcomes available for selection, except as provided for by game design.
+Any associated equipment used in conjunction with a Gaming Platform shall not influence or modify the behaviors of the game’s RNG.
+
+**4.6.1** Game Fairness.
+Games shall not include any hidden source code that can be leveraged by a player.
+The final outcome of each game shall be displayed for a sufficient length of time that permits a player
+a reasonable opportunity to verify the outcome of the game.
+
+4.6.2 Simulation of Physical Objects.
+
+4.6.3 Physics Engine.
+Games may utilize a “physics engine” which is specialized software that approximates or simulates a physical environment.
+
+4.6.4 Live Game Correlation.
+
+4.6.5 Random Event Probability.

@@ -13,6 +13,7 @@ Best Practices
 [linter](https://github.com/dominikh/go-tools)
 [error linter](https://github.com/kisielk/errcheck)
 [raft protocol](https://github.com/hashicorp/raft)
+[confines go modules](https://github.com/AkihiroSuda/gomodjail)
 
 * Avoid nesting by handling errors first.
 * Make your packages "go get"-able.

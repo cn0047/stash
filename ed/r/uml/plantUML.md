@@ -27,6 +27,23 @@ Components: folder, package, node, rectangle, frame, cloud, database.
 ```plantuml
 @startuml
 
+left to right direction
+
+rectangle element1 {
+}
+rectangle element2 {
+}
+
+element1 -[#blue,thickness=5]-> element2: Connection 1
+element1 -[#blue,thickness=5]-> element2: Connection 2
+element1 -[#blue,thickness=5]-> element2: Connection 3
+
+@enduml
+```
+
+```plantuml
+@startuml
+
 title Componets diagram, example #1.
 
 left to right direction
