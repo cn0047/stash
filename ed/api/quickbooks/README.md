@@ -46,6 +46,9 @@ curl -s -X POST -H $a -H $jh 'https://oauth.platform.intuit.com/oauth2/v1/tokens
   -d grant_type=refresh_token \
   -d refresh_token=$rt \
   | jq
+# @return:
+{"error":"invalid_grant","error_description":"Incorrect or invalid refresh token"}
+{"x_refresh_token_expires_in": 8719958, "refresh_token": "tkn-scrt", "access_token": "tkn-val", "token_type": "bearer", "expires_in": 3600}
 ````
 
 ````sh

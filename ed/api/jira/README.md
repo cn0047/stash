@@ -11,9 +11,14 @@ git commit -m "PRJ-1273: Some comment."
 ````
 
 ````sql
+-- JQL
+
 -- issues filter query
 assignee WAS currentUser() DURING (-26w, now())
 ORDER BY updated DESC
+
+project = "PRJ" AND (creator = "userid" OR reporter = "userid")
+ORDER BY created DESC
 ````
 
 ````
