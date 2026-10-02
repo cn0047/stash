@@ -218,3 +218,49 @@ Games may utilize a “physics engine” which is specialized software that appr
 4.6.4 Live Game Correlation.
 
 4.6.5 Random Event Probability.
+
+4.7.1 Software Requirements for Percentage Payout.
+
+4.7.3 Odds.
+
+**4.8** Bonus/Feature Requirements.
+
+4.8.1 Bonus/Feature Games.
+The game shall make it clear to the player that they are in a bonus/feature mode.
+
+4.8.2 Games which offer a bonus/feature which requires player selection or interaction
+are prohibited from automatically making selections or initiating the bonus/feature.
+
+4.8.3 If a bonus/feature in progress requires extra funds to be wagered in order to continue,
+the player shall be provided an opportunity not to participate.
+
+4.8.4 Community bonuses shall contain an appropriate description of the rules governing each community bonus.
+
+4.8.5 Double-Up/Gamble Features (Triple-Up, Take-or-Risk) instructions shall be fully disclosed.
+The player shall have a choice as to whether or not they want to participate in the double-up/gamble feature.
+
+4.8.6 A mystery award is an award paid by a game that is not associated with a specific paytable combination.
+
+**4.9** Alternative Game Modes
+
+4.9.1 Free Play Mode.
+
+4.9.2 Autoplay Mode.
+
+4.9.3 Tournament Mode.
+
+**4.10** Games with Skill. Skill means the human attributes of a player such as:
+knowledge, dexterity, visual recognition, logic, memory, reaction, strength, agility, athleticism,
+hand-to-eye coordination, numerical and/or lexical ability, or any other ability or expertise relevant to game play.
+
+4.10.2 Display for Games with Skill.
+
+4.10.3 Virtual Opponent.
+
+4.10.4 Outcome for Games with Skill.
+
+**4.11** Peer-to-Peer (P2P) Gaming.
+
+**4.12** Persistence Games.
+
+**4.13** Progressive Jackpots and Incrementing Jackpots.
