@@ -21,6 +21,7 @@ cat .ssh_my/id_rsa.pub | awk '{print $2}' | base64 -d | md5sum
 
 locate sshd_config
 
+eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 ssh-add -D # delete keys from agent
 vim /etc/ssh/sshd_config

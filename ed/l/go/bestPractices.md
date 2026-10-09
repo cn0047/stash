@@ -14,6 +14,8 @@ Best Practices
 [error linter](https://github.com/kisielk/errcheck)
 [raft protocol](https://github.com/hashicorp/raft)
 [confines go modules](https://github.com/AkihiroSuda/gomodjail)
+~~[go-swagger](https://github.com/go-swagger/go-swagger)~~
+[oapi-codegen](https://github.com/oapi-codegen/oapi-codegen)
 
 * Avoid nesting by handling errors first.
 * Make your packages "go get"-able.

@@ -16,7 +16,7 @@ _gtag.push(['_trackEvent', 'action'])
 _gtag.push(['_tackSocial', 'facebook', 'like', 'fx.ua'])
 _gtag.push(['_setSustomVar', 'slot', 'name', 'value', 'scope'])
 _gtag.push(['_setSustomVar', 1, 'role', 'customer', 1])
-// where scopes: 3 - page; 2 - session; 1 - visitor.
+// where scopes: 1 - visitor, 2 - session, 3 - page.
 ````
 
 ````js

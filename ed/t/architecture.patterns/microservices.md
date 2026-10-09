@@ -5,6 +5,9 @@ Microservices
 [consul](https://www.consul.io/)
 [service discovery](https://github.com/etcd-io/etcd)
 
+Microservices - single purpose functions deployed as separate units,
+with each unit owning its own data.
+
 Microservices is a variant of the SOA
 architectural style that structures an application as a collection of loosely coupled services.
 It is *modern* interpretation of SOA used to build distributed software systems.

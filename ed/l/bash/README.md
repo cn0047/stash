@@ -17,6 +17,8 @@ bash --version
 echo $BASH_VERSION
 echo There are ${#BASH_ALIASES[*]} aliases defined.
 
+eval "echo 'it works'"
+
 SCRIPT=`realpath $0`
 SCRIPT_DIR=`dirname $SCRIPT`
 
