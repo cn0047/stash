@@ -306,9 +306,11 @@ git submodule update --remote --recursive
 [user]
     name = V.K.
     email = cn007b@gmail.com
-# [url "git@github.com:"]
-#     insteadOf = https://github.com/
-# [url "git@bitbucket.org:"]
-#     insteadOf = https://bitbucket.org/
+[url "git@github.com:"]
+    insteadOf = https://github.com/
+[url "git@gitlab.com:"]
+    insteadOf = https://gitlab.com/
+[url "git@bitbucket.org:"]
+    insteadOf = https://bitbucket.org/
 
 ````

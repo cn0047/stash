@@ -1,4 +1,4 @@
-ssh (Secure Shell)
+SSH (Secure Shell)
 -
 
 `pssh` tool to run ssh command on few servers simultaneously

@@ -1,4 +1,4 @@
-YAML
+YAML (Yet Another Markup Language)
 -
 
 detection: ~

@@ -1,4 +1,4 @@
-TDD - Test-driven development.
+TDD (Test-driven development)
 -
 
 ````sh

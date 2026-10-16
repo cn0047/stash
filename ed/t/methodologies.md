@@ -1,6 +1,8 @@
 Software Development Methodologies
 -
 
+[planning poker](https://planningpokeronline.com)
+
 The ideal task size is not bigger than 1 day work.
 
 Two-pizza teams - where no team should be so big that it could not be fed with two pizzas.

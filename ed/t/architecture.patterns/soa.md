@@ -1,5 +1,7 @@
-SOA - Service Oriented Architecture
+SOA (Service Oriented Architecture)
 -
+
+SOA - core functionality shared across multiple enterprise systems.
 
 SOA is less about how to modularize an application,
 and more about how to compose an application by integration
@@ -16,3 +18,5 @@ Each SOA building block can be:
 * Service provider.
 * Service broker.
 * Service consumer.
+
+SOA is quite expensive in terms of development and maintenance.

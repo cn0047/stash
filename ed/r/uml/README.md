@@ -1,4 +1,4 @@
-UML
+UML (Unified Modeling Language)
 -
 
 ### Building blocks:

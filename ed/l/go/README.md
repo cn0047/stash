@@ -92,8 +92,8 @@ go clean -r                           # clean unneeded files
 go clean -modcache
 go env
 go env GOOS
-go env -json
 go env GOPATH
+go env -json
 go fmt ./...                          # format code
 go get ./...                          # [old] install all project dependencies
                                       # [now] is dedicated to adjusting dependencies

@@ -1,4 +1,4 @@
-SOAP - Simple Object Access Protocol
+SOAP (Simple Object Access Protocol)
 -
 
 SOAP uses XML to structure messages for exchanging information between different systems.

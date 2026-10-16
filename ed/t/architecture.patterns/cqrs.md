@@ -1,4 +1,4 @@
-CQRS - Command Query Responsibility Segregation
+CQRS (Command Query Responsibility Segregation)
 -
 
 Type 1 - Single database CQRS.

@@ -1,4 +1,4 @@
-arc42
+Arc42
 -
 
 [docs](https://docs.arc42.org/)
